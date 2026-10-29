@@ -1,0 +1,489 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2015-06",
+  "messages": [
+    {
+      "id": "msg-44e7b0963bec",
+      "message_id": "<556C8E76.4000709@skyeome.net>",
+      "from_name": "Skye Bender-deMoll",
+      "from_email_hash": "016c31bf83672a8e8fce6b664eb68ddff364b5df6912775ec31eeceebce90340",
+      "date": "2015-06-01T09:55:18Z",
+      "subject": "[statnet_help] visualization assistance",
+      "subject_clean": "[statnet_help] visualization assistance",
+      "in_reply_to": "<A061CE11-E5B6-4FA6-94C7-EA1846F959F8@gmail.com>",
+      "references": [
+        "<A061CE11-E5B6-4FA6-94C7-EA1846F959F8@gmail.com>"
+      ],
+      "body_plain": "Hi jimi,\n\nOn 05/28/2015 10:34 AM, jimi adams wrote:\n> Hi all,\n> I have a data set I???ve been working with that was from a teaching\n> example, and I???m trying to get a dynamic visualization of it\n> configured. The basics are working, but I am trying to figure out if a\n> few tweaks are possible, and I haven???t come up with anything yet, so\n> any help on these would be much appreciated.\n>\n> 1 - As far as I can tell, tie directionality is fixed across the entire\n> visualization. Is that so? I have 5 tie types (encoded as weights) some\n> of which are directed, some of which are not. I???d like to allow the\n> directionality to vary according to the type being visualized.\n\nYes, tie directionality is fixed.  However, for the purposes of \nrendering you can turn on and off the arrow based on edge type.  You \ncould do this with some logic in the plot command\n\ntest<-network.initialize(3)\ntest[1,2]<-1\ntest[1,3]<-1\nset.edge.attribute(test,'type',c('A','B'))\nplot(test, arrowhead.cex = ifelse(test%e%'type'=='A',0,1),)\n\nor perhaps by pre-caching an attribute for each edge to indicate if it \nshould be drawn.\n\n> 2 - I???m not figuring out how to change node color based on edge\n> patterns (e.g., can someone pass something to / contract something from\n> others dynamically, or should I code that outside of the visualization)?\n\nYou could probably encode some sort of edge pattern logic into plot \ncommands (i.e. show vertices with degree > 2 in red) but if you have \nsome sort of transmission process in mind, you will probably need to run \na simulation ahead of time, cache a status variable on the vertices, and \nthen plot that.  Have you seen the EpiModel package?  It may have a \nmodel that does what you want right out of the box.\n\nbest,\n  -skye",
+      "body_snippet": "Hi jimi,\n\nOn 05/28/2015 10:34 AM, jimi adams wrote:\n> Hi all,\n> I have a data set I???ve been working with that was from a teaching\n> example, and I???m trying to get a dynamic visualization of it\n> c",
+      "thread_id": "thread-44e7b0963bec",
+      "thread_depth": 0,
+      "month": "2015-06"
+    },
+    {
+      "id": "msg-e83557f07dbd",
+      "message_id": "<alpine.WNT.2.00.1506020719390.4256@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2015-06-02T07:24:54Z",
+      "subject": "[statnet_help] Errors returned on models run after updating ergm",
+      "subject_clean": "[statnet_help] Errors returned on models run after updating ergm",
+      "in_reply_to": "<CAKAbm6MzNBQYnwQ72eY7vrttvR7ngvSLuDYKwk_zz-NUz56Jkg@mail.gmail.com>",
+      "references": [
+        "<CAKAbm6OBwm6vmVZcS+pc1NmueVKg+LAu+h34uyY=DwxRGGvUEw@mail.gmail.com>",
+        "<5568D6FD.1050500@uni-konstanz.de>",
+        "<CAKAbm6MzNBQYnwQ72eY7vrttvR7ngvSLuDYKwk_zz-NUz56Jkg@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Matt,\n\nThese are not errors, they are diagnostic warnings that provide additional \ninformation on the performance of the MCMC estimation algorithm.  You \nshould still be getting results -- let me know if that's not the case.\n\nWhen you see this kind of error, it suggests you might want to increase \nyour MCMC.interval to reduce the correlation between draws from the chain \n(see the documentation for control.ergm).\n\nbest,\nMartina\n\nOn Fri, 29 May 2015, Matt Robbins wrote:\n\n> Hi Philip,\n> Thanks for the quick response.? Yes, I looked at the MCMC diagnostics and while the gof plots looked good for edgewise\n> shared partners and in some cases, in degree, things haven't lined up well on the out degree plot. \n> \n> Is there a way to determine if the errors are arising from data issues (missing data) vs. specification issues?\n> \n> Thanks,\n> M\n> \n> On Fri, May 29, 2015 at 2:15 PM, Philip Leifeld <philip.leifeld@uni-konstanz.de> wrote:\n>       Hi Mateo,\n>\n>       Have you made sure the ERGMs you estimated previously were non-degenerate? Did you take a look at the MCMC\n>       diagnostics output?\n>\n>       Best,\n>       Philip\n>\n>       Am 29.05.2015 um 22:56 schrieb Matt Robbins:\n>             Hello Statnet!\n>\n>             I am running into some issues with inconsistent model runs between\n>             different versions of the ergm package.? I ran a series of models on? a\n>             couple of diffferent networks that converged over the last few weeks.\n>             However, after updating to ergm version 3.2.4, running models with the\n>             same specifications now yields error messages.? Here are the messages:\n>\n>             1) /Excessive correlation among the statistics. Using a\n>             no-crosscorrelation approximation./\n>\n>             This error seems to be associated with models that include a large\n>             number of terms(including a bunch of nodemix terms).\n>\n>             2) /1: In .ergm.mvar.spec0(z) :? Excessive correlation among the\n>             statistics. Using a no-crosscorrelation approximation./\n>\n>             This error term seems to be associated with models run a large number of\n>             missing links (coded as NAs).\n>\n>             Again, these models converged error-free while using an older version of\n>             the ergm package, but return errors under the current version.? Can\n>             anyone shed light on this issue?? What are the implications for the\n>             model results generated using the previous versions of ergm?\n>\n>             Thanks,\n>             Mateo\n> \n>\n>             --\n>             Matt Robbins\n>             Ph.D. Candidate\n>             Center for Environmental Policy and Behavior\n>             <http://environmentalpolicy.ucdavis.edu/>\n>             Department of Environmental Science and Policy\n>             Graduate Group in Ecology\n>             University of California, Davis\n> \n>\n>             _______________________________________________\n>             statnet_help mailing list\n>             statnet_help@u.washington.edu\n>             http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> \n> \n> \n> \n> --\n> Matt RobbinsPh.D. Candidate\n> Center for Environmental Policy and Behavior\n> Department of Environmental Science and Policy\n> Graduate Group in Ecology\n> University of California, Davis\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Matt,\n\nThese are not errors, they are diagnostic warnings that provide additional \ninformation on the performance of the MCMC estimation algorithm.  You \nshould still be getting results -- let me k",
+      "thread_id": "thread-e83557f07dbd",
+      "thread_depth": 0,
+      "month": "2015-06"
+    },
+    {
+      "id": "msg-1ce3ed49e038",
+      "message_id": "<CAKAbm6MVw8n4wmpEhF645jtUB5-eHGvPMKcxVrQYZ=rF7RFi2Q@mail.gmail.com>",
+      "from_name": "Matt Robbins",
+      "from_email_hash": "018cdea43f93204130d9a33cdd30fb8cda78346c0b60a3a8b5fbbe116a85af46",
+      "date": "2015-06-03T14:09:59Z",
+      "subject": "[statnet_help] Errors returned on models run after updating ergm",
+      "subject_clean": "[statnet_help] Errors returned on models run after updating ergm",
+      "in_reply_to": "<alpine.WNT.2.00.1506020719390.4256@morrism-laptop>",
+      "references": [
+        "<CAKAbm6OBwm6vmVZcS+pc1NmueVKg+LAu+h34uyY=DwxRGGvUEw@mail.gmail.com>",
+        "<5568D6FD.1050500@uni-konstanz.de>",
+        "<CAKAbm6MzNBQYnwQ72eY7vrttvR7ngvSLuDYKwk_zz-NUz56Jkg@mail.gmail.com>",
+        "<alpine.WNT.2.00.1506020719390.4256@morrism-laptop>"
+      ],
+      "body_plain": "Hi Martina,\n\nThanks for your response!  I am not really getting results from many of the\nruns that return such warnings.  I get a list of estimated coefficients,\nbut most have no standard deviations (NA).  I doesn't seem  like an issue\nwith interval length, as I am already manually setting that.  That does\nraise the question:\nIs there a principled or systematic way to increase the burnin, interval,\niteration control values?\n\nHere is an example:\n\nmod1 <-ergm(w1~edges+gwidegree(.8, fixed = T, cutoff =\n30)+nodemix('smallfishsect', base = -trim.pairs)+nodecov('Resp1'),\ncontrol=control.ergm(MCMC.burnin=150000, MCMC.interval=10000,\nMCMLE.maxit=35))\nIteration 1 of at most 35:\nThe log-likelihood improved by 1.734\nStep length converged once. Increasing MCMC sample size.\nIteration 2 of at most 35:\nThe log-likelihood improved by 0.6029\nStep length converged twice. Stopping.\n\nThis model was fit using MCMC.  To examine model diagnostics and check for\ndegeneracy, use the mcmc.diagnostics() function.\nWarning messages:\n1: In .ergm.mvar.spec0(z) :\n  Excessive correlation among the statistics. Using a no-crosscorrelation\napproximation.\n2: In .ergm.mvar.spec0(z) :\n  Excessive correlation among the statistics. Using a no-crosscorrelation\napproximation.\n3: In .ergm.mvar.spec0(z) :\n  Excessive correlation among the statistics. Using a no-crosscorrelation\napproximation.\n\nThanks,\nMateo\n\nOn Tue, Jun 2, 2015 at 7:24 AM, martina morris <morrism@u.washington.edu>\nwrote:\n\n> Hi Matt,\n>\n> These are not errors, they are diagnostic warnings that provide additional\n> information on the performance of the MCMC estimation algorithm.  You\n> should still be getting results -- let me know if that's not the case.\n>\n> When you see this kind of error, it suggests you might want to increase\n> your MCMC.interval to reduce the correlation between draws from the chain\n> (see the documentation for control.ergm).\n>\n> best,\n> Martina\n>\n>\n> On Fri, 29 May 2015, Matt Robbins wrote:\n>\n>  Hi Philip,\n>> Thanks for the quick response.  Yes, I looked at the MCMC diagnostics and\n>> while the gof plots looked good for edgewise\n>> shared partners and in some cases, in degree, things haven't lined up\n>> well on the out degree plot.\n>> Is there a way to determine if the errors are arising from data issues\n>> (missing data) vs. specification issues?\n>>\n>> Thanks,\n>> M\n>>\n>> On Fri, May 29, 2015 at 2:15 PM, Philip Leifeld <\n>> philip.leifeld@uni-konstanz.de> wrote:\n>>       Hi Mateo,\n>>\n>>       Have you made sure the ERGMs you estimated previously were\n>> non-degenerate? Did you take a look at the MCMC\n>>       diagnostics output?\n>>\n>>       Best,\n>>       Philip\n>>\n>>       Am 29.05.2015 um 22:56 schrieb Matt Robbins:\n>>             Hello Statnet!\n>>\n>>             I am running into some issues with inconsistent model runs\n>> between\n>>             different versions of the ergm package.  I ran a series of\n>> models on  a\n>>             couple of diffferent networks that converged over the last\n>> few weeks.\n>>             However, after updating to ergm version 3.2.4, running models\n>> with the\n>>             same specifications now yields error messages.  Here are the\n>> messages:\n>>\n>>             1) /Excessive correlation among the statistics. Using a\n>>             no-crosscorrelation approximation./\n>>\n>>             This error seems to be associated with models that include a\n>> large\n>>             number of terms(including a bunch of nodemix terms).\n>>\n>>             2) /1: In .ergm.mvar.spec0(z) :  Excessive correlation among\n>> the\n>>             statistics. Using a no-crosscorrelation approximation./\n>>\n>>             This error term seems to be associated with models run a\n>> large number of\n>>             missing links (coded as NAs).\n>>\n>>             Again, these models converged error-free while using an older\n>> version of\n>>             the ergm package, but return errors under the current\n>> version.  Can\n>>             anyone shed light on this issue?  What are the implications\n>> for the\n>>             model results generated using the previous versions of ergm?\n>>\n>>             Thanks,\n>>             Mateo\n>>\n>>\n>>             --\n>>             Matt Robbins\n>>             Ph.D. Candidate\n>>             Center for Environmental Policy and Behavior\n>>             <http://environmentalpolicy.ucdavis.edu/>\n>>             Department of Environmental Science and Policy\n>>             Graduate Group in Ecology\n>>             University of California, Davis\n>>\n>>\n>>             _______________________________________________\n>>             statnet_help mailing list\n>>             statnet_help@u.washington.edu\n>>\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>>\n>>\n>> --\n>> Matt RobbinsPh.D. Candidate\n>> Center for Environmental Policy and Behavior\n>> Department of Environmental Science and Policy\n>> Graduate Group in Ecology\n>> University of California, Davis\n>>\n>>\n>>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n\n-- \nMatt Robbins\nPh.D. Candidate\nCenter for Environmental Policy and Behavior\n<http://environmentalpolicy.ucdavis.edu/>\nDepartment of Environmental Science and Policy\nGraduate Group in Ecology\nUniversity of California, Davis\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150603/363dc5c9/attachment.html>",
+      "body_snippet": "Hi Martina,\n\nThanks for your response!  I am not really getting results from many of the\nruns that return such warnings.  I get a list of estimated coefficients,\nbut most have no standard deviations (",
+      "thread_id": "thread-e83557f07dbd",
+      "thread_depth": 1,
+      "month": "2015-06"
+    },
+    {
+      "id": "msg-52591b5bfb4e",
+      "message_id": "<CAPxw2WA1Z4siCm6VuH5EdG69-Sk29UCEsGo9QdekppgZcH9HTw@mail.gmail.com>",
+      "from_name": "Chris Vargo",
+      "from_email_hash": "8d140ba481422721895007b68459746aabc876aa28d51a9959936af0656a5150",
+      "date": "2015-06-03T14:25:45Z",
+      "subject": "[statnet_help] Installing Statnet",
+      "subject_clean": "[statnet_help] Installing Statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Installing statnet on mac 10.10.3 with R 0.99.441.\n\nld: warning: directory not found for option\n'-L/usr/local/lib/gcc/x86_64-apple-darwin13.0.0/4.8.2'\nld: library not found for -lgfortran\nclang: error: linker command failed with exit code 1 (use -v to see invocation)\nmake: *** [latentnet.so] Error 1\nERROR: compilation failed for package ?latentnet?* removing\n?/Library/Frameworks/R.framework/Versions/3.2/Resources/library/latentnet?Warning\nin install.packages :\ninstallation of package ?latentnet? had non-zero exit status\nERROR: dependency ?latentnet? is not available for package ?statnet?*\nremoving ?/Library/Frameworks/R.framework/Versions/3.2/Resources/library/statnet?Warning\nin install.packages :\ninstallation of package ?statnet? had non-zero exit status\n\nI tried updating XCode/Command Line Tools. Also tried not installing\ndependencies. I have been able to install other packages, such as ergm and\nsna.\n\nIt looks like the install is looking for the GCC folder and not finding it.\n\nwhereis gcc\n\nreveals that my gcc is in /usr/bin/gcc\n\nIt looks like the install is looking for it in /usr/local/lib/gcc/\n\nIs there a way to fix this?\n\n\nThanks for your help.\n\n\nBest,\n\nChris\nChris J. Vargo\nUniversity of Alabama\nAssistant Professor, Ph.D.\n\nAdvertising & Public Relations\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150603/36f0c868/attachment.html>",
+      "body_snippet": "Installing statnet on mac 10.10.3 with R 0.99.441.\n\nld: warning: directory not found for option\n'-L/usr/local/lib/gcc/x86_64-apple-darwin13.0.0/4.8.2'\nld: library not found for -lgfortran\nclang: error",
+      "thread_id": "thread-52591b5bfb4e",
+      "thread_depth": 0,
+      "month": "2015-06"
+    },
+    {
+      "id": "msg-826a3fc1e304",
+      "message_id": "<alpine.WNT.2.00.1506031636090.4256@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2015-06-03T16:36:51Z",
+      "subject": "[statnet_help] Errors returned on models run after updating ergm",
+      "subject_clean": "[statnet_help] Errors returned on models run after updating ergm",
+      "in_reply_to": "<CAKAbm6MVw8n4wmpEhF645jtUB5-eHGvPMKcxVrQYZ=rF7RFi2Q@mail.gmail.com>",
+      "references": [
+        "<CAKAbm6OBwm6vmVZcS+pc1NmueVKg+LAu+h34uyY=DwxRGGvUEw@mail.gmail.com>",
+        "<5568D6FD.1050500@uni-konstanz.de>",
+        "<CAKAbm6MzNBQYnwQ72eY7vrttvR7ngvSLuDYKwk_zz-NUz56Jkg@mail.gmail.com>",
+        "<alpine.WNT.2.00.1506020719390.4256@morrism-laptop>",
+        "<CAKAbm6MVw8n4wmpEhF645jtUB5-eHGvPMKcxVrQYZ=rF7RFi2Q@mail.gmail.com>"
+      ],
+      "body_plain": "Can you send a copy of the output you're getting with NAs?\n\nOn Wed, 3 Jun 2015, Matt Robbins wrote:\n\n> Hi Martina,\n> Thanks for your response!? I am not really getting results from many of the runs that return such warnings.? I get a list\n> of estimated coefficients, but most have no standard deviations (NA).? I doesn't seem ?like an issue with interval\n> length, as I am already manually setting that.? That does raise the question:\n> Is there a principled or systematic way to increase the burnin, interval, iteration control values?\n> \n> Here is an example:\n> \n> mod1 <-ergm(w1~edges+gwidegree(.8, fixed = T, cutoff = 30)+nodemix('smallfishsect', base = -trim.pairs)+nodecov('Resp1'),\n> control=control.ergm(MCMC.burnin=150000, MCMC.interval=10000, MCMLE.maxit=35))\n> Iteration 1 of at most 35: \n> The log-likelihood improved by 1.734 \n> Step length converged once. Increasing MCMC sample size.\n> Iteration 2 of at most 35: \n> The log-likelihood improved by 0.6029 \n> Step length converged twice. Stopping.\n> \n> This model was fit using MCMC.? To examine model diagnostics and check for degeneracy, use the mcmc.diagnostics()\n> function.\n> Warning messages:\n> 1: In .ergm.mvar.spec0(z) :\n> ? Excessive correlation among the statistics. Using a no-crosscorrelation approximation.\n> 2: In .ergm.mvar.spec0(z) :\n> ? Excessive correlation among the statistics. Using a no-crosscorrelation approximation.\n> 3: In .ergm.mvar.spec0(z) :\n> ? Excessive correlation among the statistics. Using a no-crosscorrelation approximation.\n> \n> Thanks,\n> Mateo\n> \n> On Tue, Jun 2, 2015 at 7:24 AM, martina morris <morrism@u.washington.edu> wrote:\n>       Hi Matt,\n>\n>       These are not errors, they are diagnostic warnings that provide additional information on the performance of\n>       the MCMC estimation algorithm.? You should still be getting results -- let me know if that's not the case.\n>\n>       When you see this kind of error, it suggests you might want to increase your MCMC.interval to reduce the\n>       correlation between draws from the chain (see the documentation for control.ergm).\n>\n>       best,\n>       Martina\n>\n>       On Fri, 29 May 2015, Matt Robbins wrote:\n>\n>       Hi Philip,\n>       Thanks for the quick response.? Yes, I looked at the MCMC diagnostics and while the gof plots looked\n>       good for edgewise\n>       shared partners and in some cases, in degree, things haven't lined up well on the out degree plot.\n>       Is there a way to determine if the errors are arising from data issues (missing data) vs. specification\n>       issues?\n>\n>       Thanks,\n>       M\n>\n>       On Fri, May 29, 2015 at 2:15 PM, Philip Leifeld <philip.leifeld@uni-konstanz.de> wrote:\n>       ? ? ? Hi Mateo,\n>\n>       ? ? ? Have you made sure the ERGMs you estimated previously were non-degenerate? Did you take a look at\n>       the MCMC\n>       ? ? ? diagnostics output?\n>\n>       ? ? ? Best,\n>       ? ? ? Philip\n>\n>       ? ? ? Am 29.05.2015 um 22:56 schrieb Matt Robbins:\n>       ? ? ? ? ? ? Hello Statnet!\n>\n>       ? ? ? ? ? ? I am running into some issues with inconsistent model runs between\n>       ? ? ? ? ? ? different versions of the ergm package.? I ran a series of models on? a\n>       ? ? ? ? ? ? couple of diffferent networks that converged over the last few weeks.\n>       ? ? ? ? ? ? However, after updating to ergm version 3.2.4, running models with the\n>       ? ? ? ? ? ? same specifications now yields error messages.? Here are the messages:\n>\n>       ? ? ? ? ? ? 1) /Excessive correlation among the statistics. Using a\n>       ? ? ? ? ? ? no-crosscorrelation approximation./\n>\n>       ? ? ? ? ? ? This error seems to be associated with models that include a large\n>       ? ? ? ? ? ? number of terms(including a bunch of nodemix terms).\n>\n>       ? ? ? ? ? ? 2) /1: In .ergm.mvar.spec0(z) :? Excessive correlation among the\n>       ? ? ? ? ? ? statistics. Using a no-crosscorrelation approximation./\n>\n>       ? ? ? ? ? ? This error term seems to be associated with models run a large number of\n>       ? ? ? ? ? ? missing links (coded as NAs).\n>\n>       ? ? ? ? ? ? Again, these models converged error-free while using an older version of\n>       ? ? ? ? ? ? the ergm package, but return errors under the current version.? Can\n>       ? ? ? ? ? ? anyone shed light on this issue?? What are the implications for the\n>       ? ? ? ? ? ? model results generated using the previous versions of ergm?\n>\n>       ? ? ? ? ? ? Thanks,\n>       ? ? ? ? ? ? Mateo\n> \n>\n>       ? ? ? ? ? ? --\n>       ? ? ? ? ? ? Matt Robbins\n>       ? ? ? ? ? ? Ph.D. Candidate\n>       ? ? ? ? ? ? Center for Environmental Policy and Behavior\n>       ? ? ? ? ? ? <http://environmentalpolicy.ucdavis.edu/>\n>       ? ? ? ? ? ? Department of Environmental Science and Policy\n>       ? ? ? ? ? ? Graduate Group in Ecology\n>       ? ? ? ? ? ? University of California, Davis\n> \n>\n>       ? ? ? ? ? ? _______________________________________________\n>       ? ? ? ? ? ? statnet_help mailing list\n>       ? ? ? ? ? ? statnet_help@u.washington.edu\n>       ? ? ? ? ? ? http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> \n> \n> \n>\n>       --\n> Matt RobbinsPh.D. Candidate\n> Center for Environmental Policy and Behavior\n> Department of Environmental Science and Policy\n> Graduate Group in Ecology\n> University of California, Davis\n> \n> \n> \n> ****************************************************************\n> ?Professor of Sociology and Statistics\n> ?Director, UWCFAR Sociobehavioral and Prevention Research Core\n> ?Box 354322\n> ?University of Washington\n> ?Seattle, WA 98195-4322\n>\n> ?Office:? ? ? ? (206) 685-3402\n> ?Dept Office:? ?(206) 543-5882, 543-7237\n> ?Fax:? ? ? ? ? ?(206) 685-7419\n> \n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> \n> \n> \n> \n> --\n> Matt RobbinsPh.D. Candidate\n> Center for Environmental Policy and Behavior\n> Department of Environmental Science and Policy\n> Graduate Group in Ecology\n> University of California, Davis\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Can you send a copy of the output you're getting with NAs?\n\nOn Wed, 3 Jun 2015, Matt Robbins wrote:\n\n> Hi Martina,\n> Thanks for your response!? I am not really getting results from many of the runs th",
+      "thread_id": "thread-e83557f07dbd",
+      "thread_depth": 2,
+      "month": "2015-06"
+    },
+    {
+      "id": "msg-bf5c14f7b1af",
+      "message_id": "<55728033.2080409@skyeome.net>",
+      "from_name": "Skye Bender-deMoll",
+      "from_email_hash": "016c31bf83672a8e8fce6b664eb68ddff364b5df6912775ec31eeceebce90340",
+      "date": "2015-06-05T22:08:03Z",
+      "subject": "[statnet_help] Installing Statnet",
+      "subject_clean": "[statnet_help] Installing Statnet",
+      "in_reply_to": "<CAPxw2WA1Z4siCm6VuH5EdG69-Sk29UCEsGo9QdekppgZcH9HTw@mail.gmail.com>",
+      "references": [
+        "<CAPxw2WA1Z4siCm6VuH5EdG69-Sk29UCEsGo9QdekppgZcH9HTw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Chris,\n\nThanks for the report. Are you able to compile other packages or R \nitself without errors?  This looks like it might be an issues with your \nR build tools configuration.  It seems to be building fine on our mac \nbuild server with default tools.  It is also building fine on CRAN, is \nthere a reason you want to compile from source instead of installing the \nbinary version from CRAN?\n\nbest,\n  -skye\n\n\nOn 06/03/2015 02:25 PM, Chris Vargo wrote:\n> Installing statnet on mac 10.10.3 with R 0.99.441.\n>\n> |ld:  warning:  directorynot  foundfor  option'-L/usr/local/lib/gcc/x86_64-apple-darwin13.0.0/4.8.2'\n> ld:  librarynot  foundfor  -lgfortran\n> clang:  error:  linker command failedwith  exit  code1  (use  -v to see invocation)\n> make:  ***  [latentnet.so]  Error  1\n> ERROR:  compilation failedfor  package  ???latentnet???\n> *  removing???/Library/Frameworks/R.framework/Versions/3.2/Resources/library/latentnet???\n> Warning  in  install.packages:\n> installation ofpackage  ???latentnet???  had non-zeroexit  status\n> ERROR:  dependency???latentnet???  is  not  availablefor  package  ???statnet???\n> *  removing???/Library/Frameworks/R.framework/Versions/3.2/Resources/library/statnet???\n> Warning  in  install.packages:\n> installation ofpackage  ???statnet???  had non-zeroexit  status|\n>\n> I tried updating XCode/Command Line Tools. Also tried not installing\n> dependencies. I have been able to install other packages, such as ergm\n> and sna.\n>\n> It looks like the install is looking for the GCC folder and not finding it.\n>\n> |whereis gcc|\n>\n> reveals that my gcc is in /usr/bin/gcc\n>\n> It looks like the install is looking for it in /usr/local/lib/gcc/\n>\n> Is there a way to fix this?\n>\n>\n> Thanks for your help.\n>\n>\n> Best,\n>\n> Chris\n>\n> Chris J. Vargo\n> University of Alabama\n> Assistant Professor, Ph.D.\n>\n> Advertising & Public Relations\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi Chris,\n\nThanks for the report. Are you able to compile other packages or R \nitself without errors?  This looks like it might be an issues with your \nR build tools configuration.  It seems to be bui",
+      "thread_id": "thread-52591b5bfb4e",
+      "thread_depth": 1,
+      "month": "2015-06"
+    },
+    {
+      "id": "msg-a70b18322890",
+      "message_id": "<3CEDBB9B-7896-4C06-81CC-EEBD9B444733@nus.edu.sg>",
+      "from_name": "Oliver Steven Matthew",
+      "from_email_hash": "bd07ce227b14ad80f34f9b9d8f1e3d042ca42e932847285fae5495f97158717f",
+      "date": "2015-06-11T09:59:28Z",
+      "subject": "[statnet_help] error for ergm with bipartite network",
+      "subject_clean": "[statnet_help] error for ergm with bipartite network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Greetings everyone,\n\nI am working with a bipartite network (545 Actors X 407 Events). At present, I am having trouble getting ergm to recognize the network as bipartite. When I attempt to model using ergm, I receive the following error message:\n\n> ergm(net ~ edges + b1nodematch(\"district1?))\nError: The term b1nodematch does not exist for this type of ERGM. Are you sure you have the right name?\n\n\nI guess that I have failed to correctly specify an option somewhere along the line. However, when I originally set the adjacency matrix ?mat? as a network object ?net', I specified the network as bipartite and it is undirected. For example, see below:\n\n> net<-network(mat, bipartite=545)\n>\n> net\n Network attributes:\n  vertices = 952\n  directed = FALSE\n  hyper = FALSE\n  loops = FALSE\n  multiple = FALSE\n  bipartite = 545\n  total edges= 2137\n    missing edges= 0\n    non-missing edges= 2137\n\n Vertex attribute names:\n    vertex.names\n\n\nI am just getting started with the statnet suite so this is a true beginner?s mistake. However, I was not able to identify a previous discussion on statnet_help that described a user with a similar problem. If anyone could point me in that direction, I would be very appreciative. More generally, is there a good guide or tutorial for dealing specifically with bipartite networks in statnet that anyone can recommend for a beginner?\n\nMany thanks in advance for any help or advice you can give,\n\n\nSteve Oliver\n\nVisiting Assistant Professor\nDivision of Social Sciences\nYale-NUS College\n\n\n________________________________\n\nImportant: This email is confidential and may be privileged. If you are not the intended recipient, please delete it and notify us immediately; you should not copy or use it for any purpose, nor disclose its contents to any other person. Thank you.",
+      "body_snippet": "Greetings everyone,\n\nI am working with a bipartite network (545 Actors X 407 Events). At present, I am having trouble getting ergm to recognize the network as bipartite. When I attempt to model using ",
+      "thread_id": "thread-a70b18322890",
+      "thread_depth": 0,
+      "month": "2015-06"
+    },
+    {
+      "id": "msg-302bf3deb0ce",
+      "message_id": "<5579D45D.2020101@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2015-06-11T11:33:01Z",
+      "subject": "[statnet_help] error for ergm with bipartite network",
+      "subject_clean": "[statnet_help] error for ergm with bipartite network",
+      "in_reply_to": "<3CEDBB9B-7896-4C06-81CC-EEBD9B444733@nus.edu.sg>",
+      "references": [
+        "<3CEDBB9B-7896-4C06-81CC-EEBD9B444733@nus.edu.sg>"
+      ],
+      "body_plain": "Hi Oliver - it does seem that your network is properly stored as a \nbipartite network.  But, it seems that you don't have a vertex attribute \nnamed 'district1' included, since it's not listed under \"Vertex \nattribute names\". That might be the cause of the problem (although the \nspecific nature of the error does sound like it's pointing in a slightly \ndifferent direction).\n\nHTH,\nSteve\n\n\n\nOn 6/11/2015 9:59 AM, Oliver Steven Matthew wrote:\n> Greetings everyone,\n>\n> I am working with a bipartite network (545 Actors X 407 Events). At present, I am having trouble getting ergm to recognize the network as bipartite. When I attempt to model using ergm, I receive the following error message:\n>\n>> ergm(net ~ edges + b1nodematch(\"district1?))\n> Error: The term b1nodematch does not exist for this type of ERGM. Are you sure you have the right name?\n>\n>\n> I guess that I have failed to correctly specify an option somewhere along the line. However, when I originally set the adjacency matrix ?mat? as a network object ?net', I specified the network as bipartite and it is undirected. For example, see below:\n>\n>> net<-network(mat, bipartite=545)\n>>\n>> net\n>   Network attributes:\n>    vertices = 952\n>    directed = FALSE\n>    hyper = FALSE\n>    loops = FALSE\n>    multiple = FALSE\n>    bipartite = 545\n>    total edges= 2137\n>      missing edges= 0\n>      non-missing edges= 2137\n>\n>   Vertex attribute names:\n>      vertex.names\n>\n>\n> I am just getting started with the statnet suite so this is a true beginner?s mistake. However, I was not able to identify a previous discussion on statnet_help that described a user with a similar problem. If anyone could point me in that direction, I would be very appreciative. More generally, is there a good guide or tutorial for dealing specifically with bipartite networks in statnet that anyone can recommend for a beginner?\n>\n> Many thanks in advance for any help or advice you can give,\n>\n>\n> Steve Oliver\n>\n> Visiting Assistant Professor\n> Division of Social Sciences\n> Yale-NUS College\n>\n>\n> ________________________________\n>\n> Important: This email is confidential and may be privileged. If you are not the intended recipient, please delete it and notify us immediately; you should not copy or use it for any purpose, nor disclose its contents to any other person. Thank you.\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \n*******************************************************************\n\"We cannot overstate the role of behavioral science in our effort\n  to get ahead of the curve with emerging infections.\"\n   --David Satcher, Director, US Centers for Disease Control, 1995\n*******************************************************************\nSteven M. Goodreau / Assoc. Professor / Dept. of Anthropology\nUniversity of Washington / Denny Hall 423 / Campus Box 353100\nSeattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau\n*******************************************************************",
+      "body_snippet": "Hi Oliver - it does seem that your network is properly stored as a \nbipartite network.  But, it seems that you don't have a vertex attribute \nnamed 'district1' included, since it's not listed under \"V",
+      "thread_id": "thread-a70b18322890",
+      "thread_depth": 1,
+      "month": "2015-06"
+    },
+    {
+      "id": "msg-16d2a756601e",
+      "message_id": "<BY1PR0101MB11906251E8B2E7E901AAB1168BBC0@BY1PR0101MB1190.prod.exchangelabs.com>",
+      "from_name": "Elliott, David L (MU-Student)",
+      "from_email_hash": "fc30cf8d632f6c0b89bc6dbb129b61fea44adf4daeeec4dc1add6ee58568f820",
+      "date": "2015-06-11T11:59:43Z",
+      "subject": "[statnet_help] Question for developers and users of the SNA R packages regarding Revolution R Open",
+      "subject_clean": "[statnet_help] Question for developers and users of the SNA R packages regarding Revolution R Open",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\n\nBelow is a question I posted to the SOCNET list yesterday, and still seeking a response, I'm taking the liberty of reposting it here.  Any recommendation one way or the other would be appreciated:\n\n\nRevolution R Open was recommended to me yesterday by the quantitative corpus linguist Stefan Th. Gries:\n\n\nhttp://www.revolutionanalytics.com/revolution-r-open\n\n\n\nI use a 64-bit processor and Windows 7, and apparently this \"enhanced\" version of R is designed strictly for 64 bits, which I think is why Stefan suggested it to me.  The developers claim that Revolution R Open is compatible with all CRAN packages and RStudio.  Does anyone have experience with this version of R, and would you recommend it over \"regular\" R 3.2.0 for 64 bits?  Has anyone tried it with sna, statnet, RSIENA, igraph, etc.?  Would you trust its stability and reliability for publishable research results?\n\n\nThanks,\n\n\nDavid L. Elliott\n\nPh.D. Candidate in Sociology\n\nUniversity of Missouri\n\n\nP.S.  I look forward to meeting a number of you on this list in Brighton Beach.  I am registered  for four statnet-related workshops, including Professor Morris's ERGM workshop.\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150611/52bc4d95/attachment.html>",
+      "body_snippet": "Hi,\n\n\nBelow is a question I posted to the SOCNET list yesterday, and still seeking a response, I'm taking the liberty of reposting it here.  Any recommendation one way or the other would be appreciate",
+      "thread_id": "thread-16d2a756601e",
+      "thread_depth": 0,
+      "month": "2015-06"
+    },
+    {
+      "id": "msg-ea43aad9ea79",
+      "message_id": "<1AD28E2A-6806-44A4-B5FE-9F47C7ACC945@nus.edu.sg>",
+      "from_name": "Oliver Steven Matthew",
+      "from_email_hash": "bd07ce227b14ad80f34f9b9d8f1e3d042ca42e932847285fae5495f97158717f",
+      "date": "2015-06-11T12:24:25Z",
+      "subject": "[statnet_help] error for ergm with bipartite network",
+      "subject_clean": "[statnet_help] error for ergm with bipartite network",
+      "in_reply_to": "<5579D45D.2020101@uw.edu>",
+      "references": [
+        "<3CEDBB9B-7896-4C06-81CC-EEBD9B444733@nus.edu.sg>",
+        "<5579D45D.2020101@uw.edu>"
+      ],
+      "body_plain": "Hi Steve,\n\nThanks for getting to my post so quickly: However, I think I might have created some confusion with the code I posted in my first message (my apologies). The original block of code (plus output) is as follows:\n\n> net<-network(mat, bipartite=545)\n> net\n Network attributes:\n  vertices = 952\n  directed = FALSE\n  hyper = FALSE\n  loops = FALSE\n  multiple = FALSE\n  bipartite = 545\n  total edges= 2137\n    missing edges= 0\n    non-missing edges= 2137\n\n Vertex attribute names:\n    vertex.names\n>\n> district1<-c(district[1:545], rep(NA, 407))\n>\n> ft<-which(district1 %in% \"???\")\n> lg<-which(district1 %in% \"???\")\n> ba<-which(district1 %in% \"???\")\n> ns<-which(district1 %in% \"???\")\n> lh<-which(district1 %in% \"???\")\n> yt<-which(district1 %in% \"???\")\n> jf<-which(district1 %in% \"???\")\n>\n> set.vertex.attribute(net, \"district1\", 2, v=ft)\n> set.vertex.attribute(net, \"district1\", 3, v=lg)\n> set.vertex.attribute(net, \"district1\", 4, v=ba)\n> set.vertex.attribute(net, \"district1\", 5, v=ns)\n> set.vertex.attribute(net, \"district1\", 6, v=lh)\n> set.vertex.attribute(net, \"district1\", 7, v=yt)\n> set.vertex.attribute(net, \"district1\", 8, v=jf)\n>\n> net\n Network attributes:\n  vertices = 952\n  directed = FALSE\n  hyper = FALSE\n  loops = FALSE\n  multiple = FALSE\n  bipartite = 545\n  total edges= 2137\n    missing edges= 0\n    non-missing edges= 2137\n\n Vertex attribute names:\n    district1 vertex.names\n>\n> ergm(net ~ edges + b1nodematch(\"district1\"))\nError: The term b1nodematch does not exist for this type of ERGM. Are you sure you have the right name?\n\n\nAs you can see in the output, ?district1? is now listed as a vertex attribute for ?net?. However, I still get the error when I use b1nodematch.\n\nThanks again,\n\nSteve\n\n> On Jun 11, 2015, at 11:33 AM, Steven Goodreau <goodreau@uw.edu> wrote:\n>\n> Hi Oliver - it does seem that your network is properly stored as a bipartite network.  But, it seems that you don't have a vertex attribute named 'district1' included, since it's not listed under \"Vertex attribute names\". That might be the cause of the problem (although the specific nature of the error does sound like it's pointing in a slightly different direction).\n>\n> HTH,\n> Steve\n>\n>\n>\n> On 6/11/2015 9:59 AM, Oliver Steven Matthew wrote:\n>> Greetings everyone,\n>>\n>> I am working with a bipartite network (545 Actors X 407 Events). At present, I am having trouble getting ergm to recognize the network as bipartite. When I attempt to model using ergm, I receive the following error message:\n>>\n>>> ergm(net ~ edges + b1nodematch(\"district1?))\n>> Error: The term b1nodematch does not exist for this type of ERGM. Are you sure you have the right name?\n>>\n>>\n>> I guess that I have failed to correctly specify an option somewhere along the line. However, when I originally set the adjacency matrix ?mat? as a network object ?net', I specified the network as bipartite and it is undirected. For example, see below:\n>>\n>>> net<-network(mat, bipartite=545)\n>>>\n>>> net\n>>  Network attributes:\n>>   vertices = 952\n>>   directed = FALSE\n>>   hyper = FALSE\n>>   loops = FALSE\n>>   multiple = FALSE\n>>   bipartite = 545\n>>   total edges= 2137\n>>     missing edges= 0\n>>     non-missing edges= 2137\n>>\n>>  Vertex attribute names:\n>>     vertex.names\n>>\n>>\n>> I am just getting started with the statnet suite so this is a true beginner?s mistake. However, I was not able to identify a previous discussion on statnet_help that described a user with a similar problem. If anyone could point me in that direction, I would be very appreciative. More generally, is there a good guide or tutorial for dealing specifically with bipartite networks in statnet that anyone can recommend for a beginner?\n>>\n>> Many thanks in advance for any help or advice you can give,\n>>\n>>\n>> Steve Oliver\n>>\n>> Visiting Assistant Professor\n>> Division of Social Sciences\n>> Yale-NUS College\n>>\n>>\n>> ________________________________\n>>\n>> Important: This email is confidential and may be privileged. If you are not the intended recipient, please delete it and notify us immediately; you should not copy or use it for any purpose, nor disclose its contents to any other person. Thank you.\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n> --\n> *******************************************************************\n> \"We cannot overstate the role of behavioral science in our effort\n> to get ahead of the curve with emerging infections.\"\n>  --David Satcher, Director, US Centers for Disease Control, 1995\n> *******************************************************************\n> Steven M. Goodreau / Assoc. Professor / Dept. of Anthropology\n> University of Washington / Denny Hall 423 / Campus Box 353100\n> Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)\n> http://faculty.washington.edu/goodreau\n> *******************************************************************\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n________________________________\n\nImportant: This email is confidential and may be privileged. If you are not the intended recipient, please delete it and notify us immediately; you should not copy or use it for any purpose, nor disclose its contents to any other person. Thank you.",
+      "body_snippet": "Hi Steve,\n\nThanks for getting to my post so quickly: However, I think I might have created some confusion with the code I posted in my first message (my apologies). The original block of code (plus ou",
+      "thread_id": "thread-a70b18322890",
+      "thread_depth": 2,
+      "month": "2015-06"
+    },
+    {
+      "id": "msg-45479f5cd8bf",
+      "message_id": "<1434200740.3608.139.camel@uow.edu.au>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2015-06-13T06:05:40Z",
+      "subject": "[statnet_help] STERGM errors",
+      "subject_clean": "[statnet_help] STERGM errors",
+      "in_reply_to": "<CAJvYH+_hR6SwTfkeV02do+0hZnFLBN2OffmY6n8SeP_oDtLi-w@mail.gmail.com>",
+      "references": [
+        "<CAJvYH+_hR6SwTfkeV02do+0hZnFLBN2OffmY6n8SeP_oDtLi-w@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Jeff,\n\nThis did expose a bug in tergm, which will be fixed in the next release.\nOther than that,\n\n> \n> for (i in 1:10) {\n> activate.network.attribute(net, \"dyadic\", x[i], onset=i, length=1)\n> }\n\n\nx is a 3D array, so x[i] will extract its i'th element. I think you're\nlooking for x[,,i]. Also, NAs for covariates are not allowed.\n\n> net.fit <- stergm(net, formation= ~edges + mutual + dyadcov(net,\n> \"dyadic\") , dissolution= ~edges + mutual  + dyadcov(net, \"dyadic\"),\n> estimate = \"CMLE\", times = c(1:11))\n\n\nAlso, unfortunately, tergm doesn't support a series of networks with\nheterogeneous sizes at this time, though it isn't explicit about it. A\nfull support is a complicated question, but it'll handle it more\ngracefully in the next release (hopefully, next week).\n\n                                    Pavel\n\n-- \nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics\nBuilding 39C Room 185\nUniversity of Wollongong NSW 2522\nP +61 2 4221 3713\nW niasra.uow.edu.au\nPlease consider the environment before printing this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150613/6aa12d49/attachment.html>",
+      "body_snippet": "Dear Jeff,\n\nThis did expose a bug in tergm, which will be fixed in the next release.\nOther than that,\n\n> \n> for (i in 1:10) {\n> activate.network.attribute(net, \"dyadic\", x[i], onset=i, length=1)\n> }\n\n",
+      "thread_id": "thread-45479f5cd8bf",
+      "thread_depth": 0,
+      "month": "2015-06"
+    },
+    {
+      "id": "msg-a41e126bfd11",
+      "message_id": "<557C38E9.2010508@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2015-06-13T07:06:33Z",
+      "subject": "[statnet_help] error for ergm with bipartite network",
+      "subject_clean": "[statnet_help] error for ergm with bipartite network",
+      "in_reply_to": "<1AD28E2A-6806-44A4-B5FE-9F47C7ACC945@nus.edu.sg>",
+      "references": [
+        "<3CEDBB9B-7896-4C06-81CC-EEBD9B444733@nus.edu.sg>",
+        "<5579D45D.2020101@uw.edu>",
+        "<1AD28E2A-6806-44A4-B5FE-9F47C7ACC945@nus.edu.sg>"
+      ],
+      "body_plain": "Hello Oliver,\n\nI don?t have your data, but when I run a stripped-down version of the \ncode with made-up data in the same structure as yours, the term appears \nworks fine.  Since it?s a relatively new addition to our toolkit, I \nthink the most likely explanation is that you have an old version of \nergm loaded? You can find out which with sessionInfo().    I have ergm \n3.2.4 and the following code works just fine:\n\nlibrary(ergm)\nmat <- matrix(0,952,952)\nnet<-network(mat, bipartite=545, directed=F)\nnet<- san(net~edges,target.stats=2137)\nnet\ndistrict1 <- sample(2:8, 952, replace=T)\nset.vertex.attribute(net, \"district1\", district1)\nmyergm <- ergm(net ~ edges + b1nodematch(\"district1\"))\n\nMy other guess was that maybe you had missing values in your district1 \nattribute, and the error message was triggered by that, even if it \npointed to a different problem.  But it appears that the attribute works \njust fine with missing data as well:\n\nset.vertex.attribute(net, \"district1\", district1, v=c(1:20))\nmyergm <- ergm(net ~ edges + b1nodematch(\"district1\"))\n\nIf it does turn out to be an old version, then either of the following \nshould help:\n\nupdate.packages(?statnet?)\nupdate.packages(?ergm?)\n\nLet us know if that solves the problem.\n\nYours,\nSteve\n\nOn 6/11/2015 3:24 PM, Oliver Steven Matthew wrote:\n> Hi Steve,\n>\n> Thanks for getting to my post so quickly: However, I think I might have created some confusion with the code I posted in my first message (my apologies). The original block of code (plus output) is as follows:\n>\n>> net<-network(mat, bipartite=545)\n>> net\n>   Network attributes:\n>    vertices = 952\n>    directed = FALSE\n>    hyper = FALSE\n>    loops = FALSE\n>    multiple = FALSE\n>    bipartite = 545\n>    total edges= 2137\n>      missing edges= 0\n>      non-missing edges= 2137\n>\n>   Vertex attribute names:\n>      vertex.names\n>> district1<-c(district[1:545], rep(NA, 407))\n>>\n>> ft<-which(district1 %in% \"???\")\n>> lg<-which(district1 %in% \"???\")\n>> ba<-which(district1 %in% \"???\")\n>> ns<-which(district1 %in% \"???\")\n>> lh<-which(district1 %in% \"???\")\n>> yt<-which(district1 %in% \"???\")\n>> jf<-which(district1 %in% \"???\")\n>>\n>> set.vertex.attribute(net, \"district1\", 2, v=ft)\n>> set.vertex.attribute(net, \"district1\", 3, v=lg)\n>> set.vertex.attribute(net, \"district1\", 4, v=ba)\n>> set.vertex.attribute(net, \"district1\", 5, v=ns)\n>> set.vertex.attribute(net, \"district1\", 6, v=lh)\n>> set.vertex.attribute(net, \"district1\", 7, v=yt)\n>> set.vertex.attribute(net, \"district1\", 8, v=jf)\n>>\n>> net\n>   Network attributes:\n>    vertices = 952\n>    directed = FALSE\n>    hyper = FALSE\n>    loops = FALSE\n>    multiple = FALSE\n>    bipartite = 545\n>    total edges= 2137\n>      missing edges= 0\n>      non-missing edges= 2137\n>\n>   Vertex attribute names:\n>      district1 vertex.names\n>> ergm(net ~ edges + b1nodematch(\"district1\"))\n> Error: The term b1nodematch does not exist for this type of ERGM. Are you sure you have the right name?\n>\n>\n> As you can see in the output, ?district1? is now listed as a vertex attribute for ?net?. However, I still get the error when I use b1nodematch.\n>\n> Thanks again,\n>\n> Steve\n>\n>> On Jun 11, 2015, at 11:33 AM, Steven Goodreau <goodreau@uw.edu> wrote:\n>>\n>> Hi Oliver - it does seem that your network is properly stored as a bipartite network.  But, it seems that you don't have a vertex attribute named 'district1' included, since it's not listed under \"Vertex attribute names\". That might be the cause of the problem (although the specific nature of the error does sound like it's pointing in a slightly different direction).\n>>\n>> HTH,\n>> Steve\n>>\n>>\n>>\n>> On 6/11/2015 9:59 AM, Oliver Steven Matthew wrote:\n>>> Greetings everyone,\n>>>\n>>> I am working with a bipartite network (545 Actors X 407 Events). At present, I am having trouble getting ergm to recognize the network as bipartite. When I attempt to model using ergm, I receive the following error message:\n>>>\n>>>> ergm(net ~ edges + b1nodematch(\"district1?))\n>>> Error: The term b1nodematch does not exist for this type of ERGM. Are you sure you have the right name?\n>>>\n>>>\n>>> I guess that I have failed to correctly specify an option somewhere along the line. However, when I originally set the adjacency matrix ?mat? as a network object ?net', I specified the network as bipartite and it is undirected. For example, see below:\n>>>\n>>>> net<-network(mat, bipartite=545)\n>>>>\n>>>> net\n>>>   Network attributes:\n>>>    vertices = 952\n>>>    directed = FALSE\n>>>    hyper = FALSE\n>>>    loops = FALSE\n>>>    multiple = FALSE\n>>>    bipartite = 545\n>>>    total edges= 2137\n>>>      missing edges= 0\n>>>      non-missing edges= 2137\n>>>\n>>>   Vertex attribute names:\n>>>      vertex.names\n>>>\n>>>\n>>> I am just getting started with the statnet suite so this is a true beginner?s mistake. However, I was not able to identify a previous discussion on statnet_help that described a user with a similar problem. If anyone could point me in that direction, I would be very appreciative. More generally, is there a good guide or tutorial for dealing specifically with bipartite networks in statnet that anyone can recommend for a beginner?\n>>>\n>>> Many thanks in advance for any help or advice you can give,\n>>>\n>>>\n>>> Steve Oliver\n>>>\n>>> Visiting Assistant Professor\n>>> Division of Social Sciences\n>>> Yale-NUS College\n>>>\n>>>\n>>> ________________________________\n>>>\n>>> Important: This email is confidential and may be privileged. If you are not the intended recipient, please delete it and notify us immediately; you should not copy or use it for any purpose, nor disclose its contents to any other person. Thank you.\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>> --\n>> *******************************************************************\n>> \"We cannot overstate the role of behavioral science in our effort\n>> to get ahead of the curve with emerging infections.\"\n>>   --David Satcher, Director, US Centers for Disease Control, 1995\n>> *******************************************************************\n>> Steven M. Goodreau / Assoc. Professor / Dept. of Anthropology\n>> University of Washington / Denny Hall 423 / Campus Box 353100\n>> Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)\n>> http://faculty.washington.edu/goodreau\n>> *******************************************************************\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n> ________________________________\n>\n> Important: This email is confidential and may be privileged. If you are not the intended recipient, please delete it and notify us immediately; you should not copy or use it for any purpose, nor disclose its contents to any other person. Thank you.\n\n-- \n*******************************************************************\n\"We cannot overstate the role of behavioral science in our effort\n  to get ahead of the curve with emerging infections.\"\n   --David Satcher, Director, US Centers for Disease Control, 1995\n*******************************************************************\nSteven M. Goodreau / Assoc. Professor / Dept. of Anthropology\nUniversity of Washington / Denny Hall 423 / Campus Box 353100\nSeattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau\n*******************************************************************\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150613/dffe2604/attachment.html>",
+      "body_snippet": "Hello Oliver,\n\nI don?t have your data, but when I run a stripped-down version of the \ncode with made-up data in the same structure as yours, the term appears \nworks fine.  Since it?s a relatively new ",
+      "thread_id": "thread-a70b18322890",
+      "thread_depth": 3,
+      "month": "2015-06"
+    },
+    {
+      "id": "msg-f7e3d834a3f4",
+      "message_id": "<86AA3343-C944-430E-B5F7-0F6ED1420F1B@nus.edu.sg>",
+      "from_name": "Oliver Steven Matthew",
+      "from_email_hash": "bd07ce227b14ad80f34f9b9d8f1e3d042ca42e932847285fae5495f97158717f",
+      "date": "2015-06-13T08:08:18Z",
+      "subject": "[statnet_help] error for ergm with bipartite network",
+      "subject_clean": "[statnet_help] error for ergm with bipartite network",
+      "in_reply_to": "<557C38E9.2010508@uw.edu>",
+      "references": [
+        "<3CEDBB9B-7896-4C06-81CC-EEBD9B444733@nus.edu.sg>",
+        "<5579D45D.2020101@uw.edu>",
+        "<1AD28E2A-6806-44A4-B5FE-9F47C7ACC945@nus.edu.sg>",
+        "<557C38E9.2010508@uw.edu>"
+      ],
+      "body_plain": "An HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150613/a8a2e850/attachment.html>",
+      "body_snippet": "An HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150613/a8a2e850/attachment.html>",
+      "thread_id": "thread-a70b18322890",
+      "thread_depth": 4,
+      "month": "2015-06"
+    },
+    {
+      "id": "msg-4e14a5a82b8e",
+      "message_id": "<CAM8BP_k8GmOEk=tgmmh5PTLs09nZqYNdY41h_-d=TqASVNxfcQ@mail.gmail.com>",
+      "from_name": "srecko joksimovic",
+      "from_email_hash": "4245782f69f11c8d3f59b4ed61149f8439d49cee7db2f63799e90c80dbd270ad",
+      "date": "2015-06-18T08:53:49Z",
+      "subject": "[statnet_help] Loading gdf and net formats",
+      "subject_clean": "[statnet_help] Loading gdf and net formats",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi statnet,\n\nPlease accept my apology if this is fairly simple question, however I\nwasn't able to find an answer.\nIs it possible to load gdf or net format to ergm? I have seen this example\nhttp://rstudio-pubs-static.s3.amazonaws.com/11707_19488c7d3ec64f7c925992721e417e34.html\nhow to build a graph from csv. However, I already have a graph in gdf\nformat with certain properties for nodes (e.g., node type) and edges (e.g.,\nweight, edge type) that I would like to use in the analysis.\n\nThanks,\nSrecko\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150618/e09f9a61/attachment.html>",
+      "body_snippet": "Hi statnet,\n\nPlease accept my apology if this is fairly simple question, however I\nwasn't able to find an answer.\nIs it possible to load gdf or net format to ergm? I have seen this example\nhttp://rstu",
+      "thread_id": "thread-4e14a5a82b8e",
+      "thread_depth": 0,
+      "month": "2015-06"
+    },
+    {
+      "id": "msg-52f31be029cb",
+      "message_id": "<CAGd_HQvv3BV8tEi3HajZM66FK0_Nk-tE56r0eNum=BkZ8nrKEg@mail.gmail.com>",
+      "from_name": "Rachel White",
+      "from_email_hash": "6c433d589ba6c45c5a9804beae29792b100dc8607eeecc68dee9d248cbbb84f8",
+      "date": "2015-06-18T09:48:04Z",
+      "subject": "[statnet_help] Statnet library access issue",
+      "subject_clean": "[statnet_help] Statnet library access issue",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI have installed the packages for statnet but it will not let me access the\nstatnet library. Ultimately, I am trying to run ergm but I have to access\nthe statnet library first. Below is the code I am seeing when I try to\naccess both the statnet and ergm library. Any thoughts on how to fix this?\nI am running a Mac OS X 10.10.3 and my version of R is 3.1.3.\n\n> install.packages(\"ergm\")\n\n  There is a binary version available (and will\n  be installed) but the source version is later:\n     binary source\nergm  3.2.4  3.4.0\n\ntrying URL 'http://cran.mtu.edu/bin/macosx/contrib/3.1/ergm_3.2.4.tgz'\nContent type 'application/x-gzip' length 1468648 bytes (1.4 MB)\nopened URL\n==================================================\ndownloaded 1.4 MB\n\n\nThe downloaded binary packages are in\n/var/folders/v0/p9kgs8096cldmfbs79rnc5x80000gn/T//Rtmp6HihP2/downloaded_packages\n> install.packages(\"statnet\")\ntrying URL 'http://cran.mtu.edu/bin/macosx/contrib/3.1/statnet_2014.2.0.tgz'\nContent type 'application/x-gzip' length 29230 bytes (28 KB)\nopened URL\n==================================================\ndownloaded 28 KB\n\n\nThe downloaded binary packages are in\n/var/folders/v0/p9kgs8096cldmfbs79rnc5x80000gn/T//Rtmp6HihP2/downloaded_packages\n> library(statnet)\nLoading required package: ergm\nError in get(Info[i, 1], envir = env) :\n  lazy-load database\n'/Library/Frameworks/R.framework/Versions/3.1/Resources/library/robustbase/R/robustbase.rdb'\nis corrupt\nIn addition: Warning message:\nIn get(Info[i, 1], envir = env) : internal error -3 in R_decompress1\nError: package ?ergm? could not be loaded\n> library(ergm)\nError in get(Info[i, 1], envir = env) :\n  lazy-load database\n'/Library/Frameworks/R.framework/Versions/3.1/Resources/library/robustbase/R/robustbase.rdb'\nis corrupt\nIn addition: Warning message:\nIn get(Info[i, 1], envir = env) : internal error -3 in R_decompress1\nError: package or namespace load failed for ?ergm?\n\n?Thanks,\n?\n\nRachel S. White\nEducation Policy Doctoral Student, Michigan State University\nGovernance & Finance Editor, Green & Write - Education Policy Insights Blog\nM.A., Education Policy & Leadership, The Ohio State University\nB.A., Public Policy, University of Michigan\n810.569.2682 | whitera3@msu.edu\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150618/f38a4675/attachment.html>",
+      "body_snippet": "Hello,\n\nI have installed the packages for statnet but it will not let me access the\nstatnet library. Ultimately, I am trying to run ergm but I have to access\nthe statnet library first. Below is the co",
+      "thread_id": "thread-52f31be029cb",
+      "thread_depth": 0,
+      "month": "2015-06"
+    },
+    {
+      "id": "msg-edb97e9eee5f",
+      "message_id": "<558313B3.3090703@skyeome.net>",
+      "from_name": "Skye Bender-deMoll",
+      "from_email_hash": "016c31bf83672a8e8fce6b664eb68ddff364b5df6912775ec31eeceebce90340",
+      "date": "2015-06-18T11:53:39Z",
+      "subject": "[statnet_help] Loading gdf and net formats",
+      "subject_clean": "[statnet_help] Loading gdf and net formats",
+      "in_reply_to": "<CAM8BP_k8GmOEk=tgmmh5PTLs09nZqYNdY41h_-d=TqASVNxfcQ@mail.gmail.com>",
+      "references": [
+        "<CAM8BP_k8GmOEk=tgmmh5PTLs09nZqYNdY41h_-d=TqASVNxfcQ@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Srecko,\n  I don't believe that statnet/network packages support directly \nimporting from gdf format at this point.  However, R does provide \nutilities for processing csv files, so as a work around I think you \ncould split the gdf file into two sections (one for nodes, one for \nedges), read them in as data frames, and then assemble them into a \nnetwork. The ?loading.attributes help page may have some useful examples.\n\nbest,\n  -skye\n\nOn 06/18/2015 08:53 AM, srecko joksimovic wrote:\n> Hi statnet,\n>\n> Please accept my apology if this is fairly simple question, however I\n> wasn't able to find an answer.?\n> Is it possible to load gdf or net format to ergm? I have seen this\n> example?\n> http://rstudio-pubs-static.s3.amazonaws.com/11707_19488c7d3ec64f7c925992721e417e34.html\n> how to build a graph from csv. However, I already have a graph in gdf\n> format with certain properties for nodes (e.g., node type) and edges\n> (e.g., weight, edge type) that I would like to use in the analysis.\n>\n> Thanks,\n> Srecko\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi Srecko,\n  I don't believe that statnet/network packages support directly \nimporting from gdf format at this point.  However, R does provide \nutilities for processing csv files, so as a work around ",
+      "thread_id": "thread-4e14a5a82b8e",
+      "thread_depth": 1,
+      "month": "2015-06"
+    },
+    {
+      "id": "msg-181ac76be7aa",
+      "message_id": "<1434717344.27868.50.camel@uow.edu.au>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2015-06-19T05:35:44Z",
+      "subject": "[statnet_help] latentnet: problems simulating (Gaussian) weighted network",
+      "subject_clean": "[statnet_help] latentnet: problems simulating (Gaussian) weighted network",
+      "in_reply_to": "<CAC4stHzQpFUoNhxoS1vrj6SQ4iuUCq9c5hn5wgc79UgiJFoxew@mail.gmail.com>",
+      "references": [
+        "<CAC4stHzQpFUoNhxoS1vrj6SQ4iuUCq9c5hn5wgc79UgiJFoxew@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Jason,\n\nI am not sure if I ever replied to this e-mail, but, just in case, the\nbug has been fixed and the next release should be up any day now.\n\n                           Pavel\n\nOn Tue, 2015-04-07 at 06:22 +1000, Jason Morgan wrote:\n> Dear List,\n> \n> \n> I am trying to simulate from an estimated ergmm model with Gaussian\n> weighted edges, but am getting an error that I can't seem to get\n> around. Code is below. I am probably just missing something, but the\n> documentation isn't clear on how to do this. I have no problems with\n> binary ties.\n> \n> \n> > mig1D <- ergmm(Mig05 ~ euclidean(d=1), response=\"lmig\", \n> +                family=\"normal\", verbose=2, \n> +                control=control.ergmm(burnin=2e6, \n> +                                      interval=100),\n> +                fam.par=list(prior.var=5, prior.var.df=1))\n> > simulate(mig1D, nsim=1)\n> Error in sqrt(dispersion) : non-numeric argument to mathematical\n> function\n> \n> Much appreciated,\n> \n> ~Jason\n> \n> \n> -- \n> ~ Jason Morgan\n> \n> \n> \"Those who have had no share in the good fortunes of the mighty\n>  Often have a share in their misfortunes.\"\n>                 -- Bertolt Brecht, \"Der Kaukasische Kreidekreis\"\n>                                     (The Caucasian Chalk Circle)\n> \n> \n\n-- \nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics\nBuilding 39C Room 185\nUniversity of Wollongong NSW 2522\nP +61 2 4221 3713\nW niasra.uow.edu.au\nPlease consider the environment before printing this email.",
+      "body_snippet": "Dear Jason,\n\nI am not sure if I ever replied to this e-mail, but, just in case, the\nbug has been fixed and the next release should be up any day now.\n\n                           Pavel\n\nOn Tue, 2015-04",
+      "thread_id": "thread-181ac76be7aa",
+      "thread_depth": 0,
+      "month": "2015-06"
+    },
+    {
+      "id": "msg-70d2d93f5a0f",
+      "message_id": "<55933938.60102@gmail.com>",
+      "from_name": "Andreas Handel",
+      "from_email_hash": "dbf0eb5caf50baea246ad2198a245272f7b791bf9a8ef1255147f36ca5623813",
+      "date": "2015-06-30T17:50:00Z",
+      "subject": "[statnet_help] how to have both directed and undirected edges?",
+      "subject_clean": "[statnet_help] how to have both directed and undirected edges?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\nI feel like my question should be easy to figure out, but I just \ncouldn't find any documentation on it. So let's try this mailing list:\n\nI have a network that has a mix of directed and undirected edges. I set \nit up as a directed network, and I have no problem adding the directed \nedges. But I'm stuck at how to add the undirected ones. I tried to do \nadd.edges() twice with head and tail flipped, but that produces 2 \ndirected edges. How can I produce a single undirected edge between 2 \nvertices?\n\nBtw, I also need to allow for multiple edges, a person could be having a \ndirected edge to someone (if A says they know B) and an undirected (if C \nsays that A and B know each other).\n\nThanks,\nAndreas",
+      "body_snippet": "Hi all,\nI feel like my question should be easy to figure out, but I just \ncouldn't find any documentation on it. So let's try this mailing list:\n\nI have a network that has a mix of directed and undire",
+      "thread_id": "thread-70d2d93f5a0f",
+      "thread_depth": 0,
+      "month": "2015-06"
+    },
+    {
+      "id": "msg-dca9e2c6ed2d",
+      "message_id": "<559341B5.3000307@skyeome.net>",
+      "from_name": "Skye Bender-deMoll",
+      "from_email_hash": "016c31bf83672a8e8fce6b664eb68ddff364b5df6912775ec31eeceebce90340",
+      "date": "2015-06-30T18:26:13Z",
+      "subject": "[statnet_help] how to have both directed and undirected edges?",
+      "subject_clean": "[statnet_help] how to have both directed and undirected edges?",
+      "in_reply_to": "<55933938.60102@gmail.com>",
+      "references": [
+        "<55933938.60102@gmail.com>"
+      ],
+      "body_plain": "Hi Andreas,\n\n\"directed-ness\" is a network-level property.  So if your network \ncontains directed edges, all of the edges must be directed, and you will \nhave to represent mutual ties with one edge in each direction as you \nsuggest.\n\nYou can set a network's 'directed' attribute to FALSE, which means that \nall edges will be considered undirected.\n\nmyNet%n%'directed'<-FALSE\n\nIf you are generating a 'multiplex' network, in which there is the \npossibility of having more than one edge (of different types) you will \nprobably want to set the 'multiple' property to TRUE.\n\n\n > network.initialize(50,directed = TRUE,multiple = TRUE)\n  Network attributes:\n   vertices = 50\n   directed = TRUE\n   hyper = FALSE\n   loops = FALSE\n   multiple = TRUE\n   bipartite = FALSE\n   total edges= 0\n     missing edges= 0\n     non-missing edges= 0\n\n  Vertex attribute names:\n     vertex.names\n\nNo edge attributes\n\n\nIf you need to be able to distinguish the various types of edges you \nshould set some sort of type attribute on the edges as well.\n\nbest,\n  -skye\n\n\nOn 06/30/2015 05:50 PM, Andreas Handel wrote:\n> Hi all,\n> I feel like my question should be easy to figure out, but I just\n> couldn't find any documentation on it. So let's try this mailing list:\n>\n> I have a network that has a mix of directed and undirected edges. I set\n> it up as a directed network, and I have no problem adding the directed\n> edges. But I'm stuck at how to add the undirected ones. I tried to do\n> add.edges() twice with head and tail flipped, but that produces 2\n> directed edges. How can I produce a single undirected edge between 2\n> vertices?\n>\n> Btw, I also need to allow for multiple edges, a person could be having a\n> directed edge to someone (if A says they know B) and an undirected (if C\n> says that A and B know each other).\n>\n> Thanks,\n> Andreas\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi Andreas,\n\n\"directed-ness\" is a network-level property.  So if your network \ncontains directed edges, all of the edges must be directed, and you will \nhave to represent mutual ties with one edge in ",
+      "thread_id": "thread-70d2d93f5a0f",
+      "thread_depth": 1,
+      "month": "2015-06"
+    },
+    {
+      "id": "msg-24656bc12701",
+      "message_id": "<55936F26.7010302@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2015-06-30T21:40:06Z",
+      "subject": "[statnet_help] how to have both directed and undirected edges?",
+      "subject_clean": "[statnet_help] how to have both directed and undirected edges?",
+      "in_reply_to": "<559341B5.3000307@skyeome.net>",
+      "references": [
+        "<55933938.60102@gmail.com>",
+        "<559341B5.3000307@skyeome.net>"
+      ],
+      "body_plain": "I second Skye's remarks, with the minor additional suggestion that you \ncould also represent this data via a network list (with one network \nobject containing the directed edges and the other your undirected \nedges).  Depending on how you will be using the information, this might \nbe easier to work with.\n\nHope that helps,\n\n-Carter\n\nOn 06/30/2015 06:26 PM, Skye Bender-deMoll wrote:\n> Hi Andreas,\n>\n> \"directed-ness\" is a network-level property.  So if your network \n> contains directed edges, all of the edges must be directed, and you \n> will have to represent mutual ties with one edge in each direction as \n> you suggest.\n>\n> You can set a network's 'directed' attribute to FALSE, which means \n> that all edges will be considered undirected.\n>\n> myNet%n%'directed'<-FALSE\n>\n> If you are generating a 'multiplex' network, in which there is the \n> possibility of having more than one edge (of different types) you will \n> probably want to set the 'multiple' property to TRUE.\n>\n>\n> > network.initialize(50,directed = TRUE,multiple = TRUE)\n>  Network attributes:\n>   vertices = 50\n>   directed = TRUE\n>   hyper = FALSE\n>   loops = FALSE\n>   multiple = TRUE\n>   bipartite = FALSE\n>   total edges= 0\n>     missing edges= 0\n>     non-missing edges= 0\n>\n>  Vertex attribute names:\n>     vertex.names\n>\n> No edge attributes\n>\n>\n> If you need to be able to distinguish the various types of edges you \n> should set some sort of type attribute on the edges as well.\n>\n> best,\n>  -skye\n>\n>\n> On 06/30/2015 05:50 PM, Andreas Handel wrote:\n>> Hi all,\n>> I feel like my question should be easy to figure out, but I just\n>> couldn't find any documentation on it. So let's try this mailing list:\n>>\n>> I have a network that has a mix of directed and undirected edges. I set\n>> it up as a directed network, and I have no problem adding the directed\n>> edges. But I'm stuck at how to add the undirected ones. I tried to do\n>> add.edges() twice with head and tail flipped, but that produces 2\n>> directed edges. How can I produce a single undirected edge between 2\n>> vertices?\n>>\n>> Btw, I also need to allow for multiple edges, a person could be having a\n>> directed edge to someone (if A says they know B) and an undirected (if C\n>> says that A and B know each other).\n>>\n>> Thanks,\n>> Andreas\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "I second Skye's remarks, with the minor additional suggestion that you \ncould also represent this data via a network list (with one network \nobject containing the directed edges and the other your und",
+      "thread_id": "thread-70d2d93f5a0f",
+      "thread_depth": 2,
+      "month": "2015-06"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-44e7b0963bec",
+      "subject": "[statnet_help] visualization assistance",
+      "message_count": 1,
+      "participants": [
+        "Skye Bender-deMoll"
+      ],
+      "started": "2015-06-01T09:55:18Z",
+      "last_reply": "2015-06-01T09:55:18Z",
+      "root_message_id": "msg-44e7b0963bec"
+    },
+    {
+      "id": "thread-e83557f07dbd",
+      "subject": "[statnet_help] Errors returned on models run after updating ergm",
+      "message_count": 3,
+      "participants": [
+        "Matt Robbins",
+        "martina morris"
+      ],
+      "started": "2015-06-02T07:24:54Z",
+      "last_reply": "2015-06-03T16:36:51Z",
+      "root_message_id": "msg-e83557f07dbd"
+    },
+    {
+      "id": "thread-52591b5bfb4e",
+      "subject": "[statnet_help] Installing Statnet",
+      "message_count": 2,
+      "participants": [
+        "Chris Vargo",
+        "Skye Bender-deMoll"
+      ],
+      "started": "2015-06-03T14:25:45Z",
+      "last_reply": "2015-06-05T22:08:03Z",
+      "root_message_id": "msg-52591b5bfb4e"
+    },
+    {
+      "id": "thread-a70b18322890",
+      "subject": "[statnet_help] error for ergm with bipartite network",
+      "message_count": 5,
+      "participants": [
+        "Oliver Steven Matthew",
+        "Steven Goodreau"
+      ],
+      "started": "2015-06-11T09:59:28Z",
+      "last_reply": "2015-06-13T08:08:18Z",
+      "root_message_id": "msg-a70b18322890"
+    },
+    {
+      "id": "thread-16d2a756601e",
+      "subject": "[statnet_help] Question for developers and users of the SNA R packages regarding Revolution R Open",
+      "message_count": 1,
+      "participants": [
+        "Elliott, David L (MU-Student)"
+      ],
+      "started": "2015-06-11T11:59:43Z",
+      "last_reply": "2015-06-11T11:59:43Z",
+      "root_message_id": "msg-16d2a756601e"
+    },
+    {
+      "id": "thread-45479f5cd8bf",
+      "subject": "[statnet_help] STERGM errors",
+      "message_count": 1,
+      "participants": [
+        "Pavel N. Krivitsky"
+      ],
+      "started": "2015-06-13T06:05:40Z",
+      "last_reply": "2015-06-13T06:05:40Z",
+      "root_message_id": "msg-45479f5cd8bf"
+    },
+    {
+      "id": "thread-4e14a5a82b8e",
+      "subject": "[statnet_help] Loading gdf and net formats",
+      "message_count": 2,
+      "participants": [
+        "Skye Bender-deMoll",
+        "srecko joksimovic"
+      ],
+      "started": "2015-06-18T08:53:49Z",
+      "last_reply": "2015-06-18T11:53:39Z",
+      "root_message_id": "msg-4e14a5a82b8e"
+    },
+    {
+      "id": "thread-52f31be029cb",
+      "subject": "[statnet_help] Statnet library access issue",
+      "message_count": 1,
+      "participants": [
+        "Rachel White"
+      ],
+      "started": "2015-06-18T09:48:04Z",
+      "last_reply": "2015-06-18T09:48:04Z",
+      "root_message_id": "msg-52f31be029cb"
+    },
+    {
+      "id": "thread-181ac76be7aa",
+      "subject": "[statnet_help] latentnet: problems simulating (Gaussian) weighted network",
+      "message_count": 1,
+      "participants": [
+        "Pavel N. Krivitsky"
+      ],
+      "started": "2015-06-19T05:35:44Z",
+      "last_reply": "2015-06-19T05:35:44Z",
+      "root_message_id": "msg-181ac76be7aa"
+    },
+    {
+      "id": "thread-70d2d93f5a0f",
+      "subject": "[statnet_help] how to have both directed and undirected edges?",
+      "message_count": 3,
+      "participants": [
+        "Andreas Handel",
+        "Carter T. Butts",
+        "Skye Bender-deMoll"
+      ],
+      "started": "2015-06-30T17:50:00Z",
+      "last_reply": "2015-06-30T21:40:06Z",
+      "root_message_id": "msg-70d2d93f5a0f"
+    }
+  ]
+}

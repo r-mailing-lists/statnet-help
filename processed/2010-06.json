@@ -1,0 +1,401 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2010-06",
+  "messages": [
+    {
+      "id": "msg-9282c59fd549",
+      "message_id": "<AANLkTikRxE_JRR-_PjeKq-vq3UaOoJ0TdDil3QB8Vs2Y@mail.gmail.com>",
+      "from_name": "engelo",
+      "from_email_hash": "0d8b2bc6647c0671a3f96590ef8c20bfc3f070984aea2160b8f7c24f74040577",
+      "date": "2010-06-12T12:15:15Z",
+      "subject": "[statnet_help] structure - attribute interactions",
+      "subject_clean": "[statnet_help] structure - attribute interactions",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\ncan I have separate statistics for the gwdegree of males and females? If so,\nhow do I model that?\nIs it possible to model a situation in which the their is greater tendency\nfor male triangles to form than female triangles, for example?\n\nThanks,\nOfer\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100612/68d2d14a/attachment.html>",
+      "body_snippet": "Dear all,\ncan I have separate statistics for the gwdegree of males and females? If so,\nhow do I model that?\nIs it possible to model a situation in which the their is greater tendency\nfor male triangle",
+      "thread_id": "thread-9282c59fd549",
+      "thread_depth": 0,
+      "month": "2010-06"
+    },
+    {
+      "id": "msg-23ceead77fa2",
+      "message_id": "<F5CE3AC8-5D20-455E-AFE5-941753D5D704@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-06-13T09:02:16Z",
+      "subject": "[statnet_help] structure - attribute interactions",
+      "subject_clean": "[statnet_help] structure - attribute interactions",
+      "in_reply_to": "<AANLkTikRxE_JRR-_PjeKq-vq3UaOoJ0TdDil3QB8Vs2Y@mail.gmail.com>",
+      "references": [
+        "<AANLkTikRxE_JRR-_PjeKq-vq3UaOoJ0TdDil3QB8Vs2Y@mail.gmail.com>"
+      ],
+      "body_plain": "If your network has a vertex attribute named (say) \"Sex\" that gives  \nthe sex of each individual, you should be able to use\n\ngwdegree(0.5, TRUE, \"Sex\")\n\nThis is not documented, but in a quick test it seems to work okay for  \nme:\n\n > data(faux.mesa.high)\n > summary(faux.mesa.high~gwdegree(0.5, fixed=TRUE))\ngwdegree\n199.5657\n > summary(faux.mesa.high~gwdegree(0.5, TRUE, \"Sex\"))\ngwdeg0.5.SexF gwdeg0.5.SexM\n      105.5248       94.0409\n\n\n\n\nDave\n\n\nOn Jun 12, 2010, at 3:15 PM, engelo wrote:\n\n> Dear all,\n> can I have separate statistics for the gwdegree of males and  \n> females? If so, how do I model that?\n> Is it possible to model a situation in which the their is greater  \n> tendency for male triangles to form than female triangles, for  \n> example?\n>\n> Thanks,\n> Ofer\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "If your network has a vertex attribute named (say) \"Sex\" that gives  \nthe sex of each individual, you should be able to use\n\ngwdegree(0.5, TRUE, \"Sex\")\n\nThis is not documented, but in a quick test it ",
+      "thread_id": "thread-9282c59fd549",
+      "thread_depth": 1,
+      "month": "2010-06"
+    },
+    {
+      "id": "msg-5a4a5edfa56e",
+      "message_id": "<AANLkTinMCaFW-2jeCvEvRlXvYxaqBpS9o4M64hWS5W1L@mail.gmail.com>",
+      "from_name": "Sun Kyung Kim",
+      "from_email_hash": "35f48a1f027bf76938a27a5837e98a4b2603b665ecac80f43ad43f7c8905b6c3",
+      "date": "2010-06-17T11:12:14Z",
+      "subject": "[statnet_help] structure - attribute interactions",
+      "subject_clean": "[statnet_help] structure - attribute interactions",
+      "in_reply_to": "<AANLkTikRxE_JRR-_PjeKq-vq3UaOoJ0TdDil3QB8Vs2Y@mail.gmail.com>",
+      "references": [
+        "<AANLkTikRxE_JRR-_PjeKq-vq3UaOoJ0TdDil3QB8Vs2Y@mail.gmail.com>"
+      ],
+      "body_plain": "Dear all,\n\nI am about to plot a graph in statnet where each node is presented as one of\nfollowing.\n\n1) Black circle\n2) White circle\n3) Black triangle\n4) White triangle\n\nHow can I plot this ?\nI am struggling to plot this.\n\nthanks in advance\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100617/3c7e6d6b/attachment.html>",
+      "body_snippet": "Dear all,\n\nI am about to plot a graph in statnet where each node is presented as one of\nfollowing.\n\n1) Black circle\n2) White circle\n3) Black triangle\n4) White triangle\n\nHow can I plot this ?\nI am stru",
+      "thread_id": "thread-9282c59fd549",
+      "thread_depth": 1,
+      "month": "2010-06"
+    },
+    {
+      "id": "msg-dd02def88e14",
+      "message_id": "<3BC66B5A-0316-4443-8E8D-8E156046375E@gmail.com>",
+      "from_name": "Simone Gabbriellini",
+      "from_email_hash": "28a5511d14889ed7a9cead1a4c5c2eaa14a88c2b4b5d3fded2bed235eea4d272",
+      "date": "2010-06-18T10:24:37Z",
+      "subject": "[statnet_help] structure - attribute interactions",
+      "subject_clean": "[statnet_help] structure - attribute interactions",
+      "in_reply_to": "<AANLkTinMCaFW-2jeCvEvRlXvYxaqBpS9o4M64hWS5W1L@mail.gmail.com>",
+      "references": [
+        "<AANLkTikRxE_JRR-_PjeKq-vq3UaOoJ0TdDil3QB8Vs2Y@mail.gmail.com>",
+        "<AANLkTinMCaFW-2jeCvEvRlXvYxaqBpS9o4M64hWS5W1L@mail.gmail.com>"
+      ],
+      "body_plain": "not sure to get the point, but I guess you need to code vertex attributes... something like:\n\nset.vertex.attribute(yournetwork, \"color\", c(\"black\",\"white\",\"black\",\"white\"))\nset.vertex.attribute(yournetwork, \"shape\", c(\"circle\",\"circle\",\"triangle\",\"triangle\"))\n\nI didn't check it, so you have to give it a try.\n\nHTH,\nsimone\n\nIl giorno 17/giu/2010, alle ore 20.12, Sun Kyung Kim ha scritto:\n\n> Dear all, \n> \n> I am about to plot a graph in statnet where each node is presented as one of following.\n> \n> 1) Black circle\n> 2) White circle\n> 3) Black triangle\n> 4) White triangle\n> \n> How can I plot this ?\n> I am struggling to plot this.\n> \n> thanks in advance\n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "not sure to get the point, but I guess you need to code vertex attributes... something like:\n\nset.vertex.attribute(yournetwork, \"color\", c(\"black\",\"white\",\"black\",\"white\"))\nset.vertex.attribute(yourne",
+      "thread_id": "thread-9282c59fd549",
+      "thread_depth": 2,
+      "month": "2010-06"
+    },
+    {
+      "id": "msg-d078928958a9",
+      "message_id": "<AANLkTilIP9FFWdn6yqy8d3oCKeFWLkW4_ib2YbbsjBhw@mail.gmail.com>",
+      "from_name": "Sean Goggins",
+      "from_email_hash": "c84ef926864ce21a7a090ec9dd9cbf48909f752075d29b0bd517cf18a3c742de",
+      "date": "2010-06-19T07:11:27Z",
+      "subject": "[statnet_help] package SNA with a weighted network - gplot / does SNA address weighted networks?",
+      "subject_clean": "[statnet_help] package SNA with a weighted network - gplot / does SNA address weighted networks?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I have loaded a weighted network (edges with weights) from a pajek file,\nusing the command below:\n\n> gplot(stRead, uselen=TRUE,edge.len=\"weight\", usecurve=TRUE)\n\nI get this error:\nError in edge.len * sqrt((e.len/2)^2 - (dist[i]/2)^2) :\n  non-numeric argument to binary operator\n\nHere is a summary of my data:\n\n> summary(stRead)\nNetwork attributes:\n vertices = 26\n directed = FALSE\n hyper = FALSE\n loops = FALSE\n multiple = FALSE\n bipartite = FALSE\n title = readv26\n total edges = 645\n   missing edges = 0\n   non-missing edges = 645\n density = 1.984615\n\nVertex attributes:\n\n ... <not relevant/>\n\nEdge attributes:\n\n weight:\n   numeric valued attribute\n   attribute summary:\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.\n  4.577  15.740  22.070  32.540  31.050 331.500\n\nI also used plot.network with the same results.\nplot.network(stRead, uselen=TRUE,edge.len=\"weight\", usecurve=TRUE)\nError in edge.len * sqrt((e.len/2)^2 - (dist[i, j]/2)^2)\n\nI welcome any thoughts.\n\nRelated Question:  I am able to successfully plot my data with iGraph, but\nwould like to do weighted network analysis using SNA.  As I go through the\ndocumentation, it appears that SNA may not account for weighted networks...\nbut the consideration of edge weights in the docs for the SNA and Network\npackages visualization functions makes me think that the ability analyze\nweighted networks may be there, but not much written about yet.\n\n-- \nSean P. Goggins, Ph.D\nhttp://www.goggins.com\nPhone: (215) 948-2729\n\n\"Never doubt that a small group of thoughtful, committed citizens can change\nthe world. Indeed, it is the only thing that ever has.\"\n-- Margaret Mead\n\n\"The most effective way to do it, is to do it.\"\n-- Amelia Earhart\n\nhttp://www.sociotech.net\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100619/f8eb6b5e/attachment.html>",
+      "body_snippet": "I have loaded a weighted network (edges with weights) from a pajek file,\nusing the command below:\n\n> gplot(stRead, uselen=TRUE,edge.len=\"weight\", usecurve=TRUE)\n\nI get this error:\nError in edge.len * ",
+      "thread_id": "thread-d078928958a9",
+      "thread_depth": 0,
+      "month": "2010-06"
+    },
+    {
+      "id": "msg-235c0c4ec4d7",
+      "message_id": "<6757038BFDCD614DA5213272D1E157980672A1BD84@USMASVGDOIM522.usma.ds.army.edu>",
+      "from_name": "McCulloh, I. MAJ  BS&L",
+      "from_email_hash": "036fda2478435ceb1ffb50eb49653009d7801990b4e281de642417da546820b6",
+      "date": "2010-06-19T15:17:15Z",
+      "subject": "[statnet_help] package SNA with a weighted network - gplot / does\tSNA address weighted networks?",
+      "subject_clean": "[statnet_help] package SNA with a weighted network - gplot / does\tSNA address weighted networks?",
+      "in_reply_to": "<AANLkTilIP9FFWdn6yqy8d3oCKeFWLkW4_ib2YbbsjBhw@mail.gmail.com>",
+      "references": [],
+      "body_plain": "George Barnett just published a paper on this in the latest issue of Connections and I think he referenced software. Many software packages handle weighted links. The particulars depend on the package. For a weighted version of betweenness, look at Information Centrality in W&F.\n\nI know ORA has weighted degree and Info Centrality. I imagine George's new measure will be in an upcoming version.\n\nIan\n\n________________________________\nFrom: statnet_help-bounces@mailman2.u.washington.edu <statnet_help-bounces@mailman2.u.washington.edu>\nTo: statnet_help mailing list <statnet_help@u.washington.edu>\nSent: Sat Jun 19 10:11:27 2010\nSubject: [statnet_help] package SNA with a weighted network - gplot / does SNA address weighted networks?\n\nI have loaded a weighted network (edges with weights) from a pajek file, using the command below:\n\n> gplot(stRead, uselen=TRUE,edge.len=\"weight\", usecurve=TRUE)\n\nI get this error:\nError in edge.len * sqrt((e.len/2)^2 - (dist[i]/2)^2) :\n  non-numeric argument to binary operator\n\nHere is a summary of my data:\n\n> summary(stRead)\nNetwork attributes:\n vertices = 26\n directed = FALSE\n hyper = FALSE\n loops = FALSE\n multiple = FALSE\n bipartite = FALSE\n title = readv26\n total edges = 645\n   missing edges = 0\n   non-missing edges = 645\n density = 1.984615\n\nVertex attributes:\n\n ... <not relevant/>\n\nEdge attributes:\n\n weight:\n   numeric valued attribute\n   attribute summary:\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.\n  4.577  15.740  22.070  32.540  31.050 331.500\n\nI also used plot.network with the same results.\nplot.network(stRead, uselen=TRUE,edge.len=\"weight\", usecurve=TRUE)\nError in edge.len * sqrt((e.len/2)^2 - (dist[i, j]/2)^2)\n\nI welcome any thoughts.\n\nRelated Question:  I am able to successfully plot my data with iGraph, but would like to do weighted network analysis using SNA.  As I go through the documentation, it appears that SNA may not account for weighted networks... but the consideration of edge weights in the docs for the SNA and Network packages visualization functions makes me think that the ability analyze weighted networks may be there, but not much written about yet.\n\n--\nSean P. Goggins, Ph.D\nhttp://www.goggins.com\nPhone: (215) 948-2729\n\n\"Never doubt that a small group of thoughtful, committed citizens can change the world. Indeed, it is the only thing that ever has.\"\n-- Margaret Mead\n\n\"The most effective way to do it, is to do it.\"\n-- Amelia Earhart\n\nhttp://www.sociotech.net\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100619/4a06bb8e/attachment.html>",
+      "body_snippet": "George Barnett just published a paper on this in the latest issue of Connections and I think he referenced software. Many software packages handle weighted links. The particulars depend on the package",
+      "thread_id": "thread-d078928958a9",
+      "thread_depth": 1,
+      "month": "2010-06"
+    },
+    {
+      "id": "msg-b88bd66f5312",
+      "message_id": "<AANLkTiltXVOOxtFFee3m7mAdoV8_QwseugbCcXfPErw6@mail.gmail.com>",
+      "from_name": "Sean Goggins",
+      "from_email_hash": "4e79a27d3a07437da9b0b136b049ff158fb2c2cfac0a11199be79ddf6030cea4",
+      "date": "2010-06-19T16:01:51Z",
+      "subject": "[statnet_help] Re: package SNA with a weighted network - gplot / does SNA address weighted networks?",
+      "subject_clean": "[statnet_help] Re: package SNA with a weighted network - gplot / does SNA address weighted networks?",
+      "in_reply_to": "<6757038BFDCD614DA5213272D1E157980672A1BD84@USMASVGDOIM522.usma.ds.army.edu>",
+      "references": [
+        "<AANLkTilIP9FFWdn6yqy8d3oCKeFWLkW4_ib2YbbsjBhw@mail.gmail.com>",
+        "<6757038BFDCD614DA5213272D1E157980672A1BD84@USMASVGDOIM522.usma.ds.army.edu>"
+      ],
+      "body_plain": "Ian,\n\nThanks for the help.  I have done extensive analysis of weighted edge\nnetworks in UCI*NET.  I was hoping that statnet would accomodate this\nas well; it would be nice to be able to script all of my analysis in\none tool, and I am actually pretty close.  Having used UCI*NET for so\nlong, it did not occur to me that one would do network analysis\nwithout weighted edges.\n\nAre there R packages other than iGraph that support analysis of weight\nnetworks?  (Sorry, I don't know what ORA refers to).\n\nI have relied on the Carter Butts and Hancock papers from the journal\nof statistical software for my R SNA retooling.  I was hoping that\nweighted edges were a statnet feature simply not covered in the\narticles.\n\nIf ORA is an R package, I could be set!  I have found iGraph to be\npowerful for visualizing weighted networks (far more flexible than\nNetdraw.).  I can't say enough about how impressed I am with the tools\nin R!\n\nThanks!!\n\nSean\n\nOn 6/19/10, McCulloh, I. MAJ  BS&L <Ian.McCulloh@usma.edu> wrote:\n> George Barnett just published a paper on this in the latest issue of\n> Connections and I think he referenced software. Many software packages\n> handle weighted links. The particulars depend on the package. For a weighted\n> version of betweenness, look at Information Centrality in W&F.\n>\n> I know ORA has weighted degree and Info Centrality. I imagine George's new\n> measure will be in an upcoming version.\n>\n> Ian\n>\n> ________________________________\n> From: statnet_help-bounces@mailman2.u.washington.edu\n> <statnet_help-bounces@mailman2.u.washington.edu>\n> To: statnet_help mailing list <statnet_help@u.washington.edu>\n> Sent: Sat Jun 19 10:11:27 2010\n> Subject: [statnet_help] package SNA with a weighted network - gplot / does\n> SNA address weighted networks?\n>\n> I have loaded a weighted network (edges with weights) from a pajek file,\n> using the command below:\n>\n>> gplot(stRead, uselen=TRUE,edge.len=\"weight\", usecurve=TRUE)\n>\n> I get this error:\n> Error in edge.len * sqrt((e.len/2)^2 - (dist[i]/2)^2) :\n>   non-numeric argument to binary operator\n>\n> Here is a summary of my data:\n>\n>> summary(stRead)\n> Network attributes:\n>  vertices = 26\n>  directed = FALSE\n>  hyper = FALSE\n>  loops = FALSE\n>  multiple = FALSE\n>  bipartite = FALSE\n>  title = readv26\n>  total edges = 645\n>    missing edges = 0\n>    non-missing edges = 645\n>  density = 1.984615\n>\n> Vertex attributes:\n>\n>  ... <not relevant/>\n>\n> Edge attributes:\n>\n>  weight:\n>    numeric valued attribute\n>    attribute summary:\n>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.\n>   4.577  15.740  22.070  32.540  31.050 331.500\n>\n> I also used plot.network with the same results.\n> plot.network(stRead, uselen=TRUE,edge.len=\"weight\", usecurve=TRUE)\n> Error in edge.len * sqrt((e.len/2)^2 - (dist[i, j]/2)^2)\n>\n> I welcome any thoughts.\n>\n> Related Question:  I am able to successfully plot my data with iGraph, but\n> would like to do weighted network analysis using SNA.  As I go through the\n> documentation, it appears that SNA may not account for weighted networks...\n> but the consideration of edge weights in the docs for the SNA and Network\n> packages visualization functions makes me think that the ability analyze\n> weighted networks may be there, but not much written about yet.\n>\n> --\n> Sean P. Goggins, Ph.D\n> http://www.goggins.com\n> Phone: (215) 948-2729\n>\n> \"Never doubt that a small group of thoughtful, committed citizens can change\n> the world. Indeed, it is the only thing that ever has.\"\n> -- Margaret Mead\n>\n> \"The most effective way to do it, is to do it.\"\n> -- Amelia Earhart\n>\n> http://www.sociotech.net\n>\n\n-- \nSent from my mobile device\n\nSean P. Goggins, Ph.D\nhttp://www.goggins.com\nPhone: (215) 948-2729\n\n\"Never doubt that a small group of thoughtful, committed citizens can\nchange the world. Indeed, it is the only thing that ever has.\"\n-- Margaret Mead\n\n\"The most effective way to do it, is to do it.\"\n-- Amelia Earhart\n\nhttp://www.sociotech.net",
+      "body_snippet": "Ian,\n\nThanks for the help.  I have done extensive analysis of weighted edge\nnetworks in UCI*NET.  I was hoping that statnet would accomodate this\nas well; it would be nice to be able to script all of ",
+      "thread_id": "thread-d078928958a9",
+      "thread_depth": 2,
+      "month": "2010-06"
+    },
+    {
+      "id": "msg-af0d1e122691",
+      "message_id": "<948EE88C-3D0B-4178-9389-C93400DEC7CE@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-06-19T16:45:29Z",
+      "subject": "[statnet_help] Re: package SNA with a weighted network - gplot / does SNA address weighted networks?",
+      "subject_clean": "[statnet_help] Re: package SNA with a weighted network - gplot / does SNA address weighted networks?",
+      "in_reply_to": "<AANLkTiltXVOOxtFFee3m7mAdoV8_QwseugbCcXfPErw6@mail.gmail.com>",
+      "references": [
+        "<AANLkTilIP9FFWdn6yqy8d3oCKeFWLkW4_ib2YbbsjBhw@mail.gmail.com>",
+        "<6757038BFDCD614DA5213272D1E157980672A1BD84@USMASVGDOIM522.usma.ds.army.edu>",
+        "<AANLkTiltXVOOxtFFee3m7mAdoV8_QwseugbCcXfPErw6@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Sean.  I'm actually sitting next to Carter right now and he assures  \nme that gplot can do this.\n\nI believe that the problem is that you can't pass edge.len as a name  \nof an edge covariate; instead, you'd need to pull this edge covariate  \nout of the network explicitly, then pass this matrix to gplot,  \nsomething like this:\n\nedgelen <- stRead %e% \"weight\"\nplot(stRead, uselen=TRUE, edge.len = edgelen, usecurve=TRUE)\n\nI'm not sure whether this syntax will work for your example because I  \ncan't test it (I don't have your network object), but I believe it  \nshould.   HTH,\n\nDave\n\n\n\nOn Jun 19, 2010, at 4:01 PM, Sean Goggins wrote:\n\n> Ian,\n>\n> Thanks for the help.  I have done extensive analysis of weighted edge\n> networks in UCI*NET.  I was hoping that statnet would accomodate this\n> as well; it would be nice to be able to script all of my analysis in\n> one tool, and I am actually pretty close.  Having used UCI*NET for so\n> long, it did not occur to me that one would do network analysis\n> without weighted edges.\n>\n> Are there R packages other than iGraph that support analysis of weight\n> networks?  (Sorry, I don't know what ORA refers to).\n>\n> I have relied on the Carter Butts and Hancock papers from the journal\n> of statistical software for my R SNA retooling.  I was hoping that\n> weighted edges were a statnet feature simply not covered in the\n> articles.\n>\n> If ORA is an R package, I could be set!  I have found iGraph to be\n> powerful for visualizing weighted networks (far more flexible than\n> Netdraw.).  I can't say enough about how impressed I am with the tools\n> in R!\n>\n> Thanks!!\n>\n> Sean\n>\n> On 6/19/10, McCulloh, I. MAJ  BS&L <Ian.McCulloh@usma.edu> wrote:\n>> George Barnett just published a paper on this in the latest issue of\n>> Connections and I think he referenced software. Many software  \n>> packages\n>> handle weighted links. The particulars depend on the package. For a  \n>> weighted\n>> version of betweenness, look at Information Centrality in W&F.\n>>\n>> I know ORA has weighted degree and Info Centrality. I imagine  \n>> George's new\n>> measure will be in an upcoming version.\n>>\n>> Ian\n>>\n>> ________________________________\n>> From: statnet_help-bounces@mailman2.u.washington.edu\n>> <statnet_help-bounces@mailman2.u.washington.edu>\n>> To: statnet_help mailing list <statnet_help@u.washington.edu>\n>> Sent: Sat Jun 19 10:11:27 2010\n>> Subject: [statnet_help] package SNA with a weighted network -  \n>> gplot / does\n>> SNA address weighted networks?\n>>\n>> I have loaded a weighted network (edges with weights) from a pajek  \n>> file,\n>> using the command below:\n>>\n>>> gplot(stRead, uselen=TRUE,edge.len=\"weight\", usecurve=TRUE)\n>>\n>> I get this error:\n>> Error in edge.len * sqrt((e.len/2)^2 - (dist[i]/2)^2) :\n>>  non-numeric argument to binary operator\n>>\n>> Here is a summary of my data:\n>>\n>>> summary(stRead)\n>> Network attributes:\n>> vertices = 26\n>> directed = FALSE\n>> hyper = FALSE\n>> loops = FALSE\n>> multiple = FALSE\n>> bipartite = FALSE\n>> title = readv26\n>> total edges = 645\n>>   missing edges = 0\n>>   non-missing edges = 645\n>> density = 1.984615\n>>\n>> Vertex attributes:\n>>\n>> ... <not relevant/>\n>>\n>> Edge attributes:\n>>\n>> weight:\n>>   numeric valued attribute\n>>   attribute summary:\n>>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.\n>>  4.577  15.740  22.070  32.540  31.050 331.500\n>>\n>> I also used plot.network with the same results.\n>> plot.network(stRead, uselen=TRUE,edge.len=\"weight\", usecurve=TRUE)\n>> Error in edge.len * sqrt((e.len/2)^2 - (dist[i, j]/2)^2)\n>>\n>> I welcome any thoughts.\n>>\n>> Related Question:  I am able to successfully plot my data with  \n>> iGraph, but\n>> would like to do weighted network analysis using SNA.  As I go  \n>> through the\n>> documentation, it appears that SNA may not account for weighted  \n>> networks...\n>> but the consideration of edge weights in the docs for the SNA and  \n>> Network\n>> packages visualization functions makes me think that the ability  \n>> analyze\n>> weighted networks may be there, but not much written about yet.\n>>\n>> --\n>> Sean P. Goggins, Ph.D\n>> http://www.goggins.com\n>> Phone: (215) 948-2729\n>>\n>> \"Never doubt that a small group of thoughtful, committed citizens  \n>> can change\n>> the world. Indeed, it is the only thing that ever has.\"\n>> -- Margaret Mead\n>>\n>> \"The most effective way to do it, is to do it.\"\n>> -- Amelia Earhart\n>>\n>> http://www.sociotech.net\n>>\n>\n> -- \n> Sent from my mobile device\n>\n> Sean P. Goggins, Ph.D\n> http://www.goggins.com\n> Phone: (215) 948-2729\n>\n> \"Never doubt that a small group of thoughtful, committed citizens can\n> change the world. Indeed, it is the only thing that ever has.\"\n> -- Margaret Mead\n>\n> \"The most effective way to do it, is to do it.\"\n> -- Amelia Earhart\n>\n> http://www.sociotech.net\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Sean.  I'm actually sitting next to Carter right now and he assures  \nme that gplot can do this.\n\nI believe that the problem is that you can't pass edge.len as a name  \nof an edge covariate; instea",
+      "thread_id": "thread-d078928958a9",
+      "thread_depth": 3,
+      "month": "2010-06"
+    },
+    {
+      "id": "msg-2b4a9f7f961b",
+      "message_id": "<854154.7397.qm@web65707.mail.ac4.yahoo.com>",
+      "from_name": "udibh@yahoo.com",
+      "from_email_hash": "521074efb307bb80304dc00143cfdc27899d2327677926848bb5fe4cf0140062",
+      "date": "2010-06-19T23:54:22Z",
+      "subject": "[statnet_help] unsubscribe",
+      "subject_clean": "[statnet_help] unsubscribe",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100619/70742ed5/attachment.html>",
+      "body_snippet": "-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100619/70742ed5/attachment.html>",
+      "thread_id": "thread-2b4a9f7f961b",
+      "thread_depth": 0,
+      "month": "2010-06"
+    },
+    {
+      "id": "msg-e4c57f1d07f0",
+      "message_id": "<AANLkTilwhlZPKrxLNN2K2bvOWr6DevqiKgm9uRa3wXTC@mail.gmail.com>",
+      "from_name": "Sean Goggins",
+      "from_email_hash": "c84ef926864ce21a7a090ec9dd9cbf48909f752075d29b0bd517cf18a3c742de",
+      "date": "2010-06-22T10:44:39Z",
+      "subject": "[statnet_help] Re: package SNA with a weighted network - gplot /  does SNA address weighted networks?",
+      "subject_clean": "[statnet_help] Re: package SNA with a weighted network - gplot /  does SNA address weighted networks?",
+      "in_reply_to": "<948EE88C-3D0B-4178-9389-C93400DEC7CE@stat.psu.edu>",
+      "references": [
+        "<AANLkTilIP9FFWdn6yqy8d3oCKeFWLkW4_ib2YbbsjBhw@mail.gmail.com>",
+        "<6757038BFDCD614DA5213272D1E157980672A1BD84@USMASVGDOIM522.usma.ds.army.edu>",
+        "<AANLkTiltXVOOxtFFee3m7mAdoV8_QwseugbCcXfPErw6@mail.gmail.com>",
+        "<948EE88C-3D0B-4178-9389-C93400DEC7CE@stat.psu.edu>"
+      ],
+      "body_plain": "David,\n\nThanks!\n\nThat solved my error straightaway!  Do you have any comments or advice\nregarding the support of statnet for weighted networks more generally?\n Perhaps an article to point one at.  Or a history of the relationship\nbetween statnet and ORA?  These are all optional curiosities.  The main\npurpose of my inquiry to the list is resolved.\n\nThanks!\n\nSean\n\nOn Sat, Jun 19, 2010 at 7:45 PM, David Hunter <dhunter@stat.psu.edu> wrote:\n\n> Hi Sean.  I'm actually sitting next to Carter right now and he assures me\n> that gplot can do this.\n>\n> I believe that the problem is that you can't pass edge.len as a name of an\n> edge covariate; instead, you'd need to pull this edge covariate out of the\n> network explicitly, then pass this matrix to gplot, something like this:\n>\n> edgelen <- stRead %e% \"weight\"\n> plot(stRead, uselen=TRUE, edge.len = edgelen, usecurve=TRUE)\n>\n> I'm not sure whether this syntax will work for your example because I can't\n> test it (I don't have your network object), but I believe it should.   HTH,\n>\n> Dave\n>\n>\n>\n>\n> On Jun 19, 2010, at 4:01 PM, Sean Goggins wrote:\n>\n>  Ian,\n>>\n>> Thanks for the help.  I have done extensive analysis of weighted edge\n>> networks in UCI*NET.  I was hoping that statnet would accomodate this\n>> as well; it would be nice to be able to script all of my analysis in\n>> one tool, and I am actually pretty close.  Having used UCI*NET for so\n>> long, it did not occur to me that one would do network analysis\n>> without weighted edges.\n>>\n>> Are there R packages other than iGraph that support analysis of weight\n>> networks?  (Sorry, I don't know what ORA refers to).\n>>\n>> I have relied on the Carter Butts and Hancock papers from the journal\n>> of statistical software for my R SNA retooling.  I was hoping that\n>> weighted edges were a statnet feature simply not covered in the\n>> articles.\n>>\n>> If ORA is an R package, I could be set!  I have found iGraph to be\n>> powerful for visualizing weighted networks (far more flexible than\n>> Netdraw.).  I can't say enough about how impressed I am with the tools\n>> in R!\n>>\n>> Thanks!!\n>>\n>> Sean\n>>\n>> On 6/19/10, McCulloh, I. MAJ  BS&L <Ian.McCulloh@usma.edu> wrote:\n>>\n>>> George Barnett just published a paper on this in the latest issue of\n>>> Connections and I think he referenced software. Many software packages\n>>> handle weighted links. The particulars depend on the package. For a\n>>> weighted\n>>> version of betweenness, look at Information Centrality in W&F.\n>>>\n>>> I know ORA has weighted degree and Info Centrality. I imagine George's\n>>> new\n>>> measure will be in an upcoming version.\n>>>\n>>> Ian\n>>>\n>>> ________________________________\n>>> From: statnet_help-bounces@mailman2.u.washington.edu\n>>> <statnet_help-bounces@mailman2.u.washington.edu>\n>>> To: statnet_help mailing list <statnet_help@u.washington.edu>\n>>> Sent: Sat Jun 19 10:11:27 2010\n>>> Subject: [statnet_help] package SNA with a weighted network - gplot /\n>>> does\n>>> SNA address weighted networks?\n>>>\n>>> I have loaded a weighted network (edges with weights) from a pajek file,\n>>> using the command below:\n>>>\n>>>  gplot(stRead, uselen=TRUE,edge.len=\"weight\", usecurve=TRUE)\n>>>>\n>>>\n>>> I get this error:\n>>> Error in edge.len * sqrt((e.len/2)^2 - (dist[i]/2)^2) :\n>>>  non-numeric argument to binary operator\n>>>\n>>> Here is a summary of my data:\n>>>\n>>>  summary(stRead)\n>>>>\n>>> Network attributes:\n>>> vertices = 26\n>>> directed = FALSE\n>>> hyper = FALSE\n>>> loops = FALSE\n>>> multiple = FALSE\n>>> bipartite = FALSE\n>>> title = readv26\n>>> total edges = 645\n>>>  missing edges = 0\n>>>  non-missing edges = 645\n>>> density = 1.984615\n>>>\n>>> Vertex attributes:\n>>>\n>>> ... <not relevant/>\n>>>\n>>> Edge attributes:\n>>>\n>>> weight:\n>>>  numeric valued attribute\n>>>  attribute summary:\n>>>  Min. 1st Qu.  Median    Mean 3rd Qu.    Max.\n>>>  4.577  15.740  22.070  32.540  31.050 331.500\n>>>\n>>> I also used plot.network with the same results.\n>>> plot.network(stRead, uselen=TRUE,edge.len=\"weight\", usecurve=TRUE)\n>>> Error in edge.len * sqrt((e.len/2)^2 - (dist[i, j]/2)^2)\n>>>\n>>> I welcome any thoughts.\n>>>\n>>> Related Question:  I am able to successfully plot my data with iGraph,\n>>> but\n>>> would like to do weighted network analysis using SNA.  As I go through\n>>> the\n>>> documentation, it appears that SNA may not account for weighted\n>>> networks...\n>>> but the consideration of edge weights in the docs for the SNA and Network\n>>> packages visualization functions makes me think that the ability analyze\n>>> weighted networks may be there, but not much written about yet.\n>>>\n>>> --\n>>> Sean P. Goggins, Ph.D\n>>> http://www.goggins.com\n>>> Phone: (215) 948-2729\n>>>\n>>> \"Never doubt that a small group of thoughtful, committed citizens can\n>>> change\n>>> the world. Indeed, it is the only thing that ever has.\"\n>>> -- Margaret Mead\n>>>\n>>> \"The most effective way to do it, is to do it.\"\n>>> -- Amelia Earhart\n>>>\n>>> http://www.sociotech.net\n>>>\n>>>\n>> --\n>> Sent from my mobile device\n>>\n>> Sean P. Goggins, Ph.D\n>> http://www.goggins.com\n>> Phone: (215) 948-2729\n>>\n>> \"Never doubt that a small group of thoughtful, committed citizens can\n>> change the world. Indeed, it is the only thing that ever has.\"\n>> -- Margaret Mead\n>>\n>> \"The most effective way to do it, is to do it.\"\n>> -- Amelia Earhart\n>>\n>> http://www.sociotech.net\n>> _______________________________________________\n>>\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n> _______________________________________________\n>\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \nSean P. Goggins, Ph.D\nhttp://www.goggins.com\nPhone: (215) 948-2729\n\n\"Never doubt that a small group of thoughtful, committed citizens can change\nthe world. Indeed, it is the only thing that ever has.\"\n-- Margaret Mead\n\n\"The most effective way to do it, is to do it.\"\n-- Amelia Earhart\n\nhttp://www.sociotech.net\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100622/ec238a01/attachment.html>",
+      "body_snippet": "David,\n\nThanks!\n\nThat solved my error straightaway!  Do you have any comments or advice\nregarding the support of statnet for weighted networks more generally?\n Perhaps an article to point one at.  Or ",
+      "thread_id": "thread-d078928958a9",
+      "thread_depth": 4,
+      "month": "2010-06"
+    },
+    {
+      "id": "msg-f5be3eb9cdb9",
+      "message_id": "<AANLkTimNjwySMoo6qBBUv_5quxLRChdT8LqrMbCqzRNN@mail.gmail.com>",
+      "from_name": "Sean Goggins",
+      "from_email_hash": "c84ef926864ce21a7a090ec9dd9cbf48909f752075d29b0bd517cf18a3c742de",
+      "date": "2010-06-22T10:57:37Z",
+      "subject": "[statnet_help] Tnet V Statnet for weighted networks",
+      "subject_clean": "[statnet_help] Tnet V Statnet for weighted networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I recently posed a question about weighted networks and visualizations in\nstatnet, which the participants on this list were quick to answer.  I find\nthe statnet libraries both well done and well documented.\n\nWith that in mind, I am curious what folks who use statnet have to say about\nthe use of \"tnet\" for weighted networks.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100622/933937cd/attachment.html>",
+      "body_snippet": "I recently posed a question about weighted networks and visualizations in\nstatnet, which the participants on this list were quick to answer.  I find\nthe statnet libraries both well done and well docum",
+      "thread_id": "thread-f5be3eb9cdb9",
+      "thread_depth": 0,
+      "month": "2010-06"
+    },
+    {
+      "id": "msg-2784eef8287b",
+      "message_id": "<SNT136-w227840AB6FCC33139E3B6CBCC50@phx.gbl>",
+      "from_name": "Wewe We",
+      "from_email_hash": "69854578c4c095651ddac9c964decd8b76abbe8711c862f8a9721d5104050869",
+      "date": "2010-06-22T17:03:40Z",
+      "subject": "[statnet_help] syntax for social network analysis in Statnet",
+      "subject_clean": "[statnet_help] syntax for social network analysis in Statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all members,\n\nI have a stupid question on Statnet. I am trying to do Social Network Analysis using Statnet. Could someone tell me what's the syntax to read edge list file? And syntax to calculate centrality measures (degree, closeness, betweenness, etc)?\n\nThank you in advance\n\nJohn MA\nChubb Insurance Australia\n \t\t \t   \t\t  \n_________________________________________________________________\nBrowse profiles for FREE! Meet local singles online.\nhttp://clk.atdmt.com/NMN/go/150855801/direct/01/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100623/f31a75eb/attachment.html>",
+      "body_snippet": "Dear all members,\n\nI have a stupid question on Statnet. I am trying to do Social Network Analysis using Statnet. Could someone tell me what's the syntax to read edge list file? And syntax to calculate",
+      "thread_id": "thread-2784eef8287b",
+      "thread_depth": 0,
+      "month": "2010-06"
+    },
+    {
+      "id": "msg-99b4ba6fae77",
+      "message_id": "<AB9F5DC5-5FCF-4F37-A5F3-E16C6DA7C673@gmail.com>",
+      "from_name": "Simone Gabbriellini",
+      "from_email_hash": "28a5511d14889ed7a9cead1a4c5c2eaa14a88c2b4b5d3fded2bed235eea4d272",
+      "date": "2010-06-25T03:00:27Z",
+      "subject": "[statnet_help] how to export network to file",
+      "subject_clean": "[statnet_help] how to export network to file",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello List,\n\nI would like to export the samplike network to file in pajek format. \n\nI see there's a function to import pajek file, but I cannot find the one to export.\n\ncan someone give me a hint?\n\nbest regards,\nSimone Gabbriellini",
+      "body_snippet": "Hello List,\n\nI would like to export the samplike network to file in pajek format. \n\nI see there's a function to import pajek file, but I cannot find the one to export.\n\ncan someone give me a hint?\n\nbe",
+      "thread_id": "thread-99b4ba6fae77",
+      "thread_depth": 0,
+      "month": "2010-06"
+    },
+    {
+      "id": "msg-e87a0822f512",
+      "message_id": "<3920DC962E323A46B40D415ADC1CD6C25F7B003232@EX10.asurite.ad.asu.edu>",
+      "from_name": "David Schaefer",
+      "from_email_hash": "68ed60123835f929b1bceff70c06e4abcd7c94aab073da013ffb873fd56ee511",
+      "date": "2010-06-25T12:43:54Z",
+      "subject": "[statnet_help] ERGM - too many unique dyads",
+      "subject_clean": "[statnet_help] ERGM - too many unique dyads",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI am running into what I think is a memory-related error that I hope someone can help solve.  I am trying to estimate an ERGM on a network with 2,350 nodes.  On my PC I have tried increasing the memory using 'memory.limit(3000)'  I have also tried running in 64-bit R on a mac.  Both produce the same error.  I'm using version 2.2-4 of statnet.\n\nHere is the error message:\n\nError in ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m, theta.offset = theta.offset,  :\n  Too many unique dyads!\n\nHere is the model I am trying to estimate.\n\n> model1<- ergm (recnet~ edges + nodematch(\"educ\") + nodematch(\"sex\") + nodematch(\"race\") + nodematch(\"grade\") + absdiff(\"gpa\") + absdiff(\"probbhvr\") + absdiff(\"health\") + absdiff(\"depres\") +\ngwdegree(.25, fixed=TRUE) + gwdsp(.25, fixed=TRUE) + gwesp(.25, fixed=TRUE))\n\nI know I could do some recoding to simplify the measurement of variables (i.e., converting numeric scales to integers).  But, I would prefer to keep measures in their original metrics if possible.\n\nAny insight would be appreciated.\n--David\n\n*********************************************\nDavid R. Schaefer, Ph.D.\nAssistant Professor\nSchool of Social and Family Dynamics\nArizona State University\nwww.public.asu.edu/~schaef/<http://www.public.asu.edu/~schaef/>\nhttp://ssfd.clas.asu.edu/cluster\n*********************************************\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100625/1270efef/attachment.html>",
+      "body_snippet": "Hi all,\n\nI am running into what I think is a memory-related error that I hope someone can help solve.  I am trying to estimate an ERGM on a network with 2,350 nodes.  On my PC I have tried increasing ",
+      "thread_id": "thread-e87a0822f512",
+      "thread_depth": 0,
+      "month": "2010-06"
+    },
+    {
+      "id": "msg-f84487427f1b",
+      "message_id": "<4626D6F5-F8B1-4741-8F92-7B07C82CD2DE@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-06-27T07:12:19Z",
+      "subject": "[statnet_help] ERGM - too many unique dyads",
+      "subject_clean": "[statnet_help] ERGM - too many unique dyads",
+      "in_reply_to": "<3920DC962E323A46B40D415ADC1CD6C25F7B003232@EX10.asurite.ad.asu.edu>",
+      "references": [
+        "<3920DC962E323A46B40D415ADC1CD6C25F7B003232@EX10.asurite.ad.asu.edu>"
+      ],
+      "body_plain": "Hi David.  You are correct that this is a memory-related error.   \nYou're getting the error because (a) your network has more than 1  \nmillion possible edges; and (b) the model you're using uses quantative  \nvariables in such a way that most vectors of \"change statistics\" (each  \npossible edge gets its own such vector) are completely unique, which  \nmeans that you're not able to take advantage of ergm's default  \ncompression algorithm, which basically stores only the unique change  \nstatistic vectors (and keeps a count of the number of times each one  \nis used).  All of this information is fed into the logistic regression  \nsolver that returns the MPLE for you.\n\nIn any case, the error you're seeing should be pretty easy to fix,  \nthough the error message you got should be more informative about how  \nto fix it!  (I'll make a change for the next version of ergm).  The  \nkey is changing the default value (which is 1 million) of the control  \nparameter called \"maxNumDyadTypes\" using the control.ergm function.\n\nI'll use the faux.magnolia.high dataset to demonstrate, since it has  \n1461 nodes and 1461-choose-2 is just big enough to go over a million.   \nFirst, here's what happens before changing the default:\n\n > data(faux.magnolia.high)\n > fmh <- faux.magnolia.high\n > fmh %v% \"quantitative.var\" <- rnorm(1461)\n > ergm(fmh ~ absdiff(\"quantitative.var\"))\nError in ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m,  \ntheta.offset = theta.offset,  :\n   Too many unique dyads!\n\nNow for the control.ergm function:\n\n > big.enough <- 1461 * 1460 / 2\n > ergm(fmh ~ absdiff(\"quantitative.var\"),  \ncontrol=control.ergm(maxNumDyadTypes=big.enough))\nNewton-Raphson iterations:  12\n\nMLE Coefficients:\nabsdiff.quantitative.var\n                   -20.49\n\nHope this helps.\n\nDave\n\n\n\nOn Jun 25, 2010, at 3:43 PM, David Schaefer wrote:\n\n> Hi all,\n>\n> I am running into what I think is a memory-related error that I hope  \n> someone can help solve.  I am trying to estimate an ERGM on a  \n> network with 2,350 nodes.  On my PC I have tried increasing the  \n> memory using ?memory.limit(3000)?  I have also tried running in 64- \n> bit R on a mac.  Both produce the same error.  I?m using version  \n> 2.2-4 of statnet.\n>\n> Here is the error message:\n>\n> Error in ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m,  \n> theta.offset = theta.offset,  :\n>   Too many unique dyads!\n>\n> Here is the model I am trying to estimate.\n>\n> > model1<- ergm (recnet~ edges + nodematch(\"educ\") +  \n> nodematch(\"sex\") + nodematch(\"race\") + nodematch(\"grade\") +  \n> absdiff(\"gpa\") + absdiff(\"probbhvr\") + absdiff(\"health\") +  \n> absdiff(\"depres\") +\n> gwdegree(.25, fixed=TRUE) + gwdsp(.25, fixed=TRUE) + gwesp(.25,  \n> fixed=TRUE))\n>\n> I know I could do some recoding to simplify the measurement of  \n> variables (i.e., converting numeric scales to integers).  But, I  \n> would prefer to keep measures in their original metrics if possible.\n>\n> Any insight would be appreciated.\n> --David\n>\n> *********************************************\n> David R. Schaefer, Ph.D.\n> Assistant Professor\n> School of Social and Family Dynamics\n> Arizona State University\n> www.public.asu.edu/~schaef/\n> http://ssfd.clas.asu.edu/cluster\n> *********************************************\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100627/b180f706/attachment.html>",
+      "body_snippet": "Hi David.  You are correct that this is a memory-related error.   \nYou're getting the error because (a) your network has more than 1  \nmillion possible edges; and (b) the model you're using uses quant",
+      "thread_id": "thread-e87a0822f512",
+      "thread_depth": 1,
+      "month": "2010-06"
+    },
+    {
+      "id": "msg-717ee61e5bfd",
+      "message_id": "<D5BEDF96-E96E-460C-A48A-A02168D3D3B0@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-06-27T10:07:33Z",
+      "subject": "[statnet_help] Use ERGM with Robbins-Monro Algorithm.",
+      "subject_clean": "[statnet_help] Use ERGM with Robbins-Monro Algorithm.",
+      "in_reply_to": "<56028.165.91.113.161.1273726560.squirrel@m1.stat.tamu.edu>",
+      "references": [
+        "<56028.165.91.113.161.1273726560.squirrel@m1.stat.tamu.edu>"
+      ],
+      "body_plain": "Hello Ick Hoon,\n\nI'm sorry it took so long to deal with this one.  This was a bug that  \nI inadvertently introduced when I modified the simulating  \nfunctionality of ergm.  I believe I have now fixed it; in any case, I  \nnow can run an example like yours without getting the same error.\n\nI would like to upload a new version of ergm to CRAN with this fix  \n(along with quite a few others that we've made recently), but now is  \nnot a good time to mess with the CRAN version because there is a  \nworkshop on statnet happening at the Sunbelt networks conference this  \nweek and uploading during this week could cause problems there.   As  \nan alternative, I will post the source code of the new (beta) version  \nof ergm_2.2-5 on my website at\n\nhttp://www.stat.psu.edu/~dhunter/code/\n\nIf you find any additional problems, please let us know!  The new  \nversion should be on CRAN sometime next week.\n\nDave\n\n\nOn May 13, 2010, at 12:56 AM, kentjin@stat.tamu.edu wrote:\n\n> Hello! I want to analyze my network data using Robbins-Monro algorithm\n> proposed by Snijders (2002).\n>\n> Here is my code for Robbins-Monro algorithm\n> -------------------------------------------------------------------------\n> form <- X ~ edges + gwdegree(0.2, fixed=TRUE) + gwesp(0.2, fixed=TRUE)\n> m1 <- ergm(formula=form, MPLEonly=TRUE)\n> m2 <- ergm(formula=form, theta0=m1$coef, seed=12345,\n>  control=control.ergm(style=\"Robbins-Monro\"), verb=TRUE)\n> -------------------------------------------------------------------------\n>\n> However, I have an error message as following:\n> -------------------------------------------------------------------------\n> Evaluating network in model\n> Initializing model.\n> Initializing Metropolis-Hastings proposal.\n> Fitting initial model.\n> Fitting ERGM.\n> Robbins-Monro algorithm with theta_0 equal to:\n>          edges        gwdegree gwesp.fixed.0.2\n>     -3.0849596      -0.3656705       1.1951401\n> Phase 1:  16 iterations (interval=100)\n> Error in vector(\"integer\", length) : invalid 'length' argument\n> -------------------------------------------------------------------------\n>\n> How can I correct my code to find MCMCMLE with Robbins-Monro  \n> algorithm?\n> Thank you very much.\n>\n> Sincerely,\n> Ick Hoon Jin\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hello Ick Hoon,\n\nI'm sorry it took so long to deal with this one.  This was a bug that  \nI inadvertently introduced when I modified the simulating  \nfunctionality of ergm.  I believe I have now fixed ",
+      "thread_id": "thread-717ee61e5bfd",
+      "thread_depth": 0,
+      "month": "2010-06"
+    },
+    {
+      "id": "msg-55b3ccc1147b",
+      "message_id": "<3920DC962E323A46B40D415ADC1CD6C25F7B155F55@EX10.asurite.ad.asu.edu>",
+      "from_name": "David Schaefer",
+      "from_email_hash": "68ed60123835f929b1bceff70c06e4abcd7c94aab073da013ffb873fd56ee511",
+      "date": "2010-06-29T14:34:25Z",
+      "subject": "[statnet_help] ERGM - too many unique dyads",
+      "subject_clean": "[statnet_help] ERGM - too many unique dyads",
+      "in_reply_to": "<4626D6F5-F8B1-4741-8F92-7B07C82CD2DE@stat.psu.edu>",
+      "references": [
+        "<3920DC962E323A46B40D415ADC1CD6C25F7B003232@EX10.asurite.ad.asu.edu>",
+        "<4626D6F5-F8B1-4741-8F92-7B07C82CD2DE@stat.psu.edu>"
+      ],
+      "body_plain": "Hi David,\n\nThanks for the code!  It resolved the problem without a hitch.\n\nBest,\nDavid\n\n________________________________\nFrom: statnet_help-bounces@mailman2.u.washington.edu [mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of David Hunter\nSent: Sunday, June 27, 2010 7:12 AM\nTo: statnet list\nSubject: Re: [statnet_help] ERGM - too many unique dyads\n\nHi David.  You are correct that this is a memory-related error.  You're getting the error because (a) your network has more than 1 million possible edges; and (b) the model you're using uses quantative variables in such a way that most vectors of \"change statistics\" (each possible edge gets its own such vector) are completely unique, which means that you're not able to take advantage of ergm's default compression algorithm, which basically stores only the unique change statistic vectors (and keeps a count of the number of times each one is used).  All of this information is fed into the logistic regression solver that returns the MPLE for you.\n\nIn any case, the error you're seeing should be pretty easy to fix, though the error message you got should be more informative about how to fix it!  (I'll make a change for the next version of ergm).  The key is changing the default value (which is 1 million) of the control parameter called \"maxNumDyadTypes\" using the control.ergm function.\n\nI'll use the faux.magnolia.high dataset to demonstrate, since it has 1461 nodes and 1461-choose-2 is just big enough to go over a million.  First, here's what happens before changing the default:\n\n> data(faux.magnolia.high)\n> fmh <- faux.magnolia.high\n> fmh %v% \"quantitative.var\" <- rnorm(1461)\n> ergm(fmh ~ absdiff(\"quantitative.var\"))\nError in ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m, theta.offset = theta.offset,  :\n  Too many unique dyads!\n\nNow for the control.ergm function:\n\n> big.enough <- 1461 * 1460 / 2\n> ergm(fmh ~ absdiff(\"quantitative.var\"), control=control.ergm(maxNumDyadTypes=big.enough))\nNewton-Raphson iterations:  12\n\nMLE Coefficients:\nabsdiff.quantitative.var\n                  -20.49\n\nHope this helps.\n\nDave\n\n\n\nOn Jun 25, 2010, at 3:43 PM, David Schaefer wrote:\n\n\nHi all,\n\nI am running into what I think is a memory-related error that I hope someone can help solve.  I am trying to estimate an ERGM on a network with 2,350 nodes.  On my PC I have tried increasing the memory using 'memory.limit(3000)'  I have also tried running in 64-bit R on a mac.  Both produce the same error.  I'm using version 2.2-4 of statnet.\n\nHere is the error message:\n\nError in ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m, theta.offset = theta.offset,  :\n  Too many unique dyads!\n\nHere is the model I am trying to estimate.\n\n> model1<- ergm (recnet~ edges + nodematch(\"educ\") + nodematch(\"sex\") + nodematch(\"race\") + nodematch(\"grade\") + absdiff(\"gpa\") + absdiff(\"probbhvr\") + absdiff(\"health\") + absdiff(\"depres\") +\ngwdegree(.25, fixed=TRUE) + gwdsp(.25, fixed=TRUE) + gwesp(.25, fixed=TRUE))\n\nI know I could do some recoding to simplify the measurement of variables (i.e., converting numeric scales to integers).  But, I would prefer to keep measures in their original metrics if possible.\n\nAny insight would be appreciated.\n--David\n\n*********************************************\nDavid R. Schaefer, Ph.D.\nAssistant Professor\nSchool of Social and Family Dynamics\nArizona State University\nwww.public.asu.edu/~schaef/<http://www.public.asu.edu/~schaef/>\nhttp://ssfd.clas.asu.edu/cluster\n*********************************************\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100629/24960a51/attachment.html>",
+      "body_snippet": "Hi David,\n\nThanks for the code!  It resolved the problem without a hitch.\n\nBest,\nDavid\n\n________________________________\nFrom: statnet_help-bounces@mailman2.u.washington.edu [mailto:statnet_help-bounc",
+      "thread_id": "thread-e87a0822f512",
+      "thread_depth": 2,
+      "month": "2010-06"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-9282c59fd549",
+      "subject": "[statnet_help] structure - attribute interactions",
+      "message_count": 4,
+      "participants": [
+        "David Hunter",
+        "Simone Gabbriellini",
+        "Sun Kyung Kim",
+        "engelo"
+      ],
+      "started": "2010-06-12T12:15:15Z",
+      "last_reply": "2010-06-18T10:24:37Z",
+      "root_message_id": "msg-9282c59fd549"
+    },
+    {
+      "id": "thread-d078928958a9",
+      "subject": "[statnet_help] package SNA with a weighted network - gplot / does SNA address weighted networks?",
+      "message_count": 5,
+      "participants": [
+        "David Hunter",
+        "McCulloh, I. MAJ  BS&L",
+        "Sean Goggins"
+      ],
+      "started": "2010-06-19T07:11:27Z",
+      "last_reply": "2010-06-22T10:44:39Z",
+      "root_message_id": "msg-d078928958a9"
+    },
+    {
+      "id": "thread-2b4a9f7f961b",
+      "subject": "[statnet_help] unsubscribe",
+      "message_count": 1,
+      "participants": [
+        "udibh@yahoo.com"
+      ],
+      "started": "2010-06-19T23:54:22Z",
+      "last_reply": "2010-06-19T23:54:22Z",
+      "root_message_id": "msg-2b4a9f7f961b"
+    },
+    {
+      "id": "thread-f5be3eb9cdb9",
+      "subject": "[statnet_help] Tnet V Statnet for weighted networks",
+      "message_count": 1,
+      "participants": [
+        "Sean Goggins"
+      ],
+      "started": "2010-06-22T10:57:37Z",
+      "last_reply": "2010-06-22T10:57:37Z",
+      "root_message_id": "msg-f5be3eb9cdb9"
+    },
+    {
+      "id": "thread-2784eef8287b",
+      "subject": "[statnet_help] syntax for social network analysis in Statnet",
+      "message_count": 1,
+      "participants": [
+        "Wewe We"
+      ],
+      "started": "2010-06-22T17:03:40Z",
+      "last_reply": "2010-06-22T17:03:40Z",
+      "root_message_id": "msg-2784eef8287b"
+    },
+    {
+      "id": "thread-99b4ba6fae77",
+      "subject": "[statnet_help] how to export network to file",
+      "message_count": 1,
+      "participants": [
+        "Simone Gabbriellini"
+      ],
+      "started": "2010-06-25T03:00:27Z",
+      "last_reply": "2010-06-25T03:00:27Z",
+      "root_message_id": "msg-99b4ba6fae77"
+    },
+    {
+      "id": "thread-e87a0822f512",
+      "subject": "[statnet_help] ERGM - too many unique dyads",
+      "message_count": 3,
+      "participants": [
+        "David Hunter",
+        "David Schaefer"
+      ],
+      "started": "2010-06-25T12:43:54Z",
+      "last_reply": "2010-06-29T14:34:25Z",
+      "root_message_id": "msg-e87a0822f512"
+    },
+    {
+      "id": "thread-717ee61e5bfd",
+      "subject": "[statnet_help] Use ERGM with Robbins-Monro Algorithm.",
+      "message_count": 1,
+      "participants": [
+        "David Hunter"
+      ],
+      "started": "2010-06-27T10:07:33Z",
+      "last_reply": "2010-06-27T10:07:33Z",
+      "root_message_id": "msg-717ee61e5bfd"
+    }
+  ]
+}

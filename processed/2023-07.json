@@ -1,0 +1,36 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2023-07",
+  "messages": [
+    {
+      "id": "msg-732dae651b60",
+      "message_id": "<F55BFA96-B799-40E6-B38E-DE8E81314BBE@asurite.asu.edu>",
+      "from_name": "Jacob Young",
+      "from_email_hash": "12c71d887256658db8b65b764d2e601cbc5532ce4160d333ce75996b6a7593e1",
+      "date": "2023-07-29T11:37:03Z",
+      "subject": "[statnet_help] Question about using constraints in ergm",
+      "subject_clean": "[statnet_help] Question about using constraints in ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI am estimating a model to assess whether the effect of a variable differs across two networks. Specifically, whether a  nodeifactor() term for a variable ?white? (a binary White/Non-white node covariate). Here is a simple model:\n\nergm(\n  mynet\n  ~ edges + mutual + nodeifactor( \"white\" ) # here is the model over both networks\n\n  + S(\n    ~ edges + mutual + nodeifactor( \"white\" )\n    ~ ( block == 1 ), # here is the constraints over the first network (i.e. block == 1)\n\n  constraints = ~ blocks( \"block\", levels2 = c( 2, 3 ) )\n)\n\nMy question is this: when I estimate the subgraph portion with S(, do I need to include the edges and mutual terms if I am only interested in the nodeifactor( \"white\" ) term?\n\nPlease let me know if this question makes sense. Thanks!\n\nJacob Young<https://urldefense.com/v3/__https:/jacobtnyoung.github.io/__;!!IKRxdwAv5BmarQ!fqLVLF3BCyy5ugkZ-qzDMnh1UexUEvlbM3sKV55pnP36VE1fwhB9906Cx5mulWUssxqdrCD3LDW7NjBYKNl_JYf-kGsUbys$>, PhD\nAssociate Professor | School of Criminology and Criminal Justice\nDirector of Curriculum | Institute for Social Science Research\nWatts College of Public Service & Community Solutions\n\nArizona State University\n411 N. Central Ave., Ste. 600\nPhoenix, AZ 85004\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20230729/a6454cb7/attachment.html>",
+      "body_snippet": "Hi all,\n\nI am estimating a model to assess whether the effect of a variable differs across two networks. Specifically, whether a  nodeifactor() term for a variable ?white? (a binary White/Non-white no",
+      "thread_id": "thread-732dae651b60",
+      "thread_depth": 0,
+      "month": "2023-07"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-732dae651b60",
+      "subject": "[statnet_help] Question about using constraints in ergm",
+      "message_count": 1,
+      "participants": [
+        "Jacob Young"
+      ],
+      "started": "2023-07-29T11:37:03Z",
+      "last_reply": "2023-07-29T11:37:03Z",
+      "root_message_id": "msg-732dae651b60"
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2017-05",
+  "messages": [
+    {
+      "id": "msg-eabde93ada21",
+      "message_id": "<1493675436.23974.9.camel@uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2017-05-01T14:50:38Z",
+      "subject": "[statnet_help] ERGM warning",
+      "subject_clean": "[statnet_help] ERGM warning",
+      "in_reply_to": "<CALPwDKWE70b+fvG3pTGt+Ymr=FS3BOCG87Smw8GdR13Ut=43QA@mail.gmail.com>",
+      "references": [
+        "<CALPwDKWE70b+fvG3pTGt+Ymr=FS3BOCG87Smw8GdR13Ut=43QA@mail.gmail.com>"
+      ],
+      "body_plain": "Hi,\n\nReplying to this publicly, in case anyone has a similar question. The reason for the problem in this case is that one of the \"employer\" levels has 0 relationships, which is the smallest attainable value in the sample space and therefore has MLE at -?. For binary ERGMs, this would be detected, but for valued ERGMs, this type of detection doesn't work, because 0 is not the smallest value for nodefactor(..., form=\"sum\") in all possible sample spaces (e.g., signed edges).\n\nAlso, because there are 31 distinct employers, I recommend increasing the MCMC.samplesize and/or MCMC.interval.\n\nI hope this helps,\nPavel\n\nOn Sun, 2017-04-30 at 17:05 -0400, Rezvan Sherkati wrote:\nHi,\nI?m trying to run a ERGM model on my network. My model is:\n\nmodel <- ergm(graph~nodefactor(\"employer\"),\n              response=\"weight\", reference=~Poisson)\n\nand when I use mcmc.disgnostics, it gives me a warning:\n\nWarning messages:\n1: In cor(as.matrix(x)) : the standard deviation is zero\n2: In approx.hotelling.diff.test(x1, x2, var.equal = TRUE) :\n  Vector(s)  do not vary but equal mu0; they have been ignored for the purposes of testing.\n\nCan you help me what this warning is for?\nAlso I have tried that with model <- ergm(graph~edges+nodefactor(\"employer\"),\n              response=\"weight\", reference=~Poisson)\nand I still get the warning.\n\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n--\n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA)<http://niasra.uow.edu.au/index.html> | Web (Personal)<http://www.krivitsky.net/research> | ResearchGate<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID: 0000-0002-9101-3362<orcid.org/0000-0002-9101-3362>\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170501/3ec63c18/attachment.html>",
+      "body_snippet": "Hi,\n\nReplying to this publicly, in case anyone has a similar question. The reason for the problem in this case is that one of the \"employer\" levels has 0 relationships, which is the smallest attainabl",
+      "thread_id": "thread-eabde93ada21",
+      "thread_depth": 0,
+      "month": "2017-05"
+    },
+    {
+      "id": "msg-06a466cc250c",
+      "message_id": "<16e6e3fa-7b34-81d0-cb0e-f2dcf92a40a4@iplesp.jussieu.fr>",
+      "from_name": "Pierre-Yves Boelle",
+      "from_email_hash": "007f4196291e0ae9ce57b4a65f90814dbcf20624d21a5b2d38d7f806d98dac3e",
+      "date": "2017-05-18T04:04:53Z",
+      "subject": "[statnet_help] gof when missing edges are present - why are models terms treated differently than other GOF components?",
+      "subject_clean": "[statnet_help] gof when missing edges are present - why are models terms treated differently than other GOF components?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello All,\n\nConsider the following example :\n\n# create a nw with 10 nodes (1 to 10)\n\nnw <- network.initialize(10,directed=F,loops=F,bipartite = F)\n\n# add few edges (1-2, 1-3)\n\nnw <- network.edgelist(matrix(c(1,2,1,3),ncol = 2,byrow = T),nw)\n\n# declare all links to/from 4 and above are missing\n\nnw[4:10,,add.edges=T]=NA\n\n# fit ergm on nw\n\ne.nw=ergm(nw~edges)\n\n#perfom gof\n\ngof(e.nw, GOF = ~distance+degree+triadcensus+model)\n\n\nGoodness-of-fit for minimum geodesic distance\n\n       obs min  mean max MC p-value\n1   22.50  13 21.79  29       0.88\n2   20.44  13 20.55  28       0.98\n3    1.85   0  2.39   9       0.98\n4    0.03   0  0.09   2       0.16\nInf  0.18   0  0.18   9       0.04\n\n\n...\n\nGoodness-of-fit for model statistics\n\n        obs        min       mean        max MC p-value\n       3.00      13.00      21.79      29.00       0.00\n\n\nIn the output above :\n     - in \"minimum geodesic distance\", column \"obs\" is the average of \nconditional simulations on imputed networks, columns min-mean-max are \nthose of unconditional simulations.\n     - in the \"model statistics\", column \"obs\" is the actual statistics \nin the original network - without imputations, and column min-mean-max \nare the result of unconditional simulations.\n\nAs a consequence, while in the case above the \"GOF minimum geodesic \ndistance\" agrees between observed and simulated,\nit is never the case that \"obs\" model statistics terms compare with \n\"min-mean-max\" in GOF in my experience.\n\nThis is because differences in the computation in case of missing edges:\n     * first a set of conditional simulations are obtained: missing \nlinks are imputed using the fitted ergm model with constraints \n~observed, repeat 100 times and compute\n     all stats listed in GOF (here : distance, degree, triadcensus and \nmodel) on the imputed network.\n     The average statistics are copied to \"obs.XXX\" terms BUT FOR THE \nMODEL TERM where it is really the observed term (without imputation) \nthat is conserved.\n     * second a set of unconditional simulation are obtained, and \nstatistics computed on these.\n\nIs there a reason why model terms are treated differently from other \nstatistics ?\nFor consistency with other statistics, I would suggest that the \"model \nstatistics\" computation\n  in gof.formula, line 89\n\n84 if (\"model\" %in% all.gof.vars) {\n85   if (!network.naedgecount(nw) | !unconditional) {\n86      obs.model <- summary(object)\n87    }\n88    else {\n89      obs.model <- SimCond$obs.model\n90    }\n\nshould be changed to\n\n89   obs.model <- SimCond$summary.model[, \"mean\"]\n\n\nThanks for your comments\n\n\n\n-- \n---------------------\nPierre-Yves Bo?lle, PU-PH\nIPLESP - Institut Pierre Louis d'Epidemiologie et de Sante Publique\nAP-HP, H?pital Saint-Antoine, Biostatistiques & Sante Publique\nUPMC - Paris6, Faculte de Medecine\nINSERM U1136 - E1 : \"Surveillance et Mod?lisation des maladies infectieuses\"\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170518/f08f555a/attachment.html>",
+      "body_snippet": "Hello All,\n\nConsider the following example :\n\n# create a nw with 10 nodes (1 to 10)\n\nnw <- network.initialize(10,directed=F,loops=F,bipartite = F)\n\n# add few edges (1-2, 1-3)\n\nnw <- network.edgelist(m",
+      "thread_id": "thread-06a466cc250c",
+      "thread_depth": 0,
+      "month": "2017-05"
+    },
+    {
+      "id": "msg-497ac974dd54",
+      "message_id": "<CAE4BjoQX3pKP_XiE691RqanT_+WXfjY3gd36_g-cEYjK19KYvQ@mail.gmail.com>",
+      "from_name": "Jaber Belkhiria",
+      "from_email_hash": "be26e967fe124ea234d627ac19a343df0a94a004b048d86340e58055908b4984",
+      "date": "2017-05-25T17:26:40Z",
+      "subject": "[statnet_help] Check for correlation between predictors",
+      "subject_clean": "[statnet_help] Check for correlation between predictors",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi guys,\nQuick question: Should I care about correlation between predictors in an\nERGM model? if so how to test for it?\nThank you very much,\n\nJaber Belkhiria\nCenter for Animal Disease Modeling and Surveillance (CADMS)\nUC Davis\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170525/186f0f77/attachment.html>",
+      "body_snippet": "Hi guys,\nQuick question: Should I care about correlation between predictors in an\nERGM model? if so how to test for it?\nThank you very much,\n\nJaber Belkhiria\nCenter for Animal Disease Modeling and Sur",
+      "thread_id": "thread-497ac974dd54",
+      "thread_depth": 0,
+      "month": "2017-05"
+    },
+    {
+      "id": "msg-e6ea817550d5",
+      "message_id": "<1495761546.26112.77.camel@uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2017-05-25T18:19:08Z",
+      "subject": "[statnet_help] Check for correlation between predictors",
+      "subject_clean": "[statnet_help] Check for correlation between predictors",
+      "in_reply_to": "<CAE4BjoQX3pKP_XiE691RqanT_+WXfjY3gd36_g-cEYjK19KYvQ@mail.gmail.com>",
+      "references": [
+        "<CAE4BjoQX3pKP_XiE691RqanT_+WXfjY3gd36_g-cEYjK19KYvQ@mail.gmail.com>"
+      ],
+      "body_plain": "Hi,\n\nYes, as with linear and logistic regression, multicollinearity can be a problem. The effects on interpretation are similar, but correlation can also interfere with estimation.\n\nTo examine it once you've successfully fit the model, mcmc.diagnostics() will show you which statistics are the most correlated. Before fitting the model, you can look at the variance-covariance matrix of the MPLE estimates (vcov(ergm(nw~model, estimate=\"MPLE\")), which should give a pretty good idea (especially for dyad-independent predictors) as well.\n\nI hope this helps,\nPavel\n\nOn Thu, 2017-05-25 at 17:26 -0700, Jaber Belkhiria wrote:\nHi guys,\nQuick question: Should I care about correlation between predictors in an ERGM model? if so how to test for it?\nThank you very much,\n\nJaber Belkhiria\nCenter for Animal Disease Modeling and Surveillance (CADMS)\nUC Davis\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n--\n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA)<http://niasra.uow.edu.au/index.html> | Web (Personal)<http://www.krivitsky.net/research> | ResearchGate<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID: 0000-0002-9101-3362<orcid.org/0000-0002-9101-3362>\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170526/dd0db4b3/attachment.html>",
+      "body_snippet": "Hi,\n\nYes, as with linear and logistic regression, multicollinearity can be a problem. The effects on interpretation are similar, but correlation can also interfere with estimation.\n\nTo examine it once",
+      "thread_id": "thread-497ac974dd54",
+      "thread_depth": 1,
+      "month": "2017-05"
+    },
+    {
+      "id": "msg-593823a23adc",
+      "message_id": "<alpine.WNT.2.00.1705301207430.15248@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2017-05-30T12:10:44Z",
+      "subject": "[statnet_help] Reminder: Network Modeling for Epidemics -- Summer 2017 Course -- Applications due June 1",
+      "subject_clean": "[statnet_help] Reminder: Network Modeling for Epidemics -- Summer 2017 Course -- Applications due June 1",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Just a reminder that applications close on Thursday.\n\nBest,\nSam Jenness, Martina Morris, and Steve Goodreau\n\n\n       Network Modeling for Epidemics\n       Summer short course at the University of Washington\n       14-18 August, 2017\n\n       Network Modeling for Epidemics (NME) is a 5-day short course at the University of Washington that\n       provides an introduction to stochastic network models for infectious disease transmission dynamics,\n       with a focus on empirically based modeling of HIV transmission. ?It is a ''hands-on'' course, using\n       the EpiModel software package in R (www.epimodel.org). EpiModel provides a unified framework for\n       statistically based modeling of dynamic networks from empirical data, and simulation of epidemic\n       dynamics on these networks. It has a flexible open-source platform for learning and building\n       several types of epidemic models: deterministic compartmental, stochastic individual-based, and\n       stochastic network models. Resources include simple models that run in a browser window, built-in\n       generic models that provide basic control over population contact patterns, pathogen properties and\n       demographics, and templates for user-programmed modules that allow EpiModel to be extended to the\n       full range of pathogens, hosts, and disease dynamics for advanced research. ?This course will touch\n       on the deterministic and individual-based models, but its primary focus is on the theory, methods\n       and application of network models.\n\n       The course uses mornings for lectures, and afternoons for labs with?students working in small\n       groups. ?On the final day, students have the?option of developing an EpiModel prototype for their\n       own research?projects, with input from the instructors, which includes the lead?EpiModel software\n       developer, Dr. Samuel Jenness.\n\n       Returning students: We encourage previous attendees with active modeling?projects to apply to\n       return for a refresher course. ?The EpiModel?package has been significantly enhanced over the last\n       few years.?Returning students with active projects will have the opportunity to?work with course\n       instructors to address key challenges in the design of?their network model code.\n\n       Dates and location:\n\n       The course will be taught from Monday, August 14 to Friday, August 18?on the University of\n       Washington campus in Seattle.\n\n       Application dates and decision dates:\n\n       * ???May 1: Fellowship application deadline. Decisions will be made?by May 15.\n\n       * ???June 1: ?General application deadline. ?Applications will continue?to be accepted on a rolling\n       basis until this date. Decisions will be?made by June 15.\n\n       Costs:\n\n       Course fee is $500. Travel and accommodation costs are the responsibility of the participant,\n       although discounted hotel rates are available. We offer a limited number of fellowships for\n       pre-doctoral students or for attendees from low income countries; these cover waiver of the\n       registration fee only (travel and accommodation are still the responsibility of the fellowship\n       recipient).\n\n       Application:\n\n       Apply online at?https://catalyst.uw.edu/webq/survey/morrism/329397\n\n       Course website and more information: ?http://statnet.github.io/nme\n\n       Please free to share widely!\n\n       Yours,\n       Martina Morris, Steve Goodreau and Samuel Jenness\n\n_____________________________________________________________________________________________________________________\n\n       This e-mail message (including any attachments) is for the sole use of\n       the intended recipient(s) and may contain confidential and privileged\n       information. If the reader of this message is not the intended\n       recipient, you are hereby notified that any dissemination, distribution\n       or copying of this message (including any attachments) is strictly\n       prohibited.\n\n       If you have received this message in error, please contact\n       the sender by reply e-mail message and destroy all copies of the\n       original message (including attachments).\n_______________________________________________\nEpiModel mailing list\nEpiModel@u.washington.edu\nhttp://mailman11.u.washington.edu/mailman/listinfo/epimodel",
+      "body_snippet": "Just a reminder that applications close on Thursday.\n\nBest,\nSam Jenness, Martina Morris, and Steve Goodreau\n\n\n       Network Modeling for Epidemics\n       Summer short course at the University of Wash",
+      "thread_id": "thread-593823a23adc",
+      "thread_depth": 0,
+      "month": "2017-05"
+    },
+    {
+      "id": "msg-045017945532",
+      "message_id": "<alpine.WNT.2.00.1705310930400.15248@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2017-05-31T09:44:11Z",
+      "subject": "[statnet_help] Check for correlation between predictors",
+      "subject_clean": "[statnet_help] Check for correlation between predictors",
+      "in_reply_to": "<CAE4BjoQX3pKP_XiE691RqanT_+WXfjY3gd36_g-cEYjK19KYvQ@mail.gmail.com>",
+      "references": [
+        "<CAE4BjoQX3pKP_XiE691RqanT_+WXfjY3gd36_g-cEYjK19KYvQ@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Jaber,\n\nThere will always be correlation between predictors in a network model. \nThe terms in the model are counts of edge configurations, so the same \nedges are often involved in more than one term.\n\nHowever, these terms are computed at the network level, so your observed \ndata have a single vector of sufficient statistics, so there's no \ncorrelation you can calculate there.\n\nThe correlation is implicit in the conditional logit equation for each \ntie, as this expresses how each term will change if the tie is toggled. \nSo, you could construct the matrix of conditional changestats and test for \ncorrelation there.\n\nBut it's probably easier just to check for correlation in the estimated \ncoefficients from the model.  You'll find that in output from an ergm fit \nin the \"covar\" element.\n\nhth,\nMartina\n\nOn Thu, 25 May 2017, Jaber Belkhiria wrote:\n\n> Hi guys,Quick question: Should I care about correlation between predictors in an ERGM model? if so how to test for\n> it?\n> Thank you very much,\n> \n> Jaber Belkhiria\n> Center for Animal Disease Modeling and Surveillance (CADMS)\n> UC Davis\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Jaber,\n\nThere will always be correlation between predictors in a network model. \nThe terms in the model are counts of edge configurations, so the same \nedges are often involved in more than one ter",
+      "thread_id": "thread-497ac974dd54",
+      "thread_depth": 1,
+      "month": "2017-05"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-eabde93ada21",
+      "subject": "[statnet_help] ERGM warning",
+      "message_count": 1,
+      "participants": [
+        "Pavel Krivitsky"
+      ],
+      "started": "2017-05-01T14:50:38Z",
+      "last_reply": "2017-05-01T14:50:38Z",
+      "root_message_id": "msg-eabde93ada21"
+    },
+    {
+      "id": "thread-06a466cc250c",
+      "subject": "[statnet_help] gof when missing edges are present - why are models terms treated differently than other GOF components?",
+      "message_count": 1,
+      "participants": [
+        "Pierre-Yves Boelle"
+      ],
+      "started": "2017-05-18T04:04:53Z",
+      "last_reply": "2017-05-18T04:04:53Z",
+      "root_message_id": "msg-06a466cc250c"
+    },
+    {
+      "id": "thread-497ac974dd54",
+      "subject": "[statnet_help] Check for correlation between predictors",
+      "message_count": 3,
+      "participants": [
+        "Jaber Belkhiria",
+        "Pavel Krivitsky",
+        "martina morris"
+      ],
+      "started": "2017-05-25T17:26:40Z",
+      "last_reply": "2017-05-31T09:44:11Z",
+      "root_message_id": "msg-497ac974dd54"
+    },
+    {
+      "id": "thread-593823a23adc",
+      "subject": "[statnet_help] Reminder: Network Modeling for Epidemics -- Summer 2017 Course -- Applications due June 1",
+      "message_count": 1,
+      "participants": [
+        "martina morris"
+      ],
+      "started": "2017-05-30T12:10:44Z",
+      "last_reply": "2017-05-30T12:10:44Z",
+      "root_message_id": "msg-593823a23adc"
+    }
+  ]
+}

@@ -1,0 +1,307 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2016-02",
+  "messages": [
+    {
+      "id": "msg-84df16115bb6",
+      "message_id": "<E913ABB937F1DE4BA868F430F7197E10381875F0@EXMBXPR07CCD.UCHAD.uchospitals.edu>",
+      "from_name": "Khanna, Aditya [MED]",
+      "from_email_hash": "bcbc2ecefb65f657cdc48dbcb34944add56ec462b1b27bb58447f547a9f880c3",
+      "date": "2016-02-01T12:22:53Z",
+      "subject": "[statnet_help] parallel update",
+      "subject_clean": "[statnet_help] parallel update",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Statnet community,\n\nI have a question about profiling parallel ergm code.  I fit dyadic dependent ERGM's in serial and parallel to networks of size 50, 500 and 5000; in each case, the mean degree was 15. The serial fit converged quickly, and for each network appeared to take far less time than the parallel (some details below).\nProfiling ERGM fits for networks of size 5000, with mean degree = 15.\n\nSerial fit\n   user  system elapsed\n174.584   0.132 174.790\n\nParallel fit (using 10 cpu's on multiple nodes)\n      user  system elapsed\n727.921   0.770 729.479\n\nParallel fit (using 16 cpu's on same node)\n    user   system  elapsed\n1236.118    1.310 1240.925\n\nI find this result counterintuitive, because I expected the parallel fitting to take much less time. Can someone please help me figure out what might be wrong?\n\nThanks,\nAditya\n\n********************************************************************************\nThis e-mail is intended only for the use of the individual or entity to which\nit is addressed and may contain information that is privileged and confidential.\nIf the reader of this e-mail message is not the intended recipient, you are \nhereby notified that any dissemination, distribution or copying of this\ncommunication is prohibited. If you have received this e-mail in error, please \nnotify the sender and destroy all copies of the transmittal. \n\nThank you\nUniversity of Chicago Medicine and Biological Sciences \n********************************************************************************\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160201/ed710d43/attachment.html>",
+      "body_snippet": "Hi Statnet community,\n\nI have a question about profiling parallel ergm code.  I fit dyadic dependent ERGM's in serial and parallel to networks of size 50, 500 and 5000; in each case, the mean degree w",
+      "thread_id": "thread-84df16115bb6",
+      "thread_depth": 0,
+      "month": "2016-02"
+    },
+    {
+      "id": "msg-20b60cfd7d7f",
+      "message_id": "<D2D5313E.9B81%akhanna@medicine.bsd.uchicago.edu>",
+      "from_name": "Khanna, Aditya [MED]",
+      "from_email_hash": "bcbc2ecefb65f657cdc48dbcb34944add56ec462b1b27bb58447f547a9f880c3",
+      "date": "2016-02-01T13:59:34Z",
+      "subject": "[statnet_help] parallel update",
+      "subject_clean": "[statnet_help] parallel update",
+      "in_reply_to": "<E913ABB937F1DE4BA868F430F7197E10381875F0@EXMBXPR07CCD.UCHAD.uchospitals.edu>",
+      "references": [
+        "<E913ABB937F1DE4BA868F430F7197E10381875F0@EXMBXPR07CCD.UCHAD.uchospitals.edu>"
+      ],
+      "body_plain": "One more point: I ran the same tests with the latest version of ergm (3.5.1), and got:\n\nParallel fit (using 10 cpu?s on multiple nodes)\n    user   system  elapsed\n 486.229    0.691 1435.439\n\nParallel fit (using 16 cpu?s on same node)\n   user  system elapsed\n809.732   1.033 812.114\n\nFaster than before, but still slower than the serial.\n\nThanks,\nAditya\n\nFrom: Aditya Khanna <akhanna@medicine.bsd.uchicago.edu<mailto:akhanna@medicine.bsd.uchicago.edu>>\nDate: Monday, February 1, 2016 at 2:22 PM\nTo: \"statnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\" <statnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>>\nSubject: parallel update\n\nHi Statnet community,\n\nI have a question about profiling parallel ergm code.  I fit dyadic dependent ERGM?s in serial and parallel to networks of size 50, 500 and 5000; in each case, the mean degree was 15. The serial fit converged quickly, and for each network appeared to take far less time than the parallel (some details below).\nProfiling ERGM fits for networks of size 5000, with mean degree = 15.\n\nSerial fit\n   user  system elapsed\n174.584   0.132 174.790\n\nParallel fit (using 10 cpu?s on multiple nodes)\n      user  system elapsed\n727.921   0.770 729.479\n\nParallel fit (using 16 cpu?s on same node)\n    user   system  elapsed\n1236.118    1.310 1240.925\n\nI find this result counterintuitive, because I expected the parallel fitting to take much less time. Can someone please help me figure out what might be wrong?\n\nThanks,\nAditya\n\n********************************************************************************\nThis e-mail is intended only for the use of the individual or entity to which\nit is addressed and may contain information that is privileged and confidential.\nIf the reader of this e-mail message is not the intended recipient, you are \nhereby notified that any dissemination, distribution or copying of this\ncommunication is prohibited. If you have received this e-mail in error, please \nnotify the sender and destroy all copies of the transmittal. \n\nThank you\nUniversity of Chicago Medicine and Biological Sciences \n********************************************************************************",
+      "body_snippet": "One more point: I ran the same tests with the latest version of ergm (3.5.1), and got:\n\nParallel fit (using 10 cpu?s on multiple nodes)\n    user   system  elapsed\n 486.229    0.691 1435.439\n\nParallel ",
+      "thread_id": "thread-84df16115bb6",
+      "thread_depth": 1,
+      "month": "2016-02"
+    },
+    {
+      "id": "msg-4e94bfe2119e",
+      "message_id": "<FD3F4CB2-A262-4246-90B1-3AF43C85280A@csiro.au>",
+      "from_name": "Andrew.Terhorst@csiro.au",
+      "from_email_hash": "6b0b243c4c8ca1af9556bbc5be3219737a5bf7af63ce11b3722ae23a20cbb725",
+      "date": "2016-02-02T18:22:43Z",
+      "subject": "[statnet_help] Boundary-spanning triads",
+      "subject_clean": "[statnet_help] Boundary-spanning triads",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello\n\nI would like to assess the level of collaboration in an open innovation project by examining the number of boundary-spanning triads in a directed network. I have played around with assortative mixing coefficients in igraph but prefer to look at collaboration at the triadic level.  I suspect bipartite network analysis is the way to go.  Any advice would be appreciated.\n\nCheers\n\n--\nAndrew Terhorst\nOpen Innovation Researcher\n\nDATA61 | CSIRO\nE andrew.terhorst@data61.csiro.au<mailto:elizabeth.mckenzie@nicta.com.au> T +613 6237 5562   M +61 400 869 594\n15 College Road, Sandy Bay, TAS 7005 www.data61.csiro.au<http://www.data61.csiro.au/>\n\nCSIRO?s Digital Productivity business unit and NICTA have joined forces to create digital powerhouse Data61\n[cid:B6733BDC-8CF6-4994-91AE-5249E20E4050]\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160203/f66ec7cf/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: 1094D94F-EBC3-4BEE-90A7-CF668E98BF01[13].png\nType: image/png\nSize: 4205 bytes\nDesc: 1094D94F-EBC3-4BEE-90A7-CF668E98BF01[13].png\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160203/f66ec7cf/attachment.png>",
+      "body_snippet": "Hello\n\nI would like to assess the level of collaboration in an open innovation project by examining the number of boundary-spanning triads in a directed network. I have played around with assortative ",
+      "thread_id": "thread-4e94bfe2119e",
+      "thread_depth": 0,
+      "month": "2016-02"
+    },
+    {
+      "id": "msg-6d3747d6d4c5",
+      "message_id": "<98B0EDFF-AEDD-4F9F-A886-F034636DCDCE@haikuanalytics.com>",
+      "from_name": "John Burrett",
+      "from_email_hash": "fc526aa28ea36f1aec62c0c8a6d2f50420d99861ab6d4c1ec2e9fc9280eafef0",
+      "date": "2016-02-03T07:43:23Z",
+      "subject": "[statnet_help] Boundary-spanning triads",
+      "subject_clean": "[statnet_help] Boundary-spanning triads",
+      "in_reply_to": "<FD3F4CB2-A262-4246-90B1-3AF43C85280A@csiro.au>",
+      "references": [
+        "<FD3F4CB2-A262-4246-90B1-3AF43C85280A@csiro.au>"
+      ],
+      "body_plain": "Hi Andrew\n\nUnless I am misunderstanding your question, I would think you should look at clusters and clustering coefficients..  Then if you want to get deeper, you could look at what kind of triangle permutations are observed, as well as reciprocal edges. \n\nJohn Burrett\nhaikuanalytics inc\nclarity in data, power in presentation\n\njburrett@haikuanalytics.com\n613.818.2848\n\n\n\n> On Feb 2, 2016, at 9:22 PM, Andrew.Terhorst@csiro.au wrote:\n> \n> Hello\n> \n> I would like to assess the level of collaboration in an open innovation project by examining the number of boundary-spanning triads in a directed network. I have played around with assortative mixing coefficients in igraph but prefer to look at collaboration at the triadic level.  I suspect bipartite network analysis is the way to go.  Any advice would be appreciated.\n> \n> Cheers\n> \n> --\n> Andrew Terhorst\n> Open Innovation Researcher\n>  \n> DATA61 | CSIRO\n> E andrew.terhorst@data61.csiro.au <mailto:elizabeth.mckenzie@nicta.com.au> T +613 6237 5562   M +61 400 869 594\n> 15 College Road, Sandy Bay, TAS 7005 www.data61.csiro.au <http://www.data61.csiro.au/>\n>  \n> CSIRO?s Digital Productivity business unit and NICTA have joined forces to create digital powerhouse Data61 \n> <1094D94F-EBC3-4BEE-90A7-CF668E98BF01[13].png>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160203/7664dc71/attachment.html>",
+      "body_snippet": "Hi Andrew\n\nUnless I am misunderstanding your question, I would think you should look at clusters and clustering coefficients..  Then if you want to get deeper, you could look at what kind of triangle ",
+      "thread_id": "thread-4e94bfe2119e",
+      "thread_depth": 1,
+      "month": "2016-02"
+    },
+    {
+      "id": "msg-8c405a5503dc",
+      "message_id": "<CAByPayE2-HZRVc0FhCZHr9Rqn5jUrueJe2aARbGyrfu2m2=WQg@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2016-02-03T08:05:56Z",
+      "subject": "[statnet_help] Boundary-spanning triads",
+      "subject_clean": "[statnet_help] Boundary-spanning triads",
+      "in_reply_to": "<FD3F4CB2-A262-4246-90B1-3AF43C85280A@csiro.au>",
+      "references": [
+        "<FD3F4CB2-A262-4246-90B1-3AF43C85280A@csiro.au>"
+      ],
+      "body_plain": "If I understand correctly, I think you should have a look at triad census.\nTore Opsahl's work on triadic closure in two-mode networks should also be\nrelevant, e.g.\nhttp://toreopsahl.com/2011/12/21/article-triadic-closure-in-two-mode-networks-redefining-the-global-and-local-clustering-coefficients/\n\nTry asking your question to SOCNET list https://www.insna.org/socnet.html.\nYou should get a broader feedback.\n\nhth,\nmichal\n\nOn Wed, Feb 3, 2016 at 3:22 AM, <Andrew.Terhorst@csiro.au> wrote:\n\n> Hello\n>\n> I would like to assess the level of collaboration in an open innovation\n> project by examining the number of boundary-spanning triads in a directed\n> network. I have played around with assortative mixing coefficients in\n> igraph but prefer to look at collaboration at the triadic level.  I suspect\n> bipartite network analysis is the way to go.  Any advice would be\n> appreciated.\n>\n> Cheers\n>\n>\n> --\n>\n> *Andrew Terhorst*\n> Open Innovation Researcher\n>\n>\n>\n> *DATA61 | CSIRO*\n>\n> *E *andrew.terhorst@data61.csiro.au <elizabeth.mckenzie@nicta.com.au> *T* +613\n> 6237 5562   *M* +61 400 869 594\n>\n> 15 College Road, Sandy Bay, TAS 7005 www.data61.csiro.au\n>\n>\n> *CSIRO?s Digital Productivity business unit and NICTA have joined forces\n> to create digital powerhouse Data61*\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160203/205730ea/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: 1094D94F-EBC3-4BEE-90A7-CF668E98BF01[13].png\nType: image/png\nSize: 4205 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160203/205730ea/attachment.png>",
+      "body_snippet": "If I understand correctly, I think you should have a look at triad census.\nTore Opsahl's work on triadic closure in two-mode networks should also be\nrelevant, e.g.\nhttp://toreopsahl.com/2011/12/21/art",
+      "thread_id": "thread-4e94bfe2119e",
+      "thread_depth": 1,
+      "month": "2016-02"
+    },
+    {
+      "id": "msg-4a6af7c65448",
+      "message_id": "<CAP9UTLZFBtr15_EFtMq7vrhHhUmTgn3GO+Zw_4kwQUQ7HuAFgg@mail.gmail.com>",
+      "from_name": "Fabian Held",
+      "from_email_hash": "9b4b32e98fd6ce98531692db93cd2c597f69c6995a7765f086740e72fe1e324d",
+      "date": "2016-02-04T04:01:29Z",
+      "subject": "[statnet_help] Structural zeros between most classes of nodes?",
+      "subject_clean": "[statnet_help] Structural zeros between most classes of nodes?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet users\n\nI would like to determine if there is a difference in\ncontributions/importance of different classes of nodes between three\ndirected advice networks.\n\nBasically the data contain three separate networks for different types of\nadvice. The nodes differ with regards to one categorical attribute (five\ndistinct classes) and we assume that only nodes in one of these classes\nwould want to receive advice (let's call these\"pupils\", while all the\nothers are professionals of some kind). Pupils can receive advice from each\nother, or from any of the other categories. There are 8 pupils and 20 other\nnodes.\n\nI'm thinking of modelling this as an ERGM, with a parameter for density and\na node attribute effect on indegree (links pointing where the advice came\nfrom). \"Forbidden\" relations could be represented with structural zeros,\nbut my concern is that there are quite many of them. Would this\nconfiguration violate any model assumptions? Or is there a different\napproach that you would recommend?\n\nThanks in advance\nFabian\n\n\n\n*Fabian P Held, PhD | *Postdoctoral Researcher in Computational Modelling\n\nCharles Perkins Centre, Faculty of Science, School of Mathematics and\nStatistics\n\n*THE UNIVERSITY OF SYDNEY*\nRm 3200, Charles Perkins Centre hub D17 | The University of Sydney | NSW |\n2006\n\n*T* +61 2 8627 0427\n*E* fabian.held@sydney.edu.au | *W* sydney.edu.au\n\n*W* http://sydney.edu.au/science/people/fabian.held\n*B* http://fabianheld.wordpress.com | *t* @FPHeld\n\n\nCRICOS 00026A\nThis email plus any attachments to it are confidential. Any unauthorised\nuse is strictly prohibited. If you receive this email in error, please\ndelete it and any attachments. Please think of our environment and only\nprint this e-mail if necessary.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160204/4fd63c5c/attachment.html>",
+      "body_snippet": "Dear statnet users\n\nI would like to determine if there is a difference in\ncontributions/importance of different classes of nodes between three\ndirected advice networks.\n\nBasically the data contain thr",
+      "thread_id": "thread-4a6af7c65448",
+      "thread_depth": 0,
+      "month": "2016-02"
+    },
+    {
+      "id": "msg-4655e954262d",
+      "message_id": "<56B34945.1060609@ipw.unibe.ch>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "267581854094383cee73c04f2f16c57beabca283c871136016390ce40bec223b",
+      "date": "2016-02-04T04:51:17Z",
+      "subject": "[statnet_help] Structural zeros between most classes of nodes?",
+      "subject_clean": "[statnet_help] Structural zeros between most classes of nodes?",
+      "in_reply_to": "<CAP9UTLZFBtr15_EFtMq7vrhHhUmTgn3GO+Zw_4kwQUQ7HuAFgg@mail.gmail.com>",
+      "references": [
+        "<CAP9UTLZFBtr15_EFtMq7vrhHhUmTgn3GO+Zw_4kwQUQ7HuAFgg@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Fabian,\n\nA TERGM (not STERGM) without any temporal dependencies can be applied to \nmultiple separate groups. This essentially reduces to a pooled ERGM. \nEstimation is possible using the xergm package, which builds on many \nstatnet functions. There are two estimation strategies: structural zeros \nin an MCMC MLE framework (the mtergm function can do this) and MPLE with \nbootstrapped confidence intervals (use the btergm function to do this). \nThe latter is faster but becomes more accurate and less biased with \nlarger networks and more groups); the former is more accurate with \nsmaller numbers of groups but also prohibitively slow for more than a \ncouple of networks. Of course, you can also construct a block-diagonal \nmatrix with off-diagonal structural zeros manually and then use the ergm \npackage, which is basically what mtergm does for you.\n\nNote, however, that the ERGM or TERGM does not solve the problem with \nthe violation of the i.i.d. assumption for you; you must explicitly \ncontrol for network dependencies in your groups for an ERGM to yield \nresults that are less biased than a GLM. In other words, just adding \ndensity and node attributes is likely not enough.\n\nBest,\nPhilip\n\nAm 04.02.2016 um 13:01 schrieb Fabian Held:\n> Dear statnet users\n>\n> I would like to determine if there is a difference in\n> contributions/importance of different classes of nodes between three\n> directed advice networks.\n>\n> Basically the data contain three separate networks for different types\n> of advice. The nodes differ with regards to one categorical attribute\n> (five distinct classes) and we assume that only nodes in one of these\n> classes would want to receive advice (let's call these\"pupils\", while\n> all the others are professionals of some kind). Pupils can receive\n> advice from each other, or from any of the other categories. There are 8\n> pupils and 20 other nodes.\n>\n> I'm thinking of modelling this as an ERGM, with a parameter for density\n> and a node attribute effect on indegree (links pointing where the advice\n> came from). \"Forbidden\" relations could be represented with structural\n> zeros, but my concern is that there are quite many of them. Would this\n> configuration violate any model assumptions? Or is there a different\n> approach that you would recommend?\n>\n> Thanks in advance\n> Fabian\n> *\n> *\n> *\n> *\n> *\n> *\n> *Fabian P Held, PhD | *Postdoctoral Researcher in Computational Modelling\n>\n> Charles Perkins Centre, Faculty of Science, School of Mathematics and\n> Statistics\n>\n> *THE UNIVERSITY OF SYDNEY*\n> Rm 3200, Charles Perkins Centre hub D17 | The University of Sydney | NSW\n> | 2006\n>\n> *T*+61 2 8627 0427\n> *E*fabian.held@sydney.edu.au <mailto:fabian.held@sydney.edu.au>|\n> *W*sydney.edu.au <http://sydney.edu.au/>\n>\n> *W*http://sydney.edu.au/science/people/fabian.held_\n> _*B*http://fabianheld.wordpress.com <http://fabianheld.wordpress.com/>|\n> *t* @FPHeld__\n>\n>\n> CRICOS 00026A\n> This email plus any attachments to it are confidential. Any unauthorised\n> use is strictly prohibited. If you receive this email in error, please\n> delete it and any attachments.Please think of our environment and only\n> print this e-mail if necessary.\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi Fabian,\n\nA TERGM (not STERGM) without any temporal dependencies can be applied to \nmultiple separate groups. This essentially reduces to a pooled ERGM. \nEstimation is possible using the xergm packa",
+      "thread_id": "thread-4a6af7c65448",
+      "thread_depth": 1,
+      "month": "2016-02"
+    },
+    {
+      "id": "msg-2ab7781b6fd3",
+      "message_id": "<CAO9oa+mwpHz=g98gG3-m6hwVJZEk70iQ5iDdCHVRZJc-H6qkLw@mail.gmail.com>",
+      "from_name": "Krause, R.W.",
+      "from_email_hash": "cd1e92998bfba6b0bbc2c456126c7c4554bc697383768f2795e6fd169ef1619f",
+      "date": "2016-02-04T07:38:34Z",
+      "subject": "[statnet_help] Structural zeros between most classes of nodes?",
+      "subject_clean": "[statnet_help] Structural zeros between most classes of nodes?",
+      "in_reply_to": "<56B34945.1060609@ipw.unibe.ch>",
+      "references": [
+        "<CAP9UTLZFBtr15_EFtMq7vrhHhUmTgn3GO+Zw_4kwQUQ7HuAFgg@mail.gmail.com>",
+        "<56B34945.1060609@ipw.unibe.ch>"
+      ],
+      "body_plain": "Dear Fabian,\n\nIs the advice of a pupil to a pupil equivalent to the advice of a\nprofessional to a professional? (Is Xij = 1 qualitatively the same\nrelationship as Xim = 1? With \"i\" and \"j\" being pupils and \"m\" being a\nprofessional?)\n\nIf this is not the case, what you describe sounds to me like a multilevel\nnetwork. Here you have both, the unipartite structure of ties between nodes\nof the same type (your pupil to pupil advice) and the bipartite structure\nof ties between different types of nodes (often used to express affiliation\nto organizations - but could also express advice from qualitatively\ndifferent types of nodes). It is possible but not necessary to allow links\nbetween the other type of nodes.\nIt sounds to me that the relationships here are qualitatively different\nbetween different types of nodes but if you simply code them in one matrix\nthe program cannot see that and they would contribute to the statistics in\nthe same way that pupil-pupil ties do.\nExample: You observe  the following constellations pupil1 -> pupil2, pupil1\n-> pupil3, pupil2 -> pupil3 and professional1 -> pupil1, professional1 ->\npupil2. These 5 ties look like 2 transitive triads, however, the triad with\nthe professional involved should probably not count to the same triad\nstatistics as the triads with only pupils involved.\n\nUnfortunately I do not have hands on experience with multilevel networks in\nstatnet. The ERGM package is able to model bipartite networks (I did not\nfind anything about multilevel) and I assume there is a way to model\nmultilevel networks in the statnet packages (otherwise MPNet might be an\nalternative).\n\nEventually, I recommend using a multiplex multilevel network. Statnet is\nable to handle multiplex networks (multiplex means different types of edges\nbetween nodes).\nThis, I think, would capture the data in the way you describe it.\n\nFor further reading on multilevel networks I recommend this book:\n\nMultilevel Network Analysis for the Social Sciences.\n\nEmmanuel Lazega and Tom A.B. Snijders (eds).\n\nCham: Springer, 2016. Methodos Series: Methodological Prospects in the\nSocial Sciences.\n\nISBN 978-3-319-24518-8\n\nISBN 978-3-319-24520-1 (eBook)\n\nDOI: 10.1007/978-3-319-24520-1\n\nBest Regards,\n\nRobert Krause\n\nICS Sociology, PhD Student\nUniversity of Groningen\nGrote Rozenstraat 31,\nRoom B119\n9712 TG Groningen, The Netherlands\n\nOn Thu, Feb 4, 2016 at 1:51 PM, Philip Leifeld <philip.leifeld@ipw.unibe.ch>\nwrote:\n\n> Hi Fabian,\n>\n> A TERGM (not STERGM) without any temporal dependencies can be applied to\n> multiple separate groups. This essentially reduces to a pooled ERGM.\n> Estimation is possible using the xergm package, which builds on many\n> statnet functions. There are two estimation strategies: structural zeros in\n> an MCMC MLE framework (the mtergm function can do this) and MPLE with\n> bootstrapped confidence intervals (use the btergm function to do this). The\n> latter is faster but becomes more accurate and less biased with larger\n> networks and more groups); the former is more accurate with smaller numbers\n> of groups but also prohibitively slow for more than a couple of networks.\n> Of course, you can also construct a block-diagonal matrix with off-diagonal\n> structural zeros manually and then use the ergm package, which is basically\n> what mtergm does for you.\n>\n> Note, however, that the ERGM or TERGM does not solve the problem with the\n> violation of the i.i.d. assumption for you; you must explicitly control for\n> network dependencies in your groups for an ERGM to yield results that are\n> less biased than a GLM. In other words, just adding density and node\n> attributes is likely not enough.\n>\n> Best,\n> Philip\n>\n> Am 04.02.2016 um 13:01 schrieb Fabian Held:\n>\n>> Dear statnet users\n>>\n>> I would like to determine if there is a difference in\n>> contributions/importance of different classes of nodes between three\n>> directed advice networks.\n>>\n>> Basically the data contain three separate networks for different types\n>> of advice. The nodes differ with regards to one categorical attribute\n>> (five distinct classes) and we assume that only nodes in one of these\n>> classes would want to receive advice (let's call these\"pupils\", while\n>> all the others are professionals of some kind). Pupils can receive\n>> advice from each other, or from any of the other categories. There are 8\n>> pupils and 20 other nodes.\n>>\n>> I'm thinking of modelling this as an ERGM, with a parameter for density\n>> and a node attribute effect on indegree (links pointing where the advice\n>> came from). \"Forbidden\" relations could be represented with structural\n>> zeros, but my concern is that there are quite many of them. Would this\n>> configuration violate any model assumptions? Or is there a different\n>> approach that you would recommend?\n>>\n>> Thanks in advance\n>> Fabian\n>> *\n>> *\n>> *\n>> *\n>> *\n>> *\n>> *Fabian P Held, PhD | *Postdoctoral Researcher in Computational Modelling\n>>\n>> Charles Perkins Centre, Faculty of Science, School of Mathematics and\n>> Statistics\n>>\n>> *THE UNIVERSITY OF SYDNEY*\n>> Rm 3200, Charles Perkins Centre hub D17 | The University of Sydney | NSW\n>> | 2006\n>>\n>> *T*+61 2 8627 0427\n>> *E*fabian.held@sydney.edu.au <mailto:fabian.held@sydney.edu.au>|\n>> *W*sydney.edu.au <http://sydney.edu.au/>\n>>\n>> *W*http://sydney.edu.au/science/people/fabian.held_\n>> _*B*http://fabianheld.wordpress.com <http://fabianheld.wordpress.com/>|\n>> *t* @FPHeld__\n>>\n>>\n>> CRICOS 00026A\n>> This email plus any attachments to it are confidential. Any unauthorised\n>> use is strictly prohibited. If you receive this email in error, please\n>> delete it and any attachments.Please think of our environment and only\n>> print this e-mail if necessary.\n>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160204/9b122dbc/attachment.html>",
+      "body_snippet": "Dear Fabian,\n\nIs the advice of a pupil to a pupil equivalent to the advice of a\nprofessional to a professional? (Is Xij = 1 qualitatively the same\nrelationship as Xim = 1? With \"i\" and \"j\" being pupil",
+      "thread_id": "thread-4a6af7c65448",
+      "thread_depth": 2,
+      "month": "2016-02"
+    },
+    {
+      "id": "msg-931bdbbdd918",
+      "message_id": "<56B4AF0B.5030608@ipw.unibe.ch>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "267581854094383cee73c04f2f16c57beabca283c871136016390ce40bec223b",
+      "date": "2016-02-05T06:17:47Z",
+      "subject": "[statnet_help] Structural zeros between most classes of nodes?",
+      "subject_clean": "[statnet_help] Structural zeros between most classes of nodes?",
+      "in_reply_to": "<CAO9oa+mwpHz=g98gG3-m6hwVJZEk70iQ5iDdCHVRZJc-H6qkLw@mail.gmail.com>",
+      "references": [
+        "<CAP9UTLZFBtr15_EFtMq7vrhHhUmTgn3GO+Zw_4kwQUQ7HuAFgg@mail.gmail.com>",
+        "<56B34945.1060609@ipw.unibe.ch>",
+        "<CAO9oa+mwpHz=g98gG3-m6hwVJZEk70iQ5iDdCHVRZJc-H6qkLw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Robert and Fabian,\n\nThis may or may not be necessary depending on the statistics to be used. \nSome statistics like triangle have an 'attr' argument where you can \nspecify that only within-type triangles should be counted. However, I \nthink this was not implemented for GWESP and related statistics. In \nprinciple, it should be possible to use a standard ERGM (with \noff-diagonal structural zeros) with some custom model terms where you \nrestrict the counts of subgraph products to be established only within \nor across levels of an optional nodal attribute. If you don't want to \ncode them in C (in case they don't have such an argument), you can still \ncode them up as a change statistic manually and include them as a dyadic \ncovariate.\n\nKind regards\n\nPhilip\n\nAm 04.02.2016 um 16:38 schrieb Krause, R.W.:\n> Dear Fabian,\n>\n> Is the advice of a pupil to a pupil equivalent to the advice of a\n> professional to a professional? (Is Xij = 1 qualitatively the same\n> relationship as Xim = 1? With \"i\" and \"j\" being pupils and \"m\" being a\n> professional?)\n>\n> If this is not the case, what you describe sounds to me like a\n> multilevel network. Here you have both, the unipartite structure of ties\n> between nodes of the same type (your pupil to pupil advice) and the\n> bipartite structure of ties between different types of nodes (often used\n> to express affiliation to organizations - but could also express advice\n> from qualitatively different types of nodes). It is possible but not\n> necessary to allow links between the other type of nodes.\n> It sounds to me that the relationships here are qualitatively different\n> between different types of nodes but if you simply code them in one\n> matrix the program cannot see that and they would contribute to the\n> statistics in the same way that pupil-pupil ties do.\n> Example: You observe  the following constellations pupil1 -> pupil2,\n> pupil1 -> pupil3, pupil2 -> pupil3 and professional1 -> pupil1,\n> professional1 -> pupil2. These 5 ties look like 2 transitive triads,\n> however, the triad with the professional involved should probably not\n> count to the same triad statistics as the triads with only pupils involved.\n>\n> Unfortunately I do not have hands on experience with multilevel networks\n> in statnet. The ERGM package is able to model bipartite networks (I did\n> not find anything about multilevel) and I assume there is a way to model\n> multilevel networks in the statnet packages (otherwise MPNet might be an\n> alternative).\n>\n> Eventually, I recommend using a multiplex multilevel network. Statnet is\n> able to handle multiplex networks (multiplex means different types of\n> edges between nodes).\n> This, I think, would capture the data in the way you describe it.\n>\n> For further reading on multilevel networks I recommend this book:\n>\n> Multilevel Network Analysis for the Social Sciences.\n>\n> Emmanuel Lazega and Tom A.B. Snijders (eds).\n>\n> Cham: Springer, 2016. Methodos Series: Methodological Prospects in the\n> Social Sciences.\n>\n> ISBN 978-3-319-24518-8\n>\n> ISBN 978-3-319-24520-1 (eBook)\n>\n> DOI: 10.1007/978-3-319-24520-1\n>\n>\n> Best Regards,\n>\n> Robert Krause\n>\n> ICS Sociology, PhD Student\n> University of Groningen\n> Grote Rozenstraat 31,\n> Room B119\n> 9712 TG Groningen, The Netherlands\n>\n> On Thu, Feb 4, 2016 at 1:51 PM, Philip Leifeld\n> <philip.leifeld@ipw.unibe.ch <mailto:philip.leifeld@ipw.unibe.ch>> wrote:\n>\n>     Hi Fabian,\n>\n>     A TERGM (not STERGM) without any temporal dependencies can be\n>     applied to multiple separate groups. This essentially reduces to a\n>     pooled ERGM. Estimation is possible using the xergm package, which\n>     builds on many statnet functions. There are two estimation\n>     strategies: structural zeros in an MCMC MLE framework (the mtergm\n>     function can do this) and MPLE with bootstrapped confidence\n>     intervals (use the btergm function to do this). The latter is faster\n>     but becomes more accurate and less biased with larger networks and\n>     more groups); the former is more accurate with smaller numbers of\n>     groups but also prohibitively slow for more than a couple of\n>     networks. Of course, you can also construct a block-diagonal matrix\n>     with off-diagonal structural zeros manually and then use the ergm\n>     package, which is basically what mtergm does for you.\n>\n>     Note, however, that the ERGM or TERGM does not solve the problem\n>     with the violation of the i.i.d. assumption for you; you must\n>     explicitly control for network dependencies in your groups for an\n>     ERGM to yield results that are less biased than a GLM. In other\n>     words, just adding density and node attributes is likely not enough.\n>\n>     Best,\n>     Philip\n>\n>     Am 04.02.2016 um 13:01 schrieb Fabian Held:\n>\n>         Dear statnet users\n>\n>         I would like to determine if there is a difference in\n>         contributions/importance of different classes of nodes between three\n>         directed advice networks.\n>\n>         Basically the data contain three separate networks for different\n>         types\n>         of advice. The nodes differ with regards to one categorical\n>         attribute\n>         (five distinct classes) and we assume that only nodes in one of\n>         these\n>         classes would want to receive advice (let's call these\"pupils\",\n>         while\n>         all the others are professionals of some kind). Pupils can receive\n>         advice from each other, or from any of the other categories.\n>         There are 8\n>         pupils and 20 other nodes.\n>\n>         I'm thinking of modelling this as an ERGM, with a parameter for\n>         density\n>         and a node attribute effect on indegree (links pointing where\n>         the advice\n>         came from). \"Forbidden\" relations could be represented with\n>         structural\n>         zeros, but my concern is that there are quite many of them.\n>         Would this\n>         configuration violate any model assumptions? Or is there a different\n>         approach that you would recommend?\n>\n>         Thanks in advance\n>         Fabian\n>         *\n>         *\n>         *\n>         *\n>         *\n>         *\n>         *Fabian P Held, PhD | *Postdoctoral Researcher in Computational\n>         Modelling\n>\n>         Charles Perkins Centre, Faculty of Science, School of\n>         Mathematics and\n>         Statistics\n>\n>         *THE UNIVERSITY OF SYDNEY*\n>         Rm 3200, Charles Perkins Centre hub D17 | The University of\n>         Sydney | NSW\n>         | 2006\n>\n>         *T*+61 2 8627 0427\n>         *E*fabian.held@sydney.edu.au <mailto:fabian.held@sydney.edu.au>\n>         <mailto:fabian.held@sydney.edu.au\n>         <mailto:fabian.held@sydney.edu.au>>|\n>         *W*sydney.edu.au <http://sydney.edu.au> <http://sydney.edu.au/>\n>\n>         *W*http://sydney.edu.au/science/people/fabian.held_\n>         _*B*http://fabianheld.wordpress.com\n>         <http://fabianheld.wordpress.com/>|\n>         *t* @FPHeld__\n>\n>\n>         CRICOS 00026A\n>         This email plus any attachments to it are confidential. Any\n>         unauthorised\n>         use is strictly prohibited. If you receive this email in error,\n>         please\n>         delete it and any attachments.Please think of our environment\n>         and only\n>         print this e-mail if necessary.\n>\n>\n>\n>         _______________________________________________\n>         statnet_help mailing list\n>         statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>         http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>     _______________________________________________\n>     statnet_help mailing list\n>     statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>     http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi Robert and Fabian,\n\nThis may or may not be necessary depending on the statistics to be used. \nSome statistics like triangle have an 'attr' argument where you can \nspecify that only within-type tria",
+      "thread_id": "thread-4a6af7c65448",
+      "thread_depth": 3,
+      "month": "2016-02"
+    },
+    {
+      "id": "msg-24886c64b0ad",
+      "message_id": "<CC27483F-84D3-4984-A3F9-37969E25E3A2@maastrichtuniversity.nl>",
+      "from_name": "Bohlecarbonell Katherina (ERD)",
+      "from_email_hash": "55ad899d28a429d3f95a71c2f953a0d30c07f841c828999931553bd1c4dbf043",
+      "date": "2016-02-05T15:26:24Z",
+      "subject": "[statnet_help] convergence with ergm 3.5.1 more difficult than with 3.2.4",
+      "subject_clean": "[statnet_help] convergence with ergm 3.5.1 more difficult than with 3.2.4",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI found it's harder to get models to converge with ergm 3.5.1 than it is with version 3.2.4.\nFor the following small network, I only got 3 success out of 15 trials (with different seeds); but all 15 trials converged with ergm 3.2.4.\n\nAre there any parameters I need to change to make the new version work better?\n\nExample:\n\nmatrix <- rbind(\nc(0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),\nc(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),\nc(0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0),\nc(0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),\nc(1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),\nc(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),\nc(NA,NA,NA,NA,NA,1,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA),\nc(NA,NA,NA,NA,NA,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA),\nc(1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1),\nc(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0),\nc(0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0),\nc(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),\nc(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),\nc(1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0),\nc(1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0),\nc(0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0),\nc(0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0),\nc(NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,0,0,1,1),\nc(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),\nc(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0))\n\nn <- network(matrix,matrix.type=\"adjacency\",directed=T)\nfit <- ergm(n ~ edges + mutual + gwidegree(0.5, fixed=T) +\ngwodegree(0.5, fixed =T) ,\n             control = control.ergm(MCMC.burnin = 50000, MCMC.interval = 20000,\n                                    MCMC.samplesize=1000, seed=193))\n\n# Error message:\n#  \"Unconstrained MCMC sampling did not mix at all. Optimization\ncannot continue.\"\n\n#Version information:\n\n# Ergm 3.2.4 case:\n# R version 3.2.1 (2015-06-18), Platform: x86_64-apple-darwin10.8.0 (64-bit)\n# ergm_3.2.4, network_1.13.0, statnet.common_3.3.0\n\n# Ergm 3.5.1 case:\n# R version 3.2.1 (2015-06-18); Platform: x86_64-apple-darwin10.8.0 (64-bit)\n# ergm_3.5.1, network_1.13.0, statnet.common_3.3.0\n\nThanks for your help,\nKaterina\n\n\nKaterina Bohle Carbonell, MSc\nPhD at Maastricht University\nSkype: katerinabc\nkaterinacb.wordpress.com<http://katerinacb.wordpress.com/> (views are my own)\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160205/54591fa5/attachment.html>",
+      "body_snippet": "Hello,\n\nI found it's harder to get models to converge with ergm 3.5.1 than it is with version 3.2.4.\nFor the following small network, I only got 3 success out of 15 trials (with different seeds); but ",
+      "thread_id": "thread-24886c64b0ad",
+      "thread_depth": 0,
+      "month": "2016-02"
+    },
+    {
+      "id": "msg-cb26f83e00bb",
+      "message_id": "<alpine.WNT.2.00.1602151141500.8832@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2016-02-15T12:09:54Z",
+      "subject": "[statnet_help] unanswered statnet question",
+      "subject_clean": "[statnet_help] unanswered statnet question",
+      "in_reply_to": "<2C48AD48-5975-4F99-9736-228174842D61@maastrichtuniversity.nl>",
+      "references": [
+        "<2C48AD48-5975-4F99-9736-228174842D61@maastrichtuniversity.nl>"
+      ],
+      "body_plain": "Hi Katherina,\n\nSorry for not responding earlier.  We did in fact spend some time on \nthis, and it led to two different streams of responses.  Since the two of \nus involved were also teaching a workshop last week, this response was \ndelayed.\n\nThe two things we noticed were:\n\n1. The issue with convergence has to do with changes in the way that \nergm handles estimation with missing data.  We had already been working on \nthat, and the tests with the pre-release version of ergm (planned for \nrelease before Sunbelt) and several different seeds suggests that \nconvergence is obtained for your example.\n\n2. The gwodegree term is not providing a good fit to your data, largely \nbecause your odegree distribution is bimodal.  try:\n\nbarplot(summary(n ~ odegree(0:20)))\n\nto see this.  In general, when using the gw* terms, it is a good idea to \nlook at the corresponding *degree or *sp distributions first, to see if \nthey are distributions that have the form that gw* terms are designed to \nsummarize -- a monotonic pattern of decline in the upper tail.  In your \ncase, the odegree dist'n has a secondary mode in the upper tail.\n\nThe gw* terms may also induce degeneracy in an ergm when there is \nmis-specification like this.  So, even if your model converges, the lack \nof fit may mean it is converging to a degenerate model:  the realizations \nfrom the model are bimodal, with neither mode centered on the observed \nsufficient statistics, but the average of the two modes matches these \nstatstics.\n\nIf the paragraph above doesn't make sense to you, i'd suggest taking a \nlook at Mark Handcock's classic working paper on ergm degeneracy here:\n\nhttps://www.csss.washington.edu/research/working-papers/39\n\nYour question led me to develop some exploratory approaches to the \ngw*terms that i'll be posting on the statnet site soon.\n\nHTH.\n\nbest,\nmm\n\n\nOn Mon, 15 Feb 2016, Bohlecarbonell Katherina (ERD) wrote:\n\n> Dear Martina, \n> Please forgive me for reaching out directly to you, but I had no luck with the statnet list server. I also do\n> not receive any updates from the list server, which makes me wonder if there is really nobody who had a\n> question in the past 10 days.\n> \n> I found it's harder to get models to converge with ergm 3.5.1 than it is?with version 3.2.4.\n> \n> For the following small network, I only got 3 success out of 15 trials?(with different seeds); but all 15\n> trials converged with ergm 3.2.4.\n> \n> Are there any parameters I need to change to make the new version works better?\n> \n> Example:\n> \n> matrix <- rbind(\n> c(0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),\n> c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),\n> c(0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0),\n> c(0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),\n> c(1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),\n> c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),\n> c(NA,NA,NA,NA,NA,1,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA),\n> c(NA,NA,NA,NA,NA,1,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA),\n> c(1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1),\n> c(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0),\n> c(0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0),\n> c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),\n> c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),\n> c(1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0),\n> c(1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0),\n> c(0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0),\n> c(0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0),\n> c(NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,0,0,1,1),\n> c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),\n> c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0))\n> \n> n <- network(matrix,matrix.type=\"adjacency\",directed=T)\n> fit <- ergm(n ~ edges + mutual + gwidegree(0.5, fixed=T) +\n> gwodegree(0.5, fixed =T) ,\n> ?????????????control = control.ergm(MCMC.burnin = 50000, MCMC.interval = 20000,\n> ????????????????????????????????????MCMC.samplesize=1000, seed=193))\n> \n> # Error message:\n> # ?\"Unconstrained MCMC sampling did not mix at all. Optimization\n> cannot continue.\"\n> \n> #Version information:\n> \n> # Ergm 3.2.4 case:\n> # R version 3.2.1 (2015-06-18), Platform: x86_64-apple-darwin10.8.0 (64-bit)\n> # ergm_3.2.4, network_1.13.0, statnet.common_3.3.0\n> \n> # Ergm 3.5.1 case:\n> # R version 3.2.1 (2015-06-18); Platform: x86_64-apple-darwin10.8.0 (64-bit)\n> # ergm_3.5.1, network_1.13.0, statnet.common_3.3.0\n> \n> Thanks for your help,\n> Katerina \n> \n> Katerina Bohle Carbonell, MSc\n> \n> PhD?at Maastricht University \n> \n> Skype: katerinabc\n> \n> katerinacb.wordpress.com?(views are my own)\n> \n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Katherina,\n\nSorry for not responding earlier.  We did in fact spend some time on \nthis, and it led to two different streams of responses.  Since the two of \nus involved were also teaching a worksho",
+      "thread_id": "thread-cb26f83e00bb",
+      "thread_depth": 0,
+      "month": "2016-02"
+    },
+    {
+      "id": "msg-777eb12cb2d4",
+      "message_id": "<1456139760248.88343@csiro.au>",
+      "from_name": "Andrew.Terhorst@csiro.au",
+      "from_email_hash": "6b0b243c4c8ca1af9556bbc5be3219737a5bf7af63ce11b3722ae23a20cbb725",
+      "date": "2016-02-22T03:15:59Z",
+      "subject": "[statnet_help] Microstructure of brokerage",
+      "subject_clean": "[statnet_help] Microstructure of brokerage",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello\n\n\nI am looking at absorptive capacity in open innovation collaborations. Essentially absorptive capacity is a form of organisational learning where knowledge acquired by individuals is transformed into new ideas/innovations at the group and organisational level.  I believe brokerage is a key social mechanism in absorptive capacity and I would like to analyse this in terms of the conduit, tertius gaudens and terius iungens processes as outlined by Obstfeld, Borgatti and Davis (2014).\n\n\nI have directed knowledge provider networks from three open innovation case studies with codifiability, observability and complexity of knowledge provided rated on a scale of 1 to 10 (three measures of tacitness).  Using exponential random graph models, I want to see how patterns of brokerage differ with different levels of tacit knowledge sharing in an open innovation collaboration. My goal is to look at absorptive capacity at the level of the collaboration as well as at the firm level.\n\n\nI am presented with a challenge of specifying network triadic microstructures of interest (namely the tertius gaudens/iungens orientations).\n\n\nI reckon I can use two-paths (021C) to describe conduit processes and two paths (021D) with a tail  to describe tertius gaudens processes, and triads (120D) with a tail to describe tertius iungens processes.  I would like to examine these in purely structural terms or consider these microstructures with each node having an attribute = membership of a particular organisation. However, I am not sure how easy it will be to interpret the over/under representation of these configurations.\n\n\nThe ergm.graphlets package looks interesting but does not seem to support directed networks? Any advice would be appreciated.\n\n\nKind regards\n\n--\nAndrew Terhorst\nOpen Innovation Researcher\nLocation leader for Sandy Bay site\n\nDATA61 |  CSIRO\nE andrew.terhorst@csiro.au T +61 3 6237 5662 M +61 400 869 594\n15 College Rd, Sandy Bay, TAS 7005\nhttp://www.data61.csiro.au\nhttp://people.csiro.au/T/A/Andrew-Terhorst.aspx\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160222/135a32f7/attachment.html>",
+      "body_snippet": "Hello\n\n\nI am looking at absorptive capacity in open innovation collaborations. Essentially absorptive capacity is a form of organisational learning where knowledge acquired by individuals is transform",
+      "thread_id": "thread-777eb12cb2d4",
+      "thread_depth": 0,
+      "month": "2016-02"
+    },
+    {
+      "id": "msg-14827198fada",
+      "message_id": "<56CB6528.9010809@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2016-02-22T11:44:40Z",
+      "subject": "[statnet_help] Microstructure of brokerage",
+      "subject_clean": "[statnet_help] Microstructure of brokerage",
+      "in_reply_to": "<1456139760248.88343@csiro.au>",
+      "references": [
+        "<1456139760248.88343@csiro.au>"
+      ],
+      "body_plain": "Hi, Andrew -\n\nIt is not obvious how one would be able to infer matchmaking brokerage \nfrom cross-sectional data, since it cannot be distinguished from any \nother form of clustering (and, in some cases, eliminates the evidence of \nits own pre-condition - i.e., after i brokers the formation of the {j,k} \nedge, the {i,j} and {i,k} edges may break).  I can imagine some very \nclever tricks using supplemental data in special cases, but as a general \nmatter I suspect that it is impossible.  If you are interested in \ndetecting the evidence of processes like matchmaking, you are going to \nneed dynamic data.  (See e.g. Spiro et al. (Social Networks, 2013) for a \ndiscussion of some of the issues involved in assessing dynamic versus \nstatic brokerage.)\n\nHope that helps,\n\n-Carter\n\nOn 02/22/2016 03:15 AM, Andrew.Terhorst@csiro.au wrote:\n>\n> Hello\n>\n>\n> I am looking at absorptive capacity in open innovation collaborations. \n> Essentially absorptive capacity is a form of organisational learning \n> where knowledge acquired by individuals is transformed into new \n> ideas/innovations at the group and organisational level.  \n> I believe brokerage is a key social mechanism in absorptive capacity \n> and I would like to analyse this in terms of the conduit, tertius \n> gaudens and terius iungens processes as outlined by Obstfeld, Borgatti \n> and Davis (2014).\n>\n>\n> I have directed knowledge provider networks from three open innovation \n> case studies with codifiability, observability and complexity of \n> knowledge provided rated on a scale of 1 to 10 (three measures of \n> tacitness).  Using exponential random graph models, I want to see how \n> patterns of brokerage differ with different levels of tacit knowledge \n> sharing in an open innovation collaboration. My goal is to look at \n> absorptive capacity at the level of the collaboration as well as at \n> the firm level.\n>\n>\n> I am presented with a challenge of specifying network triadic \n> microstructures of interest (namely the tertius gaudens/iungens \n> orientations).\n>\n>\n> I reckon I can use two-paths (021C) to describe conduit processes and \n> two paths (021D) with a tail  to describe tertius gaudens processes, \n> and triads (120D) with a tail to describe tertius iungens processes.  \n> I would like to examine these in purely structural terms or consider \n> these microstructures with each node having an attribute = membership \n> of a particular organisation. However, I am not sure how easy it will \n> be to interpret the over/under representation of these configurations.\n>\n>\n> The ergm.graphlets package looks interesting but does not seem \n> to support directed networks? Any advice would be appreciated.\n>\n>\n> Kind regards\n>\n> --\n> *Andrew Terhorst\n> *Open Innovation Researcher\n> Location leader for Sandy Bay site\n>\n> DATA61 |  CSIRO\n> *E* andrew.terhorst@csiro.au *T* +61 3 6237 5662 *M* +61 400 869 594\n> 15 College Rd, Sandy Bay, TAS 7005\n> http://www.data61.csiro.au\n> http://people.csiro.au/T/A/Andrew-Terhorst.aspx\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160222/b37ec5fb/attachment.html>",
+      "body_snippet": "Hi, Andrew -\n\nIt is not obvious how one would be able to infer matchmaking brokerage \nfrom cross-sectional data, since it cannot be distinguished from any \nother form of clustering (and, in some cases",
+      "thread_id": "thread-777eb12cb2d4",
+      "thread_depth": 1,
+      "month": "2016-02"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-84df16115bb6",
+      "subject": "[statnet_help] parallel update",
+      "message_count": 2,
+      "participants": [
+        "Khanna, Aditya [MED]"
+      ],
+      "started": "2016-02-01T12:22:53Z",
+      "last_reply": "2016-02-01T13:59:34Z",
+      "root_message_id": "msg-84df16115bb6"
+    },
+    {
+      "id": "thread-4e94bfe2119e",
+      "subject": "[statnet_help] Boundary-spanning triads",
+      "message_count": 3,
+      "participants": [
+        "Andrew.Terhorst@csiro.au",
+        "John Burrett",
+        "Michał Bojanowski"
+      ],
+      "started": "2016-02-02T18:22:43Z",
+      "last_reply": "2016-02-03T08:05:56Z",
+      "root_message_id": "msg-4e94bfe2119e"
+    },
+    {
+      "id": "thread-4a6af7c65448",
+      "subject": "[statnet_help] Structural zeros between most classes of nodes?",
+      "message_count": 4,
+      "participants": [
+        "Fabian Held",
+        "Krause, R.W.",
+        "Philip Leifeld"
+      ],
+      "started": "2016-02-04T04:01:29Z",
+      "last_reply": "2016-02-05T06:17:47Z",
+      "root_message_id": "msg-4a6af7c65448"
+    },
+    {
+      "id": "thread-24886c64b0ad",
+      "subject": "[statnet_help] convergence with ergm 3.5.1 more difficult than with 3.2.4",
+      "message_count": 1,
+      "participants": [
+        "Bohlecarbonell Katherina (ERD)"
+      ],
+      "started": "2016-02-05T15:26:24Z",
+      "last_reply": "2016-02-05T15:26:24Z",
+      "root_message_id": "msg-24886c64b0ad"
+    },
+    {
+      "id": "thread-cb26f83e00bb",
+      "subject": "[statnet_help] unanswered statnet question",
+      "message_count": 1,
+      "participants": [
+        "martina morris"
+      ],
+      "started": "2016-02-15T12:09:54Z",
+      "last_reply": "2016-02-15T12:09:54Z",
+      "root_message_id": "msg-cb26f83e00bb"
+    },
+    {
+      "id": "thread-777eb12cb2d4",
+      "subject": "[statnet_help] Microstructure of brokerage",
+      "message_count": 2,
+      "participants": [
+        "Andrew.Terhorst@csiro.au",
+        "Carter T. Butts"
+      ],
+      "started": "2016-02-22T03:15:59Z",
+      "last_reply": "2016-02-22T11:44:40Z",
+      "root_message_id": "msg-777eb12cb2d4"
+    }
+  ]
+}

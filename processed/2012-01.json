@@ -1,0 +1,234 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2012-01",
+  "messages": [
+    {
+      "id": "msg-d8077deb1ec9",
+      "message_id": "<1325766109.3294.18.camel@lmde>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2012-01-05T04:21:49Z",
+      "subject": "[statnet_help] stepping algorithm trace values",
+      "subject_clean": "[statnet_help] stepping algorithm trace values",
+      "in_reply_to": "<2db8308d1df89f4d28069928e96113d6.squirrel@webmail.stat.unipd.it>",
+      "references": [
+        "<2db8308d1df89f4d28069928e96113d6.squirrel@webmail.stat.unipd.it>"
+      ],
+      "body_plain": "Hi Nicola,\n\nI know my reply is late (and that you probably found a solution) but,\nanyway, it could be useful for others...\n\nWhen you download the ERGM package sources on CRAN,\n\nhttp://cran.r-project.org/bin/windows/contrib/r-release/ergm_2.4-3.zip\n\nyou can slightly modify the ./ergm/R/ergm.stepping.R file by\nuncommenting (removing the #) line 206 and 207.\n\nAfter, you have to recompile the package from these modified sources by\nrunning in a terminal:\n\nR CMD INSTALL ergm/\n\nOr, inside R:\n\ninstall.packages(\"<PATH/TO/ERGM/SOURCES>\",repos=NULL)\n\nNow, when you use the stepping algo, your ergm object will contain the\ninformations you need:\n\nmymodel <- ergm(<blablabla_whith_stepping>)\nmymodel$allmeanvals # give all mean value parameter estimates\nmymodel$allparamvals # give all eta\n\n\nBest regards,\nVictorin\n\nOn Mon, 2011-10-10 at 16:13 +0200, Soriani Nicola wrote:\n> Hi All,\n> \n> I have a question.\n> \n> Using style=\"Stepping\" to estimate a ERGM, can I take trace of the value of\n> the coefficients in the algorithm steps?\n> \n> Because in some cases, the stepping algorithm fails, it enters in a loop and\n> it never exits. So I am curious to see these values to understand where and\n> maybe in what points the stepping fails to converge.\n> \n> \n> Thanks.\n> \n> Nicola\n> \n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Hi Nicola,\n\nI know my reply is late (and that you probably found a solution) but,\nanyway, it could be useful for others...\n\nWhen you download the ERGM package sources on CRAN,\n\nhttp://cran.r-project.o",
+      "thread_id": "thread-d8077deb1ec9",
+      "thread_depth": 0,
+      "month": "2012-01"
+    },
+    {
+      "id": "msg-52ae4d2b7c99",
+      "message_id": "<1325794604.29169.18.camel@lmde>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2012-01-05T12:16:44Z",
+      "subject": "[statnet_help] Stepping algo and constraints",
+      "subject_clean": "[statnet_help] Stepping algo and constraints",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet developers,\n\nI think that the stepping algo, as it is coded in the ergm package\n2.4-3, doesn't take into account the \"contraints\" argument defined in\nergm() functions (actually I need a maxout=5 constraint).\n\nI created here some simple code to show you the problem:\n\n#####\nlibrary(ergm)\n\n# We simulate a network under the maxout constraint:\nnet <- simulate(network(50) ~ edges, theta0 = -1, constraints = ~\nbd(maxout = 5))\nplot(net)\nmax( rowSums( net[,] ) )\n\n# model formula\nf <- net ~  edges\n\n#model estimation\nm1 <- ergm(formula = f, theta0 = \"MPLE\", constraints = ~ bd(maxout = 5),\ncontrol = control.ergm( check.degeneracy = FALSE, style = \"Stepping\",\nstepMCMCsize = 300, gridsize = 1000, metric = \"lognormal\"), burnin = 1e\n+4, MCMCsamplesize = 1e+3, interval = 1e+4, maxit = 1, verbose = F )\n\nm1$coef # BINGO, underestimation of the edge param.\n\n# goodness of fit:\nm1gof <- simulate(object = f, theta0 = m1$coef , nsim=100, burnin=1e+4,\ninterval=1e+4, basis = NULL, statsonly=TRUE, sequential=TRUE,\nconstraints = ~ bd(maxout=5), control = control.simulate.formula(),\nverbose=TRUE)\nplot(c(m1gof), type=\"l\",ylim=c(150,250))\nabline(a= summary(net~edges) ,b=0, col =\"red\")\nlegend(\"bottomright\",legend=c(\"nb of edges in simulated networks\",\"nb of\nedges in observed network\") ,fill=c(\"black\",\"red\") )\n####\n\nAfter some tests and verifications, I successfully modified the sources\nas follow:\n\n- In the \"./R/ergm.R\" file, change line 286:\n    \"Stepping\" = ergm.stepping(theta0, nw, model, Clist, initialfit,\nby this one:\n    \"Stepping\" = ergm.stepping(theta0, nw, model, Clist, initialfit,\nconstraints,\n\n\n- In the \".R/ergm.stepping.R\" file, change line 39:\n\tergm.stepping = function(theta0, nw, model, Clist, initialfit,\nby this one:\n\tergm.stepping = function(theta0, nw, model, Clist, initialfit,\nconstraints,\n\n- In the \".R/ergm.stepping.R\" file, change lines 69 and 161:\n        interval=MCMCparams$interval, statsonly=TRUE,\nby this one:\n        interval=MCMCparams$interval, statsonly=TRUE,\nconstraints=constraints,\n\nAfter recompiling the package with these small modifications, I obtain\nmuch better results with the above example.\n\nAs, I didn't modify the simulate.ergm file, I'm pretty confident these\nmodifications won't affect other parts of the package.\n\nBest regards,\nVictorin Luisier\n\nP.S: A big thank for the newly added comments in the sources, they are\nvery useful indeed.\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Dear Statnet developers,\n\nI think that the stepping algo, as it is coded in the ergm package\n2.4-3, doesn't take into account the \"contraints\" argument defined in\nergm() functions (actually I need a m",
+      "thread_id": "thread-52ae4d2b7c99",
+      "thread_depth": 0,
+      "month": "2012-01"
+    },
+    {
+      "id": "msg-e068d37e1b37",
+      "message_id": "<6E71EB81-DF89-4EAF-87AA-6DF84953CCC4@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2012-01-05T16:34:22Z",
+      "subject": "[statnet_help] Stepping algo and constraints",
+      "subject_clean": "[statnet_help] Stepping algo and constraints",
+      "in_reply_to": "<1325794604.29169.18.camel@lmde>",
+      "references": [
+        "<1325794604.29169.18.camel@lmde>"
+      ],
+      "body_plain": "Thanks, Victorin.  What you're saying makes sense, and I appreciate the code suggestion!  I'll check this out and try to get it into the next release.\n\nBest wishes,\nDave\n\n\n\n\nOn Jan 5, 2012, at 3:16 PM, Victorin Luisier wrote:\n\n> Dear Statnet developers,\n> \n> I think that the stepping algo, as it is coded in the ergm package\n> 2.4-3, doesn't take into account the \"contraints\" argument defined in\n> ergm() functions (actually I need a maxout=5 constraint).\n> \n> I created here some simple code to show you the problem:\n> \n> #####\n> library(ergm)\n> \n> # We simulate a network under the maxout constraint:\n> net <- simulate(network(50) ~ edges, theta0 = -1, constraints = ~\n> bd(maxout = 5))\n> plot(net)\n> max( rowSums( net[,] ) )\n> \n> # model formula\n> f <- net ~  edges\n> \n> #model estimation\n> m1 <- ergm(formula = f, theta0 = \"MPLE\", constraints = ~ bd(maxout = 5),\n> control = control.ergm( check.degeneracy = FALSE, style = \"Stepping\",\n> stepMCMCsize = 300, gridsize = 1000, metric = \"lognormal\"), burnin = 1e\n> +4, MCMCsamplesize = 1e+3, interval = 1e+4, maxit = 1, verbose = F )\n> \n> m1$coef # BINGO, underestimation of the edge param.\n> \n> # goodness of fit:\n> m1gof <- simulate(object = f, theta0 = m1$coef , nsim=100, burnin=1e+4,\n> interval=1e+4, basis = NULL, statsonly=TRUE, sequential=TRUE,\n> constraints = ~ bd(maxout=5), control = control.simulate.formula(),\n> verbose=TRUE)\n> plot(c(m1gof), type=\"l\",ylim=c(150,250))\n> abline(a= summary(net~edges) ,b=0, col =\"red\")\n> legend(\"bottomright\",legend=c(\"nb of edges in simulated networks\",\"nb of\n> edges in observed network\") ,fill=c(\"black\",\"red\") )\n> ####\n> \n> After some tests and verifications, I successfully modified the sources\n> as follow:\n> \n> - In the \"./R/ergm.R\" file, change line 286:\n>    \"Stepping\" = ergm.stepping(theta0, nw, model, Clist, initialfit,\n> by this one:\n>    \"Stepping\" = ergm.stepping(theta0, nw, model, Clist, initialfit,\n> constraints,\n> \n> \n> - In the \".R/ergm.stepping.R\" file, change line 39:\n> \tergm.stepping = function(theta0, nw, model, Clist, initialfit,\n> by this one:\n> \tergm.stepping = function(theta0, nw, model, Clist, initialfit,\n> constraints,\n> \n> - In the \".R/ergm.stepping.R\" file, change lines 69 and 161:\n>        interval=MCMCparams$interval, statsonly=TRUE,\n> by this one:\n>        interval=MCMCparams$interval, statsonly=TRUE,\n> constraints=constraints,\n> \n> After recompiling the package with these small modifications, I obtain\n> much better results with the above example.\n> \n> As, I didn't modify the simulate.ergm file, I'm pretty confident these\n> modifications won't affect other parts of the package.\n> \n> Best regards,\n> Victorin Luisier\n> \n> P.S: A big thank for the newly added comments in the sources, they are\n> very useful indeed.\n> \n> -- \n> Victorin LUISIER, Assistant doctorant\n> M?thodologie et Analyse de donn?es\n> FAPSE - UNIGE\n> Bureau n?4139 - Unimail\n> Bd du Pont d'Arve 40\n> 1211 Gen?ve 4\n> T?l: (+41-22) 379 91 34\n> E-mail: victorin.luisier@unige.ch\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Thanks, Victorin.  What you're saying makes sense, and I appreciate the code suggestion!  I'll check this out and try to get it into the next release.\n\nBest wishes,\nDave\n\n\n\n\nOn Jan 5, 2012, at 3:16 PM",
+      "thread_id": "thread-52ae4d2b7c99",
+      "thread_depth": 1,
+      "month": "2012-01"
+    },
+    {
+      "id": "msg-21434e887dd9",
+      "message_id": "<CAA1J5vTjoBBo4xhO_Qk8euaJHp7OG3+nT9BikX_C13DHG8rDBA@mail.gmail.com>",
+      "from_name": "Sam Stewart",
+      "from_email_hash": "51b57d9e397a077e24243651cef0d1d3aa1bf70a60060faa096fc9f957fe6cc3",
+      "date": "2012-01-19T07:52:29Z",
+      "subject": "[statnet_help] Core-Periphery Analysis",
+      "subject_clean": "[statnet_help] Core-Periphery Analysis",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Is it possible to do core-periphery analysis in statnet?  If not statnet,\nis it possible in R?  I've got it to work in UCINET, but my analysis and\nvisualization is all done in R so far.\n\nThanks,\nSam\n\n-- \nSam Stewart, MMath, A.Stat\nIDPhD Candidate (Health Informatics)\nFaculty of Computer Science, Dalhousie University\n6050 University Ave.\nHalifax, NS, Canada, B3H 1W5\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20120119/1014190e/attachment.html>",
+      "body_snippet": "Is it possible to do core-periphery analysis in statnet?  If not statnet,\nis it possible in R?  I've got it to work in UCINET, but my analysis and\nvisualization is all done in R so far.\n\nThanks,\nSam\n\n",
+      "thread_id": "thread-21434e887dd9",
+      "thread_depth": 0,
+      "month": "2012-01"
+    },
+    {
+      "id": "msg-a21580b23eab",
+      "message_id": "<CAG_xUHc553x210aJ9+XJj9e1g+OHJcL+hoprcHiY0K_vteC2tA@mail.gmail.com>",
+      "from_name": "Jenny Long",
+      "from_email_hash": "61c1dac6bd34952e75da0416955043c880f59485ef6db75ed7bbe9c301186405",
+      "date": "2012-01-23T13:34:13Z",
+      "subject": "[statnet_help] Creating weights matrices for use in sna lnam function",
+      "subject_clean": "[statnet_help] Creating weights matrices for use in sna lnam function",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi there\n\nI'm trying to fit a linear autocorrelation model using the lnam\nfunction in the sna package.\n\nI've developed a number of possible models with different geodesic\ndistances, reciprocal and nonreciprocal friends. Lnam will fit a model\nwhen the matrix order is in the correct order, but not if my variables\nare ordered to match the order of the relevant person ID's in the\nadjacency matrix.\n\nThe matrices are typically 647*647 node matrices with 2336 vertices.\nMy rownames and colnames are a list of ID numbers in the same order,\nand I've checked that the one specifications match my original data.\nThere are no ones on the diagonal.  The matrices produce the following\nresponse from R;\n\n\"Error in qr.solve(t(X) %*% X, t(X) %*% W1a %*% y) :  singular matrix\n'a' in solve\"\n\nI've get the same response testing a variety of subsets of the matrix,\nmatrices with different levels of geodesic distances, alternative\ncovariates, alternative dependent variables, matrices transformed into\nnetwork objects.\n\nI've been able to get these spatial error models (errorsarlm) and\nspatial lag models(lagsarlm) to run in spdep which applies the same\nequation and also uses maximum likelihood through \"solve\" to find a\nsolution. I was hoping to cross check a couple of the results by\nrunning them in lnam but the inability of lnam to run these models has\nmade me question the equivalence of the two methods\n\nDoes anyone know of a possible solution to the singular matrix\nproblem? Perhaps something in the settings of lnam or a way to\ntransform the matrix so that it is no longer singular\n(non-invertible)?\n\n\nPlease let me know if any additional details are needed to understand my query\n\n\nThank you in advance\n\nJenny Long\nPhD student\nUniversity of Auckland",
+      "body_snippet": "Hi there\n\nI'm trying to fit a linear autocorrelation model using the lnam\nfunction in the sna package.\n\nI've developed a number of possible models with different geodesic\ndistances, reciprocal and non",
+      "thread_id": "thread-a21580b23eab",
+      "thread_depth": 0,
+      "month": "2012-01"
+    },
+    {
+      "id": "msg-826100312e4a",
+      "message_id": "<000701ccda1c$050d9f20$0f28dd60$@usc.edu>",
+      "from_name": "Thomas Valente",
+      "from_email_hash": "0893e9aa724045adf3eb0c49e0049c610f32e65b6b9f51c53170d2f2ddad6b3d",
+      "date": "2012-01-23T14:11:56Z",
+      "subject": "[statnet_help] Creating weights matrices for use in sna lnam\tfunction",
+      "subject_clean": "[statnet_help] Creating weights matrices for use in sna lnam\tfunction",
+      "in_reply_to": "<CAG_xUHc553x210aJ9+XJj9e1g+OHJcL+hoprcHiY0K_vteC2tA@mail.gmail.com>",
+      "references": [
+        "<CAG_xUHc553x210aJ9+XJj9e1g+OHJcL+hoprcHiY0K_vteC2tA@mail.gmail.com>"
+      ],
+      "body_plain": "Jenny\nI encountered a similar problem, I think, and discovered that nodes with the\nsame profile seemed to cause this.  Specifically, isolates are linearly\ndependent and so should be removed.\nIf you have isolates this may be causing the problem or nodes that have\nidentical links.\n-Tom Valente\n\n-----Original Message-----\nFrom: statnet_help-bounces@mailman2.u.washington.edu\n[mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of Jenny\nLong\nSent: Monday, January 23, 2012 1:34 PM\nTo: statnet_help@u.washington.edu\nSubject: [statnet_help] Creating weights matrices for use in sna lnam\nfunction\n\nHi there\n\nI'm trying to fit a linear autocorrelation model using the lnam function in\nthe sna package.\n\nI've developed a number of possible models with different geodesic\ndistances, reciprocal and nonreciprocal friends. Lnam will fit a model when\nthe matrix order is in the correct order, but not if my variables are\nordered to match the order of the relevant person ID's in the adjacency\nmatrix.\n\nThe matrices are typically 647*647 node matrices with 2336 vertices.\nMy rownames and colnames are a list of ID numbers in the same order, and\nI've checked that the one specifications match my original data.\nThere are no ones on the diagonal.  The matrices produce the following\nresponse from R;\n\n\"Error in qr.solve(t(X) %*% X, t(X) %*% W1a %*% y) :  singular matrix 'a' in\nsolve\"\n\nI've get the same response testing a variety of subsets of the matrix,\nmatrices with different levels of geodesic distances, alternative\ncovariates, alternative dependent variables, matrices transformed into\nnetwork objects.\n\nI've been able to get these spatial error models (errorsarlm) and spatial\nlag models(lagsarlm) to run in spdep which applies the same equation and\nalso uses maximum likelihood through \"solve\" to find a solution. I was\nhoping to cross check a couple of the results by running them in lnam but\nthe inability of lnam to run these models has made me question the\nequivalence of the two methods\n\nDoes anyone know of a possible solution to the singular matrix problem?\nPerhaps something in the settings of lnam or a way to transform the matrix\nso that it is no longer singular (non-invertible)?\n\n\nPlease let me know if any additional details are needed to understand my\nquery\n\n\nThank you in advance\n\nJenny Long\nPhD student\nUniversity of Auckland\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Jenny\nI encountered a similar problem, I think, and discovered that nodes with the\nsame profile seemed to cause this.  Specifically, isolates are linearly\ndependent and so should be removed.\nIf you ha",
+      "thread_id": "thread-a21580b23eab",
+      "thread_depth": 1,
+      "month": "2012-01"
+    },
+    {
+      "id": "msg-0cbd31f29a38",
+      "message_id": "<CAG_xUHfKjc0J1EDkXvtjvRKeiQGD9=bF-WP80H_CPgi2+sVx3A@mail.gmail.com>",
+      "from_name": "Jenny Long",
+      "from_email_hash": "61c1dac6bd34952e75da0416955043c880f59485ef6db75ed7bbe9c301186405",
+      "date": "2012-01-24T12:31:32Z",
+      "subject": "[statnet_help] Creating weights matrices for use in sna lnam function",
+      "subject_clean": "[statnet_help] Creating weights matrices for use in sna lnam function",
+      "in_reply_to": "<000701ccda1c$050d9f20$0f28dd60$@usc.edu>",
+      "references": [
+        "<CAG_xUHc553x210aJ9+XJj9e1g+OHJcL+hoprcHiY0K_vteC2tA@mail.gmail.com>",
+        "<000701ccda1c$050d9f20$0f28dd60$@usc.edu>"
+      ],
+      "body_plain": "Hi Tom\n\nThanks for your prompt response and suggestions - it's nice to know other\npeople have run into similar difficulties!\n\nIt turned out that dummy coded categorical variables were the cause of my\nsingular matrix problem - I turn these into a single column and the\nsingular matrix issue disappears!\n\nYour suggestions sent me on an important journey to understand more about\nthe identical links and isolates present in my data, so thank you very much\nfor your prompt reply :-)\n\n\nWarm regards\n\nJenny Long\nPhD student\nUniversity of Auckland\n\nOn Tue, Jan 24, 2012 at 11:11 AM, Thomas Valente <tvalente@usc.edu> wrote:\n\n> Jenny\n> I encountered a similar problem, I think, and discovered that nodes with\n> the\n> same profile seemed to cause this.  Specifically, isolates are linearly\n> dependent and so should be removed.\n> If you have isolates this may be causing the problem or nodes that have\n> identical links.\n> -Tom Valente\n>\n> -----Original Message-----\n> From: statnet_help-bounces@mailman2.u.washington.edu\n> [mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of Jenny\n> Long\n> Sent: Monday, January 23, 2012 1:34 PM\n> To: statnet_help@u.washington.edu\n> Subject: [statnet_help] Creating weights matrices for use in sna lnam\n> function\n>\n> Hi there\n>\n> I'm trying to fit a linear autocorrelation model using the lnam function in\n> the sna package.\n>\n> I've developed a number of possible models with different geodesic\n> distances, reciprocal and nonreciprocal friends. Lnam will fit a model when\n> the matrix order is in the correct order, but not if my variables are\n> ordered to match the order of the relevant person ID's in the adjacency\n> matrix.\n>\n> The matrices are typically 647*647 node matrices with 2336 vertices.\n> My rownames and colnames are a list of ID numbers in the same order, and\n> I've checked that the one specifications match my original data.\n> There are no ones on the diagonal.  The matrices produce the following\n> response from R;\n>\n> \"Error in qr.solve(t(X) %*% X, t(X) %*% W1a %*% y) :  singular matrix 'a'\n> in\n> solve\"\n>\n> I've get the same response testing a variety of subsets of the matrix,\n> matrices with different levels of geodesic distances, alternative\n> covariates, alternative dependent variables, matrices transformed into\n> network objects.\n>\n> I've been able to get these spatial error models (errorsarlm) and spatial\n> lag models(lagsarlm) to run in spdep which applies the same equation and\n> also uses maximum likelihood through \"solve\" to find a solution. I was\n> hoping to cross check a couple of the results by running them in lnam but\n> the inability of lnam to run these models has made me question the\n> equivalence of the two methods\n>\n> Does anyone know of a possible solution to the singular matrix problem?\n> Perhaps something in the settings of lnam or a way to transform the matrix\n> so that it is no longer singular (non-invertible)?\n>\n>\n> Please let me know if any additional details are needed to understand my\n> query\n>\n>\n> Thank you in advance\n>\n> Jenny Long\n> PhD student\n> University of Auckland\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20120125/2ab85322/attachment.html>",
+      "body_snippet": "Hi Tom\n\nThanks for your prompt response and suggestions - it's nice to know other\npeople have run into similar difficulties!\n\nIt turned out that dummy coded categorical variables were the cause of my\n",
+      "thread_id": "thread-a21580b23eab",
+      "thread_depth": 2,
+      "month": "2012-01"
+    },
+    {
+      "id": "msg-6c2977fd4e11",
+      "message_id": "<20120129000906.13646k2ty5yucfc4@webaccess.umail.ucsb.edu>",
+      "from_name": "Hamid Ghofrani",
+      "from_email_hash": "e1317a22b3331f978a5bcd2a8748865e22849f9eb723a6fe61c70ad52d3f8b64",
+      "date": "2012-01-29T00:09:06Z",
+      "subject": "[statnet_help] List of the edges for a given statistic",
+      "subject_clean": "[statnet_help] List of the edges for a given statistic",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All,\nIs there anyway in either the package \"network\" or  sna package to  \nidentify the edges that belong to a particular network statistics. for  \nexample, the list of the edges that form triangles. In other words, I  \nam looking a function such that if I give it a network object and  \nspecify a network statistic ( kstar, triangle, degree(2),....) , it  \nwill somehow return a list of the edges that are part of the specified  \nstructure.\nI could not find anything in these packages and although It is not  \nvery hard to program it, I wanted to see  whether  there are some  \nfunctions or not.\nThank you very much.\nBest Regards,\nHamid\n-- \nHamid Ghofrani\nhamid@umail.ucsb.edu",
+      "body_snippet": "Dear All,\nIs there anyway in either the package \"network\" or  sna package to  \nidentify the edges that belong to a particular network statistics. for  \nexample, the list of the edges that form triangl",
+      "thread_id": "thread-6c2977fd4e11",
+      "thread_depth": 0,
+      "month": "2012-01"
+    },
+    {
+      "id": "msg-837fcdb6a06c",
+      "message_id": "<CANQBBMsbrqzdrfc+WibFpGhzV-mO8ks-PyqO1tzUz=f3Lo+Wiw@mail.gmail.com>",
+      "from_name": "Wincent",
+      "from_email_hash": "6846f5c272f8850077470247e7e6a025c83f8d7387bcf22387269b3b25a06522",
+      "date": "2012-01-31T01:01:04Z",
+      "subject": "[statnet_help] Isolates in ergm",
+      "subject_clean": "[statnet_help] Isolates in ergm",
+      "in_reply_to": "<4EF652E9.8040606@uw.edu>",
+      "references": [
+        "<CANQBBMtGuKL_cVWUMtReUCifu-BLycoP7GEcfebqEGnwP4hD0g@mail.gmail.com>",
+        "<1324753170.8735.24.camel@Navi.krivitsky.homeip.net>",
+        "<4EF652E9.8040606@uw.edu>"
+      ],
+      "body_plain": "Hi Steven and Pavel, thanks very much for the suggestion.\n\nI posted to enquire because I have difficulty in finding a model with\nsatisfactory goodness-of-it (after trying multiple possible terms)\nmainly owning to the preponderance of isolates.\n\nIf the isolates were included, then my follow-up question is: what is\nthe acceptable goodness-of-fit in ergm? Do the modellers have to\nconduct an ergm regenerating the observed network 'perfectly'? If my\naim is to test the explanatory power of some generating mechanisms, is\nit acceptable to demonstrating a model with certain terms generates\nthe observed network better than models without such terms holding all\nothers constant, just like the practices of ordinary OLS modelling?\n\nRegards\nWincent\n\nOn 25 December 2011 06:32, Steven Goodreau <goodreau@uw.edu> wrote:\n> Hi Wincent,\n>\n> To follow on with that: I agree with Pavel - you would rarely want to\n> exclude isolates, and if you did, it should be because you believe that they\n> are somehow excluded from the stochastic process you are modeling; I have a\n> hard time coming up with a reasonable example, but if you were in that case,\n> you would then need to condition your model on no isolates.\n>\n> Now, assuming you do include the isolates in the network for estimation --\n> whether you then want to explicitly include an isolates term in the model or\n> not, or consider some other set of model parameters that would address the\n> preponderance of isolates (other degree terms, for instance) is really a\n> question of the hypotheses that you are interested in testing. ?This is a\n> substantive question that only you and your collaborators can really answer.\n>\n> Cheers,\n> Steve\n>\n>\n>\n>\n> On 12/24/2011 10:59 AM, Pavel N. Krivitsky wrote:\n>>\n>> Dear Wincent,\n>>\n>> The isolates are a part of the information you have about the social\n>> structure, so they most certainly should be kept in the network. (In\n>> principle, if you excluded the isolates, you would have to fit a model\n>> conditional on having no isolates.)\n>>\n>> ? ? ? ? ? ? ? ? I hope this helps,\n>> ? ? ? ? ? ? ? ? Pavel\n>>\n>> On Sun, 2011-12-25 at 00:41 +0800, Wincent wrote:\n>>>\n>>> Dear listers, May I enquire into the handling of isolates in fitting\n>>> ergm? I am thinking about either excluding isolates before modeling or\n>>> fitting an ergm with a network statistic of isolate. Which is the\n>>> preferable way to proceed? Or other options should be adapted?\n>>>\n>>> Thanks and Merry Christmas.\n>>>\n>>> --\n>>> Wincent Ronggui HUANG\n>>> Sociology Department of Fudan University\n>>> PhD of City University of Hong Kong\n>>> http://homepage.fudan.edu.cn/rghuang/cv/\n>>>\n>>>\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n\n\n-- \nWincent Ronggui HUANG\nSociology Department of Fudan University\nPhD of City University of Hong Kong\nhttp://homepage.fudan.edu.cn/rghuang/cv/",
+      "body_snippet": "Hi Steven and Pavel, thanks very much for the suggestion.\n\nI posted to enquire because I have difficulty in finding a model with\nsatisfactory goodness-of-it (after trying multiple possible terms)\nmain",
+      "thread_id": "thread-837fcdb6a06c",
+      "thread_depth": 0,
+      "month": "2012-01"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-d8077deb1ec9",
+      "subject": "[statnet_help] stepping algorithm trace values",
+      "message_count": 1,
+      "participants": [
+        "Victorin Luisier"
+      ],
+      "started": "2012-01-05T04:21:49Z",
+      "last_reply": "2012-01-05T04:21:49Z",
+      "root_message_id": "msg-d8077deb1ec9"
+    },
+    {
+      "id": "thread-52ae4d2b7c99",
+      "subject": "[statnet_help] Stepping algo and constraints",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Victorin Luisier"
+      ],
+      "started": "2012-01-05T12:16:44Z",
+      "last_reply": "2012-01-05T16:34:22Z",
+      "root_message_id": "msg-52ae4d2b7c99"
+    },
+    {
+      "id": "thread-21434e887dd9",
+      "subject": "[statnet_help] Core-Periphery Analysis",
+      "message_count": 1,
+      "participants": [
+        "Sam Stewart"
+      ],
+      "started": "2012-01-19T07:52:29Z",
+      "last_reply": "2012-01-19T07:52:29Z",
+      "root_message_id": "msg-21434e887dd9"
+    },
+    {
+      "id": "thread-a21580b23eab",
+      "subject": "[statnet_help] Creating weights matrices for use in sna lnam function",
+      "message_count": 3,
+      "participants": [
+        "Jenny Long",
+        "Thomas Valente"
+      ],
+      "started": "2012-01-23T13:34:13Z",
+      "last_reply": "2012-01-24T12:31:32Z",
+      "root_message_id": "msg-a21580b23eab"
+    },
+    {
+      "id": "thread-6c2977fd4e11",
+      "subject": "[statnet_help] List of the edges for a given statistic",
+      "message_count": 1,
+      "participants": [
+        "Hamid Ghofrani"
+      ],
+      "started": "2012-01-29T00:09:06Z",
+      "last_reply": "2012-01-29T00:09:06Z",
+      "root_message_id": "msg-6c2977fd4e11"
+    },
+    {
+      "id": "thread-837fcdb6a06c",
+      "subject": "[statnet_help] Isolates in ergm",
+      "message_count": 1,
+      "participants": [
+        "Wincent"
+      ],
+      "started": "2012-01-31T01:01:04Z",
+      "last_reply": "2012-01-31T01:01:04Z",
+      "root_message_id": "msg-837fcdb6a06c"
+    }
+  ]
+}

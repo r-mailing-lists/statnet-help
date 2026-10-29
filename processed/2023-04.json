@@ -1,0 +1,211 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2023-04",
+  "messages": [
+    {
+      "id": "msg-3652dd2c04ab",
+      "message_id": "<5b56edbe.af91f.1876636770d.Coremail.chenbc20@mails.tsinghua.edu.cn>",
+      "from_name": "陈博川",
+      "from_email_hash": "2441e90deb0ec7b13d5973c627dc83fe805f590ddf2db7549adfdde8726d4edf",
+      "date": "2023-04-09T06:30:58Z",
+      "subject": "[statnet_help] Question about Model Stuck in MCMLE",
+      "subject_clean": "[statnet_help] Question about Model Stuck in MCMLE",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Statnet Developer:\nGood morning. Thank you so much for your patience to look into my question. I am encountering some questions beyond my capability so I have no choice but to turn to you for help.\n\n\nI am encountering the problem of MCMLE stuck. My original code looked like\n\n\ngw1_help <- ergm(helpnet ~ edges + nodefactor(\"work\") + nodefactor(\"income\") + nodefactor(\"edu\") + nodefactor(\"religious\") + nodefactor(\"gender\") + nodecov(\"age\") + edgecov(kin_sup,\"kinweight\") + gwidegree(.1, T) + gwesp(.1, T) + gwdsp(.1, T), control = control.ergm(MCMC.samplesize = 1e+5, MCMC.burnin = 1e+6, MCMC.interval = 1000, seed = 567), eval.loglik = T, verbose = T) \n\n\nwhich worked qiuite well. However, once I add 'edgecov(sup_loca2_net, \"distance\") ' in, which looked like:\n\n\ngw1_help <- ergm(helpnet ~ edges + nodefactor(\"work\") + nodefactor(\"income\") + nodefactor(\"edu\") + nodefactor(\"religious\") + nodefactor(\"gender\") + nodecov(\"age\") + edgecov(sup_loca2_net, \"distance\") + edgecov(kin_sup,\"kinweight\") + gwidegree(.1, T) + gwesp(.1, T) + gwdsp(.1, T), control = control.ergm(MCMC.samplesize = 1e+5, MCMC.burnin = 1e+6, MCMC.interval = 1000, seed = 567), eval.loglik = T, verbose = T) \n\n\nthe model stuck and said \"MCMLE estimation stuck. There may be excessive correlation between model terms, suggesting a poor model for the observed data. If target.stats are specified, try increasing SAN parameter.\"\n\n\nI don't know what happened and I desperately want to know how to solve this problem, Thanks for your time and patience! Hope to hear from you soon! \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20230409/9dfa97a3/attachment.html>",
+      "body_snippet": "Statnet Developer:\nGood morning. Thank you so much for your patience to look into my question. I am encountering some questions beyond my capability so I have no choice but to turn to you for help.\n\n\n",
+      "thread_id": "thread-3652dd2c04ab",
+      "thread_depth": 0,
+      "month": "2023-04"
+    },
+    {
+      "id": "msg-53083e4b4f57",
+      "message_id": "<39ecf3be-49ba-8b3d-a0ac-39ebd64305db@stat.ucla.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "fb40357ebb8d7f0a427d9ad2641aa56f67d6763bdb0f1109ba0f3c4b5584b09d",
+      "date": "2023-04-09T08:25:25Z",
+      "subject": "[statnet_help] Question about Model Stuck in MCMLE",
+      "subject_clean": "[statnet_help] Question about Model Stuck in MCMLE",
+      "in_reply_to": "<5b56edbe.af91f.1876636770d.Coremail.chenbc20@mails.tsinghua.edu.cn>",
+      "references": [
+        "<5b56edbe.af91f.1876636770d.Coremail.chenbc20@mails.tsinghua.edu.cn>"
+      ],
+      "body_plain": "An HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20230409/59f72d07/attachment.html>",
+      "body_snippet": "An HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20230409/59f72d07/attachment.html>",
+      "thread_id": "thread-3652dd2c04ab",
+      "thread_depth": 1,
+      "month": "2023-04"
+    },
+    {
+      "id": "msg-e60c0cf9a7c3",
+      "message_id": "<4f515507-270e-125f-d1f0-4bd8675b31c7@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2023-04-09T12:38:34Z",
+      "subject": "[statnet_help] Question about Model Stuck in MCMLE",
+      "subject_clean": "[statnet_help] Question about Model Stuck in MCMLE",
+      "in_reply_to": "<5b56edbe.af91f.1876636770d.Coremail.chenbc20@mails.tsinghua.edu.cn>",
+      "references": [
+        "<5b56edbe.af91f.1876636770d.Coremail.chenbc20@mails.tsinghua.edu.cn>"
+      ],
+      "body_plain": "If you are using distance as a predictor, you are positing that tie \nprobability falls exponentially (approximately) in distance; this is \nprobably too sharp an SIF. Try using the log distance instead.\n\n-Carter\n\nOn 4/9/23 6:30 AM, ??? wrote:\n> Statnet Developer:\n> Good morning.?Thank you so much for your patience to look into my \n> question. I am encountering some questions beyond my capability so I \n> have no choice but to turn to you for help.\n>\n> I am encountering the problem of MCMLE stuck. My original code looked like\n>\n> gw1_help <- ergm(helpnet ~ edges + nodefactor(\"work\") + \n> nodefactor(\"income\") + nodefactor(\"edu\") + nodefactor(\"religious\") + \n> nodefactor(\"gender\") + nodecov(\"age\") + edgecov(kin_sup,\"kinweight\") + \n> gwidegree(.1, T) + gwesp(.1, T) + gwdsp(.1, T), control = \n> control.ergm(MCMC.samplesize = 1e+5, MCMC.burnin = 1e+6, MCMC.interval \n> = 1000, seed = 567), eval.loglik = T, verbose = T)\n>\n> which worked qiuite well. However, once I add 'edgecov(sup_loca2_net, \n> \"distance\")?' in, which looked like:\n>\n> gw1_help <- ergm(helpnet ~ edges + nodefactor(\"work\") + \n> nodefactor(\"income\") + nodefactor(\"edu\") + nodefactor(\"religious\") + \n> nodefactor(\"gender\") + nodecov(\"age\") + edgecov(sup_loca2_net, \n> \"distance\") + edgecov(kin_sup,\"kinweight\") + gwidegree(.1, T) + \n> gwesp(.1, T) + gwdsp(.1, T), control = control.ergm(MCMC.samplesize = \n> 1e+5, MCMC.burnin = 1e+6, MCMC.interval = 1000, seed = 567), \n> eval.loglik = T, verbose = T)\n>\n> the model stuck and said \"*_MCMLE estimation stuck. There may be \n> excessive correlation between model terms, suggesting a poor model for \n> the observed data. If target.stats are specified, try increasing SAN \n> _**param*eter.\"\n>\n> I don't know what happened and I desperately want to know how to solve \n> this problem, Thanks for your time and patience! Hope to hear from you \n> soon!\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://urldefense.com/v3/__http://mailman13.u.washington.edu/mailman/listinfo/statnet_help__;!!CzAuKJ42GuquVTTmVmPViYEvSg!MXKxthAW4qsCYVUIoNakj72_N0d2pl2p1VQqNWKwlCEVOKwOY_y_R8rqy2SuSzxRcojQkfOTzeaCjimCM1NbTpS-EGs$  \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20230409/ddf0d365/attachment.html>",
+      "body_snippet": "If you are using distance as a predictor, you are positing that tie \nprobability falls exponentially (approximately) in distance; this is \nprobably too sharp an SIF. Try using the log distance instead",
+      "thread_id": "thread-3652dd2c04ab",
+      "thread_depth": 1,
+      "month": "2023-04"
+    },
+    {
+      "id": "msg-c3b5f9215eb3",
+      "message_id": "<7deb9b9b.38ea1.1876c1592a2.Coremail.chenbc20@mails.tsinghua.edu.cn>",
+      "from_name": "陈博川",
+      "from_email_hash": "2441e90deb0ec7b13d5973c627dc83fe805f590ddf2db7549adfdde8726d4edf",
+      "date": "2023-04-10T09:52:45Z",
+      "subject": "[statnet_help] Model Stuck Without Reason",
+      "subject_clean": "[statnet_help] Model Stuck Without Reason",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet developer:\nThanks for your time!\nI am encountering a problem of my model, which yesterday Prof. Handcock told me to replace ergm with ergm.tepered:\n\"gw1_help <- ergm.tapered(supnet ~ edges + nodefactor(\"work\")+ nodefactor(\"income\")+ nodefactor(\"edu\")+ nodefactor(\"religious\")+ nodefactor(\"gender\")+ nodecov(\"age\")+ edgecov(sup_loca2_net,\"distance\")+ edgecov(kin_sup,\"kinweight\")+ gwidegree(.1,T)+ gwesp(.1,T)+ gwdsp(.1,T), control = control.ergm.tapered(MCMC.samplesize =1e+5, MCMC.burnin =1e+6, MCMC.interval =1000, seed =567), eval.loglik =T, verbose =T)\"\n\n\nI couldn't run this model on my macbookpro ( intel 4-core 16ram), so I put this code on an online platform, which is Chinese version of Colab. I used 8-core 32G CPU to run my code, and it stuck at 48th iteration. I put the plot of the code and the plot of CPU and RAM in the appendix, and I don't know what I should do to make it work. My network isn't very large, which nodes are around 300 and edges are less than 1000. Thanks!!!\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20230411/7a297d1a/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: ??2023-04-11 00.52.05.png\nType: image/png\nSize: 245890 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20230411/7a297d1a/attachment.png>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: ??2023-04-11 00.52.23.png\nType: image/png\nSize: 274565 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20230411/7a297d1a/attachment-0001.png>",
+      "body_snippet": "Dear Statnet developer:\nThanks for your time!\nI am encountering a problem of my model, which yesterday Prof. Handcock told me to replace ergm with ergm.tepered:\n\"gw1_help <- ergm.tapered(supnet ~ edge",
+      "thread_id": "thread-c3b5f9215eb3",
+      "thread_depth": 0,
+      "month": "2023-04"
+    },
+    {
+      "id": "msg-e7a45408737e",
+      "message_id": "<73e0940f.38eb8.1876c2d80e5.Coremail.chenbc20@mails.tsinghua.edu.cn>",
+      "from_name": "陈博川",
+      "from_email_hash": "2441e90deb0ec7b13d5973c627dc83fe805f590ddf2db7549adfdde8726d4edf",
+      "date": "2023-04-10T10:18:54Z",
+      "subject": "[statnet_help] MCMC sampling did not mix at all",
+      "subject_clean": "[statnet_help] MCMC sampling did not mix at all",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet developer:\nThanks for your time!\nI am encountering a problem of my model, which yesterday Prof. Handcock told me to replace ergm with ergm.tepered:\n\"gw1_help <- ergm.tapered(supnet ~ edges + nodefactor(\"work\") + nodefactor(\"income\") + nodefactor(\"edu\") + nodefactor(\"religious\") + nodefactor(\"gender\") + nodecov(\"age\") + edgecov(sup_loca2_net,\"distance\") + edgecov(kin_sup,\"kinweight\") + gwidegree(.1, T) + gwesp(.1, T) + gwdsp(.1, T), control = control.ergm.tapered(MCMC.samplesize = 1e+5, MCMC.burnin = 1e+6, MCMC.interval = 1000, seed = 567), eval.loglik = T, verbose = T)\"\n\n\nI couldn't run this model on my macbookpro ( intel 4-core 16ram), so I put this code on an online platform, which is Chinese version of Colab. I used 8-core 32G CPU to run my code, and it stuck at 48th iteration. I don't know what I should do to make it work. My network isn't very large, which nodes are around 300 and edges are less than 1000. \nAfter I wrote the first email, the model reported the error says:\n\n\n\"Unconstrained MCMC sampling did not mix at all. Optimization cannot continue\"\n\n\n and I also put the screenshot in the appendix. Please help me out with this problem! I have been suffered soooo much with this model issue. Thank you so much!\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20230411/f99c2547/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: ??2023-04-11 01.17.03.png\nType: image/png\nSize: 224132 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20230411/f99c2547/attachment.png>",
+      "body_snippet": "Dear Statnet developer:\nThanks for your time!\nI am encountering a problem of my model, which yesterday Prof. Handcock told me to replace ergm with ergm.tepered:\n\"gw1_help <- ergm.tapered(supnet ~ edge",
+      "thread_id": "thread-e7a45408737e",
+      "thread_depth": 0,
+      "month": "2023-04"
+    },
+    {
+      "id": "msg-88eb2beefa58",
+      "message_id": "<CANzmWwroR3U6OE9otRWu6MP9Lv-+bkezt9+jPso49hLngXJ5Cw@mail.gmail.com>",
+      "from_name": "F Benjamin Rosche",
+      "from_email_hash": "9cfd575f71cde728c3da8c775caac602a09681d8da8be57a75a7531e1068730f",
+      "date": "2023-04-10T14:30:01Z",
+      "subject": "[statnet_help] Constraints: blockdiag() and odegrees",
+      "subject_clean": "[statnet_help] Constraints: blockdiag() and odegrees",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet users,\n\nI have a question regarding constraints in an ergm. To estimate\none model across a few networks (indexed by nid), I am using:\n\nergm(...., constraints=blockdiag(\"nid\"))\n\nto reflect that nodes in different networks cannot form edges between each\nother.\n\nFor various reasons, I have to add another constraint: *+odegrees, *which\nis currently not possible in combination with blockdiag().\n\nI tried estimating separate models by network instead of using blockdiag()\nso that I can add odegrees. However, because I have relatively many\nparameters for relatively few observations per network, estimating just one\nmodel across networks leads to much more stable estimates.\n\nIs there any other strategy that I could take to estimate just one model\nbut enforce that nodes in different networks cannot form edges between each\nother and have the same outdegree as the observed network?\n\nI am grateful for any pointers you can provide.\n\nThank you,\n\nBen\n\n-- \n*Benjamin Rosche *\nDoctoral student / Social Dynamics Lab / benrosche.com\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20230410/7de42794/attachment.html>",
+      "body_snippet": "Dear statnet users,\n\nI have a question regarding constraints in an ergm. To estimate\none model across a few networks (indexed by nid), I am using:\n\nergm(...., constraints=blockdiag(\"nid\"))\n\nto reflect",
+      "thread_id": "thread-88eb2beefa58",
+      "thread_depth": 0,
+      "month": "2023-04"
+    },
+    {
+      "id": "msg-f2dabe7cf443",
+      "message_id": "<BYAPR02MB4789211DC1259C98DFA16BAD8A999@BYAPR02MB4789.namprd02.prod.outlook.com>",
+      "from_name": "Lin Zhu",
+      "from_email_hash": "f657a0514f81a03a588f3da725de776670084a5b6a976c35d258d4c2ff1e5d87",
+      "date": "2023-04-14T00:13:32Z",
+      "subject": "[statnet_help] GWESP drops overtime using STERGM fitted with edges dissolution approximation method",
+      "subject_clean": "[statnet_help] GWESP drops overtime using STERGM fitted with edges dissolution approximation method",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet group,\n\nHope you are all doing well.\n\nAs part of our modeling work, we are struggling to fit a STERGM to cross-sectional + duration data that includes a GWESP target. We originally used the edges dissolution approximation method, and see GWESP drop precipitously in simulated networks over time (we are using monthly time steps). We have not been able to get the model to finish running using the full STERGM (without the approximation). Increasing simulation time horizon by using a smaller timestep (eg., daily) results in an improved fit using the approximation method, but this approach would present computational challenges if we needed to run the simulation at daily timesteps.\n\nDo you have suggestions on how we could address this issue (maybe changes to settings that would help the full STERGM to finish, or workarounds for the approximation)?\n\nThank you so much.\n\nBest,\nLin\n\n\nLin Zhu  |  Research Engineer\nDepartment of Health Policy | School of Medicine\nCenter for Health Policy | Freeman Spogli Institute for International Studies\nStanford University\n615 Crothers Way\nEncina Commons, Office 113\nStanford, CA 94305-6006\n650.736.8139 | linzhu1@stanford.edu\n[signature_670862627]\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20230414/4314b5cc/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: image001.png\nType: image/png\nSize: 6796 bytes\nDesc: image001.png\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20230414/4314b5cc/attachment.png>",
+      "body_snippet": "Dear Statnet group,\n\nHope you are all doing well.\n\nAs part of our modeling work, we are struggling to fit a STERGM to cross-sectional + duration data that includes a GWESP target. We originally used t",
+      "thread_id": "thread-f2dabe7cf443",
+      "thread_depth": 0,
+      "month": "2023-04"
+    },
+    {
+      "id": "msg-5dcc1e7f290a",
+      "message_id": "<58B3F77F-93F8-4295-A5E5-4C61819AB23E@gmail.com>",
+      "from_name": "Terin Mayer",
+      "from_email_hash": "fdb29b61f7d71586f63857b5ca84caa28d798f428868b9d9bb99fdf5a0a896c8",
+      "date": "2023-04-19T08:03:19Z",
+      "subject": "[statnet_help] Specifying TERGM constraint on bipartite network",
+      "subject_clean": "[statnet_help] Specifying TERGM constraint on bipartite network",
+      "in_reply_to": "<mailman.230.1681916344.26033.statnet_help@mailman13.u.washington.edu>",
+      "references": [
+        "<mailman.230.1681916344.26033.statnet_help@mailman13.u.washington.edu>"
+      ],
+      "body_plain": "Hello Statnet Community?\n\nGreetings, and with much appreciation for all your work on this incredible collection of open-source resources! \n\nI am writing to request information and advice for estimating a TERGM on a bipartite network with a dyad-independent constraint on the sample space. \n\nI am attempting to fit a TERGM to a bipartite network of local units of government participating in watershed management organizations. I observe this network over a several decade time-span. During that range, some watershed management organizations (mode 2 nodes) are created and some disband. There are geographic constraints on the possible links, which I have represented as an edge-list and passed to the \"fixallbut()? constraint operator.  \n\nI am encountering some difficulties in getting the model to run. In certain circumstances initial MPLE estimation doesn?t complete (?Error in set.constr.type(lprec, rep(?>=?, NROW(X.bar))): ?types? and ?constraints? are not the same length.) In other attempts, the MPLE estimation appears to get stuck on ?evaluating the predictor and response matrix\". In all cases, I get the warning ?Active vertex set varies from time point to time point. Estimation may not work.? \n\nBeing new at this, I?m having some difficulty discerning when I should keep debugging vs. when I need to reconceptualize my data to fit existing package limitations. \n\nSpecifically, my questions are:\n- Should I anticipate that fixing the vertex set will improve my chances of successful modeling? (i.e. not representing creation/destruction of the second mode in the bipartite scheme and thus not having changes in the active vertex set)\n- What is the correct way to specify the ?fixallbut(free.dyads)? constraint with a bipartite network? Is there a way of using permanent ids to ensure that the edgelist (which I build using node names) correctly picks out the vertexes in each network panel? \n\nI have refrained from providing a reproducible example, but would readily do so if that would help clarify my query. \n\nThanks kindly for any help you can provide!\nTerin\n\nTerin Mayer\nPhD Candidate in Public Affairs, University of Minnesota\nUC Berkeley MPP ?18 \nterin.mayer@gmail.com \nterin@umn.edu <mailto:terin@umn.edu> | 612-812-0710\nterinvmayer.com <http://terinvmayer.com/> \n\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20230419/3537376c/attachment.html>",
+      "body_snippet": "Hello Statnet Community?\n\nGreetings, and with much appreciation for all your work on this incredible collection of open-source resources! \n\nI am writing to request information and advice for estimatin",
+      "thread_id": "thread-5dcc1e7f290a",
+      "thread_depth": 0,
+      "month": "2023-04"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-3652dd2c04ab",
+      "subject": "[statnet_help] Question about Model Stuck in MCMLE",
+      "message_count": 3,
+      "participants": [
+        "Carter T. Butts",
+        "Mark S. Handcock",
+        "陈博川"
+      ],
+      "started": "2023-04-09T06:30:58Z",
+      "last_reply": "2023-04-09T12:38:34Z",
+      "root_message_id": "msg-3652dd2c04ab"
+    },
+    {
+      "id": "thread-c3b5f9215eb3",
+      "subject": "[statnet_help] Model Stuck Without Reason",
+      "message_count": 1,
+      "participants": [
+        "陈博川"
+      ],
+      "started": "2023-04-10T09:52:45Z",
+      "last_reply": "2023-04-10T09:52:45Z",
+      "root_message_id": "msg-c3b5f9215eb3"
+    },
+    {
+      "id": "thread-e7a45408737e",
+      "subject": "[statnet_help] MCMC sampling did not mix at all",
+      "message_count": 1,
+      "participants": [
+        "陈博川"
+      ],
+      "started": "2023-04-10T10:18:54Z",
+      "last_reply": "2023-04-10T10:18:54Z",
+      "root_message_id": "msg-e7a45408737e"
+    },
+    {
+      "id": "thread-88eb2beefa58",
+      "subject": "[statnet_help] Constraints: blockdiag() and odegrees",
+      "message_count": 1,
+      "participants": [
+        "F Benjamin Rosche"
+      ],
+      "started": "2023-04-10T14:30:01Z",
+      "last_reply": "2023-04-10T14:30:01Z",
+      "root_message_id": "msg-88eb2beefa58"
+    },
+    {
+      "id": "thread-f2dabe7cf443",
+      "subject": "[statnet_help] GWESP drops overtime using STERGM fitted with edges dissolution approximation method",
+      "message_count": 1,
+      "participants": [
+        "Lin Zhu"
+      ],
+      "started": "2023-04-14T00:13:32Z",
+      "last_reply": "2023-04-14T00:13:32Z",
+      "root_message_id": "msg-f2dabe7cf443"
+    },
+    {
+      "id": "thread-5dcc1e7f290a",
+      "subject": "[statnet_help] Specifying TERGM constraint on bipartite network",
+      "message_count": 1,
+      "participants": [
+        "Terin Mayer"
+      ],
+      "started": "2023-04-19T08:03:19Z",
+      "last_reply": "2023-04-19T08:03:19Z",
+      "root_message_id": "msg-5dcc1e7f290a"
+    }
+  ]
+}

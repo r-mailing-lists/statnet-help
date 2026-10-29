@@ -1,0 +1,504 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2010-10",
+  "messages": [
+    {
+      "id": "msg-9b0682830b66",
+      "message_id": "<1286275660.4850.87.camel@fipm-laptop>",
+      "from_name": "Guido Conaldi",
+      "from_email_hash": "cafaed32974c2432c035d6911f12e21f638205d0091ffd052f37e860b720b044",
+      "date": "2010-10-05T03:47:40Z",
+      "subject": "[statnet_help] A clarification on higher-order parameters for directed network in PNet and ergm package",
+      "subject_clean": "[statnet_help] A clarification on higher-order parameters for directed network in PNet and ergm package",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All,\n\nI am trying to compare the higher-order effects available for directed\nnetworks in PNet with the ones in the ergm package.\n\nWhat is not clear to me is whether with directed networks  the GWESP\nterm corresponds to the AT-C or the AT-T parameters in PNet terminology.\nIn other words, does the GWESP term represent higher-order transitive\nclosure or cyclic closure?\n\nOn the other hand, I assume that the GWDSP term with directed networks\ncorresponds to the A2P-T term in PNet. In other words, an higher-order\n2-path parameter.\n\nCould anyone more knowledgeable please help me?\n\nThanks in advance and regards,\nGuido",
+      "body_snippet": "Dear All,\n\nI am trying to compare the higher-order effects available for directed\nnetworks in PNet with the ones in the ergm package.\n\nWhat is not clear to me is whether with directed networks  the GW",
+      "thread_id": "thread-9b0682830b66",
+      "thread_depth": 0,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-4aa6aca2ed76",
+      "message_id": "<2C3FED56-338C-4D29-8944-6002C5D133DE@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-10-05T07:07:25Z",
+      "subject": "[statnet_help] A clarification on higher-order parameters for directed network in PNet and ergm package",
+      "subject_clean": "[statnet_help] A clarification on higher-order parameters for directed network in PNet and ergm package",
+      "in_reply_to": "<1286275660.4850.87.camel@fipm-laptop>",
+      "references": [
+        "<1286275660.4850.87.camel@fipm-laptop>"
+      ],
+      "body_plain": "Hi Guido.  I'm not sure what AT-T and AT-C are exactly, but if you  \nwant an explanation about how alternating k-triangles / k-twopaths / k- \nstars relate to the GWESP / GWDSP / GWD terms in ergm, check out:\n? Hunter DR (2007), Curved exponential family models for social  \nnetworks, Social Networks, 29: 216-230.\n\nBest,\nDave\n\n\n\n\nOn Oct 5, 2010, at 6:47 AM, Guido Conaldi wrote:\n\n> Dear All,\n>\n> I am trying to compare the higher-order effects available for directed\n> networks in PNet with the ones in the ergm package.\n>\n> What is not clear to me is whether with directed networks  the GWESP\n> term corresponds to the AT-C or the AT-T parameters in PNet  \n> terminology.\n> In other words, does the GWESP term represent higher-order transitive\n> closure or cyclic closure?\n>\n> On the other hand, I assume that the GWDSP term with directed networks\n> corresponds to the A2P-T term in PNet. In other words, an higher-order\n> 2-path parameter.\n>\n> Could anyone more knowledgeable please help me?\n>\n> Thanks in advance and regards,\n> Guido\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Guido.  I'm not sure what AT-T and AT-C are exactly, but if you  \nwant an explanation about how alternating k-triangles / k-twopaths / k- \nstars relate to the GWESP / GWDSP / GWD terms in ergm, che",
+      "thread_id": "thread-9b0682830b66",
+      "thread_depth": 1,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-ba2cf8c42de4",
+      "message_id": "<4CAB3AD5.3040901@fas.harvard.edu>",
+      "from_name": "Kevin Lewis",
+      "from_email_hash": "3e16f115495b0e59b9f7583fd0cfe6f012b826a6e99dfab804f7275bfb0c581c",
+      "date": "2010-10-05T07:48:53Z",
+      "subject": "[statnet_help] A clarification on higher-order parameters for directed network in PNet and ergm package",
+      "subject_clean": "[statnet_help] A clarification on higher-order parameters for directed network in PNet and ergm package",
+      "in_reply_to": "<2C3FED56-338C-4D29-8944-6002C5D133DE@stat.psu.edu>",
+      "references": [
+        "<1286275660.4850.87.camel@fipm-laptop>",
+        "<2C3FED56-338C-4D29-8944-6002C5D133DE@stat.psu.edu>"
+      ],
+      "body_plain": "hi guido and dave,\n\ni've used both pnet and statnet for ERG modeling, and am pretty sure \nthat GWESP corresponds to AT-T (transitive closure), while you are right \nthat GWDSP corresponds to A2P-T (2-paths) (though, as dave notes, you \nshould also check out his article for exactly how the two relate to each \nother... but they will both get the same job done). i do not believe \nthat a higher-order term for cyclic closure (or \"activity closure\" or \n\"popularity closure\") currently exists in statnet. hope this helps!\n\n-kevin\n\nOn 10/5/2010 10:07 AM, David Hunter wrote:\n> Hi Guido.  I'm not sure what AT-T and AT-C are exactly, but if you \n> want an explanation about how alternating k-triangles / k-twopaths / \n> k-stars relate to the GWESP / GWDSP / GWD terms in ergm, check out:\n> ? Hunter DR (2007), Curved exponential family models for social \n> networks, Social Networks, 29: 216-230.\n>\n> Best,\n> Dave\n>\n>\n>\n>\n> On Oct 5, 2010, at 6:47 AM, Guido Conaldi wrote:\n>\n>> Dear All,\n>>\n>> I am trying to compare the higher-order effects available for directed\n>> networks in PNet with the ones in the ergm package.\n>>\n>> What is not clear to me is whether with directed networks  the GWESP\n>> term corresponds to the AT-C or the AT-T parameters in PNet terminology.\n>> In other words, does the GWESP term represent higher-order transitive\n>> closure or cyclic closure?\n>>\n>> On the other hand, I assume that the GWDSP term with directed networks\n>> corresponds to the A2P-T term in PNet. In other words, an higher-order\n>> 2-path parameter.\n>>\n>> Could anyone more knowledgeable please help me?\n>>\n>> Thanks in advance and regards,\n>> Guido\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nKevin Lewis\nPh.D. Candidate in Sociology\nHarvard University\n33 Kirkland Street\nCambridge, MA 02138",
+      "body_snippet": "hi guido and dave,\n\ni've used both pnet and statnet for ERG modeling, and am pretty sure \nthat GWESP corresponds to AT-T (transitive closure), while you are right \nthat GWDSP corresponds to A2P-T (2-p",
+      "thread_id": "thread-9b0682830b66",
+      "thread_depth": 2,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-758fa8a47646",
+      "message_id": "<1286290799.4850.238.camel@fipm-laptop>",
+      "from_name": "Guido Conaldi",
+      "from_email_hash": "cafaed32974c2432c035d6911f12e21f638205d0091ffd052f37e860b720b044",
+      "date": "2010-10-05T07:59:59Z",
+      "subject": "[statnet_help] A clarification on higher-order parameters for directed network in PNet and ergm package",
+      "subject_clean": "[statnet_help] A clarification on higher-order parameters for directed network in PNet and ergm package",
+      "in_reply_to": "<2C3FED56-338C-4D29-8944-6002C5D133DE@stat.psu.edu>",
+      "references": [
+        "<1286275660.4850.87.camel@fipm-laptop>",
+        "<2C3FED56-338C-4D29-8944-6002C5D133DE@stat.psu.edu>"
+      ],
+      "body_plain": "Hi Dave,\n\nThank you for the hint. I have read your article and I think I\nunderstand the relationships existing between the two sets of terms.\n\nTo clarify, my question is: over which configurations is the geometric\nweighting done when the gwesp term is applied to a directed network?\n\nThe help file says: \"for directed networks the geometric weighting is\nover homogeneous shared partners only (i.e., only partners on a directed\ntwo-path connecting the nodes in the edge and in the same direction).\"\n\nGiven the tie A->C as an example, is the term counting all partners B in\nthe triangles A->C->B->A and not the ones in the triangles A->C,\nA->B->C?\n\nAgain, thanks in advance and regards,\nGuido\n\n\nOn Tue, 2010-10-05 at 10:07 -0400, David Hunter wrote: \n> Hi Guido.  I'm not sure what AT-T and AT-C are exactly, but if you  \n> want an explanation about how alternating k-triangles / k-twopaths / k- \n> stars relate to the GWESP / GWDSP / GWD terms in ergm, check out:\n> ? Hunter DR (2007), Curved exponential family models for social  \n> networks, Social Networks, 29: 216-230.\n> \n> Best,\n> Dave\n> \n> \n> \n> \n> On Oct 5, 2010, at 6:47 AM, Guido Conaldi wrote:\n> \n> > Dear All,\n> >\n> > I am trying to compare the higher-order effects available for directed\n> > networks in PNet with the ones in the ergm package.\n> >\n> > What is not clear to me is whether with directed networks  the GWESP\n> > term corresponds to the AT-C or the AT-T parameters in PNet  \n> > terminology.\n> > In other words, does the GWESP term represent higher-order transitive\n> > closure or cyclic closure?\n> >\n> > On the other hand, I assume that the GWDSP term with directed networks\n> > corresponds to the A2P-T term in PNet. In other words, an higher-order\n> > 2-path parameter.\n> >\n> > Could anyone more knowledgeable please help me?\n> >\n> > Thanks in advance and regards,\n> > Guido\n> >\n> > _______________________________________________\n> > statnet_help mailing list\n> > statnet_help@u.washington.edu\n> > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Dave,\n\nThank you for the hint. I have read your article and I think I\nunderstand the relationships existing between the two sets of terms.\n\nTo clarify, my question is: over which configurations is ",
+      "thread_id": "thread-9b0682830b66",
+      "thread_depth": 2,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-7a2c572bce56",
+      "message_id": "<174B878F92356F4EADEB87F69311E99C0867C5@brown-mail1.gwb.wustl.edu>",
+      "from_name": "Jenine Harris",
+      "from_email_hash": "58e5b70d2876440f1ad8d8b44b872ef827aa4a06e922f831941fe71a43c4bbd0",
+      "date": "2010-10-05T08:03:51Z",
+      "subject": "[statnet_help] version 2.2-5 updates documentation?",
+      "subject_clean": "[statnet_help] version 2.2-5 updates documentation?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI am looking for documentation of the changes to Statnet from version 2.2-4 to 2.2-5...we are getting some very different parameter estimates in a model including much larger/smaller magnitude for several betas, changes in the direction of the relationship (positive/negative) for a few betas, and differences in which predictors are significant.\n\nI've searched my mail archives, the statnet website, and listserv archives to no avail...sorry if I just missed it!\n\nJenine\n\n--\nJenine K. Harris, PhD\nAssistant Professor\nGeorge Warren Brown School of Social Work\nWashington University in St. Louis\nOne Brookings Drive\nCampus Box 1196\nSt. Louis, MO 63130\nPhone: 314-935-3939  Fax: 314-935-8126\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101005/e264f058/attachment.html>",
+      "body_snippet": "Hi all,\n\nI am looking for documentation of the changes to Statnet from version 2.2-4 to 2.2-5...we are getting some very different parameter estimates in a model including much larger/smaller magnitud",
+      "thread_id": "thread-7a2c572bce56",
+      "thread_depth": 0,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-7bcd1b347a67",
+      "message_id": "<AANLkTimGsORF+LJ4j_PE8CxWA8Bxp6MZa+Wi1NJoqPXK@mail.gmail.com>",
+      "from_name": "Haris Memic",
+      "from_email_hash": "3242f70fee752cc23de46cbf0221901b900a5011736103a06460e18c8b822892",
+      "date": "2010-10-05T10:19:19Z",
+      "subject": "[statnet_help] A clarification on higher-order parameters for directed network in PNet and ergm package",
+      "subject_clean": "[statnet_help] A clarification on higher-order parameters for directed network in PNet and ergm package",
+      "in_reply_to": "<2C3FED56-338C-4D29-8944-6002C5D133DE@stat.psu.edu>",
+      "references": [
+        "<1286275660.4850.87.camel@fipm-laptop>",
+        "<2C3FED56-338C-4D29-8944-6002C5D133DE@stat.psu.edu>"
+      ],
+      "body_plain": "Guido refered to therms described in:\n\nRobins,  G.,  Pattison,  P., Wang,  P.  (2009).  Closure,  connectivity\nand  degree  distributions:  Exponential random  graph  (p*) models  for\ndirected  social  networks,  Social  Networks,  Volume  31,  Issue  2,\n2009,  Pages 105-117.\n\nIt would be nice to have them in Statnet. Could you please add them?\nI thought about programming them in myself as I will need them in the\nfuture, but think it would be more appropriate if you would add them to the\nofficial Statnet version.\n\nHaris\n\nOn Tue, Oct 5, 2010 at 4:07 PM, David Hunter <dhunter@stat.psu.edu> wrote:\n\n> Hi Guido.  I'm not sure what AT-T and AT-C are exactly, but if you want an\n> explanation about how alternating k-triangles / k-twopaths / k-stars relate\n> to the GWESP / GWDSP / GWD terms in ergm, check out:\n> ? Hunter DR (2007), Curved exponential family models for social networks,\n> Social Networks, 29: 216-230.\n>\n> Best,\n> Dave\n>\n>\n>\n>\n>\n> On Oct 5, 2010, at 6:47 AM, Guido Conaldi wrote:\n>\n> Dear All,\n>>\n>> I am trying to compare the higher-order effects available for directed\n>> networks in PNet with the ones in the ergm package.\n>>\n>> What is not clear to me is whether with directed networks  the GWESP\n>> term corresponds to the AT-C or the AT-T parameters in PNet terminology.\n>> In other words, does the GWESP term represent higher-order transitive\n>> closure or cyclic closure?\n>>\n>> On the other hand, I assume that the GWDSP term with directed networks\n>> corresponds to the A2P-T term in PNet. In other words, an higher-order\n>> 2-path parameter.\n>>\n>> Could anyone more knowledgeable please help me?\n>>\n>> Thanks in advance and regards,\n>> Guido\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101005/51998118/attachment.html>",
+      "body_snippet": "Guido refered to therms described in:\n\nRobins,  G.,  Pattison,  P., Wang,  P.  (2009).  Closure,  connectivity\nand  degree  distributions:  Exponential random  graph  (p*) models  for\ndirected  social",
+      "thread_id": "thread-9b0682830b66",
+      "thread_depth": 2,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-cd816392ef22",
+      "message_id": "<4CAB8791.4040800@u.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2010-10-05T13:16:17Z",
+      "subject": "[statnet_help] A clarification on higher-order parameters for directed network in PNet and ergm package",
+      "subject_clean": "[statnet_help] A clarification on higher-order parameters for directed network in PNet and ergm package",
+      "in_reply_to": "<AANLkTimGsORF+LJ4j_PE8CxWA8Bxp6MZa+Wi1NJoqPXK@mail.gmail.com>",
+      "references": [
+        "<1286275660.4850.87.camel@fipm-laptop>",
+        "<2C3FED56-338C-4D29-8944-6002C5D133DE@stat.psu.edu>",
+        "<AANLkTimGsORF+LJ4j_PE8CxWA8Bxp6MZa+Wi1NJoqPXK@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Haris et al,\n\nWe are weeks away from releasing a handy step-by-step guide to coding up \none's one statistics for ergm.  (I know, I know, we've been talking \nabout this for a long time; but we really are close now.)  Once we do \nthat, it should dramatically lower the bar for allowing statnet users to \nwrite their own statistics, and to share those of general usefulness \nwith the statnet user community as a whole.\n\nCheers,\nSteve\n\n\nHaris Memic wrote:\n> Guido refered to therms described in:\n>  \n> Robins,  G.,  Pattison,  P., Wang,  P.  (2009).  Closure,  connectivity  \n> and  degree  distributions:  Exponential random  graph  (p*) models  \n> for  directed  social  networks,  Social  Networks,  Volume  31,  Issue  \n> 2,  2009,  Pages 105-117.\n>  \n> It would be nice to have them in Statnet. Could you please add them?\n> I thought about programming them in myself as I will need them in the \n> future, but think it would be more appropriate if you would add them to \n> the official Statnet version.\n>  \n> Haris\n> \n> On Tue, Oct 5, 2010 at 4:07 PM, David Hunter <dhunter@stat.psu.edu \n> <mailto:dhunter@stat.psu.edu>> wrote:\n> \n>     Hi Guido.  I'm not sure what AT-T and AT-C are exactly, but if you\n>     want an explanation about how alternating k-triangles / k-twopaths /\n>     k-stars relate to the GWESP / GWDSP / GWD terms in ergm, check out:\n>     ? Hunter DR (2007), Curved exponential family models for social\n>     networks, Social Networks, 29: 216-230.\n> \n>     Best,\n>     Dave\n> \n> \n> \n> \n> \n>     On Oct 5, 2010, at 6:47 AM, Guido Conaldi wrote:\n> \n>         Dear All,\n> \n>         I am trying to compare the higher-order effects available for\n>         directed\n>         networks in PNet with the ones in the ergm package.\n> \n>         What is not clear to me is whether with directed networks  the GWESP\n>         term corresponds to the AT-C or the AT-T parameters in PNet\n>         terminology.\n>         In other words, does the GWESP term represent higher-order\n>         transitive\n>         closure or cyclic closure?\n> \n>         On the other hand, I assume that the GWDSP term with directed\n>         networks\n>         corresponds to the A2P-T term in PNet. In other words, an\n>         higher-order\n>         2-path parameter.\n> \n>         Could anyone more knowledgeable please help me?\n> \n>         Thanks in advance and regards,\n>         Guido\n> \n>         _______________________________________________\n>         statnet_help mailing list\n>         statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>         http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> \n> \n>     _______________________________________________\n>     statnet_help mailing list\n>     statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>     http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> \n> \n> \n> ------------------------------------------------------------------------\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n\n-- \n\n***********************************************************************\n  * Steven M. Goodreau / Assoc. Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100     *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)   *\n  * http://faculty.washington.edu/goodreau                            *\n  * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k         *\n***********************************************************************",
+      "body_snippet": "Hi Haris et al,\n\nWe are weeks away from releasing a handy step-by-step guide to coding up \none's one statistics for ergm.  (I know, I know, we've been talking \nabout this for a long time; but we reall",
+      "thread_id": "thread-9b0682830b66",
+      "thread_depth": 3,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-a809675ef010",
+      "message_id": "<346478.15319.qm@web114012.mail.gq1.yahoo.com>",
+      "from_name": "Markus Schafer",
+      "from_email_hash": "7c73f5c18c1e262043852e198f23c52c2cff64ce752850e6635d29d9c5d1b984",
+      "date": "2010-10-07T13:28:21Z",
+      "subject": "[statnet_help] interaction effects and absdiff term",
+      "subject_clean": "[statnet_help] interaction effects and absdiff term",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI am trying to test some hypotheses with ERGM that involve interaction terms for two continuous variables - e.g., is the effect of dyadic differences in X moderated by dyadic differenes in Z? \n\nmodel<-ergm(net.net~ edges + absdiff('X') + absdiff('Z') + <<<INTERACTION TERM of X and Z>>> + ....)\n\nIs it possible to answer this question with ergm model terms in statnet? \n\nthanks in advance,\n\nMarkus",
+      "body_snippet": "Hello,\n\nI am trying to test some hypotheses with ERGM that involve interaction terms for two continuous variables - e.g., is the effect of dyadic differences in X moderated by dyadic differenes in Z? ",
+      "thread_id": "thread-a809675ef010",
+      "thread_depth": 0,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-f2969c73b1b8",
+      "message_id": "<DB11E64B-6E4F-41F5-B5DC-A564C85EFB9C@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-10-11T05:51:47Z",
+      "subject": "[statnet_help] Re: Robbins-Monro and Stepping algorithms",
+      "subject_clean": "[statnet_help] Re: Robbins-Monro and Stepping algorithms",
+      "in_reply_to": "<20101011143303.xeymb1xqjo8k8og0@webmail.unina.it>",
+      "references": [
+        "<20100920114208.g5gh29dbkoscc484@webmail.unina.it>",
+        "<626E8C45-C641-4486-BDCC-0F6A500064C1@stat.psu.edu>",
+        "<20101011143303.xeymb1xqjo8k8og0@webmail.unina.it>"
+      ],
+      "body_plain": "Dear Agnieszka, I'm forwarding your question to the statnet_help email  \nlist; I'm not sure off the top of my head about your Robbins-Monro  \nquestion, but perhaps someone on the list knows quickly.\n\nDave\n\n\n\n\nOn Oct 11, 2010, at 8:33 AM, agnieszka.stawinoga@unina.it wrote:\n\n> Dear Prof. Hunter,\n>\n> I am writing to ask how I can count the length of a chain in\n> the ergm parameters estimation using algorithms Robbins-Monro and\n> Stepping.\n> In the work of S.M. Goodreau \"Advances in exponential random graph\n> (p*) models applied to a large social network\"Social Networks 29\n> (2007) 231?248 I found the formula (burnin+MCMCsamplesize*interval).\n> Is it also valid in the case of the Robbins-Monro and the Stepping  \n> algorithms?\n>\n> Thank You for Your help.\n> Best regards.\n>\n> Agnieszka Stawinoga\n>\n>",
+      "body_snippet": "Dear Agnieszka, I'm forwarding your question to the statnet_help email  \nlist; I'm not sure off the top of my head about your Robbins-Monro  \nquestion, but perhaps someone on the list knows quickly.\n\n",
+      "thread_id": "thread-f2969c73b1b8",
+      "thread_depth": 0,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-1fefba31432f",
+      "message_id": "<AANLkTin5NkrXq_H=TxAdCCen3vRXiG-e7Uj2vFMt-HEN@mail.gmail.com>",
+      "from_name": "Wincent",
+      "from_email_hash": "6846f5c272f8850077470247e7e6a025c83f8d7387bcf22387269b3b25a06522",
+      "date": "2010-10-12T07:20:56Z",
+      "subject": "[statnet_help] direct assignment of network object",
+      "subject_clean": "[statnet_help] direct assignment of network object",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": ">      m <- matrix(rbinom(25,1,.4),5,5)\n>      diag(m) <- 0\n>      g <- network(m, directed=FALSE)\n> newg <- g\n> delete.vertices(newg,2)\n> newg\n Network attributes:\n  vertices = 4\n  directed = FALSE\n  hyper = FALSE\n  loops = FALSE\n  multiple = FALSE\n  bipartite = FALSE\n  total edges= 5\n    missing edges= 0\n    non-missing edges= 5\n\n Vertex attribute names:\n    vertex.names\n\n adjacency matrix:\n  1 3 4 5\n1 0 1 0 1\n3 1 0 1 1\n4 0 1 0 1\n5 1 1 1 0\n> g\n Network attributes:\n  vertices = 4\n  directed = FALSE\n  hyper = FALSE\n  loops = FALSE\n  multiple = FALSE\n  bipartite = FALSE\n  total edges= 5\n    missing edges= 0\n    non-missing edges= 5\n\n Vertex attribute names:\n    vertex.names\n\n adjacency matrix:\n  1 3 4 5\n1 0 1 0 1\n3 1 0 1 1\n4 0 1 0 1\n5 1 1 1 0\n>\n\nIt seems that direct assignment behaves NOT in the same manner as\n'network.copy'.  Is it a bug?\nBest\n\n-- \nWincent Ronggui HUANG (Ph.D.)\nCity University of Hong Kong\nhttp://asrr.r-forge.r-project.org/rghuang.html",
+      "body_snippet": ">      m <- matrix(rbinom(25,1,.4),5,5)\n>      diag(m) <- 0\n>      g <- network(m, directed=FALSE)\n> newg <- g\n> delete.vertices(newg,2)\n> newg\n Network attributes:\n  vertices = 4\n  directed = FALSE\n ",
+      "thread_id": "thread-1fefba31432f",
+      "thread_depth": 0,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-dc7fca6e2f94",
+      "message_id": "<4CB49F37.2000107@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-10-12T10:47:35Z",
+      "subject": "[statnet_help] direct assignment of network object",
+      "subject_clean": "[statnet_help] direct assignment of network object",
+      "in_reply_to": "<AANLkTin5NkrXq_H=TxAdCCen3vRXiG-e7Uj2vFMt-HEN@mail.gmail.com>",
+      "references": [
+        "<AANLkTin5NkrXq_H=TxAdCCen3vRXiG-e7Uj2vFMt-HEN@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Wincent -\n\nOn 10/12/2010 07:20 AM, Wincent wrote:\n> It seems that direct assignment behaves NOT in the same manner as\n> 'network.copy'.  Is it a bug?\n\nOdd -- this was working in earlier R versions, so it seems to be a \nrelatively recent break.  Looks like an issue with R's deferred \nevaluation mechanism.  In particular, note that if you modify g or newg \n(e.g., by adding edges) prior to the delete.vertices call, you do not \nget this effect.  I expect that R delays the network.copy operation \n(which, BTW, is what the assignment operator does) too long, and \ndelete.vertices thus gets a pointer to the original object, rather than \nto the copy (that has not yet been made).  That would be my initial \nguess, at least.\n\nI'll put in a patch on the latest version (now on CRAN!), but in the \ninterim, here is a workaround.  After you generate the new copy, you can \nforce it to be evaluated by a command like\n\nnewg[1,1]<-0\n\nor even\n\ng[1,1]<-0\n\nThis will have no obvious effect, but will force R to evaluate the \nassignment (and hence network.copy), breaking the tie between the \nobjects.  Likely, there are many other commands that would also work, \nbut this is an easy option.  It works fine on my system, but let me know \nif it doesn't work for you....\n\nThanks!\n\n-Carter",
+      "body_snippet": "Hi, Wincent -\n\nOn 10/12/2010 07:20 AM, Wincent wrote:\n> It seems that direct assignment behaves NOT in the same manner as\n> 'network.copy'.  Is it a bug?\n\nOdd -- this was working in earlier R versions",
+      "thread_id": "thread-1fefba31432f",
+      "thread_depth": 1,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-1aa86b421416",
+      "message_id": "<4CB49FF9.3000108@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-10-12T10:50:49Z",
+      "subject": "[statnet_help] network v1.5 on CRAN",
+      "subject_clean": "[statnet_help] network v1.5 on CRAN",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi, all.  Took longer than expected, but the latest network release \nshould be appearing on CRAN soon (if it's not there already).  I'm \nexpecting a minor bugfix patch soonish, so let me know of any new issues \nyou encounter.  I hope to have the ChangeLog and whatnot up on my site \nsome time this evening.\n\nEnjoy,\n\n-Carter",
+      "body_snippet": "Hi, all.  Took longer than expected, but the latest network release \nshould be appearing on CRAN soon (if it's not there already).  I'm \nexpecting a minor bugfix patch soonish, so let me know of any n",
+      "thread_id": "thread-1aa86b421416",
+      "thread_depth": 0,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-7049678d98a4",
+      "message_id": "<F27665AF-558A-4DA7-8F0B-3656DC86EDF0@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-10-12T14:22:07Z",
+      "subject": "[statnet_help] interaction effects and absdiff term",
+      "subject_clean": "[statnet_help] interaction effects and absdiff term",
+      "in_reply_to": "<346478.15319.qm@web114012.mail.gq1.yahoo.com>",
+      "references": [
+        "<346478.15319.qm@web114012.mail.gq1.yahoo.com>"
+      ],
+      "body_plain": "Hi Markus.\n\nOne approach is to code up a whole matrix of \"interaction terms\" and  \nthen enter this into the model as a dyadcov term.  However, depending  \non what you wish to put in the \"...\", there may be a simpler way:  If  \nyou are only using model terms that result in independence of the  \nedges, then the ergm function is really just doing logistic  \nregression.  Thus, you can use the ergmMPLE function to give you the  \nresponse and predictors that may be fed into a logistic regression,  \nand then you can use the usual interaction-term capability of the glm  \nfunction.  See help(ergmMPLE) for details on this function.\n\nHope this helps.\n\nDave\n\n\n\n\nOn Oct 7, 2010, at 4:28 PM, Markus Schafer wrote:\n\n>\n> Hello,\n>\n> I am trying to test some hypotheses with ERGM that involve  \n> interaction terms for two continuous variables - e.g., is the effect  \n> of dyadic differences in X moderated by dyadic differenes in Z?\n>\n> model<-ergm(net.net~ edges + absdiff('X') + absdiff('Z') +  \n> <<<INTERACTION TERM of X and Z>>> + ....)\n>\n> Is it possible to answer this question with ergm model terms in  \n> statnet?\n>\n> thanks in advance,\n>\n> Markus\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Markus.\n\nOne approach is to code up a whole matrix of \"interaction terms\" and  \nthen enter this into the model as a dyadcov term.  However, depending  \non what you wish to put in the \"...\", there m",
+      "thread_id": "thread-a809675ef010",
+      "thread_depth": 1,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-748a0e4d7163",
+      "message_id": "<5F690A84-E129-41E0-B685-02AF546F3530@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-10-18T05:27:32Z",
+      "subject": "[statnet_help] version 2.2-5 updates documentation?",
+      "subject_clean": "[statnet_help] version 2.2-5 updates documentation?",
+      "in_reply_to": "<174B878F92356F4EADEB87F69311E99C0867C5@brown-mail1.gwb.wustl.edu>",
+      "references": [
+        "<174B878F92356F4EADEB87F69311E99C0867C5@brown-mail1.gwb.wustl.edu>"
+      ],
+      "body_plain": "Hi Jenine.  Thanks for your email.\n\nThere had been other results that had us scratching our heads a bit,  \nand thanks to you and others (e.g., James Kitts) bringing this up, we  \nhave found a pretty serious bug in 2.2-5.  I will rush to get a new  \nversion out and send the source to this list before it goes up on  \nCRAN.  However, in the meantime, do you have a small example or two of  \nresults that were different in 2.2-4 and 2.2-5?  I'd like to test the  \nnew version as much as I can, and in particular I'm very interested to  \nknow whether this bug explains the discrepancies you've seen.\n\nI'm really, really sorry for the inconvenience!\n\nDave\n\n\n\nOn Oct 5, 2010, at 11:03 AM, Jenine Harris wrote:\n\n> Hi all,\n>\n> I am looking for documentation of the changes to Statnet from  \n> version 2.2-4 to 2.2-5?we are getting some very different parameter  \n> estimates in a model including much larger/smaller magnitude for  \n> several betas, changes in the direction of the relationship  \n> (positive/negative) for a few betas, and differences in which  \n> predictors are significant.\n>\n> I?ve searched my mail archives, the statnet website, and listserv  \n> archives to no avail?sorry if I just missed it!\n>\n> Jenine\n>\n> --\n> Jenine K. Harris, PhD\n> Assistant Professor\n> George Warren Brown School of Social Work\n> Washington University in St. Louis\n> One Brookings Drive\n> Campus Box 1196\n> St. Louis, MO 63130\n> Phone: 314-935-3939  Fax: 314-935-8126\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101018/d1df6557/attachment.html>",
+      "body_snippet": "Hi Jenine.  Thanks for your email.\n\nThere had been other results that had us scratching our heads a bit,  \nand thanks to you and others (e.g., James Kitts) bringing this up, we  \nhave found a pretty s",
+      "thread_id": "thread-7a2c572bce56",
+      "thread_depth": 1,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-9d88e23ccab6",
+      "message_id": "<01c8994874d5d79167f714d19508ccd1.squirrel@webmail.stat.unipd.it>",
+      "from_name": "Soriani Nicola",
+      "from_email_hash": "bad2caca9903706f9e3ae9b9200f838b32f69bcb1198b839eb309a817ad8dd27",
+      "date": "2010-10-21T16:13:58Z",
+      "subject": "[statnet_help] missing edges",
+      "subject_clean": "[statnet_help] missing edges",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi All,\n\nSomebody can explain me what really \"ergm\" does (or it did in last\nreleases) when in the network there are some NA edges?\n\nThanks a lot.\n\nNicola\n\n\n-- \nSoriani Nicola\nScuola di Dottorato in Scienze Statistiche XXIII Ciclo\nDipartimento di Scienze Statistiche, Universit? di Padova\nStanza 122 - Tel. 049 827 4174\nPh.D. Student\nDepartment of Statistical Sciences\nUniversity of Padova, Italy",
+      "body_snippet": "Hi All,\n\nSomebody can explain me what really \"ergm\" does (or it did in last\nreleases) when in the network there are some NA edges?\n\nThanks a lot.\n\nNicola\n\n\n-- \nSoriani Nicola\nScuola di Dottorato in Sc",
+      "thread_id": "thread-9d88e23ccab6",
+      "thread_depth": 0,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-47ae0023fcf3",
+      "message_id": "<4CC0F745.9080008@ucla.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "fb40357ebb8d7f0a427d9ad2641aa56f67d6763bdb0f1109ba0f3c4b5584b09d",
+      "date": "2010-10-21T19:30:29Z",
+      "subject": "[statnet_help] missing edges",
+      "subject_clean": "[statnet_help] missing edges",
+      "in_reply_to": "<01c8994874d5d79167f714d19508ccd1.squirrel@webmail.stat.unipd.it>",
+      "references": [
+        "<01c8994874d5d79167f714d19508ccd1.squirrel@webmail.stat.unipd.it>"
+      ],
+      "body_plain": "Hi Nicola,\n\n\"ergm\" interprets the value of NA for an edge as meaning that information about the presence or absence of that edge is missing.\n\nWhen an ERGM model is fit, ergm() uses the methods developed by the \"statnet\" team to find the MLE of the parameters given the observed data. This is detailed in:\n\n\"Modeling social networks from sampled data\"\nMark S. Handcock and Krista J. Gile\nAnnals of Applied Statistics, Volume 4, Number 1 (2010), 5-25.\n<http://projecteuclid.org/euclid.aoas/1273584445>\n\nIn particular, these estimates and models can be interpreted in the same way as those without missing or sampled data.\n\nIt is worthwhile noting that \"latentnet\" also computes estimates that adjust for missing data.\n\nI hope this helps.\n\nMark\n\nOn 10/22/10 7:13 AM, Soriani Nicola wrote:\n>\n> Hi All,\n>\n> Somebody can explain me what really \"ergm\" does (or it did in last\n> releases) when in the network there are some NA edges?\n>\n> Thanks a lot.\n>\n> Nicola\n>\n>",
+      "body_snippet": "Hi Nicola,\n\n\"ergm\" interprets the value of NA for an edge as meaning that information about the presence or absence of that edge is missing.\n\nWhen an ERGM model is fit, ergm() uses the methods develop",
+      "thread_id": "thread-9d88e23ccab6",
+      "thread_depth": 1,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-c1af62717e99",
+      "message_id": "<20101023235445.17064rl3lid12ask@webaccess.umail.ucsb.edu>",
+      "from_name": "Hamid Ghofrani",
+      "from_email_hash": "e1317a22b3331f978a5bcd2a8748865e22849f9eb723a6fe61c70ad52d3f8b64",
+      "date": "2010-10-23T23:54:45Z",
+      "subject": "[statnet_help] A toy example for STATNET",
+      "subject_clean": "[statnet_help] A toy example for STATNET",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All,\nMy question is whether there is any asymptotic assumptions for ERGM?\nWhy isn't there any example for small size graphs?\nI was trying to create a toy example, an undirected  network of 10  \nnodes and created 3 triangles 123, 456, 789 ( according to node labels).\nmodel <- ergm(m ~ triangle,control=control.ergm(check.degeneracy=T),maxit=50)\nEvery model ended up being degenerate.\nI needed to use a small network so that I would be able to calculate  \nthe exact value for normalizing constant.\nThe dependence structure is very simple, It has only 3 triangles and  \nnothing else so What would be the cause for degeneracy?\nIs there any minimum number of nodes we need to have in STATNET package?\nThank you,\n-- \nHamid Ghofrani\nhamid@umail.ucsb.edu",
+      "body_snippet": "Dear All,\nMy question is whether there is any asymptotic assumptions for ERGM?\nWhy isn't there any example for small size graphs?\nI was trying to create a toy example, an undirected  network of 10  \nn",
+      "thread_id": "thread-c1af62717e99",
+      "thread_depth": 0,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-cb0667b810b3",
+      "message_id": "<AANLkTi=O7XO1A-RAgvhcZ311an2Wy7Bw7XYxiEnfy5ME@mail.gmail.com>",
+      "from_name": "Tomáš Drenčák",
+      "from_email_hash": "8dbeb36dfe1afa89219b510fadb9ecfafb5e41cf086dd0dc54b3194d4c2d6233",
+      "date": "2010-10-25T04:26:54Z",
+      "subject": "[statnet_help] Network shrink",
+      "subject_clean": "[statnet_help] Network shrink",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\nI'd like to ask how can I shrink network in statnet. I've seen this\nfunctionality in Pajek program. There you can label vertex by cluster or\ncomponent id and the program will then shrink all vertexes with such id into\none vertex. It also maintains connections between newly created vertex and\nall others not included within the cluster (loop is created for vertexes\ninside the cluster).\n\nIs there some simple way how to do this in statnet?\n\nThanks,\n  Tomas\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101025/3cbc6d57/attachment.html>",
+      "body_snippet": "Hi all,\nI'd like to ask how can I shrink network in statnet. I've seen this\nfunctionality in Pajek program. There you can label vertex by cluster or\ncomponent id and the program will then shrink all v",
+      "thread_id": "thread-cb0667b810b3",
+      "thread_depth": 0,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-80859ba132bd",
+      "message_id": "<4CC662C5.2010808@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-10-25T22:10:29Z",
+      "subject": "[statnet_help] A toy example for STATNET",
+      "subject_clean": "[statnet_help] A toy example for STATNET",
+      "in_reply_to": "<20101023235445.17064rl3lid12ask@webaccess.umail.ucsb.edu>",
+      "references": [
+        "<20101023235445.17064rl3lid12ask@webaccess.umail.ucsb.edu>"
+      ],
+      "body_plain": "Hi, Hamid -\n\nOn 10/23/2010 11:54 PM, Hamid Ghofrani wrote:\n> Dear All,\n> My question is whether there is any asymptotic assumptions for ERGM?\n\nYes.  (A less general question might yield a less generic answer.)\n\n> Why isn't there any example for small size graphs?\n\nI believe you will find some such examples in the ergm man pages.\n\n> I was trying to create a toy example, an undirected network of 10 nodes\n> and created 3 triangles 123, 456, 789 ( according to node labels).\n> model <- ergm(m ~\n> triangle,control=control.ergm(check.degeneracy=T),maxit=50)\n> Every model ended up being degenerate.\n> I needed to use a small network so that I would be able to calculate the\n> exact value for normalizing constant.\n> The dependence structure is very simple, It has only 3 triangles and\n> nothing else so What would be the cause for degeneracy?\n> Is there any minimum number of nodes we need to have in STATNET package?\n\nThe pure triangle model is the textbook case of a degenerate model -- \nsee Strauss's 1986 SIAM Review paper for an analysis.  Heuristically, it \nis easy to see why this is so.  Let t be the triangle count in a simple \ngraph of order N, and let theta be the associated parameter.  For \ntheta>0, the complete graph (K_N) is clearly of maximum probability \n(since graph probability is proportional to exp(theta*t(G)), and this \nhas a unique maximum at G=K_N).  Consider the probability ratio for K_N \nversus some other graph, G', under this model.  If G' is not complete, \nit is missing at least one edge; thus, t(K_N)-t(G')>=N-2.  (This is \nbecause you will break N-2 triangles by removing an edge from a complete \ngraph on N vertices.)  Recalling that normalizing factors cancel here, \nthe ratio of graph probabilities is\n\nPr(G')/Pr(K_N) =  exp(theta*t(G'))/exp(theta*t(K_N))\n                =  exp(theta*(t(G')-t(K_N)))\n                <= exp(-theta*(N-2))\n\nThis falls exponentially fast in N -- the probability of observing any \nother graph versus the complete graph rapidly becomes very small.  This \nalone is not a proof of degeneracy, but it should suggest the nature of \nthe phenomenon.  From a more pragmatic viewpoint, let us consider an \nMCMC seeking to simulate draws from this model (via a Metropolis \nalgorithm with single edge updates), and ask what happens when the \nMarkov chain arrives at K_N.  From the above, the probability of \naccepting any proposal (all of which involve a single edge removal) will \nbe exp(-theta*(N-2)); the expected waiting time for a move away from K_N \nwill then be the reciprocal of this (since the waiting time here is \ngeometrically distributed), or exp(theta*(N-2)).  For the chain to move \nfreely away from the complete graph, we need this to be reasonably \nsmall...say, exp(theta*(N-2))<=k, where k is on the order of 10 to 100. \n  That suggests that theta needs to be very small, e.g.\n\n         N=10    N=100   N=1000\nk=10    0.288   0.023   0.002\nk=100   0.576   0.047   0.005\n\nin order for the chain to mix.  Increasing theta beyond this point will \nlead the waiting times for exit from the complete graph to increase \nexponentially fast (thus effectively killing the MCMC).  Even if N=10, \nthat can still ruin your life -- increase your theta from 0.288 to 1, \nand you are now waiting about 3000 iterations for a single exit. \nIncrease it further from 1 to 2, and you are waiting for almost 9 \nmillion iterations.  Further increases are clearly contraindicated for \nthose with finite life spans.\n\nI've written this somewhat extensive response because I encounter this \nquestion frequently, and hope that this answer may be of use to others. \n  (Also, the topic is very interesting.)  The general object lessons to \nbe drawn include the following:\n\n1. The triangle model is unsafe at any speed (per Strauss).\n\n2. The degenerate models we tend to encounter have bad behavior that \ngrows exponentially worse in the parameters.  Thus, even a small graph \nwill not always save you -- there is a high-entropy region in which \nthings will work, but the system freezes very quickly once one exits \nthat region.  (See Handcock's 2003 chapter for a very nice example of \nhow small and irregular those regions can be.)  The fact that this \nregion itself often shrinks exponentially fast in N just adds additional \nexcitement to the problem.\n\n3. One can often gain an intuition for the extent of the degeneracy \nproblem by examining the conditional probabilities of edge \nadditions/deletions near the mode (or modes, in some cases).  This is \nnot perfect, but has the virtue of mapping directly onto MCMC behavior.\n\n\nOne final cautionary: as my colleagues have often noted, degeneracy is \nnot simply a problem of the MCMC (although the former tends to wreak \nhavoc with the latter, and the latter is often used heuristically to \nidentify the former).  The triangle model is still going to concentrate \nits mass on the complete graph when theta>0, and no simulation method is \ngoing to change that.  Finding simulation methods that let us get better \nperformance for near-degenerate models is an active research area, and \nlikewise there are ways that existing MCMC schemes can perform poorly on \notherwise tolerable models (see Snijders 2002 JoSS paper for some of \nthese issues); when things really don't seem to work, however, one \nshould entertain the possibility that one's model may be too close to \nthe degenerate limit to be salvaged by any degree of computational \nwizardry.  Techniques such as heuristic analysis of probability ratios \n(as performed above) can be helpful in determining whether this is in \nfact the case.\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "Hi, Hamid -\n\nOn 10/23/2010 11:54 PM, Hamid Ghofrani wrote:\n> Dear All,\n> My question is whether there is any asymptotic assumptions for ERGM?\n\nYes.  (A less general question might yield a less generic",
+      "thread_id": "thread-c1af62717e99",
+      "thread_depth": 1,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-a6a8eb2f99cf",
+      "message_id": "<AANLkTinG+HWhqhOZMdb7aJwn=zq71_3crRrj2HBmC2xY@mail.gmail.com>",
+      "from_name": "Saeed Nasehi Moghadam",
+      "from_email_hash": "bd649562b27e56fdf90f5219df591b4859bb28486c4beabc53908bcc516096e8",
+      "date": "2010-10-26T07:01:04Z",
+      "subject": "[statnet_help] Help:about Warning: The standard errors are suspect due to possible poor convergence",
+      "subject_clean": "[statnet_help] Help:about Warning: The standard errors are suspect due to possible poor convergence",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all and David Hunter\ni need to fit p1 model to my data and use this command\n======================================================================================================\nd.p1=ergm(d~edges+sender+receiver+mutual,seed=1010,maxit=4,verbose=TRUE,interval=500,control=control.ergm(style=\"Robbins-Monro\"))\n======================================================================================================\nbut after fitting model in summary(d.p1) this warning apears:\n-------------------------------------------------------------------------------------------------------------------------------\nWarning:  The standard errors are suspect due to possible poor convergence.\n    Null  Deviance: 41250.575  on 29756  degrees of freedom\n Residual Deviance: 41227.717  on 29410  degrees of freedom\n          Deviance:    22.858  on   346  degrees of freedom\n\nAIC: 41920    BIC: 44792\n------------------------------------------------------------------------------------------------------------------------------------\ndue to size of  my data i could not use another style except\nRobbins-Monro. Now is there any problem to my fit process ? and how\ncan i resolve this\nproblem?\n.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101026/12bdbe16/attachment.html>",
+      "body_snippet": "Hi all and David Hunter\ni need to fit p1 model to my data and use this command\n======================================================================================================\nd.p1=ergm(d~edges+",
+      "thread_id": "thread-a6a8eb2f99cf",
+      "thread_depth": 0,
+      "month": "2010-10"
+    },
+    {
+      "id": "msg-8cd7a7b9b222",
+      "message_id": "<4102DA2A6DF4394B83D6F9EFC2AD12F74D88B7E654@UFEXCH-MBXCL01.ad.ufl.edu>",
+      "from_name": "Fletcher,Robert",
+      "from_email_hash": "0ee220df58b0f3970e4f9e6d621b0def82c555ebc9cd0188447eb76f897d1d46",
+      "date": "2010-10-30T13:31:59Z",
+      "subject": "[statnet_help] BIC interpretation in Latentnet",
+      "subject_clean": "[statnet_help] BIC interpretation in Latentnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet users,\n\nI am running latent space models using the package latentnet to quantify spatial networks based on animal movement. I am interested in comparing among models using model selection criteria. Based on my reading of the documentation of latentnet, it is unclear whether BIC is scaled such that 'smaller is better' or 'larger is better'. One of the examples in the latentnet manual suggests that smaller is better (on the summary.ergmm page), but on another page (the ergmm page), under BIC it cites Handcock et al. (2005). In that article (and Handcock et al. 2007), they select the model with the largest BIC. Could someone please clarify if smaller or larger BIC values are better in this package?\n\nAlso, I have been unable to find any documentation regarding the component BIC values that are provided (e.g., for latent spacing/clustering, random effects, etc.). I assume that the clustering BIC component comes from Hancock et al. (2007), but it is not clear about how this applies when G=1 and there is only latent space dimensions (and no clustering specified). Should these be used for model selection, or the overall BIC?\n\nThanks,\n\nRob Fletcher\n_________________________________________________\nRobert J. Fletcher, Jr.\nAssistant Professor\nDepartment of Wildlife Ecology and Conservation\n318 Newins-Ziegler Hall\nPO Box 110430\nUniversity of Florida\nGainesville, FL 32611\n352-846-0632\nweb: http://plaza.ufl.edu/robert.fletcher/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101030/b2bf8d3c/attachment.html>",
+      "body_snippet": "Dear Statnet users,\n\nI am running latent space models using the package latentnet to quantify spatial networks based on animal movement. I am interested in comparing among models using model selection",
+      "thread_id": "thread-8cd7a7b9b222",
+      "thread_depth": 0,
+      "month": "2010-10"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-9b0682830b66",
+      "subject": "[statnet_help] A clarification on higher-order parameters for directed network in PNet and ergm package",
+      "message_count": 6,
+      "participants": [
+        "David Hunter",
+        "Guido Conaldi",
+        "Haris Memic",
+        "Kevin Lewis",
+        "Steven Goodreau"
+      ],
+      "started": "2010-10-05T03:47:40Z",
+      "last_reply": "2010-10-05T13:16:17Z",
+      "root_message_id": "msg-9b0682830b66"
+    },
+    {
+      "id": "thread-7a2c572bce56",
+      "subject": "[statnet_help] version 2.2-5 updates documentation?",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Jenine Harris"
+      ],
+      "started": "2010-10-05T08:03:51Z",
+      "last_reply": "2010-10-18T05:27:32Z",
+      "root_message_id": "msg-7a2c572bce56"
+    },
+    {
+      "id": "thread-a809675ef010",
+      "subject": "[statnet_help] interaction effects and absdiff term",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Markus Schafer"
+      ],
+      "started": "2010-10-07T13:28:21Z",
+      "last_reply": "2010-10-12T14:22:07Z",
+      "root_message_id": "msg-a809675ef010"
+    },
+    {
+      "id": "thread-f2969c73b1b8",
+      "subject": "[statnet_help] Re: Robbins-Monro and Stepping algorithms",
+      "message_count": 1,
+      "participants": [
+        "David Hunter"
+      ],
+      "started": "2010-10-11T05:51:47Z",
+      "last_reply": "2010-10-11T05:51:47Z",
+      "root_message_id": "msg-f2969c73b1b8"
+    },
+    {
+      "id": "thread-1fefba31432f",
+      "subject": "[statnet_help] direct assignment of network object",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Wincent"
+      ],
+      "started": "2010-10-12T07:20:56Z",
+      "last_reply": "2010-10-12T10:47:35Z",
+      "root_message_id": "msg-1fefba31432f"
+    },
+    {
+      "id": "thread-1aa86b421416",
+      "subject": "[statnet_help] network v1.5 on CRAN",
+      "message_count": 1,
+      "participants": [
+        "Carter T. Butts"
+      ],
+      "started": "2010-10-12T10:50:49Z",
+      "last_reply": "2010-10-12T10:50:49Z",
+      "root_message_id": "msg-1aa86b421416"
+    },
+    {
+      "id": "thread-9d88e23ccab6",
+      "subject": "[statnet_help] missing edges",
+      "message_count": 2,
+      "participants": [
+        "Mark S. Handcock",
+        "Soriani Nicola"
+      ],
+      "started": "2010-10-21T16:13:58Z",
+      "last_reply": "2010-10-21T19:30:29Z",
+      "root_message_id": "msg-9d88e23ccab6"
+    },
+    {
+      "id": "thread-c1af62717e99",
+      "subject": "[statnet_help] A toy example for STATNET",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Hamid Ghofrani"
+      ],
+      "started": "2010-10-23T23:54:45Z",
+      "last_reply": "2010-10-25T22:10:29Z",
+      "root_message_id": "msg-c1af62717e99"
+    },
+    {
+      "id": "thread-cb0667b810b3",
+      "subject": "[statnet_help] Network shrink",
+      "message_count": 1,
+      "participants": [
+        "Tomáš Drenčák"
+      ],
+      "started": "2010-10-25T04:26:54Z",
+      "last_reply": "2010-10-25T04:26:54Z",
+      "root_message_id": "msg-cb0667b810b3"
+    },
+    {
+      "id": "thread-a6a8eb2f99cf",
+      "subject": "[statnet_help] Help:about Warning: The standard errors are suspect due to possible poor convergence",
+      "message_count": 1,
+      "participants": [
+        "Saeed Nasehi Moghadam"
+      ],
+      "started": "2010-10-26T07:01:04Z",
+      "last_reply": "2010-10-26T07:01:04Z",
+      "root_message_id": "msg-a6a8eb2f99cf"
+    },
+    {
+      "id": "thread-8cd7a7b9b222",
+      "subject": "[statnet_help] BIC interpretation in Latentnet",
+      "message_count": 1,
+      "participants": [
+        "Fletcher,Robert"
+      ],
+      "started": "2010-10-30T13:31:59Z",
+      "last_reply": "2010-10-30T13:31:59Z",
+      "root_message_id": "msg-8cd7a7b9b222"
+    }
+  ]
+}

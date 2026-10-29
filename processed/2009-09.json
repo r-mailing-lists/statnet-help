@@ -1,0 +1,501 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2009-09",
+  "messages": [
+    {
+      "id": "msg-6d0eb452c41d",
+      "message_id": "<Pine.LNX.4.43.0909011317430.23991@hymn32.u.washington.edu>",
+      "from_name": "David A. Nolin",
+      "from_email_hash": "9bdba4bb84525b0697b0c9619af7e9af2b1f5002747878ee0c904c5a04fc85a6",
+      "date": "2009-09-01T13:17:43Z",
+      "subject": "[statnet_help] Extracting subgraph based on vertex attribute or restrict calculation of node level indices",
+      "subject_clean": "[statnet_help] Extracting subgraph based on vertex attribute or restrict calculation of node level indices",
+      "in_reply_to": "<7A54D116-7D3B-42BA-900E-5CE2D2AB30C5@sunrise.ch>",
+      "references": [],
+      "body_plain": "To calculate degree over a subset of nodes, use the \"nodes\" option for the degree function. For example, to calculate outdegree (supposing your network is directed) for males only, you'd have something like:\n\ndegree(YourNetwork, nodes=(YourNetwork%v%\"Gender\"==\"m\"), cmode=\"outdegree\")\n\n\n\nOn Mon, 31 Aug 2009, Rico Leuthold wrote:\n\n> Hi,\n>\n> For my thesis, I need to compare the subgraphs of a network based on the gender \n> attribute. The gender data is stored as vertex attribute. What I need is a \n> comparison of some node level indices, such as the degree, within a gender and \n> between the genders.\n>\n> Is there a way to extract a subgraph by gender, or to restrict the calculation \n> of the indices to the gender?\n>\n> Any help is appreciated - thank you ...\n>\n> -rico\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "To calculate degree over a subset of nodes, use the \"nodes\" option for the degree function. For example, to calculate outdegree (supposing your network is directed) for males only, you'd have somethin",
+      "thread_id": "thread-6d0eb452c41d",
+      "thread_depth": 0,
+      "month": "2009-09"
+    },
+    {
+      "id": "msg-7ff7c9c307ef",
+      "message_id": "<DFC2337D-0888-421A-AB91-3472D4096DEC@sunrise.ch>",
+      "from_name": "Rico Leuthold",
+      "from_email_hash": "5a2194e2269f172eebed43c0b69e06d83e66d85093fabbec633d04f1487f9686",
+      "date": "2009-09-03T10:07:39Z",
+      "subject": "[statnet_help] Number of isolates in a network",
+      "subject_clean": "[statnet_help] Number of isolates in a network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nAnother newbie question from my site - How can I determine the number  \nof isolates in a network?\n\nI tried ...\n > summary(net ~ degree(0))\ndegree0\n     14\n... but don't know how to access the number (14). And I need the  \nnumber only to use it in a function ...\n\nThank's again for any help\nRico",
+      "body_snippet": "Hi,\n\nAnother newbie question from my site - How can I determine the number  \nof isolates in a network?\n\nI tried ...\n > summary(net ~ degree(0))\ndegree0\n     14\n... but don't know how to access the num",
+      "thread_id": "thread-7ff7c9c307ef",
+      "thread_depth": 0,
+      "month": "2009-09"
+    },
+    {
+      "id": "msg-6a1a5aa2d35d",
+      "message_id": "<9c15a6240909031012q4c22a67u4ef52dfe700f20bb@mail.gmail.com>",
+      "from_name": "Ben Domingue",
+      "from_email_hash": "8044ec7b0a2e39518222887aecfd1b7d94fd6091c3fdd1931d4cf8c64fddc0de",
+      "date": "2009-09-03T10:12:36Z",
+      "subject": "[statnet_help] Number of isolates in a network",
+      "subject_clean": "[statnet_help] Number of isolates in a network",
+      "in_reply_to": "<DFC2337D-0888-421A-AB91-3472D4096DEC@sunrise.ch>",
+      "references": [
+        "<DFC2337D-0888-421A-AB91-3472D4096DEC@sunrise.ch>"
+      ],
+      "body_plain": "If I'm not mistaken, it's just a matter of using the following if\n'foo' is a network object:\nlength(isolates(foo))\nisolates(foo) returns a vector of the isolate nodes and you want the length.\n\nBen\n\nOn Thu, Sep 3, 2009 at 11:07 AM, Rico Leuthold<rleuthold@sunrise.ch> wrote:\n> Hi,\n>\n> Another newbie question from my site - How can I determine the number of\n> isolates in a network?\n>\n> I tried ...\n>> summary(net ~ degree(0))\n> degree0\n> ? ?14\n> ... but don't know how to access the number (14). And I need the number only\n> to use it in a function ...\n>\n> Thank's again for any help\n> Rico\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "If I'm not mistaken, it's just a matter of using the following if\n'foo' is a network object:\nlength(isolates(foo))\nisolates(foo) returns a vector of the isolate nodes and you want the length.\n\nBen\n\nOn",
+      "thread_id": "thread-7ff7c9c307ef",
+      "thread_depth": 1,
+      "month": "2009-09"
+    },
+    {
+      "id": "msg-1ef08a04c373",
+      "message_id": "<A29EB20E-AE1B-4099-951E-5BF44C5A664E@sunrise.ch>",
+      "from_name": "Rico Leuthold",
+      "from_email_hash": "5a2194e2269f172eebed43c0b69e06d83e66d85093fabbec633d04f1487f9686",
+      "date": "2009-09-04T06:40:16Z",
+      "subject": "[statnet_help] plot network layout",
+      "subject_clean": "[statnet_help] plot network layout",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nWhen I plot my networks - using the kamadakawai layout - the nodes are  \nalways so \"packed\" together. Therefore I woud like to play around with  \nsome of the layout parameters (layout.par)to increase the edge  \nlengths. But I can not figure out how I can pass these parameters,  \nsince the plot function takes only argument as the node parameter.\n\nDoes somebody have an example for me on how to do this, and eventually  \nsome advice to what values the elen and kkconst parameters should be  \nset to increase the edge length?\n\nThank you very much ...\nrico\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090904/8f501676/attachment.html>",
+      "body_snippet": "Hi,\n\nWhen I plot my networks - using the kamadakawai layout - the nodes are  \nalways so \"packed\" together. Therefore I woud like to play around with  \nsome of the layout parameters (layout.par)to incr",
+      "thread_id": "thread-1ef08a04c373",
+      "thread_depth": 0,
+      "month": "2009-09"
+    },
+    {
+      "id": "msg-d5da7efeca46",
+      "message_id": "<E1333145-BE6C-41BA-93D0-38A7116DE9C8@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-09-04T07:54:09Z",
+      "subject": "[statnet_help] plot network layout",
+      "subject_clean": "[statnet_help] plot network layout",
+      "in_reply_to": "<A29EB20E-AE1B-4099-951E-5BF44C5A664E@sunrise.ch>",
+      "references": [
+        "<A29EB20E-AE1B-4099-951E-5BF44C5A664E@sunrise.ch>"
+      ],
+      "body_plain": "One trick that helps if there aren't too many nodes is to modify the  \nplot by hand using the \"interactive\" argument.  Make sure to save the  \ncoordinates for later use, as in:\n\nmycoords <- plot(mynetwork, interactive=TRUE)\n# followed by:\nplot(mynetwork, coord=mycoords)\n\n\n\nDave\n\n\nOn Sep 4, 2009, at 9:40 AM, Rico Leuthold wrote:\n\n> Hi,\n>\n> When I plot my networks - using the kamadakawai layout - the nodes  \n> are always so \"packed\" together. Therefore I woud like to play  \n> around with some of the layout parameters (layout.par)to increase  \n> the edge lengths. But I can not figure out how I can pass these  \n> parameters, since the plot function takes only argument as the node  \n> parameter.\n>\n> Does somebody have an example for me on how to do this, and  \n> eventually some advice to what values the elen and kkconst  \n> parameters should be set to increase the edge length?\n>\n> Thank you very much ...\n> rico\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090904/fd4e821d/attachment.html>",
+      "body_snippet": "One trick that helps if there aren't too many nodes is to modify the  \nplot by hand using the \"interactive\" argument.  Make sure to save the  \ncoordinates for later use, as in:\n\nmycoords <- plot(mynet",
+      "thread_id": "thread-1ef08a04c373",
+      "thread_depth": 1,
+      "month": "2009-09"
+    },
+    {
+      "id": "msg-1c5c2dd418ea",
+      "message_id": "<290A827E-C098-4301-BA44-8450F4A34FDD@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-09-04T08:00:31Z",
+      "subject": "[statnet_help] plot network layout",
+      "subject_clean": "[statnet_help] plot network layout",
+      "in_reply_to": "<E1333145-BE6C-41BA-93D0-38A7116DE9C8@stat.psu.edu>",
+      "references": [
+        "<A29EB20E-AE1B-4099-951E-5BF44C5A664E@sunrise.ch>",
+        "<E1333145-BE6C-41BA-93D0-38A7116DE9C8@stat.psu.edu>"
+      ],
+      "body_plain": "Sorry, one more thing I forgot to mention, in case you didn't already  \nknow:  Make sure you're reading the correct help file using  \nhelp(plot.network), where there's a whole lot more description about  \nparameters you can control.\n\nDave\n\n\nOn Sep 4, 2009, at 10:54 AM, David Hunter wrote:\n\n> One trick that helps if there aren't too many nodes is to modify the  \n> plot by hand using the \"interactive\" argument.  Make sure to save  \n> the coordinates for later use, as in:\n>\n> mycoords <- plot(mynetwork, interactive=TRUE)\n> # followed by:\n> plot(mynetwork, coord=mycoords)\n>\n>\n>\n> Dave\n>\n>\n> On Sep 4, 2009, at 9:40 AM, Rico Leuthold wrote:\n>\n>> Hi,\n>>\n>> When I plot my networks - using the kamadakawai layout - the nodes  \n>> are always so \"packed\" together. Therefore I woud like to play  \n>> around with some of the layout parameters (layout.par)to increase  \n>> the edge lengths. But I can not figure out how I can pass these  \n>> parameters, since the plot function takes only argument as the node  \n>> parameter.\n>>\n>> Does somebody have an example for me on how to do this, and  \n>> eventually some advice to what values the elen and kkconst  \n>> parameters should be set to increase the edge length?\n>>\n>> Thank you very much ...\n>> rico\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090904/49f9b6b8/attachment.html>",
+      "body_snippet": "Sorry, one more thing I forgot to mention, in case you didn't already  \nknow:  Make sure you're reading the correct help file using  \nhelp(plot.network), where there's a whole lot more description abo",
+      "thread_id": "thread-1ef08a04c373",
+      "thread_depth": 2,
+      "month": "2009-09"
+    },
+    {
+      "id": "msg-955bed2ac92b",
+      "message_id": "<49F42126-3029-4207-A390-DCAF5826CD32@sunrise.ch>",
+      "from_name": "Rico Leuthold",
+      "from_email_hash": "5a2194e2269f172eebed43c0b69e06d83e66d85093fabbec633d04f1487f9686",
+      "date": "2009-09-04T09:32:48Z",
+      "subject": "[statnet_help] plot network layout",
+      "subject_clean": "[statnet_help] plot network layout",
+      "in_reply_to": "<290A827E-C098-4301-BA44-8450F4A34FDD@stat.psu.edu>",
+      "references": [
+        "<A29EB20E-AE1B-4099-951E-5BF44C5A664E@sunrise.ch>",
+        "<E1333145-BE6C-41BA-93D0-38A7116DE9C8@stat.psu.edu>",
+        "<290A827E-C098-4301-BA44-8450F4A34FDD@stat.psu.edu>"
+      ],
+      "body_plain": "Hi David,\n\nThanks for the suggestions. My problem is, that I'm going to plot  \naround 20 networks, so it would be easier to have a \"non-manual\"  \nsolution for this problem.\n\nAs for the help - I think this time I got the right manual :-) Itried  \nto set the edge.len parameter to 2, but as soon as I do this, I get  \ncurved edges - as expected. Since in the help it says:\n\n\tedge.len if uselen==TRUE, curved edge lengths are scaled by edge.len.\n\nThank's\nRico\n\n\nOn 04.09.2009, at 17:00, David Hunter wrote:\n\n> Sorry, one more thing I forgot to mention, in case you didn't  \n> already know:  Make sure you're reading the correct help file using  \n> help(plot.network), where there's a whole lot more description about  \n> parameters you can control.\n>\n> Dave\n>\n>\n> On Sep 4, 2009, at 10:54 AM, David Hunter wrote:\n>\n>> One trick that helps if there aren't too many nodes is to modify  \n>> the plot by hand using the \"interactive\" argument.  Make sure to  \n>> save the coordinates for later use, as in:\n>>\n>> mycoords <- plot(mynetwork, interactive=TRUE)\n>> # followed by:\n>> plot(mynetwork, coord=mycoords)\n>>\n>>\n>>\n>> Dave\n>>\n>>\n>> On Sep 4, 2009, at 9:40 AM, Rico Leuthold wrote:\n>>\n>>> Hi,\n>>>\n>>> When I plot my networks - using the kamadakawai layout - the nodes  \n>>> are always so \"packed\" together. Therefore I woud like to play  \n>>> around with some of the layout parameters (layout.par)to increase  \n>>> the edge lengths. But I can not figure out how I can pass these  \n>>> parameters, since the plot function takes only argument as the  \n>>> node parameter.\n>>>\n>>> Does somebody have an example for me on how to do this, and  \n>>> eventually some advice to what values the elen and kkconst  \n>>> parameters should be set to increase the edge length?\n>>>\n>>> Thank you very much ...\n>>> rico\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090904/e770575b/attachment.html>",
+      "body_snippet": "Hi David,\n\nThanks for the suggestions. My problem is, that I'm going to plot  \naround 20 networks, so it would be easier to have a \"non-manual\"  \nsolution for this problem.\n\nAs for the help - I think ",
+      "thread_id": "thread-1ef08a04c373",
+      "thread_depth": 3,
+      "month": "2009-09"
+    },
+    {
+      "id": "msg-4863e9f67839",
+      "message_id": "<A6EDEFB1-7EA4-48F2-91D7-23A71501A752@reed.edu>",
+      "from_name": "Alexander H. Montgomery",
+      "from_email_hash": "d1c48c3c695c97a51e653a3cc66bc8e8fd7c5c03b9e0a43fd4b72da306733d40",
+      "date": "2009-09-04T11:26:35Z",
+      "subject": "[statnet_help] plot network layout",
+      "subject_clean": "[statnet_help] plot network layout",
+      "in_reply_to": "<49F42126-3029-4207-A390-DCAF5826CD32@sunrise.ch>",
+      "references": [
+        "<A29EB20E-AE1B-4099-951E-5BF44C5A664E@sunrise.ch>",
+        "<E1333145-BE6C-41BA-93D0-38A7116DE9C8@stat.psu.edu>",
+        "<290A827E-C098-4301-BA44-8450F4A34FDD@stat.psu.edu>",
+        "<49F42126-3029-4207-A390-DCAF5826CD32@sunrise.ch>"
+      ],
+      "body_plain": "You might have better luck using \"fruchtermanreingold\" instead and  \nincreasing layout.par$repulse.rad until the network spreads out more:\n\nlayout.par <- list(repulse.rad=<some large number>)\n\nThen\n\nplot(mynetwork,layout.par=layout.par)\n\nIterate until you get something that looks good.\n\nKeep in mind that if your network is sufficiently large and dense,  \nit's always going to look \"packed together\" on a graph.\n\n-AHM\n\nOn 2009-09-04, at 9:32 AM, Rico Leuthold wrote:\n\n> Hi David,\n>\n> Thanks for the suggestions. My problem is, that I'm going to plot  \n> around 20 networks, so it would be easier to have a \"non-manual\"  \n> solution for this problem.\n>\n> As for the help - I think this time I got the right manual :-)  \n> Itried to set the edge.len parameter to 2, but as soon as I do this,  \n> I get curved edges - as expected. Since in the help it says:\n>\n> \tedge.len if uselen==TRUE, curved edge lengths are scaled by edge.len.\n>\n> Thank's\n> Rico\n>\n>\n> On 04.09.2009, at 17:00, David Hunter wrote:\n>\n>> Sorry, one more thing I forgot to mention, in case you didn't  \n>> already know:  Make sure you're reading the correct help file using  \n>> help(plot.network), where there's a whole lot more description  \n>> about parameters you can control.\n>>\n>> Dave\n>>\n>>\n>> On Sep 4, 2009, at 10:54 AM, David Hunter wrote:\n>>\n>>> One trick that helps if there aren't too many nodes is to modify  \n>>> the plot by hand using the \"interactive\" argument.  Make sure to  \n>>> save the coordinates for later use, as in:\n>>>\n>>> mycoords <- plot(mynetwork, interactive=TRUE)\n>>> # followed by:\n>>> plot(mynetwork, coord=mycoords)\n>>>\n>>>\n>>>\n>>> Dave\n>>>\n>>>\n>>> On Sep 4, 2009, at 9:40 AM, Rico Leuthold wrote:\n>>>\n>>>> Hi,\n>>>>\n>>>> When I plot my networks - using the kamadakawai layout - the  \n>>>> nodes are always so \"packed\" together. Therefore I woud like to  \n>>>> play around with some of the layout parameters (layout.par)to  \n>>>> increase the edge lengths. But I can not figure out how I can  \n>>>> pass these parameters, since the plot function takes only  \n>>>> argument as the node parameter.\n>>>>\n>>>> Does somebody have an example for me on how to do this, and  \n>>>> eventually some advice to what values the elen and kkconst  \n>>>> parameters should be set to increase the edge length?\n>>>>\n>>>> Thank you very much ...\n>>>> rico\n>>>> _______________________________________________\n>>>> statnet_help mailing list\n>>>> statnet_help@u.washington.edu\n>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090904/25903f2c/attachment.html>",
+      "body_snippet": "You might have better luck using \"fruchtermanreingold\" instead and  \nincreasing layout.par$repulse.rad until the network spreads out more:\n\nlayout.par <- list(repulse.rad=<some large number>)\n\nThen\n\np",
+      "thread_id": "thread-1ef08a04c373",
+      "thread_depth": 4,
+      "month": "2009-09"
+    },
+    {
+      "id": "msg-4968c9bce63d",
+      "message_id": "<01FD694F-3E04-496E-8C4E-0A19D54EC733@sunrise.ch>",
+      "from_name": "Rico Leuthold",
+      "from_email_hash": "5a2194e2269f172eebed43c0b69e06d83e66d85093fabbec633d04f1487f9686",
+      "date": "2009-09-04T12:23:58Z",
+      "subject": "[statnet_help] plot network layout",
+      "subject_clean": "[statnet_help] plot network layout",
+      "in_reply_to": "<A6EDEFB1-7EA4-48F2-91D7-23A71501A752@reed.edu>",
+      "references": [
+        "<A29EB20E-AE1B-4099-951E-5BF44C5A664E@sunrise.ch>",
+        "<E1333145-BE6C-41BA-93D0-38A7116DE9C8@stat.psu.edu>",
+        "<290A827E-C098-4301-BA44-8450F4A34FDD@stat.psu.edu>",
+        "<49F42126-3029-4207-A390-DCAF5826CD32@sunrise.ch>",
+        "<A6EDEFB1-7EA4-48F2-91D7-23A71501A752@reed.edu>"
+      ],
+      "body_plain": "... thank you very much. That is exactly what I was looking for.\n\nIn my case a value of about 40000 seems to be appropriate.\n\n-rico\n\n\nOn 04.09.2009, at 20:26, Alexander H. Montgomery wrote:\n\n> You might have better luck using \"fruchtermanreingold\" instead and  \n> increasing layout.par$repulse.rad until the network spreads out more:\n>\n> layout.par <- list(repulse.rad=<some large number>)\n>\n> Then\n>\n> plot(mynetwork,layout.par=layout.par)\n>\n> Iterate until you get something that looks good.\n>\n> Keep in mind that if your network is sufficiently large and dense,  \n> it's always going to look \"packed together\" on a graph.\n>\n> -AHM\n>\n> On 2009-09-04, at 9:32 AM, Rico Leuthold wrote:\n>\n>> Hi David,\n>>\n>> Thanks for the suggestions. My problem is, that I'm going to plot  \n>> around 20 networks, so it would be easier to have a \"non-manual\"  \n>> solution for this problem.\n>>\n>> As for the help - I think this time I got the right manual :-)  \n>> Itried to set the edge.len parameter to 2, but as soon as I do  \n>> this, I get curved edges - as expected. Since in the help it says:\n>>\n>> \tedge.len if uselen==TRUE, curved edge lengths are scaled by  \n>> edge.len.\n>>\n>> Thank's\n>> Rico\n>>\n>>\n>> On 04.09.2009, at 17:00, David Hunter wrote:\n>>\n>>> Sorry, one more thing I forgot to mention, in case you didn't  \n>>> already know:  Make sure you're reading the correct help file  \n>>> using help(plot.network), where there's a whole lot more  \n>>> description about parameters you can control.\n>>>\n>>> Dave\n>>>\n>>>\n>>> On Sep 4, 2009, at 10:54 AM, David Hunter wrote:\n>>>\n>>>> One trick that helps if there aren't too many nodes is to modify  \n>>>> the plot by hand using the \"interactive\" argument.  Make sure to  \n>>>> save the coordinates for later use, as in:\n>>>>\n>>>> mycoords <- plot(mynetwork, interactive=TRUE)\n>>>> # followed by:\n>>>> plot(mynetwork, coord=mycoords)\n>>>>\n>>>>\n>>>>\n>>>> Dave\n>>>>\n>>>>\n>>>> On Sep 4, 2009, at 9:40 AM, Rico Leuthold wrote:\n>>>>\n>>>>> Hi,\n>>>>>\n>>>>> When I plot my networks - using the kamadakawai layout - the  \n>>>>> nodes are always so \"packed\" together. Therefore I woud like to  \n>>>>> play around with some of the layout parameters (layout.par)to  \n>>>>> increase the edge lengths. But I can not figure out how I can  \n>>>>> pass these parameters, since the plot function takes only  \n>>>>> argument as the node parameter.\n>>>>>\n>>>>> Does somebody have an example for me on how to do this, and  \n>>>>> eventually some advice to what values the elen and kkconst  \n>>>>> parameters should be set to increase the edge length?\n>>>>>\n>>>>> Thank you very much ...\n>>>>> rico\n>>>>> _______________________________________________\n>>>>> statnet_help mailing list\n>>>>> statnet_help@u.washington.edu\n>>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>>\n>>>> _______________________________________________\n>>>> statnet_help mailing list\n>>>> statnet_help@u.washington.edu\n>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090904/d6d37cfc/attachment.html>",
+      "body_snippet": "... thank you very much. That is exactly what I was looking for.\n\nIn my case a value of about 40000 seems to be appropriate.\n\n-rico\n\n\nOn 04.09.2009, at 20:26, Alexander H. Montgomery wrote:\n\n> You mig",
+      "thread_id": "thread-1ef08a04c373",
+      "thread_depth": 5,
+      "month": "2009-09"
+    },
+    {
+      "id": "msg-4e7163a940d6",
+      "message_id": "<076a01ca2f14$75aeecd0$610cc670$@com>",
+      "from_name": "Benjamin Elbirt",
+      "from_email_hash": "fcc44ce245c606048d928df310c3a40f70fdf6fe7d61b3f641c49566b4910287",
+      "date": "2009-09-06T10:07:04Z",
+      "subject": "[statnet_help] Newbie Installation PRoblems",
+      "subject_clean": "[statnet_help] Newbie Installation PRoblems",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Good Afternoon,\n\n \n\nI'm trying to install StatNet in R (downloaded the latest/updated today) and\nI get the following error:\n\n \n\npackage 'network' successfully unpacked and MD5 sums checked\n\nError in normalizePath(path) : \n\n  path[1]=\"C:\\Program Files\\R\\R-2.9.2\\library/network\": The system cannot\nfind the file specified\n\n \n\nI am on a Windows XP system.  Any help would be greatly appreciated.\n\n\nBen Elbirt\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090906/18377c86/attachment.html>",
+      "body_snippet": "Good Afternoon,\n\n \n\nI'm trying to install StatNet in R (downloaded the latest/updated today) and\nI get the following error:\n\n \n\npackage 'network' successfully unpacked and MD5 sums checked\n\nError in n",
+      "thread_id": "thread-4e7163a940d6",
+      "thread_depth": 0,
+      "month": "2009-09"
+    },
+    {
+      "id": "msg-76e71710e23c",
+      "message_id": "<4E15D330-3B1A-4C23-BF0E-B4D1962DD7F0@sunrise.ch>",
+      "from_name": "Rico Leuthold",
+      "from_email_hash": "5a2194e2269f172eebed43c0b69e06d83e66d85093fabbec633d04f1487f9686",
+      "date": "2009-09-07T01:38:48Z",
+      "subject": "[statnet_help] Assortativity coefficient (Newman)",
+      "subject_clean": "[statnet_help] Assortativity coefficient (Newman)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nWhere it's relatively simple to calculate the assortativity  \ncoefficient (based on the mixingmatrix values), as introduced by  \nNewman, with statnet, it will be difficult to write a function to  \ndetermine the standard deviation for that value.\n\nSo I thought I'm asking the community before I try to create such a  \nfunction. Does anybody have an approach or even better a function to  \ncalculate this value?\n\nMany thanks ...\nrico",
+      "body_snippet": "Hi,\n\nWhere it's relatively simple to calculate the assortativity  \ncoefficient (based on the mixingmatrix values), as introduced by  \nNewman, with statnet, it will be difficult to write a function to ",
+      "thread_id": "thread-76e71710e23c",
+      "thread_depth": 0,
+      "month": "2009-09"
+    },
+    {
+      "id": "msg-b13b43a76877",
+      "message_id": "<Pine.WNT.4.64.0909071304360.3528@mmorris>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2009-09-07T13:06:54Z",
+      "subject": "[statnet_help] plot network layout",
+      "subject_clean": "[statnet_help] plot network layout",
+      "in_reply_to": "<01FD694F-3E04-496E-8C4E-0A19D54EC733@sunrise.ch>",
+      "references": [
+        "<A29EB20E-AE1B-4099-951E-5BF44C5A664E@sunrise.ch>",
+        "<E1333145-BE6C-41BA-93D0-38A7116DE9C8@stat.psu.edu>",
+        "<290A827E-C098-4301-BA44-8450F4A34FDD@stat.psu.edu>",
+        "<49F42126-3029-4207-A390-DCAF5826CD32@sunrise.ch>",
+        "<A6EDEFB1-7EA4-48F2-91D7-23A71501A752@reed.edu>",
+        "<01FD694F-3E04-496E-8C4E-0A19D54EC733@sunrise.ch>"
+      ],
+      "body_plain": "You might also try reducing the node size -- i often use vertex.cex=0.6\n\nbest,\nmm\n\nOn Fri, 4 Sep 2009, Rico Leuthold wrote:\n\n> ... thank you very much. That is exactly what I was looking for.\n>\n> In my case a value of about 40000 seems to be appropriate.\n>\n> -rico\n>\n>\n> On 04.09.2009, at 20:26, Alexander H. Montgomery wrote:\n>\n>> You might have better luck using \"fruchtermanreingold\" instead and \n>> increasing layout.par$repulse.rad until the network spreads out more:\n>> \n>> layout.par <- list(repulse.rad=<some large number>)\n>> \n>> Then\n>> \n>> plot(mynetwork,layout.par=layout.par)\n>> \n>> Iterate until you get something that looks good.\n>> \n>> Keep in mind that if your network is sufficiently large and dense, it's \n>> always going to look \"packed together\" on a graph.\n>> \n>> -AHM\n>> \n>> On 2009-09-04, at 9:32 AM, Rico Leuthold wrote:\n>> \n>>> Hi David,\n>>> \n>>> Thanks for the suggestions. My problem is, that I'm going to plot around \n>>> 20 networks, so it would be easier to have a \"non-manual\" solution for \n>>> this problem.\n>>> \n>>> As for the help - I think this time I got the right manual :-) Itried to \n>>> set the edge.len parameter to 2, but as soon as I do this, I get curved \n>>> edges - as expected. Since in the help it says:\n>>>\n>>> \tedge.len if uselen==TRUE, curved edge lengths are scaled by edge.len.\n>>> \n>>> Thank's\n>>> Rico\n>>> \n>>> \n>>> On 04.09.2009, at 17:00, David Hunter wrote:\n>>> \n>>>> Sorry, one more thing I forgot to mention, in case you didn't already \n>>>> know:  Make sure you're reading the correct help file using \n>>>> help(plot.network), where there's a whole lot more description about \n>>>> parameters you can control.\n>>>> \n>>>> Dave\n>>>> \n>>>> \n>>>> On Sep 4, 2009, at 10:54 AM, David Hunter wrote:\n>>>> \n>>>>> One trick that helps if there aren't too many nodes is to modify the \n>>>>> plot by hand using the \"interactive\" argument.  Make sure to save the \n>>>>> coordinates for later use, as in:\n>>>>> \n>>>>> mycoords <- plot(mynetwork, interactive=TRUE)\n>>>>> # followed by:\n>>>>> plot(mynetwork, coord=mycoords)\n>>>>> \n>>>>> \n>>>>> \n>>>>> Dave\n>>>>> \n>>>>> \n>>>>> On Sep 4, 2009, at 9:40 AM, Rico Leuthold wrote:\n>>>>> \n>>>>>> Hi,\n>>>>>> \n>>>>>> When I plot my networks - using the kamadakawai layout - the nodes are \n>>>>>> always so \"packed\" together. Therefore I woud like to play around with \n>>>>>> some of the layout parameters (layout.par)to increase the edge lengths. \n>>>>>> But I can not figure out how I can pass these parameters, since the \n>>>>>> plot function takes only argument as the node parameter.\n>>>>>> \n>>>>>> Does somebody have an example for me on how to do this, and eventually \n>>>>>> some advice to what values the elen and kkconst parameters should be \n>>>>>> set to increase the edge length?\n>>>>>> \n>>>>>> Thank you very much ...\n>>>>>> rico\n>>>>>> _______________________________________________\n>>>>>> statnet_help mailing list\n>>>>>> statnet_help@u.washington.edu\n>>>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>>> \n>>>>> _______________________________________________\n>>>>> statnet_help mailing list\n>>>>> statnet_help@u.washington.edu\n>>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>> \n>>>> _______________________________________________\n>>>> statnet_help mailing list\n>>>> statnet_help@u.washington.edu\n>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>> \n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>> \n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "You might also try reducing the node size -- i often use vertex.cex=0.6\n\nbest,\nmm\n\nOn Fri, 4 Sep 2009, Rico Leuthold wrote:\n\n> ... thank you very much. That is exactly what I was looking for.\n>\n> In m",
+      "thread_id": "thread-1ef08a04c373",
+      "thread_depth": 6,
+      "month": "2009-09"
+    },
+    {
+      "id": "msg-b835a0fef95c",
+      "message_id": "<29E535F9-04B1-4E89-9E8F-F14533C188E1@sunrise.ch>",
+      "from_name": "Rico Leuthold",
+      "from_email_hash": "5a2194e2269f172eebed43c0b69e06d83e66d85093fabbec633d04f1487f9686",
+      "date": "2009-09-08T03:48:40Z",
+      "subject": "[statnet_help] Egde betweenness",
+      "subject_clean": "[statnet_help] Egde betweenness",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nQuestion over question - I'm sorry. But believe me, I'm searching the  \narchive and the manuals before posting questions.\n\nI'm looking for a function to calculate edge betweeness. Is this  \nimplemented in one of the statnet packages?\n\nThank's\nRico",
+      "body_snippet": "Hi,\n\nQuestion over question - I'm sorry. But believe me, I'm searching the  \narchive and the manuals before posting questions.\n\nI'm looking for a function to calculate edge betweeness. Is this  \nimple",
+      "thread_id": "thread-b835a0fef95c",
+      "thread_depth": 0,
+      "month": "2009-09"
+    },
+    {
+      "id": "msg-a7f293e3629f",
+      "message_id": "<4AA8F830.2060307@ucsd.edu>",
+      "from_name": "Simon Frost",
+      "from_email_hash": "035b0ea7e424ab86c49e75c8ef123f13dce97b7aaadbb47397e5c83707ce33a8",
+      "date": "2009-09-10T05:59:28Z",
+      "subject": "[statnet_help] Research Associate in Network Epidemiology using Bipartite Networks at the University of Cambridge",
+      "subject_clean": "[statnet_help] Research Associate in Network Epidemiology using Bipartite Networks at the University of Cambridge",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet List,\n\nSorry if this is off-topic, but I'm looking for a networky person for \nthe following position. Simulation/ERGM experience (especially on \nbipartite networks) would be great!\n\nUNIVERSITY OF CAMBRIDGE\n\nDEPARTMENT OF VETERINARY MEDICINE\n\nResearch Associate in Network Epidemiology using Bipartite Networks\n\nStipend 7 ?27,183.00 to ?35,469.00\n\nLimit of Tenure: 31 August 2010, with reappointment on a yearly basis \nuntil 31 August 2011.\n \nVenues, such as bars and clubs, can shape social, sexual, and drug-use \nnetworks. This project involves the development of statistical, \ncomputational, and mathematical models of social networks and disease \ntransmission, which will be applied to a dataset of HIV risk behaviours \nand drug use collected from men who have sex with men in bars and clubs \nin San Diego, California. Simulation models will be used to generate \nbipartite networks, representing the relationship between individuals \nand the places they visit. This project will guide further data \ncollection from cities in the United Kingdom. Models of how individuals \nchoose where to go, and how they behave there, can also be adapted to \nother systems, such as how different host species are infected by \ndifferent pathogen species.\n\nYou should have a PhD in one of the following fields: statistics, \ncomputational biology, sociology, mathematics, or epidemiology. You \nshould have a keen interest in social/sexual/drug-using networks. You \nshould also have excellent quantitative skills, be proficient in \ncomputer programming (R, C/C++, Python), or show evidence that such \nskills can be acquired quickly.\n\nFor informal enquiries contact Dr. Simon Frost by email: sdf22@cam.ac.uk\n\nFurther particulars are available at: http://www.vet.cam.ac.uk/news/\n\nApplicants should supply the following:\n\nLetter of application stating areas of interest\nCurriculum Vitae, with the names and contact details of three referees\nA completed application form PD18, (parts one and three only) available \nfrom the Melissa Large on 01223 337055 or from:\nhttp://www.admin.cam.ac.uk/offices/hr/forms/pd18\n\nApplications should be sent to Melissa Large, Department of Veterinary \nMedicine, Madingley Road, Cambridge CB3 0ES to arrive no later than 2nd \nOctober 2009. Applications can be made via email to \nrecruit@vet.cam.ac.uk with the above documents as word attachments. \nInterviews will be held 12th October 2009\n\n\n-- \nSimon D.W. Frost, D.Phil.\nSenior Lecturer\nDepartment of Veterinary Medicine\nUniversity of Cambridge\nMadingley Road\nCambridge CB3 0ES\nU.K.\n\nTel: +44 (0)1223 764201\nFax: +44 (0)1223 765760\nEmail: sdf22@cam.ac.uk\nURL: http://www.vet.cam.ac.uk/research/investigators/frost.html",
+      "body_snippet": "Dear Statnet List,\n\nSorry if this is off-topic, but I'm looking for a networky person for \nthe following position. Simulation/ERGM experience (especially on \nbipartite networks) would be great!\n\nUNIVE",
+      "thread_id": "thread-a7f293e3629f",
+      "thread_depth": 0,
+      "month": "2009-09"
+    },
+    {
+      "id": "msg-16ca7ea611f4",
+      "message_id": "<7631DE49-DD4E-4122-A7D0-1C83CE80EEFC@sunrise.ch>",
+      "from_name": "Rico Leuthold",
+      "from_email_hash": "5a2194e2269f172eebed43c0b69e06d83e66d85093fabbec633d04f1487f9686",
+      "date": "2009-09-13T01:37:54Z",
+      "subject": "[statnet_help] ERGM null model with fixed degree distribution",
+      "subject_clean": "[statnet_help] ERGM null model with fixed degree distribution",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nIn the last few days I tried to find an access to the world of the  \nERGM's. But for people which are not that familiar with statistics,  \nlike me, this seems to be rather difficult. The information in all the  \narticles is just overwhelming.\n\nSo, I thought you could maybe give me some help with a particular  \nquestion I would like to answer by the use of the ergm package.\n\nI try to study the assortative mixing, based on the gender, in the  \nnetwork. There is some good and clear advise in the \"statnet Tutorial\"  \narticle on how to do this. But in the tutorial they use, as I  \nunderstand it, an Erd?s-R?nyi Model as the null model. For my network,  \nhowever, it seems to be better to use a network with a fixed degree  \ndistribution as the null model. Is it convenient to get such a model  \nwith the following command:\n\nR> mod_deg <- ergm(net_orig ~ degree(unique(degree(net_orig,  \ngmode=\"graph\"))))\n\nBased on the model, I would like to study the assortative mixing by  \ngender:\n\nR> mod_deg_sex <- ergm(net_orig ~ degree(unique(degree(net_orig,  \ngmode=\"graph\"))) + nodemix(\"SEX\"))\n\n[...]\n\nmix.SEX.f.f  -1.0693    14.7238        NA   0.942\nmix.SEX.f.m  -1.0430    16.1148        NA   0.948\nmix.SEX.m.m  -0.9059    11.3241        NA   0.936\nmix.SEX.f.u  -1.4389     5.1658        NA   0.781\nmix.SEX.m.u  -1.2306     4.8916        NA   0.801\nmix.SEX.u.u     -Inf         NA        NA      NA\n\n[...]\n\nR> mod_deg_sex$mle.lik\n[1] -692.3349\n\n(u stands for nodes for which the gender is unknown)\n\nDoes this output mean, that the assortative mixing  by gender is  \n(statistically) not a factor which leads to the given network  \nstructure (high std. errors, and p-values)?\n\nAny help and comments are highly appreciated.\n\nThank you\nrico",
+      "body_snippet": "Hi,\n\nIn the last few days I tried to find an access to the world of the  \nERGM's. But for people which are not that familiar with statistics,  \nlike me, this seems to be rather difficult. The informat",
+      "thread_id": "thread-16ca7ea611f4",
+      "thread_depth": 0,
+      "month": "2009-09"
+    },
+    {
+      "id": "msg-944ae07f9ee0",
+      "message_id": "<A2921000-EC1A-4765-B117-BDD76C541856@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-09-14T04:12:15Z",
+      "subject": "[statnet_help] ERGM null model with fixed degree distribution",
+      "subject_clean": "[statnet_help] ERGM null model with fixed degree distribution",
+      "in_reply_to": "<7631DE49-DD4E-4122-A7D0-1C83CE80EEFC@sunrise.ch>",
+      "references": [
+        "<7631DE49-DD4E-4122-A7D0-1C83CE80EEFC@sunrise.ch>"
+      ],
+      "body_plain": "Hi Rico.  Just a quick response for now:\n\nAdding degree terms to an ergm won't fix the degree distribution.  To  \ndo that you should use the \"constraints\" option with the ergm  \nfunction.  In the help file for the ergm function, check out the  \nspecific section that discusses \"constraints\" and see if that makes  \nsense.\n\nSorry for the brief reply!\nDave\n\n\nOn Sep 13, 2009, at 4:37 AM, Rico Leuthold wrote:\n\n> Hi,\n>\n> In the last few days I tried to find an access to the world of the  \n> ERGM's. But for people which are not that familiar with statistics,  \n> like me, this seems to be rather difficult. The information in all  \n> the articles is just overwhelming.\n>\n> So, I thought you could maybe give me some help with a particular  \n> question I would like to answer by the use of the ergm package.\n>\n> I try to study the assortative mixing, based on the gender, in the  \n> network. There is some good and clear advise in the \"statnet  \n> Tutorial\" article on how to do this. But in the tutorial they use,  \n> as I understand it, an Erd?s-R?nyi Model as the null model. For my  \n> network, however, it seems to be better to use a network with a  \n> fixed degree distribution as the null model. Is it convenient to get  \n> such a model with the following command:\n>\n> R> mod_deg <- ergm(net_orig ~ degree(unique(degree(net_orig,  \n> gmode=\"graph\"))))\n>\n> Based on the model, I would like to study the assortative mixing by  \n> gender:\n>\n> R> mod_deg_sex <- ergm(net_orig ~ degree(unique(degree(net_orig,  \n> gmode=\"graph\"))) + nodemix(\"SEX\"))\n>\n> [...]\n>\n> mix.SEX.f.f  -1.0693    14.7238        NA   0.942\n> mix.SEX.f.m  -1.0430    16.1148        NA   0.948\n> mix.SEX.m.m  -0.9059    11.3241        NA   0.936\n> mix.SEX.f.u  -1.4389     5.1658        NA   0.781\n> mix.SEX.m.u  -1.2306     4.8916        NA   0.801\n> mix.SEX.u.u     -Inf         NA        NA      NA\n>\n> [...]\n>\n> R> mod_deg_sex$mle.lik\n> [1] -692.3349\n>\n> (u stands for nodes for which the gender is unknown)\n>\n> Does this output mean, that the assortative mixing  by gender is  \n> (statistically) not a factor which leads to the given network  \n> structure (high std. errors, and p-values)?\n>\n> Any help and comments are highly appreciated.\n>\n> Thank you\n> rico\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Rico.  Just a quick response for now:\n\nAdding degree terms to an ergm won't fix the degree distribution.  To  \ndo that you should use the \"constraints\" option with the ergm  \nfunction.  In the help",
+      "thread_id": "thread-16ca7ea611f4",
+      "thread_depth": 1,
+      "month": "2009-09"
+    },
+    {
+      "id": "msg-9363d4848d46",
+      "message_id": "<84C59624B1B0204BBCB3B7DDF981AE630D3D0DAE@GWB-PO.gwb.wustl.edu>",
+      "from_name": "Marsela Dauti",
+      "from_email_hash": "10a1d3726d2d52f81c4d0f791a3423b55b436eed7e6d1799a8baaf3f616c49f6",
+      "date": "2009-09-19T15:49:35Z",
+      "subject": "[statnet_help] missing values",
+      "subject_clean": "[statnet_help] missing values",
+      "in_reply_to": null,
+      "references": [
+        "<1ea8d8280908061519w86a71f9o8b2ab262b831f252@mail.gmail.com>",
+        "<Pine.WNT.4.64.0908180750260.3180@vinaya.csde.washington.edu>",
+        "<1ea8d8280908180914k5bbdb577ndbe7067820ca88e3@mail.gmail.com>"
+      ],
+      "body_plain": "Hi,\n\n \n\nI am running a stochastic model in R with attribute and structural predictors and I get the following error:\n\n \n\nCalling optimization routines...\n\nstatseval:  epsilon value is  \n\nCalling MCMLE Optimization...\n\nUsing Newton-Raphson Step ...\n\nConverting theta0 to eta0\n\nOptimizing loglikelihood\n\ninitial  value -0.000000 \n\nfinal  value -0.028021 \n\nconverged\n\nthe log-likelihood improved by 0.02802 \n\nStarting MCMC s.e. computation.\n\nError in svd(H) : infinite or missing values in 'x'\n\n \n\nThis occurs when I change nodefactor to nodematch for two variables in the model (none of them have missing values). The two variables are region (5 categories) and sector (5 categories). \n\n \n\nI understand from the output that this might be related to the missing or infinite values but I am wondering why this occurs when I use nodematch and also if there is any way I can address the problem. I have replaced missing values with NAs.\n\n \n\nThank you very much for the feedback. Please let me know if you have any question about the model. \n\n \n\nMarsela \n\n \nMarsela Dauti, MSW, MA | Doctoral Student | George Warren Brown School of Social Work | Washington University in St. Louis | 1 Brookings Drive, Campus Box 1196, St. Louis, MO 63130\n \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090919/b5221f93/attachment.html>",
+      "body_snippet": "Hi,\n\n \n\nI am running a stochastic model in R with attribute and structural predictors and I get the following error:\n\n \n\nCalling optimization routines...\n\nstatseval:  epsilon value is  \n\nCalling MCMLE",
+      "thread_id": "thread-9363d4848d46",
+      "thread_depth": 0,
+      "month": "2009-09"
+    },
+    {
+      "id": "msg-309a6dc5ff32",
+      "message_id": "<6F597A62-1027-4011-84EF-A17359D91982@asu.edu>",
+      "from_name": "Matthew Pittinsky",
+      "from_email_hash": "070319829aa04d75e9ef26ed32041066fc8ebc33f91045870072e23bc0dac640",
+      "date": "2009-09-23T17:10:49Z",
+      "subject": "[statnet_help] ERGM, missing data, and dyadcov and edgecov terms",
+      "subject_clean": "[statnet_help] ERGM, missing data, and dyadcov and edgecov terms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI have a Statnet-ERGM question that I suspect has been asked and  \nanswered, but so far my search of the archives has not yielded an  \nanswer.\n\nI am working with a directed graph. A small number of actors in my  \npopulation have missing data for their edges.  However, I have a rich  \nset of attribute data for these actors, which leads me to retain dyads  \nin which they are alters for models w/ nodematch terms, etc.\n\nCertain ERGM terms (e.g., edgecov) require that the dataset analyzed  \nconsist of all possible edges in the data along with values for  \nwhatever edge covariates are of interest.  In my case, given missing  \ndata, all possible edges (possible = possibly observed) would not be a  \nsquare matrix, because only actors with alter data can be egos, while  \nall actors can be alters.\n\nI assume the edgecov term expects a square matrix anyway.  If so, I  \nseem to have two options:\n\n1) Reduce my data to only edges in which ego and alter both are  \ncomplete in terms of tie data.\n2) Provide ERGM with the full square matrix, including edges that I  \ncan't observe.\n\nIf #2, to the extent I have a node attribute indicating whether the  \nnode's edges were missing rather than null, are there additional  \nstatements that can be made to capture that only certain directed  \nedges can be observed?\n\nAs a reminder (from the JOSS ERGM article):\n\n\"The x argument is either a square matrix of covariates, one for each  \npossible edge in the network, covariates, or a network; if the latter,  \noptional argument attrname provides the name of the quantitative edge  \nattribute to use for covariate values (in this case, missing edges in  \nx are assigned a covariate value of zero). \"\n\nIt appears to call for the square matrix, but that doesn't feel quite  \nright.\n\nAny suggestions, best practices, readings, or considerations are  \nappreciated....\n\nThanks!\n\nMatthew\n\n________________________\n\nMatthew Pittinsky, Ph.D.\nAssistant Professor\nArizona State University\nSchool of Social and Family Dynamics, Program in Sociology\noffice: Social Sciences 217\nphone: 480-727-9163\nemail: mpittinsky@asu.edu\nweb: www.public.asu.edu/~mpittins\n\n________________________",
+      "body_snippet": "Hello,\n\nI have a Statnet-ERGM question that I suspect has been asked and  \nanswered, but so far my search of the archives has not yielded an  \nanswer.\n\nI am working with a directed graph. A small numb",
+      "thread_id": "thread-309a6dc5ff32",
+      "thread_depth": 0,
+      "month": "2009-09"
+    },
+    {
+      "id": "msg-ed6947496d78",
+      "message_id": "<43932520-0B6F-44B8-8DBF-375E2AC84306@asu.edu>",
+      "from_name": "Matthew Pittinsky",
+      "from_email_hash": "070319829aa04d75e9ef26ed32041066fc8ebc33f91045870072e23bc0dac640",
+      "date": "2009-09-24T08:24:08Z",
+      "subject": "[statnet_help] ERGM, missing data, and dyadcov and edgecov terms",
+      "subject_clean": "[statnet_help] ERGM, missing data, and dyadcov and edgecov terms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI have a Statnet-ERGM question that I suspect has been asked and  \nanswered, but so far my search of the archives has not yielded an  \nanswer.\n\nI am working with a directed graph. A small number of actors in my  \npopulation have missing data for their edges.  However, I have a rich  \nset of attribute data for these actors, which leads me to retain dyads  \nin which they are alters for models w/ nodematch terms, etc.\n\nCertain ERGM terms (e.g., edgecov) require that the dataset analyzed  \nconsist of all possible edges in the data along with values for  \nwhatever edge covariates are of interest.  In my case, given missing  \ndata, all possible edges (possible = possibly observed) would not be a  \nsquare matrix, because only actors with alter data can be egos, while  \nall actors can be alters.\n\nI assume the edgecov term expects a square matrix anyway.  If so, I  \nseem to have two options:\n\n1) Reduce my data to only edges in which ego and alter both are  \ncomplete in terms of tie data.\n2) Provide ERGM with the full square matrix, including edges that I  \ncan't observe.\n\nIf #2, to the extent I have a node attribute indicating whether the  \nnode's edges were missing rather than null, are there additional  \nstatements that can be made to capture that only certain directed  \nedges can be observed?\n\nAs a reminder (from the JOSS ERGM article):\n\n\"The x argument is either a square matrix of covariates, one for each  \npossible edge in the network, covariates, or a network; if the latter,  \noptional argument attrname provides the name of the quantitative edge  \nattribute to use for covariate values (in this case, missing edges in  \nx are assigned a covariate value of zero). \"\n\nIt appears to call for the square matrix, but that doesn't feel quite  \nright.\n\nAny suggestions, best practices, readings, or considerations are  \nappreciated....\n\nThanks!\n\nMatthew\n\n________________________\n\nMatthew Pittinsky, Ph.D.\nAssistant Professor\nArizona State University\nSchool of Social and Family Dynamics, Program in Sociology\noffice: Social Sciences 217\nphone: 480-727-9163\nemail: mpittinsky@asu.edu\nweb: www.public.asu.edu/~mpittins\n\n________________________",
+      "body_snippet": "Hello,\n\nI have a Statnet-ERGM question that I suspect has been asked and  \nanswered, but so far my search of the archives has not yielded an  \nanswer.\n\nI am working with a directed graph. A small numb",
+      "thread_id": "thread-ed6947496d78",
+      "thread_depth": 0,
+      "month": "2009-09"
+    },
+    {
+      "id": "msg-62a1979aaf91",
+      "message_id": "<b06d32bc0909301621l35610811i1d600a9ce688b1e4@mail.gmail.com>",
+      "from_name": "Michael Barnett",
+      "from_email_hash": "a50878f400f032e1783fe2f97cbda97d5af442a86149e8d72fc81b14b3c10ccb",
+      "date": "2009-09-30T16:21:14Z",
+      "subject": "[statnet_help] calculating egocentric network density",
+      "subject_clean": "[statnet_help] calculating egocentric network density",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Statnet List -\n\nThis is my first post to the list. I'm an R and statnet newbie, so I\napologize if this question is straightforward.\n\nSimple question though: How can I calculate egocentric neighborhood density\n(at any distance) for selected nodes (by attribute) in a network?\n\nI've tried playing with the gapply() function with failure mostly and the\nego.extract() function doesn't allow you to extract a neighborhood beyond\ndistance = 1. I'm sure this is possible, any ideas?\n\nThank you!\n\n-Michael Barnett\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090930/b65007a7/attachment.html>",
+      "body_snippet": "Hi Statnet List -\n\nThis is my first post to the list. I'm an R and statnet newbie, so I\napologize if this question is straightforward.\n\nSimple question though: How can I calculate egocentric neighborh",
+      "thread_id": "thread-62a1979aaf91",
+      "thread_depth": 0,
+      "month": "2009-09"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-6d0eb452c41d",
+      "subject": "[statnet_help] Extracting subgraph based on vertex attribute or restrict calculation of node level indices",
+      "message_count": 1,
+      "participants": [
+        "David A. Nolin"
+      ],
+      "started": "2009-09-01T13:17:43Z",
+      "last_reply": "2009-09-01T13:17:43Z",
+      "root_message_id": "msg-6d0eb452c41d"
+    },
+    {
+      "id": "thread-7ff7c9c307ef",
+      "subject": "[statnet_help] Number of isolates in a network",
+      "message_count": 2,
+      "participants": [
+        "Ben Domingue",
+        "Rico Leuthold"
+      ],
+      "started": "2009-09-03T10:07:39Z",
+      "last_reply": "2009-09-03T10:12:36Z",
+      "root_message_id": "msg-7ff7c9c307ef"
+    },
+    {
+      "id": "thread-1ef08a04c373",
+      "subject": "[statnet_help] plot network layout",
+      "message_count": 7,
+      "participants": [
+        "Alexander H. Montgomery",
+        "David Hunter",
+        "Martina Morris",
+        "Rico Leuthold"
+      ],
+      "started": "2009-09-04T06:40:16Z",
+      "last_reply": "2009-09-07T13:06:54Z",
+      "root_message_id": "msg-1ef08a04c373"
+    },
+    {
+      "id": "thread-4e7163a940d6",
+      "subject": "[statnet_help] Newbie Installation PRoblems",
+      "message_count": 1,
+      "participants": [
+        "Benjamin Elbirt"
+      ],
+      "started": "2009-09-06T10:07:04Z",
+      "last_reply": "2009-09-06T10:07:04Z",
+      "root_message_id": "msg-4e7163a940d6"
+    },
+    {
+      "id": "thread-76e71710e23c",
+      "subject": "[statnet_help] Assortativity coefficient (Newman)",
+      "message_count": 1,
+      "participants": [
+        "Rico Leuthold"
+      ],
+      "started": "2009-09-07T01:38:48Z",
+      "last_reply": "2009-09-07T01:38:48Z",
+      "root_message_id": "msg-76e71710e23c"
+    },
+    {
+      "id": "thread-b835a0fef95c",
+      "subject": "[statnet_help] Egde betweenness",
+      "message_count": 1,
+      "participants": [
+        "Rico Leuthold"
+      ],
+      "started": "2009-09-08T03:48:40Z",
+      "last_reply": "2009-09-08T03:48:40Z",
+      "root_message_id": "msg-b835a0fef95c"
+    },
+    {
+      "id": "thread-a7f293e3629f",
+      "subject": "[statnet_help] Research Associate in Network Epidemiology using Bipartite Networks at the University of Cambridge",
+      "message_count": 1,
+      "participants": [
+        "Simon Frost"
+      ],
+      "started": "2009-09-10T05:59:28Z",
+      "last_reply": "2009-09-10T05:59:28Z",
+      "root_message_id": "msg-a7f293e3629f"
+    },
+    {
+      "id": "thread-16ca7ea611f4",
+      "subject": "[statnet_help] ERGM null model with fixed degree distribution",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Rico Leuthold"
+      ],
+      "started": "2009-09-13T01:37:54Z",
+      "last_reply": "2009-09-14T04:12:15Z",
+      "root_message_id": "msg-16ca7ea611f4"
+    },
+    {
+      "id": "thread-9363d4848d46",
+      "subject": "[statnet_help] missing values",
+      "message_count": 1,
+      "participants": [
+        "Marsela Dauti"
+      ],
+      "started": "2009-09-19T15:49:35Z",
+      "last_reply": "2009-09-19T15:49:35Z",
+      "root_message_id": "msg-9363d4848d46"
+    },
+    {
+      "id": "thread-309a6dc5ff32",
+      "subject": "[statnet_help] ERGM, missing data, and dyadcov and edgecov terms",
+      "message_count": 1,
+      "participants": [
+        "Matthew Pittinsky"
+      ],
+      "started": "2009-09-23T17:10:49Z",
+      "last_reply": "2009-09-23T17:10:49Z",
+      "root_message_id": "msg-309a6dc5ff32"
+    },
+    {
+      "id": "thread-ed6947496d78",
+      "subject": "[statnet_help] ERGM, missing data, and dyadcov and edgecov terms",
+      "message_count": 1,
+      "participants": [
+        "Matthew Pittinsky"
+      ],
+      "started": "2009-09-24T08:24:08Z",
+      "last_reply": "2009-09-24T08:24:08Z",
+      "root_message_id": "msg-ed6947496d78"
+    },
+    {
+      "id": "thread-62a1979aaf91",
+      "subject": "[statnet_help] calculating egocentric network density",
+      "message_count": 1,
+      "participants": [
+        "Michael Barnett"
+      ],
+      "started": "2009-09-30T16:21:14Z",
+      "last_reply": "2009-09-30T16:21:14Z",
+      "root_message_id": "msg-62a1979aaf91"
+    }
+  ]
+}

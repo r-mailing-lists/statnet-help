@@ -1,0 +1,155 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2007-08",
+  "messages": [
+    {
+      "id": "msg-cf6b183957d6",
+      "message_id": "<Pine.WNT.4.64.0708020844550.1716@vinaya.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2007-08-02T09:24:50Z",
+      "subject": "[statnet_help] nested homophily terms",
+      "subject_clean": "[statnet_help] nested homophily terms",
+      "in_reply_to": "<46AE6546.4030007@fas.harvard.edu>",
+      "references": [
+        "<46AE6546.4030007@fas.harvard.edu>"
+      ],
+      "body_plain": "Hi Kevin,\n\nI'll take a stab at your first question, and parts of your second. For the \nremainder, I'll need to defer to those more knowledgeable about the \ndetails of the fitting algorithms. (Dave? Mark? Carter? Other statnet \nusers with similar experiences?)\n\n> question 1: is it possible to model these (nested) attributes in the \n> first place? discerning the role of ethnic homophily while controlling \n> for racial homophily, and vice versa? i have talked to several people \n> about this issue. on one hand, some have told me that i must leave out a \n> 'reference group' for each in order for the model to work. on the other \n> hand, others have told me it is ok to just go ahead and throw both \n> attributes into the model- and my preliminary results seem to confirm \n> that this is in fact works just fine, and i get intelligible results \n> (see 'model 1', attached).\n\nIf I understand your scenario correctly, then it should be fine to fit \nthis model.  You would only need a reference group when all of your \nhomophilous dyad types are constrained to sum to a function of another \nterm in the model, but that is not the case.  (In contrast, if you have an \nedges term and a nodefactor term in the same model, then statnet will \nforce a reference group, since the sum of all the nodefactor statistics \nmust equal twice the number of edges.)\n\nI imagine you might be interested in separating out the different \nethnicities; that is, running a race-only model, and then running a model \nwith race and *one* of the races broken down by ethnicity, to see how the \nlikelihood changes.  To do this, you would need to code up a number of \ndummy variables out of your ethnicity variable; the first would have \nvalues 10, 11, and one value only for each of the remaining races; and so \non.\n\n> question 2: assuming that i am doing this right- i.e. that model 1 is ok- i \n> run into another problem further down the line. you'll note that in model 1, \n> statnet appropriately dropped the homophily terms for ethnicity 40 and 60- \n> because, as mentioned above, these categories are duplicates of race 4 and \n> race 6, respectively. however, something seems to go wrong when i switch over \n> to a dyad-dependence model. when i add a \"mutual\" term for reciprocal ties, \n> three bad things happen (see 'model 2', attached). first, i do not receive \n> MCMC s.e. statistics (i assume i should be receiving these because i am now \n> in dyad-dependence land, which is no longer equivalent to pseudo-likelihood \n> estimation). second, some of my p-values shoot way up such that fewer terms \n> are significant. and third, the homophily terms for ethnicity 40 and 60 are \n> now maintained, when they should be dropped. what am i doing wrong here? i \n> wonder if problems 1 and 2 are the result of problem 3, because the model is \n> keeping terms it shouldn't be keeping. if this is so, how do i get statnet to \n> drop these duplicate terms again?\n\nI am not surpised that some of your p-values would go up; some of what \nseemed like strong homophily before can now be seen to be moderate \nhomophily combined with mutuality, so the strength of the homophily \npredictor shoud go down.  However, your values do go up much more than I \nwould have expected.  I suspect the non-dropping of the two terms may play \nsome role in this.\n\nRegarding the lack of MCMC s.e., I have no idea what that's about, so will \nneed to defer to others.\n\nRegarding the non-dropping of terms - note that there are different types \nof dropping.  ergm literally drops terms from the model altogether (i.e. \nthe user is given a warning message that the term is being dropped, and it \ndoes not appear in the resulting list of coefficients at all) when the \nmodel statistic lies on the boundary or is undefined, and will yield a \nnon-finite estimate.  Examples are a nodefactor term in which there are no \nties for anyone in that attribute class; or a nodematch term for an \nattribute class containing only one node.  This is different from the \nscenario when one term is masked by another, as is the case with your data \nand model.  The glm routines in R are smart enough to be able to identify \nthis, and remove one term from the fitting process, yielding a lack of \nestimate for it.  My understanding is that the MCMC fitting algorithms in \nergm do not check for this situation.  (Or rather, they do in the \nstraightforward case of a nodefactor summing up to edges, and create a \nreference group; but not in other cases, where there is masking across \ndifferent attributes).  So the reason this worked in the first case is \nthat as a dyadic independence model, the fit drew on R's glm routines and \nthe masked terms were not fit, and in the latter case it went to the MCMC \nroutines, which attempted to fit them and had problems. I do suspect that \nall three of your problems may actually stem from this one, although I'm \nnot sure.\n\nIn terms of a solution, I imagine there is again some way to break your \nvariables up into additional dummy variables, although the exact method \nfor this is not clear to me right now. On the other hand, it might be \nworthwhile for us to consider adding similar checks to the MCMC algorithm \nas exist for glm, but that's a much much slower process. Anyone else have \nan idea?\n\nCheers,\nSteve\n\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 140 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65855,-122.3091&z=18&t=k             *\n**************************************************************************",
+      "body_snippet": "Hi Kevin,\n\nI'll take a stab at your first question, and parts of your second. For the \nremainder, I'll need to defer to those more knowledgeable about the \ndetails of the fitting algorithms. (Dave? Ma",
+      "thread_id": "thread-cf6b183957d6",
+      "thread_depth": 0,
+      "month": "2007-08"
+    },
+    {
+      "id": "msg-cd43179b6da8",
+      "message_id": "<009c01c7ddec$14215e60$41787d80@sppd.usc.edu>",
+      "from_name": "Chris Weare",
+      "from_email_hash": "77db26d1955d49d6e9e971fdb674277f19ca6b9ce8621ac74f3ed48805eac322",
+      "date": "2007-08-13T13:54:02Z",
+      "subject": "[statnet_help] Valued networks",
+      "subject_clean": "[statnet_help] Valued networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Can statnet analyze a valued network as a network object?  Specifically, I\nhave a network with positive, negative, and null relationships.  If statnet\ncannot analyze valued data, is there a way to jointly evaluate the positive\nand negative networks?\n \nThank you in advance.\n \nChris\n \n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nChristopher Weare \nDeputy Director, Civic Engagement Initiative\n\nResearch Associate Professor \nSchool of Policy, Planning, and Development \n\nVKC 371\nUniversity of Southern California \n\nLos Angeles, CA 90089-0626\n\n213-740-4690 voice \n\nweare@usc.edu \n\n \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20070813/7c8e8393/attachment.html>",
+      "body_snippet": "Can statnet analyze a valued network as a network object?  Specifically, I\nhave a network with positive, negative, and null relationships.  If statnet\ncannot analyze valued data, is there a way to joi",
+      "thread_id": "thread-cd43179b6da8",
+      "thread_depth": 0,
+      "month": "2007-08"
+    },
+    {
+      "id": "msg-9a9872b3c4d7",
+      "message_id": "<20070827130609.jcr9bijg000gs8gg@webmail5.isis.unc.edu>",
+      "from_name": "ykkim@email.unc.edu",
+      "from_email_hash": "8f05db1b3d5997a35dd8ed42cc4ed90d26cb291a170a771fc38c315e91c9daea",
+      "date": "2007-08-27T10:06:09Z",
+      "subject": "[statnet_help] error in library(statnet)",
+      "subject_clean": "[statnet_help] error in library(statnet)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear a staff member:\n\nI followed the instructions and it seemed perfect until after I \ncompleted library(updatestatnet). When I typed library(statnet), I got \nthe following error messages.\n\nError in dyn.load(x, as.logical(local), as.logical(now)) : \tunable to \nload shared library \n'/Library/Frameworks/R.framework/Versions/2.5/Resources/library/statnet/libs/i386/statnet.so':\n  \ndlopen(/Library/Frameworks/R.framework/Versions/2.5/Resources/library/statnet/libs/i386/statnet.so, 6): Library not loaded: \n/Library/Frameworks/R.framework/Versions/2.4/Resources/lib/libR.dylib\n  Referenced from: \n/Library/Frameworks/R.framework/Versions/2.5/Resources/library/statnet/libs/i386/statnet.so\n  Reason: image not found\nError in library(statnet) : .First.lib failed for 'statnet'\n\nCould you please give me help? Thank you in advance.\n\nBest regards,\n\nYong",
+      "body_snippet": "Dear a staff member:\n\nI followed the instructions and it seemed perfect until after I \ncompleted library(updatestatnet). When I typed library(statnet), I got \nthe following error messages.\n\nError in d",
+      "thread_id": "thread-9a9872b3c4d7",
+      "thread_depth": 0,
+      "month": "2007-08"
+    },
+    {
+      "id": "msg-0c706d1411d8",
+      "message_id": "<C2F87A58.F802%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2007-08-27T12:55:52Z",
+      "subject": "[statnet_help] error in library(statnet)",
+      "subject_clean": "[statnet_help] error in library(statnet)",
+      "in_reply_to": "<20070827130609.jcr9bijg000gs8gg@webmail5.isis.unc.edu>",
+      "references": [],
+      "body_plain": "Dear Yong,\n\nI assume you have R 2.5.1 installed on a Macintosh?\n\nIt is clearly drawing from the 2.4 library. Try to reinstall now and see if\nit reoccurs.\n\nBest,\n\nMark\n\n-------------------------------------------------\nMark S. Handcock\nProfessor of Statistics\nDepartment of Statistics, B313 Padelford Hall\nUniversity of Washington, Box 354322     Phone:  (206) 543-6774\nSeattle, WA  98195-4322.           FAX:   (206) 365-6324\nWeb:  www.stat.washington.edu/~handcock\ninternet:  handcock@stat.washington.edu\n\nOn 8/27/07 10:06 AM, \"ykkim@email.unc.edu\" <ykkim@email.unc.edu> wrote:\n\n> Dear a staff member:\n> \n> I followed the instructions and it seemed perfect until after I\n> completed library(updatestatnet). When I typed library(statnet), I got\n> the following error messages.\n> \n> Error in dyn.load(x, as.logical(local), as.logical(now)) :  unable to\n> load shared library\n> '/Library/Frameworks/R.framework/Versions/2.5/Resources/library/statnet/libs/i\n> 386/statnet.so':\n>   \n> dlopen(/Library/Frameworks/R.framework/Versions/2.5/Resources/library/statnet/\n> libs/i386/statnet.so, 6): Library not loaded:\n> /Library/Frameworks/R.framework/Versions/2.4/Resources/lib/libR.dylib\n>   Referenced from:\n> /Library/Frameworks/R.framework/Versions/2.5/Resources/library/statnet/libs/i3\n> 86/statnet.so\n>   Reason: image not found\n> Error in library(statnet) : .First.lib failed for 'statnet'\n> \n> Could you please give me help? Thank you in advance.\n> \n> Best regards,\n> \n> Yong\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Yong,\n\nI assume you have R 2.5.1 installed on a Macintosh?\n\nIt is clearly drawing from the 2.4 library. Try to reinstall now and see if\nit reoccurs.\n\nBest,\n\nMark\n\n--------------------------------",
+      "thread_id": "thread-9a9872b3c4d7",
+      "thread_depth": 1,
+      "month": "2007-08"
+    },
+    {
+      "id": "msg-06ae1ba70646",
+      "message_id": "<64EA3ABA-9F15-4A9F-8B44-6A132CF2D8CD@gmail.com>",
+      "from_name": "Matt Drinkwater",
+      "from_email_hash": "16495ad1e0f0bc0e2bc7075d5a790bfcd93ea235cddc35f34d229607db61efeb",
+      "date": "2007-08-29T05:55:59Z",
+      "subject": "[statnet_help] more problems getting statnet to work",
+      "subject_clean": "[statnet_help] more problems getting statnet to work",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nLooking back over the last month of threads, it seems that there is  \nsomething up with the current build that means that many are having  \nthe same problem.\n\nIn any case, I too can't get library(statnet) to work.\n\nMatthew Weber suggested editing the statnet.so file to point at 2.5  \ninstead of 2.4, which I have done.\n\nJames Holland Jones suggested setting the fortran compiler using this  \ncommand in a terminal window, which I've tried (can't tell if it has  \ndone anything)\n\nexport F77=/usr/local/gcc4.0/bin/gfortran\n\nI'm still stuck. It seems to be looking for something that I don't  \nhave - though I've installed the XTools and X11. Any suggestions?\n\nHere's my error message:\n\n > library(statnet)\nLoading required package: network\nClasses for Relational Data\nVersion 1.2 created on July 31, 2007.\ncopyright (c) 2005, Carter T. Butts, University of California-Irvine\n                     Mark S. Handcock, University of Washington\n                     David R. Hunter, Penn State University\n                     Martina Morris, University of Washington\nType help(package=\"network\") to get started.\nError in dyn.load(x, as.logical(local), as.logical(now)) :\n\tunable to load shared library '/Library/Frameworks/R.framework/ \nVersions/2.5/Resources/library/statnet/libs/i386/statnet.so':\n   dlopen(/Library/Frameworks/R.framework/Versions/2.5/Resources/ \nlibrary/statnet/libs/i386/statnet.so, 6): Library not loaded: /usr/ \nlocal/gcc4.0/lib/libgcc_s.1.0.dylib\n   Referenced from: /Library/Frameworks/R.framework/Versions/2.5/ \nResources/library/statnet/libs/i386/statnet.so\n   Reason: image not found\nError in library(statnet) : .First.lib failed for 'statnet'\n\nMany thanks\n\nMatt Drinkwater",
+      "body_snippet": "Hi,\n\nLooking back over the last month of threads, it seems that there is  \nsomething up with the current build that means that many are having  \nthe same problem.\n\nIn any case, I too can't get library",
+      "thread_id": "thread-06ae1ba70646",
+      "thread_depth": 0,
+      "month": "2007-08"
+    },
+    {
+      "id": "msg-cf8da0905651",
+      "message_id": "<46D59961.2040408@stanford.edu>",
+      "from_name": "James Holland Jones",
+      "from_email_hash": "acb826446b123a69e69bcb08e635e786bb139ab855a8cfa560a293990f9fb6ea",
+      "date": "2007-08-29T09:05:53Z",
+      "subject": "[statnet_help] more problems getting statnet to work",
+      "subject_clean": "[statnet_help] more problems getting statnet to work",
+      "in_reply_to": "<64EA3ABA-9F15-4A9F-8B44-6A132CF2D8CD@gmail.com>",
+      "references": [
+        "<64EA3ABA-9F15-4A9F-8B44-6A132CF2D8CD@gmail.com>"
+      ],
+      "body_plain": "Matt,\n\nThis is a problem that has beset macs.  The first thing you should do is \ncheck to see that you have gcc installed.  Open Terminal.app and cd to \n/usr/local/.  Is there a gcc4.0 folder?  If there isn't, that would \nexplain your error!\n\nMac's XCode used to not work for building R and so Mac distributions of \nR included their own gcc.  As of R 2.5, gcc was no longer included in \nthe R distribution. There is a discussion of this here:\n\nhttp://cran.r-project.org/bin/macosx/RMacOSX-FAQ.html#Why-do-I-need-custom-compilers-for-the-CRAN-binary_003f\n\nI think that the statnet code is written assuming that gcc was installed \nby R and the paths referred to in the code have not been changed to \nreflect the fact that XCode now works for building R.\n\nAs a temporary work-around, you can do a custom install of R 2.4, \ninstalling only gcc.  This should work until the code for macs is updated.\n\nI hope this helps.\n\njhj\n\nMatt Drinkwater wrote:\n> Hi,\n> \n> Looking back over the last month of threads, it seems that there is \n> something up with the current build that means that many are having the \n> same problem.\n> \n> In any case, I too can't get library(statnet) to work.\n> \n> Matthew Weber suggested editing the statnet.so file to point at 2.5 \n> instead of 2.4, which I have done.\n> \n> James Holland Jones suggested setting the fortran compiler using this \n> command in a terminal window, which I've tried (can't tell if it has \n> done anything)\n> \n> export F77=/usr/local/gcc4.0/bin/gfortran\n> \n> I'm still stuck. It seems to be looking for something that I don't have \n> - though I've installed the XTools and X11. Any suggestions?\n> \n> Here's my error message:\n> \n>  > library(statnet)\n> Loading required package: network\n> Classes for Relational Data\n> Version 1.2 created on July 31, 2007.\n> copyright (c) 2005, Carter T. Butts, University of California-Irvine\n>                     Mark S. Handcock, University of Washington\n>                     David R. Hunter, Penn State University\n>                     Martina Morris, University of Washington\n> Type help(package=\"network\") to get started.\n> Error in dyn.load(x, as.logical(local), as.logical(now)) :\n>     unable to load shared library \n> '/Library/Frameworks/R.framework/Versions/2.5/Resources/library/statnet/libs/i386/statnet.so': \n> \n>   \n> dlopen(/Library/Frameworks/R.framework/Versions/2.5/Resources/library/statnet/libs/i386/statnet.so, \n> 6): Library not loaded: /usr/local/gcc4.0/lib/libgcc_s.1.0.dylib\n>   Referenced from: \n> /Library/Frameworks/R.framework/Versions/2.5/Resources/library/statnet/libs/i386/statnet.so \n> \n>   Reason: image not found\n> Error in library(statnet) : .First.lib failed for 'statnet'\n> \n> Many thanks\n> \n> Matt Drinkwater\n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n\n-- \nJames Holland Jones\nAssistant Professor\n\nDepartment of Anthropological Sciences\n450 Serra Mall\nBuilding 50\nStanford, CA 94305-2034\n\nphone:  650-723-4824\nfax:    650-725-0605\nemail:  jhj1@stanford.edu\nurl:    http://www.stanford.edu/~jhj1",
+      "body_snippet": "Matt,\n\nThis is a problem that has beset macs.  The first thing you should do is \ncheck to see that you have gcc installed.  Open Terminal.app and cd to \n/usr/local/.  Is there a gcc4.0 folder?  If the",
+      "thread_id": "thread-06ae1ba70646",
+      "thread_depth": 1,
+      "month": "2007-08"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-cf6b183957d6",
+      "subject": "[statnet_help] nested homophily terms",
+      "message_count": 1,
+      "participants": [
+        "Steven Goodreau"
+      ],
+      "started": "2007-08-02T09:24:50Z",
+      "last_reply": "2007-08-02T09:24:50Z",
+      "root_message_id": "msg-cf6b183957d6"
+    },
+    {
+      "id": "thread-cd43179b6da8",
+      "subject": "[statnet_help] Valued networks",
+      "message_count": 1,
+      "participants": [
+        "Chris Weare"
+      ],
+      "started": "2007-08-13T13:54:02Z",
+      "last_reply": "2007-08-13T13:54:02Z",
+      "root_message_id": "msg-cd43179b6da8"
+    },
+    {
+      "id": "thread-9a9872b3c4d7",
+      "subject": "[statnet_help] error in library(statnet)",
+      "message_count": 2,
+      "participants": [
+        "Mark S. Handcock",
+        "ykkim@email.unc.edu"
+      ],
+      "started": "2007-08-27T10:06:09Z",
+      "last_reply": "2007-08-27T12:55:52Z",
+      "root_message_id": "msg-9a9872b3c4d7"
+    },
+    {
+      "id": "thread-06ae1ba70646",
+      "subject": "[statnet_help] more problems getting statnet to work",
+      "message_count": 2,
+      "participants": [
+        "James Holland Jones",
+        "Matt Drinkwater"
+      ],
+      "started": "2007-08-29T05:55:59Z",
+      "last_reply": "2007-08-29T09:05:53Z",
+      "root_message_id": "msg-06ae1ba70646"
+    }
+  ]
+}

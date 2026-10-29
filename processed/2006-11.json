@@ -1,0 +1,178 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2006-11",
+  "messages": [
+    {
+      "id": "msg-b212ab9a41e8",
+      "message_id": "<2A1F3E27491CBF46BC14ACB3E5C7D89A84431A@icex3.ic.ac.uk>",
+      "from_name": "Criscuolo, Paola",
+      "from_email_hash": "e88feee832a858e64fc890c1931ebab4727c70a997ea38d69087b23003aa7ae2",
+      "date": "2006-11-01T09:28:57Z",
+      "subject": "[statnet_help] Computational time required by netlogit",
+      "subject_clean": "[statnet_help] Computational time required by netlogit",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet users,\n\nI am trying to estimate a QAP model with a binary network as a dependent variable using the command netlogit with the double semi-partialling method. I have 435 nodes and 9 independent variables. I have estimated the same model using UCINET routine for the same permutation method and the valued network as dependent variable. The computation time in UCINET was around 1 hour with 2000 permutations but the netlogit estimation is taking more than 5 hours with 1000 permutations. \nIs this normal? Would you advice me to use a different permutation method with netlogit?\n\nThanks\nPaola\n\nPaola Criscuolo Research Associate Innovation Studies Centre Tanaka Business School Imperial College London London, SW7 2AZ, UK Tel: +44-(0)20-75941582Fax: +44-(0)20-75945915web page: www.imperial.ac.uk/innovationstudies\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20061101/b95c286e/attachment.html>\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear statnet users,\n\nI am trying to estimate a QAP model with a binary network as a dependent variable using the command netlogit with the double semi-partialling method. I have 435 nodes and 9 indepe",
+      "thread_id": "thread-b212ab9a41e8",
+      "thread_depth": 0,
+      "month": "2006-11"
+    },
+    {
+      "id": "msg-62ccf4480d13",
+      "message_id": "<454A9D5A.6070904@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2006-11-02T17:37:30Z",
+      "subject": "[statnet_help] Computational time required by netlogit",
+      "subject_clean": "[statnet_help] Computational time required by netlogit",
+      "in_reply_to": "<2A1F3E27491CBF46BC14ACB3E5C7D89A84431A@icex3.ic.ac.uk>",
+      "references": [
+        "<2A1F3E27491CBF46BC14ACB3E5C7D89A84431A@icex3.ic.ac.uk>"
+      ],
+      "body_plain": "Hi, Paola -\n\nCriscuolo, Paola wrote:\n> Dear statnet users,\n> \n> I am trying to estimate a QAP model with a binary network as a dependent \n> variable using the command netlogit with the double semi-partialling \n> method. I have 435 nodes and 9 independent variables. I have estimated \n> the same model using UCINET routine for the same permutation method and \n> the valued network as dependent variable. The computation time in UCINET \n> was around 1 hour with 2000 permutations but the netlogit estimation is \n> taking more than 5 hours with 1000 permutations.\n> Is this normal? Would you advice me to use a different permutation \n> method with netlogit?\n> \n\nThat kind of procedure is always going to be slow on a 10x435x435 array, \nand the netlogit routine is not built for speed.  In terms of alternate \npermutation methods, there's not much theory at this point (of which I \nam aware) on the properties of these test procedures in the logistic \nregression case; so, caveat emptor.  I would probably opt for a network \npermutation model (see the netperm package) under these circumstances, \nmyself, but it depends on what you want to infer....\n\n-Carter\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi, Paola -\n\nCriscuolo, Paola wrote:\n> Dear statnet users,\n> \n> I am trying to estimate a QAP model with a binary network as a dependent \n> variable using the command netlogit with the double semi-par",
+      "thread_id": "thread-b212ab9a41e8",
+      "thread_depth": 1,
+      "month": "2006-11"
+    },
+    {
+      "id": "msg-64a2d57c57f6",
+      "message_id": "<20061108122218.5048D5A078@webmail218.herald.ox.ac.uk>",
+      "from_name": "Caroline Buckee",
+      "from_email_hash": "0da61fda4adc12616100406d8e0f6c50c20b45b0d695c615f01b5d3f01a7d06b",
+      "date": "2006-11-08T04:22:18Z",
+      "subject": "[statnet_help] statnet installation",
+      "subject_clean": "[statnet_help] statnet installation",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "An embedded and charset-unspecified text was scrubbed...\nName: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20061108/84de5a23/attachment.ksh>",
+      "body_snippet": "An embedded and charset-unspecified text was scrubbed...\nName: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20061108/84de5a23/attachment.ksh>",
+      "thread_id": "thread-64a2d57c57f6",
+      "thread_depth": 0,
+      "month": "2006-11"
+    },
+    {
+      "id": "msg-e5fc3a612c30",
+      "message_id": "<Pine.GSO.4.58.0611080705530.3600@mint.u.arizona.edu>",
+      "from_name": "Miller McPherson",
+      "from_email_hash": "df4aa48222b49ab138ce9b02c854b500f77d4d07325399f2a138749c27d63221",
+      "date": "2006-11-08T06:09:43Z",
+      "subject": "[statnet_help] statnet installation",
+      "subject_clean": "[statnet_help] statnet installation",
+      "in_reply_to": "<20061108122218.5048D5A078@webmail218.herald.ox.ac.uk>",
+      "references": [
+        "<20061108122218.5048D5A078@webmail218.herald.ox.ac.uk>"
+      ],
+      "body_plain": "Me Too,\n     In installing statnet on a new PC (previous installations on several\nother computers were successful), I get essentially the same problem--no\nsuch package statnet.  I tried reverting to the older version of R, but no\nluck there, either.\nMiller McPherson\n\nOn Wed, 8 Nov 2006, Caroline Buckee wrote:\n\n> Hello\n>\n> I tried to install statnet on my Mac (OSX Tiger). Although it said that all the\n> packages were successfully installed and updated, when I try to load statnet I\n> get the following error:\n>\n> Loading required package: network\n> Classes for Relational Data\n> Version 1.1-1 created on October 10, 2006.\n> copyright (c) 2005, Carter T. Butts, University of California-Irvine\n>                     Mark S. Handcock, University of Washington\n>                     David R. Hunter, Penn State University\n>                     Martina Morris, University of Washington\n> Type help(package=\"network\") to get started.\n> Error in dyn.load(x, as.logical(local), as.logical(now)) :\n> \tunable to load shared library\n> '/Library/Frameworks/R.framework/Versions/2.4/Resources/library/statnet/libs/ppc/statnet.so':\n>\n> dlopen(/Library/Frameworks/R.framework/Versions/2.4/Resources/library/statnet/libs/ppc/statnet.so,\n> 6): Library not loaded:\n> /Library/Frameworks/R.framework/Versions/2.3/Resources/lib/libR.dylib\n>   Referenced from:\n> /Library/Frameworks/R.framework/Versions/2.4/Resources/library/statnet/libs/ppc/statnet.so\n>   Reason: image not found\n> Error in library(statnet) : .First.lib failed for 'statnet'\n>\n> When I go to data and packages manager, it says that statnet is not loaded\n> although some other packages (network, for example) are loaded.\n> Please help!!\n>\n> Thank you,\n> Caroline Buckee\n>\n> Evolution Group\n> Department of Zoology\n> University of Oxford\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n\nMiller McPherson                     *  *\nProfessor Emeritus of Sociology               ******\nmcphersn@U.Arizona.edu                  *\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Me Too,\n     In installing statnet on a new PC (previous installations on several\nother computers were successful), I get essentially the same problem--no\nsuch package statnet.  I tried reverting to t",
+      "thread_id": "thread-64a2d57c57f6",
+      "thread_depth": 1,
+      "month": "2006-11"
+    },
+    {
+      "id": "msg-6656d39ef972",
+      "message_id": "<200611091924.kA9JOkRr009620@smtp.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2006-11-09T11:24:05Z",
+      "subject": "[statnet_help] statnet installation",
+      "subject_clean": "[statnet_help] statnet installation",
+      "in_reply_to": "<20061108122218.5048D5A078@webmail218.herald.ox.ac.uk>",
+      "references": [],
+      "body_plain": "Dear Caroline,\n\nThey was a problem with the MacOS X PPC build. Try reinstalling now using:\n\nlibrary(updatestatnet)\nupdate.statnet.now()\n\nwhich will force a reinstall.\n\nThe Mac OS X (tiger) version was built on a Mac Pro (Intel Core Duo) with a\ncross-compiler for the PPC version. Please let me know if you have problems\nloading it. It would be good to ensure the build works on older G4 and G5\nMac.\n\nBest,\n\nMark\n\n-------------------------------------------------\nMark S.  Handcock\nProfessor of Statistics and  Sociology\nDepartment of Statistics, C014-B Padelford  Hall\nUniversity of Washington, Box 354322     Phone:  (206) 221-6930\nSeattle, WA  98195-4322.           FAX:   (206) 685-7419\nWeb:  www.stat.washington.edu/~handcock\ninternet:  handcock@stat.washington.edu\n\n\n\n\n\nOn 11/8/06 4:22 AM, \"Caroline Buckee\" <caroline.buckee@zoo.ox.ac.uk> wrote:\n\n> Hello\n> \n> I tried to install statnet on my Mac (OSX Tiger). Although it said that all\n> the\n> packages were successfully installed and updated, when I try to load statnet I\n> get the following error:\n> \n> Loading required package: network\n> Classes for Relational Data\n> Version 1.1-1 created on October 10, 2006.\n> copyright (c) 2005, Carter T. Butts, University of California-Irvine\n>                     Mark S. Handcock, University of Washington\n>                     David R. Hunter, Penn State University\n>                     Martina Morris, University of Washington\n> Type help(package=\"network\") to get started.\n> Error in dyn.load(x, as.logical(local), as.logical(now)) :\n> unable to load shared library\n> '/Library/Frameworks/R.framework/Versions/2.4/Resources/library/statnet/libs/p\n> pc/statnet.so':\n>  \n> dlopen(/Library/Frameworks/R.framework/Versions/2.4/Resources/library/statnet/\n> libs/ppc/statnet.so,\n> 6): Library not loaded:\n> /Library/Frameworks/R.framework/Versions/2.3/Resources/lib/libR.dylib\n>   Referenced from:\n> /Library/Frameworks/R.framework/Versions/2.4/Resources/library/statnet/libs/pp\n> c/statnet.so\n>   Reason: image not found\n> Error in library(statnet) : .First.lib failed for 'statnet'\n> \n> When I go to data and packages manager, it says that statnet is not loaded\n> although some other packages (network, for example) are loaded.\n> Please help!!\n> \n> Thank you,\n> Caroline Buckee\n> \n> Evolution Group \n> Department of Zoology\n> University of Oxford\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Caroline,\n\nThey was a problem with the MacOS X PPC build. Try reinstalling now using:\n\nlibrary(updatestatnet)\nupdate.statnet.now()\n\nwhich will force a reinstall.\n\nThe Mac OS X (tiger) version was",
+      "thread_id": "thread-64a2d57c57f6",
+      "thread_depth": 1,
+      "month": "2006-11"
+    },
+    {
+      "id": "msg-deafdec420f6",
+      "message_id": "<C178C0B3.A82C%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2006-11-09T11:25:39Z",
+      "subject": "[statnet_help] statnet installation",
+      "subject_clean": "[statnet_help] statnet installation",
+      "in_reply_to": "<Pine.GSO.4.58.0611080705530.3600@mint.u.arizona.edu>",
+      "references": [],
+      "body_plain": "Dear Miller,\n\nThis was a typo on the upgrade to 1.0-11. Please retry it now using:\n\nlibrary(updatestatnet)\nupdate.statnet.now()\n\nwhich will force a reinstall.\n\nBest,\n\nMark\n\nfor the \"statnet\" team\n\n-------------------------------------------------\nMark S.  Handcock\nProfessor of Statistics and  Sociology\nDepartment of Statistics, C014-B Padelford  Hall\nUniversity of Washington, Box 354322     Phone:  (206) 221-6930\nSeattle, WA  98195-4322.           FAX:   (206) 685-7419\nWeb:  www.stat.washington.edu/~handcock\ninternet:  handcock@stat.washington.edu\n\n\n\n\n\nOn 11/8/06 6:09 AM, \"Miller McPherson\" <mcphersn@U.Arizona.EDU> wrote:\n\n> Me Too,\n>      In installing statnet on a new PC (previous installations on several\n> other computers were successful), I get essentially the same problem--no\n> such package statnet.  I tried reverting to the older version of R, but no\n> luck there, either.\n> Miller McPherson\n> \n> On Wed, 8 Nov 2006, Caroline Buckee wrote:\n> \n>> Hello\n>> \n>> I tried to install statnet on my Mac (OSX Tiger). Although it said that all\n>> the\n>> packages were successfully installed and updated, when I try to load statnet\n>> I\n>> get the following error:\n>> \n>> Loading required package: network\n>> Classes for Relational Data\n>> Version 1.1-1 created on October 10, 2006.\n>> copyright (c) 2005, Carter T. Butts, University of California-Irvine\n>>                     Mark S. Handcock, University of Washington\n>>                     David R. Hunter, Penn State University\n>>                     Martina Morris, University of Washington\n>> Type help(package=\"network\") to get started.\n>> Error in dyn.load(x, as.logical(local), as.logical(now)) :\n>> unable to load shared library\n>> '/Library/Frameworks/R.framework/Versions/2.4/Resources/library/statnet/libs/\n>> ppc/statnet.so':\n>> \n>> dlopen(/Library/Frameworks/R.framework/Versions/2.4/Resources/library/statnet\n>> /libs/ppc/statnet.so,\n>> 6): Library not loaded:\n>> /Library/Frameworks/R.framework/Versions/2.3/Resources/lib/libR.dylib\n>>   Referenced from:\n>> /Library/Frameworks/R.framework/Versions/2.4/Resources/library/statnet/libs/p\n>> pc/statnet.so\n>>   Reason: image not found\n>> Error in library(statnet) : .First.lib failed for 'statnet'\n>> \n>> When I go to data and packages manager, it says that statnet is not loaded\n>> although some other packages (network, for example) are loaded.\n>> Please help!!\n>> \n>> Thank you,\n>> Caroline Buckee\n>> \n>> Evolution Group\n>> Department of Zoology\n>> University of Oxford\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>> \n> \n> Miller McPherson                     *  *\n> Professor Emeritus of Sociology               ******\n> mcphersn@U.Arizona.edu                  *\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Miller,\n\nThis was a typo on the upgrade to 1.0-11. Please retry it now using:\n\nlibrary(updatestatnet)\nupdate.statnet.now()\n\nwhich will force a reinstall.\n\nBest,\n\nMark\n\nfor the \"statnet\" team\n\n---",
+      "thread_id": "thread-64a2d57c57f6",
+      "thread_depth": 2,
+      "month": "2006-11"
+    },
+    {
+      "id": "msg-05132f1e244d",
+      "message_id": "<20061113095800.07safh6apcogg088@webmail.duke.edu>",
+      "from_name": "jas76@soc.duke.edu",
+      "from_email_hash": "c2ceaca6b5d4431cf175ab54e1ab9c155aa98bd1090bfe41b6ba4d7c0c7046c0",
+      "date": "2006-11-13T06:58:00Z",
+      "subject": "[statnet_help] Statnet help",
+      "subject_clean": "[statnet_help] Statnet help",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I succesfully installed statnet with the newest build of R but was unable to get\nthe ergm function to work.  I tried a very simple (and abritrary) example but it\nwould basically never finish running and would sometimes close R down.  So, I\ndid something like:\n\nr<-network(rgraph(10))\nergmtest<-ergm(r~edges)\n\nbut could not get this to finish computing.  Any ideas as to what is going on? \nI did this on a Windows based computer if that is helpful.  Also, I had no\nproblems running statnet on earlier versions of R on different comuters.\n\n\nThank you,\n\nJeff Smith\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "I succesfully installed statnet with the newest build of R but was unable to get\nthe ergm function to work.  I tried a very simple (and abritrary) example but it\nwould basically never finish running a",
+      "thread_id": "thread-05132f1e244d",
+      "thread_depth": 0,
+      "month": "2006-11"
+    },
+    {
+      "id": "msg-baa8a568de6c",
+      "message_id": "<200611131719.kADHJ0j2015483@smtp.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2006-11-13T09:18:31Z",
+      "subject": "[statnet_help] Statnet help",
+      "subject_clean": "[statnet_help] Statnet help",
+      "in_reply_to": "<20061113095800.07safh6apcogg088@webmail.duke.edu>",
+      "references": [],
+      "body_plain": "Hi Jeff,\n\nCan you take a look at the FAQ for the way to determine your exact system\nand OS and email them to me?\n\nThanks,\n\nMark\n\n\nOn 11/13/06 6:58 AM, \"jas76@soc.duke.edu\" <jas76@soc.duke.edu> wrote:\n\n> \n> I succesfully installed statnet with the newest build of R but was unable to\n> get\n> the ergm function to work.  I tried a very simple (and abritrary) example but\n> it\n> would basically never finish running and would sometimes close R down.  So, I\n> did something like:\n> \n> r<-network(rgraph(10))\n> ergmtest<-ergm(r~edges)\n> \n> but could not get this to finish computing.  Any ideas as to what is going on?\n> I did this on a Windows based computer if that is helpful.  Also, I had no\n> problems running statnet on earlier versions of R on different comuters.\n> \n> \n> Thank you,\n> \n> Jeff Smith\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Jeff,\n\nCan you take a look at the FAQ for the way to determine your exact system\nand OS and email them to me?\n\nThanks,\n\nMark\n\n\nOn 11/13/06 6:58 AM, \"jas76@soc.duke.edu\" <jas76@soc.duke.edu> wrote:\n",
+      "thread_id": "thread-05132f1e244d",
+      "thread_depth": 1,
+      "month": "2006-11"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-b212ab9a41e8",
+      "subject": "[statnet_help] Computational time required by netlogit",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Criscuolo, Paola"
+      ],
+      "started": "2006-11-01T09:28:57Z",
+      "last_reply": "2006-11-02T17:37:30Z",
+      "root_message_id": "msg-b212ab9a41e8"
+    },
+    {
+      "id": "thread-64a2d57c57f6",
+      "subject": "[statnet_help] statnet installation",
+      "message_count": 4,
+      "participants": [
+        "Caroline Buckee",
+        "Mark S. Handcock",
+        "Miller McPherson"
+      ],
+      "started": "2006-11-08T04:22:18Z",
+      "last_reply": "2006-11-09T11:25:39Z",
+      "root_message_id": "msg-64a2d57c57f6"
+    },
+    {
+      "id": "thread-05132f1e244d",
+      "subject": "[statnet_help] Statnet help",
+      "message_count": 2,
+      "participants": [
+        "Mark S. Handcock",
+        "jas76@soc.duke.edu"
+      ],
+      "started": "2006-11-13T06:58:00Z",
+      "last_reply": "2006-11-13T09:18:31Z",
+      "root_message_id": "msg-05132f1e244d"
+    }
+  ]
+}

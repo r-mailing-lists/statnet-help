@@ -1,0 +1,236 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2020-02",
+  "messages": [
+    {
+      "id": "msg-95aad306ada0",
+      "message_id": "<006c01d5dc04$bb511210$31f33630$@uni-koblenz.de>",
+      "from_name": "Joshua Dohmen",
+      "from_email_hash": "d1ff7c8630401ba2c7265ad8e691ff1549b3278108ad37f683e66b5f666ea0f0",
+      "date": "2020-02-05T01:14:55Z",
+      "subject": "[statnet_help] STERGM: links driving attribute change",
+      "subject_clean": "[statnet_help] STERGM: links driving attribute change",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi list,\n\n \n\nIs it possible to model weather tie-formation/tie-dissolution leads to\nattribute change (using stergm)?\n\n \n\nThis been a topic here: \n\n[statnet_help] STERGM and selection vs influence:\nhttp://mailman13.u.washington.edu/mailman/htdig/statnet_help/2014/001713.htm\nl \n\n\n[statnet_help] STERGM with time-varying nodal covariates:\nhttp://mailman13.u.washington.edu/pipermail/statnet_help/2012/001324.html \n\n\nWhat would the interpretation look like?\n\nIf a node i is involved in tie-formation (between t1 and t2) -- ... is it\nlikely for i to take over the attribute value of j? .is it likely for i and\nj to have the same attribute value at t2?\n\nAnd when the attribute is numeric -- . the value difference is getting\nsmaller?\n\n \n\nThe postings are already a little bit older. If there are some new\ndevelopments that I might not have found, I would be happy to hear about it.\n\n \n\nRegards, \n\nJoshua \n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200205/35c9e79e/attachment.html>",
+      "body_snippet": "Hi list,\n\n \n\nIs it possible to model weather tie-formation/tie-dissolution leads to\nattribute change (using stergm)?\n\n \n\nThis been a topic here: \n\n[statnet_help] STERGM and selection vs influence:\nhtt",
+      "thread_id": "thread-95aad306ada0",
+      "thread_depth": 0,
+      "month": "2020-02"
+    },
+    {
+      "id": "msg-3ac85729436b",
+      "message_id": "<alpine.WNT.2.21.999.2002051109170.25248@LAPTOP-PHUBQHL5>",
+      "from_name": "martina morris",
+      "from_email_hash": "723fa6c3cfc81bc0b636cb6ab264b9e07126ad90bc6bb940e8243a073bbb4b8b",
+      "date": "2020-02-05T11:14:38Z",
+      "subject": "[statnet_help] STERGM: links driving attribute change",
+      "subject_clean": "[statnet_help] STERGM: links driving attribute change",
+      "in_reply_to": "<006c01d5dc04$bb511210$31f33630$@uni-koblenz.de>",
+      "references": [
+        "<006c01d5dc04$bb511210$31f33630$@uni-koblenz.de>"
+      ],
+      "body_plain": "Hi Josh,\n\nIt is not possible to do that using STERGM alone -- STERGM, like ERGM, \nis a model for tie process only (not nodal attributes).\n\nBut you could probably use the EpiModel package to do this.  EpiModel uses \nergm/tergm to represent the tie formation/dissolution process, but then \nuses other code to update nodal attributes as a function of the ties.  It \nwas designed for epidemic modeling, where ties allow for transmission (and \nthus changing nodal status) over time.\n\nWe have lots of info up online, and there's a dedicated EpiModel help \nlist.  See:  epimodel.org and http://statnet.github.io/nme/\n\nI don't know if this will meet your needs, but let us know if you have any \nquestions.\n\nbest,\nmm\n\n\nOn Wed, 5 Feb 2020, Joshua Dohmen wrote:\n\n> \n> Hi list,\n>\n> \n> \n> Is it possible to model weather tie-formation/tie-dissolution leads to attribute change (using\n> stergm)?\n>\n> \n> \n> This been a topic here:\n> \n> [statnet_help] STERGM and selection vs influence:\n> http://mailman13.u.washington.edu/mailman/htdig/statnet_help/2014/001713.html\n>\n>                    [statnet_help] STERGM with time-varying nodal covariates:\n>            http://mailman13.u.washington.edu/pipermail/statnet_help/2012/001324.html\n> \n> What would the interpretation look like?\n> \n> If a node i is involved in tie-formation (between t1 and t2) -- ... is it likely for i to take\n> over the attribute value of j? ?is it likely for i and j to have the same attribute value at t2?\n> \n> And when the attribute is numeric -- ? the value difference is getting smaller?\n>\n> \n> \n> The postings are already a little bit older. If there are some new developments that I might not\n> have found, I would be happy to hear about it.\n>\n> \n> \n> Regards,\n> \n> Joshua\n>\n> \n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Josh,\n\nIt is not possible to do that using STERGM alone -- STERGM, like ERGM, \nis a model for tie process only (not nodal attributes).\n\nBut you could probably use the EpiModel package to do this.  ",
+      "thread_id": "thread-95aad306ada0",
+      "thread_depth": 1,
+      "month": "2020-02"
+    },
+    {
+      "id": "msg-1769c338c989",
+      "message_id": "<CAAxb0Mm1mO4YY_zbpyYtXJD1_nkiHSnFyAWS4fLftO56g9uVdw@mail.gmail.com>",
+      "from_name": "Sara Futch",
+      "from_email_hash": "f4b6e0dae4957ebbc25b831ac8c90c4dfc6b8dabdcccadf0a83dacc3f5ef686e",
+      "date": "2020-02-13T07:55:28Z",
+      "subject": "[statnet_help] Bipartite ERGM terms?",
+      "subject_clean": "[statnet_help] Bipartite ERGM terms?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nDoes anyone have much experience with Bipartite ERGMs in statnet? I'm\nhaving a hard time finding the right terms.\n\nI want to do an analysis similar to Stephens, Chen, and Butler (2016)\n<https://onlinelibrary.wiley.com/doi/full/10.1111/jcc4.12158> to get at\nactivity spread and popularity spread in my network. I have quite a large\nnetwork (3651 x 629); I believe this is too large for PNet, which is what\nthese authors used. Has anyone done a similar analysis in statnet? I think\nthat GWESP seems on track with what I want, but it's only for one-mode\nnetworks.\n\nI appreciate any insight, thank y'all!\nSara Futch\n-- \nGraduate Research Assistant\nFisheries, Wildlife, and Conservation Biology\nHuman Dimensions Minor\nCollege of Natural Resources\nNorth Carolina State University\nshe | her | hers\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200213/e76557e9/attachment.html>",
+      "body_snippet": "Hi all,\n\nDoes anyone have much experience with Bipartite ERGMs in statnet? I'm\nhaving a hard time finding the right terms.\n\nI want to do an analysis similar to Stephens, Chen, and Butler (2016)\n<https",
+      "thread_id": "thread-1769c338c989",
+      "thread_depth": 0,
+      "month": "2020-02"
+    },
+    {
+      "id": "msg-f7fc6267ecdc",
+      "message_id": "<CAB6MsjrynBDx8cZSk64dPy-tvLA7SX5Qp_SY=H+LP4_KA71q1w@mail.gmail.com>",
+      "from_name": "Filippo Santi",
+      "from_email_hash": "20a53ccc85eae399d32c620d2861e106a959401accd9ec457dbc66c62c3b8d95",
+      "date": "2020-02-17T01:32:08Z",
+      "subject": "[statnet_help] Fwd: help",
+      "subject_clean": "[statnet_help] Fwd: help",
+      "in_reply_to": "<CAB6MsjrUq-z9P5ZjTPrhUkV+6zBBuN=FaCpgKJ5gwieWzd0jTA@mail.gmail.com>",
+      "references": [
+        "<CAB6MsjrUq-z9P5ZjTPrhUkV+6zBBuN=FaCpgKJ5gwieWzd0jTA@mail.gmail.com>"
+      ],
+      "body_plain": "Dear all,\n\nI am running an ERGM model on world level bilateral trade flows, using a\nfew additional covariates at node as well as at dyad level. I also add the\nGWESP term.\n\nI have several questions related to mcmc.diagnostic(), which I launch to\ncheck for degeneracy. I am sure that they might turn out to be very simple\nthose who know the principle of MCMC, but unfortunately, it is not my case,\nand I am a bit stuck for what concerns the interpretation.\n\nIn particular:\n\n1) what do the axes refer to?\n2) How should I interpret the fact that my estimates are not fluctuating\naround zero, but still relatively stable around a certain value?\n3) My distribution is skewed (often to the left) and this is reflected also\nin the left hand side plot, with the initialised value lying below the\ncentral value. What is the exact meaning of this? Where should I look to\ntry to solve this?\n4) To make things faster, I used multiple cores to perform the estimation.\nThe diagnostic of some of the cores is often completely shifted with\nrespect to the other. Is it normal? if it is not, what could explain that?\n\nI report below the model. The MCMC.DIAGNOSTIC() plots are instead attached\nas PNG.\n\nThank you in advance for any help.\n\n-- \n*Filippo Santi*\n*Phd in Development Economics*\n\n\n*-----------------------------------------------------*\n\n\n\n\n\n\n\n\n\n*grav.model.trade.12 <- ergm(net.trade.2010.redux ~ edges + mutual\n                  + edgecov(net.migration.2010, 'weight')\n          + nodeicov('gdpcap') + nodeocov('gdpcap')\n    + edgecov(net.distance.2010, 'log_dist')                             +\nedgecov(net.colony.2010, 'colony')                            +\nedgecov(net.contiguity.2010, 'contig')                              +\nedgecov(net.language.2010, 'comlang_ethno')                             +\ngwesp(decay = 0.25, fixed = TRUE) # Didier et al. 2019: decay = 0.25\nstandard in literature...                            , eval.loglik = T,\ncontrol=control.ergm(seed=1,MCMC.burnin = 50000,MCMC.interval = 3000,\n\nMCMC.samplesize = 70000, MCMLE.maxit = 10000,\n                                      main.method = \"Stepping\",\nparallel=np,\n      parallel.type\n=\"PSOCK\"))summary(grav.model.trade.12)==========================Summary of\nmodel fit==========================Formula:   net.trade.2010.redux ~ edges\n+ mutual + edgecov(net.migration.2010,     \"weight\") + nodeicov(\"gdpcap\") +\nnodeocov(\"gdpcap\") +     edgecov(net.distance.2010, \"log_dist\") +\nedgecov(net.colony.2010,     \"colony\") + edgecov(net.contiguity.2010,\n\"contig\") +     edgecov(net.language.2010, \"comlang_ethno\") + gwesp(decay =\n0.25,     fixed = TRUE)Iterations:  NA  Stepping MLE Results:\n          Estimate Std. Error MCMC %    z value Pr(>|z|)    edges\n       -6.675e+00  8.859e-12      0 -7.534e+11  < 1e-04 ***mutual\n       2.584e+00  3.346e-12      0  7.722e+11  < 1e-04 ***edgecov.weight\n     6.874e-07  1.842e-07      0  3.731e+00 0.000191 ***nodeicov.gdpcap\n    6.671e-06  1.057e-06      0  6.313e+00  < 1e-04 ***nodeocov.gdpcap\n  2.436e-06  1.081e-06      0  2.253e+00 0.024287 *  edgecov.log_dist\n-3.065e-01  7.275e-11      0 -4.213e+09  < 1e-04 ***edgecov.colony\n 6.794e-01  3.086e-13      0  2.202e+12  < 1e-04 ***edgecov.contig\n 8.230e-01  5.504e-13      0  1.495e+12  < 1e-04 ***edgecov.comlang_ethno\n2.955e-01  1.770e-12      0  1.670e+11  < 1e-04 ***gwesp.fixed.0.25\n 4.617e+00  1.125e-11      0  4.105e+11  < 1e-04 ***---Signif. codes:  0\n?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1     Null Deviance: 36606  on\n26406  degrees of freedom Residual Deviance: 11473  on 26396  degrees of\nfreedom AIC: 11493    BIC: 11575    (Smaller is better.)#\n-------------------------------------------------------------------------*\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200217/be5b53b0/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: degeneracy_3_12feb2020.png\nType: image/png\nSize: 10575 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200217/be5b53b0/attachment.png>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: degeneracy_2_12feb2020.png\nType: image/png\nSize: 11540 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200217/be5b53b0/attachment-0001.png>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: degeneracy_12feb2020.png\nType: image/png\nSize: 5276 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200217/be5b53b0/attachment-0002.png>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: degeneracy_4_12feb2020.png\nType: image/png\nSize: 10352 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200217/be5b53b0/attachment-0003.png>",
+      "body_snippet": "Dear all,\n\nI am running an ERGM model on world level bilateral trade flows, using a\nfew additional covariates at node as well as at dyad level. I also add the\nGWESP term.\n\nI have several questions rel",
+      "thread_id": "thread-f7fc6267ecdc",
+      "thread_depth": 0,
+      "month": "2020-02"
+    },
+    {
+      "id": "msg-64659024cab5",
+      "message_id": "<17c3ec23-f776-bdd7-ba4d-efdb41c6f856@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2020-02-17T19:15:44Z",
+      "subject": "[statnet_help] Network Modeling for Epidemics -- Summer short course at the University of Washington -- 17-21 August, 2020",
+      "subject_clean": "[statnet_help] Network Modeling for Epidemics -- Summer short course at the University of Washington -- 17-21 August, 2020",
+      "in_reply_to": "<a834fde1-706f-af5c-ae16-c1db840a1cb6@uw.edu>",
+      "references": [
+        "<a834fde1-706f-af5c-ae16-c1db840a1cb6@uw.edu>"
+      ],
+      "body_plain": "############################################################################\n\nNetwork Modeling for Epidemics\nSummer short course at the University of Washington\n17-21 August, 2020\n\nNetwork Modeling for Epidemics (NME) is a 5-day short course at the \nUniversity of Washington that provides an introduction to stochastic \nnetwork models for infectious disease transmission dynamics, with a \nfocus on empirically based modeling of HIV transmission. It is a \n''hands-on'' course, using the EpiModel software package in R \n(www.epimodel.org). EpiModel provides a unified framework for \nstatistically based modeling of dynamic networks from empirical data, \nand simulation of epidemic dynamics on these networks. It has a flexible \nopen-source platform for learning and building several types of epidemic \nmodels: deterministic compartmental, stochastic individual-based, and \nstochastic network models. Resources include simple models that run in a \nbrowser window, built-in generic models that provide basic control over \npopulation contact patterns, pathogen properties and demographics, and \ntemplates for user-programmed modules that allow EpiModel to be extended \nto the full range of pathogens, hosts, and disease dynamics for advanced \nresearch. This course will touch on the deterministic and \nindividual-based models, but its primary focus is on the theory, methods \nand application of network models.\n\nThe course uses a mix of lectures, tutorials, and labs with students \nworking in small groups. On the final day, students work to develop an \nEpiModel prototype model (either individually or in groups based on \nshared research interests), with input from the instructors, including \nthe lead EpiModel software developer, Dr. Samuel Jenness.\n\nReturning students: We encourage previous attendees with active modeling \nprojects to apply to return for a refresher course. The EpiModel package \nhas been significantly enhanced over the last few years. Returning \nstudents with active projects will have the opportunity to work with \ncourse instructors to address key challenges in the design of their \nnetwork model code.\n\n*Dates and location:*\n\nThe course will be taught from Monday, August 17 to Friday, August 21 on \nthe University of Washington campus in Seattle.\n\n*Costs:*\n\nCourse fee is $800. Travel and accommodation costs are the \nresponsibility of the participant, although discounted hotel rates are \navailable. We offer a limited number of fee waivers for pre-doctoral \nstudents or for attendees from low income countries. These cover waiver \nof the registration fee only; travel and accommodation are still the \nresponsibility of the fee waiver recipient.\n\n*Application dates and decision dates:*\n\n*??? Apr 19: Fee-waiver application deadline. Decisions will be made by \nApr 30, and response required by May 15.\n\n*??? May 17:? General application deadline. Decisions will be made by \nMay 31 and a response required by June 15.\n\n*??? A waitlist will be established along with rolling admission through \nJune 30 if space allows.\n\n*Application:*\n\nApply online at https://catalyst.uw.edu/webq/survey/morrism/385149\n\nCourse website and more information: http://statnet.github.io/nme\n\nPlease free to share widely!\n\nNote: We will also be teaching this course in Antwerp, Belgium, 7-11 \nSeptember.? More information can be found here: \nhttps://www.uantwerpen.be/en/summer-schools/modelling-infectious-diseases/\n\nYours,\nMartina Morris, Steve Goodreau and Samuel Jenness\n\n-- \n*****************************************************************\nSteven M. Goodreau / Professor / Dept. of Anthropology\nPhysical address: Denny Hall M236\nMailing address: Campus Box 353100 / 4216 Memorial Way NE\nUniv. of Washington / Seattle WA 98195\n1-206-685-3870 (phone) /1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau\n*****************************************************************",
+      "body_snippet": "############################################################################\n\nNetwork Modeling for Epidemics\nSummer short course at the University of Washington\n17-21 August, 2020\n\nNetwork Modeling fo",
+      "thread_id": "thread-64659024cab5",
+      "thread_depth": 0,
+      "month": "2020-02"
+    },
+    {
+      "id": "msg-8a4c9040736b",
+      "message_id": "<f0f72130c3684bed9403c9dc8a4f8de8@umanitoba.ca>",
+      "from_name": "Darren Gillis",
+      "from_email_hash": "abcfa96f7631a9e7355afccc34df12dfc84c8d37e75393b1771b22c00bd02e0c",
+      "date": "2020-02-21T07:13:17Z",
+      "subject": "[statnet_help] Likelihood and AIC from mtergm() in the btergm package by Leifeld",
+      "subject_clean": "[statnet_help] Likelihood and AIC from mtergm() in the btergm package by Leifeld",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\n\nI am not sure if this is the correct place to post regarding btergm, but I thought I'd try as other related posts appear in the archives.\n\n\nI am currently working with a dynamic network (four annual cross-sections) of vessel associations in a North Sea trawl fishery. I am exploring both tergm::stergm() and btergm::mtergm() as alternative modeling methods. I am interested in using AIC to compare alternative models within (not between) each of these packages (in addition to examining  MCMC chains, checking degeneracy and GOF). I can easily extract these values from stergm(), but in mtergm() the S4 slots for likelihood, aic, and bic mtergm are all NA. In addition, attempts to directly obtain these values with \"AIC(mtergm.model) \" result in:\n\n\nError in UseMethod(\"logLik\") :\n  no applicable method for 'logLik' applied to an object of class \"mtergm\"\n\n\n\nAre these slots place holders for compatibility with other packages or have I missed something in the manual and associated publication (Leifeld et al. 2018)?   I think the answer is pretty clear, but I wanted to double check before I moved on. Thank you for considering my query.\n\n\nDr. Darren M. Gillis\nProfessor, Biological Sciences\nFaculty of Science\nUniversity of Manitoba\n\n?Ignorance more frequently begets confidence than does knowledge.?\n? Charles Darwin\n\n\"...,  reality must take precedence over public relations, for Nature cannot be fooled.\"\n? Richard P. Feynman\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200221/6de6da4e/attachment.html>",
+      "body_snippet": "Hello,\n\n\nI am not sure if this is the correct place to post regarding btergm, but I thought I'd try as other related posts appear in the archives.\n\n\nI am currently working with a dynamic network (four",
+      "thread_id": "thread-8a4c9040736b",
+      "thread_depth": 0,
+      "month": "2020-02"
+    },
+    {
+      "id": "msg-a594119e88c5",
+      "message_id": "<fbfcc648-6042-08c8-f0f7-0761cee8685e@essex.ac.uk>",
+      "from_name": "Leifeld, Philip",
+      "from_email_hash": "623e594acc8168f60bca5694f4157c2bf1a205fb46ba2a542c6c95734dc06de0",
+      "date": "2020-02-22T08:04:25Z",
+      "subject": "[statnet_help] Likelihood and AIC from mtergm() in the btergm package by Leifeld",
+      "subject_clean": "[statnet_help] Likelihood and AIC from mtergm() in the btergm package by Leifeld",
+      "in_reply_to": "<9f4bf88a7c7c4165a91383c7813237b9@LNXP265MB0714.GBRP265.PROD.OUTLOOK.COM>",
+      "references": [
+        "<9f4bf88a7c7c4165a91383c7813237b9@LNXP265MB0714.GBRP265.PROD.OUTLOOK.COM>"
+      ],
+      "body_plain": "Hi Darren,\n\nWhile the btergm function implements a bootrapping correction to MPLE \nstandard errors in a TERGM (i.e., for a panel of many networks), mtergm \nis just a convenience wrapper for the ergm::ergm function with MCMLE \n(i.e., for few waves) based on a block-diagonal matrix with an offset \nterm. The original ergm object is stored inside the output, and you can \naccess it via mtergm.model@ergm. However, the ergm package does not seem \nto define a working logLik method for models with an offset term, hence \nlogLik(mtergm.model@ergm) does not seem to work. Upon inspecting a \nfitted model, I can see that a log likelihood value is stored in the \n$loglikelihood slot. Provided that this is indeed the log likelihood, \nwhich the statnet developers should be able to confirm, I suppose you \nmay be able to calculate the desired quantities as follows:\n\nll <- as.numeric(mtergm.model@ergm$loglikelihood)\naic <- -2 * ll + (2 * length(mtergm.model@ergm$coef))\nbic <- -2 * ll + (2 * log(nobs(mtergm.model@ergm)))\n\nThat said, I am not sure how well-defined BIC is in a network context \ngiven its reliance on the number of observations, which is perhaps \nambiguous in a network context.\n\nIf you have any follow-up questions, please feel free to email me \ndirectly or add an entry to the issue tracker for the btergm package on \nGitHub: https://github.com/leifeld/btergm/issues\n\nBest regards,\n\nPhilip\n\n-- \nProfessor of Comparative Politics\nDepartment of Government\nUniversity of Essex\nhttp://www.philipleifeld.com\n\nOn 21/02/2020 15:13, Darren Gillis wrote:\n> Hello,\n> \n> \n> I am not sure if this is the correct place to post regarding btergm, but \n> I thought I'd try as other related posts appear in the archives.\n> \n> \n> I am currently working with a dynamic network (four annual \n> cross-sections) of vessel associations in a North Sea trawl fishery. I \n> am exploring both tergm::stergm() and btergm::mtergm() as alternative \n> modeling methods. I am interested in using AIC to compare alternative \n> models within (not between)?each of these packages (in addition to \n> examining? MCMC chains, checking?degeneracy and GOF). I can easily \n> extract these values from stergm(), but in mtergm()?the S4?slots for \n> likelihood, aic, and bic?mtergm are all NA. In addition, attempts to \n> directly obtain these values with \"AIC(mtergm.model) \"?result in:\n> \n> \n> Error in UseMethod(\"logLik\") : no applicable method for 'logLik' applied \n> to an object of class \"mtergm\"\n> \n> \n> \n> Are these slots place holders for compatibility with other packages or \n> have I missed?something in the manual and associated publication \n> (Leifeld et al. 2018)?? ?I think the answer is pretty clear, but I \n> wanted to double check before I moved on.?Thank you for considering my \n> query.\n> \n> \n> Dr. Darren M. Gillis\n> Professor,?Biological Sciences\n> Faculty of Science\n> University of Manitoba\n> \n> ?Ignorance more frequently begets confidence than does knowledge.?\n> ? Charles Darwin\n> \n> \n> \"...,? reality must take precedence over public relations, for Nature \n> cannot be fooled.\"\n> ? Richard P. Feynman\n> \n> \n>",
+      "body_snippet": "Hi Darren,\n\nWhile the btergm function implements a bootrapping correction to MPLE \nstandard errors in a TERGM (i.e., for a panel of many networks), mtergm \nis just a convenience wrapper for the ergm::",
+      "thread_id": "thread-a594119e88c5",
+      "thread_depth": 0,
+      "month": "2020-02"
+    },
+    {
+      "id": "msg-ab7162d2d57c",
+      "message_id": "<8e20da3c1c7e40ec8fb7899c32e082ea@umanitoba.ca>",
+      "from_name": "Darren Gillis",
+      "from_email_hash": "abcfa96f7631a9e7355afccc34df12dfc84c8d37e75393b1771b22c00bd02e0c",
+      "date": "2020-02-22T09:06:23Z",
+      "subject": "[statnet_help] Likelihood and AIC from mtergm() in the btergm package by Leifeld",
+      "subject_clean": "[statnet_help] Likelihood and AIC from mtergm() in the btergm package by Leifeld",
+      "in_reply_to": "<fbfcc648-6042-08c8-f0f7-0761cee8685e@essex.ac.uk>",
+      "references": [
+        "<9f4bf88a7c7c4165a91383c7813237b9@LNXP265MB0714.GBRP265.PROD.OUTLOOK.COM>",
+        "<fbfcc648-6042-08c8-f0f7-0761cee8685e@essex.ac.uk>"
+      ],
+      "body_plain": "Hi Philip,\n\n\nThank you for your rapid reply! This is very helpful.\n\n\nFirst, I apologize for stating that the likelihood, aic, and bic slots contain NA when in fact they contain NaN. The same issue for me, but it could be important (or misleading) for someone trying to determine the root of the issue.\n\n\nEspecially, I want to thank you also for the quick AIC hack. It will serve my purposes for now, but I will wait for input from the statnet team on the meaning of ergm$likelihood  before I use these values in my manuscript. And I always have the auc.pr values across the panel of networks. In fact, it may be just as good for my goal, but AIC is more familiar for most fisheries reviewers.\n\n\nI am exploring both your package and STERGMs for this dynamic network, and I greatly appreciate the work that you and the statnet team have placed in your packages.\n\n\nWarmest regards, Darren\n\n\n\nDr. Darren M. Gillis\nProfessor, Biological Sciences\nFaculty of Science\nUniversity of Manitoba\n\n________________________________\nFrom: Leifeld, Philip <philip.leifeld@essex.ac.uk>\nSent: February 22, 2020 10:04 AM\nTo: statnet_help@u.washington.edu\nCc: Darren Gillis\nSubject: Re: [statnet_help] Likelihood and AIC from mtergm() in the btergm package by Leifeld\n\nHi Darren,\n\nWhile the btergm function implements a bootrapping correction to MPLE\nstandard errors in a TERGM (i.e., for a panel of many networks), mtergm\nis just a convenience wrapper for the ergm::ergm function with MCMLE\n(i.e., for few waves) based on a block-diagonal matrix with an offset\nterm. The original ergm object is stored inside the output, and you can\naccess it via mtergm.model@ergm. However, the ergm package does not seem\nto define a working logLik method for models with an offset term, hence\nlogLik(mtergm.model@ergm) does not seem to work. Upon inspecting a\nfitted model, I can see that a log likelihood value is stored in the\n$loglikelihood slot. Provided that this is indeed the log likelihood,\nwhich the statnet developers should be able to confirm, I suppose you\nmay be able to calculate the desired quantities as follows:\n\nll <- as.numeric(mtergm.model@ergm$loglikelihood)\naic <- -2 * ll + (2 * length(mtergm.model@ergm$coef))\nbic <- -2 * ll + (2 * log(nobs(mtergm.model@ergm)))\n\nThat said, I am not sure how well-defined BIC is in a network context\ngiven its reliance on the number of observations, which is perhaps\nambiguous in a network context.\n\nIf you have any follow-up questions, please feel free to email me\ndirectly or add an entry to the issue tracker for the btergm package on\nGitHub: https://github.com/leifeld/btergm/issues\n\nBest regards,\n\nPhilip\n\n--\nProfessor of Comparative Politics\nDepartment of Government\nUniversity of Essex\nhttp://www.philipleifeld.com\n\nOn 21/02/2020 15:13, Darren Gillis wrote:\n> Hello,\n>\n>\n> I am not sure if this is the correct place to post regarding btergm, but\n> I thought I'd try as other related posts appear in the archives.\n>\n>\n> I am currently working with a dynamic network (four annual\n> cross-sections) of vessel associations in a North Sea trawl fishery. I\n> am exploring both tergm::stergm() and btergm::mtergm() as alternative\n> modeling methods. I am interested in using AIC to compare alternative\n> models within (not between) each of these packages (in addition to\n> examining  MCMC chains, checking degeneracy and GOF). I can easily\n> extract these values from stergm(), but in mtergm() the S4 slots for\n> likelihood, aic, and bic mtergm are all NA. In addition, attempts to\n> directly obtain these values with \"AIC(mtergm.model) \" result in:\n>\n>\n> Error in UseMethod(\"logLik\") : no applicable method for 'logLik' applied\n> to an object of class \"mtergm\"\n>\n>\n>\n> Are these slots place holders for compatibility with other packages or\n> have I missed something in the manual and associated publication\n> (Leifeld et al. 2018)?   I think the answer is pretty clear, but I\n> wanted to double check before I moved on. Thank you for considering my\n> query.\n>\n>\n> Dr. Darren M. Gillis\n> Professor, Biological Sciences\n> Faculty of Science\n> University of Manitoba\n>\n> ?Ignorance more frequently begets confidence than does knowledge.?\n> ? Charles Darwin\n>\n>\n> \"...,  reality must take precedence over public relations, for Nature\n> cannot be fooled.\"\n> ? Richard P. Feynman\n>\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200222/83588c05/attachment.html>",
+      "body_snippet": "Hi Philip,\n\n\nThank you for your rapid reply! This is very helpful.\n\n\nFirst, I apologize for stating that the likelihood, aic, and bic slots contain NA when in fact they contain NaN. The same issue for",
+      "thread_id": "thread-a594119e88c5",
+      "thread_depth": 1,
+      "month": "2020-02"
+    },
+    {
+      "id": "msg-d5501d1a6eec",
+      "message_id": "<757fbf3cb56b49d5adb377b2d313fb21@umanitoba.ca>",
+      "from_name": "Darren Gillis",
+      "from_email_hash": "abcfa96f7631a9e7355afccc34df12dfc84c8d37e75393b1771b22c00bd02e0c",
+      "date": "2020-02-26T18:09:04Z",
+      "subject": "[statnet_help] Likelihood and AIC from mtergm() in the btergm package by Leifeld",
+      "subject_clean": "[statnet_help] Likelihood and AIC from mtergm() in the btergm package by Leifeld",
+      "in_reply_to": "<8e20da3c1c7e40ec8fb7899c32e082ea@umanitoba.ca>",
+      "references": [
+        "<9f4bf88a7c7c4165a91383c7813237b9@LNXP265MB0714.GBRP265.PROD.OUTLOOK.COM>",
+        "<fbfcc648-6042-08c8-f0f7-0761cee8685e@essex.ac.uk>",
+        "<8e20da3c1c7e40ec8fb7899c32e082ea@umanitoba.ca>"
+      ],
+      "body_plain": "After digging into the GIT code (which I should have done before) I see that loglikelihood value returned by ergm()  is:\n\n\"The approximate change in log-likelihood in the last iteration. The value is only approximate because it is estimated based on the MCMC random sample.\"\n\nand not the model value that I require. I was wondering if the mle.lik value is available for \"a block-diagonal matrix with an offset  term\" described by Dr. Leifeld below. If not , I will continue with AUC based GOF statistics. Thank you for taking the time to consider my query.\n\nRegards, Darren\n\n\nDr. Darren M. Gillis\nProfessor, Biological Sciences\nFaculty of Science\nUniversity of Manitoba\n\n\n\n\n________________________________\nFrom: Darren Gillis\nSent: February 22, 2020 11:06 AM\nTo: Leifeld, Philip; statnet_help@u.washington.edu\nCc: morrism@u.washington.edu\nSubject: Re: [statnet_help] Likelihood and AIC from mtergm() in the btergm package by Leifeld\n\n\nHi Philip,\n\n\nThank you for your rapid reply! This is very helpful.\n\n\nFirst, I apologize for stating that the likelihood, aic, and bic slots contain NA when in fact they contain NaN. The same issue for me, but it could be important (or misleading) for someone trying to determine the root of the issue.\n\n\nEspecially, I want to thank you also for the quick AIC hack. It will serve my purposes for now, but I will wait for input from the statnet team on the meaning of ergm$likelihood  before I use these values in my manuscript. And I always have the auc.pr values across the panel of networks. In fact, it may be just as good for my goal, but AIC is more familiar for most fisheries reviewers.\n\n\nI am exploring both your package and STERGMs for this dynamic network, and I greatly appreciate the work that you and the statnet team have placed in your packages.\n\n\nWarmest regards, Darren\n\n\n\nDr. Darren M. Gillis\nProfessor, Biological Sciences\nFaculty of Science\nUniversity of Manitoba\n\n________________________________\nFrom: Leifeld, Philip <philip.leifeld@essex.ac.uk>\nSent: February 22, 2020 10:04 AM\nTo: statnet_help@u.washington.edu\nCc: Darren Gillis\nSubject: Re: [statnet_help] Likelihood and AIC from mtergm() in the btergm package by Leifeld\n\nHi Darren,\n\nWhile the btergm function implements a bootrapping correction to MPLE\nstandard errors in a TERGM (i.e., for a panel of many networks), mtergm\nis just a convenience wrapper for the ergm::ergm function with MCMLE\n(i.e., for few waves) based on a block-diagonal matrix with an offset\nterm. The original ergm object is stored inside the output, and you can\naccess it via mtergm.model@ergm. However, the ergm package does not seem\nto define a working logLik method for models with an offset term, hence\nlogLik(mtergm.model@ergm) does not seem to work. Upon inspecting a\nfitted model, I can see that a log likelihood value is stored in the\n$loglikelihood slot. Provided that this is indeed the log likelihood,\nwhich the statnet developers should be able to confirm, I suppose you\nmay be able to calculate the desired quantities as follows:\n\nll <- as.numeric(mtergm.model@ergm$loglikelihood)\naic <- -2 * ll + (2 * length(mtergm.model@ergm$coef))\nbic <- -2 * ll + (2 * log(nobs(mtergm.model@ergm)))\n\nThat said, I am not sure how well-defined BIC is in a network context\ngiven its reliance on the number of observations, which is perhaps\nambiguous in a network context.\n\nIf you have any follow-up questions, please feel free to email me\ndirectly or add an entry to the issue tracker for the btergm package on\nGitHub: https://github.com/leifeld/btergm/issues\n\nBest regards,\n\nPhilip\n\n--\nProfessor of Comparative Politics\nDepartment of Government\nUniversity of Essex\nhttp://www.philipleifeld.com\n\nOn 21/02/2020 15:13, Darren Gillis wrote:\n> Hello,\n>\n>\n> I am not sure if this is the correct place to post regarding btergm, but\n> I thought I'd try as other related posts appear in the archives.\n>\n>\n> I am currently working with a dynamic network (four annual\n> cross-sections) of vessel associations in a North Sea trawl fishery. I\n> am exploring both tergm::stergm() and btergm::mtergm() as alternative\n> modeling methods. I am interested in using AIC to compare alternative\n> models within (not between) each of these packages (in addition to\n> examining  MCMC chains, checking degeneracy and GOF). I can easily\n> extract these values from stergm(), but in mtergm() the S4 slots for\n> likelihood, aic, and bic mtergm are all NA. In addition, attempts to\n> directly obtain these values with \"AIC(mtergm.model) \" result in:\n>\n>\n> Error in UseMethod(\"logLik\") : no applicable method for 'logLik' applied\n> to an object of class \"mtergm\"\n>\n>\n>\n> Are these slots place holders for compatibility with other packages or\n> have I missed something in the manual and associated publication\n> (Leifeld et al. 2018)?   I think the answer is pretty clear, but I\n> wanted to double check before I moved on. Thank you for considering my\n> query.\n>\n>\n> Dr. Darren M. Gillis\n> Professor, Biological Sciences\n> Faculty of Science\n> University of Manitoba\n>\n> ?Ignorance more frequently begets confidence than does knowledge.?\n> ? Charles Darwin\n>\n>\n> \"...,  reality must take precedence over public relations, for Nature\n> cannot be fooled.\"\n> ? Richard P. Feynman\n>\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200227/dddfb721/attachment.html>",
+      "body_snippet": "After digging into the GIT code (which I should have done before) I see that loglikelihood value returned by ergm()  is:\n\n\"The approximate change in log-likelihood in the last iteration. The value is ",
+      "thread_id": "thread-a594119e88c5",
+      "thread_depth": 2,
+      "month": "2020-02"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-95aad306ada0",
+      "subject": "[statnet_help] STERGM: links driving attribute change",
+      "message_count": 2,
+      "participants": [
+        "Joshua Dohmen",
+        "martina morris"
+      ],
+      "started": "2020-02-05T01:14:55Z",
+      "last_reply": "2020-02-05T11:14:38Z",
+      "root_message_id": "msg-95aad306ada0"
+    },
+    {
+      "id": "thread-1769c338c989",
+      "subject": "[statnet_help] Bipartite ERGM terms?",
+      "message_count": 1,
+      "participants": [
+        "Sara Futch"
+      ],
+      "started": "2020-02-13T07:55:28Z",
+      "last_reply": "2020-02-13T07:55:28Z",
+      "root_message_id": "msg-1769c338c989"
+    },
+    {
+      "id": "thread-f7fc6267ecdc",
+      "subject": "[statnet_help] Fwd: help",
+      "message_count": 1,
+      "participants": [
+        "Filippo Santi"
+      ],
+      "started": "2020-02-17T01:32:08Z",
+      "last_reply": "2020-02-17T01:32:08Z",
+      "root_message_id": "msg-f7fc6267ecdc"
+    },
+    {
+      "id": "thread-64659024cab5",
+      "subject": "[statnet_help] Network Modeling for Epidemics -- Summer short course at the University of Washington -- 17-21 August, 2020",
+      "message_count": 1,
+      "participants": [
+        "Steven Goodreau"
+      ],
+      "started": "2020-02-17T19:15:44Z",
+      "last_reply": "2020-02-17T19:15:44Z",
+      "root_message_id": "msg-64659024cab5"
+    },
+    {
+      "id": "thread-8a4c9040736b",
+      "subject": "[statnet_help] Likelihood and AIC from mtergm() in the btergm package by Leifeld",
+      "message_count": 1,
+      "participants": [
+        "Darren Gillis"
+      ],
+      "started": "2020-02-21T07:13:17Z",
+      "last_reply": "2020-02-21T07:13:17Z",
+      "root_message_id": "msg-8a4c9040736b"
+    },
+    {
+      "id": "thread-a594119e88c5",
+      "subject": "[statnet_help] Likelihood and AIC from mtergm() in the btergm package by Leifeld",
+      "message_count": 3,
+      "participants": [
+        "Darren Gillis",
+        "Leifeld, Philip"
+      ],
+      "started": "2020-02-22T08:04:25Z",
+      "last_reply": "2020-02-26T18:09:04Z",
+      "root_message_id": "msg-a594119e88c5"
+    }
+  ]
+}

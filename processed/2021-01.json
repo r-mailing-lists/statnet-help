@@ -1,0 +1,139 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2021-01",
+  "messages": [
+    {
+      "id": "msg-69f08d245b97",
+      "message_id": "<AM5PR0502MB30922B791114D4A24D7CD2A7A8D10@AM5PR0502MB3092.eurprd05.prod.outlook.com>",
+      "from_name": "SARAZIN Marc",
+      "from_email_hash": "e67eb636498fc57624ae1fad40aef8f61f3db813428008f5fa8764bdd7079faf",
+      "date": "2021-01-05T11:51:06Z",
+      "subject": "[statnet_help] \"RTP\" version of dgwesp / dgwnsp / dgwdsp",
+      "subject_clean": "[statnet_help] \"RTP\" version of dgwesp / dgwnsp / dgwdsp",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnetters,\n\nHappy New Year! I hope you are all keeping well and safe.\n\nUpon looking through the source code of the ERGM package, I noticed a \"type\" for dgwesp / dgwnsp / dgwdsp that is not documented in the help files: \"RTP\" (Recursive Two-Path). This effect for dgwesp documents cases where there is both a direct tie between i and j (e.g. i --> j) and one or more symmetric two-paths between i and j (i.e. i <--> k <--> j ).\n\nThe dgwesp effect seems to work just fine, and indeed I have been using it in my models. However, there seems to be an issue with dgwnsp (i.e. cases where i <--> k <--> j but there is no direct tie between i and j). Specifically, the dgwnsp RTP effect always calculates to 0, which also means that the value of dgwdsp RTP is always equal to the value of dgwesp RTP. I have found this both in an empirical network and in a test network, specifically designed to test this bug.\n\nI'm e-mailing 1) to see if this is a known bug of the dgwnsp/dgwdsp RTP terms; and 2) if there were any plans to fix these terms in future (I would gladly fix them myself, but this is currently beyond my skill set). Likewise, and secondarily, 3) if there were any known bugs with the dgwesp RTP term (the one that works), which might explain why it isn't mentioned in the help documentation.\n\nThanks very much!\nAll the best,\nMarc\n\n--\nDr Marc Sarazin\nPost-Doctoral Fellow in Education\nMoray House School of Education and Sport, University of Edinburgh\nAcademic Visitor, Department of Education, University of Oxford\nThe University of Edinburgh is a charitable body, registered in Scotland, with registration number SC005336.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210105/6b665f47/attachment.html>",
+      "body_snippet": "Dear Statnetters,\n\nHappy New Year! I hope you are all keeping well and safe.\n\nUpon looking through the source code of the ERGM package, I noticed a \"type\" for dgwesp / dgwnsp / dgwdsp that is not docu",
+      "thread_id": "thread-69f08d245b97",
+      "thread_depth": 0,
+      "month": "2021-01"
+    },
+    {
+      "id": "msg-0823de136e73",
+      "message_id": "<alpine.WNT.2.21.999.2101111158150.5820@LAPTOP-PHUBQHL5>",
+      "from_name": "martina morris",
+      "from_email_hash": "723fa6c3cfc81bc0b636cb6ab264b9e07126ad90bc6bb940e8243a073bbb4b8b",
+      "date": "2021-01-11T12:15:28Z",
+      "subject": "[statnet_help] \"RTP\" version of dgwesp / dgwnsp / dgwdsp",
+      "subject_clean": "[statnet_help] \"RTP\" version of dgwesp / dgwnsp / dgwdsp",
+      "in_reply_to": "<AM5PR0502MB30922B791114D4A24D7CD2A7A8D10@AM5PR0502MB3092.eurprd05.prod.outlook.com>",
+      "references": [
+        "<AM5PR0502MB30922B791114D4A24D7CD2A7A8D10@AM5PR0502MB3092.eurprd05.prod.outlook.com>"
+      ],
+      "body_plain": "Hi Marc,\n\nThx for reporting this.  This isn't a known bug, so give us a bit to check \nand see if it's indeed a bug.\n\nI believe the RTP option is documented, as I see it under ?ergm::gwdsp. \nSo you might want to make sure you have the most recent version of ergm \ninstalled.\n\nFYI (and for the list's information) -- possible bug reports are best \nsubmitted via our GitHub repositories.  For ergm, that is here:\n\nhttps://github.com/statnet/ergm/\n\nIf you don't have a GitHub account, though, feel free to continue using \nthe statnet_help list.\n\nAnd the statnet_help list is also the right place for all questions that \naren't source code related.\n\nbest,\nmm\n\nOn Tue, 5 Jan 2021, SARAZIN Marc wrote:\n\n> Dear Statnetters,\n> \n> Happy New Year! I hope you are all keeping well and safe.\n> \n> Upon looking through the source code of the ERGM package, I noticed a \"type\" for dgwesp / dgwnsp /\n> dgwdsp that is not documented in the help files: \"RTP\" (Recursive Two-Path). This effect for dgwesp\n> documents cases where there is both a direct tie between i and j (e.g. i --> j) and one or more\n> symmetric two-paths between i and j (i.e. i <--> k <--> j ).\n> \n> The dgwesp effect seems to work just fine, and indeed I have been using it in my models. However,\n> there seems to be an issue with dgwnsp (i.e. cases where?i <--> k <--> j but there is no direct tie\n> between i and j). Specifically, the dgwnsp RTP effect always calculates to 0, which also means that\n> the value of dgwdsp RTP is always equal to the value of dgwesp RTP. I have found this both in an\n> empirical network and in a test network, specifically designed to test this bug.\n> \n> I'm e-mailing 1) to see if this is a known bug of the dgwnsp/dgwdsp RTP terms; and 2) if there were\n> any plans to fix these terms in future (I would gladly fix them myself, but this is currently beyond\n> my skill set). Likewise, and secondarily, 3) if there were any known bugs with the dgwesp RTP term\n> (the one that works), which might explain why it isn't mentioned in the help documentation.\n> \n> Thanks very much!\n> All the best,\n> Marc\n> \n> --\n> Dr Marc Sarazin\n> Post-Doctoral Fellow in Education\n> Moray House School of Education and Sport, University of Edinburgh\n> Academic Visitor, Department of Education, University of Oxford\n> The University of Edinburgh is a charitable body, registered in Scotland, with registration number\n> SC005336.\n>\n\n****************************************************************\n  Professor Emerita of Sociology and Statistics\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Marc,\n\nThx for reporting this.  This isn't a known bug, so give us a bit to check \nand see if it's indeed a bug.\n\nI believe the RTP option is documented, as I see it under ?ergm::gwdsp. \nSo you mig",
+      "thread_id": "thread-69f08d245b97",
+      "thread_depth": 1,
+      "month": "2021-01"
+    },
+    {
+      "id": "msg-7a71db419520",
+      "message_id": "<alpine.WNT.2.21.999.2101121654340.2908@LAPTOP-PHUBQHL5>",
+      "from_name": "martina morris",
+      "from_email_hash": "723fa6c3cfc81bc0b636cb6ab264b9e07126ad90bc6bb940e8243a073bbb4b8b",
+      "date": "2021-01-12T16:55:39Z",
+      "subject": "[statnet_help] \"RTP\" version of dgwesp / dgwnsp / dgwdsp",
+      "subject_clean": "[statnet_help] \"RTP\" version of dgwesp / dgwnsp / dgwdsp",
+      "in_reply_to": "<AM5PR0502MB30922B791114D4A24D7CD2A7A8D10@AM5PR0502MB3092.eurprd05.prod.outlook.com>",
+      "references": [
+        "<AM5PR0502MB30922B791114D4A24D7CD2A7A8D10@AM5PR0502MB3092.eurprd05.prod.outlook.com>"
+      ],
+      "body_plain": "Marc -- would you please:\n\n1. open an issue in the ergm GitHub repo for this, and\n2. post your test code for the RTP term\n\nmany thx,\nmm\n\n\nOn Tue, 5 Jan 2021, SARAZIN Marc wrote:\n\n> Dear Statnetters,\n> \n> Happy New Year! I hope you are all keeping well and safe.\n> \n> Upon looking through the source code of the ERGM package, I noticed a \"type\" for dgwesp / dgwnsp /\n> dgwdsp that is not documented in the help files: \"RTP\" (Recursive Two-Path). This effect for dgwesp\n> documents cases where there is both a direct tie between i and j (e.g. i --> j) and one or more\n> symmetric two-paths between i and j (i.e. i <--> k <--> j ).\n> \n> The dgwesp effect seems to work just fine, and indeed I have been using it in my models. However,\n> there seems to be an issue with dgwnsp (i.e. cases where?i <--> k <--> j but there is no direct tie\n> between i and j). Specifically, the dgwnsp RTP effect always calculates to 0, which also means that\n> the value of dgwdsp RTP is always equal to the value of dgwesp RTP. I have found this both in an\n> empirical network and in a test network, specifically designed to test this bug.\n> \n> I'm e-mailing 1) to see if this is a known bug of the dgwnsp/dgwdsp RTP terms; and 2) if there were\n> any plans to fix these terms in future (I would gladly fix them myself, but this is currently beyond\n> my skill set). Likewise, and secondarily, 3) if there were any known bugs with the dgwesp RTP term\n> (the one that works), which might explain why it isn't mentioned in the help documentation.\n> \n> Thanks very much!\n> All the best,\n> Marc\n> \n> --\n> Dr Marc Sarazin\n> Post-Doctoral Fellow in Education\n> Moray House School of Education and Sport, University of Edinburgh\n> Academic Visitor, Department of Education, University of Oxford\n> The University of Edinburgh is a charitable body, registered in Scotland, with registration number\n> SC005336.\n>\n\n****************************************************************\n  Professor Emerita of Sociology and Statistics\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Marc -- would you please:\n\n1. open an issue in the ergm GitHub repo for this, and\n2. post your test code for the RTP term\n\nmany thx,\nmm\n\n\nOn Tue, 5 Jan 2021, SARAZIN Marc wrote:\n\n> Dear Statnetters,\n>",
+      "thread_id": "thread-69f08d245b97",
+      "thread_depth": 1,
+      "month": "2021-01"
+    },
+    {
+      "id": "msg-219fece818f1",
+      "message_id": "<84E45CAF-2931-49A1-B8D3-3CC97423C426@contoso.com>",
+      "from_name": "Cui Qinghua",
+      "from_email_hash": "95aa4010e227ff354b14b53da0dc2c734e23a8f23d6e1a85e93b95a8459001e7",
+      "date": "2021-01-14T18:55:55Z",
+      "subject": "[statnet_help] An inquiry about where to find the code",
+      "subject_clean": "[statnet_help] An inquiry about where to find the code",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet_help,\n\nI am looking for the code which Professor Marijtje A.J. van Duijna said she provided it on the statnet website in her paper. The paper name is ? Comparison of Maximum Pseudo Likelihood and Maximum Likelihood Estimation of Exponential Family Random Graph Models ?.\n\n\n[cid:image001.png@01D6EB2C.FEFA8E50]\nThis Screenshot is from the paper.\nCould you please tell me where I can find it?\n\nThank you very much.\n\nKind regards,\nQinghua\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210115/2f68330c/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: image001.png\nType: image/png\nSize: 58552 bytes\nDesc: image001.png\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210115/2f68330c/attachment.png>",
+      "body_snippet": "Dear statnet_help,\n\nI am looking for the code which Professor Marijtje A.J. van Duijna said she provided it on the statnet website in her paper. The paper name is ? Comparison of Maximum Pseudo Likeli",
+      "thread_id": "thread-219fece818f1",
+      "thread_depth": 0,
+      "month": "2021-01"
+    },
+    {
+      "id": "msg-6e502960ef82",
+      "message_id": "<alpine.WNT.2.21.999.2101181355450.14380@LAPTOP-PHUBQHL5>",
+      "from_name": "martina morris",
+      "from_email_hash": "723fa6c3cfc81bc0b636cb6ab264b9e07126ad90bc6bb940e8243a073bbb4b8b",
+      "date": "2021-01-18T13:57:36Z",
+      "subject": "[statnet_help] An inquiry about where to find the code",
+      "subject_clean": "[statnet_help] An inquiry about where to find the code",
+      "in_reply_to": "<84E45CAF-2931-49A1-B8D3-3CC97423C426@contoso.com>",
+      "references": [
+        "<84E45CAF-2931-49A1-B8D3-3CC97423C426@contoso.com>"
+      ],
+      "body_plain": "Hi Qinghua,\n\nWe moved/updated the website last year, and in the process, we restored \nitems selectively.  But I've looked in our archive, and I don't see it \nthere either.\n\nHave reached out to Marijtje to see if she still has the code.\n\nbest,\nmm\n\nOn Fri, 15 Jan 2021, Cui Qinghua wrote:\n\n> \n> Dear statnet_help,\n>\n> \n> \n> I am looking for the code which Professor Marijtje A.J. van Duijna said she provided it on the\n> statnet website in her paper. The paper name is ? Comparison of Maximum Pseudo Likelihood and Maximum\n> Likelihood Estimation of Exponential Family Random Graph Models ?.\n>\n> \n>\n> \n> \n> [IMAGE]\n> This Screenshot is from the paper.\n> \n> Could you please tell me where I can find it?\n>\n> \n> \n> Thank you very much.\n>\n> \n> \n> Kind regards,\n> \n> Qinghua\n> \n> \n>\n\n****************************************************************\n  Professor Emerita of Sociology and Statistics\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Qinghua,\n\nWe moved/updated the website last year, and in the process, we restored \nitems selectively.  But I've looked in our archive, and I don't see it \nthere either.\n\nHave reached out to Marijtj",
+      "thread_id": "thread-219fece818f1",
+      "thread_depth": 1,
+      "month": "2021-01"
+    },
+    {
+      "id": "msg-613bd60c756e",
+      "message_id": "<d22adbec-1cd3-6937-f4fb-42ac07acfcf0@stat.ucla.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "4255dafa1d1d30609901138880c7f909594e9d2578c1571a4b94e634e021c55f",
+      "date": "2021-01-28T00:24:14Z",
+      "subject": "[statnet_help] An inquiry about where to find the code",
+      "subject_clean": "[statnet_help] An inquiry about where to find the code",
+      "in_reply_to": "<alpine.WNT.2.21.999.2101181355450.14380@LAPTOP-PHUBQHL5>",
+      "references": [
+        "<84E45CAF-2931-49A1-B8D3-3CC97423C426@contoso.com>",
+        "<alpine.WNT.2.21.999.2101181355450.14380@LAPTOP-PHUBQHL5>"
+      ],
+      "body_plain": "Hi Qinghua,\n\nI have placed the code on github at the address:\n\nhttps://github.com/handcock/ERGM_MPLE_MLE\n\nBest,\n\nMark\n\nIstat\n\nOn 1/18/21 1:57 PM, martina morris wrote:\n> Hi Qinghua,\n>\n> We moved/updated the website last year, and in the process, we \n> restored items selectively.? But I've looked in our archive, and I \n> don't see it there either.\n>\n> Have reached out to Marijtje to see if she still has the code.\n>\n> best,\n> mm\n>\n> On Fri, 15 Jan 2021, Cui Qinghua wrote:\n>\n>>\n>> Dear statnet_help,\n>>\n>>\n>>\n>> I am looking for the code which Professor Marijtje A.J. van Duijna \n>> said she provided it on the\n>> statnet website in her paper. The paper name is ? Comparison of \n>> Maximum Pseudo Likelihood and Maximum\n>> Likelihood Estimation of Exponential Family Random Graph Models ?.\n>>\n>>\n>>\n>>\n>>\n>> [IMAGE]\n>> This Screenshot is from the paper.\n>>\n>> Could you please tell me where I can find it?\n>>\n>>\n>>\n>> Thank you very much.\n>>\n>>\n>>\n>> Kind regards,\n>>\n>> Qinghua\n>>\n>>\n>>\n>\n> ****************************************************************\n> ?Professor Emerita of Sociology and Statistics\n> ?Box 354322\n> ?University of Washington\n> ?Seattle, WA 98195-4322\n>\n> ?Office:??????? (206) 685-3402\n> ?Dept Office:?? (206) 543-5882, 543-7237\n> ?Fax:?????????? (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210128/2d9494df/attachment.html>",
+      "body_snippet": "Hi Qinghua,\n\nI have placed the code on github at the address:\n\nhttps://github.com/handcock/ERGM_MPLE_MLE\n\nBest,\n\nMark\n\nIstat\n\nOn 1/18/21 1:57 PM, martina morris wrote:\n> Hi Qinghua,\n>\n> We moved/updat",
+      "thread_id": "thread-219fece818f1",
+      "thread_depth": 2,
+      "month": "2021-01"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-69f08d245b97",
+      "subject": "[statnet_help] \"RTP\" version of dgwesp / dgwnsp / dgwdsp",
+      "message_count": 3,
+      "participants": [
+        "SARAZIN Marc",
+        "martina morris"
+      ],
+      "started": "2021-01-05T11:51:06Z",
+      "last_reply": "2021-01-12T16:55:39Z",
+      "root_message_id": "msg-69f08d245b97"
+    },
+    {
+      "id": "thread-219fece818f1",
+      "subject": "[statnet_help] An inquiry about where to find the code",
+      "message_count": 3,
+      "participants": [
+        "Cui Qinghua",
+        "Mark S. Handcock",
+        "martina morris"
+      ],
+      "started": "2021-01-14T18:55:55Z",
+      "last_reply": "2021-01-28T00:24:14Z",
+      "root_message_id": "msg-219fece818f1"
+    }
+  ]
+}

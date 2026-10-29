@@ -1,0 +1,277 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2020-03",
+  "messages": [
+    {
+      "id": "msg-f950ee2028b9",
+      "message_id": "<34dc04afff2f594c7684a1ebcac54f5ced565fde.camel@unsw.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "41572807418827d3378242dec6425ef03cf45319ec22768b112bc8c068097b67",
+      "date": "2020-03-02T03:47:16Z",
+      "subject": "[statnet_help] Likelihood and AIC from mtergm() in the btergm package by Leifeld",
+      "subject_clean": "[statnet_help] Likelihood and AIC from mtergm() in the btergm package by Leifeld",
+      "in_reply_to": "<fbfcc648-6042-08c8-f0f7-0761cee8685e@essex.ac.uk>",
+      "references": [
+        "<9f4bf88a7c7c4165a91383c7813237b9@LNXP265MB0714.GBRP265.PROD.OUTLOOK.COM>",
+        "<fbfcc648-6042-08c8-f0f7-0761cee8685e@essex.ac.uk>"
+      ],
+      "body_plain": "Hi,\n\nOn Sat, 2020-02-22 at 16:04 +0000, Leifeld, Philip wrote:\n> However, the ergm package does not seem \n> to define a working logLik method for models with an offset term, \n\nAre you sure? Every version I've tried handles this OK:\n\n> logLik(ergm(flomarriage~edges+offset(edges),offset.coef=-2))\n...\n'log Lik.' -82.01365 (df=2)\n\nActually, now that I look, df should be 1 here, since there is only one\nfree parameter. Also, it looks like the value of the maximised\nlikelihood depends on the offset parameter, which, in this case, it\nshouldn't:\n\n> logLik(ergm(flomarriage~edges+offset(edges),offset.coef=-1))\n...\n'log Lik.' -79.6536 (df=2)\n\nAnother day, another issue (or two).\n\n\t\t\tBest,\n\t\t\tPavel",
+      "body_snippet": "Hi,\n\nOn Sat, 2020-02-22 at 16:04 +0000, Leifeld, Philip wrote:\n> However, the ergm package does not seem \n> to define a working logLik method for models with an offset term, \n\nAre you sure? Every vers",
+      "thread_id": "thread-f950ee2028b9",
+      "thread_depth": 0,
+      "month": "2020-03"
+    },
+    {
+      "id": "msg-f5fd5309f7f6",
+      "message_id": "<CAEzSE6V_KdXW5mm5GGu2YsmFmxrBX2wNxSNVy-_SKD71tX5VmQ@mail.gmail.com>",
+      "from_name": "Michael Heaney",
+      "from_email_hash": "4d6403dbcaae8825781ae6c49066171f12df256ce970fec71e8e0e6fc8ca3792",
+      "date": "2020-03-05T20:58:33Z",
+      "subject": "[statnet_help] Modeling Relational Event Dynamics with R/statnet",
+      "subject_clean": "[statnet_help] Modeling Relational Event Dynamics with R/statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet Community,\n\nDoes anyone have a copy of the materials for the workshop \"Modeling\nRelational Event Dynamics with R/statnet\" that is taught by Carter Butts?\nIf you could share them with me, I would appreciate it.\n\nAlso, if you happen to have any other good tutorial materials on Relational\nEvent Models, I would welcome them.\n\nThanks in advance. :)\n\nMichael\n\n--\nMichael T. Heaney, Ph.D.\n\nResearch Fellow\nSchool of Social and Political Sciences\nUniversity of Glasgow\n\nAdjunct Research Professor\nInstitute for Research on Women and Gender\nUniversity of Michigan\n\nemail 01: Michael.Heaney@glasgow.ac.uk\nemail 02: mheaney@umich.edu\nemail 03: michaeltheaney@gmail.com\n\nphone: +44 (0) 730 534 2286\nhttp://www.michaeltheaney.com/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200305/5f6eaa77/attachment.html>",
+      "body_snippet": "Dear Statnet Community,\n\nDoes anyone have a copy of the materials for the workshop \"Modeling\nRelational Event Dynamics with R/statnet\" that is taught by Carter Butts?\nIf you could share them with me, ",
+      "thread_id": "thread-f5fd5309f7f6",
+      "thread_depth": 0,
+      "month": "2020-03"
+    },
+    {
+      "id": "msg-156657e37bd9",
+      "message_id": "<a4f49451-0ca5-e003-bc38-985d5208361c@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2020-03-05T21:54:32Z",
+      "subject": "[statnet_help] Modeling Relational Event Dynamics with R/statnet",
+      "subject_clean": "[statnet_help] Modeling Relational Event Dynamics with R/statnet",
+      "in_reply_to": "<CAEzSE6V_KdXW5mm5GGu2YsmFmxrBX2wNxSNVy-_SKD71tX5VmQ@mail.gmail.com>",
+      "references": [
+        "<CAEzSE6V_KdXW5mm5GGu2YsmFmxrBX2wNxSNVy-_SKD71tX5VmQ@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Michael -\n\nYou can usually find fairly up-to-date workshop materials at the \nworkshop wiki: https://github.com/statnet/Workshops/wiki.? The \nrelational event workshop information is among those available.\n\nHope that helps!\n\n-Carter\n\nOn 3/5/20 8:58 PM, Michael Heaney wrote:\n> Dear Statnet Community,\n>\n> Does anyone have a copy of the materials for the workshop \"Modeling \n> Relational Event Dynamics with R/statnet\" that is taught by Carter \n> Butts?? If you could share them with me, I would appreciate it.\n>\n> Also, if you happen to have any other good tutorial materials on \n> Relational Event Models, I would welcome them.\n>\n> Thanks in advance. :)\n>\n> Michael\n>\n> --\n> Michael T. Heaney, Ph.D.\n>\n> Research Fellow\n> School of Social and Political Sciences\n> University of Glasgow\n>\n> Adjunct Research Professor\n> Institute for Research on Women and Gender\n> University of Michigan\n>\n> email 01: Michael.Heaney@glasgow.ac.uk \n> <mailto:Michael.Heaney@glasgow.ac.uk>\n> email 02: mheaney@umich.edu <mailto:mheaney@umich.edu>\n> email 03: michaeltheaney@gmail.com <mailto:michaeltheaney@gmail.com>\n>\n> phone: +44 (0) 730 534 2286\n> http://www.michaeltheaney.com/\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200305/b4dd6291/attachment.html>",
+      "body_snippet": "Hi, Michael -\n\nYou can usually find fairly up-to-date workshop materials at the \nworkshop wiki: https://github.com/statnet/Workshops/wiki.? The \nrelational event workshop information is among those av",
+      "thread_id": "thread-f5fd5309f7f6",
+      "thread_depth": 1,
+      "month": "2020-03"
+    },
+    {
+      "id": "msg-4d73bf62a216",
+      "message_id": "<CAJyOa80sZAKBrY2cGhWrd17HZR-+3sUGn_J2FNnC-F_JoByn2Q@mail.gmail.com>",
+      "from_name": "Yaxin Cui",
+      "from_email_hash": "4274a7d0d422558734d434922541d47705b8d2e7ec4b71f0d2cad5e6583e6732",
+      "date": "2020-03-06T12:19:54Z",
+      "subject": "[statnet_help] Reference distribution h(x) in valued ERGM",
+      "subject_clean": "[statnet_help] Reference distribution h(x) in valued ERGM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet Community,\n\nI am working on a weighted network modeling using valued-ERGM in my\nresearch, and the determination of the choice of reference distribution\nh(y).\n\nI know there are choices such as Poisson distribution, Geometric\ndistribution (in ergm.count) and also Bernoulli, uniform, discrete uniform\nand standard normal distribution (in ergm). Is there any mathematical form\nof h(y) for each distribution? As the network structure y is the variable\nin h(y) function, how does the distribution of link strength determine h(y)?\n\nThank you so much for your help in advance!\n\nRegards,\nYaxin\n\n--\nYaxin Cui, Ph.D. student\nNorthwestern University, Mechanical Engineering Department\nEmail: yaxincui2023@u.northwestern.edu\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200306/02a1ac86/attachment.html>",
+      "body_snippet": "Dear Statnet Community,\n\nI am working on a weighted network modeling using valued-ERGM in my\nresearch, and the determination of the choice of reference distribution\nh(y).\n\nI know there are choices suc",
+      "thread_id": "thread-4d73bf62a216",
+      "thread_depth": 0,
+      "month": "2020-03"
+    },
+    {
+      "id": "msg-f39ae20bbf45",
+      "message_id": "<ZR0P278MB013898AB0CBACD4DC602414398FD0@ZR0P278MB0138.CHEP278.PROD.OUTLOOK.COM>",
+      "from_name": "Haenni, Malena",
+      "from_email_hash": "4173129b5b68c75e6b39fafc2db8b2829a833cf42e32223009546eb8f45aa34c",
+      "date": "2020-03-12T03:21:43Z",
+      "subject": "[statnet_help] MCMC% values",
+      "subject_clean": "[statnet_help] MCMC% values",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet community\n\nI am working with valued ERGMs with count data. I am wondering what the MCMC % values mean. I never see them reported in papers, but I was told in a summer school course as a rule of thumb that the value should not be higher than 10.\n\nAny insights on that? And what does it mean for the goodness of my models if I have a few predictors for which the values are 50 or even up to 78? This is the case for sum and one other predictor, the others are 0 ore close to 0.\n\nWhat does this tell me about the goodness or the legitimacy of the models?\n\nI would be grateful for your insights.\n\nBest\nMalena\n\n\n\nMalena Haenni\nPhd candidate\n\n[https://owa.unisg.ch/owa/service.svc/s/GetFileAttachment?id=AAMkAGVkMjc4ZDQ2LWE2MTgtNGU2Zi1iMjM0LWMwYzM3N2RkNGM3MABGAAAAAACiVTGePE42TKTx82ovfOpiBwDZ09ADcZZYTK%2F53pderis%2BAAAAAAEJAADZ09ADcZZYTK%2F53pderis%2BAAAAAG1kAAABEgAQAHPgAW%2Fgj3xGso5x3j7BpJI%3D&X-OWA-CANARY=0fTg9RdP3kSUDpQ7yUTodZV9c_1tetQIsS4O3xbzUQzQbfvE3V3TsksfqzFbVgKFFsv07hIw8IM.]\nInstitut f?r Systemisches Management und Public Governance | (IMP-HSG)\nUniversit?t St.Gallen (HSG) | Dufourstr. 40a | CH-9000 St.Gallen\n\nTel. +41 79 796 50 40\nmalena.haenni@unisg.ch<mailto:malena.haenni@unisg.ch> | www.imp.unisg.ch<http://www.imp.unisg.ch/>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200312/df9fcda5/attachment.html>",
+      "body_snippet": "Dear statnet community\n\nI am working with valued ERGMs with count data. I am wondering what the MCMC % values mean. I never see them reported in papers, but I was told in a summer school course as a r",
+      "thread_id": "thread-f39ae20bbf45",
+      "thread_depth": 0,
+      "month": "2020-03"
+    },
+    {
+      "id": "msg-8f58fc4aed1e",
+      "message_id": "<9b5553ef69b1693b5077d0a37429a69191d814f3.camel@unsw.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "41572807418827d3378242dec6425ef03cf45319ec22768b112bc8c068097b67",
+      "date": "2020-03-13T20:42:55Z",
+      "subject": "[statnet_help] Reference distribution h(x) in valued ERGM",
+      "subject_clean": "[statnet_help] Reference distribution h(x) in valued ERGM",
+      "in_reply_to": "<CAJyOa80sZAKBrY2cGhWrd17HZR-+3sUGn_J2FNnC-F_JoByn2Q@mail.gmail.com>",
+      "references": [
+        "<CAJyOa80sZAKBrY2cGhWrd17HZR-+3sUGn_J2FNnC-F_JoByn2Q@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Yaxin,\n\nIt should be in the help for the references:\n\nhelp('ergm-references')\n\n\n\nBest,\nPavel\n\nOn Fri, 2020-03-06 at 14:19 -0600, Yaxin Cui wrote:\n Dear Statnet Community,\n\nI am working on a weighted network modeling using valued-ERGM in my research, and the determination of the choice of reference distribution h(y).\n\nI know there are choices such as Poisson distribution, Geometric distribution (in ergm.count) and also Bernoulli, uniform, discrete uniform and standard normal distribution (in ergm). Is there any mathematical form of h(y) for each distribution? As the network structure y is the variable in h(y) function, how does the distribution of link strength determine h(y)?\n\nThank you so much for your help in advance!\n\nRegards,\nYaxin\n\n--\nYaxin Cui, Ph.D. student\nNorthwestern University, Mechanical Engineering Department\nEmail: yaxincui2023@u.northwestern.edu<mailto:yaxincui2023@u.northwestern.edu>\n\n\n_______________________________________________\n\nstatnet_help mailing list\n\n<mailto:statnet_help@u.washington.edu>\n\nstatnet_help@u.washington.edu\n\n\n<http://mailman13.u.washington.edu/mailman/listinfo/statnet_help>\n\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200314/2384f215/attachment.html>",
+      "body_snippet": "Dear Yaxin,\n\nIt should be in the help for the references:\n\nhelp('ergm-references')\n\n\n\nBest,\nPavel\n\nOn Fri, 2020-03-06 at 14:19 -0600, Yaxin Cui wrote:\n Dear Statnet Community,\n\nI am working on a weigh",
+      "thread_id": "thread-4d73bf62a216",
+      "thread_depth": 1,
+      "month": "2020-03"
+    },
+    {
+      "id": "msg-ad29175e0dbd",
+      "message_id": "<01696a3554422dc8c5065278587c2c03b2185ba4.camel@unsw.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "41572807418827d3378242dec6425ef03cf45319ec22768b112bc8c068097b67",
+      "date": "2020-03-13T20:48:31Z",
+      "subject": "[statnet_help] MCMC% values",
+      "subject_clean": "[statnet_help] MCMC% values",
+      "in_reply_to": "<ZR0P278MB013898AB0CBACD4DC602414398FD0@ZR0P278MB0138.CHEP278.PROD.OUTLOOK.COM>",
+      "references": [
+        "<ZR0P278MB013898AB0CBACD4DC602414398FD0@ZR0P278MB0138.CHEP278.PROD.OUTLOOK.COM>"
+      ],
+      "body_plain": "Dear Malena,\n\nMCMC % is the percent of the standard error in the table that is due to using MCMC to estimate the likelihood (loosely speaking). If the model converages but the MCMC % is that high, it means that the model is not too problematic, but the MCMC.interval= control.ergm() parameter is too small to get an accurate idea of what the MLE is.\n\nYou can play around with it, or you can try the MCMC.effectiveSize= mechanism, which will try to find it automatically---though it's relatively untested.\n\nI hope this helps,\nPavel\n\nOn Thu, 2020-03-12 at 10:21 +0000, Haenni, Malena wrote:\nDear statnet community\n\nI am working with valued ERGMs with count data. I am wondering what the MCMC % values mean. I never see them reported in papers, but I was told in a summer school course as a rule of thumb that the value should not be higher than 10.\n\nAny insights on that? And what does it mean for the goodness of my models if I have a few predictors for which the values are 50 or even up to 78? This is the case for sum and one other predictor, the others are 0 ore close to 0.\n\nWhat does this tell me about the goodness or the legitimacy of the models?\n\nI would be grateful for your insights.\n\nBest\nMalena\n\n\n\nMalena Haenni\nPhd candidate\n\n[https://owa.unisg.ch/owa/service.svc/s/GetFileAttachment?id=AAMkAGVkMjc4ZDQ2LWE2MTgtNGU2Zi1iMjM0LWMwYzM3N2RkNGM3MABGAAAAAACiVTGePE42TKTx82ovfOpiBwDZ09ADcZZYTK%2F53pderis%2BAAAAAAEJAADZ09ADcZZYTK%2F53pderis%2BAAAAAG1kAAABEgAQAHPgAW%2Fgj3xGso5x3j7BpJI%3D&X-OWA-CANARY=0fTg9RdP3kSUDpQ7yUTodZV9c_1tetQIsS4O3xbzUQzQbfvE3V3TsksfqzFbVgKFFsv07hIw8IM.]\nInstitut f?r Systemisches Management und Public Governance | (IMP-HSG)\nUniversit?t St.Gallen (HSG) | Dufourstr. 40a | CH-9000 St.Gallen\n\nTel. +41 79 796 50 40\nmalena.haenni@unisg.ch<mailto:malena.haenni@unisg.ch> | www.imp.unisg.ch<http://www.imp.unisg.ch/>\n\n_______________________________________________\n\nstatnet_help mailing list\n\n<mailto:statnet_help@u.washington.edu>\n\nstatnet_help@u.washington.edu\n\n\n<http://mailman13.u.washington.edu/mailman/listinfo/statnet_help>\n\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200314/c53b8fd6/attachment.html>",
+      "body_snippet": "Dear Malena,\n\nMCMC % is the percent of the standard error in the table that is due to using MCMC to estimate the likelihood (loosely speaking). If the model converages but the MCMC % is that high, it ",
+      "thread_id": "thread-f39ae20bbf45",
+      "thread_depth": 1,
+      "month": "2020-03"
+    },
+    {
+      "id": "msg-620481c2cd41",
+      "message_id": "<alpine.WNT.2.21.999.2003210915200.8304@LAPTOP-PHUBQHL5>",
+      "from_name": "martina morris",
+      "from_email_hash": "723fa6c3cfc81bc0b636cb6ab264b9e07126ad90bc6bb940e8243a073bbb4b8b",
+      "date": "2020-03-21T09:16:37Z",
+      "subject": "[statnet_help] An error on gplot.target() function (fwd)",
+      "subject_clean": "[statnet_help] An error on gplot.target() function (fwd)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "---------- Forwarded message ----------\nDate: Sat, 21 Mar 2020 12:05:20 +0000\nFrom: hakan hekim <hhekim@hotmail.com>\nTo: \"morrism@uw.edu\" <morrism@uw.edu>\nSubject: An error on gplot.target() function\n\nHi,\n\nI am working on a SNA project and using statnet. I am having an error, I couldn't find any contact information on statnet\nwebsite. I found your e-mail at statnet package document on CRAN.\n\nFollowing code;\nsna::gplot.target(g, closeness(g), main=\"Degree\", ?circ.lab = FALSE,\n ? ? ? ? ? ? ? ? ? circ.col=\"skyblue\", usearrows = FALSE,\n ? ? ? ? ? ? ? ? ? circ.lab.col = \"white\",\n ? ? ? ? ? ? ? ? ? vertex.col=c(\"blue\", rep(\"red\", 32), \"yellow\"),\n ? ? ? ? ? ? ? ? ? edge.col=\"darkgray\", displaylabels = TRUE,\n ? ? ? ? ? ? ? ? ? label = netfriends_myk %v% \"alias\", label.cex=0.5,)\n\ndevelops this warning;\nIn doTryCatch(return(expr), name, parentenv, handler) :? \"circ.lab\" is not a graphical parameter\n\nand in some cases does not draw the plot.\n\nCan you help me on this issue or point to someone who can help?\n\nThanks.\n\nHakan",
+      "body_snippet": "---------- Forwarded message ----------\nDate: Sat, 21 Mar 2020 12:05:20 +0000\nFrom: hakan hekim <hhekim@hotmail.com>\nTo: \"morrism@uw.edu\" <morrism@uw.edu>\nSubject: An error on gplot.target() function\n",
+      "thread_id": "thread-620481c2cd41",
+      "thread_depth": 0,
+      "month": "2020-03"
+    },
+    {
+      "id": "msg-2f024aa26f1b",
+      "message_id": "<alpine.WNT.2.21.999.2003211031020.8304@LAPTOP-PHUBQHL5>",
+      "from_name": "martina morris",
+      "from_email_hash": "723fa6c3cfc81bc0b636cb6ab264b9e07126ad90bc6bb940e8243a073bbb4b8b",
+      "date": "2020-03-21T10:31:36Z",
+      "subject": "[statnet_help] An error on gplot.target() function (fwd)",
+      "subject_clean": "[statnet_help] An error on gplot.target() function (fwd)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI am working on a SNA project and using statnet. I am having an error, I \ncouldn't find any contact information on statnet\nwebsite. I found your e-mail at statnet package document on CRAN.\n\nFollowing code;\nsna::gplot.target(g, closeness(g), main=\"Degree\", ?circ.lab = FALSE,\n ? ? ? ? ? ? ? ? ? circ.col=\"skyblue\", usearrows = FALSE,\n ? ? ? ? ? ? ? ? ? circ.lab.col = \"white\",\n ? ? ? ? ? ? ? ? ? vertex.col=c(\"blue\", rep(\"red\", 32), \"yellow\"),\n ? ? ? ? ? ? ? ? ? edge.col=\"darkgray\", displaylabels = TRUE,\n ? ? ? ? ? ? ? ? ? label = netfriends_myk %v% \"alias\", label.cex=0.5,)\n\ndevelops this warning;\nIn doTryCatch(return(expr), name, parentenv, handler) :? \"circ.lab\" is not a \ngraphical parameter\n\nand in some cases does not draw the plot.\n\nCan you help me on this issue or point to someone who can help?\n\nThanks.\n\nHakan",
+      "body_snippet": "Hi,\n\nI am working on a SNA project and using statnet. I am having an error, I \ncouldn't find any contact information on statnet\nwebsite. I found your e-mail at statnet package document on CRAN.\n\nFollo",
+      "thread_id": "thread-2f024aa26f1b",
+      "thread_depth": 0,
+      "month": "2020-03"
+    },
+    {
+      "id": "msg-4e295d578a68",
+      "message_id": "<418ef0a8-040b-1bd0-2f27-ee8b500d0ff7@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2020-03-21T11:53:18Z",
+      "subject": "[statnet_help] An error on gplot.target() function (fwd)",
+      "subject_clean": "[statnet_help] An error on gplot.target() function (fwd)",
+      "in_reply_to": "<alpine.WNT.2.21.999.2003211031020.8304@LAPTOP-PHUBQHL5>",
+      "references": [
+        "<alpine.WNT.2.21.999.2003211031020.8304@LAPTOP-PHUBQHL5>"
+      ],
+      "body_plain": "Hi, Hakan (by way of Martina):\n\nA fix will be in the next sna release, but in the meantime I've attached \na modified version of gplot.target (suitable for source()ing) that will \nfix the spurious warnings regarding circ.lab.? I'm not able to reproduce \nthe failure to draw the plot, however.? If there's a reproducible \nexample of that, I'll take a look.\n\nHope that helps,\n\n-Carter\n\nOn 3/21/20 10:31 AM, martina morris wrote:\n>\n> Hi,\n>\n> I am working on a SNA project and using statnet. I am having an error, \n> I couldn't find any contact information on statnet\n> website. I found your e-mail at statnet package document on CRAN.\n>\n> Following code;\n> sna::gplot.target(g, closeness(g), main=\"Degree\", ?circ.lab = FALSE,\n> ? ? ? ? ? ? ? ? ? circ.col=\"skyblue\", usearrows = FALSE,\n> ? ? ? ? ? ? ? ? ? circ.lab.col = \"white\",\n> ? ? ? ? ? ? ? ? ? vertex.col=c(\"blue\", rep(\"red\", 32), \"yellow\"),\n> ? ? ? ? ? ? ? ? ? edge.col=\"darkgray\", displaylabels = TRUE,\n> ? ? ? ? ? ? ? ? ? label = netfriends_myk %v% \"alias\", label.cex=0.5,)\n>\n> develops this warning;\n> In doTryCatch(return(expr), name, parentenv, handler) : \"circ.lab\" is \n> not a graphical parameter\n>\n> and in some cases does not draw the plot.\n>\n> Can you help me on this issue or point to someone who can help?\n>\n> Thanks.\n>\n> Hakan\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200321/11efaf01/attachment.html>\n-------------- next part --------------\n#Modified version of gplot.target that fixes a spurious warning; to appear in\n#sna version 2.6\n#\n#CTB, 3/21/20\n#\ngplot.target<-\nfunction (dat, x, circ.rad = (1:10)/10, circ.col = \"blue\", circ.lwd = 1, \n    circ.lty = 3, circ.lab = TRUE, circ.lab.cex = 0.75, circ.lab.theta = pi, \n    circ.lab.col = 1, circ.lab.digits = 1, circ.lab.offset = 0.025, \n    periph.outside = FALSE, periph.outside.offset = 1.2, ...) \n{\n    offset <- min(0.5, sum(x == max(x))/(length(x) - 1))\n    xrange <- diff(range(x))\n    xmin <- min(x)\n    x <- 1 - (x - xmin)/(xrange + offset)\n    circ.val <- (1 - circ.rad) * (xrange + offset) + xmin\n    cl <- match.call()\n    if (is.null(cl$layout.par)) \n        cl$layout.par <- list(radii = x)\n    else cl$layout.par$radii <- x\n    cl$layout.par$periph.outside <- periph.outside\n    cl$layout.par$periph.outside.offset <- periph.outside.offset\n    cl$x <- NULL\n    cl$circ.rad <- NULL\n    cl$circ.col <- NULL\n    cl$circ.lwd <- NULL\n    cl$circ.lty <- NULL\n    cl$circ.lab.theta <- NULL\n    cl$circ.lab.col <- NULL\n    cl$circ.lab.cex <- NULL\n    cl$circ.lab.digits <- NULL\n    cl$circ.lab.offset <- NULL\n    cl$periph.outside <- NULL\n    cl$periph.outside.offset <- NULL\n    cl$circ.lab <- NULL\n    cl$mode <- \"target\"\n    cl$xlim = c(-periph.outside.offset, periph.outside.offset)\n    cl$ylim = c(-periph.outside.offset, periph.outside.offset)\n    cl[[1]] <- match.fun(\"gplot\")\n    coord <- eval(cl)\n    if (length(circ.col) < length(x)) \n        circ.col <- rep(circ.col, length = length(x))\n    if (length(circ.lwd) < length(x)) \n        circ.lwd <- rep(circ.lwd, length = length(x))\n    if (length(circ.lty) < length(x)) \n        circ.lty <- rep(circ.lty, length = length(x))\n    for (i in 1:length(circ.rad)) segments(circ.rad[i] * sin(2 * \n        pi/100 * (0:99)), circ.rad[i] * cos(2 * pi/100 * (0:99)), \n        circ.rad[i] * sin(2 * pi/100 * (1:100)), circ.rad[i] * \n            cos(2 * pi/100 * (1:100)), col = circ.col[i], lwd = circ.lwd[i], \n        lty = circ.lty[i])\n    if (circ.lab) \n        text((circ.rad + circ.lab.offset) * cos(circ.lab.theta), \n            (circ.rad + circ.lab.offset) * sin(circ.lab.theta), \n            round(circ.val, digits = circ.lab.digits), cex = circ.lab.cex, \n            col = circ.lab.col)\n    invisible(coord)\n}",
+      "body_snippet": "Hi, Hakan (by way of Martina):\n\nA fix will be in the next sna release, but in the meantime I've attached \na modified version of gplot.target (suitable for source()ing) that will \nfix the spurious warn",
+      "thread_id": "thread-2f024aa26f1b",
+      "thread_depth": 1,
+      "month": "2020-03"
+    },
+    {
+      "id": "msg-74b5782da0e2",
+      "message_id": "<CAEzSE6UykUwjOxRvX7B6O3y6XwMY-JOD768pCD8vOcG47D+xVA@mail.gmail.com>",
+      "from_name": "Michael Heaney",
+      "from_email_hash": "4d6403dbcaae8825781ae6c49066171f12df256ce970fec71e8e0e6fc8ca3792",
+      "date": "2020-03-25T17:58:02Z",
+      "subject": "[statnet_help] Online course on Social Network Analysis (June 8-12, 2020)",
+      "subject_clean": "[statnet_help] Online course on Social Network Analysis (June 8-12, 2020)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "STATISTICAL ANALYSIS OF SOCIAL NETWORK DATA (Please share!) -- I am\noffering an intensive, one-week, online, graduate-level course on social\nnetwork analysis through the University of St. Gallen, Switzerland, from\nJune 8-12, 2020. We will cover the fundamentals of both descriptive (e.g.,\ncentrality, visualization) and inferential network analysis (e.g., ERGM,\nTERGM). This will be a small course capped at 20 students, so students will\nbe guaranteed individualized attention through class sessions and abundant\nonline office hours. Students who successfully complete the course will\nreceive 4 ECTS (European Credit Transfer and Accumulation System). Direct\nquestions to michaeltheaney@gmail.com. More info here:\nhttps://www.gserm.ch/stgallen/course/?course_code=10,828\n<https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.gserm.ch%2Fstgallen%2Fcourse%2F%3Fcourse_code%3D10%252C828%26fbclid%3DIwAR2ZjXBE_CilQULyvFngM7uL9bWwqgPsiXapl5PjazcQumIUnhSFysQx2hQ&h=AT1bKt6PeH46Vxh9Yx8esrZTlsk-whUkljtBOqqBVQ7HkOVU_YHePzah4LY_Y27xxlfVspoqMjvntG12IEQF7J_OZTAT1MCPnwTTEuJwCVSbbj3TkC0y4l0JPzVAm6I6qtAVRdgvhu68gLkIVuaCs9y-TQ>\n\n\nMichael\n\n-- \nMichael T. Heaney, Ph.D.\nAdjunct Research Professor\nInstitute for Research on Women and Gender\nUniversity of Michigan\n1136 Lane Hall\n204 S. State Street\nAnn Arbor, MI 48109-1290 USA\n\nPhone: +1.734.764.9537\nE-mail: mheaney@umich.edu <michaeltheaney@gmail.com>\nhttp://www.michaeltheaney.com/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200325/2c589b67/attachment.html>",
+      "body_snippet": "STATISTICAL ANALYSIS OF SOCIAL NETWORK DATA (Please share!) -- I am\noffering an intensive, one-week, online, graduate-level course on social\nnetwork analysis through the University of St. Gallen, Swit",
+      "thread_id": "thread-74b5782da0e2",
+      "thread_depth": 0,
+      "month": "2020-03"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-f950ee2028b9",
+      "subject": "[statnet_help] Likelihood and AIC from mtergm() in the btergm package by Leifeld",
+      "message_count": 1,
+      "participants": [
+        "Pavel Krivitsky"
+      ],
+      "started": "2020-03-02T03:47:16Z",
+      "last_reply": "2020-03-02T03:47:16Z",
+      "root_message_id": "msg-f950ee2028b9"
+    },
+    {
+      "id": "thread-f5fd5309f7f6",
+      "subject": "[statnet_help] Modeling Relational Event Dynamics with R/statnet",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Michael Heaney"
+      ],
+      "started": "2020-03-05T20:58:33Z",
+      "last_reply": "2020-03-05T21:54:32Z",
+      "root_message_id": "msg-f5fd5309f7f6"
+    },
+    {
+      "id": "thread-4d73bf62a216",
+      "subject": "[statnet_help] Reference distribution h(x) in valued ERGM",
+      "message_count": 2,
+      "participants": [
+        "Pavel Krivitsky",
+        "Yaxin Cui"
+      ],
+      "started": "2020-03-06T12:19:54Z",
+      "last_reply": "2020-03-13T20:42:55Z",
+      "root_message_id": "msg-4d73bf62a216"
+    },
+    {
+      "id": "thread-f39ae20bbf45",
+      "subject": "[statnet_help] MCMC% values",
+      "message_count": 2,
+      "participants": [
+        "Haenni, Malena",
+        "Pavel Krivitsky"
+      ],
+      "started": "2020-03-12T03:21:43Z",
+      "last_reply": "2020-03-13T20:48:31Z",
+      "root_message_id": "msg-f39ae20bbf45"
+    },
+    {
+      "id": "thread-620481c2cd41",
+      "subject": "[statnet_help] An error on gplot.target() function (fwd)",
+      "message_count": 1,
+      "participants": [
+        "martina morris"
+      ],
+      "started": "2020-03-21T09:16:37Z",
+      "last_reply": "2020-03-21T09:16:37Z",
+      "root_message_id": "msg-620481c2cd41"
+    },
+    {
+      "id": "thread-2f024aa26f1b",
+      "subject": "[statnet_help] An error on gplot.target() function (fwd)",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "martina morris"
+      ],
+      "started": "2020-03-21T10:31:36Z",
+      "last_reply": "2020-03-21T11:53:18Z",
+      "root_message_id": "msg-2f024aa26f1b"
+    },
+    {
+      "id": "thread-74b5782da0e2",
+      "subject": "[statnet_help] Online course on Social Network Analysis (June 8-12, 2020)",
+      "message_count": 1,
+      "participants": [
+        "Michael Heaney"
+      ],
+      "started": "2020-03-25T17:58:02Z",
+      "last_reply": "2020-03-25T17:58:02Z",
+      "root_message_id": "msg-74b5782da0e2"
+    }
+  ]
+}

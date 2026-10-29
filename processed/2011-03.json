@@ -1,0 +1,684 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2011-03",
+  "messages": [
+    {
+      "id": "msg-7764c0217086",
+      "message_id": "<174B878F92356F4EADEB87F69311E99C1D1B7A@brown-mail1.gwb.wustl.edu>",
+      "from_name": "Jenine Harris",
+      "from_email_hash": "58e5b70d2876440f1ad8d8b44b872ef827aa4a06e922f831941fe71a43c4bbd0",
+      "date": "2011-03-05T17:18:52Z",
+      "subject": "[statnet_help] estimating decay/alpha parameters for geometric terms",
+      "subject_clean": "[statnet_help] estimating decay/alpha parameters for geometric terms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI am working with an undirected network of approximately 54 nodes and have a question about specifying the alpha parameter for the GWD, GWDSP, and GWESP terms. There appear to be two ways to do this --- specify it yourself and select fixed=TRUE for an ERGM or put in some value and select fixed=FALSE for a CEF. The CEF strategy then approximates the appropriate alpha parameter for you according to Hunter 2006 and others. I'm a little confused by this second strategy after having run the same syntax with two different values as my starting guess for alpha and fixed=FALSE and getting two vastly different results even using the same seed to start.\n\nI guess I'm mostly curious about the relationship between the alpha you specify and the alpha that is selected when you run the model with the fixed=FALSE option. It seems to me they must be related somehow since, in the model where the alpha was 0.5 to begin, the three estimated alphas were all near 0.5, while when I began with an alpha of 1.0 the three estimated alphas were close to 1.0.\n\nOther model results were also pretty different with these two alpha values which would seem to indicate that the alpha is important, at least in this case.\n\nThe Snijders et al. paper from 2006 used the fixed=TRUE and tested several alpha values as another possible strategy --- any thoughts on this as opposed to using fixed=FALSE?\n\nThanks in advance for any insight. I'm happy to send along more of my syntax if that would be helpful.\n\nJenine\n\n==========================\nSummary of model fit\n==========================\nFormula:   anyint ~ edges + nodecov(\"influence\") + nodematch(\"agency\") + \n    nodefactor(\"jobrank\") + nodecov(\"tobaccofocus\") + nodecov(\"tobaccohours\") + \n    gwdegree(0.5, F) + gwesp(0.5, F) + gwdsp(0.5, F)\nNewton-Raphson iterations:  8 \nMCMC sample of size 1000 \nMonte Carlo MLE Results:\n                     Estimate Std. Error MCMC s.e. p-value    \nedges                -6.81864    7.82139     0.019  0.3835    \nnodecov.influence     0.09132    0.26241     0.001  0.7279    \nnodematch.agency      2.52688    1.10930     0.003  0.0229 *  \nnodefactor.jobrank.2 -0.83744    0.80284     0.002  0.2971    \nnodefactor.jobrank.3 -0.82410    0.38449     0.001  0.0323 *  \nnodecov.tobaccofocus  0.10213    0.73934     0.002  0.8901    \nnodecov.tobaccohours  0.57680    0.11925  0.000192  <1e-04 ***\ngwdegree              3.20853    6.29682     0.020  0.6104    \ngwdegree.decay        0.43865    1.98470     0.006  0.8251    \ngwesp                 0.96534    0.66603     0.002  0.1475    \ngwesp.alpha           0.47613    0.78032     0.002  0.5419    \ngwdsp                -0.10112    0.12560  0.000349  0.4209    \ngwdsp.alpha           0.50218    1.74784     0.004  0.7739    \n---\nSignif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1 \n    Null  Deviance: 1983.79  on 1431  degrees of freedom\n Residual Deviance: 1158.54  on 1418  degrees of freedom\n          Deviance:  825.25  on   13  degrees of freedom\n \nAIC: 1184.5    BIC: 1253 \n\n==========================\nSummary of model fit\n==========================\nFormula:   anyint ~ edges + nodecov(\"influence\") + nodematch(\"agency\") + \n    nodefactor(\"jobrank\") + nodecov(\"tobaccofocus\") + nodecov(\"tobaccohours\") + \n    gwdegree(1, F) + gwesp(1, F) + gwdsp(1, F)\nNewton-Raphson iterations:  9 \nMCMC sample of size 1000 \nMonte Carlo MLE Results:\n                     Estimate Std. Error MCMC s.e.  p-value    \nedges                -6.66175    1.32178     0.018  < 1e-04 ***\nnodecov.influence     0.09596    0.05900     0.001 0.104067    \nnodematch.agency      2.44164    0.24725     0.003  < 1e-04 ***\nnodefactor.jobrank.2 -0.75248    0.14242     0.002  < 1e-04 ***\nnodefactor.jobrank.3 -0.76198    0.22956     0.003 0.000925 ***\nnodecov.tobaccofocus  0.10767    0.13735     0.002 0.433240    \nnodecov.tobaccohours  0.54455    0.01385  0.000214  < 1e-04 ***\ngwdegree             -0.94852    1.02486     0.015 0.354853    \ngwdegree.decay        1.01732    1.10834     0.016 0.358839    \ngwesp                 0.70120    0.05068     0.001  < 1e-04 ***\ngwesp.alpha           0.98385    0.08439     0.001  < 1e-04 ***\ngwdsp                -0.04508    0.01336  0.000151 0.000762 ***\ngwdsp.alpha           1.00077    0.27636     0.005 0.000304 ***\n---\nSignif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1 \n    Null  Deviance: 1983.79  on 1431  degrees of freedom\n Residual Deviance: 1138.27  on 1418  degrees of freedom\n          Deviance:  845.51  on   13  degrees of freedom\n \nAIC: 1164.3    BIC: 1232.7 \n>",
+      "body_snippet": "Hi all,\n\nI am working with an undirected network of approximately 54 nodes and have a question about specifying the alpha parameter for the GWD, GWDSP, and GWESP terms. There appear to be two ways to ",
+      "thread_id": "thread-7764c0217086",
+      "thread_depth": 0,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-15ffd29c9b7e",
+      "message_id": "<822cf523656678393967af1ddd0152c3.squirrel@webmail.stat.unipd.it>",
+      "from_name": "Soriani Nicola",
+      "from_email_hash": "bad2caca9903706f9e3ae9b9200f838b32f69bcb1198b839eb309a817ad8dd27",
+      "date": "2011-03-12T01:08:05Z",
+      "subject": "[statnet_help] P2 routine",
+      "subject_clean": "[statnet_help] P2 routine",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi All,\n\nI would like know if in Statnet exists some routine to estimate p2 model.\n\nThanks.\n\nNicola\n-- \nSoriani Nicola\nScuola di Dottorato in Scienze Statistiche XXIII Ciclo\nDipartimento di Scienze Statistiche, Universit? di Padova\nStanza 122 - Tel. 049 827 4174\nPh.D. Student\nDepartment of Statistical Sciences\nUniversity of Padova, Italy",
+      "body_snippet": "Hi All,\n\nI would like know if in Statnet exists some routine to estimate p2 model.\n\nThanks.\n\nNicola\n-- \nSoriani Nicola\nScuola di Dottorato in Scienze Statistiche XXIII Ciclo\nDipartimento di Scienze St",
+      "thread_id": "thread-15ffd29c9b7e",
+      "thread_depth": 0,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-195ecbd58907",
+      "message_id": "<AANLkTi=cz90SnAn=VZ0RfJgy6Yb4HjFfhpSa+=i-CWFL@mail.gmail.com>",
+      "from_name": "Yun Huang",
+      "from_email_hash": "adf4da61062e4fa75371efaffb9053bf686d51778199fff94d9a21334bfff133",
+      "date": "2011-03-12T06:56:34Z",
+      "subject": "[statnet_help] P2 routine",
+      "subject_clean": "[statnet_help] P2 routine",
+      "in_reply_to": "<822cf523656678393967af1ddd0152c3.squirrel@webmail.stat.unipd.it>",
+      "references": [
+        "<822cf523656678393967af1ddd0152c3.squirrel@webmail.stat.unipd.it>"
+      ],
+      "body_plain": "FYI: StOCNET can do p2 models.\nYun\n\nOn Sat, Mar 12, 2011 at 3:08 AM, Soriani Nicola <soria@stat.unipd.it> wrote:\n> Hi All,\n>\n> I would like know if in Statnet exists some routine to estimate p2 model.\n>\n> Thanks.\n>\n> Nicola\n> --\n> Soriani Nicola\n> Scuola di Dottorato in Scienze Statistiche XXIII Ciclo\n> Dipartimento di Scienze Statistiche, Universit? di Padova\n> Stanza 122 - Tel. 049 827 4174\n> Ph.D. Student\n> Department of Statistical Sciences\n> University of Padova, Italy\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \nYun Huang\nScience of Networks in Communities (SONIC)\nIndustrial Engineering and Management Sciences\nNorthwestern University\nGoogle Voice: 847-220-7310\nOffice: FSB 1.459",
+      "body_snippet": "FYI: StOCNET can do p2 models.\nYun\n\nOn Sat, Mar 12, 2011 at 3:08 AM, Soriani Nicola <soria@stat.unipd.it> wrote:\n> Hi All,\n>\n> I would like know if in Statnet exists some routine to estimate p2 model.",
+      "thread_id": "thread-15ffd29c9b7e",
+      "thread_depth": 1,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-94f8159f893d",
+      "message_id": "<4D7D314A.4000504@stat.tamu.edu>",
+      "from_name": "kentjin",
+      "from_email_hash": "60ea3323291c210446e5500f2304ead7db34b77a128be681cead1fcaae67439d",
+      "date": "2011-03-13T14:04:10Z",
+      "subject": "[statnet_help] Question for MCMCMLE Calculation Time",
+      "subject_clean": "[statnet_help] Question for MCMCMLE Calculation Time",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello, everybody.\nI have a question for MCMCMLE calculation time.\nCurrently, I am estimating parameters with two different models.\n\n Model 1. The model with edge counts, k2-star, and gwesp terms.\n    > form <- X ~ edges + kstar(2) + gwesp(log(2), fixed=TRUE)\n    > m1 <- ergm(formula=form, MPLEonly=TRUE)\n    > m31 <- ergm(formula=form, theta0=m1$coef, maxit=1,\nMCMCsamplesize=50000, verb=TRUE)\n Model 2. The model with edge count, gwdegree, and gwesp terms.\n    > form <- X ~ edges + gwdegree(0.2, fixed=TRUE) + gwesp(0.2, fixed=TRUE)\n    > m1 <- ergm(formula=form, MPLEonly=TRUE)\n    > m31 <- ergm(formula=form, theta0=m1$coef, maxit=1,\nMCMCsamplesize=50000, verb=TRUE)\n\nIn my thought, Model 1 takes shorter time than Model 2 because the\ncalculation of statistics in Model 1 are simpler than those in Model 2.\nIn actual, Model 1 takes much longer time to find their parameter\nestimates. Also, Model 1 has model degeneracy problem.\nWhy the calculation for Model 1 takes much longer time?\nMore specifically, is there any algorithms excluding a complete network\nor an empty network from MCMC samples? (This is my guess.)\nThank you very much.\n\n-- \nSincerely Yours,\n\nJin, Ick Hoon\nPh.D. Candidate\nDepartment of Statisitcs\nTexas A&M University",
+      "body_snippet": "Hello, everybody.\nI have a question for MCMCMLE calculation time.\nCurrently, I am estimating parameters with two different models.\n\n Model 1. The model with edge counts, k2-star, and gwesp terms.\n    ",
+      "thread_id": "thread-94f8159f893d",
+      "thread_depth": 0,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-385dbc87e3d7",
+      "message_id": "<510411CF-51BA-4790-B47F-7F2058B52EE5@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2011-03-13T14:46:41Z",
+      "subject": "[statnet_help] Question for MCMCMLE Calculation Time",
+      "subject_clean": "[statnet_help] Question for MCMCMLE Calculation Time",
+      "in_reply_to": "<4D7D314A.4000504@stat.tamu.edu>",
+      "references": [
+        "<4D7D314A.4000504@stat.tamu.edu>"
+      ],
+      "body_plain": "Hi Ick Hoon.\nThe reason is the presence of the 2-star term in model 1.  The  \npresence of this term essentially always makes a model degenerate.\n\nDave\n\n\n\n\nOn Mar 13, 2011, at 5:04 PM, kentjin wrote:\n\n> Hello, everybody.\n> I have a question for MCMCMLE calculation time.\n> Currently, I am estimating parameters with two different models.\n>\n> Model 1. The model with edge counts, k2-star, and gwesp terms.\n>> form <- X ~ edges + kstar(2) + gwesp(log(2), fixed=TRUE)\n>> m1 <- ergm(formula=form, MPLEonly=TRUE)\n>> m31 <- ergm(formula=form, theta0=m1$coef, maxit=1,\n> MCMCsamplesize=50000, verb=TRUE)\n> Model 2. The model with edge count, gwdegree, and gwesp terms.\n>> form <- X ~ edges + gwdegree(0.2, fixed=TRUE) + gwesp(0.2,  \n>> fixed=TRUE)\n>> m1 <- ergm(formula=form, MPLEonly=TRUE)\n>> m31 <- ergm(formula=form, theta0=m1$coef, maxit=1,\n> MCMCsamplesize=50000, verb=TRUE)\n>\n> In my thought, Model 1 takes shorter time than Model 2 because the\n> calculation of statistics in Model 1 are simpler than those in Model  \n> 2.\n> In actual, Model 1 takes much longer time to find their parameter\n> estimates. Also, Model 1 has model degeneracy problem.\n> Why the calculation for Model 1 takes much longer time?\n> More specifically, is there any algorithms excluding a complete  \n> network\n> or an empty network from MCMC samples? (This is my guess.)\n> Thank you very much.\n>\n> -- \n> Sincerely Yours,\n>\n> Jin, Ick Hoon\n> Ph.D. Candidate\n> Department of Statisitcs\n> Texas A&M University\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Ick Hoon.\nThe reason is the presence of the 2-star term in model 1.  The  \npresence of this term essentially always makes a model degenerate.\n\nDave\n\n\n\n\nOn Mar 13, 2011, at 5:04 PM, kentjin wrote:\n\n",
+      "thread_id": "thread-94f8159f893d",
+      "thread_depth": 1,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-0f2ab23c133d",
+      "message_id": "<AANLkTik_RapSYnyGwiLUN1OG6d0Yfe2THLXgHKxd53SD@mail.gmail.com>",
+      "from_name": "Brian Keegan",
+      "from_email_hash": "0a040d156157c7a0846c2e199462b4a90b1286ad17bfecf6c905da0c405bc047",
+      "date": "2011-03-13T15:30:23Z",
+      "subject": "[statnet_help] Question for MCMCMLE Calculation Time",
+      "subject_clean": "[statnet_help] Question for MCMCMLE Calculation Time",
+      "in_reply_to": "<510411CF-51BA-4790-B47F-7F2058B52EE5@stat.psu.edu>",
+      "references": [
+        "<4D7D314A.4000504@stat.tamu.edu>",
+        "<510411CF-51BA-4790-B47F-7F2058B52EE5@stat.psu.edu>"
+      ],
+      "body_plain": "This is a nice heuristic my experience in retrospect suggests would be true,\nbut I had never made the explicit connection. Reviewing the Robins,\nPattison, Kalish, Lusher 2007 article (pg. 188), it nevertheless says this\nfairly plainly:\n\n\"Simulation studies suggest that Markov graph models that contain at least\nnon-zero three-star parameters tend to exhibit less near degeneracy than\nthose with two-stars as the highest order non-zero star parameter (Robins et\nal., 2005). But the inclusion of three-star parameters often is not\nsufficient to remove near degeneracy behavior in Markov graph models,\nparticularly when attempting to find models that reproduce the high levels\nof transitivity often observed in human social structures (there is an\nextended discussion in Snijders et al., in press).\"\n\nAlthough it might be empirically heretical to even suggest that entire\nsub-classes of models are *non grata*, but might it be useful to document a\nlist of some of these heuristics in plain language (with appropriate\nreferences) to guide users in building models?\n\nOn Sun, Mar 13, 2011 at 4:46 PM, David Hunter <dhunter@stat.psu.edu> wrote:\n\n> Hi Ick Hoon.\n> The reason is the presence of the 2-star term in model 1.  The presence of\n> this term essentially always makes a model degenerate.\n>\n> Dave\n>\n>\n>\n>\n>\n> On Mar 13, 2011, at 5:04 PM, kentjin wrote:\n>\n>  Hello, everybody.\n>> I have a question for MCMCMLE calculation time.\n>> Currently, I am estimating parameters with two different models.\n>>\n>> Model 1. The model with edge counts, k2-star, and gwesp terms.\n>>\n>>> form <- X ~ edges + kstar(2) + gwesp(log(2), fixed=TRUE)\n>>> m1 <- ergm(formula=form, MPLEonly=TRUE)\n>>> m31 <- ergm(formula=form, theta0=m1$coef, maxit=1,\n>>>\n>> MCMCsamplesize=50000, verb=TRUE)\n>> Model 2. The model with edge count, gwdegree, and gwesp terms.\n>>\n>>> form <- X ~ edges + gwdegree(0.2, fixed=TRUE) + gwesp(0.2, fixed=TRUE)\n>>> m1 <- ergm(formula=form, MPLEonly=TRUE)\n>>> m31 <- ergm(formula=form, theta0=m1$coef, maxit=1,\n>>>\n>> MCMCsamplesize=50000, verb=TRUE)\n>>\n>> In my thought, Model 1 takes shorter time than Model 2 because the\n>> calculation of statistics in Model 1 are simpler than those in Model 2.\n>> In actual, Model 1 takes much longer time to find their parameter\n>> estimates. Also, Model 1 has model degeneracy problem.\n>> Why the calculation for Model 1 takes much longer time?\n>> More specifically, is there any algorithms excluding a complete network\n>> or an empty network from MCMC samples? (This is my guess.)\n>> Thank you very much.\n>>\n>> --\n>> Sincerely Yours,\n>>\n>> Jin, Ick Hoon\n>> Ph.D. Candidate\n>> Department of Statisitcs\n>> Texas A&M University\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \nBrian C. Keegan\nPh.D. Student - Media, Technology, & Society\nSchool of Communication, Northwestern University\n\nScience of Networks in Communities, Laboratory for Collaborative Technology\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110313/31995db4/attachment.html>",
+      "body_snippet": "This is a nice heuristic my experience in retrospect suggests would be true,\nbut I had never made the explicit connection. Reviewing the Robins,\nPattison, Kalish, Lusher 2007 article (pg. 188), it nev",
+      "thread_id": "thread-94f8159f893d",
+      "thread_depth": 2,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-c98d9e642081",
+      "message_id": "<F66445CC-839A-457F-8D94-70B552A575E5@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2011-03-13T15:39:58Z",
+      "subject": "[statnet_help] Question for MCMCMLE Calculation Time",
+      "subject_clean": "[statnet_help] Question for MCMCMLE Calculation Time",
+      "in_reply_to": "<AANLkTik_RapSYnyGwiLUN1OG6d0Yfe2THLXgHKxd53SD@mail.gmail.com>",
+      "references": [
+        "<4D7D314A.4000504@stat.tamu.edu>",
+        "<510411CF-51BA-4790-B47F-7F2058B52EE5@stat.psu.edu>",
+        "<AANLkTik_RapSYnyGwiLUN1OG6d0Yfe2THLXgHKxd53SD@mail.gmail.com>"
+      ],
+      "body_plain": "...Also, for a more technical look at degeneracy, here's a shameless  \nplug for a recent paper by Michael Schweinberger:\nhttp://www.stat.psu.edu/reports/2010/TR10-07.pdf\n\nBrian's final suggestion would indeed be helpful.  My own thought is  \nto steer clear of k-stars entirely, but I'm not nearly as experienced  \nas some with regard to using these models.\n\nDave\n\n\n\nOn Mar 13, 2011, at 6:30 PM, Brian Keegan wrote:\n\n> This is a nice heuristic my experience in retrospect suggests would  \n> be true, but I had never made the explicit connection. Reviewing the  \n> Robins, Pattison, Kalish, Lusher 2007 article (pg. 188), it  \n> nevertheless says this fairly plainly:\n>\n> \"Simulation studies suggest that Markov graph models that contain at  \n> least non-zero three-star parameters tend to exhibit less near  \n> degeneracy than those with two-stars as the highest order non-zero  \n> star parameter (Robins et al., 2005). But the inclusion of three- \n> star parameters often is not sufficient to remove near degeneracy  \n> behavior in Markov graph models, particularly when attempting to  \n> find models that reproduce the high levels of transitivity often  \n> observed in human social structures (there is an extended discussion  \n> in Snijders et al., in press).\"\n>\n> Although it might be empirically heretical to even suggest that  \n> entire sub-classes of models are non grata, but might it be useful  \n> to document a list of some of these heuristics in plain language  \n> (with appropriate references) to guide users in building models?\n>\n> On Sun, Mar 13, 2011 at 4:46 PM, David Hunter <dhunter@stat.psu.edu>  \n> wrote:\n> Hi Ick Hoon.\n> The reason is the presence of the 2-star term in model 1.  The  \n> presence of this term essentially always makes a model degenerate.\n>\n> Dave\n>\n>\n>\n>\n>\n> On Mar 13, 2011, at 5:04 PM, kentjin wrote:\n>\n> Hello, everybody.\n> I have a question for MCMCMLE calculation time.\n> Currently, I am estimating parameters with two different models.\n>\n> Model 1. The model with edge counts, k2-star, and gwesp terms.\n> form <- X ~ edges + kstar(2) + gwesp(log(2), fixed=TRUE)\n> m1 <- ergm(formula=form, MPLEonly=TRUE)\n> m31 <- ergm(formula=form, theta0=m1$coef, maxit=1,\n> MCMCsamplesize=50000, verb=TRUE)\n> Model 2. The model with edge count, gwdegree, and gwesp terms.\n> form <- X ~ edges + gwdegree(0.2, fixed=TRUE) + gwesp(0.2, fixed=TRUE)\n> m1 <- ergm(formula=form, MPLEonly=TRUE)\n> m31 <- ergm(formula=form, theta0=m1$coef, maxit=1,\n> MCMCsamplesize=50000, verb=TRUE)\n>\n> In my thought, Model 1 takes shorter time than Model 2 because the\n> calculation of statistics in Model 1 are simpler than those in Model  \n> 2.\n> In actual, Model 1 takes much longer time to find their parameter\n> estimates. Also, Model 1 has model degeneracy problem.\n> Why the calculation for Model 1 takes much longer time?\n> More specifically, is there any algorithms excluding a complete  \n> network\n> or an empty network from MCMC samples? (This is my guess.)\n> Thank you very much.\n>\n> -- \n> Sincerely Yours,\n>\n> Jin, Ick Hoon\n> Ph.D. Candidate\n> Department of Statisitcs\n> Texas A&M University\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n> -- \n> Brian C. Keegan\n> Ph.D. Student - Media, Technology, & Society\n> School of Communication, Northwestern University\n>\n> Science of Networks in Communities, Laboratory for Collaborative  \n> Technology\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110313/29add09f/attachment.html>",
+      "body_snippet": "...Also, for a more technical look at degeneracy, here's a shameless  \nplug for a recent paper by Michael Schweinberger:\nhttp://www.stat.psu.edu/reports/2010/TR10-07.pdf\n\nBrian's final suggestion woul",
+      "thread_id": "thread-94f8159f893d",
+      "thread_depth": 3,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-122e98a43637",
+      "message_id": "<AANLkTik=i8f-ke+o_QnTKScnu52ofmEMSEj4YcGAfbe7@mail.gmail.com>",
+      "from_name": "Sam Stewart",
+      "from_email_hash": "51b57d9e397a077e24243651cef0d1d3aa1bf70a60060faa096fc9f957fe6cc3",
+      "date": "2011-03-15T05:45:14Z",
+      "subject": "[statnet_help] 2-Mode Clusters",
+      "subject_clean": "[statnet_help] 2-Mode Clusters",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello list,\n\nDoes anyone know if statnet has methods to find clusterings specific to\n2-Mode networks?  In particular I'm looking for Bi-cliques, biplexes, or\nother clustering algorithms such as GENFAC2 or FACTIONS.\n\nThanks,\nSam\n\n-- \nSam Stewart, MMath, A.Stat\nIDPhD Candidate (Health Informatics)\nFaculty of Computer Science, Dalhousie University\n6050 University Ave.\nHalifax, NS, Canada, B3H 1W5\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110315/aeb2342b/attachment.html>",
+      "body_snippet": "Hello list,\n\nDoes anyone know if statnet has methods to find clusterings specific to\n2-Mode networks?  In particular I'm looking for Bi-cliques, biplexes, or\nother clustering algorithms such as GENFAC",
+      "thread_id": "thread-122e98a43637",
+      "thread_depth": 0,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-9625fa37eb9d",
+      "message_id": "<271BC1C0-CCD3-408C-AFC6-DD1F28059956@u.northwestern.edu>",
+      "from_name": "Brian Keegan",
+      "from_email_hash": "3b948e021ad8c3244b25debfb9f62272611e0cc92a948076316d222c8243b96d",
+      "date": "2011-03-15T06:48:26Z",
+      "subject": "[statnet_help] 2-Mode Clusters",
+      "subject_clean": "[statnet_help] 2-Mode Clusters",
+      "in_reply_to": "<AANLkTik=i8f-ke+o_QnTKScnu52ofmEMSEj4YcGAfbe7@mail.gmail.com>",
+      "references": [
+        "<AANLkTik=i8f-ke+o_QnTKScnu52ofmEMSEj4YcGAfbe7@mail.gmail.com>"
+      ],
+      "body_plain": "I believe a 4-cycle should capture local clustering akin to a Markov triangle parameter for 1-mode networks and non-edgewise shared partners (nsp) is the corresponding higher-order term. I'd still love to see some more 2-mode network parameters however :)\n\n\n\nOn Mar 15, 2011, at 7:45 AM, Sam Stewart <samstewart11@gmail.com> wrote:\n\n> Hello list,\n> \n> Does anyone know if statnet has methods to find clusterings specific to 2-Mode networks?  In particular I'm looking for Bi-cliques, biplexes, or other clustering algorithms such as GENFAC2 or FACTIONS.\n> \n> Thanks,\n> Sam\n> \n> -- \n> Sam Stewart, MMath, A.Stat\n> IDPhD Candidate (Health Informatics)\n> Faculty of Computer Science, Dalhousie University\n> 6050 University Ave.\n> Halifax, NS, Canada, B3H 1W5\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "I believe a 4-cycle should capture local clustering akin to a Markov triangle parameter for 1-mode networks and non-edgewise shared partners (nsp) is the corresponding higher-order term. I'd still lov",
+      "thread_id": "thread-122e98a43637",
+      "thread_depth": 1,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-1968d2ad195d",
+      "message_id": "<AANLkTika3C=PHcAUdWDFpznuu3sDjE2bcfV_cLsnbOGe@mail.gmail.com>",
+      "from_name": "Brian Keegan",
+      "from_email_hash": "0a040d156157c7a0846c2e199462b4a90b1286ad17bfecf6c905da0c405bc047",
+      "date": "2011-03-15T07:19:32Z",
+      "subject": "[statnet_help] 2-Mode Clusters",
+      "subject_clean": "[statnet_help] 2-Mode Clusters",
+      "in_reply_to": "<AANLkTik=i8f-ke+o_QnTKScnu52ofmEMSEj4YcGAfbe7@mail.gmail.com>",
+      "references": [
+        "<AANLkTik=i8f-ke+o_QnTKScnu52ofmEMSEj4YcGAfbe7@mail.gmail.com>"
+      ],
+      "body_plain": "I believe a 4-cycle should capture local clustering akin to a Markov\ntriangle parameter for 1-mode networks and non-edgewise shared partners\n(nsp) is the corresponding higher-order term. I'd still love to see some\nmore 2-mode network parameters however :)\n\nOn Tue, Mar 15, 2011 at 7:45 AM, Sam Stewart <samstewart11@gmail.com> wrote:\n\n> Hello list,\n>\n> Does anyone know if statnet has methods to find clusterings specific to\n> 2-Mode networks?  In particular I'm looking for Bi-cliques, biplexes, or\n> other clustering algorithms such as GENFAC2 or FACTIONS.\n>\n> Thanks,\n> Sam\n>\n> --\n> Sam Stewart, MMath, A.Stat\n> IDPhD Candidate (Health Informatics)\n> Faculty of Computer Science, Dalhousie University\n> 6050 University Ave.\n> Halifax, NS, Canada, B3H 1W5\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n\n-- \nBrian C. Keegan\nPh.D. Student - Media, Technology, & Society\nSchool of Communication, Northwestern University\n\nScience of Networks in Communities, Laboratory for Collaborative Technology\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110315/b99117c1/attachment.html>",
+      "body_snippet": "I believe a 4-cycle should capture local clustering akin to a Markov\ntriangle parameter for 1-mode networks and non-edgewise shared partners\n(nsp) is the corresponding higher-order term. I'd still lov",
+      "thread_id": "thread-122e98a43637",
+      "thread_depth": 1,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-5d1bb5b28217",
+      "message_id": "<5816EA1E-3F11-4E30-B233-447686A729ED@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2011-03-15T07:57:17Z",
+      "subject": "[statnet_help] 2-Mode Clusters",
+      "subject_clean": "[statnet_help] 2-Mode Clusters",
+      "in_reply_to": "<AANLkTika3C=PHcAUdWDFpznuu3sDjE2bcfV_cLsnbOGe@mail.gmail.com>",
+      "references": [
+        "<AANLkTik=i8f-ke+o_QnTKScnu52ofmEMSEj4YcGAfbe7@mail.gmail.com>",
+        "<AANLkTika3C=PHcAUdWDFpznuu3sDjE2bcfV_cLsnbOGe@mail.gmail.com>"
+      ],
+      "body_plain": "In case this helps, here is a list of the currently documented 2-mode  \nmodel terms, all of which are available in statnet:\n\nb1concurrent(by=NULL)\nb1degree(d, by=NULL)\nb1factor(attrname, base=1)\nb1star(k, attrname=NULL)\nb1starmix(k, attrname, base=NULL, diff=TRUE)\nb1twostar(b1attrname, b2attrname, base=NULL)\n...and also \"b2\" versions of all of the above.  (In this context, b1  \nrefers to mode 1 of a two-mode network, and b2 refers to mode 2.)\n\nSee help(\"ergm-terms\") for explanations of what these do.  Also, we  \nhope that others might add more terms using the methods described in http://www.stat.psu.edu/~dhunter/papers/ergmuserterms.pdf\n\nFinally, there are a few additional such terms that we hope to add to  \nthe ergm package in the near future.\n\nDave\n\n\n\nOn Mar 15, 2011, at 10:19 AM, Brian Keegan wrote:\n\n> I believe a 4-cycle should capture local clustering akin to a Markov  \n> triangle parameter for 1-mode networks and non-edgewise shared  \n> partners (nsp) is the corresponding higher-order term. I'd still  \n> love to see some more 2-mode network parameters however :)\n>\n> On Tue, Mar 15, 2011 at 7:45 AM, Sam Stewart  \n> <samstewart11@gmail.com> wrote:\n> Hello list,\n>\n> Does anyone know if statnet has methods to find clusterings specific  \n> to 2-Mode networks?  In particular I'm looking for Bi-cliques,  \n> biplexes, or other clustering algorithms such as GENFAC2 or FACTIONS.\n>\n> Thanks,\n> Sam\n>\n> -- \n> Sam Stewart, MMath, A.Stat\n> IDPhD Candidate (Health Informatics)\n> Faculty of Computer Science, Dalhousie University\n> 6050 University Ave.\n> Halifax, NS, Canada, B3H 1W5\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n>\n> -- \n> Brian C. Keegan\n> Ph.D. Student - Media, Technology, & Society\n> School of Communication, Northwestern University\n>\n> Science of Networks in Communities, Laboratory for Collaborative  \n> Technology\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110315/0aec20ce/attachment.html>",
+      "body_snippet": "In case this helps, here is a list of the currently documented 2-mode  \nmodel terms, all of which are available in statnet:\n\nb1concurrent(by=NULL)\nb1degree(d, by=NULL)\nb1factor(attrname, base=1)\nb1sta",
+      "thread_id": "thread-122e98a43637",
+      "thread_depth": 2,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-a98e4a69b7fc",
+      "message_id": "<01DC41C390C400479C7F2C44CE0E095109874A5EC1@PITT-EXCH-14.univ.pitt.edu>",
+      "from_name": "Victor, Jennifer Nicoll",
+      "from_email_hash": "ff5e0a55ef0a100c3bb19faf407905174b26664120f09691690bd3801f859695",
+      "date": "2011-03-15T13:35:42Z",
+      "subject": "[statnet_help] ERGM crash help",
+      "subject_clean": "[statnet_help] ERGM crash help",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello users and experts:\n\nI am trying to estimate an ERGM that causes R to crash (by \"crash,\" I mean that the program spontaneously closes while doing the calculation).  I have two similar models, of different size, and the smaller one estimates fine. The larger one has the problem.  The call is:\n\nmodel02.hou<-ergm(dichot.hou.vote.net~edges+edgecov(dichot.hou.vote.net, attrname=\"houlob\")+edgecov(dichot.hou.vote.net, attrname=\"houcom\"))\n\nI've tried alternative specifications.  A model with only \"edges\" will estimate.  Adding any other variables, using \"nodematch,\" \"nodecov,\" \"edgecov,\" etc., causes it to crash.  \n\nThe network is 438x438.  It has 47,842 edges, and its density is 0.5.\n\nMy smaller model (of size 101) with all the variables specified that I want, estimates fine.\n\nSuggestions?\nThanks,\nJennifer Victor\n___________________________________________\nJennifer Nicoll Victor\nAssistant Professor\nDepartment of Political Science\nUniversity of Pittsburgh\n4600 Wesley W. Posvar Hall\n(412) 624-7204\nE-mail:  jnvictor@pitt.edu\nHomepage:  http://www.pitt.edu/~jnvictor",
+      "body_snippet": "Hello users and experts:\n\nI am trying to estimate an ERGM that causes R to crash (by \"crash,\" I mean that the program spontaneously closes while doing the calculation).  I have two similar models, of ",
+      "thread_id": "thread-a98e4a69b7fc",
+      "thread_depth": 0,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-82da6973081f",
+      "message_id": "<4D8109D4.9000202@fas.harvard.edu>",
+      "from_name": "Kevin Lewis",
+      "from_email_hash": "3e16f115495b0e59b9f7583fd0cfe6f012b826a6e99dfab804f7275bfb0c581c",
+      "date": "2011-03-16T12:04:52Z",
+      "subject": "[statnet_help] missing data on node attributes",
+      "subject_clean": "[statnet_help] missing data on node attributes",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "greetings,\n\nplease forgive me for what i fear is an extremely basic question- but is \nthere any documentation on how to deal with missing data in node \nattributes using ergm? i.e. first, how such data should be entered, and \nsecond, how it is dealt with in the model itself. in the past i have \nused primarily categorical attributes, and so i just dealt with this by \nincluding the missing data code as part of the \"base\" for nodefactor \nterms and omitting the missing data code using the \"keep\" function for \nnodematch terms, but currently i have missing data on some continuous \nattributes and am not sure how i should deal with this (or if this is \neven possible). thanks very much!\n\n-kevin\n\np.s. please forgive me if i've missed a prior message on this topic- the \nmost recent post i can find in the archive is a note from mark handcock \nback in 2009:\n\n\"statnet does recognize missing data on vertex attributes...\nHowever this version of the ergm() function does not adjust for missing\ndata on vertex attributes - it only adjusts for missing values on the\ntie values. It is possible to do and we have worked out the statistical\ntheory to do it, but have not implemented it in the public version. I\nexpect it will appear in a major future release and we will communicate\nit to this forum.\"\n\n-- \nKevin Lewis\nPh.D. Candidate in Sociology\nHarvard University\n33 Kirkland Street\nCambridge, MA 02138",
+      "body_snippet": "greetings,\n\nplease forgive me for what i fear is an extremely basic question- but is \nthere any documentation on how to deal with missing data in node \nattributes using ergm? i.e. first, how such data",
+      "thread_id": "thread-82da6973081f",
+      "thread_depth": 0,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-6bb57c4d7b74",
+      "message_id": "<4D81E63B.8050104@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2011-03-17T03:45:15Z",
+      "subject": "[statnet_help] Intervall and autocorrelated samples",
+      "subject_clean": "[statnet_help] Intervall and autocorrelated samples",
+      "in_reply_to": "<4D4990FB.9080201@u.washington.edu>",
+      "references": [
+        "<4D4982C1.70106@unige.ch>",
+        "<4D4990FB.9080201@u.washington.edu>"
+      ],
+      "body_plain": "Hi all,\n\nFollowing the advices of Steven Goodreau, I decreased the \"interval\" \nargument in my estimations because the TNT proposal rapidly speeds up \nmixing when sampling from sparse networks. I can now estimate a model in \nseveral hours instead of days. Thanks Steven.\n\nHowever, I see in the mcmc diagnostics that the statistics are very \nautocorrelated, sometimes above .95. Does it exist a \"dumb rule\" to be \nquite sure that these autocorrelations are not a problem for the estimation?\n\nI have also another question about the mcmc diagnostics output: with \nsome models, I get a table containing informations like \"enough \nBurn-in\", \"enough samples\", \"Dependence factor\", etc. However, this \ntable doesn't appear all the time, is it normal?\n\nThanks for your help!\n\nHave a nice day,\nVictorin Luisier\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Hi all,\n\nFollowing the advices of Steven Goodreau, I decreased the \"interval\" \nargument in my estimations because the TNT proposal rapidly speeds up \nmixing when sampling from sparse networks. I can n",
+      "thread_id": "thread-6bb57c4d7b74",
+      "thread_depth": 0,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-84131d586a05",
+      "message_id": "<AANLkTin8S8148-=9F5xZZrotiObp0gSAhbUzywjsYdXO@mail.gmail.com>",
+      "from_name": "Olivier Robineau",
+      "from_email_hash": "bee00c2188e22b181c2522cc8fc9c044c8cd904b9c5297869cc12b25b469be47",
+      "date": "2011-03-17T09:12:46Z",
+      "subject": "[statnet_help] problems using san() to create a network from egocentric data",
+      "subject_clean": "[statnet_help] problems using san() to create a network from egocentric data",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI am a new user of statnet and I work on sexual relationship in France with\negocentric data.\n\nTo be familiar with statnet function,I am trying to build a network of 53\nedges by  using the function san(). I have many problems to find the network\ni expect:\n\neach vertex can have 0 to 3 edges\nrelationship can only be heterosexual (reason why I use a bipartite network)\nVertices can have two different type of edges: regular and occasional\neach vertex can have 1 or 2 regular partner but a vertex with this attribute\ncan have an occasional relationship with a vertex  having the  'regular'\nattribute. That is the problem, I have tried to introduce this attribute in\nmany different fonction and I always have problems with my final edge count:\n\nN=network.initialize(100,directed=FALSE,bipartite=50)\n\nsex=c(rep('F',50),rep('M',50))\nnbpart=c(rep(1,40),rep(2,5),3,rep(0,4),rep(1,30),rep(2,10),3,rep(0,9))\nnbpartF=c(rep(1,40),rep(2,5),3,rep(0,4),rep(0,50))\nnbpartM=c(rep(0,50),rep(1,30),rep(2,10),3,rep(0,9))\nregular=c(rep('Y',20),rep('N',20),rep('Y',3),rep('N',2),rep('N',5),rep('Y',19),rep('N',19),rep('Y',3),rep('N',9))\nnbregular=c(rep(1,20),rep(0,20),rep(1,2),2,rep(0,2),rep(0,5),rep(1,19),rep(0,19),2,2,1,rep(0,9))\nregularM=c(rep('N',50),rep('Y',19),rep('N',19),rep('Y',3),rep(0,9))\nregularF=c(rep('Y',20),rep('N',20),rep('Y',3),rep('N',2),rep('N',5),rep('N',50))\n\nN %v% 'sex'=sex\nN %v% 'nbpart'= nbpart\nN %v% 'nbpartF'= nbpartF\nN %v% 'nbpartM'= nbpartM\nN %v% 'regular'= regular\nN %v% 'nbregular'= nbregular\nN %v% 'regularF'= regularF\nN %v% 'regularM'= regularM\n\n\n\n##correct number of relationship\nS=san(N~edges+degree(1:3,'sex'),meanstats=c(53,40,5,1,30,10,1),nsim=1,burnin=4000000,MCMCsamplesize=2000000,sequential=TRUE,interval=1000,constraints=~bd(maxout=3))\nsummary(S~edges+degree(0:5)+degree(0:5,'sex'))\n\n#introducing 'regular' partnership (all vertice with this attribute have an\nedge with a vertex with this attribute)\n\nS1=san(N~edges+degree(1:3,'sex')+nodematch('regular',diff=TRUE,keep=2),meanstats=c(53,40,5,1,30,10,1,24),nsim=1,burnin=4000000,MCMCsamplesize=3000000,sequential=TRUE,interval=1000,constraints=~bd(maxout=3))\nsummary(S1~edges+degree(0:5)+degree(0:5,'sex')+degree(0:5,'regular'))\nmixingmatrix(S1,'regular')\n\n##using edgecov\nN1=N\nN1[regularH=='Y',regularF=='Y']=1\n\nS1=san(N~edges+degree(1:3,'sex')+edgecov(N1),meanstats=c(53,40,5,1,30,10,1,24),nsim=1,burnin=4000000,MCMCsamplesize=3000000,sequential=TRUE,interval=1000,constraints=~bd(maxout=3))\n##too many degree 3\n\nMany thanks for you help\n\nOlivier Robineau\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110317/c8ff3d3e/attachment.html>",
+      "body_snippet": "Hello,\n\nI am a new user of statnet and I work on sexual relationship in France with\negocentric data.\n\nTo be familiar with statnet function,I am trying to build a network of 53\nedges by  using the func",
+      "thread_id": "thread-84131d586a05",
+      "thread_depth": 0,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-9681c30c74be",
+      "message_id": "<4D834E1C.6010807@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2011-03-18T05:20:44Z",
+      "subject": "[statnet_help] pseudo multilevel ergm?",
+      "subject_clean": "[statnet_help] pseudo multilevel ergm?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI just received 40 small directed networks (between 5 to 15 nodes) with \ntheir predictors. As far as I know, doing a multilevel ergm is not \npossible  because ergm predicts on the whole network, and not on dyads \n(as the multilevel p2 does).\n\nHowever, I am wondering if it would be possible to append all these 40 \nsmall networks (to create a big network) and use a constraint that would \nrespect the different boundaries between the small networks. So gamma \nwould be the set of all possible big networks with same boundaries \n(edges between different subnetworks would be prohibited).\n\nIs it statistically and technically possible to do so?\n\nThanks a lot for you help!\nVic.\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Hi all,\n\nI just received 40 small directed networks (between 5 to 15 nodes) with \ntheir predictors. As far as I know, doing a multilevel ergm is not \npossible  because ergm predicts on the whole netwo",
+      "thread_id": "thread-9681c30c74be",
+      "thread_depth": 0,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-fc547046e5a4",
+      "message_id": "<4D839068.8060903@coll.mpg.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "be636dde28cefa502024155d2c668f78a853d393127e9415ccd248c0c80cf950",
+      "date": "2011-03-18T10:03:36Z",
+      "subject": "[statnet_help] 'thresh' option in gplot",
+      "subject_clean": "[statnet_help] 'thresh' option in gplot",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI would like to plot a valued network. Since I am at an explorative \nstage of my analysis, it would be a good idea to try out several \nthreshold values when plotting the network. Edges should only appear if \nthe edge weight is above this threshold. As far as I can see, this nice \nfeature has been implemented in gplot. But I am not really able to use \nit because I don't know how to specify the edge attribute which the \nthreshold parameter refers to. Here is an example:\n\nlibrary(sna)\nlibrary(network)\nmat<-rgraph(5)*matrix(1:25,5,5)\nnet<-network(mat,ignore.eval=FALSE,names.eval=\"value\")\nt <- mean(mat[mat != 0]) # some threshold\ngplot(net, thresh=t)\n\nThe result shows no edges. How can I specify that the 'thresh' option \nshould use the edge attribute 'value'?\n\nThanks!\n\nPhilip\n\n-- \nPhilip Leifeld\nMax Planck Institute for     | +49 (0) 1577 6830349 (mobile)\nResearch on Collective Goods | +49 (0) 228 91416-73 (phone)\nMaxNetAging Doctoral Fellow  | +49 (0) 228 91416-62 (fax)\nKurt-Schumacher-Str. 10      | Leifeld@coll.mpg.de\n53113 Bonn, Germany          | http://www.philipleifeld.de",
+      "body_snippet": "Hi,\n\nI would like to plot a valued network. Since I am at an explorative \nstage of my analysis, it would be a good idea to try out several \nthreshold values when plotting the network. Edges should onl",
+      "thread_id": "thread-fc547046e5a4",
+      "thread_depth": 0,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-9a3a50a347e0",
+      "message_id": "<4D88E720.1090309@coll.mpg.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "be636dde28cefa502024155d2c668f78a853d393127e9415ccd248c0c80cf950",
+      "date": "2011-03-22T11:14:56Z",
+      "subject": "[statnet_help] 'thresh' option in gplot",
+      "subject_clean": "[statnet_help] 'thresh' option in gplot",
+      "in_reply_to": "<d3a7d115a4801b891b54ea8fd8a6b42e@email.unc.edu>",
+      "references": [
+        "<4D839068.8060903@coll.mpg.de>",
+        "<d3a7d115a4801b891b54ea8fd8a6b42e@email.unc.edu>"
+      ],
+      "body_plain": "Thanks, I know this function in Netdraw.\n\nBut does anyone know how to specify the edge attribute for the 'thresh' \noption of the plot.network() function?\n\nPerhaps the authors of the package? Carter? Alex?\n\nTake care,\n\nPhilip\n\nOn 18.03.2011 18:22, dnolin wrote:\n>\n> For exploratory visualization it's actually much easier to do this in\n> NetDraw/UCInet. You can actually change your threshold cutoff with a click\n> of a button and it will toggle on/off ties interactively.\n>\n> --Dave\n>\n> On Fri, 18 Mar 2011 18:03:36 +0100, Philip Leifeld<Leifeld@coll.mpg.de>\n> wrote:\n>> Hi,\n>>\n>> I would like to plot a valued network. Since I am at an explorative\n>> stage of my analysis, it would be a good idea to try out several\n>> threshold values when plotting the network. Edges should only appear if\n>> the edge weight is above this threshold. As far as I can see, this nice\n>> feature has been implemented in gplot. But I am not really able to use\n>> it because I don't know how to specify the edge attribute which the\n>> threshold parameter refers to. Here is an example:\n>>\n>> library(sna)\n>> library(network)\n>> mat<-rgraph(5)*matrix(1:25,5,5)\n>> net<-network(mat,ignore.eval=FALSE,names.eval=\"value\")\n>> t<- mean(mat[mat != 0]) # some threshold\n>> gplot(net, thresh=t)\n>>\n>> The result shows no edges. How can I specify that the 'thresh' option\n>> should use the edge attribute 'value'?\n>>\n>> Thanks!\n>>\n>> Philip\n>\n\n-- \nPhilip Leifeld\nMax Planck Institute for     | +49 (0) 1577 6830349 (mobile)\nResearch on Collective Goods | +49 (0) 228 91416-73 (phone)\nMaxNetAging Doctoral Fellow  | +49 (0) 228 91416-62 (fax)\nKurt-Schumacher-Str. 10      | Leifeld@coll.mpg.de\n53113 Bonn, Germany          | http://www.philipleifeld.de",
+      "body_snippet": "Thanks, I know this function in Netdraw.\n\nBut does anyone know how to specify the edge attribute for the 'thresh' \noption of the plot.network() function?\n\nPerhaps the authors of the package? Carter? A",
+      "thread_id": "thread-9a3a50a347e0",
+      "thread_depth": 0,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-a60342dec3ce",
+      "message_id": "<4D899678.8080901@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2011-03-22T23:43:04Z",
+      "subject": "[statnet_help] 'thresh' option in gplot",
+      "subject_clean": "[statnet_help] 'thresh' option in gplot",
+      "in_reply_to": "<4D839068.8060903@coll.mpg.de>",
+      "references": [
+        "<4D839068.8060903@coll.mpg.de>"
+      ],
+      "body_plain": "Hi, Philip.  gplot takes its edge values from the input matrix (e.g., an \nadjacency or sna edgelist matrix) that you supply.  If you supply data \nin some other form (e.g., a network object), then gplot will internally \ncoerce the data into edgelist form, taking all edges to have a default \nvalue of 1 (as if the data had been an adjacency matrix, although that \nis not how it is internally represented).\n\nIf you want to use thresholding with gplot and a valued network object, \nyou will want to coerce it into matrix form first.  See, e.g., \nas.edgelist.sna, or as.sociomatrix (and specifically the \"attrname\" \nargument).\n\nHope that helps,\n\n-Carter\n\nOn 03/18/2011 10:03 AM, Philip Leifeld wrote:\n> Hi,\n>\n> I would like to plot a valued network. Since I am at an explorative\n> stage of my analysis, it would be a good idea to try out several\n> threshold values when plotting the network. Edges should only appear if\n> the edge weight is above this threshold. As far as I can see, this nice\n> feature has been implemented in gplot. But I am not really able to use\n> it because I don't know how to specify the edge attribute which the\n> threshold parameter refers to. Here is an example:\n>\n> library(sna)\n> library(network)\n> mat<-rgraph(5)*matrix(1:25,5,5)\n> net<-network(mat,ignore.eval=FALSE,names.eval=\"value\")\n> t <- mean(mat[mat != 0]) # some threshold\n> gplot(net, thresh=t)\n>\n> The result shows no edges. How can I specify that the 'thresh' option\n> should use the edge attribute 'value'?\n>\n> Thanks!\n>\n> Philip\n>",
+      "body_snippet": "Hi, Philip.  gplot takes its edge values from the input matrix (e.g., an \nadjacency or sna edgelist matrix) that you supply.  If you supply data \nin some other form (e.g., a network object), then gplo",
+      "thread_id": "thread-fc547046e5a4",
+      "thread_depth": 1,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-6db93fa37e54",
+      "message_id": "<4D89C201.70302@coll.mpg.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "be636dde28cefa502024155d2c668f78a853d393127e9415ccd248c0c80cf950",
+      "date": "2011-03-23T02:48:49Z",
+      "subject": "[statnet_help] 'thresh' option in gplot",
+      "subject_clean": "[statnet_help] 'thresh' option in gplot",
+      "in_reply_to": "<4D899678.8080901@uci.edu>",
+      "references": [
+        "<4D839068.8060903@coll.mpg.de>",
+        "<4D899678.8080901@uci.edu>"
+      ],
+      "body_plain": "Hi Carter,\n\nThanks, it seems to work now if I write:\n\ngplot(as.sociomatrix(net, attrname=\"value\"), thresh=t)\n\nHowever, I get the following warning message:\n\n\"In d.raw * dist : longer object length is not a multiple of shorter \nobject length\"\n\nAny idea how to avoid that?\n\nThanks,\n\nPhilip\n\n\nOn 23.03.2011 07:43, Carter T. Butts wrote:\n> Hi, Philip. gplot takes its edge values from the input matrix (e.g., an\n> adjacency or sna edgelist matrix) that you supply. If you supply data in\n> some other form (e.g., a network object), then gplot will internally\n> coerce the data into edgelist form, taking all edges to have a default\n> value of 1 (as if the data had been an adjacency matrix, although that\n> is not how it is internally represented).\n>\n> If you want to use thresholding with gplot and a valued network object,\n> you will want to coerce it into matrix form first. See, e.g.,\n> as.edgelist.sna, or as.sociomatrix (and specifically the \"attrname\"\n> argument).\n>\n> Hope that helps,\n>\n> -Carter\n>\n> On 03/18/2011 10:03 AM, Philip Leifeld wrote:\n>> Hi,\n>>\n>> I would like to plot a valued network. Since I am at an explorative\n>> stage of my analysis, it would be a good idea to try out several\n>> threshold values when plotting the network. Edges should only appear if\n>> the edge weight is above this threshold. As far as I can see, this nice\n>> feature has been implemented in gplot. But I am not really able to use\n>> it because I don't know how to specify the edge attribute which the\n>> threshold parameter refers to. Here is an example:\n>>\n>> library(sna)\n>> library(network)\n>> mat<-rgraph(5)*matrix(1:25,5,5)\n>> net<-network(mat,ignore.eval=FALSE,names.eval=\"value\")\n>> t <- mean(mat[mat != 0]) # some threshold\n>> gplot(net, thresh=t)\n>>\n>> The result shows no edges. How can I specify that the 'thresh' option\n>> should use the edge attribute 'value'?\n>>\n>> Thanks!\n>>\n>> Philip\n>>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nPhilip Leifeld\nMax Planck Institute for     | +49 (0) 1577 6830349 (mobile)\nResearch on Collective Goods | +49 (0) 228 91416-73 (phone)\nMaxNetAging Doctoral Fellow  | +49 (0) 228 91416-62 (fax)\nKurt-Schumacher-Str. 10      | Leifeld@coll.mpg.de\n53113 Bonn, Germany          | http://www.philipleifeld.de",
+      "body_snippet": "Hi Carter,\n\nThanks, it seems to work now if I write:\n\ngplot(as.sociomatrix(net, attrname=\"value\"), thresh=t)\n\nHowever, I get the following warning message:\n\n\"In d.raw * dist : longer object length is ",
+      "thread_id": "thread-fc547046e5a4",
+      "thread_depth": 2,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-5b95504ad317",
+      "message_id": "<AANLkTi=bqcnGPt3CabeQNFShre2Xns3-O2Zr+mkOG21k@mail.gmail.com>",
+      "from_name": "Brian Keegan",
+      "from_email_hash": "0a040d156157c7a0846c2e199462b4a90b1286ad17bfecf6c905da0c405bc047",
+      "date": "2011-03-23T23:01:08Z",
+      "subject": "[statnet_help] gwdsp error",
+      "subject_clean": "[statnet_help] gwdsp error",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I'm running a bipartite network with 1316 actors against 735 events. The\nmajority of these are isolated dyads, but there are a few components (no\ngiant) in the network. This is running on an Amazon EC2 instance with 17gb\nof memory, so hopefully memory is not the limiting issue.\n\nI want to use the gwdsp to capture higher-order \"clustering\" -- the tendency\nfor the same people to work together on many of the same projects. I specify\na model:\n\nmodel<-ergm(bp~edges+gwb1degree(.1)+gwb2degree(.1)+b1degree(1)+b2degree(1)+gwdsp(.1))\n\nThis will estimate up to Iteration 3 before reporting out:\n\nError in svd(H) : infinite or missing values in 'x'\n\nI don't know what matrix is being passed to the singular value\ndecomposition. Would this error suggest that there's something amiss in my\ndata, my use of the gwdsp term, or the presence or lack of other parameters?\n\nIf my interpretations (below) are wildly wacky, please let me know. I hope\nnot, because without the gwdsp term, the MCMC.diagnostics and GoF have all\nbeen nice.\n\nEdges = density\ngwb1degree = tendency for people to work on many projects\ngwb1degree = tendency for projects to have many people\nb1degree(1) = tendency for there to be people with exactly one project\n(control on degree distribution)\nb2degree(1) = tendency for there to be projects with exactly one person\n(control on degree distribution)\ngwdsp = tendency for many people to share several projects (bipartite\nclustering)\n\nThanks!\n\nBrian\n\n-- \nBrian C. Keegan\nPh.D. Student - Media, Technology, & Society\nSchool of Communication, Northwestern University\n\nScience of Networks in Communities, Laboratory for Collaborative Technology\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110323/706bd04c/attachment.html>",
+      "body_snippet": "I'm running a bipartite network with 1316 actors against 735 events. The\nmajority of these are isolated dyads, but there are a few components (no\ngiant) in the network. This is running on an Amazon EC",
+      "thread_id": "thread-5b95504ad317",
+      "thread_depth": 0,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-fbd0b939cbed",
+      "message_id": "<4D8B1AAB.3030706@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2011-03-24T03:19:23Z",
+      "subject": "[statnet_help] 'thresh' option in gplot",
+      "subject_clean": "[statnet_help] 'thresh' option in gplot",
+      "in_reply_to": "<4D89C201.70302@coll.mpg.de>",
+      "references": [
+        "<4D839068.8060903@coll.mpg.de>",
+        "<4D899678.8080901@uci.edu>",
+        "<4D89C201.70302@coll.mpg.de>"
+      ],
+      "body_plain": "Hi, Philip.  I can't seem to duplicate this warning on my end.  Can you \nsend me a simple example?\n\nThanks,\n\n-Carter\n\nOn 03/23/2011 02:48 AM, Philip Leifeld wrote:\n> Hi Carter,\n>\n> Thanks, it seems to work now if I write:\n>\n> gplot(as.sociomatrix(net, attrname=\"value\"), thresh=t)\n>\n> However, I get the following warning message:\n>\n> \"In d.raw * dist : longer object length is not a multiple of shorter\n> object length\"\n>\n> Any idea how to avoid that?\n>\n> Thanks,\n>\n> Philip\n>\n>\n> On 23.03.2011 07:43, Carter T. Butts wrote:\n>> Hi, Philip. gplot takes its edge values from the input matrix (e.g., an\n>> adjacency or sna edgelist matrix) that you supply. If you supply data in\n>> some other form (e.g., a network object), then gplot will internally\n>> coerce the data into edgelist form, taking all edges to have a default\n>> value of 1 (as if the data had been an adjacency matrix, although that\n>> is not how it is internally represented).\n>>\n>> If you want to use thresholding with gplot and a valued network object,\n>> you will want to coerce it into matrix form first. See, e.g.,\n>> as.edgelist.sna, or as.sociomatrix (and specifically the \"attrname\"\n>> argument).\n>>\n>> Hope that helps,\n>>\n>> -Carter\n>>\n>> On 03/18/2011 10:03 AM, Philip Leifeld wrote:\n>>> Hi,\n>>>\n>>> I would like to plot a valued network. Since I am at an explorative\n>>> stage of my analysis, it would be a good idea to try out several\n>>> threshold values when plotting the network. Edges should only appear if\n>>> the edge weight is above this threshold. As far as I can see, this nice\n>>> feature has been implemented in gplot. But I am not really able to use\n>>> it because I don't know how to specify the edge attribute which the\n>>> threshold parameter refers to. Here is an example:\n>>>\n>>> library(sna)\n>>> library(network)\n>>> mat<-rgraph(5)*matrix(1:25,5,5)\n>>> net<-network(mat,ignore.eval=FALSE,names.eval=\"value\")\n>>> t <- mean(mat[mat != 0]) # some threshold\n>>> gplot(net, thresh=t)\n>>>\n>>> The result shows no edges. How can I specify that the 'thresh' option\n>>> should use the edge attribute 'value'?\n>>>\n>>> Thanks!\n>>>\n>>> Philip\n>>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi, Philip.  I can't seem to duplicate this warning on my end.  Can you \nsend me a simple example?\n\nThanks,\n\n-Carter\n\nOn 03/23/2011 02:48 AM, Philip Leifeld wrote:\n> Hi Carter,\n>\n> Thanks, it seems to",
+      "thread_id": "thread-fc547046e5a4",
+      "thread_depth": 3,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-6b8c3bf5df81",
+      "message_id": "<4D8B2B9A.6070002@coll.mpg.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "be636dde28cefa502024155d2c668f78a853d393127e9415ccd248c0c80cf950",
+      "date": "2011-03-24T04:31:38Z",
+      "subject": "[statnet_help] 'thresh' option in gplot",
+      "subject_clean": "[statnet_help] 'thresh' option in gplot",
+      "in_reply_to": "<4D8B1AAB.3030706@uci.edu>",
+      "references": [
+        "<4D839068.8060903@coll.mpg.de>",
+        "<4D899678.8080901@uci.edu>",
+        "<4D89C201.70302@coll.mpg.de>",
+        "<4D8B1AAB.3030706@uci.edu>"
+      ],
+      "body_plain": "OK, so this warning seems to occur only on my machine. I tried it on a \ncouple of other computers, and it never printed the warning message.\n\nHere is the code that causes the warning on my computer:\n\nlibrary(statnet)\nmat<-rgraph(5)*matrix(1:25,5,5)\nnet<-network(mat,ignore.eval=FALSE,names.eval=\"value\")\nt <- mean(mat[mat != 0]) # some threshold\ngplot(as.sociomatrix(net, attrname=\"value\"), thresh=t)\n\nAnd here is some information about the versions I am using:\n\nI am running R 2.11.1 (2010-05-31) and the network package in version \n1.5-1 (2010-10-18) on Ubuntu Linux 10.10 (32 bit) i686.\n\nThe problem did *not* occur on the following computers:\n- R 2.10.1 (2009-12-14); network 1.5-1; Ubuntu 10.04 (32 bit) i686.\n- R 2.12.0 (2010-10-15); network 1.6 (2011-01-28); WinXP SP2; VirtualBox\n\nI guess I will just update to the latest version of R and the network \npackage and hope that the warning message will go away. Thanks for your \nhelp, though.\n\nPhilip\n\nOn 24.03.2011 11:19, Carter T. Butts wrote:\n> Hi, Philip. I can't seem to duplicate this warning on my end. Can you\n> send me a simple example?\n>\n> Thanks,\n>\n> -Carter\n>\n> On 03/23/2011 02:48 AM, Philip Leifeld wrote:\n>> Hi Carter,\n>>\n>> Thanks, it seems to work now if I write:\n>>\n>> gplot(as.sociomatrix(net, attrname=\"value\"), thresh=t)\n>>\n>> However, I get the following warning message:\n>>\n>> \"In d.raw * dist : longer object length is not a multiple of shorter\n>> object length\"\n>>\n>> Any idea how to avoid that?\n>>\n>> Thanks,\n>>\n>> Philip\n>>\n>>\n>> On 23.03.2011 07:43, Carter T. Butts wrote:\n>>> Hi, Philip. gplot takes its edge values from the input matrix (e.g., an\n>>> adjacency or sna edgelist matrix) that you supply. If you supply data in\n>>> some other form (e.g., a network object), then gplot will internally\n>>> coerce the data into edgelist form, taking all edges to have a default\n>>> value of 1 (as if the data had been an adjacency matrix, although that\n>>> is not how it is internally represented).\n>>>\n>>> If you want to use thresholding with gplot and a valued network object,\n>>> you will want to coerce it into matrix form first. See, e.g.,\n>>> as.edgelist.sna, or as.sociomatrix (and specifically the \"attrname\"\n>>> argument).\n>>>\n>>> Hope that helps,\n>>>\n>>> -Carter\n>>>\n>>> On 03/18/2011 10:03 AM, Philip Leifeld wrote:\n>>>> Hi,\n>>>>\n>>>> I would like to plot a valued network. Since I am at an explorative\n>>>> stage of my analysis, it would be a good idea to try out several\n>>>> threshold values when plotting the network. Edges should only appear if\n>>>> the edge weight is above this threshold. As far as I can see, this nice\n>>>> feature has been implemented in gplot. But I am not really able to use\n>>>> it because I don't know how to specify the edge attribute which the\n>>>> threshold parameter refers to. Here is an example:\n>>>>\n>>>> library(sna)\n>>>> library(network)\n>>>> mat<-rgraph(5)*matrix(1:25,5,5)\n>>>> net<-network(mat,ignore.eval=FALSE,names.eval=\"value\")\n>>>> t <- mean(mat[mat != 0]) # some threshold\n>>>> gplot(net, thresh=t)\n>>>>\n>>>> The result shows no edges. How can I specify that the 'thresh' option\n>>>> should use the edge attribute 'value'?\n>>>>\n>>>> Thanks!\n>>>>\n>>>> Philip\n>>>>\n>>>\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>",
+      "body_snippet": "OK, so this warning seems to occur only on my machine. I tried it on a \ncouple of other computers, and it never printed the warning message.\n\nHere is the code that causes the warning on my computer:\n\n",
+      "thread_id": "thread-fc547046e5a4",
+      "thread_depth": 4,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-9e2cc8a95d7b",
+      "message_id": "<798FF3A49CD1EE43BEAE3523FC9EF5B28BF96602F3@EXCH07-03.apollogrp.edu>",
+      "from_name": "Philip Heinrich",
+      "from_email_hash": "eef65b2d9592fd15623682df130f7f9274763e62d74facbee5922b6659e32584",
+      "date": "2011-03-24T10:19:01Z",
+      "subject": "[statnet_help] Real Basic Question",
+      "subject_clean": "[statnet_help] Real Basic Question",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I'm learning Social Network Analysis using Statnet.  I'm trying to load an Excel spreadsheet with Knoke's Information Exchange data so I can work through the examples in Hanneman and Riddle's Introduction to Social Network Methods (2005).\n\nI've been through R in a Nutshell by Joseph Adler, the R Data Import/Export monograph, and three or four other sources that I have Googled but the only advise I am getting is to save the Excel file as a CSV or TXT.  I've tried read.table, read.csv, and several others but keep getting error messages such as: object not found; unexpected input; and cannot open connection.  I'm guessing it has something to do with libraries since laying out the detailed path to the file doesn't help.\n\nTwo things.  Can someone direct me to a good explanation of how to use libraries in R?  Second, can someone talk me though my short-term problem so I can continue to SNA.\n\nThanks.\n\n\nPhilip Heinrich, MA, MBA\nResearch Manager - Academic Research Group\nUniversity of Phoenix\n602-557-1783 - Voice\n602-557-1854 - Fax\n\n\n\n________________________________\nThis message is private and confidential. If you have received it in error, please notify the sender and remove it from your system.\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110324/da588af0/attachment.html>",
+      "body_snippet": "I'm learning Social Network Analysis using Statnet.  I'm trying to load an Excel spreadsheet with Knoke's Information Exchange data so I can work through the examples in Hanneman and Riddle's Introduc",
+      "thread_id": "thread-9e2cc8a95d7b",
+      "thread_depth": 0,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-43e04c550a8e",
+      "message_id": "<AANLkTikEQyNvVoDAbXK9RBwRrpcrQRTvK+yyjyHU-JTc@mail.gmail.com>",
+      "from_name": "Brian Keegan",
+      "from_email_hash": "0a040d156157c7a0846c2e199462b4a90b1286ad17bfecf6c905da0c405bc047",
+      "date": "2011-03-24T10:50:52Z",
+      "subject": "[statnet_help] Real Basic Question",
+      "subject_clean": "[statnet_help] Real Basic Question",
+      "in_reply_to": "<798FF3A49CD1EE43BEAE3523FC9EF5B28BF96602F3@EXCH07-03.apollogrp.edu>",
+      "references": [
+        "<798FF3A49CD1EE43BEAE3523FC9EF5B28BF96602F3@EXCH07-03.apollogrp.edu>"
+      ],
+      "body_plain": "Dan McFarland's group at Stanford has a really nice and well-documented set\nof labs for R. Some of the intro ones use igraph (unfortunately, since their\nlogic and compatibility don't always extend to the network libraries), but\nthe later ones use network/sna.\n\nhttp://sna.stanford.edu/rlabs.php\n\nOn Thu, Mar 24, 2011 at 10:19 AM, Philip Heinrich <\nphilip.heinrich@phoenix.edu> wrote:\n\n>  I?m learning Social Network Analysis using Statnet.  I?m trying to load\n> an Excel spreadsheet with Knoke?s Information Exchange data so I can work\n> through the examples in Hanneman and Riddle?s Introduction to Social Network\n> Methods (2005).\n>\n>\n>\n> I?ve been through *R in a Nutshell* by Joseph Adler, the R Data\n> Import/Export monograph, and three or four other sources that I have Googled\n> but the only advise I am getting is to save the Excel file as a CSV or TXT.\n> I?ve tried read.table, read.csv, and several others but keep getting error\n> messages such as: object not found; unexpected input; and cannot open\n> connection.  I?m guessing it has something to do with libraries since laying\n> out the detailed path to the file doesn?t help.\n>\n>\n>\n> Two things.  Can someone direct me to a good explanation of how to use\n> libraries in R?  Second, can someone talk me though my short-term problem so\n> I can continue to SNA.\n>\n>\n>\n> Thanks.\n>\n>\n>\n>\n>\n> Philip Heinrich, MA, MBA\n> Research Manager - Academic Research Group\n> University of Phoenix\n> 602-557-1783 - Voice\n> 602-557-1854 - Fax\n>\n>\n>\n>\n>\n> ------------------------------\n> This message is private and confidential. If you have received it in error,\n> please notify the sender and remove it from your system.\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n\n-- \nBrian C. Keegan\nPh.D. Student - Media, Technology, & Society\nSchool of Communication, Northwestern University\n\nScience of Networks in Communities, Laboratory for Collaborative Technology\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110324/707b313f/attachment.html>",
+      "body_snippet": "Dan McFarland's group at Stanford has a really nice and well-documented set\nof labs for R. Some of the intro ones use igraph (unfortunately, since their\nlogic and compatibility don't always extend to ",
+      "thread_id": "thread-9e2cc8a95d7b",
+      "thread_depth": 1,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-11fa828619fe",
+      "message_id": "<AANLkTimTAZBHGfr+c-DCSaE+xGRO5MyauWSiYUfTC1ON@mail.gmail.com>",
+      "from_name": "Semenov Alexander",
+      "from_email_hash": "6e5c1fbfadfa41a39f5196efe167a24af19fbcdae65a1300008188c51bdc86f1",
+      "date": "2011-03-26T19:46:26Z",
+      "subject": "[statnet_help] Real Basic Question",
+      "subject_clean": "[statnet_help] Real Basic Question",
+      "in_reply_to": "<798FF3A49CD1EE43BEAE3523FC9EF5B28BF96602F3@EXCH07-03.apollogrp.edu>",
+      "references": [
+        "<798FF3A49CD1EE43BEAE3523FC9EF5B28BF96602F3@EXCH07-03.apollogrp.edu>"
+      ],
+      "body_plain": "Hello, Philip.\nI usually import *.csv this way: first import it as matrix, than convert\nmatrix object to network objetc.\ndata.mat<-as.matrix(read.table(\"DATA\"))\ndatan.net<-as.network(data.mat)\nas.network function has several arguments for loops, directed graphs, etc.\nYou can check it out by executing help(as.network).\nHere is a reference to some R-related SNA resources:\nhttp://jeromyanglim.blogspot.com/2009/08/social-network-analysis-resources-for-r.html\nBest wishes,\nAlexander.\n\n2011/3/24 Philip Heinrich <philip.heinrich@phoenix.edu>\n\n>  I?m learning Social Network Analysis using Statnet.  I?m trying to load\n> an Excel spreadsheet with Knoke?s Information Exchange data so I can work\n> through the examples in Hanneman and Riddle?s Introduction to Social Network\n> Methods (2005).\n>\n>\n>\n> I?ve been through *R in a Nutshell* by Joseph Adler, the R Data\n> Import/Export monograph, and three or four other sources that I have Googled\n> but the only advise I am getting is to save the Excel file as a CSV or TXT.\n> I?ve tried read.table, read.csv, and several others but keep getting error\n> messages such as: object not found; unexpected input; and cannot open\n> connection.  I?m guessing it has something to do with libraries since laying\n> out the detailed path to the file doesn?t help.\n>\n>\n>\n> Two things.  Can someone direct me to a good explanation of how to use\n> libraries in R?  Second, can someone talk me though my short-term problem so\n> I can continue to SNA.\n>\n>\n>\n> Thanks.\n>\n>\n>\n>\n>\n> Philip Heinrich, MA, MBA\n> Research Manager - Academic Research Group\n> University of Phoenix\n> 602-557-1783 - Voice\n> 602-557-1854 - Fax\n>\n>\n>\n>\n>\n> ------------------------------\n> This message is private and confidential. If you have received it in error,\n> please notify the sender and remove it from your system.\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110327/9b3cbd4f/attachment.html>",
+      "body_snippet": "Hello, Philip.\nI usually import *.csv this way: first import it as matrix, than convert\nmatrix object to network objetc.\ndata.mat<-as.matrix(read.table(\"DATA\"))\ndatan.net<-as.network(data.mat)\nas.netw",
+      "thread_id": "thread-9e2cc8a95d7b",
+      "thread_depth": 1,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-ea28ab4e9ae1",
+      "message_id": "<AANLkTim+D0giCRo0Cni1m2VntD+H0RYm=XZqfn+hwaN-@mail.gmail.com>",
+      "from_name": "Semenov Alexander",
+      "from_email_hash": "6e5c1fbfadfa41a39f5196efe167a24af19fbcdae65a1300008188c51bdc86f1",
+      "date": "2011-03-26T20:22:20Z",
+      "subject": "[statnet_help] statnet wrongfully reports directed network as undirected",
+      "subject_clean": "[statnet_help] statnet wrongfully reports directed network as undirected",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello, everybody.\nMy question may be very lame and the solution to it is very simple, but I\nhave noone else to ask it.\nI import a directed network from *.csv file but statnet says, that it's\nundirected.\nHere are my commands:\n\nlazy.mat<-as.matrix(read.table(\"D:/Disser/lazy_soc.csv\"))\nlazy.net<-as.network(lazy.mat, directed=TRUE)\nlazy.net\n\nhere is the output for the last command:\n\nNetwork attributes:\n  vertices = 22\n  directed = FALSE\n  hyper = FALSE\n  loops = FALSE\n  multiple = FALSE\n  bipartite = 21\n  total edges= 21\n    missing edges= 0\n    non-missing edges= 21\n\nWhile there are 20 nodes and 40 edges.\nIt happends to any *.csv file and the pattern is the following: for N\nvertices in \"real\" data it shows N+2 vertices and N+1 total edges.\nI did this procedure before, but everything worked fine.\nI've attached the file so, that you could check it out ourself.\nThanks in advance.\nBest regards,\nAlexander.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110327/7ad5493f/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: lazy_soc.csv\nType: text/csv\nSize: 1243 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110327/7ad5493f/attachment.csv>",
+      "body_snippet": "Hello, everybody.\nMy question may be very lame and the solution to it is very simple, but I\nhave noone else to ask it.\nI import a directed network from *.csv file but statnet says, that it's\nundirecte",
+      "thread_id": "thread-ea28ab4e9ae1",
+      "thread_depth": 0,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-22257c976eae",
+      "message_id": "<AANLkTikb7xWzPFdWG6DnWGODhHrdBP3eFbQyRek6R=1T@mail.gmail.com>",
+      "from_name": "Wincent",
+      "from_email_hash": "6846f5c272f8850077470247e7e6a025c83f8d7387bcf22387269b3b25a06522",
+      "date": "2011-03-26T20:45:14Z",
+      "subject": "[statnet_help] Real Basic Question",
+      "subject_clean": "[statnet_help] Real Basic Question",
+      "in_reply_to": "<798FF3A49CD1EE43BEAE3523FC9EF5B28BF96602F3@EXCH07-03.apollogrp.edu>",
+      "references": [
+        "<AcvqR5FmGTSsLf++T7e+Ck7hZdDQGg==>",
+        "<798FF3A49CD1EE43BEAE3523FC9EF5B28BF96602F3@EXCH07-03.apollogrp.edu>"
+      ],
+      "body_plain": "I suspect you use Windows, and use / as path separator.\nIf you file is c:\\exam.csv, you need to use\n> dat <- read.csv(\"c/exam.csv\")\n\nThen you can coerce it to matrix and then to network object, etc.\n\nRegards,\n\nOn 25 March 2011 01:19, Philip Heinrich <philip.heinrich@phoenix.edu> wrote:\n\n>  I?m learning Social Network Analysis using Statnet.  I?m trying to load\n> an Excel spreadsheet with Knoke?s Information Exchange data so I can work\n> through the examples in Hanneman and Riddle?s Introduction to Social Network\n> Methods (2005).\n>\n>\n>\n> I?ve been through *R in a Nutshell* by Joseph Adler, the R Data\n> Import/Export monograph, and three or four other sources that I have Googled\n> but the only advise I am getting is to save the Excel file as a CSV or TXT.\n> I?ve tried read.table, read.csv, and several others but keep getting error\n> messages such as: object not found; unexpected input; and cannot open\n> connection.  I?m guessing it has something to do with libraries since laying\n> out the detailed path to the file doesn?t help.\n>\n>\n>\n> Two things.  Can someone direct me to a good explanation of how to use\n> libraries in R?  Second, can someone talk me though my short-term problem so\n> I can continue to SNA.\n>\n>\n>\n> Thanks.\n>\n>\n>\n>\n>\n> Philip Heinrich, MA, MBA\n> Research Manager - Academic Research Group\n> University of Phoenix\n> 602-557-1783 - Voice\n> 602-557-1854 - Fax\n>\n>\n>\n>\n>\n> ------------------------------\n> This message is private and confidential. If you have received it in error,\n> please notify the sender and remove it from your system.\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n\n-- \nWincent Ronggui HUANG\nSociology Department of Fudan University\nPhD of City University of Hong Kong\nhttp://asrr.r-forge.r-project.org/rghuang.html\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110327/0528a424/attachment.html>",
+      "body_snippet": "I suspect you use Windows, and use / as path separator.\nIf you file is c:\\exam.csv, you need to use\n> dat <- read.csv(\"c/exam.csv\")\n\nThen you can coerce it to matrix and then to network object, etc.\n\n",
+      "thread_id": "thread-9e2cc8a95d7b",
+      "thread_depth": 1,
+      "month": "2011-03"
+    },
+    {
+      "id": "msg-7c8891164316",
+      "message_id": "<4D8EBEB1.5030107@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2011-03-26T21:36:01Z",
+      "subject": "[statnet_help] statnet wrongfully reports directed network as undirected",
+      "subject_clean": "[statnet_help] statnet wrongfully reports directed network as undirected",
+      "in_reply_to": "<AANLkTim+D0giCRo0Cni1m2VntD+H0RYm=XZqfn+hwaN-@mail.gmail.com>",
+      "references": [
+        "<AANLkTim+D0giCRo0Cni1m2VntD+H0RYm=XZqfn+hwaN-@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Alexander.  You are using read.table (with default settings) to \nimport your data, but your data is not in the format it expects (a \nwhitespace delimited table); if you check the results, you will see that \nit has given you something like this:\n\n >head(lazy.mat)\n      V1 \n \n \n\n[1,] \n\",Student-1,Student-2,Student-3,Student-4,Student-5,Student-6,Student-7,Student-8,Student-9,Student-10,Student-11,Student-12,Student-13,Student-14,Student-15,Student-16,Student-17,Student-18,Student-19,Student-20\"\n[2,] \"Student-1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0\" \n \n\n[3,] \"Student-2,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0\" \n \n\n[4,] \"Student-3,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0\" \n\n....\n\nTry something like this, instead:\n\nlazy.mat<-as.matrix(read.csv(\"/tmp/lazy_soc.csv\",row.names=1))\nlazy.net<-network(lazy.mat)\n\nThat works fine on this end.\n\nHope that helps,\n\n-Carter\n\n\nOn 03/26/2011 08:22 PM, Semenov Alexander wrote:\n> Hello, everybody.\n> My question may be very lame and the solution to it is very simple, but\n> I have noone else to ask it.\n> I import a directed network from *.csv file but statnet says, that it's\n> undirected.\n> Here are my commands:\n>\n> lazy.mat<-as.matrix(read.table(\"D:/Disser/lazy_soc.csv\"))\n> lazy.net <http://lazy.net><-as.network(lazy.mat, directed=TRUE)\n> lazy.net <http://lazy.net>\n>\n> here is the output for the last command:\n>\n> Network attributes:\n>    vertices = 22\n>    directed = FALSE\n>    hyper = FALSE\n>    loops = FALSE\n>    multiple = FALSE\n>    bipartite = 21\n>    total edges= 21\n>      missing edges= 0\n>      non-missing edges= 21\n>\n> While there are 20 nodes and 40 edges.\n> It happends to any *.csv file and the pattern is the following: for N\n> vertices in \"real\" data it shows N+2 vertices and N+1 total edges.\n> I did this procedure before, but everything worked fine.\n> I've attached the file so, that you could check it out ourself.\n> Thanks in advance.\n> Best regards,\n> Alexander.\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi, Alexander.  You are using read.table (with default settings) to \nimport your data, but your data is not in the format it expects (a \nwhitespace delimited table); if you check the results, you will",
+      "thread_id": "thread-ea28ab4e9ae1",
+      "thread_depth": 1,
+      "month": "2011-03"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-7764c0217086",
+      "subject": "[statnet_help] estimating decay/alpha parameters for geometric terms",
+      "message_count": 1,
+      "participants": [
+        "Jenine Harris"
+      ],
+      "started": "2011-03-05T17:18:52Z",
+      "last_reply": "2011-03-05T17:18:52Z",
+      "root_message_id": "msg-7764c0217086"
+    },
+    {
+      "id": "thread-15ffd29c9b7e",
+      "subject": "[statnet_help] P2 routine",
+      "message_count": 2,
+      "participants": [
+        "Soriani Nicola",
+        "Yun Huang"
+      ],
+      "started": "2011-03-12T01:08:05Z",
+      "last_reply": "2011-03-12T06:56:34Z",
+      "root_message_id": "msg-15ffd29c9b7e"
+    },
+    {
+      "id": "thread-94f8159f893d",
+      "subject": "[statnet_help] Question for MCMCMLE Calculation Time",
+      "message_count": 4,
+      "participants": [
+        "Brian Keegan",
+        "David Hunter",
+        "kentjin"
+      ],
+      "started": "2011-03-13T14:04:10Z",
+      "last_reply": "2011-03-13T15:39:58Z",
+      "root_message_id": "msg-94f8159f893d"
+    },
+    {
+      "id": "thread-122e98a43637",
+      "subject": "[statnet_help] 2-Mode Clusters",
+      "message_count": 4,
+      "participants": [
+        "Brian Keegan",
+        "David Hunter",
+        "Sam Stewart"
+      ],
+      "started": "2011-03-15T05:45:14Z",
+      "last_reply": "2011-03-15T07:57:17Z",
+      "root_message_id": "msg-122e98a43637"
+    },
+    {
+      "id": "thread-a98e4a69b7fc",
+      "subject": "[statnet_help] ERGM crash help",
+      "message_count": 1,
+      "participants": [
+        "Victor, Jennifer Nicoll"
+      ],
+      "started": "2011-03-15T13:35:42Z",
+      "last_reply": "2011-03-15T13:35:42Z",
+      "root_message_id": "msg-a98e4a69b7fc"
+    },
+    {
+      "id": "thread-82da6973081f",
+      "subject": "[statnet_help] missing data on node attributes",
+      "message_count": 1,
+      "participants": [
+        "Kevin Lewis"
+      ],
+      "started": "2011-03-16T12:04:52Z",
+      "last_reply": "2011-03-16T12:04:52Z",
+      "root_message_id": "msg-82da6973081f"
+    },
+    {
+      "id": "thread-6bb57c4d7b74",
+      "subject": "[statnet_help] Intervall and autocorrelated samples",
+      "message_count": 1,
+      "participants": [
+        "Victorin Luisier"
+      ],
+      "started": "2011-03-17T03:45:15Z",
+      "last_reply": "2011-03-17T03:45:15Z",
+      "root_message_id": "msg-6bb57c4d7b74"
+    },
+    {
+      "id": "thread-84131d586a05",
+      "subject": "[statnet_help] problems using san() to create a network from egocentric data",
+      "message_count": 1,
+      "participants": [
+        "Olivier Robineau"
+      ],
+      "started": "2011-03-17T09:12:46Z",
+      "last_reply": "2011-03-17T09:12:46Z",
+      "root_message_id": "msg-84131d586a05"
+    },
+    {
+      "id": "thread-9681c30c74be",
+      "subject": "[statnet_help] pseudo multilevel ergm?",
+      "message_count": 1,
+      "participants": [
+        "Victorin Luisier"
+      ],
+      "started": "2011-03-18T05:20:44Z",
+      "last_reply": "2011-03-18T05:20:44Z",
+      "root_message_id": "msg-9681c30c74be"
+    },
+    {
+      "id": "thread-fc547046e5a4",
+      "subject": "[statnet_help] 'thresh' option in gplot",
+      "message_count": 5,
+      "participants": [
+        "Carter T. Butts",
+        "Philip Leifeld"
+      ],
+      "started": "2011-03-18T10:03:36Z",
+      "last_reply": "2011-03-24T04:31:38Z",
+      "root_message_id": "msg-fc547046e5a4"
+    },
+    {
+      "id": "thread-9a3a50a347e0",
+      "subject": "[statnet_help] 'thresh' option in gplot",
+      "message_count": 1,
+      "participants": [
+        "Philip Leifeld"
+      ],
+      "started": "2011-03-22T11:14:56Z",
+      "last_reply": "2011-03-22T11:14:56Z",
+      "root_message_id": "msg-9a3a50a347e0"
+    },
+    {
+      "id": "thread-5b95504ad317",
+      "subject": "[statnet_help] gwdsp error",
+      "message_count": 1,
+      "participants": [
+        "Brian Keegan"
+      ],
+      "started": "2011-03-23T23:01:08Z",
+      "last_reply": "2011-03-23T23:01:08Z",
+      "root_message_id": "msg-5b95504ad317"
+    },
+    {
+      "id": "thread-9e2cc8a95d7b",
+      "subject": "[statnet_help] Real Basic Question",
+      "message_count": 4,
+      "participants": [
+        "Brian Keegan",
+        "Philip Heinrich",
+        "Semenov Alexander",
+        "Wincent"
+      ],
+      "started": "2011-03-24T10:19:01Z",
+      "last_reply": "2011-03-26T20:45:14Z",
+      "root_message_id": "msg-9e2cc8a95d7b"
+    },
+    {
+      "id": "thread-ea28ab4e9ae1",
+      "subject": "[statnet_help] statnet wrongfully reports directed network as undirected",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Semenov Alexander"
+      ],
+      "started": "2011-03-26T20:22:20Z",
+      "last_reply": "2011-03-26T21:36:01Z",
+      "root_message_id": "msg-ea28ab4e9ae1"
+    }
+  ]
+}

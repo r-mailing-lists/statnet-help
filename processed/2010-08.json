@@ -1,0 +1,822 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2010-08",
+  "messages": [
+    {
+      "id": "msg-31840f3484dd",
+      "message_id": "<AANLkTin=khzaPX=nKxgqS_Ev=S0VWTpwkfEv3Ug0rQ4P@mail.gmail.com>",
+      "from_name": "Saeed Nasehi Moghadam",
+      "from_email_hash": "bd649562b27e56fdf90f5219df591b4859bb28486c4beabc53908bcc516096e8",
+      "date": "2010-08-01T08:49:05Z",
+      "subject": "[statnet_help] Error in fitting p1model to data which have some zero degree nodes",
+      "subject_clean": "[statnet_help] Error in fitting p1model to data which have some zero degree nodes",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "hello every one and Dr David Hunter\nI need to fit p1 model to my data which have some zero indegree or outdegree\nnodes so when i fit p1 model through this command:\n==================================================================================================\ndip.p1.ergm=ergm(dip~edges+sender+receiver+mutual,burnin=10000,\nMCMCsamplesize=80000, interval=100, maxit=3,control=control.ergm(style =\n\"Robbins-Monro\"),verbose=TRUE)\n==================================================================================================\nbut after enter this command this error was appeared:\n==================================================================================================\nEvaluating network in model\nInitializing model.\n Warning: There are no out ties for the vertex 6 ;\n  the corresponding coefficient has been fixed at its MLE of negative\ninfinity.\n Warning: There are no out ties for the vertex 7 ;\n  the corresponding coefficient has been fixed at its MLE of negative\ninfinity.\n Warning: There are no out ties for the vertex 8 ;\n  the corresponding coefficient has been fixed at its MLE of negative\ninfinity.\n Warning: There are no out ties for the vertex 13 ;\n  the corresponding coefficient has been fixed at its MLE of negative\ninfinity.\n Warning: There are no out ties for the vertex 14 ;\n...\n\ntheta new: 2.55145709491215\n theta new: 3.38146888920551\n theta new: -Inf\n theta new: -Inf\n theta new: 1.89279864037168\n theta new: -Inf\n theta new: 3.4938276903279\n theta new: -Inf\n theta new: 1.67401465809101\n theta new: 1.32054592476786\n theta new: 1.79544270671737\n theta new: 3.52683389405267\n theta new: 3.53085929866654\n theta new: 3.97389549533489\nPhase 3:  20 iterations (interval=100)\nCalling MCMLE Optimization...\nUsing Newton-Raphson Step ...\nOptimizing loglikelihood\ninitial  value -0.000000\nfinal  value -12.824664\nconverged\nthe log-likelihood improved by 12.82\nError in htmp %*% t(etagrad) : non-conformable arguments\n==================================================================================================\nnow i dont understand  this term: \"Error in htmp %*% t(etagrad) :\nnon-conformable arguments\"\nif problem is zero degree nodes how can i resolve this problem? or if zero\ndegree is not problem what means of  \"Error in htmp %*% t(etagrad) :\nnon-conformable arguments\"?\nsince there are some nodes with zero degree that it is imposible deletting\nthose nodes, in my data how can i fit p1 model thorogh ergm package?\nThanks for any help\nSaeed\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100801/5b8c0ee7/attachment.html>",
+      "body_snippet": "hello every one and Dr David Hunter\nI need to fit p1 model to my data which have some zero indegree or outdegree\nnodes so when i fit p1 model through this command:\n====================================",
+      "thread_id": "thread-31840f3484dd",
+      "thread_depth": 0,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-ba9f24ec0d81",
+      "message_id": "<4C5824FB.2030904@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2010-08-03T07:17:31Z",
+      "subject": "[statnet_help] Problem with \"constraints=~bd(maxout=5)\"",
+      "subject_clean": "[statnet_help] Problem with \"constraints=~bd(maxout=5)\"",
+      "in_reply_to": "<4C46FCEF.4030607@unige.ch>",
+      "references": [
+        "<4C46FCEF.4030607@unige.ch>"
+      ],
+      "body_plain": "Hi,\n\nI'm still stuck with this \"maxout=5\" constraint. Can anyone help me please?\n\n1) After some experimentation, it appears that the ergm() function \nprobably \"understand\" my constraint:\n\n > m1<-ergm(net ~ edges+ nodematch(\"sexe\",diff=TRUE), \tverbose=TRUE, \nconstraints=~bd(maxout=5),burnin=100000, MCMCsamplesize=100, \ninterval=100000,maxit=3, control=control.ergm(check.degeneracy=TRUE))\n\n > m1$constraints\n~bd(maxout = 5)\n\n2) But neither the simulate() function, nor the gof() one simulate under \nthis \"maxout=5\" constraint; simulated models also have odegree(6:+):\n\n > m1.sim<-simulate.ergm(m1,verbose=TRUE, constraints=~bd(maxout=5))\n > rbind(summary(m1.sim~odegree(6:12)))\n      odegree6 odegree7 odegree8 odegree9 odegree10 odegree11 odegree12\n[1,]      113       73       36       20        18         1         5\n\n > m1.gof<-gof.ergm(m1, GOF= ~distance + espartners +dspartners + \ntriadcensus +idegree + odegree+model, nsim=2, verbose=TRUE, \nconstraints=~bd(maxout=5))\nStarting GOF for the given ERGM formula.\nCalculating observed network statistics.\nStarting simulations.\nSim 1 of 2 : Starting 1 MCMC iteration of 10000 steps.\nTNT sampler accepted 68.270% of 10000 proposed steps.\nSim 2 of 2 : Warning:  Initial network does not satisfy degree constraints.\n  Proceeding anyway, but final network may not satisfy constraints.\nStarting 1 MCMC iteration of 1000 steps.\nTNT sampler accepted 69.400% of 1000 proposed steps.\n\nThanks a lot for your help,\nVictorin\n\n\n\nLe 21. 07. 10 15:58, Victorin Luisier a ?crit :\n> Hi all,\n>\n> I have a directed friendship network of 1113 college students. As these\n> were asked to name a maximum of 5 other students, I condition on the\n> number of outedges with the ergm \"constraints\" argument:\n>\n> model <- ergm(net ~ edges + gwidegree(.1, fixed=TRUE) +\n> gwodegree(.1,fixed=TRUE) + gwdsp(.1,fixed=TRUE) + gwesp(.1,fixed=TRUE),\n> constraints=~bd(maxout=5), control=control.ergm(check.degeneracy=TRUE),\n> burnin=100000, MCMCsamplesize=10000, interval=100000,maxit=5)\n>\n> (The instability of this model is 19 and the model is probably\n> problematic).\n>\n> As I do a GOF analysis, I again define the \"constraints\" argument:\n>\n> model.gof<-gof(model, GOF= ~distance + espartners +dspartners +\n> triadcensus +idegree + odegree+model, nsim=100, verbose=TRUE,\n> constraints=~bd(maxout=5), burnin=100000, interval=100000)\n>\n> During the each simulation (nsim), I have however this warning message:\n>\n> \"Warning: Initial network does not satisfy degree constraints.\n> Proceeding anyway, but final network may not satisfy constraints.\".\n>\n> Following this warning, I successfully checked that\n> max(summary(net~odegree(6:1113)))==0\n>\n> When I plot the GOF simulations, the odegree simulations distribution\n> seems strange: simulated models also have odegree(6:+).\n>\n> So my questions:\n> 1) Does the ergm command really understand my constraint? Is there any\n> incompatibility between my constraint and the gwodegree stat?\n>\n> 2) Does the gof command understand my constraint?\n>\n> Thanks a lot for your help,\n> Victorin\n>\n>\n>\n>\n>\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Hi,\n\nI'm still stuck with this \"maxout=5\" constraint. Can anyone help me please?\n\n1) After some experimentation, it appears that the ergm() function \nprobably \"understand\" my constraint:\n\n > m1<-ergm(",
+      "thread_id": "thread-ba9f24ec0d81",
+      "thread_depth": 0,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-ea51740bcef6",
+      "message_id": "<174B878F92356F4EADEB87F69311E99C023533@brown-mail1.gwb.wustl.edu>",
+      "from_name": "Jenine Harris",
+      "from_email_hash": "58e5b70d2876440f1ad8d8b44b872ef827aa4a06e922f831941fe71a43c4bbd0",
+      "date": "2010-08-03T14:38:52Z",
+      "subject": "[statnet_help] using the base argument in nodemix?",
+      "subject_clean": "[statnet_help] using the base argument in nodemix?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nIn a previous question to the group in 2008 it was asked whether it is possible to delete specific pairings of node types in the nodemix procedure and the answer at that point seemed to be no. However, it seems like this might be possible now with the BASE argument for nodemix. Does anyone know if the BASE argument works this way, and, if so, how do you tell it to omit specific pairings. The Morris/Handcock/Hunter article in JOSS states:\n\nThe optional base argument is a vector of integers corresponding to the\npairings that should not be included. If base contains only negative integers, then these\nintegers correspond to the only pairings that should be included. By default (i.e., with\nbase = NULL or base = 0), all pairings are included.\n\nHowever, I have not successfully been able to omit pairings so far. My code is:\n\norecon3_model <- ergm(orecon ~ edges +\n                gwesp(0.5, fixed=TRUE) + gwdsp(0.5,fixed=TRUE)+ gwdegree(0.5, fixed=TRUE)+ nodemix('oregonagencycon', base=),\n                MCMCsamplesize=1e+5, maxit = 7, burnin = 1e+5, verbose=TRUE,\n                control=control.ergm(steplength = 0.25))\nsummary(orecon3_model)\n\nI am hoping to omit about 6 of the possible pairings (there are six categories of node type and the network is undirected): pairs 1.1, 2.2, 2.4, 2.6, 5.6, 6.6\n\nThanks!\nJenine\n\n--\nJenine K. Harris, PhD\nAssistant Professor\nGeorge Warren Brown School of Social Work\nWashington University in St. Louis\nOne Brookings Drive\nCampus Box 1196\nSt. Louis, MO 63130\nPhone: 314-935-3939  Fax: 314-935-8126\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100803/921a4c5b/attachment.html>",
+      "body_snippet": "Hi all,\n\nIn a previous question to the group in 2008 it was asked whether it is possible to delete specific pairings of node types in the nodemix procedure and the answer at that point seemed to be no",
+      "thread_id": "thread-ea51740bcef6",
+      "thread_depth": 0,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-9c652f471a86",
+      "message_id": "<4C59448D.3000200@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2010-08-04T03:44:29Z",
+      "subject": "Fwd: Re: [statnet_help] Problem with \"constraints=~bd(maxout=5)\"",
+      "subject_clean": "[statnet_help] Problem with \"constraints=~bd(maxout=5)\"",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi David,\n\nThanks a lot for your response. I get the same bad behavior when using\nthe directed \"sampson\" network. I have prepared a little document (see\nthe attached file) you can just run and see if you have the same problems.\n\nThanks a lot for your help,\nVictorin\n\nLe 03. 08. 10 16:52, David Hunter a ?crit :\n> Hi Victorin (repling offline).  I'm traveling at the moment but will try\n> to look into this when I return. In the meantime, can you get the same\n> bad behavior using a network that is already included with the ergm\n> package, such as faux.mesa.high? It would help if I were able to exactly\n> duplicate the problem you're seeing.\n>\n> Thanks.\n>\n> Dave\n>\n>\n>\n> On Aug 3, 2010, at 10:17 AM, Victorin Luisier wrote:\n>\n>> Hi,\n>>\n>> I'm still stuck with this \"maxout=5\" constraint. Can anyone help me\n>> please?\n>>\n>> 1) After some experimentation, it appears that the ergm() function\n>> probably \"understand\" my constraint:\n>>\n>> > m1<-ergm(net ~ edges+ nodematch(\"sexe\",diff=TRUE), verbose=TRUE,\n>> constraints=~bd(maxout=5),burnin=100000, MCMCsamplesize=100,\n>> interval=100000,maxit=3, control=control.ergm(check.degeneracy=TRUE))\n>>\n>> > m1$constraints\n>> ~bd(maxout = 5)\n>>\n>> 2) But neither the simulate() function, nor the gof() one simulate\n>> under this \"maxout=5\" constraint; simulated models also have\n>> odegree(6:+):\n>>\n>> > m1.sim<-simulate.ergm(m1,verbose=TRUE, constraints=~bd(maxout=5))\n>> > rbind(summary(m1.sim~odegree(6:12)))\n>> odegree6 odegree7 odegree8 odegree9 odegree10 odegree11 odegree12\n>> [1,] 113 73 36 20 18 1 5\n>>\n>> > m1.gof<-gof.ergm(m1, GOF= ~distance + espartners +dspartners +\n>> triadcensus +idegree + odegree+model, nsim=2, verbose=TRUE,\n>> constraints=~bd(maxout=5))\n>> Starting GOF for the given ERGM formula.\n>> Calculating observed network statistics.\n>> Starting simulations.\n>> Sim 1 of 2 : Starting 1 MCMC iteration of 10000 steps.\n>> TNT sampler accepted 68.270% of 10000 proposed steps.\n>> Sim 2 of 2 : Warning: Initial network does not satisfy degree\n>> constraints.\n>> Proceeding anyway, but final network may not satisfy constraints.\n>> Starting 1 MCMC iteration of 1000 steps.\n>> TNT sampler accepted 69.400% of 1000 proposed steps.\n>>\n>> Thanks a lot for your help,\n>> Victorin\n>>\n>>\n>>\n>> Le 21. 07. 10 15:58, Victorin Luisier a ?crit :\n>>> Hi all,\n>>>\n>>> I have a directed friendship network of 1113 college students. As these\n>>> were asked to name a maximum of 5 other students, I condition on the\n>>> number of outedges with the ergm \"constraints\" argument:\n>>>\n>>> model <- ergm(net ~ edges + gwidegree(.1, fixed=TRUE) +\n>>> gwodegree(.1,fixed=TRUE) + gwdsp(.1,fixed=TRUE) + gwesp(.1,fixed=TRUE),\n>>> constraints=~bd(maxout=5), control=control.ergm(check.degeneracy=TRUE),\n>>> burnin=100000, MCMCsamplesize=10000, interval=100000,maxit=5)\n>>>\n>>> (The instability of this model is 19 and the model is probably\n>>> problematic).\n>>>\n>>> As I do a GOF analysis, I again define the \"constraints\" argument:\n>>>\n>>> model.gof<-gof(model, GOF= ~distance + espartners +dspartners +\n>>> triadcensus +idegree + odegree+model, nsim=100, verbose=TRUE,\n>>> constraints=~bd(maxout=5), burnin=100000, interval=100000)\n>>>\n>>> During the each simulation (nsim), I have however this warning message:\n>>>\n>>> \"Warning: Initial network does not satisfy degree constraints.\n>>> Proceeding anyway, but final network may not satisfy constraints.\".\n>>>\n>>> Following this warning, I successfully checked that\n>>> max(summary(net~odegree(6:1113)))==0\n>>>\n>>> When I plot the GOF simulations, the odegree simulations distribution\n>>> seems strange: simulated models also have odegree(6:+).\n>>>\n>>> So my questions:\n>>> 1) Does the ergm command really understand my constraint? Is there any\n>>> incompatibility between my constraint and the gwodegree stat?\n>>>\n>>> 2) Does the gof command understand my constraint?\n>>>\n>>> Thanks a lot for your help,\n>>> Victorin\n>>>\n>>>\n>>>\n>>>\n>>>\n>>>\n>>>\n>>>\n>>>\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>> --\n>> Victorin LUISIER, Assistant doctorant\n>> M?thodologie et Analyse de donn?es\n>> FAPSE - UNIGE\n>> Bureau n?4139 - Unimail\n>> Bd du Pont d'Arve 40\n>> 1211 Gen?ve 4\n>> T?l: (+41-22) 379 91 34\n>> E-mail: victorin.luisier@unige.ch\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch\n\n-------------- next part --------------\nlibrary(statnet)\nlibrary(coda)\n# data(package=\"ergm\")\ndata(sampson) # I take a directed network (my networks are also directed)\n\nsummary(samplike~odegree(0:18)) # To test the maxout constraint, i'll take maxout=6 (In this network, no monk have more than 6 friends)\n\n# list.vertex.attributes(samplike)\n# get.vertex.attribute(samplike,\"group\")\n\n\n### estimation of a simple model with maxout=6 ###\n########################################################\n\nm1<-ergm(samplike ~ edges+ nodematch(\"group\",diff=TRUE), verbose=TRUE, constraints=~bd(maxout=6), control=control.ergm(check.degeneracy=TRUE))\n\n### Output of during the estimation of m1 ###\n#############################################\n\n# I have double-commented the parts of output I think problematic.\n\n# Evaluating network in model\n# Initializing model.\n# Initializing Metropolis-Hastings proposal.\n# Fitting initial model.\n# Compressed MPLE covariate matrix has 8 rows.\n# Fitting ERGM.\n# Iteration 1 of at most 3 with parameter: \n#                    edges    nodematch.group.Turks    nodematch.group.loyal \n#                -2.001480                 2.917771                 2.192535 \n# nodematch.group.outcasts \n#                 3.610918 \n# TNT sampler accepted 45.588% of 1000000 proposed steps.\n## Back from unconstrained MCMC...\n# The density of the returned network is 0.287581699346405 \n# The density of the original network is 0.287581699346405 \n# Summary of simulation, relative to observed network:\n#                   edges nodematch.group.Turks nodematch.group.loyal\n# Min.          -21.69000             -11.83000             -12.30000\n# 1st Qu.        -7.68800              -2.82800              -2.30200\n# Median         -4.68800              -0.82760              -0.30160\n# Mean           -4.31200              -1.17200              -0.69840\n# 3rd Qu.        -0.68770               1.17200               1.69800\n# Max.           13.31000               8.17200              10.70000\n# std. err.       0.04957               0.02721               0.03006\n# std. t units. -86.99365             -43.08765             -23.23213\n# p.value dev.    0.00000               0.00000               0.00000\n# std. dev.       4.95703               2.72085               3.00597\n#               nodematch.group.outcasts\n# Min.                          -6.93300\n# 1st Qu.                       -0.93310\n# Median                         0.06690\n# Mean                          -0.06690\n# 3rd Qu.                        1.06700\n# Max.                           2.06700\n# std. err.                      0.01306\n# std. t units.                 -5.12186\n# p.value dev.                   0.00000\n# std. dev.                      1.30617\n## odegree2 odegree3 odegree4 odegree5 odegree6 odegree7 \n#        1        2        3        5        6        1 \n# idegree2 idegree3 idegree4 idegree5 idegree6 \n#        1        1        2        9        5 \n# Meanstats of simulation, relative to observed network:\n# numeric(0)\n# Calling optimization routines...\n# statseval:  epsilon value is  \n# Calling MCMLE Optimization...\n# Using Newton-Raphson Step ...\n# Using log-normal approx (no optim)\n# Iteration 2 of at most 3 with parameter: \n#                    edges    nodematch.group.Turks    nodematch.group.loyal \n#                -1.839514                 2.929590                 2.122048 \n# nodematch.group.outcasts \n#                 3.502607 \n# TNT sampler accepted 47.462% of 1000000 proposed steps.\n## Back from unconstrained MCMC...\n# The density of the returned network is 0.281045751633987 \n# The density of the original network is 0.287581699346405 \n# Summary of simulation, relative to observed network:\n#                    edges nodematch.group.Turks nodematch.group.loyal\n# Min.           -25.00000              -8.00000             -17.00000\n# 1st Qu.         -9.00000               0.00000              -8.00000\n# Median          -5.00000               2.00000              -6.00000\n# Mean            -5.20900               1.57200              -5.87400\n# 3rd Qu.         -2.00000               3.00000              -4.00000\n# Max.            11.00000              11.00000               4.00000\n# std. err.        0.04900               0.02600               0.02947\n# std. t units. -106.31129              60.44605            -199.34874\n# p.value dev.     0.00000               0.00000               0.00000\n# std. dev.        4.90014               2.59984               2.94665\n#               nodematch.group.outcasts\n# Min.                          -7.00000\n# 1st Qu.                       -2.00000\n# Median                        -1.00000\n# Mean                          -0.99810\n# 3rd Qu.                        0.00000\n# Max.                           1.00000\n# std. err.                      0.01308\n# std. t units.                -76.32065\n# p.value dev.                   0.00000\n# std. dev.                      1.30777\n## odegree1 odegree2 odegree4 odegree5 odegree6 odegree8 \n#        1        1        5        7        2        2 \n# idegree3 idegree4 idegree5 idegree6 \n#        1        7        5        5 \n# Meanstats of simulation, relative to observed network:\n# numeric(0)\n# Calling optimization routines...\n# statseval:  epsilon value is  \n# Calling MCMLE Optimization...\n# Using Newton-Raphson Step ...\n# Using log-normal approx (no optim)\n# Iteration 3 of at most 3 with parameter: \n#                    edges    nodematch.group.Turks    nodematch.group.loyal \n#                -1.798986                 2.694994                 2.633075 \n# nodematch.group.outcasts \n#                 3.977043 \n# TNT sampler accepted 45.027% of 1000000 proposed steps.\n## Back from unconstrained MCMC...\n# The density of the returned network is 0.316993464052288 \n# The density of the original network is 0.287581699346405 \n# Summary of simulation, relative to observed network:\n#                   edges nodematch.group.Turks nodematch.group.loyal\n# Min.          -11.00000              -8.00000              -7.00000\n# 1st Qu.         4.00000              -1.00000               1.00000\n# Median          7.00000               1.00000               3.00000\n# Mean            6.44300               1.12800               2.81600\n# 3rd Qu.         9.00000               3.00000               5.00000\n# Max.           20.00000              10.00000              12.00000\n# std. err.       0.04293               0.02543               0.02516\n# std. t units. 150.07752              44.37422             111.91047\n# p.value dev.    0.00000               0.00000               0.00000\n# std. dev.       4.29318               2.54269               2.51648\n#               nodematch.group.outcasts\n# Min.                          -4.00000\n# 1st Qu.                        1.00000\n# Median                         2.00000\n# Mean                           1.66700\n# 3rd Qu.                        2.00000\n# Max.                           3.00000\n# std. err.                      0.01068\n# std. t units.                156.02581\n# p.value dev.                   0.00000\n# std. dev.                      1.06816\n##  odegree2  odegree3  odegree4  odegree5  odegree6  odegree7  odegree8 odegree10 \n#         2         1         4         3         2         3         2         1 \n# idegree3 idegree4 idegree5 idegree6 idegree8 \n#        1        3        6        6        2 \n# Meanstats of simulation, relative to observed network:\n# numeric(0)\n# Calling optimization routines...\n# statseval:  epsilon value is  \n# Calling MCMLE Optimization...\n# Using Newton-Raphson Step ...\n# Using log-normal approx (no optim)\n# Starting MCMC s.e. computation.\n# Checking for degeneracy.\n# The instability of the model is:  4.1 \n# Instabilities greater than 1 suggest the model is degenerate.\n# \n# This model was fit using MCMC.  To examine model diagnostics and check for degeneracy, use the mcmc.diagnostics() function.\n# > \n\n\n### Simulation function ###\n##################\n\nm1.sim.1<-simulate.ergm(m1,verbose=TRUE) #no warnings during computation\n\nrbind(summary(m1.sim.1~odegree(0:17))) # the simulated network often doesn't match the constraint. So I define the constraint explicitely:\n\nm1.sim.2<-simulate.ergm(m1,verbose=TRUE, constraints=~bd(maxout=6))\nrbind(summary(m1.sim.2~odegree(0:17))) # this second simulated network  often doesn't match the constraint either.\n\n\n### GOF function ###\n###########\n\nm1.gof.1<-gof.ergm(m1, GOF= ~distance + espartners +dspartners + triadcensus +idegree + odegree+model, nsim=100, verbose=TRUE) # After each simulation, I have this warning message: Warning:  Initial network does not satisfy degree constraints. Proceeding anyway, but final network may not satisfy constraints.\n# The sampler is TNT.\n\npdf(\"m1gof1.pdf\")\nplot(m1.gof.1,plotlogodds=FALSE) # simul. networks doesn't match my constraint\ndev.off()\n\n\nm1.gof.2<-gof.ergm(m1, GOF= ~distance + espartners +dspartners + triadcensus +idegree + odegree+model, nsim=100, verbose=TRUE, constraints=~bd(maxout=6)) #same warning message.\n\n\npdf(\"m1gof2.pdf\")\nplot(m1.gof.2,plotlogodds=FALSE) # simul. networks doesn't match my constraint\ndev.off()",
+      "body_snippet": "Hi David,\n\nThanks a lot for your response. I get the same bad behavior when using\nthe directed \"sampson\" network. I have prepared a little document (see\nthe attached file) you can just run and see if ",
+      "thread_id": "thread-9c652f471a86",
+      "thread_depth": 0,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-7b126421c53c",
+      "message_id": "<DE0C6022F900DD4DA7563AA2659DE662DFFB28@mf-fbw-ex01.fbw.vu.nl>",
+      "from_name": "Wijk, B.C.M. van, (Bernadette)",
+      "from_email_hash": "137784b858a89af3db20b7fd9d4657775e6ecf784d366acdd7b6eb479f0ceb19",
+      "date": "2010-08-04T08:11:25Z",
+      "subject": "[statnet_help] ergmuserterms",
+      "subject_clean": "[statnet_help] ergmuserterms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "To whom it may concern, \n\nWe are currently implementing the statnet ergm package to analyze different anatomical and functional neural networks and find the results quite promising. To be able to compare things with, e.g. mere motif counting approach, it would be handy to include large motifs. The ergmuserterms package is, unfortunately, not quite self-explaning, so that we are wondering whether someone already generated a code for larger motifs, e.g. similar to the available triad census a quad census (with 4 nodes) or even larger sets.\n\n\nThanks in advance for your support.\n\n\nAndreas Daffertshofer\nBernadette van Wijk\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100804/6be4ddd3/attachment.html>",
+      "body_snippet": "To whom it may concern, \n\nWe are currently implementing the statnet ergm package to analyze different anatomical and functional neural networks and find the results quite promising. To be able to comp",
+      "thread_id": "thread-7b126421c53c",
+      "thread_depth": 0,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-e860b59d060e",
+      "message_id": "<4C59CD14.3010103@uab.edu>",
+      "from_name": "Renato Corbetta",
+      "from_email_hash": "9a523c679c473e810b1f76f33489a20297a8d9e452db3eec406c78982a06dae0",
+      "date": "2010-08-04T13:27:00Z",
+      "subject": "[statnet_help] Re: statnet_help Digest, Vol 48, Issue 18",
+      "subject_clean": "[statnet_help] Re: statnet_help Digest, Vol 48, Issue 18",
+      "in_reply_to": "<201007301900.o6UJ0V9d018908@mxout14.cac.washington.edu>",
+      "references": [
+        "<201007301900.o6UJ0V9d018908@mxout14.cac.washington.edu>"
+      ],
+      "body_plain": "Dear Carter and Victorin,\n\nthank you for the great advice.  It turns out that a combination of all \nof your suggestions did the trick.\nThe effects of changing the repulse.rad became more visible after \nmodifying the graph margins. \nReducing the vertex.cex and using semi-transparency ---I ended up \nchanging edge.col using the RGB\nfunction with an alpha parameter--- made the plot a lot prettier.\n\nrenato\n\nstatnet_help-request@mailman2.u.washington.edu wrote:\n> Send statnet_help mailing list submissions to\n> \tstatnet_help@u.washington.edu\n>\n> To subscribe or unsubscribe via the World Wide Web, visit\n> \thttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> or, via email, send a message with subject or body 'help' to\n> \tstatnet_help-request@mailman2.u.washington.edu\n>\n> You can reach the person managing the list at\n> \tstatnet_help-owner@mailman2.u.washington.edu\n>\n> When replying, please edit your Subject line so it is more specific\n> than \"Re: Contents of statnet_help digest...\"\n>   \n> ------------------------------------------------------------------------\n>\n> Subject:\n> Re: [statnet_help] Re: Modifying plot layout parameters (repulse.rad)\n> From:\n> \"Carter T. Butts\" <buttsc@uci.edu>\n> Date:\n> Fri, 30 Jul 2010 07:00:45 -0500\n> To:\n> \"Victorin.Luisier@unige.ch\" <Victorin.Luisier@unige.ch>\n>\n> To:\n> \"Victorin.Luisier@unige.ch\" <Victorin.Luisier@unige.ch>\n> CC:\n> statnet help mailing list <statnet_help@u.washington.edu>\n>\n>\n>\n> Three points:\n>\n> 1. As noted, shrinking plot elements is important with very large \n> displays.  You will want to set your vertex.cex to something suitably \n> small.  Getting the ideal values for parameters like repulse.rad \n> requires some testing in difficult cases; recall that custom coordinates \n> can also be specified if needed.\n>\n> 2. R's default plot margins eat a lot of space.  Setting the \"mar\" \n> argument with \"par\" can help.\n>\n> 3. Semi-transparancy has been supported in gplot/plot.network for as \n> long as R has supported it -- it's a standard feature.  (Just pass a \n> color with an alpha parameter.)\n>\n> 4. Currently, gplot in sna is slightly more advanced than plot.network. \n>   (It lacks some of plot.network's conveniences, however.)\n>\n> Hope that helps,\n>\n> -Carter\n>\n>\n> Victorin Luisier wrote:\n>> Hi Renato,\n>>\n>> When I try the \"repulse.rad\" argument, it appears to work:\n>>\n>> plot(mynetwork,layout.par=list(repulse.rad=1000000))\n>>\n>> The problem is that the circumference of the plot remain the same (see\n>> the attached rrex.pdf).\n>>\n>> I had similar problems with my graphs (I have large networks). I solved\n>> these by:\n>> - reducing the size of the relation lines and of the nodes;\n>> - using semi-transparency (only with the igraph library) (see \n>> Rplot001.pdf).\n>>\n>> Hope this help,\n>> Victorin\n>>\n>>\n>>\n>>\n>> Le 29. 07. 10 21:45, Renato Corbetta a ?crit :\n>>> Hello,\n>>>\n>>> I am plotting a pretty dense network with 117 nodes, only two of which\n>>> are isolates.\n>>> The plot looks very \"crowded,\" and I am trying to increase the\n>>> repulse.rad of\n>>> the default fruchtermanreingold layout to spread the nodes out. A while\n>>> ago someone\n>>> on the list suggested the following procedure:\n>>>\n>>> layout.par <- list(repulse.rad=<some large number>)\n>>> plot(mynetwork, layout.par=layout.par)\n>>>\n>>> This does not work for me regardless of how large a number I assign to\n>>> repulse.rad. More likely, I am just not understanding how to pass\n>>> parameters to layout.par. Can someone please point me to a practical\n>>> example(s) that shows how this is done?\n>>> Sorry about the dumb question, and thank you in advance,\n>>>\n>>> renato\n>>>\n>> ------------------------------------------------------------------------\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n> ------------------------------------------------------------------------\n>\n> Subject:\n> Re: [statnet_help] Re: Modifying plot layout parameters (repulse.rad)\n> From:\n> \"Carter T. Butts\" <buttsc@uci.edu>\n> Date:\n> Fri, 30 Jul 2010 07:08:58 -0500\n>\n> CC:\n> statnet help mailing list <statnet_help@u.washington.edu>, \n> \"Victorin.Luisier@unige.ch\" <Victorin.Luisier@unige.ch>\n>\n>\n>\n> Correction:\n>\n> Carter T. Butts wrote:\n>> Three points:\n>>\n>\n> Make that four.  Or a suitably large value of three.\n>\n> -Carter\n>\n>\n> ------------------------------------------------------------------------\n>\n> Subject:\n> Re: [statnet_help] Re: Modifying plot layout parameters (repulse.rad)\n> From:\n> Victorin Luisier <Victorin.Luisier@unige.ch>\n> Date:\n> Fri, 30 Jul 2010 07:23:46 -0500\n> To:\n> \"statnet_help@u.washington.edu\" <statnet_help@u.washington.edu>\n>\n> To:\n> \"statnet_help@u.washington.edu\" <statnet_help@u.washington.edu>\n>\n>\n>\n> Hi Carter,\n>\n>> 3. Semi-transparancy has been supported in gplot/plot.network for as\n>> long as R has supported it -- it's a standard feature. (Just pass a\n>> color with an alpha parameter.)\n>\n> Thank you for the info!\n>\n> @+\n> Vic.\n>\n\n\n-- \n*****************************************************************\nRenato Corbetta                          \nAssistant Professor                      \n411 Heritage Hall                                   \nDepartment of Government                       \nThe University of Alabama at Birmingham\n1401 University Blvd.\nBirmingham, AL 35294\nPhone: 205-934-2336\nFax: 205-975-5712\nWeb site: http://www.dpo.uab.edu/~corbetta/home.htm\n*****************************************************************",
+      "body_snippet": "Dear Carter and Victorin,\n\nthank you for the great advice.  It turns out that a combination of all \nof your suggestions did the trick.\nThe effects of changing the repulse.rad became more visible after",
+      "thread_id": "thread-e860b59d060e",
+      "thread_depth": 0,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-07adc96a3736",
+      "message_id": "<AANLkTinE1es=DHYkNY8tjs+Op2uF52iC589MoGxALYBm@mail.gmail.com>",
+      "from_name": "Brian Keegan",
+      "from_email_hash": "0a040d156157c7a0846c2e199462b4a90b1286ad17bfecf6c905da0c405bc047",
+      "date": "2010-08-04T21:36:02Z",
+      "subject": "[statnet_help] Missing parameters in bipartite diagnostics",
+      "subject_clean": "[statnet_help] Missing parameters in bipartite diagnostics",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I'm estimating a relatively simple bipartite model with geometric-weighted\nparameters for each mode and and a binary attribute for each mode.\n\n*model <- ergm(Net ~ b2star(1) + gwb1degree(1, fixed=TRUE) + gwb2degree(1,\nfixed=TRUE) + b1factor(\"Binary actor attribute\") + b2factor(\"Binary event\nattribute\"))*\n\n*Summary(model)* reports out estimates for all five parameters. However,\nwhen I run *mcmc.diagnositics(model)*, the gwb2degree estimates do not\nappear.\n\nAre b2star and gwb2degree colluding against me? Am I misunderstanding\nsomething?\n\nThanks!\n\nBrian\n\n-- \nBrian C. Keegan\nPh.D. Student - Media, Technology, & Society\nSchool of Communication, Northwestern University\n\nScience of Networks in Communities, Laboratory for Collaborative Technology,\nCenter for Technology & Social Behavior\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100804/0366fba9/attachment.html>",
+      "body_snippet": "I'm estimating a relatively simple bipartite model with geometric-weighted\nparameters for each mode and and a binary attribute for each mode.\n\n*model <- ergm(Net ~ b2star(1) + gwb1degree(1, fixed=TRUE",
+      "thread_id": "thread-07adc96a3736",
+      "thread_depth": 0,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-6c341d1ae9a5",
+      "message_id": "<4C5A8919.8020004@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2010-08-05T02:49:13Z",
+      "subject": "[statnet_help] Re: statnet_help Digest, Vol 48, Issue 18",
+      "subject_clean": "[statnet_help] Re: statnet_help Digest, Vol 48, Issue 18",
+      "in_reply_to": "<4C59CD14.3010103@uab.edu>",
+      "references": [
+        "<201007301900.o6UJ0V9d018908@mxout14.cac.washington.edu>",
+        "<4C59CD14.3010103@uab.edu>"
+      ],
+      "body_plain": "Dear Renato,\n\nHave you also tried and managed to decrease the edgelines width?\n\nI'm trying to do that with the \"edge.lwd\" parameter, but after some \nexperimentation, it appears to be impossible (I can only increase the \nwidth)...\n\n@+\nVic.\n\n\n\n\nLe 04. 08. 10 22:27, Renato Corbetta a ?crit :\n> Dear Carter and Victorin,\n>\n> thank you for the great advice. It turns out that a combination of all\n> of your suggestions did the trick.\n> The effects of changing the repulse.rad became more visible after\n> modifying the graph margins. Reducing the vertex.cex and using\n> semi-transparency ---I ended up changing edge.col using the RGB\n> function with an alpha parameter--- made the plot a lot prettier.\n>\n> renato\n>\n> statnet_help-request@mailman2.u.washington.edu wrote:\n>> Send statnet_help mailing list submissions to\n>> statnet_help@u.washington.edu\n>>\n>> To subscribe or unsubscribe via the World Wide Web, visit\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>> or, via email, send a message with subject or body 'help' to\n>> statnet_help-request@mailman2.u.washington.edu\n>>\n>> You can reach the person managing the list at\n>> statnet_help-owner@mailman2.u.washington.edu\n>>\n>> When replying, please edit your Subject line so it is more specific\n>> than \"Re: Contents of statnet_help digest...\"\n>> ------------------------------------------------------------------------\n>>\n>> Subject:\n>> Re: [statnet_help] Re: Modifying plot layout parameters (repulse.rad)\n>> From:\n>> \"Carter T. Butts\" <buttsc@uci.edu>\n>> Date:\n>> Fri, 30 Jul 2010 07:00:45 -0500\n>> To:\n>> \"Victorin.Luisier@unige.ch\" <Victorin.Luisier@unige.ch>\n>>\n>> To:\n>> \"Victorin.Luisier@unige.ch\" <Victorin.Luisier@unige.ch>\n>> CC:\n>> statnet help mailing list <statnet_help@u.washington.edu>\n>>\n>>\n>>\n>> Three points:\n>>\n>> 1. As noted, shrinking plot elements is important with very large\n>> displays. You will want to set your vertex.cex to something suitably\n>> small. Getting the ideal values for parameters like repulse.rad\n>> requires some testing in difficult cases; recall that custom\n>> coordinates can also be specified if needed.\n>>\n>> 2. R's default plot margins eat a lot of space. Setting the \"mar\"\n>> argument with \"par\" can help.\n>>\n>> 3. Semi-transparancy has been supported in gplot/plot.network for as\n>> long as R has supported it -- it's a standard feature. (Just pass a\n>> color with an alpha parameter.)\n>>\n>> 4. Currently, gplot in sna is slightly more advanced than\n>> plot.network. (It lacks some of plot.network's conveniences, however.)\n>>\n>> Hope that helps,\n>>\n>> -Carter\n>>\n>>\n>> Victorin Luisier wrote:\n>>> Hi Renato,\n>>>\n>>> When I try the \"repulse.rad\" argument, it appears to work:\n>>>\n>>> plot(mynetwork,layout.par=list(repulse.rad=1000000))\n>>>\n>>> The problem is that the circumference of the plot remain the same (see\n>>> the attached rrex.pdf).\n>>>\n>>> I had similar problems with my graphs (I have large networks). I solved\n>>> these by:\n>>> - reducing the size of the relation lines and of the nodes;\n>>> - using semi-transparency (only with the igraph library) (see\n>>> Rplot001.pdf).\n>>>\n>>> Hope this help,\n>>> Victorin\n>>>\n>>>\n>>>\n>>>\n>>> Le 29. 07. 10 21:45, Renato Corbetta a ?crit :\n>>>> Hello,\n>>>>\n>>>> I am plotting a pretty dense network with 117 nodes, only two of which\n>>>> are isolates.\n>>>> The plot looks very \"crowded,\" and I am trying to increase the\n>>>> repulse.rad of\n>>>> the default fruchtermanreingold layout to spread the nodes out. A while\n>>>> ago someone\n>>>> on the list suggested the following procedure:\n>>>>\n>>>> layout.par <- list(repulse.rad=<some large number>)\n>>>> plot(mynetwork, layout.par=layout.par)\n>>>>\n>>>> This does not work for me regardless of how large a number I assign to\n>>>> repulse.rad. More likely, I am just not understanding how to pass\n>>>> parameters to layout.par. Can someone please point me to a practical\n>>>> example(s) that shows how this is done?\n>>>> Sorry about the dumb question, and thank you in advance,\n>>>>\n>>>> renato\n>>>>\n>>> ------------------------------------------------------------------------\n>>>\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>>\n>> ------------------------------------------------------------------------\n>>\n>> Subject:\n>> Re: [statnet_help] Re: Modifying plot layout parameters (repulse.rad)\n>> From:\n>> \"Carter T. Butts\" <buttsc@uci.edu>\n>> Date:\n>> Fri, 30 Jul 2010 07:08:58 -0500\n>>\n>> CC:\n>> statnet help mailing list <statnet_help@u.washington.edu>,\n>> \"Victorin.Luisier@unige.ch\" <Victorin.Luisier@unige.ch>\n>>\n>>\n>>\n>> Correction:\n>>\n>> Carter T. Butts wrote:\n>>> Three points:\n>>>\n>>\n>> Make that four. Or a suitably large value of three.\n>>\n>> -Carter\n>>\n>>\n>> ------------------------------------------------------------------------\n>>\n>> Subject:\n>> Re: [statnet_help] Re: Modifying plot layout parameters (repulse.rad)\n>> From:\n>> Victorin Luisier <Victorin.Luisier@unige.ch>\n>> Date:\n>> Fri, 30 Jul 2010 07:23:46 -0500\n>> To:\n>> \"statnet_help@u.washington.edu\" <statnet_help@u.washington.edu>\n>>\n>> To:\n>> \"statnet_help@u.washington.edu\" <statnet_help@u.washington.edu>\n>>\n>>\n>>\n>> Hi Carter,\n>>\n>>> 3. Semi-transparancy has been supported in gplot/plot.network for as\n>>> long as R has supported it -- it's a standard feature. (Just pass a\n>>> color with an alpha parameter.)\n>>\n>> Thank you for the info!\n>>\n>> @+\n>> Vic.\n>>\n>\n>\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Dear Renato,\n\nHave you also tried and managed to decrease the edgelines width?\n\nI'm trying to do that with the \"edge.lwd\" parameter, but after some \nexperimentation, it appears to be impossible (I can",
+      "thread_id": "thread-e860b59d060e",
+      "thread_depth": 1,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-0aef56e92828",
+      "message_id": "<D89C89BB-9A3F-47B1-8B22-F886AFF4D9FC@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-08-05T06:04:49Z",
+      "subject": "[statnet_help] using the base argument in nodemix?",
+      "subject_clean": "[statnet_help] using the base argument in nodemix?",
+      "in_reply_to": "<174B878F92356F4EADEB87F69311E99C023533@brown-mail1.gwb.wustl.edu>",
+      "references": [
+        "<174B878F92356F4EADEB87F69311E99C023533@brown-mail1.gwb.wustl.edu>"
+      ],
+      "body_plain": "Hi Jenine.  The base argument does in fact work with nodemix.  This is  \na bit clunky, but it's not hard to do.  Take a look at this example:\n\n  data(faux.mesa.high)\n  summary(faux.mesa.high~nodemix(\"Race\"))\nmix.Race.Black.Black  mix.Race.Black.Hisp   mix.Race.Hisp.Hisp  \nmix.Race.Black.NatAm\n                    0                    8                    \n53                   13\n  mix.Race.Hisp.NatAm mix.Race.NatAm.NatAm mix.Race.Black.Other   \nmix.Race.Hisp.Other\n                   41                   46                     \n0                    1\nmix.Race.NatAm.Other mix.Race.Other.Other mix.Race.Black.White   \nmix.Race.Hisp.White\n                    0                    0                     \n5                   22\nmix.Race.NatAm.White mix.Race.Other.White mix.Race.White.White\n                   10                    0                    4\n\nSuppose I wanted to omit all pairings involving the \"Other\" category.   \nNotice that in the summary above, there are 15 total positions in the  \nvector and \"Other\" occurs in positions 7, 8, 9, 10, and 14.   \nTherefore, I can make these positions the base and get rid of them:\n\n  summary(faux.mesa.high~nodemix(\"Race\", base=c(7,8,9,10,14)))\nmix.Race.Black.Black  mix.Race.Black.Hisp   mix.Race.Hisp.Hisp  \nmix.Race.Black.NatAm\n                    0                    8                    \n53                   13\n  mix.Race.Hisp.NatAm mix.Race.NatAm.NatAm mix.Race.Black.White   \nmix.Race.Hisp.White\n                   41                   46                     \n5                   22\nmix.Race.NatAm.White mix.Race.White.White\n                   10                    4\n\n\nHope this helps.\nDave\n\n\n\nOn Aug 3, 2010, at 5:38 PM, Jenine Harris wrote:\n\n> Hi all,\n>\n> In a previous question to the group in 2008 it was asked whether it  \n> is possible to delete specific pairings of node types in the nodemix  \n> procedure and the answer at that point seemed to be no. However, it  \n> seems like this might be possible now with the BASE argument for  \n> nodemix. Does anyone know if the BASE argument works this way, and,  \n> if so, how do you tell it to omit specific pairings. The Morris/ \n> Handcock/Hunter article in JOSS states:\n>\n> The optional base argument is a vector of integers corresponding to  \n> the\n> pairings that should not be included. If base contains only negative  \n> integers, then these\n> integers correspond to the only pairings that should be included. By  \n> default (i.e., with\n> base = NULL or base = 0), all pairings are included.\n>\n> However, I have not successfully been able to omit pairings so far.  \n> My code is:\n>\n> orecon3_model <- ergm(orecon ~ edges +\n>                 gwesp(0.5, fixed=TRUE) + gwdsp(0.5,fixed=TRUE)+  \n> gwdegree(0.5, fixed=TRUE)+ nodemix('oregonagencycon', base=),\n>                 MCMCsamplesize=1e+5, maxit = 7, burnin = 1e+5,  \n> verbose=TRUE,\n>                 control=control.ergm(steplength = 0.25))\n> summary(orecon3_model)\n>\n> I am hoping to omit about 6 of the possible pairings (there are six  \n> categories of node type and the network is undirected): pairs 1.1,  \n> 2.2, 2.4, 2.6, 5.6, 6.6\n>\n> Thanks!\n> Jenine\n>\n> --\n> Jenine K. Harris, PhD\n> Assistant Professor\n> George Warren Brown School of Social Work\n> Washington University in St. Louis\n> One Brookings Drive\n> Campus Box 1196\n> St. Louis, MO 63130\n> Phone: 314-935-3939  Fax: 314-935-8126\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100805/10216b34/attachment.html>",
+      "body_snippet": "Hi Jenine.  The base argument does in fact work with nodemix.  This is  \na bit clunky, but it's not hard to do.  Take a look at this example:\n\n  data(faux.mesa.high)\n  summary(faux.mesa.high~nodemix(\"",
+      "thread_id": "thread-ea51740bcef6",
+      "thread_depth": 1,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-7e96b81d14a8",
+      "message_id": "<6B30EE5A-3E78-44D0-AE29-732E3956434A@brownschool.wustl.edu>",
+      "from_name": "Jenine Harris",
+      "from_email_hash": "58e5b70d2876440f1ad8d8b44b872ef827aa4a06e922f831941fe71a43c4bbd0",
+      "date": "2010-08-05T12:43:54Z",
+      "subject": "[statnet_help] using the base argument in nodemix?",
+      "subject_clean": "[statnet_help] using the base argument in nodemix?",
+      "in_reply_to": "<D89C89BB-9A3F-47B1-8B22-F886AFF4D9FC@stat.psu.edu>",
+      "references": [
+        "<174B878F92356F4EADEB87F69311E99C023533@brown-mail1.gwb.wustl.edu>",
+        "<D89C89BB-9A3F-47B1-8B22-F886AFF4D9FC@stat.psu.edu>"
+      ],
+      "body_plain": "Perfect, thank you. My vector was not formatted correctly.\n\nSent from my iPhone\n\nOn Aug 5, 2010, at 8:04 AM, David Hunter <dhunter@stat.psu.edu<mailto:dhunter@stat.psu.edu>> wrote:\n\nHi Jenine.  The base argument does in fact work with nodemix.  This is a bit clunky, but it's not hard to do.  Take a look at this example:\n\n data(faux.mesa.high)\n summary(faux.mesa.high~nodemix(\"Race\"))\nmix.Race.Black.Black  mix.Race.Black.Hisp   mix.Race.Hisp.Hisp mix.Race.Black.NatAm\n                   0                    8                   53                   13\n mix.Race.Hisp.NatAm mix.Race.NatAm.NatAm mix.Race.Black.Other  mix.Race.Hisp.Other\n                  41                   46                    0                    1\nmix.Race.NatAm.Other mix.Race.Other.Other mix.Race.Black.White  mix.Race.Hisp.White\n                   0                    0                    5                   22\nmix.Race.NatAm.White mix.Race.Other.White mix.Race.White.White\n                  10                    0                    4\n\nSuppose I wanted to omit all pairings involving the \"Other\" category.  Notice that in the summary above, there are 15 total positions in the vector and \"Other\" occurs in positions 7, 8, 9, 10, and 14.  Therefore, I can make these positions the base and get rid of them:\n\n summary(faux.mesa.high~nodemix(\"Race\", base=c(7,8,9,10,14)))\nmix.Race.Black.Black  mix.Race.Black.Hisp   mix.Race.Hisp.Hisp mix.Race.Black.NatAm\n                   0                    8                   53                   13\n mix.Race.Hisp.NatAm mix.Race.NatAm.NatAm mix.Race.Black.White  mix.Race.Hisp.White\n                  41                   46                    5                   22\nmix.Race.NatAm.White mix.Race.White.White\n                  10                    4\n\n\nHope this helps.\nDave\n\n\n\nOn Aug 3, 2010, at 5:38 PM, Jenine Harris wrote:\n\nHi all,\n\nIn a previous question to the group in 2008 it was asked whether it is possible to delete specific pairings of node types in the nodemix procedure and the answer at that point seemed to be no. However, it seems like this might be possible now with the BASE argument for nodemix. Does anyone know if the BASE argument works this way, and, if so, how do you tell it to omit specific pairings. The Morris/Handcock/Hunter article in JOSS states:\n\nThe optional base argument is a vector of integers corresponding to the\npairings that should not be included. If base contains only negative integers, then these\nintegers correspond to the only pairings that should be included. By default (i.e., with\nbase = NULL or base = 0), all pairings are included.\n\nHowever, I have not successfully been able to omit pairings so far. My code is:\n\norecon3_model <- ergm(orecon ~ edges +\n                gwesp(0.5, fixed=TRUE) + gwdsp(0.5,fixed=TRUE)+ gwdegree(0.5, fixed=TRUE)+ nodemix('oregonagencycon', base=),\n                MCMCsamplesize=1e+5, maxit = 7, burnin = 1e+5, verbose=TRUE,\n                control=control.ergm(steplength = 0.25))\nsummary(orecon3_model)\n\nI am hoping to omit about 6 of the possible pairings (there are six categories of node type and the network is undirected): pairs 1.1, 2.2, 2.4, 2.6, 5.6, 6.6\n\nThanks!\nJenine\n\n--\nJenine K. Harris, PhD\nAssistant Professor\nGeorge Warren Brown School of Social Work\nWashington University in St. Louis\nOne Brookings Drive\nCampus Box 1196\nSt. Louis, MO 63130\nPhone: 314-935-3939  Fax: 314-935-8126\n\n_______________________________________________\nstatnet_help mailing list\n<mailto:statnet_help@u.washington.edu>statnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\n<http://mailman2.u.washington.edu/mailman/listinfo/statnet_help>http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100805/570ca954/attachment.html>",
+      "body_snippet": "Perfect, thank you. My vector was not formatted correctly.\n\nSent from my iPhone\n\nOn Aug 5, 2010, at 8:04 AM, David Hunter <dhunter@stat.psu.edu<mailto:dhunter@stat.psu.edu>> wrote:\n\nHi Jenine.  The ba",
+      "thread_id": "thread-ea51740bcef6",
+      "thread_depth": 2,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-d4b74d82fe2e",
+      "message_id": "<4C5C3AE2.6030409@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2010-08-06T09:40:02Z",
+      "subject": "Fwd: Re: [statnet_help] Problem with \"constraints=~bd(maxout=5)\"",
+      "subject_clean": "[statnet_help] Problem with \"constraints=~bd(maxout=5)\"",
+      "in_reply_to": "<4C59448D.3000200@unige.ch>",
+      "references": [
+        "<4C59448D.3000200@unige.ch>"
+      ],
+      "body_plain": "Hi David,\n\nGood news! (for me anyway, as I have to prepare a poster next week :-)\n\nLeaving unchanged the other packages I had, I compiled the 4 latest \nversions of the ergm package and it appears that:\n\n- version 2.2.2 works!\n- versions 2.2.3 + 2.2.4 +2.2.5 don't work.\n\nLet me know if I can help by doing some other tests.\n\n@+\nVictorin\n\nLe 04. 08. 10 12:44, Victorin Luisier a ?crit :\n> Hi David,\n>\n> Thanks a lot for your response. I get the same bad behavior when using\n> the directed \"sampson\" network. I have prepared a little document (see\n> the attached file) you can just run and see if you have the same problems.\n>\n> Thanks a lot for your help,\n> Victorin\n>\n> Le 03. 08. 10 16:52, David Hunter a ?crit :\n>> Hi Victorin (repling offline). I'm traveling at the moment but will try\n>> to look into this when I return. In the meantime, can you get the same\n>> bad behavior using a network that is already included with the ergm\n>> package, such as faux.mesa.high? It would help if I were able to exactly\n>> duplicate the problem you're seeing.\n>>\n>> Thanks.\n>>\n>> Dave\n>>\n>>\n>>\n>> On Aug 3, 2010, at 10:17 AM, Victorin Luisier wrote:\n>>\n>>> Hi,\n>>>\n>>> I'm still stuck with this \"maxout=5\" constraint. Can anyone help me\n>>> please?\n>>>\n>>> 1) After some experimentation, it appears that the ergm() function\n>>> probably \"understand\" my constraint:\n>>>\n>>> > m1<-ergm(net ~ edges+ nodematch(\"sexe\",diff=TRUE), verbose=TRUE,\n>>> constraints=~bd(maxout=5),burnin=100000, MCMCsamplesize=100,\n>>> interval=100000,maxit=3, control=control.ergm(check.degeneracy=TRUE))\n>>>\n>>> > m1$constraints\n>>> ~bd(maxout = 5)\n>>>\n>>> 2) But neither the simulate() function, nor the gof() one simulate\n>>> under this \"maxout=5\" constraint; simulated models also have\n>>> odegree(6:+):\n>>>\n>>> > m1.sim<-simulate.ergm(m1,verbose=TRUE, constraints=~bd(maxout=5))\n>>> > rbind(summary(m1.sim~odegree(6:12)))\n>>> odegree6 odegree7 odegree8 odegree9 odegree10 odegree11 odegree12\n>>> [1,] 113 73 36 20 18 1 5\n>>>\n>>> > m1.gof<-gof.ergm(m1, GOF= ~distance + espartners +dspartners +\n>>> triadcensus +idegree + odegree+model, nsim=2, verbose=TRUE,\n>>> constraints=~bd(maxout=5))\n>>> Starting GOF for the given ERGM formula.\n>>> Calculating observed network statistics.\n>>> Starting simulations.\n>>> Sim 1 of 2 : Starting 1 MCMC iteration of 10000 steps.\n>>> TNT sampler accepted 68.270% of 10000 proposed steps.\n>>> Sim 2 of 2 : Warning: Initial network does not satisfy degree\n>>> constraints.\n>>> Proceeding anyway, but final network may not satisfy constraints.\n>>> Starting 1 MCMC iteration of 1000 steps.\n>>> TNT sampler accepted 69.400% of 1000 proposed steps.\n>>>\n>>> Thanks a lot for your help,\n>>> Victorin\n>>>\n>>>\n>>>\n>>> Le 21. 07. 10 15:58, Victorin Luisier a ?crit :\n>>>> Hi all,\n>>>>\n>>>> I have a directed friendship network of 1113 college students. As these\n>>>> were asked to name a maximum of 5 other students, I condition on the\n>>>> number of outedges with the ergm \"constraints\" argument:\n>>>>\n>>>> model <- ergm(net ~ edges + gwidegree(.1, fixed=TRUE) +\n>>>> gwodegree(.1,fixed=TRUE) + gwdsp(.1,fixed=TRUE) + gwesp(.1,fixed=TRUE),\n>>>> constraints=~bd(maxout=5), control=control.ergm(check.degeneracy=TRUE),\n>>>> burnin=100000, MCMCsamplesize=10000, interval=100000,maxit=5)\n>>>>\n>>>> (The instability of this model is 19 and the model is probably\n>>>> problematic).\n>>>>\n>>>> As I do a GOF analysis, I again define the \"constraints\" argument:\n>>>>\n>>>> model.gof<-gof(model, GOF= ~distance + espartners +dspartners +\n>>>> triadcensus +idegree + odegree+model, nsim=100, verbose=TRUE,\n>>>> constraints=~bd(maxout=5), burnin=100000, interval=100000)\n>>>>\n>>>> During the each simulation (nsim), I have however this warning message:\n>>>>\n>>>> \"Warning: Initial network does not satisfy degree constraints.\n>>>> Proceeding anyway, but final network may not satisfy constraints.\".\n>>>>\n>>>> Following this warning, I successfully checked that\n>>>> max(summary(net~odegree(6:1113)))==0\n>>>>\n>>>> When I plot the GOF simulations, the odegree simulations distribution\n>>>> seems strange: simulated models also have odegree(6:+).\n>>>>\n>>>> So my questions:\n>>>> 1) Does the ergm command really understand my constraint? Is there any\n>>>> incompatibility between my constraint and the gwodegree stat?\n>>>>\n>>>> 2) Does the gof command understand my constraint?\n>>>>\n>>>> Thanks a lot for your help,\n>>>> Victorin\n>>>>\n>>>>\n>>>>\n>>>>\n>>>>\n>>>>\n>>>>\n>>>>\n>>>>\n>>>> _______________________________________________\n>>>> statnet_help mailing list\n>>>> statnet_help@u.washington.edu\n>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>>> --\n>>> Victorin LUISIER, Assistant doctorant\n>>> M?thodologie et Analyse de donn?es\n>>> FAPSE - UNIGE\n>>> Bureau n?4139 - Unimail\n>>> Bd du Pont d'Arve 40\n>>> 1211 Gen?ve 4\n>>> T?l: (+41-22) 379 91 34\n>>> E-mail: victorin.luisier@unige.ch\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Hi David,\n\nGood news! (for me anyway, as I have to prepare a poster next week :-)\n\nLeaving unchanged the other packages I had, I compiled the 4 latest \nversions of the ergm package and it appears that",
+      "thread_id": "thread-9c652f471a86",
+      "thread_depth": 1,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-f0fca2fd0f32",
+      "message_id": "<alpine.LRH.2.01.1008090453390.13730@hymn12.u.washington.edu>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2010-08-09T04:53:39Z",
+      "subject": "[statnet_help] ergmuserterms",
+      "subject_clean": "[statnet_help] ergmuserterms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi folks --\n\nWe received a request last week for a tutorial on writing ergm user terms.  This is a project that has been on our \"to do\" list for a couple of years now.  \n\nSo -- we will get this done by October 1st, and publish it on the statnet webpage, with an announcement on the statnet_help list.\n\nAnd thanks to the user who sent the nudge (his post is reproduced below).\n\nbest,\nMartina, Steve and Dave\n\n************************************************************************************************************\nDate: Tue, 3 Aug 2010 16:58:37 +0200\nFrom: Andreas Daffertshofer <marlow@fbw.vu.nl>\nTo: statnet_help@u.washington.edu\nSubject: ergmuserterms\n\nTo whom it may concern,\n\nI am currently implementing the statnet ergm package to analyze different anatomical and functional neural networks and find the\nresults quite promising. To be able to compare things with, e.g. mere motif counting approach, it would be handy to include large\nmotifs. The ergmuserterms package is, unfortunately, not quite self-explaning, so that I am wondering whether some already generated\na code for larger motifs, e.g. similar to the available triad census a quad census or even larger sets.\n\nThanks in advance for your support.\n\nAndreas Daffertshofer\n\n_____________________________________________________________________________________________________________________________________\nDr. A. Daffertshofer\nResearch Institute MOVE\nFaculty of Human Movement Sciences [www.fbw.vu.nl], VU University Amsterdam\nVan der Boechorststraat 9, 1081 BT Amsterdam, The Netherlands\ntel +31 (0) 20 598 8468 (fax 8529)\n\n****************************************************************\n\n Professor of Sociology and Statistics\n\n Director, UWCFAR Sociobehavioral and Prevention Research Core\n\n Box 354322\n\n University of Washington\n\n Seattle, WA 98195-4322\n\n\n\n Office:\t(206) 685-3402\n\n Dept Office: \t(206) 543-5882, 543-7237\n\n Fax: \t\t(206) 685-7419\n\n\n\nmorrism@u.washington.edu\n\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi folks --\n\nWe received a request last week for a tutorial on writing ergm user terms.  This is a project that has been on our \"to do\" list for a couple of years now.  \n\nSo -- we will get this done b",
+      "thread_id": "thread-f0fca2fd0f32",
+      "thread_depth": 0,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-3cd2f28a5a36",
+      "message_id": "<alpine.LRH.2.01.1008230927001.24279@hymn31.u.washington.edu>",
+      "from_name": "stanj@u.washington.edu",
+      "from_email_hash": "67c87847c37c18e652cb63f9975cd85d256dc0a7b95ab36680da1e84be17d41b",
+      "date": "2010-08-23T09:27:00Z",
+      "subject": "[statnet_help] Interpreting nodemix coefficients",
+      "subject_clean": "[statnet_help] Interpreting nodemix coefficients",
+      "in_reply_to": "<Pine.LNX.4.43.1001211036200.31186@hymn33.u.washington.edu>",
+      "references": [],
+      "body_plain": "Hello Everyone,\nI had a quick question that I thought I knew the answer for, but now I don't know.\n\nIf I estimate a model using an edges term and a nodemix term, does this control for the number of nodes within each of the nodemix groups?  For example, in a network of 60 females and 40 males, does the estimated nodemix term Male->Female estimate the likelihood of a tie from a male to a female in raw terms?  Or does it estimate the likelihood of a tie from a male to a female controlling for the fact that there are more females then males?\n\nI apologize if this is very obvious but I couldn't find anything in the documentation or in the users group, but I could be easily missing something.  Thanks for your help!\n\nJared",
+      "body_snippet": "Hello Everyone,\nI had a quick question that I thought I knew the answer for, but now I don't know.\n\nIf I estimate a model using an edges term and a nodemix term, does this control for the number of no",
+      "thread_id": "thread-3cd2f28a5a36",
+      "thread_depth": 0,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-8fd055f4c485",
+      "message_id": "<AANLkTi=ixcUdFRwVz-3h5na2LxGiZ7thZnia2iwhyxbv@mail.gmail.com>",
+      "from_name": "Jeff Treem",
+      "from_email_hash": "a00728fa6ff940ceea0538e7af80b1e45fd870677dfd7d4753ed089eaeaa2809",
+      "date": "2010-08-23T22:42:28Z",
+      "subject": "[statnet_help] istars and ostars by attribute",
+      "subject_clean": "[statnet_help] istars and ostars by attribute",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello fellow Statneters,\n\nI have a network with an attribute - in this case, each node is assigned to\na cluster (1-5). I am trying to get the summary of various structures by\ncluster membership, but am running into some trouble when I do anything\nbeyond nodemix, nodeifactor, or nodeofactor. For instance, when I try to\nlook at istars and ostars, I run into this situation:\n\nsummary(g ~ edges + istar(3, \"cluster\", base=1))\nError in length(arglist): 'arglist' is missing\n\nMy question is two-fold:\n1. Do you know what I am doing wrong in my code?\n2. Is there a way to get counts of the different combinations of\nistars/ostars, as well as triangles, such that I can see how the different\nclusters are mixing with each other (ex: # of triangles that are 1->2->3->1)\n\nThank you in advance for all of your help and input, and I apologize for any\nsimple errors I may have made.\n\nCheers,\nJeff\n-- \nJeffrey William Treem\nPh.D. Candidate\nMedia, Technology and Society\nNorthwestern University\n213-220-8620\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100824/a0d36074/attachment.html>",
+      "body_snippet": "Hello fellow Statneters,\n\nI have a network with an attribute - in this case, each node is assigned to\na cluster (1-5). I am trying to get the summary of various structures by\ncluster membership, but a",
+      "thread_id": "thread-8fd055f4c485",
+      "thread_depth": 0,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-039b92fcfac2",
+      "message_id": "<AANLkTim-Ee3VACiZE3+L4GkfkFSA8ZY2QvM0pa4y5gHA@mail.gmail.com>",
+      "from_name": "Elena Grewal",
+      "from_email_hash": "82405de478d2a4af660d23848680f3c2a591c80e9451bcbddb6fe3ad2968a022",
+      "date": "2010-08-24T15:30:20Z",
+      "subject": "[statnet_help] converting ergm output into tables",
+      "subject_clean": "[statnet_help] converting ergm output into tables",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI am running many ergm models and want to put all of the coefficients into\nan excel table. I was wondering if there was a program that exists that\noutputs the coefficients into an excel table. I haven't seen one but I may\nnot be looking in the right place!\n\nThanks,\nElena\n\n-- \nElena Grewal\nDoctoral Candidate\nStanford University School of Education\n(203) 887-4858\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100824/b50901d4/attachment.html>",
+      "body_snippet": "Hi all,\n\nI am running many ergm models and want to put all of the coefficients into\nan excel table. I was wondering if there was a program that exists that\noutputs the coefficients into an excel table",
+      "thread_id": "thread-039b92fcfac2",
+      "thread_depth": 0,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-98c90ecac4d7",
+      "message_id": "<4C745676.8010203@ucla.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "fb40357ebb8d7f0a427d9ad2641aa56f67d6763bdb0f1109ba0f3c4b5584b09d",
+      "date": "2010-08-24T16:32:06Z",
+      "subject": "[statnet_help] converting ergm output into tables",
+      "subject_clean": "[statnet_help] converting ergm output into tables",
+      "in_reply_to": "<AANLkTim-Ee3VACiZE3+L4GkfkFSA8ZY2QvM0pa4y5gHA@mail.gmail.com>",
+      "references": [
+        "<AANLkTim-Ee3VACiZE3+L4GkfkFSA8ZY2QvM0pa4y5gHA@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Elena,\n\nA good question...\n\nThe coefficients exist as a table in the summary of the fit. So they can be extracted from the summary and written to a CSV file, for example. Here is how I do it:\n\ndata(florentine)\ngest <- ergm(flomarriage ~ edges + absdiff(\"wealth\"))\nsummary(gest)\nwrite.table(summary(gest)$coefs,sep=\",\",file=\"test.csv\")\n\nThe file can be read straight into Excel with row and column names intact. Of course, you can also remove the names. See ?write.table for that.\n\nCheers,\n\nMark\n\n----------------------------------------------------\nMark S. Handcock\nProfessor of Statistics\nDepartment of Statistics\nUniversity of California     Phone:  (310) 825-8430\nLos Angeles, CA 90095-1554.   FAX:   (206) 457-1953\nWeb:  www.stat.ucla.edu/~handcock\ninternet:  handcock@ucla.edu\n\nOn 8/25/10 6:30 AM, Elena Grewal wrote:\n> Hi all,\n>\n> I am running many ergm models and want to put all of the coefficients into an excel table. I was wondering if there was a program that exists that outputs the coefficients into an\n> excel table. I haven't seen one but I may not be looking in the right place!\n>\n> Thanks,\n> Elena\n>\n> --\n> Elena Grewal\n> Doctoral Candidate\n> Stanford University School of Education\n> (203) 887-4858\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Elena,\n\nA good question...\n\nThe coefficients exist as a table in the summary of the fit. So they can be extracted from the summary and written to a CSV file, for example. Here is how I do it:\n\ndata",
+      "thread_id": "thread-039b92fcfac2",
+      "thread_depth": 1,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-627c6a3cd99c",
+      "message_id": "<4C74892C.6070105@ucla.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "fb40357ebb8d7f0a427d9ad2641aa56f67d6763bdb0f1109ba0f3c4b5584b09d",
+      "date": "2010-08-24T20:08:28Z",
+      "subject": "[statnet_help] istars and ostars by attribute",
+      "subject_clean": "[statnet_help] istars and ostars by attribute",
+      "in_reply_to": "<AANLkTi=ixcUdFRwVz-3h5na2LxGiZ7thZnia2iwhyxbv@mail.gmail.com>",
+      "references": [
+        "<AANLkTi=ixcUdFRwVz-3h5na2LxGiZ7thZnia2iwhyxbv@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Jeff,\n\nThe \"istar\" term does not have a \"base\" argument (according to the manual page for it). That is what is causing the error. However, e.g.,\n\n  summary(samplike ~ edges + istar(3, \"group\"))\n        edges istar3.group\n           88           96\n\nsays there are 96 three in-stars where all three vertices have the same \"group\".\n\nFor question 2, I would write a simple loop that extracts a matrix of all triangles from the edge-list as a three column matrix of vertex ids. Then you can analyze all patterns as \nfunctions of attributes of the vertices. While there is no pre-packaged function to do this, it is straightforward to write.\n\nCheers,\n\nMark\t\n\n----------------------------------------------------\nMark S. Handcock\nProfessor of Statistics\nDepartment of Statistics\nUniversity of California     Phone:  (310) 825-8430\nLos Angeles, CA 90095-1554.   FAX:   (206) 457-1953\nWeb:  www.stat.ucla.edu/~handcock\ninternet:  handcock@ucla.edu\n\nOn 8/24/10 1:42 PM, Jeff Treem wrote:\n> Hello fellow Statneters,\n>\n> I have a network with an attribute - in this case, each node is assigned to a cluster (1-5). I am trying to get the summary of various structures by cluster membership, but am\n> running into some trouble when I do anything beyond nodemix, nodeifactor, or nodeofactor. For instance, when I try to look at istars and ostars, I run into this situation:\n>\n> summary(g ~ edges + istar(3, \"cluster\", base=1))\n> Error in length(arglist): 'arglist' is missing\n>\n> My question is two-fold:\n> 1. Do you know what I am doing wrong in my code?\n> 2. Is there a way to get counts of the different combinations of istars/ostars, as well as triangles, such that I can see how the different clusters are mixing with each other (ex:\n> # of triangles that are 1->2->3->1)\n>\n> Thank you in advance for all of your help and input, and I apologize for any simple errors I may have made.\n>\n> Cheers,\n> Jeff\n> --\n> Jeffrey William Treem\n> Ph.D. Candidate\n> Media, Technology and Society\n> Northwestern University\n> 213-220-8620\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Jeff,\n\nThe \"istar\" term does not have a \"base\" argument (according to the manual page for it). That is what is causing the error. However, e.g.,\n\n  summary(samplike ~ edges + istar(3, \"group\"))\n   ",
+      "thread_id": "thread-8fd055f4c485",
+      "thread_depth": 1,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-4573f2a7a97b",
+      "message_id": "<4C755983.40302@uu.nl>",
+      "from_name": "Michal Bojanowski",
+      "from_email_hash": "b72e0a534c25ec0973b778cd472059c61c5350ce731228b66a3a79a50069f13f",
+      "date": "2010-08-25T10:57:23Z",
+      "subject": "[statnet_help]  from network to igraph and back again, and NAMESPACEs",
+      "subject_clean": "[statnet_help]  from network to igraph and back again, and NAMESPACEs",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI thought people here might be interested in this:\n\nI created an R package that enables somewhat easier conversion between \nnetwork objects of class 'network' and networks of class 'igraph', from \nthe respective packages. It is called 'intergraph'. More information here:\n\nhttp://brokeringclosure.wordpress.com/2010/08/25/from-igraph-to-network-and-back-again/\n\nThe package is still experimental. It may give warnings during some of \nthe operations. This happens most often at places where I was not sure \nwhat is the best default behavior so decided to warn the user about the \nchoices made (for example when not copying some network/edge/vertex \nattribute).\n\n*If you try it out I'm very interested in your feedback!*\n\nA related issue:\n\nTo be able to build upon the 'network' package reliably I had to patch \nit to add the package namespace. Package namespaces, as definined here\n\nhttp://cran.r-project.org/doc/manuals/R-exts.html#Package-name-spaces\n\nare a necessary standard for R packages nowadays. I remember discussing \nthis issue with Mark when I was visiting Stats dep. at UW in autumn 2008.\n\n*Please seriously consider adding namespaces to all 'statnet' packages.*\n\nThe procedure should be very straightforward. For the 'network' package \nyou add a NAMESPACE file to the top level of package directory \ncontaining two lines:\n\nuseDynLib(\"network\")\nexportPattern(\"^[^\\\\.]\")\n\nThis will export all the R functions defined in the package which names \ndo not start with a dot (there are none as far as I remember) and \nregister the C functions contained in the package.\n\nThe namespaced 'network' package passes R CMD check. Additionally I ran \nall the examples and tests in 'ergm' and some other 'statnet' packages \nto check if it doesn't break something by accident. Everything performed \nseamlessly.\n\n\nBest,\nMichal\n\n\n\n-- \n-----------------------------\nMichal Bojanowski\nPhD Candidate\nICS / Department of Sociology\nUtrecht University\nhttp://www.fss.uu.nl/soc/bojanowski\nhttp://www.bojanorama.pl",
+      "body_snippet": "Hi,\n\nI thought people here might be interested in this:\n\nI created an R package that enables somewhat easier conversion between \nnetwork objects of class 'network' and networks of class 'igraph', from",
+      "thread_id": "thread-4573f2a7a97b",
+      "thread_depth": 0,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-b1a13b20ac01",
+      "message_id": "<3920DC962E323A46B40D415ADC1CD6C25F7FD3AFC0@EX10.asurite.ad.asu.edu>",
+      "from_name": "David Schaefer",
+      "from_email_hash": "68ed60123835f929b1bceff70c06e4abcd7c94aab073da013ffb873fd56ee511",
+      "date": "2010-08-25T20:29:47Z",
+      "subject": "[statnet_help] results that are too significant",
+      "subject_clean": "[statnet_help] results that are too significant",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI just received a review in which a reviewer suggested that the low p-values of an ERGM were possibly an indication of poor convergence (in this case, p-values for all effect but one fell below .001).  When estimating those models, the MCMC diagnostic plots showed no signs of degeneracy and the gof plots indicated the model reproduced the network well.  To be safe, I reran the models and increased the burnin to 10 million, the MCMC sample size to 200,000 and the sampling interval to 10,000.  The results don't change; the significance levels are just as extreme; and, the MCMC diagnostic plots look even better than before.\n\nIs convergence something that I should be worried about?  If so, is there anything else I can do to check for it?  I should mention I am using ergm 2.2-4 and R 2.10.1.  I have included the model estimation command below.\n\nf4<-ergm(coTiesBin2_653~ edges + gwdegree(.5, fixed=TRUE) +\n    gwesp(.75, fixed=TRUE) + gwdsp(.75, fixed=TRUE) +   \n    nodecov('pop1017') + nodecov('SES') + nodecov('oneparentP') +\n    nodecov('nonWhiteP') + nodecov('crimHistory') + nodecov('diffhome') + \n    absdiff('diffhome') + absdiff('SES') + absdiff('oneparentP') + \n    absdiff('nonWhiteP') + absdiff('crimHistory') + \n    edgecov(schoolMat653) + edgecov(logDist653)\n    ,burnin=10000000, MCMCsamplesize=200000, interval=10000)\n\nThanks,\nDavid\n\n*********************************************\nDavid R. Schaefer, Ph.D.\nSchool of Social and Family Dynamics\nArizona State University\nhttp://www.public.asu.edu/~schaef/\nhttp://ssfd.clas.asu.edu/cluster\n*********************************************",
+      "body_snippet": "Hi all,\n\nI just received a review in which a reviewer suggested that the low p-values of an ERGM were possibly an indication of poor convergence (in this case, p-values for all effect but one fell bel",
+      "thread_id": "thread-b1a13b20ac01",
+      "thread_depth": 0,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-a840f3a66f84",
+      "message_id": "<98A085D8-CDDC-44D3-81EA-2A3C66E42AC8@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-08-27T14:15:25Z",
+      "subject": "[statnet_help] results that are too significant",
+      "subject_clean": "[statnet_help] results that are too significant",
+      "in_reply_to": "<3920DC962E323A46B40D415ADC1CD6C25F7FD3AFC0@EX10.asurite.ad.asu.edu>",
+      "references": [
+        "<3920DC962E323A46B40D415ADC1CD6C25F7FD3AFC0@EX10.asurite.ad.asu.edu>"
+      ],
+      "body_plain": "Hi David.  I have to say, I can't see any basis for the referee's  \nsuspicion off the top of my head.  The low p-values indicate small  \nstandard errors (relative to the values of the coefficient  \nestimates).  These standard errors come from estimates of the second  \nderivative matrix (the Hessian) of the approximated log-likelihood  \nfunction -- they are the square roots of the diagonal of the inverse  \nof the negative Hessian, to be exact -- and thus it's not clear to me  \nhow small standard errors (i.e., a very sharply peaked approximate  \nlikelihood surface at the maximum) might result from \"poor  \nconvergence\".  Perhaps someone else on the list can help with the  \nintuition here, but it sounds to me as though (a) you have done all  \nyou could to try to rule out any convergence issues, and (b) there is  \nno reason to suspect that low p-values are by themselves evidence of  \nconvergence issues.\n\nDoes this help?  (And does anyone else see something I'm missing?)\n\nDave\n\n\n\nOn Aug 25, 2010, at 11:29 PM, David Schaefer wrote:\n\n> Hi all,\n>\n> I just received a review in which a reviewer suggested that the low  \n> p-values of an ERGM were possibly an indication of poor convergence  \n> (in this case, p-values for all effect but one fell below .001).   \n> When estimating those models, the MCMC diagnostic plots showed no  \n> signs of degeneracy and the gof plots indicated the model reproduced  \n> the network well.  To be safe, I reran the models and increased the  \n> burnin to 10 million, the MCMC sample size to 200,000 and the  \n> sampling interval to 10,000.  The results don't change; the  \n> significance levels are just as extreme; and, the MCMC diagnostic  \n> plots look even better than before.\n>\n> Is convergence something that I should be worried about?  If so, is  \n> there anything else I can do to check for it?  I should mention I am  \n> using ergm 2.2-4 and R 2.10.1.  I have included the model estimation  \n> command below.\n>\n> f4<-ergm(coTiesBin2_653~ edges + gwdegree(.5, fixed=TRUE) +\n>    gwesp(.75, fixed=TRUE) + gwdsp(.75, fixed=TRUE) +\n>    nodecov('pop1017') + nodecov('SES') + nodecov('oneparentP') +\n>    nodecov('nonWhiteP') + nodecov('crimHistory') +  \n> nodecov('diffhome') +\n>    absdiff('diffhome') + absdiff('SES') + absdiff('oneparentP') +\n>    absdiff('nonWhiteP') + absdiff('crimHistory') +\n>    edgecov(schoolMat653) + edgecov(logDist653)\n>    ,burnin=10000000, MCMCsamplesize=200000, interval=10000)\n>\n> Thanks,\n> David\n>\n> *********************************************\n> David R. Schaefer, Ph.D.\n> School of Social and Family Dynamics\n> Arizona State University\n> http://www.public.asu.edu/~schaef/\n> http://ssfd.clas.asu.edu/cluster\n> *********************************************\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi David.  I have to say, I can't see any basis for the referee's  \nsuspicion off the top of my head.  The low p-values indicate small  \nstandard errors (relative to the values of the coefficient  \nes",
+      "thread_id": "thread-b1a13b20ac01",
+      "thread_depth": 1,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-a5e6ee9ce4c9",
+      "message_id": "<AANLkTikW0JUCd28+e1eb+q87Gso_=1uFO_iCUXmwbnA8@mail.gmail.com>",
+      "from_name": "Jesse Blocher",
+      "from_email_hash": "c7b71f9a060b1fefb82c3d7fd68e834f4c2fd310db6ba43a95293c419b4640d7",
+      "date": "2010-08-28T20:04:33Z",
+      "subject": "[statnet_help] Re: results that are too significant",
+      "subject_clean": "[statnet_help] Re: results that are too significant",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I've seen this criticism in econometrics when your dependent variable and\nthe independent variable in question are mechanically correlated - i.e.\ninadvertently derived from the same underlying source of variation, in which\ncase you by definition will have small standard errors. But that has nothing\nto do with convergence, it has to do with your variable choices. I'm an ERGM\nrookie myself, so I'm not sure how that would apply to your specific model,\nbut perhaps this may nudge the discussion in the right direction.\n\n\n\n> ---------- Forwarded message ----------\n> From: David Hunter <dhunter@stat.psu.edu>\n> To: David Schaefer <David.Schaefer@asu.edu>\n> Date: Fri, 27 Aug 2010 17:15:25 -0400\n> Subject: Re: [statnet_help] results that are too significant\n> Hi David.  I have to say, I can't see any basis for the referee's suspicion\n> off the top of my head.  The low p-values indicate small standard errors\n> (relative to the values of the coefficient estimates).  These standard\n> errors come from estimates of the second derivative matrix (the Hessian) of\n> the approximated log-likelihood function -- they are the square roots of the\n> diagonal of the inverse of the negative Hessian, to be exact -- and thus\n> it's not clear to me how small standard errors (i.e., a very sharply peaked\n> approximate likelihood surface at the maximum) might result from \"poor\n> convergence\".  Perhaps someone else on the list can help with the intuition\n> here, but it sounds to me as though (a) you have done all you could to try\n> to rule out any convergence issues, and (b) there is no reason to suspect\n> that low p-values are by themselves evidence of convergence issues.\n>\n> Does this help?  (And does anyone else see something I'm missing?)\n>\n> Dave\n>\n>\n>\n> On Aug 25, 2010, at 11:29 PM, David Schaefer wrote:\n>\n>  Hi all,\n>>\n>> I just received a review in which a reviewer suggested that the low\n>> p-values of an ERGM were possibly an indication of poor convergence (in this\n>> case, p-values for all effect but one fell below .001).  When estimating\n>> those models, the MCMC diagnostic plots showed no signs of degeneracy and\n>> the gof plots indicated the model reproduced the network well.  To be safe,\n>> I reran the models and increased the burnin to 10 million, the MCMC sample\n>> size to 200,000 and the sampling interval to 10,000.  The results don't\n>> change; the significance levels are just as extreme; and, the MCMC\n>> diagnostic plots look even better than before.\n>>\n>> Is convergence something that I should be worried about?  If so, is there\n>> anything else I can do to check for it?  I should mention I am using ergm\n>> 2.2-4 and R 2.10.1.  I have included the model estimation command below.\n>>\n>> f4<-ergm(coTiesBin2_653~ edges + gwdegree(.5, fixed=TRUE) +\n>>   gwesp(.75, fixed=TRUE) + gwdsp(.75, fixed=TRUE) +\n>>   nodecov('pop1017') + nodecov('SES') + nodecov('oneparentP') +\n>>   nodecov('nonWhiteP') + nodecov('crimHistory') + nodecov('diffhome') +\n>>   absdiff('diffhome') + absdiff('SES') + absdiff('oneparentP') +\n>>   absdiff('nonWhiteP') + absdiff('crimHistory') +\n>>   edgecov(schoolMat653) + edgecov(logDist653)\n>>   ,burnin=10000000, MCMCsamplesize=200000, interval=10000)\n>>\n>> Thanks,\n>> David\n>>\n>> *********************************************\n>> David R. Schaefer, Ph.D.\n>> School of Social and Family Dynamics\n>> Arizona State University\n>> http://www.public.asu.edu/~schaef/ <http://www.public.asu.edu/%7Eschaef/>\n>> http://ssfd.clas.asu.edu/cluster\n>> *********************************************\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@mailman2.u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n\n-- \nJesse Blocher ? Doctoral Candidate, Finance ? UNC?s Kenan-Flagler Business\nSchool\nCampus Box 3490 ? McColl Building ? Chapel Hill, NC 27599-3490 ? fax\n919-962-2068 ?\njesse_blocher@unc.edu ? http://www.kenan-flagler.unc.edu ?\nhttp://www.unc.edu/~jabloche\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100828/e9852a8b/attachment.html>",
+      "body_snippet": "I've seen this criticism in econometrics when your dependent variable and\nthe independent variable in question are mechanically correlated - i.e.\ninadvertently derived from the same underlying source ",
+      "thread_id": "thread-a5e6ee9ce4c9",
+      "thread_depth": 0,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-89ec6b1b2362",
+      "message_id": "<4C7B663F.4070105@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-08-30T01:05:19Z",
+      "subject": "[statnet_help] results that are too significant",
+      "subject_clean": "[statnet_help] results that are too significant",
+      "in_reply_to": "<3920DC962E323A46B40D415ADC1CD6C25F7FD3AFC0@EX10.asurite.ad.asu.edu>",
+      "references": [
+        "<3920DC962E323A46B40D415ADC1CD6C25F7FD3AFC0@EX10.asurite.ad.asu.edu>"
+      ],
+      "body_plain": "Hi, David -\n\nDavid Schaefer wrote:\n> Hi all,\n> \n> I just received a review in which a reviewer suggested that the low\n> p-values of an ERGM were possibly an indication of poor convergence\n> (in this case, p-values for all effect but one fell below .001).\n> When estimating those models, the MCMC diagnostic plots showed no\n> signs of degeneracy and the gof plots indicated the model reproduced\n> the network well.  To be safe, I reran the models and increased the\n> burnin to 10 million, the MCMC sample size to 200,000 and the\n> sampling interval to 10,000.  The results don't change; the\n> significance levels are just as extreme; and, the MCMC diagnostic\n> plots look even better than before.\n> \n> Is convergence something that I should be worried about?  If so, is\n> there anything else I can do to check for it?  I should mention I am\n> using ergm 2.2-4 and R 2.10.1.  I have included the model estimation\n> command below.\n\nI have seen that problem before (pseudo-convergence leading to strange \nstandard error estimates), usually on large networks with models that \nhad substantial dependence.  The fact that something can go wrong does \nnot, however, necessarily imply that it has.  If, in this case, (1) the \nchain seems to be mixing well, (2) diagnostics look good, (3) your mean \nstats match closely match the observed statistics, and (4) you get \nconsistent results with multiple runs, and (5) you have no particular \nreason to expect that something is amiss, then (given the length of the \nchains) it would seem that you are about as safe as you are likely to \nget.  Getting similar results for the covariate effects with the \ndependence terms removed, assuming you do, would also help rule out some \nsources of algorithmic malfeasance.\n\nDid the reviewer suggest some specific reason to doubt the results?  If \nnot, it isn't obvious to me why one would suggest this as a problem.  I \nhave on occasion raised similar questions in reviews, but always because \nthere was something funny in the results (or in the description of the \nfitting procedure) that suggested poor convergence.  Convergence issues \nare certainly a risk with these sorts of models (and they can be hard to \ndetect), but one wouldn't suspect non-convergence simply on the basis of \nlow p-values.\n\nThis reviewer may or may not have had a good reason for raising this \nissue, but one should be aware that there is a lot of mythology \nsurrounding ERGMs these days.  Your reviewer might be an expert, whose \nquestion arises from a problem they noticed in your analysis, or they \nmight be someone who once saw an ERGM talk, and who is now applying \nsomething they hazily remember having heard during an excessively \ncaffeinated exchange between persons whose own expertise consisted of \nhaving attended an afternoon workshop.  It is wise to respond diligently \nand respectfully to reviewer comments, while also entertaining the \npossibility that some of them do not arise from a position of competence.\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "Hi, David -\n\nDavid Schaefer wrote:\n> Hi all,\n> \n> I just received a review in which a reviewer suggested that the low\n> p-values of an ERGM were possibly an indication of poor convergence\n> (in this c",
+      "thread_id": "thread-b1a13b20ac01",
+      "thread_depth": 1,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-62008642383d",
+      "message_id": "<4C7B69B1.5050901@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-08-30T01:20:01Z",
+      "subject": "[statnet_help] \tfrom network to igraph and back again, and NAMESPACEs",
+      "subject_clean": "[statnet_help] \tfrom network to igraph and back again, and NAMESPACEs",
+      "in_reply_to": "<4C755983.40302@uu.nl>",
+      "references": [
+        "<4C755983.40302@uu.nl>"
+      ],
+      "body_plain": "Michal Bojanowski wrote:\n> \n> *Please seriously consider adding namespaces to all 'statnet' packages.*\n> \n\nI rather despise R namespaces, considering them to be (along with S4 \nmethods, text messaging, and American Idol) symptomatic of the \ndegeneration of our society.  However, all the cool kids are using them \nthese days, and I expect to yield to peer pressure in upcoming releases. \n  My own curmudgeonry aside, I am much cheered by the fact that you \ndidn't run into difficulties; did you also use the C-level API?  I \nentertain some hope of getting the network release out before the \ncurtain of fall quarter descends, so it is possible that this change \ncould be rolled out ere long....\n\n-Carter",
+      "body_snippet": "Michal Bojanowski wrote:\n> \n> *Please seriously consider adding namespaces to all 'statnet' packages.*\n> \n\nI rather despise R namespaces, considering them to be (along with S4 \nmethods, text messaging",
+      "thread_id": "thread-4573f2a7a97b",
+      "thread_depth": 1,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-c1b2766026c6",
+      "message_id": "<4C7B988A.4090203@uu.nl>",
+      "from_name": "Michal Bojanowski",
+      "from_email_hash": "b72e0a534c25ec0973b778cd472059c61c5350ce731228b66a3a79a50069f13f",
+      "date": "2010-08-30T04:39:54Z",
+      "subject": "[statnet_help] \tfrom network to igraph and back again, and NAMESPACEs",
+      "subject_clean": "[statnet_help] \tfrom network to igraph and back again, and NAMESPACEs",
+      "in_reply_to": "<4C7B69B1.5050901@uci.edu>",
+      "references": [
+        "<4C755983.40302@uu.nl>",
+        "<4C7B69B1.5050901@uci.edu>"
+      ],
+      "body_plain": "On 08/30/2010 10:20 AM, Carter T. Butts wrote:\n> Michal Bojanowski wrote:\n>>\n>> *Please seriously consider adding namespaces to all 'statnet' packages.*\n>>\n>\n> I rather despise R namespaces, considering them to be (along with S4\n> methods, text messaging, and American Idol) symptomatic of the\n> degeneration of our society. However, all the cool kids are using them\n> these days, and I expect to yield to peer pressure in upcoming releases.\n> My own curmudgeonry aside, I am much cheered by the fact that you didn't\n> run into difficulties; did you also use the C-level API? I entertain\n> some hope of getting the network release out before the curtain of fall\n> quarter descends, so it is possible that this change could be rolled out\n> ere long....\n\nFirst of all apologies for a somewhat lengthy e-mail.\n\nI can understand why S4 is considered by some people an over(haul/kill). \nBut as far as it goes for namespaces: they are very practical, \nespecially in case of multiple name conflicts, like between 'network' \nand 'igraph'. I do think namespaces will be more and more indispensable \ngiven the pace at which the number of packages available through CRAN \ngrows. I also believe that adding namespaces will make extending \n'network' and Statnet much easier. Simultaneously, I do not really see \nany harmful side effects of using namespaces, unless of course somebody \nfeels intimidated by writing two lines of pseudo-code to an extra file.\n\nTo be honest I have somewhat farther-reaching plans as it goes for the \n'intergraph' package. Given that 'network' and 'igraph' are two main \npackages providing data structures for networks ('graph' package \nfollowing closely) it would be really neat to have a somewhat unified \ninterface to the data in both packages. What I have in mind is something \nlike 'DBI' package in the case of interfacing relational data bases. It \ndefines generic functions for which packages 'RMySQL', 'RSQLite' and \nothers provides methods. DBI is written in S4, but given that both \n'network' and 'igraph' are written in S3 it would not be necessary to go \nfor S4. What I had in mind is having generics for, say: as.network, \nas.igraph, as.matrix, network/edge/vertex attribute get/set methods \ndefined in a separate package like 'intergraph' and specific methods \nlike 'as.matrix.network' in 'network', 'as.matrix.igraph' in 'igraph' \nand so on.\n\nI did already quite some work in that direction with positive results. \nWhat is important is that the tiny modifications that has to be made to \nboth igraph and network do not change the R API: users will not notice \nthat, and so the exising software depending on either network or igraph \nshould be perfectly OK. I'll be happy to collaborate on that with any \nvolunteers.\n\nI'm curious what you and other Statnet-ers would think about such a project.\n\nAs for the conversion functions within 'intergraph':\n\nApart from the namespace issue I did not really run into any problems. \nThe package is pure R, I did not use C API directly. As both 'network' \nand 'igraph' use C under the hood I can imagine that it might make sense \nperformance-wise to have the conversion done by some C routines. \nCurrently the conversion does not use adjacency matrices as an \nintermediate format but data frames: edgelist + edge attributes and \nvertex data frame with attributes so should be rather efficient.\n\nOne limitation is that 'igraph' is somewhat less general than 'network' \nin terms of the data model, so hypergraphs for example are not supported \n(I still have to add some warnings into the code).\n\nI would definitely welcome namespacing the 'network' and other Statnet \npackages. Let me know if there is any way I could be of help.\n\n\n\n~michal\n\n\n\n\n-- \n-----------------------------\nMichal Bojanowski\nPhD Candidate\nICS / Department of Sociology\nUtrecht University\nhttp://www.fss.uu.nl/soc/bojanowski\nhttp://www.bojanorama.pl",
+      "body_snippet": "On 08/30/2010 10:20 AM, Carter T. Butts wrote:\n> Michal Bojanowski wrote:\n>>\n>> *Please seriously consider adding namespaces to all 'statnet' packages.*\n>>\n>\n> I rather despise R namespaces, consideri",
+      "thread_id": "thread-4573f2a7a97b",
+      "thread_depth": 2,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-5500fbdb67cf",
+      "message_id": "<B3324E10-3DA4-462A-BD68-5618112D28BC@indiana.edu>",
+      "from_name": "John Paolillo",
+      "from_email_hash": "ed2e68fe12ef43cbfc7788a6c13cbec0a20962ceea4b203142fa86e549628685",
+      "date": "2010-08-30T05:43:11Z",
+      "subject": "[statnet_help] \tfrom network to igraph and back again, and NAMESPACEs",
+      "subject_clean": "[statnet_help] \tfrom network to igraph and back again, and NAMESPACEs",
+      "in_reply_to": "<4C7B988A.4090203@uu.nl>",
+      "references": [
+        "<4C755983.40302@uu.nl>",
+        "<4C7B69B1.5050901@uci.edu>",
+        "<4C7B988A.4090203@uu.nl>"
+      ],
+      "body_plain": "The point about namespaces is well-made by Michal, but really it should have been obvious and best practice would have indicated using R namespaces at the outset of the Statnet project. Unfortunately, this is just one of the programming practices that the Statnet project has adopted that runs counter to the R environment that they chose to work within. To the namespace issue may be added at least the following three:\n\n(1) Statnet imposes an unusual modification on the semantics of formula objects in R. In no other R package does one write a formula in which complex object (i.e. the network, which contains many vectors of differing lengths) is expressed in terms of objects contained within it. \n\n(2) Insistence on C code (ostensibly for speed), to the point of incorporating legacy code that duplicates basic functionality of the BLAS in R (e.g. eigen decomposition). This actually flies in the face of the speed criterion, because the R BLAS is optimized for multiple-core architectures (not as common when the Statnet project started as they are now), and the legacy code is not (nor is specialized Statnet C code like the network layout code necessarily multi-processor optimized). \n\n(3) Statnet has dependencies on packages that bear a UW license which is NOT compatible with GPL licenses, meaning that Statnet and code that uses Statnet packages raise legal complications regarding licensing that are likely to surprise many users. Specifically, \"for profit\" uses of some parts of the code potentially require payment of royalty fees to UW (the GPL license of R has no such restriction).\n\nThe above problems, like the namespace issue, make Statnet not play well with other packages, and for this reason any use of Statnet is awkward for me. It would be good if the Statnet team could give some attention to them, so that it can interoperate better with R and other R packages.\n\nJohn Paolillo\n\nOn Aug 30, 2010, at 7:39 AM, Michal Bojanowski wrote:\n\n> On 08/30/2010 10:20 AM, Carter T. Butts wrote:\n>> Michal Bojanowski wrote:\n>>> \n>>> *Please seriously consider adding namespaces to all 'statnet' packages.*\n>>> \n>> \n>> I rather despise R namespaces, considering them to be (along with S4\n>> methods, text messaging, and American Idol) symptomatic of the\n>> degeneration of our society. However, all the cool kids are using them\n>> these days, and I expect to yield to peer pressure in upcoming releases.\n>> My own curmudgeonry aside, I am much cheered by the fact that you didn't\n>> run into difficulties; did you also use the C-level API? I entertain\n>> some hope of getting the network release out before the curtain of fall\n>> quarter descends, so it is possible that this change could be rolled out\n>> ere long....\n> \n> First of all apologies for a somewhat lengthy e-mail.\n> \n> I can understand why S4 is considered by some people an over(haul/kill). But as far as it goes for namespaces: they are very practical, especially in case of multiple name conflicts, like between 'network' and 'igraph'. I do think namespaces will be more and more indispensable given the pace at which the number of packages available through CRAN grows. I also believe that adding namespaces will make extending 'network' and Statnet much easier. Simultaneously, I do not really see any harmful side effects of using namespaces, unless of course somebody feels intimidated by writing two lines of pseudo-code to an extra file.\n> \n> To be honest I have somewhat farther-reaching plans as it goes for the 'intergraph' package. Given that 'network' and 'igraph' are two main packages providing data structures for networks ('graph' package following closely) it would be really neat to have a somewhat unified interface to the data in both packages. What I have in mind is something like 'DBI' package in the case of interfacing relational data bases. It defines generic functions for which packages 'RMySQL', 'RSQLite' and others provides methods. DBI is written in S4, but given that both 'network' and 'igraph' are written in S3 it would not be necessary to go for S4. What I had in mind is having generics for, say: as.network, as.igraph, as.matrix, network/edge/vertex attribute get/set methods defined in a separate package like 'intergraph' and specific methods like 'as.matrix.network' in 'network', 'as.matrix.igraph' in 'igraph' and so on.\n> \n> I did already quite some work in that direction with positive results. What is important is that the tiny modifications that has to be made to both igraph and network do not change the R API: users will not notice that, and so the exising software depending on either network or igraph should be perfectly OK. I'll be happy to collaborate on that with any volunteers.\n> \n> I'm curious what you and other Statnet-ers would think about such a project.\n> \n> As for the conversion functions within 'intergraph':\n> \n> Apart from the namespace issue I did not really run into any problems. The package is pure R, I did not use C API directly. As both 'network' and 'igraph' use C under the hood I can imagine that it might make sense performance-wise to have the conversion done by some C routines. Currently the conversion does not use adjacency matrices as an intermediate format but data frames: edgelist + edge attributes and vertex data frame with attributes so should be rather efficient.\n> \n> One limitation is that 'igraph' is somewhat less general than 'network' in terms of the data model, so hypergraphs for example are not supported (I still have to add some warnings into the code).\n> \n> I would definitely welcome namespacing the 'network' and other Statnet packages. Let me know if there is any way I could be of help.\n> \n> \n> \n> ~michal\n> \n> \n> \n> \n> -- \n> -----------------------------\n> Michal Bojanowski\n> PhD Candidate\n> ICS / Department of Sociology\n> Utrecht University\n> http://www.fss.uu.nl/soc/bojanowski\n> http://www.bojanorama.pl\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "The point about namespaces is well-made by Michal, but really it should have been obvious and best practice would have indicated using R namespaces at the outset of the Statnet project. Unfortunately,",
+      "thread_id": "thread-4573f2a7a97b",
+      "thread_depth": 3,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-f0e29a71c2d9",
+      "message_id": "<4C7BB6C9.40300@uu.nl>",
+      "from_name": "Michal Bojanowski",
+      "from_email_hash": "b72e0a534c25ec0973b778cd472059c61c5350ce731228b66a3a79a50069f13f",
+      "date": "2010-08-30T06:48:57Z",
+      "subject": "[statnet_help] \tfrom network to igraph and back again, and NAMESPACEs",
+      "subject_clean": "[statnet_help] \tfrom network to igraph and back again, and NAMESPACEs",
+      "in_reply_to": "<B3324E10-3DA4-462A-BD68-5618112D28BC@indiana.edu>",
+      "references": [
+        "<4C755983.40302@uu.nl>",
+        "<4C7B69B1.5050901@uci.edu>",
+        "<4C7B988A.4090203@uu.nl>",
+        "<B3324E10-3DA4-462A-BD68-5618112D28BC@indiana.edu>"
+      ],
+      "body_plain": "I did not check it with the history of the R sources nor Statnet\npackages, but it may very well be that when the first Statnet packages\nwere written the namespace mechanism was not yet part of R itself. My\nown first R packages did not use namespaces either, I added them later.\nAs I wrote in my initial e-mail, the modification to the package is\nreally tiny and non-intrusive, it does not affect any other code within\nthat package nor in any other packages depending on it.\n\n> (1) Statnet imposes an unusual modification on the semantics of\n> formula objects in R. In no other R package does one write a formula\n> in which complex object (i.e. the network, which contains many\n> vectors of differing lengths) is expressed in terms of objects\n> contained within it.\n>\n> (2) Insistence on C code (ostensibly for speed), to the point of\n> incorporating legacy code that duplicates basic functionality of the\n> BLAS in R (e.g. eigen decomposition). This actually flies in the face\n> of the speed criterion, because the R BLAS is optimized for\n> multiple-core architectures (not as common when the Statnet project\n> started as they are now), and the legacy code is not (nor is\n> specialized Statnet C code like the network layout code necessarily\n> multi-processor optimized).\n\nI do not really see any conflict nor interdependence between the the use\nof namespaces and the first two issues you mentioned. The namespace\ncan be added to a package irrespectively whether the functions in that\npackage use formula objects in a non-standard way, duplicate some\nfunctionality (whether written in R on in C) in base R or some other\npackages etc. It is just a mechanism enabling the users to, among other\nthings, use a consistent way of calling functions with the same names\nthat come from different packages.\n\nIn fact, if you plan to duplicate a certain functionality, say an R\nfunction, it may even make more sense to call the new function the same\nway as the original to indicate that it is designed to do the same thing\nand then use the namespace so that the users can choose to import the\nversion they prefer.\n\n> (3) Statnet has dependencies on packages that bear a UW license\n> which is NOT compatible with GPL licenses, meaning that Statnet and\n> code that uses Statnet packages raise legal complications regarding\n> licensing that are likely to surprise many users. Specifically, \"for\n> profit\" uses of some parts of the code potentially require payment of\n> royalty fees to UW (the GPL license of R has no such restriction).\n\nWell, this seems to me as a completely different matter. Indeed, I am a\nbit surprised with what you wrote. I just had a look at the sources of\n'network' and 'ergm' (COPYING and LICENSE files) and they both seem to\nbe under GPL (?). Statnet authors, please clarify.\n\nTaking the issue a bit more generally. There are other\npackages in the R World created to work with network data, like 'igraph'\nand 'graph'. Apart from the data structures for networks, they do\nprovide a lot of other functionality. I see that functionality\ndefinitely *complementary* to all the things that were created within\nStatnet. For me as a network modeling person it was always a real pain\ngoing back and forth between 'igraph' and 'network' while, say, running\nsome community detection algorithm in 'igraph' and then fitting some\nERGMs to the same data set.\n\nIt is of course the decision of a package author whether, while writing\nthe package, he/she facilitates or impedes using his/her package\ntogether with other R packages designed to work with the same type of data.\n\nNevertheless, whatever Statnet's standing about the licensing is, in my\nopinion, it does not have much to do with the \"technical\" benefits of\nhaving the packages NAMESPACEd.\n\n> The above problems, like the namespace issue, make Statnet not play\n> well with other packages, and for this reason any use of Statnet is\n> awkward for me. It would be good if the Statnet team could give some\n> attention to them, so that it can interoperate better with R and\n> other R packages.\n\nTwo thumbs up about that. Although, as I wrote above, the other issues\n(apart from namespaces) do not seem to be that \"severe\" for \ninteroperability with other packages.\n\n\n\n-- \n-----------------------------\nMichal Bojanowski\nPhD Candidate\nICS / Department of Sociology\nUtrecht University\nhttp://www.fss.uu.nl/soc/bojanowski\nhttp://www.bojanorama.pl",
+      "body_snippet": "I did not check it with the history of the R sources nor Statnet\npackages, but it may very well be that when the first Statnet packages\nwere written the namespace mechanism was not yet part of R itsel",
+      "thread_id": "thread-4573f2a7a97b",
+      "thread_depth": 4,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-c0f5ce736d69",
+      "message_id": "<AANLkTi=Cd6mX5u_Pt-r8Kvs7Lzn-0GkaofxiC+ZJd53N@mail.gmail.com>",
+      "from_name": "Magnus Thor Torfason",
+      "from_email_hash": "e8dfdba8a231410f04d2c7031ac3e6b776742de15395ba7d5e2c8d40f55870fe",
+      "date": "2010-08-30T08:06:44Z",
+      "subject": "[statnet_help] from network to igraph and back again, and NAMESPACEs",
+      "subject_clean": "[statnet_help] from network to igraph and back again, and NAMESPACEs",
+      "in_reply_to": "<4C7BB6C9.40300@uu.nl>",
+      "references": [
+        "<4C755983.40302@uu.nl>",
+        "<4C7B69B1.5050901@uci.edu>",
+        "<4C7B988A.4090203@uu.nl>",
+        "<B3324E10-3DA4-462A-BD68-5618112D28BC@indiana.edu>",
+        "<4C7BB6C9.40300@uu.nl>"
+      ],
+      "body_plain": "I think this is a really great endeavor, and am extremely happy to see\nsomeone take this up. I have used igraph quite a bit, mostly because I have\nbeen using very large networks. However, statnet and the network package\nhave a bunch of really useful functions available. Some get ported between\nthe two packages, but many do not. I have ended up writing some conversion\nfunctions myself, but having them nicely encapsulated in an interface\npackage would be really great. For me personally, it would probably increase\nmy use of statnet quite a bit.\n\nI'm too grateful both to the authors of statnet and igraph to fully endorse\nthe somewhat harsh tone of John's email, although all of his points seem\nlike things that could improve the attractiveness of statnet to a number of\naudiences. As for licensing specifically, I've personally released stuff\nunder non-commercial-only license. I feel that the decision of license is a\nvery personal one, and that it is seldom reasonable to phrase requests for\nchanges in licensing in terms of 'should' (*).\n\nHowever, as for using namespaces when writing public packages for R, I am\nvery close to using the 'should' word, and will second a hearty call to\n'please please please' add namespaces to network and related packages.\n\nIn the end, we are all trying to help each other out in doing good research\nand pushing forward the frontiers of knowledge (**). In this, increased\ninteroperability between the 'competing' packages helps everyone. However, I\nam also very sensitive to the fact that although the open-source licenses\nthat most of the code is released under allow lots of changes by third\nparties, it tends to be most productive to involve all authors/copyright\nholder in a constructive relationship.\n\nI look very much forward to seeing the outcome of the intergraph project,\nwhich builds on two great packages.\n\nBest,\nMagnus\n\n(*) Re-reading John's email, I see that it could be interpreted as\nsuggesting that the dependencies be removed, rather than the licenses being\nchanged. I don't know the code in question well enough to know if it would\nbe feasible to do so without loosing a lot of functionality, but if the\ndependency was very minimal, that would seem like a good idea.\n\n(**) All this talk about helping each other out reminded me that I have been\nintending to respond to a request for help on this list for over a month now\n:-P Hopefully, I'll be able to address that soon.\n\n\nOn Mon, Aug 30, 2010 at 9:48 AM, Michal Bojanowski <m.j.bojanowski@uu.nl>wrote:\n\n> I did not check it with the history of the R sources nor Statnet\n> packages, but it may very well be that when the first Statnet packages\n> were written the namespace mechanism was not yet part of R itself. My\n> own first R packages did not use namespaces either, I added them later.\n> As I wrote in my initial e-mail, the modification to the package is\n> really tiny and non-intrusive, it does not affect any other code within\n> that package nor in any other packages depending on it.\n>\n>\n>  (1) Statnet imposes an unusual modification on the semantics of\n>> formula objects in R. In no other R package does one write a formula\n>> in which complex object (i.e. the network, which contains many\n>> vectors of differing lengths) is expressed in terms of objects\n>> contained within it.\n>>\n>> (2) Insistence on C code (ostensibly for speed), to the point of\n>> incorporating legacy code that duplicates basic functionality of the\n>> BLAS in R (e.g. eigen decomposition). This actually flies in the face\n>> of the speed criterion, because the R BLAS is optimized for\n>> multiple-core architectures (not as common when the Statnet project\n>> started as they are now), and the legacy code is not (nor is\n>> specialized Statnet C code like the network layout code necessarily\n>> multi-processor optimized).\n>>\n>\n> I do not really see any conflict nor interdependence between the the use\n> of namespaces and the first two issues you mentioned. The namespace\n> can be added to a package irrespectively whether the functions in that\n> package use formula objects in a non-standard way, duplicate some\n> functionality (whether written in R on in C) in base R or some other\n> packages etc. It is just a mechanism enabling the users to, among other\n> things, use a consistent way of calling functions with the same names\n> that come from different packages.\n>\n> In fact, if you plan to duplicate a certain functionality, say an R\n> function, it may even make more sense to call the new function the same\n> way as the original to indicate that it is designed to do the same thing\n> and then use the namespace so that the users can choose to import the\n> version they prefer.\n>\n>\n>  (3) Statnet has dependencies on packages that bear a UW license\n>> which is NOT compatible with GPL licenses, meaning that Statnet and\n>> code that uses Statnet packages raise legal complications regarding\n>> licensing that are likely to surprise many users. Specifically, \"for\n>> profit\" uses of some parts of the code potentially require payment of\n>> royalty fees to UW (the GPL license of R has no such restriction).\n>>\n>\n> Well, this seems to me as a completely different matter. Indeed, I am a\n> bit surprised with what you wrote. I just had a look at the sources of\n> 'network' and 'ergm' (COPYING and LICENSE files) and they both seem to\n> be under GPL (?). Statnet authors, please clarify.\n>\n> Taking the issue a bit more generally. There are other\n> packages in the R World created to work with network data, like 'igraph'\n> and 'graph'. Apart from the data structures for networks, they do\n> provide a lot of other functionality. I see that functionality\n> definitely *complementary* to all the things that were created within\n> Statnet. For me as a network modeling person it was always a real pain\n> going back and forth between 'igraph' and 'network' while, say, running\n> some community detection algorithm in 'igraph' and then fitting some\n> ERGMs to the same data set.\n>\n> It is of course the decision of a package author whether, while writing\n> the package, he/she facilitates or impedes using his/her package\n> together with other R packages designed to work with the same type of data.\n>\n> Nevertheless, whatever Statnet's standing about the licensing is, in my\n> opinion, it does not have much to do with the \"technical\" benefits of\n> having the packages NAMESPACEd.\n>\n>\n>  The above problems, like the namespace issue, make Statnet not play\n>> well with other packages, and for this reason any use of Statnet is\n>> awkward for me. It would be good if the Statnet team could give some\n>> attention to them, so that it can interoperate better with R and\n>> other R packages.\n>>\n>\n> Two thumbs up about that. Although, as I wrote above, the other issues\n> (apart from namespaces) do not seem to be that \"severe\" for\n> interoperability with other packages.\n>\n>\n>\n>\n> --\n> -----------------------------\n> Michal Bojanowski\n> PhD Candidate\n> ICS / Department of Sociology\n> Utrecht University\n> http://www.fss.uu.nl/soc/bojanowski\n> http://www.bojanorama.pl\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100830/915eaa48/attachment.html>",
+      "body_snippet": "I think this is a really great endeavor, and am extremely happy to see\nsomeone take this up. I have used igraph quite a bit, mostly because I have\nbeen using very large networks. However, statnet and ",
+      "thread_id": "thread-4573f2a7a97b",
+      "thread_depth": 5,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-bf54b3d4b7ab",
+      "message_id": "<4C7BD1D5.2060605@uu.nl>",
+      "from_name": "Michal Bojanowski",
+      "from_email_hash": "b72e0a534c25ec0973b778cd472059c61c5350ce731228b66a3a79a50069f13f",
+      "date": "2010-08-30T08:44:21Z",
+      "subject": "[statnet_help] from network to igraph and back again, and NAMESPACEs",
+      "subject_clean": "[statnet_help] from network to igraph and back again, and NAMESPACEs",
+      "in_reply_to": "<AANLkTi=Cd6mX5u_Pt-r8Kvs7Lzn-0GkaofxiC+ZJd53N@mail.gmail.com>",
+      "references": [
+        "<4C755983.40302@uu.nl>",
+        "<4C7B69B1.5050901@uci.edu>",
+        "<4C7B988A.4090203@uu.nl>",
+        "<B3324E10-3DA4-462A-BD68-5618112D28BC@indiana.edu>",
+        "<4C7BB6C9.40300@uu.nl>",
+        "<AANLkTi=Cd6mX5u_Pt-r8Kvs7Lzn-0GkaofxiC+ZJd53N@mail.gmail.com>"
+      ],
+      "body_plain": "On 08/30/2010 05:06 PM, Magnus Thor Torfason wrote:\n> I think this is a really great endeavor, and am extremely happy to see\n> someone take this up. I have used igraph quite a bit, mostly because I\n> have been using very large networks. However, statnet and the network\n> package have a bunch of really useful functions available. Some get\n> ported between the two packages, but many do not. I have ended up\n> writing some conversion functions myself, but having them nicely\n> encapsulated in an interface package would be really great. For me\n> personally, it would probably increase my use of statnet quite a bit.\n\nIndeed, there was quite some porting between 'network' and 'igraph'. \nEspecially from 'network' to 'igraph': network layout algorithms for \nplotting for example ported from 'network' or 'sna' into 'igraph'. If \nyou look at the source code you can see that the core functionality was \nmore or less copy-pasted. Apart from the fact that it might be \nconsidered as a not a very nice behavior, although not illegal, to me it \nis really counter-productive. Any upgrade or bug-fixing in the original \ncode leaves the \"ported\" copy unchanged.\n\n(Side note: Actually, it is a somewhat strange use of the word \"porting\" \nas both packages are within the same system: R. It's not porting Fortran \nto C or something...)\n\nThe above seems to be another argument for working towards package \ninteroperability. If there would be tighter conversion routines or \ninterfaces between the two packages no \"porting\" would be necessary.\n\n\n> I'm too grateful both to the authors of statnet and igraph to fully\n> endorse the somewhat harsh tone of John's email, although all of his\n> points seem like things that could improve the attractiveness of statnet\n> to a number of audiences. As for licensing specifically, I've personally\n> released stuff under non-commercial-only license. I feel that the\n> decision of license is a very personal one, and that it is seldom\n> reasonable to phrase requests for changes in licensing in terms of\n> 'should' (*).\n\nVery true. On CRAN there are many packages that have a non-standard \nlicenses, take 'ff' for example. Any author is free to choose licensing \noptions that suit him best. But, in the context of 'intergraph' and alike:\n\n1. I don't think licensing actually matters much.\n\n2. Although there are non-GPL Statnet packages, like 'mclust' (thanks \nJohn!) the 'network' package is under GPL, and so are, I conjecture, all \nits reverse-dependencies.",
+      "body_snippet": "On 08/30/2010 05:06 PM, Magnus Thor Torfason wrote:\n> I think this is a really great endeavor, and am extremely happy to see\n> someone take this up. I have used igraph quite a bit, mostly because I\n> ",
+      "thread_id": "thread-4573f2a7a97b",
+      "thread_depth": 6,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-1a5714567c31",
+      "message_id": "<4C7C354B.8070904@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-08-30T15:48:43Z",
+      "subject": "[statnet_help] \tfrom network to igraph and back again, and NAMESPACEs",
+      "subject_clean": "[statnet_help] \tfrom network to igraph and back again, and NAMESPACEs",
+      "in_reply_to": "<B3324E10-3DA4-462A-BD68-5618112D28BC@indiana.edu>",
+      "references": [
+        "<4C755983.40302@uu.nl>",
+        "<4C7B69B1.5050901@uci.edu>",
+        "<4C7B988A.4090203@uu.nl>",
+        "<B3324E10-3DA4-462A-BD68-5618112D28BC@indiana.edu>"
+      ],
+      "body_plain": "Hi, John -\n\nJohn Paolillo wrote:\n> The point about namespaces is well-made by Michal, but really it\n> should have been obvious and best practice would have indicated using\n> R namespaces at the outset of the Statnet project. \n\nThis would have been rather difficult, since namespaces were unused \nand/or non-existent when the first bits of statnet were being assembled. \n   Back then, R had a very small community, and we dealt with conflicts \nvia the time-honored method of not creating duplicate nomenclature (also \ncalled \"not being a jerk,\" though circumstances have changed since \nthen).  I don't recall when current the R NAMESPACE system first came \ninto existence -- I suspect that it postdates sna -- but it was \nessentially unused until just a few years ago.  If the R precognition \nlibrary had been available back then, perhaps we would have done things \ndifferently.  (Of course, seriously entertaining the idea that R would \nbecome so popular -- especially among network analysts -- that there \nmight be a need for such a thing would have been grounds at that time \nfor diagnosis of narcissistic personality disorder.)\n\nIf you are new to R, then you will doubtless be mystified by many things \nyou find in the older packages.  These are the legacies of a wild, \nfrontier age, when the documentation standards were loose, you could use \ngenerics any way you wanted, and the actual rules for R package \nconstruction were determined by a complex version of 20 questions. \n(This last is still true, to an extent.)  To those who have grown up \nwith sidewalks and indoor plumbing, the free-wheeling designs of this \nearlier period doubtless carry a whiff of the barbaric.  As the heavy \nhand of civilization has descended upon the R community (with an influx \nof new users and developers unencumbered by history), however, many of \nour packages have gradually been subjugated to the useful and the good. \n  Thus are the fruits of the ancient days of R made available to its \nmodern, enlightened user base, though they must occasionally cope with \nthe narrow streets, blind alleys, and poor sewage treatment that \naccompany legacy code.\n\n> \n> (1) Statnet imposes an unusual modification on the semantics of\n> formula objects in R. In no other R package does one write a formula\n> in which complex object (i.e. the network, which contains many\n> vectors of differing lengths) is expressed in terms of objects\n> contained within it.\n\nWhy, thank you.  We like to stay ahead of the curve.\n\n> \n> (2) Insistence on C code (ostensibly for speed), to the point of\n> incorporating legacy code that duplicates basic functionality of the\n> BLAS in R (e.g. eigen decomposition). This actually flies in the face\n> of the speed criterion, because the R BLAS is optimized for\n> multiple-core architectures (not as common when the Statnet project\n> started as they are now), and the legacy code is not (nor is\n> specialized Statnet C code like the network layout code necessarily\n> multi-processor optimized).\n\nAh yes, the good ole' days, before C backending.  Back then, you could \nalmost compute betweenness on a 100 node network, if your life \nexpectancy was high enough.  (But then, you didn't have data sets that \nbig, so this was not so horrid as might be imagined.)  You will find \nthat nearly everything in some packages is now backended, and none of it \nfor the pure joy of writing in C.  If something is backended, there is \nusually a good reason for it -- generally, that reason being that the \nrequisite R builtins were non-existent, slow, inapplicable, non-robust, \netc.  As R evolves, it may gradually become possible to shift from using \ncustom backends to R internal functions, and I expect that such things \nwill occur.  (Of course, one does not tamper with working code unless \none has a very good reason to do so, so there would need to be clear \nevidence of performance gains.)\n\nWith respect to your specific question re:BLAS, I'm not sure to what \ncode you are referring.  I can, however, provide an illustrative case \nstudy (for those who are curious about how the process works).  A few \nreleases ago, I switched the default method for evcent from the standard \nR eigen() method to a customized internal version, since I was able to \nobtain substantial memory and performance improvements on large graphs \nby so doing, and since I had received some requests in that regard.  The \ncustom backend generally performs much better for this specific task, \nbut is less robust than the backend that R uses; for that reason, and \nfor compatibility with legacy code, the option to use the R built-in was \nincluded.  I certainly wouldn't have bothered with creating a custom \nbackend if it wasn't needed, having better things to do with my scarce \ntime than reinvent a somewhat lumpy wheel.  In this case, however, there \nwas a need, the code resolved that need, and the change was worth \nmaking.  If you have better backend code that you would like to \ncontribute, please feel free -- there is a whole laundry list of things \nin there that could stand to be improved.\n\n> \n> (3) Statnet has dependencies on packages that bear a UW license which\n> is NOT compatible with GPL licenses, meaning that Statnet and code\n> that uses Statnet packages raise legal complications regarding\n> licensing that are likely to surprise many users. Specifically, \"for\n> profit\" uses of some parts of the code potentially require payment of\n> royalty fees to UW (the GPL license of R has no such restriction).\n> \n\nAs far as I know, there is one optional package (latentnet) that has one \nsuch dependency on an external R package with a possibly funny license \n(mclust).  The statnet public releases are all GPL (v2 or v3, \ndepending), and the core packages have no such dependencies AFAIK. \nPerhaps you would like to expand on the list of \"packages\" involved? \n(Or, by \"dependencies\" and \"packages,\" did you mean \"dependency\" and \n\"package?\")  I would also be interested to learn what parts of the \nstatnet code require payment of royalty fees to UW.  Perhaps this was \ndecided at a super-secret meeting to which I wasn't invited.\n\n> The above problems, like the namespace issue, make Statnet not play\n> well with other packages, and for this reason any use of Statnet is\n> awkward for me. It would be good if the Statnet team could give some\n> attention to them, so that it can interoperate better with R and\n> other R packages.\n\nDespite all evidence to the contrary, we do love our peeps, and we try \nto evolve our toolkit in response to user input.  This is more like \nsteering a tanker than a motorboat, so the salutary effects of \nbelligerence are not always immediate; and, of course, there are some \ncases in which well-intentioned suggestions are unwise or infeasible due \nto engineering trade-offs that are not apparent to the person making the \nsuggestion.  The R world has changed radically over the past few years, \nas have the kind of data analysis challenges that we and our peers face. \n  (When I wrote the first version of sna, the largest complete network \ndata set of which I was aware had about 60 nodes.)  In the face of such \nchallenges, our ragtag band of sociologists, anthropologists, and \nstatisticians attempts to provide the best free software reasonably \nproducible by amateur developers working in their spare time.  So long \nas we and others find it useful, we will continue to do so.\n\nThanks,\n\n-Carter",
+      "body_snippet": "Hi, John -\n\nJohn Paolillo wrote:\n> The point about namespaces is well-made by Michal, but really it\n> should have been obvious and best practice would have indicated using\n> R namespaces at the outset",
+      "thread_id": "thread-4573f2a7a97b",
+      "thread_depth": 4,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-91cd91de4921",
+      "message_id": "<4C7C4510.3080808@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-08-30T16:56:00Z",
+      "subject": "[statnet_help] \tfrom network to igraph and back again, and NAMESPACEs",
+      "subject_clean": "[statnet_help] \tfrom network to igraph and back again, and NAMESPACEs",
+      "in_reply_to": "<4C7B988A.4090203@uu.nl>",
+      "references": [
+        "<4C755983.40302@uu.nl>",
+        "<4C7B69B1.5050901@uci.edu>",
+        "<4C7B988A.4090203@uu.nl>"
+      ],
+      "body_plain": "Hi, Michal -\n\nMichal Bojanowski wrote:\n> I can understand why S4 is considered by some people an over(haul/kill). \n> But as far as it goes for namespaces: they are very practical, \n> especially in case of multiple name conflicts, like between 'network' \n> and 'igraph'. I do think namespaces will be more and more indispensable \n> given the pace at which the number of packages available through CRAN \n> grows. I also believe that adding namespaces will make extending \n> 'network' and Statnet much easier. Simultaneously, I do not really see \n> any harmful side effects of using namespaces, unless of course somebody \n> feels intimidated by writing two lines of pseudo-code to an extra file.\n\nIt is always possible that I am exaggerating my opposition for purposes \nof humorous effect and/or to distract the reader from considering \naccusations of sloth on my part, though I prefer to let such questions \nremain in the domain of personal speculation.  From an end user \nperspective, the main downside of namespaces is that they reduce the \ntransparency of access to code within the interpreter (since you need to \nknow what namespace the function is in, and query it correctly).  This \nis not terribly difficult, but is IMHO a lot less obvious for new users \n(and I find it a pain, myself).  From a developer's point of view, the \nonly real concern is making sure that there's not some highly \nnon-obvious bug in cross-package compatibility that will suddenly arise \nwhen you add namespaces to your package.  That may seem unlikely, but \nmaintaining multiple interdependent packages teaches one the Tao of \nParanoia.\n\n From a historical perspective, collision problems used to be avoided by \nnot creating packages with duplicate nomenclature.  That was eminently \ndoable, even until very recently.  But the R world has changed, the \nnumber of packages has grown to the point where collisions are a real \nissue, and needs of the network community have become sufficiently \ndiverse that multiple R-based toolkits start to make sense.  In this \nenvironment, I am persuaded that namespaces are a regrettable necessity. \n  (There is still no excuse for American Idol.)\n\n> \n> To be honest I have somewhat farther-reaching plans as it goes for the \n> 'intergraph' package.\n >...\n> I'm curious what you and other Statnet-ers would think about such a \n> project.\n\nIt's an interesting issue.  Back when we started building statnet per \nse, the idea was to build the network class as a unifying data \nstructure.  It works pretty damn well (though it has legacy aspects that \ncould be improved), but my sense at this stage is that the increasing \nscale and diversity of network data sets is such that no one structure \nis going to work well for all applications.  There are intrinsic \nengineering tradeoffs involved in choosing one representation over \nanother, and nothing makes everyone happy.  As it is, I use adjacency \nmatrices when just playing around with simple structures, network \nobjects for large/complex networks with rich metadata, and sna edgelists \nfor ultra-huge networks with ~1e6 nodes/edges.  (Actually, I've also \nused network objects for the latter, but even the linear costs of \nmetadata support start to become a concern when you are squeezing every \nbit of RAM out of your machine.)  We also have projects that are \nstarting to require database storage (as you describe), for incompletely \nobserved networks of unthinkable size.  Trying to shoehorn all of this \ninto one class would require a very special brand of madness.\n\nGiven that, the idea of working towards a unified API (or \n``meta-class,'' as it were) to form another abstraction layer between \nthe usual class-level data representation and the analysis tools would \nseem to have promise.  Very difficult to do well, however.  In the short \nterm, a more systematic scheme for class conversion would doubtless be \nhelpful.  (Otherwise, our packages have to know how to decode everyone \nelse's classes, which is not practical.  And vice versa.)  Not speaking \nfor the other members of the team, I am sympathetic to supporting such a \nlingua franca effort if (1) it's well-designed, (2) doesn't break \nanything, and (3) doesn't create maintenance problems down the road.  I \nhave learned the hard way to be very careful vis a vis (2) and (3), and \ndo not lightly make changes to the network class.  But persuasion is not \nimpossible, and I am open to specific proposals.\n\nCheers,\n\n-Carter",
+      "body_snippet": "Hi, Michal -\n\nMichal Bojanowski wrote:\n> I can understand why S4 is considered by some people an over(haul/kill). \n> But as far as it goes for namespaces: they are very practical, \n> especially in cas",
+      "thread_id": "thread-4573f2a7a97b",
+      "thread_depth": 3,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-68ee6d10c84e",
+      "message_id": "<4C7C4A83.8070806@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-08-30T17:19:15Z",
+      "subject": "[statnet_help] from network to igraph and back again, and NAMESPACEs",
+      "subject_clean": "[statnet_help] from network to igraph and back again, and NAMESPACEs",
+      "in_reply_to": "<AANLkTi=Cd6mX5u_Pt-r8Kvs7Lzn-0GkaofxiC+ZJd53N@mail.gmail.com>",
+      "references": [
+        "<4C755983.40302@uu.nl>",
+        "<4C7B69B1.5050901@uci.edu>",
+        "<4C7B988A.4090203@uu.nl>",
+        "<B3324E10-3DA4-462A-BD68-5618112D28BC@indiana.edu>",
+        "<4C7BB6C9.40300@uu.nl>",
+        "<AANLkTi=Cd6mX5u_Pt-r8Kvs7Lzn-0GkaofxiC+ZJd53N@mail.gmail.com>"
+      ],
+      "body_plain": "Magnus Thor Torfason wrote:\n\n> In the end, we are all trying to help each other out in doing good \n> research and pushing forward the frontiers of knowledge (**). \n\nAmen to that.\n\n-Carter",
+      "body_snippet": "Magnus Thor Torfason wrote:\n\n> In the end, we are all trying to help each other out in doing good \n> research and pushing forward the frontiers of knowledge (**). \n\nAmen to that.\n\n-Carter",
+      "thread_id": "thread-4573f2a7a97b",
+      "thread_depth": 6,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-2f59b371a46e",
+      "message_id": "<1283218157.8027.209.camel@Navi.krivitsky.homeip.net>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "cb70f739514c92e764ee284f71749cc7cd6077e1214aef044b591e1ecaca2fef",
+      "date": "2010-08-30T18:29:17Z",
+      "subject": "[statnet_help] from network to igraph and back again, and NAMESPACEs",
+      "subject_clean": "[statnet_help] from network to igraph and back again, and NAMESPACEs",
+      "in_reply_to": "<4C7BD1D5.2060605@uu.nl>",
+      "references": [
+        "<4C755983.40302@uu.nl>",
+        "<4C7B69B1.5050901@uci.edu>",
+        "<4C7B988A.4090203@uu.nl>",
+        "<B3324E10-3DA4-462A-BD68-5618112D28BC@indiana.edu>",
+        "<4C7BB6C9.40300@uu.nl>",
+        "<AANLkTi=Cd6mX5u_Pt-r8Kvs7Lzn-0GkaofxiC+ZJd53N@mail.gmail.com>",
+        "<4C7BD1D5.2060605@uu.nl>"
+      ],
+      "body_plain": "> 2. Although there are non-GPL Statnet packages, like 'mclust' (thanks \n> John!) the 'network' package is under GPL, and so are, I conjecture, all \n> its reverse-dependencies.\n\nApropos that, the next release of latentnet will not depend on mclust\n--- I have reimplemented the parts I needed in latentnet.\n\n                         Pavel\n\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "> 2. Although there are non-GPL Statnet packages, like 'mclust' (thanks \n> John!) the 'network' package is under GPL, and so are, I conjecture, all \n> its reverse-dependencies.\n\nApropos that, the next",
+      "thread_id": "thread-4573f2a7a97b",
+      "thread_depth": 7,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-7ec271f0a563",
+      "message_id": "<AANLkTi=V2SUhFxCKWa52oqkXj_6gkYNTb=EM3sZ=OWvu@mail.gmail.com>",
+      "from_name": "Magnus Thor Torfason",
+      "from_email_hash": "e8dfdba8a231410f04d2c7031ac3e6b776742de15395ba7d5e2c8d40f55870fe",
+      "date": "2010-08-31T07:11:53Z",
+      "subject": "[statnet_help] from network to igraph and back again, and NAMESPACEs",
+      "subject_clean": "[statnet_help] from network to igraph and back again, and NAMESPACEs",
+      "in_reply_to": "<4C7C4510.3080808@uci.edu>",
+      "references": [
+        "<4C755983.40302@uu.nl>",
+        "<4C7B69B1.5050901@uci.edu>",
+        "<4C7B988A.4090203@uu.nl>",
+        "<4C7C4510.3080808@uci.edu>"
+      ],
+      "body_plain": "On Mon, Aug 30, 2010 at 7:56 PM, Carter T. Butts <buttsc@uci.edu> wrote:\n\n> ... the idea of working towards a unified API (or ``meta-class,'' as it\n> were) to form another abstraction layer between the usual class-level data\n> representation and the analysis tools would seem to have promise.  Very\n> difficult to do well, however ...\n>\n\nVery true. I have definitely had the experience of running through all the\ndatabase abstraction hoops when writing code, only to then be thwarted\nbecause of subtle differences in the SQL syntax, and having to write\nplatform specific code anyway. My feeling is that it is going to be very\ndifficult to come up with an abstraction that frees people from needing a\npretty extensive understanding of the underlying data structures. I think\nthat a set of conversion functions, mostly:\n\nas.network.*()\nas.igraph.*()\nas.data.frame.*()\n\nwhich are implemented with the aim of maximal efficiency and preservation of\nall data (names, weights and other attributes, as well as network isolates,\ncome to mind), would be a huge boon.\n\nBest,\nMagnus Thor\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100831/6d46c0e6/attachment.html>",
+      "body_snippet": "On Mon, Aug 30, 2010 at 7:56 PM, Carter T. Butts <buttsc@uci.edu> wrote:\n\n> ... the idea of working towards a unified API (or ``meta-class,'' as it\n> were) to form another abstraction layer between th",
+      "thread_id": "thread-4573f2a7a97b",
+      "thread_depth": 4,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-b8ee0d5927f4",
+      "message_id": "<4C7D2455.7050006@uu.nl>",
+      "from_name": "Michal Bojanowski",
+      "from_email_hash": "b72e0a534c25ec0973b778cd472059c61c5350ce731228b66a3a79a50069f13f",
+      "date": "2010-08-31T08:48:37Z",
+      "subject": "[statnet_help] from network to igraph and back again, and NAMESPACEs",
+      "subject_clean": "[statnet_help] from network to igraph and back again, and NAMESPACEs",
+      "in_reply_to": "<AANLkTi=V2SUhFxCKWa52oqkXj_6gkYNTb=EM3sZ=OWvu@mail.gmail.com>",
+      "references": [
+        "<4C755983.40302@uu.nl>",
+        "<4C7B69B1.5050901@uci.edu>",
+        "<4C7B988A.4090203@uu.nl>",
+        "<4C7C4510.3080808@uci.edu>",
+        "<AANLkTi=V2SUhFxCKWa52oqkXj_6gkYNTb=EM3sZ=OWvu@mail.gmail.com>"
+      ],
+      "body_plain": "> I think that a set of conversion functions, mostly:\n>\n> as.network.*()\n> as.igraph.*()\n> as.data.frame.*()\n>\n> which are implemented with the aim of maximal efficiency and\n> preservation of all data (names, weights and other attributes, as well\n> as network isolates, come to mind), would be a huge boon.\n\n\nAll three of these are already implemented in 'intergraph', although \n'as.data.frame' is called 'asDF'. Can't recall why exactly I decided to \nchange the name... Maybe because in most cases it actually returns a \nlist of two data frames not a data frame itself. Perhaps I change it to \n'as.data. frame. There is also 'as.network.data.frame' and \n'as.igraph.data.frame' (wrapper around 'graph.data.frame' in igraph) to \nassemble the networks from edge and vertex \"data bases\".",
+      "body_snippet": "> I think that a set of conversion functions, mostly:\n>\n> as.network.*()\n> as.igraph.*()\n> as.data.frame.*()\n>\n> which are implemented with the aim of maximal efficiency and\n> preservation of all data",
+      "thread_id": "thread-4573f2a7a97b",
+      "thread_depth": 5,
+      "month": "2010-08"
+    },
+    {
+      "id": "msg-d95d47bca86d",
+      "message_id": "<4C7D4AD3.8070101@uu.nl>",
+      "from_name": "Michal Bojanowski",
+      "from_email_hash": "b72e0a534c25ec0973b778cd472059c61c5350ce731228b66a3a79a50069f13f",
+      "date": "2010-08-31T11:32:51Z",
+      "subject": "[statnet_help] \tfrom network to igraph and back again, and NAMESPACEs",
+      "subject_clean": "[statnet_help] \tfrom network to igraph and back again, and NAMESPACEs",
+      "in_reply_to": "<4C7C4510.3080808@uci.edu>",
+      "references": [
+        "<4C755983.40302@uu.nl>",
+        "<4C7B69B1.5050901@uci.edu>",
+        "<4C7B988A.4090203@uu.nl>",
+        "<4C7C4510.3080808@uci.edu>"
+      ],
+      "body_plain": "Hi Carter,\n\n> remain in the domain of personal speculation. From an end user\n> perspective, the main downside of namespaces is that they reduce the\n> transparency of access to code within the interpreter (since you need\n> to know what namespace the function is in, and query it correctly).\n> This is not terribly difficult, but is IMHO a lot less obvious for\n> new users (and I find it a pain, myself).\n\nI'm not sure if understand correctly, but I guess you are referring to\naccessing the code that is within the package namespace and which is not\nexported.\n\nThen one way to \"grab\" is using the triple-colon operator, then indeed\nyou have to know in what package the function is to get it.\nAlternatively, one can also use 'getAnywhere' or 'getS3method' for that.\n\nThe namespace I used for 'network' exports everything, so all the code\nthat is user-visible in the original package is still user-visible in\nthe namespaced version.\n\nI have made a note about my early experiments with namespaces and name\nconflicts between 'igraph' and 'network' here\n\nhttp://brokeringclosure.wordpress.com/2010/08/31/namespaces-and-name-conflicts/\n\nPerhaps of interest also to others.\n\n\n\n> From a developer's point of view, the only real concern is making\n> sure that there's not some highly non-obvious bug in cross-package\n> compatibility that will suddenly arise when you add namespaces to\n> your package. That may seem unlikely, but maintaining multiple\n> interdependent packages teaches one the Tao of Paranoia.\n\nIndeed. That is of course the problem as all the changes propagate \nthrough dependecy and Suggest inter-package network like STD... As there \nmay be a lot of unforeseen consequences the only way, I think, is to \nhave a lot of testing code.\n\n\n> From a historical perspective, collision problems used to be avoided\n> by not creating packages with duplicate nomenclature. That was\n> eminently doable, even until very recently. But the R world has\n> changed, the number of packages has grown to the point where\n> collisions are a real issue, and needs of the network community have\n> become sufficiently diverse that multiple R-based toolkits start to\n> make sense. In this environment, I am persuaded that namespaces are a\n> regrettable necessity. (There is still no excuse for American Idol.)\n\nI definitely agree on that. I also recall early days of R somewhat\nresemble MIT hacker culture. As the community grows collisions are more \nand more likely. Perhaps American Idol should be namespaced too...\n\n\n> Given that, the idea of working towards a unified API (or\n> ``meta-class,'' as it were) to form another abstraction layer\n> between the usual class-level data representation and the analysis\n> tools would seem to have promise. Very difficult to do well, however.\n> In the short term, a more systematic scheme for class conversion\n> would doubtless be helpful. (Otherwise, our packages have to know how\n> to decode everyone else's classes, which is not practical. And vice\n> versa.) Not speaking for the other members of the team, I am\n> sympathetic to supporting such a lingua franca effort if (1) it's\n> well-designed, (2) doesn't break anything, and (3) doesn't create\n> maintenance problems down the road. I have learned the hard way to be\n> very careful vis a vis (2) and (3), and do not lightly make changes\n> to the network class. But persuasion is not impossible, and I am open\n> to specific proposals.\n\nThanks for the good word. All your 1-3 points are definitely the top \npriority for me too.\n\n~Michal",
+      "body_snippet": "Hi Carter,\n\n> remain in the domain of personal speculation. From an end user\n> perspective, the main downside of namespaces is that they reduce the\n> transparency of access to code within the interpre",
+      "thread_id": "thread-4573f2a7a97b",
+      "thread_depth": 4,
+      "month": "2010-08"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-31840f3484dd",
+      "subject": "[statnet_help] Error in fitting p1model to data which have some zero degree nodes",
+      "message_count": 1,
+      "participants": [
+        "Saeed Nasehi Moghadam"
+      ],
+      "started": "2010-08-01T08:49:05Z",
+      "last_reply": "2010-08-01T08:49:05Z",
+      "root_message_id": "msg-31840f3484dd"
+    },
+    {
+      "id": "thread-ba9f24ec0d81",
+      "subject": "[statnet_help] Problem with \"constraints=~bd(maxout=5)\"",
+      "message_count": 1,
+      "participants": [
+        "Victorin Luisier"
+      ],
+      "started": "2010-08-03T07:17:31Z",
+      "last_reply": "2010-08-03T07:17:31Z",
+      "root_message_id": "msg-ba9f24ec0d81"
+    },
+    {
+      "id": "thread-ea51740bcef6",
+      "subject": "[statnet_help] using the base argument in nodemix?",
+      "message_count": 3,
+      "participants": [
+        "David Hunter",
+        "Jenine Harris"
+      ],
+      "started": "2010-08-03T14:38:52Z",
+      "last_reply": "2010-08-05T12:43:54Z",
+      "root_message_id": "msg-ea51740bcef6"
+    },
+    {
+      "id": "thread-9c652f471a86",
+      "subject": "[statnet_help] Problem with \"constraints=~bd(maxout=5)\"",
+      "message_count": 2,
+      "participants": [
+        "Victorin Luisier"
+      ],
+      "started": "2010-08-04T03:44:29Z",
+      "last_reply": "2010-08-06T09:40:02Z",
+      "root_message_id": "msg-9c652f471a86"
+    },
+    {
+      "id": "thread-7b126421c53c",
+      "subject": "[statnet_help] ergmuserterms",
+      "message_count": 1,
+      "participants": [
+        "Wijk, B.C.M. van, (Bernadette)"
+      ],
+      "started": "2010-08-04T08:11:25Z",
+      "last_reply": "2010-08-04T08:11:25Z",
+      "root_message_id": "msg-7b126421c53c"
+    },
+    {
+      "id": "thread-e860b59d060e",
+      "subject": "[statnet_help] Re: statnet_help Digest, Vol 48, Issue 18",
+      "message_count": 2,
+      "participants": [
+        "Renato Corbetta",
+        "Victorin Luisier"
+      ],
+      "started": "2010-08-04T13:27:00Z",
+      "last_reply": "2010-08-05T02:49:13Z",
+      "root_message_id": "msg-e860b59d060e"
+    },
+    {
+      "id": "thread-07adc96a3736",
+      "subject": "[statnet_help] Missing parameters in bipartite diagnostics",
+      "message_count": 1,
+      "participants": [
+        "Brian Keegan"
+      ],
+      "started": "2010-08-04T21:36:02Z",
+      "last_reply": "2010-08-04T21:36:02Z",
+      "root_message_id": "msg-07adc96a3736"
+    },
+    {
+      "id": "thread-f0fca2fd0f32",
+      "subject": "[statnet_help] ergmuserterms",
+      "message_count": 1,
+      "participants": [
+        "Martina Morris"
+      ],
+      "started": "2010-08-09T04:53:39Z",
+      "last_reply": "2010-08-09T04:53:39Z",
+      "root_message_id": "msg-f0fca2fd0f32"
+    },
+    {
+      "id": "thread-3cd2f28a5a36",
+      "subject": "[statnet_help] Interpreting nodemix coefficients",
+      "message_count": 1,
+      "participants": [
+        "stanj@u.washington.edu"
+      ],
+      "started": "2010-08-23T09:27:00Z",
+      "last_reply": "2010-08-23T09:27:00Z",
+      "root_message_id": "msg-3cd2f28a5a36"
+    },
+    {
+      "id": "thread-8fd055f4c485",
+      "subject": "[statnet_help] istars and ostars by attribute",
+      "message_count": 2,
+      "participants": [
+        "Jeff Treem",
+        "Mark S. Handcock"
+      ],
+      "started": "2010-08-23T22:42:28Z",
+      "last_reply": "2010-08-24T20:08:28Z",
+      "root_message_id": "msg-8fd055f4c485"
+    },
+    {
+      "id": "thread-039b92fcfac2",
+      "subject": "[statnet_help] converting ergm output into tables",
+      "message_count": 2,
+      "participants": [
+        "Elena Grewal",
+        "Mark S. Handcock"
+      ],
+      "started": "2010-08-24T15:30:20Z",
+      "last_reply": "2010-08-24T16:32:06Z",
+      "root_message_id": "msg-039b92fcfac2"
+    },
+    {
+      "id": "thread-4573f2a7a97b",
+      "subject": "[statnet_help]  from network to igraph and back again, and NAMESPACEs",
+      "message_count": 14,
+      "participants": [
+        "Carter T. Butts",
+        "John Paolillo",
+        "Magnus Thor Torfason",
+        "Michal Bojanowski",
+        "Pavel N. Krivitsky"
+      ],
+      "started": "2010-08-25T10:57:23Z",
+      "last_reply": "2010-08-31T11:32:51Z",
+      "root_message_id": "msg-4573f2a7a97b"
+    },
+    {
+      "id": "thread-b1a13b20ac01",
+      "subject": "[statnet_help] results that are too significant",
+      "message_count": 3,
+      "participants": [
+        "Carter T. Butts",
+        "David Hunter",
+        "David Schaefer"
+      ],
+      "started": "2010-08-25T20:29:47Z",
+      "last_reply": "2010-08-30T01:05:19Z",
+      "root_message_id": "msg-b1a13b20ac01"
+    },
+    {
+      "id": "thread-a5e6ee9ce4c9",
+      "subject": "[statnet_help] Re: results that are too significant",
+      "message_count": 1,
+      "participants": [
+        "Jesse Blocher"
+      ],
+      "started": "2010-08-28T20:04:33Z",
+      "last_reply": "2010-08-28T20:04:33Z",
+      "root_message_id": "msg-a5e6ee9ce4c9"
+    }
+  ]
+}

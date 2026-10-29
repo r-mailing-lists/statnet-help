@@ -1,0 +1,307 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2011-08",
+  "messages": [
+    {
+      "id": "msg-a3bcaf105118",
+      "message_id": "<4E3AA8FF.9040304@coll.mpg.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "be636dde28cefa502024155d2c668f78a853d393127e9415ccd248c0c80cf950",
+      "date": "2011-08-04T07:13:19Z",
+      "subject": "[statnet_help] marginal effects",
+      "subject_clean": "[statnet_help] marginal effects",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nA reviewer said I should report marginal effects for ERGM coefficients. \nHow can I do that?\n\nLet's assume I have a dyadic dependence model for a contact network. I \nhave included edges, a nodemix term, transitive triads, and an edge \ncovariate.\n\nWhy should it be insufficient to say that the probability of two \nindividuals of being tied in the network is increased by 23 percent \n(i.e., exp(coef) = 1.23) if the edge covariate is increased by one unit?\n\nThanks,\nPhilip",
+      "body_snippet": "Hi,\n\nA reviewer said I should report marginal effects for ERGM coefficients. \nHow can I do that?\n\nLet's assume I have a dyadic dependence model for a contact network. I \nhave included edges, a nodemix",
+      "thread_id": "thread-a3bcaf105118",
+      "thread_depth": 0,
+      "month": "2011-08"
+    },
+    {
+      "id": "msg-66ec3029749c",
+      "message_id": "<alpine.LRH.2.01.1108040859420.28327@hymn32.u.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2011-08-04T08:59:42Z",
+      "subject": "[statnet_help] marginal effects",
+      "subject_clean": "[statnet_help] marginal effects",
+      "in_reply_to": "<4E3AA8FF.9040304@coll.mpg.de>",
+      "references": [],
+      "body_plain": "Hi Philip,\n\nThat's not quite how the coefficients work.   It is approximately true when the tie has a low probability to begin with, but gets farther and farther away form the truth as ties get more likely.\n\nSince you said that exp(coef) = 1.23, then that means the coefficient you're talking about is about 0.207.  So, imagine a pair of actors, who otherwise have a log-odds of a tie of -10.  That corresponds to a very low probability, exp(-10) / (1+exp(-10))= 0.0000454. Now, if you bump up the covariate by 1 on your statistic of interest, the log-odds of a tie will rise to -10+0.207 = -9.793.  Indeed the probability corresponding to this is 0.0000558, which is 23% higher than before.\n\nBut now imagine they have a log-odds of 2, and thus a tie probability of 0.88. Their revised log-odds will be 2.207, for a probability of 0.90; only about 2% higher.\n\nThat's the way log-odds work, and it's by design, not a quirk.  It's one way to capture that fact that you can't ever make a claim that some phenomenon has a strict multiplicative effect on probabilities, because then you run the risk of probabilities rising above 1.\n\nSince humans are much better at thinking in terms of probabilities rather than log-odds, it's common when using methods based on log-odds - whether it's for logistic regression, or ergms, or something else - to report the coefficients, and then also report examples of marginal effects, which is what it sounds like your reviewer wants.\n\nHope that helps,\nSteve\n\n\n***********************************************************************\n  * Steven M. Goodreau / Assoc. Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100     *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)   *\n  * http://faculty.washington.edu/goodreau                            *\n  * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k         *\n***********************************************************************\n\nOn Thu, 4 Aug 2011, Philip Leifeld wrote:\n\n> Hi,\n>\n> A reviewer said I should report marginal effects for ERGM coefficients. How \n> can I do that?\n>\n> Let's assume I have a dyadic dependence model for a contact network. I have \n> included edges, a nodemix term, transitive triads, and an edge covariate.\n>\n> Why should it be insufficient to say that the probability of two individuals \n> of being tied in the network is increased by 23 percent (i.e., exp(coef) = \n> 1.23) if the edge covariate is increased by one unit?\n>\n> Thanks,\n> Philip\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi Philip,\n\nThat's not quite how the coefficients work.   It is approximately true when the tie has a low probability to begin with, but gets farther and farther away form the truth as ties get more l",
+      "thread_id": "thread-a3bcaf105118",
+      "thread_depth": 1,
+      "month": "2011-08"
+    },
+    {
+      "id": "msg-4d54439a0525",
+      "message_id": "<F7452FEC9FABCF4493C2DBB2E9DC31CE18FEAF64@xmail32.ad.ua.ac.be>",
+      "from_name": "Quets Jan",
+      "from_email_hash": "ee70f7919e81636709211e51fc5cd3e6ce39b02267094f4686a4e6899abb3f8b",
+      "date": "2011-08-09T04:17:51Z",
+      "subject": "[statnet_help] netstat intallation error",
+      "subject_clean": "[statnet_help] netstat intallation error",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\nI'm using Ubuntu 10.04 64bit, I get an error when I want to install netstat in R.\none can see the details below.\n(also in window 7 64 bit I got more or less the same problem)\n\nWhat could be wrong?\n\n******************************************************\n> install.packages('statnet')\nWarning in install.packages(\"statnet\") :\n  argument 'lib' is missing: using '/home/jan/R/x86_64-pc-linux-gnu-library/2.10'\n--- Please select a CRAN mirror for use in this session ---\nLoading Tcl/Tk interface ... done\nWarning: unable to access index for repository http://www.freestatistics.org/cran/src/contrib\nWarning message:\nIn getDependencies(pkgs, dependencies, available, lib) :\n  package ?statnet? is not available\n>\n\n *****************************************************\n\n> sessionInfo()\nR version 2.10.1 (2009-12-14)\nx86_64-pc-linux-gnu\n\nlocale:\n [1] LC_CTYPE=en_US.utf8       LC_NUMERIC=C\n [3] LC_TIME=en_US.utf8        LC_COLLATE=en_US.utf8\n [5] LC_MONETARY=C             LC_MESSAGES=en_US.utf8\n [7] LC_PAPER=en_US.utf8       LC_NAME=C\n [9] LC_ADDRESS=C              LC_TELEPHONE=C\n[11] LC_MEASUREMENT=en_US.utf8 LC_IDENTIFICATION=C\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base\n\nloaded via a namespace (and not attached):\n[1] tcltk_2.10.1 tools_2.10.1\n>\n\n *****************************************************\n\n> getOption(\"pkgType\")\n[1] \"source\"\n>\n\n\nThanks,\nJan\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110809/af74bc28/attachment.html>",
+      "body_snippet": "Hello,\nI'm using Ubuntu 10.04 64bit, I get an error when I want to install netstat in R.\none can see the details below.\n(also in window 7 64 bit I got more or less the same problem)\n\nWhat could be wro",
+      "thread_id": "thread-4d54439a0525",
+      "thread_depth": 0,
+      "month": "2011-08"
+    },
+    {
+      "id": "msg-fdceb547120a",
+      "message_id": "<4E417A5B.2020609@ucla.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "fb40357ebb8d7f0a427d9ad2641aa56f67d6763bdb0f1109ba0f3c4b5584b09d",
+      "date": "2011-08-09T11:20:11Z",
+      "subject": "[statnet_help] netstat intallation error",
+      "subject_clean": "[statnet_help] netstat intallation error",
+      "in_reply_to": "<F7452FEC9FABCF4493C2DBB2E9DC31CE18FEAF64@xmail32.ad.ua.ac.be>",
+      "references": [
+        "<F7452FEC9FABCF4493C2DBB2E9DC31CE18FEAF64@xmail32.ad.ua.ac.be>"
+      ],
+      "body_plain": "Jan,\n\nYou appear to be using R 2.10, which is very old. It would be good to update and try again.\n\nIf that does not work, try a different mirror for CRAN.\n\nGood luck!\n\nMark\n\nOn 8/9/11 4:17 AM, Quets Jan wrote:\n>\n> Hello,\n> I'm using Ubuntu 10.04 64bit, I get an error when I want to install netstat in R.\n> one can see the details below.\n> (also in window 7 64 bit I got more or less the same problem)\n>\n> What could be wrong?\n>\n> ******************************************************\n>>  install.packages('statnet')\n> Warning in install.packages(\"statnet\") :\n> argument 'lib' is missing: using '/home/jan/R/x86_64-pc-linux-gnu-library/2.10'\n> --- Please select a CRAN mirror for use in this session ---\n> Loading Tcl/Tk interface ... done\n> Warning: unable to access index for repository http://www.freestatistics.org/cran/src/contrib\n> Warning message:\n> In getDependencies(pkgs, dependencies, available, lib) :\n> package ?statnet? is not available\n>>\n>\n> *****************************************************\n>\n>>  sessionInfo()\n> R version 2.10.1 (2009-12-14)\n> x86_64-pc-linux-gnu\n>\n> locale:\n> [1] LC_CTYPE=en_US.utf8 LC_NUMERIC=C\n> [3] LC_TIME=en_US.utf8 LC_COLLATE=en_US.utf8\n> [5] LC_MONETARY=C LC_MESSAGES=en_US.utf8\n> [7] LC_PAPER=en_US.utf8 LC_NAME=C\n> [9] LC_ADDRESS=C LC_TELEPHONE=C\n> [11] LC_MEASUREMENT=en_US.utf8 LC_IDENTIFICATION=C\n>\n> attached base packages:\n> [1] stats graphics grDevices utils datasets methods base\n>\n> loaded via a namespace (and not attached):\n> [1] tcltk_2.10.1 tools_2.10.1\n>>\n>\n> *****************************************************\n>\n>>  getOption(\"pkgType\")\n> [1] \"source\"\n>>\n>\n>\n> Thanks,\n> Jan\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Jan,\n\nYou appear to be using R 2.10, which is very old. It would be good to update and try again.\n\nIf that does not work, try a different mirror for CRAN.\n\nGood luck!\n\nMark\n\nOn 8/9/11 4:17 AM, Quets J",
+      "thread_id": "thread-4d54439a0525",
+      "thread_depth": 1,
+      "month": "2011-08"
+    },
+    {
+      "id": "msg-ff24c55d464b",
+      "message_id": "<CACOOgoH_1s18ggy0m2Qu3LY9fxEDm3JN=MMm9UYT1d6oStD1pg@mail.gmail.com>",
+      "from_name": "tomas gueneau",
+      "from_email_hash": "988713533df62be792d3966f1a6a820e4a2c33f7166ab964be27a5e6eff56af5",
+      "date": "2011-08-10T14:33:07Z",
+      "subject": "[statnet_help] Re: installation problem ubuntu.",
+      "subject_clean": "[statnet_help] Re: installation problem ubuntu.",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "It's very likely the problem is your version, as already mentioned. I used\nto have the same problem. Just update R through synaptic and should be ok.\nOn Aug 9, 2011 9:05 PM, <statnet_help-request@mailman2.u.washington.edu>\nwrote:\n> Send statnet_help mailing list submissions to\n> statnet_help@u.washington.edu\n>\n> To subscribe or unsubscribe via the World Wide Web, visit\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> or, via email, send a message with subject or body 'help' to\n> statnet_help-request@mailman2.u.washington.edu\n>\n> You can reach the person managing the list at\n> statnet_help-owner@mailman2.u.washington.edu\n>\n> When replying, please edit your Subject line so it is more specific\n> than \"Re: Contents of statnet_help digest...\"\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110810/5c77597d/attachment.html>",
+      "body_snippet": "It's very likely the problem is your version, as already mentioned. I used\nto have the same problem. Just update R through synaptic and should be ok.\nOn Aug 9, 2011 9:05 PM, <statnet_help-request@mail",
+      "thread_id": "thread-ff24c55d464b",
+      "thread_depth": 0,
+      "month": "2011-08"
+    },
+    {
+      "id": "msg-752582cdd01a",
+      "message_id": "<web-165175290@uni-freiburg.de>",
+      "from_name": "Alla Bulashevska",
+      "from_email_hash": "80d5401ffd62756896e5fa22e25c03e764ea2e24549240203deb6d8e0c012002",
+      "date": "2011-08-14T14:04:18Z",
+      "subject": "[statnet_help] Latent Cluster Model with package latentnet",
+      "subject_clean": "[statnet_help] Latent Cluster Model with package latentnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\ni am trying to simulate two example networks discussed in\nthe paper of Krivitsky et.al. published in Social Networks\nJournal 2009\n -Representing degree distributions, clustering, and\nhomophily in social networks with latent cluster random\neffects models.\nThe first network has 150 actors and the degree sequence\ngenerated from the Yule distribution and i simulate it with\nthe following command:\nS1<- ryule(n=150)\nThe second network should be a draw from the Latent Cluster\nModel with 3 groups and 2 dimensions and given parameters\nsuch as cluster means and intra-cluster deviation, but\nshould have the same degree distribution as the first.\nI try to simulate it with the following piece of code:\nmodS1<- ergmm(S1 ~ euclidean(d=2, G=3))\nS2<- with(modS1,simulate(model, par= list(Z.mean=\nrbind(c(0,0),c(-1.5,1.5),c(1.5,1.5)), Z.var= rep(0.2,\ntimes= 3)), prior= prior))\n\nThe problem is i do not know how to prescribe the\nconstraint about degree distribution. The function\nsimulate() in the package latentnet do not have the\nparameter constraints like in the package ergm so that one\ncan use constraints=~degreedist.\n\nThanks for the help, \nAlla.",
+      "body_snippet": "Hi all,\ni am trying to simulate two example networks discussed in\nthe paper of Krivitsky et.al. published in Social Networks\nJournal 2009\n -Representing degree distributions, clustering, and\nhomophily",
+      "thread_id": "thread-752582cdd01a",
+      "thread_depth": 0,
+      "month": "2011-08"
+    },
+    {
+      "id": "msg-7dc998b03251",
+      "message_id": "<OF1A46CC9F.BA2C9B82-ONC12578ED.006E31ED-C12578ED.006E31ED@be.ibm.com>",
+      "from_name": "Tom Kochuyt",
+      "from_email_hash": "46f39e60ea17044367574233c6036a3c2ecdd09badcc49c19d1b5d76f9ccf618",
+      "date": "2011-08-15T13:03:37Z",
+      "subject": "[statnet_help] AUTO: Tom Kochuyt is out of the office (returning 22/08/2011)",
+      "subject_clean": "[statnet_help] AUTO: Tom Kochuyt is out of the office (returning 22/08/2011)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I am out of the office until 22/08/2011.\n\nDear,\n\nI'm out of the office from August 15th until August 22th.\nFor all urgent matters related to leads and opportunities Jilco Schuurmans\ncan be contacted.\n\n\nI will respond to all other mails as soon as I am back in the office.\n\n\nKind regards,\n\nTom Kochuyt\n\n\nNote: This is an automated response to your message  \"statnet_help Digest,\nVol 61, Issue 4\" sent on 15/8/2011 21:01:33.\n\nThis is the only notification you will receive while this person is away.",
+      "body_snippet": "I am out of the office until 22/08/2011.\n\nDear,\n\nI'm out of the office from August 15th until August 22th.\nFor all urgent matters related to leads and opportunities Jilco Schuurmans\ncan be contacted.\n",
+      "thread_id": "thread-7dc998b03251",
+      "thread_depth": 0,
+      "month": "2011-08"
+    },
+    {
+      "id": "msg-d7db4a13a499",
+      "message_id": "<CANqgAXg6Hr4CyvZV38UZmss9DWt_W7YSEBrF5STnBV1YdvF_GA@mail.gmail.com>",
+      "from_name": "chengjun wang",
+      "from_email_hash": "48d0e4355a7b670f78b80a940ebdd6d299c8a10a0424a9369941196090fcd120",
+      "date": "2011-08-17T07:24:43Z",
+      "subject": "[statnet_help] About Homophily effect for Directed Network",
+      "subject_clean": "[statnet_help] About Homophily effect for Directed Network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear everyone,\n\nI have two questions about ERGM:\n\n1. how to interpret the homophily effect of ERGM for directed networks?\nWhat's the difference from undirected networks?\n\n2. How could ERGM use the weight of edge for analysis? that is, how could\nergm deal with weighted network?\n\nYour reply will be appreciated a lot.\n\nPlus, how could I browse the former discussions of this mail list?\n\nBest regards.\n\nSincerely yours.\n\nWang Chengjun\n\n\n\nWeb Mining Lab\nDepartment of Media and Communication\nCity university of Hong kong.\nRoom 105D,Hall 8, City university of Hong kong,\n83 Tat Chee Avenue,kowloon.Hong Kong.\nEmail: wangchj04@gmail.com; chengwang6@student.cityu.edu.hk\nMobile:96442905   Tel:34423580\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110817/e1669302/attachment.html>",
+      "body_snippet": "Dear everyone,\n\nI have two questions about ERGM:\n\n1. how to interpret the homophily effect of ERGM for directed networks?\nWhat's the difference from undirected networks?\n\n2. How could ERGM use the wei",
+      "thread_id": "thread-d7db4a13a499",
+      "thread_depth": 0,
+      "month": "2011-08"
+    },
+    {
+      "id": "msg-6b257ad1c7b7",
+      "message_id": "<36644.129.105.36.195.1313613869.squirrel@mail.it.northwestern.edu>",
+      "from_name": "Hugh J Devlin",
+      "from_email_hash": "eb00b10a817fde0a193dccc0dbd0776d612083e53c084a69b3dae82258d1ab15",
+      "date": "2011-08-17T13:44:29Z",
+      "subject": "[statnet_help] Re: predicted link probabilities",
+      "subject_clean": "[statnet_help] Re: predicted link probabilities",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "This function was inspired by a long post by Nicola Soriani from July 2010 and is a\nfeeble attempt to tack unto that archived thread.\n\nThis function takes as input an ergm model for an undirected relation and returns\nthe edge probabilities, analytically, without simulation. It is considerably simpler\nthan the previously posted code, and less general, but seems to work fine for\nundirected graphs anyway.\n\nI would very much appreciate any comments on this code. I bet it could be far\nsimpler still if I knoew what I were doing.\n\nWould such a fucntion be a reasonable addition to the ergm package, or is that\nsuggestion ergm heresy?\n\nthanks,\nHugh\n\n# Analytic (non-simulation) edge probability\n# after Anderson, Wasserman, Crouch. p* primer (1999), p. 53\n# input: x, an ergm model for an undirected relation\n# returns real-valued matrix of same dim as x, the edge probabilities\npredict = function(x) {\n\tn <- network.size(x$network)\n\tz <- summary(x$formula)\n\tresult = matrix(0.0, n, n)\n\t# alternative ergm model\n\txAlt <- x\n\txAlt$formula <- ergm.update.formula(xAlt$formula, xAlt$network ~ .)\n\t# undirected, upper triangle loop\n\tfor(i in 1:(n-1)) {\n\t\tfor(j in (i+1):n) {\n\t\t\txAlt$network[i,j] <- !xAlt$network[i,j] # toggle 1 edge\n\t\t\tzAlt <- summary(xAlt$formula)\n\t\t\t# reverse terms to save -1 factor in Anderson et. al.\n\t\t\tif(x$network[i,j])\n\t\t\t\td <- zAlt - z\n\t\t\telse\n\t\t\t\td <- z - zAlt\n\t\t\tp <- (1.0 / (1.0 + exp(sum(x$coef * d))))\n\t\t\tresult[i,j] <- p # undirected\n\t\t\tresult[j,i] <- p\n\t\t\txAlt$network[i,j] <- !xAlt$network[i,j] # restore edge\n\t\t}\n\t}\n\treturn(result)\n}",
+      "body_snippet": "This function was inspired by a long post by Nicola Soriani from July 2010 and is a\nfeeble attempt to tack unto that archived thread.\n\nThis function takes as input an ergm model for an undirected rela",
+      "thread_id": "thread-6b257ad1c7b7",
+      "thread_depth": 0,
+      "month": "2011-08"
+    },
+    {
+      "id": "msg-d8ea64ed0209",
+      "message_id": "<CA+4c0qhOCbWgKPdP+EEPiait21Kr-Nqb_4CD8Uz6CtRbWAfBPw@mail.gmail.com>",
+      "from_name": "Amiyaal Ilany",
+      "from_email_hash": "c0e89b5d330ba4010bfaa9b554cf622ad0fcc16ae2eaca6783f270e5d8d3885f",
+      "date": "2011-08-17T16:31:07Z",
+      "subject": "[statnet_help] Triad census & edges",
+      "subject_clean": "[statnet_help] Triad census & edges",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI am testing if specific triad types are more/less common than expected by\nchance in undirected social networks. I would like to control for the number\nof edges and for the degree distribution. Should these terms be added as\nconstraints? I read somewhere that 'edges' is a good term to add to almost\nany model. Could it then be added both to the model and as constraint?\n\nThank you,\n\nAmiyaal Ilany\nDepartment of Zoology\nTel Aviv University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110818/a093f8f8/attachment.html>",
+      "body_snippet": "Hello,\n\nI am testing if specific triad types are more/less common than expected by\nchance in undirected social networks. I would like to control for the number\nof edges and for the degree distribution",
+      "thread_id": "thread-d8ea64ed0209",
+      "thread_depth": 0,
+      "month": "2011-08"
+    },
+    {
+      "id": "msg-180a686ff7d6",
+      "message_id": "<CAFjTKSjCig8FxHWy-070_6K14AYNcGWNnfgHjb6LBvthZH6+qQ@mail.gmail.com>",
+      "from_name": "John Scott",
+      "from_email_hash": "f3e17b4e70f57fa7a82fc7a2a375fa9425dab1c63564ce33709c4b6122f3a3bb",
+      "date": "2011-08-18T14:48:01Z",
+      "subject": "[statnet_help] Valued Edges",
+      "subject_clean": "[statnet_help] Valued Edges",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\nThis is a follow-up question to Scott McClurg's question of last April 15\n(\"Newbie\"), in which he asked about converting a .csv file into a network\nobject without losing the edge values.  The response to his question was to\ninclude the 'names.eval' argument with the 'ignore.eval' argument.  I\nfollowed the script the question and response exactly except for file names,\nbut I still lost the edge values.  Below is my code - Please let me know if\nI am doing something wrong or if there is a new development.\nThanks in advance,\nJohn\n\n> mmm.csv<-read.csv(\"mmm 2009_1 client affil by bill.csv\", row.names=1,\nheader=T )\n> dim(mmm.csv)\n[1] 777 777\n> mmm.csv<-as.matrix(mmm.csv)\n> diag(mmm.csv)<-0\n> mmm.net<- network(mmm.csv, directed=F, loops=F, hyper=F, multiple=F,\nbipartite=F, ignore.eval=F, names.eval=\"rep\")\n> mmm.net[4,]\n  [1] 0 1 1 0 0 0 0 1 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0\n0 0 0 0 1 1 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 1 1 0 0 0 1 0 0 0 1 1 0 0 0 0 0\n1 0 0 0 0 0...\n\n\n-- \nJohn C. Scott\nAssistant Professor, Department of Public Policy\nResearch Scientist, Institute on Aging\n\n211 Abernethy Hall\nUniversity of North Carolina at Chapel Hill\nChapel Hill, NC 27599-3435\nWebsite: http://johncscott.web.unc.edu/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110818/8af17aa1/attachment.html>",
+      "body_snippet": "Hi,\nThis is a follow-up question to Scott McClurg's question of last April 15\n(\"Newbie\"), in which he asked about converting a .csv file into a network\nobject without losing the edge values.  The resp",
+      "thread_id": "thread-180a686ff7d6",
+      "thread_depth": 0,
+      "month": "2011-08"
+    },
+    {
+      "id": "msg-4b0874daa37e",
+      "message_id": "<4E5D81F7.6030303@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2011-08-30T17:36:07Z",
+      "subject": "[statnet_help] Triad census & edges",
+      "subject_clean": "[statnet_help] Triad census & edges",
+      "in_reply_to": "<CA+4c0qhOCbWgKPdP+EEPiait21Kr-Nqb_4CD8Uz6CtRbWAfBPw@mail.gmail.com>",
+      "references": [
+        "<CA+4c0qhOCbWgKPdP+EEPiait21Kr-Nqb_4CD8Uz6CtRbWAfBPw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Amiyaal,\n\nYou cannot add edges as both a constraint or a model term; it must be \none or the other.  If it's a constraint then it's not allowed to vary, \nand if it's not allowed to vary, then you can't do inference on it. \nWhether you chose to add it as a term or a constraint depends on the \nhypothesis that you're trying to test, and the theoretical seting that \nyou're working with.  Is there a reason to believe that the random \nprocess you're exploring would generate the same number of ties with \neach alternative realization? Or is the actual number of edges \nstochastic as well?\n\nYours,\nSteve\n\n\n\nOn 8/17/2011 4:31 PM, Amiyaal Ilany wrote:\n> Hello,\n>\n> I am testing if specific triad types are more/less common than \n> expected by chance in undirected social networks. I would like to \n> control for the number of edges and for the degree distribution. \n> Should these terms be added as constraints? I read somewhere that \n> 'edges' is a good term to add to almost any model. Could it then be \n> added both to the model and as constraint?\n>\n> Thank you,\n>\n> Amiyaal Ilany\n> Department of Zoology\n> Tel Aviv University\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110830/9c3a23e7/attachment.html>",
+      "body_snippet": "Hi Amiyaal,\n\nYou cannot add edges as both a constraint or a model term; it must be \none or the other.  If it's a constraint then it's not allowed to vary, \nand if it's not allowed to vary, then you ca",
+      "thread_id": "thread-d8ea64ed0209",
+      "thread_depth": 1,
+      "month": "2011-08"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-a3bcaf105118",
+      "subject": "[statnet_help] marginal effects",
+      "message_count": 2,
+      "participants": [
+        "Philip Leifeld",
+        "Steven Goodreau"
+      ],
+      "started": "2011-08-04T07:13:19Z",
+      "last_reply": "2011-08-04T08:59:42Z",
+      "root_message_id": "msg-a3bcaf105118"
+    },
+    {
+      "id": "thread-4d54439a0525",
+      "subject": "[statnet_help] netstat intallation error",
+      "message_count": 2,
+      "participants": [
+        "Mark S. Handcock",
+        "Quets Jan"
+      ],
+      "started": "2011-08-09T04:17:51Z",
+      "last_reply": "2011-08-09T11:20:11Z",
+      "root_message_id": "msg-4d54439a0525"
+    },
+    {
+      "id": "thread-ff24c55d464b",
+      "subject": "[statnet_help] Re: installation problem ubuntu.",
+      "message_count": 1,
+      "participants": [
+        "tomas gueneau"
+      ],
+      "started": "2011-08-10T14:33:07Z",
+      "last_reply": "2011-08-10T14:33:07Z",
+      "root_message_id": "msg-ff24c55d464b"
+    },
+    {
+      "id": "thread-752582cdd01a",
+      "subject": "[statnet_help] Latent Cluster Model with package latentnet",
+      "message_count": 1,
+      "participants": [
+        "Alla Bulashevska"
+      ],
+      "started": "2011-08-14T14:04:18Z",
+      "last_reply": "2011-08-14T14:04:18Z",
+      "root_message_id": "msg-752582cdd01a"
+    },
+    {
+      "id": "thread-7dc998b03251",
+      "subject": "[statnet_help] AUTO: Tom Kochuyt is out of the office (returning 22/08/2011)",
+      "message_count": 1,
+      "participants": [
+        "Tom Kochuyt"
+      ],
+      "started": "2011-08-15T13:03:37Z",
+      "last_reply": "2011-08-15T13:03:37Z",
+      "root_message_id": "msg-7dc998b03251"
+    },
+    {
+      "id": "thread-d7db4a13a499",
+      "subject": "[statnet_help] About Homophily effect for Directed Network",
+      "message_count": 1,
+      "participants": [
+        "chengjun wang"
+      ],
+      "started": "2011-08-17T07:24:43Z",
+      "last_reply": "2011-08-17T07:24:43Z",
+      "root_message_id": "msg-d7db4a13a499"
+    },
+    {
+      "id": "thread-6b257ad1c7b7",
+      "subject": "[statnet_help] Re: predicted link probabilities",
+      "message_count": 1,
+      "participants": [
+        "Hugh J Devlin"
+      ],
+      "started": "2011-08-17T13:44:29Z",
+      "last_reply": "2011-08-17T13:44:29Z",
+      "root_message_id": "msg-6b257ad1c7b7"
+    },
+    {
+      "id": "thread-d8ea64ed0209",
+      "subject": "[statnet_help] Triad census & edges",
+      "message_count": 2,
+      "participants": [
+        "Amiyaal Ilany",
+        "Steven Goodreau"
+      ],
+      "started": "2011-08-17T16:31:07Z",
+      "last_reply": "2011-08-30T17:36:07Z",
+      "root_message_id": "msg-d8ea64ed0209"
+    },
+    {
+      "id": "thread-180a686ff7d6",
+      "subject": "[statnet_help] Valued Edges",
+      "message_count": 1,
+      "participants": [
+        "John Scott"
+      ],
+      "started": "2011-08-18T14:48:01Z",
+      "last_reply": "2011-08-18T14:48:01Z",
+      "root_message_id": "msg-180a686ff7d6"
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2012-12",
+  "messages": [
+    {
+      "id": "msg-67c573d03e67",
+      "message_id": "<CACzhPxkhumg_ayxxoDbudEP45UqEQ9xY_siJpoif2HvCziWRKA@mail.gmail.com>",
+      "from_name": "Pedro Costa del Amo",
+      "from_email_hash": "1b0ea26064298edfebc75ec10c5842b3a0513311a8a600c2bf5750289d9f8c40",
+      "date": "2012-12-02T06:29:40Z",
+      "subject": "[statnet_help] Problem with nodecov in network with counts",
+      "subject_clean": "[statnet_help] Problem with nodecov in network with counts",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet users and developers,\n\nI am trying to estimate an ERGM in a network with count data, in which I am\ninterested in using the new version of nodecov to model the main effect of\na numeric attribute.  Unfortunately, I am running all the time into the\nsame error, which I haven't been able to solve:\n\n*Warning in if (order) coefs[order, seq_len(order)] else numeric() :*\n*  the condition has length > 1 and only the first element will be used*\n*Error in if (order) coefs[order, seq_len(order)] else numeric() : *\n*  argument is not interpretable as logical*\n\nThe very same error message arises if one tries to estimate the following\nmodel with the zach network data provided with the ergm.count package:\n\n*fit <- ergm(zach~edges + nodecov(\"faction.id\",form=\"sum\"),\nresponse=\"contexts\", verbose=TRUE, reference=~Poisson)\n*\n\nEven though using nodecov of the faction.id attribute might not be the\nmost appropriate choice in that case, it serves as reproducible example.\n\nThe problem seems to occur after a couple iterations when calling the the\nautocovariance function (*acf*) from the function ar.yw.*default*. All the\ncovariances returned correspond to NA values. The output of the traceback\ncommand after the error message is the following:\n\n8: ar.yw.default(x, aic = aic, order.max = order.max, na.action =\nna.action,\n       series = series, ...)\n7: ar.yw(x, aic = aic, order.max = order.max, na.action = na.action,\n       series = series, ...)\n6: ar(x[, i], aic = TRUE)\n5: spectrum0.ar(x)\n4: effectiveSize(x)\n3: approx.hotelling.diff.test(esteq, esteq.obs)\n2: ergm.MCMLE(init, nw, model, initialfit, control = control, MHproposal =\nMHproposal,\n       MHproposal.obs = MHproposal.obs, verbose = verbose, response =\nresponse,\n       ...)\n1: ergm(zach ~ edges + nodecov(\"faction.id\", form = \"sum\"), response =\n\"contexts\",\n       verbose = TRUE, reference = ~Poisson)\n\n\nI am using the R version 2.15.2 (2012-10-26). What am I missing? Any help\nwould be appreciated.\n\nBest and thank you in advance,\n\nPedro Costa del Amo\nDepartment of Genomic Mathematics, University of Bonn\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20121202/c7301eb3/attachment.html>",
+      "body_snippet": "Dear Statnet users and developers,\n\nI am trying to estimate an ERGM in a network with count data, in which I am\ninterested in using the new version of nodecov to model the main effect of\na numeric att",
+      "thread_id": "thread-67c573d03e67",
+      "thread_depth": 0,
+      "month": "2012-12"
+    },
+    {
+      "id": "msg-5e7ea26662c7",
+      "message_id": "<1354519252.18410.21.camel@piPad.krivitsky.homeip.net>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "460258cbd680ea347ee0196adc8a17e139024de6f74b950cba8add8e35654b6f",
+      "date": "2012-12-02T23:20:52Z",
+      "subject": "[statnet_help] Problem with nodecov in network with counts",
+      "subject_clean": "[statnet_help] Problem with nodecov in network with counts",
+      "in_reply_to": "<CACzhPxkhumg_ayxxoDbudEP45UqEQ9xY_siJpoif2HvCziWRKA@mail.gmail.com>",
+      "references": [
+        "<CACzhPxkhumg_ayxxoDbudEP45UqEQ9xY_siJpoif2HvCziWRKA@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Pedro,\n\n> I am trying to estimate an ERGM in a network with count data, in which\n> I am interested in using the new version of nodecov to model the main\n> effect of a numeric attribute.  Unfortunately, I am running all the\n> time into the same error, which I haven't been able to solve:\n\nThis is, indeed, a bug in the implementation. Thanks for reporting it;\nwe'll fix it in the CRAN release.\n\n> fit <- ergm(zach~edges + nodecov(\"faction.id\",form=\"sum\"),\n> response=\"contexts\", verbose=TRUE, reference=~Poisson)\n> \n> \n> \n> Even though using nodecov of the faction.id attribute might not be the\n> most appropriate choice in that case, it serves as reproducible\n> example. \n\nWell, it could be interpreted as the effect of an actor's faction\nalignment on that actor's overall propensity to socialize...\n\nThat said, note that \"edges\" simply counts the number of nonzero ties,\nand if you want to model the overall propensity to interact in social\ncontexts, it should probably be accompanied by \"sum\".\n\n                           Pavel",
+      "body_snippet": "Dear Pedro,\n\n> I am trying to estimate an ERGM in a network with count data, in which\n> I am interested in using the new version of nodecov to model the main\n> effect of a numeric attribute.  Unfortun",
+      "thread_id": "thread-67c573d03e67",
+      "thread_depth": 1,
+      "month": "2012-12"
+    },
+    {
+      "id": "msg-4108a3669919",
+      "message_id": "<6D8DE8B6-C125-4682-AD71-8C20FA3CDFE7@Central.uh.edu>",
+      "from_name": "Kirkland, Justin H",
+      "from_email_hash": "de1d1026aa7ce6650a69a3d55219f1d5872484da5f733da972cf3a1a65051b52",
+      "date": "2012-12-05T10:56:12Z",
+      "subject": "[statnet_help] Differential Reciprocity",
+      "subject_clean": "[statnet_help] Differential Reciprocity",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet Users and Developers,\n\nI am working on a project attempting to measure the reciprocity between sets of legislators in the Texas state legislature. In general, I expect reciprocity to be common, but I expect that reciprocity will be even more common when one of the members of a dyad is a leader in the legislature. That is, I expect that {i,j} and {j,i} will occur together frequently, but I expect that frequency to be even higher when j has a certain node attribute. I have been trying to figure out ways to implement an ERGM to test this expectation in R, but have had little success. The standard \"mutual\" term for for ERGMs will allow node attributes to be incorporated, but this will result in a statistic measuring reciprocity when both i and j are leaders or when both are not leaders. I cannot figure out how to generate a \"mutual\" term for the circumstance where j is a leader and i is not.\n\nMy instinct is that I may have to build a new ERGM term using the ergm.userterms package. This package requires new functions both in R and in C (since ergm change statistics are calculated using C). Unfortunately, I have little experience programming in C, so designing such a statistic is beyond my current skills. I believe I could make some head way if I could locate the original C code of the basic \"mutual\" term for ERGMs, but have had little success tracking down the C code for \"mutual\" either on my own machine or through internet searches.\n\nIf anyone has any insights about:\n\n1) How I might test the differential reciprocity I expect using the current terms in the ERGM toolkit,\n2) How to code up such a statistic using the ergm.userterms package, or\n3) What the C code for the standard \"mutual\" ergm term looks like\n\nit would be of a great help to me. I am currently using R 2.15 and stat net version 3.0-1 on a Macintosh. Thanks in advance for any help!\n\nBest,\nJustin Kirkland\n\nJustin H. Kirkland\nAssistant Professor\nDepartment of Political Science\nUniversity of Houston\nwww.uh.edu/~jhkirkla<http://www.uh.edu/~jhkirkla>\njhkirkland@uh.edu<mailto:jhkirkland@uh.edu>\n\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20121205/f2b78f21/attachment.html>",
+      "body_snippet": "Dear Statnet Users and Developers,\n\nI am working on a project attempting to measure the reciprocity between sets of legislators in the Texas state legislature. In general, I expect reciprocity to be c",
+      "thread_id": "thread-4108a3669919",
+      "thread_depth": 0,
+      "month": "2012-12"
+    },
+    {
+      "id": "msg-19550750282c",
+      "message_id": "<C863E7693594F148ABBECBDDCE36AA760F822155@XMAIL-MBX-AH1.AD.UCSD.EDU>",
+      "from_name": "Lewis, Kevin",
+      "from_email_hash": "2885157a0538b695de73963d3e7a2540ad757b4f239727aaf4414d9353dd804b",
+      "date": "2012-12-05T12:04:54Z",
+      "subject": "[statnet_help] RE: Differential Reciprocity",
+      "subject_clean": "[statnet_help] RE: Differential Reciprocity",
+      "in_reply_to": "<6D8DE8B6-C125-4682-AD71-8C20FA3CDFE7@Central.uh.edu>",
+      "references": [
+        "<6D8DE8B6-C125-4682-AD71-8C20FA3CDFE7@Central.uh.edu>"
+      ],
+      "body_plain": "dear justin,\n\nplease forgive me if i am misunderstanding- but don't the current versions of the mutual terms allow you to study the effect you are interested in? in other words, if you include the generic \"mutual\" term in your model capturing the baseline tendency for EVERYONE towards reciprocity; and then you include another term in your model capturing reciprocity only among people who match on the \"leader\" attribute (or, if you want you can set diff=TRUE and have separate terms for reciprocity between two leaders, on one hand, and reciprocity between two non-leaders, on the other)- then this latter term will provide the same effect you are interested in, except its opposite. in other words, for instance, if you find that the reciprocity*matching term is negative- indicating that (controlling for the baseline tendency towards reciprocity) reciprocal ties between two people who match on leadership are LESS likely than chance would predict- then by definition reciprocal ties between two people who do not match on leadership (i.e. a leader and a non-leader) are MORE likely than chance would predict. so- all things equal- if you want to find the likelihood of a \"matching\" reciprocal tie, you add the baseline reciprocity coefficient to the matching*reciprocity coefficient (plus any other matching/sociality terms as appropriate); whereas if you want the likelihood of a \"non-matching\" reciprocal tie, you just look to the baseline reciprocity coefficient (plus any other matching/sociality terms as appropriate).\n\nplease let me know if this doesn't make sense (or if anyone else has any corrections!). best wishes,\n\n-kevin\n\nKevin Lewis\nAssistant Professor of Sociology\nUniversity of California, San Diego\n\nFrom: statnet_help-bounces@mailman2.u.washington.edu [mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of Kirkland, Justin H\nSent: Wednesday, December 05, 2012 10:56 AM\nTo: statnet_help@u.washington.edu\nSubject: [statnet_help] Differential Reciprocity\n\nDear Statnet Users and Developers,\n\nI am working on a project attempting to measure the reciprocity between sets of legislators in the Texas state legislature. In general, I expect reciprocity to be common, but I expect that reciprocity will be even more common when one of the members of a dyad is a leader in the legislature. That is, I expect that {i,j} and {j,i} will occur together frequently, but I expect that frequency to be even higher when j has a certain node attribute. I have been trying to figure out ways to implement an ERGM to test this expectation in R, but have had little success. The standard \"mutual\" term for for ERGMs will allow node attributes to be incorporated, but this will result in a statistic measuring reciprocity when both i and j are leaders or when both are not leaders. I cannot figure out how to generate a \"mutual\" term for the circumstance where j is a leader and i is not.\n\nMy instinct is that I may have to build a new ERGM term using the ergm.userterms package. This package requires new functions both in R and in C (since ergm change statistics are calculated using C). Unfortunately, I have little experience programming in C, so designing such a statistic is beyond my current skills. I believe I could make some head way if I could locate the original C code of the basic \"mutual\" term for ERGMs, but have had little success tracking down the C code for \"mutual\" either on my own machine or through internet searches.\n\nIf anyone has any insights about:\n\n1) How I might test the differential reciprocity I expect using the current terms in the ERGM toolkit,\n2) How to code up such a statistic using the ergm.userterms package, or\n3) What the C code for the standard \"mutual\" ergm term looks like\n\nit would be of a great help to me. I am currently using R 2.15 and stat net version 3.0-1 on a Macintosh. Thanks in advance for any help!\n\nBest,\nJustin Kirkland\n\nJustin H. Kirkland\nAssistant Professor\nDepartment of Political Science\nUniversity of Houston\nwww.uh.edu/~jhkirkla<http://www.uh.edu/~jhkirkla>\njhkirkland@uh.edu<mailto:jhkirkland@uh.edu>\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20121205/45c0e904/attachment.html>",
+      "body_snippet": "dear justin,\n\nplease forgive me if i am misunderstanding- but don't the current versions of the mutual terms allow you to study the effect you are interested in? in other words, if you include the gen",
+      "thread_id": "thread-4108a3669919",
+      "thread_depth": 1,
+      "month": "2012-12"
+    },
+    {
+      "id": "msg-53ae5ae6ae15",
+      "message_id": "<3C4F4DCA-A385-425E-BCEA-ADE1FFE4B5D4@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2012-12-27T05:09:04Z",
+      "subject": "[statnet_help] Re: SNA of animal movement using ERGM package",
+      "subject_clean": "[statnet_help] Re: SNA of animal movement using ERGM package",
+      "in_reply_to": "<CAL+WpDyrCFcSFco1tNwfvNibxmJs8qzfuDbqDYdu8dhmgBm9UQ@mail.gmail.com>",
+      "references": [
+        "<CAL+WpDySoCm3Qb7U7Ptkv_L1-M4vbs7dDEMQ9-ooj3MA3MMjSA@mail.gmail.com>",
+        "<CAL+WpDyrCFcSFco1tNwfvNibxmJs8qzfuDbqDYdu8dhmgBm9UQ@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Long, \n\nI'm not aware of any such papers, but I will forward your email question to a much larger email list where it's more likely to suggest a paper to someone.\n\nBest wishes,\nDave\n\n------\nDavid Hunter\nProfessor and Head\nDepartment of Statistics\nPenn State University\nPhone:  (814) 865-1348\nFax:  (814) 863-7114\nwww.stat.psu.edu/~dhunter\n\n\n\n\n\n\nOn Dec 18, 2012, at 7:09 PM, Nguyen Van Long wrote:\n\n> Dear Dr Hunter,\n> \n> \n> Greetings from Long Nguyen and wish you are having very lovely greeting season coming soon.\n> \n> \n> I am really interest in using ERGM package for SNA with poultry movement data in Vietnam. I searched for references that used ERGM package, but no luck.\n> \n> Do you have any SNA papers for animal movement using ERGM package?\n> \n> Thank you very much for your kind help.\n> \n> Best wishes,\n> \n> Long\n>  \n> --------------------------------------------------------\n> Nguyen Van Long, DVM, MSc, PhD Candidate\n> Epidemiology Division\n> Department of Animal Health, MARD\n> No. 15/78 Giaiphong Road,\n> Phuongmai, Dongda, Hanoi, Vietnam\n> Tel: (84.4) 38685104 - 0903239918 (Mobile)\n> Fax: (84.4) 38686339\n> Email: nvlong@dah.gov.vn or long.dahvn@gmail.com\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20121227/ebdcdeb4/attachment.html>",
+      "body_snippet": "Dear Long, \n\nI'm not aware of any such papers, but I will forward your email question to a much larger email list where it's more likely to suggest a paper to someone.\n\nBest wishes,\nDave\n\n------\nDavid",
+      "thread_id": "thread-53ae5ae6ae15",
+      "thread_depth": 0,
+      "month": "2012-12"
+    },
+    {
+      "id": "msg-40a322733d0d",
+      "message_id": "<CAHfK2MsfKAyQCt9e4c+rsMUtew0Pf+h9yjRpO5=hg=JEjQ7e6A@mail.gmail.com>",
+      "from_name": "C.H.",
+      "from_email_hash": "f25ef601a0cde0a9ce68467c9b7222bee9955e0f9881cc9c7fa75712bd9e2118",
+      "date": "2012-12-28T02:43:57Z",
+      "subject": "[statnet_help] Deletion of edges based on edge attribute",
+      "subject_clean": "[statnet_help] Deletion of edges based on edge attribute",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI have a question about the delete.edges method. My task is to delete\nthe edges on a graph based on certain edge attribute less than a\nthreshold. In the attached file, a network named \"ssim\" with an edge\nattribute called \"count\" is created.\n\n[R Code]\nsource(\"outgraph.R\")\nthinsim <- ssim\nthinsim %e% \"count\" ## is there a way to select edges (eid) based on\nedge attribute?\ndelete.edges(thinsim, (1:network.edgecount(thinsim))[thinsim %e%\n\"count\" <= 1])  # (1:network.edgecount(thinsim))[thinsim %e% \"count\"\n<= 1]  is not a good way\nthinsim %e% \"count\" ## not working at all. there still some edges with\ncount == 1\n[/R Code]\n\nMy question is: is there any better way to do this? Thank you so much!\n\nRegards,\n\nCH\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: outgraph.R\nType: application/octet-stream\nSize: 16758 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20121228/c0d6ee80/attachment.obj>",
+      "body_snippet": "Dear all,\n\nI have a question about the delete.edges method. My task is to delete\nthe edges on a graph based on certain edge attribute less than a\nthreshold. In the attached file, a network named \"ssim",
+      "thread_id": "thread-40a322733d0d",
+      "thread_depth": 0,
+      "month": "2012-12"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-67c573d03e67",
+      "subject": "[statnet_help] Problem with nodecov in network with counts",
+      "message_count": 2,
+      "participants": [
+        "Pavel N. Krivitsky",
+        "Pedro Costa del Amo"
+      ],
+      "started": "2012-12-02T06:29:40Z",
+      "last_reply": "2012-12-02T23:20:52Z",
+      "root_message_id": "msg-67c573d03e67"
+    },
+    {
+      "id": "thread-4108a3669919",
+      "subject": "[statnet_help] Differential Reciprocity",
+      "message_count": 2,
+      "participants": [
+        "Kirkland, Justin H",
+        "Lewis, Kevin"
+      ],
+      "started": "2012-12-05T10:56:12Z",
+      "last_reply": "2012-12-05T12:04:54Z",
+      "root_message_id": "msg-4108a3669919"
+    },
+    {
+      "id": "thread-53ae5ae6ae15",
+      "subject": "[statnet_help] Re: SNA of animal movement using ERGM package",
+      "message_count": 1,
+      "participants": [
+        "David Hunter"
+      ],
+      "started": "2012-12-27T05:09:04Z",
+      "last_reply": "2012-12-27T05:09:04Z",
+      "root_message_id": "msg-53ae5ae6ae15"
+    },
+    {
+      "id": "thread-40a322733d0d",
+      "subject": "[statnet_help] Deletion of edges based on edge attribute",
+      "message_count": 1,
+      "participants": [
+        "C.H."
+      ],
+      "started": "2012-12-28T02:43:57Z",
+      "last_reply": "2012-12-28T02:43:57Z",
+      "root_message_id": "msg-40a322733d0d"
+    }
+  ]
+}

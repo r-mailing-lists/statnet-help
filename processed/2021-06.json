@@ -1,0 +1,109 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2021-06",
+  "messages": [
+    {
+      "id": "msg-0e26ed1b21b5",
+      "message_id": "<alpine.WNT.2.21.999.2106092303530.5236@LAPTOP-PHUBQHL5>",
+      "from_name": "martina morris",
+      "from_email_hash": "723fa6c3cfc81bc0b636cb6ab264b9e07126ad90bc6bb940e8243a073bbb4b8b",
+      "date": "2021-06-09T23:24:02Z",
+      "subject": "[statnet_help] New versions of the statnet packages coming this week!",
+      "subject_clean": "[statnet_help] New versions of the statnet packages coming this week!",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi folks,\n\nWe're excited to announce the upcoming new releases, which are making \ntheir way to CRAN this week and next.  The biggest changes are in the \nfoundational stat packages: ergm and tergm.  Both have been given major \nupdates that extend functionality and provide dramatic improvements in \ncomputational efficiency, especially for large sparse networks (1M nodes).\n\nThe updates to ergm are reviewed in this preprint:\n\nhttp://arxiv.org/abs/2106.04997\n\nThe updates to tergm will be reflected in the tergm workshop tutorial \n(available in time for Sunbelt), and a paper in due course.\n\nDespite the magnitude of the changes, and the development of new user \ninterfaces, the updates are almost entirely backwards compatible.  That \nsaid, we will be deprecating some of the older functions (like stergm()) \nin the future, so it's worth learning how to access this functionality \nusing the new syntax.\n\nIf you have questions about the new versions, this statnet_help list is \nstill the place to ask them.\n\nIf you need to report a bug, the GitHub repositories are the place for \nthat (they're listed at github.org/statnet)\n\nIf you want to thank someone, thank Pavel -- he remains our lead developer \nand maintainer.  It's a crazy amount of work.\n\nOther resources can be found on our website: http://statnet.org/\n\nHappy modeling!\n\nThe statnet Development Team",
+      "body_snippet": "Hi folks,\n\nWe're excited to announce the upcoming new releases, which are making \ntheir way to CRAN this week and next.  The biggest changes are in the \nfoundational stat packages: ergm and tergm.  Bo",
+      "thread_id": "thread-0e26ed1b21b5",
+      "thread_depth": 0,
+      "month": "2021-06"
+    },
+    {
+      "id": "msg-7cac673ede14",
+      "message_id": "<CAFNg8yo+H5tsTu+ZNKVD_xzN+et40eX-yORxzd7JhO_S0HCkVA@mail.gmail.com>",
+      "from_name": "Adam Haber",
+      "from_email_hash": "fbbab9750bfd6019ce59a8f052108dfc0b75b66a783f4799cbc7a04ad4ae2d76",
+      "date": "2021-06-24T05:31:25Z",
+      "subject": "[statnet_help] Question about egocentric networks",
+      "subject_clean": "[statnet_help] Question about egocentric networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI have measured connectivity data in a biological network, and I want to\nunderstand if it is reasonable to try and model it using ergm.ego.\n\nThe data is of the following form: I have a big biological network that I\ncan't fully observe, and whose size is unknown to me (but I can provide\nan order-of-magnitude estimate).\nFor a single, random node in this network, I conducted an experiment in\nwhich I measured if it is connected to a random sample of N *other* nodes.\nIt was connected to some, but not all. I also measured various node/edge\nlevel covariates of the sampled \"ego\" and potential \"alters\".\nFinally, I repeated this analysis K times, so I have K \"egos\" and K sets\n(of different sizes) of \"potential alters\", some of which were connected to\nthe corresponding ego and some were not, as well as the relevant covariates.\n\nI have never used ergm.ego, and curious to know if it can be used in such\nan analysis. Specifically, from the tutorials I have found online it is not\nclear to me how to use the information in the sampled-but-not-connected\nnodes in each of the K experiments (and their covariates).\n\nAny help would be much appreciated!\nBest,\nAdam\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210624/ae8f86a9/attachment.html>",
+      "body_snippet": "Hello,\n\nI have measured connectivity data in a biological network, and I want to\nunderstand if it is reasonable to try and model it using ergm.ego.\n\nThe data is of the following form: I have a big bio",
+      "thread_id": "thread-7cac673ede14",
+      "thread_depth": 0,
+      "month": "2021-06"
+    },
+    {
+      "id": "msg-f6f1596946f1",
+      "message_id": "<alpine.WNT.2.21.999.2106241320070.28252@LAPTOP-PHUBQHL5>",
+      "from_name": "martina morris",
+      "from_email_hash": "723fa6c3cfc81bc0b636cb6ab264b9e07126ad90bc6bb940e8243a073bbb4b8b",
+      "date": "2021-06-24T14:28:59Z",
+      "subject": "[statnet_help] Question about egocentric networks",
+      "subject_clean": "[statnet_help] Question about egocentric networks",
+      "in_reply_to": "<CAFNg8yo+H5tsTu+ZNKVD_xzN+et40eX-yORxzd7JhO_S0HCkVA@mail.gmail.com>",
+      "references": [
+        "<CAFNg8yo+H5tsTu+ZNKVD_xzN+et40eX-yORxzd7JhO_S0HCkVA@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Adam,\n\nYour data is a bit different than what is currently designed for \nergm.ego, in that you have information on a sample of ego's non-ties, as \nwell as their ties.\n\nIt would be straightforward to use ergm.ego on the sample of ego/alter tie \ndata (so, ignoring the non-tie info).  So you might consider starting \nthere.  You can, with this approach, use the non-tie data as validation \ndata: simulate from your models and see if they reproduce the tie vs. \nnon-tie distributions.\n\nI'm cc'ing Pavel Krivitsky and Michal Bojanowski who may have some ideas \nabout how to use the non-tie egodata.\n\nFinally, we are teaching the ergm.ego workshop next week: Mon., 6/28 \n20:00-23:00 ET for the Sunbelt remote workshop.  More info here: \nhttps://networks2021.net/workshops\n\nbest,\nmm\n\n\nOn Thu, 24 Jun 2021, Adam Haber wrote:\n\n> Hello,\n> \n> I have measured connectivity data in a biological network, and I want to understand if it is reasonable\n> to try and model it using ergm.ego. \n> \n> The data is of the following form: I have a big biological network that I can't fully observe,?and whose\n> size is unknown to?me (but I can provide an?order-of-magnitude estimate). \n> For a single, random node in this network, I conducted an experiment in which I measured if it is\n> connected to a random sample of N other nodes. It was connected to some, but not all. I also measured\n> various node/edge level covariates of the sampled \"ego\" and potential \"alters\". \n> Finally, I repeated this analysis K times, so I have K \"egos\" and K sets (of different sizes) of\n> \"potential alters\", some of which were connected to the corresponding ego and some were not, as well as\n> the relevant covariates.\n> \n> I have never used ergm.ego, and curious to know if it can be used in such an analysis. Specifically,\n> from the tutorials I have found online it is not clear to me how to use the information in the\n> sampled-but-not-connected nodes in each of the K experiments (and their covariates).\n> \n> Any help would be much appreciated!\n> Best,\n> Adam\n> \n> \n>\n\n****************************************************************\n  Professor Emerita of Sociology and Statistics\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Adam,\n\nYour data is a bit different than what is currently designed for \nergm.ego, in that you have information on a sample of ego's non-ties, as \nwell as their ties.\n\nIt would be straightforward t",
+      "thread_id": "thread-7cac673ede14",
+      "thread_depth": 1,
+      "month": "2021-06"
+    },
+    {
+      "id": "msg-c0712ba3cb8f",
+      "message_id": "<CADUL7fgj15K-YCPAzgtv_cJxun77xB96fYoWh1kPMOF-ij_V6Q@mail.gmail.com>",
+      "from_name": "Mohsen Jafari Songhori",
+      "from_email_hash": "591c038193fc373a80a546dbf7f40bea45327db9e90002b995c37dbd09f348c2",
+      "date": "2021-06-29T04:17:59Z",
+      "subject": "[statnet_help] Modeling and simulation of bi-variate networks with statnet/ergm",
+      "subject_clean": "[statnet_help] Modeling and simulation of bi-variate networks with statnet/ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\n\n\nI am currently conducting my research on generating/simulating a large\nnumber of bivariate (and not bipartite) networks. My (observed) networks\nhave 40-60 nodes, and, my (ERGM modeling) approach toward them is very\nsimilar to the one taken in the following paper: Can Informal Communication\nNetworks Disrupt Coordination in New Product Development Projects? |\nOrganization Science (informs.org)\n<https://pubsonline.informs.org/doi/abs/10.1287/orsc.2015.0974?casa_token=X062ht9OKl8AAAAA:HtI1gP68khvmHPWKZ1Yrd-zRr5Sdm6k97mq4V6KNrw02KTcuZTKC3Q2Nzh0vyRzKbMBshae4lg>.\nI have attempted to generate bi-variate graphs using XPNet, and\nunfortunately, despite the description in its manual, the software does not\ngenerate any sample of bi-variate graph files .\n\n\nI would be very grateful for any advice on how to model/simulate bi-variate\nnetworks (i.e., a fixed set of nodes that there can be two types of ties\namong them) with Statnet/ERGM/ or other R libraries.\n\n\nThanks a lot in advance.\n\nKind Regards,\n\nMohsen\n\n-- \n*Postdoc Researcher*\n*Eindhoven University of Technology *\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210629/a921b647/attachment.html>",
+      "body_snippet": "Dear all,\n\n\n\nI am currently conducting my research on generating/simulating a large\nnumber of bivariate (and not bipartite) networks. My (observed) networks\nhave 40-60 nodes, and, my (ERGM modeling) a",
+      "thread_id": "thread-c0712ba3cb8f",
+      "thread_depth": 0,
+      "month": "2021-06"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-0e26ed1b21b5",
+      "subject": "[statnet_help] New versions of the statnet packages coming this week!",
+      "message_count": 1,
+      "participants": [
+        "martina morris"
+      ],
+      "started": "2021-06-09T23:24:02Z",
+      "last_reply": "2021-06-09T23:24:02Z",
+      "root_message_id": "msg-0e26ed1b21b5"
+    },
+    {
+      "id": "thread-7cac673ede14",
+      "subject": "[statnet_help] Question about egocentric networks",
+      "message_count": 2,
+      "participants": [
+        "Adam Haber",
+        "martina morris"
+      ],
+      "started": "2021-06-24T05:31:25Z",
+      "last_reply": "2021-06-24T14:28:59Z",
+      "root_message_id": "msg-7cac673ede14"
+    },
+    {
+      "id": "thread-c0712ba3cb8f",
+      "subject": "[statnet_help] Modeling and simulation of bi-variate networks with statnet/ergm",
+      "message_count": 1,
+      "participants": [
+        "Mohsen Jafari Songhori"
+      ],
+      "started": "2021-06-29T04:17:59Z",
+      "last_reply": "2021-06-29T04:17:59Z",
+      "root_message_id": "msg-c0712ba3cb8f"
+    }
+  ]
+}

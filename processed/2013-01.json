@@ -1,0 +1,338 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2013-01",
+  "messages": [
+    {
+      "id": "msg-c6766bf464cd",
+      "message_id": "<CAHfK2MuVvgFSVzUKr6uAVUNjHBTVL_S4WdwVt0K49-k6_k+Odg@mail.gmail.com>",
+      "from_name": "C.H.",
+      "from_email_hash": "f25ef601a0cde0a9ce68467c9b7222bee9955e0f9881cc9c7fa75712bd9e2118",
+      "date": "2013-01-02T01:16:58Z",
+      "subject": "[statnet_help] addition of NA in $mel after simulate.ergm",
+      "subject_clean": "[statnet_help] addition of NA in $mel after simulate.ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI have a question regarding the simulate.ergm. For example\n\n[R code]\nrequire(ergm)\ndata(florentine)\nlength(flomarriage$mel) # 20\nnetwork.edgecount(flomarriage) #20\n\ngest <- ergm(flomarriage ~ edges + absdiff(\"wealth\"))\n\nset.seed(2013)\nssim <- simulate(gest)\n\nlength(ssim$mel) #45\nnetwork.edgecount(ssim) #25\n\n[/R code]\n\nThe discrepancy between length(ssim$mel) and network.edgecount(ssim)\ncan be explored by closer look at the ssim$mel. Twenty NA edges were\nadded and thus the eids are inflated by 20, the original edge count in\nflomarriage.\nIt is reproducible in another dataset such as samplike\n\n[R code]\nrequire(ergm)\ndata(\"sampson\")\nset.seed(2013)\nsimulate(ergm(samplike~edges))$mel\n[/R code]\n\n88 NA edges were added this time.\n\nI would like to know the reason for addition of NA edges. Are these NA\nedges functional?\n\nThank you!\n\nRegards,\n\nCH",
+      "body_snippet": "Dear all,\n\nI have a question regarding the simulate.ergm. For example\n\n[R code]\nrequire(ergm)\ndata(florentine)\nlength(flomarriage$mel) # 20\nnetwork.edgecount(flomarriage) #20\n\ngest <- ergm(flomarriage",
+      "thread_id": "thread-c6766bf464cd",
+      "thread_depth": 0,
+      "month": "2013-01"
+    },
+    {
+      "id": "msg-6344c15714a2",
+      "message_id": "<72E8CAED492B92449DEDAD0250390A361D913017@exch-mbx-02.utu.fi>",
+      "from_name": "Shupin Li",
+      "from_email_hash": "38700f5808ab105ec199cbb8075d83f0e4e2f5a90ba6f54b05dba2c790f968a0",
+      "date": "2013-01-06T10:22:14Z",
+      "subject": "[statnet_help] Problems of plotting with missing value in statnet",
+      "subject_clean": "[statnet_help] Problems of plotting with missing value in statnet",
+      "in_reply_to": "<72E8CAED492B92449DEDAD0250390A361D912F9E@exch-mbx-02.utu.fi>",
+      "references": [
+        "<72E8CAED492B92449DEDAD0250390A361D912F9E@exch-mbx-02.utu.fi>"
+      ],
+      "body_plain": "Hi all,\n\nI am master student in University of Turku, Finland and I am using statnet to do SNA for my thesis. I have following 3 questions when I am doing. Hope I could get some help for you guys. Thanks:)\n\n1) Below commands are for a network to indicate their friends in classroom, whose object is already network (namely\"net\") and there are some missing values which are labelled in \"NA\". I want to find out who is the most popular in the classroom so I use plot command \"plot(net,displaylabels=T,boxed.labels=F)\",but it did not come any graph nor error information for me. What's the problem?\n\n2) What other ways/commands I could use in statnet to find out who is the most popular in below network?\n\n3) I also want to investigate whether students' seft-esteem (which is a independent variable, which is collected by seft-report questionnaire) could have some relationship with their network in classroom. I plan to use self-esteem and ergm models to investigate it. But I don't know how to entry such data of self-esteem together with social network data into R.\n\n> summary(net)\nNetwork attributes:\n  vertices = 17\n  directed = TRUE\n  hyper = FALSE\n  loops = FALSE\n  multiple = FALSE\n  bipartite = FALSE\n total edges = 207\n   missing edges = 18\n   non-missing edges = 189\n density = 0.6948529\nVertex attributes:\n  vertex.names:\n   character valued attribute\n   17 valid vertex names\nNo edge attributes\nNetwork adjacency matrix:\n    X1 X2 X3 X4 X5 X6 X7 X8 X9 X10 X11 X12 X13 X14 X15 X16 X17\nX1   0  1  1 NA  1  1  1  1  1   1   1   1   1   1   1   1   1\nX2  NA  0  1  1  1  1  1  1  1   1   1   1   1   1   1   1   1\nX3   1  1  0  1  1  1  1  1  1   1   1   1   1   1   1   1   1\nX4  NA NA NA  0 NA NA NA NA NA  NA  NA  NA  NA  NA  NA  NA  NA\nX5   1  1  1  1  0  1  1  1  1   1   1   1   1   1   1   1   1\nX6   1  1  1  1  1  0  1  1  1   1   1   1   1   1   1   1   1\nX7   1  1  1  1  1  1  0  1  1   1   1   1   1   1   1   1   1\nX8   0  0  0  0  0  0  0  0  0   0   0   0   0   0   0   0   0\nX9   0  0  0  0  0  0  0  0  0   0   0   0   0   0   0   0   0\nX10  1  1  1  1  1  1  1  1  1   0   1   1   1   1   1   1   1\nX11  1  1  1  1  1  1  1  1  1   1   0   1   1   1   1   1   1\nX12  0  0  0  0  0  0  0  0  0   0   0   0   0   0   0   0   0\nX13  0  0  0  0  0  0  0  0  0   0   0   0   0   0   0   0   0\nX14  1  1  1  1  1  1  1  1  1   1   1   1   1   0   1   1   1\nX15  1  1  1  1  1  1  1  1  1   1   1   1   1   1   0   1   0\nX16  1  1  1  1  1  1  1  1  1   1   1   1   1   1   1   0   1\nX17  1  1  1  1  1  1  1  1  1   1   1   1   1   1   1   1   0\n> plot(net,displaylabels=T,boxed.labels=F)\n\nThank you very much and look forward to your kind help!\n\nHave a nice week:)\n\nSincerely,\nShupin",
+      "body_snippet": "Hi all,\n\nI am master student in University of Turku, Finland and I am using statnet to do SNA for my thesis. I have following 3 questions when I am doing. Hope I could get some help for you guys. Than",
+      "thread_id": "thread-6344c15714a2",
+      "thread_depth": 0,
+      "month": "2013-01"
+    },
+    {
+      "id": "msg-ef301d5a99f4",
+      "message_id": "<006801cdef59$469c0410$d3d40c30$@usc.edu>",
+      "from_name": "Tom Valente",
+      "from_email_hash": "0893e9aa724045adf3eb0c49e0049c610f32e65b6b9f51c53170d2f2ddad6b3d",
+      "date": "2013-01-10T09:38:17Z",
+      "subject": "[statnet_help] Generating random centralized or modular networks ",
+      "subject_clean": "[statnet_help] Generating random centralized or modular networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "All\nHas anyone written r functions that will generate random networks that are\ncentralized/scale-free or with specific modularities?\n-Tom\n\nThomas W. Valente, PhD, Professor\nInstitute for Prevention Research, Department of Preventive Medicine\nKeck School of Medicine, University of Southern California\n2001 N. Soto Ave., 302w\nLos Angeles, CA 90032\n\nSocial Networks and Health (2010) Oxford University Press.\nEvaluating Health Promotion Programs, (2002) Oxford University Press.\nNetwork Models of the Diffusion of Innovations, (1995) Hampton Press.",
+      "body_snippet": "All\nHas anyone written r functions that will generate random networks that are\ncentralized/scale-free or with specific modularities?\n-Tom\n\nThomas W. Valente, PhD, Professor\nInstitute for Prevention Re",
+      "thread_id": "thread-ef301d5a99f4",
+      "thread_depth": 0,
+      "month": "2013-01"
+    },
+    {
+      "id": "msg-b4bb1be20772",
+      "message_id": "<1664BFA86AE9FF43A1FFF33DB26C560F09B9B918@D-SRV-XMB06.fhhnet.stadt.hamburg.de>",
+      "from_name": "Leist, Sebastian",
+      "from_email_hash": "3b1544655c84f2b562d088ede7d5f04f9e7a8ab6f332f1044d31b8610eb0de07",
+      "date": "2013-01-11T01:15:20Z",
+      "subject": "[statnet_help] Model-selection in latentnet",
+      "subject_clean": "[statnet_help] Model-selection in latentnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nfirst I wish everyone a happy new year!\nI have a question about the model selection criteria in latent position clustering with latentnet.\nThe analysed network is bipartite, has 302 nodes in the first group, 201 nodes in the second group and 1,153 edges. I applied the latent position clustering model and received results which look good to me and comply with my expectations regarding the latent positions. Unfortunately, I am not sure which cluster solution is best based on the three BIC values provided and I was not able to find an answer to my question on my own.\nIs it the higher the better for the overall BIC as suggested in the article of Handcock et al. [Model-based clustering for social networks (2007)]?\nThe BIC Values are as followed:\n\n\n3 Cluster\n\n4 Cluster\n\n5 Cluster\n\n6 Cluster\n\n7 Cluster\n\n8 Cluster\n\n9 Cluster\n\nOverall BIC\n\n10,557.840\n\n10,547.720\n\n10,540.910\n\n10,541.500\n\n10,540.240\n\n10,546.410\n\n10,549.810\n\nLikelihood BIC\n\n6,362.186\n\n6,382.822\n\n6,351.809\n\n6,376.923\n\n6,367.492\n\n6,367.988\n\n6,374.493\n\nLatent space/Clustering BIC\n\n4,195.654\n\n4,164.898\n\n4,189.102\n\n4,164.576\n\n4,172.750\n\n4,178.418\n\n4,175.321\n\n\n[cid:image003.png@01CDEF4F.E864D6F0]\n\nI appreciate if anyone could show me a hint about the right way to choose the best model solution.\n\nThank you!\nSebastian\n\nSebastian Leist\nGeostatistische Analysen BQ 12-3\nSystemanalysen und Bildungsberichterstattung\nInstitut f?r Bildungsmonitoring und Qualit?tsentwicklung (IfBQ)\n\nFreie und Hansestadt Hamburg\nBeh?rde f?r Schule und Berufsbildung (BSB)\nInstitut f?r Bildungsmonitoring und Qualit?tsentwicklung (IfBQ)\nBeltgens Garten 25, 20537 Hamburg\nTel: +49(0)40-428851-326\nFax: +49(0)40-427978-208\nSebastian.Leist@ifbq.hamburg.de<mailto:Sebastian.Leist@ifbm.hamburg.de>\nwww.bildungsmonitoring.hamburg.de<http://www.bildungsmonitoring.hamburg.de/>\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130111/228f7946/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: image001.png\nType: image/png\nSize: 26072 bytes\nDesc: image001.png\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130111/228f7946/attachment.png>",
+      "body_snippet": "Dear all,\n\nfirst I wish everyone a happy new year!\nI have a question about the model selection criteria in latent position clustering with latentnet.\nThe analysed network is bipartite, has 302 nodes i",
+      "thread_id": "thread-b4bb1be20772",
+      "thread_depth": 0,
+      "month": "2013-01"
+    },
+    {
+      "id": "msg-73f26b8faf25",
+      "message_id": "<50F01FC1.6030206@helsinki.fi>",
+      "from_name": "Juha Itkonen",
+      "from_email_hash": "428adaab6ca45bf5857d207a689680efdc3023f5792d971c8c02bba6b8e44ce5",
+      "date": "2013-01-11T06:20:49Z",
+      "subject": "[statnet_help] Help with ergm",
+      "subject_clean": "[statnet_help] Help with ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet users and developers,\n\nI'm using the statnet package for PhD work, and first I'd like to thank \nthe developers for creating such wonderful tools. However I have a few \nproblems with my ERGMs that I couldn't resolve with the documentation, \nand I was hoping you could help.\n\nI'm working with a new dataset that we collected with a Facebook app \nthat works as a survey (https://sns.it.helsinki.fi). So far we have a \nfairly large dataset of Facebook friendships and survey answers for the \nvertices (6000 vertices and 25000 edges).\n\nI'm using the ergm package to estimate a model very similar to the one \nused by Wimmer & Lewis (2010) in their brilliant paper in American \nJournal of Sociology. My biggest problem, I think, is getting converged \nMCMC samples out of the model.\n\nIn verbose mode ergm outputs some statistics labelled \"Back from \nunconstrained MCMC. Average statistics:\". I couldn't find documentation \non what they mean, but have I guessed correctly that they equal the MCMC \nsample average of the count statistics minus the observed count \nstatistics? The mcmc.diagnostics function indicates that they differ \nsignificantly from zero, which I understand means poor convergence of \nthe MCMC (or poor fit of the model)?\n\nI guess I need really long MCMC runs, but I feel that the MCMC algorithm \nseems to slow down the further it goes. I observe this especially with \nverbose mode when I use short burnins with many retries: Each retry \nseems to take longer to compute than the previous. Is this something \nthat should happen or can it be avoided somehow? And for many \nconfigurations, the process seems to freeze completely at some point. \nThe last output says \"Burn-in failed to converge or mixed...\"\n\nAlso I noticed that you added support for parallel computing. Has anyone \ntried to run ergm massively parallel with MPI? I have access to \ncomputers where I could run it with a few hundred cores and I was \nwondering would it be worth the effort.\n\nFor further details I attached one of my outputs, where I chose \nparameters so that the script finishes. I've been using ergm versions \n3.0-3 and 3.0-999. I would be really grateful for any tips on getting \nbetter results with the model.\n\nYours sincerely,\nJuha Itkonen\n\n-- \nJuha Itkonen\nDoctoral student\n\nDepartment of Political and Economic Studies\nEconomics\nP.O. Box 17 (Arkadiankatu 7)\nFI-00014 University of Helsinki\nFinland\n\nEmail: juha.itkonen@helsinki.fi\nPhone: +358 50 318 2260\nFax: +358 9 191 28736\nHomepage: http://blogs.helsinki.fi/jitkonen\n\n-------------- next part --------------\nAn embedded and charset-unspecified text was scrubbed...\nName: output9\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130111/e3d99ea0/attachment.ksh>",
+      "body_snippet": "Dear Statnet users and developers,\n\nI'm using the statnet package for PhD work, and first I'd like to thank \nthe developers for creating such wonderful tools. However I have a few \nproblems with my ER",
+      "thread_id": "thread-73f26b8faf25",
+      "thread_depth": 0,
+      "month": "2013-01"
+    },
+    {
+      "id": "msg-479c44920cc4",
+      "message_id": "<1358050152.11777.mnt23021@law.ritsumei.ac.jp>",
+      "from_name": "megumi nishimura",
+      "from_email_hash": "ae4b0f6185210f5ff5dc2cff29c3961dcc310f2f7a2c0d750955eb4c5361f827",
+      "date": "2013-01-12T20:09:12Z",
+      "subject": "[statnet_help] re: Euclidean distance for bipartite",
+      "subject_clean": "[statnet_help] re: Euclidean distance for bipartite",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear User community,\r\n\r\nI am now analyzing bipartite graphs.  I would like to know if there is different command to compute the Euclidean distance of bipartite networks from that of one-mode.\r\n\r\n##I had create my R object that is bipartite already (=mynet), like below\r\n\r\nmean(as.matrix(dist(mynet, method=\"euclidean\", upper=T, diag=T)))\r\n\r\nI look forward to the answers from somebody.\r\n\r\nBest regards,\r\n\r\nMegumi Nishimura\r\nRitsumeikan University",
+      "body_snippet": "Dear User community,\r\n\r\nI am now analyzing bipartite graphs.  I would like to know if there is different command to compute the Euclidean distance of bipartite networks from that of one-mode.\r\n\r\n##I h",
+      "thread_id": "thread-479c44920cc4",
+      "thread_depth": 0,
+      "month": "2013-01"
+    },
+    {
+      "id": "msg-be8a9376e55e",
+      "message_id": "<1358051036.7896.mnt23021@law.ritsumei.ac.jp>",
+      "from_name": "megumi nishimura",
+      "from_email_hash": "ae4b0f6185210f5ff5dc2cff29c3961dcc310f2f7a2c0d750955eb4c5361f827",
+      "date": "2013-01-12T20:23:56Z",
+      "subject": "[statnet_help] re: goodness of fit in geodesic for bipartite",
+      "subject_clean": "[statnet_help] re: goodness of fit in geodesic for bipartite",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear User community,\r\n\r\nI am now analyzing bipartite graphs, ran the model, and ran simulations for goodness of fit in terms of degrees and geodesics distance.\r\n\r\nMy model includes 165(b1) + 150 (b2)=250 nodes, and 701 edges. My model also includes: exogenous var+gwb1dgree+gwb2degree+wgdsp.\r\n>mygof<-gof(mynet<-degree+distance, burnin=1e+5, interval=1e+5, seed=100)\r\n\r\nMy model predict a good degree distribution, however diminum geodesics was dissapointint.  It is very similar picture of \r\nDavid R. Hunter, Steven M. Goodreau, and Mark S. Handcock, \"Goodness of fit of social network models,\" American Ststistical Association Journal, 2008, Vol 103, No. 481, p. 256, Figure 4, right-hand column.\r\n\r\nTheir geodesic distance problem was improved, after they had included GWEPS statistics.  But, GWESP (edge-wise SP) does not make sense for bipartite.\r\n\r\nIf anyone knows how to improve Bipartite geodesics goodness of fit, please reply here.  Or, is the problem of over-predict the short distances and under-predict the longer distance often a problem for bipartites??, because there is no triangular relations, as actors are connected to other actors through edges by definition??\r\n\r\nI appreciate your reply in advance.\r\n\r\nBest regards,\r\n\r\nMegumi Nishimura\r\nFaculty of Law\r\nRitsumeikan University",
+      "body_snippet": "Dear User community,\r\n\r\nI am now analyzing bipartite graphs, ran the model, and ran simulations for goodness of fit in terms of degrees and geodesics distance.\r\n\r\nMy model includes 165(b1) + 150 (b2)=",
+      "thread_id": "thread-be8a9376e55e",
+      "thread_depth": 0,
+      "month": "2013-01"
+    },
+    {
+      "id": "msg-748763d8beba",
+      "message_id": "<1358051329.13948.mnt23021@law.ritsumei.ac.jp>",
+      "from_name": "megumi nishimura",
+      "from_email_hash": "ae4b0f6185210f5ff5dc2cff29c3961dcc310f2f7a2c0d750955eb4c5361f827",
+      "date": "2013-01-12T20:28:49Z",
+      "subject": "[statnet_help] re: WGDSP for bipartite",
+      "subject_clean": "[statnet_help] re: WGDSP for bipartite",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear User community,\r\n\r\nI am now analyzing bipartite graphs, I saw the similar question in the former statnet FAQ, but nobody answered it.  So, please allow me to ask the same question for the community.\r\n\r\nI ran the ERGM model by including WGDSP (weighted geometrically edge-wise shared partner).\r\n\r\nBut, there is no particular command for bipartite now, although we have a separate star structure (gwb1degree, gwb2degree).  So, when we include WGDSP in the model, did the computer calcuate the outputs without distingquish the dyad of actor-actor, event-event, or actor-event??\r\n\r\nOr, have we had already separate WGDSP?  \r\n\r\nI appreciate your reply in advance.\r\n\r\nBest regards,\r\n\r\nMegumi Nishimura\r\nFaculty of Law\r\nRitsumeikan University",
+      "body_snippet": "Dear User community,\r\n\r\nI am now analyzing bipartite graphs, I saw the similar question in the former statnet FAQ, but nobody answered it.  So, please allow me to ask the same question for the communi",
+      "thread_id": "thread-748763d8beba",
+      "thread_depth": 0,
+      "month": "2013-01"
+    },
+    {
+      "id": "msg-cb24e6a7dcb6",
+      "message_id": "<1358054377.15343.mnt23021@law.ritsumei.ac.jp>",
+      "from_name": "megumi nishimura",
+      "from_email_hash": "ae4b0f6185210f5ff5dc2cff29c3961dcc310f2f7a2c0d750955eb4c5361f827",
+      "date": "2013-01-12T21:19:37Z",
+      "subject": "[statnet_help]  rebipartite, nodematch command, and multicollinearity",
+      "subject_clean": "[statnet_help]  rebipartite, nodematch command, and multicollinearity",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear user community,\r\n\r\nI am interested in the homophily effects in bipartite networks. \r\n\r\nPlease ask the community if I am running the correct model, and other multicollenearity questions.\r\n\r\nWe examine if the citizen donate money to their own professional organizations. And, I will run ERGM model WITH keeping bipartite structure.\r\n\r\nI would like to know if people donate money to their own professional organization\r\n\r\nAssume I code the doctors as 1, farmers as 2, and managers as 3.  Then, I code the doctor's organization as 1, farmer's organization as 2, manager's Organization as 3.  I have 10 actors (b1), 5 organization (events, b2).  Edges are non-valued, and non-directed.\r\n\r\nI make a bipartite R network object, called \"mynet.\"\r\nattached the following combined ethnic variable to \"mynet.\"\r\ncombeth<-c(1, 3, 2, 2, 3, 1, 1, 1, 2, 2, 1, 3, 2, 1, 1)\r\nmynet<-set.vertex.attribute(mynet, \"combinedethnic\", combeth)\r\n\r\nThen, run an ergm model with nodematch command,\r\nmymodel1<-ergm(mynet~edges+nodematch(\"combinedethnic\", diff=T, keep=c(1, 2, 3))+wg1bdegree(0.25), seed=100)\r\n\r\nQUESTION1) I got an output, but would like to know nodematch is a right command to analyze my research question above for BIPARTITE??\r\n\r\nQUESTION 2) If I recode the ethnic variable into like the following, and is included in my model, do we have multicollinearity problem?\r\nMen lawyers as 1, Women lawyers as 2, Men farmers as 3, Women farmers as 4, Men managers as 5. Women managers as 6. Make a ethnic variable\r\ngeneth<-c(1, 3, 5, 2, 4, 5, 3, 2, 1, 3, NA, NA, NA, NA, NA)\r\n\r\nThen, run ergm,\r\nmymodel2<-ergm(mynet~edges+bafactor(geneth, base=1)+nodematch(\"combinedethnic\", diff=T, keep=c(1, 2, 3))+gwb1degree(0.25), seed=100)\r\n\r\nQ2) Do we have a multicollenearity problem, because our \"combinedethnic\" and \"geneth\" variables are so similar?\r\n\r\nQ3) Finally, if we have multicollinearity problem, how do we detect it.  Does the model simply clash? or show degeneracy? or bad p-values on the difference between sample statistics and the observed one? or other statistics?\r\n\r\nI appreciate your replies in advance.\r\n\r\nBest regards,\r\n\r\nMegumi Nishimura\r\nFaculty of Law\r\nRitsumeikan University",
+      "body_snippet": "Dear user community,\r\n\r\nI am interested in the homophily effects in bipartite networks. \r\n\r\nPlease ask the community if I am running the correct model, and other multicollenearity questions.\r\n\r\nWe exa",
+      "thread_id": "thread-cb24e6a7dcb6",
+      "thread_depth": 0,
+      "month": "2013-01"
+    },
+    {
+      "id": "msg-78585b01e4ab",
+      "message_id": "<50F5DFE6.3030303@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2013-01-15T15:01:58Z",
+      "subject": "[statnet_help] re: goodness of fit in geodesic for bipartite",
+      "subject_clean": "[statnet_help] re: goodness of fit in geodesic for bipartite",
+      "in_reply_to": "<1358051036.7896.mnt23021@law.ritsumei.ac.jp>",
+      "references": [
+        "<1358051036.7896.mnt23021@law.ritsumei.ac.jp>"
+      ],
+      "body_plain": "Hello,\r\n> My model predict a good degree distribution, however diminum geodesics was dissapointint.  It is very similar picture of \r\n> David R. Hunter, Steven M. Goodreau, and Mark S. Handcock, \"Goodness of fit of social network models,\" American Ststistical Association Journal, 2008, Vol 103, No. 481, p. 256, Figure 4, right-hand column.\r\n>\r\n> Their geodesic distance problem was improved, after they had included GWEPS statistics.  But, GWESP (edge-wise SP) does not make sense for bipartite.\r\n>\r\n> If anyone knows how to improve Bipartite geodesics goodness of fit, please reply here.  Or, is the problem of over-predict the short distances and under-predict the longer distance often a problem for bipartites??, because there is no triangular relations, as actors are connected to other actors through edges by definition??\r\n\r\nI do not work with bipartite affillation-style networks myself, but I\r\nhave a feeling that this pattern is quite common across many kinds of\r\nnetworks. As long as there are some forms of clustering that is strong\r\nbut not complete (ie with some ties between clusters) occurring that we\r\nhave not incorporated into our model, one might expect to see this\r\npattern. Perhaps someone has done a comparative examination of this\r\nacross various domains or network types. Any users aware of this?\r\n\r\nAs for your other question about GWESP - yes, you are right that it does\r\nnot make sense for bipartite networks. GWDSP would make sense though,\r\nand would capture an analogous type of process at the 4-cycle level, so\r\nI ma glad to see that you include that. Without more knowledge of your\r\ndata, I don't have any advice for improving the geodesic fit. I'd\r\nsuggest perhaps trying ways to find other types of explicit or latent\r\nclustering in your data. anyone else have any thoughts?\r\n\r\nThanks,\r\nSteve\r\n\r\n*** NOTE NEW OFFICE LOCATION AS OF MARCH 2012: DENNY 423 ***\r\n\r\nSteven M. Goodreau / Assoc. Professor / Dept. of Anthropology\r\nUniversity of Washington / Denny Hall 423 / Campus Box 353100\r\nSeattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)\r\nhttp://faculty.washington.edu/goodreau",
+      "body_snippet": "Hello,\r\n> My model predict a good degree distribution, however diminum geodesics was dissapointint.  It is very similar picture of \r\n> David R. Hunter, Steven M. Goodreau, and Mark S. Handcock, \"Goodn",
+      "thread_id": "thread-be8a9376e55e",
+      "thread_depth": 1,
+      "month": "2013-01"
+    },
+    {
+      "id": "msg-ac1e80c2f259",
+      "message_id": "<alpine.WNT.1.10.1301181324540.9672@morrism-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-01-18T13:26:52Z",
+      "subject": "[statnet_help] Help with ergm",
+      "subject_clean": "[statnet_help] Help with ergm",
+      "in_reply_to": "<50F01FC1.6030206@helsinki.fi>",
+      "references": [
+        "<50F01FC1.6030206@helsinki.fi>"
+      ],
+      "body_plain": "Hi Juha,\n\nWe've made a number of recent changes to the program and the\nrelease candidate is up at:\n\nhttp://statnet.csde.washington.edu/preview/\n\nIf you haven't already done so, would you try installing this version and \nsee if it gives you the same results?\n\nthanks,\nMartina\n\nOn Fri, 11 Jan 2013, Juha Itkonen wrote:\n\n> Dear Statnet users and developers,\n>\n> I'm using the statnet package for PhD work, and first I'd like to thank the \n> developers for creating such wonderful tools. However I have a few problems \n> with my ERGMs that I couldn't resolve with the documentation, and I was \n> hoping you could help.\n>\n> I'm working with a new dataset that we collected with a Facebook app that \n> works as a survey (https://sns.it.helsinki.fi). So far we have a fairly large \n> dataset of Facebook friendships and survey answers for the vertices (6000 \n> vertices and 25000 edges).\n>\n> I'm using the ergm package to estimate a model very similar to the one used \n> by Wimmer & Lewis (2010) in their brilliant paper in American Journal of \n> Sociology. My biggest problem, I think, is getting converged MCMC samples out \n> of the model.\n>\n> In verbose mode ergm outputs some statistics labelled \"Back from \n> unconstrained MCMC. Average statistics:\". I couldn't find documentation on \n> what they mean, but have I guessed correctly that they equal the MCMC sample \n> average of the count statistics minus the observed count statistics? The \n> mcmc.diagnostics function indicates that they differ significantly from zero, \n> which I understand means poor convergence of the MCMC (or poor fit of the \n> model)?\n>\n> I guess I need really long MCMC runs, but I feel that the MCMC algorithm \n> seems to slow down the further it goes. I observe this especially with \n> verbose mode when I use short burnins with many retries: Each retry seems to \n> take longer to compute than the previous. Is this something that should \n> happen or can it be avoided somehow? And for many configurations, the process \n> seems to freeze completely at some point. The last output says \"Burn-in \n> failed to converge or mixed...\"\n>\n> Also I noticed that you added support for parallel computing. Has anyone \n> tried to run ergm massively parallel with MPI? I have access to computers \n> where I could run it with a few hundred cores and I was wondering would it be \n> worth the effort.\n>\n> For further details I attached one of my outputs, where I chose parameters so \n> that the script finishes. I've been using ergm versions 3.0-3 and 3.0-999. I \n> would be really grateful for any tips on getting better results with the \n> model.\n>\n> Yours sincerely,\n> Juha Itkonen\n>\n> -- \n> Juha Itkonen\n> Doctoral student\n>\n> Department of Political and Economic Studies\n> Economics\n> P.O. Box 17 (Arkadiankatu 7)\n> FI-00014 University of Helsinki\n> Finland\n>\n> Email: juha.itkonen@helsinki.fi\n> Phone: +358 50 318 2260\n> Fax: +358 9 191 28736\n> Homepage: http://blogs.helsinki.fi/jitkonen\n>\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Juha,\n\nWe've made a number of recent changes to the program and the\nrelease candidate is up at:\n\nhttp://statnet.csde.washington.edu/preview/\n\nIf you haven't already done so, would you try installin",
+      "thread_id": "thread-73f26b8faf25",
+      "thread_depth": 1,
+      "month": "2013-01"
+    },
+    {
+      "id": "msg-949bd610b75e",
+      "message_id": "<50FDE02D.2020903@siu.edu>",
+      "from_name": "Shane Gleason",
+      "from_email_hash": "ac41ec97f21ad08d483932a77d2108a01f71b70e5a177513a1cd409ce7614ba0",
+      "date": "2013-01-21T16:41:17Z",
+      "subject": "[statnet_help] Importing attributes via CSV?",
+      "subject_clean": "[statnet_help] Importing attributes via CSV?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello everyone,\n\nI am afraid this might be a very basic question, though it does not seem \nto be in the list archives.\n\nI have network attributes which are contained in a separate file from \nthe network (so I have network.csv and attributes.csv).\n\nReading through the tutorials available online, mostly in the JSS \nspecial issue, there does not seem to be any mention of a way to import \nattributes, just to assign them with R code.  Is there anyway to import \nattributes or will I need to just do it via R code (there are an awful \nlot of attributes to assign).\n\nThanks so much in advance,\n\nShane\n\n-- \nShane Gleason\nDoctoral Candidate\nSouthern Illinois University:Carbondale\nDepartment of Political Science\nFaner 3172",
+      "body_snippet": "Hello everyone,\n\nI am afraid this might be a very basic question, though it does not seem \nto be in the list archives.\n\nI have network attributes which are contained in a separate file from \nthe netwo",
+      "thread_id": "thread-949bd610b75e",
+      "thread_depth": 0,
+      "month": "2013-01"
+    },
+    {
+      "id": "msg-ba4607ec1d50",
+      "message_id": "<alpine.WNT.1.10.1301211646480.5268@morrism-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-01-21T17:38:34Z",
+      "subject": "[statnet_help] Importing attributes via CSV?",
+      "subject_clean": "[statnet_help] Importing attributes via CSV?",
+      "in_reply_to": "<50FDE02D.2020903@siu.edu>",
+      "references": [
+        "<50FDE02D.2020903@siu.edu>"
+      ],
+      "body_plain": "Shane,\n\nPlease take a look at the online tutorials from the last Sunbelt \nconference (that's where we offered 6 workshops).  In particular,\n\"An Introduction to Network Analysis with R and statnet\"\nhttps://statnet.csde.washington.edu/trac/wiki/Resources#TrainingWorkshopMaterialsSunbelt2012\n\nYou'll find the commands to use in the .R command file associated with the \nIntro workshop.  Most are part of the \"network\" or \"sna\" packages, not \nergm.  Statnet is really a collection of several packages packages, and \nthe tutorials we offer now cover the functionality associated with each \npackage separately.\n\nHTH,\nMartina\n\nOn Mon, 21 Jan 2013, Shane Gleason wrote:\n\n> Hello everyone,\n>\n> I am afraid this might be a very basic question, though it does not seem to \n> be in the list archives.\n>\n> I have network attributes which are contained in a separate file from the \n> network (so I have network.csv and attributes.csv).\n>\n> Reading through the tutorials available online, mostly in the JSS special \n> issue, there does not seem to be any mention of a way to import attributes, \n> just to assign them with R code.  Is there anyway to import attributes or \n> will I need to just do it via R code (there are an awful lot of attributes to \n> assign).\n>\n> Thanks so much in advance,\n>\n> Shane\n>\n> -- \n> Shane Gleason\n> Doctoral Candidate\n> Southern Illinois University:Carbondale\n> Department of Political Science\n> Faner 3172\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Shane,\n\nPlease take a look at the online tutorials from the last Sunbelt \nconference (that's where we offered 6 workshops).  In particular,\n\"An Introduction to Network Analysis with R and statnet\"\nhtt",
+      "thread_id": "thread-949bd610b75e",
+      "thread_depth": 1,
+      "month": "2013-01"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-c6766bf464cd",
+      "subject": "[statnet_help] addition of NA in $mel after simulate.ergm",
+      "message_count": 1,
+      "participants": [
+        "C.H."
+      ],
+      "started": "2013-01-02T01:16:58Z",
+      "last_reply": "2013-01-02T01:16:58Z",
+      "root_message_id": "msg-c6766bf464cd"
+    },
+    {
+      "id": "thread-6344c15714a2",
+      "subject": "[statnet_help] Problems of plotting with missing value in statnet",
+      "message_count": 1,
+      "participants": [
+        "Shupin Li"
+      ],
+      "started": "2013-01-06T10:22:14Z",
+      "last_reply": "2013-01-06T10:22:14Z",
+      "root_message_id": "msg-6344c15714a2"
+    },
+    {
+      "id": "thread-ef301d5a99f4",
+      "subject": "[statnet_help] Generating random centralized or modular networks",
+      "message_count": 1,
+      "participants": [
+        "Tom Valente"
+      ],
+      "started": "2013-01-10T09:38:17Z",
+      "last_reply": "2013-01-10T09:38:17Z",
+      "root_message_id": "msg-ef301d5a99f4"
+    },
+    {
+      "id": "thread-b4bb1be20772",
+      "subject": "[statnet_help] Model-selection in latentnet",
+      "message_count": 1,
+      "participants": [
+        "Leist, Sebastian"
+      ],
+      "started": "2013-01-11T01:15:20Z",
+      "last_reply": "2013-01-11T01:15:20Z",
+      "root_message_id": "msg-b4bb1be20772"
+    },
+    {
+      "id": "thread-73f26b8faf25",
+      "subject": "[statnet_help] Help with ergm",
+      "message_count": 2,
+      "participants": [
+        "Juha Itkonen",
+        "Martina Morris"
+      ],
+      "started": "2013-01-11T06:20:49Z",
+      "last_reply": "2013-01-18T13:26:52Z",
+      "root_message_id": "msg-73f26b8faf25"
+    },
+    {
+      "id": "thread-479c44920cc4",
+      "subject": "[statnet_help] re: Euclidean distance for bipartite",
+      "message_count": 1,
+      "participants": [
+        "megumi nishimura"
+      ],
+      "started": "2013-01-12T20:09:12Z",
+      "last_reply": "2013-01-12T20:09:12Z",
+      "root_message_id": "msg-479c44920cc4"
+    },
+    {
+      "id": "thread-be8a9376e55e",
+      "subject": "[statnet_help] re: goodness of fit in geodesic for bipartite",
+      "message_count": 2,
+      "participants": [
+        "Steven Goodreau",
+        "megumi nishimura"
+      ],
+      "started": "2013-01-12T20:23:56Z",
+      "last_reply": "2013-01-15T15:01:58Z",
+      "root_message_id": "msg-be8a9376e55e"
+    },
+    {
+      "id": "thread-748763d8beba",
+      "subject": "[statnet_help] re: WGDSP for bipartite",
+      "message_count": 1,
+      "participants": [
+        "megumi nishimura"
+      ],
+      "started": "2013-01-12T20:28:49Z",
+      "last_reply": "2013-01-12T20:28:49Z",
+      "root_message_id": "msg-748763d8beba"
+    },
+    {
+      "id": "thread-cb24e6a7dcb6",
+      "subject": "[statnet_help]  rebipartite, nodematch command, and multicollinearity",
+      "message_count": 1,
+      "participants": [
+        "megumi nishimura"
+      ],
+      "started": "2013-01-12T21:19:37Z",
+      "last_reply": "2013-01-12T21:19:37Z",
+      "root_message_id": "msg-cb24e6a7dcb6"
+    },
+    {
+      "id": "thread-949bd610b75e",
+      "subject": "[statnet_help] Importing attributes via CSV?",
+      "message_count": 2,
+      "participants": [
+        "Martina Morris",
+        "Shane Gleason"
+      ],
+      "started": "2013-01-21T16:41:17Z",
+      "last_reply": "2013-01-21T17:38:34Z",
+      "root_message_id": "msg-949bd610b75e"
+    }
+  ]
+}

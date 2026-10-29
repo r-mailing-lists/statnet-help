@@ -1,0 +1,599 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2008-10",
+  "messages": [
+    {
+      "id": "msg-c3c01b8f9a3c",
+      "message_id": "<E35F1CE4D8494A73A3EE0577646F5F22@mail2world.com>",
+      "from_name": "Richard Dekens",
+      "from_email_hash": "193004826ec754b361bdcd8df7c7d23e74f348a9525392bf7e548a35c7fc97b2",
+      "date": "2008-10-07T10:58:19Z",
+      "subject": "[statnet_help] error when plotting gof object",
+      "subject_clean": "[statnet_help] error when plotting gof object",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi, I tried the example code given in the help for plot.gofobject:\n\ndata(florentine)\ngest <- ergm(flomarriage ~ edges + kstar(2))\ngofflo <- gof(gest)\nplot(gofflo)\n\nAll goes well until the plot(gofflo) command, which invokes the\nfollowing error message:\n\n> plot(gofflo)\nError in axis(side = 1, at = 1:10, labels = c(0, 1, 2, 3, 4, 5, 6, 7, : \ntoo few arguments\n\nThe plot is only partly drawn, without any axes. I also ttempted to\nreplicate plotting gof objects as described in JSS issues 9 (statnet\ntutorial) and issue 3 (ergm: a package to fit....), which yields the\nsame error message.\n\nHas anything changed in the ergm code or perhaps in the latest R\nVersion? How to fix this? I'd like to be able to print the gof objects.\n\nThanks, Richard\n\n\n\nsome details on the system:\nR version 2.7.2 (2008-08-25) \ni386-pc-mingw32 \n\nattached base packages:\n[1] tools stats graphics grDevices utils datasets methods \n[8] base \n\nother attached packages:\n[1] statnet_2.1 networksis_1.0 sna_1.5 \n[4] degreenet_1.0 latentnet_2.1-1 ergm_2.1 \n[7] network_1.4-1 shapes_1.1-1 rgl_0.81 \n[10] scatterplot3d_0.3-27 abind_1.1-0 \n\n> getOption(\"pkgType\") \n[1] \"win.binary\"\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081007/a4ffad9f/attachment.html>",
+      "body_snippet": "Hi, I tried the example code given in the help for plot.gofobject:\n\ndata(florentine)\ngest <- ergm(flomarriage ~ edges + kstar(2))\ngofflo <- gof(gest)\nplot(gofflo)\n\nAll goes well until the plot(gofflo)",
+      "thread_id": "thread-c3c01b8f9a3c",
+      "thread_depth": 0,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-05118ef7f273",
+      "message_id": "<C510F4B6.1BB88%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2008-10-07T11:12:54Z",
+      "subject": "[statnet_help] error when plotting gof object",
+      "subject_clean": "[statnet_help] error when plotting gof object",
+      "in_reply_to": "<E35F1CE4D8494A73A3EE0577646F5F22@mail2world.com>",
+      "references": [],
+      "body_plain": "Richard,\n\nI tried the code you have under Windows and 2.7.2 (i.e., the same set up as\nyou have). The code runs fine for me. Nothing has changed in \"ergm\" to cause\nthis.\n\nCan you try a clean install on R and remove your workspace first? That is\nall I can think of (conditional on the failure of the code).\n\nRegards,\n\nMark\n\n\nOn 10/7/08 10:58 AM, \"Richard Dekens\" <detuimelaar@snail-mail.net> wrote:\n\n> \n> Hi, I tried the example code given in the help for plot.gofobject:\n> \n> data(florentine)\n> gest <- ergm(flomarriage ~ edges + kstar(2))\n> gofflo <- gof(gest)\n> plot(gofflo)\n> \n> All goes well until the plot(gofflo) command, which invokes the\n> following error message:\n> \n>> plot(gofflo)\n> Error in axis(side = 1, at = 1:10, labels = c(0, 1, 2, 3, 4, 5, 6, 7, :\n> too few arguments\n> \n> The plot is only partly drawn, without any axes. I also ttempted to\n> replicate plotting gof objects as described in JSS issues 9 (statnet\n> tutorial) and issue 3 (ergm: a package to fit....), which yields the\n> same error message.\n> \n> Has anything changed in the ergm code or perhaps in the latest R\n> Version? How to fix this? I'd like to be able to print the gof objects.\n> \n> Thanks, Richard\n> \n> \n> \n> some details on the system:\n> R version 2.7.2 (2008-08-25)\n> i386-pc-mingw32 \n> \n> attached base packages:\n> [1] tools stats graphics grDevices utils datasets methods\n> [8] base \n> \n> other attached packages:\n> [1] statnet_2.1 networksis_1.0 sna_1.5\n> [4] degreenet_1.0 latentnet_2.1-1 ergm_2.1\n> [7] network_1.4-1 shapes_1.1-1 rgl_0.81\n> [10] scatterplot3d_0.3-27 abind_1.1-0\n> \n>> getOption(\"pkgType\")\n> [1] \"win.binary\"\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Richard,\n\nI tried the code you have under Windows and 2.7.2 (i.e., the same set up as\nyou have). The code runs fine for me. Nothing has changed in \"ergm\" to cause\nthis.\n\nCan you try a clean install on",
+      "thread_id": "thread-c3c01b8f9a3c",
+      "thread_depth": 1,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-f31c8ba85a5d",
+      "message_id": "<adab274a0810110245p6b4f6861qcad8b4f49041614b@mail.gmail.com>",
+      "from_name": "Haris Memic",
+      "from_email_hash": "3242f70fee752cc23de46cbf0221901b900a5011736103a06460e18c8b822892",
+      "date": "2008-10-11T02:45:51Z",
+      "subject": "[statnet_help] Options for running statnet on large networks",
+      "subject_clean": "[statnet_help] Options for running statnet on large networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet group.\n\nI have this problem in that I have a pretty big network with 600+ actors.\nI am searching for the most efficient way to run statnet on such network.\n\nI am also considering buying a new computer for this purpose and am curious\nwhether a 2,6 quad procesor processor would be faster then 3,0 Ghz Core2Duo\nfor running statnet or would it not? I was told that some applications can\nnot benefit from quad core processors and other can,so I am trying to see\nwhat could\nbe the best  option for me.\nI have also heard that there is a possibility to remotely run statnet on\nsome dedicated machine. If that is true please point me to the necessary\ninfo.\n\nThanks.\n\nRegards,\nHaris Memic\nFaculty of Information Technology, Bosnia and Herzegovina\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081011/28a31010/attachment.html>",
+      "body_snippet": "Dear statnet group.\n\nI have this problem in that I have a pretty big network with 600+ actors.\nI am searching for the most efficient way to run statnet on such network.\n\nI am also considering buying a",
+      "thread_id": "thread-f31c8ba85a5d",
+      "thread_depth": 0,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-a7d53cb91202",
+      "message_id": "<000a01c93032$255deba0$7019c2e0$@vlegels@ugent.be>",
+      "from_name": "Jef Vlegels",
+      "from_email_hash": "2c9ae18a029cd39586b4e15b856c86d0cc1fdfd9dda1c4b1b282a6e2cfb21479",
+      "date": "2008-10-17T01:27:08Z",
+      "subject": "[statnet_help] meta analysis and ergm-models",
+      "subject_clean": "[statnet_help] meta analysis and ergm-models",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet team,\n\n \n\nI have a question about the implementation of erg models.\n\nI'm trying to fit a erg model on a very large social network dataset,\ncontaining 80 different schools in Belgium. It has about 15.000 respondents.\nIn particular I'm looking for ethnical and gender homophily , and structural\nhomophily (class, school and education type).\n\n \n\n( model2 <- ergm(vlo13 ~ edges + transitive + nodematch(\"class\") +\nnodematch(\"ethnicity\") + nodematch(\"EducType\") + nodematch(\"gender\"),\nverbose = TRUE) )\n\n \n\n \n\nBecause it is such a large data set, would it be a good idea to split the\ndataset by school? I would than look for a model that fits all the 80\nnetworks, and perform a meta analysis to check whether the model has a good\nfit for all the different school networks.\n\nSo I would split the dataset because:\n\n-          I have to deal with smaller datasets, so it takes less longer to\ndo the calculations. This makes experimenting with the model much easier. \n\n-          It is structural impossible to have a relationship with someone\nfrom a different school (because of the geometric distance), so there would\nbe very large homophily for the variable 'school' when I would do my\nanalysis on the whole network.\n\n-          There is no theoretical issue when I split the network up by\nschool, because of this structural restraint. \n\n \n\nI hope you understand my question. \n\n \n\nMany thanks,\n\n \n\nJef \n\n \n\n \n\n---------------------------------------------\n\nJef Vlegels\n\nUniversiteit Gent\n\nWetenschappelijk onderzoeker\n\n+32(0)9 264 91 75\n\nJef.Vlegels@UGent.be\n\n \n\nVakgroep Sociologie\n\nKorte Meer 3\n\nB-9000 Gent\n\n \n\n \n\n \n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081017/50fdd8a8/attachment.html>",
+      "body_snippet": "Dear statnet team,\n\n \n\nI have a question about the implementation of erg models.\n\nI'm trying to fit a erg model on a very large social network dataset,\ncontaining 80 different schools in Belgium. It h",
+      "thread_id": "thread-a7d53cb91202",
+      "thread_depth": 0,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-6d7d4bf9dfaa",
+      "message_id": "<EABD83E0D9B54FF7A79055B62A32ACAB@WJCMUPC>",
+      "from_name": "Jiang",
+      "from_email_hash": "23a572fcc9510789d6cf32e576cff3ccf7ebb8d07e42ea807d8c8e51ce299e3b",
+      "date": "2008-10-17T08:18:29Z",
+      "subject": "[statnet_help] FW: Network R Package fails to import Pajek file",
+      "subject_clean": "[statnet_help] FW: Network R Package fails to import Pajek file",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Folks,\n\nNow I am using SNA package to calculate some measurements for a bunch of\nnetworks. I have generated some networks in the format of Pajek, but it\nseems to fail to import them into R. I attached the error information and\nthe networks I used in the attachment. Are the versions of Pajek and SNA not\ncompatible? Hope you can help me to solve it. Thank you so much. \n\nNOTICE:\nI have updated to the latest version of NETWORK R package. The version is\n1.4-1. My operation system is vista basic. And the version of R is 2.7.2. I\nhave tried installed NETWORK again, but it still failed to read. \n\nI totally don't know what the reason is. I am looking forward to your\nresponse.\n\n---------------------------------------------------------------------------\nfilename <- paste(\"OssNet2004_14568.net\", sep=\"\");\ngsn <- read.paj(filename);\n----------------------------------------------------------------------------\n\nBest,\n\nJiang Wu\n-------------- next part --------------\nAn embedded and charset-unspecified text was scrubbed...\nName: error message.txt\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081017/2c168001/attachment.txt>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: Links.net\nType: application/x-noteexpress-tagged\nSize: 881 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081017/2c168001/attachment.bin>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: OssNet2004_14568.net\nType: application/x-noteexpress-tagged\nSize: 3254 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081017/2c168001/attachment-0001.bin>",
+      "body_snippet": "Dear Folks,\n\nNow I am using SNA package to calculate some measurements for a bunch of\nnetworks. I have generated some networks in the format of Pajek, but it\nseems to fail to import them into R. I att",
+      "thread_id": "thread-6d7d4bf9dfaa",
+      "thread_depth": 0,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-b399577443f9",
+      "message_id": "<Pine.WNT.4.64.0810171518110.6036@vinaya.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2008-10-17T15:23:25Z",
+      "subject": "[statnet_help] meta analysis and ergm-models",
+      "subject_clean": "[statnet_help] meta analysis and ergm-models",
+      "in_reply_to": "<000a01c93032$255deba0$7019c2e0$@vlegels@ugent.be>",
+      "references": [
+        "<000a01c93032$255deba0$7019c2e0$@vlegels@ugent.be>"
+      ],
+      "body_plain": "Hi Jef,\n\nWhen one has data on multiple settings in which it is impossible for \npeople to nominate those in other settings, then I would strongly \nrecommend modeling them as separately.  Otherwise one is confounding two \ndifferent processes.\n\n> -          It is structural impossible to have a relationship with someone\n> from a different school (because of the geometric distance), so there would\n> be very large homophily for the variable 'school' when I would do my\n> analysis on the whole network.\n\nYes, in this case the MLE for a school-homophily parameter would be \npositive infinity. We know this without having to actually model it \ndirectly, and doing so won't tell you anything in addition.\n\nJef, I will forward you a manuscript in which we analyzed multiple schools \nindependently, so you can get a sense for how we did it.\n\nSteve\n\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65855,-122.3091&z=18&t=k             *\n**************************************************************************",
+      "body_snippet": "Hi Jef,\n\nWhen one has data on multiple settings in which it is impossible for \npeople to nominate those in other settings, then I would strongly \nrecommend modeling them as separately.  Otherwise one ",
+      "thread_id": "thread-a7d53cb91202",
+      "thread_depth": 1,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-73362320187b",
+      "message_id": "<005801c93291$5820c880$08625980$@vlegels@ugent.be>",
+      "from_name": "Jef Vlegels",
+      "from_email_hash": "2c9ae18a029cd39586b4e15b856c86d0cc1fdfd9dda1c4b1b282a6e2cfb21479",
+      "date": "2008-10-20T01:53:38Z",
+      "subject": "[statnet_help] statnet linux",
+      "subject_clean": "[statnet_help] statnet linux",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Statnet team,\n\n \n\nAre there any advantages in running statnet on a Linux system (debian)?\nEspecially for calculating erg models in large networks?\n\n \n\nJef\n\n \n\n \n\n \n\nJef Vlegels\nUniversiteit Gent\nVakgroep Sociologie\nKorte Meer 3 \nB-9000 Gent\nPhone: +32 (0)9 264.91.75\nFax: +32 (0)9 264.69.75\n <mailto:ronan.vanrossem@ugent.be> jef.vlegels@ugent.be\n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081020/ecf8a0a9/attachment.html>",
+      "body_snippet": "Statnet team,\n\n \n\nAre there any advantages in running statnet on a Linux system (debian)?\nEspecially for calculating erg models in large networks?\n\n \n\nJef\n\n \n\n \n\n \n\nJef Vlegels\nUniversiteit Gent\nVakgr",
+      "thread_id": "thread-73362320187b",
+      "thread_depth": 0,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-fea7c71194b7",
+      "message_id": "<6D74C26B369041C5816249D599EFEB05@WJCMUPC>",
+      "from_name": "Jiang",
+      "from_email_hash": "23a572fcc9510789d6cf32e576cff3ccf7ebb8d07e42ea807d8c8e51ce299e3b",
+      "date": "2008-10-20T15:03:33Z",
+      "subject": "[statnet_help] FW: Network R Package fails to import Pajek file",
+      "subject_clean": "[statnet_help] FW: Network R Package fails to import Pajek file",
+      "in_reply_to": "<EABD83E0D9B54FF7A79055B62A32ACAB@WJCMUPC>",
+      "references": [
+        "<EABD83E0D9B54FF7A79055B62A32ACAB@WJCMUPC>"
+      ],
+      "body_plain": "Dear Folks,\n\nI have solved this issue by myself. It seems that there are no people who\nwant to respond to this question. Actually, the answer is: We can use iGraph\nand SNA at the same time. If you use the command \"library(igraph)\"\n\"library(sna)\", they are not compatible. But now there seems another bug. I\nrun the network in the attachment using the following command.\n\n-------------------------------------\nlibrary(DBI); library(RMySQL); library(sna); library(network);\ngg <- read.paj(\"D:/OSS/datfiles/cum_OssPPNet2006_3.net\", simplify=TRUE,\ndebug=TRUE, verbose=TRUE);\n------------------------------\n\nand the following error is generated. but I just add one node in the network\n(see cum_OssPPNet2006_3_1.net). It can work. Is there any people can try? Is\nit a bug?\nIt is very strange, why need to add \"1\" in the end of the file name?\n\n\n\n[1] \"nextline called... new loop started\"\n[1] \"vertex list set\"\n[1] \"nextline called... new loop started\"\n[1] \"arc or edge lines present\"\n[1] \"length of dyad list 1\"\n[1] \"unlisting dyad list to matrix\"\n[1] \"isnull previous dyads?:  TRUE\"\n[1] \"edge end out of range, skipping network creation\"\n[1] \"first dyad list (arcs?), is too short to be a full network, skipping to\nnext dyad list (edges?)\"\n[1] \"nextline called... new loop started\"\n[1] \"nnetworks= 1\"\n[1] \"network.names= cum_OssPPNet2006_31\"\n[1] \"vertex null? FALSE\"\n[1] \"network.title= cum_OssPPNet2006_3\"\n[1] \"vector null? TRUE\"\n[1] \"colnames.vector= \"\n[1] \"projects null? TRUE\"\n[1] \"nprojects= 0\"\n[1] \"names.projects= \"\n[1] \"number of networks 1\"\n[1] \"working along network names cum_OssPPNet2006_31\"\nError in get(network.names[i]) : cannot find \"cum_OssPPNet2006_31\" variable\n\n\n\nBest,\n\nJiang\n\n\n\n-----????-----\n???: Jiang [mailto:jiangwu.john@gmail.com] \n????: 2008?10?17? 11:18\n???: statnet_help@u.washington.edu\n??: [statnet_help] FW: Network R Package fails to import Pajek file\n\nDear Folks,\n\nNow I am using SNA package to calculate some measurements for a bunch of\nnetworks. I have generated some networks in the format of Pajek, but it\nseems to fail to import them into R. I attached the error information and\nthe networks I used in the attachment. Are the versions of Pajek and SNA not\ncompatible? Hope you can help me to solve it. Thank you so much. \n\nNOTICE:\nI have updated to the latest version of NETWORK R package. The version is\n1.4-1. My operation system is vista basic. And the version of R is 2.7.2. I\nhave tried installed NETWORK again, but it still failed to read. \n\nI totally don't know what the reason is. I am looking forward to your\nresponse.\n\n---------------------------------------------------------------------------\nfilename <- paste(\"OssNet2004_14568.net\", sep=\"\");\ngsn <- read.paj(filename);\n----------------------------------------------------------------------------\n\nBest,\n\nJiang Wu\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: cum_OssPPNet2006_3.net\nType: application/x-noteexpress-tagged\nSize: 55 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081020/742ebb92/attachment.bin>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: cum_OssPPNet2006_3_1.net\nType: application/x-noteexpress-tagged\nSize: 74 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081020/742ebb92/attachment-0001.bin>",
+      "body_snippet": "Dear Folks,\n\nI have solved this issue by myself. It seems that there are no people who\nwant to respond to this question. Actually, the answer is: We can use iGraph\nand SNA at the same time. If you use",
+      "thread_id": "thread-6d7d4bf9dfaa",
+      "thread_depth": 1,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-f8e18ba3d02e",
+      "message_id": "<CB02573D-0B16-474B-A03D-560B77087801@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-10-21T04:02:45Z",
+      "subject": "[statnet_help] A question about ERGMs and simulating networks with an arbitrary number of nodes",
+      "subject_clean": "[statnet_help] A question about ERGMs and simulating networks with an arbitrary number of nodes",
+      "in_reply_to": "<1DACC243-2169-4DF8-BD5A-BE5589E00FB7@gmail.com>",
+      "references": [
+        "<544FE328-1D7F-48A9-812E-B07902A1C03F@gmail.com>",
+        "<F95E940D-FC94-41B9-8BF5-60C28A6E93C3@stat.psu.edu>",
+        "<1DACC243-2169-4DF8-BD5A-BE5589E00FB7@gmail.com>"
+      ],
+      "body_plain": "Hi Hannu.  The answer to your question is yes, it is possible (and  \nvery easy, in fact, using ergm) to do exactly what you're suggesting:\n\ninitialfit <- ergm(network ~ edges + <otherterms>)\nparameterestimates <- initialfit$coef\nsimulate(newnetwork ~ edges + <otherterms>, theta0=parameterestimates)\n\nHowever, doing this is perilous.  The reason it's perilous is that it  \nis not clear that doing the above gives you \"statistically similar\"  \nresults.  In fact, it's rather clear that in many cases it does not.\n\nConsider the simplest of all ergms:  The \"edges\" ergm, where the only  \nstatistic is the number of edges.  This gives the well-known Erdos- \nRenyi graph model in which each edge has the same probability of  \nforming, independent of all others.  If you fit this ergm on a network  \nwith n nodes, you will obtain as a parameter estimate exactly the  \nfollowing quantity:\n   log(p) - log(1-p),\nwhere p equals the density of the network, i.e., the proportion of the  \nn-choose-2 pairs of nodes that share an edge in your n-node  \n(undirected) network.  If you now simulate a new network on m nodes  \nwith the same ergm and the same parameter estimate, you will recreate  \nthe same density in your new network, on average.  However, note that  \nthis does NOT give you the same number of edges on average.  For  \ninstance, if m = 2n, then the same proportion will produce on average  \nmore than four times as many edges (because m-choose-2 is a bit more  \nthan 4 times n-choose-2 when m=2n).  So it is necessary here to be  \nvery clear about what you mean by \"statistically similar\".  If you  \nmean that you want the same number of edges on average, then you  \ncannot merely use the same parameter value obtained using an \"edges\"  \nmodel.  Perhaps it's more realistic to define \"statistically similar\"  \nin this case to mean \"same mean degree\", but even in this case the  \n\"edges\" parameter must be adjusted when the number of nodes changes.   \nThen again, if \"statistically similar\" means that you want the same  \nnetwork density on average, then it's fine to use the same \"edges\"  \nparameter for different-sized networks.\n\nNow consider using the \"density\" term instead of \"edges\" in an ergm.   \nThe density term equals edges divided by n-choose-2, so it is  \nequivalent to the edges term AS LONG AS n REMAINS FIXED, since in this  \ncase density is simply a constant multiple of edges.  In other words,  \nusing density alone gives you an Erdos-Renyi graph just as using edges  \nalone does.  But if you intend to change the size of the network while  \nkeeping the network \"statistically similar\", then once again it is  \nnecessary to be very specific about defining \"statistically similar\".   \nIn particular, using the same parameter value in a new m-node network  \nwill not give the same density on average (remember, it's the *edges*  \nparameter that does this).\n\nIf the story is so complicated for even the simplest of ergms, imagine  \nwhat happens for more complicated ones!\n\nI hope this helps.\nDave\n\n\n\nOn Sep 29, 2008, at 10:47 AM, Hannu Rajaniemi wrote:\n\n> Hi Dave and the rest of the list,\n>\n> Thanks for the response. Apologies if the question was confusing --  \n> what I was wondering about if it would be possible to:\n>\n> * fit an ERGM model into a network dataset with n nodes\n> * create a model with the *same* ERGM model coefficients, but for m ! \n> = n nodes\n> * draw graph samples from that model.\n>\n> Another way of saying this would be that given a graph with some  \n> attribute data, I would like to generate random graphs which are  \n> statistically similar to it (in terms of homophily, number of  \n> triangles, etc.) but which have a smaller (or larger) number of  \n> nodes than the original graph.\n>\n> Is there an easy way to do this?\n>\n> kind regards,\n>\n> -- Hannu\n>\n>\n> On 10 Sep 2008, at 18:35, David Hunter wrote:\n>\n>> Hi Hannu.  In general, the question comes down to what you mean by  \n>> \"similar statistical characteristics\".  It turns out that this  \n>> phrase is not always so easy to define in terms of the only thing  \n>> that matters about a network in the context of a specific ERGM,  \n>> namely, the vector of network statistics.  Thus, your question is  \n>> best answered with another question:  What do you mean precisely by  \n>> \"the same ERGM model characteristics\"?\n>>\n>> (I should add that this question is sometimes fairly easy to answer  \n>> satisfactorily, sometimes not!)\n>>\n>> Dave\n>>\n>>\n>>\n>> On Sep 10, 2008, at 11:57 AM, Hannu Rajaniemi wrote:\n>>\n>>> Dear Statnet List,\n>>>\n>>> I have been playing with statnet a bit for a hobby project, and  \n>>> am a bit confused about drawing sample networks using \"simulate\"  \n>>> and a model fitted using the ergm function.\n>>>\n>>> This may be a result of my poor understanding of the theory of  \n>>> ERGMs in general, but I was wondering if it is possible to  \n>>> simulate a network with more or less nodes than the original  \n>>> network -- i.e. simulate a network that is larger/smaller than the  \n>>> original but with similar statistical characteristics in the ERGM  \n>>> sense.\n>>>\n>>> For example, let's say I fit an ERGM model using the full  \n>>> faux.magnolia graph (1400 nodes or so, but only wish to generate  \n>>> sample networks with, say, 20 actors but with the same ERGM model  \n>>> characteristics. Is there any way to do this? And does the  \n>>> question even make sense....? :-)\n>>>\n>>> Any advice would be much appreciated.\n>>>\n>>> kind regards,\n>>>\n>>> -- Hannu Rajaniemi\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Hannu.  The answer to your question is yes, it is possible (and  \nvery easy, in fact, using ergm) to do exactly what you're suggesting:\n\ninitialfit <- ergm(network ~ edges + <otherterms>)\nparameter",
+      "thread_id": "thread-f8e18ba3d02e",
+      "thread_depth": 0,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-27769fa0f795",
+      "message_id": "<00679E51EE311B44B2A060470D0A50020223DA19@EX05.asurite.ad.asu.edu>",
+      "from_name": "David Schaefer",
+      "from_email_hash": "68ed60123835f929b1bceff70c06e4abcd7c94aab073da013ffb873fd56ee511",
+      "date": "2008-10-21T13:48:38Z",
+      "subject": "[statnet_help] FW: Network R Package fails to import Pajek file",
+      "subject_clean": "[statnet_help] FW: Network R Package fails to import Pajek file",
+      "in_reply_to": "<6D74C26B369041C5816249D599EFEB05@WJCMUPC>",
+      "references": [],
+      "body_plain": "Hi Jiang,\n\nMy students are also having a problem reading Pajek data into R, even with a much simpler dataset (see attached).  One problem seems to be the x,y,z coordinates that Pajek specifies for the vertices.  When they manually delete the coordinates, the read.paj command works as expected.  This seems to be a problem only with the more recent version of the network package (1.4) - I have versions 1.1 and 1.2 on my computers that read the same Pajek file without a problem.  Here is the command I'm using.\n\nnet1<-read.paj('C:/Documents and Settings/schaef/Desktop/temp5.net')\n\nIf anyone knows of another fix I would appreciate hearing about it.\n\nBest,\nDavid\n\n*********************************************\nDavid R. Schaefer, Ph.D.\nSchool of Social and Family Dynamics\nArizona State University\nBox 873701\nTempe, AZ 85287-3701\nwww.public.asu.edu/~schaef/\n*********************************************\n\n-----Original Message-----\nFrom: statnet_help-bounces@mailman2.u.washington.edu [mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of Jiang\nSent: Monday, October 20, 2008 3:04 PM\nTo: 'Jiang'; statnet_help@u.washington.edu\nSubject: re: [statnet_help] FW: Network R Package fails to import Pajek file\n\nDear Folks,\n\nI have solved this issue by myself. It seems that there are no people who\nwant to respond to this question. Actually, the answer is: We can use iGraph\nand SNA at the same time. If you use the command \"library(igraph)\"\n\"library(sna)\", they are not compatible. But now there seems another bug. I\nrun the network in the attachment using the following command.\n\n-------------------------------------\nlibrary(DBI); library(RMySQL); library(sna); library(network);\ngg <- read.paj(\"D:/OSS/datfiles/cum_OssPPNet2006_3.net\", simplify=TRUE,\ndebug=TRUE, verbose=TRUE);\n------------------------------\n\nand the following error is generated. but I just add one node in the network\n(see cum_OssPPNet2006_3_1.net). It can work. Is there any people can try? Is\nit a bug?\nIt is very strange, why need to add \"1\" in the end of the file name?\n\n\n\n[1] \"nextline called... new loop started\"\n[1] \"vertex list set\"\n[1] \"nextline called... new loop started\"\n[1] \"arc or edge lines present\"\n[1] \"length of dyad list 1\"\n[1] \"unlisting dyad list to matrix\"\n[1] \"isnull previous dyads?:  TRUE\"\n[1] \"edge end out of range, skipping network creation\"\n[1] \"first dyad list (arcs?), is too short to be a full network, skipping to\nnext dyad list (edges?)\"\n[1] \"nextline called... new loop started\"\n[1] \"nnetworks= 1\"\n[1] \"network.names= cum_OssPPNet2006_31\"\n[1] \"vertex null? FALSE\"\n[1] \"network.title= cum_OssPPNet2006_3\"\n[1] \"vector null? TRUE\"\n[1] \"colnames.vector= \"\n[1] \"projects null? TRUE\"\n[1] \"nprojects= 0\"\n[1] \"names.projects= \"\n[1] \"number of networks 1\"\n[1] \"working along network names cum_OssPPNet2006_31\"\nError in get(network.names[i]) : cannot find \"cum_OssPPNet2006_31\" variable\n\n\n\nBest,\n\nJiang\n\n\n\n-----????-----\n???: Jiang [mailto:jiangwu.john@gmail.com] \n????: 2008?10?17? 11:18\n???: statnet_help@u.washington.edu\n??: [statnet_help] FW: Network R Package fails to import Pajek file\n\nDear Folks,\n\nNow I am using SNA package to calculate some measurements for a bunch of\nnetworks. I have generated some networks in the format of Pajek, but it\nseems to fail to import them into R. I attached the error information and\nthe networks I used in the attachment. Are the versions of Pajek and SNA not\ncompatible? Hope you can help me to solve it. Thank you so much. \n\nNOTICE:\nI have updated to the latest version of NETWORK R package. The version is\n1.4-1. My operation system is vista basic. And the version of R is 2.7.2. I\nhave tried installed NETWORK again, but it still failed to read. \n\nI totally don't know what the reason is. I am looking forward to your\nresponse.\n\n---------------------------------------------------------------------------\nfilename <- paste(\"OssNet2004_14568.net\", sep=\"\");\ngsn <- read.paj(filename);\n----------------------------------------------------------------------------\n\nBest,\n\nJiang Wu\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: temp5.net\nType: application/octet-stream\nSize: 592 bytes\nDesc: temp5.net\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081021/192bc236/attachment.obj>",
+      "body_snippet": "Hi Jiang,\n\nMy students are also having a problem reading Pajek data into R, even with a much simpler dataset (see attached).  One problem seems to be the x,y,z coordinates that Pajek specifies for the",
+      "thread_id": "thread-6d7d4bf9dfaa",
+      "thread_depth": 2,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-cfbf50ffa91a",
+      "message_id": "<DF052FE7-A76E-4EA2-AD0C-5941FA05BF37@reed.edu>",
+      "from_name": "Alexander H. Montgomery",
+      "from_email_hash": "d1c48c3c695c97a51e653a3cc66bc8e8fd7c5c03b9e0a43fd4b72da306733d40",
+      "date": "2008-10-21T14:42:33Z",
+      "subject": "[statnet_help] FW: Network R Package fails to import Pajek file",
+      "subject_clean": "[statnet_help] FW: Network R Package fails to import Pajek file",
+      "in_reply_to": "<00679E51EE311B44B2A060470D0A50020223DA19@EX05.asurite.ad.asu.edu>",
+      "references": [
+        "<00679E51EE311B44B2A060470D0A50020223DA19@EX05.asurite.ad.asu.edu>"
+      ],
+      "body_plain": "David:\n\nYour network reads in fine on my setup (Mac OS X, R 2.7.1, Network  \npackage 1.4-1). Maybe this is a windows-unique bug?\n\n > net1=read.paj(\"/Users/ahm/Desktop/temp5.net\")\n > net1\n  Network attributes:\n   vertices = 5\n   directed = TRUE\n   hyper = FALSE\n   loops = FALSE\n   multiple = FALSE\n   bipartite = FALSE\n   title = temp5\n   total edges= 8\n     missing edges= 0\n     non-missing edges= 8\n\n  Vertex attribute names:\n     vertex.names x y z\n\n  adjacency matrix:\n   1 2 3 4 5\n1 0 1 1 0 0\n2 1 0 1 1 0\n3 1 0 0 0 0\n4 0 1 0 0 1\n5 0 0 0 0 0\n\nJiang:\n\nThe code does not appear to deal properly with a network with only one  \nedge. Since a Pajek file can have multiple networks, and since your  \nnetwork is not named, it calls the first network it finds by the name  \nof the file, plus a \"1\". Looking at the code, it appears to reject  \nyour network based on the number of dyads being 1. I've changed this  \nin the attached read.paj.R, based on the 1.4-1 codebase. I don't know  \nthe code well enough to comment on whether this change might have  \nother unintended effects, but it works with your sample network:\n\n > net2=read.paj(\"/Users/ahm/Desktop/cum_OssPPNet2006_3.net\",verbose=T)\n[1] \"vertex list set\"\n[1] \"length of dyad list 1\"\n[1] \"edge value created from edge/arc list\"\n[1] \"network created from edge/arc list\"\n[1] \"number of networks 1\"\n[1] \"working along network names cum_OssPPNet2006_31\"\n[1] \"number of projects 1\"\n > net2\n  Network attributes:\n   vertices = 2\n   directed = FALSE\n   hyper = FALSE\n   loops = FALSE\n   multiple = FALSE\n   bipartite = FALSE\n   title = cum_OssPPNet2006_3\n   total edges= 1\n     missing edges= 0\n     non-missing edges= 1\n\n  Vertex attribute names:\n     vertex.names\n\n  adjacency matrix:\n         2:traxy 1:root\n2:traxy       0      1\n1:root        1      0\n\n-AHM\n\n--\nAlexander H. Montgomery\nAssistant Professor, Reed College\nVisiting Assistant Professor, Stanford University (2008-9)\nCISAC, Encina Hall E209\n616 Serra St\nStanford, CA 94305-6165\nwork (650) 725-2702\nfax (650) 723-0089\nahm@reed.edu\nhttp://www.reed.edu/~ahm\n\n\nOn 2008-10-21, at 1:48 PM, David Schaefer wrote:\n\n> Hi Jiang,\n>\n> My students are also having a problem reading Pajek data into R,  \n> even with a much simpler dataset (see attached).  One problem seems  \n> to be the x,y,z coordinates that Pajek specifies for the vertices.   \n> When they manually delete the coordinates, the read.paj command  \n> works as expected.  This seems to be a problem only with the more  \n> recent version of the network package (1.4) - I have versions 1.1  \n> and 1.2 on my computers that read the same Pajek file without a  \n> problem.  Here is the command I'm using.\n>\n> net1<-read.paj('C:/Documents and Settings/schaef/Desktop/temp5.net')\n>\n> If anyone knows of another fix I would appreciate hearing about it.\n>\n> Best,\n> David\n>\n> *********************************************\n> David R. Schaefer, Ph.D.\n> School of Social and Family Dynamics\n> Arizona State University\n> Box 873701\n> Tempe, AZ 85287-3701\n> www.public.asu.edu/~schaef/\n> *********************************************\n>\n> -----Original Message-----\n> From: statnet_help-bounces@mailman2.u.washington.edu [mailto:statnet_help-bounces@mailman2.u.washington.edu \n> ] On Behalf Of Jiang\n> Sent: Monday, October 20, 2008 3:04 PM\n> To: 'Jiang'; statnet_help@u.washington.edu\n> Subject: re: [statnet_help] FW: Network R Package fails to import  \n> Pajek file\n>\n> Dear Folks,\n>\n> I have solved this issue by myself. It seems that there are no  \n> people who\n> want to respond to this question. Actually, the answer is: We can  \n> use iGraph\n> and SNA at the same time. If you use the command \"library(igraph)\"\n> \"library(sna)\", they are not compatible. But now there seems another  \n> bug. I\n> run the network in the attachment using the following command.\n>\n> -------------------------------------\n> library(DBI); library(RMySQL); library(sna); library(network);\n> gg <- read.paj(\"D:/OSS/datfiles/cum_OssPPNet2006_3.net\",  \n> simplify=TRUE,\n> debug=TRUE, verbose=TRUE);\n> ------------------------------\n>\n> and the following error is generated. but I just add one node in the  \n> network\n> (see cum_OssPPNet2006_3_1.net). It can work. Is there any people can  \n> try? Is\n> it a bug?\n> It is very strange, why need to add \"1\" in the end of the file name?\n>\n>\n>\n> [1] \"nextline called... new loop started\"\n> [1] \"vertex list set\"\n> [1] \"nextline called... new loop started\"\n> [1] \"arc or edge lines present\"\n> [1] \"length of dyad list 1\"\n> [1] \"unlisting dyad list to matrix\"\n> [1] \"isnull previous dyads?:  TRUE\"\n> [1] \"edge end out of range, skipping network creation\"\n> [1] \"first dyad list (arcs?), is too short to be a full network,  \n> skipping to\n> next dyad list (edges?)\"\n> [1] \"nextline called... new loop started\"\n> [1] \"nnetworks= 1\"\n> [1] \"network.names= cum_OssPPNet2006_31\"\n> [1] \"vertex null? FALSE\"\n> [1] \"network.title= cum_OssPPNet2006_3\"\n> [1] \"vector null? TRUE\"\n> [1] \"colnames.vector= \"\n> [1] \"projects null? TRUE\"\n> [1] \"nprojects= 0\"\n> [1] \"names.projects= \"\n> [1] \"number of networks 1\"\n> [1] \"working along network names cum_OssPPNet2006_31\"\n> Error in get(network.names[i]) : cannot find \"cum_OssPPNet2006_31\"  \n> variable\n>\n>\n>\n> Best,\n>\n> Jiang\n>\n>\n>\n> -----????-----\n> ???: Jiang [mailto:jiangwu.john@gmail.com]\n> ????: 2008?10?17? 11:18\n> ???: statnet_help@u.washington.edu\n> ??: [statnet_help] FW: Network R Package fails to import Pajek  \n> file\n>\n> Dear Folks,\n>\n> Now I am using SNA package to calculate some measurements for a  \n> bunch of\n> networks. I have generated some networks in the format of Pajek, but  \n> it\n> seems to fail to import them into R. I attached the error  \n> information and\n> the networks I used in the attachment. Are the versions of Pajek and  \n> SNA not\n> compatible? Hope you can help me to solve it. Thank you so much.\n>\n> NOTICE:\n> I have updated to the latest version of NETWORK R package. The  \n> version is\n> 1.4-1. My operation system is vista basic. And the version of R is  \n> 2.7.2. I\n> have tried installed NETWORK again, but it still failed to read.\n>\n> I totally don't know what the reason is. I am looking forward to your\n> response.\n>\n> ---------------------------------------------------------------------------\n> filename <- paste(\"OssNet2004_14568.net\", sep=\"\");\n> gsn <- read.paj(filename);\n> ----------------------------------------------------------------------------\n>\n> Best,\n>\n> Jiang Wu\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: read.paj.R\nType: application/octet-stream\nSize: 22912 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081021/bfdd439c/attachment.obj>",
+      "body_snippet": "David:\n\nYour network reads in fine on my setup (Mac OS X, R 2.7.1, Network  \npackage 1.4-1). Maybe this is a windows-unique bug?\n\n > net1=read.paj(\"/Users/ahm/Desktop/temp5.net\")\n > net1\n  Network att",
+      "thread_id": "thread-6d7d4bf9dfaa",
+      "thread_depth": 3,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-406d5da9d959",
+      "message_id": "<57905cc0810220424m42cb1970sc1bd609f612bf39f@mail.gmail.com>",
+      "from_name": "Mikołaj Hnatiuk",
+      "from_email_hash": "dc3867cce54b7d8ef07c814bb486481ef6333c44f0e2e94405f95677529b9be1",
+      "date": "2008-10-22T04:24:39Z",
+      "subject": "[statnet_help]",
+      "subject_clean": "[statnet_help]",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\nim newbie to ERGM. Im doing research for my project. My problem is somehow\ncomplicated one. I have network with 2 kinds of relations, one is\ndichotomous, the other one valued. I have a reason to belive that strength\nof the tie on 2nd network influences the appareance of the tie in the first\none. The network contains 2467 nodes. Ive read some articles on logistic\nregression in networks, but didn't figure out how to do it on such large\nnetworks - i've tried to use \"netlogit\" (using quadtratic assigment-\nnullhyp=\"qap\" )  function from SNA package, following Krackhardt article in\nSocial Networks (*Krackhardt, David \"Predicting with Networks: A Multiple\nRegression Approach to Analyzing Dyadic Data.\" Social Networks, 10\n(December): 359-381.)   , but after approximately 20h of computation i gave\nup and decided to post on the list. My question is: Is it possible to do\nlogistic regression on 2 networks using just some kind of \"sample\" of  a\nnetwork and by doing such - obtain significant results? Or is there a way\naround this, possibly including usage of ERGMs ? Im really desperate to do\nthis.\nBest,\nMikolaj Hnatiuk\nInstitute of Sociology,  Warsaw University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081022/138776e3/attachment.html>",
+      "body_snippet": "Hi,\nim newbie to ERGM. Im doing research for my project. My problem is somehow\ncomplicated one. I have network with 2 kinds of relations, one is\ndichotomous, the other one valued. I have a reason to b",
+      "thread_id": "thread-406d5da9d959",
+      "thread_depth": 0,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-f56858e4ec33",
+      "message_id": "<ca5106b30810221404s5e45f203u6eb430da63662cc6@mail.gmail.com>",
+      "from_name": "Mengxiao Zhu",
+      "from_email_hash": "28fac92ef04c829420b7a246b9018aac67660421c61cd24e5805a76e67b72144",
+      "date": "2008-10-22T14:04:48Z",
+      "subject": "[statnet_help] Error message when handling large network",
+      "subject_clean": "[statnet_help] Error message when handling large network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet Developers,\n\nWe're recently using Statnet to analyze some large networks (2000+ nodes and\n40,000+ links).\nThe \"too many unique dyads\" error shows up a lot. One example is as follows.\nWhat might be\npossible reasons and what should we do to avoid this kind of error message?\n\n*Model:*\nm1 <- ergm(network ~ edges + kstar(2) + triangle + absdiff(\"Usage_log\") +\nmatch(\"City\") + match(\"Country\") + match(\"AcctType\") + edgecov(agediff)  )\n\n*Error message:*\nError in ergm.pl(Clist = Clist, Clist.miss = Clist2, m = m, theta.offset =\ntheta.offset,  :\n  Too many unique dyads!\nCalls: ergm -> ergm.initialfit -> ergm.mple -> ergm.pl -> .C\nExecution halted\n\nThanks!\n\nBest,\n\nMengxiao\n\n-- \nZhu, Mengxiao\n\nDepartment of Industrial Engineering and Management Science, McCormick\nSchool of Engineering;\nScience of Networks in Communities(SONIC) Group\nNorthwestern University\n\n2145 Sheridan Rd Room C210, Evanston, IL 60208-3119\n\nmzhu@northwestern.edu\nhttps://netfiles.uiuc.edu/mzhu4/www/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081022/498be4eb/attachment.html>",
+      "body_snippet": "Dear Statnet Developers,\n\nWe're recently using Statnet to analyze some large networks (2000+ nodes and\n40,000+ links).\nThe \"too many unique dyads\" error shows up a lot. One example is as follows.\nWhat",
+      "thread_id": "thread-f56858e4ec33",
+      "thread_depth": 0,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-d8bc9d3f1da5",
+      "message_id": "<877172.93935.qm@web53511.mail.re2.yahoo.com>",
+      "from_name": "Phil Murphy",
+      "from_email_hash": "9cc1c84b4814962bd98ecdcde4ef95c290b70cdd2e945ffe736f6b65312d3933",
+      "date": "2008-10-23T10:57:31Z",
+      "subject": "[statnet_help] Blockmodeling in R",
+      "subject_clean": "[statnet_help] Blockmodeling in R",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All, \n?\nI am searching for a relatively?resilient blockmodeling algorithm for use with a particularly large 2-mode dataset (potentially in the thousands of nodes on one axis and a few hundred on the other). Can anyone point me to a paper or other material that describes the options and limitations of the blockmodeling algorithm that is available on R?\n?\nI have a good deal of experience with blockmodeling in Pajek and the dos program TwoMode, but there are time and size limitations in each. I have been eyeing the Statnet and sna packages available in R for some time now, but I have yet to take the plunge. Now that I have an opportunity to take a little time to train myself in this platform, I would really appreciate any advice you could offer.\n?\nBest, \n?\nPhil\n?Philip J. Murphy, Ph.D.\nInternational Development and Policy Analytic Research\nPittsburgh, PA 15260\nhttp://critical.node.googlepages.com \n\n\n      \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081023/2f1be184/attachment.html>",
+      "body_snippet": "Dear All, \n?\nI am searching for a relatively?resilient blockmodeling algorithm for use with a particularly large 2-mode dataset (potentially in the thousands of nodes on one axis and a few hundred on ",
+      "thread_id": "thread-d8bc9d3f1da5",
+      "thread_depth": 0,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-8b8de40f249b",
+      "message_id": "<490164C3.4000308@gmail.com>",
+      "from_name": "Ales Ziberna",
+      "from_email_hash": "5e680d377132a5f4662c83255d0d6d392f3dd8a38545f7e92257bf49b437f21f",
+      "date": "2008-10-23T23:01:39Z",
+      "subject": "[statnet_help] Blockmodeling in R",
+      "subject_clean": "[statnet_help] Blockmodeling in R",
+      "in_reply_to": "<877172.93935.qm@web53511.mail.re2.yahoo.com>",
+      "references": [
+        "<877172.93935.qm@web53511.mail.re2.yahoo.com>"
+      ],
+      "body_plain": "Dear Phill,\n\nI was looking around for solutions for your problem a few months ago and \nhave found no satisfactory solution, at least not for the problem of \nyour size.\n\nFor my problem, which was only about 90 by 260 matrix, I then used my \npackage for blockmodeling (with sum of squres approach and complete \nblocs, which run the fastest) , which is available at \nhttp://www2.arnes.si/~aziber4/blockmodeling, but I doubt it will be of \nuse to you, as it would simply take to long, if nothing else goes wrong.\n\nWhen I was looking at the literature, the 2-mode clustering algorithms \nseemed promising (for review see Van Mechelen, Bock and De Boeck, 2004), \nbut none of those or similar algorithms seem to be implemented in R. I \nwould be very happy if somebody pointed something out.\n\nSo my suggestion for now would be that you do cluster separately each \nmode (as when analyzing classical, non network data) and then form \ntwo-mode blockmodel from that. If you find some at lest reasonably fast \nalgorithm, you can try it to optimize this solution.\n\nBest regards,\nAles Ziberna\n\nIven Van Mechelen, Hans-Hermann Bock and Paul De Boeck (2004): Two-mode \nclustering methods: astructuredoverview. Stat Methods Med Res 2004; 13; \n363, DOI: 10.1191/0962280204sm373ra\n\nPhil Murphy pravi:\n>\n> Dear All,\n>\n>  \n>\n> I am searching for a relatively resilient blockmodeling algorithm for \n> use with a particularly large 2-mode dataset (potentially in the \n> thousands of nodes on one axis and a few hundred on the other). Can \n> anyone point me to a paper or other material that describes the \n> options and limitations of the blockmodeling algorithm that is \n> available on R?\n>\n>  \n>\n> I have a good deal of experience with blockmodeling in Pajek and the \n> dos program TwoMode, but there are time and size limitations in each. \n> I have been eyeing the Statnet and sna packages available in R for \n> some time now, but I have yet to take the plunge. Now that I have an \n> opportunity to take a little time to train myself in this platform, I \n> would really appreciate any advice you could offer.\n>\n>  \n>\n> Best,\n>\n>  \n>\n> Phil\n>\n>\n>  \n> Philip J. Murphy, Ph.D.\n> International Development and Policy Analytic Research\n> Pittsburgh, PA 15260\n> http://critical.node.googlepages.com\n>\n> ------------------------------------------------------------------------\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>   \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081024/91b90861/attachment.html>",
+      "body_snippet": "Dear Phill,\n\nI was looking around for solutions for your problem a few months ago and \nhave found no satisfactory solution, at least not for the problem of \nyour size.\n\nFor my problem, which was only ",
+      "thread_id": "thread-d8bc9d3f1da5",
+      "thread_depth": 1,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-0775e3e4f7f5",
+      "message_id": "<1629e2bb0810241004v48a49a6fv378bcc4f20efc9af@mail.gmail.com>",
+      "from_name": "Moses Boudourides",
+      "from_email_hash": "c5624448747271419acb164061064e1a7b0a1e969681d0b921805e16e6affe4a",
+      "date": "2008-10-24T10:04:41Z",
+      "subject": "[statnet_help] Some very elementary questions",
+      "subject_clean": "[statnet_help] Some very elementary questions",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nAlthough I'm following the mailing list for at least a year, I'm\nafraid I'm not keeping track of all help given to posed questions and\nso I'd like to beg your pardon if what I'm asking is something you\nalready have answered for a great deal of times.\n\nWell, the general form of my data is a 2-mode structure of individuals\nx (groups and attributes). By this, I mean that each line refers to an\nindividual's multi-organizational memberships plus some attributional\nvariables. Now, I have to say that although some of the attributes are\ndichotomous (1 or 0), there are also attributes taking finite values\n(0, 1, ..., K). Of course, I know that each value might be recoded to\na dichotomous one but I was wondering whether I can proceed without\ndoing this.\n\nMy first question is how to import such data from SPSS to the R\nenvironment. In some occasions, I was doing this rather manually but I\nhope there is a more standard way and this is why I'm asking you.\n\nThe second question is about the statnet command for a GWD, GWESP and\nGWDSP models. I have been using something like this:\n\nedges + nodefactor(\"attributeA\") + nodefactor(\"attributeB\") +\nmatch(\"attributeA\") + match(\"attributeB\") (+ more attributes +) +\ngwdegree(1, fixed = FALSE) + gwesp(1, fixed = FALSE) + gwe/dsp(1,\nfixed = FALSE)\n\nIs this right? Or what would it be a better one?\n\nIn particular, when attributeA (or B) takes multiple values, is there\na way to match only particular (and predefined) values?\n\nThanks in advance for your time and any possible you might give me.\n\nAll the best,\n\n--Moses",
+      "body_snippet": "Dear all,\n\nAlthough I'm following the mailing list for at least a year, I'm\nafraid I'm not keeping track of all help given to posed questions and\nso I'd like to beg your pardon if what I'm asking is s",
+      "thread_id": "thread-0775e3e4f7f5",
+      "thread_depth": 0,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-511e6607887b",
+      "message_id": "<49053E68.3060506@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2008-10-26T21:07:04Z",
+      "subject": "[statnet_help] Some very elementary questions",
+      "subject_clean": "[statnet_help] Some very elementary questions",
+      "in_reply_to": "<1629e2bb0810241004v48a49a6fv378bcc4f20efc9af@mail.gmail.com>",
+      "references": [
+        "<1629e2bb0810241004v48a49a6fv378bcc4f20efc9af@mail.gmail.com>"
+      ],
+      "body_plain": "Moses Boudourides wrote:\n> \n> Well, the general form of my data is a 2-mode structure of individuals\n> x (groups and attributes). By this, I mean that each line refers to an\n> individual's multi-organizational memberships plus some attributional\n> variables. Now, I have to say that although some of the attributes are\n> dichotomous (1 or 0), there are also attributes taking finite values\n> (0, 1, ..., K). Of course, I know that each value might be recoded to\n> a dichotomous one but I was wondering whether I can proceed without\n> doing this.\n> \n> My first question is how to import such data from SPSS to the R\n> environment. In some occasions, I was doing this rather manually but I\n> hope there is a more standard way and this is why I'm asking you.\n\nTry read.nos in sna, or read.table in the R base package; this will \nimport the data, after which you can either work with it in adjacency \nform or coerce it to a network object.\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "Moses Boudourides wrote:\n> \n> Well, the general form of my data is a 2-mode structure of individuals\n> x (groups and attributes). By this, I mean that each line refers to an\n> individual's multi-organ",
+      "thread_id": "thread-0775e3e4f7f5",
+      "thread_depth": 1,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-4b0b68f4ad93",
+      "message_id": "<490566D7.9060201@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2008-10-26T23:59:35Z",
+      "subject": "[statnet_help] Blockmodeling in R",
+      "subject_clean": "[statnet_help] Blockmodeling in R",
+      "in_reply_to": "<877172.93935.qm@web53511.mail.re2.yahoo.com>",
+      "references": [
+        "<877172.93935.qm@web53511.mail.re2.yahoo.com>"
+      ],
+      "body_plain": "Phil Murphy wrote:\n> Dear All,\n> \n>  \n> \n> I am searching for a relatively resilient blockmodeling algorithm for \n> use with a particularly large 2-mode dataset (potentially in the \n> thousands of nodes on one axis and a few hundred on the other). Can \n> anyone point me to a paper or other material that describes the options \n> and limitations of the blockmodeling algorithm that is available on R?\n> \n\nCheck the sna man pages (particularly the sedist, equiv.clust, and \nblockmodel routines).  These are not currently optimized for very large \ndata sets, but can handle a few thousand nodes on a decent machine.\n\n-Carter",
+      "body_snippet": "Phil Murphy wrote:\n> Dear All,\n> \n>  \n> \n> I am searching for a relatively resilient blockmodeling algorithm for \n> use with a particularly large 2-mode dataset (potentially in the \n> thousands of nod",
+      "thread_id": "thread-d8bc9d3f1da5",
+      "thread_depth": 1,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-c270d89a14a0",
+      "message_id": "<4905768A.2070501@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2008-10-27T01:06:34Z",
+      "subject": "[statnet_help]",
+      "subject_clean": "[statnet_help]",
+      "in_reply_to": "<57905cc0810220424m42cb1970sc1bd609f612bf39f@mail.gmail.com>",
+      "references": [
+        "<57905cc0810220424m42cb1970sc1bd609f612bf39f@mail.gmail.com>"
+      ],
+      "body_plain": "Miko?aj Hnatiuk wrote:\n> Hi,\n> im newbie to ERGM. Im doing research for my project. My problem is \n> somehow complicated one. I have network with 2 kinds of relations, one \n> is dichotomous, the other one valued. I have a reason to belive that \n> strength of the tie on 2nd network influences the appareance of the tie \n> in the first one. The network contains 2467 nodes. Ive read some \n> articles on logistic regression in networks, but didn't figure out how \n> to do it on such large networks - i've tried to use \"netlogit\" (using \n> quadtratic assigment-  nullhyp=\"qap\" )  function from SNA package, \n> following Krackhardt article in Social Networks (*Krackhardt, David \n> \"Predicting with Networks: A Multiple Regression Approach to Analyzing \n> Dyadic Data.\" Social Networks, 10 (December): 359-381.)   , but after \n> approximately 20h of computation i gave up and decided to post on the \n> list. My question is: Is it possible to do logistic regression on 2 \n> networks using just some kind of \"sample\" of  a network and by doing \n> such - obtain significant results? Or is there a way around this, \n> possibly including usage of ERGMs ? Im really desperate to do this.\n>\n\nnetlogit will do it, but the computations for the QAP replications are \nvery expensive; you should expect it to take quite a while.  One can run \nsuch an analysis in ergm, but the tests it gives you will be essentially \nthe equivalent of the classical test option in netlogit (which will be \nfaster, but will not help in the case of autocorrelation).  Another \noption is netperm (an optional package within statnet), which fits the \nnetwork permutation models from my 2007 Sociological Methodology paper. \n  I've never tried fitting anything that large using netperm, but it \nwill probably be faster than a logistic QAP (though you may need to \ntweak the parameters to get good performance).\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "Miko?aj Hnatiuk wrote:\n> Hi,\n> im newbie to ERGM. Im doing research for my project. My problem is \n> somehow complicated one. I have network with 2 kinds of relations, one \n> is dichotomous, the other",
+      "thread_id": "thread-406d5da9d959",
+      "thread_depth": 1,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-e93a65c392b8",
+      "message_id": "<004201c9390c$1f71eb00$5e55c100$@vlegels@ugent.be>",
+      "from_name": "Jef Vlegels",
+      "from_email_hash": "2c9ae18a029cd39586b4e15b856c86d0cc1fdfd9dda1c4b1b282a6e2cfb21479",
+      "date": "2008-10-28T07:47:38Z",
+      "subject": "[statnet_help] error in svd(H): infinite or missing values in 'x'",
+      "subject_clean": "[statnet_help] error in svd(H): infinite or missing values in 'x'",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All,\n\n \n\nI've been running the same erg model 126 times on different networkdata,\nthere is one dataset that gives an error message.\n\n \n\nI run:\n\nmodel595 <- ergm(vlo595 ~ edges + gwesp(0.2, fixed=TRUE) +\nnodematch(\"klasnr2\") + nodematch(\"alloch2b\") + nodematch(\"OndType\") +\nnodematch(\"female\"), verbose = F)\n\n \n\nThere should be nothing wrong with this formula, because it runs on the 125\nother networks. \n\nThere is also nothing wrong with the 'vlo595' dataset, and the attributes of\nthat dataset I think (see summary(vlo595) below in this e-mail)\n\n \n\nI get this error message:\n\nError in svd(H) : infinite or missing values in 'x'\n\n \n\nWhat does this mean? What is the 'x' value? There is nowhere a missing or\ninfinite value in my dataset and attributes.\n\n \n\nThanks,\n\n \n\nJef \n\n \n\n \n\n \n\n \n\n> summary(vlo595)\n\nNetwork attributes:\n\n vertices = 126\n\n directed = TRUE\n\n hyper = FALSE\n\n loops = FALSE\n\n multiple = FALSE\n\n bipartite = FALSE\n\n total edges = 407 \n\n   missing edges = 0 \n\n   non-missing edges = 407 \n\n density = 0.02584127 \n\n \n\nVertex attributes:\n\n \n\n alloch2b:\n\n   numeric valued attribute\n\n   attribute summary:\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n\n0.00000 0.00000 0.00000 0.06349 0.00000 1.00000 \n\n \n\n female:\n\n   numeric valued attribute\n\n   attribute summary:\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n\n  0.000   0.000   0.000   0.373   1.000   1.000 \n\n \n\n klasnr2:\n\n   numeric valued attribute\n\n   attribute summary:\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n\n  373.0   379.0   385.0   383.8   388.0   393.0 \n\n \n\n OndType:\n\n   numeric valued attribute\n\n   attribute summary:\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n\n  2.000   3.000   3.000   3.373   4.000   4.000 \n\n vertex.names:\n\n   character valued attribute\n\n   126 valid vertex names\n\n \n\nNo edge attributes\n\n \n\nNetwork edgelist matrix:\n\n       [,1] [,2]\n\n  [1,]   28    1\n\n  [2,]   29    1\n\n  [3,]   30    1\n\n  [4,]   32    1\n\nEtc.\n\n \n\n \n\n \n\n \n\nJef Vlegels\nUniversiteit Gent\nVakgroep Sociologie\nKorte Meer 3 \nB-9000 Gent\nPhone: +32 (0)9 264.91.75\nFax: +32 (0)9 264.69.75\n <mailto:ronan.vanrossem@ugent.be> jef.vlegels@ugent.be\n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081028/2292fa94/attachment.html>",
+      "body_snippet": "Dear All,\n\n \n\nI've been running the same erg model 126 times on different networkdata,\nthere is one dataset that gives an error message.\n\n \n\nI run:\n\nmodel595 <- ergm(vlo595 ~ edges + gwesp(0.2, fixed=",
+      "thread_id": "thread-e93a65c392b8",
+      "thread_depth": 0,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-ce803eaf6719",
+      "message_id": "<Pine.WNT.4.64.0810290843540.5284@vinaya.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2008-10-29T08:46:35Z",
+      "subject": "[statnet_help] error in svd(H): infinite or missing values in 'x'",
+      "subject_clean": "[statnet_help] error in svd(H): infinite or missing values in 'x'",
+      "in_reply_to": "<004201c9390c$1f71eb00$5e55c100$@vlegels@ugent.be>",
+      "references": [
+        "<004201c9390c$1f71eb00$5e55c100$@vlegels@ugent.be>"
+      ],
+      "body_plain": "Hello Jef,\n\nThat is very strange, and perhaps a bug.  If you want to send me the \nvlo595 object, I can explore myself to see if I can identify the source of \nthe problem.  If not, then try typing \"traceback()\" imediately after you \nget the error, and send me the output from that; that should help me \ndiagnose the problem.\n\nSteve\n\n\n\nOn Tue, 28 Oct 2008, Jef Vlegels wrote:\n\n> Date: Tue, 28 Oct 2008 15:47:38 +0100\n> From: Jef Vlegels <jef.vlegels@ugent.be>\n> To: statnet_help@u.washington.edu\n> Subject: [statnet_help] error in svd(H): infinite or missing values in 'x'\n> \n> Dear All,\n>\n>\n>\n> I've been running the same erg model 126 times on different networkdata,\n> there is one dataset that gives an error message.\n>\n>\n>\n> I run:\n>\n> model595 <- ergm(vlo595 ~ edges + gwesp(0.2, fixed=TRUE) +\n> nodematch(\"klasnr2\") + nodematch(\"alloch2b\") + nodematch(\"OndType\") +\n> nodematch(\"female\"), verbose = F)\n>\n>\n>\n> There should be nothing wrong with this formula, because it runs on the 125\n> other networks.\n>\n> There is also nothing wrong with the 'vlo595' dataset, and the attributes of\n> that dataset I think (see summary(vlo595) below in this e-mail)\n>\n>\n>\n> I get this error message:\n>\n> Error in svd(H) : infinite or missing values in 'x'\n>\n>\n>\n> What does this mean? What is the 'x' value? There is nowhere a missing or\n> infinite value in my dataset and attributes.\n>\n>\n>\n> Thanks,\n>\n>\n>\n> Jef\n>\n>\n>\n>\n>\n>\n>\n>\n>\n>> summary(vlo595)\n>\n> Network attributes:\n>\n> vertices = 126\n>\n> directed = TRUE\n>\n> hyper = FALSE\n>\n> loops = FALSE\n>\n> multiple = FALSE\n>\n> bipartite = FALSE\n>\n> total edges = 407\n>\n>   missing edges = 0\n>\n>   non-missing edges = 407\n>\n> density = 0.02584127\n>\n>\n>\n> Vertex attributes:\n>\n>\n>\n> alloch2b:\n>\n>   numeric valued attribute\n>\n>   attribute summary:\n>\n>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.\n>\n> 0.00000 0.00000 0.00000 0.06349 0.00000 1.00000\n>\n>\n>\n> female:\n>\n>   numeric valued attribute\n>\n>   attribute summary:\n>\n>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.\n>\n>  0.000   0.000   0.000   0.373   1.000   1.000\n>\n>\n>\n> klasnr2:\n>\n>   numeric valued attribute\n>\n>   attribute summary:\n>\n>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.\n>\n>  373.0   379.0   385.0   383.8   388.0   393.0\n>\n>\n>\n> OndType:\n>\n>   numeric valued attribute\n>\n>   attribute summary:\n>\n>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.\n>\n>  2.000   3.000   3.000   3.373   4.000   4.000\n>\n> vertex.names:\n>\n>   character valued attribute\n>\n>   126 valid vertex names\n>\n>\n>\n> No edge attributes\n>\n>\n>\n> Network edgelist matrix:\n>\n>       [,1] [,2]\n>\n>  [1,]   28    1\n>\n>  [2,]   29    1\n>\n>  [3,]   30    1\n>\n>  [4,]   32    1\n>\n> Etc.\n>\n>\n>\n>\n>\n>\n>\n>\n>\n> Jef Vlegels\n> Universiteit Gent\n> Vakgroep Sociologie\n> Korte Meer 3\n> B-9000 Gent\n> Phone: +32 (0)9 264.91.75\n> Fax: +32 (0)9 264.69.75\n> <mailto:ronan.vanrossem@ugent.be> jef.vlegels@ugent.be\n>\n>\n>\n>\n\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65855,-122.3091&z=18&t=k             *\n**************************************************************************",
+      "body_snippet": "Hello Jef,\n\nThat is very strange, and perhaps a bug.  If you want to send me the \nvlo595 object, I can explore myself to see if I can identify the source of \nthe problem.  If not, then try typing \"tra",
+      "thread_id": "thread-e93a65c392b8",
+      "thread_depth": 1,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-2db2738abc90",
+      "message_id": "<001201c93a66$48756c60$d9604520$@vlegels@ugent.be>",
+      "from_name": "Jef Vlegels",
+      "from_email_hash": "2c9ae18a029cd39586b4e15b856c86d0cc1fdfd9dda1c4b1b282a6e2cfb21479",
+      "date": "2008-10-30T01:05:32Z",
+      "subject": "[statnet_help] error in svd(H): infinite or missing values in 'x'",
+      "subject_clean": "[statnet_help] error in svd(H): infinite or missing values in 'x'",
+      "in_reply_to": "<Pine.WNT.4.64.0810290843540.5284@vinaya.csde.washington.edu>",
+      "references": [
+        "<004201c9390c$1f71eb00$5e55c100$@vlegels@ugent.be>",
+        "<Pine.WNT.4.64.0810290843540.5284@vinaya.csde.washington.edu>"
+      ],
+      "body_plain": "Hello Steven,\n\nIn the txt file 'makevlo595.txt', you'll find the script to become vlo595.\nYou'll see in the script that I used 'VLO0595_M.txt' (the network data) and\n'att595.txt' (the attributes) to make vlo595.\n\nThe model is:\nmodel595 <- ergm(vlo595 ~ edges + gwesp(0.2, fixed=TRUE) +\nnodematch(\"klasnr2\") + nodematch(\"alloch2b\") + nodematch(\"OndType\") +\nnodematch(\"female\"), verbose = F)\n\n\nThanks,\n\nJef\n\n\nJef Vlegels\nUniversiteit Gent\nVakgroep Sociologie\nKorte Meer 3 \nB-9000 Gent\nPhone: +32 (0)9 264.91.75\nFax: +32 (0)9 264.69.75\njef.vlegels@ugent.be\n\n-----Oorspronkelijk bericht-----\nVan: Steven Goodreau [mailto:goodreau@u.washington.edu] \nVerzonden: woensdag 29 oktober 2008 16:47\nAan: Jef Vlegels\nCC: statnet_help@u.washington.edu\nOnderwerp: Re: [statnet_help] error in svd(H): infinite or missing values in\n'x'\n\n\nHello Jef,\n\nThat is very strange, and perhaps a bug.  If you want to send me the \nvlo595 object, I can explore myself to see if I can identify the source of \nthe problem.  If not, then try typing \"traceback()\" imediately after you \nget the error, and send me the output from that; that should help me \ndiagnose the problem.\n\nSteve\n\n\n\nOn Tue, 28 Oct 2008, Jef Vlegels wrote:\n\n> Date: Tue, 28 Oct 2008 15:47:38 +0100\n> From: Jef Vlegels <jef.vlegels@ugent.be>\n> To: statnet_help@u.washington.edu\n> Subject: [statnet_help] error in svd(H): infinite or missing values in 'x'\n> \n> Dear All,\n>\n>\n>\n> I've been running the same erg model 126 times on different networkdata,\n> there is one dataset that gives an error message.\n>\n>\n>\n> I run:\n>\n> model595 <- ergm(vlo595 ~ edges + gwesp(0.2, fixed=TRUE) +\n> nodematch(\"klasnr2\") + nodematch(\"alloch2b\") + nodematch(\"OndType\") +\n> nodematch(\"female\"), verbose = F)\n>\n>\n>\n> There should be nothing wrong with this formula, because it runs on the\n125\n> other networks.\n>\n> There is also nothing wrong with the 'vlo595' dataset, and the attributes\nof\n> that dataset I think (see summary(vlo595) below in this e-mail)\n>\n>\n>\n> I get this error message:\n>\n> Error in svd(H) : infinite or missing values in 'x'\n>\n>\n>\n> What does this mean? What is the 'x' value? There is nowhere a missing or\n> infinite value in my dataset and attributes.\n>\n>\n>\n> Thanks,\n>\n>\n>\n> Jef\n>\n>\n>\n>\n>\n>\n>\n>\n>\n>> summary(vlo595)\n>\n> Network attributes:\n>\n> vertices = 126\n>\n> directed = TRUE\n>\n> hyper = FALSE\n>\n> loops = FALSE\n>\n> multiple = FALSE\n>\n> bipartite = FALSE\n>\n> total edges = 407\n>\n>   missing edges = 0\n>\n>   non-missing edges = 407\n>\n> density = 0.02584127\n>\n>\n>\n> Vertex attributes:\n>\n>\n>\n> alloch2b:\n>\n>   numeric valued attribute\n>\n>   attribute summary:\n>\n>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.\n>\n> 0.00000 0.00000 0.00000 0.06349 0.00000 1.00000\n>\n>\n>\n> female:\n>\n>   numeric valued attribute\n>\n>   attribute summary:\n>\n>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.\n>\n>  0.000   0.000   0.000   0.373   1.000   1.000\n>\n>\n>\n> klasnr2:\n>\n>   numeric valued attribute\n>\n>   attribute summary:\n>\n>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.\n>\n>  373.0   379.0   385.0   383.8   388.0   393.0\n>\n>\n>\n> OndType:\n>\n>   numeric valued attribute\n>\n>   attribute summary:\n>\n>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.\n>\n>  2.000   3.000   3.000   3.373   4.000   4.000\n>\n> vertex.names:\n>\n>   character valued attribute\n>\n>   126 valid vertex names\n>\n>\n>\n> No edge attributes\n>\n>\n>\n> Network edgelist matrix:\n>\n>       [,1] [,2]\n>\n>  [1,]   28    1\n>\n>  [2,]   29    1\n>\n>  [3,]   30    1\n>\n>  [4,]   32    1\n>\n> Etc.\n>\n>\n>\n>\n>\n>\n>\n>\n>\n> Jef Vlegels\n> Universiteit Gent\n> Vakgroep Sociologie\n> Korte Meer 3\n> B-9000 Gent\n> Phone: +32 (0)9 264.91.75\n> Fax: +32 (0)9 264.69.75\n> <mailto:ronan.vanrossem@ugent.be> jef.vlegels@ugent.be\n>\n>\n>\n>\n\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65855,-122.3091&z=18&t=k             *\n**************************************************************************\n-------------- next part --------------\nAn embedded and charset-unspecified text was scrubbed...\nName: VLO0595_M.txt\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081030/ac17d9f5/attachment.txt>\n-------------- next part --------------\nAn embedded and charset-unspecified text was scrubbed...\nName: att595.txt\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081030/ac17d9f5/attachment-0001.txt>\n-------------- next part --------------\nAn embedded and charset-unspecified text was scrubbed...\nName: makevlo595.txt\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081030/ac17d9f5/attachment-0002.txt>",
+      "body_snippet": "Hello Steven,\n\nIn the txt file 'makevlo595.txt', you'll find the script to become vlo595.\nYou'll see in the script that I used 'VLO0595_M.txt' (the network data) and\n'att595.txt' (the attributes) to m",
+      "thread_id": "thread-e93a65c392b8",
+      "thread_depth": 2,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-95a6d6eb6042",
+      "message_id": "<57905cc0810310643n5f6cc01q9693da24ea88290a@mail.gmail.com>",
+      "from_name": "Mikołaj Hnatiuk",
+      "from_email_hash": "dc3867cce54b7d8ef07c814bb486481ef6333c44f0e2e94405f95677529b9be1",
+      "date": "2008-10-31T06:43:03Z",
+      "subject": "[statnet_help]",
+      "subject_clean": "[statnet_help]",
+      "in_reply_to": "<4905768A.2070501@uci.edu>",
+      "references": [
+        "<57905cc0810220424m42cb1970sc1bd609f612bf39f@mail.gmail.com>",
+        "<4905768A.2070501@uci.edu>"
+      ],
+      "body_plain": "Thank you!\nNow i have yet another problem. I want to do logit on some samples (300-400)\nfrom my network to save some computation time. I wrote some R code, which\ndoesnt work, i've tried to run it several times, with different arguments,\nignoring vertex names, etc. etc., but i still do get an error in netlogit\nfunction:\n        linksamp.net <- as.network(linksamp)\n        comsamp.net<- as.network(comsamp)\n        logity[i] <- netlogit(linksamp.net ~comsamp.net, nullhyp=c(\"qap\",\n         \"classical\") )\n\ni get warnings(>50) and an error\nError in as.sociomatrix(x, attrname = NULL, simplify = TRUE) :\n  as.sociomatrix input must be an adjacency matrix/array, network, or list.\nbut:\n> is.network(linksamp.net)\n[1] TRUE\n> is.network(comsamp.net)\n[1] TRUE\n\n\nIs it a bug or my failure?\n\n\nMikolaj Hnatiuk,\nInstitute of Sociology,  Warsaw University, Poland\n\n\np.s. whole code:\n\nNetworkSize<-1:ceiling(sqrt(nties(links)))\n\nv<- NetworkSize\nperms <- 3\nsamp <- 350\nlogity <- vector(length=perms )\n\n for (i in 1:perms ) {\ns <- sample(v, size=proba)\nsort(s)\n  linksamp <- array(0, dim=c(samp ,samp ))\n  comsamp <- array(0, dim=c(samp ,samp ))\n    for(k in 1:proba)\n        {\n        for(l in 1:proba)\n            {\n            linksamp[k,l] <- links[s[k],s[l] ]\n            comsamp[k,l] <- commat[s[k], s[l] ]\n            }\n\n        }\n        linksamp.net <- as.network(linksamp)\n        comsamp.net<- as.network(comsamp)\n        logity[i] <- netlogit(linksamp.net ~comsamp.net, nullhyp=c(\"qap\",\n         \"classical\") )\n\n      }\n\n2008/10/27 Carter T. Butts <buttsc@uci.edu>\n\n> Miko?aj Hnatiuk wrote:\n>\n>> Hi,\n>> im newbie to ERGM. Im doing research for my project. My problem is somehow\n>> complicated one. I have network with 2 kinds of relations, one is\n>> dichotomous, the other one valued. I have a reason to belive that strength\n>> of the tie on 2nd network influences the appareance of the tie in the first\n>> one. The network contains 2467 nodes. Ive read some articles on logistic\n>> regression in networks, but didn't figure out how to do it on such large\n>> networks - i've tried to use \"netlogit\" (using quadtratic assigment-\n>>  nullhyp=\"qap\" )  function from SNA package, following Krackhardt article in\n>> Social Networks (*Krackhardt, David \"Predicting with Networks: A Multiple\n>> Regression Approach to Analyzing Dyadic Data.\" Social Networks, 10\n>> (December): 359-381.)   , but after approximately 20h of computation i gave\n>> up and decided to post on the list. My question is: Is it possible to do\n>> logistic regression on 2 networks using just some kind of \"sample\" of  a\n>> network and by doing such - obtain significant results? Or is there a way\n>> around this, possibly including usage of ERGMs ? Im really desperate to do\n>> this.\n>>\n>>\n> netlogit will do it, but the computations for the QAP replications are very\n> expensive; you should expect it to take quite a while.  One can run such an\n> analysis in ergm, but the tests it gives you will be essentially the\n> equivalent of the classical test option in netlogit (which will be faster,\n> but will not help in the case of autocorrelation).  Another option is\n> netperm (an optional package within statnet), which fits the network\n> permutation models from my 2007 Sociological Methodology paper.  I've never\n> tried fitting anything that large using netperm, but it will probably be\n> faster than a logistic QAP (though you may need to tweak the parameters to\n> get good performance).\n>\n> Hope that helps,\n>\n> -Carter\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081031/9d82726e/attachment.html>",
+      "body_snippet": "Thank you!\nNow i have yet another problem. I want to do logit on some samples (300-400)\nfrom my network to save some computation time. I wrote some R code, which\ndoesnt work, i've tried to run it seve",
+      "thread_id": "thread-406d5da9d959",
+      "thread_depth": 2,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-a371029368fb",
+      "message_id": "<57905cc0810310644q1fb53878ob75618fa8af0e948@mail.gmail.com>",
+      "from_name": "Mikołaj Hnatiuk",
+      "from_email_hash": "dc3867cce54b7d8ef07c814bb486481ef6333c44f0e2e94405f95677529b9be1",
+      "date": "2008-10-31T06:44:57Z",
+      "subject": "Fwd: [statnet_help]",
+      "subject_clean": "[statnet_help]",
+      "in_reply_to": "<57905cc0810310643n5f6cc01q9693da24ea88290a@mail.gmail.com>",
+      "references": [
+        "<57905cc0810220424m42cb1970sc1bd609f612bf39f@mail.gmail.com>",
+        "<4905768A.2070501@uci.edu>",
+        "<57905cc0810310643n5f6cc01q9693da24ea88290a@mail.gmail.com>"
+      ],
+      "body_plain": "of course samp = proba, i was trying to translate variable names form polish\nto eng. Sorry\n\n\n---------- Forwarded message ----------\nFrom: Miko?aj Hnatiuk <Mikolaj.Hnatiuk@gmail.com>\nDate: 2008/10/31\nSubject: Re: [statnet_help]\nTo: buttsc@uci.edu\nCc: statnet_help@u.washington.edu\n\n\nThank you!\nNow i have yet another problem. I want to do logit on some samples (300-400)\nfrom my network to save some computation time. I wrote some R code, which\ndoesnt work, i've tried to run it several times, with different arguments,\nignoring vertex names, etc. etc., but i still do get an error in netlogit\nfunction:\n        linksamp.net <- as.network(linksamp)\n        comsamp.net<- as.network(comsamp)\n        logity[i] <- netlogit(linksamp.net ~comsamp.net, nullhyp=c(\"qap\",\n         \"classical\") )\n\ni get warnings(>50) and an error\nError in as.sociomatrix(x, attrname = NULL, simplify = TRUE) :\n  as.sociomatrix input must be an adjacency matrix/array, network, or list.\nbut:\n> is.network(linksamp.net)\n[1] TRUE\n> is.network(comsamp.net)\n[1] TRUE\n\n\nIs it a bug or my failure?\n\n\nMikolaj Hnatiuk,\nInstitute of Sociology,  Warsaw University, Poland\n\n\np.s. whole code:\n\nNetworkSize<-1:ceiling(sqrt(nties(links)))\n\nv<- NetworkSize\nperms <- 3\nsamp <- 350\nlogity <- vector(length=perms )\n\n for (i in 1:perms ) {\ns <- sample(v, size=proba)\nsort(s)\n  linksamp <- array(0, dim=c(samp ,samp ))\n  comsamp <- array(0, dim=c(samp ,samp ))\n    for(k in 1:proba)\n        {\n        for(l in 1:proba)\n            {\n            linksamp[k,l] <- links[s[k],s[l] ]\n            comsamp[k,l] <- commat[s[k], s[l] ]\n            }\n\n        }\n        linksamp.net <- as.network(linksamp)\n        comsamp.net<- as.network(comsamp)\n        logity[i] <- netlogit(linksamp.net ~comsamp.net, nullhyp=c(\"qap\",\n         \"classical\") )\n\n      }\n\n2008/10/27 Carter T. Butts <buttsc@uci.edu>\n\nMiko?aj Hnatiuk wrote:\n>\n>> Hi,\n>> im newbie to ERGM. Im doing research for my project. My problem is somehow\n>> complicated one. I have network with 2 kinds of relations, one is\n>> dichotomous, the other one valued. I have a reason to belive that strength\n>> of the tie on 2nd network influences the appareance of the tie in the first\n>> one. The network contains 2467 nodes. Ive read some articles on logistic\n>> regression in networks, but didn't figure out how to do it on such large\n>> networks - i've tried to use \"netlogit\" (using quadtratic assigment-\n>>  nullhyp=\"qap\" )  function from SNA package, following Krackhardt article in\n>> Social Networks (*Krackhardt, David \"Predicting with Networks: A Multiple\n>> Regression Approach to Analyzing Dyadic Data.\" Social Networks, 10\n>> (December): 359-381.)   , but after approximately 20h of computation i gave\n>> up and decided to post on the list. My question is: Is it possible to do\n>> logistic regression on 2 networks using just some kind of \"sample\" of  a\n>> network and by doing such - obtain significant results? Or is there a way\n>> around this, possibly including usage of ERGMs ? Im really desperate to do\n>> this.\n>>\n>>\n> netlogit will do it, but the computations for the QAP replications are very\n> expensive; you should expect it to take quite a while.  One can run such an\n> analysis in ergm, but the tests it gives you will be essentially the\n> equivalent of the classical test option in netlogit (which will be faster,\n> but will not help in the case of autocorrelation).  Another option is\n> netperm (an optional package within statnet), which fits the network\n> permutation models from my 2007 Sociological Methodology paper.  I've never\n> tried fitting anything that large using netperm, but it will probably be\n> faster than a logistic QAP (though you may need to tweak the parameters to\n> get good performance).\n>\n> Hope that helps,\n>\n> -Carter\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20081031/d478814c/attachment.html>",
+      "body_snippet": "of course samp = proba, i was trying to translate variable names form polish\nto eng. Sorry\n\n\n---------- Forwarded message ----------\nFrom: Miko?aj Hnatiuk <Mikolaj.Hnatiuk@gmail.com>\nDate: 2008/10/31\n",
+      "thread_id": "thread-406d5da9d959",
+      "thread_depth": 3,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-4c4d2c48503a",
+      "message_id": "<490B12E0.8050000@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2008-10-31T07:14:56Z",
+      "subject": "[statnet_help] statnet linux",
+      "subject_clean": "[statnet_help] statnet linux",
+      "in_reply_to": "<005801c93291$5820c880$08625980$%vlegels@ugent.be>",
+      "references": [
+        "<005801c93291$5820c880$08625980$%vlegels@ugent.be>"
+      ],
+      "body_plain": "Dear Jef,\n\nSorry for the delay...\n\nFor me, it was a question of memory handling (RAM and swap). Because, \nwhen you have to estimate a Curved exponantial family model, memory is \nvery soon a problem.\n\nMy questionning was: what is the max memory handled by the OS per \nprocess. Because if your OS cannot handle more than 2.5Gb per process, R \nwon't be able to pass this limit.\n\nDebian (and Linux in general) are known to be more efficients with \nmemory handling than The OS of Microsoft (windows server entreprise or \nmore expensive could also be ok).\n\nIf you have to handle a lot of memory, a good idea is to install a Linux \n64bit version or the Debian bigmem kernel. The memory is better handled \nby the OS with this 2 solutions.\n\nBest regards,\nVictorin Luisier\n\nSee also:\n1)http://stat.ethz.ch/CRAN/bin/windows/base/rw-FAQ.html#There-seems-to-be-a-limit-on-the-memory-it-uses_0021\n2)https://stat.ethz.ch/pipermail/r-devel/2003-July/027094.html\n3)http://msdn.microsoft.com/en-gb/library/aa366778.aspx#physical_memory_limits_windows_vista\n\nJef Vlegels a ?crit :\n> Statnet team,\n> \n>  \n> \n> Are there any advantages in running statnet on a Linux system (debian)? \n> Especially for calculating erg models in large networks?\n> \n>  \n> \n> Jef\n> \n>  \n> \n>  \n> \n>  \n> \n> Jef Vlegels\n> *Universiteit Gent\n> */Vakgroep Sociologie\n> /Korte Meer 3\n> B-9000 Gent\n> Phone: +32 (0)9 264.91.75\n> Fax: +32 (0)9 264.69.75\n> jef.vlegels@ugent.be <mailto:ronan.vanrossem@ugent.be>\n> \n>  \n> \n> \n> ------------------------------------------------------------------------\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Dear Jef,\n\nSorry for the delay...\n\nFor me, it was a question of memory handling (RAM and swap). Because, \nwhen you have to estimate a Curved exponantial family model, memory is \nvery soon a problem.\n\n",
+      "thread_id": "thread-4c4d2c48503a",
+      "thread_depth": 0,
+      "month": "2008-10"
+    },
+    {
+      "id": "msg-29ff89221868",
+      "message_id": "<C53066CC.2E6C1%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2008-10-31T07:39:56Z",
+      "subject": "[statnet_help] error in svd(H): infinite or missing values in 'x'",
+      "subject_clean": "[statnet_help] error in svd(H): infinite or missing values in 'x'",
+      "in_reply_to": "<001201c93a66$48756c60$d9604520$@vlegels@ugent.be>",
+      "references": [],
+      "body_plain": "Hi Jeff,\n\nThanks for the code. We have rerun it and note that the error message:\n \n Error in svd(H) : infinite or missing values in 'x'\n\nis just a warning and does not indicate a serious problem. Specifically it\nnotes that the covariance matrix of the MCMC component of the s.e. is not\npositive definite. The net effect is usually that the MCMC s.e. for one or\nmore coefficients is NA. The code directly deals with it and the estimates\nare not unduly effected that is, you can believe the results in the summary\ntables, etc.\n\nWe should probably make this warning appear only if verbose=T in the next\nversion.\n\nThanks for pointing it out.\n\nMark\n\n\nOn 10/30/08 1:05 AM, \"Jef Vlegels\" <jef.vlegels@ugent.be> wrote:\n\n> Hello Steven,\n> \n> In the txt file 'makevlo595.txt', you'll find the script to become vlo595.\n> You'll see in the script that I used 'VLO0595_M.txt' (the network data) and\n> 'att595.txt' (the attributes) to make vlo595.\n> \n> The model is:\n> model595 <- ergm(vlo595 ~ edges + gwesp(0.2, fixed=TRUE) +\n> nodematch(\"klasnr2\") + nodematch(\"alloch2b\") + nodematch(\"OndType\") +\n> nodematch(\"female\"), verbose = F)\n> \n> \n> Thanks,\n> \n> Jef\n> \n> \n> Jef Vlegels\n> Universiteit Gent\n> Vakgroep Sociologie\n> Korte Meer 3 \n> B-9000 Gent\n> Phone: +32 (0)9 264.91.75\n> Fax: +32 (0)9 264.69.75\n> jef.vlegels@ugent.be\n> \n> -----Oorspronkelijk bericht-----\n> Van: Steven Goodreau [mailto:goodreau@u.washington.edu]\n> Verzonden: woensdag 29 oktober 2008 16:47\n> Aan: Jef Vlegels\n> CC: statnet_help@u.washington.edu\n> Onderwerp: Re: [statnet_help] error in svd(H): infinite or missing values in\n> 'x'\n> \n> \n> Hello Jef,\n> \n> That is very strange, and perhaps a bug.  If you want to send me the\n> vlo595 object, I can explore myself to see if I can identify the source of\n> the problem.  If not, then try typing \"traceback()\" imediately after you\n> get the error, and send me the output from that; that should help me\n> diagnose the problem.\n> \n> Steve\n> \n> \n> \n> On Tue, 28 Oct 2008, Jef Vlegels wrote:\n> \n>> Date: Tue, 28 Oct 2008 15:47:38 +0100\n>> From: Jef Vlegels <jef.vlegels@ugent.be>\n>> To: statnet_help@u.washington.edu\n>> Subject: [statnet_help] error in svd(H): infinite or missing values in 'x'\n>> \n>> Dear All,\n>> \n>> \n>> \n>> I've been running the same erg model 126 times on different networkdata,\n>> there is one dataset that gives an error message.\n>> \n>> \n>> \n>> I run:\n>> \n>> model595 <- ergm(vlo595 ~ edges + gwesp(0.2, fixed=TRUE) +\n>> nodematch(\"klasnr2\") + nodematch(\"alloch2b\") + nodematch(\"OndType\") +\n>> nodematch(\"female\"), verbose = F)\n>> \n>> \n>> \n>> There should be nothing wrong with this formula, because it runs on the\n> 125\n>> other networks.\n>> \n>> There is also nothing wrong with the 'vlo595' dataset, and the attributes\n> of\n>> that dataset I think (see summary(vlo595) below in this e-mail)\n>> \n>> \n>> \n>> I get this error message:\n>> \n>> Error in svd(H) : infinite or missing values in 'x'\n>> \n>> \n>> \n>> What does this mean? What is the 'x' value? There is nowhere a missing or\n>> infinite value in my dataset and attributes.\n>> \n>> \n>> \n>> Thanks,\n>> \n>> \n>> \n>> Jef\n>> \n>> \n>> \n>> \n>> \n>> \n>> \n>> \n>> \n>>> summary(vlo595)\n>> \n>> Network attributes:\n>> \n>> vertices = 126\n>> \n>> directed = TRUE\n>> \n>> hyper = FALSE\n>> \n>> loops = FALSE\n>> \n>> multiple = FALSE\n>> \n>> bipartite = FALSE\n>> \n>> total edges = 407\n>> \n>>   missing edges = 0\n>> \n>>   non-missing edges = 407\n>> \n>> density = 0.02584127\n>> \n>> \n>> \n>> Vertex attributes:\n>> \n>> \n>> \n>> alloch2b:\n>> \n>>   numeric valued attribute\n>> \n>>   attribute summary:\n>> \n>>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.\n>> \n>> 0.00000 0.00000 0.00000 0.06349 0.00000 1.00000\n>> \n>> \n>> \n>> female:\n>> \n>>   numeric valued attribute\n>> \n>>   attribute summary:\n>> \n>>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.\n>> \n>>  0.000   0.000   0.000   0.373   1.000   1.000\n>> \n>> \n>> \n>> klasnr2:\n>> \n>>   numeric valued attribute\n>> \n>>   attribute summary:\n>> \n>>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.\n>> \n>>  373.0   379.0   385.0   383.8   388.0   393.0\n>> \n>> \n>> \n>> OndType:\n>> \n>>   numeric valued attribute\n>> \n>>   attribute summary:\n>> \n>>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.\n>> \n>>  2.000   3.000   3.000   3.373   4.000   4.000\n>> \n>> vertex.names:\n>> \n>>   character valued attribute\n>> \n>>   126 valid vertex names\n>> \n>> \n>> \n>> No edge attributes\n>> \n>> \n>> \n>> Network edgelist matrix:\n>> \n>>       [,1] [,2]\n>> \n>>  [1,]   28    1\n>> \n>>  [2,]   29    1\n>> \n>>  [3,]   30    1\n>> \n>>  [4,]   32    1\n>> \n>> Etc.\n>> \n>> \n>> \n>> \n>> \n>> \n>> \n>> \n>> \n>> Jef Vlegels\n>> Universiteit Gent\n>> Vakgroep Sociologie\n>> Korte Meer 3\n>> B-9000 Gent\n>> Phone: +32 (0)9 264.91.75\n>> Fax: +32 (0)9 264.69.75\n>> <mailto:ronan.vanrossem@ugent.be> jef.vlegels@ugent.be\n>> \n>> \n>> \n>> \n> \n> **************************************************************************\n>   * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n>   * University of Washington / Denny Hall 452 / Campus Box 353100        *\n>   * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n>   * http://faculty.washington.edu/goodreau                               *\n>   * http://maps.google.com/?q=%2047.65855,-122.3091&z=18&t=k             *\n> **************************************************************************\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Jeff,\n\nThanks for the code. We have rerun it and note that the error message:\n \n Error in svd(H) : infinite or missing values in 'x'\n\nis just a warning and does not indicate a serious problem. Spec",
+      "thread_id": "thread-e93a65c392b8",
+      "thread_depth": 3,
+      "month": "2008-10"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-c3c01b8f9a3c",
+      "subject": "[statnet_help] error when plotting gof object",
+      "message_count": 2,
+      "participants": [
+        "Mark S. Handcock",
+        "Richard Dekens"
+      ],
+      "started": "2008-10-07T10:58:19Z",
+      "last_reply": "2008-10-07T11:12:54Z",
+      "root_message_id": "msg-c3c01b8f9a3c"
+    },
+    {
+      "id": "thread-f31c8ba85a5d",
+      "subject": "[statnet_help] Options for running statnet on large networks",
+      "message_count": 1,
+      "participants": [
+        "Haris Memic"
+      ],
+      "started": "2008-10-11T02:45:51Z",
+      "last_reply": "2008-10-11T02:45:51Z",
+      "root_message_id": "msg-f31c8ba85a5d"
+    },
+    {
+      "id": "thread-a7d53cb91202",
+      "subject": "[statnet_help] meta analysis and ergm-models",
+      "message_count": 2,
+      "participants": [
+        "Jef Vlegels",
+        "Steven Goodreau"
+      ],
+      "started": "2008-10-17T01:27:08Z",
+      "last_reply": "2008-10-17T15:23:25Z",
+      "root_message_id": "msg-a7d53cb91202"
+    },
+    {
+      "id": "thread-6d7d4bf9dfaa",
+      "subject": "[statnet_help] FW: Network R Package fails to import Pajek file",
+      "message_count": 4,
+      "participants": [
+        "Alexander H. Montgomery",
+        "David Schaefer",
+        "Jiang"
+      ],
+      "started": "2008-10-17T08:18:29Z",
+      "last_reply": "2008-10-21T14:42:33Z",
+      "root_message_id": "msg-6d7d4bf9dfaa"
+    },
+    {
+      "id": "thread-73362320187b",
+      "subject": "[statnet_help] statnet linux",
+      "message_count": 1,
+      "participants": [
+        "Jef Vlegels"
+      ],
+      "started": "2008-10-20T01:53:38Z",
+      "last_reply": "2008-10-20T01:53:38Z",
+      "root_message_id": "msg-73362320187b"
+    },
+    {
+      "id": "thread-f8e18ba3d02e",
+      "subject": "[statnet_help] A question about ERGMs and simulating networks with an arbitrary number of nodes",
+      "message_count": 1,
+      "participants": [
+        "David Hunter"
+      ],
+      "started": "2008-10-21T04:02:45Z",
+      "last_reply": "2008-10-21T04:02:45Z",
+      "root_message_id": "msg-f8e18ba3d02e"
+    },
+    {
+      "id": "thread-406d5da9d959",
+      "subject": "[statnet_help]",
+      "message_count": 4,
+      "participants": [
+        "Carter T. Butts",
+        "Mikołaj Hnatiuk"
+      ],
+      "started": "2008-10-22T04:24:39Z",
+      "last_reply": "2008-10-31T06:44:57Z",
+      "root_message_id": "msg-406d5da9d959"
+    },
+    {
+      "id": "thread-f56858e4ec33",
+      "subject": "[statnet_help] Error message when handling large network",
+      "message_count": 1,
+      "participants": [
+        "Mengxiao Zhu"
+      ],
+      "started": "2008-10-22T14:04:48Z",
+      "last_reply": "2008-10-22T14:04:48Z",
+      "root_message_id": "msg-f56858e4ec33"
+    },
+    {
+      "id": "thread-d8bc9d3f1da5",
+      "subject": "[statnet_help] Blockmodeling in R",
+      "message_count": 3,
+      "participants": [
+        "Ales Ziberna",
+        "Carter T. Butts",
+        "Phil Murphy"
+      ],
+      "started": "2008-10-23T10:57:31Z",
+      "last_reply": "2008-10-26T23:59:35Z",
+      "root_message_id": "msg-d8bc9d3f1da5"
+    },
+    {
+      "id": "thread-0775e3e4f7f5",
+      "subject": "[statnet_help] Some very elementary questions",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Moses Boudourides"
+      ],
+      "started": "2008-10-24T10:04:41Z",
+      "last_reply": "2008-10-26T21:07:04Z",
+      "root_message_id": "msg-0775e3e4f7f5"
+    },
+    {
+      "id": "thread-e93a65c392b8",
+      "subject": "[statnet_help] error in svd(H): infinite or missing values in 'x'",
+      "message_count": 4,
+      "participants": [
+        "Jef Vlegels",
+        "Mark S. Handcock",
+        "Steven Goodreau"
+      ],
+      "started": "2008-10-28T07:47:38Z",
+      "last_reply": "2008-10-31T07:39:56Z",
+      "root_message_id": "msg-e93a65c392b8"
+    },
+    {
+      "id": "thread-4c4d2c48503a",
+      "subject": "[statnet_help] statnet linux",
+      "message_count": 1,
+      "participants": [
+        "Victorin Luisier"
+      ],
+      "started": "2008-10-31T07:14:56Z",
+      "last_reply": "2008-10-31T07:14:56Z",
+      "root_message_id": "msg-4c4d2c48503a"
+    }
+  ]
+}

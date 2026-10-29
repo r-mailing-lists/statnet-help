@@ -1,0 +1,353 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2017-10",
+  "messages": [
+    {
+      "id": "msg-345bcd6f6a31",
+      "message_id": "<80B8B991-E526-4F3F-B8D8-0E746D60EE24@aggiemail.usu.edu>",
+      "from_name": "Emily Long",
+      "from_email_hash": "e9a717e8b9f696378793d9640d3db225ebe6542d12b5465ddbe6cf42e9542680",
+      "date": "2017-10-07T16:59:30Z",
+      "subject": "[statnet_help] Basic attribute-based indegree/outdegree",
+      "subject_clean": "[statnet_help] Basic attribute-based indegree/outdegree",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi there,\n\nI am brand-new to ERGMs, having recently made the jump from Siena models, so this question is very rudimentary. I?ve worked through a handful of the (very helpful) tutorials and am still unclear, so I figured I?d give this group a try.\n\nI am interested in modeling nodal in-degree and out-degree based on a specific attribute. For example, a binary indicator of diabetes. I am theoretically interested in the association between diabetes status (with or without) and both outgoing and incoming friendship nominations. In following David Schaefer?s 2014 obesity paper in the American Journal of Public Health, I am hoping to model indegree, outdegree, and homophily based on this attribute in order to parse apart concepts such as social withdrawal and social marginalization. \n\nAny feedback on the correct term is appreciated. \n\nAll the best,\n\nEmily\n\nEmily Long\nDoctoral Candidate\nPrevention Science Lab\nDepartment of Psychology\nUtah State University\n\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171007/79dfccc0/attachment.html>",
+      "body_snippet": "Hi there,\n\nI am brand-new to ERGMs, having recently made the jump from Siena models, so this question is very rudimentary. I?ve worked through a handful of the (very helpful) tutorials and am still un",
+      "thread_id": "thread-345bcd6f6a31",
+      "thread_depth": 0,
+      "month": "2017-10"
+    },
+    {
+      "id": "msg-2c4fa4f52597",
+      "message_id": "<1f5ee3f4-564a-0e47-6dfe-e9f24ed23752@uw.edu>",
+      "from_name": "Steven M Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2017-10-07T17:33:59Z",
+      "subject": "[statnet_help] Basic attribute-based indegree/outdegree",
+      "subject_clean": "[statnet_help] Basic attribute-based indegree/outdegree",
+      "in_reply_to": "<80B8B991-E526-4F3F-B8D8-0E746D60EE24@aggiemail.usu.edu>",
+      "references": [
+        "<80B8B991-E526-4F3F-B8D8-0E746D60EE24@aggiemail.usu.edu>"
+      ],
+      "body_plain": "Welcome Emily!\n\nIf I understand you correctly, you are interested in different attribute \ngroups having different mean in-degrees from each other, and different \nmean out-degrees from each other, as well as homophily.? If that is the \ncase, and the attributes are categorical, then the terms to use are \nnodeifactor, nodeofactor and nodematch.\n\nIf the attribute in question is quantitative rather than categorical, \nthen nodeicov, nodeocov, and absdiff may be what you want.\n\nIf you want to do more specific degree models (i.e. a propensity for \nnodes with a particular attribute to have exactly in-degree 1, or \nsomething like that), then you can use the terms idegree and odegree.\n\nMore information on each of these, and the arguments they take, can be \nfound at help(\"ergm-terms\")\n\nCheers,\nSteve\n\n\n\nOn 10/7/2017 4:59 PM, Emily Long wrote:\n> Hi there,\n>\n> I am brand-new to ERGMs, having recently made the jump from Siena \n> models, so this question is very rudimentary. I?ve worked through a \n> handful of the (very helpful) tutorials and am still unclear, so I \n> figured I?d give this group a try.\n>\n> I am interested in modeling nodal in-degree and out-degree based on a \n> specific attribute. For example, a binary indicator of diabetes. I am \n> theoretically interested in the association between diabetes status \n> (with or without) and both outgoing and incoming friendship \n> nominations. In following David Schaefer?s 2014 obesity paper in the \n> American Journal of Public Health, I am hoping to model indegree, \n> outdegree, and homophily based on this attribute in order to parse \n> apart concepts such as social withdrawal and social marginalization.\n>\n> Any feedback on the correct term is appreciated.\n>\n> All the best,\n>\n> Emily\n>\n> Emily Long\n> Doctoral Candidate\n> Prevention Science Lab\n> Department of Psychology\n> Utah State University\n>\n>\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \n*****************************************************************\n  * Note: I am now based out of an office in CSDE (Raitt 218L). *\n  * My mailing address remains Anthropology.                    *\n*****************************************************************\nSteven M. Goodreau / Professor / Dept. of Anthropology\nPhysical address: Raitt Hall 218L\nMailing address: Campus Box 353100 / 4216 Memorial Way NE\nUniv. of Washington / Seattle WA 98195\n1-206-685-3870 (phone) /1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau\n*****************************************************************\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171007/c6b9c207/attachment.html>",
+      "body_snippet": "Welcome Emily!\n\nIf I understand you correctly, you are interested in different attribute \ngroups having different mean in-degrees from each other, and different \nmean out-degrees from each other, as w",
+      "thread_id": "thread-345bcd6f6a31",
+      "thread_depth": 1,
+      "month": "2017-10"
+    },
+    {
+      "id": "msg-0e771563fce6",
+      "message_id": "<CA14F03E-B950-4F81-BBD3-A81BB73E5C36@aggiemail.usu.edu>",
+      "from_name": "Emily Long",
+      "from_email_hash": "e9a717e8b9f696378793d9640d3db225ebe6542d12b5465ddbe6cf42e9542680",
+      "date": "2017-10-07T18:08:36Z",
+      "subject": "[statnet_help] Basic attribute-based indegree/outdegree",
+      "subject_clean": "[statnet_help] Basic attribute-based indegree/outdegree",
+      "in_reply_to": "<1f5ee3f4-564a-0e47-6dfe-e9f24ed23752@uw.edu>",
+      "references": [
+        "<80B8B991-E526-4F3F-B8D8-0E746D60EE24@aggiemail.usu.edu>",
+        "<1f5ee3f4-564a-0e47-6dfe-e9f24ed23752@uw.edu>"
+      ],
+      "body_plain": "Thanks so much, Steve. I received a missing data error (Error in ergm.getglobalstats(nw, model, response = response) : \n  NA/NaN/Inf in foreign function call (arg 13)), so it looks like my next step is to read up on the treatment of missing data in these models. I appreciate the helpful introduction.\n\n-Emily\n\nEmily Long\nDoctoral Candidate\nPrevention Science Lab\nDepartment of Psychology\nUtah State University\n\n\n\n\n> On Oct 7, 2017, at 6:33 PM, Steven M Goodreau <goodreau@uw.edu> wrote:\n> \n> Welcome Emily!\n> \n> If I understand you correctly, you are interested in different attribute groups having different mean in-degrees from each other, and different mean out-degrees from each other, as well as homophily.  If that is the case, and the attributes are categorical, then the terms to use are nodeifactor, nodeofactor and nodematch.\n> \n> If the attribute in question is quantitative rather than categorical, then nodeicov, nodeocov, and absdiff may be what you want.\n> If you want to do more specific degree models (i.e. a propensity for nodes with a particular attribute to have exactly in-degree 1, or something like that), then you can use the terms idegree and odegree.\n> \n> More information on each of these, and the arguments they take, can be found at help(\"ergm-terms\")\n> Cheers,\n> Steve\n> \n> \n> On 10/7/2017 4:59 PM, Emily Long wrote:\n>> Hi there,\n>> \n>> I am brand-new to ERGMs, having recently made the jump from Siena models, so this question is very rudimentary. I?ve worked through a handful of the (very helpful) tutorials and am still unclear, so I figured I?d give this group a try.\n>> \n>> I am interested in modeling nodal in-degree and out-degree based on a specific attribute. For example, a binary indicator of diabetes. I am theoretically interested in the association between diabetes status (with or without) and both outgoing and incoming friendship nominations. In following David Schaefer?s 2014 obesity paper in the American Journal of Public Health, I am hoping to model indegree, outdegree, and homophily based on this attribute in order to parse apart concepts such as social withdrawal and social marginalization. \n>> \n>> Any feedback on the correct term is appreciated. \n>> \n>> All the best,\n>> \n>> Emily\n>> \n>> Emily Long\n>> Doctoral Candidate\n>> Prevention Science Lab\n>> Department of Psychology\n>> Utah State University\n>> \n>> \n>> \n>> \n>> \n>> \n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help <http://mailman13.u.washington.edu/mailman/listinfo/statnet_help>\n> \n> -- \n> *****************************************************************\n>  * Note: I am now based out of an office in CSDE (Raitt 218L). *\n>  * My mailing address remains Anthropology.                    *\n> *****************************************************************\n> Steven M. Goodreau / Professor / Dept. of Anthropology\n> Physical address: Raitt Hall 218L\n> Mailing address: Campus Box 353100 / 4216 Memorial Way NE\n> Univ. of Washington / Seattle WA 98195\n> 1-206-685-3870 (phone) /1-206-543-3285 (fax)\n> http://faculty.washington.edu/goodreau <http://faculty.washington.edu/goodreau>\n> *****************************************************************\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171007/8b6d2eca/attachment.html>",
+      "body_snippet": "Thanks so much, Steve. I received a missing data error (Error in ergm.getglobalstats(nw, model, response = response) : \n  NA/NaN/Inf in foreign function call (arg 13)), so it looks like my next step i",
+      "thread_id": "thread-345bcd6f6a31",
+      "thread_depth": 2,
+      "month": "2017-10"
+    },
+    {
+      "id": "msg-e7858a35816b",
+      "message_id": "<030001d341ce$7fa90c90$7efb25b0$@gmail.com>",
+      "from_name": "Damien Georges",
+      "from_email_hash": "113c5e39756387ed292afe8739b1d4a07e9baf542df06a72c5b3412e3bbb281b",
+      "date": "2017-10-10T06:48:48Z",
+      "subject": "[statnet_help] 3 terms nodefactor",
+      "subject_clean": "[statnet_help] 3 terms nodefactor",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\n \n\nI am trying to fit a one-off relationship network (Adaptation of S. Goodreau\nand S. Jeness work in racial disparities among MSM in Atlanta work (Lancet\n2017)). \n\nI want my network to be influenced by the sex (sex; 'M', 'W'), the number of\nmain relationship (deg.main; 0, 1) and the number of casual relationship\n(deg.pers; 0, 1, 2) of individuals.\n\n \n\nMy formation formulae is then (I have removed all the terms we are not\ninterested in here):\n\n \n\nformation.i <- ~ edges + nodefactor(c('sex',\"deg.main\", \"deg.pers\"), base =\n1)\n\n \n\nI was expected to give a length 12 target statistic vector :\n\n-          1 for edges count \n\n-          2 (sex levels)   x   2 (deg.main levels)   x 3 (deg.pers levels)\n- 1 (ref level here sex: M , deg.main: 0, deg.pers: 0 ) = 11 paramters\n\n \n\nBut the model (netest) keep complaining requiring for 11 parameters only.\n\n \n\nHere is the error message:\n\n \n\n--\n\nError in vector.namesmatch(target.stats, names(nw.stats)) : \n\n  Length of \"target.stats\" is 12 but should be 11.\n\n--\n\n \n\nDoes somebody know why nodefactor(c('sex',\"deg.main\", \"deg.pers\"), base = 1)\nrequires only 10 parameters (and not 11 i.e. 12 combinations of sex,\ndeg.main, deg.pers - 1 ref level)?\n\n \n\nBest,\n\nDamien\n\n \n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171010/6e870dff/attachment.html>",
+      "body_snippet": "Hi all,\n\n \n\nI am trying to fit a one-off relationship network (Adaptation of S. Goodreau\nand S. Jeness work in racial disparities among MSM in Atlanta work (Lancet\n2017)). \n\nI want my network to be in",
+      "thread_id": "thread-e7858a35816b",
+      "thread_depth": 0,
+      "month": "2017-10"
+    },
+    {
+      "id": "msg-8319a1606dca",
+      "message_id": "<b3569496-ad40-3f9a-13c0-8e121a057d11@uw.edu>",
+      "from_name": "Steven M Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2017-10-10T08:18:59Z",
+      "subject": "[statnet_help] 3 terms nodefactor",
+      "subject_clean": "[statnet_help] 3 terms nodefactor",
+      "in_reply_to": "<030001d341ce$7fa90c90$7efb25b0$@gmail.com>",
+      "references": [
+        "<030001d341ce$7fa90c90$7efb25b0$@gmail.com>"
+      ],
+      "body_plain": "Damien -\n\nMy guess is that in the network that you created to do the estimation \non, one of the 12 possible (sex x deg.main x deg.pers) combinations is \nnot actually represented by anybody in the network.? The tools can't \ntell that there are some combinations that are theoretically possible in \nyour model but don't actually appear, so they don't include a term for them.\n\nIf you check on that and it doesn't seem to be the case, perhaps email \njust to me with some reproducible code and I can check further.\n\nAlso, out of curiosity, since you are doing two sexes - have you set the \nmodel up as bipartite or do you just have a nodematch term on sex? I \ndon't think that would affect this issue here, but perhaps there's \nsomething I'm not thinking of.\n\nCheers,\n\nSteve\n\n\n\nOn 10/10/2017 6:48 AM, Damien Georges wrote:\n>\n> Hi all,\n>\n> I am trying to fit a one-off relationship network (Adaptation of S. \n> Goodreau and S. Jeness work in racial disparities among MSM in Atlanta \n> work (Lancet 2017)).\n>\n> I want my network to be influenced by the sex (sex; ?M?, ?W?), the \n> number of main relationship (deg.main; 0, 1) and the number of casual \n> relationship (deg.pers; 0, 1, 2) of individuals.\n>\n> My formation formulae is then (I have removed all the terms we are not \n> interested in here):\n>\n> formation.i <- ~ edges + nodefactor(c('sex',\"deg.main\", \"deg.pers\"), \n> base = 1)\n>\n> I was expected to give a length 12 target statistic vector :\n>\n> -1 for edges count\n>\n> -2 (sex levels)?? x ??2 (deg.main levels) ??x 3 (deg.pers levels)?? - \n> 1 (ref level here sex: M , deg.main: 0, deg.pers: 0 ) = 11 paramters\n>\n> But the model (netest) keep complaining requiring for 11 parameters only.\n>\n> Here is the error message:\n>\n> --\n>\n> Error in vector.namesmatch(target.stats, names(nw.stats)) :\n>\n> ??Length of \"target.stats\" is 12 but should be 11.\n>\n> --\n>\n> Does somebody know why nodefactor(c('sex',\"deg.main\", \"deg.pers\"), \n> base = 1) requires only 10 parameters (and not 11 i.e. 12 combinations \n> of sex, deg.main, deg.pers ? 1 ref level)?\n>\n> Best,\n>\n> Damien\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \n*****************************************************************\n  * Note: I am now based out of an office in CSDE (Raitt 218L). *\n  * My mailing address remains Anthropology.                    *\n*****************************************************************\nSteven M. Goodreau / Professor / Dept. of Anthropology\nPhysical address: Raitt Hall 218L\nMailing address: Campus Box 353100 / 4216 Memorial Way NE\nUniv. of Washington / Seattle WA 98195\n1-206-685-3870 (phone) /1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau\n*****************************************************************\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171010/6dcf123b/attachment.html>",
+      "body_snippet": "Damien -\n\nMy guess is that in the network that you created to do the estimation \non, one of the 12 possible (sex x deg.main x deg.pers) combinations is \nnot actually represented by anybody in the netw",
+      "thread_id": "thread-e7858a35816b",
+      "thread_depth": 1,
+      "month": "2017-10"
+    },
+    {
+      "id": "msg-28cf479e9898",
+      "message_id": "<58d0fa46-7209-6859-2beb-430fefba9e75@uw.edu>",
+      "from_name": "Steven M Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2017-10-10T12:39:08Z",
+      "subject": "[statnet_help] 3 terms nodefactor",
+      "subject_clean": "[statnet_help] 3 terms nodefactor",
+      "in_reply_to": "<b3569496-ad40-3f9a-13c0-8e121a057d11@uw.edu>",
+      "references": [
+        "<030001d341ce$7fa90c90$7efb25b0$@gmail.com>",
+        "<b3569496-ad40-3f9a-13c0-8e121a057d11@uw.edu>"
+      ],
+      "body_plain": "Damien - you can also try running the line:\n\nsummary(your.network.name ~ edges + nodefactor(c('sex',\"deg.main\", \n\"deg.pers\"), base = 1)) after you've run all your code up to but not \nincluding the model estimation line.? let me know what results you get, \nas that will also help pinpoint this.\n\nsteve\n\n\nOn 10/10/2017 8:18 AM, Steven M Goodreau wrote:\n>\n> Damien -\n>\n> My guess is that in the network that you created to do the estimation \n> on, one of the 12 possible (sex x deg.main x deg.pers) combinations is \n> not actually represented by anybody in the network.? The tools can't \n> tell that there are some combinations that are theoretically possible \n> in your model but don't actually appear, so they don't include a term \n> for them.\n>\n> If you check on that and it doesn't seem to be the case, perhaps email \n> just to me with some reproducible code and I can check further.\n>\n> Also, out of curiosity, since you are doing two sexes - have you set \n> the model up as bipartite or do you just have a nodematch term on sex? \n> I don't think that would affect this issue here, but perhaps there's \n> something I'm not thinking of.\n>\n> Cheers,\n>\n> Steve\n>\n>\n>\n> On 10/10/2017 6:48 AM, Damien Georges wrote:\n>>\n>> Hi all,\n>>\n>> I am trying to fit a one-off relationship network (Adaptation of S. \n>> Goodreau and S. Jeness work in racial disparities among MSM in \n>> Atlanta work (Lancet 2017)).\n>>\n>> I want my network to be influenced by the sex (sex; ?M?, ?W?), the \n>> number of main relationship (deg.main; 0, 1) and the number of casual \n>> relationship (deg.pers; 0, 1, 2) of individuals.\n>>\n>> My formation formulae is then (I have removed all the terms we are \n>> not interested in here):\n>>\n>> formation.i <- ~ edges + nodefactor(c('sex',\"deg.main\", \"deg.pers\"), \n>> base = 1)\n>>\n>> I was expected to give a length 12 target statistic vector :\n>>\n>> -1 for edges count\n>>\n>> -2 (sex levels)?? x ??2 (deg.main levels) ??x 3 (deg.pers levels)?? - \n>> 1 (ref level here sex: M , deg.main: 0, deg.pers: 0 ) = 11 paramters\n>>\n>> But the model (netest) keep complaining requiring for 11 parameters only.\n>>\n>> Here is the error message:\n>>\n>> --\n>>\n>> Error in vector.namesmatch(target.stats, names(nw.stats)) :\n>>\n>> ??Length of \"target.stats\" is 12 but should be 11.\n>>\n>> --\n>>\n>> Does somebody know why nodefactor(c('sex',\"deg.main\", \"deg.pers\"), \n>> base = 1) requires only 10 parameters (and not 11 i.e. 12 \n>> combinations of sex, deg.main, deg.pers ? 1 ref level)?\n>>\n>> Best,\n>>\n>> Damien\n>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n> -- \n> *****************************************************************\n>   * Note: I am now based out of an office in CSDE (Raitt 218L). *\n>   * My mailing address remains Anthropology.                    *\n> *****************************************************************\n> Steven M. Goodreau / Professor / Dept. of Anthropology\n> Physical address: Raitt Hall 218L\n> Mailing address: Campus Box 353100 / 4216 Memorial Way NE\n> Univ. of Washington / Seattle WA 98195\n> 1-206-685-3870 (phone) /1-206-543-3285 (fax)\n> http://faculty.washington.edu/goodreau\n> *****************************************************************\n\n-- \n*****************************************************************\n  * Note: I am now based out of an office in CSDE (Raitt 218L). *\n  * My mailing address remains Anthropology.                    *\n*****************************************************************\nSteven M. Goodreau / Professor / Dept. of Anthropology\nPhysical address: Raitt Hall 218L\nMailing address: Campus Box 353100 / 4216 Memorial Way NE\nUniv. of Washington / Seattle WA 98195\n1-206-685-3870 (phone) /1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau\n*****************************************************************\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171010/c1aa2858/attachment.html>",
+      "body_snippet": "Damien - you can also try running the line:\n\nsummary(your.network.name ~ edges + nodefactor(c('sex',\"deg.main\", \n\"deg.pers\"), base = 1)) after you've run all your code up to but not \nincluding the mod",
+      "thread_id": "thread-e7858a35816b",
+      "thread_depth": 2,
+      "month": "2017-10"
+    },
+    {
+      "id": "msg-2fcfbb80214e",
+      "message_id": "<CAGyvxxyEOFj_4u1xHvMJU0go_wYiUa66KYHRM7f3+AkUL=6_8w@mail.gmail.com>",
+      "from_name": "Rany Octaria",
+      "from_email_hash": "c82101754d31d184be40465442baf0412c90d7255fd70ff63d8efcf350ea1e7e",
+      "date": "2017-10-10T14:23:49Z",
+      "subject": "[statnet_help] Plotting Specific Ego Network",
+      "subject_clean": "[statnet_help] Plotting Specific Ego Network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\nI am trying to draw an ego network for specific node(s) in my graph using\nego. extract. The idea is to make a graph of node called \"a\" and all other\nwho is connected to \"a\" into a separate graph and display them separately.\n\nI tried this code but gets a* large list* instead of a network:\nego_a <- ego.extract(hdds_net, ego=hdds_net %v% \"vertex.names\"==\"a\",\nneighborhood = \"in\")\n\n-  How do I get a network object from ego.extract? I want to be able to\nplot it using gplot\n\nThanks!\n\nRany Octaria\nTennessee Dept of Health\n-- \nBest Wishes,\nRany\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171010/3236c9d4/attachment.html>",
+      "body_snippet": "Hi,\nI am trying to draw an ego network for specific node(s) in my graph using\nego. extract. The idea is to make a graph of node called \"a\" and all other\nwho is connected to \"a\" into a separate graph a",
+      "thread_id": "thread-2fcfbb80214e",
+      "thread_depth": 0,
+      "month": "2017-10"
+    },
+    {
+      "id": "msg-7bb85fa04987",
+      "message_id": "<3ad2d314-de81-05d3-f153-2b6de01847d0@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2017-10-10T15:06:10Z",
+      "subject": "[statnet_help] Plotting Specific Ego Network",
+      "subject_clean": "[statnet_help] Plotting Specific Ego Network",
+      "in_reply_to": "<CAGyvxxyEOFj_4u1xHvMJU0go_wYiUa66KYHRM7f3+AkUL=6_8w@mail.gmail.com>",
+      "references": [
+        "<CAGyvxxyEOFj_4u1xHvMJU0go_wYiUa66KYHRM7f3+AkUL=6_8w@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Rany -\n\nThe \"ego\" argument should be a list of vertex IDs (i.e., the numbers of \nthe vertices you want to select in the adjacency matrix \nrepresentation).? Try using \"which\" to get the index of the matching \nvertex.? The result is returned as a list, but if you selected only one \nvertex it should have only one entry; just use [[1]] to pull the matrix \nfrom the list.\n\nHope that helps,\n\n-Carter\n\n\nOn 10/10/2017 02:23 PM, Rany Octaria wrote:\n> Hi,\n> I am trying to draw an ego network for specific node(s) in my graph \n> using ego. extract. The idea is to make a?graph of node called \"a\" and \n> all other who is connected to \"a\"?into a separate graph and display \n> them separately.\n>\n> I tried this code but gets a*large list* instead of a network:\n> ego_a <- ego.extract(hdds_net, ego=hdds_net %v% \"vertex.names\"==\"a\", \n> neighborhood = \"in\")\n>\n> -? How do I get a network object from ego.extract? I want to be able \n> to plot it using gplot\n>\n> Thanks!\n>\n> Rany Octaria\n> Tennessee Dept of Health\n> -- \n> Best Wishes,\n> Rany\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171010/a5375e86/attachment.html>",
+      "body_snippet": "Hi, Rany -\n\nThe \"ego\" argument should be a list of vertex IDs (i.e., the numbers of \nthe vertices you want to select in the adjacency matrix \nrepresentation).? Try using \"which\" to get the index of th",
+      "thread_id": "thread-2fcfbb80214e",
+      "thread_depth": 1,
+      "month": "2017-10"
+    },
+    {
+      "id": "msg-6032c40b0641",
+      "message_id": "<CAGyvxxwosEVJCSHY6sL05A9+iqE5WUGafTgq2Yh33nuKob4X4w@mail.gmail.com>",
+      "from_name": "Rany Octaria",
+      "from_email_hash": "c82101754d31d184be40465442baf0412c90d7255fd70ff63d8efcf350ea1e7e",
+      "date": "2017-10-11T06:26:51Z",
+      "subject": "[statnet_help] Plotting Specific Ego Network",
+      "subject_clean": "[statnet_help] Plotting Specific Ego Network",
+      "in_reply_to": "<CAGyvxxyEOFj_4u1xHvMJU0go_wYiUa66KYHRM7f3+AkUL=6_8w@mail.gmail.com>",
+      "references": [
+        "<CAGyvxxyEOFj_4u1xHvMJU0go_wYiUa66KYHRM7f3+AkUL=6_8w@mail.gmail.com>"
+      ],
+      "body_plain": "Please disregard my previous message. I was able to make the ego network,\nbut now facing issue with the vertex attributes. When you do ego.extract,\nhow do we preserve the vertex and edge attributes into the new network?\nThanks\nRany\n\nOn Tue, Oct 10, 2017 at 4:23 PM Rany Octaria <ranyoctaria@gmail.com> wrote:\n\n> Hi,\n> I am trying to draw an ego network for specific node(s) in my graph using\n> ego. extract. The idea is to make a graph of node called \"a\" and all other\n> who is connected to \"a\" into a separate graph and display them separately.\n>\n> I tried this code but gets a* large list* instead of a network:\n> ego_a <- ego.extract(hdds_net, ego=hdds_net %v% \"vertex.names\"==\"a\",\n> neighborhood = \"in\")\n>\n> -  How do I get a network object from ego.extract? I want to be able to\n> plot it using gplot\n>\n> Thanks!\n>\n> Rany Octaria\n> Tennessee Dept of Health\n> --\n> Best Wishes,\n> Rany\n>\n-- \nBest Wishes,\nRany\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171011/99fb959c/attachment.html>",
+      "body_snippet": "Please disregard my previous message. I was able to make the ego network,\nbut now facing issue with the vertex attributes. When you do ego.extract,\nhow do we preserve the vertex and edge attributes in",
+      "thread_id": "thread-2fcfbb80214e",
+      "thread_depth": 1,
+      "month": "2017-10"
+    },
+    {
+      "id": "msg-c2c0efec78bf",
+      "message_id": "<511ae91a-776a-1774-bf79-d6aadc1df9d8@manchester.ac.uk>",
+      "from_name": "Wouter Spekkink",
+      "from_email_hash": "a5484cf6ccc64d635969a14ea4c22370ebefa6e071393afac31c815292bdd8b6",
+      "date": "2017-10-17T08:03:44Z",
+      "subject": "[statnet_help] Custom constraints (for DAGs)",
+      "subject_clean": "[statnet_help] Custom constraints (for DAGs)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI was wondering what possibilities there are for introducing custom \nconstraints into statnet.\n\nLong story short, I want to limit the sample space to Directed Acyclic \nGraphs (DAGs). I figured out a way to check whether adding an edge to a \ngraph would cause it to stop being a DAG (i.e., add a cycle at any \nlength). The attached C++ code creates a 10-by-10 adjacency matrix, and \nonly creates edges if they do not create cycles. This is in line with \nthe \"flipping edges\" logic of statnet.\n\nIn principle, before \"switching on an edge\", this could be used to check \nwhether the edge introduces cycles, and if it does, to decide to not \nswitch it on. However, I have no idea how I could actually implement \nthis as a constraint. Is there a way to achieve this through the \nergm.userterms package?\n\nBest,\n\nWouter Spekkink\n\n\n\n\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: main.cpp\nType: text/x-c++src\nSize: 2925 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171017/bafafab2/attachment.bin>",
+      "body_snippet": "Dear all,\n\nI was wondering what possibilities there are for introducing custom \nconstraints into statnet.\n\nLong story short, I want to limit the sample space to Directed Acyclic \nGraphs (DAGs). I figu",
+      "thread_id": "thread-c2c0efec78bf",
+      "thread_depth": 0,
+      "month": "2017-10"
+    },
+    {
+      "id": "msg-95b56ea4e679",
+      "message_id": "<06c801d3480f$29519c80$7bf4d580$@gmail.com>",
+      "from_name": "Damien Georges",
+      "from_email_hash": "113c5e39756387ed292afe8739b1d4a07e9baf542df06a72c5b3412e3bbb281b",
+      "date": "2017-10-18T05:46:47Z",
+      "subject": "[statnet_help] 3 terms nodefactor",
+      "subject_clean": "[statnet_help] 3 terms nodefactor",
+      "in_reply_to": "<58d0fa46-7209-6859-2beb-430fefba9e75@uw.edu>",
+      "references": [
+        "<030001d341ce$7fa90c90$7efb25b0$@gmail.com>",
+        "<b3569496-ad40-3f9a-13c0-8e121a057d11@uw.edu>",
+        "<58d0fa46-7209-6859-2beb-430fefba9e75@uw.edu>"
+      ],
+      "body_plain": "Steven,\n\n \n\nThanks a lot for the hints! \n\n \n\nAs you suggested, the issue came from the one of the combinations that was\nnot represented in my dataset (women having 1 main and 2 casual partnership\nthe day of the interview). Removing the target statistic (0) associated with\nthis item makes the model run smoothly.\n\n \n\nConcerning the type of model, I decided to go for a model with a nodematch\nterm on sex to stay as general as possible (and be able to target both\nheterosexual and homosexual partnership).\n\n \n\nCheers,\n\nDamien\n\n \n\nFrom: Steven M Goodreau [mailto:goodreau@uw.edu] \nSent: 10 October 2017 21:39\nTo: statnet_help@u.washington.edu\nSubject: Re: [statnet_help] 3 terms nodefactor\n\n \n\nDamien - you can also try running the line:\n\nsummary(your.network.name ~ edges + nodefactor(c('sex',\"deg.main\",\n\"deg.pers\"), base = 1)) after you've run all your code up to but not\nincluding the model estimation line.  let me know what results you get, as\nthat will also help pinpoint this.\n\nsteve\n\n \n\nOn 10/10/2017 8:18 AM, Steven M Goodreau wrote:\n\nDamien - \n\nMy guess is that in the network that you created to do the estimation on,\none of the 12 possible (sex x deg.main x deg.pers) combinations is not\nactually represented by anybody in the network.  The tools can't tell that\nthere are some combinations that are theoretically possible in your model\nbut don't actually appear, so they don't include a term for them.\n\nIf you check on that and it doesn't seem to be the case, perhaps email just\nto me with some reproducible code and I can check further.\n\nAlso, out of curiosity, since you are doing two sexes - have you set the\nmodel up as bipartite or do you just have a nodematch term on sex? I don't\nthink that would affect this issue here, but perhaps there's something I'm\nnot thinking of.\n\nCheers,\n\nSteve\n\n \n\n \n\nOn 10/10/2017 6:48 AM, Damien Georges wrote:\n\nHi all,\n\n \n\nI am trying to fit a one-off relationship network (Adaptation of S. Goodreau\nand S. Jeness work in racial disparities among MSM in Atlanta work (Lancet\n2017)). \n\nI want my network to be influenced by the sex (sex; 'M', 'W'), the number of\nmain relationship (deg.main; 0, 1) and the number of casual relationship\n(deg.pers; 0, 1, 2) of individuals.\n\n \n\nMy formation formulae is then (I have removed all the terms we are not\ninterested in here):\n\n \n\nformation.i <- ~ edges + nodefactor(c('sex',\"deg.main\", \"deg.pers\"), base =\n1)\n\n \n\nI was expected to give a length 12 target statistic vector :\n\n-          1 for edges count \n\n-          2 (sex levels)   x   2 (deg.main levels)   x 3 (deg.pers levels)\n- 1 (ref level here sex: M , deg.main: 0, deg.pers: 0 ) = 11 paramters\n\n \n\nBut the model (netest) keep complaining requiring for 11 parameters only.\n\n \n\nHere is the error message:\n\n \n\n--\n\nError in vector.namesmatch(target.stats, names(nw.stats)) : \n\n  Length of \"target.stats\" is 12 but should be 11.\n\n--\n\n \n\nDoes somebody know why nodefactor(c('sex',\"deg.main\", \"deg.pers\"), base = 1)\nrequires only 10 parameters (and not 11 i.e. 12 combinations of sex,\ndeg.main, deg.pers - 1 ref level)?\n\n \n\nBest,\n\nDamien\n\n \n\n \n\n\n\n\n\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu> \nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n\n\n\n-- \n*****************************************************************\n * Note: I am now based out of an office in CSDE (Raitt 218L). *\n * My mailing address remains Anthropology.                    *\n*****************************************************************\nSteven M. Goodreau / Professor / Dept. of Anthropology\nPhysical address: Raitt Hall 218L\nMailing address: Campus Box 353100 / 4216 Memorial Way NE\nUniv. of Washington / Seattle WA 98195\n1-206-685-3870 (phone) /1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau\n*****************************************************************\n\n\n\n\n\n-- \n*****************************************************************\n * Note: I am now based out of an office in CSDE (Raitt 218L). *\n * My mailing address remains Anthropology.                    *\n*****************************************************************\nSteven M. Goodreau / Professor / Dept. of Anthropology\nPhysical address: Raitt Hall 218L\nMailing address: Campus Box 353100 / 4216 Memorial Way NE\nUniv. of Washington / Seattle WA 98195\n1-206-685-3870 (phone) /1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau\n*****************************************************************\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171018/69334950/attachment.html>",
+      "body_snippet": "Steven,\n\n \n\nThanks a lot for the hints! \n\n \n\nAs you suggested, the issue came from the one of the combinations that was\nnot represented in my dataset (women having 1 main and 2 casual partnership\nthe ",
+      "thread_id": "thread-e7858a35816b",
+      "thread_depth": 3,
+      "month": "2017-10"
+    },
+    {
+      "id": "msg-200943e717d5",
+      "message_id": "<CADJVJ56XhY_GS6zJu+0pJ1xnKFWLvWS+E6B=X5o6d7YQXbQ0NQ@mail.gmail.com>",
+      "from_name": "Shiran Cohen",
+      "from_email_hash": "c241ecd973add7b4babec09d63445f4e8a130ba0643f8e2862288306595bf1eb",
+      "date": "2017-10-31T07:48:33Z",
+      "subject": "[statnet_help] ERGM",
+      "subject_clean": "[statnet_help] ERGM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone\n\nI have an ERGM model. My network has 300 nodes.\n\nIs there a way to \"grow\" a network which was generated by simulations? (say\nto 400 nodes?)\n\nIf not, can it be done using TERGM?\n\nThank you\n\nShiran\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171031/173e8732/attachment.html>",
+      "body_snippet": "Hi everyone\n\nI have an ERGM model. My network has 300 nodes.\n\nIs there a way to \"grow\" a network which was generated by simulations? (say\nto 400 nodes?)\n\nIf not, can it be done using TERGM?\n\nThank you",
+      "thread_id": "thread-200943e717d5",
+      "thread_depth": 0,
+      "month": "2017-10"
+    },
+    {
+      "id": "msg-149f1188ac5d",
+      "message_id": "<CAByPayFWmLZ-CW2HLFSqq-DHzLapHWBXBjAHTMsersd7Pfk+0w@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2017-10-31T08:32:54Z",
+      "subject": "[statnet_help] ERGM",
+      "subject_clean": "[statnet_help] ERGM",
+      "in_reply_to": "<CADJVJ56XhY_GS6zJu+0pJ1xnKFWLvWS+E6B=X5o6d7YQXbQ0NQ@mail.gmail.com>",
+      "references": [
+        "<CADJVJ56XhY_GS6zJu+0pJ1xnKFWLvWS+E6B=X5o6d7YQXbQ0NQ@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Shiran,\n\nYour seemingly simple question actually touches many quite fundamental\nissues, both statistical and substantive. Let me give you my take, I hope\nothers in this list will chip in if I miss something.\n\n>From the purely technical point of view, you can fit an ERGM to your\n300-node network, take the parameter estimates, and then sample 400-node\nnetworks from an ERGM with the same parameter estimates. HOWEVER, the BIG\nquestion is:\n\nIs it reasonable to assume that the generated 400-node networks can be\nthought of as a result of the same real-world process that governs the\nobserved 300-node network?\n\nThe answer is not obvious because it depends how the real-world processes\nshaping the network scale with network size. That's a substantive question\nand answer depends on what the network represents.\n\nERGMs with \"standard\" parametrisation scale with network size preserving\nthe density, i.e. networks of different sizes sampled from the same ERGM\nmodel (terms and coefficient values) will have on average the same density.\nSometimes this might be what you want, but sometimes it is not. For\nexample, if you study social network within a school class of 20, kids\nmight report on average 3 friends. It is not  reasonable to assume that\naverage number of friends for a kid in a class of 40 will be a double of\nthat. The average degree will be rather similar. In other words, the\nbefriending process scales with network size such that average degree\nshould stay the same and density, as a consequence, decrease. Naive\nsampling of bigger networks from the same ERGM will give unrealistically\ndense networks. To overcome that offset terms were developed, see:\n\nKrivitsky, Pavel N., Mark S. Handcock, and Martina Morris. \"Adjusting for\nnetwork size and composition effects in exponential-family random graph\nmodels.\" *Statistical methodology* 8.4 (2011): 319-339.\n\nKolaczyk, Eric D., and Pavel N. Krivitsky. \"On the question of effective\nsample size in network modeling: An asymptotic inquiry.\" *Statistical\nscience: a review journal of the Institute of Mathematical Statistics* 30.2\n(2015): 184.\n\n... and section 5.3 of\n\nSchweinberger, Michael, Pavel N. Krivitsky, and Carter T. Butts.\n\"Foundations of Finite-, Super-, and Infinite-Population Random Graph\nInference.\" *arXiv preprint arXiv:1707.04800* (2017).\n\nYou can use offsets with ergm(). I don't have a good code snipet with an\nexample at this very moment but have a look at ?ergm and arguments `offset`\nand `offset.coef`.\n\n Of course the issue of scaling may not be limited to density vs average\ndegree (essentially the `edges` term), but may in principle apply to other\nterms as well.\n\n\nhth,\nMichal\n\n\n\n\n\n\nOn Tue, Oct 31, 2017 at 3:48 PM, Shiran Cohen <shiran.cohen.2016@gmail.com>\nwrote:\n\n> Hi everyone\n>\n> I have an ERGM model. My network has 300 nodes.\n>\n> Is there a way to \"grow\" a network which was generated by simulations?\n> (say to 400 nodes?)\n>\n> If not, can it be done using TERGM?\n>\n> Thank you\n>\n> Shiran\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171031/e891ea21/attachment.html>",
+      "body_snippet": "Hi Shiran,\n\nYour seemingly simple question actually touches many quite fundamental\nissues, both statistical and substantive. Let me give you my take, I hope\nothers in this list will chip in if I miss ",
+      "thread_id": "thread-200943e717d5",
+      "thread_depth": 1,
+      "month": "2017-10"
+    },
+    {
+      "id": "msg-e098418733bf",
+      "message_id": "<CAO9oa+=2K2oDmwZ3x58L4BaytvN9gXL_2ME4J0u_2e4pOmzsaw@mail.gmail.com>",
+      "from_name": "Krause, R.W.",
+      "from_email_hash": "cd1e92998bfba6b0bbc2c456126c7c4554bc697383768f2795e6fd169ef1619f",
+      "date": "2017-10-31T08:35:41Z",
+      "subject": "[statnet_help] ERGM",
+      "subject_clean": "[statnet_help] ERGM",
+      "in_reply_to": "<CADJVJ56XhY_GS6zJu+0pJ1xnKFWLvWS+E6B=X5o6d7YQXbQ0NQ@mail.gmail.com>",
+      "references": [
+        "<CADJVJ56XhY_GS6zJu+0pJ1xnKFWLvWS+E6B=X5o6d7YQXbQ0NQ@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Shiran,\n\nCould you explain what you mean with grow?\n\n\nIf you want to add, say 250 more nodes and simulate the ties between the\nold and new nodeset and within the new nodeset but keeping the ties within\nthe old nodeset fixed, then this can be easily done with the ergm package.\n\n#1) Add the new nodes to the old network - I assume a simple adjacency\nmatrix:\n\n# first we create the new bigger network.\n#oldNet = your current network with the 300 nodes\n\nnewNodes <- 250 #number of new nodes\nnewSize <- nrow(oldNet) + newNodes\n\nnewNet <- matrix(NA, newSize , newSize )\nnewNet[nrow(oldNet),nrow(oldNet)] <- oldNet\n\n# Now we have and adjacency matrix of the desired size with the former\nnetwork between the 300 original nodes and missing data for all other ties\n\n#2) Simulate the new ties -I do not know if you used simulate in R to\nsimulate the network you have, so I write the script with sufficient\ndetail, if you have not used it.\n# If you are familiar, just set: constraints = ~observed, to keep all old\nties as they are and only simulate the new ones.\n\n\nnewNetSim <- sim (newNet ~ ... , #insert your model parameters here\n                               coef = ..., #insert a vector with the\nparameter values here\n                               statsonly = FALSE,  #to return the simulated\nnetwork(s)\n                               nsim = 1, # the number of simulated networks\nyou want\n                               constraints = ~observed, #this leaves all\nobserved ties (here your original network) as they are - the function will\nonly simulate missing ties\n                               control = control.simulate(MCMC.burnin =\n1,000,000 #given that your network is very big, I would give the algorithm\nenough time to simulate\n\n                                        #through all the cells multiple\ntimes. Maybe your model is quite simple, then a smaller\n\n                                        #value will be fine. Best have a\nlook at the network statistics of the simulated networks,\n\n                                        #if there are multiple and see if\nthe simulation is converged\n\n MCMC.interval = 1,000,000)) # if you sample multiple networks ensure that\nthey are spaced out far enough in the\n\n                                             # sampling process. Otherwise\nyour network statistics will be highly correlated.\n\n                                             # Best monitor the auto\ncorrelation of the simulated networks and increase the interval if\nnecessary.\n\n\nI hope this helps.\n\nBest Regards,\n\nRobert Krause\n\nICS Sociology, PhD Candidate\nUniversity of Groningen\nGrote Rozenstraat 31,\nRoom B119\n9712 TG Groningen, The Netherlands\n\nOn Tue, Oct 31, 2017 at 3:48 PM, Shiran Cohen <shiran.cohen.2016@gmail.com>\nwrote:\n\n> Hi everyone\n>\n> I have an ERGM model. My network has 300 nodes.\n>\n> Is there a way to \"grow\" a network which was generated by simulations?\n> (say to 400 nodes?)\n>\n> If not, can it be done using TERGM?\n>\n> Thank you\n>\n> Shiran\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171031/0d87d8e2/attachment.html>",
+      "body_snippet": "Dear Shiran,\n\nCould you explain what you mean with grow?\n\n\nIf you want to add, say 250 more nodes and simulate the ties between the\nold and new nodeset and within the new nodeset but keeping the ties ",
+      "thread_id": "thread-200943e717d5",
+      "thread_depth": 1,
+      "month": "2017-10"
+    },
+    {
+      "id": "msg-f8cede561f4f",
+      "message_id": "<CAO9oa+=6oxyZop6y6OnqPJL9K-nGCNM56_EEjA+4gr5tniN5ow@mail.gmail.com>",
+      "from_name": "Krause, R.W.",
+      "from_email_hash": "cd1e92998bfba6b0bbc2c456126c7c4554bc697383768f2795e6fd169ef1619f",
+      "date": "2017-10-31T09:02:26Z",
+      "subject": "[statnet_help] ERGM",
+      "subject_clean": "[statnet_help] ERGM",
+      "in_reply_to": "<CAByPayFWmLZ-CW2HLFSqq-DHzLapHWBXBjAHTMsersd7Pfk+0w@mail.gmail.com>",
+      "references": [
+        "<CADJVJ56XhY_GS6zJu+0pJ1xnKFWLvWS+E6B=X5o6d7YQXbQ0NQ@mail.gmail.com>",
+        "<CAByPayFWmLZ-CW2HLFSqq-DHzLapHWBXBjAHTMsersd7Pfk+0w@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Shiran,\n\nMichal is absolutely right. I completely forgot about the scaling of the\nparameters. If you just add a few node ti your 300 (e.g. 10?) then the code\nI send should work fine enough. If you add 250, as I did in the code, then\nyou have a problem.\nSorry for not having thought of the scaling. Thank you Michal!\n\nBest Regards,\n\nRobert Krause\n\nICS Sociology, PhD Candidate\nUniversity of Groningen\nGrote Rozenstraat 31,\nRoom B119\n9712 TG Groningen, The Netherlands\n\nOn Tue, Oct 31, 2017 at 4:32 PM, Micha? Bojanowski <michal2992@gmail.com>\nwrote:\n\n> Hi Shiran,\n>\n> Your seemingly simple question actually touches many quite fundamental\n> issues, both statistical and substantive. Let me give you my take, I hope\n> others in this list will chip in if I miss something.\n>\n> From the purely technical point of view, you can fit an ERGM to your\n> 300-node network, take the parameter estimates, and then sample 400-node\n> networks from an ERGM with the same parameter estimates. HOWEVER, the BIG\n> question is:\n>\n> Is it reasonable to assume that the generated 400-node networks can be\n> thought of as a result of the same real-world process that governs the\n> observed 300-node network?\n>\n> The answer is not obvious because it depends how the real-world processes\n> shaping the network scale with network size. That's a substantive question\n> and answer depends on what the network represents.\n>\n> ERGMs with \"standard\" parametrisation scale with network size preserving\n> the density, i.e. networks of different sizes sampled from the same ERGM\n> model (terms and coefficient values) will have on average the same density.\n> Sometimes this might be what you want, but sometimes it is not. For\n> example, if you study social network within a school class of 20, kids\n> might report on average 3 friends. It is not  reasonable to assume that\n> average number of friends for a kid in a class of 40 will be a double of\n> that. The average degree will be rather similar. In other words, the\n> befriending process scales with network size such that average degree\n> should stay the same and density, as a consequence, decrease. Naive\n> sampling of bigger networks from the same ERGM will give unrealistically\n> dense networks. To overcome that offset terms were developed, see:\n>\n> Krivitsky, Pavel N., Mark S. Handcock, and Martina Morris. \"Adjusting for\n> network size and composition effects in exponential-family random graph\n> models.\" *Statistical methodology* 8.4 (2011): 319-339.\n>\n> Kolaczyk, Eric D., and Pavel N. Krivitsky. \"On the question of effective\n> sample size in network modeling: An asymptotic inquiry.\" *Statistical\n> science: a review journal of the Institute of Mathematical Statistics* 30.2\n> (2015): 184.\n>\n> ... and section 5.3 of\n>\n> Schweinberger, Michael, Pavel N. Krivitsky, and Carter T. Butts.\n> \"Foundations of Finite-, Super-, and Infinite-Population Random Graph\n> Inference.\" *arXiv preprint arXiv:1707.04800* (2017).\n>\n> You can use offsets with ergm(). I don't have a good code snipet with an\n> example at this very moment but have a look at ?ergm and arguments `offset`\n> and `offset.coef`.\n>\n>  Of course the issue of scaling may not be limited to density vs average\n> degree (essentially the `edges` term), but may in principle apply to other\n> terms as well.\n>\n>\n> hth,\n> Michal\n>\n>\n>\n>\n>\n>\n> On Tue, Oct 31, 2017 at 3:48 PM, Shiran Cohen <shiran.cohen.2016@gmail.com\n> > wrote:\n>\n>> Hi everyone\n>>\n>> I have an ERGM model. My network has 300 nodes.\n>>\n>> Is there a way to \"grow\" a network which was generated by simulations?\n>> (say to 400 nodes?)\n>>\n>> If not, can it be done using TERGM?\n>>\n>> Thank you\n>>\n>> Shiran\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171031/b31a040f/attachment.html>",
+      "body_snippet": "Dear Shiran,\n\nMichal is absolutely right. I completely forgot about the scaling of the\nparameters. If you just add a few node ti your 300 (e.g. 10?) then the code\nI send should work fine enough. If yo",
+      "thread_id": "thread-200943e717d5",
+      "thread_depth": 2,
+      "month": "2017-10"
+    },
+    {
+      "id": "msg-90ed671bd2a1",
+      "message_id": "<alpine.WNT.2.00.1710311052080.12276@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2017-10-31T10:58:43Z",
+      "subject": "[statnet_help] ERGM",
+      "subject_clean": "[statnet_help] ERGM",
+      "in_reply_to": "<CADJVJ56XhY_GS6zJu+0pJ1xnKFWLvWS+E6B=X5o6d7YQXbQ0NQ@mail.gmail.com>",
+      "references": [
+        "<CADJVJ56XhY_GS6zJu+0pJ1xnKFWLvWS+E6B=X5o6d7YQXbQ0NQ@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Shiran,\n\nGiven the previous comments and suggestions, I'll just add that the \nanswer is \"yes\", subject to the scaling assumption.\n\nWRT \"how to\":\nWe used to have a section on this in our ERGM tutorial materials -- it has \nsince migrated for the most part to the new ergm.ego tutorial.  But the \nold materials are still online and may be more useful for your case.  You \ncan find them here:\n\nhttps://statnet.csde.washington.edu/trac/raw-attachment/wiki/Sunbelt2016/ergm_tutorial.html#working-with-egocentrically-sampled-network-data\n\nhth,\nMartina\n\nOn Tue, 31 Oct 2017, Shiran Cohen wrote:\n\n> Hi everyone\n> I have an ERGM model. My network has 300 nodes.\n> \n> Is there a way to \"grow\" a network which was generated by simulations? (say to 400 nodes?)\n> \n> If not, can it be done using TERGM?\n> \n> Thank you\n> \n> Shiran\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Shiran,\n\nGiven the previous comments and suggestions, I'll just add that the \nanswer is \"yes\", subject to the scaling assumption.\n\nWRT \"how to\":\nWe used to have a section on this in our ERGM tutori",
+      "thread_id": "thread-200943e717d5",
+      "thread_depth": 1,
+      "month": "2017-10"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-345bcd6f6a31",
+      "subject": "[statnet_help] Basic attribute-based indegree/outdegree",
+      "message_count": 3,
+      "participants": [
+        "Emily Long",
+        "Steven M Goodreau"
+      ],
+      "started": "2017-10-07T16:59:30Z",
+      "last_reply": "2017-10-07T18:08:36Z",
+      "root_message_id": "msg-345bcd6f6a31"
+    },
+    {
+      "id": "thread-e7858a35816b",
+      "subject": "[statnet_help] 3 terms nodefactor",
+      "message_count": 4,
+      "participants": [
+        "Damien Georges",
+        "Steven M Goodreau"
+      ],
+      "started": "2017-10-10T06:48:48Z",
+      "last_reply": "2017-10-18T05:46:47Z",
+      "root_message_id": "msg-e7858a35816b"
+    },
+    {
+      "id": "thread-2fcfbb80214e",
+      "subject": "[statnet_help] Plotting Specific Ego Network",
+      "message_count": 3,
+      "participants": [
+        "Carter T. Butts",
+        "Rany Octaria"
+      ],
+      "started": "2017-10-10T14:23:49Z",
+      "last_reply": "2017-10-11T06:26:51Z",
+      "root_message_id": "msg-2fcfbb80214e"
+    },
+    {
+      "id": "thread-c2c0efec78bf",
+      "subject": "[statnet_help] Custom constraints (for DAGs)",
+      "message_count": 1,
+      "participants": [
+        "Wouter Spekkink"
+      ],
+      "started": "2017-10-17T08:03:44Z",
+      "last_reply": "2017-10-17T08:03:44Z",
+      "root_message_id": "msg-c2c0efec78bf"
+    },
+    {
+      "id": "thread-200943e717d5",
+      "subject": "[statnet_help] ERGM",
+      "message_count": 5,
+      "participants": [
+        "Krause, R.W.",
+        "Michał Bojanowski",
+        "Shiran Cohen",
+        "martina morris"
+      ],
+      "started": "2017-10-31T07:48:33Z",
+      "last_reply": "2017-10-31T10:58:43Z",
+      "root_message_id": "msg-200943e717d5"
+    }
+  ]
+}

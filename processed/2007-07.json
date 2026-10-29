@@ -1,0 +1,209 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2007-07",
+  "messages": [
+    {
+      "id": "msg-8dc4d9762892",
+      "message_id": "<Pine.LNX.4.58.0707052118121.6211@localhost>",
+      "from_name": "Lee Worden",
+      "from_email_hash": "3c6b83d7d070bf64bcde29d2acd2375539a17b87dcb387d97b35bfbf9e600484",
+      "date": "2007-07-05T21:35:01Z",
+      "subject": "[statnet_help] trouble installing statnet on ubuntu linux",
+      "subject_clean": "[statnet_help] trouble installing statnet on ubuntu linux",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi - I've looked through the statnet email archive but don't see what I'm\ndoing wrong.\n\nI've installed R (sudo apt-get install r-base);\nset an environment variable R_LIB=$HOME/work/simulation/network/r-lib\nthe install.packages goes mostly okay, but the updatestatnet step fails on\ntrying to choose a mirror.  Here's a transcript.  Do you think there's\na bug, or have I done something wrong?  Thanks - Lee Worden\n\n> install.packages(\"updatestatnet\",contriburl=\"http://csde.washington.edu/statnet\")\nWarning in install.packages(\"updatestatnet\",contriburl=\"http://csde.washington.edu/statnet\") :\n\targument 'lib' is missing: using /home/wonder/work/simulation/network/r-lib\ntrying URL  'http://csde.washington.edu/statnet/updatestatnet_1.0.tar.gz'\n[...]\n* DONE (updatestatnet)\n\nThe downloaded packages are int\n\t/tmp/RtmpHywQsB/downloaded_packages\nWarning message:\ncannot create HTML package index in: tools::unix.packages.html(.Library)\n> library(updatestatnet)\nUpdating statnet over the Internet...\n--- Please select a CRAN mirror for use in this session ---\nLoading Tcl/Tk interface ... done\n[AT THIS POINT A MENU APPEARS AND I SELECT A USA MIRROR AND CLICK 'OK']\nError in contrib.url(repos, type) : trying to use CRAN without setting a mirror\nError in library(updatestatnet) : .First.lib failed for 'updatestatnet'\n> sessionInfo()\nR version 2.4.1 (2006-12-18)\ni486-pc-linux-gnu\n\nlocale:\nLC_CTYPE=en_US.UTF-8;LC_NUMERIC=C;LC_TIME=en_US.UTF-8;LC_COLLATE=en_US.UTF-8;LC_MONETARY=en_US.UTF-8;LC_MESSAGES=en_US.UTF-8;LC_PAPER=en_US.UTF-8;LC_NAME=C;LC_ADDRESS=C;LC_TELEPHONE=C;LC_MEASUREMENT=en_US.UTF-8;LC_IDENTIFICATION=C\n\nattached base packages:\n[1] \"stats\"     \"graphics\"  \"grDevices\" \"utils\"     \"datasets\"  \"methods\"\n[7] \"base\"\n> getOption(\"pkgType\")\n[1] \"source\"\n>",
+      "body_snippet": "Hi - I've looked through the statnet email archive but don't see what I'm\ndoing wrong.\n\nI've installed R (sudo apt-get install r-base);\nset an environment variable R_LIB=$HOME/work/simulation/network/",
+      "thread_id": "thread-8dc4d9762892",
+      "thread_depth": 0,
+      "month": "2007-07"
+    },
+    {
+      "id": "msg-f9fed0083174",
+      "message_id": "<C2B3D048.4269%matthew.weber@usc.edu>",
+      "from_name": "Matthew Weber",
+      "from_email_hash": "24a9cc81e4bad3563cc59386964e6317afb2062caf07a4f12a38f96e52d806f2",
+      "date": "2007-07-06T10:56:08Z",
+      "subject": "[statnet_help] StatNet Help",
+      "subject_clean": "[statnet_help] StatNet Help",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi:\n\nI attended the ERGM workshop at Sunbelt this year, and wanted to spend some\ntime this summer learning Statnet. I'm very familiar with ERGM and have been\nusing PNet, but was hoping to learn a new package.\n\nI've been trying to run the package on my computer, but have been\nencountering a problem trying to install and run. If you can offer any\nadvice it'd be much appreciated.\n\nThanks,\nMatt\n\n\n> sessionInfo()\nR version 2.5.0 (2007-04-23)\ni386-apple-darwin8.9.1\n\nlocale:\nen_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\nattached base packages:\n[1] \"splines\"   \"stats\"     \"graphics\"  \"grDevices\" \"utils\"\n[6] \"datasets\"  \"methods\"   \"base\"\n\nother attached packages:\n      spatial          coda       lattice       network updatestatnet\n     \"7.2-33\"      \"0.11-2\"      \"0.15-4\"       \"1.1-2\"         \"1.0\"\n\n> getOption(\"pkgType\")\n[1] \"mac.binary\"\n\n> library(statnet)\nError in dyn.load(x, as.logical(local), as.logical(now)) :\n    unable to load shared library\n'/Library/Frameworks/R.framework/Versions/2.5/Resources/library/statnet/libs\n/i386/statnet.so':\n  \ndlopen(/Library/Frameworks/R.framework/Versions/2.5/Resources/library/statne\nt/libs/i386/statnet.so, 6): Library not loaded:\n/Library/Frameworks/R.framework/Versions/2.4/Resources/lib/libR.dylib\n  Referenced from: \n/Library/Frameworks/R.framework/Versions/2.5/Resources/library/statnet/libs/\ni386/statnet.so\n  Reason: image not found\nError in library(statnet) : .First.lib failed for 'statnet'\n\n\n\n\nMatthew S. Weber\nDoctoral Student\nAnnenberg School for Communication\n----------------------\nmatthew.weber@usc.edu\n----------------------",
+      "body_snippet": "Hi:\n\nI attended the ERGM workshop at Sunbelt this year, and wanted to spend some\ntime this summer learning Statnet. I'm very familiar with ERGM and have been\nusing PNet, but was hoping to learn a new ",
+      "thread_id": "thread-f9fed0083174",
+      "thread_depth": 0,
+      "month": "2007-07"
+    },
+    {
+      "id": "msg-602ed007ddbe",
+      "message_id": "<468E8AA2.7000809@stanford.edu>",
+      "from_name": "James Holland Jones",
+      "from_email_hash": "acb826446b123a69e69bcb08e635e786bb139ab855a8cfa560a293990f9fb6ea",
+      "date": "2007-07-06T11:32:02Z",
+      "subject": "[statnet_help] StatNet Help",
+      "subject_clean": "[statnet_help] StatNet Help",
+      "in_reply_to": "<C2B3D048.4269%matthew.weber@usc.edu>",
+      "references": [
+        "<C2B3D048.4269%matthew.weber@usc.edu>"
+      ],
+      "body_plain": "I get the same error when loading on my intel mac.  It looks like there \nis an error in the path that loads the R math library?\n\ndlopen(/Library/Frameworks/R.framework/Versions/2.5/Resources/library/statnet/libs/i386/statnet.so, \n6): Library not loaded: \n/Library/Frameworks/R.framework/Versions/2.4/Resources/lib/libR.dylib\n\nShould be:\n\n/Library/Frameworks/R.framework/Versions/2.5/Resources/lib/libR.dylib\n\nno?\n\n\n-- \nJames Holland Jones\nAssistant Professor\n\nDepartment of Anthropological Sciences\nBuilding 360\nStanford, CA 94305-2117\n\nphone:  650-723-4824\nfax:    650-725-9996\nemail:  jhj1@stanford.edu\nurl:    http://www.stanford.edu/~jhj1",
+      "body_snippet": "I get the same error when loading on my intel mac.  It looks like there \nis an error in the path that loads the R math library?\n\ndlopen(/Library/Frameworks/R.framework/Versions/2.5/Resources/library/s",
+      "thread_id": "thread-f9fed0083174",
+      "thread_depth": 1,
+      "month": "2007-07"
+    },
+    {
+      "id": "msg-7b50571f5e05",
+      "message_id": "<38567.164.164.89.51.1183748616.squirrel@imap.stat.psu.edu>",
+      "from_name": "dhunter@stat.psu.edu",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2007-07-06T12:03:36Z",
+      "subject": "[statnet_help] StatNet Help",
+      "subject_clean": "[statnet_help] StatNet Help",
+      "in_reply_to": "<468E8AA2.7000809@stanford.edu>",
+      "references": [
+        "<C2B3D048.4269%matthew.weber@usc.edu>",
+        "<468E8AA2.7000809@stanford.edu>"
+      ],
+      "body_plain": "I could be wrong, but I suspect that this is a mac/R problem, not a\nstatnet problem.  A similar thing happened to me when I upgraded from R\n2.3.x to 2.5.0 on my (non-intel) mac.  It resulted in my inability to\nbuild ANY package from source because; the problem was not limited to\nstatnet.\n\nI corrected the problem, if you can call it corrected, by reinstalling R\n2.3.  If anyone has any advice about how to deal with this without having\nto install an older version, I'd love to hear it (and I hope folks don't\nmind a non-statnet-related post in this case).  I remember that Mark\nHandcock told me he did not have this issue with his (intel) mac, so I'm\npuzzled.\n\nDave Hunter\n\n\n> I get the same error when loading on my intel mac.  It looks like there\n> is an error in the path that loads the R math library?\n>\n> dlopen(/Library/Frameworks/R.framework/Versions/2.5/Resources/library/statnet/libs/i386/statnet.so,\n> 6): Library not loaded:\n> /Library/Frameworks/R.framework/Versions/2.4/Resources/lib/libR.dylib\n>\n> Should be:\n>\n> /Library/Frameworks/R.framework/Versions/2.5/Resources/lib/libR.dylib\n>\n> no?\n>\n>\n> --\n> James Holland Jones\n> Assistant Professor\n>\n> Department of Anthropological Sciences\n> Building 360\n> Stanford, CA 94305-2117\n>\n> phone:  650-723-4824\n> fax:    650-725-9996\n> email:  jhj1@stanford.edu\n> url:    http://www.stanford.edu/~jhj1\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "I could be wrong, but I suspect that this is a mac/R problem, not a\nstatnet problem.  A similar thing happened to me when I upgraded from R\n2.3.x to 2.5.0 on my (non-intel) mac.  It resulted in my ina",
+      "thread_id": "thread-f9fed0083174",
+      "thread_depth": 2,
+      "month": "2007-07"
+    },
+    {
+      "id": "msg-0a99b0fd3798",
+      "message_id": "<1E1C7485-BD28-4A3E-B855-949EEC37D11C@biomail.ucsd.edu>",
+      "from_name": "Art Poon",
+      "from_email_hash": "f24b65dfd7492932fef4587ed4f65bd2d157ca0dcb81041364d2041e415469d7",
+      "date": "2007-07-06T12:26:07Z",
+      "subject": "[statnet_help] Re: StatNet on Mac",
+      "subject_clean": "[statnet_help] Re: StatNet on Mac",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear colleagues,\n\nI've come across this issue before with an earlier version of StatNet  \nand R.  I have a crude workaround, in which I edit the line in the  \nfile \"statnet.so\" to correct the path to the shared library for the  \ncurrent version of R.\n\ni.e. from:\n\u0000/Library/Frameworks/R.framework/Versions/2.4/Resources/lib/ \nlibR.dylib\u0000\u0000\u0000\u0000\u0000\u0000\f\u0000\u0000\u0000\n\nto:\n/Library/Frameworks/R.framework/Versions/2.5/Resources/lib/ \nlibR.dylib\u0000\u0000\u0000\u0000\u0000\u0000\f\u0000\u0000\u0000\n\nIt seems to work.  I've also tried creating a folder in the directory  \n\"/Library/Frameworks/R.framework/Versions/2.4/Resources/\" called  \n\"lib\" and copied the shared library \"libR.dylib\" into it, and that  \nseemed to work also.\n\nBest,\n- Art.",
+      "body_snippet": "Dear colleagues,\n\nI've come across this issue before with an earlier version of StatNet  \nand R.  I have a crude workaround, in which I edit the line in the  \nfile \"statnet.so\" to correct the path to ",
+      "thread_id": "thread-0a99b0fd3798",
+      "thread_depth": 0,
+      "month": "2007-07"
+    },
+    {
+      "id": "msg-665ea24e6cee",
+      "message_id": "<C2B3F586.4284%matthew.weber@usc.edu>",
+      "from_name": "Matthew Weber",
+      "from_email_hash": "24a9cc81e4bad3563cc59386964e6317afb2062caf07a4f12a38f96e52d806f2",
+      "date": "2007-07-06T13:35:02Z",
+      "subject": "[statnet_help] StatNet Help",
+      "subject_clean": "[statnet_help] StatNet Help",
+      "in_reply_to": "<38567.164.164.89.51.1183748616.squirrel@imap.stat.psu.edu>",
+      "references": [],
+      "body_plain": "Thank you for the suggestions. I attempted to modify the statnet.so line to\ncorrect for it pointing to version 2.4, which does appear to be the problem.\nHowever, for some reason simply editing the command line did not work.\n\nI now end up with this slightly different error string:\n\nError in dyn.load(x, as.logical(local), as.logical(now)) :\n    unable to load shared library\n'/Library/Frameworks/R.framework/Versions/2.5/Resources/library/statnet/libs\n/i386/statnet.so':\n  \ndlopen(/Library/Frameworks/R.framework/Versions/2.5/Resources/library/statne\nt/libs/i386/statnet.so, 6): Library not loaded:\n/usr/local/gcc4.0/lib/libgcc_s.1.0.dylib\n  Referenced from: \n/Library/Frameworks/R.framework/Versions/2.5/Resources/library/statnet/libs/\ni386/statnet.so\n  Reason: image not found\nError in library(statnet) : .First.lib failed for 'statnet'\n\n\nIf someone could point me in the right direction I would gladly try\ninstalling the older version (2.3) of statnet.\n\nThanks again for the responses so far - much appreciated.\n\n-Matt\n\n\nOn 7/6/07 12:03 PM, \"dhunter@stat.psu.edu\" <dhunter@stat.psu.edu> wrote:\n\n> I could be wrong, but I suspect that this is a mac/R problem, not a\n> statnet problem.  A similar thing happened to me when I upgraded from R\n> 2.3.x to 2.5.0 on my (non-intel) mac.  It resulted in my inability to\n> build ANY package from source because; the problem was not limited to\n> statnet.\n> \n> I corrected the problem, if you can call it corrected, by reinstalling R\n> 2.3.  If anyone has any advice about how to deal with this without having\n> to install an older version, I'd love to hear it (and I hope folks don't\n> mind a non-statnet-related post in this case).  I remember that Mark\n> Handcock told me he did not have this issue with his (intel) mac, so I'm\n> puzzled.\n> \n> Dave Hunter\n> \n> \n>> I get the same error when loading on my intel mac.  It looks like there\n>> is an error in the path that loads the R math library?\n>> \n>> dlopen(/Library/Frameworks/R.framework/Versions/2.5/Resources/library/statnet\n>> /libs/i386/statnet.so,\n>> 6): Library not loaded:\n>> /Library/Frameworks/R.framework/Versions/2.4/Resources/lib/libR.dylib\n>> \n>> Should be:\n>> \n>> /Library/Frameworks/R.framework/Versions/2.5/Resources/lib/libR.dylib\n>> \n>> no?\n>> \n>> \n>> --\n>> James Holland Jones\n>> Assistant Professor\n>> \n>> Department of Anthropological Sciences\n>> Building 360\n>> Stanford, CA 94305-2117\n>> \n>> phone:  650-723-4824\n>> fax:    650-725-9996\n>> email:  jhj1@stanford.edu\n>> url:    http://www.stanford.edu/~jhj1\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>> \n> \n> \n\nMatthew S. Weber\nDoctoral Student\nAnnenberg School for Communication\n----------------------\nmatthew.weber@usc.edu\n----------------------",
+      "body_snippet": "Thank you for the suggestions. I attempted to modify the statnet.so line to\ncorrect for it pointing to version 2.4, which does appear to be the problem.\nHowever, for some reason simply editing the com",
+      "thread_id": "thread-f9fed0083174",
+      "thread_depth": 3,
+      "month": "2007-07"
+    },
+    {
+      "id": "msg-091597907e2a",
+      "message_id": "<468FBFD1.5030400@stanford.edu>",
+      "from_name": "James Holland Jones",
+      "from_email_hash": "acb826446b123a69e69bcb08e635e786bb139ab855a8cfa560a293990f9fb6ea",
+      "date": "2007-07-07T09:31:13Z",
+      "subject": "[statnet_help] StatNet Help",
+      "subject_clean": "[statnet_help] StatNet Help",
+      "in_reply_to": "<C2B3F586.4284%matthew.weber@usc.edu>",
+      "references": [
+        "<C2B3F586.4284%matthew.weber@usc.edu>"
+      ],
+      "body_plain": "If I am not mistaken, this is a gcc problem.  The latest Apple developer \ntools apparently lack a Fortran compiler. Here is some text from the\nJAGS 0.90 manual (http://www-fis.iarc.fr/~martyn/software/jags/manual.pdf):\n\n\n> A.2.4 Mac OS X: instructions from Bill Northcott If trying to build\n> software on Mac OS X you really need to use Tiger (10.4.x) or Panther\n>  (10.3.x). The open source support has improved greatly in recent\n> releases. You also need the latest version of Apple?s Xcode\n> development tools. These are available as a free download from \n> http://developer.apple.com. You need to set up a free login to ADC.\n> The Apple developer tools do not include a Fortran compiler. Without\n> Fortran, you will not be able to build libRmath. The GNU g77 Fortran\n> compiler is included in the R binary distribution available on CRAN.\n> Install the R binary and select ?GNU Fortran?, and ?Tcl/Tk? from\n> the optional components in the customize step of the installer. \n> IMPORTANT for Tiger (10.4.x) users: The default C/C++ compiler for\n> Tiger is gcc-4. This is not compatible with g77. Before trying to\n> build anything using g77, the default compiler must be changed with\n> the command sudo gcc_select 3.3. (It won?t hurt to do this on Panther\n>  as well.) gcc-4 uses a new Fortran compiler known as gfortran. This\n> should be usable in the near future, but for the moment some hacking\n> would be required.\n\nI don't know if this is still true but it would explain why you can't \nload statnet.so, and you are using gcc 4.0...\n\nI am going to go in and try to build on my office machine later today \nand will let you know if these various suggestions solve the problem.\n\nCheers,\n\nJamie\n\n\nMatthew Weber wrote:\n> Thank you for the suggestions. I attempted to modify the statnet.so\n> line to correct for it pointing to version 2.4, which does appear to\n> be the problem. However, for some reason simply editing the command\n> line did not work.\n> \n> I now end up with this slightly different error string:\n> \n> Error in dyn.load(x, as.logical(local), as.logical(now)) : unable to\n> load shared library \n> '/Library/Frameworks/R.framework/Versions/2.5/Resources/library/statnet/libs\n>  /i386/statnet.so':\n> \n> dlopen(/Library/Frameworks/R.framework/Versions/2.5/Resources/library/statne\n>  t/libs/i386/statnet.so, 6): Library not loaded: \n> /usr/local/gcc4.0/lib/libgcc_s.1.0.dylib Referenced from: \n> /Library/Frameworks/R.framework/Versions/2.5/Resources/library/statnet/libs/\n>  i386/statnet.so Reason: image not found Error in library(statnet) :\n> .First.lib failed for 'statnet'\n> \n> \n> If someone could point me in the right direction I would gladly try \n> installing the older version (2.3) of statnet.\n> \n> Thanks again for the responses so far - much appreciated.\n> \n> -Matt\n> \n> \n> On 7/6/07 12:03 PM, \"dhunter@stat.psu.edu\" <dhunter@stat.psu.edu>\n> wrote:\n> \n>> I could be wrong, but I suspect that this is a mac/R problem, not a\n>>  statnet problem.  A similar thing happened to me when I upgraded\n>> from R 2.3.x to 2.5.0 on my (non-intel) mac.  It resulted in my\n>> inability to build ANY package from source because; the problem was\n>> not limited to statnet.\n>> \n>> I corrected the problem, if you can call it corrected, by\n>> reinstalling R 2.3.  If anyone has any advice about how to deal\n>> with this without having to install an older version, I'd love to\n>> hear it (and I hope folks don't mind a non-statnet-related post in\n>> this case).  I remember that Mark Handcock told me he did not have\n>> this issue with his (intel) mac, so I'm puzzled.\n>> \n>> Dave Hunter\n>> \n>> \n>>> I get the same error when loading on my intel mac.  It looks like\n>>> there is an error in the path that loads the R math library?\n>>> \n>>> dlopen(/Library/Frameworks/R.framework/Versions/2.5/Resources/library/statnet\n>>>  /libs/i386/statnet.so, 6): Library not loaded: \n>>> /Library/Frameworks/R.framework/Versions/2.4/Resources/lib/libR.dylib\n>>> \n>>> \n>>> Should be:\n>>> \n>>> /Library/Frameworks/R.framework/Versions/2.5/Resources/lib/libR.dylib\n>>> \n>>> \n>>> no?\n>>> \n>>> \n>>> -- James Holland Jones Assistant Professor\n>>> \n>>> Department of Anthropological Sciences Building 360 Stanford, CA\n>>> 94305-2117\n>>> \n>>> phone:  650-723-4824 fax:    650-725-9996 email:\n>>> jhj1@stanford.edu url:    http://www.stanford.edu/~jhj1 \n>>> _______________________________________________ statnet_help\n>>> mailing list statnet_help@u.washington.edu \n>>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>>> \n>> \n> \n> Matthew S. Weber Doctoral Student Annenberg School for Communication \n> ---------------------- matthew.weber@usc.edu ----------------------\n> \n> \n> \n> _______________________________________________ statnet_help mailing\n> list statnet_help@u.washington.edu \n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n\n-- \nJames Holland Jones\nAssistant Professor\n\nDepartment of Anthropological Sciences\nBuilding 360\nStanford, CA 94305-2117\n\nphone:  650-723-4824\nfax:    650-725-9996\nemail:  jhj1@stanford.edu\nurl:    http://www.stanford.edu/~jhj1",
+      "body_snippet": "If I am not mistaken, this is a gcc problem.  The latest Apple developer \ntools apparently lack a Fortran compiler. Here is some text from the\nJAGS 0.90 manual (http://www-fis.iarc.fr/~martyn/software",
+      "thread_id": "thread-f9fed0083174",
+      "thread_depth": 4,
+      "month": "2007-07"
+    },
+    {
+      "id": "msg-708a39243244",
+      "message_id": "<468FDAE2.8080208@stanford.edu>",
+      "from_name": "James Holland Jones",
+      "from_email_hash": "acb826446b123a69e69bcb08e635e786bb139ab855a8cfa560a293990f9fb6ea",
+      "date": "2007-07-07T11:26:42Z",
+      "subject": "[statnet_help] StatNet Help",
+      "subject_clean": "[statnet_help] StatNet Help",
+      "in_reply_to": "<468FBFD1.5030400@stanford.edu>",
+      "references": [
+        "<C2B3F586.4284%matthew.weber@usc.edu>",
+        "<468FBFD1.5030400@stanford.edu>"
+      ],
+      "body_plain": "One more thought: have you set your Fortran compiler?  In a terminal \nwindow type:\n\nexport F77=/usr/local/gcc4.0/bin/gfortran\n\nYou need to have XTools 2.4.1and you do, in fact, need to use gcc 4.0 \nobviously.\n\nI just got it to install on my intel mac running R 2.5.0/OS 10.4.9.\n\nGood luck,\n\nj\n-- \nJames Holland Jones\nAssistant Professor\n\nDepartment of Anthropological Sciences\nBuilding 360\nStanford, CA 94305-2117\n\nphone:  650-723-4824\nfax:    650-725-9996\nemail:  jhj1@stanford.edu\nurl:    http://www.stanford.edu/~jhj1",
+      "body_snippet": "One more thought: have you set your Fortran compiler?  In a terminal \nwindow type:\n\nexport F77=/usr/local/gcc4.0/bin/gfortran\n\nYou need to have XTools 2.4.1and you do, in fact, need to use gcc 4.0 \nob",
+      "thread_id": "thread-f9fed0083174",
+      "thread_depth": 5,
+      "month": "2007-07"
+    },
+    {
+      "id": "msg-8f397e619eac",
+      "message_id": "<46AE6546.4030007@fas.harvard.edu>",
+      "from_name": "Kevin Lewis",
+      "from_email_hash": "3e16f115495b0e59b9f7583fd0cfe6f012b826a6e99dfab804f7275bfb0c581c",
+      "date": "2007-07-30T15:25:10Z",
+      "subject": "[statnet_help] nested homophily terms",
+      "subject_clean": "[statnet_help] nested homophily terms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "greetings,\n\ni have a somewhat detailed question regarding homophily statistics that \ni am hoping one of the experts can help me with! i apologize for the \nlength- i will try to be as specific as possible to avoid confusion.\n\ni have a large (n=1640), directed social network that i am trying to \nmodel, and i have a number of attributes to work with. my problem \nconcerns two of these attributes in particular- 'race' and 'ethnicity.' \nthese are not traditional race and ethnicity attributes, because \nethnicity is actually completely NESTED within race. more specifically, \ni have 6 categories for the attribute of race: 1, 2, 3, 4, 5, 6. i also \nhave 12 categories for the attribute of ethnicity: 10, 11, 20, 21, 31, \n32, 33, 34, 40, 50, 51, and 60. the two attributes are related in that \nethnicity 10 and 11, combined, form race 1; ethnicity 20 and 21, \ncombined, form race 2... and so on. ethnicity, then, is completed nested \nin race- two people with the same ethnicity, by definition, MUST have \nthe same race. race 4 and 6 cannot be further divided, and so race 4 is \nidentical to ethnicity 40, and race 6 is identical to ethnicity 60.\n\nour aim is essentially to understand the respective roles of racial and \nethnic homophily in our social network- CONTROLLING for the role of the \nother. in other words, some ethnic groups may care only about ethnicity \nin forming ties, but not about race; while other groups may care only \nabout race, and not ethnicity.\n\nquestion 1: is it possible to model these (nested) attributes in the \nfirst place? discerning the role of ethnic homophily while controlling \nfor racial homophily, and vice versa? i have talked to several people \nabout this issue. on one hand, some have told me that i must leave out a \n'reference group' for each in order for the model to work. on the other \nhand, others have told me it is ok to just go ahead and throw both \nattributes into the model- and my preliminary results seem to confirm \nthat this is in fact works just fine, and i get intelligible results \n(see 'model 1', attached).\n\nquestion 2: assuming that i am doing this right- i.e. that model 1 is \nok- i run into another problem further down the line. you'll note that \nin model 1, statnet appropriately dropped the homophily terms for \nethnicity 40 and 60- because, as mentioned above, these categories are \nduplicates of race 4 and race 6, respectively. however, something seems \nto go wrong when i switch over to a dyad-dependence model. when i add a \n\"mutual\" term for reciprocal ties, three bad things happen (see 'model \n2', attached). first, i do not receive MCMC s.e. statistics (i assume i \nshould be receiving these because i am now in dyad-dependence land, \nwhich is no longer equivalent to pseudo-likelihood estimation). second, \nsome of my p-values shoot way up such that fewer terms are significant. \nand third, the homophily terms for ethnicity 40 and 60 are now \nmaintained, when they should be dropped. what am i doing wrong here? i \nwonder if problems 1 and 2 are the result of problem 3, because the \nmodel is keeping terms it shouldn't be keeping. if this is so, how do i \nget statnet to drop these duplicate terms again?\n\nif there is anything that i can clarify, please let me know. thank you \nin advance for your help! i have been beating my head against the wall \nfor some time with this issue, and hopefully can finally resolve it and \nget on my way.\n\nkevin lewis\nkmlewis@fas.harvard.edu\n-------------- next part --------------\nAn embedded and charset-unspecified text was scrubbed...\nName: model1.txt\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20070730/f93d930e/attachment.txt>\n-------------- next part --------------\nAn embedded and charset-unspecified text was scrubbed...\nName: model2.txt\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20070730/f93d930e/attachment-0001.txt>",
+      "body_snippet": "greetings,\n\ni have a somewhat detailed question regarding homophily statistics that \ni am hoping one of the experts can help me with! i apologize for the \nlength- i will try to be as specific as possi",
+      "thread_id": "thread-8f397e619eac",
+      "thread_depth": 0,
+      "month": "2007-07"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-8dc4d9762892",
+      "subject": "[statnet_help] trouble installing statnet on ubuntu linux",
+      "message_count": 1,
+      "participants": [
+        "Lee Worden"
+      ],
+      "started": "2007-07-05T21:35:01Z",
+      "last_reply": "2007-07-05T21:35:01Z",
+      "root_message_id": "msg-8dc4d9762892"
+    },
+    {
+      "id": "thread-f9fed0083174",
+      "subject": "[statnet_help] StatNet Help",
+      "message_count": 6,
+      "participants": [
+        "James Holland Jones",
+        "Matthew Weber",
+        "dhunter@stat.psu.edu"
+      ],
+      "started": "2007-07-06T10:56:08Z",
+      "last_reply": "2007-07-07T11:26:42Z",
+      "root_message_id": "msg-f9fed0083174"
+    },
+    {
+      "id": "thread-0a99b0fd3798",
+      "subject": "[statnet_help] Re: StatNet on Mac",
+      "message_count": 1,
+      "participants": [
+        "Art Poon"
+      ],
+      "started": "2007-07-06T12:26:07Z",
+      "last_reply": "2007-07-06T12:26:07Z",
+      "root_message_id": "msg-0a99b0fd3798"
+    },
+    {
+      "id": "thread-8f397e619eac",
+      "subject": "[statnet_help] nested homophily terms",
+      "message_count": 1,
+      "participants": [
+        "Kevin Lewis"
+      ],
+      "started": "2007-07-30T15:25:10Z",
+      "last_reply": "2007-07-30T15:25:10Z",
+      "root_message_id": "msg-8f397e619eac"
+    }
+  ]
+}

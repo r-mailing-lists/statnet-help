@@ -1,0 +1,469 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2016-01",
+  "messages": [
+    {
+      "id": "msg-83203c21500e",
+      "message_id": "<CAARX5cWTfMp3n1vL7ms1YfTxto1pVDBGVVFruBVRNz1gM3Fp2g@mail.gmail.com>",
+      "from_name": "Shyam Saladi",
+      "from_email_hash": "14cdb40b57e2fe16ac81f34685269649da5ad332480c4b646b50240c7d729661",
+      "date": "2016-01-05T16:23:01Z",
+      "subject": "[statnet_help] Using the nodes argument for centrality metrics in sna",
+      "subject_clean": "[statnet_help] Using the nodes argument for centrality metrics in sna",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet users,\n\n\nI am trying to calculate centrality metrics for a specific node within a\ngraph using statnet:\n\n\n\nHow do I use the nodes argument of these functions to specify this? For\nexample, take prestige\n\n\n\n# for example, use the faux.magnolia.high dataset from ergm (1461 vertices\nand 974 edges)\n\n> library(\"ergm\")\n\n> data(?faux.magnolia.high?)\n\n\n\n# Try calculating for node 1\n\n> sna::prestige(faux.magnolia.high, nodes = 1, gmode = \"graph\")\n\n1\n\n# Try calculating for node 2\n\n> sna::prestige(faux.magnolia.high, nodes = 2, gmode = \"graph\")\n\nNA\n\n\nThanks in advance,\n\nShyam\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160105/8c0ffbfe/attachment.html>",
+      "body_snippet": "Dear statnet users,\n\n\nI am trying to calculate centrality metrics for a specific node within a\ngraph using statnet:\n\n\n\nHow do I use the nodes argument of these functions to specify this? For\nexample, ",
+      "thread_id": "thread-83203c21500e",
+      "thread_depth": 0,
+      "month": "2016-01"
+    },
+    {
+      "id": "msg-6286264896f1",
+      "message_id": "<568C667F.5040608@skyeome.net>",
+      "from_name": "Skye Bender-deMoll",
+      "from_email_hash": "016c31bf83672a8e8fce6b664eb68ddff364b5df6912775ec31eeceebce90340",
+      "date": "2016-01-05T16:57:35Z",
+      "subject": "[statnet_help] Using the nodes argument for centrality metrics in sna",
+      "subject_clean": "[statnet_help] Using the nodes argument for centrality metrics in sna",
+      "in_reply_to": "<CAARX5cWTfMp3n1vL7ms1YfTxto1pVDBGVVFruBVRNz1gM3Fp2g@mail.gmail.com>",
+      "references": [
+        "<CAARX5cWTfMp3n1vL7ms1YfTxto1pVDBGVVFruBVRNz1gM3Fp2g@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Shyam,\r\n  This looks to me like a bug in the sna::prestige function when used \r\nwith the degree-related versions of prestige.  It passes the nodes \r\nargument on to  degree() which returns a vector of the length nodes, \r\nwhich it then tries to subset using nodes -- which will contain out-of \r\nrange indices that produce the NA.  As a work around, you can just \r\nsubset the vector returned by prestige().  So if you want the value for \r\nvertex id 2\r\n\r\nsna::prestige(faux.magnolia.high, gmode = \"graph\")[2]\r\n\r\n\r\nbut the calculations will be done using the full graph\r\n\r\nbest,\r\n  -skye\r\n\r\n\r\nOn 01/05/2016 04:23 PM, Shyam Saladi wrote:\r\n> Dear statnet users,\r\n>\r\n>\r\n> I am trying to calculate centrality metrics for a specific node within a\r\n> graph using statnet:\r\n>\r\n> Â\r\n>\r\n> How do I use the nodes argument of these functions to specify this? For\r\n> example, take prestige\r\n>\r\n> Â\r\n>\r\n> # for example, use the faux.magnolia.high dataset from ergm (1461\r\n> vertices and 974 edges)\r\n>\r\n>  > library(\"ergm\")\r\n>\r\n>  > data(“faux.magnolia.high”)\r\n>\r\n> Â\r\n>\r\n> # Try calculating for node 1\r\n>\r\n>  > sna::prestige(faux.magnolia.high, nodes = 1, gmode = \"graph\")\r\n>\r\n> 1\r\n>\r\n> # Try calculating for node 2\r\n>\r\n>  > sna::prestige(faux.magnolia.high, nodes = 2, gmode = \"graph\")\r\n>\r\n> NA\r\n>\r\n>\r\n> Thanks in advance,\r\n>\r\n> Shyam\r\n>\r\n>\r\n>\r\n> _______________________________________________\r\n> statnet_help mailing list\r\n> statnet_help@u.washington.edu\r\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\r\n>",
+      "body_snippet": "Hi Shyam,\r\n  This looks to me like a bug in the sna::prestige function when used \r\nwith the degree-related versions of prestige.  It passes the nodes \r\nargument on to  degree() which returns a vector ",
+      "thread_id": "thread-83203c21500e",
+      "thread_depth": 1,
+      "month": "2016-01"
+    },
+    {
+      "id": "msg-d30b92852ab5",
+      "message_id": "<CAG=Y_n0PpXegO1erHNv9KqHqL72BJc+T0uAbZTXiA2x9n-V59g@mail.gmail.com>",
+      "from_name": "Duy Pham Thien Dang",
+      "from_email_hash": "57a55a3ca0ff9b04a87bd0a3eaba1b0b6297fd1e3886291ffc346ff6a927a26d",
+      "date": "2016-01-09T18:01:32Z",
+      "subject": "[statnet_help] [Help] Model and interpret edgecov results",
+      "subject_clean": "[statnet_help] [Help] Model and interpret edgecov results",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI am very new to ERG modelling and I would like to clarify some confusions.\n\nI am trying to understand how giving security advice and security\ntroubleshoot would affect security influence. For this purpose, I have\nthree binary networks: \"give security advice\", \"give security\ntroubleshoot\", and \"influence security\". The last one asked the participant\nto nominate those who can influence their security behaviours.\n\nMy model is as followed:\ninflNet ~ ostar(1) + edgecov(giveSecAdvice) + edgecov(giveTroubleshoot)\n\nI believe ostar(1) means an out-directed tie which represents security\ninfluence of one node to another. Each of the edgecov terms indicates the\nexistence of its respective tie in any directions.\n\nMy results are as followed:\n\n                         Estimate Std. Error MCMC %  p-value\n\nostar1                                     -7.47033    0.38651      0\n   < 1e-04 ***\nedgecov.giveSecAdvice         3.04909     0.22970      1          < 1e-04\n***\nedgecov.giveTroubleshoot     2.55972     0.23052      1           < 1e-04\n***\nAIC: 3165    BIC: 3263\n\nI have two questions:\n\n1) Is it correct to interpret these results as: the conditional log odds of\nthe co-occurrence of a security influence tie, a give security advice tie,\nand a give security troubleshoot tie is (-7.5 + 3.05 + 2.56), which is a\nprobability of 13.12%?\n\n2) How should I model my ERGM (or what terms should I use) to determine\nwhether people who send out security advice and troubleshoot would be those\nwho influence other people as well? (i.e. entrainment effect of directed\nties coming from the same source)\n\nThank you.\n\nDuy\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160110/1ecf7b9f/attachment.html>",
+      "body_snippet": "Hello,\n\nI am very new to ERG modelling and I would like to clarify some confusions.\n\nI am trying to understand how giving security advice and security\ntroubleshoot would affect security influence. For",
+      "thread_id": "thread-d30b92852ab5",
+      "thread_depth": 0,
+      "month": "2016-01"
+    },
+    {
+      "id": "msg-f32872f02ea8",
+      "message_id": "<alpine.WNT.2.00.1601121639460.8552@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2016-01-12T17:15:08Z",
+      "subject": "[statnet_help] [Help] Model and interpret edgecov results",
+      "subject_clean": "[statnet_help] [Help] Model and interpret edgecov results",
+      "in_reply_to": "<CAG=Y_n0PpXegO1erHNv9KqHqL72BJc+T0uAbZTXiA2x9n-V59g@mail.gmail.com>",
+      "references": [
+        "<CAG=Y_n0PpXegO1erHNv9KqHqL72BJc+T0uAbZTXiA2x9n-V59g@mail.gmail.com>"
+      ],
+      "body_plain": "On Sun, 10 Jan 2016, Duy Pham Thien Dang wrote:\n\n\n> I believe?ostar(1) means an out-directed tie which represents security influence of one node to another.\n\nIn a directed network, ostar(1) = edges, it's a baseline density term.  So \nhere it would represent the baseline odds of nominating someone as \ninfluential.\n\n> Each of the?edgecov?terms indicates the existence of its respective tie \n> in any directions.\n\nNo -- edgecov respects directionality (dyadcov is symmetric).  So in your \ncase a positive coefficient would mean the direction is the same for both \nties (e.g., nominate someone as influential that you giveSecAdvice to)\n\n> My results are as followed:\n>             ? ? ? ? ? ? ? ? ? ? ? ? ?Estimate Std. Error MCMC % ?p-value \n> \n> ostar1 ? ? ? ?            -7.47033 ?  ?0.38651 ? ? ?0 ? ? ? ? ?< 1e-04***\n> edgecov.giveSecAdvice ? ?  3.04909 ? ? 0.22970 ? ? ?1 ? ? ? ? ?< 1e-04***\n> edgecov.giveTroubleshoot ? 2.55972 ? ? 0.23052 ? ? ?1 ? ? ? ?  < 1e-04***\n> AIC: 3165 ? ?BIC: 3263\n> \n> I have two questions:\n> \n> 1) Is it correct to interpret these results as: the conditional log odds of the co-occurrence of a security influence\n> tie, a give security advice tie, and a give security troubleshoot tie is (-7.5 + 3.05 + 2.56), which is a probability of\n> 13.12%?\n\nMaybe a better way to think about it is\n\nthe logit of nominating someone as influential, without giving\nSecurity advice or troubleshooting is -7.5 (p = 0.1%)\n\nif you give security advice, it's -7.5+3.0 = -3.5 (p = 1%)\n\nand if you also give troubleshooting it's -7.5+3.0+2.6 = -1.9 (p=13%). \nso, 130x more likely than the baseline probability.\n\n> 2) How should I model my ERGM (or what terms should I use) to determine whether people who send out security advice and\n> troubleshoot would be those who influence other people as well? (i.e. entrainment effect of directed ties coming from the\n> same source)\n\nSo, for example, you want to know if i -> j as influential, whether j -> i \nas someone s/he gives secAdvice to?\n\nIf so, and your secAdvice matrix is set up as outgoing advice (row -> \ncol), then if you transpose that matrix, it'll represent incoming advice, \nand you can use that as your edgecov.\n\n> Thank you.\n> \n> Duy\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "On Sun, 10 Jan 2016, Duy Pham Thien Dang wrote:\n\n\n> I believe?ostar(1) means an out-directed tie which represents security influence of one node to another.\n\nIn a directed network, ostar(1) = edges, i",
+      "thread_id": "thread-d30b92852ab5",
+      "thread_depth": 1,
+      "month": "2016-01"
+    },
+    {
+      "id": "msg-3823cc95030f",
+      "message_id": "<alpine.WNT.2.00.1601121721120.8552@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2016-01-12T17:22:24Z",
+      "subject": "[statnet_help] [Help] Model and interpret edgecov results",
+      "subject_clean": "[statnet_help] [Help] Model and interpret edgecov results",
+      "in_reply_to": "<alpine.WNT.2.00.1601121639460.8552@morrism-laptop>",
+      "references": [
+        "<CAG=Y_n0PpXegO1erHNv9KqHqL72BJc+T0uAbZTXiA2x9n-V59g@mail.gmail.com>",
+        "<alpine.WNT.2.00.1601121639460.8552@morrism-laptop>"
+      ],
+      "body_plain": "sorry for the typo\n\n> if you give security advice, it's -7.5+3.0 = -3.5 (p = 1%)\n                                                ^4\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "sorry for the typo\n\n> if you give security advice, it's -7.5+3.0 = -3.5 (p = 1%)\n                                                ^4\n\n****************************************************************\n  ",
+      "thread_id": "thread-d30b92852ab5",
+      "thread_depth": 2,
+      "month": "2016-01"
+    },
+    {
+      "id": "msg-0345a6eafef8",
+      "message_id": "<CAG=Y_n1JV80teEaAKFEPihyD0ZgjD=oXuSdFDSMToMchLsmAfw@mail.gmail.com>",
+      "from_name": "Duy Pham Thien Dang",
+      "from_email_hash": "57a55a3ca0ff9b04a87bd0a3eaba1b0b6297fd1e3886291ffc346ff6a927a26d",
+      "date": "2016-01-14T06:11:59Z",
+      "subject": "[statnet_help] [Help] Interpret alpha and decay of GW-terms; how to improve GOF for in-degree",
+      "subject_clean": "[statnet_help] [Help] Interpret alpha and decay of GW-terms; how to improve GOF for in-degree",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nWhen fitting models that have gwesp, gwdsp, gwidegree, and gwodegree with\ntheir alphas and decays not fixed (i.e. fixed=FALSE), I have the following\nmodels and results:\n\nModel 1: fixed alphas of shared partners terms\n\ninflNet ~ edges +  gwdsp(0.2, fixed = TRUE) + gwesp(0.2, fixed = TRUE) +\ngwidegree(1) +\n    gwodegree(1)\n\ngwdsp.fixed.0.2          -0.04752    0.02463      1  0.0536 .\ngwesp.fixed.0.2           0.25211    0.10553      5  0.0169 *\ngwidegree                -0.86060    0.34143      1  0.0117 *\ngwidegree.decay           0.94548    0.50543      1  0.0614 .\ngwodegree                -2.30413    0.40254      1  <1e-04 ***\ngwodegree.decay           1.03374    0.16190      1  <1e-04 ***\n\nModel 2: fixed decays of degree distributions terms (also increased the\ndecays from 1 to 2, and I found these increases do not produce much\ndifference)\n\ninflNet ~ edges + gwdsp(0.2) + gwesp(0.2) + gwidegree(2, fixed = TRUE) +\ngwodegree(2, fixed = TRUE)\n\ngwdsp                    -0.06876    0.02298      0 0.00277 **\ngwdsp.alpha              -1.04984    0.15941      1 < 1e-04 ***\ngwesp                     0.22824    0.10061      0 0.02330 *\ngwesp.alpha              -0.83378    0.35282      1 0.01812 *\ngwidegree                -1.48455    0.36201      1 < 1e-04 ***\ngwodegree                -2.70058    0.23600      0 < 1e-04 ***\n\nI have four questions:\n1) How should I interpret the alphas and decays if they are not fixed? If\nthe term's effect is significant but the decay is not (e.g. gwidegree in\nModel 1), should I interpret that the term's effect is also not significant?\n\n2) When gwdsp and gwesp in Model 1 have their alphas fixed, only\ngwesp.fixed.0.2 is significant. But when the alphas are not fixed like in\nModel 2, both gwdsp and gwesp and their alphas are significant. Could you\nplease explain why this happened?\n\n3) Regarding calculating GOF, I found there are two functions gof() and\ngof.ergm(), and most ERGM tutorials that I foud use gof(). Is there any\ndifference between these two functions?\n\n4) Also regarding GOF, it appears that I have many issues with the GOF for\nin-degree (the others are fine)\n\nGoodness-of-fit for in-degree\n\n   obs min   mean max MC p-value\n0  139 123 138.71 152       1.00\n1   81  61  75.72  88       0.46 (overestimate within acceptable range)\n2   70  43  63.33  78       0.40 (overestimate within acceptable range)\n3   34  29  41.85  53       0.18 (underestimate - borderline)\n4   15  14  22.34  37       0.12 (underestimate - borderline)\n5    8   5  12.60  20       0.22 (underestimate - borderline)\n6    2   2   7.76  15       0.04 (underestimate - borderline)\n7   24   1   5.17  10       0.00 (overestimate - above acceptable range)\n8    0   0   2.91   8       0.08 (underestimate - borderline)\n9    0   0   1.40   6       0.56 (underestimate - borderline)\n10   0   0   0.51   3       1.00\n11   0   0   0.33   3       1.00\n12   0   0   0.20   2       1.00\n13   0   0   0.14   1       1.00\n14   0   0   0.02   1       1.00\n16   0   0   0.01   1       1.00\n\nWhat should I do to improve the GOF for in-degree? I read a tutorial that\nsuggests adding degree() term to control for the over- or underestimated\ndegrees, and I have tried adding istar(7) with the hopes to fix it but\nfailed.\n\nGreat thanks in advance.\n\nAll the best,\nDuy\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160115/5cfddf9d/attachment.html>",
+      "body_snippet": "Hello,\n\nWhen fitting models that have gwesp, gwdsp, gwidegree, and gwodegree with\ntheir alphas and decays not fixed (i.e. fixed=FALSE), I have the following\nmodels and results:\n\nModel 1: fixed alphas ",
+      "thread_id": "thread-0345a6eafef8",
+      "thread_depth": 0,
+      "month": "2016-01"
+    },
+    {
+      "id": "msg-4335e1734c87",
+      "message_id": "<162A9B9660784647A296A79545240AFB641543E5@exmbx05-cdc.nexus.csiro.au>",
+      "from_name": "Andrew.Terhorst@csiro.au",
+      "from_email_hash": "6b0b243c4c8ca1af9556bbc5be3219737a5bf7af63ce11b3722ae23a20cbb725",
+      "date": "2016-01-14T19:07:53Z",
+      "subject": "[statnet_help] Checking edgcov terms are correct",
+      "subject_clean": "[statnet_help] Checking edgcov terms are correct",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi\n\nI have been trying out the ergm package the past day or so. I am exploring knowledge sharing networks and how these relate to innovation.\n\nI have the following complete directed networks (constructed from a binary adjacency matrix):\n\n- knowledge.provider.net\n- affect.based.trust.net\n- cognition.based.trust\n- idea.generation.net\n- idea.realisation.net\n\nI postulate that trust is key to knowledge sharing, idea generation and idea implementation. Furthermore, I believe idea generation and idea implementation require knowledge sharing. To test for this I run the following models:\n\nmodel.01 <- ergm(knowledge.provider.net~edges+\n                mutual+\n                edgecov(affect.based.trust.net)+\n                edgecov(cognition.based.trust.net))\n\nmodel.02 <- ergm(idea.generation.net~edges+\n                mutual+\n                edgecov(knowledge.provider.net)+\n                edgecov(affect.based.trust.net)+\n                edgecov(cognition.based.trust.net))\n\nmodel.03 <- ergm(idea.realisation.net~edges+\n                mutual+\n                edgecov(idea.generation.net)+\n                edgecov(knowledge.provider.net)+\n                edgecov(affect.based.trust.net)+\n                edgecov(cognition.based.trust.net))\n\nAll three models converge and seem to confirm my postulated hypotheses. There are significant covariate effects (which one can sort of see by examining plotted network graphs).  However, when checking goodness of fit, things start to unravel:\n\nmodel.01.gof <- gof(model.01~ idegree + odegree + espartners + distance, directed = TRUE)\n\nSome of my p-values are pretty low. So my questions to the list are: did I specify my ergm correctly and what adjustments could I try to improve my goodness of fit?\n\nThanks.\n\n\n--\nAndrew Terhorst\nOpen Innovation Researcher\nLocation leader for Sandy Bay site\n\nDATA61 |  CSIRO\nE andrew.terhorst@csiro.au T +61 3 6237 5662 M +61 400 869 594\n15 College Rd, Sandy Bay, TAS 7005\nhttp://www.data61.csiro.au\nhttp://people.csiro.au/T/A/Andrew-Terhorst.aspx\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160115/13508049/attachment.html>",
+      "body_snippet": "Hi\n\nI have been trying out the ergm package the past day or so. I am exploring knowledge sharing networks and how these relate to innovation.\n\nI have the following complete directed networks (construc",
+      "thread_id": "thread-4335e1734c87",
+      "thread_depth": 0,
+      "month": "2016-01"
+    },
+    {
+      "id": "msg-82004edd203d",
+      "message_id": "<162A9B9660784647A296A79545240AFB64154425@exmbx05-cdc.nexus.csiro.au>",
+      "from_name": "Andrew.Terhorst@csiro.au",
+      "from_email_hash": "6b0b243c4c8ca1af9556bbc5be3219737a5bf7af63ce11b3722ae23a20cbb725",
+      "date": "2016-01-14T20:08:10Z",
+      "subject": "[statnet_help] There may be excessive correlation between model terms",
+      "subject_clean": "[statnet_help] There may be excessive correlation between model terms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi\n\nI get this MCMLE estimation stuck error when trying to process this ergm:\n\nmodel.06 <- ergm(knowledge.provider.net~edges+\n                 gwesp(0.5),\n                 verbose = TRUE)\n\nThe error message suggests my model terms may have excessive correlation and if target.stats are specified, I should try increasing the SAN parameters using control.ergm().  I am trying to understand what this means. Working through the tutorials, this is not obvious to me.\n\n--\nAndrew Terhorst\nOpen Innovation Researcher\nLocation leader for Sandy Bay site\n\nDATA61 |  CSIRO\nE andrew.terhorst@csiro.au T +61 3 6237 5662 M +61 400 869 594\n15 College Rd, Sandy Bay, TAS 7005\nhttp://www.data61.csiro.au\nhttp://people.csiro.au/T/A/Andrew-Terhorst.aspx\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160115/a7bc776f/attachment.html>",
+      "body_snippet": "Hi\n\nI get this MCMLE estimation stuck error when trying to process this ergm:\n\nmodel.06 <- ergm(knowledge.provider.net~edges+\n                 gwesp(0.5),\n                 verbose = TRUE)\n\nThe error m",
+      "thread_id": "thread-82004edd203d",
+      "thread_depth": 0,
+      "month": "2016-01"
+    },
+    {
+      "id": "msg-3544f7b764e7",
+      "message_id": "<E8040B1C-DFE2-455D-9F4C-269C46B48487@gmail.com>",
+      "from_name": "Duy Dang",
+      "from_email_hash": "57a55a3ca0ff9b04a87bd0a3eaba1b0b6297fd1e3886291ffc346ff6a927a26d",
+      "date": "2016-01-15T01:59:27Z",
+      "subject": "[statnet_help]  [Help] Interpret alpha and decay of GW-terms; how to improve GOF for in-degree",
+      "subject_clean": "[statnet_help]  [Help] Interpret alpha and decay of GW-terms; how to improve GOF for in-degree",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone, I hope that I can reply to my own post to update the current situation (I apologise if I created another post by mistake!)\n\nMy Question #4:\nI have fixed the GOF issues by including the term idegree(7) to control for the underrepresented in-degree of 7 (I also figured out the correct way to describe the GOF plot).\n\nHowever, including this term makes the gwesp(0.1, fixed=TRUE) and gwdsp(0.1, fixed=TRUE) become insignificant. I wonder if controlling the in-degree would be a correct decision, and whether I should choose the model without the idegree(7) term which has the shared partners terms significant??\n\nAll the best,\nDuy",
+      "body_snippet": "Hi everyone, I hope that I can reply to my own post to update the current situation (I apologise if I created another post by mistake!)\n\nMy Question #4:\nI have fixed the GOF issues by including the te",
+      "thread_id": "thread-3544f7b764e7",
+      "thread_depth": 0,
+      "month": "2016-01"
+    },
+    {
+      "id": "msg-3c2b7d034818",
+      "message_id": "<alpine.WNT.2.00.1601151017430.7780@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2016-01-15T10:52:07Z",
+      "subject": "[statnet_help] [Help] Interpret alpha and decay of GW-terms; how to improve GOF for in-degree",
+      "subject_clean": "[statnet_help] [Help] Interpret alpha and decay of GW-terms; how to improve GOF for in-degree",
+      "in_reply_to": "<E8040B1C-DFE2-455D-9F4C-269C46B48487@gmail.com>",
+      "references": [
+        "<E8040B1C-DFE2-455D-9F4C-269C46B48487@gmail.com>"
+      ],
+      "body_plain": "Duy,\n\nHave you examined the idegree distribution to see if there are any strange \npatterns in it?  You can do that with the summary command.  For example:\n\nsummary(net ~ idegree(1:20))\n\nOr you can use the graphics from the gof command for the idegree \ndistribution.\n\nIn principle, you should conduct exploratory analysis on all of the terms \nin your model -- the same way you would look at the univariate (and \npossibly bivariate) distributions for the covariates in a non-network \nsetting.  You want to make sure there are no strange artifacts, inadequate \ncell counts, or just plain errors in the data.  The only difference here \nis that your covariates have to be constructed before you can conduct EDA \non them.\n\nIn your previous email, you sequentially fixed the decay parameters in the \ngw* terms, but the values you chose did not match the values that were \nestimated when they were not fixed.  How did you choose the fixed values?\n\nFinally, if controlling for idegree(7) changes your gw*sp terms to \ninsignificant, this means the two are correlated, just as in a standard \nregression context.  There is no single \"correct\" way to handle this. \nSome might argue that degree terms establish basic constraints for all the \nother terms, and that interpretation is therefore cleaner when you control \nproperly for the degree distribution before testing for higher order \neffects (like shared partners).  But Granovetter's classic article on the \n\"The Theory Gap in Social Network Analysis\" (1979) argued that this may \nnot be the right approach, if e.g., the propensity to close triads is \ndriving the degree distribution.\n\nhth,\nmm\n\n\n  On Fri, 15 Jan 2016, Duy Dang wrote:\n\n> Hi everyone, I hope that I can reply to my own post to update the current situation (I apologise if I created another post by mistake!)\n>\n> My Question #4:\n> I have fixed the GOF issues by including the term idegree(7) to control for the underrepresented in-degree of 7 (I also figured out the correct way to describe the GOF plot).\n>\n> However, including this term makes the gwesp(0.1, fixed=TRUE) and gwdsp(0.1, fixed=TRUE) become insignificant. I wonder if controlling the in-degree would be a correct decision, and whether I should choose the model without the idegree(7) term which has the shared partners terms significant??\n>\n> All the best,\n> Duy\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Duy,\n\nHave you examined the idegree distribution to see if there are any strange \npatterns in it?  You can do that with the summary command.  For example:\n\nsummary(net ~ idegree(1:20))\n\nOr you can use",
+      "thread_id": "thread-3544f7b764e7",
+      "thread_depth": 1,
+      "month": "2016-01"
+    },
+    {
+      "id": "msg-fb9850d3c3b5",
+      "message_id": "<CAG=Y_n2pvdMsQ8kz9W2CUT9YS4WVkYnUjp0uRak8WGbM420ZgA@mail.gmail.com>",
+      "from_name": "Duy Pham Thien Dang",
+      "from_email_hash": "57a55a3ca0ff9b04a87bd0a3eaba1b0b6297fd1e3886291ffc346ff6a927a26d",
+      "date": "2016-01-15T21:11:21Z",
+      "subject": "[statnet_help] [Help] Interpret alpha and decay of GW-terms; how to improve GOF for in-degree",
+      "subject_clean": "[statnet_help] [Help] Interpret alpha and decay of GW-terms; how to improve GOF for in-degree",
+      "in_reply_to": "<alpine.WNT.2.00.1601151017430.7780@morrism-laptop>",
+      "references": [
+        "<E8040B1C-DFE2-455D-9F4C-269C46B48487@gmail.com>",
+        "<alpine.WNT.2.00.1601151017430.7780@morrism-laptop>"
+      ],
+      "body_plain": "Dear Prof Morris,\n\nThank you for your reply.\n\nRegarding the alpha and decay parameters in my two previous models:\nModel 1:\ninflNet ~ edges + gwdsp(0.2, fixed = TRUE) + gwesp(0.2, fixed = TRUE) +\ngwidegree(1) + gwodegree(1)\n\nModel 2:\ninflNet ~ edges + gwdsp(0.2) + gwesp(0.2) + gwidegree(2, fixed = TRUE) +\ngwodegree(2, fixed = TRUE)\n\nI didn't follow any systematic approaches to select them and I just wanted\nto experiment what would happen when fixing one set of parameters while\nrelaxing the other set.\n\nBy changing the decay parameters from 1 to 2, I also wanted to see the\neffect caused by this change. As the model still converged and I received\nsimilar significant results with negative signs, I (perhaps wrongly)\nassumed that it didn't result in much difference.\n\n---\n\nAt the moment, I fix all parameters at 0.1 and progressively increase them\nuntil the model fails to converge. The max value of these parameters before\nthey make the model fail to converge appear to be 1.5. Interestingly, I\nfound quite a number of studies chose to fix parameters instead of relaxing\nthem too. I found this approach works for me because:\n\n1) When I relaxed the parameters, they often resulted in degeneracy and the\nmodel failed to converge. This happened when I combined these structural\nfeatures with the node's attributes in the models, and especially when the\nalpha parameters of the gw*sp terms are relaxed.\n2) Fixing all parameters increased significantly converge time.\n3) I haven't clearly understood how to interpret the separate results of\nthe terms and their parameters when they are relaxed (as described in my\nQuestion 1 in the other post), so fixing them gives me easier\ninterpretations.\n\nBest regards,\nDuy\n\nOn 16 January 2016 at 05:52, martina morris <morrism@u.washington.edu>\nwrote:\n\n> Duy,\n>\n> Have you examined the idegree distribution to see if there are any strange\n> patterns in it?  You can do that with the summary command.  For example:\n>\n> summary(net ~ idegree(1:20))\n>\n> Or you can use the graphics from the gof command for the idegree\n> distribution.\n>\n> In principle, you should conduct exploratory analysis on all of the terms\n> in your model -- the same way you would look at the univariate (and\n> possibly bivariate) distributions for the covariates in a non-network\n> setting.  You want to make sure there are no strange artifacts, inadequate\n> cell counts, or just plain errors in the data.  The only difference here is\n> that your covariates have to be constructed before you can conduct EDA on\n> them.\n>\n> In your previous email, you sequentially fixed the decay parameters in the\n> gw* terms, but the values you chose did not match the values that were\n> estimated when they were not fixed.  How did you choose the fixed values?\n>\n> Finally, if controlling for idegree(7) changes your gw*sp terms to\n> insignificant, this means the two are correlated, just as in a standard\n> regression context.  There is no single \"correct\" way to handle this. Some\n> might argue that degree terms establish basic constraints for all the other\n> terms, and that interpretation is therefore cleaner when you control\n> properly for the degree distribution before testing for higher order\n> effects (like shared partners).  But Granovetter's classic article on the\n> \"The Theory Gap in Social Network Analysis\" (1979) argued that this may not\n> be the right approach, if e.g., the propensity to close triads is driving\n> the degree distribution.\n>\n> hth,\n> mm\n>\n>\n>\n>  On Fri, 15 Jan 2016, Duy Dang wrote:\n>\n> Hi everyone, I hope that I can reply to my own post to update the current\n>> situation (I apologise if I created another post by mistake!)\n>>\n>> My Question #4:\n>> I have fixed the GOF issues by including the term idegree(7) to control\n>> for the underrepresented in-degree of 7 (I also figured out the correct way\n>> to describe the GOF plot).\n>>\n>> However, including this term makes the gwesp(0.1, fixed=TRUE) and\n>> gwdsp(0.1, fixed=TRUE) become insignificant. I wonder if controlling the\n>> in-degree would be a correct decision, and whether I should choose the\n>> model without the idegree(7) term which has the shared partners terms\n>> significant??\n>>\n>> All the best,\n>> Duy\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n\n\n\n\n-- \n*Duy Dang **BBus(BIS), BBus(Hons)*\nDoctoral Researcher\n\nSchool of Business IT and Logistics | RMIT University\nRMIT College of Business, Building 80, Level 8 | Ext: 50160\n445 Swanston Street, Melbourne 3000, Australia\nCRICOS Provider Code: 00122A\nConnect via: Academia <https://rmit.academia.edu/duydang> | LinkedIn\n<http://au.linkedin.com/in/duyptdang/> | Twitter\n<https://twitter.com/dptdang> | Personal website\n<http://duyptdang.weebly.com/>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160116/c84d91f0/attachment.html>",
+      "body_snippet": "Dear Prof Morris,\n\nThank you for your reply.\n\nRegarding the alpha and decay parameters in my two previous models:\nModel 1:\ninflNet ~ edges + gwdsp(0.2, fixed = TRUE) + gwesp(0.2, fixed = TRUE) +\ngwide",
+      "thread_id": "thread-3544f7b764e7",
+      "thread_depth": 2,
+      "month": "2016-01"
+    },
+    {
+      "id": "msg-ceb809b8685a",
+      "message_id": "<CAAXtaJQoeYJ6LvG=XCSa5QqP2Lquxy7-wcGYt3PrMR7DzjE6zw@mail.gmail.com>",
+      "from_name": "Tyler Scott",
+      "from_email_hash": "a6196bf6bee214db58cd900226f3e3e9fc8b0672fb870606b878ab9e684fe083",
+      "date": "2016-01-16T17:19:23Z",
+      "subject": "[statnet_help] issue with non-binary references in parallel",
+      "subject_clean": "[statnet_help] issue with non-binary references in parallel",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello all,\n\n     I'm currently having trouble getting code to work, but the same code\ndid work without error as of October, 2015; I suspect that I am missing\nsomething obvious, but wasn't sure if perhaps there is a package issue or\nif the procedure for using non-binary references and/or parallel processing\nhas changed in the last round of updates? I have pasted a reproducible\nexample below.  The same model does fit (or, I should say, at least does\nnot produce an error message) when run in serial mode.\n\nThanks,\n\n-tyler scott\n\n\n> library(statnet)> library(ergm.count)> net  = network(cbind(expand.grid(1:6,6:1)),matrix.type='edgelist',directed=T)> set.edge.attribute(net,'weight',round(runif(36,min = 0,max=10)))> model <- ergm(net ~ sum,response = 'weight',reference=~Poisson,+               control=control.ergm(parallel=2, parallel.type=\"PSOCK\"))Starting contrastive divergence estimation via CD-MCMLE:\nIteration 1 of at most 60: Error in checkForRemoteErrors(val) :\n  2 nodes produced errors; first error: Error in MH_* initialization:\ncould not find function MH_PoissonTNT in namespace for package\nergm.count.Memory has not been deallocated, so restart R sometime\nsoon.\n\n> sessionInfo()R version 3.2.3 (2015-12-10)\nPlatform: x86_64-pc-linux-gnu (64-bit)\nRunning under: Debian GNU/Linux 8 (jessie)\n\nlocale:\n [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C\nLC_TIME=en_US.UTF-8\n [4] LC_COLLATE=en_US.UTF-8     LC_MONETARY=en_US.UTF-8\nLC_MESSAGES=en_US.UTF-8\n [7] LC_PAPER=en_US.UTF-8       LC_NAME=C\nLC_ADDRESS=C\n[10] LC_TELEPHONE=C             LC_MEASUREMENT=en_US.UTF-8\nLC_IDENTIFICATION=C\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base\n\nother attached packages:\n [1] tidyr_0.3.1          statnet_2015.11.0    ergm.count_3.2.0\ntergm_3.3.1\n [5] sna_2.3-2            ergm_3.5.1           statnet.common_3.3.0\nnetworkDynamic_0.9.0\n [9] network_1.13.0       cluster_2.0.3\n\nloaded via a namespace (and not attached):\n [1] Rcpp_0.12.3       lattice_0.20-33   grid_3.2.3\nnlme_3.1-122      magrittr_1.5\n [6] coda_0.18-1       robustbase_0.92-5 Matrix_1.2-3      trust_0.1-7\n      tools_3.2.3\n[11] DEoptimR_1.0-4    parallel_3.2.3    lpSolve_5.6.13   >\ngetOption(\"pkgType\")[1] \"source\"\n\n\n\n-- \nTyler Scott\nGraduate Fellow in Environmental Politics and\nGovernance, Center for Environmental Politics\nEvans School of Public Affairs\nUniversity of Washington\n253.632.3362\ntscott1@uw.edu\ntyler.andrew.scott.com\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160116/36325551/attachment.html>",
+      "body_snippet": "Hello all,\n\n     I'm currently having trouble getting code to work, but the same code\ndid work without error as of October, 2015; I suspect that I am missing\nsomething obvious, but wasn't sure if perh",
+      "thread_id": "thread-ceb809b8685a",
+      "thread_depth": 0,
+      "month": "2016-01"
+    },
+    {
+      "id": "msg-59a551896e02",
+      "message_id": "<569D7CC5.4090905@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2016-01-18T16:01:09Z",
+      "subject": "[statnet_help] There may be excessive correlation between model terms",
+      "subject_clean": "[statnet_help] There may be excessive correlation between model terms",
+      "in_reply_to": "<162A9B9660784647A296A79545240AFB64154425@exmbx05-cdc.nexus.csiro.au>",
+      "references": [
+        "<162A9B9660784647A296A79545240AFB64154425@exmbx05-cdc.nexus.csiro.au>"
+      ],
+      "body_plain": "Hello Andrew --\n\nMy guess is that your network is relatively dense, yes?  Our group has \ntraditionally worked with relatively sparse networks, and our tutorials \nall reflected that.  Recently, as more folks have been modeling denser \nnetworks with ERGMs, we've come to see the same issue you are \nmentioning. The reason can be seen by thinking through the logic of what \nGWESP represents when alpha is 0: it simplifies to the number of edges \nin at least one triangle.  For sparse networks you would generally only \nexpect a few edges to be in triangles, and then when you see a lot more \nthen there is something special going on, and sufficient information to \nestimate what it is.  But for a dense network, you might expect nearly \nevery edge to be in at least one triangle; effectively, the edges term \nand the GWESP(alpha=0) term are collinear. You are using a higher value \nfor alpha -- 0.5 -- but it may still be sufficiently low that the terms \nare nearly collinear rather than exactly so.\n\nMy advice is to increase the starting alpha, perhaps into the range of 1 \nto 2.  It may be easier to fix it in order to improve convergence, and \nthen once you know you're in a realm that is successful, only then let \nit vary. Keep trying, and let us know what happens.\n\nAll of this has shown us that GWESP is even more subtle and complex than \nwe had already appreciated.  There is a lot more theoretical work to be \ndone around its interpretation in different settings, and its \nrelationship to network concepts beyond just transitivity. Contributions \nto that literature, from you or anyone else reading this - are highly \nwelcome!\n\nSteve\n\n\n\nOn 1/14/2016 8:08 PM, Andrew.Terhorst@csiro.au wrote:\n> Hi\n>\n> I get this MCMLE estimation stuck error when trying to process this ergm:\n>\n> model.06 <- ergm(knowledge.provider.net~edges+\n>                  gwesp(0.5),\n>                  verbose = TRUE)\n>\n> The error message suggests my model terms may have excessive \n> correlation and if target.stats are specified, I should try increasing \n> the SAN parameters using control.ergm().  I am trying to understand \n> what this means. Working through the tutorials, this is not obvious to me.\n>\n> --\n> *Andrew Terhorst\n> *Open Innovation Researcher\n> Location leader for Sandy Bay site\n>\n> DATA61 |  CSIRO\n> *E* andrew.terhorst@csiro.au *T* +61 3 6237 5662 *M* +61 400 869 594\n> 15 College Rd, Sandy Bay, TAS 7005\n> http://www.data61.csiro.au\n> http://people.csiro.au/T/A/Andrew-Terhorst.aspx\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \n*******************************************************************\nSteven M. Goodreau / Assoc. Professor / Dept. of Anthropology\nUniv. of Washington / Condon Hall 508 / 1100 NE Campus Pkwy\nCampus Box 353100 / Seattle WA 98195 / 1-206-685-3870 (phone)\n1-206-543-3285 (fax) / http://faculty.washington.edu/goodreau\n*******************************************************************\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160118/18e2d88a/attachment.html>",
+      "body_snippet": "Hello Andrew --\n\nMy guess is that your network is relatively dense, yes?  Our group has \ntraditionally worked with relatively sparse networks, and our tutorials \nall reflected that.  Recently, as more",
+      "thread_id": "thread-82004edd203d",
+      "thread_depth": 1,
+      "month": "2016-01"
+    },
+    {
+      "id": "msg-4e4a44e5c16b",
+      "message_id": "<CAG=Y_n2tpcmq7_2O9sPrdvTmZXetc_eJ5UyRie+kbA7M7kR8fg@mail.gmail.com>",
+      "from_name": "Duy Pham Thien Dang",
+      "from_email_hash": "57a55a3ca0ff9b04a87bd0a3eaba1b0b6297fd1e3886291ffc346ff6a927a26d",
+      "date": "2016-01-18T17:09:46Z",
+      "subject": "[statnet_help] Steps to develop an ERG model",
+      "subject_clean": "[statnet_help] Steps to develop an ERG model",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI am confused about the steps to develop an ERG model.\n\nI read the paper \"An introduction to exponential random graph (p*) models\nfor social networks\" by Robins et al. (2007), and they explained the five\nsteps to construct a model. It reads to me that one would start by\nconstructing a model with (possibly) many terms/configurations that reflect\nthe hypotheses (Step 3), and then reduce/constrain the parameters to\nachieve a more parsimonious model (Step 4). By doing this way, I imagine\nthat only one final model should be reported in a study.\n\nHowever, I found quite a number of ERGM studies which constructed multiple\nmodels and compare them. Specifically, they constructed a baseline model\nwhich only has the \"edges\" term, then a \"Pure Attributes\" model which\ndescribes homophily effects, then a \"Structural\" model (which either adds\nnew structural terms to the previous model or serves a standalone model),\nthen finally a \"Combined\" model with all the terms. They seem to follow an\napproach that builds up the model's complexity over time, rather than\nreduce the model's complexity to the finest state.\n\nI would like to understand more about the differences of these approaches\nto construct an ERG model. Could you please advise and/or point me to the\nmain literature about constructing ERG models?\n\nThank you very much.\n\nBest regards,\nDuy\n\n-- \n*Duy Dang **BBus(BIS), BBus(Hons)*\nDoctoral Researcher\n\nSchool of Business IT and Logistics | RMIT University\nRMIT College of Business, Building 80, Level 8 | Ext: 50160\n445 Swanston Street, Melbourne 3000, Australia\nCRICOS Provider Code: 00122A\nConnect via: Academia <https://rmit.academia.edu/duydang> | LinkedIn\n<http://au.linkedin.com/in/duyptdang/> | Twitter\n<https://twitter.com/dptdang> | Personal website\n<http://duyptdang.weebly.com/>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160119/c007b54f/attachment.html>",
+      "body_snippet": "Hello,\n\nI am confused about the steps to develop an ERG model.\n\nI read the paper \"An introduction to exponential random graph (p*) models\nfor social networks\" by Robins et al. (2007), and they explain",
+      "thread_id": "thread-4e4a44e5c16b",
+      "thread_depth": 0,
+      "month": "2016-01"
+    },
+    {
+      "id": "msg-e552024e180d",
+      "message_id": "<569DDF9B.2020206@unito.it>",
+      "from_name": "Andrea Gallelli",
+      "from_email_hash": "0556852f2156cde9e7915ba13bfd7926f57de7db087a547469ad0d38342a9b4c",
+      "date": "2016-01-18T23:02:51Z",
+      "subject": "[statnet_help] Steps to develop an ERG model",
+      "subject_clean": "[statnet_help] Steps to develop an ERG model",
+      "in_reply_to": "<CAG=Y_n2tpcmq7_2O9sPrdvTmZXetc_eJ5UyRie+kbA7M7kR8fg@mail.gmail.com>",
+      "references": [
+        "<CAG=Y_n2tpcmq7_2O9sPrdvTmZXetc_eJ5UyRie+kbA7M7kR8fg@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Duy,\nintersiting point, perhaps the authors of the paper you refer to will \ngive a better answer, but I try to make some guesses.\nI'm new to ergm too, anyway I think that the way you propose your model \nresults must be connected to your theoretical formulations, and it does \nnot depend on ergm (or whatever model you use) itself.\nFor example you might want to put in evidence the presence of spurious \nrelations, and derive theoretical relevance from that. Let's say that \nmodel 1 contains only individual attributes, some of which are \nsignificant; then you run model 2 adding structural terms, and you find \nthat individual attributes are no longer significant or have a weaker \neffect; this means that structural mechanisms actually prevail on nodal \nproperties. And this is different than showing directly model 2 results. \nIf past researches underline the importance of individual variables, you \nare now able to show  that even if some individual charachteristics may \nbe associated with tie formation (model 1), there are structural forces \nthat are actually responsible for that (model 2). So, only if it is \ntheoretically relevant, showing both models' results allows you to show \nwhich specific social mechanisms are taking place.\nHope that helps, but I'm very curious to read others' comments.\nBest,\nAndrea\n\n\nIl 19/01/2016 02:09, Duy Pham Thien Dang ha scritto:\n> Hello,\n>\n> I am confused about the steps to develop an ERG model.\n>\n> I read the paper \"An introduction to exponential random graph (p*) \n> models for social networks\" by Robins et al. (2007), and they \n> explained the five steps to construct a model. It reads to me that one \n> would start by constructing a model with (possibly) many \n> terms/configurations that reflect the hypotheses (Step 3), and then \n> reduce/constrain the parameters to achieve a more parsimonious model \n> (Step 4). By doing this way, I imagine that only one final model \n> should be reported in a study.\n>\n> However, I found quite a number of ERGM studies which constructed \n> multiple models and compare them. Specifically, they constructed a \n> baseline model which only has the \"edges\" term, then a \"Pure \n> Attributes\" model which describes homophily effects, then a \n> \"Structural\" model (which either adds new structural terms to the \n> previous model or serves a standalone model), then finally a \n> \"Combined\" model with all the terms. They seem to follow an approach \n> that builds up the model's complexity over time, rather than reduce \n> the model's complexity to the finest state.\n>\n> I would like to understand more about the differences of these \n> approaches to construct an ERG model. Could you please advise and/or \n> point me to the main literature about constructing ERG models?\n>\n> Thank you very much.\n>\n> Best regards,\n> Duy\n>\n> -- \n> *Duy Dang */BBus(BIS), BBus(Hons)/\n> Doctoral Researcher\n>\n> School of Business IT and Logistics | RMIT University\n> RMIT College of Business, Building 80, Level 8 | Ext: 50160\n> 445 Swanston Street, Melbourne 3000, Australia\n> CRICOS Provider Code: 00122A\n> Connect via: Academia <https://rmit.academia.edu/duydang> | LinkedIn \n> <http://au.linkedin.com/in/duyptdang/> | Twitter \n> <https://twitter.com/dptdang> | Personal website \n> <http://duyptdang.weebly.com/>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nAndrea Gallelli, Ph.D\nPost-doctoral Research Fellow in Sociology\nInterco-SSH European research www.interco-ssh.eu\n\nandrea.gallelli@unito.it\nmob. +393207932860\nTwitter: Andrea_Gallelli\n\n\n\n\n\n\tPlease consider your environmental responsibility. Before printing this \ne-mail message, ask yourself whether you really need a hard copy.\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160119/3d8556a0/attachment.html>",
+      "body_snippet": "Hi Duy,\nintersiting point, perhaps the authors of the paper you refer to will \ngive a better answer, but I try to make some guesses.\nI'm new to ergm too, anyway I think that the way you propose your m",
+      "thread_id": "thread-4e4a44e5c16b",
+      "thread_depth": 1,
+      "month": "2016-01"
+    },
+    {
+      "id": "msg-afa8fdf13886",
+      "message_id": "<CAO9oa+=wJcpxNZoWugbseKywwFcHvvEXKwWuaxbhGoBN0Qaczg@mail.gmail.com>",
+      "from_name": "Krause, R.W.",
+      "from_email_hash": "cd1e92998bfba6b0bbc2c456126c7c4554bc697383768f2795e6fd169ef1619f",
+      "date": "2016-01-20T02:24:50Z",
+      "subject": "[statnet_help] gwdsp.# and esp.#",
+      "subject_clean": "[statnet_help] gwdsp.# and esp.#",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet Team,\n\nI simulated some networks including parameters for gwesp and gwdsp the\nsaved statistics include 30 terms for each of those (gwdsp.1 ... gwdsp.30\nand esp.1 ... esp.30). I though they were the count of each of those\nconstellations (esp.1 = 1 edge wise shared partner), but they are not\ncumulative. Many of the simulated networks show esp.1 = 0, but every esp.2\nshould include two esp.1.\n\nHere is an example code:\nexampleNetwork = simulate(network(75) ~ edges + mutual + gwdsp + gwesp,\n                           coef = c(  -2.45, 3.41, -.22,log(2),.65,log(2)),\nnsim = 10, statsonly = TRUE,\n                           control=control.simulate( MCMC.burnin=1500000,\nMCMC.interval=125000))\n\nWhat do these statistics represent?\nWhere can I find the description of this in the manual?\n\nThank you very much for your help.\nBest Regards,\n\nRobert Krause\n\nICS Sociology, PhD Student\nUniversity of Groningen\nGrote Rozenstraat 31,\nRoom B119\n9712 TG Groningen, The Netherlands\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160120/f0a387ab/attachment.html>",
+      "body_snippet": "Dear Statnet Team,\n\nI simulated some networks including parameters for gwesp and gwdsp the\nsaved statistics include 30 terms for each of those (gwdsp.1 ... gwdsp.30\nand esp.1 ... esp.30). I though the",
+      "thread_id": "thread-afa8fdf13886",
+      "thread_depth": 0,
+      "month": "2016-01"
+    },
+    {
+      "id": "msg-382aef7468a1",
+      "message_id": "<alpine.WNT.2.00.1601201107400.7672@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2016-01-20T11:09:37Z",
+      "subject": "[statnet_help] gwdsp.# and esp.#",
+      "subject_clean": "[statnet_help] gwdsp.# and esp.#",
+      "in_reply_to": "<CAO9oa+=wJcpxNZoWugbseKywwFcHvvEXKwWuaxbhGoBN0Qaczg@mail.gmail.com>",
+      "references": [
+        "<CAO9oa+=wJcpxNZoWugbseKywwFcHvvEXKwWuaxbhGoBN0Qaczg@mail.gmail.com>"
+      ],
+      "body_plain": "On Wed, 20 Jan 2016, Krause, R.W. wrote:\n\n> Dear Statnet Team,\n> \n> I simulated some networks including parameters for gwesp and gwdsp the saved statistics include 30 terms for\n> each of those (gwdsp.1 ... gwdsp.30 and esp.1 ... esp.30). I though they were the count of each of those\n> constellations (esp.1 = 1 edge wise shared partner), but they are not cumulative. Many of the simulated\n> networks show esp.1 = 0, but every esp.2 should include two esp.1.\n\nNope, the esp counts are like degree counts, not like star counts.  Just \nas there are not 2 degree1 nodes in a degree2 node, an esp of 2 means \nthis edge has 2 shared partners.\n\nbest,\nmm\n\n> Here is an example code:\n> exampleNetwork = simulate(network(75) ~ edges + mutual + gwdsp + gwesp,\n> ? ? ? ? ? ? ? ? ? ? ? ? ? ?coef = c( ?-2.45, 3.41, -.22,log(2),.65,log(2)), nsim = 10, statsonly = TRUE,\n> ? ? ? ? ? ? ? ? ? ? ? ? ? ?control=control.simulate( MCMC.burnin=1500000, MCMC.interval=125000))\n> \n> What do these statistics represent?\n> Where can I find the description of this in the manual?\n> \n> Thank you very much for your help.\n> Best Regards,\n> Robert Krause\n> \n> ICS Sociology, PhD Student\n> University of Groningen\n> Grote Rozenstraat 31, \n> Room B119\n> 9712 TG Groningen, The Netherlands\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "On Wed, 20 Jan 2016, Krause, R.W. wrote:\n\n> Dear Statnet Team,\n> \n> I simulated some networks including parameters for gwesp and gwdsp the saved statistics include 30 terms for\n> each of those (gwdsp.",
+      "thread_id": "thread-afa8fdf13886",
+      "thread_depth": 1,
+      "month": "2016-01"
+    },
+    {
+      "id": "msg-b95fc7d22b01",
+      "message_id": "<CAAXtaJTn6QniqAk3WNfnyG0-Vz810sf2FV1hyi_teyn+ScRhPg@mail.gmail.com>",
+      "from_name": "Tyler Scott",
+      "from_email_hash": "a6196bf6bee214db58cd900226f3e3e9fc8b0672fb870606b878ab9e684fe083",
+      "date": "2016-01-20T12:58:01Z",
+      "subject": "[statnet_help] issue with non-binary references in parallel",
+      "subject_clean": "[statnet_help] issue with non-binary references in parallel",
+      "in_reply_to": "<CAAXtaJQoeYJ6LvG=XCSa5QqP2Lquxy7-wcGYt3PrMR7DzjE6zw@mail.gmail.com>",
+      "references": [
+        "<CAAXtaJQoeYJ6LvG=XCSa5QqP2Lquxy7-wcGYt3PrMR7DzjE6zw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi statent - to follow up on my own post, I believe that the error has\nsomething to do with how ergm integrates with ergm.count, as references\nwithin ergm work fine (e.g., reference = ~Unif(0,1)), but references from\nergm.count produce the \"MH_* initialization\" error. In any case, guidance\nor suggestions would be appreciated. Thanks again.\n\n-tyler scott\n\nOn Sat, Jan 16, 2016 at 8:19 PM, Tyler Scott <tscott1@uw.edu> wrote:\n\n> Hello all,\n>\n>      I'm currently having trouble getting code to work, but the same code\n> did work without error as of October, 2015; I suspect that I am missing\n> something obvious, but wasn't sure if perhaps there is a package issue or\n> if the procedure for using non-binary references and/or parallel processing\n> has changed in the last round of updates? I have pasted a reproducible\n> example below.  The same model does fit (or, I should say, at least does\n> not produce an error message) when run in serial mode.\n>\n> Thanks,\n>\n> -tyler scott\n>\n>\n> > library(statnet)> library(ergm.count)> net  = network(cbind(expand.grid(1:6,6:1)),matrix.type='edgelist',directed=T)> set.edge.attribute(net,'weight',round(runif(36,min = 0,max=10)))> model <- ergm(net ~ sum,response = 'weight',reference=~Poisson,+               control=control.ergm(parallel=2, parallel.type=\"PSOCK\"))Starting contrastive divergence estimation via CD-MCMLE:\n> Iteration 1 of at most 60: Error in checkForRemoteErrors(val) :\n>   2 nodes produced errors; first error: Error in MH_* initialization: could not find function MH_PoissonTNT in namespace for package ergm.count.Memory has not been deallocated, so restart R sometime soon.\n>\n> > sessionInfo()R version 3.2.3 (2015-12-10)\n> Platform: x86_64-pc-linux-gnu (64-bit)\n> Running under: Debian GNU/Linux 8 (jessie)\n>\n> locale:\n>  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C               LC_TIME=en_US.UTF-8\n>  [4] LC_COLLATE=en_US.UTF-8     LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8\n>  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                  LC_ADDRESS=C\n> [10] LC_TELEPHONE=C             LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C\n>\n> attached base packages:\n> [1] stats     graphics  grDevices utils     datasets  methods   base\n>\n> other attached packages:\n>  [1] tidyr_0.3.1          statnet_2015.11.0    ergm.count_3.2.0     tergm_3.3.1\n>  [5] sna_2.3-2            ergm_3.5.1           statnet.common_3.3.0 networkDynamic_0.9.0\n>  [9] network_1.13.0       cluster_2.0.3\n>\n> loaded via a namespace (and not attached):\n>  [1] Rcpp_0.12.3       lattice_0.20-33   grid_3.2.3        nlme_3.1-122      magrittr_1.5\n>  [6] coda_0.18-1       robustbase_0.92-5 Matrix_1.2-3      trust_0.1-7       tools_3.2.3\n> [11] DEoptimR_1.0-4    parallel_3.2.3    lpSolve_5.6.13   > getOption(\"pkgType\")[1] \"source\"\n>\n>\n>\n> --\n> Tyler Scott\n> Graduate Fellow in Environmental Politics and\n> Governance, Center for Environmental Politics\n> Evans School of Public Affairs\n> University of Washington\n> 253.632.3362\n> tscott1@uw.edu\n> tyler.andrew.scott.com\n>\n\n\n\n-- \nTyler Scott\nGraduate Fellow in Environmental Politics and\nGovernance, Center for Environmental Politics\nEvans School of Public Affairs\nUniversity of Washington\n253.632.3362\ntscott1@uw.edu\ntyler.andrew.scott.com\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160120/872e09b1/attachment.html>",
+      "body_snippet": "Hi statent - to follow up on my own post, I believe that the error has\nsomething to do with how ergm integrates with ergm.count, as references\nwithin ergm work fine (e.g., reference = ~Unif(0,1)), but",
+      "thread_id": "thread-ceb809b8685a",
+      "thread_depth": 1,
+      "month": "2016-01"
+    },
+    {
+      "id": "msg-42a5880f786d",
+      "message_id": "<2736A696-20FA-467C-A4B7-EA4E41773493@csiro.au>",
+      "from_name": "Andrew.Terhorst@csiro.au",
+      "from_email_hash": "6b0b243c4c8ca1af9556bbc5be3219737a5bf7af63ce11b3722ae23a20cbb725",
+      "date": "2016-01-20T13:24:25Z",
+      "subject": "[statnet_help] Specification of sender/receiver effects",
+      "subject_clean": "[statnet_help] Specification of sender/receiver effects",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nPNet allows you to determine sender/receiver effects on specific actor attributes. I do not understand how one does this in statnet. The base parameter allows you to include/exclude attributes. One can pass a vector object = list of attributes? Say I have a personality factor e.g. \"Openness\" rated between 0 and 1 for each actor, what is the syntax for determining sender and receiver effects for this attribute in an ergm statement?  Thanks in advance.\n\nCheers\n\nSent from my iPad",
+      "body_snippet": "Hello,\n\nPNet allows you to determine sender/receiver effects on specific actor attributes. I do not understand how one does this in statnet. The base parameter allows you to include/exclude attributes",
+      "thread_id": "thread-42a5880f786d",
+      "thread_depth": 0,
+      "month": "2016-01"
+    },
+    {
+      "id": "msg-0788d25fb6d7",
+      "message_id": "<CAO9oa+kbO-rMjJ3yPhPPdkV__5HECg-jYa7+_=+Y9XTYz4VBtA@mail.gmail.com>",
+      "from_name": "Krause, R.W.",
+      "from_email_hash": "cd1e92998bfba6b0bbc2c456126c7c4554bc697383768f2795e6fd169ef1619f",
+      "date": "2016-01-21T00:49:30Z",
+      "subject": "[statnet_help] gwdsp.# and esp.#",
+      "subject_clean": "[statnet_help] gwdsp.# and esp.#",
+      "in_reply_to": "<alpine.WNT.2.00.1601201107400.7672@morrism-laptop>",
+      "references": [
+        "<CAO9oa+=wJcpxNZoWugbseKywwFcHvvEXKwWuaxbhGoBN0Qaczg@mail.gmail.com>",
+        "<alpine.WNT.2.00.1601201107400.7672@morrism-laptop>"
+      ],
+      "body_plain": "Thank you!\n\nBest Regards,\n\nRobert Krause\n\nICS Sociology, PhD Student\nUniversity of Groningen\nGrote Rozenstraat 31,\nRoom B119\n9712 TG Groningen, The Netherlands\n\nOn Wed, Jan 20, 2016 at 8:09 PM, martina morris <morrism@u.washington.edu>\nwrote:\n\n> On Wed, 20 Jan 2016, Krause, R.W. wrote:\n>\n> Dear Statnet Team,\n>>\n>> I simulated some networks including parameters for gwesp and gwdsp the\n>> saved statistics include 30 terms for\n>> each of those (gwdsp.1 ... gwdsp.30 and esp.1 ... esp.30). I though they\n>> were the count of each of those\n>> constellations (esp.1 = 1 edge wise shared partner), but they are not\n>> cumulative. Many of the simulated\n>> networks show esp.1 = 0, but every esp.2 should include two esp.1.\n>>\n>\n> Nope, the esp counts are like degree counts, not like star counts.  Just\n> as there are not 2 degree1 nodes in a degree2 node, an esp of 2 means this\n> edge has 2 shared partners.\n>\n> best,\n> mm\n>\n> Here is an example code:\n>> exampleNetwork = simulate(network(75) ~ edges + mutual + gwdsp + gwesp,\n>>                            coef = c(  -2.45, 3.41,\n>> -.22,log(2),.65,log(2)), nsim = 10, statsonly = TRUE,\n>>                            control=control.simulate( MCMC.burnin=1500000,\n>> MCMC.interval=125000))\n>>\n>> What do these statistics represent?\n>> Where can I find the description of this in the manual?\n>>\n>> Thank you very much for your help.\n>> Best Regards,\n>> Robert Krause\n>>\n>> ICS Sociology, PhD Student\n>> University of Groningen\n>> Grote Rozenstraat 31, Room B119\n>> 9712 TG Groningen, The Netherlands\n>>\n>>\n>>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160121/47cdaece/attachment.html>",
+      "body_snippet": "Thank you!\n\nBest Regards,\n\nRobert Krause\n\nICS Sociology, PhD Student\nUniversity of Groningen\nGrote Rozenstraat 31,\nRoom B119\n9712 TG Groningen, The Netherlands\n\nOn Wed, Jan 20, 2016 at 8:09 PM, martin",
+      "thread_id": "thread-afa8fdf13886",
+      "thread_depth": 2,
+      "month": "2016-01"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-83203c21500e",
+      "subject": "[statnet_help] Using the nodes argument for centrality metrics in sna",
+      "message_count": 2,
+      "participants": [
+        "Shyam Saladi",
+        "Skye Bender-deMoll"
+      ],
+      "started": "2016-01-05T16:23:01Z",
+      "last_reply": "2016-01-05T16:57:35Z",
+      "root_message_id": "msg-83203c21500e"
+    },
+    {
+      "id": "thread-d30b92852ab5",
+      "subject": "[statnet_help] [Help] Model and interpret edgecov results",
+      "message_count": 3,
+      "participants": [
+        "Duy Pham Thien Dang",
+        "martina morris"
+      ],
+      "started": "2016-01-09T18:01:32Z",
+      "last_reply": "2016-01-12T17:22:24Z",
+      "root_message_id": "msg-d30b92852ab5"
+    },
+    {
+      "id": "thread-0345a6eafef8",
+      "subject": "[statnet_help] [Help] Interpret alpha and decay of GW-terms; how to improve GOF for in-degree",
+      "message_count": 1,
+      "participants": [
+        "Duy Pham Thien Dang"
+      ],
+      "started": "2016-01-14T06:11:59Z",
+      "last_reply": "2016-01-14T06:11:59Z",
+      "root_message_id": "msg-0345a6eafef8"
+    },
+    {
+      "id": "thread-4335e1734c87",
+      "subject": "[statnet_help] Checking edgcov terms are correct",
+      "message_count": 1,
+      "participants": [
+        "Andrew.Terhorst@csiro.au"
+      ],
+      "started": "2016-01-14T19:07:53Z",
+      "last_reply": "2016-01-14T19:07:53Z",
+      "root_message_id": "msg-4335e1734c87"
+    },
+    {
+      "id": "thread-82004edd203d",
+      "subject": "[statnet_help] There may be excessive correlation between model terms",
+      "message_count": 2,
+      "participants": [
+        "Andrew.Terhorst@csiro.au",
+        "Steven Goodreau"
+      ],
+      "started": "2016-01-14T20:08:10Z",
+      "last_reply": "2016-01-18T16:01:09Z",
+      "root_message_id": "msg-82004edd203d"
+    },
+    {
+      "id": "thread-3544f7b764e7",
+      "subject": "[statnet_help]  [Help] Interpret alpha and decay of GW-terms; how to improve GOF for in-degree",
+      "message_count": 3,
+      "participants": [
+        "Duy Dang",
+        "Duy Pham Thien Dang",
+        "martina morris"
+      ],
+      "started": "2016-01-15T01:59:27Z",
+      "last_reply": "2016-01-15T21:11:21Z",
+      "root_message_id": "msg-3544f7b764e7"
+    },
+    {
+      "id": "thread-ceb809b8685a",
+      "subject": "[statnet_help] issue with non-binary references in parallel",
+      "message_count": 2,
+      "participants": [
+        "Tyler Scott"
+      ],
+      "started": "2016-01-16T17:19:23Z",
+      "last_reply": "2016-01-20T12:58:01Z",
+      "root_message_id": "msg-ceb809b8685a"
+    },
+    {
+      "id": "thread-4e4a44e5c16b",
+      "subject": "[statnet_help] Steps to develop an ERG model",
+      "message_count": 2,
+      "participants": [
+        "Andrea Gallelli",
+        "Duy Pham Thien Dang"
+      ],
+      "started": "2016-01-18T17:09:46Z",
+      "last_reply": "2016-01-18T23:02:51Z",
+      "root_message_id": "msg-4e4a44e5c16b"
+    },
+    {
+      "id": "thread-afa8fdf13886",
+      "subject": "[statnet_help] gwdsp.# and esp.#",
+      "message_count": 3,
+      "participants": [
+        "Krause, R.W.",
+        "martina morris"
+      ],
+      "started": "2016-01-20T02:24:50Z",
+      "last_reply": "2016-01-21T00:49:30Z",
+      "root_message_id": "msg-afa8fdf13886"
+    },
+    {
+      "id": "thread-42a5880f786d",
+      "subject": "[statnet_help] Specification of sender/receiver effects",
+      "message_count": 1,
+      "participants": [
+        "Andrew.Terhorst@csiro.au"
+      ],
+      "started": "2016-01-20T13:24:25Z",
+      "last_reply": "2016-01-20T13:24:25Z",
+      "root_message_id": "msg-42a5880f786d"
+    }
+  ]
+}

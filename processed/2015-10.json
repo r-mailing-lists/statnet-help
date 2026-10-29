@@ -1,0 +1,395 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2015-10",
+  "messages": [
+    {
+      "id": "msg-c31467a9535a",
+      "message_id": "<560D5172.2000102@ipgovernance.eu>",
+      "from_name": "Sebastian Haunss",
+      "from_email_hash": "05dba600bd153ce6aeccb3f221011d77b705ea60745a3f411436b0feefc8a70c",
+      "date": "2015-10-01T08:29:54Z",
+      "subject": "[statnet_help] STERGM and bipartite networks",
+      "subject_clean": "[statnet_help] STERGM and bipartite networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statneters,\n\nis there a limit how many sime slices a bipartite network in a STERGM model can have?\n\nWhen I create 10 random networks of the same size:\n\ng <- list()\nfor (i in 1:10) {\ng[[i]] <- network(5, bipartite=10, density=0.2)\n}\n\nand construct a model which only acconts for the first two networks\n\nmodel1 <- stergm(g,\n                  formation = ~ edges + b1star(2) + b2star(2),\n                  dissolution = ~ edges + b1star(2) + b2star(2),\n                  estimate = \"CMLE\",\n                  times = 1:2)\n\neverything runs fine.\nBut if I include more than 2 networks, e.g.\n\nmodel2 <- stergm(g,\n                  formation = ~ edges + b1star(2) + b2star(2),\n                  dissolution = ~ edges + b1star(2) + b2star(2),\n                  estimate = \"CMLE\",\n                  times = 1:4)\n\nI get the following error:\n\nError in combine.networks(y0s, standardized = TRUE, blockname = \".stergm.CMLE.time.index\") :\n  Bipartite networks are not supported at this time.\n\nany ideas?\n\nBest\nSebastian\n\n\n-- \n\nPD Dr. Sebastian Haunss\nUniversit?t Bremen | SOCIUM - Forschungszentrum Ungleichheit und Sozialpolitik\nMary-Somerville-Str. 7, 28359 Bremen | Postadresse: Postfach 33 04 40, 28334 Bremen\nTelefon: +49 421 218-58572 | Web: shaunss.ipgovernance.eu | PGP Key ID: 78732002",
+      "body_snippet": "Dear Statneters,\n\nis there a limit how many sime slices a bipartite network in a STERGM model can have?\n\nWhen I create 10 random networks of the same size:\n\ng <- list()\nfor (i in 1:10) {\ng[[i]] <- net",
+      "thread_id": "thread-c31467a9535a",
+      "thread_depth": 0,
+      "month": "2015-10"
+    },
+    {
+      "id": "msg-c6af4eae5353",
+      "message_id": "<560D8754.7030403@gmail.com>",
+      "from_name": "Peter Verbeet",
+      "from_email_hash": "09fdc5d1c23fede3e047b9965a4a47e37cc52f884f5f9cd82fa9a9e7e10de1a4",
+      "date": "2015-10-01T12:19:48Z",
+      "subject": "[statnet_help] test message",
+      "subject_clean": "[statnet_help] test message",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "",
+      "body_snippet": "",
+      "thread_id": "thread-c6af4eae5353",
+      "thread_depth": 0,
+      "month": "2015-10"
+    },
+    {
+      "id": "msg-7763c11cfc66",
+      "message_id": "<560D8B1E.5030207@gmail.com>",
+      "from_name": "Peter Verbeet",
+      "from_email_hash": "09fdc5d1c23fede3e047b9965a4a47e37cc52f884f5f9cd82fa9a9e7e10de1a4",
+      "date": "2015-10-01T12:35:58Z",
+      "subject": "[statnet_help] Cox proportional hazard and the relational events model in Relevent",
+      "subject_clean": "[statnet_help] Cox proportional hazard and the relational events model in Relevent",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI have been studying the Butts (2008) paper on Relational Event Models. \nThe approach is definitely powerful. What I seem to miss is how it \ndiffers from a Cox proportional hazard model. If we consider a Cox model \nwith time-varying covariates and assume every edge to be at risk always \nand events are allowed to recur everytime, wouldn't we end up with the \nsame model? I have the feeling something must be different between these \nmodels, but what is it exactly?\n\nEric Quintane has a few papers where the REM is estimated as a Cox \nmodel, but he uses an ordered set of events in his papers, rather than \ntime-stamped events.\n\nSo, my question: when modeling a time-stamped event sequence, how does \nthe model differ from a Cox model?\n\nThank you,\nPeter Verbeet",
+      "body_snippet": "Hi,\n\nI have been studying the Butts (2008) paper on Relational Event Models. \nThe approach is definitely powerful. What I seem to miss is how it \ndiffers from a Cox proportional hazard model. If we co",
+      "thread_id": "thread-7763c11cfc66",
+      "thread_depth": 0,
+      "month": "2015-10"
+    },
+    {
+      "id": "msg-71dd519b83ed",
+      "message_id": "<op.x51pcjgwryrw2o@migedi729969.unicatt.it>",
+      "from_name": "Giulia Berlusconi",
+      "from_email_hash": "fd36de8af70bd43b44fffaa2df32655e66063233a54c8ff7e673053eac225882",
+      "date": "2015-10-05T11:22:57Z",
+      "subject": "[statnet_help] latentnet with weighted network",
+      "subject_clean": "[statnet_help] latentnet with weighted network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI am having troubles using latentnet to model a weighted network. My  \nnetwork has 61 nodes and 187 edges. The edge weights (=kilos of drug  \ntraded) range from 6.99 to 244,020.28 (mean=4,400.69, sd=21,644.70).\n\nI want to fit a normal model for the log of drug amount given that it's >0.\n\nI have two questions:\n1) When I get the log of drug amount, how should I consider the edges that  \nare equal to 0? The options are: NAs or calculate the log and get -Inf.\n2) I am new to Bayesian statistics and not sure how to set the prior.var  \nand prior.var.df parameters. Any suggestions?\n\nThank you in advance for your help!\n\nBest wishes,\nGiulia\n\n-- \nGiulia Berlusconi, Ph.D.\nResearch Fellow at Universit? Cattolica del Sacro Cuore\nResearcher at Transcrime\n\nTranscrime - Joint Research Centre on Transnational Crime\nUniversit? Cattolica del Sacro Cuore | Universit? degli Studi di Trento\nLargo Gemelli 1, 20123 Milano (Italy)\nT: +39 02 7234 3715/3716 | Fax: +39 02 7234 3721\nSkype: giulia8610\nwww.transcrime.it | www.arielproject.eu\nhttp://docenti.unicatt.it/ita/giulia_berlusconi/\n\nIf you are not the intended recipient please contact the sender and delete  \nthis email, whose distribution is strictly prohibited.\nChiunque riceva per errore questa comunicazione ? pregato di contattare il  \nmittente e distruggere il messaggio, la cui illecita diffusione verr?  \nperseguita a norma di legge.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151005/d30b927d/attachment.html>",
+      "body_snippet": "Dear all,\n\nI am having troubles using latentnet to model a weighted network. My  \nnetwork has 61 nodes and 187 edges. The edge weights (=kilos of drug  \ntraded) range from 6.99 to 244,020.28 (mean=4,4",
+      "thread_id": "thread-71dd519b83ed",
+      "thread_depth": 0,
+      "month": "2015-10"
+    },
+    {
+      "id": "msg-cf04b264d31b",
+      "message_id": "<331E1C3620E3EC48A22463908F29695CD73FF4@CITESMBX3.ad.uillinois.edu>",
+      "from_name": "Benton, Richard",
+      "from_email_hash": "6836949321d604790a2ef74872930b75624abf573fe3b40dc6959310d02cc586",
+      "date": "2015-10-07T13:08:51Z",
+      "subject": "[statnet_help] Continuous Node Covariates in Bipartite ERGM",
+      "subject_clean": "[statnet_help] Continuous Node Covariates in Bipartite ERGM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Group,\nThere was a message 3 years ago about including a continuous node covariate in a bipartite ERGM where values on the covariate would likely be absent in one of the modes - following the naming conventions, this effect might be a nodeb1cov and nodeb2cov. Are there any plans to introduce such effects to the menu of ergm terms?\n\nIn the earlier message, Pavel suggested that a work around would be to use the nodecov term but with zero values filled in for the missing covariate values in the \"opposite\" mode--e.g. fill in zeros for an age covariate for the \"event\" mode when age is really a \"person\" mode characteristic. Is this really accurate? won't substituting zeros affect the ergm estimate?\n\nThanks,\nRichard\n\nRichard A. Benton\nAssistant Professor\nSchool of Labor and Employment Relations\nUniversity of Illinois, Urbana-Champaign\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151007/b193396e/attachment.html>",
+      "body_snippet": "Hi Group,\nThere was a message 3 years ago about including a continuous node covariate in a bipartite ERGM where values on the covariate would likely be absent in one of the modes - following the namin",
+      "thread_id": "thread-cf04b264d31b",
+      "thread_depth": 0,
+      "month": "2015-10"
+    },
+    {
+      "id": "msg-3fba1b5dc1fe",
+      "message_id": "<CEA185C5CD72EC46AEE6CF280D7FD7F4820A5BF9@S-ITSV-MBX08P.ead.ubc.ca>",
+      "from_name": "Chandler, Kate",
+      "from_email_hash": "caf62a50d62d95825cb2a28564f2ff3bfdd50ee98c729a7f0a6aa30abf55527b",
+      "date": "2015-10-08T07:52:54Z",
+      "subject": "[statnet_help] Visualizing a Changing Social Network",
+      "subject_clean": "[statnet_help] Visualizing a Changing Social Network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nMy name is Kate Chandler and I am a masters student at the University of British Columbia.  I would like to visualize a social network that changes over time, so that it looks something like this<http://www.archivalscience.ca/communities.gif> (you might need Chrome to view it, and the visualization starts after a couple of seconds.)\n\nI am using a subset of the Enron Email Dataset, which includes only the top ten emailers.  You can see this dataset here<http://www.archivalscience.ca/enron_bigplayers.csv>.\n\nMy previous attempts to visualize this data has been confusing to the viewer, because the layout switches the position of the vertices from one time frame to another.  My previous attempts to visualize the network are visible here <http://www.archivalscience.ca/igraph.gif> (igraph static images of time-based subsets of the dataset shown one after the other) and here <http://www.archivalscience.ca/bigplayers_movie.gif> (ndtv animation).\n\nTo make clear the changing social network, I plan to create custom software.  So far, this is my general strategy:\n\nFirst, run the igraph's fastgreedy algorithm on time-based subsets of the dataset, and for each subset run the igraph function \"community(fg)\" which creates a list of groups of vertices.  Then, get the program to randomly select a vertex within a group and assign it a set of coordinates.  The other vertices in this group would be given an offset of this original coordinate so that the entire group is positioned together on the graph.  This would be repeated for all groups of vertices.\n\nIn the next increment of the dataset, the program would again begin with the same first selected vertex of each group, and would again put vertices of the same group close to one another together.  Vertices which have left their original group to form new groups, should be shown as moving from their parent group toward their new group.\n\nSo I am trying to figure out several things: how to assign a coordinate to a vertex, how to assign an off-set coordinate to vertices in the same group, and how to animate the movement of vertices away from their parent group.\n\nAny ideas or suggestions would be much appreciated.\n\nKate Chandler\n\nCandidate, MAS/MLIS\nSchool of Library, Archival, and Information Studies\nUniversity of British Columbia\nEmail: kate.chandler@ubc.ca<mailto:kate.chandler@ubc.ca>\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151008/0fe78684/attachment.html>",
+      "body_snippet": "Hello,\n\nMy name is Kate Chandler and I am a masters student at the University of British Columbia.  I would like to visualize a social network that changes over time, so that it looks something like t",
+      "thread_id": "thread-3fba1b5dc1fe",
+      "thread_depth": 0,
+      "month": "2015-10"
+    },
+    {
+      "id": "msg-0c1e484df4da",
+      "message_id": "<1444705794.17751.27.camel@uow.edu.au>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2015-10-12T20:09:54Z",
+      "subject": "[statnet_help] Specifying missing/unobserved edges in a network object",
+      "subject_clean": "[statnet_help] Specifying missing/unobserved edges in a network object",
+      "in_reply_to": "<D229B717.821E%akhanna@medicine.bsd.uchicago.edu>",
+      "references": [
+        "<D229B717.821E%akhanna@medicine.bsd.uchicago.edu>"
+      ],
+      "body_plain": "Hi, Aditya,\n\nIt is possible to do, but it requires writing a custom MHproposal and\nmaybe using the custom observation process API that is under\ndevelopment. If you don't mind my asking, what's the underlying\nproblem?\n\n\t\t\t\tBest,\n\t\t\t\tPavel\n\nOn Thu, 2015-09-24 at 19:20 +0000, Khanna, Aditya [MED] wrote:\n> Dear Statnet Developers,\n> \n> I am looking for ways to apply ergms to model unobserved ties in a\n> network. Say I have a sample of 50 nodes (numbered consecutively from\n> 1 to 50), and I know there are 75 edges between them. However, I only\n> observe 50 edges, between the first 30 nodes. I want to specify that\n> there are 25 possible edges between nodes 31:50, which are ?missing?.\n> \n> How can I create a network object that includes a specification for\n> the missing edges?\n> Thanks,\n> Aditya\n> \n> *********************************************************************\n> ***********\n> This e-mail is intended only for the use of the individual or entity\n> to which\n> it is addressed and may contain information that is privileged and\n> confidential.\n> If the reader of this e-mail message is not the intended recipient,\n> you are \n> hereby notified that any dissemination, distribution or copying of\n> this\n> communication is prohibited. If you have received this e-mail in\n> error, please \n> notify the sender and destroy all copies of the transmittal. \n> \n> Thank you\n> University of Chicago Medicine and Biological Sciences \n> *********************************************************************\n> ***********\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> \n-- \nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 185\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA): http://niasra.uow.edu.au/index.html\nWeb (Personal): http://www.krivitsky.net/research\nORCID: 0000-0002-9101-3362\n\nNOTICE: This email is intended for the addressee named and may contain\nconfidential information. If you are not the intended recipient, please\ndelete it and notify the sender. Please consider the environment before\nprinting this email.",
+      "body_snippet": "Hi, Aditya,\n\nIt is possible to do, but it requires writing a custom MHproposal and\nmaybe using the custom observation process API that is under\ndevelopment. If you don't mind my asking, what's the und",
+      "thread_id": "thread-0c1e484df4da",
+      "thread_depth": 0,
+      "month": "2015-10"
+    },
+    {
+      "id": "msg-4d7d51f92ebc",
+      "message_id": "<E913ABB937F1DE4BA868F430F7197E1028134FE0@EXMBXPR07CCD.UCHAD.uchospitals.edu>",
+      "from_name": "Khanna, Aditya [MED]",
+      "from_email_hash": "bcbc2ecefb65f657cdc48dbcb34944add56ec462b1b27bb58447f547a9f880c3",
+      "date": "2015-10-14T08:32:15Z",
+      "subject": "[statnet_help] ergm's that adjust for network size and composition effects",
+      "subject_clean": "[statnet_help] ergm's that adjust for network size and composition effects",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Statnet community,\n\nI have been working with some agent-based modelers, and I received a question from them that I didn't know the answer to. Can one of you please help out? The question pertains to Pavel and colleagues' 2011 paper, Adjusting for network size and composition effect, and is quoted below.\n\n\nOne of the points that the Krivitsky et al. - 2011 paper made was how the network statistics are derived from an egocentric census. E.g., network level properties calculated via f(x_i,x_j) are slightly modified when considering egos and alters (equation 4), whereas actor level statistics are unchanged (equation 5). So this got me thinking about the types of statistics that can be extracted from not just a single level egocentric sample, but what if you ask the alters who THEY talked to etc. (i.e., snowball or forest fire sampling) and if there were any assumptions that Krivitsky's paper makes that would need  to be adjusted to include those. Specifically, in their discussion section they state:\n\"We limit our statistics to first- and second-order effects - dyadic and degree distribution effects - and do not discuss third-order effects such as triad-closure bias, and while two of the notions of locality that we describe allow modeling of such effects, we do not examine the properties of these in the presence of an offset, because the egocentrically sampled data available do not contain information about such effects.\"\nThis is what prompted my question about any follow up work that they've done in this area, as they hinted at wanted to do something in the future (at that time, and maybe in the past now!).\n\nThanks,\nAditya Khanna\nUniversity of Chicago\n\n********************************************************************************\nThis e-mail is intended only for the use of the individual or entity to which\nit is addressed and may contain information that is privileged and confidential.\nIf the reader of this e-mail message is not the intended recipient, you are \nhereby notified that any dissemination, distribution or copying of this\ncommunication is prohibited. If you have received this e-mail in error, please \nnotify the sender and destroy all copies of the transmittal. \n\nThank you\nUniversity of Chicago Medicine and Biological Sciences \n********************************************************************************\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151014/62cb5717/attachment.html>",
+      "body_snippet": "Hi Statnet community,\n\nI have been working with some agent-based modelers, and I received a question from them that I didn't know the answer to. Can one of you please help out? The question pertains t",
+      "thread_id": "thread-4d7d51f92ebc",
+      "thread_depth": 0,
+      "month": "2015-10"
+    },
+    {
+      "id": "msg-924140859b14",
+      "message_id": "<E913ABB937F1DE4BA868F430F7197E1028135046@EXMBXPR07CCD.UCHAD.uchospitals.edu>",
+      "from_name": "Khanna, Aditya [MED]",
+      "from_email_hash": "bcbc2ecefb65f657cdc48dbcb34944add56ec462b1b27bb58447f547a9f880c3",
+      "date": "2015-10-14T10:53:10Z",
+      "subject": "[statnet_help] Specifying missing/unobserved edges in a network object",
+      "subject_clean": "[statnet_help] Specifying missing/unobserved edges in a network object",
+      "in_reply_to": "<1444705794.17751.27.camel@uow.edu.au>",
+      "references": [
+        "<D229B717.821E%akhanna@medicine.bsd.uchicago.edu>",
+        "<1444705794.17751.27.camel@uow.edu.au>"
+      ],
+      "body_plain": "HI Pavel,\n\nThanks for your response. I paraphrase the problem in a hypothetical scenario below.\n\nConsider 30 participants recruited for a public health study. We have information on their online Facebook network, say they are connected to a  total of 130 individuals. Thus, we have information on all ties for the first 30 individuals, but for the next 100, we only know of their tie(s) to the 30 participants. We have no information on the ties that might exist between these 100 individuals. \n\nI am interested in identifying sets of most \"central\" nodes (via different algorithms, eg. betweenness, bridging, key player, etc). But our assessment of such centralities will be incorrect because we don't have information on all edges in the network. Therefore, one possible approach is to use ergm's to model the unobserved edges, between the 100 Facebook friends of the study participants, to get a complete picture of the network, before applying graph centrality algorithms. \n\nI thought one way to mark edges as being unobserved is in the `network` package, by setting the value of an edge equal to NA, as opposed to 0 or 1. For a network object `net`, if I wanted to mark an edge between nodes i and j as NA, I could do the following:\n\nnet.edges[i,j, add.edges=TRUE] <- NA\n\nIf I iterate the above process between all nodes that have unobserved ties, the goal is accomplished, in theory at least. In practice, given the size of Facebook networks, the above process is simply too slow. I didn't see a need here to write a custom MH proposal, but maybe I am missing something?\n\nThanks,\nAditya\n\n-----Original Message-----\nFrom: Pavel N. Krivitsky [mailto:pavel@uow.edu.au] \nSent: Monday, October 12, 2015 10:10 PM\nTo: Khanna, Aditya [MED]; statnet_help@u.washington.edu\nSubject: Re: [statnet_help] Specifying missing/unobserved edges in a network object\n\nHi, Aditya,\n\nIt is possible to do, but it requires writing a custom MHproposal and maybe using the custom observation process API that is under development. If you don't mind my asking, what's the underlying problem?\n\n\t\t\t\tBest,\n\t\t\t\tPavel\n\nOn Thu, 2015-09-24 at 19:20 +0000, Khanna, Aditya [MED] wrote:\n> Dear Statnet Developers,\n> \n> I am looking for ways to apply ergms to model unobserved ties in a \n> network. Say I have a sample of 50 nodes (numbered consecutively from\n> 1 to 50), and I know there are 75 edges between them. However, I only \n> observe 50 edges, between the first 30 nodes. I want to specify that \n> there are 25 possible edges between nodes 31:50, which are ?missing?.\n> \n> How can I create a network object that includes a specification for \n> the missing edges?\n> Thanks,\n> Aditya\n> \n> *********************************************************************\n> ***********\n> This e-mail is intended only for the use of the individual or entity \n> to which it is addressed and may contain information that is \n> privileged and confidential.\n> If the reader of this e-mail message is not the intended recipient, \n> you are hereby notified that any dissemination, distribution or \n> copying of this communication is prohibited. If you have received this \n> e-mail in error, please notify the sender and destroy all copies of \n> the transmittal.\n> \n> Thank you\n> University of Chicago Medicine and Biological Sciences\n> *********************************************************************\n> ***********\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> \n--\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA) School of Mathematics and Applied Statistics | Building 39C Room 185 University of Wollongong NSW 2522 Australia T +61 2 4221 3713 Web (NIASRA): http://niasra.uow.edu.au/index.html\nWeb (Personal): http://www.krivitsky.net/research\nORCID: 0000-0002-9101-3362\n\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n\n\n********************************************************************************\nThis e-mail is intended only for the use of the individual or entity to which\nit is addressed and may contain information that is privileged and confidential.\nIf the reader of this e-mail message is not the intended recipient, you are \nhereby notified that any dissemination, distribution or copying of this\ncommunication is prohibited. If you have received this e-mail in error, please \nnotify the sender and destroy all copies of the transmittal. \n\nThank you\nUniversity of Chicago Medicine and Biological Sciences \n********************************************************************************",
+      "body_snippet": "HI Pavel,\n\nThanks for your response. I paraphrase the problem in a hypothetical scenario below.\n\nConsider 30 participants recruited for a public health study. We have information on their online Faceb",
+      "thread_id": "thread-0c1e484df4da",
+      "thread_depth": 1,
+      "month": "2015-10"
+    },
+    {
+      "id": "msg-a76d06f4c48f",
+      "message_id": "<56201430.6070608@skyeome.net>",
+      "from_name": "Skye Bender-deMoll",
+      "from_email_hash": "016c31bf83672a8e8fce6b664eb68ddff364b5df6912775ec31eeceebce90340",
+      "date": "2015-10-15T14:01:36Z",
+      "subject": "[statnet_help] recent statnet package releases: ndtv and tsna",
+      "subject_clean": "[statnet_help] recent statnet package releases: ndtv and tsna",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi folks,\n\nJust a quick update to say that the statnet team has released the alpha \nversion of the 'tsna' (Temporal Social Network Analysis) pack to CRAN.\nThe new package has:\n\n* Code for finding forward temporal paths through networks which will \nhopefully serve as the basis of lots of extensions of centrality measures.\n* Tools for evaluating durations of ties, rates of change, etc\n* Measures of sequence (Gibson?s p-shifts) from the relevent package\n* Static projections of dynamic networks\n* And of course it has wrappers for evaluating standard ?static? SNA \nmetrics at multiple time points and returning a time series (using the \nergm and sna packages).\n\nA vignette for tsna is located here:\nhttp://cran.fhcrc.org/web/packages/tsna/vignettes/tsna_vignette.html\n\nplease let me know if you have questions or see issues :-)\n\n\nYesterday we also released an update to the 'ndtv' package for \nvisualizing temporal networks. It has some neat new features, including \nthe ability to easily embed animations as widgets in Rmarkdown \ndocuments. I wrote a blog post with a quick overview here: \nhttp://skyeome.net/wordpress/?p=775\n\nAnd a heads up, we've been previwing a new ergm release and hope to have \nit up to CRAN very soon.  In addition to bug fixes and features, this \nwill get rid of the warnings like:\n\n\"Warning: replacing previous import by ?network::as.edgelist.network? \nwhen loading ?tergm?\"\n\nwhich you may have been seeing due to the migration of some functions \nfrom ergm to network in the last network release.\n\nbest,\n  -skye",
+      "body_snippet": "Hi folks,\n\nJust a quick update to say that the statnet team has released the alpha \nversion of the 'tsna' (Temporal Social Network Analysis) pack to CRAN.\nThe new package has:\n\n* Code for finding forw",
+      "thread_id": "thread-a76d06f4c48f",
+      "thread_depth": 0,
+      "month": "2015-10"
+    },
+    {
+      "id": "msg-1e7c42dc0c15",
+      "message_id": "<1445218468.7864.34.camel@uow.edu.au>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2015-10-18T18:34:28Z",
+      "subject": "[statnet_help] STERGM and bipartite networks",
+      "subject_clean": "[statnet_help] STERGM and bipartite networks",
+      "in_reply_to": "<560D5172.2000102@ipgovernance.eu>",
+      "references": [
+        "<560D5172.2000102@ipgovernance.eu>"
+      ],
+      "body_plain": "Dear Sebastian,\n\nThe error message is slightly inaccurate. Some of the machinery we use\nto fit series of 3+ networks didn't quite work for bipartite ones, so\nit was disabled.\n\nAs it happens, I've just committed an implementation for bipartite\nnetworks, so the next release --- hopefully to come in the next week or\ntwo --- will be to fit model2.\n\n\t\t\t\t\tI hope this helps,\n\t\t\t\t\tPavel\n\n\nOn Thu, 2015-10-01 at 17:29 +0200, Sebastian Haunss wrote:\n> Dear Statneters,\n> \n> is there a limit how many sime slices a bipartite network in a STERGM\n> model can have?\n> \n> When I create 10 random networks of the same size:\n> \n> g <- list()\n> for (i in 1:10) {\n> g[[i]] <- network(5, bipartite=10, density=0.2)\n> }\n> \n> and construct a model which only acconts for the first two networks\n> \n> model1 <- stergm(g,\n> ??????????????????formation = ~ edges + b1star(2) + b2star(2),\n> ??????????????????dissolution = ~ edges + b1star(2) + b2star(2),\n> ??????????????????estimate = \"CMLE\",\n> ??????????????????times = 1:2)\n> \n> everything runs fine.\n> But if I include more than 2 networks, e.g.\n> \n> model2 <- stergm(g,\n> ??????????????????formation = ~ edges + b1star(2) + b2star(2),\n> ??????????????????dissolution = ~ edges + b1star(2) + b2star(2),\n> ??????????????????estimate = \"CMLE\",\n> ??????????????????times = 1:4)\n> \n> I get the following error:\n> \n> Error in combine.networks(y0s, standardized = TRUE, blockname =\n> \".stergm.CMLE.time.index\") :\n> ? Bipartite networks are not supported at this time.\n> \n> any ideas?\n> \n> Best\n> Sebastian\n> \n> \n> -- \n> \n> PD Dr. Sebastian Haunss\n> Universit?t Bremen | SOCIUM - Forschungszentrum Ungleichheit und\n> Sozialpolitik\n> Mary-Somerville-Str. 7, 28359 Bremen | Postadresse: Postfach 33 04\n> 40, 28334 Bremen\n> Telefon: +49 421 218-58572 | Web: shaunss.ipgovernance.eu | PGP Key\n> ID: 78732002\n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n-- \nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 185\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA): http://niasra.uow.edu.au/index.html\nWeb (Personal): http://www.krivitsky.net/research\nORCID: 0000-0002-9101-3362\n\nNOTICE: This email is intended for the addressee named and may contain\nconfidential information. If you are not the intended recipient, please\ndelete it and notify the sender. Please consider the environment before\nprinting this email.",
+      "body_snippet": "Dear Sebastian,\n\nThe error message is slightly inaccurate. Some of the machinery we use\nto fit series of 3+ networks didn't quite work for bipartite ones, so\nit was disabled.\n\nAs it happens, I've just",
+      "thread_id": "thread-c31467a9535a",
+      "thread_depth": 1,
+      "month": "2015-10"
+    },
+    {
+      "id": "msg-940f7efd908e",
+      "message_id": "<331E1C3620E3EC48A22463908F29695CD76BEC@CITESMBX3.ad.uillinois.edu>",
+      "from_name": "Benton, Richard",
+      "from_email_hash": "6836949321d604790a2ef74872930b75624abf573fe3b40dc6959310d02cc586",
+      "date": "2015-10-20T07:04:54Z",
+      "subject": "[statnet_help]  STERGM and bipartite networks",
+      "subject_clean": "[statnet_help]  STERGM and bipartite networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Pavel (and others)\nYou mention that you've committed an implementation for bipartite networks to be released soon. Is the new implementation exclusive to stergm or does it introduce new implementations for bipartite networks in ergm as well.\n\nSpecific to my case: I'm still trying to figure out how to implement an ergm for a bipartite network with continuous node covariates similar to the b1factor ergm term - something like b1nodecov or some such.\n\nThanks!\nRichard Benton\n\nRichard A. Benton\nAssistant Professor\nSchool of Labor and Employment Relations\nUniversity of Illinois, Urbana-Champaign\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151020/19dd4c36/attachment.html>",
+      "body_snippet": "Hi Pavel (and others)\nYou mention that you've committed an implementation for bipartite networks to be released soon. Is the new implementation exclusive to stergm or does it introduce new implementat",
+      "thread_id": "thread-940f7efd908e",
+      "thread_depth": 0,
+      "month": "2015-10"
+    },
+    {
+      "id": "msg-b24450a62de5",
+      "message_id": "<1445823608.3537.139.camel@uow.edu.au>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2015-10-25T18:40:08Z",
+      "subject": "[statnet_help] STERGM and bipartite networks",
+      "subject_clean": "[statnet_help] STERGM and bipartite networks",
+      "in_reply_to": "<331E1C3620E3EC48A22463908F29695CD76BEC@CITESMBX3.ad.uillinois.edu>",
+      "references": [
+        "<331E1C3620E3EC48A22463908F29695CD76BEC@CITESMBX3.ad.uillinois.edu>"
+      ],
+      "body_plain": "Hi, Richard,\n> Specific to my case: I'm still trying to figure out how to implement\n> an ergm for a bipartite network with continuous node covariates\n> similar to the b1factor ergm term - something like b1nodecov or some\n> such.\nThat looks like an omission that we probably should remedy in the next\nrelease. For the moment, the following workaround should work. Let b1x\nbe a vector of actors' covariates, b2x be a vector of events'\ncovariates, and nw the response network. If you set it up as follows:\nnw %v% \"b1x\" <- c(b1x, rep(0, network.size(nw)-(nw%n%\"bipartite\")))\nnw %v% \"b2x\" <- c(rep(0, nw%n%\"bipartite\"), b2x)\nthen\nergm(nw ~ nodecov(\"b1x\") + nodecov(\"b2x\"))\nshould fit the model with b1 covariate and b2 covariate, because the\ncovariate for the b2s in b1x would be all 0s and vice versa. (Of\ncourse, you don't have to put both terms in the model.)\n\t\t\t\tI hope this helps,\n\t\t\t\tPavel\n\n\n-- \nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 185\nUniversity of Wollongong NSW 2522 Australia\nT?+61 2 4221 3713\nWeb (NIASRA)?|?Web (Personal)?|?ResearchGate?|?ORCID: 0000-0002-9101-3362\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151026/7e62c6ce/attachment.html>",
+      "body_snippet": "Hi, Richard,\n> Specific to my case: I'm still trying to figure out how to implement\n> an ergm for a bipartite network with continuous node covariates\n> similar to the b1factor ergm term - something li",
+      "thread_id": "thread-940f7efd908e",
+      "thread_depth": 1,
+      "month": "2015-10"
+    },
+    {
+      "id": "msg-bb2382c104c8",
+      "message_id": "<1445823683.3537.141.camel@uow.edu.au>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2015-10-25T18:41:23Z",
+      "subject": "[statnet_help] STERGM and bipartite networks",
+      "subject_clean": "[statnet_help] STERGM and bipartite networks",
+      "in_reply_to": "<560D5172.2000102@ipgovernance.eu>",
+      "references": [
+        "<560D5172.2000102@ipgovernance.eu>"
+      ],
+      "body_plain": "Dear Sebastian,\n\nThe fix should be up on CRAN now --- though it may take a few days to\npropagate to Windows and MacOS builds. Let me know how it works for\nyou.\n\n\t\t\t\tBest,\n\t\t\t\tPavel\n\nOn Thu, 2015-10-01 at 17:29 +0200, Sebastian Haunss wrote:\n> Dear Statneters,\n> \n> is there a limit how many sime slices a bipartite network in a STERGM\n> model can have?\n> \n> When I create 10 random networks of the same size:\n> \n> g <- list()\n> for (i in 1:10) {\n> g[[i]] <- network(5, bipartite=10, density=0.2)\n> }\n> \n> and construct a model which only acconts for the first two networks\n> \n> model1 <- stergm(g,\n> ??????????????????formation = ~ edges + b1star(2) + b2star(2),\n> ??????????????????dissolution = ~ edges + b1star(2) + b2star(2),\n> ??????????????????estimate = \"CMLE\",\n> ??????????????????times = 1:2)\n> \n> everything runs fine.\n> But if I include more than 2 networks, e.g.\n> \n> model2 <- stergm(g,\n> ??????????????????formation = ~ edges + b1star(2) + b2star(2),\n> ??????????????????dissolution = ~ edges + b1star(2) + b2star(2),\n> ??????????????????estimate = \"CMLE\",\n> ??????????????????times = 1:4)\n> \n> I get the following error:\n> \n> Error in combine.networks(y0s, standardized = TRUE, blockname =\n> \".stergm.CMLE.time.index\") :\n> ? Bipartite networks are not supported at this time.\n> \n> any ideas?\n> \n> Best\n> Sebastian\n> \n> \n> -- \n> \n> PD Dr. Sebastian Haunss\n> Universit?t Bremen | SOCIUM - Forschungszentrum Ungleichheit und\n> Sozialpolitik\n> Mary-Somerville-Str. 7, 28359 Bremen | Postadresse: Postfach 33 04\n> 40, 28334 Bremen\n> Telefon: +49 421 218-58572 | Web: shaunss.ipgovernance.eu | PGP Key\n> ID: 78732002\n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n-- \nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 185\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA): http://niasra.uow.edu.au/index.html\nWeb (Personal): http://www.krivitsky.net/research\nORCID: 0000-0002-9101-3362\n\nNOTICE: This email is intended for the addressee named and may contain\nconfidential information. If you are not the intended recipient, please\ndelete it and notify the sender. Please consider the environment before\nprinting this email.",
+      "body_snippet": "Dear Sebastian,\n\nThe fix should be up on CRAN now --- though it may take a few days to\npropagate to Windows and MacOS builds. Let me know how it works for\nyou.\n\n\t\t\t\tBest,\n\t\t\t\tPavel\n\nOn Thu, 2015-10-01",
+      "thread_id": "thread-c31467a9535a",
+      "thread_depth": 1,
+      "month": "2015-10"
+    },
+    {
+      "id": "msg-8305bdfcdc52",
+      "message_id": "<1445831635.3537.169.camel@uow.edu.au>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2015-10-25T20:53:55Z",
+      "subject": "[statnet_help] ergm's that adjust for network size and composition effects",
+      "subject_clean": "[statnet_help] ergm's that adjust for network size and composition effects",
+      "in_reply_to": "<E913ABB937F1DE4BA868F430F7197E1028134FE0@EXMBXPR07CCD.UCHAD.uchospitals.edu>",
+      "references": [
+        "<E913ABB937F1DE4BA868F430F7197E1028134FE0@EXMBXPR07CCD.UCHAD.uchospitals.edu>"
+      ],
+      "body_plain": "Hi, Aditya,\nSome of it. In?\nPavel N. Krivitsky and Eric D. Kolaczyk. On the Question of Effective\nSample Size in Network Modeling: An Asymptotic Inquiry. Statistical\nScience, 2015, 30(2), 184-198. doi:10.1214/14-STS502\nwe describe an adjustment for mutuality in directed network, and\nprovide a heuristic argument and a simulation study for triad closure,\nat least for sufficiently large networks.\n\t\t\t\t\t\tI hope this helps,\n\t\t\t\t\t\tPavel\n\nOn Wed, 2015-10-14 at 15:32 +0000, Khanna, Aditya [MED] wrote:\n> Hi Statnet community,\n> ?\n> I have been working with some agent-based modelers, and I received a\n> question from them that I didn?t know the answer to. Can one of you\n> please help out? The question pertains to Pavel and colleagues? 2011\n> paper, Adjusting for network size and composition effect, and is\n> quoted below.\n> ?\n> ?\n> One of the points that the?Krivitsky et al. - 2011 paper made was how\n> the network statistics are derived from an egocentric census. E.g.,\n> network level properties calculated via f(x_i,x_j) are slightly\n> modified when considering egos and alters (equation 4), whereas actor\n> level statistics are unchanged (equation 5). So this got me thinking\n> about the types of statistics that can be extracted from not just a\n> single level egocentric sample, but what if you ask the alters who\n> THEY talked to etc. (i.e., snowball or forest fire sampling) and if\n> there were any assumptions that Krivitsky?s paper makes that would\n> need ?to be adjusted to include those. Specifically, in their\n> discussion section they state:\n> ?We limit our statistics to first- and second-order?effects ? dyadic\n> and degree distribution effects ? and do not discuss third-order\n> effects such?as triad-closure bias, and while two of the?notions of\n> locality that we describe allow modeling?of such effects, we do not\n> examine the properties of these in the presence of an offset,?because\n> the egocentrically sampled data?available do not contain information\n> about such effects.?\n> This is what prompted my question about any follow up work that\n> they?ve done in this area, as they hinted at wanted to do something\n> in the future (at that time, and maybe in the past now!).\n> ?\n> Thanks,\n> Aditya Khanna\n> University of Chicago\n> *********************************************************************\n> ***********\n> This e-mail is intended only for the use of the individual or entity\n> to which\n> it is addressed and may contain information that is privileged and\n> confidential.\n> If the reader of this e-mail message is not the intended recipient,\n> you are \n> hereby notified that any dissemination, distribution or copying of\n> this\n> communication is prohibited. If you have received this e-mail in\n> error, please \n> notify the sender and destroy all copies of the transmittal. \n> \n> Thank you\n> University of Chicago Medicine and Biological Sciences \n> *********************************************************************\n> ***********\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n-- \nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 185\nUniversity of Wollongong NSW 2522 Australia\nT?+61 2 4221 3713\nWeb (NIASRA)?|?Web (Personal)?|?ResearchGate?|?ORCID: 0000-0002-9101-3362\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151026/8994d3cd/attachment.html>",
+      "body_snippet": "Hi, Aditya,\nSome of it. In?\nPavel N. Krivitsky and Eric D. Kolaczyk. On the Question of Effective\nSample Size in Network Modeling: An Asymptotic Inquiry. Statistical\nScience, 2015, 30(2), 184-198. doi",
+      "thread_id": "thread-4d7d51f92ebc",
+      "thread_depth": 1,
+      "month": "2015-10"
+    },
+    {
+      "id": "msg-8f804c2b1b6f",
+      "message_id": "<E913ABB937F1DE4BA868F430F7197E1028136411@EXMBXPR07CCD.UCHAD.uchospitals.edu>",
+      "from_name": "Khanna, Aditya [MED]",
+      "from_email_hash": "bcbc2ecefb65f657cdc48dbcb34944add56ec462b1b27bb58447f547a9f880c3",
+      "date": "2015-10-26T07:38:39Z",
+      "subject": "[statnet_help] ergm's that adjust for network size and composition effects",
+      "subject_clean": "[statnet_help] ergm's that adjust for network size and composition effects",
+      "in_reply_to": "<1445831635.3537.169.camel@uow.edu.au>",
+      "references": [
+        "<E913ABB937F1DE4BA868F430F7197E1028134FE0@EXMBXPR07CCD.UCHAD.uchospitals.edu>",
+        "<1445831635.3537.169.camel@uow.edu.au>"
+      ],
+      "body_plain": "Thanks Pavel! I really appreciate your help. Coincidentally, I am currently reading Dr. Kolaczyk?s book on networks and R: http://www.springer.com/us/book/9781493909827\n\nFrom: Pavel N. Krivitsky [mailto:pavel@uow.edu.au]\nSent: Sunday, October 25, 2015 10:54 PM\nTo: Khanna, Aditya [MED]; statnet_help@u.washington.edu\nSubject: Re: [statnet_help] ergm's that adjust for network size and composition effects\n\nHi, Aditya,\n\nSome of it. In\n\nPavel N. Krivitsky and Eric D. Kolaczyk. On the Question of Effective Sample Size in Network Modeling: An Asymptotic Inquiry. Statistical Science, 2015, 30(2), 184-198. doi:10.1214/14-STS502\n\nwe describe an adjustment for mutuality in directed network, and provide a heuristic argument and a simulation study for triad closure, at least for sufficiently large networks.\n\n                                                                        I hope this helps,\n                                                                        Pavel\n\n\nOn Wed, 2015-10-14 at 15:32 +0000, Khanna, Aditya [MED] wrote:\nHi Statnet community,\n\nI have been working with some agent-based modelers, and I received a question from them that I didn?t know the answer to. Can one of you please help out? The question pertains to Pavel and colleagues? 2011 paper, Adjusting for network size and composition effect, and is quoted below.\n\n\nOne of the points that the Krivitsky et al. - 2011 paper made was how the network statistics are derived from an egocentric census. E.g., network level properties calculated via f(x_i,x_j) are slightly modified when considering egos and alters (equation 4), whereas actor level statistics are unchanged (equation 5). So this got me thinking about the types of statistics that can be extracted from not just a single level egocentric sample, but what if you ask the alters who THEY talked to etc. (i.e., snowball or forest fire sampling) and if there were any assumptions that Krivitsky?s paper makes that would need  to be adjusted to include those. Specifically, in their discussion section they state:\n?We limit our statistics to first- and second-order effects ? dyadic and degree distribution effects ? and do not discuss third-order effects such as triad-closure bias, and while two of the notions of locality that we describe allow modeling of such effects, we do not examine the properties of these in the presence of an offset, because the egocentrically sampled data available do not contain information about such effects.?\nThis is what prompted my question about any follow up work that they?ve done in this area, as they hinted at wanted to do something in the future (at that time, and maybe in the past now!).\n\nThanks,\nAditya Khanna\nUniversity of Chicago\n********************************************************************************\nThis e-mail is intended only for the use of the individual or entity to which\nit is addressed and may contain information that is privileged and confidential.\nIf the reader of this e-mail message is not the intended recipient, you are\nhereby notified that any dissemination, distribution or copying of this\ncommunication is prohibited. If you have received this e-mail in error, please\nnotify the sender and destroy all copies of the transmittal.\n\nThank you\nUniversity of Chicago Medicine and Biological Sciences\n********************************************************************************\n\n_______________________________________________\n\nstatnet_help mailing list\n\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\n\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n--\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 185\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA)<http://niasra.uow.edu.au/index.html> | Web (Personal)<http://www.krivitsky.net/research> | ResearchGate<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID: 0000-0002-9101-3362<http://orcid.org/0000-0002-9101-3362>\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n\n********************************************************************************\nThis e-mail is intended only for the use of the individual or entity to which\nit is addressed and may contain information that is privileged and confidential.\nIf the reader of this e-mail message is not the intended recipient, you are \nhereby notified that any dissemination, distribution or copying of this\ncommunication is prohibited. If you have received this e-mail in error, please \nnotify the sender and destroy all copies of the transmittal. \n\nThank you\nUniversity of Chicago Medicine and Biological Sciences \n********************************************************************************\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151026/6a63df4e/attachment.html>",
+      "body_snippet": "Thanks Pavel! I really appreciate your help. Coincidentally, I am currently reading Dr. Kolaczyk?s book on networks and R: http://www.springer.com/us/book/9781493909827\n\nFrom: Pavel N. Krivitsky [mail",
+      "thread_id": "thread-4d7d51f92ebc",
+      "thread_depth": 2,
+      "month": "2015-10"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-c31467a9535a",
+      "subject": "[statnet_help] STERGM and bipartite networks",
+      "message_count": 3,
+      "participants": [
+        "Pavel N. Krivitsky",
+        "Sebastian Haunss"
+      ],
+      "started": "2015-10-01T08:29:54Z",
+      "last_reply": "2015-10-25T18:41:23Z",
+      "root_message_id": "msg-c31467a9535a"
+    },
+    {
+      "id": "thread-c6af4eae5353",
+      "subject": "[statnet_help] test message",
+      "message_count": 1,
+      "participants": [
+        "Peter Verbeet"
+      ],
+      "started": "2015-10-01T12:19:48Z",
+      "last_reply": "2015-10-01T12:19:48Z",
+      "root_message_id": "msg-c6af4eae5353"
+    },
+    {
+      "id": "thread-7763c11cfc66",
+      "subject": "[statnet_help] Cox proportional hazard and the relational events model in Relevent",
+      "message_count": 1,
+      "participants": [
+        "Peter Verbeet"
+      ],
+      "started": "2015-10-01T12:35:58Z",
+      "last_reply": "2015-10-01T12:35:58Z",
+      "root_message_id": "msg-7763c11cfc66"
+    },
+    {
+      "id": "thread-71dd519b83ed",
+      "subject": "[statnet_help] latentnet with weighted network",
+      "message_count": 1,
+      "participants": [
+        "Giulia Berlusconi"
+      ],
+      "started": "2015-10-05T11:22:57Z",
+      "last_reply": "2015-10-05T11:22:57Z",
+      "root_message_id": "msg-71dd519b83ed"
+    },
+    {
+      "id": "thread-cf04b264d31b",
+      "subject": "[statnet_help] Continuous Node Covariates in Bipartite ERGM",
+      "message_count": 1,
+      "participants": [
+        "Benton, Richard"
+      ],
+      "started": "2015-10-07T13:08:51Z",
+      "last_reply": "2015-10-07T13:08:51Z",
+      "root_message_id": "msg-cf04b264d31b"
+    },
+    {
+      "id": "thread-3fba1b5dc1fe",
+      "subject": "[statnet_help] Visualizing a Changing Social Network",
+      "message_count": 1,
+      "participants": [
+        "Chandler, Kate"
+      ],
+      "started": "2015-10-08T07:52:54Z",
+      "last_reply": "2015-10-08T07:52:54Z",
+      "root_message_id": "msg-3fba1b5dc1fe"
+    },
+    {
+      "id": "thread-0c1e484df4da",
+      "subject": "[statnet_help] Specifying missing/unobserved edges in a network object",
+      "message_count": 2,
+      "participants": [
+        "Khanna, Aditya [MED]",
+        "Pavel N. Krivitsky"
+      ],
+      "started": "2015-10-12T20:09:54Z",
+      "last_reply": "2015-10-14T10:53:10Z",
+      "root_message_id": "msg-0c1e484df4da"
+    },
+    {
+      "id": "thread-4d7d51f92ebc",
+      "subject": "[statnet_help] ergm's that adjust for network size and composition effects",
+      "message_count": 3,
+      "participants": [
+        "Khanna, Aditya [MED]",
+        "Pavel N. Krivitsky"
+      ],
+      "started": "2015-10-14T08:32:15Z",
+      "last_reply": "2015-10-26T07:38:39Z",
+      "root_message_id": "msg-4d7d51f92ebc"
+    },
+    {
+      "id": "thread-a76d06f4c48f",
+      "subject": "[statnet_help] recent statnet package releases: ndtv and tsna",
+      "message_count": 1,
+      "participants": [
+        "Skye Bender-deMoll"
+      ],
+      "started": "2015-10-15T14:01:36Z",
+      "last_reply": "2015-10-15T14:01:36Z",
+      "root_message_id": "msg-a76d06f4c48f"
+    },
+    {
+      "id": "thread-940f7efd908e",
+      "subject": "[statnet_help]  STERGM and bipartite networks",
+      "message_count": 2,
+      "participants": [
+        "Benton, Richard",
+        "Pavel N. Krivitsky"
+      ],
+      "started": "2015-10-20T07:04:54Z",
+      "last_reply": "2015-10-25T18:40:08Z",
+      "root_message_id": "msg-940f7efd908e"
+    }
+  ]
+}

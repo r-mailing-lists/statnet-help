@@ -1,0 +1,242 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2013-09",
+  "messages": [
+    {
+      "id": "msg-4a33e26630e7",
+      "message_id": "<5232D230.4020207@uni-konstanz.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "0e8856775b020043f064c122aa5e96f11a67360200ec15df7ed5c1cadf4a2652",
+      "date": "2013-09-13T01:52:00Z",
+      "subject": "[statnet_help] Interpretation of curved model terms if MPLE is used",
+      "subject_clean": "[statnet_help] Interpretation of curved model terms if MPLE is used",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nHow can I interpret curved model terms like GWESP if I fit an ergm using \nMPLE and if the alpha value is not fixed? I noticed that no alpha value \nis reported. I guess the parameter is not estimated? If not, what fixed \nparameter is used? Here is a minimal example comparing MCMC and MPLE - \nMLE has 3 and MPLE has 2 parameters:\n\nlibrary(ergm)\nmat <- matrix(rbinom(100, 1, .25), nrow = 10, ncol = 10)\ndiag(mat) <- 0\nnw <- network(mat)\nfit.mle <- ergm(nw ~ edges + gwesp, estimate = \"MLE\")\nsummary(fit.mle)\nfit.mple <- ergm(nw ~ edges + gwesp, estimate = \"MPLE\")\nsummary(fit.mple)\n\nThanks,\n\nPhilip",
+      "body_snippet": "Hi,\n\nHow can I interpret curved model terms like GWESP if I fit an ergm using \nMPLE and if the alpha value is not fixed? I noticed that no alpha value \nis reported. I guess the parameter is not estima",
+      "thread_id": "thread-4a33e26630e7",
+      "thread_depth": 0,
+      "month": "2013-09"
+    },
+    {
+      "id": "msg-f82ef69cf041",
+      "message_id": "<alpine.WNT.1.10.1309131058170.7612@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-09-13T10:58:52Z",
+      "subject": "[statnet_help] Interpretation of curved model terms if MPLE is used",
+      "subject_clean": "[statnet_help] Interpretation of curved model terms if MPLE is used",
+      "in_reply_to": "<5232D230.4020207@uni-konstanz.de>",
+      "references": [
+        "<5232D230.4020207@uni-konstanz.de>"
+      ],
+      "body_plain": "Hi Philip,\n\nYou can recover the alpha parameter with:  fit.mle$coef\n\nfit.mle$coef\n       edges       gwesp gwesp.alpha\n  -1.3518520   0.4408169  -0.9306589\n\nbest,\nmm\n\nOn Fri, 13 Sep 2013, Philip Leifeld wrote:\n\n> Hi,\n>\n> How can I interpret curved model terms like GWESP if I fit an ergm using MPLE \n> and if the alpha value is not fixed? I noticed that no alpha value is \n> reported. I guess the parameter is not estimated? If not, what fixed \n> parameter is used? Here is a minimal example comparing MCMC and MPLE - MLE \n> has 3 and MPLE has 2 parameters:\n>\n> library(ergm)\n> mat <- matrix(rbinom(100, 1, .25), nrow = 10, ncol = 10)\n> diag(mat) <- 0\n> nw <- network(mat)\n> fit.mle <- ergm(nw ~ edges + gwesp, estimate = \"MLE\")\n> summary(fit.mle)\n> fit.mple <- ergm(nw ~ edges + gwesp, estimate = \"MPLE\")\n> summary(fit.mple)\n>\n> Thanks,\n>\n> Philip\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Philip,\n\nYou can recover the alpha parameter with:  fit.mle$coef\n\nfit.mle$coef\n       edges       gwesp gwesp.alpha\n  -1.3518520   0.4408169  -0.9306589\n\nbest,\nmm\n\nOn Fri, 13 Sep 2013, Philip Leife",
+      "thread_id": "thread-4a33e26630e7",
+      "thread_depth": 1,
+      "month": "2013-09"
+    },
+    {
+      "id": "msg-8fb245f7e384",
+      "message_id": "<E06837D3-299A-4065-A9BF-A69DEBEB3E78@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2013-09-14T04:58:17Z",
+      "subject": "[statnet_help] Interpretation of curved model terms if MPLE is used",
+      "subject_clean": "[statnet_help] Interpretation of curved model terms if MPLE is used",
+      "in_reply_to": "<alpine.WNT.1.10.1309131058170.7612@morrism-PC>",
+      "references": [
+        "<5232D230.4020207@uni-konstanz.de>",
+        "<alpine.WNT.1.10.1309131058170.7612@morrism-PC>"
+      ],
+      "body_plain": "Hi, Philip.  Just to add to what Martina said:  That will work for the MLE, but for the MPLE it's more subtle.  In fact, the value of alpha is zero--the default.  Observe:\n\n> data(faux.mesa.high)\n> ergm(faux.mesa.high~gwesp, estimate=\"MPLE\")\n\nMPLE Coefficients:\n  gwesp  \n-0.4868  \n> ergm(faux.mesa.high~gwesp(alpha=0), estimate=\"MPLE\")\n\nMPLE Coefficients:\n  gwesp  \n-0.4868  \n\n\nBottom line, there is no implementation for a meaningful MPLE for alpha when fixed=FALSE is used.  Perhaps we could give a warning in this case, but trying to anticipate all possibilities where such a warning should be issued is probably too difficult.  Maybe the best thing for us to do is to add \"alpha=0\" to the documentation so it's clearer what the default is.\n\nBest,\nDave\n\n\nOn Sep 13, 2013, at 1:58 PM, martina morris wrote:\n\n> Hi Philip,\n> \n> You can recover the alpha parameter with:  fit.mle$coef\n> \n> fit.mle$coef\n>      edges       gwesp gwesp.alpha\n> -1.3518520   0.4408169  -0.9306589\n> \n> best,\n> mm\n> \n> On Fri, 13 Sep 2013, Philip Leifeld wrote:\n> \n>> Hi,\n>> \n>> How can I interpret curved model terms like GWESP if I fit an ergm using MPLE and if the alpha value is not fixed? I noticed that no alpha value is reported. I guess the parameter is not estimated? If not, what fixed parameter is used? Here is a minimal example comparing MCMC and MPLE - MLE has 3 and MPLE has 2 parameters:\n>> \n>> library(ergm)\n>> mat <- matrix(rbinom(100, 1, .25), nrow = 10, ncol = 10)\n>> diag(mat) <- 0\n>> nw <- network(mat)\n>> fit.mle <- ergm(nw ~ edges + gwesp, estimate = \"MLE\")\n>> summary(fit.mle)\n>> fit.mple <- ergm(nw ~ edges + gwesp, estimate = \"MPLE\")\n>> summary(fit.mple)\n>> \n>> Thanks,\n>> \n>> Philip\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>> \n> \n> ****************************************************************\n> Professor of Sociology and Statistics\n> Director, UWCFAR Sociobehavioral and Prevention Research Core\n> Box 354322\n> University of Washington\n> Seattle, WA 98195-4322\n> \n> Office:        (206) 685-3402\n> Dept Office:   (206) 543-5882, 543-7237\n> Fax:           (206) 685-7419\n> \n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi, Philip.  Just to add to what Martina said:  That will work for the MLE, but for the MPLE it's more subtle.  In fact, the value of alpha is zero--the default.  Observe:\n\n> data(faux.mesa.high)\n> er",
+      "thread_id": "thread-4a33e26630e7",
+      "thread_depth": 2,
+      "month": "2013-09"
+    },
+    {
+      "id": "msg-b3e170116d4e",
+      "message_id": "<52345486.5010107@uni-konstanz.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "0e8856775b020043f064c122aa5e96f11a67360200ec15df7ed5c1cadf4a2652",
+      "date": "2013-09-14T05:20:22Z",
+      "subject": "[statnet_help] Interpretation of curved model terms if MPLE is used",
+      "subject_clean": "[statnet_help] Interpretation of curved model terms if MPLE is used",
+      "in_reply_to": "<E06837D3-299A-4065-A9BF-A69DEBEB3E78@stat.psu.edu>",
+      "references": [
+        "<5232D230.4020207@uni-konstanz.de>",
+        "<alpine.WNT.1.10.1309131058170.7612@morrism-PC>",
+        "<E06837D3-299A-4065-A9BF-A69DEBEB3E78@stat.psu.edu>"
+      ],
+      "body_plain": "Great, this answers my question. Thanks very much. I think adding alpha \n= 0 to the documentation would be helpful. And it would be nice if MPLE \nand MCMC MLE reported the same coefficients (either with or without the \nfixed alpha value listed as a coefficient. In the current \nimplementation, fixed alpha parameters are reported as coefficients by \nthe MLE but not by the MPLE. This causes trouble in my case because I am \nusing the simulate function to simulate new networks from an MPLE-based \nERGM including a gwesp term. I think the problem is that \ncoef.sublength.model() counts one more term than is actually present \nbecause it assumes that the alpha parameter is listed under coef, and \nthus the simulate function throws an error. Can you confirm this?\n\nPhilip\n\nAm 14.09.2013 13:58, schrieb David Hunter:\n> Hi, Philip.  Just to add to what Martina said:  That will work for the MLE, but for the MPLE it's more subtle.  In fact, the value of alpha is zero--the default.  Observe:\n>\n>> data(faux.mesa.high)\n>> ergm(faux.mesa.high~gwesp, estimate=\"MPLE\")\n>\n> MPLE Coefficients:\n>    gwesp\n> -0.4868\n>> ergm(faux.mesa.high~gwesp(alpha=0), estimate=\"MPLE\")\n>\n> MPLE Coefficients:\n>    gwesp\n> -0.4868\n>\n>\n> Bottom line, there is no implementation for a meaningful MPLE for alpha when fixed=FALSE is used.  Perhaps we could give a warning in this case, but trying to anticipate all possibilities where such a warning should be issued is probably too difficult.  Maybe the best thing for us to do is to add \"alpha=0\" to the documentation so it's clearer what the default is.\n>\n> Best,\n> Dave\n>\n>\n> On Sep 13, 2013, at 1:58 PM, martina morris wrote:\n>\n>> Hi Philip,\n>>\n>> You can recover the alpha parameter with:  fit.mle$coef\n>>\n>> fit.mle$coef\n>>       edges       gwesp gwesp.alpha\n>> -1.3518520   0.4408169  -0.9306589\n>>\n>> best,\n>> mm\n>>\n>> On Fri, 13 Sep 2013, Philip Leifeld wrote:\n>>\n>>> Hi,\n>>>\n>>> How can I interpret curved model terms like GWESP if I fit an ergm using MPLE and if the alpha value is not fixed? I noticed that no alpha value is reported. I guess the parameter is not estimated? If not, what fixed parameter is used? Here is a minimal example comparing MCMC and MPLE - MLE has 3 and MPLE has 2 parameters:\n>>>\n>>> library(ergm)\n>>> mat <- matrix(rbinom(100, 1, .25), nrow = 10, ncol = 10)\n>>> diag(mat) <- 0\n>>> nw <- network(mat)\n>>> fit.mle <- ergm(nw ~ edges + gwesp, estimate = \"MLE\")\n>>> summary(fit.mle)\n>>> fit.mple <- ergm(nw ~ edges + gwesp, estimate = \"MPLE\")\n>>> summary(fit.mple)\n>>>\n>>> Thanks,\n>>>\n>>> Philip\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>>\n>> ****************************************************************\n>> Professor of Sociology and Statistics\n>> Director, UWCFAR Sociobehavioral and Prevention Research Core\n>> Box 354322\n>> University of Washington\n>> Seattle, WA 98195-4322\n>>\n>> Office:        (206) 685-3402\n>> Dept Office:   (206) 543-5882, 543-7237\n>> Fax:           (206) 685-7419\n>>\n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Great, this answers my question. Thanks very much. I think adding alpha \n= 0 to the documentation would be helpful. And it would be nice if MPLE \nand MCMC MLE reported the same coefficients (either wi",
+      "thread_id": "thread-4a33e26630e7",
+      "thread_depth": 3,
+      "month": "2013-09"
+    },
+    {
+      "id": "msg-67974094f7e4",
+      "message_id": "<326C5829-3D9E-4473-B4C9-4C955B7A15F4@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2013-09-14T06:07:20Z",
+      "subject": "[statnet_help] Interpretation of curved model terms if MPLE is used",
+      "subject_clean": "[statnet_help] Interpretation of curved model terms if MPLE is used",
+      "in_reply_to": "<52345486.5010107@uni-konstanz.de>",
+      "references": [
+        "<5232D230.4020207@uni-konstanz.de>",
+        "<alpine.WNT.1.10.1309131058170.7612@morrism-PC>",
+        "<E06837D3-299A-4065-A9BF-A69DEBEB3E78@stat.psu.edu>",
+        "<52345486.5010107@uni-konstanz.de>"
+      ],
+      "body_plain": "Hi, Philip.  I'm not sure I fully understand:  I don't believe that an alpha value is reported by MLE when fixed=TRUE, only when fixed=FALSE.  But when MPLE is used, fixed=FALSE makes no sense.  In other words, for fixed=TRUE, both methods produce the same number of coefficients; whereas for fixed=FALSE, MPLE should not be used.\n\nI think that maybe the confusion only arises when fixed=FALSE is used with MPLE.  I see your point that it might be helpful to have one additional coefficient output in that case, namely the (actually fixed!) value of alpha.  But it seems this might encourage the use of fixed=FALSE with MPLE, which is probably not good.\n\nSorry if I'm misunderstanding something!\n\nDave\n\nPS.  I added alpha=0 to the documentation, so that should show up with the next release of ergm.\n\n\n\nOn Sep 14, 2013, at 8:20 AM, Philip Leifeld wrote:\n\n> Great, this answers my question. Thanks very much. I think adding alpha = 0 to the documentation would be helpful. And it would be nice if MPLE and MCMC MLE reported the same coefficients (either with or without the fixed alpha value listed as a coefficient. In the current implementation, fixed alpha parameters are reported as coefficients by the MLE but not by the MPLE. This causes trouble in my case because I am using the simulate function to simulate new networks from an MPLE-based ERGM including a gwesp term. I think the problem is that coef.sublength.model() counts one more term than is actually present because it assumes that the alpha parameter is listed under coef, and thus the simulate function throws an error. Can you confirm this?\n> \n> Philip\n> \n> Am 14.09.2013 13:58, schrieb David Hunter:\n>> Hi, Philip.  Just to add to what Martina said:  That will work for the MLE, but for the MPLE it's more subtle.  In fact, the value of alpha is zero--the default.  Observe:\n>> \n>>> data(faux.mesa.high)\n>>> ergm(faux.mesa.high~gwesp, estimate=\"MPLE\")\n>> \n>> MPLE Coefficients:\n>>   gwesp\n>> -0.4868\n>>> ergm(faux.mesa.high~gwesp(alpha=0), estimate=\"MPLE\")\n>> \n>> MPLE Coefficients:\n>>   gwesp\n>> -0.4868\n>> \n>> \n>> Bottom line, there is no implementation for a meaningful MPLE for alpha when fixed=FALSE is used.  Perhaps we could give a warning in this case, but trying to anticipate all possibilities where such a warning should be issued is probably too difficult.  Maybe the best thing for us to do is to add \"alpha=0\" to the documentation so it's clearer what the default is.\n>> \n>> Best,\n>> Dave\n>> \n>> \n>> On Sep 13, 2013, at 1:58 PM, martina morris wrote:\n>> \n>>> Hi Philip,\n>>> \n>>> You can recover the alpha parameter with:  fit.mle$coef\n>>> \n>>> fit.mle$coef\n>>>      edges       gwesp gwesp.alpha\n>>> -1.3518520   0.4408169  -0.9306589\n>>> \n>>> best,\n>>> mm\n>>> \n>>> On Fri, 13 Sep 2013, Philip Leifeld wrote:\n>>> \n>>>> Hi,\n>>>> \n>>>> How can I interpret curved model terms like GWESP if I fit an ergm using MPLE and if the alpha value is not fixed? I noticed that no alpha value is reported. I guess the parameter is not estimated? If not, what fixed parameter is used? Here is a minimal example comparing MCMC and MPLE - MLE has 3 and MPLE has 2 parameters:\n>>>> \n>>>> library(ergm)\n>>>> mat <- matrix(rbinom(100, 1, .25), nrow = 10, ncol = 10)\n>>>> diag(mat) <- 0\n>>>> nw <- network(mat)\n>>>> fit.mle <- ergm(nw ~ edges + gwesp, estimate = \"MLE\")\n>>>> summary(fit.mle)\n>>>> fit.mple <- ergm(nw ~ edges + gwesp, estimate = \"MPLE\")\n>>>> summary(fit.mple)\n>>>> \n>>>> Thanks,\n>>>> \n>>>> Philip\n>>>> _______________________________________________\n>>>> statnet_help mailing list\n>>>> statnet_help@u.washington.edu\n>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>> \n>>> \n>>> ****************************************************************\n>>> Professor of Sociology and Statistics\n>>> Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>> Box 354322\n>>> University of Washington\n>>> Seattle, WA 98195-4322\n>>> \n>>> Office:        (206) 685-3402\n>>> Dept Office:   (206) 543-5882, 543-7237\n>>> Fax:           (206) 685-7419\n>>> \n>>> morrism@u.washington.edu\n>>> http://faculty.washington.edu/morrism/\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>",
+      "body_snippet": "Hi, Philip.  I'm not sure I fully understand:  I don't believe that an alpha value is reported by MLE when fixed=TRUE, only when fixed=FALSE.  But when MPLE is used, fixed=FALSE makes no sense.  In ot",
+      "thread_id": "thread-4a33e26630e7",
+      "thread_depth": 4,
+      "month": "2013-09"
+    },
+    {
+      "id": "msg-b4b2b85181cf",
+      "message_id": "<5234647F.3050207@uni-konstanz.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "0e8856775b020043f064c122aa5e96f11a67360200ec15df7ed5c1cadf4a2652",
+      "date": "2013-09-14T06:28:31Z",
+      "subject": "[statnet_help] Interpretation of curved model terms if MPLE is used",
+      "subject_clean": "[statnet_help] Interpretation of curved model terms if MPLE is used",
+      "in_reply_to": "<326C5829-3D9E-4473-B4C9-4C955B7A15F4@stat.psu.edu>",
+      "references": [
+        "<5232D230.4020207@uni-konstanz.de>",
+        "<alpine.WNT.1.10.1309131058170.7612@morrism-PC>",
+        "<E06837D3-299A-4065-A9BF-A69DEBEB3E78@stat.psu.edu>",
+        "<52345486.5010107@uni-konstanz.de>",
+        "<326C5829-3D9E-4473-B4C9-4C955B7A15F4@stat.psu.edu>"
+      ],
+      "body_plain": "Hi Dave,\n\nYou are right that MLE with fixed = TRUE produces only one coefficient. \nHowever, consider the following example:\n\nlibrary(ergm)\ndata(faux.mesa.high)\n\ntest1 <- ergm(faux.mesa.high ~ gwesp(alpha = 0), estimate=\"MPLE\")\nsim <- simulate(test1)  # throws an error\n\ntest2 <- ergm(faux.mesa.high ~ gwesp(alpha = 0, fixed = TRUE), \nestimate=\"MPLE\")\nsim <- simulate(test2)  # works fine\n\nThe error message is:\n\ncoef has 1 elements, while the model requires 2 parameters.\n\nThanks,\nPhilip\n\nAm 14.09.2013 15:07, schrieb David Hunter:\n> Hi, Philip.  I'm not sure I fully understand:  I don't believe that an alpha value is reported by MLE when fixed=TRUE, only when fixed=FALSE.  But when MPLE is used, fixed=FALSE makes no sense.  In other words, for fixed=TRUE, both methods produce the same number of coefficients; whereas for fixed=FALSE, MPLE should not be used.\n>\n> I think that maybe the confusion only arises when fixed=FALSE is used with MPLE.  I see your point that it might be helpful to have one additional coefficient output in that case, namely the (actually fixed!) value of alpha.  But it seems this might encourage the use of fixed=FALSE with MPLE, which is probably not good.\n>\n> Sorry if I'm misunderstanding something!\n>\n> Dave\n>\n> PS.  I added alpha=0 to the documentation, so that should show up with the next release of ergm.\n>\n>\n>\n> On Sep 14, 2013, at 8:20 AM, Philip Leifeld wrote:\n>\n>> Great, this answers my question. Thanks very much. I think adding alpha = 0 to the documentation would be helpful. And it would be nice if MPLE and MCMC MLE reported the same coefficients (either with or without the fixed alpha value listed as a coefficient. In the current implementation, fixed alpha parameters are reported as coefficients by the MLE but not by the MPLE. This causes trouble in my case because I am using the simulate function to simulate new networks from an MPLE-based ERGM including a gwesp term. I think the problem is that coef.sublength.model() counts one more term than is actually present because it assumes that the alpha parameter is listed under coef, and thus the simulate function throws an error. Can you confirm this?\n>>\n>> Philip\n>>\n>> Am 14.09.2013 13:58, schrieb David Hunter:\n>>> Hi, Philip.  Just to add to what Martina said:  That will work for the MLE, but for the MPLE it's more subtle.  In fact, the value of alpha is zero--the default.  Observe:\n>>>\n>>>> data(faux.mesa.high)\n>>>> ergm(faux.mesa.high~gwesp, estimate=\"MPLE\")\n>>>\n>>> MPLE Coefficients:\n>>>    gwesp\n>>> -0.4868\n>>>> ergm(faux.mesa.high~gwesp(alpha=0), estimate=\"MPLE\")\n>>>\n>>> MPLE Coefficients:\n>>>    gwesp\n>>> -0.4868\n>>>\n>>>\n>>> Bottom line, there is no implementation for a meaningful MPLE for alpha when fixed=FALSE is used.  Perhaps we could give a warning in this case, but trying to anticipate all possibilities where such a warning should be issued is probably too difficult.  Maybe the best thing for us to do is to add \"alpha=0\" to the documentation so it's clearer what the default is.\n>>>\n>>> Best,\n>>> Dave\n>>>\n>>>\n>>> On Sep 13, 2013, at 1:58 PM, martina morris wrote:\n>>>\n>>>> Hi Philip,\n>>>>\n>>>> You can recover the alpha parameter with:  fit.mle$coef\n>>>>\n>>>> fit.mle$coef\n>>>>       edges       gwesp gwesp.alpha\n>>>> -1.3518520   0.4408169  -0.9306589\n>>>>\n>>>> best,\n>>>> mm\n>>>>\n>>>> On Fri, 13 Sep 2013, Philip Leifeld wrote:\n>>>>\n>>>>> Hi,\n>>>>>\n>>>>> How can I interpret curved model terms like GWESP if I fit an ergm using MPLE and if the alpha value is not fixed? I noticed that no alpha value is reported. I guess the parameter is not estimated? If not, what fixed parameter is used? Here is a minimal example comparing MCMC and MPLE - MLE has 3 and MPLE has 2 parameters:\n>>>>>\n>>>>> library(ergm)\n>>>>> mat <- matrix(rbinom(100, 1, .25), nrow = 10, ncol = 10)\n>>>>> diag(mat) <- 0\n>>>>> nw <- network(mat)\n>>>>> fit.mle <- ergm(nw ~ edges + gwesp, estimate = \"MLE\")\n>>>>> summary(fit.mle)\n>>>>> fit.mple <- ergm(nw ~ edges + gwesp, estimate = \"MPLE\")\n>>>>> summary(fit.mple)\n>>>>>\n>>>>> Thanks,\n>>>>>\n>>>>> Philip\n>>>>> _______________________________________________\n>>>>> statnet_help mailing list\n>>>>> statnet_help@u.washington.edu\n>>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>>>\n>>>>\n>>>> ****************************************************************\n>>>> Professor of Sociology and Statistics\n>>>> Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>>> Box 354322\n>>>> University of Washington\n>>>> Seattle, WA 98195-4322\n>>>>\n>>>> Office:        (206) 685-3402\n>>>> Dept Office:   (206) 543-5882, 543-7237\n>>>> Fax:           (206) 685-7419\n>>>>\n>>>> morrism@u.washington.edu\n>>>> http://faculty.washington.edu/morrism/\n>>>> _______________________________________________\n>>>> statnet_help mailing list\n>>>> statnet_help@u.washington.edu\n>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>",
+      "body_snippet": "Hi Dave,\n\nYou are right that MLE with fixed = TRUE produces only one coefficient. \nHowever, consider the following example:\n\nlibrary(ergm)\ndata(faux.mesa.high)\n\ntest1 <- ergm(faux.mesa.high ~ gwesp(al",
+      "thread_id": "thread-4a33e26630e7",
+      "thread_depth": 5,
+      "month": "2013-09"
+    },
+    {
+      "id": "msg-7bec41c9d49b",
+      "message_id": "<2AFAB457-98C8-4838-B5F1-7B6271CC0F04@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2013-09-14T06:42:58Z",
+      "subject": "[statnet_help] Interpretation of curved model terms if MPLE is used",
+      "subject_clean": "[statnet_help] Interpretation of curved model terms if MPLE is used",
+      "in_reply_to": "<5234647F.3050207@uni-konstanz.de>",
+      "references": [
+        "<5232D230.4020207@uni-konstanz.de>",
+        "<alpine.WNT.1.10.1309131058170.7612@morrism-PC>",
+        "<E06837D3-299A-4065-A9BF-A69DEBEB3E78@stat.psu.edu>",
+        "<52345486.5010107@uni-konstanz.de>",
+        "<326C5829-3D9E-4473-B4C9-4C955B7A15F4@stat.psu.edu>",
+        "<5234647F.3050207@uni-konstanz.de>"
+      ],
+      "body_plain": "Thanks, Philip, for the instructive example!  You're right that the first instance should not throw an error and should in fact behave like the second instance, since the default fixed=FALSE is implicitly being changed to fixed=TRUE because of the MPLE.\n\nI'll see about trying to fix this for the next release.\n\nDave\n\n\nOn Sep 14, 2013, at 9:28 AM, Philip Leifeld wrote:\n\n> Hi Dave,\n> \n> You are right that MLE with fixed = TRUE produces only one coefficient. However, consider the following example:\n> \n> library(ergm)\n> data(faux.mesa.high)\n> \n> test1 <- ergm(faux.mesa.high ~ gwesp(alpha = 0), estimate=\"MPLE\")\n> sim <- simulate(test1)  # throws an error\n> \n> test2 <- ergm(faux.mesa.high ~ gwesp(alpha = 0, fixed = TRUE), estimate=\"MPLE\")\n> sim <- simulate(test2)  # works fine\n> \n> The error message is:\n> \n> coef has 1 elements, while the model requires 2 parameters.\n> \n> Thanks,\n> Philip\n> \n> Am 14.09.2013 15:07, schrieb David Hunter:\n>> Hi, Philip.  I'm not sure I fully understand:  I don't believe that an alpha value is reported by MLE when fixed=TRUE, only when fixed=FALSE.  But when MPLE is used, fixed=FALSE makes no sense.  In other words, for fixed=TRUE, both methods produce the same number of coefficients; whereas for fixed=FALSE, MPLE should not be used.\n>> \n>> I think that maybe the confusion only arises when fixed=FALSE is used with MPLE.  I see your point that it might be helpful to have one additional coefficient output in that case, namely the (actually fixed!) value of alpha.  But it seems this might encourage the use of fixed=FALSE with MPLE, which is probably not good.\n>> \n>> Sorry if I'm misunderstanding something!\n>> \n>> Dave\n>> \n>> PS.  I added alpha=0 to the documentation, so that should show up with the next release of ergm.\n>> \n>> \n>> \n>> On Sep 14, 2013, at 8:20 AM, Philip Leifeld wrote:\n>> \n>>> Great, this answers my question. Thanks very much. I think adding alpha = 0 to the documentation would be helpful. And it would be nice if MPLE and MCMC MLE reported the same coefficients (either with or without the fixed alpha value listed as a coefficient. In the current implementation, fixed alpha parameters are reported as coefficients by the MLE but not by the MPLE. This causes trouble in my case because I am using the simulate function to simulate new networks from an MPLE-based ERGM including a gwesp term. I think the problem is that coef.sublength.model() counts one more term than is actually present because it assumes that the alpha parameter is listed under coef, and thus the simulate function throws an error. Can you confirm this?\n>>> \n>>> Philip\n>>> \n>>> Am 14.09.2013 13:58, schrieb David Hunter:\n>>>> Hi, Philip.  Just to add to what Martina said:  That will work for the MLE, but for the MPLE it's more subtle.  In fact, the value of alpha is zero--the default.  Observe:\n>>>> \n>>>>> data(faux.mesa.high)\n>>>>> ergm(faux.mesa.high~gwesp, estimate=\"MPLE\")\n>>>> \n>>>> MPLE Coefficients:\n>>>>   gwesp\n>>>> -0.4868\n>>>>> ergm(faux.mesa.high~gwesp(alpha=0), estimate=\"MPLE\")\n>>>> \n>>>> MPLE Coefficients:\n>>>>   gwesp\n>>>> -0.4868\n>>>> \n>>>> \n>>>> Bottom line, there is no implementation for a meaningful MPLE for alpha when fixed=FALSE is used.  Perhaps we could give a warning in this case, but trying to anticipate all possibilities where such a warning should be issued is probably too difficult.  Maybe the best thing for us to do is to add \"alpha=0\" to the documentation so it's clearer what the default is.\n>>>> \n>>>> Best,\n>>>> Dave\n>>>> \n>>>> \n>>>> On Sep 13, 2013, at 1:58 PM, martina morris wrote:\n>>>> \n>>>>> Hi Philip,\n>>>>> \n>>>>> You can recover the alpha parameter with:  fit.mle$coef\n>>>>> \n>>>>> fit.mle$coef\n>>>>>      edges       gwesp gwesp.alpha\n>>>>> -1.3518520   0.4408169  -0.9306589\n>>>>> \n>>>>> best,\n>>>>> mm\n>>>>> \n>>>>> On Fri, 13 Sep 2013, Philip Leifeld wrote:\n>>>>> \n>>>>>> Hi,\n>>>>>> \n>>>>>> How can I interpret curved model terms like GWESP if I fit an ergm using MPLE and if the alpha value is not fixed? I noticed that no alpha value is reported. I guess the parameter is not estimated? If not, what fixed parameter is used? Here is a minimal example comparing MCMC and MPLE - MLE has 3 and MPLE has 2 parameters:\n>>>>>> \n>>>>>> library(ergm)\n>>>>>> mat <- matrix(rbinom(100, 1, .25), nrow = 10, ncol = 10)\n>>>>>> diag(mat) <- 0\n>>>>>> nw <- network(mat)\n>>>>>> fit.mle <- ergm(nw ~ edges + gwesp, estimate = \"MLE\")\n>>>>>> summary(fit.mle)\n>>>>>> fit.mple <- ergm(nw ~ edges + gwesp, estimate = \"MPLE\")\n>>>>>> summary(fit.mple)\n>>>>>> \n>>>>>> Thanks,\n>>>>>> \n>>>>>> Philip\n>>>>>> _______________________________________________\n>>>>>> statnet_help mailing list\n>>>>>> statnet_help@u.washington.edu\n>>>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>>>> \n>>>>> \n>>>>> ****************************************************************\n>>>>> Professor of Sociology and Statistics\n>>>>> Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>>>> Box 354322\n>>>>> University of Washington\n>>>>> Seattle, WA 98195-4322\n>>>>> \n>>>>> Office:        (206) 685-3402\n>>>>> Dept Office:   (206) 543-5882, 543-7237\n>>>>> Fax:           (206) 685-7419\n>>>>> \n>>>>> morrism@u.washington.edu\n>>>>> http://faculty.washington.edu/morrism/\n>>>>> _______________________________________________\n>>>>> statnet_help mailing list\n>>>>> statnet_help@u.washington.edu\n>>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>> \n>>",
+      "body_snippet": "Thanks, Philip, for the instructive example!  You're right that the first instance should not throw an error and should in fact behave like the second instance, since the default fixed=FALSE is implic",
+      "thread_id": "thread-4a33e26630e7",
+      "thread_depth": 6,
+      "month": "2013-09"
+    },
+    {
+      "id": "msg-2d4b3b95b5d5",
+      "message_id": "<1379488076.18030.mnt23021@law.ritsumei.ac.jp>",
+      "from_name": "megumi nishimura",
+      "from_email_hash": "ae4b0f6185210f5ff5dc2cff29c3961dcc310f2f7a2c0d750955eb4c5361f827",
+      "date": "2013-09-18T00:07:56Z",
+      "subject": "[statnet_help] gwb1degree, gwb2degree, gwdsp, when alpha=0 or 1",
+      "subject_clean": "[statnet_help] gwb1degree, gwb2degree, gwdsp, when alpha=0 or 1",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi=20Martina,=20\r\n\r\nIn=20fact,=20we=20had=20very=20high=20correlation=20(=3D0.98)=20bet.=20edges=\r\n=20term=20&=20gwDsp.=20(But=20not=20+0.99=20as=20you=20instructed=20below)\r\n\r\n1)=20why=20high=20correlations=20between=20edges=20term=20&=20gwDsp=20is=20a=\r\n=20problem?\r\n\r\n2)=20Is=20a=20correlation=20=3D0.98=20a=20problem??=20Above=20what=20value=20=\r\na=20high=20correlation=20a=20problem?\r\n\r\nI=20look=20forward=20to=20hearing=20from=20you=20again.\r\n\r\nSincerely,\r\n\r\nMegumi\r\n\r\n\r\nMegumi,=20\r\n\r\nThese=20value=20of=20alpha=20are=20not=20inherently=20problematic.=20But=20y=\r\nou=20should=20be=20\r\naware=20of=20the=20impact=20on=20the=20interpretation=20of=20the=20gwdsp=20t=\r\nerm,=20and=20pay=20\r\nattention=20to=20the=20impact=20on=20the=20correlation=20between=20the=20gwd=\r\nsp=20term=20and=20the=20\r\nedges=20term.=20For=20very=20dense=20networks,=20setting=20alpha=3D0=20can=20=\r\nresult=20in=20very=20\r\nhigh=20correlations=20(.99+)=20between=20edges=20and=20gwEsp=20terms.=20I'm=20=\r\nnot=20sure=20\r\nwhether=20the=20same=20holds=20for=20gwDsp=20terms,=20but=20you=20should=20k=\r\neep=20an=20eye=20on=20it.=20\r\nIf=20that=20problem=20does=20occur,=20increasing=20alpha=20may=20help.=20\r\n\r\nbest,=20\r\nMartina=20\r\n\r\nOn=20Sun,=2011=20Aug=202013,=20megumi=20nishimura=20wrote:=20\r\n\r\n\r\n>=20Dear=20statnet=20community,=20\r\n\r\n>=20\r\n\r\n>=20Relating=20the=20below=20communications,=20I=20have=20slightly=20differe=\r\nnt=20questions.=20\r\n\r\n>=20\r\n\r\n>=20I=20run=20bipartite=20network=20models=20which=20include=20gwb1degree,=20=\r\ngwb2degree,=20gwdsp.=20I=20set=20my=20alphas=20for=20these=20parameter=20as=20=\r\ngwb1degree(alpha=3D1),=20gwb2degree(alpha=3D1),=20gwdsp(alpha=3D0).=20I=20co=\r\nuld=20NON-degenerating=20models,=20and=20produced=20some=20estimations.=20\r\n\r\n>=20\r\n\r\n>=20I=20set=20these=20alpha=20parameters,=20because=20they=20recover=20my=20=\r\ngeodesic=20distance=20best=20in=20gof=20simulations=20from=20the=20various=20=\r\ncombinations=20of=20parameters.=20\r\n\r\n>=20\r\n\r\n>=20Is=20alpha=3D1=20or=200=20problematic?=20Can=20someone=20explain=20quali=\r\ntatively=20on=20how=20alpha=3D0=20and=20alpha=3D1=20differ=20substantially?=20=\r\nOr,=20in=20other=20words,=20how=20lower=20values=20of=20alpha=20and=20higher=\r\n=20value=20of=20alpha=20differ=20substantially?=20\r\n\r\n>=20\r\n\r\n>=20I=20look=20forward=20your=20reply.=20\r\n\r\n>=20\r\n\r\n>=20Sincerely,=20\r\n\r\n>=20\r\n\r\n>=20Megumi=20Nishimura=20\r\n\r\n>=20Ritsumeikan=20University=20",
+      "body_snippet": "Hi=20Martina,=20\r\n\r\nIn=20fact,=20we=20had=20very=20high=20correlation=20(=3D0.98)=20bet.=20edges=\r\n=20term=20&=20gwDsp.=20(But=20not=20+0.99=20as=20you=20instructed=20below)\r\n\r\n1)=20why=20high=20corre",
+      "thread_id": "thread-2d4b3b95b5d5",
+      "thread_depth": 0,
+      "month": "2013-09"
+    },
+    {
+      "id": "msg-f1b4e2df71f3",
+      "message_id": "<1379577900.22147.mnt23021@law.ritsumei.ac.jp>",
+      "from_name": "megumi nishimura",
+      "from_email_hash": "ae4b0f6185210f5ff5dc2cff29c3961dcc310f2f7a2c0d750955eb4c5361f827",
+      "date": "2013-09-19T01:05:00Z",
+      "subject": "[statnet_help] re: nodematch command in bipartite",
+      "subject_clean": "[statnet_help] re: nodematch command in bipartite",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear=20statnet=20community,\r\n\r\nI=20am=20interested=20in=20a=20kind=20of=20selective=20mixing=20in=20biparti=\r\nte.=20=20For=20instance,\r\n\r\nI=20have=203=20actors,=20and=205=20organization.=20=20I=20am=20interested=20=\r\nin=20whether=20Asian=20American=20is=20more=20likely=20to=20donate=20money=20=\r\nto=20an=20Asian=20organization,=20Italian=20Americans=20to=20an=20Italian=20=\r\nAmerican=20organization,=20Irish=20American=20citizens=20to=20a=20Irish=20Am=\r\nerican=20organization.=20=20(That=20is,=20issue=20on=20whether=20an=20actor'=\r\ns=20attribute=20influences=20her=20choices=20of=20organization=20by=20its=20=\r\nattributes.=20\r\n\r\nI=20code=20Asian=3D1,=20Asian=20organization=3D1,=20Italian=20American=3D2,=20=\r\nItalian=20American=20organization=3D2,=20Irish=20American=3D3,=20Irish=20org=\r\nanization=3D3.\r\n\r\n##Assume=20I=20had=20already=20recutangular=20edge=20lists=20file,=20and=20I=\r\n=20first=20create=20bipartite=20network=20with=203=20actors=20and=205=20even=\r\nts.\r\nmynet[,=202]<-mynet[,=202]+3\r\nmynet<-network(mynet,=20bipartite=3D3,=20directed=3DF)\r\n\r\n#I=20create=20actor=20attributes--(1)\r\nActorEthnic<-c(1,2,3,=20NA,=20NA,=20NA,=20NA,=20NA)\r\nmynet<-set.vertex.attribute(mynet,=20\"ActorEthnic\",=20ActorEthnic)\r\n\r\n##Then,=20I=20create=20organization=20attribute---(2)\r\nOrgEthnic<-c(NA,=20NA,=20NA,=201,=202,=203,=201,=202)\r\nmynet<-set.vertex.attribute(mynet,=20\"OrgEthnic\",=20OrgEthnic)\r\n\r\n##Then,=20I=20create=20a=20COMBINED=20((1)+(2))attribute=20of\r\nCombiEth<-c(1,=202,=203,=201,=202,=203,=201,=202)\r\nmynet<-set.vertex.attribute(mynet,=20\"CombiEth\",=20CombiEth)\r\n\r\n##Then,=20I=20ran=20my=20ergm.\r\nmodel1<-ergm(mynet~edges+b1factor(\"ActorEthnic\",=20base=3D1)+b2factor+(\"OrgE=\r\nthnic\",=20base=3D1)+nodematch(\"CombiEth\",=20diff=3DT,=20keep=3Dc(1,=202,=203=\r\n))\r\n,=20seed=3D100)\r\n\r\n\r\nIs=20this=20the=20right=20way=20to=20analyze=20the=20effects=20of=20selectiv=\r\ne=20mixing=20between=20actors=20and=20events???\r\n\r\nIf=20wrong,=20please=20tell=20me=20the=20right=20and=20simple=20way=20to=20d=\r\no.\r\n\r\nI=20look=20forward=20to=20hearing=20from=20somebody.\r\n\r\nMegumi=20Nishimura\r\nRitsumeikan=20University",
+      "body_snippet": "Dear=20statnet=20community,\r\n\r\nI=20am=20interested=20in=20a=20kind=20of=20selective=20mixing=20in=20biparti=\r\nte.=20=20For=20instance,\r\n\r\nI=20have=203=20actors,=20and=205=20organization.=20=20I=20am=2",
+      "thread_id": "thread-f1b4e2df71f3",
+      "thread_depth": 0,
+      "month": "2013-09"
+    },
+    {
+      "id": "msg-9de73a37150f",
+      "message_id": "<1379915705.8893.mnt23021@law.ritsumei.ac.jp>",
+      "from_name": "megumi nishimura",
+      "from_email_hash": "ae4b0f6185210f5ff5dc2cff29c3961dcc310f2f7a2c0d750955eb4c5361f827",
+      "date": "2013-09-22T22:55:05Z",
+      "subject": "[statnet_help] re: inter-relations bet. homophily & triad",
+      "subject_clean": "[statnet_help] re: inter-relations bet. homophily & triad",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear=20authors,\r\n\r\nI=20am=20reading=20Steven=20Goodreau,=20Jim=20Kitts,=20and=20Martina=20Morri=\r\ns,=20\"Birds=20of=20a=20feather,=20or=20friend=20of=20a=20friend?\"=20Demograp=\r\nhy,=20vol.=2046-1,=20February=202009,=20and=20a=20bit=20confusing=20about=20=\r\ntheir=20discussions=20on=20inter-relations=20between=20homophily=20and=20tri=\r\nad=20clusure=20(pp.=20106,=20115-116).=20I=20may=20be=20terribly=20misunders=\r\ntood=20something,=20but=20if=20you=20would=20help=20me=20to=20better=20under=\r\nstand=20their=20discussions,=20it=20would=20be=20very=20appreciated.\r\n\r\n1)=20First=20of=20all,=20do=20you=20discuss=20on=20inter-relations=20between=\r\n=20homophily=20ONLY=20&=20triad?=20=20Or,=20inter-relations=20between=20SELE=\r\nCTIVE=20MIXING=20(homophily+heterophily)=20&=20triad?=20=20If=20you=20discus=\r\ns=20on=20inter-relations=20between=20homophily=20ONLY=20&=20triad,=20why=20s=\r\no??=20=20It=20seems=20to=20me=20that=20heterophily=20also=20close=20triad,=20=\r\nlike=20the=20your=20figure=20b)=20in=20Figure=201=20of=20page=20106.=20=20=20=\r\n\r\n\r\nMore=20specifically,=20how=20can=20we=20interpret=20the=20pure=20triad=20GWE=\r\nSP=20coefficient=20of=20a=20full=20model=20in=20Table=202=20in=20page=20116.=\r\n=20=20Is=20it=20indicate=20pure=20triad=20force,=20after=20regress=20out=20(=\r\nhomophily=20only)=20or=20(homophily+hetelophily)??=20=20Is=20it=20indicate=20=\r\nthe=20phenomonon=20of=20b.=20of=20Figure=201=20in=20page=20106?=20=20Because=\r\n=20this=20b=20figure=20in=20page=20106=20seems=20to=20be=20created=20also=20=\r\nby=20heterophily,=20I=20do=20not=20understand=20much,=20because=20Your=20ter=\r\nm=20(in=20Talbe=202)=20includes=20the=20heterophilous=20phenomena,=20like=20=\r\nthe=20coefficient=20of=20Hispanic=20(negative=20coef).=20=20\r\n\r\n2)=20As=20for=20your=20interpretations=20of=20Table=202=20in=20page=20115-11=\r\n6,=20there=20is=20several=20points=20I=20do=20not=20really=20grasp.\r\n\r\nFirst,=20when=20the=20magnitudes=20of=20one=20category=20of=20a=20coeff=20in=\r\ncreases=20after=20having=20included=20a=20triad=20term,=20you=20explain=20th=\r\ne=20reason=20for=20that=20is=20that\"homophilous=20ties=20in=20this=20categor=\r\ny=20are=20less=20likely=20than=20others=20to=20be=20found=20in=20triangles.\"=\r\n---But,=20I=20do=20not=20still=20very=20much=20understand=20this=20phenomeno=\r\nn=20(That=20is,=20magnitude=20of=20one=20category=20increased=20after=20the=20=\r\ninclusion=20of=20a=20triad=20term.)---Do=20you=20have=20a=20more=20intuitive=\r\n=20explanation?\r\n\r\nSecond,=20if=20the=20magnitudes=20of=20a=20category=20of=20selective=20mixin=\r\ng=20does=20not=20change=20with=20or=20without=20a=20triad=20term,=20does=20t=\r\nhis=20mean=20simply=20that=20\"observed=20triads=20are=20basically=20driven=20=\r\nby=20selective=20mixing=20patterns?\"\r\n\r\nThird,=20I=20am=20more=20interested=20in=20the=20inter-relations=20between=20=\r\nselective=20mixing=20and=204-cycles,=20because=20I=20have=20a=20bipartite=20=\r\nnetwork.=20=20It=20your=20discussions=20on=20the=20inter-relations=20between=\r\n=20homophily=20(?=20selective=20mixing?)=20&=20triad=20basically=20remain=20=\r\nthe=20same?\r\n\r\nI=20look=20forward=20to=20hearing=20from=20you.\r\n\r\nSincerely,\r\n\r\nMegumi=20Nishimura\r\nRitsumeikan=20University",
+      "body_snippet": "Dear=20authors,\r\n\r\nI=20am=20reading=20Steven=20Goodreau,=20Jim=20Kitts,=20and=20Martina=20Morri=\r\ns,=20\"Birds=20of=20a=20feather,=20or=20friend=20of=20a=20friend?\"=20Demograp=\r\nhy,=20vol.=2046-1,=20Fe",
+      "thread_id": "thread-9de73a37150f",
+      "thread_depth": 0,
+      "month": "2013-09"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-4a33e26630e7",
+      "subject": "[statnet_help] Interpretation of curved model terms if MPLE is used",
+      "message_count": 7,
+      "participants": [
+        "David Hunter",
+        "Philip Leifeld",
+        "martina morris"
+      ],
+      "started": "2013-09-13T01:52:00Z",
+      "last_reply": "2013-09-14T06:42:58Z",
+      "root_message_id": "msg-4a33e26630e7"
+    },
+    {
+      "id": "thread-2d4b3b95b5d5",
+      "subject": "[statnet_help] gwb1degree, gwb2degree, gwdsp, when alpha=0 or 1",
+      "message_count": 1,
+      "participants": [
+        "megumi nishimura"
+      ],
+      "started": "2013-09-18T00:07:56Z",
+      "last_reply": "2013-09-18T00:07:56Z",
+      "root_message_id": "msg-2d4b3b95b5d5"
+    },
+    {
+      "id": "thread-f1b4e2df71f3",
+      "subject": "[statnet_help] re: nodematch command in bipartite",
+      "message_count": 1,
+      "participants": [
+        "megumi nishimura"
+      ],
+      "started": "2013-09-19T01:05:00Z",
+      "last_reply": "2013-09-19T01:05:00Z",
+      "root_message_id": "msg-f1b4e2df71f3"
+    },
+    {
+      "id": "thread-9de73a37150f",
+      "subject": "[statnet_help] re: inter-relations bet. homophily & triad",
+      "message_count": 1,
+      "participants": [
+        "megumi nishimura"
+      ],
+      "started": "2013-09-22T22:55:05Z",
+      "last_reply": "2013-09-22T22:55:05Z",
+      "root_message_id": "msg-9de73a37150f"
+    }
+  ]
+}

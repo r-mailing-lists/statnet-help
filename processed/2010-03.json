@@ -1,0 +1,662 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2010-03",
+  "messages": [
+    {
+      "id": "msg-55173446a02b",
+      "message_id": "<1ea8d8281003041451n257572ebl55fb7db228b376d6@mail.gmail.com>",
+      "from_name": "Jenine Harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2010-03-04T14:51:41Z",
+      "subject": "[statnet_help] interpretation of the utriangle, ltriangle terms in dyadcov",
+      "subject_clean": "[statnet_help] interpretation of the utriangle, ltriangle terms in dyadcov",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI'm working on a project looking a referral network of cancer services\norganizations for low-income cancer patients (what predicts organization A\nreferring a patient to organization B). One of the predictors of referrals\nthat I am using is a network of distance (in minutes) on public\ntransportation between the organizations. I am using the dyadcov term in my\nERGM to predict the presence of a referral tie between two organizations\nbased on how far apart they are. My question is: How would I interpret the\nfollowing:\n\ndyadcov.minutes.mutual       -28.44480    0.06961        NA  < 1e-04 ***\ndyadcov.minutes.utri         -15.46894    0.11195        NA  < 1e-04 ***\ndyadcov.minutes.ltri         -15.42000    0.10858        NA  < 1e-04 ***\n\nThe first row appears to be the reduction in likelihood of a tie for a 1\nunit increase in minutes between organizations when A refers to B and B\nrefers to A (there are referral links going both directions).\n\nThe upper triangle is then likely to be the reduction in the likelihood of a\ntie for a 1 unit increase in minutes when A refers to B (but B does not\nrefer to A)\n\nThe lower triangle is the reduction in the likelihood of a tie for a 1 unit\nincrease in minutes when B refers to A (but A does not refer to B)\n\nI gather from the statnet tutorials that each dyad only falls into one of\nthese categories....mutual, upper, or lower\n\nDoes this sound like an appropriate interpretation of these results?\n\nThanks in advance for any thoughts on this.\n\nJenine\n\n-- \n************************************\nJenine K. Harris, Ph.D.\nAssistant Professor of Community Health\nBiostatistics Division\nSaint Louis University School of Public Health\nAssistant Director of Research\nCenter for Tobacco Policy Research\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210 (SLU phone)\n314.977.3234 (SLU fax)\n314.935.3744 (WU phone)\n314.935.3756 (WU fax)\nhttp://ctpr.wustl.edu/\n\nPlease note: I split my time between two offices, email is typically the\nbest way to reach me.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100304/fcda1f23/attachment.html>",
+      "body_snippet": "Hi all,\n\nI'm working on a project looking a referral network of cancer services\norganizations for low-income cancer patients (what predicts organization A\nreferring a patient to organization B). One o",
+      "thread_id": "thread-55173446a02b",
+      "thread_depth": 0,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-8d11584d5323",
+      "message_id": "<6757038BFDCD614DA5213272D1E15798061348179D@USMASVGDOIM522.usma.ds.army.edu>",
+      "from_name": "McCulloh, I. MAJ  BS&L",
+      "from_email_hash": "036fda2478435ceb1ffb50eb49653009d7801990b4e281de642417da546820b6",
+      "date": "2010-03-04T19:09:26Z",
+      "subject": "[statnet_help] interpretation of the utriangle,\tltriangle terms in dyadcov",
+      "subject_clean": "[statnet_help] interpretation of the utriangle,\tltriangle terms in dyadcov",
+      "in_reply_to": "<1ea8d8281003041451n257572ebl55fb7db228b376d6@mail.gmail.com>",
+      "references": [
+        "<1ea8d8281003041451n257572ebl55fb7db228b376d6@mail.gmail.com>"
+      ],
+      "body_plain": "I would actually recommend using edgecov.  You can run the command, ergm(refer~edgecov(dist)), where refer and dist are the referral network and distance network respectively.  A significant finding will tell you that there is a relationship between distance and referral.  A negative coefficient on the estimate would suggest that as distance increases, the likelihood of referral decreases.  The dist network can remain as a weighted network.\n\nIan McCulloh\n\n-----Original Message-----\nFrom: statnet_help-bounces@mailman2.u.washington.edu [mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of Jenine Harris\nSent: Thursday, March 04, 2010 5:52 PM\nTo: statnet_help@u.washington.edu\nSubject: [statnet_help] interpretation of the utriangle, ltriangle terms in dyadcov\n\nHi all,\n\nI'm working on a project looking a referral network of cancer services organizations for low-income cancer patients (what predicts organization A referring a patient to organization B). One of the predictors of referrals that I am using is a network of distance (in minutes) on public transportation between the organizations. I am using the dyadcov term in my ERGM to predict the presence of a referral tie between two organizations based on how far apart they are. My question is: How would I interpret the following:\n\ndyadcov.minutes.mutual       -28.44480    0.06961        NA  < 1e-04 ***\ndyadcov.minutes.utri         -15.46894    0.11195        NA  < 1e-04 ***\ndyadcov.minutes.ltri         -15.42000    0.10858        NA  < 1e-04 ***\n\nThe first row appears to be the reduction in likelihood of a tie for a 1 unit increase in minutes between organizations when A refers to B and B refers to A (there are referral links going both directions).\n\nThe upper triangle is then likely to be the reduction in the likelihood of a tie for a 1 unit increase in minutes when A refers to B (but B does not refer to A)\n\nThe lower triangle is the reduction in the likelihood of a tie for a 1 unit increase in minutes when B refers to A (but A does not refer to B)\n\nI gather from the statnet tutorials that each dyad only falls into one of these categories....mutual, upper, or lower\n\nDoes this sound like an appropriate interpretation of these results?\n\nThanks in advance for any thoughts on this.\n\nJenine\n\n--\n************************************\nJenine K. Harris, Ph.D.\nAssistant Professor of Community Health\nBiostatistics Division\nSaint Louis University School of Public Health Assistant Director of Research Center for Tobacco Policy Research\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210 (SLU phone)\n314.977.3234 (SLU fax)\n314.935.3744 (WU phone)\n314.935.3756 (WU fax)\nhttp://ctpr.wustl.edu/\n\nPlease note: I split my time between two offices, email is typically the best way to reach me.",
+      "body_snippet": "I would actually recommend using edgecov.  You can run the command, ergm(refer~edgecov(dist)), where refer and dist are the referral network and distance network respectively.  A significant finding w",
+      "thread_id": "thread-55173446a02b",
+      "thread_depth": 1,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-edebcb37d7d6",
+      "message_id": "<1ea8d8281003050819g6ba674bbk55759ca7e54ed276@mail.gmail.com>",
+      "from_name": "Jenine Harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2010-03-05T08:19:53Z",
+      "subject": "[statnet_help] interpretation of the utriangle, ltriangle terms  in dyadcov",
+      "subject_clean": "[statnet_help] interpretation of the utriangle, ltriangle terms  in dyadcov",
+      "in_reply_to": "<6757038BFDCD614DA5213272D1E15798061348179D@USMASVGDOIM522.usma.ds.army.edu>",
+      "references": [
+        "<1ea8d8281003041451n257572ebl55fb7db228b376d6@mail.gmail.com>",
+        "<6757038BFDCD614DA5213272D1E15798061348179D@USMASVGDOIM522.usma.ds.army.edu>"
+      ],
+      "body_plain": "This sounds much more straightforward. I'll give it a try, thanks for the\nadvice.\n\nOn Thu, Mar 4, 2010 at 9:09 PM, McCulloh, I. MAJ BS&L <Ian.McCulloh@usma.edu\n> wrote:\n\n> I would actually recommend using edgecov.  You can run the command,\n> ergm(refer~edgecov(dist)), where refer and dist are the referral network and\n> distance network respectively.  A significant finding will tell you that\n> there is a relationship between distance and referral.  A negative\n> coefficient on the estimate would suggest that as distance increases, the\n> likelihood of referral decreases.  The dist network can remain as a weighted\n> network.\n>\n> Ian McCulloh\n>\n> -----Original Message-----\n> From: statnet_help-bounces@mailman2.u.washington.edu [mailto:\n> statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of Jenine Harris\n> Sent: Thursday, March 04, 2010 5:52 PM\n> To: statnet_help@u.washington.edu\n> Subject: [statnet_help] interpretation of the utriangle, ltriangle terms in\n> dyadcov\n>\n> Hi all,\n>\n> I'm working on a project looking a referral network of cancer services\n> organizations for low-income cancer patients (what predicts organization A\n> referring a patient to organization B). One of the predictors of referrals\n> that I am using is a network of distance (in minutes) on public\n> transportation between the organizations. I am using the dyadcov term in my\n> ERGM to predict the presence of a referral tie between two organizations\n> based on how far apart they are. My question is: How would I interpret the\n> following:\n>\n> dyadcov.minutes.mutual       -28.44480    0.06961        NA  < 1e-04 ***\n> dyadcov.minutes.utri         -15.46894    0.11195        NA  < 1e-04 ***\n> dyadcov.minutes.ltri         -15.42000    0.10858        NA  < 1e-04 ***\n>\n> The first row appears to be the reduction in likelihood of a tie for a 1\n> unit increase in minutes between organizations when A refers to B and B\n> refers to A (there are referral links going both directions).\n>\n> The upper triangle is then likely to be the reduction in the likelihood of\n> a tie for a 1 unit increase in minutes when A refers to B (but B does not\n> refer to A)\n>\n> The lower triangle is the reduction in the likelihood of a tie for a 1 unit\n> increase in minutes when B refers to A (but A does not refer to B)\n>\n> I gather from the statnet tutorials that each dyad only falls into one of\n> these categories....mutual, upper, or lower\n>\n> Does this sound like an appropriate interpretation of these results?\n>\n> Thanks in advance for any thoughts on this.\n>\n> Jenine\n>\n> --\n> ************************************\n> Jenine K. Harris, Ph.D.\n> Assistant Professor of Community Health\n> Biostatistics Division\n> Saint Louis University School of Public Health Assistant Director of\n> Research Center for Tobacco Policy Research\n> 3545 Lafayette Ave, Suite 300\n> St. Louis, MO 63104-1399\n> 314.977.8210 (SLU phone)\n> 314.977.3234 (SLU fax)\n> 314.935.3744 (WU phone)\n> 314.935.3756 (WU fax)\n> http://ctpr.wustl.edu/\n>\n> Please note: I split my time between two offices, email is typically the\n> best way to reach me.\n>\n>\n\n\n-- \n************************************\nJenine K. Harris, Ph.D.\nAssistant Professor of Community Health\nBiostatistics Division\nSaint Louis University School of Public Health\nAssistant Director of Research\nCenter for Tobacco Policy Research\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210 (SLU phone)\n314.977.3234 (SLU fax)\n314.935.3744 (WU phone)\n314.935.3756 (WU fax)\nhttp://ctpr.wustl.edu/\n\nPlease note: I split my time between two offices, email is typically the\nbest way to reach me.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100305/2c7ff38f/attachment.html>",
+      "body_snippet": "This sounds much more straightforward. I'll give it a try, thanks for the\nadvice.\n\nOn Thu, Mar 4, 2010 at 9:09 PM, McCulloh, I. MAJ BS&L <Ian.McCulloh@usma.edu\n> wrote:\n\n> I would actually recommend u",
+      "thread_id": "thread-55173446a02b",
+      "thread_depth": 2,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-b6a9e8737954",
+      "message_id": "<2fb509b41003091741k7eff639ao7b803e11794e989e@mail.gmail.com>",
+      "from_name": "Michael Bishop",
+      "from_email_hash": "935da6619ad76b76b55c713d398b9d0e5a0e3a795674669373d65f9c2fcab9f6",
+      "date": "2010-03-09T17:41:51Z",
+      "subject": "[statnet_help] Adolescent Health Network Data and R",
+      "subject_clean": "[statnet_help] Adolescent Health Network Data and R",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I'm a graduate student trying to figure out Add Health's social\nnetwork data and I'm hoping that, because it is widely used, someone\non this list could offer a little guidance.  Also, feel free to inform me\nif I'm breaking list protocol in any way.\n\nMy primary goal is to predict \"popularity.\"  I figured I'd create and\npredict multiple measures of centrality and try to think about how\nthey differ.  I can read the documentation to learn how to create\nthose measures in general.  But I'm wondering, -here is my first question-\nhas anyone written up anything specific to manipulating the Ad Health\nnetwork data.\n\n\nThat alone would be enormously helpful, but if you want to comment on\nanother issue that would be great.  Here it is: popularity cannot be\ndirectly measured, and various facts about the way data is collected\nare going to bias any measure of popularity I use.  I face the\nfollowing questions: what are the ways I expect various measures of\npopularity to be biased and how can I correct for them.\n\nOne way to categorize biases in the measures would be those that\naffect school/grade-level means and those that affect variation within\nschools/grades.  Some of the biases I'm thinking about are school\nsize, fraction absent or otherwise not providing usable data, and\nfraction of friends outside the school. Sometimes students nominate\nsomeone that they say is in the school but does not show up on the\nroster which indicates the accuracy of the roster could be an issue.\n\nI see two potentially complementary ways to approach correcting for\nthese biases.  One is to build the correction into my measure of\ncentrality.  The other is that when I model these influences when I am\npredicting the measure of centrality (with some kind of mixed effects\nmodel).  Right now I'm just working with In-Degree so I'm\nexperimenting with the latter approach but I'd like to consider the\nformer now that I'm ready to construct new measures of centrality.\n\nI'm sorry this email got so long.  Please don't feel a burden to solve\nmy research problems, but if you can point me in the right direction\nthat would be great.\n\nMany thanks,\nMike\n\nPh.D. Student\nSociology Department\nUniversity of Chicago\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100309/18f2b1bc/attachment.html>",
+      "body_snippet": "I'm a graduate student trying to figure out Add Health's social\nnetwork data and I'm hoping that, because it is widely used, someone\non this list could offer a little guidance.  Also, feel free to inf",
+      "thread_id": "thread-b6a9e8737954",
+      "thread_depth": 0,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-77fd284523d2",
+      "message_id": "<alpine.LRH.2.01.1003131707220.6523@hymn33.u.washington.edu>",
+      "from_name": "Jacob T N Young",
+      "from_email_hash": "b524165ae71e695a434423f4d03ff2b531aaa5385fda0564e8400e72b8bd4de9",
+      "date": "2010-03-13T17:07:22Z",
+      "subject": "[statnet_help] Question about statnet",
+      "subject_clean": "[statnet_help] Question about statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI am having trouble with the following model:\n\nmodel <- ergm (schoolnet ~ nodecov(\"slfctrl_s\") + absdiff(\"slfctrl_s\"))\n\nbut this error message is returned:\n\nError in ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m, theta.offset = theta.offset,  : \n  NA/NaN/Inf in foreign function call (arg 11)\n\nI have made sure that all of the values for \"slfctrl_s\" are valid by using:\n\nslfctrl_s[is.na(slfctrl_s)] <- mean(slfctrl_s, na.rm = TRUE)\n\n\nHowever, I do not get the error for the model:\n\nmodel <- ergm (schoolnet ~ nodefactor(\"grade_s\"))\n\n\nSo, it seems that there is a problem with the slfctrl_s variable. I have tried just using one term for this variable, but still get the same error.\n\nAny suggestions would be much appreciated.\n\n\nThanks,\n\nJacob Young",
+      "body_snippet": "Hello,\n\nI am having trouble with the following model:\n\nmodel <- ergm (schoolnet ~ nodecov(\"slfctrl_s\") + absdiff(\"slfctrl_s\"))\n\nbut this error message is returned:\n\nError in ergm.pl(Clist = Clist, Cli",
+      "thread_id": "thread-77fd284523d2",
+      "thread_depth": 0,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-9cb91ab9a47b",
+      "message_id": "<F6151D89-A557-4730-9847-7D74EF5FF3D7@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-03-14T09:18:06Z",
+      "subject": "[statnet_help] Question about statnet",
+      "subject_clean": "[statnet_help] Question about statnet",
+      "in_reply_to": "<alpine.LRH.2.01.1003131707220.6523@hymn33.u.washington.edu>",
+      "references": [
+        "<alpine.LRH.2.01.1003131707220.6523@hymn33.u.washington.edu>"
+      ],
+      "body_plain": "Hi Jacob.  Since you didn't provide an example to test, I invented  \none.  This might explain the problem:\n\n > nw=network.initialize(5)\n > nw[1,2]=nw[3,4]=nw[4,5]=1\n > slfctrl_s <- c(1, 1, 2, 2, NA)\n > nw %v% \"slfctrl_s\" <- slfctrl_s\n > ergm(nw~nodecov(\"slfctrl_s\"))\nError in ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m,  \ntheta.offset = theta.offset,  :\n   NA/NaN/Inf in foreign function call (arg 11)\n\nThis (above) appears to be the same error you got.  However, note that  \nyour fix does not work:\n\n > slfctrl_s[is.na(slfctrl_s)] <- mean(slfctrl_s, na.rm = TRUE)\n > ergm(nw~nodecov(\"slfctrl_s\"))\nError in ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m,  \ntheta.offset = theta.offset,  :\n   NA/NaN/Inf in foreign function call (arg 11)\n\nThe reason is that you did not change the vertex attribute in the nw  \nobject.  The code below does this and fixes the error:\n\n > nw %v% \"slfctrl_s\" <- slfctrl_s\n > ergm(nw~nodecov(\"slfctrl_s\"))\nNewton-Raphson iterations:  4\n\nMLE Coefficients:\nnodecov.slfctrl_s\n           -0.5485\n\n\nHope this helps!\n\n\n\nDave\n\n\nOn Mar 13, 2010, at 8:07 PM, Jacob T N Young wrote:\n\n> Hello,\n>\n> I am having trouble with the following model:\n>\n> model <- ergm (schoolnet ~ nodecov(\"slfctrl_s\") +  \n> absdiff(\"slfctrl_s\"))\n>\n> but this error message is returned:\n>\n> Error in ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m,  \n> theta.offset = theta.offset,  :\n>  NA/NaN/Inf in foreign function call (arg 11)\n>\n> I have made sure that all of the values for \"slfctrl_s\" are valid by  \n> using:\n>\n> slfctrl_s[is.na(slfctrl_s)] <- mean(slfctrl_s, na.rm = TRUE)\n>\n>\n> However, I do not get the error for the model:\n>\n> model <- ergm (schoolnet ~ nodefactor(\"grade_s\"))\n>\n>\n> So, it seems that there is a problem with the slfctrl_s variable. I  \n> have tried just using one term for this variable, but still get the  \n> same error.\n>\n> Any suggestions would be much appreciated.\n>\n>\n> Thanks,\n>\n> Jacob Young\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Jacob.  Since you didn't provide an example to test, I invented  \none.  This might explain the problem:\n\n > nw=network.initialize(5)\n > nw[1,2]=nw[3,4]=nw[4,5]=1\n > slfctrl_s <- c(1, 1, 2, 2, NA)\n ",
+      "thread_id": "thread-77fd284523d2",
+      "thread_depth": 1,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-cfe601771966",
+      "message_id": "<4B9F86B8.2080201@coll.mpg.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "be636dde28cefa502024155d2c668f78a853d393127e9415ccd248c0c80cf950",
+      "date": "2010-03-16T06:25:12Z",
+      "subject": "[statnet_help] How can I obtain a list of the components of a network?",
+      "subject_clean": "[statnet_help] How can I obtain a list of the components of a network?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nis there a function that returns a list of all components of a network? \nThe list should contain vectors of the member vertices or their indices. \nIsolates should also be included as single one-member components. I \nfound sna.components(), but it just seems to return the number of \ncomponents, not a list of the components themselves. Thanks!\n\nPhilip\n\n-- \nPhilip Leifeld\nMax Planck Institute for     | +49 (0) 1577 6830349 (mobile)\nResearch on Collective Goods | +49 (0) 228 91416-73 (phone)\nMaxNetAging Doctoral Fellow  | +49 (0) 228 91416-62 (fax)\nKurt-Schumacher-Str. 10      | Leifeld@coll.mpg.de\n53113 Bonn, Germany          | http://www.philipleifeld.de",
+      "body_snippet": "Hi,\n\nis there a function that returns a list of all components of a network? \nThe list should contain vectors of the member vertices or their indices. \nIsolates should also be included as single one-m",
+      "thread_id": "thread-cfe601771966",
+      "thread_depth": 0,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-c38733884cee",
+      "message_id": "<1629e2bb1003160636y1b725f95j76a2bdcd89a2da9f@mail.gmail.com>",
+      "from_name": "Moses Boudourides",
+      "from_email_hash": "c5624448747271419acb164061064e1a7b0a1e969681d0b921805e16e6affe4a",
+      "date": "2010-03-16T06:36:27Z",
+      "subject": "[statnet_help] How can I obtain a list of the components of a  network?",
+      "subject_clean": "[statnet_help] How can I obtain a list of the components of a  network?",
+      "in_reply_to": "<4B9F86B8.2080201@coll.mpg.de>",
+      "references": [
+        "<4B9F86B8.2080201@coll.mpg.de>"
+      ],
+      "body_plain": "Philip, I don't know if you can do this inside statnet - people here\nwill reply. However, I'd like to say that I'm doing this through the\nPerl module Graph\n\nhttp://search.cpan.org/~jhi/Graph-0.91/lib/Graph.pod\n\nActually, it's pretty fast. I'm using it to locate components of\ngraphs composed of 300 K or more nodes and it does the job in just a\nfew minutes.\n\nBest,\n\n--Moses\n\n\nOn Tue, Mar 16, 2010 at 3:25 PM, Philip Leifeld <Leifeld@coll.mpg.de> wrote:\n> Hi,\n>\n> is there a function that returns a list of all components of a network? The\n> list should contain vectors of the member vertices or their indices.\n> Isolates should also be included as single one-member components. I found\n> sna.components(), but it just seems to return the number of components, not\n> a list of the components themselves. Thanks!\n>\n> Philip\n>\n> --\n> Philip Leifeld\n> Max Planck Institute for ? ? | +49 (0) 1577 6830349 (mobile)\n> Research on Collective Goods | +49 (0) 228 91416-73 (phone)\n> MaxNetAging Doctoral Fellow ?| +49 (0) 228 91416-62 (fax)\n> Kurt-Schumacher-Str. 10 ? ? ?| Leifeld@coll.mpg.de\n> 53113 Bonn, Germany ? ? ? ? ?| http://www.philipleifeld.de\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Philip, I don't know if you can do this inside statnet - people here\nwill reply. However, I'd like to say that I'm doing this through the\nPerl module Graph\n\nhttp://search.cpan.org/~jhi/Graph-0.91/lib/",
+      "thread_id": "thread-cfe601771966",
+      "thread_depth": 1,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-8ce9d45f5476",
+      "message_id": "<4BA12477.2070906@cs.rutgers.edu>",
+      "from_name": "Darakhshan Mir",
+      "from_email_hash": "42826cbbf3d11dccfb9f63f6e4921435ec4ed96153a994f0ea707fb9f1efae50",
+      "date": "2010-03-17T11:50:31Z",
+      "subject": "[statnet_help] The Lazega lawyer data set?",
+      "subject_clean": "[statnet_help] The Lazega lawyer data set?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi All,\nI'm trying to run the R code with the paper \"Curved Exponential Family \nModels for Social Networks\" by D. Hunter. I was wondering if the Lazega \nlawyer data set that the author uses in the paper is publicly available. \nI am new to statnet and  would appreciate any pointers.\n\nThanks,\nDarakhshan",
+      "body_snippet": "Hi All,\nI'm trying to run the R code with the paper \"Curved Exponential Family \nModels for Social Networks\" by D. Hunter. I was wondering if the Lazega \nlawyer data set that the author uses in the pap",
+      "thread_id": "thread-8ce9d45f5476",
+      "thread_depth": 0,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-fca18eefedf4",
+      "message_id": "<alpine.WNT.2.00.1003171230530.3704@Martina-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2010-03-17T12:31:39Z",
+      "subject": "[statnet_help] The Lazega lawyer data set?",
+      "subject_clean": "[statnet_help] The Lazega lawyer data set?",
+      "in_reply_to": "<4BA12477.2070906@cs.rutgers.edu>",
+      "references": [
+        "<4BA12477.2070906@cs.rutgers.edu>"
+      ],
+      "body_plain": "Hi Darakhshan,\n\nI believe the data set is not yet publicly available, so you will need to \nrequest it from Lazega.\n\nbest,\nMartina\n\nOn Wed, 17 Mar 2010, Darakhshan Mir wrote:\n\n> Hi All,\n> I'm trying to run the R code with the paper \"Curved Exponential Family Models \n> for Social Networks\" by D. Hunter. I was wondering if the Lazega lawyer data \n> set that the author uses in the paper is publicly available. I am new to \n> statnet and  would appreciate any pointers.\n>\n> Thanks,\n> Darakhshan\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Darakhshan,\n\nI believe the data set is not yet publicly available, so you will need to \nrequest it from Lazega.\n\nbest,\nMartina\n\nOn Wed, 17 Mar 2010, Darakhshan Mir wrote:\n\n> Hi All,\n> I'm trying to",
+      "thread_id": "thread-8ce9d45f5476",
+      "thread_depth": 1,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-39ba9a80c471",
+      "message_id": "<f3f507c31003171639m28d1cf2co82469f2783907b17@mail.gmail.com>",
+      "from_name": "Miruna Petrescu-Prahova",
+      "from_email_hash": "2618921fac9f3181c30c6b9789b4f6b6f455cf5b7bc306f09a19b12082da97ac",
+      "date": "2010-03-17T16:39:48Z",
+      "subject": "[statnet_help] How can I obtain a list of the components of a  network?",
+      "subject_clean": "[statnet_help] How can I obtain a list of the components of a  network?",
+      "in_reply_to": "<4B9F86B8.2080201@coll.mpg.de>",
+      "references": [
+        "<4B9F86B8.2080201@coll.mpg.de>"
+      ],
+      "body_plain": "Hi Philip,\n\ncomponent.dist() gives you more information, such as the component\nmembership for each node. The example code in the help file for\ncomponent.dist() provides additional useful plots.\n\nMiruna\n\nOn Tue, Mar 16, 2010 at 6:25 AM, Philip Leifeld <Leifeld@coll.mpg.de> wrote:\n> Hi,\n>\n> is there a function that returns a list of all components of a network? The\n> list should contain vectors of the member vertices or their indices.\n> Isolates should also be included as single one-member components. I found\n> sna.components(), but it just seems to return the number of components, not\n> a list of the components themselves. Thanks!\n>\n> Philip\n>\n> --\n> Philip Leifeld\n> Max Planck Institute for ? ? | +49 (0) 1577 6830349 (mobile)\n> Research on Collective Goods | +49 (0) 228 91416-73 (phone)\n> MaxNetAging Doctoral Fellow ?| +49 (0) 228 91416-62 (fax)\n> Kurt-Schumacher-Str. 10 ? ? ?| Leifeld@coll.mpg.de\n> 53113 Bonn, Germany ? ? ? ? ?| http://www.philipleifeld.de\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \nMiruna Petrescu-Prahova, PhD\nResearch Associate\nDepartment of Statistics\nUniversity of Washington\nBox 354320\nSeattle, WA 98195-4320\nmirunapp@u.washington.edu",
+      "body_snippet": "Hi Philip,\n\ncomponent.dist() gives you more information, such as the component\nmembership for each node. The example code in the help file for\ncomponent.dist() provides additional useful plots.\n\nMirun",
+      "thread_id": "thread-cfe601771966",
+      "thread_depth": 1,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-971bd69596d7",
+      "message_id": "<alpine.WNT.2.00.1003181202230.1356@Martina-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2010-03-18T12:06:58Z",
+      "subject": "[statnet_help] Adolescent Health Network Data and R",
+      "subject_clean": "[statnet_help] Adolescent Health Network Data and R",
+      "in_reply_to": "<2fb509b41003091741k7eff639ao7b803e11794e989e@mail.gmail.com>",
+      "references": [
+        "<2fb509b41003091741k7eff639ao7b803e11794e989e@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Michael,\n\nIf you're using the network structure files, I have a student who recently \nanalyzed one of the schools and I could put you in touch with her to ask \nfor the code for reading in the data, transforming it to a network object, \nand using sna/ergm routines.\n\nRe: missing data -- you're right this is a big issue.  Mark Handcock and \nKrista Gile are the two people with the most expertise on that.\n\nbest,\nMartina\n\nOn Tue, 9 Mar 2010, Michael Bishop wrote:\n\n> I'm a graduate student trying to figure out Add Health's social\n> network data and I'm hoping that, because it is widely used, someone\n> on this list could offer a little guidance.? Also, feel free to inform me\n> if I'm breaking list protocol in any way.\n> \n> My primary goal is to predict \"popularity.\" ?I figured I'd create and\n> predict multiple measures of centrality and try to think about how\n> they differ.? I can read the documentation to learn how to create\n> those measures in general.? But I'm wondering, -here is my first question-\n> has anyone written up anything specific to manipulating the Ad Health\n> network data. \n> \n> \n> That alone would be enormously helpful, but if you want to comment on\n> another issue that would be great. ?Here it is: popularity cannot be\n> directly measured, and various facts about the way data is collected\n> are going to bias any measure of popularity I use. ?I face the\n> following questions: what are the ways I expect various measures of\n> popularity to be biased and how can I correct for them.\n> \n> One way to categorize biases in the measures would be those that\n> affect school/grade-level means and those that affect variation within\n> schools/grades. ?Some of the biases I'm thinking about are school\n> size, fraction absent or otherwise not providing usable data, and\n> fraction of friends outside the school. Sometimes students nominate\n> someone that they say is in the school but does not show up on the\n> roster which indicates the accuracy of the roster could be an issue.\n> \n> I see two potentially complementary ways to approach correcting for\n> these biases. ?One is to build the correction into my measure of\n> centrality. ?The other is that when I model these influences when I am\n> predicting the measure of centrality (with some kind of mixed effects\n> model). ?Right now I'm just working with In-Degree so I'm\n> experimenting with the latter approach but I'd like to consider the\n> former now that I'm ready to construct new measures of centrality.\n> \n> I'm sorry this email got so long. ?Please don't feel a burden to solve\n> my research problems, but if you can point me in the right direction\n> that would be great.\n> \n> Many thanks,\n> Mike\n> \n> Ph.D. Student\n> Sociology Department\n> University of Chicago\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Michael,\n\nIf you're using the network structure files, I have a student who recently \nanalyzed one of the schools and I could put you in touch with her to ask \nfor the code for reading in the data,",
+      "thread_id": "thread-b6a9e8737954",
+      "thread_depth": 1,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-b7e003db7f1e",
+      "message_id": "<alpine.LRH.2.01.1003181422010.19903@hymn33.u.washington.edu>",
+      "from_name": "David R Lewandowski",
+      "from_email_hash": "db5dcae540427f7d7281af3f684558afb57cdc69e883e30d7712b5ef13cd61db",
+      "date": "2010-03-18T14:22:01Z",
+      "subject": "[statnet_help] Can't join statnet_help",
+      "subject_clean": "[statnet_help] Can't join statnet_help",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "An HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100318/a470f7ab/attachment.html>",
+      "body_snippet": "An HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100318/a470f7ab/attachment.html>",
+      "thread_id": "thread-b7e003db7f1e",
+      "thread_depth": 0,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-5614506847f3",
+      "message_id": "<alpine.WNT.2.00.1003181706430.1356@Martina-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2010-03-18T17:15:47Z",
+      "subject": "[statnet_help] interpreting GWDSP?",
+      "subject_clean": "[statnet_help] interpreting GWDSP?",
+      "in_reply_to": "<1ea8d8280908061519w86a71f9o8b2ab262b831f252@mail.gmail.com>",
+      "references": [
+        "<1ea8d8280908061519w86a71f9o8b2ab262b831f252@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Jenine,\n\nI don't know if you got a response to this question, and I just ran \nacross something that might help, so thought I'd send it to you.\nDanny Wyatt (from here at UW) sent us a short description, and I made up a \nlittle excel spreadsheet to see if I could get some intuition (attached).\n\nBriefly, these terms (GWESP, GWDSP, and GWDEG) fit a 2 parameter curve to \nthe histogram of the number of shared partners, or degree.  The two \nparameters, alpha and w, define the shape of this curve.  The alpha term \nacts a bit like an intercept (in a non-linear way), and the coefficient \n(w) acts a bit like a slope (again, in a non-linear way)\n\nDanny's explanation below.  Hope this helps.\n\nbest,\nMartina\n\n> Anyhow, have you read this paper by David Hunter?\n> Curved exponential family models for social networks, Social Networks\n> 29(2). 216-230.\n> http://dx.doi.org/10.1016/j.socnet.2006.08.005\n>\n> It helped me understand the GW* features a lot better.  In particular\n> Eqn. 16 in that papers works it out so that you can interpret your\n> parameters as the log odds of a node increasing its degree from k to\n> k+1---or for GWESP the log odds that a pair will change their number\n> of shared partners from k to k+1.\n>\n> The general form of that is\n> w * (1 - exp(-alpha))^k\n> where w is the regular non-alpha parameter.\n>\n> So if you've fixed alpha=0.2, then it's just w * (0.181)^k.  You could\n> plot that out for k from 0 to N-2 (if you've got N people) and it'll\n> show you how the log odds of adding a new shared partner decreases as\n> you have more shared partners.\n>\n> Actually, if you exp it to get the odds it'll approach 1 and you can\n> find the point where it's close enough to 1 for you and then say \"this\n> is the point at which its no longer beneficial for two people to keep\n> adding mutual friends.\"\n\nOn Thu, 6 Aug 2009, Jenine Harris wrote:\n\n> Hi,\n> \n> I was wondering if anyone has an example of how a GWDSP term would be interpreted in somewhat lay terms. From my understanding GWDSP\n> accounts for the distribution of shared partnership for each dyad in a network, but I'm not sure how to go about interpreting a\n> negative signficant GWDSP coefficient of -0.25 in an actual ERGM model. What does this say about the distribution and how does it\n> influence the likelihood of a tie?\n> \n> Any help is greatly appreciated.\n> \n> Thanks in advance,\n> Jenine\n> --\n> ************************************\n> Jenine K. Harris, Ph.D.\n> Assistant Professor of Community Health\n> Biostatistics Division\n> Saint Louis University School of Public Health\n> Assistant Director of Research\n> Center for Tobacco Policy Research\n> 3545 Lafayette Ave, Suite 300\n> St. Louis, MO 63104-1399\n> 314.977.8210 (SLU phone)\n> 314.977.3234 (SLU fax)\n> 314.935.3744 (WU phone)\n> 314.935.3756 (WU fax)\n> http://ctpr.wustl.edu/\n> \n> Please note: I split my time between two offices, email is typically the best way to reach me.\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: gwesp interpretation.xlsx\nType: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\nSize: 13277 bytes\nDesc: \nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100318/d38fb1cc/attachment.xlsx>",
+      "body_snippet": "Hi Jenine,\n\nI don't know if you got a response to this question, and I just ran \nacross something that might help, so thought I'd send it to you.\nDanny Wyatt (from here at UW) sent us a short descript",
+      "thread_id": "thread-5614506847f3",
+      "thread_depth": 0,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-61807d7abe7c",
+      "message_id": "<20100323151840.50932a3dxvmy81lc@webmail.service.emory.edu>",
+      "from_name": "James Broesch",
+      "from_email_hash": "04f27e39e201c8da45e9fa757c28d97655993064ee01228981141aae4ec164a1",
+      "date": "2010-03-23T12:18:40Z",
+      "subject": "[statnet_help] Edges as a Constraint or a Parameter?",
+      "subject_clean": "[statnet_help] Edges as a Constraint or a Parameter?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\nI had a question that I am hoping someone here with more experience  \nwith ERG models might have some input.\n\nBackground on Project: I am using ERG models to examine the patters of  \nadvice networks in traditional settings related to acquiring  \nskills/knowledge. I am interested in empirically testing if a variety  \nof attributes (perceived skill, age, gender, etc.), suggested by  \nanalytical modeling to be important, are related to the patterns of  \nthese networks and the number of nominations that an individual  \nreceives. The way that the data was collected, we allowed individuals  \nto nominate at most 5 other people, which I am including as a  \nconstraint in all models.\n\nI am unsure whether to include edges as a constraint or as a parameter  \nto estimate.  When I include it as a parameter, all my main effects  \nparameters (nodeicov) are strongly correlated (above .8) with the  \nedges parameter (and with each other). When I constrain the simulated  \nnetworks to match the number of edges present in the observed data, I  \nno longer have this problem, but the parameter estimates are different  \n(same direction, but different magnitudes).\n\nTheoretically, I think that varying the number of total ties present  \nin the network is important, since there are reasons to think that  \nthis might happen in the real world.  However, the correlation between  \nthis parameter and all the main effects is troubling.\n\nDoes anyone have any thoughts on what is more important, not having  \nstrong correlations between predictors, or having a model that is  \nallowed to vary in ways that are similar to what we might expect in  \nreality?\n\nAny input is appreciated,\n\nJames Broesch\n\nPhD Candidate\nDepartment of Anthropology\nEmory University",
+      "body_snippet": "Hello,\nI had a question that I am hoping someone here with more experience  \nwith ERG models might have some input.\n\nBackground on Project: I am using ERG models to examine the patters of  \nadvice net",
+      "thread_id": "thread-61807d7abe7c",
+      "thread_depth": 0,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-c10db35ea97a",
+      "message_id": "<c3de8e2a1003231618t5000fcfmbd24a285a1b8c81a@mail.gmail.com>",
+      "from_name": "Dai Shizuka",
+      "from_email_hash": "0821b2ad1f8274594f16f40474bb605d24560d46df345789005069d0a7638667",
+      "date": "2010-03-23T16:18:47Z",
+      "subject": "[statnet_help] Numbered IDs create massive problems",
+      "subject_clean": "[statnet_help] Numbered IDs create massive problems",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hey everyone,\nI have a simple problem that I hope has a simple solution:\n\nI am working on a social network of birds (43 individuals in this network),\neach with a unique ID number, ranging from 7 to 112998.\n\nWhen I import an edge list based on these ID numbers using network(), it\ncreates a vertex for all numbers up to 112998 (remember, there are actually\nonly 43 individuals).\nI can get around this by assigning the ID numbers as factors, but this then\ncreates a separate problem: Now, when I create an adjacency matrix, it sorts\nthem by the first digit, then second digit such that 112998 comes before\n256, which comes before 7. However, if I sort a list of vertex attributes\nusing the same IDs, it sorts them correctly in numerical order. This means\nthat my attribute list and the vertex list does not match up!\n\nIs there a way to get statnet to recognize my ID names as numbers, but not\ncreate vertices for all possible numbers up to 112998?\n\nAny clues would be greatly appreciated,\n\nDai Shizuka\n----------\nDaizaburo Shizuka\nPostdoctoral Researcher\nDepartment of Zoology & Physiology\nUniversity of Wyoming\n1000 E. University Ave\nLaramie, Wyoming 82071\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100323/a32eb163/attachment.html>",
+      "body_snippet": "Hey everyone,\nI have a simple problem that I hope has a simple solution:\n\nI am working on a social network of birds (43 individuals in this network),\neach with a unique ID number, ranging from 7 to 11",
+      "thread_id": "thread-c10db35ea97a",
+      "thread_depth": 0,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-006221564e3d",
+      "message_id": "<alpine.WNT.2.00.1003231622060.3288@Martina-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2010-03-23T16:26:24Z",
+      "subject": "[statnet_help] Numbered IDs create massive problems",
+      "subject_clean": "[statnet_help] Numbered IDs create massive problems",
+      "in_reply_to": "<c3de8e2a1003231618t5000fcfmbd24a285a1b8c81a@mail.gmail.com>",
+      "references": [
+        "<c3de8e2a1003231618t5000fcfmbd24a285a1b8c81a@mail.gmail.com>"
+      ],
+      "body_plain": "Hello Dai,\n\nSomeone else may propose a solution to this within R and network, but my \nsuggestion, since you only have 43 nodes, would be to use a text editor \nscript to change the vertex id's to sequential numbers before importing \nthe edgelist.\n\nMartina\n\nOn Tue, 23 Mar 2010, Dai Shizuka wrote:\n\n> Hey everyone,\n> I have a simple problem that I hope has a simple solution:\n> \n> I am working on a social network of birds (43 individuals in this network), each with a unique ID number, ranging from 7 to 112998.\n> \n> When I import an edge list based on these ID numbers using network(), it creates a vertex for all numbers up to 112998 (remember,\n> there are actually only 43 individuals).\n> I can get around this by assigning the ID numbers as factors, but this then creates a separate problem: Now, when I create an\n> adjacency matrix, it sorts them by the first digit, then second digit such that 112998 comes before 256, which comes before 7.\n> However, if I sort a list of vertex attributes using the same IDs, it sorts them correctly in numerical order. This means that my\n> attribute list and the vertex list does not match up!\n> \n> Is there a way to get statnet to recognize my ID names as numbers, but not create vertices for all possible numbers up to 112998?\n> \n> Any clues would be greatly appreciated,\n> \n> Dai Shizuka\n> ----------\n> Daizaburo Shizuka\n> Postdoctoral Researcher\n> Department of Zoology & Physiology\n> University of Wyoming\n> 1000 E. University Ave\n> Laramie, Wyoming 82071\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hello Dai,\n\nSomeone else may propose a solution to this within R and network, but my \nsuggestion, since you only have 43 nodes, would be to use a text editor \nscript to change the vertex id's to seque",
+      "thread_id": "thread-c10db35ea97a",
+      "thread_depth": 1,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-66b22a1c5868",
+      "message_id": "<c3de8e2a1003231703r3317852fua6c1c39a41206f3d@mail.gmail.com>",
+      "from_name": "Dai Shizuka",
+      "from_email_hash": "0821b2ad1f8274594f16f40474bb605d24560d46df345789005069d0a7638667",
+      "date": "2010-03-23T17:03:41Z",
+      "subject": "[statnet_help] Numbered IDs create massive problems",
+      "subject_clean": "[statnet_help] Numbered IDs create massive problems",
+      "in_reply_to": "<alpine.WNT.2.00.1003231622060.3288@Martina-PC>",
+      "references": [
+        "<c3de8e2a1003231618t5000fcfmbd24a285a1b8c81a@mail.gmail.com>",
+        "<alpine.WNT.2.00.1003231622060.3288@Martina-PC>"
+      ],
+      "body_plain": "Hi,\nThanks for the quick reply. The problem is that the example I gave is just\none year's worth of data of a 16-year data set... Some of the same\nindividuals are seen across years, and it's important that I don't lose\ntrack of these identities. Plus, I also have lots of attribute data that I\nwant to link to these vertices... so I can't simply reduce the IDs to\nsequential numbers.\n\nDai\n----------\nDaizaburo Shizuka\nPostdoctoral Researcher\nDepartment of Zoology & Physiology\nUniversity of Wyoming\n1000 E. University Ave\nLaramie, Wyoming 82071\n\n\nOn Tue, Mar 23, 2010 at 5:26 PM, Martina Morris <morrism@u.washington.edu>wrote:\n\n> Hello Dai,\n>\n> Someone else may propose a solution to this within R and network, but my\n> suggestion, since you only have 43 nodes, would be to use a text editor\n> script to change the vertex id's to sequential numbers before importing the\n> edgelist.\n>\n> Martina\n>\n>\n> On Tue, 23 Mar 2010, Dai Shizuka wrote:\n>\n>  Hey everyone,\n>> I have a simple problem that I hope has a simple solution:\n>>\n>> I am working on a social network of birds (43 individuals in this\n>> network), each with a unique ID number, ranging from 7 to 112998.\n>>\n>> When I import an edge list based on these ID numbers using network(), it\n>> creates a vertex for all numbers up to 112998 (remember,\n>> there are actually only 43 individuals).\n>> I can get around this by assigning the ID numbers as factors, but this\n>> then creates a separate problem: Now, when I create an\n>> adjacency matrix, it sorts them by the first digit, then second digit such\n>> that 112998 comes before 256, which comes before 7.\n>> However, if I sort a list of vertex attributes using the same IDs, it\n>> sorts them correctly in numerical order. This means that my\n>> attribute list and the vertex list does not match up!\n>>\n>> Is there a way to get statnet to recognize my ID names as numbers, but not\n>> create vertices for all possible numbers up to 112998?\n>>\n>> Any clues would be greatly appreciated,\n>>\n>> Dai Shizuka\n>> ----------\n>> Daizaburo Shizuka\n>> Postdoctoral Researcher\n>> Department of Zoology & Physiology\n>> University of Wyoming\n>> 1000 E. University Ave\n>> Laramie, Wyoming 82071\n>>\n>>\n>>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100323/91c1eb27/attachment.html>",
+      "body_snippet": "Hi,\nThanks for the quick reply. The problem is that the example I gave is just\none year's worth of data of a 16-year data set... Some of the same\nindividuals are seen across years, and it's important ",
+      "thread_id": "thread-c10db35ea97a",
+      "thread_depth": 2,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-9d5aa02df9f3",
+      "message_id": "<9c15a6241003231725r570dbb3dw2e990998fa009fe1@mail.gmail.com>",
+      "from_name": "Ben Domingue",
+      "from_email_hash": "8044ec7b0a2e39518222887aecfd1b7d94fd6091c3fdd1931d4cf8c64fddc0de",
+      "date": "2010-03-23T17:25:11Z",
+      "subject": "[statnet_help] Numbered IDs create massive problems",
+      "subject_clean": "[statnet_help] Numbered IDs create massive problems",
+      "in_reply_to": "<c3de8e2a1003231703r3317852fua6c1c39a41206f3d@mail.gmail.com>",
+      "references": [
+        "<c3de8e2a1003231618t5000fcfmbd24a285a1b8c81a@mail.gmail.com>",
+        "<alpine.WNT.2.00.1003231622060.3288@Martina-PC>",
+        "<c3de8e2a1003231703r3317852fua6c1c39a41206f3d@mail.gmail.com>"
+      ],
+      "body_plain": "Is there any way you could provide some data that we could use to\nreplicate the problem?  It seems like a fix wouldn't be too hard to\ncome by, but being able to work with the problem would be really\nhelpful.\n\nBen\nPhD Student\nSchool of Education\nUniv of Colorado at Boulder\n\nOn Tue, Mar 23, 2010 at 6:03 PM, Dai Shizuka <daishizuka@gmail.com> wrote:\n> Hi,\n> Thanks for the quick reply. The problem is that the example I gave is just\n> one year's worth of data of a 16-year data set... Some of the same\n> individuals are seen across years, and it's important that I don't lose\n> track of these identities. Plus, I also have lots of attribute data that I\n> want to link to these vertices... so I can't simply reduce the IDs to\n> sequential numbers.\n>\n> Dai\n> ----------\n> Daizaburo Shizuka\n> Postdoctoral Researcher\n> Department of Zoology & Physiology\n> University of Wyoming\n> 1000 E. University Ave\n> Laramie, Wyoming 82071\n>\n>\n> On Tue, Mar 23, 2010 at 5:26 PM, Martina Morris <morrism@u.washington.edu>\n> wrote:\n>>\n>> Hello Dai,\n>>\n>> Someone else may propose a solution to this within R and network, but my\n>> suggestion, since you only have 43 nodes, would be to use a text editor\n>> script to change the vertex id's to sequential numbers before importing the\n>> edgelist.\n>>\n>> Martina\n>>\n>> On Tue, 23 Mar 2010, Dai Shizuka wrote:\n>>\n>>> Hey everyone,\n>>> I have a simple problem that I hope has a simple solution:\n>>>\n>>> I am working on a social network of birds (43 individuals in this\n>>> network), each with a unique ID number, ranging from 7 to 112998.\n>>>\n>>> When I import an edge list based on these ID numbers using network(), it\n>>> creates a vertex for all numbers up to 112998 (remember,\n>>> there are actually only 43 individuals).\n>>> I can get around this by assigning the ID numbers as factors, but this\n>>> then creates a separate problem: Now, when I create an\n>>> adjacency matrix, it sorts them by the first digit, then second digit\n>>> such that 112998 comes before 256, which comes before 7.\n>>> However, if I sort a list of vertex attributes using the same IDs, it\n>>> sorts them correctly in numerical order. This means that my\n>>> attribute list and the vertex list does not match up!\n>>>\n>>> Is there a way to get statnet to recognize my ID names as numbers, but\n>>> not create vertices for all possible numbers up to 112998?\n>>>\n>>> Any clues would be greatly appreciated,\n>>>\n>>> Dai Shizuka\n>>> ----------\n>>> Daizaburo Shizuka\n>>> Postdoctoral Researcher\n>>> Department of Zoology & Physiology\n>>> University of Wyoming\n>>> 1000 E. University Ave\n>>> Laramie, Wyoming 82071\n>>>\n>>>\n>>\n>> ****************************************************************\n>> ?Professor of Sociology and Statistics\n>> ?Director, UWCFAR Sociobehavioral and Prevention Research Core\n>> ?Box 354322\n>> ?University of Washington\n>> ?Seattle, WA 98195-4322\n>>\n>> ?Office: ? ? ? ?(206) 685-3402\n>> ?Dept Office: ? (206) 543-5882, 543-7237\n>> ?Fax: ? ? ? ? ? (206) 685-7419\n>>\n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>",
+      "body_snippet": "Is there any way you could provide some data that we could use to\nreplicate the problem?  It seems like a fix wouldn't be too hard to\ncome by, but being able to work with the problem would be really\nh",
+      "thread_id": "thread-c10db35ea97a",
+      "thread_depth": 3,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-d51e49df94e9",
+      "message_id": "<02b801cacaed$8cd54f10$a67fed30$@edu>",
+      "from_name": "Neil Abernethy",
+      "from_email_hash": "1f793bb2c26da59bba4073093070110ce5fb05bb49182bd313f4a759cc35fe8d",
+      "date": "2010-03-23T18:01:35Z",
+      "subject": "[statnet_help] Numbered IDs create massive problems",
+      "subject_clean": "[statnet_help] Numbered IDs create massive problems",
+      "in_reply_to": "<alpine.WNT.2.00.1003231622060.3288@Martina-PC>",
+      "references": [
+        "<c3de8e2a1003231618t5000fcfmbd24a285a1b8c81a@mail.gmail.com>",
+        "<alpine.WNT.2.00.1003231622060.3288@Martina-PC>"
+      ],
+      "body_plain": "Just taking a stab:\n\nSolution 1: Paste a leading \"b\" (for \"bird\") in front of your ID's so they\nimport correctly and are labeled with familiar ID's.\n\nSolution 2: Import the ID's as strings (with \"\" around the ID's), or from R\nuse encodeString(your.edgelist) before applying as.network, which should\nagain convert properly without blank nodes.\n\n\n-----Original Message-----\nFrom: statnet_help-bounces@mailman2.u.washington.edu\n[mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of Martina\nMorris\nSent: Tuesday, March 23, 2010 4:26 PM\nTo: Dai Shizuka\nCc: statnet_help\nSubject: Re: [statnet_help] Numbered IDs create massive problems\n\nHello Dai,\n\nSomeone else may propose a solution to this within R and network, but my \nsuggestion, since you only have 43 nodes, would be to use a text editor \nscript to change the vertex id's to sequential numbers before importing \nthe edgelist.\n\nMartina\n\nOn Tue, 23 Mar 2010, Dai Shizuka wrote:\n\n> Hey everyone,\n> I have a simple problem that I hope has a simple solution:\n> \n> I am working on a social network of birds (43 individuals in this\nnetwork), each with a unique ID number, ranging from 7 to 112998.\n> \n> When I import an edge list based on these ID numbers using network(), it\ncreates a vertex for all numbers up to 112998 (remember,\n> there are actually only 43 individuals).\n> I can get around this by assigning the ID numbers as factors, but this\nthen creates a separate problem: Now, when I create an\n> adjacency matrix, it sorts them by the first digit, then second digit such\nthat 112998 comes before 256, which comes before 7.\n> However, if I sort a list of vertex attributes using the same IDs, it\nsorts them correctly in numerical order. This means that my\n> attribute list and the vertex list does not match up!\n> \n> Is there a way to get statnet to recognize my ID names as numbers, but not\ncreate vertices for all possible numbers up to 112998?\n> \n> Any clues would be greatly appreciated,\n> \n> Dai Shizuka\n> ----------\n> Daizaburo Shizuka\n> Postdoctoral Researcher\n> Department of Zoology & Physiology\n> University of Wyoming\n> 1000 E. University Ave\n> Laramie, Wyoming 82071\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Just taking a stab:\n\nSolution 1: Paste a leading \"b\" (for \"bird\") in front of your ID's so they\nimport correctly and are labeled with familiar ID's.\n\nSolution 2: Import the ID's as strings (with \"\" ar",
+      "thread_id": "thread-c10db35ea97a",
+      "thread_depth": 2,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-3d9e7911cc51",
+      "message_id": "<4BA966A8.1000108@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-03-23T18:11:04Z",
+      "subject": "[statnet_help] Numbered IDs create massive problems",
+      "subject_clean": "[statnet_help] Numbered IDs create massive problems",
+      "in_reply_to": "<c3de8e2a1003231618t5000fcfmbd24a285a1b8c81a@mail.gmail.com>",
+      "references": [
+        "<c3de8e2a1003231618t5000fcfmbd24a285a1b8c81a@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Dai -\n\nThe issue here is that the edgelist->network conversion assumes that \nyour data is given in the form of vertex IDs (since you are using a \nnumeric matrix).  Vertex IDs are not names, but the sort order of the \nvertex; thus, you can't have an ID (in the sense of the network package) \nof 112998 on a 43-node network.  You can, of course, have a vertex that \ncarries this number as a name (or other attribute).\n\nAs this suggests, one approach is to renumber your edgelists prior to \nconversion.  E.g., something like this:\n\n#Let el be your edgelist matrix\nuvert<-sort(unique(c(el[,1],el[,2])))\nel[,1]<-match(el[,1],uvert)\nel[,2]<-match(el[,2],uvert)\n\nThis will keep your network vertex IDs in the same order as your own ID \nnumbers (names).  Then, set the vertex names (or any other attribute) \nequal to uvert; you can retrieve the original names in the usual fashion \nusing %v% or get.vertex.attribute.\n\nIf you don't like that road, another option is to convert your numbers \nto fixed-width character strings with leading zeros.  (formatC will do \nthis.)  That ensures that the sort order matches the numeric order of \nyour vertex names.  Finally, you could just create the network as usual, \nand then permute the vertices into your desired order using \npermute.vertexIDs (with the order identified by \norder(as.numeric(vertex.names(mynet))) or some such).\n\nAny of these should work, but I recommend the first, FWIW.\n\nHope that helps,\n\n-Carter\n\nDai Shizuka wrote:\n> Hey everyone,\n> I have a simple problem that I hope has a simple solution:\n> \n> I am working on a social network of birds (43 individuals in this \n> network), each with a unique ID number, ranging from 7 to 112998.\n> \n> When I import an edge list based on these ID numbers using network(), it \n> creates a vertex for all numbers up to 112998 (remember, there are \n> actually only 43 individuals).\n> I can get around this by assigning the ID numbers as factors, but this \n> then creates a separate problem: Now, when I create an adjacency matrix, \n> it sorts them by the first digit, then second digit such that 112998 \n> comes before 256, which comes before 7. However, if I sort a list of \n> vertex attributes using the same IDs, it sorts them correctly in \n> numerical order. This means that my attribute list and the vertex list \n> does not match up!\n> \n> Is there a way to get statnet to recognize my ID names as numbers, but \n> not create vertices for all possible numbers up to 112998?\n> \n> Any clues would be greatly appreciated,\n> \n> Dai Shizuka\n> ----------\n> Daizaburo Shizuka\n> Postdoctoral Researcher\n> Department of Zoology & Physiology\n> University of Wyoming\n> 1000 E. University Ave\n> Laramie, Wyoming 82071\n> \n> \n> ------------------------------------------------------------------------\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi, Dai -\n\nThe issue here is that the edgelist->network conversion assumes that \nyour data is given in the form of vertex IDs (since you are using a \nnumeric matrix).  Vertex IDs are not names, but th",
+      "thread_id": "thread-c10db35ea97a",
+      "thread_depth": 1,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-b5f4a2e951ee",
+      "message_id": "<c3de8e2a1003232151t210131f7u1266423012774b42@mail.gmail.com>",
+      "from_name": "Dai Shizuka",
+      "from_email_hash": "0821b2ad1f8274594f16f40474bb605d24560d46df345789005069d0a7638667",
+      "date": "2010-03-23T21:51:14Z",
+      "subject": "[statnet_help] Numbered IDs create massive problems",
+      "subject_clean": "[statnet_help] Numbered IDs create massive problems",
+      "in_reply_to": "<4BA966A8.1000108@uci.edu>",
+      "references": [
+        "<c3de8e2a1003231618t5000fcfmbd24a285a1b8c81a@mail.gmail.com>",
+        "<4BA966A8.1000108@uci.edu>"
+      ],
+      "body_plain": "Hi all,\nI had a number of potential solutions to my problem. There were two\nparticularly good solutions (by Dr. Carter Butts, no surprisingly)... So I'm\ngoing to post here my problem and the two solutions for anyone who might\nencounter this issue in the future. I apologize for the long post.\n\nThe problem: unique ID numbers get interpreted by statnet as a continuous\nparameter. So, when trying to turn an edge list composed of these ID numbers\ninto a network object, it will try to create a node for every possible\nnumber from 1 to the largest ID number. This screws up the data. You can get\naround this problem by converting ID numbers to character strings, but when\nyou have ID numbers that are different numbers of digits, then it will sort\nthem weirdly when constructing the adjacency matrix. I'm going to\ndemonstrate the problem with two examples, and then provide the two\nsuggested solutons. You can just plug the codes into R and try it out if you\nare curious.\n\n\n# problem 1: Here, I am setting up a sample edge list consisting of 5\nindividuals with unique IDs: 8, 27, 123, 356 and 900. this will produce an\nunreasonable network object because it tries to create a node for all values\nbetween 1 and 900\n\nFocal=c(356,123,27,8,900)\nInteractor=c(123,8,900,27,356)\nel=as.data.frame(cbind(Focal,Interactor))\nnet=network(el,matrix.type=\"edgelist\",directed=FALSE)\nsummary(net)\n\n# this yields:\nNetwork attributes:\n vertices = 900\n directed = FALSE\n hyper = FALSE\n loops = FALSE\n multiple = FALSE\n bipartite = FALSE\n total edges = 5\n   missing edges = 0\n   non-missing edges = 5\n density = 1.235941e-05\n... clearly not right.\n\n## problem 2: trying to get around this by changing the IDs to characters\nmakes the matrix funky:\nFocal=as.character(c(356,123,27,8,900))\nInteractor=as.character(c(123,8,900,27,356))\nel=as.data.frame(cbind(Focal,Interactor))\nnet=network(el,matrix.type=\"edgelist\",directed=FALSE)\nsummary(net)\n\n#This yields:\nNetwork attributes:\n vertices = 5\n directed = FALSE\n hyper = FALSE\n loops = FALSE\n multiple = FALSE\n bipartite = FALSE\n total edges = 5\n   missing edges = 0\n   non-missing edges = 5\n density = 0.5\n\n\nNetwork adjacency matrix:\n    123 27 356 8 900\n123   0  0   1 1   0\n27    0  0   0 1   1\n356   1  0   0 0   1\n8     1  1   0 0   0\n900   0  1   1 0   0\n\n#So here, the network is ok, but the resulting adjacency matrix puts the ID\nnumbers in funky order: (123, 27, 356, 8, 900)\n\n\n### solution 1: convert IDs to 3-digit string with leading 0s. This way, the\ncharacter strings will sort correctly in the adjacency matrix####\nFocal=c(356,123,27,8,900)\nInteractor=c(123,8,900,27,356)\nel=as.data.frame(cbind(Focal,Interactor))\nel$Focal=as.character(sprintf(\"%03d\",el$Focal))\nel$Interactor=as.character(sprintf(\"%03d\",el$Interactor))\nnet=network(el,matrix.type=\"edgelist\",directed=FALSE)\nsummary(net)\n\nThe resulting adjacency matrix:\nNetwork adjacency matrix:\n    008 027 123 356 900\n008   0   1   1   0   0\n027   1   0   0   0   1\n123   1   0   0   1   0\n356   0   0   1   0   1\n900   0   1   0   1   0\n\n\n### solution 2: Re-code the ID into sequential numbers, and then retrieve\nthe appropriate ID numbers after establishing the network object\nFocal=c(356,123,27,8,900)\nInteractor=c(123,8,900,27,356)\nel=as.data.frame(cbind(Focal,Interactor))\ncode=sort(unique(c(el[,1],el[,2])))\nel[,1]=match(el[,1],code)\nel[,2]=match(el[,2],code)\nnet=network(el,matrix.type=\"edgelist\",directed=FALSE)\nnetwork.vertex.names(net)=code\nsummary(net)\n\nThe resulting matrix:\nNetwork adjacency matrix:\n    8 27 123 356 900\n8   0  1   1   0   0\n27  1  0   0   0   1\n123 1  0   0   1   0\n356 0  0   1   0   1\n900 0  1   0   1   0\n\n\n... I learned a lot from this exercise, so I thought I'd share the\nknowledge. Thanks to all those who were kind enough to reply.\n\nDai\n----------\nDaizaburo Shizuka\nPostdoctoral Researcher\nDepartment of Zoology & Physiology\nUniversity of Wyoming\n1000 E. University Ave\nLaramie, Wyoming 82071\n\n\nOn Tue, Mar 23, 2010 at 7:11 PM, Carter T. Butts <buttsc@uci.edu> wrote:\n\n> Hi, Dai -\n>\n> The issue here is that the edgelist->network conversion assumes that your\n> data is given in the form of vertex IDs (since you are using a numeric\n> matrix).  Vertex IDs are not names, but the sort order of the vertex; thus,\n> you can't have an ID (in the sense of the network package) of 112998 on a\n> 43-node network.  You can, of course, have a vertex that carries this number\n> as a name (or other attribute).\n>\n> As this suggests, one approach is to renumber your edgelists prior to\n> conversion.  E.g., something like this:\n>\n> #Let el be your edgelist matrix\n> uvert<-sort(unique(c(el[,1],el[,2])))\n> el[,1]<-match(el[,1],uvert)\n> el[,2]<-match(el[,2],uvert)\n>\n> This will keep your network vertex IDs in the same order as your own ID\n> numbers (names).  Then, set the vertex names (or any other attribute) equal\n> to uvert; you can retrieve the original names in the usual fashion using %v%\n> or get.vertex.attribute.\n>\n> If you don't like that road, another option is to convert your numbers to\n> fixed-width character strings with leading zeros.  (formatC will do this.)\n>  That ensures that the sort order matches the numeric order of your vertex\n> names.  Finally, you could just create the network as usual, and then\n> permute the vertices into your desired order using permute.vertexIDs (with\n> the order identified by order(as.numeric(vertex.names(mynet))) or some\n> such).\n>\n> Any of these should work, but I recommend the first, FWIW.\n>\n> Hope that helps,\n>\n> -Carter\n>\n> Dai Shizuka wrote:\n>\n>> Hey everyone,\n>> I have a simple problem that I hope has a simple solution:\n>>\n>> I am working on a social network of birds (43 individuals in this\n>> network), each with a unique ID number, ranging from 7 to 112998.\n>>\n>> When I import an edge list based on these ID numbers using network(), it\n>> creates a vertex for all numbers up to 112998 (remember, there are actually\n>> only 43 individuals).\n>> I can get around this by assigning the ID numbers as factors, but this\n>> then creates a separate problem: Now, when I create an adjacency matrix, it\n>> sorts them by the first digit, then second digit such that 112998 comes\n>> before 256, which comes before 7. However, if I sort a list of vertex\n>> attributes using the same IDs, it sorts them correctly in numerical order.\n>> This means that my attribute list and the vertex list does not match up!\n>>\n>> Is there a way to get statnet to recognize my ID names as numbers, but not\n>> create vertices for all possible numbers up to 112998?\n>>\n>> Any clues would be greatly appreciated,\n>>\n>> Dai Shizuka\n>> ----------\n>> Daizaburo Shizuka\n>> Postdoctoral Researcher\n>> Department of Zoology & Physiology\n>> University of Wyoming\n>> 1000 E. University Ave\n>> Laramie, Wyoming 82071\n>>\n>>\n>> ------------------------------------------------------------------------\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100323/3257cbe1/attachment.html>",
+      "body_snippet": "Hi all,\nI had a number of potential solutions to my problem. There were two\nparticularly good solutions (by Dr. Carter Butts, no surprisingly)... So I'm\ngoing to post here my problem and the two solut",
+      "thread_id": "thread-c10db35ea97a",
+      "thread_depth": 2,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-a0a154b594a6",
+      "message_id": "<4BAA2779.8090905@gmail.com>",
+      "from_name": "Dave Ouellette",
+      "from_email_hash": "b1006c6ef06f23cc3a1e4554de6e10c07d3761383d3b9e2ab8e896c27879373d",
+      "date": "2010-03-24T07:53:45Z",
+      "subject": "[statnet_help] Numbered IDs create massive problems",
+      "subject_clean": "[statnet_help] Numbered IDs create massive problems",
+      "in_reply_to": "<c3de8e2a1003231618t5000fcfmbd24a285a1b8c81a@mail.gmail.com>",
+      "references": [
+        "<c3de8e2a1003231618t5000fcfmbd24a285a1b8c81a@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Dai,\n\nI had the same problem with a network of 69 vertices from a dorm with\nsubject ID numbers assigned from earlier analyses, which I wanted to\nkeep, but that ranged up to 109.  The network function filled in the\nmissing vertices  with isolates, so  after I created the network object\nin the usual manner, I simply deleted those isolates like this:\n\ndorm <- delete.vertices(dorm, isolates(dorm))\n\nIt seems to work just fine, retaining all the correct vertexIDs, edges,\nand their attributes.  Incidentally, if anyone sees a flaw in my\napproach, please let me know.\n\nThanks,\n\nDavid M. Ouellette, PhD\n\nDai Shizuka wrote:\n> Hey everyone,\n> I have a simple problem that I hope has a simple solution:\n> \n> I am working on a social network of birds (43 individuals in this \n> network), each with a unique ID number, ranging from 7 to 112998.\n> \n> When I import an edge list based on these ID numbers using network(), it \n> creates a vertex for all numbers up to 112998 (remember, there are \n> actually only 43 individuals).\n> I can get around this by assigning the ID numbers as factors, but this \n> then creates a separate problem: Now, when I create an adjacency matrix, \n> it sorts them by the first digit, then second digit such that 112998 \n> comes before 256, which comes before 7. However, if I sort a list of \n> vertex attributes using the same IDs, it sorts them correctly in \n> numerical order. This means that my attribute list and the vertex list \n> does not match up!\n> \n> Is there a way to get statnet to recognize my ID names as numbers, but \n> not create vertices for all possible numbers up to 112998?\n> \n> Any clues would be greatly appreciated,\n> \n> Dai Shizuka\n> ----------\n> Daizaburo Shizuka\n> Postdoctoral Researcher\n> Department of Zoology & Physiology\n> University of Wyoming\n> 1000 E. University Ave\n> Laramie, Wyoming 82071\n> \n> \n> ------------------------------------------------------------------------\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi, Dai,\n\nI had the same problem with a network of 69 vertices from a dorm with\nsubject ID numbers assigned from earlier analyses, which I wanted to\nkeep, but that ranged up to 109.  The network funct",
+      "thread_id": "thread-c10db35ea97a",
+      "thread_depth": 1,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-793c1d10f4da",
+      "message_id": "<5daac4821003240757u695ae0c3r7149aa18aa05ab6b@mail.gmail.com>",
+      "from_name": "Sam Stewart",
+      "from_email_hash": "51b57d9e397a077e24243651cef0d1d3aa1bf70a60060faa096fc9f957fe6cc3",
+      "date": "2010-03-24T07:57:30Z",
+      "subject": "[statnet_help] Numbered IDs create massive problems",
+      "subject_clean": "[statnet_help] Numbered IDs create massive problems",
+      "in_reply_to": "<4BAA2779.8090905@gmail.com>",
+      "references": [
+        "<c3de8e2a1003231618t5000fcfmbd24a285a1b8c81a@mail.gmail.com>",
+        "<4BAA2779.8090905@gmail.com>"
+      ],
+      "body_plain": "I can't see a flaw in your system, but for Dai his range is from 1 up to\nover 100,000, so it would be too difficult to get past the creation step.\n\nBut yes, I think your system would work for more manageable ranges.\n\nOn Wed, Mar 24, 2010 at 11:53 AM, Dave Ouellette\n<dave.ouellette@gmail.com>wrote:\n\n> Hi, Dai,\n>\n> I had the same problem with a network of 69 vertices from a dorm with\n> subject ID numbers assigned from earlier analyses, which I wanted to\n> keep, but that ranged up to 109.  The network function filled in the\n> missing vertices  with isolates, so  after I created the network object\n> in the usual manner, I simply deleted those isolates like this:\n>\n> dorm <- delete.vertices(dorm, isolates(dorm))\n>\n> It seems to work just fine, retaining all the correct vertexIDs, edges,\n> and their attributes.  Incidentally, if anyone sees a flaw in my\n> approach, please let me know.\n>\n> Thanks,\n>\n> David M. Ouellette, PhD\n>\n> Dai Shizuka wrote:\n>\n>> Hey everyone,\n>> I have a simple problem that I hope has a simple solution:\n>>\n>> I am working on a social network of birds (43 individuals in this\n>> network), each with a unique ID number, ranging from 7 to 112998.\n>>\n>> When I import an edge list based on these ID numbers using network(), it\n>> creates a vertex for all numbers up to 112998 (remember, there are actually\n>> only 43 individuals).\n>> I can get around this by assigning the ID numbers as factors, but this\n>> then creates a separate problem: Now, when I create an adjacency matrix, it\n>> sorts them by the first digit, then second digit such that 112998 comes\n>> before 256, which comes before 7. However, if I sort a list of vertex\n>> attributes using the same IDs, it sorts them correctly in numerical order.\n>> This means that my attribute list and the vertex list does not match up!\n>>\n>> Is there a way to get statnet to recognize my ID names as numbers, but not\n>> create vertices for all possible numbers up to 112998?\n>>\n>> Any clues would be greatly appreciated,\n>>\n>> Dai Shizuka\n>> ----------\n>> Daizaburo Shizuka\n>> Postdoctoral Researcher\n>> Department of Zoology & Physiology\n>> University of Wyoming\n>> 1000 E. University Ave\n>> Laramie, Wyoming 82071\n>>\n>>\n>> ------------------------------------------------------------------------\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \nSam Stewart, MMath, A.Stat\nIDPhD Candidate (Health Informatics)\nFaculty of Computer Science, Dalhousie University\n6050 University Ave.\nHalifax, NS, Canada, B3H 1W5\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100324/f2441304/attachment.html>",
+      "body_snippet": "I can't see a flaw in your system, but for Dai his range is from 1 up to\nover 100,000, so it would be too difficult to get past the creation step.\n\nBut yes, I think your system would work for more man",
+      "thread_id": "thread-c10db35ea97a",
+      "thread_depth": 2,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-a4076d2b3441",
+      "message_id": "<4BAA3DD0.6080403@wirtschaft.uni-kassel.de>",
+      "from_name": "Martin Klaus",
+      "from_email_hash": "680374c9dbd7ccc76f32cb777ecc5e89798b33d124ebf6364002bbfb51e8fd5a",
+      "date": "2010-03-24T09:29:04Z",
+      "subject": "[statnet_help] Color nodes by node name lists",
+      "subject_clean": "[statnet_help] Color nodes by node name lists",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hey everyone,\n\nmy question should be answerd realy simple but I couldn figure out how I \ncan color my nodes by theri names.\nLet`s say I have a 10 node network called \"alphabet\" and the nodes name \nare A, B, C, ... J.\nNow I would like to plot the network and color the nodes A, B & C green. \nD,E & F should be blue and G, H I, & J should be red.\nIf possible I also would like to enlarge the central nodes of each color \ncluster. So A, E and J should be a littel bigger than the other nodes \nand maybe also in a differen shape, like a triangle or square!\n\nNow  how do I plot these  special colors, sizes and shapes for not only \none node but a name list of nodes?\nAnd yes I did read the ?plot and ?gplot carefully and tried so solve it \nmyselfe!\n\nThank you for answering so much!\nBest wisshes from Kassel Germany\n\nMartin Klaus",
+      "body_snippet": "Hey everyone,\n\nmy question should be answerd realy simple but I couldn figure out how I \ncan color my nodes by theri names.\nLet`s say I have a 10 node network called \"alphabet\" and the nodes name \nare",
+      "thread_id": "thread-a4076d2b3441",
+      "thread_depth": 0,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-5afcd9fb4ed3",
+      "message_id": "<5ef543831003241151l15ab8996n87e0400f9da499a1@mail.gmail.com>",
+      "from_name": "Sun Kyung Kim",
+      "from_email_hash": "35f48a1f027bf76938a27a5837e98a4b2603b665ecac80f43ad43f7c8905b6c3",
+      "date": "2010-03-24T11:51:49Z",
+      "subject": "[statnet_help] how to get adjacency matrix from simulated data?",
+      "subject_clean": "[statnet_help] how to get adjacency matrix from simulated data?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi\n\nI have a simple question.\n\nhow can i get the adjacency matrix from simulated data?\ni can get edgelist, but not adjacency matrix\n\ne.g) y<-simulate(mat~edges+...)\n      want to get matrix.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100324/a4e3dbff/attachment.html>",
+      "body_snippet": "Hi\n\nI have a simple question.\n\nhow can i get the adjacency matrix from simulated data?\ni can get edgelist, but not adjacency matrix\n\ne.g) y<-simulate(mat~edges+...)\n      want to get matrix.\n---------",
+      "thread_id": "thread-5afcd9fb4ed3",
+      "thread_depth": 0,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-5c65f317b779",
+      "message_id": "<B9946D24-D168-4DAC-A2AC-F899BA0CB545@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-03-24T13:16:02Z",
+      "subject": "[statnet_help] how to get adjacency matrix from simulated data?",
+      "subject_clean": "[statnet_help] how to get adjacency matrix from simulated data?",
+      "in_reply_to": "<5ef543831003241151l15ab8996n87e0400f9da499a1@mail.gmail.com>",
+      "references": [
+        "<5ef543831003241151l15ab8996n87e0400f9da499a1@mail.gmail.com>"
+      ],
+      "body_plain": "You can use as.matrix along with the appropriate matrix.type argument,  \nas in:\n\n > data(g4)\n > as.matrix(g4, \"adjacency\")\n    V1 V2 V3 V4\nV1  0  1  1  1\nV2  0  0  0  0\nV3  1  0  0  0\nV4  0  0  1  0\n > as.matrix(g4, \"edgelist\")\n      [,1] [,2]\n[1,]    3    1\n[2,]    1    2\n[3,]    1    3\n[4,]    4    3\n[5,]    1    4\n\nIn your example, just type\n  as.matrix(y, \"adjacency\")\n\nSee ?as.matrix.network for details.\n\nDave\n\n\n\nOn Mar 24, 2010, at 2:51 PM, Sun Kyung Kim wrote:\n\n> Hi\n>\n> I have a simple question.\n>\n> how can i get the adjacency matrix from simulated data?\n> i can get edgelist, but not adjacency matrix\n>\n> e.g) y<-simulate(mat~edges+...)\n>       want to get matrix.\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "You can use as.matrix along with the appropriate matrix.type argument,  \nas in:\n\n > data(g4)\n > as.matrix(g4, \"adjacency\")\n    V1 V2 V3 V4\nV1  0  1  1  1\nV2  0  0  0  0\nV3  1  0  0  0\nV4  0  0  1  0\n ",
+      "thread_id": "thread-5afcd9fb4ed3",
+      "thread_depth": 1,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-f5d3b6b0072d",
+      "message_id": "<7C7A446E-072A-4008-ADE3-2312BEF95D61@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-03-24T13:40:08Z",
+      "subject": "[statnet_help] Color nodes by node name lists",
+      "subject_clean": "[statnet_help] Color nodes by node name lists",
+      "in_reply_to": "<4BAA3DD0.6080403@wirtschaft.uni-kassel.de>",
+      "references": [
+        "<4BAA3DD0.6080403@wirtschaft.uni-kassel.de>"
+      ],
+      "body_plain": "Note that ?plot won't help; you need to check ?plot.network\n\nCheck out the following example, which may help:\n\n  data(g4)\n  colors <- rep(c(\"green\",\"red\",\"blue\"), c(1, 2, 1))\n  sizes <- rep(c(2.0, 2.5, 3.0), c(2, 1, 1))\n  nsides <- rep(c(3, 4, 8), c(1, 1, 2))\n  plot(g4, vertex.col=colors, vertex.cex=sizes, vertex.sides=nsides)\n\n\nDave\n\n\n\nOn Mar 24, 2010, at 12:29 PM, Martin Klaus wrote:\n\n> Hey everyone,\n>\n> my question should be answerd realy simple but I couldn figure out  \n> how I can color my nodes by theri names.\n> Let`s say I have a 10 node network called \"alphabet\" and the nodes  \n> name are A, B, C, ... J.\n> Now I would like to plot the network and color the nodes A, B & C  \n> green. D,E & F should be blue and G, H I, & J should be red.\n> If possible I also would like to enlarge the central nodes of each  \n> color cluster. So A, E and J should be a littel bigger than the  \n> other nodes and maybe also in a differen shape, like a triangle or  \n> square!\n>\n> Now  how do I plot these  special colors, sizes and shapes for not  \n> only one node but a name list of nodes?\n> And yes I did read the ?plot and ?gplot carefully and tried so solve  \n> it myselfe!\n>\n> Thank you for answering so much!\n> Best wisshes from Kassel Germany\n>\n> Martin Klaus\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Note that ?plot won't help; you need to check ?plot.network\n\nCheck out the following example, which may help:\n\n  data(g4)\n  colors <- rep(c(\"green\",\"red\",\"blue\"), c(1, 2, 1))\n  sizes <- rep(c(2.0, 2.5",
+      "thread_id": "thread-a4076d2b3441",
+      "thread_depth": 1,
+      "month": "2010-03"
+    },
+    {
+      "id": "msg-0cfed63ea62c",
+      "message_id": "<4645BA1355BE764184F2435EBA742EBD01BC445FEE34@USMASVGDOIM502.usma.ds.army.edu>",
+      "from_name": "Johnson, B. x26460 H1",
+      "from_email_hash": "6593da240f0f93de96b511583dbf39e980e6a280c934deb604d099f30da75e53",
+      "date": "2010-03-31T14:32:30Z",
+      "subject": "[statnet_help] (no subject)",
+      "subject_clean": "[statnet_help] (no subject)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "To Whom It May Concern:\n\nI have a longitudinal data set that I am trying to run an RSiena simulation for but because the network is a chess game nodes disappear. I was hoping that someone could help me establish a way to be able to label the nodes so that when I run an edgelist command the nodes appear as how I named them no matter what size the network is.\n\nRespectfully,\nCDT CPL Benjamin Johnson\nUnited States Military Academy\nH-1 USCC 2012\nW: 845-515-5004\nC: 845-825-0103\nBenjamin.johnson2@usma.edu\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100331/c1a8ce5a/attachment.html>",
+      "body_snippet": "To Whom It May Concern:\n\nI have a longitudinal data set that I am trying to run an RSiena simulation for but because the network is a chess game nodes disappear. I was hoping that someone could help m",
+      "thread_id": "thread-0cfed63ea62c",
+      "thread_depth": 0,
+      "month": "2010-03"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-55173446a02b",
+      "subject": "[statnet_help] interpretation of the utriangle, ltriangle terms in dyadcov",
+      "message_count": 3,
+      "participants": [
+        "Jenine Harris",
+        "McCulloh, I. MAJ  BS&L"
+      ],
+      "started": "2010-03-04T14:51:41Z",
+      "last_reply": "2010-03-05T08:19:53Z",
+      "root_message_id": "msg-55173446a02b"
+    },
+    {
+      "id": "thread-b6a9e8737954",
+      "subject": "[statnet_help] Adolescent Health Network Data and R",
+      "message_count": 2,
+      "participants": [
+        "Martina Morris",
+        "Michael Bishop"
+      ],
+      "started": "2010-03-09T17:41:51Z",
+      "last_reply": "2010-03-18T12:06:58Z",
+      "root_message_id": "msg-b6a9e8737954"
+    },
+    {
+      "id": "thread-77fd284523d2",
+      "subject": "[statnet_help] Question about statnet",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Jacob T N Young"
+      ],
+      "started": "2010-03-13T17:07:22Z",
+      "last_reply": "2010-03-14T09:18:06Z",
+      "root_message_id": "msg-77fd284523d2"
+    },
+    {
+      "id": "thread-cfe601771966",
+      "subject": "[statnet_help] How can I obtain a list of the components of a network?",
+      "message_count": 3,
+      "participants": [
+        "Miruna Petrescu-Prahova",
+        "Moses Boudourides",
+        "Philip Leifeld"
+      ],
+      "started": "2010-03-16T06:25:12Z",
+      "last_reply": "2010-03-17T16:39:48Z",
+      "root_message_id": "msg-cfe601771966"
+    },
+    {
+      "id": "thread-8ce9d45f5476",
+      "subject": "[statnet_help] The Lazega lawyer data set?",
+      "message_count": 2,
+      "participants": [
+        "Darakhshan Mir",
+        "Martina Morris"
+      ],
+      "started": "2010-03-17T11:50:31Z",
+      "last_reply": "2010-03-17T12:31:39Z",
+      "root_message_id": "msg-8ce9d45f5476"
+    },
+    {
+      "id": "thread-b7e003db7f1e",
+      "subject": "[statnet_help] Can't join statnet_help",
+      "message_count": 1,
+      "participants": [
+        "David R Lewandowski"
+      ],
+      "started": "2010-03-18T14:22:01Z",
+      "last_reply": "2010-03-18T14:22:01Z",
+      "root_message_id": "msg-b7e003db7f1e"
+    },
+    {
+      "id": "thread-5614506847f3",
+      "subject": "[statnet_help] interpreting GWDSP?",
+      "message_count": 1,
+      "participants": [
+        "Martina Morris"
+      ],
+      "started": "2010-03-18T17:15:47Z",
+      "last_reply": "2010-03-18T17:15:47Z",
+      "root_message_id": "msg-5614506847f3"
+    },
+    {
+      "id": "thread-61807d7abe7c",
+      "subject": "[statnet_help] Edges as a Constraint or a Parameter?",
+      "message_count": 1,
+      "participants": [
+        "James Broesch"
+      ],
+      "started": "2010-03-23T12:18:40Z",
+      "last_reply": "2010-03-23T12:18:40Z",
+      "root_message_id": "msg-61807d7abe7c"
+    },
+    {
+      "id": "thread-c10db35ea97a",
+      "subject": "[statnet_help] Numbered IDs create massive problems",
+      "message_count": 9,
+      "participants": [
+        "Ben Domingue",
+        "Carter T. Butts",
+        "Dai Shizuka",
+        "Dave Ouellette",
+        "Martina Morris",
+        "Neil Abernethy",
+        "Sam Stewart"
+      ],
+      "started": "2010-03-23T16:18:47Z",
+      "last_reply": "2010-03-24T07:57:30Z",
+      "root_message_id": "msg-c10db35ea97a"
+    },
+    {
+      "id": "thread-a4076d2b3441",
+      "subject": "[statnet_help] Color nodes by node name lists",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Martin Klaus"
+      ],
+      "started": "2010-03-24T09:29:04Z",
+      "last_reply": "2010-03-24T13:40:08Z",
+      "root_message_id": "msg-a4076d2b3441"
+    },
+    {
+      "id": "thread-5afcd9fb4ed3",
+      "subject": "[statnet_help] how to get adjacency matrix from simulated data?",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Sun Kyung Kim"
+      ],
+      "started": "2010-03-24T11:51:49Z",
+      "last_reply": "2010-03-24T13:16:02Z",
+      "root_message_id": "msg-5afcd9fb4ed3"
+    },
+    {
+      "id": "thread-0cfed63ea62c",
+      "subject": "[statnet_help] (no subject)",
+      "message_count": 1,
+      "participants": [
+        "Johnson, B. x26460 H1"
+      ],
+      "started": "2010-03-31T14:32:30Z",
+      "last_reply": "2010-03-31T14:32:30Z",
+      "root_message_id": "msg-0cfed63ea62c"
+    }
+  ]
+}

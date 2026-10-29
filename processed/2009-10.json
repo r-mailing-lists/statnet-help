@@ -1,0 +1,448 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2009-10",
+  "messages": [
+    {
+      "id": "msg-ef63b768686a",
+      "message_id": "<5A9FFF99-41EE-488F-A76A-61B2893FE883@gmail.com>",
+      "from_name": "Michael Barnett",
+      "from_email_hash": "a50878f400f032e1783fe2f97cbda97d5af442a86149e8d72fc81b14b3c10ccb",
+      "date": "2009-10-01T13:40:00Z",
+      "subject": "[statnet_help] solution for egocentric density at any distance",
+      "subject_clean": "[statnet_help] solution for egocentric density at any distance",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone -\n\nAfter my mailing yesterday, I plowed through and wrote a function to  \ndo what I was looking for. I didn't quite understand the  \nneighborhood() function at first, but once I thought more about it, I  \nrealized that I could do what I was looking for. Here's my code  \n(apologies if it's ugly):\n\n#Returns nbddensity, a matrix of egocentric densities for each node in  \na \"net\" for each distance from 1 to \"distance\"\nnbd_density <- function(net, distance) {\t\n\t\n\tsize <- network.size(net)\n\tnbddensity <- matrix(nrow = size, ncol = distance)\n\tnbd <- neighborhood(net, distance, neighborhood.type=\"total\",  \nmode=\"graph\", return.all=TRUE, partial = FALSE)\n\t\n\tfor (i in 1:distance) {\n\t\tfor (j in 1:size) {\n\t\t\tadj_m <- as.matrix(net[c(nbd[i,j,]==1),c(nbd[i,j,]==1)])\n\t\t\tifelse (length(as.vector(adj_m)) == 1, nbddensity[j,i] <- 0,\n\t\t\t\tnbddensity[j,i] <- network.density(as.network.matrix(adj_m,  \nmatrix.type=\"adjacency\")))\n\t\t\t}\n\t\t}\t\n\tnbdensity\t\n\t}\n\n-Michael\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20091001/99218bea/attachment.html>",
+      "body_snippet": "Hi everyone -\n\nAfter my mailing yesterday, I plowed through and wrote a function to  \ndo what I was looking for. I didn't quite understand the  \nneighborhood() function at first, but once I thought mo",
+      "thread_id": "thread-ef63b768686a",
+      "thread_depth": 0,
+      "month": "2009-10"
+    },
+    {
+      "id": "msg-32d36edd6808",
+      "message_id": "<Pine.WNT.4.61.0910011430170.2524@chandra.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2009-10-01T14:31:06Z",
+      "subject": "[statnet_help] solution for egocentric density at any distance",
+      "subject_clean": "[statnet_help] solution for egocentric density at any distance",
+      "in_reply_to": "<5A9FFF99-41EE-488F-A76A-61B2893FE883@gmail.com>",
+      "references": [
+        "<5A9FFF99-41EE-488F-A76A-61B2893FE883@gmail.com>"
+      ],
+      "body_plain": "Hi Michael,\n\nThanks so much for writing back, and for sharing your insights and efforts \nwith the rest of the statnet community.\n\nSteve\n\nOn Thu, 1 Oct 2009, Michael Barnett wrote:\n\n> Date: Thu, 1 Oct 2009 16:40:00 -0400\n> From: Michael Barnett <mlbarnett@gmail.com>\n> To: statnet_help@u.washington.edu\n> Subject: [statnet_help] solution for egocentric density at any distance\n> \n> Hi everyone -\n>\n> After my mailing yesterday, I plowed through and wrote a function to do what \n> I was looking for. I didn't quite understand the neighborhood() function at \n> first, but once I thought more about it, I realized that I could do what I \n> was looking for. Here's my code (apologies if it's ugly):\n>\n> #Returns nbddensity, a matrix of egocentric densities for each node in a \n> \"net\" for each distance from 1 to \"distance\"\n> nbd_density <- function(net, distance) {\t\t\tsize <- \n> network.size(net)\n> \tnbddensity <- matrix(nrow = size, ncol = distance)\n> \tnbd <- neighborhood(net, distance, neighborhood.type=\"total\", \n> mode=\"graph\", return.all=TRUE, partial = FALSE)\n> \t\tfor (i in 1:distance) {\n> \t\tfor (j in 1:size) {\n> \t\t\tadj_m <- \n> as.matrix(net[c(nbd[i,j,]==1),c(nbd[i,j,]==1)])\n> \t\t\tifelse (length(as.vector(adj_m)) == 1, \n> nbddensity[j,i] <- 0,\n> \t\t\t\tnbddensity[j,i] <- \n> network.density(as.network.matrix(adj_m, matrix.type=\"adjacency\")))\n> \t\t\t}\n> \t\t}\t\tnbdensity\t\t}\n>\n> -Michael\n\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k            *\n**************************************************************************",
+      "body_snippet": "Hi Michael,\n\nThanks so much for writing back, and for sharing your insights and efforts \nwith the rest of the statnet community.\n\nSteve\n\nOn Thu, 1 Oct 2009, Michael Barnett wrote:\n\n> Date: Thu, 1 Oct ",
+      "thread_id": "thread-ef63b768686a",
+      "thread_depth": 1,
+      "month": "2009-10"
+    },
+    {
+      "id": "msg-5b2b821d0fee",
+      "message_id": "<6E5BE8B4-DECD-48D8-88EB-B18B57BF853B@gmail.com>",
+      "from_name": "Michael Barnett",
+      "from_email_hash": "a50878f400f032e1783fe2f97cbda97d5af442a86149e8d72fc81b14b3c10ccb",
+      "date": "2009-10-01T17:23:27Z",
+      "subject": "[statnet_help] commented and edited code from last post",
+      "subject_clean": "[statnet_help] commented and edited code from last post",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Last post on this thread - there was a bug in my function and it  \nwasn't very well commented, so here it is. If anyone can think of  \nsomething simpler and faster, that would be great! This is a pretty  \ntime consuming little function.\n\n-Michael\n\n******\n\n#Function returning nbddensity, a matrix of egocentric neighborhood  \ndensities for\n#each node in a network from distance 1 to \"distance\"\nnbd_density <- function(net, distance) {\t\n\t# Initializing objects\n\tsize <- network.size(net)\n\tnbddensity <- matrix(nrow = size, ncol = distance)\n\t\n\t#Get neighborhoods\n\tnbd <- neighborhood(net, distance, neighborhood.type=\"total\",  \nmode=\"graph\", return.all=TRUE, partial = FALSE)\n\t\n\t#Nested loop which creates adjancency matrix for each node in a  \nnetwork, then calculates\n\t#its density and deposits the value in a matrix. Repeated for each  \norder up to supplied value distance\n\tfor (i in 1:distance) {\n\t\tfor (j in 1:size) {\n\t\t\tadj_m <- as.matrix(net[c(nbd[i,j,]==1),c(nbd[i,j,]==1)])\n\t\t\tifelse (length(as.vector(adj_m)) == 1, nbddensity[j,i] <- 0, #If  \nisolate, density = 0, not 1\n\t\t\t\tnbddensity[j,i] <- network.density(as.network.matrix(adj_m,  \nmatrix.type=\"adjacency\")))\n\t\t\t}\n\t\t}\t\n\tnbddensity\t #return nbddensity matrix,\n}\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20091001/a0698af9/attachment.html>",
+      "body_snippet": "Last post on this thread - there was a bug in my function and it  \nwasn't very well commented, so here it is. If anyone can think of  \nsomething simpler and faster, that would be great! This is a pret",
+      "thread_id": "thread-5b2b821d0fee",
+      "thread_depth": 0,
+      "month": "2009-10"
+    },
+    {
+      "id": "msg-e97eb75802e4",
+      "message_id": "<4ACA08A2.9040104@wirtschaft.uni-kassel.de>",
+      "from_name": "Martin Klaus",
+      "from_email_hash": "680374c9dbd7ccc76f32cb777ecc5e89798b33d124ebf6364002bbfb51e8fd5a",
+      "date": "2009-10-05T07:54:26Z",
+      "subject": "[statnet_help] Delete a ego network from a network???",
+      "subject_clean": "[statnet_help] Delete a ego network from a network???",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello there\n\nI have a more or less newbe question as well.\n\nI want to delete a ego network from its origianl big network.\nI have a network with about 100 vertices which all have vertex.names.\nI extract an ego network of one of the vertices which has 27 alters with \nthe ego.extract function.\nNow I would like to get the big network (100) wihout the ego network \n(28) so I expect a network with 72 vertices.\n\n So I tried all the delete functions and so on but nothing worked for \nme. I thought the easest way would be to just subtract e1-e2 or \nsomething but that doesn`t work eather. Any idea or help???\nThank you in advance .\nSincerely yours\n\nMartin Klaus",
+      "body_snippet": "Hello there\n\nI have a more or less newbe question as well.\n\nI want to delete a ego network from its origianl big network.\nI have a network with about 100 vertices which all have vertex.names.\nI extrac",
+      "thread_id": "thread-e97eb75802e4",
+      "thread_depth": 0,
+      "month": "2009-10"
+    },
+    {
+      "id": "msg-88edf509b983",
+      "message_id": "<2AEE462C-2F45-4DA5-B09E-9F86E0E4B336@gmail.com>",
+      "from_name": "Michael Barnett",
+      "from_email_hash": "a50878f400f032e1783fe2f97cbda97d5af442a86149e8d72fc81b14b3c10ccb",
+      "date": "2009-10-06T12:54:23Z",
+      "subject": "[statnet_help] memory limit",
+      "subject_clean": "[statnet_help] memory limit",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone -\n\nAnother question: I'm working with a set of networks ranging from  \n~400-5000 nodes. I'm running a simple program to calculate basic node- \nlevel stuff, just three different centrality measures. When I run my  \nprogram on my office's UNIX server, the program inevitably crashes  \nwith the error \"memory exhausted{limit reached?)\". I've checked the  \nmemory limits on the server and they are all \"unlimited\" except for  \nstacksize which is 10240 kbytes. Any suggestions? I'm pasting my code  \nbelow in case maybe it's my code's fault.\n\n-Michael\n\n#APSC_nodes = list of nodes and attributes for each subnetwork in  \nAPSC_comp\n#APSC_comp = list of networks (which are largest components of other  \nnetworks)\n\nAPSC_centrality <- list()\t\n\nfor (i in 1) {\n\tsize <- network.size(APSC_comp[[i]])\n\t\n\t#Component nodes indexing\n\tcomp_nodes <- APSC_nodes[[i]][APSC_comp[[i]] %v% \"vertex.names\",1]\n\t\n\t#Precalc geodesic distance matrix\n\tgd <- geodist(APSC_comp[[i]], predecessors = TRUE)\n\t\n\t#PCP node level statistics\n\tdegree <- degree(APSC_comp[[i]], gmode = \"graph\")\n\tdegree_cent <- degree/(size-1)\n\t\n\t#Centrality measures\n\tbetween_std <- betweenness(APSC_comp[[i]], nodes = NULL, gmode =  \n\"graph\", cmode = \"undirected\", geodist.precomp = gd)\n\tbetween_std_norm <- 2*between_std/((size-1)*(size-2))\n\tclose <- closeness(APSC_comp[[i]], nodes = NULL, gmode = \"graph\",  \ncmode = \"undirected\", geodist.precomp = gd)\n\n\t\n\t#Collate into list of dataframes for all nodes and PCPs\n\tAPSC_centrality[[i]] <- cbind(APSC_nodes[[i]][comp_nodes,], degree,  \ndegree_cent, between_std, between_std_norm, close) \t\n}\n\n)\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20091006/c96bb680/attachment.html>",
+      "body_snippet": "Hi everyone -\n\nAnother question: I'm working with a set of networks ranging from  \n~400-5000 nodes. I'm running a simple program to calculate basic node- \nlevel stuff, just three different centrality ",
+      "thread_id": "thread-88edf509b983",
+      "thread_depth": 0,
+      "month": "2009-10"
+    },
+    {
+      "id": "msg-ad5419749450",
+      "message_id": "<4ACBA2C7.3000507@gmail.com>",
+      "from_name": "Elizeu Santos-Neto",
+      "from_email_hash": "b580f8e90431f7e52b49188565bd217157fbc0f4e7b4badb3468868148808208",
+      "date": "2009-10-06T13:04:23Z",
+      "subject": "[statnet_help] memory limit",
+      "subject_clean": "[statnet_help] memory limit",
+      "in_reply_to": "<2AEE462C-2F45-4DA5-B09E-9F86E0E4B336@gmail.com>",
+      "references": [
+        "<2AEE462C-2F45-4DA5-B09E-9F86E0E4B336@gmail.com>"
+      ],
+      "body_plain": "Hi Michael,\n\nYou could try setting the --min-vsize=XG command line option in R (where \nX is the number of gigabytes, you want to allocate up front).\n\nI'm not sure in your case, but it fixed some memory problems I had in \nthe past.\n\nCheers,\nElizeu\n\nMichael Barnett wrote:\n> Hi everyone -\n> \n> Another question: I'm working with a set of networks ranging from \n> ~400-5000 nodes. I'm running a simple program to calculate basic \n> node-level stuff, just three different centrality measures. When I run \n> my program on my office's UNIX server, the program inevitably crashes \n> with the error \"memory exhausted{limit reached?)\". I've checked the \n> memory limits on the server and they are all \"unlimited\" except for \n> stacksize which is 10240 kbytes. Any suggestions? I'm pasting my code \n> below in case maybe it's my code's fault.\n> \n> -Michael\n> \n> #APSC_nodes = list of nodes and attributes for each subnetwork in APSC_comp\n> #APSC_comp = list of networks (which are largest components of other \n> networks)\n> \n> APSC_centrality <- list()\n> \n> for (i in 1) {\n> size <- network.size(APSC_comp[[i]])\n> \n> \n> #Component nodes indexing\n> comp_nodes <- APSC_nodes[[i]][APSC_comp[[i]] %v% \"vertex.names\",1]\n> \n> \n> #Precalc geodesic distance matrix\n> gd <- geodist(APSC_comp[[i]], predecessors = TRUE)\n> \n> \n> #PCP node level statistics\n> degree <- degree(APSC_comp[[i]], gmode = \"graph\") \n> degree_cent <- degree/(size-1)\n> \n> \n> #Centrality measures\n> between_std <- betweenness(APSC_comp[[i]], nodes = NULL, gmode = \n> \"graph\", cmode = \"undirected\", geodist.precomp = gd)\n> between_std_norm <- 2*between_std/((size-1)*(size-2))\n> close <- closeness(APSC_comp[[i]], nodes = NULL, gmode = \"graph\", cmode \n> = \"undirected\", geodist.precomp = gd)\n> \n> \n> #Collate into list of dataframes for all nodes and PCPs\n> APSC_centrality[[i]] <- cbind(APSC_nodes[[i]][comp_nodes,], degree, \n> degree_cent, between_std, between_std_norm, close) \n> }\n> \n> )\n> \n> \n> ------------------------------------------------------------------------\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n\n-- \n--\nElizeu\n\nhttp://www.ece.ubc.ca/~elizeus\nSkype: elsantosneto",
+      "body_snippet": "Hi Michael,\n\nYou could try setting the --min-vsize=XG command line option in R (where \nX is the number of gigabytes, you want to allocate up front).\n\nI'm not sure in your case, but it fixed some memor",
+      "thread_id": "thread-88edf509b983",
+      "thread_depth": 1,
+      "month": "2009-10"
+    },
+    {
+      "id": "msg-b289b8c2eca2",
+      "message_id": "<Pine.LNX.4.43.0910070647320.25938@hymn14.u.washington.edu>",
+      "from_name": "David A. Nolin",
+      "from_email_hash": "9bdba4bb84525b0697b0c9619af7e9af2b1f5002747878ee0c904c5a04fc85a6",
+      "date": "2009-10-07T06:47:32Z",
+      "subject": "[statnet_help] memory limit",
+      "subject_clean": "[statnet_help] memory limit",
+      "in_reply_to": "<2AEE462C-2F45-4DA5-B09E-9F86E0E4B336@gmail.com>",
+      "references": [],
+      "body_plain": "Michael,\n\nI've run into memory problems in the past as well, albeit on a Windows rather \nthan unix platform. You've probably already looked at this info, but here are \nsome helpful pages:\n\nhelp(Memory) #note this is case sensitive\nhelp(memory.limit)\nhelp(\"Memory-limits\")\n\nI can't speak for unix platforms, but for Windows platforms memory limits appear \nto be a combination of both OS and R limitations: apparently 32-bit\nWindows by default caps user processes at 2G, and R by default requests 1/2G\nless than the max; 64-bit Windows caps at 4G by default, and again R by default\nrequests 1/2G less. The user can increase the available memory using \nmemory.limit(size=####) up to the maximum allowed by the OS.\n\nHopefully someone with unix experience can offer more helpful advice specific to \nyour problem.\n\nMy work-around has been to split my simulations into smaller batches, extract \nthe information I need, and concatenate the results into a new workspace.\n\nCheers,\nDavid\n\nOn Tue, 6 Oct 2009, Michael Barnett wrote:\n\n> Hi everyone -\n>\n> Another question: I'm working with a set of networks ranging from ~400-5000 \n> nodes. I'm running a simple program to calculate basic node-level stuff, just \n> three different centrality measures. When I run my program on my office's UNIX \n> server, the program inevitably crashes with the error \"memory exhausted{limit \n> reached?)\". I've checked the memory limits on the server and they are all \n> \"unlimited\" except for stacksize which is 10240 kbytes. Any suggestions? I'm \n> pasting my code below in case maybe it's my code's fault.\n>\n> -Michael\n>\n> #APSC_nodes = list of nodes and attributes for each subnetwork in APSC_comp\n> #APSC_comp = list of networks (which are largest components of other networks)\n>\n> APSC_centrality <- list()\tfor (i in 1) {\n> \tsize <- network.size(APSC_comp[[i]])\n> \t\t#Component nodes indexing\n> \tcomp_nodes <- APSC_nodes[[i]][APSC_comp[[i]] %v% \"vertex.names\",1]\n> \t\t#Precalc geodesic distance matrix\n> \tgd <- geodist(APSC_comp[[i]], predecessors = TRUE)\n> \t\t#PCP node level statistics\n> \tdegree <- degree(APSC_comp[[i]], gmode = \"graph\")\n> \tdegree_cent <- degree/(size-1)\n> \t\t#Centrality measures\n> \tbetween_std <- betweenness(APSC_comp[[i]], nodes = NULL, gmode = \n\"graph\", \n> cmode = \"undirected\", geodist.precomp = gd)\n> \tbetween_std_norm <- 2*between_std/((size-1)*(size-2))\n> \tclose <- closeness(APSC_comp[[i]], nodes = NULL, gmode = \"graph\", cmode \n= \n> \"undirected\", geodist.precomp = gd)\n>\n> \t\t#Collate into list of dataframes for all nodes and PCPs\n> \tAPSC_centrality[[i]] <- cbind(APSC_nodes[[i]][comp_nodes,], degree, \n> degree_cent, between_std, between_std_norm, close)\t}\n>\n> )",
+      "body_snippet": "Michael,\n\nI've run into memory problems in the past as well, albeit on a Windows rather \nthan unix platform. You've probably already looked at this info, but here are \nsome helpful pages:\n\nhelp(Memory",
+      "thread_id": "thread-88edf509b983",
+      "thread_depth": 1,
+      "month": "2009-10"
+    },
+    {
+      "id": "msg-75a5d6e82f0f",
+      "message_id": "<JHEJIOOGCCMLMNDMHKAPKEOECOAA.masp@uevora.pt>",
+      "from_name": "Miguel Pereira",
+      "from_email_hash": "6042111d14c40472e702cff132d610768bf94909fce35c91f535771aee9c82df",
+      "date": "2009-10-07T14:02:01Z",
+      "subject": "[statnet_help] Atribute (colunm and data)",
+      "subject_clean": "[statnet_help] Atribute (colunm and data)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "HI, My name is Miguel Pereira I? am a new user of Statnet. I under if some\none can give me information to use my RODBC database query table to join a\nnetwork vertex.\nI have a common ID or copy past attributes\n.??\n\nThank you\n\nMiguel Pereira\nPh.D. candidate\nPersonal webpage: http://home.cea.uevora.pt/~masp/index.html\nResearch: http://www.catedra.uevora.pt/rui-nabeiro/index.php/rui_nabeiro",
+      "body_snippet": "HI, My name is Miguel Pereira I? am a new user of Statnet. I under if some\none can give me information to use my RODBC database query table to join a\nnetwork vertex.\nI have a common ID or copy past at",
+      "thread_id": "thread-75a5d6e82f0f",
+      "thread_depth": 0,
+      "month": "2009-10"
+    },
+    {
+      "id": "msg-70352827cf3b",
+      "message_id": "<9c15a6240910112034m3800add3g2e5274cd1d635c30@mail.gmail.com>",
+      "from_name": "Ben Domingue",
+      "from_email_hash": "8044ec7b0a2e39518222887aecfd1b7d94fd6091c3fdd1931d4cf8c64fddc0de",
+      "date": "2009-10-11T20:34:52Z",
+      "subject": "[statnet_help] Question regarding statistics used in computing ergms",
+      "subject_clean": "[statnet_help] Question regarding statistics used in computing ergms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello all,\nI am trying to get the statistics used in the estimation of ergm\nparameters (similar to what one would get from the model component of\na call to lm()).  I first thought this would be a simple matter, but\nafter looking through the help pages for ergm and ergm-terms I'm no\nlonger so sure.  Does anybody know of a way to do this?\nI searched the help archives without success, but please excuse this\nemail if I missed something.\n\n\nBen Domingue\nPhD Student\nSchool of Education\nCU Boulder",
+      "body_snippet": "Hello all,\nI am trying to get the statistics used in the estimation of ergm\nparameters (similar to what one would get from the model component of\na call to lm()).  I first thought this would be a simp",
+      "thread_id": "thread-70352827cf3b",
+      "thread_depth": 0,
+      "month": "2009-10"
+    },
+    {
+      "id": "msg-591b017e10af",
+      "message_id": "<A712D64F-A69E-4907-B11C-CD37860F2F57@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-10-12T05:12:40Z",
+      "subject": "Fwd: [statnet_help] Question regarding statistics used in computing ergms",
+      "subject_clean": "[statnet_help] Question regarding statistics used in computing ergms",
+      "in_reply_to": null,
+      "references": [
+        "<A20867B3-E056-482B-BB0E-FFCD0BC4E709@stat.psu.edu>"
+      ],
+      "body_plain": "Sorry for the repeat email, Ben.  I forgot to reply to the whole list.\n\nDave\n\nBegin forwarded message:\n\n> From: David Hunter <dhunter@stat.psu.edu>\n> Date: October 12, 2009 8:11:52 AM EDT\n> To: Ben Domingue <ben.domingue@gmail.com>\n> Subject: Re: [statnet_help] Question regarding statistics used in  \n> computing ergms\n>\n> Hi Ben.  If you're trying to retrieve the statistics for the  \n> observed network, you can get that using \"summary\" as in  \n> summary(mynetwork ~ edges + kstar(1:3)) or something along those  \n> lines.  If you're trying to get the response and predictors that  \n> would be used in a logistic regression to find the MPLE, I'm not  \n> sure there's a good way to do that yet -- though I have heard others  \n> ask for this functionality and perhaps it would be a good thing to  \n> add to the ergm package.  Which one of these, if either, are you  \n> looking for?\n>\n> Dave\n>\n>\n>\n> On Oct 11, 2009, at 11:34 PM, Ben Domingue wrote:\n>\n>> Hello all,\n>> I am trying to get the statistics used in the estimation of ergm\n>> parameters (similar to what one would get from the model component of\n>> a call to lm()).  I first thought this would be a simple matter, but\n>> after looking through the help pages for ergm and ergm-terms I'm no\n>> longer so sure.  Does anybody know of a way to do this?\n>> I searched the help archives without success, but please excuse this\n>> email if I missed something.\n>>\n>>\n>> Ben Domingue\n>> PhD Student\n>> School of Education\n>> CU Boulder\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Sorry for the repeat email, Ben.  I forgot to reply to the whole list.\n\nDave\n\nBegin forwarded message:\n\n> From: David Hunter <dhunter@stat.psu.edu>\n> Date: October 12, 2009 8:11:52 AM EDT\n> To: Ben Do",
+      "thread_id": "thread-591b017e10af",
+      "thread_depth": 0,
+      "month": "2009-10"
+    },
+    {
+      "id": "msg-0089bebe0784",
+      "message_id": "<9c15a6240910120524p6e5b6023mb59f134cf5025971@mail.gmail.com>",
+      "from_name": "Ben Domingue",
+      "from_email_hash": "8044ec7b0a2e39518222887aecfd1b7d94fd6091c3fdd1931d4cf8c64fddc0de",
+      "date": "2009-10-12T05:24:03Z",
+      "subject": "[statnet_help] Question regarding statistics used in computing  ergms",
+      "subject_clean": "[statnet_help] Question regarding statistics used in computing  ergms",
+      "in_reply_to": "<A712D64F-A69E-4907-B11C-CD37860F2F57@stat.psu.edu>",
+      "references": [
+        "<A20867B3-E056-482B-BB0E-FFCD0BC4E709@stat.psu.edu>",
+        "<A712D64F-A69E-4907-B11C-CD37860F2F57@stat.psu.edu>"
+      ],
+      "body_plain": "Dave,\nSorry for the confusion, I'm looking for the latter.  I do think it\nwould be a good thing to add especially since the change statistics\nare hard to come by otherwise.\n\nBen\n\nOn Mon, Oct 12, 2009 at 6:12 AM, David Hunter <dhunter@stat.psu.edu> wrote:\n> Sorry for the repeat email, Ben. ?I forgot to reply to the whole list.\n>\n> Dave\n>\n> Begin forwarded message:\n>\n>> From: David Hunter <dhunter@stat.psu.edu>\n>> Date: October 12, 2009 8:11:52 AM EDT\n>> To: Ben Domingue <ben.domingue@gmail.com>\n>> Subject: Re: [statnet_help] Question regarding statistics used in\n>> computing ergms\n>>\n>> Hi Ben. ?If you're trying to retrieve the statistics for the observed\n>> network, you can get that using \"summary\" as in summary(mynetwork ~ edges +\n>> kstar(1:3)) or something along those lines. ?If you're trying to get the\n>> response and predictors that would be used in a logistic regression to find\n>> the MPLE, I'm not sure there's a good way to do that yet -- though I have\n>> heard others ask for this functionality and perhaps it would be a good thing\n>> to add to the ergm package. ?Which one of these, if either, are you looking\n>> for?\n>>\n>> Dave\n>>\n>>\n>>\n>> On Oct 11, 2009, at 11:34 PM, Ben Domingue wrote:\n>>\n>>> Hello all,\n>>> I am trying to get the statistics used in the estimation of ergm\n>>> parameters (similar to what one would get from the model component of\n>>> a call to lm()). ?I first thought this would be a simple matter, but\n>>> after looking through the help pages for ergm and ergm-terms I'm no\n>>> longer so sure. ?Does anybody know of a way to do this?\n>>> I searched the help archives without success, but please excuse this\n>>> email if I missed something.\n>>>\n>>>\n>>> Ben Domingue\n>>> PhD Student\n>>> School of Education\n>>> CU Boulder\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Dave,\nSorry for the confusion, I'm looking for the latter.  I do think it\nwould be a good thing to add especially since the change statistics\nare hard to come by otherwise.\n\nBen\n\nOn Mon, Oct 12, 2009 ",
+      "thread_id": "thread-591b017e10af",
+      "thread_depth": 1,
+      "month": "2009-10"
+    },
+    {
+      "id": "msg-c32c515a6bdb",
+      "message_id": "<566b02b10910211219p559ede7r3bbafa5cf38d477b@mail.gmail.com>",
+      "from_name": "David Chen",
+      "from_email_hash": "2a54f49c5c65119ab65c67656b8ce6d0934e1a39baafe00f73f6e750c8b3ab15",
+      "date": "2009-10-21T12:19:37Z",
+      "subject": "[statnet_help] network size limit",
+      "subject_clean": "[statnet_help] network size limit",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I am importing an edge list with edge attributes to calculate the\nstructural equivalence of the nodes in the list. I believe that the\nnetwork the edgelist represents ought to have 283 nodes -- the edge\nlist contains 80089 items. In R, however, network.size() returns\n220940.\nThe edge list has the following structure\n1 2 0.6\n1 3 0.5\n...\nwhere the first and second column are nodes and the third is the edge\nattribute. There is an entry for each node.\nI am importing the edge list in the following way:\nmyData <- read.table(\"24_[t1965].txt\")\nnet <- network(myData, matrix.typ=\"edgelist\", directed=FALSE)\nset.edge.attribute(net, \"o\", myData[[3]])\n\nas.sociomatrix(net, \"o\")\n\nreturns the following error:\nError in matrix(0, nr = network.size(x), nc = network.size(x)) :\n  too many elements specified\n\nI believe I have made a mistake in the way I'm importing the file but\nI'm not sure what I've done wrong. I'd be elated to be pointed in the\nright direction.\n\nThank you,\nDavid Chen\n\n\n_________________________________________\nDavid Chen\nGraduate Student, Department of Psychology\nUniversity of Toronto",
+      "body_snippet": "I am importing an edge list with edge attributes to calculate the\nstructural equivalence of the nodes in the list. I believe that the\nnetwork the edgelist represents ought to have 283 nodes -- the edg",
+      "thread_id": "thread-c32c515a6bdb",
+      "thread_depth": 0,
+      "month": "2009-10"
+    },
+    {
+      "id": "msg-f43a0f1ef8f1",
+      "message_id": "<9c15a6240910211641k20e5bca5l4b4ee639eb17152@mail.gmail.com>",
+      "from_name": "Ben Domingue",
+      "from_email_hash": "8044ec7b0a2e39518222887aecfd1b7d94fd6091c3fdd1931d4cf8c64fddc0de",
+      "date": "2009-10-21T16:41:52Z",
+      "subject": "[statnet_help] network size limit",
+      "subject_clean": "[statnet_help] network size limit",
+      "in_reply_to": "<566b02b10910211219p559ede7r3bbafa5cf38d477b@mail.gmail.com>",
+      "references": [
+        "<566b02b10910211219p559ede7r3bbafa5cf38d477b@mail.gmail.com>"
+      ],
+      "body_plain": "This is kind of a shot in the dark without having some data to work\nwith, but what about adjusting the one line as follows:\nnet <- network(myData[,1:2], matrix.typ=\"edgelist\", directed=FALSE)\nwhere you're now just using a portion (the edgelist portion, to be\nprecise) of myData.\n\nBen\n\nOn Wed, Oct 21, 2009 at 1:19 PM, David Chen\n<ddaavviiddcchheenn@gmail.com> wrote:\n> I am importing an edge list with edge attributes to calculate the\n> structural equivalence of the nodes in the list. I believe that the\n> network the edgelist represents ought to have 283 nodes -- the edge\n> list contains 80089 items. In R, however, network.size() returns\n> 220940.\n> The edge list has the following structure\n> 1 2 0.6\n> 1 3 0.5\n> ...\n> where the first and second column are nodes and the third is the edge\n> attribute. There is an entry for each node.\n> I am importing the edge list in the following way:\n> myData <- read.table(\"24_[t1965].txt\")\n> net <- network(myData, matrix.typ=\"edgelist\", directed=FALSE)\n> set.edge.attribute(net, \"o\", myData[[3]])\n>\n> as.sociomatrix(net, \"o\")\n>\n> returns the following error:\n> Error in matrix(0, nr = network.size(x), nc = network.size(x)) :\n> ?too many elements specified\n>\n> I believe I have made a mistake in the way I'm importing the file but\n> I'm not sure what I've done wrong. I'd be elated to be pointed in the\n> right direction.\n>\n> Thank you,\n> David Chen\n>\n>\n> _________________________________________\n> David Chen\n> Graduate Student, Department of Psychology\n> University of Toronto\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "This is kind of a shot in the dark without having some data to work\nwith, but what about adjusting the one line as follows:\nnet <- network(myData[,1:2], matrix.typ=\"edgelist\", directed=FALSE)\nwhere yo",
+      "thread_id": "thread-c32c515a6bdb",
+      "thread_depth": 1,
+      "month": "2009-10"
+    },
+    {
+      "id": "msg-5fe594ac809d",
+      "message_id": "<006a01ca5657$dd3c4ae0$97b4e0a0$@duke.edu>",
+      "from_name": "James Moody",
+      "from_email_hash": "1c18c335a3c1a8b9d7c81bc6f02895a7897fa19efe09655741474e5c0e446c35",
+      "date": "2009-10-26T09:17:50Z",
+      "subject": "[statnet_help] Best specification for peer group popularity estimates?",
+      "subject_clean": "[statnet_help] Best specification for peer group popularity estimates?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Folks - \n\nI hope this email finds you well.  \n\n \n\nI'd like to estimate the popularity returns to membership in a peer group,\nthat are \"net\" of an individual's characteristics.  That is, I want to\ndistinguish \"a group of popular people\" from a \"popular group.\"\n\n \n\nMy initial instinct was to specify something like a P1 model, with\nindividual attractiveness parameters, reciprocity, etc. plus \"target group\"\nparameters (nodeifactor).  But, of course, there is a linear dependency here\nthat makes such a model unidentified.\n\n \n\nSo, any suggestions for how to capture the popularity due to group\nmembership?\n\n \n\nThanks bunches, \n\nJim Moody\n\nDuke Sociology\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20091026/a92cd14e/attachment.html>",
+      "body_snippet": "Hi Folks - \n\nI hope this email finds you well.  \n\n \n\nI'd like to estimate the popularity returns to membership in a peer group,\nthat are \"net\" of an individual's characteristics.  That is, I want to\nd",
+      "thread_id": "thread-5fe594ac809d",
+      "thread_depth": 0,
+      "month": "2009-10"
+    },
+    {
+      "id": "msg-ee84af44102c",
+      "message_id": "<Pine.GSO.4.64L.0910261245170.8063@scrubbing-bubbles.mit.edu>",
+      "from_name": "Christopher Wheat",
+      "from_email_hash": "6fad98f285e8e8a160be91c62ed29fb43790b44e4aabfd5ae93618ae3acc3b45",
+      "date": "2009-10-26T09:59:57Z",
+      "subject": "[statnet_help] Best specification for peer group popularity estimates?",
+      "subject_clean": "[statnet_help] Best specification for peer group popularity estimates?",
+      "in_reply_to": "<006a01ca5657$dd3c4ae0$97b4e0a0$@duke.edu>",
+      "references": [
+        "<006a01ca5657$dd3c4ae0$97b4e0a0$@duke.edu>"
+      ],
+      "body_plain": "James,\n\n   This is just a shot in the dark, but could you try specifying a model \nthat identifies differences in transitive closure for triads that either \ndo or do not include ingroup members?\n\n   If i & j are both members of the target group, then if the \"group\" is \nimportant in terms of attractiveness judgements on the part of third \nparties, than I guess I'd expect to see a lot of closed triads:\n\n   j -> i, k -> j, k -> i\n\nand not so many open triads:\n\n   j -> i, k -> j\n\n   What I'm thinking is that if j is a member of a popular subgroup, her \nliking i makes i all the more attractive to k.  I guess this would only \nmake sense if what you mean by \"a popular subgroup\" is \"a group whose \nmembership plays an important role in defining what's popular\".\n\n   It just seems tricky to me to get at this without having some relatively \nprocess-oriented account for popularity.  I'm not sure if this is the \nmechanism that you had in mind...\n\n- chris\n\n---\nChristopher Wheat\nAssistant Professor of Strategy\nMIT Sloan School of Management\nhttp://cwheat.scripts.mit.edu/\n\nOn Mon, 26 Oct 2009, James Moody wrote:\n\n> Hi Folks -\n>\n> I hope this email finds you well.\n>\n>\n>\n> I'd like to estimate the popularity returns to membership in a peer group,\n> that are \"net\" of an individual's characteristics.  That is, I want to\n> distinguish \"a group of popular people\" from a \"popular group.\"\n>\n>\n>\n> My initial instinct was to specify something like a P1 model, with\n> individual attractiveness parameters, reciprocity, etc. plus \"target group\"\n> parameters (nodeifactor).  But, of course, there is a linear dependency here\n> that makes such a model unidentified.\n>\n>\n>\n> So, any suggestions for how to capture the popularity due to group\n> membership?\n>\n>\n>\n> Thanks bunches,\n>\n> Jim Moody\n>\n> Duke Sociology\n>\n>",
+      "body_snippet": "James,\n\n   This is just a shot in the dark, but could you try specifying a model \nthat identifies differences in transitive closure for triads that either \ndo or do not include ingroup members?\n\n   If",
+      "thread_id": "thread-5fe594ac809d",
+      "thread_depth": 1,
+      "month": "2009-10"
+    },
+    {
+      "id": "msg-07505358f731",
+      "message_id": "<2AF395D9-545C-47EE-9F70-A8B5A0C689D7@asu.edu>",
+      "from_name": "Matthew Pittinsky",
+      "from_email_hash": "070319829aa04d75e9ef26ed32041066fc8ebc33f91045870072e23bc0dac640",
+      "date": "2009-10-26T16:22:48Z",
+      "subject": "[statnet_help] Error: package 'network' is not installed for 'arch=x86_64'",
+      "subject_clean": "[statnet_help] Error: package 'network' is not installed for 'arch=x86_64'",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello.\n\nThe analyses I am conducting involve a mix of R-Statnet and Stata  \nprogramming.  For data flow and logging reasons, I'd like to run my R- \nStatnet program from within my Stata program.  Stata allows you to run  \nOS command line statements.\n\nUnfortunately, when I run:\n\n  R CMD BATCH --no-save --no-restore programfilename.R test.out\n\nI get back:\n\nR version 2.9.2 (2009-08-24)\nCopyright (C) 2009 The R Foundation for Statistical Computing\nISBN 3-900051-07-0\n\nR is free software and comes with ABSOLUTELY NO WARRANTY.\nYou are welcome to redistribute it under certain conditions.\nType 'license()' or 'licence()' for distribution details.\n\n   Natural language support but running in an English locale\n\nR is a collaborative project with many contributors.\nType 'contributors()' for more information and\n'citation()' on how to cite R or R packages in publications.\n\nType 'demo()' for some demos, 'help()' for on-line help, or\n'help.start()' for an HTML browser interface to help.\nType 'q()' to quit R.\n\n > rm(list = ls(all = TRUE)) # Clear all objects from workspace\n >\n > setwd('/users/mpittinsky/Documents/ASU/Research/Projects/ExecComp/ \nWpaper/R') # set working directory\n > library(\"statnet\") # load statnet suite of SNA commands\nLoading required package: network\nError: package 'network' is not installed for 'arch=x86_64'\nExecution halted\n\nI am on Mac OS 10.6.1.  It is a 64 bit OS, but I only have 32 bit R  \ninstalled on my computer.  It appears that `network' is the culprit.   \nAny ideas?\n\nThanks in advance!\n\nM\n\n________________________\n\nMatthew Pittinsky, Ph.D.\nAssistant Professor\nArizona State University\nSchool of Social and Family Dynamics, Program in Sociology\noffice: Social Sciences 217\nphone: 480-727-9163\nemail: mpittinsky@asu.edu\nweb: www.public.asu.edu/~mpittins\n\n________________________",
+      "body_snippet": "Hello.\n\nThe analyses I am conducting involve a mix of R-Statnet and Stata  \nprogramming.  For data flow and logging reasons, I'd like to run my R- \nStatnet program from within my Stata program.  Stata",
+      "thread_id": "thread-07505358f731",
+      "thread_depth": 0,
+      "month": "2009-10"
+    },
+    {
+      "id": "msg-ad64653e212b",
+      "message_id": "<9AEEF1FB6254224AA355ED285F8491653C7FCA51@EXCHVS2.medctr.ad.wfubmc.edu>",
+      "from_name": "Sean L. Simpson",
+      "from_email_hash": "23eacb2c2cbed5436e4c98b22e4f49db61b6540ea38a73a61605d331f2cfa84b",
+      "date": "2009-10-30T09:42:20Z",
+      "subject": "[statnet_help] Vertex Attributes",
+      "subject_clean": "[statnet_help] Vertex Attributes",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\n \n\nI have a 90 node network and am trying to add 1 attribute to each node.\nI've attempted this with the command \n\n \n\nsubj2net %v% \"RegionComb\"<-regioncomb\n\n \n\nwhere 'regioncomb' contains 90 character attributes (1 for each node).\nHowever, when I do this I'm not sure if it's adding the ith attribute to\nthe ith node or adding all 90 attributes to each node.  When I use the\ncommand \n\n \n\nget.vertex.attribute(suj2net, \"RegionComb\") \n\n \n\nit gives me a list of 8100=90X90 attributes, so it's seemingly giving\neach node all 90.  How do I ensure that each node is only getting 1 of\nthem (the ith in the list)?\n\n \n\n \n\nThanks,\n\nSean\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20091030/cc6a4388/attachment.html>",
+      "body_snippet": "Hi all,\n\n \n\nI have a 90 node network and am trying to add 1 attribute to each node.\nI've attempted this with the command \n\n \n\nsubj2net %v% \"RegionComb\"<-regioncomb\n\n \n\nwhere 'regioncomb' contains 90 c",
+      "thread_id": "thread-ad64653e212b",
+      "thread_depth": 0,
+      "month": "2009-10"
+    },
+    {
+      "id": "msg-d913e576ae53",
+      "message_id": "<9c15a6240910311631m31f7b01w9afdc437982d253@mail.gmail.com>",
+      "from_name": "Ben Domingue",
+      "from_email_hash": "8044ec7b0a2e39518222887aecfd1b7d94fd6091c3fdd1931d4cf8c64fddc0de",
+      "date": "2009-10-31T16:31:12Z",
+      "subject": "[statnet_help] Question about the svd(H) error discussed previously",
+      "subject_clean": "[statnet_help] Question about the svd(H) error discussed previously",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\nI'm having the same problem other users have previously noted where a\nseemingly ok call to ergm produces the following error:\n\n  Error in svd(H) : infinite or missing values in 'x'\n\nLast Halloween (Fri Oct 31 07:39:56 PDT 2008), this issue was\naddressed as follows:\nWe have rerun it and note that the error message: \"Error in svd(H) :\ninfinite or missing values in 'x'\" is just a warning and does not\nindicate a serious problem. (see thread under \"error in svd(H):\ninfinite or missing values in 'x'\")\n\nIt's my understanding that errors differ from warnings in that the\nlatter still allow functions to return data.  In my case, nothing is\nbeing returned by the call to ergm.  The threat I quoted above seems\nto indicate that something would be.  What am I missing?\n\nThanks in advance,\nBen\n\nPhD Student\nCU Boulder School of Education",
+      "body_snippet": "Hello,\nI'm having the same problem other users have previously noted where a\nseemingly ok call to ergm produces the following error:\n\n  Error in svd(H) : infinite or missing values in 'x'\n\nLast Hallow",
+      "thread_id": "thread-d913e576ae53",
+      "thread_depth": 0,
+      "month": "2009-10"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-ef63b768686a",
+      "subject": "[statnet_help] solution for egocentric density at any distance",
+      "message_count": 2,
+      "participants": [
+        "Michael Barnett",
+        "Steven Goodreau"
+      ],
+      "started": "2009-10-01T13:40:00Z",
+      "last_reply": "2009-10-01T14:31:06Z",
+      "root_message_id": "msg-ef63b768686a"
+    },
+    {
+      "id": "thread-5b2b821d0fee",
+      "subject": "[statnet_help] commented and edited code from last post",
+      "message_count": 1,
+      "participants": [
+        "Michael Barnett"
+      ],
+      "started": "2009-10-01T17:23:27Z",
+      "last_reply": "2009-10-01T17:23:27Z",
+      "root_message_id": "msg-5b2b821d0fee"
+    },
+    {
+      "id": "thread-e97eb75802e4",
+      "subject": "[statnet_help] Delete a ego network from a network???",
+      "message_count": 1,
+      "participants": [
+        "Martin Klaus"
+      ],
+      "started": "2009-10-05T07:54:26Z",
+      "last_reply": "2009-10-05T07:54:26Z",
+      "root_message_id": "msg-e97eb75802e4"
+    },
+    {
+      "id": "thread-88edf509b983",
+      "subject": "[statnet_help] memory limit",
+      "message_count": 3,
+      "participants": [
+        "David A. Nolin",
+        "Elizeu Santos-Neto",
+        "Michael Barnett"
+      ],
+      "started": "2009-10-06T12:54:23Z",
+      "last_reply": "2009-10-07T06:47:32Z",
+      "root_message_id": "msg-88edf509b983"
+    },
+    {
+      "id": "thread-75a5d6e82f0f",
+      "subject": "[statnet_help] Atribute (colunm and data)",
+      "message_count": 1,
+      "participants": [
+        "Miguel Pereira"
+      ],
+      "started": "2009-10-07T14:02:01Z",
+      "last_reply": "2009-10-07T14:02:01Z",
+      "root_message_id": "msg-75a5d6e82f0f"
+    },
+    {
+      "id": "thread-70352827cf3b",
+      "subject": "[statnet_help] Question regarding statistics used in computing ergms",
+      "message_count": 1,
+      "participants": [
+        "Ben Domingue"
+      ],
+      "started": "2009-10-11T20:34:52Z",
+      "last_reply": "2009-10-11T20:34:52Z",
+      "root_message_id": "msg-70352827cf3b"
+    },
+    {
+      "id": "thread-591b017e10af",
+      "subject": "[statnet_help] Question regarding statistics used in computing ergms",
+      "message_count": 2,
+      "participants": [
+        "Ben Domingue",
+        "David Hunter"
+      ],
+      "started": "2009-10-12T05:12:40Z",
+      "last_reply": "2009-10-12T05:24:03Z",
+      "root_message_id": "msg-591b017e10af"
+    },
+    {
+      "id": "thread-c32c515a6bdb",
+      "subject": "[statnet_help] network size limit",
+      "message_count": 2,
+      "participants": [
+        "Ben Domingue",
+        "David Chen"
+      ],
+      "started": "2009-10-21T12:19:37Z",
+      "last_reply": "2009-10-21T16:41:52Z",
+      "root_message_id": "msg-c32c515a6bdb"
+    },
+    {
+      "id": "thread-5fe594ac809d",
+      "subject": "[statnet_help] Best specification for peer group popularity estimates?",
+      "message_count": 2,
+      "participants": [
+        "Christopher Wheat",
+        "James Moody"
+      ],
+      "started": "2009-10-26T09:17:50Z",
+      "last_reply": "2009-10-26T09:59:57Z",
+      "root_message_id": "msg-5fe594ac809d"
+    },
+    {
+      "id": "thread-07505358f731",
+      "subject": "[statnet_help] Error: package 'network' is not installed for 'arch=x86_64'",
+      "message_count": 1,
+      "participants": [
+        "Matthew Pittinsky"
+      ],
+      "started": "2009-10-26T16:22:48Z",
+      "last_reply": "2009-10-26T16:22:48Z",
+      "root_message_id": "msg-07505358f731"
+    },
+    {
+      "id": "thread-ad64653e212b",
+      "subject": "[statnet_help] Vertex Attributes",
+      "message_count": 1,
+      "participants": [
+        "Sean L. Simpson"
+      ],
+      "started": "2009-10-30T09:42:20Z",
+      "last_reply": "2009-10-30T09:42:20Z",
+      "root_message_id": "msg-ad64653e212b"
+    },
+    {
+      "id": "thread-d913e576ae53",
+      "subject": "[statnet_help] Question about the svd(H) error discussed previously",
+      "message_count": 1,
+      "participants": [
+        "Ben Domingue"
+      ],
+      "started": "2009-10-31T16:31:12Z",
+      "last_reply": "2009-10-31T16:31:12Z",
+      "root_message_id": "msg-d913e576ae53"
+    }
+  ]
+}

@@ -1,0 +1,276 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2022-12",
+  "messages": [
+    {
+      "id": "msg-4524d78429d2",
+      "message_id": "<DM6PR05MB6828C915A208687EC3D71C19EB179@DM6PR05MB6828.namprd05.prod.outlook.com>",
+      "from_name": "Adams, Jimi",
+      "from_email_hash": "9aec449cac94c1a0e96f8f76afa24d5cae644ad5471ccdfee9b909fb918b5a7b",
+      "date": "2022-12-02T08:28:44Z",
+      "subject": "[statnet_help] question about custom frame slicing for ndtv",
+      "subject_clean": "[statnet_help] question about custom frame slicing for ndtv",
+      "in_reply_to": "<CAHBJhMBVVWA4L+ARa0jLF1iwku2gxp4Vt8y5eKMoiaLuyRVtjQ@mail.gmail.com>",
+      "references": [
+        "<CAHBJhMBVVWA4L+ARa0jLF1iwku2gxp4Vt8y5eKMoiaLuyRVtjQ@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Kyle,\nYou can also define windows with beginning and ending stamps on the time spell. I?ve typically used the activate.vertex.attribute(onset=, terminus=) options (there are corresponding ones for edges) to accomplish this. There are other ways as well, but this is the one that made the most intuitive sense to me.\n\nHope that helps!\njimi\n\njimi adams\nProfessor & Director of Graduate Studies\nHealth & Behavioral Sciences\nUniversity of Colorado Denver\n\no. https://ucdenver.zoom.us/my/jimiadams<https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fucdenver.zoom.us%2Fmy%2Fjimiadams&data=05%7C01%7CJIMI.ADAMS%40ucdenver.edu%7Cfa020a37745047d73b7c08da91cfbd95%7C563337caa517421aaae01aa5b414fd7f%7C0%7C0%7C637982618703311968%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=YYldEdB4tq3Kg2rYopqJsRwEIgTnmTbuf6LBjQavivM%3D&reserved=0>\ne. jimi.adams@ucdenver.edu<mailto:jimi.adams@ucdenver.edu>\nw. jimiadams.com\n\n\n\nFrom: Kyle Quarles <kylequarles@gmail.com>\nSent: Wednesday, November 30, 2022 6:47 AM\nTo: statnet_help@uw.edu; skyebend@skyeome.net\nSubject: [statnet_help] question about custom frame slicing for ndtv\n\nHello list,\n\nI'm a composer with an interest in using dynamic networks to understand and model musical syntax. I have a little tool I'm building for this purpose here: https://github.com/KyleQuarles/MIDI_Dynamic_Network\n\nThis question concerns the ndtv package, specifically frame slicing. In the documentation, slice.par is always an attribute list, with a consistent interval and aggregate.dur for every slice; in other words, it appears the slice.par list can only generate slices of a single size for each animation. However, I'm interested in slicing at musical phrase boundaries, which are not very consistent or regular. So my wish is for the ability to send just an arbitrary list of frames to the compute.animation function, instead of an attribute list which sets them at regular intervals. Is such a thing possible somehow? I checked the tutorial/documentation and couldn't find anything about this, but perhaps I'm not looking for the right thing.\n\nApologies if this is a duplicate question; the archive of questions here:\nhttps://mailman13.u.washington.edu/mailman/private/statnet_help\nis searchable, but none of the 'browse by' or download features work for me.\n\nThank you,\nKyle\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221202/66223167/attachment.html>",
+      "body_snippet": "Hi Kyle,\nYou can also define windows with beginning and ending stamps on the time spell. I?ve typically used the activate.vertex.attribute(onset=, terminus=) options (there are corresponding ones for ",
+      "thread_id": "thread-4524d78429d2",
+      "thread_depth": 0,
+      "month": "2022-12"
+    },
+    {
+      "id": "msg-c9ae988e2ae6",
+      "message_id": "<BYAPR02MB478956FC283C57EE5A6A28138A199@BYAPR02MB4789.namprd02.prod.outlook.com>",
+      "from_name": "Lin Zhu",
+      "from_email_hash": "f657a0514f81a03a588f3da725de776670084a5b6a976c35d258d4c2ff1e5d87",
+      "date": "2022-12-04T12:43:12Z",
+      "subject": "[statnet_help] Error when using simulate",
+      "subject_clean": "[statnet_help] Error when using simulate",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi group,\n\nI?ve checked this in the history but it seems there?s no information about it.\n\nSo I use the ?simulate? function with an networkDynamic object. In some circumstances, it always stopped with an error message:\n\n\nError in if (!is.null(am) && am[nrow(am), 2] == times[1]) { :\n\nmissing value where TRUE/FALSE needed\n\nI?m trying to identify what caused this error but View(simulate) doesn?t provide any original code and View(simulate.networkDynamic) doesn?t exist.\n\nI?m using an older version of the package (to keep my code stable) right now:\n\n               Installed ReposVer Built\nergm           \"3.11.0\"  \"4.3.2\"  \"4.0.3\"\nergm.count     \"3.4.0\"   \"4.1.1\"  \"4.0.3\"\nndtv           \"0.13.2\"  \"0.13.3\" \"4.0.2\"\nnetwork        \"1.17.1\"  \"1.18.0\" \"4.0.2\"\nnetworkDynamic \"0.11.0\"  \"0.11.2\" \"4.0.2\"\nsna            \"2.6\"     \"2.7\"    \"4.0.2\"\nstatnet.common \"4.5.0\"   \"4.7.0\"  \"4.0.2\"\ntergm          \"3.7.0\"   \"4.1.1\"  \"4.0.3\"\n\nAny idea what could cause the error or how I can find the function code so I can try to identify the error?\n\nThank you so much!\n\nBest,\nLin\n\nLin Zhu  |  Research Engineer\nDepartment of Health Policy | School of Medicine\nCenter for Health Policy | Freeman Spogli Institute for International Studies\nStanford University\n615 Crothers Way\nEncina Commons, Office 113\nStanford, CA 94305-6006\n650.736.8139 | linzhu1@stanford.edu\n[signature_3152782964]\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221204/23d9900c/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: image001.png\nType: image/png\nSize: 6796 bytes\nDesc: image001.png\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221204/23d9900c/attachment.png>",
+      "body_snippet": "Hi group,\n\nI?ve checked this in the history but it seems there?s no information about it.\n\nSo I use the ?simulate? function with an networkDynamic object. In some circumstances, it always stopped with",
+      "thread_id": "thread-c9ae988e2ae6",
+      "thread_depth": 0,
+      "month": "2022-12"
+    },
+    {
+      "id": "msg-16f32323de73",
+      "message_id": "<CAByPayHZgmCtRm_EcwFCSf47+AMnkHX9qyaNA+f5-xAVVUZVWg@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2022-12-04T15:08:36Z",
+      "subject": "[statnet_help] Error when using simulate",
+      "subject_clean": "[statnet_help] Error when using simulate",
+      "in_reply_to": "<BYAPR02MB478956FC283C57EE5A6A28138A199@BYAPR02MB4789.namprd02.prod.outlook.com>",
+      "references": [
+        "<BYAPR02MB478956FC283C57EE5A6A28138A199@BYAPR02MB4789.namprd02.prod.outlook.com>"
+      ],
+      "body_plain": "Hi Lin Zhu,\n\nThis seems like a technical issue with 'tergm' or 'networkDynamic'. Can you\nplease open an issue at https://github.com/statnet/tergm/issues adding a\nminimal reproducible example code that we could use to trace where the\npotential bug is?\n\nBest,\nMichal\n\nOn Sun, Dec 4, 2022 at 9:48 PM Lin Zhu <linzhu1@stanford.edu> wrote:\n\n> Hi group,\n>\n>\n>\n> I?ve checked this in the history but it seems there?s no information about\n> it.\n>\n>\n>\n> So I use the ?simulate? function with an networkDynamic object. In some\n> circumstances, it always stopped with an error message:\n>\n>\n>\n> Error in if (!is.null(am) && am[nrow(am), 2] == times[1]) { :\n>\n> missing value where TRUE/FALSE needed\n>\n>\n>\n> I?m trying to identify what caused this error but View(simulate) doesn?t\n> provide any original code and View(simulate.networkDynamic) doesn?t exist.\n>\n>\n>\n> I?m using an older version of the package (to keep my code stable) right\n> now:\n>\n>\n>\n>                Installed ReposVer Built\n>\n> ergm           \"3.11.0\"  \"4.3.2\"  \"4.0.3\"\n>\n> ergm.count     \"3.4.0\"   \"4.1.1\"  \"4.0.3\"\n>\n> ndtv           \"0.13.2\"  \"0.13.3\" \"4.0.2\"\n>\n> network        \"1.17.1\"  \"1.18.0\" \"4.0.2\"\n>\n> networkDynamic \"0.11.0\"  \"0.11.2\" \"4.0.2\"\n>\n> sna            \"2.6\"     \"2.7\"    \"4.0.2\"\n>\n> statnet.common \"4.5.0\"   \"4.7.0\"  \"4.0.2\"\n>\n> tergm          \"3.7.0\"   \"4.1.1\"  \"4.0.3\"\n>\n>\n>\n> Any idea what could cause the error or how I can find the function code so\n> I can try to identify the error?\n>\n>\n>\n> Thank you so much!\n>\n>\n>\n> Best,\n>\n> Lin\n>\n>\n>\n> *Lin Zhu * |  Research Engineer\n>\n> Department of Health Policy | School of Medicine\n>\n> Center for Health Policy | Freeman Spogli Institute for International\n> Studies\n>\n> Stanford University\n>\n> 615 Crothers Way\n>\n> Encina Commons, Office 113\n>\n> Stanford, CA 94305-6006\n>\n> 650.736.8139 | linzhu1@stanford.edu\n>\n> [image: signature_3152782964]\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221205/91669e88/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: image001.png\nType: image/png\nSize: 6796 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221205/91669e88/attachment.png>",
+      "body_snippet": "Hi Lin Zhu,\n\nThis seems like a technical issue with 'tergm' or 'networkDynamic'. Can you\nplease open an issue at https://github.com/statnet/tergm/issues adding a\nminimal reproducible example code that",
+      "thread_id": "thread-c9ae988e2ae6",
+      "thread_depth": 1,
+      "month": "2022-12"
+    },
+    {
+      "id": "msg-76c264322946",
+      "message_id": "<DM6PR05MB5564C6CAC1E2A94EF6BB2422A5E69@DM6PR05MB5564.namprd05.prod.outlook.com>",
+      "from_name": "James Moody",
+      "from_email_hash": "61bf9f854728eb7df9ce43bf47087ca5c36cfa57a06fc62325b529e4d6312419",
+      "date": "2022-12-16T07:13:22Z",
+      "subject": "[statnet_help] Any way to bump out when error detected?",
+      "subject_clean": "[statnet_help] Any way to bump out when error detected?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hey Folks -\nHope you are well.\nIs there a control parameter or similar that would change the behavior when the model detects an error?  I.e. I'm seeing this:\n\nError in check.objfun.output(out, minimize, d) :\n  objfun returned value that is NA or NaN\nMLE could not be found. Trying Nelder-Mead...\n\nThen it goes on and iterates/searches for a (in my case) hopeless solution, which is *very* slow.\n\nIs there any way to get it to just bump out when this (or similar) happens? Would like to set it up so if it detects anything like this, it just stops trying.\n\nIf it were just one case, I would just interrupt it by hand ... but this is embedded in a set of 100s of such models, so running unobserved, and when it hits one of these it slows the process down to a crawl...\n\nThanks in advance,\nPeaceful Thoughts,\nJim\n\n\nJames Moody\nProfessor of Sociology\nDirector, Duke Network Analysis Center\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221216/723d72e9/attachment.html>",
+      "body_snippet": "Hey Folks -\nHope you are well.\nIs there a control parameter or similar that would change the behavior when the model detects an error?  I.e. I'm seeing this:\n\nError in check.objfun.output(out, minimiz",
+      "thread_id": "thread-76c264322946",
+      "thread_depth": 0,
+      "month": "2022-12"
+    },
+    {
+      "id": "msg-969fe243242e",
+      "message_id": "<CAByPayF3AM9vakBWY-k6SAqaHqvCkxo+JCryVzccF1wFYaZqJA@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2022-12-16T07:27:51Z",
+      "subject": "[statnet_help] Any way to bump out when error detected?",
+      "subject_clean": "[statnet_help] Any way to bump out when error detected?",
+      "in_reply_to": "<DM6PR05MB5564C6CAC1E2A94EF6BB2422A5E69@DM6PR05MB5564.namprd05.prod.outlook.com>",
+      "references": [
+        "<DM6PR05MB5564C6CAC1E2A94EF6BB2422A5E69@DM6PR05MB5564.namprd05.prod.outlook.com>"
+      ],
+      "body_plain": "Hello Jim,\n\nAFAIK we don't have a control parameter like that at this moment.\nHowever, there is a harmless hack that could essentially stop ergm()\nat the very point of estimation you are referring to, namely before\nfollowing with fallback methods of optimizing log-likelihood if the\nfirst method fails. Would that work for you?\n\nBest, Micha?\n\nOn Fri, Dec 16, 2022 at 4:13 PM James Moody <jmoody77@duke.edu> wrote:\n>\n> Hey Folks ?\n>\n> Hope you are well.\n>\n> Is there a control parameter or similar that would change the behavior when the model detects an error?  I.e. I?m seeing this:\n>\n>\n>\n> Error in check.objfun.output(out, minimize, d) :\n>\n>   objfun returned value that is NA or NaN\n>\n> MLE could not be found. Trying Nelder-Mead...\n>\n>\n>\n> Then it goes on and iterates/searches for a (in my case) hopeless solution, which is *very* slow.\n>\n>\n>\n> Is there any way to get it to just bump out when this (or similar) happens? Would like to set it up so if it detects anything like this, it just stops trying.\n>\n>\n>\n> If it were just one case, I would just interrupt it by hand ? but this is embedded in a set of 100s of such models, so running unobserved, and when it hits one of these it slows the process down to a crawl?\n>\n>\n>\n> Thanks in advance,\n>\n> Peaceful Thoughts,\n>\n> Jim\n>\n>\n>\n>\n>\n> James Moody\n>\n> Professor of Sociology\n>\n> Director, Duke Network Analysis Center\n>\n>\n>\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hello Jim,\n\nAFAIK we don't have a control parameter like that at this moment.\nHowever, there is a harmless hack that could essentially stop ergm()\nat the very point of estimation you are referring to,",
+      "thread_id": "thread-76c264322946",
+      "thread_depth": 1,
+      "month": "2022-12"
+    },
+    {
+      "id": "msg-2df6632ea547",
+      "message_id": "<2c0e3b77-9ba5-e5a6-860a-1b8b6012e48b@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2022-12-16T13:09:05Z",
+      "subject": "[statnet_help] Any way to bump out when error detected?",
+      "subject_clean": "[statnet_help] Any way to bump out when error detected?",
+      "in_reply_to": "<DM6PR05MB5564C6CAC1E2A94EF6BB2422A5E69@DM6PR05MB5564.namprd05.prod.outlook.com>",
+      "references": [
+        "<DM6PR05MB5564C6CAC1E2A94EF6BB2422A5E69@DM6PR05MB5564.namprd05.prod.outlook.com>"
+      ],
+      "body_plain": "Not a direct fix, but if you are fitting that many models (I presume, in \na simulation study?), you may want to consider using stochastic \napproximation instead of the default Geyer-Thompson-Hummel scheme.? (Use \nmain.method=\"Stochastic\" in the control() list.)? SA converges more \nreadily in non-optimal cases, and fails more gracefully.? I've now \nstarted using that as a go-to for simulation studies, or other \nunsupervised settings where a small fraction of cases with very slow \nconvergence can cause problems.? (Just be sure to turn off the bridge \nsampler if you don't need it, because its settings make it become very \nslow if you tune up your MCMC settings with SA (which you should).)\n\nHope that helps!\n\n-Carter\n\nOn 12/16/22 7:13 AM, James Moody wrote:\n>\n> Hey Folks ?\n>\n> Hope you are well.\n>\n> Is there a control parameter or similar that would change the behavior \n> when the model detects an error?? I.e. I?m seeing this:\n>\n> Error in check.objfun.output(out, minimize, d) :\n>\n> ??objfun returned value that is NA or NaN\n>\n> MLE could not be found. Trying Nelder-Mead...\n>\n> Then it goes on and iterates/searches for a (in my case) hopeless \n> solution, which is **very** slow.\n>\n> Is there any way to get it to just bump out when this (or similar) \n> happens? Would like to set it up so if it detects anything like this, \n> it just stops trying.\n>\n> If it were just one case, I would just interrupt it by hand ? but this \n> is embedded in a set of 100s of such models, so running unobserved, \n> and when it hits one of these it slows the process down to a crawl?\n>\n> Thanks in advance,\n>\n> Peaceful Thoughts,\n>\n> Jim\n>\n> James Moody\n>\n> Professor of Sociology\n>\n> Director, Duke Network Analysis Center\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://urldefense.com/v3/__http://mailman13.u.washington.edu/mailman/listinfo/statnet_help__;!!CzAuKJ42GuquVTTmVmPViYEvSg!LXP3f4NLB_jyVjQCHg_Q1zgKAcSKpv5l-0jblx8QKgDuwNGlWrCWzt2x2Q6tieF4Jd_1y9Ln0YxeZ5oE$  \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221216/9dbfdb7a/attachment.html>",
+      "body_snippet": "Not a direct fix, but if you are fitting that many models (I presume, in \na simulation study?), you may want to consider using stochastic \napproximation instead of the default Geyer-Thompson-Hummel sc",
+      "thread_id": "thread-76c264322946",
+      "thread_depth": 1,
+      "month": "2022-12"
+    },
+    {
+      "id": "msg-86387a73f5e4",
+      "message_id": "<2357350d.53090.1853cae9d6d.Coremail.chenbc20@mails.tsinghua.edu.cn>",
+      "from_name": "陈博川",
+      "from_email_hash": "2441e90deb0ec7b13d5973c627dc83fe805f590ddf2db7549adfdde8726d4edf",
+      "date": "2022-12-22T17:52:34Z",
+      "subject": "[statnet_help] 截屏2022-12-23 上午9.51.33",
+      "subject_clean": "[statnet_help] 截屏2022-12-23 上午9.51.33",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi there,\nThanks for your time to read the email. \nI'm a freshman in Tsinghua University and I'm writing to ask about the error:\n\"Error: `multiple` is `FALSE`, but `x` contains parallel edges.The following rows in `x` are duplicated:\"\nWhile i cannot see what's the problem. So i append the screenshot of the data in the appendix.\nThanks for your time and patience, hope to get the help soon!\nSincerely\nChen Bochuan\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221223/2f0201dc/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: ??2022-12-23 ??9.51.33.png\nType: image/png\nSize: 718009 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221223/2f0201dc/attachment.png>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: ??2022-12-23 ??9.51.50.png\nType: image/png\nSize: 731795 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221223/2f0201dc/attachment-0001.png>",
+      "body_snippet": "Hi there,\nThanks for your time to read the email. \nI'm a freshman in Tsinghua University and I'm writing to ask about the error:\n\"Error: `multiple` is `FALSE`, but `x` contains parallel edges.The foll",
+      "thread_id": "thread-86387a73f5e4",
+      "thread_depth": 0,
+      "month": "2022-12"
+    },
+    {
+      "id": "msg-fdbeb205b4eb",
+      "message_id": "<6f8fd883.530ae.1853cb4f64d.Coremail.chenbc20@mails.tsinghua.edu.cn>",
+      "from_name": "陈博川",
+      "from_email_hash": "2441e90deb0ec7b13d5973c627dc83fe805f590ddf2db7549adfdde8726d4edf",
+      "date": "2022-12-22T17:59:30Z",
+      "subject": "[statnet_help] statnet_help mailing list submissions",
+      "subject_clean": "[statnet_help] statnet_help mailing list submissions",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I would like to submit to statnet_help mailing list.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221223/a7234bb8/attachment.html>",
+      "body_snippet": "I would like to submit to statnet_help mailing list.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachmen",
+      "thread_id": "thread-fdbeb205b4eb",
+      "thread_depth": 0,
+      "month": "2022-12"
+    },
+    {
+      "id": "msg-b789c9698bb6",
+      "message_id": "<1de9e981.530fa.1853cc13bc2.Coremail.chenbc20@mails.tsinghua.edu.cn>",
+      "from_name": "陈博川",
+      "from_email_hash": "2441e90deb0ec7b13d5973c627dc83fe805f590ddf2db7549adfdde8726d4edf",
+      "date": "2022-12-22T18:12:54Z",
+      "subject": "[statnet_help] Question about duplicated variable",
+      "subject_clean": "[statnet_help] Question about duplicated variable",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi there,\nThanks for your time to read the email. \nI'm a freshman in Tsinghua University and I'm writing to ask about the error:\n\"Error: `multiple` is `FALSE`, but `x` contains parallel edges.The following rows in `x` are duplicated:\"\nWhile i cannot see what's the problem. So i append the screenshot of the data in the appendix.\nThanks for your time and patience, hope to get the help soon!\nSincerely\nChen Bochuan\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221223/66640653/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: ??2022-12-23 ??10.12.29.png\nType: image/png\nSize: 733988 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221223/66640653/attachment.png>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: ??2022-12-23 ??10.12.48.png\nType: image/png\nSize: 727253 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221223/66640653/attachment-0001.png>",
+      "body_snippet": "Hi there,\nThanks for your time to read the email. \nI'm a freshman in Tsinghua University and I'm writing to ask about the error:\n\"Error: `multiple` is `FALSE`, but `x` contains parallel edges.The foll",
+      "thread_id": "thread-b789c9698bb6",
+      "thread_depth": 0,
+      "month": "2022-12"
+    },
+    {
+      "id": "msg-6a3e76da8c73",
+      "message_id": "<890f431f-8374-727a-a59c-3880388fe59b@uni-hamburg.de>",
+      "from_name": "Daniel Gotthardt",
+      "from_email_hash": "f1204489023adbcbbf8c678f27c74b21263536bb4b4ceca5831755cd92505409",
+      "date": "2022-12-23T05:55:10Z",
+      "subject": "[statnet_help] Question about duplicated variable",
+      "subject_clean": "[statnet_help] Question about duplicated variable",
+      "in_reply_to": "<1de9e981.530fa.1853cc13bc2.Coremail.chenbc20@mails.tsinghua.edu.cn>",
+      "references": [
+        "<1de9e981.530fa.1853cc13bc2.Coremail.chenbc20@mails.tsinghua.edu.cn>"
+      ],
+      "body_plain": "Hello Chen Bochuan,\n\nyou have duplicates which you could not see, because you tried to subset \nthe whole matrix with a row-indicator: df[duplicated(df)] should be \ndf[duplicated(df), ].\n\nFor example the rows 1251 and 1258 are duplicates of each other with the \nvalues (FKZL26-1, HBL1191-1, 1).\n\nBest Regards,\n\nDaniel\n\nAm 23.12.2022 um 03:12 schrieb ???:\n> Hi there,\n> Thanks for your time to read the email.\n> I'm a freshman in Tsinghua University and I'm writing to ask about the \n> error:\n> \"Error: `multiple` is `FALSE`, but `x` contains parallel edges.The \n> following rows in `x` are duplicated:\"\n> While i cannot see what's the problem. So i append the screenshot of the \n> data in the appendix.\n> Thanks for your time and patience, hope to get the help soon!\n> Sincerely\n> Chen Bochuan\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \n\nDaniel Gotthardt, M.A.\n\nWissenschaftlicher Mitarbeiter / Research Associate\n\nUniversit?t Hamburg\nFakult?t f?r Wirtschafts- und Sozialwissenschaften / Faculty of \nBusiness, Economics and Social Sciences\nFachbereich Sozialwissenschaften / Department of Social Sciences\nSoziologie, insb. Digitale Sozialwissenschaft / Sociology, esp. Digital \nSocial Science\n\nMax-Brauer-Allee 60\n22765 Hamburg\nwww.uni-hamburg.de",
+      "body_snippet": "Hello Chen Bochuan,\n\nyou have duplicates which you could not see, because you tried to subset \nthe whole matrix with a row-indicator: df[duplicated(df)] should be \ndf[duplicated(df), ].\n\nFor example t",
+      "thread_id": "thread-b789c9698bb6",
+      "thread_depth": 1,
+      "month": "2022-12"
+    },
+    {
+      "id": "msg-897047852015",
+      "message_id": "<88B51891-4696-426C-BD2B-284EB92E21FE@icloud.com>",
+      "from_name": "Steffen Triebel",
+      "from_email_hash": "7e40c06854140be429959e404d693bb173ef589f988bce581b3d16535ac03f1a",
+      "date": "2022-12-27T08:17:01Z",
+      "subject": "[statnet_help] Interpreting attribute-based geometrically weighted effects in two-mode networks",
+      "subject_clean": "[statnet_help] Interpreting attribute-based geometrically weighted effects in two-mode networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI hope you had enjoyable holidays.\n\n \n\nI?m currently working on a large two-mode network (500 events, 9500 actors). My current specification includes mostly effects such as nodematch or b2star in combination with attributes and gives theoretically meaningful results. I initially thought that the fit (both upon visual inspection and based on p-values) was no reason for concern, but upon closer inspection it seems that the MCMC diagnostics point to model degeneracy.\n\n \n\nAs far as I can tell the trace and density plots are all fine. The Geweke-diagnostics are all far from zero on all individual sample statistics but the auto-correlation, while constantly decreasing, takes quite a while to get close to zero (my understanding is that any statistic after lag 0 should be close to zero). To improve this, I tried adding geometrically weighted effects (gwb1degree, gwb1dsp, ..). It seems that no matter what combination of effects I try here (effects, decay and cutoff), I can?t get the models to converge. My guess is that this is because the network is highly formalized and not as organic as a school class for example. Now, I tried substituting the attribute-based b2star-effects with gwb2degree(attr=?covar_name?, decay=0.5, fixed=T) and these work fine, which is good. However, I am at a loss on how to interpret this, as each gwb2degree-effect produces two significant parameters (the attributes are dummy covariates, so one for each value) with basically the same parameter estimate. The estimated parameters are also very large.\n\n \n\nIn sum, I have four questions:\nAre the MCMC-diagnostics as described here actually a reason for concern?\n \nHow do I interpret the parameters that gwb2degree produces?\n \nAnything else I can do to improve my model? My controls currently are: (MCMLE.maxit=200, MCMC.burnin=3000, MCMC.interval=5000, MCMC.samplesize=10000)\n \nHow can I specify the constraint that actors have a minimum degree of 1 and events have a maximum degree of 40? This should also help with further estimations, I hope.\n \n\nCheers & enjoy the rest of the year,\n\nSteffen\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221227/023b1a6f/attachment.html>",
+      "body_snippet": "Dear all,\n\nI hope you had enjoyable holidays.\n\n \n\nI?m currently working on a large two-mode network (500 events, 9500 actors). My current specification includes mostly effects such as nodematch or b2s",
+      "thread_id": "thread-897047852015",
+      "thread_depth": 0,
+      "month": "2022-12"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-4524d78429d2",
+      "subject": "[statnet_help] question about custom frame slicing for ndtv",
+      "message_count": 1,
+      "participants": [
+        "Adams, Jimi"
+      ],
+      "started": "2022-12-02T08:28:44Z",
+      "last_reply": "2022-12-02T08:28:44Z",
+      "root_message_id": "msg-4524d78429d2"
+    },
+    {
+      "id": "thread-c9ae988e2ae6",
+      "subject": "[statnet_help] Error when using simulate",
+      "message_count": 2,
+      "participants": [
+        "Lin Zhu",
+        "Michał Bojanowski"
+      ],
+      "started": "2022-12-04T12:43:12Z",
+      "last_reply": "2022-12-04T15:08:36Z",
+      "root_message_id": "msg-c9ae988e2ae6"
+    },
+    {
+      "id": "thread-76c264322946",
+      "subject": "[statnet_help] Any way to bump out when error detected?",
+      "message_count": 3,
+      "participants": [
+        "Carter T. Butts",
+        "James Moody",
+        "Michał Bojanowski"
+      ],
+      "started": "2022-12-16T07:13:22Z",
+      "last_reply": "2022-12-16T13:09:05Z",
+      "root_message_id": "msg-76c264322946"
+    },
+    {
+      "id": "thread-86387a73f5e4",
+      "subject": "[statnet_help] 截屏2022-12-23 上午9.51.33",
+      "message_count": 1,
+      "participants": [
+        "陈博川"
+      ],
+      "started": "2022-12-22T17:52:34Z",
+      "last_reply": "2022-12-22T17:52:34Z",
+      "root_message_id": "msg-86387a73f5e4"
+    },
+    {
+      "id": "thread-fdbeb205b4eb",
+      "subject": "[statnet_help] statnet_help mailing list submissions",
+      "message_count": 1,
+      "participants": [
+        "陈博川"
+      ],
+      "started": "2022-12-22T17:59:30Z",
+      "last_reply": "2022-12-22T17:59:30Z",
+      "root_message_id": "msg-fdbeb205b4eb"
+    },
+    {
+      "id": "thread-b789c9698bb6",
+      "subject": "[statnet_help] Question about duplicated variable",
+      "message_count": 2,
+      "participants": [
+        "Daniel Gotthardt",
+        "陈博川"
+      ],
+      "started": "2022-12-22T18:12:54Z",
+      "last_reply": "2022-12-23T05:55:10Z",
+      "root_message_id": "msg-b789c9698bb6"
+    },
+    {
+      "id": "thread-897047852015",
+      "subject": "[statnet_help] Interpreting attribute-based geometrically weighted effects in two-mode networks",
+      "message_count": 1,
+      "participants": [
+        "Steffen Triebel"
+      ],
+      "started": "2022-12-27T08:17:01Z",
+      "last_reply": "2022-12-27T08:17:01Z",
+      "root_message_id": "msg-897047852015"
+    }
+  ]
+}

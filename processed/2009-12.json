@@ -1,0 +1,217 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2009-12",
+  "messages": [
+    {
+      "id": "msg-23116a91967a",
+      "message_id": "<alpine.WNT.2.00.0912031332190.11188@csde-ts3.csde.washington.edu>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2009-12-03T13:44:38Z",
+      "subject": "[statnet_help] question on input for dyadic attributes (edgecov and dyadcov) in ergm",
+      "subject_clean": "[statnet_help] question on input for dyadic attributes (edgecov and dyadcov) in ergm",
+      "in_reply_to": "<525391.5856.qm@web53605.mail.re2.yahoo.com>",
+      "references": [
+        "<525391.5856.qm@web53605.mail.re2.yahoo.com>"
+      ],
+      "body_plain": "Hi Chanung,\n\nIt sounds like what you have is nodal attribute data (like gdp) and you \nwant to model the potential impact of these on tie formation.  This is \neffectively a question about selective mixing based on nodal attributes. \nWhile you can think about this at the dyadic level, it really is a \nproperty of the (two) nodes.\n\nWhy do you want to model it as a dyadic covariate rather than a nodal \ncovariate (using, for example, the absdiff ergm term)?\n\nbest,\nMartina\n\nOn Mon, 30 Nov 2009, chanung park wrote:\n\n> Hello. I have been trying to apply ergm to? a symmetric trading data between countries.\n> \n> I also have a number of binary, categorical, and continuous (quantitative) dyadic\n> attributes. For example, I am interested in how two countries with similar or\n> different gdp would form a trading tie.\n> \n> To include those continuous dyadic attributes, first, I used the following line\n> for each attributes (gdp and distance):\n> \n> table_gdp<-read.table(\"gdp.txt\")\n> matrix_gdp<-data.matrix(table_gdp)\n> gdp<-network(matrix_gdp, directed=FALSE)\n> \n> table_distance<-read.table(\"dist.txt\")\n> matrix_distance<-data.matrix(table_distance)\n> distance<-network(matrix_distance, directed=FALSE)\n> \n> Basically. gdp.txt is a country-by-country gdp matrix in which a cell consists\n> of gdp for country 1 multiplied by gdp for country 2.\n> \n> dist.txt is a country-by-country distance matrix.\n> \n> However, when I included them in ergm as follows, the output shows no significant results.\n> \n> model1<-ergm(trade~edges+edgecov(gdp)+edgecov(dist))\n> \n> Also, instead of making dyadic attributes as network variable as above,\n> I also tried to include them as matrix as follows:\n> \n> table_gdp<-read.table(\"gdp.txt\")\n> matrix_gdp<-data.matrix(table_gdp)\n> \n> table_distance<-read.table(\"dist.txt\")\n> matrix_distance<-data.matrix(table_distance)\n> \n> model1<-ergm(trade~edges+edgecov(matrix_gdp) + edgecov(matrix_dist)).\n> \n> Then, I got different results from the above input method where I made\n> dyadic attributes as network instead of matrix type.\n> \n> To summarize, I'd like know what is a correct method for using\n> multiple continuous or quantitative dyadic attributes. Also, if a network is directed,\n> can I just use dyadcov instead of edgecov, but in the same format?\n> \n> Thanks.\n> \n> Chan-ung Park\n> Associate Professor\n> Dept. of Sociology, Yonsei Univ.\n> Visiting Scholar\n> Dept. of Sociology, Harvard Univ.\n> \n> chanungi at yahoo.com\n> \n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Chanung,\n\nIt sounds like what you have is nodal attribute data (like gdp) and you \nwant to model the potential impact of these on tie formation.  This is \neffectively a question about selective mix",
+      "thread_id": "thread-23116a91967a",
+      "thread_depth": 0,
+      "month": "2009-12"
+    },
+    {
+      "id": "msg-0ac46ace861c",
+      "message_id": "<55ba41f20912060716k67ae6fafm49988b15f29b72d2@mail.gmail.com>",
+      "from_name": "Jim Magnuson",
+      "from_email_hash": "c04359c417c75b7040291437963d1f7415ff85c01682ca2046d7946bf026696d",
+      "date": "2009-12-06T07:16:24Z",
+      "subject": "[statnet_help] statnet missing from CRAN?",
+      "subject_clean": "[statnet_help] statnet missing from CRAN?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI'm trying to get started with statnet, but can't install it. Here's what\nhappens in R (on a Mac):\n\n> install.packages('statnet')\nWarning message:\npackage ?statnet? is not available\n\nThere is a note at CRAN saying the package has been removed (\nhttp://cran.r-project.org/web/packages/statnet/index.html):\n\nPackage ?statnet? was removed from the CRAN repository.\n\nFormerly available versions can be obtained from the\narchive<http://cran.r-project.org/src/contrib/Archive/statnet>\n.\n\nThe versions in the archive appear to be a few versions old...\n\nIs there an alternative way to install?\n\nThanks,\n\njim\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20091206/69e314a1/attachment.html>",
+      "body_snippet": "Hi,\n\nI'm trying to get started with statnet, but can't install it. Here's what\nhappens in R (on a Mac):\n\n> install.packages('statnet')\nWarning message:\npackage ?statnet? is not available\n\nThere is a n",
+      "thread_id": "thread-0ac46ace861c",
+      "thread_depth": 0,
+      "month": "2009-12"
+    },
+    {
+      "id": "msg-f00650b9a8e3",
+      "message_id": "<A9C3E575-BA1E-4D50-A034-1F4CE61B26BC@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-12-06T07:30:51Z",
+      "subject": "[statnet_help] statnet missing from CRAN?",
+      "subject_clean": "[statnet_help] statnet missing from CRAN?",
+      "in_reply_to": "<55ba41f20912060716k67ae6fafm49988b15f29b72d2@mail.gmail.com>",
+      "references": [
+        "<55ba41f20912060716k67ae6fafm49988b15f29b72d2@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Jim.  I didn't know statnet had been removed from CRAN.  As a  \nstopgap, you can install individual packages that fall under the  \nstatnet umbrella.  The most commonly-used of these are network, sna,  \nand ergm.  If you install these three packages from CRAN (by using the  \ninstall.packages command exactly as you've done below), you should do  \nso in that order, since ergm depends on network.  (Technically, sna  \ndoes not, though it is written to exploit network if network is loaded.)\n\nIf there are other statnet packages that you know you want, those too  \ncan be installed separately, but I believe the three above are the  \nmost commonly-used.  In fact, the only thing that the statnet  \n\"package\" does -- when it's working -- is to install a series of other  \nCRAN packages (including the three above, of course).\n\nOnce these are installed you can type 'library(ergm)' or  \n'library(network)' or 'library(sna)' to use the packages.\n\nDave\n\n\n\nOn Dec 6, 2009, at 10:16 AM, Jim Magnuson wrote:\n\n> Hi,\n>\n> I'm trying to get started with statnet, but can't install it. Here's  \n> what happens in R (on a Mac):\n>\n> > install.packages('statnet')\n> Warning message:\n> package ?statnet? is not available\n>\n> There is a note at CRAN saying the package has been removed (http://cran.r-project.org/web/packages/statnet/index.html \n> ):\n> Package ?statnet? was removed from the CRAN repository.\n>\n> Formerly available versions can be obtained from the archive.\n>\n> The versions in the archive appear to be a few versions old...\n>\n> Is there an alternative way to install?\n>\n> Thanks,\n>\n> jim\n>\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20091206/a728f365/attachment.html>",
+      "body_snippet": "Hi Jim.  I didn't know statnet had been removed from CRAN.  As a  \nstopgap, you can install individual packages that fall under the  \nstatnet umbrella.  The most commonly-used of these are network, sn",
+      "thread_id": "thread-0ac46ace861c",
+      "thread_depth": 1,
+      "month": "2009-12"
+    },
+    {
+      "id": "msg-34190f983f9d",
+      "message_id": "<6757038BFDCD614DA5213272D1E15798055FA68DBF@USMASVGDOIM522.usma.ds.army.edu>",
+      "from_name": "McCulloh, I. MAJ  BS&L",
+      "from_email_hash": "036fda2478435ceb1ffb50eb49653009d7801990b4e281de642417da546820b6",
+      "date": "2009-12-10T03:09:14Z",
+      "subject": "[statnet_help] Statnet not on CRAN",
+      "subject_clean": "[statnet_help] Statnet not on CRAN",
+      "in_reply_to": "<alpine.LRH.2.01.0911021245500.18072@hymn31.u.washington.edu>",
+      "references": [
+        "<alpine.LRH.2.01.0911021245500.18072@hymn31.u.washington.edu>"
+      ],
+      "body_plain": "Hello,\n\nI am trying to download statnet on a new computer.  I can install R, but statnet is not listed on the CRAN.  Has the package been pulled or something?\n\nIan McCulloh",
+      "body_snippet": "Hello,\n\nI am trying to download statnet on a new computer.  I can install R, but statnet is not listed on the CRAN.  Has the package been pulled or something?\n\nIan McCulloh",
+      "thread_id": "thread-34190f983f9d",
+      "thread_depth": 0,
+      "month": "2009-12"
+    },
+    {
+      "id": "msg-5a235ba6581b",
+      "message_id": "<6859125B-DE0F-4167-9A8A-6D58D660D1B1@reed.edu>",
+      "from_name": "Alexander H. Montgomery-Amo",
+      "from_email_hash": "d1c48c3c695c97a51e653a3cc66bc8e8fd7c5c03b9e0a43fd4b72da306733d40",
+      "date": "2009-12-14T20:17:33Z",
+      "subject": "[statnet_help] Valued networks in network package",
+      "subject_clean": "[statnet_help] Valued networks in network package",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "It seems that the network package doesn't actually preserve valued  \nrelations when coercing matricies into networks. For example:\n\n > m <- matrix(c(0,2,2,0),nrow=2)\n > n <- network(m)\n > degree(n)\n[1] 2 2\n > degree(m)\n[1] 4 4\n\nDoes the network package assume that networks are not valued? Or am I  \nmissing something else here?\n\nThanks\n-AHM",
+      "body_snippet": "It seems that the network package doesn't actually preserve valued  \nrelations when coercing matricies into networks. For example:\n\n > m <- matrix(c(0,2,2,0),nrow=2)\n > n <- network(m)\n > degree(n)\n[1",
+      "thread_id": "thread-5a235ba6581b",
+      "thread_depth": 0,
+      "month": "2009-12"
+    },
+    {
+      "id": "msg-61bf27febbe1",
+      "message_id": "<5daac4820912150504v470628f1u991aeb3c40ecc062@mail.gmail.com>",
+      "from_name": "Sam Stewart",
+      "from_email_hash": "51b57d9e397a077e24243651cef0d1d3aa1bf70a60060faa096fc9f957fe6cc3",
+      "date": "2009-12-15T05:04:16Z",
+      "subject": "[statnet_help] Valued networks in network package",
+      "subject_clean": "[statnet_help] Valued networks in network package",
+      "in_reply_to": "<6859125B-DE0F-4167-9A8A-6D58D660D1B1@reed.edu>",
+      "references": [
+        "<6859125B-DE0F-4167-9A8A-6D58D660D1B1@reed.edu>"
+      ],
+      "body_plain": "You want to use the network.adjacency option to create a valued adjacency matrix\n\nm = matrix(c(0,2,2,0),nrow=2)\nn = network(m)\ndegree(n)\nnetwork.adjacency(m,n)\ndegree(n)\ndegree(m)\n\nIf you're familiar with R you'll a little confused by the syntax for\nnetwork.adjacency, where m is the adjacency matrix that defines the\nvalues of the ties in n. The function (I think) takes care of the\nassignment itself.\n\nHope that helps,\nSam Stewart\n\nOn Tue, Dec 15, 2009 at 12:17 AM, Alexander H. Montgomery-Amo\n<ahm@reed.edu> wrote:\n> It seems that the network package doesn't actually preserve valued relations\n> when coercing matricies into networks. For example:\n>\n>> m <- matrix(c(0,2,2,0),nrow=2)\n>> n <- network(m)\n>> degree(n)\n> [1] 2 2\n>> degree(m)\n> [1] 4 4\n>\n> Does the network package assume that networks are not valued? Or am I\n> missing something else here?\n>\n> Thanks\n> -AHM\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \nSam Stewart, MMath, A.Stat\nIDPhD Candidate (Health Informatics)\nFaculty of Computer Science, Dalhousie University\n6050 University Ave.\nHalifax, NS, Canada, B3H 1W5",
+      "body_snippet": "You want to use the network.adjacency option to create a valued adjacency matrix\n\nm = matrix(c(0,2,2,0),nrow=2)\nn = network(m)\ndegree(n)\nnetwork.adjacency(m,n)\ndegree(n)\ndegree(m)\n\nIf you're familiar ",
+      "thread_id": "thread-5a235ba6581b",
+      "thread_depth": 1,
+      "month": "2009-12"
+    },
+    {
+      "id": "msg-df70c83e0c68",
+      "message_id": "<46A79F71-2B4F-4037-985D-9CAB66204D42@reed.edu>",
+      "from_name": "Alexander H. Montgomery-Amo",
+      "from_email_hash": "d1c48c3c695c97a51e653a3cc66bc8e8fd7c5c03b9e0a43fd4b72da306733d40",
+      "date": "2009-12-15T13:37:46Z",
+      "subject": "[statnet_help] Valued networks in network package",
+      "subject_clean": "[statnet_help] Valued networks in network package",
+      "in_reply_to": "<5daac4820912150504v470628f1u991aeb3c40ecc062@mail.gmail.com>",
+      "references": [
+        "<6859125B-DE0F-4167-9A8A-6D58D660D1B1@reed.edu>",
+        "<5daac4820912150504v470628f1u991aeb3c40ecc062@mail.gmail.com>"
+      ],
+      "body_plain": "Thanks, Sam; this seems to work, although this seems to be storing  \nthis is a fashion that doesn't allow the values to be retrieved. It  \nalso seems to be adding additional edges (!) rather than modifying the  \nones in place. Is this how it's supposed to work?\n\nSeparately, I'm wondering why network() doesn't simply pull in the  \nedge values from the original matrix. Why the extra step?\n\n > n\n  Network attributes:\n   vertices = 2\n   directed = TRUE\n   hyper = FALSE\n   loops = FALSE\n   multiple = FALSE\n   bipartite = FALSE\n   total edges= 2\n     missing edges= 0\n     non-missing edges= 2\n\n  Vertex attribute names:\n     vertex.names\n\n  adjacency matrix:\n   1 2\n1 0 1\n2 1 0\n > network.adjacency(m,n)\n > n\n  Network attributes:\n   vertices = 2\n   directed = TRUE\n   hyper = FALSE\n   loops = FALSE\n   multiple = FALSE\n   bipartite = FALSE\n   total edges= 4\n     missing edges= 0\n     non-missing edges= 4\n\n  Vertex attribute names:\n     vertex.names\n\n  adjacency matrix:\n   1 2\n1 0 1\n2 1 0\n > n[,]\n   1 2\n1 0 1\n2 1 0\n\nThanks\n-AHM\n\n\nOn 2009-12-15, at 5:04 AM, Sam Stewart wrote:\n\n> You want to use the network.adjacency option to create a valued  \n> adjacency matrix\n>\n> m = matrix(c(0,2,2,0),nrow=2)\n> n = network(m)\n> degree(n)\n> network.adjacency(m,n)\n> degree(n)\n> degree(m)\n>\n> If you're familiar with R you'll a little confused by the syntax for\n> network.adjacency, where m is the adjacency matrix that defines the\n> values of the ties in n. The function (I think) takes care of the\n> assignment itself.\n>\n> Hope that helps,\n> Sam Stewart\n>\n> On Tue, Dec 15, 2009 at 12:17 AM, Alexander H. Montgomery-Amo\n> <ahm@reed.edu> wrote:\n>> It seems that the network package doesn't actually preserve valued  \n>> relations\n>> when coercing matricies into networks. For example:\n>>\n>>> m <- matrix(c(0,2,2,0),nrow=2)\n>>> n <- network(m)\n>>> degree(n)\n>> [1] 2 2\n>>> degree(m)\n>> [1] 4 4\n>>\n>> Does the network package assume that networks are not valued? Or am I\n>> missing something else here?\n>>\n>> Thanks\n>> -AHM\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n>\n>\n> -- \n> Sam Stewart, MMath, A.Stat\n> IDPhD Candidate (Health Informatics)\n> Faculty of Computer Science, Dalhousie University\n> 6050 University Ave.\n> Halifax, NS, Canada, B3H 1W5\n>",
+      "body_snippet": "Thanks, Sam; this seems to work, although this seems to be storing  \nthis is a fashion that doesn't allow the values to be retrieved. It  \nalso seems to be adding additional edges (!) rather than modi",
+      "thread_id": "thread-5a235ba6581b",
+      "thread_depth": 2,
+      "month": "2009-12"
+    },
+    {
+      "id": "msg-a780694a02da",
+      "message_id": "<5daac4820912151631y2ed794a5sbeaaefc5ed58580a@mail.gmail.com>",
+      "from_name": "Sam Stewart",
+      "from_email_hash": "51b57d9e397a077e24243651cef0d1d3aa1bf70a60060faa096fc9f957fe6cc3",
+      "date": "2009-12-15T16:31:57Z",
+      "subject": "[statnet_help] Valued networks in network package",
+      "subject_clean": "[statnet_help] Valued networks in network package",
+      "in_reply_to": "<46A79F71-2B4F-4037-985D-9CAB66204D42@reed.edu>",
+      "references": [
+        "<6859125B-DE0F-4167-9A8A-6D58D660D1B1@reed.edu>",
+        "<5daac4820912150504v470628f1u991aeb3c40ecc062@mail.gmail.com>",
+        "<46A79F71-2B4F-4037-985D-9CAB66204D42@reed.edu>"
+      ],
+      "body_plain": "Now that I look at it closer it may not actually be reading it in as a\nvalued adjacency matrix, I haven't worked with them a lot.  I would\nsuggest taking a look at the help file for network and\nnetwork.adjacency, as well as the papers published in the Journal of\nStatistical Software on the network and sna packages.  I haven't\nattached them to avoid sending them to everyone, but their citations\nare:\n\nButts, C.  network: A Package for Managing Relational Data in R.\nJournal of Statistical Software, February 2008, Volume 24, Issue 2.\n\nButts, C. Social Network Analysis with sna.Journal of Statistical\nSoftware, February 2008, Volume 24, Issue 6.\n\nSam\n\n\n\nOn Tue, Dec 15, 2009 at 5:37 PM, Alexander H. Montgomery-Amo\n<ahm@reed.edu> wrote:\n> Thanks, Sam; this seems to work, although this seems to be storing this is a\n> fashion that doesn't allow the values to be retrieved. It also seems to be\n> adding additional edges (!) rather than modifying the ones in place. Is this\n> how it's supposed to work?\n>\n> Separately, I'm wondering why network() doesn't simply pull in the edge\n> values from the original matrix. Why the extra step?\n>\n>> n\n> ?Network attributes:\n> ?vertices = 2\n> ?directed = TRUE\n> ?hyper = FALSE\n> ?loops = FALSE\n> ?multiple = FALSE\n> ?bipartite = FALSE\n> ?total edges= 2\n> ? ?missing edges= 0\n> ? ?non-missing edges= 2\n>\n> ?Vertex attribute names:\n> ? ?vertex.names\n>\n> ?adjacency matrix:\n> ?1 2\n> 1 0 1\n> 2 1 0\n>> network.adjacency(m,n)\n>> n\n> ?Network attributes:\n> ?vertices = 2\n> ?directed = TRUE\n> ?hyper = FALSE\n> ?loops = FALSE\n> ?multiple = FALSE\n> ?bipartite = FALSE\n> ?total edges= 4\n> ? ?missing edges= 0\n> ? ?non-missing edges= 4\n>\n> ?Vertex attribute names:\n> ? ?vertex.names\n>\n> ?adjacency matrix:\n> ?1 2\n> 1 0 1\n> 2 1 0\n>> n[,]\n> ?1 2\n> 1 0 1\n> 2 1 0\n>\n> Thanks\n> -AHM\n>\n>\n> On 2009-12-15, at 5:04 AM, Sam Stewart wrote:\n>\n>> You want to use the network.adjacency option to create a valued adjacency\n>> matrix\n>>\n>> m = matrix(c(0,2,2,0),nrow=2)\n>> n = network(m)\n>> degree(n)\n>> network.adjacency(m,n)\n>> degree(n)\n>> degree(m)\n>>\n>> If you're familiar with R you'll a little confused by the syntax for\n>> network.adjacency, where m is the adjacency matrix that defines the\n>> values of the ties in n. The function (I think) takes care of the\n>> assignment itself.\n>>\n>> Hope that helps,\n>> Sam Stewart\n>>\n>> On Tue, Dec 15, 2009 at 12:17 AM, Alexander H. Montgomery-Amo\n>> <ahm@reed.edu> wrote:\n>>>\n>>> It seems that the network package doesn't actually preserve valued\n>>> relations\n>>> when coercing matricies into networks. For example:\n>>>\n>>>> m <- matrix(c(0,2,2,0),nrow=2)\n>>>> n <- network(m)\n>>>> degree(n)\n>>>\n>>> [1] 2 2\n>>>>\n>>>> degree(m)\n>>>\n>>> [1] 4 4\n>>>\n>>> Does the network package assume that networks are not valued? Or am I\n>>> missing something else here?\n>>>\n>>> Thanks\n>>> -AHM\n>>>\n>>>\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>>\n>>\n>>\n>> --\n>> Sam Stewart, MMath, A.Stat\n>> IDPhD Candidate (Health Informatics)\n>> Faculty of Computer Science, Dalhousie University\n>> 6050 University Ave.\n>> Halifax, NS, Canada, B3H 1W5\n>>\n>\n>\n\n\n\n-- \nSam Stewart, MMath, A.Stat\nIDPhD Candidate (Health Informatics)\nFaculty of Computer Science, Dalhousie University\n6050 University Ave.\nHalifax, NS, Canada, B3H 1W5",
+      "body_snippet": "Now that I look at it closer it may not actually be reading it in as a\nvalued adjacency matrix, I haven't worked with them a lot.  I would\nsuggest taking a look at the help file for network and\nnetwor",
+      "thread_id": "thread-5a235ba6581b",
+      "thread_depth": 3,
+      "month": "2009-12"
+    },
+    {
+      "id": "msg-3faf15f7d74f",
+      "message_id": "<4B284A80.2050502@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2009-12-15T18:48:32Z",
+      "subject": "[statnet_help] Valued networks in network package",
+      "subject_clean": "[statnet_help] Valued networks in network package",
+      "in_reply_to": "<6859125B-DE0F-4167-9A8A-6D58D660D1B1@reed.edu>",
+      "references": [
+        "<6859125B-DE0F-4167-9A8A-6D58D660D1B1@reed.edu>"
+      ],
+      "body_plain": "Hi, Alex -\n\nAlexander H. Montgomery-Amo wrote:\n> It seems that the network package doesn't actually preserve valued \n> relations when coercing matricies into networks. For example:\n> \n>  > m <- matrix(c(0,2,2,0),nrow=2)\n>  > n <- network(m)\n>  > degree(n)\n> [1] 2 2\n>  > degree(m)\n> [1] 4 4\n> \n> Does the network package assume that networks are not valued? Or am I \n> missing something else here?\n> \n\nNetwork objects can contain arbitrary edge metadata (including numeric \nvalues).  To include this information, you need to either tell the \nnetwork constructor how to store it, or else add it later (using, e.g., \nthe %e% operator or add.edge.attribute).  Here's a simple example:\n\n#Create a test matrix\nlibrary(sna)\nlibrary(network)\nmat<-rgraph(5)*matrix(1:25,5,5)\nmat\n\n#Create a network object, storing the edge values in \"value\"\nnet<-network(mat,ignore.eval=FALSE,names.eval=\"value\")\nsummary(net)\n\n#Retrieve the original form using as.sociomatrix\nall(as.sociomatrix(net,\"value\")==mat)\n\nNote that, since network objects can in theory contain any number of \nedge attributes of any type (including lists, complex objects, etc.), \nmost functions try not to make too many assumptions about them.  Some of \nthe shortcuts (e.g., %e%) are made specifically to handle standard \nvector types (characters, numerics, etc.), but the core functions (e.g., \nadd.edge.attribute) have to be able to work with much more general data \ntypes.  Thus one needs to specifically tell commands like network() what \nyou want to do with any available metadata.\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "Hi, Alex -\n\nAlexander H. Montgomery-Amo wrote:\n> It seems that the network package doesn't actually preserve valued \n> relations when coercing matricies into networks. For example:\n> \n>  > m <- matrix",
+      "thread_id": "thread-5a235ba6581b",
+      "thread_depth": 1,
+      "month": "2009-12"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-23116a91967a",
+      "subject": "[statnet_help] question on input for dyadic attributes (edgecov and dyadcov) in ergm",
+      "message_count": 1,
+      "participants": [
+        "Martina Morris"
+      ],
+      "started": "2009-12-03T13:44:38Z",
+      "last_reply": "2009-12-03T13:44:38Z",
+      "root_message_id": "msg-23116a91967a"
+    },
+    {
+      "id": "thread-0ac46ace861c",
+      "subject": "[statnet_help] statnet missing from CRAN?",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Jim Magnuson"
+      ],
+      "started": "2009-12-06T07:16:24Z",
+      "last_reply": "2009-12-06T07:30:51Z",
+      "root_message_id": "msg-0ac46ace861c"
+    },
+    {
+      "id": "thread-34190f983f9d",
+      "subject": "[statnet_help] Statnet not on CRAN",
+      "message_count": 1,
+      "participants": [
+        "McCulloh, I. MAJ  BS&L"
+      ],
+      "started": "2009-12-10T03:09:14Z",
+      "last_reply": "2009-12-10T03:09:14Z",
+      "root_message_id": "msg-34190f983f9d"
+    },
+    {
+      "id": "thread-5a235ba6581b",
+      "subject": "[statnet_help] Valued networks in network package",
+      "message_count": 5,
+      "participants": [
+        "Alexander H. Montgomery-Amo",
+        "Carter T. Butts",
+        "Sam Stewart"
+      ],
+      "started": "2009-12-14T20:17:33Z",
+      "last_reply": "2009-12-15T18:48:32Z",
+      "root_message_id": "msg-5a235ba6581b"
+    }
+  ]
+}

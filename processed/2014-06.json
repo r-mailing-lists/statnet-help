@@ -1,0 +1,448 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2014-06",
+  "messages": [
+    {
+      "id": "msg-dc04715ae53d",
+      "message_id": "<CAGcS3aMEHgnWSC3PtSgpNiFckMcB8-3bFPzy+C5r_h4Nib7+0g@mail.gmail.com>",
+      "from_name": "Karen Ertrachter",
+      "from_email_hash": "1c6e2a5b5363c01fa9c7e24c7311acb0a71f30e4a1ec0a31321dfdd5c75930af",
+      "date": "2014-06-07T07:55:04Z",
+      "subject": "[statnet_help] MCMC diagnostics not working",
+      "subject_clean": "[statnet_help] MCMC diagnostics not working",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone,\nI'm working on a model and I'm not able to assess model fit since it will\nnot produce MCMC diagnostics.  Instead, I typically get the error message\nthat 'MCMC diagnostics were not used or stored' and gof doesn't work\nproperly either. The gof code will run, but it just runs for a while\nwithout showing anything or manages to shut down R.  In the past, I was\nable to get MCMC diagnostics, so I'm wondering how to fix this.\n\nHere's my code:\n\njmodel.1 <-ergm(relations2~edges+nodefactor('grade')+nodematch('grade')+nodefactor('race')+nodematch('race')+nodefactor('gender')+nodematch('gender')+nodefactor('ed')+nodematch('ed'),\ncontrol = control.ergm(main.method=c(\"Stepping\"),\nMCMC.prop.weights=\"TNT\", MCMC.samplesize = 50000, MCMC.burnin=100,\nMCMC.interval = 10000))\nsummary(jmodel.1)\ngofjmodel1 <- gof(jmodel.1)\n\n?Thank you,\nKaren Ertrachter?\n\n\n-- \nKaren Ertrachter\nDepartment of Sociology and Demography\nThe Pennsylvania State University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140607/03c97d49/attachment.html>",
+      "body_snippet": "Hi everyone,\nI'm working on a model and I'm not able to assess model fit since it will\nnot produce MCMC diagnostics.  Instead, I typically get the error message\nthat 'MCMC diagnostics were not used or",
+      "thread_id": "thread-dc04715ae53d",
+      "thread_depth": 0,
+      "month": "2014-06"
+    },
+    {
+      "id": "msg-d1e51c90595e",
+      "message_id": "<53934075.2050309@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2014-06-07T09:40:21Z",
+      "subject": "[statnet_help] MCMC diagnostics not working",
+      "subject_clean": "[statnet_help] MCMC diagnostics not working",
+      "in_reply_to": "<CAGcS3aMEHgnWSC3PtSgpNiFckMcB8-3bFPzy+C5r_h4Nib7+0g@mail.gmail.com>",
+      "references": [
+        "<CAGcS3aMEHgnWSC3PtSgpNiFckMcB8-3bFPzy+C5r_h4Nib7+0g@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Karen,\n\nOn 6/7/2014 7:55 AM, Karen Ertrachter wrote:\n> Hi everyone,\n> I'm working on a model and I'm not able to assess model fit since it \n> will not produce MCMC diagnostics.  Instead, I typically get the error \n> message that 'MCMC diagnostics were not used or stored' and gof \n> doesn't work properly either. The gof code will run, but it just runs \n> for a while without showing anything or manages to shut down R.  In \n> the past, I was able to get MCMC diagnostics, so I'm wondering how to \n> fix this.\nThe model you are fitting is a purely dyadic independent one, since it \nonly contains edges, nodematch and nodefactor terms.  That is, it posits \nthat the only influence on a tie's probability are the nodes of the two \nadjacent actors; as such the ties are all conditionally independent. \nBecause of this, logistic regression works perfectly. The ergm algorithm \ndetects this automatically, and doesn't need to run the MCMC to obtain \nthe fit. As a result, there are no diagnostics. You don't really need to \ndiagnostics for such a model, because it is guaranteed to fit; there are \nno potential issues with degeneracy or other forms of lack of \nconvergence.  If you'd like to fit the MCMC anyway and obtain \ndiagnostics on it, you can by adding:\n\nforce.main=T\n\ninside your control.ergm argument.\n\nAs for the gof issues, that's harder to diagnose.  It may simply be that \nyour network is very large, and taking 100 simulations of it (the \ndefault) and then calculating the distance matrix on it takes a long \nlong time and/or more memory than you have. I would fist try this:\n\ngofjmodel1 <- gof(jmodel.1, control=control.gof.ergm(nsim=10), verbose=T)\n\nThat will reduce the number of simulations in the gof down to 10, and \nalso give you feedback in between each one.\n\nIf you are still having troubles, you might try removing the distance \ncomponent of the gof to see if you can at least get the others easily.  \nThat is, pass the gof elements you *do* want to include with a formula, \nas such:\n\ngofjmodel1 <- gof(jmodel.1~ degree+espartners.....)\n\nwhere the ones you pick will depend on whether your network is directed \nor not (and are listed at ?gof).  Note that if you do this, you also \nneed to change the control argument from control.gof.ergm to \ncontrol.gof.formula.  Yes, we know that part is a bit counter-intuitive, \nbut it fits in with standard R practice.\n\nHTH,\nSteve\n\n> Here's my code:\n> jmodel.1 <-ergm(relations2~edges+nodefactor('grade')+nodematch('grade')+nodefactor('race')+nodematch('race')+nodefactor('gender')+nodematch('gender')+nodefactor('ed')+nodematch('ed'), control = control.ergm(main.method=c(\"Stepping\"), MCMC.prop.weights=\"TNT\", MCMC.samplesize = 50000, MCMC.burnin=100, MCMC.interval = 10000))\n> summary(jmodel.1)\n> gofjmodel1 <- gof(jmodel.1)\n> Thank you,\n> Karen Ertrachter\n>\n>\n> -- \n> Karen Ertrachter\n> Department of Sociology and Demography\n> The Pennsylvania State University\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \n\n*******************************************************************\nSteven M. Goodreau / Assoc. Professor / Dept. of Anthropology\nUniversity of Washington / Denny Hall 423 / Campus Box 353100\nSeattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau\n*******************************************************************\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140607/2e26de21/attachment.html>",
+      "body_snippet": "Hi Karen,\n\nOn 6/7/2014 7:55 AM, Karen Ertrachter wrote:\n> Hi everyone,\n> I'm working on a model and I'm not able to assess model fit since it \n> will not produce MCMC diagnostics.  Instead, I typicall",
+      "thread_id": "thread-dc04715ae53d",
+      "thread_depth": 1,
+      "month": "2014-06"
+    },
+    {
+      "id": "msg-c89202c5bdff",
+      "message_id": "<1B1A2D16-6B2D-4737-AD8A-8AEF612AB2C5@quintane.net>",
+      "from_name": "Eric Quintane",
+      "from_email_hash": "8ddbb91ee5b3a80cbcfa08cbc9fd3e64ae1ab3798e1c3a78efa1dbd400030531",
+      "date": "2014-06-16T10:00:12Z",
+      "subject": "[statnet_help] Structural 0s in ergms",
+      "subject_clean": "[statnet_help] Structural 0s in ergms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear List, \n\nI would like to confirm that I am correctly specifying structural zeros in an ergm model in statnet.\nI used an old conversation in this list as a starting point, but the conversation did not provide the full syntax (or mentioned the warning that I am encountering).\n\nThis is the syntax that I am currently using: offset(edgecov(structzero)), offset.coef=-Inf\nstructzero is a network where all ties that need to be fixed are set to 1.\n\nWith this syntax, the model runs but I receive a warning message, as follows:\n1: In control$init[model.initial$etamap$offsettheta] <- offset.coef :\n  number of items to replace is not a multiple of replacement length\n\nI made sure that the size of the two networks (the original network and the structural zeros network) is the same.\n\nThank you in advance for any help.\n\nBest, \n\nEric Quintane\nAssistant Professor\nUASM",
+      "body_snippet": "Dear List, \n\nI would like to confirm that I am correctly specifying structural zeros in an ergm model in statnet.\nI used an old conversation in this list as a starting point, but the conversation did ",
+      "thread_id": "thread-c89202c5bdff",
+      "thread_depth": 0,
+      "month": "2014-06"
+    },
+    {
+      "id": "msg-6d487c96b692",
+      "message_id": "<CA+CFxkUGX1erSW1T8xspXVaPxwc0wO0Zyy2zsN=F23k0ubBYZQ@mail.gmail.com>",
+      "from_name": "Jesse Sayles",
+      "from_email_hash": "66b1d382040bb381e54b6d659aa9c3a124dc209c0d2735793f5592d6518a6a15",
+      "date": "2014-06-17T07:11:09Z",
+      "subject": "[statnet_help] symmetrize valued data for max min and avg",
+      "subject_clean": "[statnet_help] symmetrize valued data for max min and avg",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nDoes anyone know an easy way to symmetrize a square matrix with valued data\nby the max, min, and avg.\n\nI have explored SNA's symmetrize function but it converts the output to\nbinary, and does not have options for max, min, or average.\n\nThanks in advance for help.\nBest wishes\nJesse\n\n-- \n\nJesse Sayles\nPhD candidate\nSchool of Geographical Sciences & Urban Planning\nArizona State University\ngeoplan.asu.edu/sayles\n\n\n\nGraduate Assistant Fellow\n\nRob and Melani Walton Sustainability Solutions Initiatives\nsustainabilitysolutions.asu.edu/programs/fellowships/?pid=7689\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140617/f55acd36/attachment.html>",
+      "body_snippet": "Hi all,\n\nDoes anyone know an easy way to symmetrize a square matrix with valued data\nby the max, min, and avg.\n\nI have explored SNA's symmetrize function but it converts the output to\nbinary, and does",
+      "thread_id": "thread-6d487c96b692",
+      "thread_depth": 0,
+      "month": "2014-06"
+    },
+    {
+      "id": "msg-c8b2323a9be5",
+      "message_id": "<8f5459689a0f406a8719c1c8ec8b864b@DM2PR07MB653.namprd07.prod.outlook.com>",
+      "from_name": "Thomas William Valente",
+      "from_email_hash": "0893e9aa724045adf3eb0c49e0049c610f32e65b6b9f51c53170d2f2ddad6b3d",
+      "date": "2014-06-17T07:26:49Z",
+      "subject": "[statnet_help] symmetrize valued data for max min and avg",
+      "subject_clean": "[statnet_help] symmetrize valued data for max min and avg",
+      "in_reply_to": "<CA+CFxkUGX1erSW1T8xspXVaPxwc0wO0Zyy2zsN=F23k0ubBYZQ@mail.gmail.com>",
+      "references": [
+        "<CA+CFxkUGX1erSW1T8xspXVaPxwc0wO0Zyy2zsN=F23k0ubBYZQ@mail.gmail.com>"
+      ],
+      "body_plain": "All\nI?ve done it the hard/long way, this symmetrizes on the minimum, only bi-directional links retained:\n\n         dat_net    <- as.network(dat_ll, matrix.type=\"edgelist\", bipartite=FALSE, directed=TRUE)\n         dat_mat3   <- as.sociomatrix(dat_net)\n         dat_mat2   <- as.integer((dat_mat3 + t(dat_mat3)) == 2)\n         dat_mat    <- matrix(dat_mat2, NROW(dat_mat3), NROW(dat_mat3), byrow=TRUE)\n         dat_net_s  <- as.network(dat_mat, matrix.type=\"adjacency\")\n-Tom\n\nFrom: statnet_help [mailto:statnet_help-bounces@mailman13.u.washington.edu] On Behalf Of Jesse Sayles\nSent: Tuesday, June 17, 2014 7:11 AM\nTo: statnet_help@u.washington.edu\nSubject: [statnet_help] symmetrize valued data for max min and avg\n\nHi all,\n\nDoes anyone know an easy way to symmetrize a square matrix with valued data by the max, min, and avg.\n\nI have explored SNA's symmetrize function but it converts the output to binary, and does not have options for max, min, or average.\n\nThanks in advance for help.\nBest wishes\nJesse\n\n--\n\nJesse Sayles\nPhD candidate\nSchool of Geographical Sciences & Urban Planning\nArizona State University\ngeoplan.asu.edu/sayles<http://geoplan.asu.edu/sayles>\n\n\n\nGraduate Assistant Fellow\n\nRob and Melani Walton Sustainability Solutions Initiatives\nsustainabilitysolutions.asu.edu/programs/fellowships/?pid=7689<http://sustainabilitysolutions.asu.edu/programs/fellowships/?pid=7689>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140617/329c84e2/attachment.html>",
+      "body_snippet": "All\nI?ve done it the hard/long way, this symmetrizes on the minimum, only bi-directional links retained:\n\n         dat_net    <- as.network(dat_ll, matrix.type=\"edgelist\", bipartite=FALSE, directed=TR",
+      "thread_id": "thread-6d487c96b692",
+      "thread_depth": 1,
+      "month": "2014-06"
+    },
+    {
+      "id": "msg-9ab2fdf6e3e3",
+      "message_id": "<EACAE495-67B0-4788-B973-BDE90CA96E04@stanford.edu>",
+      "from_name": "James Holland Jones",
+      "from_email_hash": "acb826446b123a69e69bcb08e635e786bb139ab855a8cfa560a293990f9fb6ea",
+      "date": "2014-06-17T07:46:42Z",
+      "subject": "[statnet_help] symmetrize valued data for max min and avg",
+      "subject_clean": "[statnet_help] symmetrize valued data for max min and avg",
+      "in_reply_to": "<CA+CFxkUGX1erSW1T8xspXVaPxwc0wO0Zyy2zsN=F23k0ubBYZQ@mail.gmail.com>",
+      "references": [
+        "<CA+CFxkUGX1erSW1T8xspXVaPxwc0wO0Zyy2zsN=F23k0ubBYZQ@mail.gmail.com>"
+      ],
+      "body_plain": "kludgey, but I think this gets you what you want -- no need to use sna:\n\naaa <- matrix(floor(5*runif(25)), 5,5) \t\t# random integer matrix\ndiag(aaa) <- 0 \nm <- max(aaa) \t\t\t\t\t# the max\naaa[aaa>0] <- 1 \t\t\t\t# make binary\naaa[lower.tri(aaa)] <- t(aaa[upper.tri(aaa)]) \t# symmetrize binary matrix\naaa <- m*aaa \t\t\t\t\t# multiply by max\naaa\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    0    4    4    4    4\n[2,]    4    0    4    4    4\n[3,]    4    4    0    4    4\n[4,]    4    4    4    0    4\n[5,]    4    4    4    4    0\n\nthat's what you wanted, right?\n\nJ\n--\nJames Holland Jones\nAssociate Professor of Anthropology &\nSenior Fellow, Woods Institute for the Environment\n\n450 Serra Mall\nBuilding 50\nStanford, CA 94305-2034\n\nphone:\t650-721-2484\nfax:\t650-725-0605\nemail:\tjhj1@stanford.edu\nurl:\thttp://www.stanford.edu/~jhj1\n\n\n\n\n\nOn Jun 17, 2014, at 7:11 AM, Jesse Sayles <Jesse.Sayles@asu.edu> wrote:\n\n> Hi all, \n> \n> Does anyone know an easy way to symmetrize a square matrix with valued data by the max, min, and avg. \n> \n> I have explored SNA's symmetrize function but it converts the output to binary, and does not have options for max, min, or average. \n> \n> Thanks in advance for help. \n> Best wishes\n> Jesse\n> \n> -- \n> Jesse Sayles\n> PhD candidate \n> School of Geographical Sciences & Urban Planning\n> Arizona State University\n> geoplan.asu.edu/sayles\n>  \n> Graduate Assistant Fellow \n> Rob and Melani Walton Sustainability Solutions Initiatives\n> sustainabilitysolutions.asu.edu/programs/fellowships/?pid=7689\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "kludgey, but I think this gets you what you want -- no need to use sna:\n\naaa <- matrix(floor(5*runif(25)), 5,5) \t\t# random integer matrix\ndiag(aaa) <- 0 \nm <- max(aaa) \t\t\t\t\t# the max\naaa[aaa>0] <- 1 \t",
+      "thread_id": "thread-6d487c96b692",
+      "thread_depth": 1,
+      "month": "2014-06"
+    },
+    {
+      "id": "msg-49ed17a37b38",
+      "message_id": "<CA+CFxkUTBMEGZzZ2dMVgj-cjkZ=81ifZ3gW+Xnsa_qmWDzniuw@mail.gmail.com>",
+      "from_name": "Jesse Sayles",
+      "from_email_hash": "66b1d382040bb381e54b6d659aa9c3a124dc209c0d2735793f5592d6518a6a15",
+      "date": "2014-06-18T03:25:00Z",
+      "subject": "[statnet_help] symmetrize valued data for max min and avg",
+      "subject_clean": "[statnet_help] symmetrize valued data for max min and avg",
+      "in_reply_to": "<EACAE495-67B0-4788-B973-BDE90CA96E04@stanford.edu>",
+      "references": [
+        "<CA+CFxkUGX1erSW1T8xspXVaPxwc0wO0Zyy2zsN=F23k0ubBYZQ@mail.gmail.com>",
+        "<EACAE495-67B0-4788-B973-BDE90CA96E04@stanford.edu>"
+      ],
+      "body_plain": "Hi James, Thomas, and others who are interested.\n\nFirst, thanks for you help. I guess my case was a little different than how\nyou guys did it, so I built off of your advice and came up with the\nfollowing.\n\n#This code symmetrizes a valued matrix by max or min values of ij-ji. For\nmax, steps 1 & 5 should use \"-999\" & step 3 must use \">\" and \">=\". For min,\nuse \"999\", \"<\", & \"<=\" respectively. The input data must use NA rather than\n0 for non-ties. The code uses weak symmetrization, so an NA in ij or ji\nwill be replaced with valued data of ji or ij respectively.\n\n#make a sample matrix that includes NAs and set diag to 0.\ntest<-matrix(ncol=10, nrow=10, sample(c(NA, 1:5), 100, replace=TRUE,\nc(.5,rep(.1,5)))) #NA has high prob\n#test<-matrix(ncol=10, nrow=10, 5, 100) #to test with full mat of single\nvalues if desired\ntest0<-diag.remove(test, remove.val=0) ;test0\n\n#Step 1: convert NA to \"999\" for use with \"<\" and \"-999\" for use with \">\"\nso NA gets replaced with desired tie value (i.e., weak symmetrization)\ntest0[is.na(test0)]<- (-999) ;test0\n\n#Step 2: separate lower and upper tri\nlow<-upper.tri.remove(test0, remove.val=NA) ;low\nupp<-lower.tri.remove(test0, remove.val=NA) ;upp\n\n#Step 3: get min (<) or max (>) based on True/False, convert to 1/0, and\ncombine lower and upper. To deal with ij=ji, upp2 uses <= or >=, step2 uses\nNA, and NAs are converted to 0 in step3. This avoids \"full = 1+1\"\nlow2 <- (ifelse((low > t(upp))==TRUE, 1, 0));low2[is.na(low2)]<- 0 ;low2\nupp2 <- (ifelse((upp >= t(low))==TRUE, 1, 0));upp2[is.na(upp2)]<- 0 ;upp2\nfull <- (upp2 + low2) ;full\n\n#Step 4: extract from original data using full binary mat (selects min/max\nbased on above choice (< or >))\ntempNet <- test0*full ;tempNet\n\n#Step 5: final symmetrized mat based on min or max as specified above.\nThen, just in case there were any NA-NA ij-ji pairs, convert those to 0\nfinal <- tempNet + t(tempNet)\nfinal[final == -999] <- 0 ;final\n\n\nOn Tue, Jun 17, 2014 at 7:46 AM, James Holland Jones <jhj1@stanford.edu>\nwrote:\n\n> kludgey, but I think this gets you what you want -- no need to use sna:\n>\n> aaa <- matrix(floor(5*runif(25)), 5,5)          # random integer matrix\n> diag(aaa) <- 0\n> m <- max(aaa)                                   # the max\n> aaa[aaa>0] <- 1                                 # make binary\n> aaa[lower.tri(aaa)] <- t(aaa[upper.tri(aaa)])   # symmetrize binary matrix\n> aaa <- m*aaa                                    # multiply by max\n> aaa\n>      [,1] [,2] [,3] [,4] [,5]\n> [1,]    0    4    4    4    4\n> [2,]    4    0    4    4    4\n> [3,]    4    4    0    4    4\n> [4,]    4    4    4    0    4\n> [5,]    4    4    4    4    0\n>\n> that's what you wanted, right?\n>\n> J\n> --\n> James Holland Jones\n> Associate Professor of Anthropology &\n> Senior Fellow, Woods Institute for the Environment\n>\n> 450 Serra Mall\n> Building 50\n> Stanford, CA 94305-2034\n>\n> phone:  650-721-2484\n> fax:    650-725-0605\n> email:  jhj1@stanford.edu\n> url:    http://www.stanford.edu/~jhj1\n>\n>\n>\n>\n>\n> On Jun 17, 2014, at 7:11 AM, Jesse Sayles <Jesse.Sayles@asu.edu> wrote:\n>\n> > Hi all,\n> >\n> > Does anyone know an easy way to symmetrize a square matrix with valued\n> data by the max, min, and avg.\n> >\n> > I have explored SNA's symmetrize function but it converts the output to\n> binary, and does not have options for max, min, or average.\n> >\n> > Thanks in advance for help.\n> > Best wishes\n> > Jesse\n> >\n> > --\n> > Jesse Sayles\n> > PhD candidate\n> > School of Geographical Sciences & Urban Planning\n> > Arizona State University\n> > geoplan.asu.edu/sayles\n> >\n> > Graduate Assistant Fellow\n> > Rob and Melani Walton Sustainability Solutions Initiatives\n> > sustainabilitysolutions.asu.edu/programs/fellowships/?pid=7689\n> > _______________________________________________\n> > statnet_help mailing list\n> > statnet_help@u.washington.edu\n> > http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n\n-- \n\nJesse Sayles\nPhD candidate\nSchool of Geographical Sciences & Urban Planning\nArizona State University\ngeoplan.asu.edu/sayles\n\n\n\nGraduate Assistant Fellow\n\nRob and Melani Walton Sustainability Solutions Initiatives\nsustainabilitysolutions.asu.edu/programs/fellowships/?pid=7689\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140618/be5d1020/attachment.html>",
+      "body_snippet": "Hi James, Thomas, and others who are interested.\n\nFirst, thanks for you help. I guess my case was a little different than how\nyou guys did it, so I built off of your advice and came up with the\nfollow",
+      "thread_id": "thread-6d487c96b692",
+      "thread_depth": 2,
+      "month": "2014-06"
+    },
+    {
+      "id": "msg-5fac618ade4f",
+      "message_id": "<CA+CFxkU-W0_Pe8DvBe03_dyjarOK3AhJs_NUgxTjk2a1nbiirw@mail.gmail.com>",
+      "from_name": "Jesse Sayles",
+      "from_email_hash": "66b1d382040bb381e54b6d659aa9c3a124dc209c0d2735793f5592d6518a6a15",
+      "date": "2014-06-18T11:24:12Z",
+      "subject": "[statnet_help] trouble working with valued data for network objects",
+      "subject_clean": "[statnet_help] trouble working with valued data for network objects",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi statnet users,\n\nI write with another question. I am having trouble working with valued data\nfor network objects. Example code below. Basically, I have a full matrix\nwith tie values and I am using NAs for non-ties. This is a non-symmetric\nnetwork.\n\nI want to convert the matrix to a network object, remove isolates, and then\nconvert back to a matrix. The problem is that when I convert the network\nobject back to a matrix I get all binary values. The valued data is lost.\n\nHere is example code. Note, the code below just uses a random matrix for\nsample data, so there may be no isolates to remove. But this does not\nmatter as you will still see that the valued ties become 1s after they are\npassed through the network object.\n\n#make a sample matrix that includes NAs and set diag to 0.\ntest<-matrix(ncol=10, nrow=10, sample(c(NA, 1:5), 100, replace=TRUE,\nc(.5,rep(.1,5)))) #NA has high prob\ntest0<-diag.remove(test, remove.val=0) ;test0\n\n#make as network object and try to keep valued data using ignore.eval\ntestMeNet<-as.network.matrix(test0, ignore.eval=FALSE, na.rm=TRUE)\n;testMeNet\n\n#find isolates\nisos <- isolates(testMeNet, diag=FALSE)\nlength(isos)\n\n#remove isolates\ntestMeCut<-delete.vertices(testMeNet, (isolates(testMeNet, diag=FALSE)))\n;testMeCut\n\n#convert back to matrix. Problem is, valued ties are lost. They are now 1s\ntestMeOut <- as.matrix(testMeCut) ;testMeOut\n\n\n-- \n\nJesse Sayles\nPhD candidate\nSchool of Geographical Sciences & Urban Planning\nArizona State University\ngeoplan.asu.edu/sayles\n\n\n\nGraduate Assistant Fellow\n\nRob and Melani Walton Sustainability Solutions Initiatives\nsustainabilitysolutions.asu.edu/programs/fellowships/?pid=7689\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140618/a197cac9/attachment.html>",
+      "body_snippet": "Hi statnet users,\n\nI write with another question. I am having trouble working with valued data\nfor network objects. Example code below. Basically, I have a full matrix\nwith tie values and I am using N",
+      "thread_id": "thread-5fac618ade4f",
+      "thread_depth": 0,
+      "month": "2014-06"
+    },
+    {
+      "id": "msg-4d68604669f4",
+      "message_id": "<1403120597.31409.YahooMailNeo@web164901.mail.bf1.yahoo.com>",
+      "from_name": "Michael Siciliano",
+      "from_email_hash": "0ba931b90cc0e53338a3c719ca47313146befc521a978f0f512d8471c08a5d32",
+      "date": "2014-06-18T12:43:17Z",
+      "subject": "[statnet_help] trouble working with valued data for network objects",
+      "subject_clean": "[statnet_help] trouble working with valued data for network objects",
+      "in_reply_to": "<CA+CFxkU-W0_Pe8DvBe03_dyjarOK3AhJs_NUgxTjk2a1nbiirw@mail.gmail.com>",
+      "references": [
+        "<CA+CFxkU-W0_Pe8DvBe03_dyjarOK3AhJs_NUgxTjk2a1nbiirw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Jesse,\n\nYou just need to make two minor adjustments to your code. \n\n\n1. Add names.eval=\"value\" to the line where you create the network object.? This assigns the name for the attribute to store the edge values.\n\n2. When converting back to the matrix use the function as.sociomatrix with the argument \"value\".\n\n\nHere is your code with the changes added in. Best,\n\nMichael Siciliano\n\n#make a sample matrix that includes NAs and set diag to 0. \ntest<-matrix(ncol=10, nrow=10, sample(c(NA, 1:5), 100, replace=TRUE, c(.5,rep(.1,5)))) #NA has high prob\ntest0<-diag.remove(test, remove.val=0) ;test0\n\n#make as network object and try to keep valued data using ignore.eval\ntestMeNet<-as.network.matrix(test0, ignore.eval=FALSE, na.rm=TRUE, names.eval=\"value\") ;testMeNet\n\n#find isolates\nisos <- isolates(testMeNet, diag=FALSE)\nlength(isos)\n\n#remove isolates\ntestMeCut<-delete.vertices(testMeNet, (isolates(testMeNet, diag=FALSE))) ;testMeCut\n\n#convert back to matrix. Problem is, valued ties are lost. They are now 1s\ntestMeOut <- as.sociomatrix(testMeCut, \"value\") ;testMeOut\n\n\n\nOn Wednesday, June 18, 2014 1:24 PM, Jesse Sayles <Jesse.Sayles@asu.edu> wrote:\n \n\n\nHi statnet users,?\n\n\nI write with another question. I am having trouble working with valued data for network objects. Example code below. Basically, I have a full matrix with tie values and I am using NAs for non-ties. This is a non-symmetric network.?\n\nI want to convert the matrix to a network object, remove isolates, and then convert back to a matrix. The problem is that when I convert the network object back to a matrix I get all binary values. The valued data is lost.?\n\nHere is example code. Note, the code below just uses a random matrix for sample data, so there may be no isolates to remove. But this does not matter as you will still see that the valued ties become 1s after they are passed through the network object.?\n\n#make a sample matrix that includes NAs and set diag to 0.?\ntest<-matrix(ncol=10, nrow=10, sample(c(NA, 1:5), 100, replace=TRUE, c(.5,rep(.1,5)))) #NA has high prob\ntest0<-diag.remove(test, remove.val=0) ;test0\n\n#make as network object and try to keep valued data using ignore.eval\ntestMeNet<-as.network.matrix(test0, ignore.eval=FALSE, na.rm=TRUE) ;testMeNet\n\n#find isolates\nisos <- isolates(testMeNet, diag=FALSE)\nlength(isos)\n\n#remove isolates\ntestMeCut<-delete.vertices(testMeNet, (isolates(testMeNet, diag=FALSE))) ;testMeCut\n\n#convert back to matrix. Problem is, valued ties are lost. They are now 1s\ntestMeOut <- as.matrix(testMeCut) ;testMeOut\n\n\n-- \n\nJesse Sayles\nPhD candidate?\nSchool of Geographical Sciences & Urban Planning\nArizona State University\ngeoplan.asu.edu/sayles\n?\nGraduate Assistant Fellow?\nRob and Melani Walton Sustainability Solutions Initiatives\nsustainabilitysolutions.asu.edu/programs/fellowships/?pid=7689\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140618/e00fb9eb/attachment.html>",
+      "body_snippet": "Hi Jesse,\n\nYou just need to make two minor adjustments to your code. \n\n\n1. Add names.eval=\"value\" to the line where you create the network object.? This assigns the name for the attribute to store the",
+      "thread_id": "thread-5fac618ade4f",
+      "thread_depth": 1,
+      "month": "2014-06"
+    },
+    {
+      "id": "msg-b8d1bc0beeb5",
+      "message_id": "<CAEzSE6UOthww+6_k-ccfLegXWU27BBrgvDAxFoYcWjLA4wPNgw@mail.gmail.com>",
+      "from_name": "Michael Heaney",
+      "from_email_hash": "4d6403dbcaae8825781ae6c49066171f12df256ce970fec71e8e0e6fc8ca3792",
+      "date": "2014-06-19T20:29:06Z",
+      "subject": "[statnet_help] Help! Structural 0s in ergms",
+      "subject_clean": "[statnet_help] Help! Structural 0s in ergms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All,\n\nI am having the same problem described by Eric Quintane, below, although I\nam getting a different error than the one that he got.\n\nSpecifically, I have a two-mode network Y.  It has a structural zero any\ntime the two-mode network Z=1.  I am estimating it as a function of edges,\nb1star(2), and X.   (For the record, I have also run a more-fully-specified\nmodel, but I am giving this one for illustration).\n\nI run the following command:\n\nModel_01 <- ergm(Y\n~edges\n+b1star(2)\n+nodecov(\"X\")\n+offset(edgecov(Z))\n, offset.coef=-Inf\n, control=control.ergm(seed=12345)\n)\n\nWhen I do so, I get the following error:\n\nError in ergm(dind, estimate = \"MPLE\", constraints = constraints,\neval.loglik = FALSE,  :\n  Invalid offset parameter vector offset.coef: wrong number of parameters:\nexpected 1 got 2.\n\nThis error appears after the model converges.  It also appears regardless\nof whether I use b1star(2) or some other endogenous term, such as\nb2star(2), b1degree(1), or b2degree(1).\n\nI should note that the ergm works fine if I remove the endogenous term.\n Inclusion of the offset does seem to do the job.  Running the model with\nor without the offset term makes a difference in the ergm/logit results.\n\nAny suggestions would be most sincerely appreciated.\n\nMichael Heaney\n\n-- \nMichael T. Heaney, Ph.D.\nAssistant Professor of Organizational Studies and Political Science\nUniversity of Michigan\n722 Dennison Building\n500 Church Street\nAnn Arbor, Michigan 48109\n\nCell Phone: 202-236-3369\nE-mail: mheaney@umich.edu\nhttp://sites.lsa.umich.edu/mheaney/\n\nOn Mon, Jun 16, 2014 at 1:00 PM, Eric Quintane <eric@quintane.net> wrote:\n\n> Dear List,\n>\n> I would like to confirm that I am correctly specifying structural zeros in\n> an ergm model in statnet.\n> I used an old conversation in this list as a starting point, but the\n> conversation did not provide the full syntax (or mentioned the warning that\n> I am encountering).\n>\n> This is the syntax that I am currently using: offset(edgecov(structzero)),\n> offset.coef=-Inf\n> structzero is a network where all ties that need to be fixed are set to 1.\n>\n> With this syntax, the model runs but I receive a warning message, as\n> follows:\n> 1: In control$init[model.initial$etamap$offsettheta] <- offset.coef :\n>   number of items to replace is not a multiple of replacement length\n>\n> I made sure that the size of the two networks (the original network and\n> the structural zeros network) is the same.\n>\n> Thank you in advance for any help.\n>\n> Best,\n>\n> Eric Quintane\n> Assistant Professor\n> UASM\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140619/a0e856a4/attachment.html>",
+      "body_snippet": "Dear All,\n\nI am having the same problem described by Eric Quintane, below, although I\nam getting a different error than the one that he got.\n\nSpecifically, I have a two-mode network Y.  It has a struc",
+      "thread_id": "thread-b8d1bc0beeb5",
+      "thread_depth": 0,
+      "month": "2014-06"
+    },
+    {
+      "id": "msg-af630881c426",
+      "message_id": "<CA+hV2uWET-Mja2FtGfMfnvDGdT==m4kbVQfp-XXXm_in+5tMKA@mail.gmail.com>",
+      "from_name": "Yun Huang",
+      "from_email_hash": "adf4da61062e4fa75371efaffb9053bf686d51778199fff94d9a21334bfff133",
+      "date": "2014-06-20T10:41:18Z",
+      "subject": "[statnet_help] Help! Structural 0s in ergms",
+      "subject_clean": "[statnet_help] Help! Structural 0s in ergms",
+      "in_reply_to": "<CAEzSE6UOthww+6_k-ccfLegXWU27BBrgvDAxFoYcWjLA4wPNgw@mail.gmail.com>",
+      "references": [
+        "<CAEzSE6UOthww+6_k-ccfLegXWU27BBrgvDAxFoYcWjLA4wPNgw@mail.gmail.com>"
+      ],
+      "body_plain": "It's the problem in estimating the log likelihood. You can add\n\"eval.loglik=FALSE\" in your model control to bypass it (e.g. after the\nterm offset.coef=-Inf).\n\nOn Thu, Jun 19, 2014 at 10:29 PM, Michael Heaney <mheaney@umich.edu> wrote:\n> Dear All,\n>\n> I am having the same problem described by Eric Quintane, below, although I\n> am getting a different error than the one that he got.\n>\n> Specifically, I have a two-mode network Y.  It has a structural zero any\n> time the two-mode network Z=1.  I am estimating it as a function of edges,\n> b1star(2), and X.   (For the record, I have also run a more-fully-specified\n> model, but I am giving this one for illustration).\n>\n> I run the following command:\n>\n> Model_01 <- ergm(Y\n> ~edges\n> +b1star(2)\n> +nodecov(\"X\")\n> +offset(edgecov(Z))\n> , offset.coef=-Inf\n> , control=control.ergm(seed=12345)\n> )\n>\n> When I do so, I get the following error:\n>\n> Error in ergm(dind, estimate = \"MPLE\", constraints = constraints,\n> eval.loglik = FALSE,  :\n>   Invalid offset parameter vector offset.coef: wrong number of parameters:\n> expected 1 got 2.\n>\n> This error appears after the model converges.  It also appears regardless of\n> whether I use b1star(2) or some other endogenous term, such as b2star(2),\n> b1degree(1), or b2degree(1).\n>\n> I should note that the ergm works fine if I remove the endogenous term.\n> Inclusion of the offset does seem to do the job.  Running the model with or\n> without the offset term makes a difference in the ergm/logit results.\n>\n> Any suggestions would be most sincerely appreciated.\n>\n> Michael Heaney\n>\n> --\n> Michael T. Heaney, Ph.D.\n> Assistant Professor of Organizational Studies and Political Science\n> University of Michigan\n> 722 Dennison Building\n> 500 Church Street\n> Ann Arbor, Michigan 48109\n>\n> Cell Phone: 202-236-3369\n> E-mail: mheaney@umich.edu\n> http://sites.lsa.umich.edu/mheaney/\n>\n> On Mon, Jun 16, 2014 at 1:00 PM, Eric Quintane <eric@quintane.net> wrote:\n>>\n>> Dear List,\n>>\n>> I would like to confirm that I am correctly specifying structural zeros in\n>> an ergm model in statnet.\n>> I used an old conversation in this list as a starting point, but the\n>> conversation did not provide the full syntax (or mentioned the warning that\n>> I am encountering).\n>>\n>> This is the syntax that I am currently using: offset(edgecov(structzero)),\n>> offset.coef=-Inf\n>> structzero is a network where all ties that need to be fixed are set to 1.\n>>\n>> With this syntax, the model runs but I receive a warning message, as\n>> follows:\n>> 1: In control$init[model.initial$etamap$offsettheta] <- offset.coef :\n>>   number of items to replace is not a multiple of replacement length\n>>\n>> I made sure that the size of the two networks (the original network and\n>> the structural zeros network) is the same.\n>>\n>> Thank you in advance for any help.\n>>\n>> Best,\n>>\n>> Eric Quintane\n>> Assistant Professor\n>> UASM\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \nYun Huang\nScience of Networks in Communities (SONIC)\nIndustrial Engineering and Management Sciences\nNorthwestern University\nGoogle Voice: 847-220-7310\nOffice: FSB 1.459",
+      "body_snippet": "It's the problem in estimating the log likelihood. You can add\n\"eval.loglik=FALSE\" in your model control to bypass it (e.g. after the\nterm offset.coef=-Inf).\n\nOn Thu, Jun 19, 2014 at 10:29 PM, Michael",
+      "thread_id": "thread-b8d1bc0beeb5",
+      "thread_depth": 1,
+      "month": "2014-06"
+    },
+    {
+      "id": "msg-c640fa7a0e2f",
+      "message_id": "<53A48C8B.9060002@uni-mannheim.de>",
+      "from_name": "Dominic Nyhuis",
+      "from_email_hash": "1efee4a2cc5b9eec6af46feb182265a7ce3f3c6b528b1ce9e64825c7a3ef601d",
+      "date": "2014-06-20T12:33:31Z",
+      "subject": "[statnet_help] Singularity problem with nodematch and nodefactor",
+      "subject_clean": "[statnet_help] Singularity problem with nodematch and nodefactor",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear list,\n\n\nI am trying to run an ERGM model where I try to explain MP cooperations \nwith structural factors such as gender, seniority, etc. The data \ncontains counts of interactions between legislators. The model that I \nrun has mostly \"nodematch\" factors and some \"absdiff\". Following the \nadvice of Goodreau et al. in their 2008 JSS statnet tutorial, I include \na \"nodefactor\" for each \"nodematch\" in the model.\n\nThis works perfectly fine...\n\nfit <- ergm(net ~ edges + nodematch(\"sex\", diff = T) + \nnodefactor(\"sex\"), response = \"sum\", reference = ~Poisson, control = \ncontrol.ergm(MCMLE.trustregion = 1000))\n\nHowever, once I include a second variable such as in the following model...\n\nfit <- ergm(net ~ edges + nodematch(\"sex\", diff = T) + nodefactor(\"sex\") \n+ nodematch(\"freshman\", diff = T) + nodefactor(\"freshman\"), response = \n\"sum\", reference = ~Poisson, control = control.ergm(MCMLE.trustregion = \n1000))\n\nI get - \"Error in solve.default(H) : system is computationally singular: \nreciprocal condition number = ...\". I cannot wrap my head around what is \ngoind wrong. Any ideas?\n\n\nBest, Dominic",
+      "body_snippet": "Dear list,\n\n\nI am trying to run an ERGM model where I try to explain MP cooperations \nwith structural factors such as gender, seniority, etc. The data \ncontains counts of interactions between legislat",
+      "thread_id": "thread-c640fa7a0e2f",
+      "thread_depth": 0,
+      "month": "2014-06"
+    },
+    {
+      "id": "msg-fd14b02c7ae5",
+      "message_id": "<alpine.WNT.1.10.1406201236320.6444@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2014-06-20T12:37:37Z",
+      "subject": "[statnet_help] Singularity problem with nodematch and nodefactor",
+      "subject_clean": "[statnet_help] Singularity problem with nodematch and nodefactor",
+      "in_reply_to": "<53A48C8B.9060002@uni-mannheim.de>",
+      "references": [
+        "<53A48C8B.9060002@uni-mannheim.de>"
+      ],
+      "body_plain": "Dominic,\n\nHow is the variable \"freshman\" coded?\n\nMartina\n\nOn Fri, 20 Jun 2014, Dominic Nyhuis wrote:\n\n> Dear list,\n>\n>\n> I am trying to run an ERGM model where I try to explain MP cooperations with \n> structural factors such as gender, seniority, etc. The data contains counts \n> of interactions between legislators. The model that I run has mostly \n> \"nodematch\" factors and some \"absdiff\". Following the advice of Goodreau et \n> al. in their 2008 JSS statnet tutorial, I include a \"nodefactor\" for each \n> \"nodematch\" in the model.\n>\n> This works perfectly fine...\n>\n> fit <- ergm(net ~ edges + nodematch(\"sex\", diff = T) + nodefactor(\"sex\"), \n> response = \"sum\", reference = ~Poisson, control = \n> control.ergm(MCMLE.trustregion = 1000))\n>\n> However, once I include a second variable such as in the following model...\n>\n> fit <- ergm(net ~ edges + nodematch(\"sex\", diff = T) + nodefactor(\"sex\") + \n> nodematch(\"freshman\", diff = T) + nodefactor(\"freshman\"), response = \"sum\", \n> reference = ~Poisson, control = control.ergm(MCMLE.trustregion = \n1000))\n>\n> I get - \"Error in solve.default(H) : system is computationally singular: \n> reciprocal condition number = ...\". I cannot wrap my head around what is \n> goind wrong. Any ideas?\n>\n>\n> Best, Dominic\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Dominic,\n\nHow is the variable \"freshman\" coded?\n\nMartina\n\nOn Fri, 20 Jun 2014, Dominic Nyhuis wrote:\n\n> Dear list,\n>\n>\n> I am trying to run an ERGM model where I try to explain MP cooperations with \n>",
+      "thread_id": "thread-c640fa7a0e2f",
+      "thread_depth": 1,
+      "month": "2014-06"
+    },
+    {
+      "id": "msg-7f84fd70bea0",
+      "message_id": "<53A48F10.5060501@uni-mannheim.de>",
+      "from_name": "Dominic Nyhuis",
+      "from_email_hash": "1efee4a2cc5b9eec6af46feb182265a7ce3f3c6b528b1ce9e64825c7a3ef601d",
+      "date": "2014-06-20T12:44:16Z",
+      "subject": "[statnet_help] Singularity problem with nodematch and nodefactor",
+      "subject_clean": "[statnet_help] Singularity problem with nodematch and nodefactor",
+      "in_reply_to": "<alpine.WNT.1.10.1406201236320.6444@morrism-PC>",
+      "references": [
+        "<53A48C8B.9060002@uni-mannheim.de>",
+        "<alpine.WNT.1.10.1406201236320.6444@morrism-PC>"
+      ],
+      "body_plain": "Dear Martina,\n\n\nboth variables are binary.\n\n\nBest, Dominic\n\n\n\nAm 20.06.14 21:37, schrieb martina morris:\n> Dominic,\n>\n> How is the variable \"freshman\" coded?\n>\n> Martina\n>\n> On Fri, 20 Jun 2014, Dominic Nyhuis wrote:\n>\n>> Dear list,\n>>\n>>\n>> I am trying to run an ERGM model where I try to explain MP \n>> cooperations with structural factors such as gender, seniority, etc. \n>> The data contains counts of interactions between legislators. The \n>> model that I run has mostly \"nodematch\" factors and some \"absdiff\". \n>> Following the advice of Goodreau et al. in their 2008 JSS statnet \n>> tutorial, I include a \"nodefactor\" for each \"nodematch\" in the model.\n>>\n>> This works perfectly fine...\n>>\n>> fit <- ergm(net ~ edges + nodematch(\"sex\", diff = T) + \n>> nodefactor(\"sex\"), response = \"sum\", reference = ~Poisson, control = \n>> control.ergm(MCMLE.trustregion = 1000))\n>>\n>> However, once I include a second variable such as in the following \n>> model...\n>>\n>> fit <- ergm(net ~ edges + nodematch(\"sex\", diff = T) + \n>> nodefactor(\"sex\") + nodematch(\"freshman\", diff = T) + \n>> nodefactor(\"freshman\"), response = \"sum\", reference = ~Poisson, \n>> control = control.ergm(MCMLE.trustregion = \n> 1000))\n>>\n>> I get - \"Error in solve.default(H) : system is computationally \n>> singular: reciprocal condition number = ...\". I cannot wrap my head \n>> around what is goind wrong. Any ideas?\n>>\n>>\n>> Best, Dominic\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n>",
+      "body_snippet": "Dear Martina,\n\n\nboth variables are binary.\n\n\nBest, Dominic\n\n\n\nAm 20.06.14 21:37, schrieb martina morris:\n> Dominic,\n>\n> How is the variable \"freshman\" coded?\n>\n> Martina\n>\n> On Fri, 20 Jun 2014, Domin",
+      "thread_id": "thread-c640fa7a0e2f",
+      "thread_depth": 2,
+      "month": "2014-06"
+    },
+    {
+      "id": "msg-2a52176472df",
+      "message_id": "<alpine.WNT.1.10.1406201249200.6444@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2014-06-20T12:49:34Z",
+      "subject": "[statnet_help] Singularity problem with nodematch and nodefactor",
+      "subject_clean": "[statnet_help] Singularity problem with nodematch and nodefactor",
+      "in_reply_to": "<53A48F10.5060501@uni-mannheim.de>",
+      "references": [
+        "<53A48C8B.9060002@uni-mannheim.de>",
+        "<alpine.WNT.1.10.1406201236320.6444@morrism-PC>",
+        "<53A48F10.5060501@uni-mannheim.de>"
+      ],
+      "body_plain": "Then you can't use \"differential=T\"\n\nOn Fri, 20 Jun 2014, Dominic Nyhuis wrote:\n\n> Dear Martina,\n>\n>\n> both variables are binary.\n>\n>\n> Best, Dominic\n>\n>\n>\n> Am 20.06.14 21:37, schrieb martina morris:\n>> Dominic,\n>> \n>> How is the variable \"freshman\" coded?\n>> \n>> Martina\n>> \n>> On Fri, 20 Jun 2014, Dominic Nyhuis wrote:\n>> \n>>> Dear list,\n>>> \n>>> \n>>> I am trying to run an ERGM model where I try to explain MP cooperations \n>>> with structural factors such as gender, seniority, etc. The data contains \n>>> counts of interactions between legislators. The model that I run has \n>>> mostly \"nodematch\" factors and some \"absdiff\". Following the advice of \n>>> Goodreau et al. in their 2008 JSS statnet tutorial, I include a \n>>> \"nodefactor\" for each \"nodematch\" in the model.\n>>> \n>>> This works perfectly fine...\n>>> \n>>> fit <- ergm(net ~ edges + nodematch(\"sex\", diff = T) + nodefactor(\"sex\"), \n>>> response = \"sum\", reference = ~Poisson, control = \n>>> control.ergm(MCMLE.trustregion = 1000))\n>>> \n>>> However, once I include a second variable such as in the following \n>>> model...\n>>> \n>>> fit <- ergm(net ~ edges + nodematch(\"sex\", diff = T) + nodefactor(\"sex\") + \n>>> nodematch(\"freshman\", diff = T) + nodefactor(\"freshman\"), response = \n>>> \"sum\", reference = ~Poisson, control = control.ergm(MCMLE.trustregion = \n>> 1000))\n>>> \n>>> I get - \"Error in solve.default(H) : system is computationally singular: \n>>> reciprocal condition number = ...\". I cannot wrap my head around what is \n>>> goind wrong. Any ideas?\n>>> \n>>> \n>>> Best, Dominic\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>> \n>> \n>> ****************************************************************\n>>  Professor of Sociology and Statistics\n>>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>  Box 354322\n>>  University of Washington\n>>  Seattle, WA 98195-4322\n>>\n>>  Office:        (206) 685-3402\n>>  Dept Office:   (206) 543-5882, 543-7237\n>>  Fax:           (206) 685-7419\n>> \n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>> \n>\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Then you can't use \"differential=T\"\n\nOn Fri, 20 Jun 2014, Dominic Nyhuis wrote:\n\n> Dear Martina,\n>\n>\n> both variables are binary.\n>\n>\n> Best, Dominic\n>\n>\n>\n> Am 20.06.14 21:37, schrieb martina morris:",
+      "thread_id": "thread-c640fa7a0e2f",
+      "thread_depth": 3,
+      "month": "2014-06"
+    },
+    {
+      "id": "msg-73191e2f9af7",
+      "message_id": "<53A4906F.4070407@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2014-06-20T12:50:07Z",
+      "subject": "[statnet_help] Singularity problem with nodematch and nodefactor",
+      "subject_clean": "[statnet_help] Singularity problem with nodematch and nodefactor",
+      "in_reply_to": "<53A48F10.5060501@uni-mannheim.de>",
+      "references": [
+        "<53A48C8B.9060002@uni-mannheim.de>",
+        "<alpine.WNT.1.10.1406201236320.6444@morrism-PC>",
+        "<53A48F10.5060501@uni-mannheim.de>"
+      ],
+      "body_plain": "Hi Dominic - if you have a binary variable, and an edges term and a \nnodefactor term for that variable, then you only have one degree of \nfreedom left.  That means that you can only do nodematch with diff=F, \nnot with diff=T.  Note how in that paper we do diff=T for Grade and Race \nbecause there are multiple categories, but not for Sex, because there \naren't enough degrees of freedom.\n\nThe reason why there are only three degrees of freedom is that there are \nonly three kinds of partnerships with regard to combinations on a binary \nattribute: 00, 01, and 11.\n\nHope that helps,\nSteve\n\n\n\n\n\nOn 6/20/2014 12:44 PM, Dominic Nyhuis wrote:\n> Dear Martina,\n>\n>\n> both variables are binary.\n>\n>\n> Best, Dominic\n>\n>\n>\n> Am 20.06.14 21:37, schrieb martina morris:\n>> Dominic,\n>>\n>> How is the variable \"freshman\" coded?\n>>\n>> Martina\n>>\n>> On Fri, 20 Jun 2014, Dominic Nyhuis wrote:\n>>\n>>> Dear list,\n>>>\n>>>\n>>> I am trying to run an ERGM model where I try to explain MP \n>>> cooperations with structural factors such as gender, seniority, etc. \n>>> The data contains counts of interactions between legislators. The \n>>> model that I run has mostly \"nodematch\" factors and some \"absdiff\". \n>>> Following the advice of Goodreau et al. in their 2008 JSS statnet \n>>> tutorial, I include a \"nodefactor\" for each \"nodematch\" in the model.\n>>>\n>>> This works perfectly fine...\n>>>\n>>> fit <- ergm(net ~ edges + nodematch(\"sex\", diff = T) + \n>>> nodefactor(\"sex\"), response = \"sum\", reference = ~Poisson, control = \n>>> control.ergm(MCMLE.trustregion = 1000))\n>>>\n>>> However, once I include a second variable such as in the following \n>>> model...\n>>>\n>>> fit <- ergm(net ~ edges + nodematch(\"sex\", diff = T) + \n>>> nodefactor(\"sex\") + nodematch(\"freshman\", diff = T) + \n>>> nodefactor(\"freshman\"), response = \"sum\", reference = ~Poisson, \n>>> control = control.ergm(MCMLE.trustregion = \n>> 1000))\n>>>\n>>> I get - \"Error in solve.default(H) : system is computationally \n>>> singular: reciprocal condition number = ...\". I cannot wrap my head \n>>> around what is goind wrong. Any ideas?\n>>>\n>>>\n>>> Best, Dominic\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>>\n>> ****************************************************************\n>>  Professor of Sociology and Statistics\n>>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>  Box 354322\n>>  University of Washington\n>>  Seattle, WA 98195-4322\n>>\n>>  Office:        (206) 685-3402\n>>  Dept Office:   (206) 543-5882, 543-7237\n>>  Fax:           (206) 685-7419\n>>\n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \n\n*******************************************************************\nSteven M. Goodreau / Assoc. Professor / Dept. of Anthropology\nUniversity of Washington / Denny Hall 423 / Campus Box 353100\nSeattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau\n*******************************************************************",
+      "body_snippet": "Hi Dominic - if you have a binary variable, and an edges term and a \nnodefactor term for that variable, then you only have one degree of \nfreedom left.  That means that you can only do nodematch with ",
+      "thread_id": "thread-c640fa7a0e2f",
+      "thread_depth": 3,
+      "month": "2014-06"
+    },
+    {
+      "id": "msg-d1b09702845f",
+      "message_id": "<CAEzSE6VZ3M61TRXqJsuic_7kLUpKPQME4jwFnEvqdXEcam=ePw@mail.gmail.com>",
+      "from_name": "Michael Heaney",
+      "from_email_hash": "4d6403dbcaae8825781ae6c49066171f12df256ce970fec71e8e0e6fc8ca3792",
+      "date": "2014-06-22T14:24:58Z",
+      "subject": "[statnet_help] What causes an invalid offset parameter?",
+      "subject_clean": "[statnet_help] What causes an invalid offset parameter?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet Help List,\n\nI'd like to follow up on a question that I asked last week about using\noffset to address the problem of structural zeros.  I am getting the\nfollowing error:\n\nError in ergm(dind, estimate = \"MPLE\", constraints = constraints,\neval.loglik = FALSE,  :\n  Invalid offset parameter vector offset.coef: wrong number of parameters:\nexpected 1 got 2.\n\nLooking at the ergm source code, this error occurs whenever:\n\nlength(offset.coef) is not equal to\nlength(control$init[model.initial$etamap$offsettheta])\n\nMore specifically, ergm is telling me that length(offset.coef)=2, but it\nshould equal 1.\n\nIt is beyond my understanding how the length of offset.coef got to be 2,\nsince I set it at offset.coef=-Inf.  I have also tried offset.coef=0 and\noffset.coef=1, but they yield the same error.  Looking at the ergm source\ncode, it seems that offset.coef is something that is set by me -- it does\nnot seem to be determined endogenously.  But, obviously, something is\nhappening to offset.coef that is extending the length of the vector.\n\nWhat, if anything, can I do to fix the problem?  Is my problem an\nestimation problem or a programming problem?\n\nYun Huang kindly suggested that I try eval.loglike=FALSE but, when I do so,\nI am still getting the same error.\n\nAlso, I've tried this with both two-mode and one-mode data, but keep\ngetting the same error.\n\nBTW, here is my code again:\n\nModel_01 <- ergm(Y\n~ edges\n+ b1star(2)\n+ nodecov(\"X\")\n+ offset(edgecov(Z))\n, offset.coef=-Inf\n, control=control.ergm(seed=12345)\n )\n\nY is a two-mode network\nX is an exogenous nodecovariate\nZ is a two-mode network where Z=1 means the observation should be excluded.\n\nI would be extremely grateful if anyone has ideas on how to fix this\nproblem.\n\nSincerely,\n\nMichael\n\n-- \nMichael T. Heaney, Ph.D.\nAssistant Professor of Organizational Studies and Political Science\nUniversity of Michigan\n722 Dennison Building\n500 Church Street\nAnn Arbor, Michigan 48109\n\nCell Phone: 202-236-3369\nE-mail: mheaney@umich.edu\nhttp://sites.lsa.umich.edu/mheaney/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140622/af2c10e9/attachment.html>",
+      "body_snippet": "Dear Statnet Help List,\n\nI'd like to follow up on a question that I asked last week about using\noffset to address the problem of structural zeros.  I am getting the\nfollowing error:\n\nError in ergm(din",
+      "thread_id": "thread-d1b09702845f",
+      "thread_depth": 0,
+      "month": "2014-06"
+    },
+    {
+      "id": "msg-ba146d4da1d9",
+      "message_id": "<CA+hV2uWv9ZgfFQhqMoRuavNFJ+ugS9_aG9-sw103Q7gQbwa6GA@mail.gmail.com>",
+      "from_name": "Yun Huang",
+      "from_email_hash": "adf4da61062e4fa75371efaffb9053bf686d51778199fff94d9a21334bfff133",
+      "date": "2014-06-22T15:57:31Z",
+      "subject": "[statnet_help] What causes an invalid offset parameter?",
+      "subject_clean": "[statnet_help] What causes an invalid offset parameter?",
+      "in_reply_to": "<CAEzSE6VZ3M61TRXqJsuic_7kLUpKPQME4jwFnEvqdXEcam=ePw@mail.gmail.com>",
+      "references": [
+        "<CAEzSE6VZ3M61TRXqJsuic_7kLUpKPQME4jwFnEvqdXEcam=ePw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Michael,\n\nThere are two ways to address your error:\n\n1. Implement structural zeros using the extreme value detection.\nBasically you don't need to do anything and statnet will automatically\ndetect it and fix the coefficient to -Inf.  You will get a warning\nmessage though.\nModel_02 <- ergm(Y ~ edges + b1star(2) + edgecov(Z))\n\n2. Fix the coefficient explicitly using offset.coef and turn off the\nMPLE estimate of log likelihood using eval.loglik=FALSE. There could\nbe a bug in the last step of the estimate causing your error.\nModel_03 <- ergm(Y ~ edges + b1star(2) + offset(edgecov(Z)) ,\noffset.coef=-Inf, eval.loglik=FALSE )\n\nThe following toy models illustrate your error and the solutions. Let\nme know if you cannot repeat it with your dataset.\n\nBest,\nYun\n\nmat <- mat.or.vec(3,4)\nmat[1,] <- 1\nmat[2,2] <- 1\nY <- as.network(mat, format=adjacency, bipartite = TRUE)\nZ <- mat.or.vec(3,4)\nZ[3,3] <- 1\n\nModel_01 <- ergm(Y ~ edges + b1star(2) + offset(edgecov(Z)) , offset.coef=-Inf )\n\n\"Error in ergm(dind, estimate = \"MPLE\", constraints = constraints,\neval.loglik = FALSE,  :\n  Invalid offset parameter vector offset.coef: wrong number of\nparameters: expected 1 got 2.\"\n\nModel_02 <- ergm(Y ~ edges + b1star(2) + edgecov(Z))\n\n\"Monte Carlo MLE Results:\n          Estimate Std. Error MCMC % p-value\nedges      -2.4278     1.1648      0  0.0668 .\nb1star2     1.6675     0.7693      0  0.0583 .\nedgecov.Z     -Inf         NA     NA      NA  \"\n\nModel_03 <- ergm(Y ~ edges + b1star(2) + offset(edgecov(Z)) ,\noffset.coef=-Inf, eval.loglik=FALSE )\n\n\"Monte Carlo MLE Results:\n          Estimate Std. Error MCMC % p-value\nedges      -2.4356     1.1686      0  0.0668 .\nb1star2     1.6746     0.7727      0  0.0584 .\nedgecov.Z     -Inf         NA     NA      NA  \"\n\n\nOn Sun, Jun 22, 2014 at 4:24 PM, Michael Heaney <mheaney@umich.edu> wrote:\n> Dear Statnet Help List,\n>\n> I'd like to follow up on a question that I asked last week about using\n> offset to address the problem of structural zeros.  I am getting the\n> following error:\n>\n> Error in ergm(dind, estimate = \"MPLE\", constraints = constraints,\n> eval.loglik = FALSE,  :\n>   Invalid offset parameter vector offset.coef: wrong number of parameters:\n> expected 1 got 2.\n>\n> Looking at the ergm source code, this error occurs whenever:\n>\n> length(offset.coef) is not equal to\n> length(control$init[model.initial$etamap$offsettheta])\n>\n> More specifically, ergm is telling me that length(offset.coef)=2, but it\n> should equal 1.\n>\n> It is beyond my understanding how the length of offset.coef got to be 2,\n> since I set it at offset.coef=-Inf.  I have also tried offset.coef=0 and\n> offset.coef=1, but they yield the same error.  Looking at the ergm source\n> code, it seems that offset.coef is something that is set by me -- it does\n> not seem to be determined endogenously.  But, obviously, something is\n> happening to offset.coef that is extending the length of the vector.\n>\n> What, if anything, can I do to fix the problem?  Is my problem an estimation\n> problem or a programming problem?\n>\n> Yun Huang kindly suggested that I try eval.loglike=FALSE but, when I do so,\n> I am still getting the same error.\n>\n> Also, I've tried this with both two-mode and one-mode data, but keep getting\n> the same error.\n>\n> BTW, here is my code again:\n>\n> Model_01 <- ergm(Y\n> ~ edges\n> + b1star(2)\n> + nodecov(\"X\")\n> + offset(edgecov(Z))\n> , offset.coef=-Inf\n> , control=control.ergm(seed=12345)\n>  )\n>\n> Y is a two-mode network\n> X is an exogenous nodecovariate\n> Z is a two-mode network where Z=1 means the observation should be excluded.\n>\n> I would be extremely grateful if anyone has ideas on how to fix this\n> problem.\n>\n> Sincerely,\n>\n> Michael\n>\n> --\n> Michael T. Heaney, Ph.D.\n> Assistant Professor of Organizational Studies and Political Science\n> University of Michigan\n> 722 Dennison Building\n> 500 Church Street\n> Ann Arbor, Michigan 48109\n>\n> Cell Phone: 202-236-3369\n> E-mail: mheaney@umich.edu\n> http://sites.lsa.umich.edu/mheaney/\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \nYun Huang\nScience of Networks in Communities (SONIC)\nIndustrial Engineering and Management Sciences\nNorthwestern University\nGoogle Voice: 847-220-7310\nOffice: FSB 1.459",
+      "body_snippet": "Hi Michael,\n\nThere are two ways to address your error:\n\n1. Implement structural zeros using the extreme value detection.\nBasically you don't need to do anything and statnet will automatically\ndetect i",
+      "thread_id": "thread-d1b09702845f",
+      "thread_depth": 1,
+      "month": "2014-06"
+    },
+    {
+      "id": "msg-0c31a86e8007",
+      "message_id": "<CA+CFxkXK6Uu3sPqwbjbwW31gD+hW83hdFFoyPxVYLQjs-h_Txg@mail.gmail.com>",
+      "from_name": "Jesse Sayles",
+      "from_email_hash": "66b1d382040bb381e54b6d659aa9c3a124dc209c0d2735793f5592d6518a6a15",
+      "date": "2014-06-24T03:12:52Z",
+      "subject": "[statnet_help] trouble working with valued data for network objects",
+      "subject_clean": "[statnet_help] trouble working with valued data for network objects",
+      "in_reply_to": "<1403120597.31409.YahooMailNeo@web164901.mail.bf1.yahoo.com>",
+      "references": [
+        "<CA+CFxkU-W0_Pe8DvBe03_dyjarOK3AhJs_NUgxTjk2a1nbiirw@mail.gmail.com>",
+        "<1403120597.31409.YahooMailNeo@web164901.mail.bf1.yahoo.com>"
+      ],
+      "body_plain": "Hi Micheal,\n\nSorry it has taken me a few days to reply. I have been hard at work on\nvarious things. Thank you for showing me how to preserve the valued data\nwith network objects. Your code fixes work fine, but I then seem to be\nrunning into an odd behavior with the matrix data that only occurs when\nconverting it to a network object and back to a matrix. When I use the\noutput matrix format with other code I have written, it does not work\nproperly. But the same code works fine with matrix data that has not been\nconverted to network object and back to matrix. Here are both the\nproblematic code, functioning code, and full explanations. Any thoughts?\n\n#(19 June 2014) this code takes a matrix, converts to network, removes\nisolates (as it uses random data, there may be none to remove), and\nconverts back to matrix so that the valued data can be weak symmetrized by\nmax or min of ij-ji as described below. BUT -- the symmetrization code does\nnot work right when the data are converted from matrix to network and back\nto matrix. It does work when the data input is just as a matrix.\n\nlibrary(statnet)\n\n#make a sample matrix that includes NAs and set diag to 0.\ntest<-matrix(ncol=10, nrow=10, sample(c(NA, 1:5), 100, replace=TRUE,\nc(.75,rep(.1,5)))) #NA has high prob\ntest0<-diag.remove(test, remove.val=0) ;test0\n\n#make as network object and keep valued data (ignore.eval=FALSE,\nnames.eval=\"value\")\ntestMeNet<-as.network.matrix(test0, ignore.eval=FALSE, names.eval=\"value\",\nna.rm=TRUE) ;testMeNet\n\n#ID isoslets\nisos <- isolates(testMeNet, diag=FALSE) ;length(isos)\n\n#remove isolets\ntestMeCut<-delete.vertices(testMeNet,(isolates(testMeNet, diag=FALSE)))\n;testMeCut\n\n#convert back to matrix. #I have tried using\nas.sociomatrix(testMeCut,\"value\") and get the same result\ntestMeOut <- as.matrix(testMeCut, \"value\", matrix.type='adjacency')\n;testMeOut\nclass(testMeOut);class(test)\n\n##now symmetrize network based on max or min\n##This code symmetrizes a valued matrix by max or min values of ij-ji. For\nmax, steps 1 & 5 should use \"-999\" & step 3 must use \">\" and \">=\". For min,\nuse \"999\", \"<\", & \"<=\" respectively. The input data must use NA rather than\n0 for non-ties. The code uses weak symmetrization, so an NA in ij or ji\nwill be replaced with valued data of ji or ij respectively.\n\n#Step 1: convert NA to \"999\" for use with \"<\" and \"-999\" for use with \">\"\nso NA gets replaced with desired tie value (i.e., weak symmetrization)\ntestMeOut[is.na(testMeOut)]<- (-999) ;testMeOut\n\n#Step 2: separate lower and upper tri\nlow<-upper.tri.remove(test0, remove.val=NA) ;low\nupp<-lower.tri.remove(test0, remove.val=NA) ;upp\n\n#Step 3: get min (<) or max (>) based on True/False, convert to 1/0, and\ncombine lower and upper. To deal with ij=ji, upp2 uses <= or >=, step2 uses\nNA, and NAs are converted to 0 in step3. This avoids \"full = 1+1\"\nlow2 <- (ifelse((low > t(upp))==TRUE, 1, 0));low2[is.na(low2)]<- 0 ;low2\nupp2 <- (ifelse((upp >= t(low))==TRUE, 1, 0));upp2[is.na(upp2)]<- 0 ;upp2\nfull <- (upp2 + low2) ;full\n\n#Step 4: extract from original data using full binary mat (selects min/max\nbased on above choice (< or >))\ntempNet <- testMeOut*full ;tempNet\n\n#Step 5: final symmetrized mat based on min or max as specified above.\nThen, just in case there were any NA-NA ij-ji pairs, convert those to 0\nfinal <- tempNet + t(tempNet);final\nfinal[final == -999] <- 0 ;final\n\n#compare final, testMeOut, and test0. Not all NAs have been treated\nproperly. Rather than weak symmetrization, \"final\" has 0 where ij-ji had an\nNA and value combo.\nfinal\ntestMeOut\ntest0\n\n\n# Now run symm with matrix data that does not get passed through network\nobject. It works fine.\n\nnewtest<-matrix(ncol=10, nrow=10, sample(c(NA, 1:5), 100, replace=TRUE,\nc(.75,rep(.1,5)))) #NA has high prob\nnewtest0<-diag.remove(test, remove.val=0) ;newtest0\n\n#Step 1: convert NA to \"999\" for use with \"<\" and \"-999\" for use with \">\"\nso NA gets replaced with desired tie value (i.e., weak symmetrization)\nnewtest0[is.na(newtest0)]<- (-999) ;newtest0\n\n#Step 2: separate lower and upper tri\nlow<-upper.tri.remove(newtest0, remove.val=NA) ;low\nupp<-lower.tri.remove(newtest0, remove.val=NA) ;upp\n\n#Step 3: get min (<) or max (>) based on True/False, convert to 1/0, and\ncombine lower and upper. To deal with ij=ji, upp2 uses <= or >=, step2 uses\nNA, and NAs are converted to 0 in step3. This avoids \"full = 1+1\"\nlow2 <- (ifelse((low > t(upp))==TRUE, 1, 0));low2[is.na(low2)]<- 0 ;low2\nupp2 <- (ifelse((upp >= t(low))==TRUE, 1, 0));upp2[is.na(upp2)]<- 0 ;upp2\nfull <- (upp2 + low2) ;full\n\n#Step 4: extract from original data using full binary mat (selects min/max\nbased on above choice (< or >))\ntempNet <- testMeOut*full ;tempNet\n\n#Step 5: final symmetrized mat based on min or max as specified above.\nThen, just in case there were any NA-NA ij-ji pairs, convert those to 0\nfinal <- tempNet + t(tempNet);final\nfinal[final == -999] <- 0 ;final\n\n#compare final and newtest0. Weak symm works. There are values where ij-ji\nhad one value and one NA.\nfinal\nnewtest0\n\n# So why does the symmetrization code work when input is an unmodified\nmatrix, but not when the input is a matrix that has been passed to a\nnetwork object and back to a matrix?\n\n\n\nOn Wed, Jun 18, 2014 at 12:43 PM, Michael Siciliano <\nmichael_d_siciliano@yahoo.com> wrote:\n\n> Hi Jesse,\n>\n> You just need to make two minor adjustments to your code.\n>\n> 1. Add names.eval=\"value\" to the line where you create the network\n> object.  This assigns the name for the attribute to store the edge values.\n> 2. When converting back to the matrix use the function as.sociomatrix with\n> the argument \"value\".\n>\n> Here is your code with the changes added in. Best,\n>\n> Michael Siciliano\n>\n> #make a sample matrix that includes NAs and set diag to 0.\n> test<-matrix(ncol=10, nrow=10, sample(c(NA, 1:5), 100, replace=TRUE,\n> c(.5,rep(.1,5)))) #NA has high prob\n> test0<-diag.remove(test, remove.val=0) ;test0\n>\n> #make as network object and try to keep valued data using ignore.eval\n> testMeNet<-as.network.matrix(test0, ignore.eval=FALSE, na.rm=TRUE,\n> names.eval=\"value\") ;testMeNet\n>\n>\n> #find isolates\n> isos <- isolates(testMeNet, diag=FALSE)\n> length(isos)\n>\n> #remove isolates\n> testMeCut<-delete.vertices(testMeNet, (isolates(testMeNet, diag=FALSE)))\n> ;testMeCut\n>\n> #convert back to matrix. Problem is, valued ties are lost. They are now 1s\n> testMeOut <- as.sociomatrix(testMeCut, \"value\") ;testMeOut\n>\n>\n>   On Wednesday, June 18, 2014 1:24 PM, Jesse Sayles <Jesse.Sayles@asu.edu>\n> wrote:\n>\n>\n> Hi statnet users,\n>\n> I write with another question. I am having trouble working with valued\n> data for network objects. Example code below. Basically, I have a full\n> matrix with tie values and I am using NAs for non-ties. This is a\n> non-symmetric network.\n>\n> I want to convert the matrix to a network object, remove isolates, and\n> then convert back to a matrix. The problem is that when I convert the\n> network object back to a matrix I get all binary values. The valued data is\n> lost.\n>\n> Here is example code. Note, the code below just uses a random matrix for\n> sample data, so there may be no isolates to remove. But this does not\n> matter as you will still see that the valued ties become 1s after they are\n> passed through the network object.\n>\n> #make a sample matrix that includes NAs and set diag to 0.\n> test<-matrix(ncol=10, nrow=10, sample(c(NA, 1:5), 100, replace=TRUE,\n> c(.5,rep(.1,5)))) #NA has high prob\n> test0<-diag.remove(test, remove.val=0) ;test0\n>\n> #make as network object and try to keep valued data using ignore.eval\n> testMeNet<-as.network.matrix(test0, ignore.eval=FALSE, na.rm=TRUE)\n> ;testMeNet\n>\n> #find isolates\n> isos <- isolates(testMeNet, diag=FALSE)\n> length(isos)\n>\n> #remove isolates\n> testMeCut<-delete.vertices(testMeNet, (isolates(testMeNet, diag=FALSE)))\n> ;testMeCut\n>\n> #convert back to matrix. Problem is, valued ties are lost. They are now 1s\n> testMeOut <- as.matrix(testMeCut) ;testMeOut\n>\n>\n> --\n> Jesse Sayles\n> PhD candidate\n> School of Geographical Sciences & Urban Planning\n> Arizona State University\n> geoplan.asu.edu/sayles\n>\n> Graduate Assistant Fellow\n> Rob and Melani Walton Sustainability Solutions Initiatives\n> sustainabilitysolutions.asu.edu/programs/fellowships/?pid=7689\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n\n\n-- \n\nJesse Sayles\nPhD candidate\nSchool of Geographical Sciences & Urban Planning\nArizona State University\ngeoplan.asu.edu/sayles\n\n\n\nGraduate Assistant Fellow\n\nRob and Melani Walton Sustainability Solutions Initiatives\nsustainabilitysolutions.asu.edu/programs/fellowships/?pid=7689\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140624/5ef8c93b/attachment.html>",
+      "body_snippet": "Hi Micheal,\n\nSorry it has taken me a few days to reply. I have been hard at work on\nvarious things. Thank you for showing me how to preserve the valued data\nwith network objects. Your code fixes work ",
+      "thread_id": "thread-5fac618ade4f",
+      "thread_depth": 2,
+      "month": "2014-06"
+    },
+    {
+      "id": "msg-7b777dc82a11",
+      "message_id": "<CAEzSE6Vpk_qifPX-o2uU4Qyh0kdQC-_8k7AkApQB7APXmkpvMw@mail.gmail.com>",
+      "from_name": "Michael Heaney",
+      "from_email_hash": "4d6403dbcaae8825781ae6c49066171f12df256ce970fec71e8e0e6fc8ca3792",
+      "date": "2014-06-25T13:35:26Z",
+      "subject": "[statnet_help] What causes an invalid offset parameter?",
+      "subject_clean": "[statnet_help] What causes an invalid offset parameter?",
+      "in_reply_to": "<CA+hV2uWv9ZgfFQhqMoRuavNFJ+ugS9_aG9-sw103Q7gQbwa6GA@mail.gmail.com>",
+      "references": [
+        "<CAEzSE6VZ3M61TRXqJsuic_7kLUpKPQME4jwFnEvqdXEcam=ePw@mail.gmail.com>",
+        "<CA+hV2uWv9ZgfFQhqMoRuavNFJ+ugS9_aG9-sw103Q7gQbwa6GA@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Yun,\n\nThis is extremely helpful.  Thank you.\n\nOption 1 did not work for me.  R did not return an infinite coefficient on\nthe constraint term.\n\nBut Option 2 did work.  Thank you.\n\nIf I using Option 2, I am also not able to generate a Goodness of Fit plot.\n Is there a way to do that?\n\nAlso, is there any way to estimate the likelihood function post post hoc?\n\nMichael\n\n\nOn Sun, Jun 22, 2014 at 6:57 PM, Yun Huang <yunh.pc@gmail.com> wrote:\n\n> Hi Michael,\n>\n> There are two ways to address your error:\n>\n> 1. Implement structural zeros using the extreme value detection.\n> Basically you don't need to do anything and statnet will automatically\n> detect it and fix the coefficient to -Inf.  You will get a warning\n> message though.\n> Model_02 <- ergm(Y ~ edges + b1star(2) + edgecov(Z))\n>\n> 2. Fix the coefficient explicitly using offset.coef and turn off the\n> MPLE estimate of log likelihood using eval.loglik=FALSE. There could\n> be a bug in the last step of the estimate causing your error.\n> Model_03 <- ergm(Y ~ edges + b1star(2) + offset(edgecov(Z)) ,\n> offset.coef=-Inf, eval.loglik=FALSE )\n>\n> The following toy models illustrate your error and the solutions. Let\n> me know if you cannot repeat it with your dataset.\n>\n> Best,\n> Yun\n>\n> mat <- mat.or.vec(3,4)\n> mat[1,] <- 1\n> mat[2,2] <- 1\n> Y <- as.network(mat, format=adjacency, bipartite = TRUE)\n> Z <- mat.or.vec(3,4)\n> Z[3,3] <- 1\n>\n> Model_01 <- ergm(Y ~ edges + b1star(2) + offset(edgecov(Z)) ,\n> offset.coef=-Inf )\n>\n> \"Error in ergm(dind, estimate = \"MPLE\", constraints = constraints,\n> eval.loglik = FALSE,  :\n>   Invalid offset parameter vector offset.coef: wrong number of\n> parameters: expected 1 got 2.\"\n>\n> Model_02 <- ergm(Y ~ edges + b1star(2) + edgecov(Z))\n>\n> \"Monte Carlo MLE Results:\n>           Estimate Std. Error MCMC % p-value\n> edges      -2.4278     1.1648      0  0.0668 .\n> b1star2     1.6675     0.7693      0  0.0583 .\n> edgecov.Z     -Inf         NA     NA      NA  \"\n>\n> Model_03 <- ergm(Y ~ edges + b1star(2) + offset(edgecov(Z)) ,\n> offset.coef=-Inf, eval.loglik=FALSE )\n>\n> \"Monte Carlo MLE Results:\n>           Estimate Std. Error MCMC % p-value\n> edges      -2.4356     1.1686      0  0.0668 .\n> b1star2     1.6746     0.7727      0  0.0584 .\n> edgecov.Z     -Inf         NA     NA      NA  \"\n>\n>\n> On Sun, Jun 22, 2014 at 4:24 PM, Michael Heaney <mheaney@umich.edu> wrote:\n> > Dear Statnet Help List,\n> >\n> > I'd like to follow up on a question that I asked last week about using\n> > offset to address the problem of structural zeros.  I am getting the\n> > following error:\n> >\n> > Error in ergm(dind, estimate = \"MPLE\", constraints = constraints,\n> > eval.loglik = FALSE,  :\n> >   Invalid offset parameter vector offset.coef: wrong number of\n> parameters:\n> > expected 1 got 2.\n> >\n> > Looking at the ergm source code, this error occurs whenever:\n> >\n> > length(offset.coef) is not equal to\n> > length(control$init[model.initial$etamap$offsettheta])\n> >\n> > More specifically, ergm is telling me that length(offset.coef)=2, but it\n> > should equal 1.\n> >\n> > It is beyond my understanding how the length of offset.coef got to be 2,\n> > since I set it at offset.coef=-Inf.  I have also tried offset.coef=0 and\n> > offset.coef=1, but they yield the same error.  Looking at the ergm source\n> > code, it seems that offset.coef is something that is set by me -- it does\n> > not seem to be determined endogenously.  But, obviously, something is\n> > happening to offset.coef that is extending the length of the vector.\n> >\n> > What, if anything, can I do to fix the problem?  Is my problem an\n> estimation\n> > problem or a programming problem?\n> >\n> > Yun Huang kindly suggested that I try eval.loglike=FALSE but, when I do\n> so,\n> > I am still getting the same error.\n> >\n> > Also, I've tried this with both two-mode and one-mode data, but keep\n> getting\n> > the same error.\n> >\n> > BTW, here is my code again:\n> >\n> > Model_01 <- ergm(Y\n> > ~ edges\n> > + b1star(2)\n> > + nodecov(\"X\")\n> > + offset(edgecov(Z))\n> > , offset.coef=-Inf\n> > , control=control.ergm(seed=12345)\n> >  )\n> >\n> > Y is a two-mode network\n> > X is an exogenous nodecovariate\n> > Z is a two-mode network where Z=1 means the observation should be\n> excluded.\n> >\n> > I would be extremely grateful if anyone has ideas on how to fix this\n> > problem.\n> >\n> > Sincerely,\n> >\n> > Michael\n> >\n> > --\n> > Michael T. Heaney, Ph.D.\n> > Assistant Professor of Organizational Studies and Political Science\n> > University of Michigan\n> > 722 Dennison Building\n> > 500 Church Street\n> > Ann Arbor, Michigan 48109\n> >\n> > Cell Phone: 202-236-3369\n> > E-mail: mheaney@umich.edu\n> > http://sites.lsa.umich.edu/mheaney/\n> >\n> >\n> > _______________________________________________\n> > statnet_help mailing list\n> > statnet_help@u.washington.edu\n> > http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> >\n>\n>\n>\n> --\n> Yun Huang\n> Science of Networks in Communities (SONIC)\n> Industrial Engineering and Management Sciences\n> Northwestern University\n> Google Voice: 847-220-7310\n> Office: FSB 1.459\n>\n\n\n\n-- \nMichael T. Heaney, Ph.D.\nAssistant Professor of Organizational Studies and Political Science\nUniversity of Michigan\n722 Dennison Building\n500 Church Street\nAnn Arbor, Michigan 48109\n\nCell Phone: 202-236-3369\nE-mail: mheaney@umich.edu\nhttp://sites.lsa.umich.edu/mheaney/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140625/b51200ee/attachment.html>",
+      "body_snippet": "Dear Yun,\n\nThis is extremely helpful.  Thank you.\n\nOption 1 did not work for me.  R did not return an infinite coefficient on\nthe constraint term.\n\nBut Option 2 did work.  Thank you.\n\nIf I using Optio",
+      "thread_id": "thread-d1b09702845f",
+      "thread_depth": 2,
+      "month": "2014-06"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-dc04715ae53d",
+      "subject": "[statnet_help] MCMC diagnostics not working",
+      "message_count": 2,
+      "participants": [
+        "Karen Ertrachter",
+        "Steven Goodreau"
+      ],
+      "started": "2014-06-07T07:55:04Z",
+      "last_reply": "2014-06-07T09:40:21Z",
+      "root_message_id": "msg-dc04715ae53d"
+    },
+    {
+      "id": "thread-c89202c5bdff",
+      "subject": "[statnet_help] Structural 0s in ergms",
+      "message_count": 1,
+      "participants": [
+        "Eric Quintane"
+      ],
+      "started": "2014-06-16T10:00:12Z",
+      "last_reply": "2014-06-16T10:00:12Z",
+      "root_message_id": "msg-c89202c5bdff"
+    },
+    {
+      "id": "thread-6d487c96b692",
+      "subject": "[statnet_help] symmetrize valued data for max min and avg",
+      "message_count": 4,
+      "participants": [
+        "James Holland Jones",
+        "Jesse Sayles",
+        "Thomas William Valente"
+      ],
+      "started": "2014-06-17T07:11:09Z",
+      "last_reply": "2014-06-18T03:25:00Z",
+      "root_message_id": "msg-6d487c96b692"
+    },
+    {
+      "id": "thread-5fac618ade4f",
+      "subject": "[statnet_help] trouble working with valued data for network objects",
+      "message_count": 3,
+      "participants": [
+        "Jesse Sayles",
+        "Michael Siciliano"
+      ],
+      "started": "2014-06-18T11:24:12Z",
+      "last_reply": "2014-06-24T03:12:52Z",
+      "root_message_id": "msg-5fac618ade4f"
+    },
+    {
+      "id": "thread-b8d1bc0beeb5",
+      "subject": "[statnet_help] Help! Structural 0s in ergms",
+      "message_count": 2,
+      "participants": [
+        "Michael Heaney",
+        "Yun Huang"
+      ],
+      "started": "2014-06-19T20:29:06Z",
+      "last_reply": "2014-06-20T10:41:18Z",
+      "root_message_id": "msg-b8d1bc0beeb5"
+    },
+    {
+      "id": "thread-c640fa7a0e2f",
+      "subject": "[statnet_help] Singularity problem with nodematch and nodefactor",
+      "message_count": 5,
+      "participants": [
+        "Dominic Nyhuis",
+        "Steven Goodreau",
+        "martina morris"
+      ],
+      "started": "2014-06-20T12:33:31Z",
+      "last_reply": "2014-06-20T12:50:07Z",
+      "root_message_id": "msg-c640fa7a0e2f"
+    },
+    {
+      "id": "thread-d1b09702845f",
+      "subject": "[statnet_help] What causes an invalid offset parameter?",
+      "message_count": 3,
+      "participants": [
+        "Michael Heaney",
+        "Yun Huang"
+      ],
+      "started": "2014-06-22T14:24:58Z",
+      "last_reply": "2014-06-25T13:35:26Z",
+      "root_message_id": "msg-d1b09702845f"
+    }
+  ]
+}

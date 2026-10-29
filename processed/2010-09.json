@@ -1,0 +1,861 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2010-09",
+  "messages": [
+    {
+      "id": "msg-b6665976e231",
+      "message_id": "<D1C51561-5D75-43F0-BE0B-59A05A2E6847@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-09-02T08:54:48Z",
+      "subject": "[statnet_help] \tfrom network to igraph and back again, and NAMESPACEs",
+      "subject_clean": "[statnet_help] \tfrom network to igraph and back again, and NAMESPACEs",
+      "in_reply_to": "<B3324E10-3DA4-462A-BD68-5618112D28BC@indiana.edu>",
+      "references": [
+        "<4C755983.40302@uu.nl>",
+        "<4C7B69B1.5050901@uci.edu>",
+        "<4C7B988A.4090203@uu.nl>",
+        "<B3324E10-3DA4-462A-BD68-5618112D28BC@indiana.edu>"
+      ],
+      "body_plain": "Hi all.  John has raised some intriguing issues in his post and has  \ngenerated quite a bit of off-list email traffic among the statnet  \nteam.  To summarize briefly:\n\n\nPoint (3) appears to refer to the fact, alluded to by Michal and  \nMagnus and Pavel already, that the latentnet package (in statnet) has  \nto date depended on the mclust package (not written by us and not in  \nstatnet).  This dependency is going away, and in fact Pavel reports  \nthat a new version of latentnet is already percolating through CRAN.   \nOtherwise, all statnet code is, and has always been, GPL; details are  \nat http://statnetproject.org/attribution\n\n\nPoint (2) is trickier to parse.  There are undoubtedly some issues of  \nlegacy code (parts of sna are over 10 years old, after all!) but the  \nfact is that there is no way to make statnet packages do what they do,  \nas fast as they do it, by writing in R only. Multiple cores do not  \nchange this fact.  That said, statnet does rely on R for a lot of its  \nheavy lifting when possible.  Nothing about the statnet packages is  \nunusual, relative to many other R packages, in these regards.\n\n\nAs for (1), it is important to keep in mind that ergms are not glms.   \nThe \"unusual modification\" is not a creation of statnet; it is the  \nreality of these models.  Thus, there is no way to use completely  \nstandard glm syntax in formulating an ergm specification; the choice  \nis between creating a completely new syntax and bending the existing  \nformula structure.  We are still convinced that the latter is by far  \nthe better choice in terms of consistency with the R paradigm.  (We  \nthought very carefully about this issue when the ergm package was in  \nits infancy!)\n\nNote that in some cases, an ergm coincides with a logistic regression  \nmodel, which *is* a glm.  In such cases, one could in fact use a more  \ntraditional glm-like syntax, but even in these cases, the bookkeeping  \nnecessary to create the traditional predictor matrix is pretty  \ncomplicated and would require its own brand-new syntax since we would  \ncertainly want to create methods to help the user do this.  Our choice  \nof ergm syntax is thus a massive benefit to simplicity.\n\nThere is quite a bit more room for discussion of this question, and  \nundoubtedly if others have questions/suggestions then this could  \ncreate some more lively discussion on this list.  In particular, if  \nnovice (or not-so-novice) users are confused about the similarities  \nand differences between an ergm, with its inherent auto-dependency,  \nand a glm, please ask!  It's a great topic for this list.\n\n\nFinally, kudos to Michal for what sounds like great work on the  \nintergraph package!  I won't address the namespace issue, the only  \nreal way in which statnet currently doesn't \"play well\" in my opinion,  \nexcept to say that Michal and Magnus offer very persuasive arguments  \nin favor of namespaces and we will probably add them in future statnet  \nreleases (as others have stated or surmised, namespaces did not exist  \nin their current form when we began statnet).\n\n\n\nThanks to all for keeping discussions professional and respectful.\n\nDave\nfor the statnet team:  Mark, Carter, Steve, Martina, Pavel\n\n\n\n\nOn Aug 30, 2010, at 8:43 AM, John Paolillo wrote:\n\n> The point about namespaces is well-made by Michal, but really it  \n> should have been obvious and best practice would have indicated  \n> using R namespaces at the outset of the Statnet project.  \n> Unfortunately, this is just one of the programming practices that  \n> the Statnet project has adopted that runs counter to the R  \n> environment that they chose to work within. To the namespace issue  \n> may be added at least the following three:\n>\n> (1) Statnet imposes an unusual modification on the semantics of  \n> formula objects in R. In no other R package does one write a formula  \n> in which complex object (i.e. the network, which contains many  \n> vectors of differing lengths) is expressed in terms of objects  \n> contained within it.\n>\n> (2) Insistence on C code (ostensibly for speed), to the point of  \n> incorporating legacy code that duplicates basic functionality of the  \n> BLAS in R (e.g. eigen decomposition). This actually flies in the  \n> face of the speed criterion, because the R BLAS is optimized for  \n> multiple-core architectures (not as common when the Statnet project  \n> started as they are now), and the legacy code is not (nor is  \n> specialized Statnet C code like the network layout code necessarily  \n> multi-processor optimized).\n>\n> (3) Statnet has dependencies on packages that bear a UW license  \n> which is NOT compatible with GPL licenses, meaning that Statnet and  \n> code that uses Statnet packages raise legal complications regarding  \n> licensing that are likely to surprise many users. Specifically, \"for  \n> profit\" uses of some parts of the code potentially require payment  \n> of royalty fees to UW (the GPL license of R has no such restriction).\n>\n> The above problems, like the namespace issue, make Statnet not play  \n> well with other packages, and for this reason any use of Statnet is  \n> awkward for me. It would be good if the Statnet team could give some  \n> attention to them, so that it can interoperate better with R and  \n> other R packages.\n>\n> John Paolillo\n>",
+      "body_snippet": "Hi all.  John has raised some intriguing issues in his post and has  \ngenerated quite a bit of off-list email traffic among the statnet  \nteam.  To summarize briefly:\n\n\nPoint (3) appears to refer to t",
+      "thread_id": "thread-b6665976e231",
+      "thread_depth": 0,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-6f32ebed7c6c",
+      "message_id": "<4C80DA52.6050006@wirtschaft.uni-kassel.de>",
+      "from_name": "Martin Klaus",
+      "from_email_hash": "680374c9dbd7ccc76f32cb777ecc5e89798b33d124ebf6364002bbfb51e8fd5a",
+      "date": "2010-09-03T04:21:54Z",
+      "subject": "[statnet_help] Full CPU performance with statnet on R",
+      "subject_clean": "[statnet_help] Full CPU performance with statnet on R",
+      "in_reply_to": "<D1C51561-5D75-43F0-BE0B-59A05A2E6847@stat.psu.edu>",
+      "references": [
+        "<4C755983.40302@uu.nl>",
+        "<4C7B69B1.5050901@uci.edu>",
+        "<4C7B988A.4090203@uu.nl>",
+        "<B3324E10-3DA4-462A-BD68-5618112D28BC@indiana.edu>",
+        "<D1C51561-5D75-43F0-BE0B-59A05A2E6847@stat.psu.edu>"
+      ],
+      "body_plain": "Dear Team Stadtnet_Help,\n\nI have a new very powerfull 64bit PC with en highend processor and I \nwant to analyse VERY large networks with 1-20 million nodes.\nNow my first test with R show me that the Programm only uses 17% of the \nCPU power?\nHow is that? Can I tell R or more specific the statnet package to use up \nto 99% of the possible power on my system?\nWith the only uses 17% of the CPU it takes R to calculate only the \nclassic centrality measures like degree, betweenness and closeness for \nan 82000 node network more than ONE HOURE !!!\nHow and where can I adjust that ?\nThank you for your support,\n\nMartin Klaus",
+      "body_snippet": "Dear Team Stadtnet_Help,\n\nI have a new very powerfull 64bit PC with en highend processor and I \nwant to analyse VERY large networks with 1-20 million nodes.\nNow my first test with R show me that the P",
+      "thread_id": "thread-b6665976e231",
+      "thread_depth": 1,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-dbed6e06b0f1",
+      "message_id": "<595395C147E1FE45A8D0FFAC217207AA5D06CE65A6@BALZ00SW-MBX.ads.mwn.de>",
+      "from_name": "Marcus Drescher",
+      "from_email_hash": "05bc3ccb56dd87f9d57edeb29680c94a8209702fe59994513ea9a13031131d4f",
+      "date": "2010-09-03T05:10:28Z",
+      "subject": "[statnet_help] Plot edge values",
+      "subject_clean": "[statnet_help] Plot edge values",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nis there a way to plot edge values?\n\nBest\nMarcus\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100903/fd0e6493/attachment.html>",
+      "body_snippet": "Hi all,\n\nis there a way to plot edge values?\n\nBest\nMarcus\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/att",
+      "thread_id": "thread-dbed6e06b0f1",
+      "thread_depth": 0,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-62beb54c08a5",
+      "message_id": "<4C80ED16.2050704@ucla.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "fb40357ebb8d7f0a427d9ad2641aa56f67d6763bdb0f1109ba0f3c4b5584b09d",
+      "date": "2010-09-03T05:41:58Z",
+      "subject": "[statnet_help] Plot edge values",
+      "subject_clean": "[statnet_help] Plot edge values",
+      "in_reply_to": "<595395C147E1FE45A8D0FFAC217207AA5D06CE65A6@BALZ00SW-MBX.ads.mwn.de>",
+      "references": [
+        "<595395C147E1FE45A8D0FFAC217207AA5D06CE65A6@BALZ00SW-MBX.ads.mwn.de>"
+      ],
+      "body_plain": "Marcus,\n\nSee the many \"edge.*\" options under help(\"plot.network\")\n\nMark\n\nOn 9/3/10 8:10 PM, Marcus Drescher wrote:\n> Hi all,\n>\n> is there a way to plot edge values?\n>\n> Best\n>\n> Marcus\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Marcus,\n\nSee the many \"edge.*\" options under help(\"plot.network\")\n\nMark\n\nOn 9/3/10 8:10 PM, Marcus Drescher wrote:\n> Hi all,\n>\n> is there a way to plot edge values?\n>\n> Best\n>\n> Marcus\n>\n>\n>\n> _______",
+      "thread_id": "thread-dbed6e06b0f1",
+      "thread_depth": 1,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-f3891998e2af",
+      "message_id": "<4C80F15D.5050600@wirtschaft.uni-kassel.de>",
+      "from_name": "Martin Klaus",
+      "from_email_hash": "680374c9dbd7ccc76f32cb777ecc5e89798b33d124ebf6364002bbfb51e8fd5a",
+      "date": "2010-09-03T06:00:13Z",
+      "subject": "[statnet_help] Full CPU performance with statnet on R",
+      "subject_clean": "[statnet_help] Full CPU performance with statnet on R",
+      "in_reply_to": "<4C80F1E6.6010405@uci.edu>",
+      "references": [
+        "<4C755983.40302@uu.nl>",
+        "<4C7B69B1.5050901@uci.edu>",
+        "<4C7B988A.4090203@uu.nl>",
+        "<B3324E10-3DA4-462A-BD68-5618112D28BC@indiana.edu>",
+        "<D1C51561-5D75-43F0-BE0B-59A05A2E6847@stat.psu.edu>",
+        "<4C80DA52.6050006@wirtschaft.uni-kassel.de>",
+        "<4C80F1E6.6010405@uci.edu>"
+      ],
+      "body_plain": "Dear Carter,\n\nthank you for your fast answer. I totaly understand what your saying and \nI know that the betweenness and closeness are very calculation intensive \nmeasures and e.g. degee ist easy and on that way very fast. But I \nexpected my new PC, which by the way has 24 GB of memory, should be fast \nthan e.g a java compiled program like ORA. But ORA was 5 times faster \nthan R and it used the full 99.9% of the CPU for the whole time of \ncalculation. That is why I thought it would be possible to tell R to use \nmore of the possible CPU AND memory ;)\nBut the way I understand you it is not possible to adjust theses things \nin the statnet packge or in R at any other point?!\nThanks again for your help,\n\nMartin",
+      "body_snippet": "Dear Carter,\n\nthank you for your fast answer. I totaly understand what your saying and \nI know that the betweenness and closeness are very calculation intensive \nmeasures and e.g. degee ist easy and o",
+      "thread_id": "thread-b6665976e231",
+      "thread_depth": 3,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-51b308d84803",
+      "message_id": "<4C80F1E6.6010405@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-09-03T06:02:30Z",
+      "subject": "[statnet_help] Full CPU performance with statnet on R",
+      "subject_clean": "[statnet_help] Full CPU performance with statnet on R",
+      "in_reply_to": "<4C80DA52.6050006@wirtschaft.uni-kassel.de>",
+      "references": [
+        "<4C755983.40302@uu.nl>",
+        "<4C7B69B1.5050901@uci.edu>",
+        "<4C7B988A.4090203@uu.nl>",
+        "<B3324E10-3DA4-462A-BD68-5618112D28BC@indiana.edu>",
+        "<D1C51561-5D75-43F0-BE0B-59A05A2E6847@stat.psu.edu>",
+        "<4C80DA52.6050006@wirtschaft.uni-kassel.de>"
+      ],
+      "body_plain": "Hi, Martin -\n\nYour performance will depend on how dense your network is, how much \nmemory you have, etc.  If you are seeing low CPU utilization, you \nprobably have a memory issue.  Using the leanest available \nrepresentations can help (e.g., sna edgelists if you don't need \nmetadata), but very large graphs (like other large things) are expensive.\n\nIn like vein, you will find that certain calculations are intrinsically \ncostly for large graphs (unless they are _extremely_ sparse, and \nsometimes even then).  Things like betweenness/closeness calculation, \nclique enumeration, and cycle enumeration, geodesics, etc. are not \ncheap,* however classic they may be.  (kcores and degree are examples of \ncheap computations, however, and if those are running slow then you \nshould check your memory utilization.)\n\nIf performance is an issue, you might ask yourself why you are trying to \ncalculate something like betweenness on this large graph, and whether \nyou actually need the entire structure to answer your question. \nWhenever one deals with very large data sets (as is common in fields \nsuch as, say, GIS), it pays to think about efficiency when approaching \none's research problem.\n\nHope that helps,\n\n-Carter\n\n*Although fast _approximate_ algorithms are sometimes available for \nthese quantities.  This is an area of active research.\n\nMartin Klaus wrote:\n> Dear Team Stadtnet_Help,\n> \n> I have a new very powerfull 64bit PC with en highend processor and I \n> want to analyse VERY large networks with 1-20 million nodes.\n> Now my first test with R show me that the Programm only uses 17% of the \n> CPU power?\n> How is that? Can I tell R or more specific the statnet package to use up \n> to 99% of the possible power on my system?\n> With the only uses 17% of the CPU it takes R to calculate only the \n> classic centrality measures like degree, betweenness and closeness for \n> an 82000 node network more than ONE HOURE !!!\n> How and where can I adjust that ?\n> Thank you for your support,\n> \n> Martin Klaus\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi, Martin -\n\nYour performance will depend on how dense your network is, how much \nmemory you have, etc.  If you are seeing low CPU utilization, you \nprobably have a memory issue.  Using the leanest a",
+      "thread_id": "thread-b6665976e231",
+      "thread_depth": 2,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-5c0fb9e158c5",
+      "message_id": "<4C80F50F.5010309@uu.nl>",
+      "from_name": "Michal Bojanowski",
+      "from_email_hash": "b72e0a534c25ec0973b778cd472059c61c5350ce731228b66a3a79a50069f13f",
+      "date": "2010-09-03T06:15:59Z",
+      "subject": "[statnet_help] Full CPU performance with statnet on R",
+      "subject_clean": "[statnet_help] Full CPU performance with statnet on R",
+      "in_reply_to": "<4C80DA52.6050006@wirtschaft.uni-kassel.de>",
+      "references": [
+        "<4C755983.40302@uu.nl>",
+        "<4C7B69B1.5050901@uci.edu>",
+        "<4C7B988A.4090203@uu.nl>",
+        "<B3324E10-3DA4-462A-BD68-5618112D28BC@indiana.edu>",
+        "<D1C51561-5D75-43F0-BE0B-59A05A2E6847@stat.psu.edu>",
+        "<4C80DA52.6050006@wirtschaft.uni-kassel.de>"
+      ],
+      "body_plain": "> I have a new very powerfull 64bit PC with en highend processor and I\n> want to analyse VERY large networks with 1-20 million nodes.\n> Now my first test with R show me that the Programm only uses 17% of the\n> CPU power?\n> How is that? Can I tell R or more specific the statnet package to use up\n> to 99% of the possible power on my system?\n\nDo you have a processor with multiple cores?\n\nApart from the issues raised by Carter, another reason that you see only \n17% of CPU usage maybe because R is running on a single core. So unless \nsome of the Statnet algorithms are parallelized, or your own code is \nexplicitly parallelized, R will only use a single core.\n\nhth\n\nMichal\n\n-- \n-----------------------------\nMichal Bojanowski\nPhD Candidate\nICS / Department of Sociology\nUtrecht University\nhttp://www.fss.uu.nl/soc/bojanowski\nhttp://www.bojanorama.pl",
+      "body_snippet": "> I have a new very powerfull 64bit PC with en highend processor and I\n> want to analyse VERY large networks with 1-20 million nodes.\n> Now my first test with R show me that the Programm only uses 17%",
+      "thread_id": "thread-b6665976e231",
+      "thread_depth": 2,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-815a02778341",
+      "message_id": "<4C8165CE.5070303@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-09-03T14:17:02Z",
+      "subject": "[statnet_help] Full CPU performance with statnet on R",
+      "subject_clean": "[statnet_help] Full CPU performance with statnet on R",
+      "in_reply_to": "<4C80F15D.5050600@wirtschaft.uni-kassel.de>",
+      "references": [
+        "<4C755983.40302@uu.nl>",
+        "<4C7B69B1.5050901@uci.edu>",
+        "<4C7B988A.4090203@uu.nl>",
+        "<B3324E10-3DA4-462A-BD68-5618112D28BC@indiana.edu>",
+        "<D1C51561-5D75-43F0-BE0B-59A05A2E6847@stat.psu.edu>",
+        "<4C80DA52.6050006@wirtschaft.uni-kassel.de>",
+        "<4C80F1E6.6010405@uci.edu>",
+        "<4C80F15D.5050600@wirtschaft.uni-kassel.de>"
+      ],
+      "body_plain": "Hi, Martin -\n\nMartin Klaus wrote:\n> Dear Carter,\n> \n> thank you for your fast answer. I totaly understand what your saying and \n> I know that the betweenness and closeness are very calculation intensive \n> measures and e.g. degee ist easy and on that way very fast. But I \n> expected my new PC, which by the way has 24 GB of memory, should be fast \n> than e.g a java compiled program like ORA. But ORA was 5 times faster \n> than R and it used the full 99.9% of the CPU for the whole time of \n> calculation. That is why I thought it would be possible to tell R to use \n> more of the possible CPU AND memory ;)\n> But the way I understand you it is not possible to adjust theses things \n> in the statnet packge or in R at any other point?!\n> Thanks again for your help,\n\nOK, from what has been said, it sounds like your issue may be that you \nare looking at _total_ CPU utilization, not utilization of a specific \nCPU.  Parallel processing is gradually coming into play within R, and \nyou can employ it at user-level via libraries like snow and multicore. \nFor the most part, however, R is still engineered around a \nsingle-processor environment.  The simplest way to exploit \nmulti-processor capabilities for a problem like yours would be to use a \npackage like multicore, and set your various analysis tasks running in \nparallel.  Even if each task is serially executed, the set of tasks will \nbe completed more quickly.  (That's one of the tactics I sometimes use. \n  In fact, there are advantages of this strategy in a clustered \nenvironment, because it's easier to control how many processors I'm \neating (and how much the other users will resent my presence).)  As \nparallel processing support stabilizes, I think you'll see it used more \nextensively within R generally (and in statnet -- see the help for \ncontrol.ergm for one currently implemented example).\n\nAs far as ORA, my understanding is that the important parts are all \nwritten in C++ (unless they have rewritten it since, which is always \npossible).  (Fun bit of trivia: when I was in Kathleen's lab at CMU, I \nwrote a collection of C routines called \"netstat\" that ultimately became \npart of the first ORA backend.  All of that code was rewritten long ago, \nof course, and I doubt that ORA today retains any influence from the old \nnetstat base.)  If the CMU folks have done their homework (and they \nusually do), ORA _should_ outperform R-based tools on many tasks, since \nit's a custom-built piece of compiled code, while R libraries have large \nchunks of comparatively slow interpreted code.  That's the price you pay \nfor ease of use, flexibility, ability to interoperate with other \nlibraries, etc.  I'd guess that much of that factor of 5 is a multiple \ncore issue, but even so I would not be surprised to find that many tasks \nrun somewhat faster in ORA (or any dedicated, standalone application) \nthan in R/statnet.  If they didn't, the number of situations in which \nsuch standalone tools would be at all preferable to general-purpose \nplatforms like R would be very circumscribed.\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "Hi, Martin -\n\nMartin Klaus wrote:\n> Dear Carter,\n> \n> thank you for your fast answer. I totaly understand what your saying and \n> I know that the betweenness and closeness are very calculation intensi",
+      "thread_id": "thread-b6665976e231",
+      "thread_depth": 4,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-d8b17fee8efc",
+      "message_id": "<AANLkTi=pey_BKt0015aWAFoiU0NNDSdY=iwr-Xhyt8cM@mail.gmail.com>",
+      "from_name": "Wincent",
+      "from_email_hash": "6846f5c272f8850077470247e7e6a025c83f8d7387bcf22387269b3b25a06522",
+      "date": "2010-09-04T20:16:54Z",
+      "subject": "[statnet_help] examine relationship between betweenness and vertex attributes?",
+      "subject_clean": "[statnet_help] examine relationship between betweenness and vertex attributes?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all, I use betweenness in sna to get the betweenness score, and\nwould like to see what vertex attributes may influence or \"determine\"\nthe betweenness centrality.\nI think OLS regression can get the point estimates but the p-value\nwould be problematic.\nI wonder if there is existing function(s) for such purpose?\nThank you very much in advance.\n\n-- \nWincent Rong-gui HUANG\nDoctoral Candidate\nDept of Public and Social Administration\nCity University of Hong Kong\nhttp://asrr.r-forge.r-project.org/rghuang.html",
+      "body_snippet": "Dear all, I use betweenness in sna to get the betweenness score, and\nwould like to see what vertex attributes may influence or \"determine\"\nthe betweenness centrality.\nI think OLS regression can get th",
+      "thread_id": "thread-d8b17fee8efc",
+      "thread_depth": 0,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-50e14f2d2ce4",
+      "message_id": "<e1477274bd11ba4a768c9aef4bf37e74.squirrel@webmail.stat.unipd.it>",
+      "from_name": "Soriani Nicola",
+      "from_email_hash": "bad2caca9903706f9e3ae9b9200f838b32f69bcb1198b839eb309a817ad8dd27",
+      "date": "2010-09-06T07:18:48Z",
+      "subject": "[statnet_help] krackfr data",
+      "subject_clean": "[statnet_help] krackfr data",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi All,\n\nI need to use the data \"krackfr\".\n\nBut R version 2.11.1 does not support more the \"netdata\" package.\n\nWhere could I find it?\n\nThanks,\n\nNicola\n\n\n-- \nSoriani Nicola\nScuola di Dottorato in Scienze Statistiche XXIII Ciclo\nDipartimento di Scienze Statistiche, Universit? di Padova\nStanza 122 - Tel. 049 827 4174\nPh.D. Student\nDepartment of Statistical Sciences\nUniversity of Padova, Italy",
+      "body_snippet": "Hi All,\n\nI need to use the data \"krackfr\".\n\nBut R version 2.11.1 does not support more the \"netdata\" package.\n\nWhere could I find it?\n\nThanks,\n\nNicola\n\n\n-- \nSoriani Nicola\nScuola di Dottorato in Scien",
+      "thread_id": "thread-50e14f2d2ce4",
+      "thread_depth": 0,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-f08416e00904",
+      "message_id": "<cea5dfabc7df515bb512435304271b3d@email.unc.edu>",
+      "from_name": "dnolin",
+      "from_email_hash": "9ea4374cadcd0478c9da820629ed01f9f63173dc4f2e1510510ac970233cb3df",
+      "date": "2010-09-06T07:26:22Z",
+      "subject": "[statnet_help] examine relationship between betweenness and vertex attributes?",
+      "subject_clean": "[statnet_help] examine relationship between betweenness and vertex attributes?",
+      "in_reply_to": "<AANLkTi=pey_BKt0015aWAFoiU0NNDSdY=iwr-Xhyt8cM@mail.gmail.com>",
+      "references": [
+        "<AANLkTi=pey_BKt0015aWAFoiU0NNDSdY=iwr-Xhyt8cM@mail.gmail.com>"
+      ],
+      "body_plain": "I am also curious about this problem. More generally, is there a specific\nmethod that's preferred when regressing node-level network measures against\nother node attributes (or vice versa)? It would seem that non-independence\nof cases would violate OLS assumptions and some adjustment ought to be\nmade. For example, are there permutation method similar to QAP whereby you\ncould permute the vector of the dependent variable to see how frequently a\ncorrelation of the observed size arises?\n\nThanks,\nDave\n\n\nOn Sun, 5 Sep 2010 11:16:54 +0800, Wincent <ronggui.huang@gmail.com> wrote:\n> Dear all, I use betweenness in sna to get the betweenness score, and\n> would like to see what vertex attributes may influence or \"determine\"\n> the betweenness centrality.\n> I think OLS regression can get the point estimates but the p-value\n> would be problematic.\n> I wonder if there is existing function(s) for such purpose?\n> Thank you very much in advance.\n\n-- \n____________________________\nDavid A. Nolin\nPostdoctoral Scholar\nCarolina Population Center\nUniversity of North Carolina",
+      "body_snippet": "I am also curious about this problem. More generally, is there a specific\nmethod that's preferred when regressing node-level network measures against\nother node attributes (or vice versa)? It would se",
+      "thread_id": "thread-d8b17fee8efc",
+      "thread_depth": 1,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-584bb26aaec8",
+      "message_id": "<9717C5EFA7999845927498ECD9F6877C2BA1B5@uu01msg-exb01.soliscom.uu.nl>",
+      "from_name": "Bojanowski, M.J.  (Michal)",
+      "from_email_hash": "27858c02eeddab5f13c84d02582fd09242a7632ae83e730aa500cec040f23e67",
+      "date": "2010-09-06T16:15:16Z",
+      "subject": "[statnet_help] krackfr data",
+      "subject_clean": "[statnet_help] krackfr data",
+      "in_reply_to": null,
+      "references": [
+        "<e1477274bd11ba4a768c9aef4bf37e74.squirrel@webmail.stat.unipd.it>"
+      ],
+      "body_plain": "> I need to use the data \"krackfr\".\n> But R version 2.11.1 does not support more the \"netdata\" package.\n> Where could I find it?\n\nDo you mean 'NetData' with datasets from McFarland's SNA lab?\n\nI just installed it from CRAN with no problems using 'install.packages' (on linux).\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100907/c3ec6f06/attachment.html>",
+      "body_snippet": "> I need to use the data \"krackfr\".\n> But R version 2.11.1 does not support more the \"netdata\" package.\n> Where could I find it?\n\nDo you mean 'NetData' with datasets from McFarland's SNA lab?\n\nI just ",
+      "thread_id": "thread-50e14f2d2ce4",
+      "thread_depth": 1,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-2a98c973e7a2",
+      "message_id": "<4C85CECA.8090900@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-09-06T22:34:02Z",
+      "subject": "[statnet_help] examine relationship between betweenness and vertex attributes?",
+      "subject_clean": "[statnet_help] examine relationship between betweenness and vertex attributes?",
+      "in_reply_to": "<cea5dfabc7df515bb512435304271b3d@email.unc.edu>",
+      "references": [
+        "<AANLkTi=pey_BKt0015aWAFoiU0NNDSdY=iwr-Xhyt8cM@mail.gmail.com>",
+        "<cea5dfabc7df515bb512435304271b3d@email.unc.edu>"
+      ],
+      "body_plain": "Hi, folks -\n\nHere is a four-part answer to this question:\n\n1. If your goal is to test for marginal (non)association between an NLI \n(e.g., closeness) and a node-level covariate, IMHO the most \nstraightforward approach is to use permutation procedures.  If you want \na quick tutorial, you might check out the associated portion of the \nstatnet workshop we gave at this year's Political Networks meeting; the \nURL is \nhttp://lectopia.oit.duke.edu/ilectures/ilectures.lasso?ut=1065&id=27647, \nand the discussion starts at around 48 minutes.  (Part 1 of the day's \nsession is at \nhttp://lectopia.oit.duke.edu/ilectures/ilectures.lasso?ut=1065&id=27647, \nfor those who are interested.)   As I note in response to a question \nfrom the audience, generalizing this to the multivariate case is \npossible, but one runs into complications that make the approach less \nattractive.  For the simple, bivariate case, however, my sense is that \npermutation tests are often a good starting point.\n\n2. For more complex, parametric versions of the covariate/NLI question, \nthe natural approach is to construct a statistic based on an interaction \nof the covariate with the NLI, and employ an ERG model.  (This is \nequivalent to what nodecov does, with the NLI here being degree.)  We \nhave talked for years about adding equivalent terms for other centrality \nscores, but I am not sure if anything is implemented at present -- there \nare no special theoretical issues, but the computation can be painful. \n(I regularly hassle my CS colleagues for the algorithmic developments we \nneed to make changescore calculation fast for indices like betweenness, \nbut am assured that this is a non-trivial research problem.  :-))  I \nspoke with Mark about putting something crude together a few months ago, \nbut am not sure if he's had time to make progress on it -- it's clear \nthat this would be a very interesting set of terms to be able to \ninclude.  Having said that, we don't know how stable models built from \nthose terms would be, so this might turn out to be harder in practice \nthan it seems.\n\n3. A fact little remembered today is that the ERG were introduced in \npart to act as non-trivial null models against which to test for complex \nstructural biases.  (See the discussion in Holland and Leinhardt, JASA, \n1981.)  Using the same scheme they suggest, it is possible to conduct \nMonte Carlo tests of association with more complex structure than the \nsimple permutation tests by (1) positing a baseline ERGM, (2) fitting it \nto your data, (3) simulating draws from the fitted model, and (4) \nexamining the quantiles of the observed NLI/covariate interaction in the \ndistribution of equivalent interactions generated by the simulated data. \n  Some properties of these tests are described in the above paper.  In \npractice, there are more ways for this to go wrong than the permutation \ntest, and I would tend to favor the latter when feasible.  One case I \n_can_ think of in which the ERG-based test would be preferable would be \nwhen you want to test for an association of your covariate with a given \nNLI score, controlling for some other interaction of the same covariate \nwith the target network (e.g., homophily).  A null of independence does \nnot help you here, and a model-based test could prove efficacious.\n\n4. Another, naive alternative would be to try to treat your problem in a \nstandard regression framework, and try to patch things up in some \nfashion.  For some NLIs (e.g., degree) on large networks, we may suspect \nthat there is relatively little dependence between observations, and the \nfirst-order properties of OLS are fairly robust in any case.  This is \nessentially the rationale behind network regression (where one typically \npairs standard least squares estimators of parameters with multivariate \nQAP tests to assess significance), and it can work quite well.  Then \nagain, the \"patch and pray\" approach can also fail, and you may or may \nnot be able to tell when the answers you are getting partake heavily of \nfantasy.  I tend to encourage the use of more principled methods, where \nfeasible.\n\nThat's my take on it, anyway.  My illustrious colleagues may or may not \nagree.\n\n-Carter\n\nPS. For the adventurous, an interesting technique might be to apply the \npermutation model (a la netperm) where the left-hand matrices consist \nentirely of diagonal matrices with individual NLI scores from the \nobserved graph, and the right-hand matrices of consist entirely of \ndiagonal matrices with individual covariate scores.  This would be a \n\"vector\" or \"linear\" version of the permutation model, analogous to the \nLAP versus QAP distinction in Hubert's terminology.  (It may be simpler \nto think of as a generalized location system model using only \nassociation terms based on node covariates as object features and NLI \nscores as location features, and with the support limited to 1:1 \nassignments -- in fact, that's how I would implement it.  See the \ngeneralized location systems paper in Sociological Methodology (Butts, \n2007) for some idea of what I am prattling on about.)  I think it's safe \nto say that this application of that model family is not much \nexplored...meaning that I'm not sure if anyone has tried it.  If someone \nhas experimented with this application, I would be interesting in \nhearing about it.\n\ndnolin wrote:\n> I am also curious about this problem. More generally, is there a specific\n> method that's preferred when regressing node-level network measures against\n> other node attributes (or vice versa)? It would seem that non-independence\n> of cases would violate OLS assumptions and some adjustment ought to be\n> made. For example, are there permutation method similar to QAP whereby you\n> could permute the vector of the dependent variable to see how frequently a\n> correlation of the observed size arises?\n> \n> Thanks,\n> Dave\n> \n> \n> On Sun, 5 Sep 2010 11:16:54 +0800, Wincent <ronggui.huang@gmail.com> wrote:\n>> Dear all, I use betweenness in sna to get the betweenness score, and\n>> would like to see what vertex attributes may influence or \"determine\"\n>> the betweenness centrality.\n>> I think OLS regression can get the point estimates but the p-value\n>> would be problematic.\n>> I wonder if there is existing function(s) for such purpose?\n>> Thank you very much in advance.\n>",
+      "body_snippet": "Hi, folks -\n\nHere is a four-part answer to this question:\n\n1. If your goal is to test for marginal (non)association between an NLI \n(e.g., closeness) and a node-level covariate, IMHO the most \nstraigh",
+      "thread_id": "thread-d8b17fee8efc",
+      "thread_depth": 2,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-35011e0db60d",
+      "message_id": "<AANLkTim4JGTLDxybzxPM_oaut1-BOnLJVfE7q6M=oFf+@mail.gmail.com>",
+      "from_name": "Gabriele Martinelli",
+      "from_email_hash": "733d6ac869bd4c4837350839247ee750099c220c91580653f6b0db6ccc7c5432",
+      "date": "2010-09-08T06:47:55Z",
+      "subject": "[statnet_help] Network plot",
+      "subject_clean": "[statnet_help] Network plot",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\nI am trying to use the package network on my Mac 10.6, and every time I try\nto plot a network, I get a bad figure and a series of warnings (up to 50) of\nthis kind:\n\nIn (1:s)/s * 2 * pi + rot * 2 * pi/360 :\n  longer object length is not a multiple of shorter object length\n\nI tried with the basic networks in the examples, and it happens the same\nthing.\nI have uninstalled and re-installed R and the package several times, but\nwith no effect. The same package did work well previously (on a 10.4 OS),\nbut now it doesn't. Can you help me?\n\nThank you,\nGabriele Martinelli\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100908/7039cfa6/attachment.html>",
+      "body_snippet": "Hi,\nI am trying to use the package network on my Mac 10.6, and every time I try\nto plot a network, I get a bad figure and a series of warnings (up to 50) of\nthis kind:\n\nIn (1:s)/s * 2 * pi + rot * 2 *",
+      "thread_id": "thread-35011e0db60d",
+      "thread_depth": 0,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-3bd3e5eca8e5",
+      "message_id": "<AANLkTinHqs=8_GF32q6b0CAy0uTCzWmrwWMpEedQBenj@mail.gmail.com>",
+      "from_name": "Wincent",
+      "from_email_hash": "6846f5c272f8850077470247e7e6a025c83f8d7387bcf22387269b3b25a06522",
+      "date": "2010-09-11T22:23:54Z",
+      "subject": "[statnet_help] The license.statnet function",
+      "subject_clean": "[statnet_help] The license.statnet function",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "> license.statnet(\"ergm\")\nThe output ends like this:\n Copyright 2007 The statnet Development Team>\n\nAdding \"\\n\" to the end should make it print (cat) the output more\nprettier, right?\nIt is a trivial thing, though.\n\n-- \nWincent Rong-gui HUANG\nDoctoral Candidate\nDept of Public and Social Administration\nCity University of Hong Kong\nhttp://asrr.r-forge.r-project.org/rghuang.html",
+      "body_snippet": "> license.statnet(\"ergm\")\nThe output ends like this:\n Copyright 2007 The statnet Development Team>\n\nAdding \"\\n\" to the end should make it print (cat) the output more\nprettier, right?\nIt is a trivial t",
+      "thread_id": "thread-3bd3e5eca8e5",
+      "thread_depth": 0,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-656ce85ea560",
+      "message_id": "<AANLkTi=NzXk7x_eir=YhL1bYiy_0BMkWA6nWq+qQWQ3p@mail.gmail.com>",
+      "from_name": "Saeed Nasehi Moghadam",
+      "from_email_hash": "bd649562b27e56fdf90f5219df591b4859bb28486c4beabc53908bcc516096e8",
+      "date": "2010-09-13T00:16:04Z",
+      "subject": "[statnet_help] Question about Robbins-Monro style in ergm",
+      "subject_clean": "[statnet_help] Question about Robbins-Monro style in ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi every one and David Hunter\nIs it sufficient that 20 MCMC sample in Robbins-Monro phase_3 style\nperformed? ie if i set style equal to Robbins-Monro,without setting phase_3\narg,  ergm algorithm takes MCMC sample of size 20 and report model fit. but\nin Snijders(2002) for phase_3 proposed 1000 iterations and i dont know\nwhether 20 mcmc sample size is sufficient. also when i set phase_3=1000 i\nfaced error\nThanks alot for your help\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100913/28ee7d80/attachment.html>",
+      "body_snippet": "Hi every one and David Hunter\nIs it sufficient that 20 MCMC sample in Robbins-Monro phase_3 style\nperformed? ie if i set style equal to Robbins-Monro,without setting phase_3\narg,  ergm algorithm takes",
+      "thread_id": "thread-656ce85ea560",
+      "thread_depth": 0,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-f57425a682ae",
+      "message_id": "<AANLkTi=3ukVn=SL+BtTQRq6P++vhTJfAuXpshtidNOx7@mail.gmail.com>",
+      "from_name": "Saeed Nasehi Moghadam",
+      "from_email_hash": "bd649562b27e56fdf90f5219df591b4859bb28486c4beabc53908bcc516096e8",
+      "date": "2010-09-17T02:36:00Z",
+      "subject": "[statnet_help] Question about netperm",
+      "subject_clean": "[statnet_help] Question about netperm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone and Carter T.Butts and Thanks for attention\nFirst:I need to know that can i use theta produced from netperm for\ncomparsion purpose? ie if X,Y,Z is sociomatrices, Is it possible to compare\nstrength of association between them through netperm theta; for example Is\nit true that: if netperm.theta(X,Y)>netperm.theta(X,Z) then assciation\nbetween X and Y stronger than assciation between X and Z? and Y is closer\nthan Z to X?indeed i want to know that if i have two prediction of one\nsociomatrix, Is it possible to rank predicted matrices through netperm\nlibrary?\nSecond: How can i use GoodnessOfFit reported by summary(netperm) ie in what\nconditions GoodnessOfFit test rejected? ie what is the LogLikelihood\nstatistic distribution and usage produced by summary(netperm)? and How can i\ninterpret it?and also Is it possible to use the LogLikelihood statistic for\nComparsion purpose?\nanother question is about access to p-value produced by summary(netperm) ie\nif i need to access to p(>|Z|) through code how can i acccess to it and what\nis its property of netperm command generated object?netperm$**=p(>|Z|)???\nfinally my question about maximum bound of theta in dichotomous data, ie if\nX,Y is binary socimatrices,what is the  maximum possible of\nnetperm(X,Y)$theta and theta varry in what range? for example if it is high\ncorrelation between X and Y say(r=0.95) what we should  expect about theta?\nAgain thanks for your help\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100917/0b234e88/attachment.html>",
+      "body_snippet": "Hi everyone and Carter T.Butts and Thanks for attention\nFirst:I need to know that can i use theta produced from netperm for\ncomparsion purpose? ie if X,Y,Z is sociomatrices, Is it possible to compare\n",
+      "thread_id": "thread-f57425a682ae",
+      "thread_depth": 0,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-6fda6cb0d4d4",
+      "message_id": "<AANLkTimKJ53ORa4sbvgEoSOH_EJZKdEgKXKk3o3vz8SJ@mail.gmail.com>",
+      "from_name": "Wincent",
+      "from_email_hash": "6846f5c272f8850077470247e7e6a025c83f8d7387bcf22387269b3b25a06522",
+      "date": "2010-09-19T18:41:17Z",
+      "subject": "[statnet_help] examine relationship between betweenness and vertex attributes?",
+      "subject_clean": "[statnet_help] examine relationship between betweenness and vertex attributes?",
+      "in_reply_to": "<4C85CECA.8090900@uci.edu>",
+      "references": [
+        "<AANLkTi=pey_BKt0015aWAFoiU0NNDSdY=iwr-Xhyt8cM@mail.gmail.com>",
+        "<cea5dfabc7df515bb512435304271b3d@email.unc.edu>",
+        "<4C85CECA.8090900@uci.edu>"
+      ],
+      "body_plain": "Thanks, Carter. That is very helpful.\n\nRegards\n\nOn 7 September 2010 13:34, Carter T. Butts <buttsc@uci.edu> wrote:\n> Hi, folks -\n>\n> Here is a four-part answer to this question:\n>\n> 1. If your goal is to test for marginal (non)association between an NLI\n> (e.g., closeness) and a node-level covariate, IMHO the most straightforward\n> approach is to use permutation procedures. ?If you want a quick tutorial,\n> you might check out the associated portion of the statnet workshop we gave\n> at this year's Political Networks meeting; the URL is\n> http://lectopia.oit.duke.edu/ilectures/ilectures.lasso?ut=1065&id=27647, and\n> the discussion starts at around 48 minutes. ?(Part 1 of the day's session is\n> at http://lectopia.oit.duke.edu/ilectures/ilectures.lasso?ut=1065&id=27647,\n> for those who are interested.) ? As I note in response to a question from\n> the audience, generalizing this to the multivariate case is possible, but\n> one runs into complications that make the approach less attractive. ?For the\n> simple, bivariate case, however, my sense is that permutation tests are\n> often a good starting point.\n>\n> 2. For more complex, parametric versions of the covariate/NLI question, the\n> natural approach is to construct a statistic based on an interaction of the\n> covariate with the NLI, and employ an ERG model. ?(This is equivalent to\n> what nodecov does, with the NLI here being degree.) ?We have talked for\n> years about adding equivalent terms for other centrality scores, but I am\n> not sure if anything is implemented at present -- there are no special\n> theoretical issues, but the computation can be painful. (I regularly hassle\n> my CS colleagues for the algorithmic developments we need to make\n> changescore calculation fast for indices like betweenness, but am assured\n> that this is a non-trivial research problem. ?:-)) ?I spoke with Mark about\n> putting something crude together a few months ago, but am not sure if he's\n> had time to make progress on it -- it's clear that this would be a very\n> interesting set of terms to be able to include. ?Having said that, we don't\n> know how stable models built from those terms would be, so this might turn\n> out to be harder in practice than it seems.\n>\n> 3. A fact little remembered today is that the ERG were introduced in part to\n> act as non-trivial null models against which to test for complex structural\n> biases. ?(See the discussion in Holland and Leinhardt, JASA, 1981.) ?Using\n> the same scheme they suggest, it is possible to conduct Monte Carlo tests of\n> association with more complex structure than the simple permutation tests by\n> (1) positing a baseline ERGM, (2) fitting it to your data, (3) simulating\n> draws from the fitted model, and (4) examining the quantiles of the observed\n> NLI/covariate interaction in the distribution of equivalent interactions\n> generated by the simulated data. ?Some properties of these tests are\n> described in the above paper. ?In practice, there are more ways for this to\n> go wrong than the permutation test, and I would tend to favor the latter\n> when feasible. ?One case I _can_ think of in which the ERG-based test would\n> be preferable would be when you want to test for an association of your\n> covariate with a given NLI score, controlling for some other interaction of\n> the same covariate with the target network (e.g., homophily). ?A null of\n> independence does not help you here, and a model-based test could prove\n> efficacious.\n>\n> 4. Another, naive alternative would be to try to treat your problem in a\n> standard regression framework, and try to patch things up in some fashion.\n> ?For some NLIs (e.g., degree) on large networks, we may suspect that there\n> is relatively little dependence between observations, and the first-order\n> properties of OLS are fairly robust in any case. ?This is essentially the\n> rationale behind network regression (where one typically pairs standard\n> least squares estimators of parameters with multivariate QAP tests to assess\n> significance), and it can work quite well. ?Then again, the \"patch and pray\"\n> approach can also fail, and you may or may not be able to tell when the\n> answers you are getting partake heavily of fantasy. ?I tend to encourage the\n> use of more principled methods, where feasible.\n>\n> That's my take on it, anyway. ?My illustrious colleagues may or may not\n> agree.\n>\n> -Carter\n>\n> PS. For the adventurous, an interesting technique might be to apply the\n> permutation model (a la netperm) where the left-hand matrices consist\n> entirely of diagonal matrices with individual NLI scores from the observed\n> graph, and the right-hand matrices of consist entirely of diagonal matrices\n> with individual covariate scores. ?This would be a \"vector\" or \"linear\"\n> version of the permutation model, analogous to the LAP versus QAP\n> distinction in Hubert's terminology. ?(It may be simpler to think of as a\n> generalized location system model using only association terms based on node\n> covariates as object features and NLI scores as location features, and with\n> the support limited to 1:1 assignments -- in fact, that's how I would\n> implement it. ?See the generalized location systems paper in Sociological\n> Methodology (Butts, 2007) for some idea of what I am prattling on about.) ?I\n> think it's safe to say that this application of that model family is not\n> much explored...meaning that I'm not sure if anyone has tried it. ?If\n> someone has experimented with this application, I would be interesting in\n> hearing about it.\n>\n> dnolin wrote:\n>>\n>> I am also curious about this problem. More generally, is there a specific\n>> method that's preferred when regressing node-level network measures\n>> against\n>> other node attributes (or vice versa)? It would seem that non-independence\n>> of cases would violate OLS assumptions and some adjustment ought to be\n>> made. For example, are there permutation method similar to QAP whereby you\n>> could permute the vector of the dependent variable to see how frequently a\n>> correlation of the observed size arises?\n>>\n>> Thanks,\n>> Dave\n>>\n>>\n>> On Sun, 5 Sep 2010 11:16:54 +0800, Wincent <ronggui.huang@gmail.com>\n>> wrote:\n>>>\n>>> Dear all, I use betweenness in sna to get the betweenness score, and\n>>> would like to see what vertex attributes may influence or \"determine\"\n>>> the betweenness centrality.\n>>> I think OLS regression can get the point estimates but the p-value\n>>> would be problematic.\n>>> I wonder if there is existing function(s) for such purpose?\n>>> Thank you very much in advance.\n>>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \nWincent Rong-gui HUANG\nDoctoral Candidate\nDept of Public and Social Administration\nCity University of Hong Kong\nhttp://asrr.r-forge.r-project.org/rghuang.html",
+      "body_snippet": "Thanks, Carter. That is very helpful.\n\nRegards\n\nOn 7 September 2010 13:34, Carter T. Butts <buttsc@uci.edu> wrote:\n> Hi, folks -\n>\n> Here is a four-part answer to this question:\n>\n> 1. If your goal is",
+      "thread_id": "thread-d8b17fee8efc",
+      "thread_depth": 3,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-5291ef899fca",
+      "message_id": "<B9DB8B7B-FCFD-4252-A7D7-538EE2F3E75C@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-09-22T17:46:01Z",
+      "subject": "[statnet_help] Re: ergm crashes",
+      "subject_clean": "[statnet_help] Re: ergm crashes",
+      "in_reply_to": "<57769.99469.qm@web120618.mail.ne1.yahoo.com>",
+      "references": [
+        "<57769.99469.qm@web120618.mail.ne1.yahoo.com>"
+      ],
+      "body_plain": "Hi Iasonas.  The issue (discovered by looking at the code you sent  \nseparately) is that when you read in a vector using the \"read.table\"  \ncommand, it becomes an R object of type data.frame.  These objects can  \nbe a bit tricky to work with.\n\nIn your case, you had code like this:\n\nGender <-  read.table(\"Gender.csv\",    <other stuff clipped out>)\nmGender <- as.vector(Gender)\nmGender[mGender==\"1\"]=\"Boy\"\nmGender[mGender==\"2\"]=\"Girl\"\nng <-network(mat,directed=FALSE)\nset.vertex.attribute(ng,\"Gender\",mGender)\n\nThe problem with this is that the \"as.vector\" function does not  \nactually turn a data.frame object into a vector.  One way around this  \nis to convert the data.frame into a matrix first, then a vector using\nmGender <- as.vector(as.matrix(Gender))\n\nBut this is a bit clunky.  A slightly more efficient (if somewhat  \nugly) way is to simply grab the first column in the data.frame object,  \nwhich can be done in a couple of different ways that are equivalent  \nfor data frames:\n\nmGender <- Gender[[1]]\nmGender <- Gender[,1]\n\nIn other words, your new code would look something like this:\nGender <-  read.table(\"Gender.csv\",    <other stuff clipped out>)\nmGender <- Gender[[1]]\nmGender[mGender==\"1\"]=\"Boy\"\nmGender[mGender==\"2\"]=\"Girl\"\nng <-network(mat,directed=FALSE)\nset.vertex.attribute(ng,\"Gender\",mGender)\n\nOf course, you'd do the same for all of your vertex attributes.\n\nHope this helps,\nDave\n\nOn Sep 19, 2010, at 8:50 AM, Iasonas Lamprianou wrote:\n\n>\n> Dear all, I am doing a social network analysis using ergm. I import  \n> a rectangular matrix of data and then I build a network using the  \n> following command: ng <-network(mat,directed=FALSE)\n>\n> I then attach vertex names using commands like this:  \n> set.vertex.attribute(ng,\"SchoolType\",mSchType) where SchoolType can  \n> take six different/unique values.\n>\n> Then, I run ergm models successfully using commands like the  \n> following:\n> m3 <- ergm(ng ~ edges+nodefactor(\"Gender\")+nodefactor(\"SchoolType\"))\n>\n> But if I try to run a command with the parameter nodematch, R  \n> crashes with no excuses and no error messages (I use windows Vista  \n> and the latest R version and all packages are fully updated). I use  \n> commands (and they crash) like the following:\n> m3 <- ergm(ng ~ edges+ nodefactor(\"Gender\")+ nodematch(\"SchoolType\"))\n>\n> Can anyone help me with ideas about what might be wrong?  It may be  \n> interesting the fact that if I use one of the 'classic' examples,  \n> please see below, it does not crash but actually gives results.\n>\n> Any ideas about how to solve the issue? I suspect that something  \n> might be wrong with my data, but I do not know what.\n>\n>\n> 'classic; example that works:\n> data(faux.mesa.high) # Let?s try a larger network\n> mesa <- faux.mesa.high\n> plot(mesa)\n> summary(mesa)\n> plot(mesa, vertex.col='Grade')\n> legend(?bottomleft?,fill=7:12,legend=paste(?Grade?,7:12),cex=0.75)\n> fauxmodel.01 <- ergm(mesa ~edges + nodematch('Grade',diff=T)  \n> +nodematch('Race',diff=T)     )\n> summary(fauxmodel.01)\n>\n>\n> Dr. Iasonas Lamprianou\n>\n>\n> Assistant Professor (Educational Research and Evaluation)\n> Department of Education Sciences\n> European University-Cyprus\n> P.O. Box 22006\n> 1516 Nicosia\n> Cyprus\n> Tel.: +357-22-713178\n> Fax: +357-22-590539\n>\n>\n> Honorary Research Fellow\n> Department of Education\n> The University of Manchester\n> Oxford Road, Manchester M13 9PL, UK\n> Tel. 0044  161 275 3485\n> iasonas.lamprianou@manchester.ac.uk\n>\n>\n>",
+      "body_snippet": "Hi Iasonas.  The issue (discovered by looking at the code you sent  \nseparately) is that when you read in a vector using the \"read.table\"  \ncommand, it becomes an R object of type data.frame.  These o",
+      "thread_id": "thread-5291ef899fca",
+      "thread_depth": 0,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-38f4c62d876c",
+      "message_id": "<355671.4430.qm@web120615.mail.ne1.yahoo.com>",
+      "from_name": "Iasonas Lamprianou",
+      "from_email_hash": "adc4000e6b6f587081cbb01b701b71b0f2e10f18fd9bd7b9d65e3cde6312df9f",
+      "date": "2010-09-22T22:51:22Z",
+      "subject": "[statnet_help] Re: ergm crashes",
+      "subject_clean": "[statnet_help] Re: ergm crashes",
+      "in_reply_to": "<B9DB8B7B-FCFD-4252-A7D7-538EE2F3E75C@stat.psu.edu>",
+      "references": [],
+      "body_plain": "Thank you for the help, you helped me a lot. By the way, ERGM is a great package. Thanks\n\nDr. Iasonas Lamprianou\n\n\nAssistant Professor (Educational Research and Evaluation)\nDepartment of Education Sciences\nEuropean University-Cyprus\nP.O. Box 22006\n1516 Nicosia\nCyprus \nTel.: +357-22-713178\nFax: +357-22-590539\n\n\nHonorary Research Fellow\nDepartment of Education\nThe University of Manchester\nOxford Road, Manchester M13 9PL, UK\nTel. 0044  161 275 3485\niasonas.lamprianou@manchester.ac.uk\n\n\n--- On Thu, 23/9/10, David Hunter <dhunter@stat.psu.edu> wrote:\n\n> From: David Hunter <dhunter@stat.psu.edu>\n> Subject: Re: ergm crashes\n> To: \"statnet_help@u.washington.edu list\" <statnet_help@u.washington.edu>, \"Iasonas Lamprianou\" <lamprianou@yahoo.com>\n> Date: Thursday, 23 September, 2010, 1:46\n> Hi Iasonas.? The issue\n> (discovered by looking at the code you sent separately) is\n> that when you read in a vector using the \"read.table\"\n> command, it becomes an R object of type data.frame.?\n> These objects can be a bit tricky to work with.\n> \n> In your case, you had code like this:\n> \n> Gender <-? read.table(\"Gender.csv\",? ?\n> <other stuff clipped out>)\n> mGender <- as.vector(Gender)\n> mGender[mGender==\"1\"]=\"Boy\"\n> mGender[mGender==\"2\"]=\"Girl\"\n> ng <-network(mat,directed=FALSE)\n> set.vertex.attribute(ng,\"Gender\",mGender)\n> \n> The problem with this is that the \"as.vector\" function does\n> not actually turn a data.frame object into a vector.?\n> One way around this is to convert the data.frame into a\n> matrix first, then a vector using\n> mGender <- as.vector(as.matrix(Gender))\n> \n> But this is a bit clunky.? A slightly more efficient\n> (if somewhat ugly) way is to simply grab the first column in\n> the data.frame object, which can be done in a couple of\n> different ways that are equivalent for data frames:\n> \n> mGender <- Gender[[1]]\n> mGender <- Gender[,1]\n> \n> In other words, your new code would look something like\n> this:\n> Gender <-? read.table(\"Gender.csv\",? ?\n> <other stuff clipped out>)\n> mGender <- Gender[[1]]\n> mGender[mGender==\"1\"]=\"Boy\"\n> mGender[mGender==\"2\"]=\"Girl\"\n> ng <-network(mat,directed=FALSE)\n> set.vertex.attribute(ng,\"Gender\",mGender)\n> \n> Of course, you'd do the same for all of your vertex\n> attributes.\n> \n> Hope this helps,\n> Dave\n> \n> On Sep 19, 2010, at 8:50 AM, Iasonas Lamprianou wrote:\n> \n> > \n> > Dear all, I am doing a social network analysis using\n> ergm. I import a rectangular matrix of data and then I build\n> a network using the following command: ng\n> <-network(mat,directed=FALSE)\n> > \n> > I then attach vertex names using commands like this:\n> set.vertex.attribute(ng,\"SchoolType\",mSchType) where\n> SchoolType can take six different/unique values.\n> > \n> > Then, I run ergm models successfully using commands\n> like the following:\n> > m3 <- ergm(ng ~\n> edges+nodefactor(\"Gender\")+nodefactor(\"SchoolType\"))\n> > \n> > But if I try to run a command with the parameter\n> nodematch, R crashes with no excuses and no error messages\n> (I use windows Vista and the latest R version and all\n> packages are fully updated). I use commands (and they crash)\n> like the following:\n> > m3 <- ergm(ng ~ edges+ nodefactor(\"Gender\")+\n> nodematch(\"SchoolType\"))\n> > \n> > Can anyone help me with ideas about what might be\n> wrong?? It may be interesting the fact that if I use\n> one of the 'classic' examples, please see below, it does not\n> crash but actually gives results.\n> > \n> > Any ideas about how to solve the issue? I suspect that\n> something might be wrong with my data, but I do not know\n> what.\n> > \n> > \n> > 'classic; example that works:\n> > data(faux.mesa.high) # Let?s try a larger network\n> > mesa <- faux.mesa.high\n> > plot(mesa)\n> > summary(mesa)\n> > plot(mesa, vertex.col='Grade')\n> >\n> legend(?bottomleft?,fill=7:12,legend=paste(?Grade?,7:12),cex=0.75)\n> > fauxmodel.01 <- ergm(mesa ~edges +\n> nodematch('Grade',diff=T) +nodematch('Race',diff=T)?\n> ???)\n> > summary(fauxmodel.01)\n> > \n> > \n> > Dr. Iasonas Lamprianou\n> > \n> > \n> > Assistant Professor (Educational Research and\n> Evaluation)\n> > Department of Education Sciences\n> > European University-Cyprus\n> > P.O. Box 22006\n> > 1516 Nicosia\n> > Cyprus\n> > Tel.: +357-22-713178\n> > Fax: +357-22-590539\n> > \n> > \n> > Honorary Research Fellow\n> > Department of Education\n> > The University of Manchester\n> > Oxford Road, Manchester M13 9PL, UK\n> > Tel. 0044? 161 275 3485\n> > iasonas.lamprianou@manchester.ac.uk\n> > \n> > \n> > \n> \n>",
+      "body_snippet": "Thank you for the help, you helped me a lot. By the way, ERGM is a great package. Thanks\n\nDr. Iasonas Lamprianou\n\n\nAssistant Professor (Educational Research and Evaluation)\nDepartment of Education Sci",
+      "thread_id": "thread-5291ef899fca",
+      "thread_depth": 1,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-8dba9cd3c166",
+      "message_id": "<AANLkTikrnrNkKbs1MNUok0ZXsVTgX1SozFNkDAnz2bS=@mail.gmail.com>",
+      "from_name": "Wincent",
+      "from_email_hash": "6846f5c272f8850077470247e7e6a025c83f8d7387bcf22387269b3b25a06522",
+      "date": "2010-09-25T23:16:41Z",
+      "subject": "[statnet_help] error with update_statnet",
+      "subject_clean": "[statnet_help] error with update_statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "> update_statnet()\n--- Please select a CRAN mirror for use in this session ---\nCollecting information necessary for the install...\nDetaching package 'network'.> sessionInfo()\nR version 2.11.1 Patched (2010-08-25 r52804)\nPlatform: i386-pc-mingw32 (32-bit)\n\nlocale:\n[1] LC_COLLATE=Chinese (Simplified)_People's Republic of China.936\n[2] LC_CTYPE=Chinese (Simplified)_People's Republic of China.936\n[3] LC_MONETARY=Chinese (Simplified)_People's Republic of China.936\n[4] LC_NUMERIC=C\n[5] LC_TIME=Chinese (Simplified)_People's Republic of China.936\n\nattached base packages:\n[1] tools     stats     graphics  grDevices utils     datasets  methods\n[8] base\n\nother attached packages:\n [1] statnet_2.1-1        sna_2.1-0            degreenet_1.1\n [4] latentnet_2.4-0      coda_0.13-5          lattice_0.19-11\n [7] mvtnorm_0.9-92       abind_1.1-0          shapes_1.1-3\n[10] rgl_0.91             scatterplot3d_0.3-30 ergm_2.2-5\n[13] network_1.4-1\n\nloaded via a namespace (and not attached):\n[1] grid_2.11.1\n\nError in library.dynam.unload(paste(pkg, \".so\", sep = \"\"), inuse) :\n  shared library 'network.so' was not loaded\n\n\nAlso, where can I download and install netperm?\nThank you.\n\n-- \nWincent Rong-gui HUANG\nDoctoral Candidate\nDept of Public and Social Administration\nCity University of Hong Kong\nhttp://asrr.r-forge.r-project.org/rghuang.html",
+      "body_snippet": "> update_statnet()\n--- Please select a CRAN mirror for use in this session ---\nCollecting information necessary for the install...\nDetaching package 'network'.> sessionInfo()\nR version 2.11.1 Patched ",
+      "thread_id": "thread-8dba9cd3c166",
+      "thread_depth": 0,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-38e85fc693f9",
+      "message_id": "<AANLkTimM_63ROVKo+TbxWRax+Rkmc056eeRNUTq4jDde@mail.gmail.com>",
+      "from_name": "Wincent",
+      "from_email_hash": "6846f5c272f8850077470247e7e6a025c83f8d7387bcf22387269b3b25a06522",
+      "date": "2010-09-26T22:45:02Z",
+      "subject": "[statnet_help] error with update_statnet",
+      "subject_clean": "[statnet_help] error with update_statnet",
+      "in_reply_to": "<AANLkTi=WEtc=ys7FcVzvhEppwpi3EFqp7eTfe+EHYNpr@mail.gmail.com>",
+      "references": [
+        "<AANLkTikrnrNkKbs1MNUok0ZXsVTgX1SozFNkDAnz2bS=@mail.gmail.com>",
+        "<AANLkTi=WEtc=ys7FcVzvhEppwpi3EFqp7eTfe+EHYNpr@mail.gmail.com>"
+      ],
+      "body_plain": "Thanks, it doesn't work in R 2.11.1 patch.\n\n> update_statnet(contriburl = \"http://statnet.org\",repos = getOption(\"repos\"), type = getOption(\"pkgType\"),ask=TRUE)\nCollecting information necessary for the install...\nDetaching package 'network'.\nError in library.dynam.unload(paste(pkg, \".so\", sep = \"\"), inuse) :\n  shared library 'network.so' was not loaded\n\nI left out the object argument as it is optional.\n\nOn 27 September 2010 03:40, Saeed Nasehi Moghadam <sanameed@gmail.com> wrote:\n> Hi Wincent\n> i use update command with this :\n> -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n> update_statnet(object, ...,contriburl = \"http://statnet.org\",repos =\n> getOption(\"repos\"), type = getOption(\"pkgType\"),ask=TRUE)\n> ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n> and i test it with R2.11 although Please Read statnet help from CARN site\n> that i send in attachment.\n>\n>\n>\n> On Sun, Sep 26, 2010 at 9:46 AM, Wincent <ronggui.huang@gmail.com> wrote:\n>>\n>> > update_statnet()\n>> --- Please select a CRAN mirror for use in this session ---\n>> Collecting information necessary for the install...\n>> Detaching package 'network'.> sessionInfo()\n>> R version 2.11.1 Patched (2010-08-25 r52804)\n>> Platform: i386-pc-mingw32 (32-bit)\n>>\n>> locale:\n>> [1] LC_COLLATE=Chinese (Simplified)_People's Republic of China.936\n>> [2] LC_CTYPE=Chinese (Simplified)_People's Republic of China.936\n>> [3] LC_MONETARY=Chinese (Simplified)_People's Republic of China.936\n>> [4] LC_NUMERIC=C\n>> [5] LC_TIME=Chinese (Simplified)_People's Republic of China.936\n>>\n>> attached base packages:\n>> [1] tools ? ? stats ? ? graphics ?grDevices utils ? ? datasets ?methods\n>> [8] base\n>>\n>> other attached packages:\n>> ?[1] statnet_2.1-1 ? ? ? ?sna_2.1-0 ? ? ? ? ? ?degreenet_1.1\n>> ?[4] latentnet_2.4-0 ? ? ?coda_0.13-5 ? ? ? ? ?lattice_0.19-11\n>> ?[7] mvtnorm_0.9-92 ? ? ? abind_1.1-0 ? ? ? ? ?shapes_1.1-3\n>> [10] rgl_0.91 ? ? ? ? ? ? scatterplot3d_0.3-30 ergm_2.2-5\n>> [13] network_1.4-1\n>>\n>> loaded via a namespace (and not attached):\n>> [1] grid_2.11.1\n>>\n>> Error in library.dynam.unload(paste(pkg, \".so\", sep = \"\"), inuse) :\n>> ?shared library 'network.so' was not loaded\n>>\n>>\n>> Also, where can I download and install netperm?\n>> Thank you.\n>>\n>> --\n>> Wincent Rong-gui HUANG\n>> Doctoral Candidate\n>> Dept of Public and Social Administration\n>> City University of Hong Kong\n>> http://asrr.r-forge.r-project.org/rghuang.html\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n\n\n-- \nWincent Rong-gui HUANG\nDoctoral Candidate\nDept of Public and Social Administration\nCity University of Hong Kong\nhttp://asrr.r-forge.r-project.org/rghuang.html",
+      "body_snippet": "Thanks, it doesn't work in R 2.11.1 patch.\n\n> update_statnet(contriburl = \"http://statnet.org\",repos = getOption(\"repos\"), type = getOption(\"pkgType\"),ask=TRUE)\nCollecting information necessary for th",
+      "thread_id": "thread-38e85fc693f9",
+      "thread_depth": 0,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-d454686f2ba0",
+      "message_id": "<4CA07C4C.5010800@ucla.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "fb40357ebb8d7f0a427d9ad2641aa56f67d6763bdb0f1109ba0f3c4b5584b09d",
+      "date": "2010-09-27T04:13:16Z",
+      "subject": "[statnet_help] error with update_statnet",
+      "subject_clean": "[statnet_help] error with update_statnet",
+      "in_reply_to": "<AANLkTimM_63ROVKo+TbxWRax+Rkmc056eeRNUTq4jDde@mail.gmail.com>",
+      "references": [
+        "<AANLkTikrnrNkKbs1MNUok0ZXsVTgX1SozFNkDAnz2bS=@mail.gmail.com>",
+        "<AANLkTi=WEtc=ys7FcVzvhEppwpi3EFqp7eTfe+EHYNpr@mail.gmail.com>",
+        "<AANLkTimM_63ROVKo+TbxWRax+Rkmc056eeRNUTq4jDde@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Saeed,\n\nupdate_statnet is a complex piece of code as it tries to detach packages as it installs.\nAlas, it is not guaranteed to work on all systems and all the time.\n\nHowever, direct methods can be applied. In particular, to install \"netperm\" you can use\n\ninstall.packages(\"netperm\",contriburl=\"http://csde.washington.edu/statnet\")\n\nMark\n\n----------------------------------------------------\nMark S. Handcock\nProfessor of Statistics\nDepartment of Statistics\nUniversity of California     Phone:  (310) 817-6778\nLos Angeles, CA 90095-1554.   FAX:   (206) 457-1953\nWeb:  www.stat.ucla.edu/~handcock\ninternet:  handcock@ucla.edu\n\n\nOn 9/27/10 1:45 PM, Wincent wrote:\n> Thanks, it doesn't work in R 2.11.1 patch.\n>\n>> update_statnet(contriburl = \"http://statnet.org\",repos = getOption(\"repos\"), type = getOption(\"pkgType\"),ask=TRUE)\n> Collecting information necessary for the install...\n> Detaching package 'network'.\n> Error in library.dynam.unload(paste(pkg, \".so\", sep = \"\"), inuse) :\n>    shared library 'network.so' was not loaded\n>\n> I left out the object argument as it is optional.\n>\n> On 27 September 2010 03:40, Saeed Nasehi Moghadam<sanameed@gmail.com>  wrote:\n>> Hi Wincent\n>> i use update command with this :\n>> -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n>> update_statnet(object, ...,contriburl = \"http://statnet.org\",repos =\n>> getOption(\"repos\"), type = getOption(\"pkgType\"),ask=TRUE)\n>> ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n>> and i test it with R2.11 although Please Read statnet help from CARN site\n>> that i send in attachment.\n>>\n>>\n>>\n>> On Sun, Sep 26, 2010 at 9:46 AM, Wincent<ronggui.huang@gmail.com>  wrote:\n>>>\n>>>> update_statnet()\n>>> --- Please select a CRAN mirror for use in this session ---\n>>> Collecting information necessary for the install...\n>>> Detaching package 'network'.>  sessionInfo()\n>>> R version 2.11.1 Patched (2010-08-25 r52804)\n>>> Platform: i386-pc-mingw32 (32-bit)\n>>>\n>>> locale:\n>>> [1] LC_COLLATE=Chinese (Simplified)_People's Republic of China.936\n>>> [2] LC_CTYPE=Chinese (Simplified)_People's Republic of China.936\n>>> [3] LC_MONETARY=Chinese (Simplified)_People's Republic of China.936\n>>> [4] LC_NUMERIC=C\n>>> [5] LC_TIME=Chinese (Simplified)_People's Republic of China.936\n>>>\n>>> attached base packages:\n>>> [1] tools     stats     graphics  grDevices utils     datasets  methods\n>>> [8] base\n>>>\n>>> other attached packages:\n>>>   [1] statnet_2.1-1        sna_2.1-0            degreenet_1.1\n>>>   [4] latentnet_2.4-0      coda_0.13-5          lattice_0.19-11\n>>>   [7] mvtnorm_0.9-92       abind_1.1-0          shapes_1.1-3\n>>> [10] rgl_0.91             scatterplot3d_0.3-30 ergm_2.2-5\n>>> [13] network_1.4-1\n>>>\n>>> loaded via a namespace (and not attached):\n>>> [1] grid_2.11.1\n>>>\n>>> Error in library.dynam.unload(paste(pkg, \".so\", sep = \"\"), inuse) :\n>>>   shared library 'network.so' was not loaded\n>>>\n>>>\n>>> Also, where can I download and install netperm?\n>>> Thank you.\n>>>\n>>> --\n>>> Wincent Rong-gui HUANG\n>>> Doctoral Candidate\n>>> Dept of Public and Social Administration\n>>> City University of Hong Kong\n>>> http://asrr.r-forge.r-project.org/rghuang.html\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>\n>\n>",
+      "body_snippet": "Hi Saeed,\n\nupdate_statnet is a complex piece of code as it tries to detach packages as it installs.\nAlas, it is not guaranteed to work on all systems and all the time.\n\nHowever, direct methods can be ",
+      "thread_id": "thread-38e85fc693f9",
+      "thread_depth": 1,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-8d94c9d973db",
+      "message_id": "<AANLkTimUJmQaaN2bpAH-1ZZHuS_cCdzZU+-YQt0xs5ia@mail.gmail.com>",
+      "from_name": "Wincent",
+      "from_email_hash": "6846f5c272f8850077470247e7e6a025c83f8d7387bcf22387269b3b25a06522",
+      "date": "2010-09-27T05:32:12Z",
+      "subject": "[statnet_help] error with update_statnet",
+      "subject_clean": "[statnet_help] error with update_statnet",
+      "in_reply_to": "<4CA07C4C.5010800@ucla.edu>",
+      "references": [
+        "<AANLkTikrnrNkKbs1MNUok0ZXsVTgX1SozFNkDAnz2bS=@mail.gmail.com>",
+        "<AANLkTi=WEtc=ys7FcVzvhEppwpi3EFqp7eTfe+EHYNpr@mail.gmail.com>",
+        "<AANLkTimM_63ROVKo+TbxWRax+Rkmc056eeRNUTq4jDde@mail.gmail.com>",
+        "<4CA07C4C.5010800@ucla.edu>"
+      ],
+      "body_plain": "Yup, it is quite complex.\nYet, it is deemed to fail in Windows as the dynamic shared object is\n*.dll rather than *.so. To solve this problem, the following lines may\nbe a possibility.\n\n                    if (.Platform$OS.type==\"windows\") {\n                       library.dynam.unload(paste(pkg, \".dll\", sep = \"\"),inuse)\n                    } else {\n                    library.dynam.unload(paste(pkg, \".so\", sep = \"\"),inuse)\n                    }\n\nBest\n\nOn 27 September 2010 19:13, Mark S. Handcock <handcock@ucla.edu> wrote:\n> Hi Saeed,\n>\n> update_statnet is a complex piece of code as it tries to detach packages as\n> it installs.\n> Alas, it is not guaranteed to work on all systems and all the time.\n>\n> However, direct methods can be applied. In particular, to install \"netperm\"\n> you can use\n>\n> install.packages(\"netperm\",contriburl=\"http://csde.washington.edu/statnet\")\n>\n> Mark\n>\n> ----------------------------------------------------\n> Mark S. Handcock\n> Professor of Statistics\n> Department of Statistics\n> University of California ? ? Phone: ?(310) 817-6778\n> Los Angeles, CA 90095-1554. ? FAX: ? (206) 457-1953\n> Web: ?www.stat.ucla.edu/~handcock\n> internet: ?handcock@ucla.edu\n>\n>\n> On 9/27/10 1:45 PM, Wincent wrote:\n>>\n>> Thanks, it doesn't work in R 2.11.1 patch.\n>>\n>>> update_statnet(contriburl = \"http://statnet.org\",repos =\n>>> getOption(\"repos\"), type = getOption(\"pkgType\"),ask=TRUE)\n>>\n>> Collecting information necessary for the install...\n>> Detaching package 'network'.\n>> Error in library.dynam.unload(paste(pkg, \".so\", sep = \"\"), inuse) :\n>> ? shared library 'network.so' was not loaded\n>>\n>> I left out the object argument as it is optional.\n>>\n>> On 27 September 2010 03:40, Saeed Nasehi Moghadam<sanameed@gmail.com>\n>> ?wrote:\n>>>\n>>> Hi Wincent\n>>> i use update command with this :\n>>>\n>>> -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n>>> update_statnet(object, ...,contriburl = \"http://statnet.org\",repos =\n>>> getOption(\"repos\"), type = getOption(\"pkgType\"),ask=TRUE)\n>>>\n>>> ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n>>> and i test it with R2.11 although Please Read statnet help from CARN site\n>>> that i send in attachment.\n>>>\n>>>\n>>>\n>>> On Sun, Sep 26, 2010 at 9:46 AM, Wincent<ronggui.huang@gmail.com> ?wrote:\n>>>>\n>>>>> update_statnet()\n>>>>\n>>>> --- Please select a CRAN mirror for use in this session ---\n>>>> Collecting information necessary for the install...\n>>>> Detaching package 'network'.> ?sessionInfo()\n>>>> R version 2.11.1 Patched (2010-08-25 r52804)\n>>>> Platform: i386-pc-mingw32 (32-bit)\n>>>>\n>>>> locale:\n>>>> [1] LC_COLLATE=Chinese (Simplified)_People's Republic of China.936\n>>>> [2] LC_CTYPE=Chinese (Simplified)_People's Republic of China.936\n>>>> [3] LC_MONETARY=Chinese (Simplified)_People's Republic of China.936\n>>>> [4] LC_NUMERIC=C\n>>>> [5] LC_TIME=Chinese (Simplified)_People's Republic of China.936\n>>>>\n>>>> attached base packages:\n>>>> [1] tools ? ? stats ? ? graphics ?grDevices utils ? ? datasets ?methods\n>>>> [8] base\n>>>>\n>>>> other attached packages:\n>>>> ?[1] statnet_2.1-1 ? ? ? ?sna_2.1-0 ? ? ? ? ? ?degreenet_1.1\n>>>> ?[4] latentnet_2.4-0 ? ? ?coda_0.13-5 ? ? ? ? ?lattice_0.19-11\n>>>> ?[7] mvtnorm_0.9-92 ? ? ? abind_1.1-0 ? ? ? ? ?shapes_1.1-3\n>>>> [10] rgl_0.91 ? ? ? ? ? ? scatterplot3d_0.3-30 ergm_2.2-5\n>>>> [13] network_1.4-1\n>>>>\n>>>> loaded via a namespace (and not attached):\n>>>> [1] grid_2.11.1\n>>>>\n>>>> Error in library.dynam.unload(paste(pkg, \".so\", sep = \"\"), inuse) :\n>>>> ?shared library 'network.so' was not loaded\n>>>>\n>>>>\n>>>> Also, where can I download and install netperm?\n>>>> Thank you.\n>>>>\n>>>> --\n>>>> Wincent Rong-gui HUANG\n>>>> Doctoral Candidate\n>>>> Dept of Public and Social Administration\n>>>> City University of Hong Kong\n>>>> http://asrr.r-forge.r-project.org/rghuang.html\n>>>> _______________________________________________\n>>>> statnet_help mailing list\n>>>> statnet_help@u.washington.edu\n>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>>>\n>>\n>>\n>>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \nWincent Rong-gui HUANG\nDoctoral Candidate\nDept of Public and Social Administration\nCity University of Hong Kong\nhttp://asrr.r-forge.r-project.org/rghuang.html",
+      "body_snippet": "Yup, it is quite complex.\nYet, it is deemed to fail in Windows as the dynamic shared object is\n*.dll rather than *.so. To solve this problem, the following lines may\nbe a possibility.\n\n               ",
+      "thread_id": "thread-38e85fc693f9",
+      "thread_depth": 2,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-950f0ec3ebd3",
+      "message_id": "<4CA098E3.3020808@uu.nl>",
+      "from_name": "Michal Bojanowski",
+      "from_email_hash": "b72e0a534c25ec0973b778cd472059c61c5350ce731228b66a3a79a50069f13f",
+      "date": "2010-09-27T06:15:15Z",
+      "subject": "[statnet_help] error with update_statnet",
+      "subject_clean": "[statnet_help] error with update_statnet",
+      "in_reply_to": "<AANLkTimUJmQaaN2bpAH-1ZZHuS_cCdzZU+-YQt0xs5ia@mail.gmail.com>",
+      "references": [
+        "<AANLkTikrnrNkKbs1MNUok0ZXsVTgX1SozFNkDAnz2bS=@mail.gmail.com>",
+        "<AANLkTi=WEtc=ys7FcVzvhEppwpi3EFqp7eTfe+EHYNpr@mail.gmail.com>",
+        "<AANLkTimM_63ROVKo+TbxWRax+Rkmc056eeRNUTq4jDde@mail.gmail.com>",
+        "<4CA07C4C.5010800@ucla.edu>",
+        "<AANLkTimUJmQaaN2bpAH-1ZZHuS_cCdzZU+-YQt0xs5ia@mail.gmail.com>"
+      ],
+      "body_plain": "On 09/27/2010 02:32 PM, Wincent wrote:\n> Yup, it is quite complex.\n> Yet, it is deemed to fail in Windows as the dynamic shared object is\n> *.dll rather than *.so. To solve this problem, the following lines may\n> be a possibility.\n>\n>                      if (.Platform$OS.type==\"windows\") {\n>                         library.dynam.unload(paste(pkg, \".dll\", sep = \"\"),inuse)\n>                      } else {\n>                      library.dynam.unload(paste(pkg, \".so\", sep = \"\"),inuse)\n>                      }\n\n\nTo intrude into the discussion:\n\nActually 'library.dynam.unload' is already platform-independent using \nthe default settings (at least in R 2.11 ...). I believe that instead of \nusing 'if' as above, the line 64 of \"update_statnet.R\" could be like:\n\nlibrary.dynam.unload( pkg, system.file(package=\"pkg\") )\n\nThe file extenstion is handled by the 'file.ext' argument which has the \ndefault (\".so\"/ \".dll\") set depending on the operating system.\n\n\nAs a side note (not tested though): I have a hunch that the complicated \ndetach/unload mechanism in 'update_statnet' is no longer needed as \ncalling 'detach' with unload=TRUE and force=TRUE should detach the \npackage and unload any DLL/SO's irrespectively whether there are other \npackages loaded that depend on the package being detached (which I \npresume was the source of errors to be caught by 'capture.output' inside \n'really.detach').",
+      "body_snippet": "On 09/27/2010 02:32 PM, Wincent wrote:\n> Yup, it is quite complex.\n> Yet, it is deemed to fail in Windows as the dynamic shared object is\n> *.dll rather than *.so. To solve this problem, the following",
+      "thread_id": "thread-38e85fc693f9",
+      "thread_depth": 3,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-0358f43bec38",
+      "message_id": "<4CA09D81.4000300@ucla.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "fb40357ebb8d7f0a427d9ad2641aa56f67d6763bdb0f1109ba0f3c4b5584b09d",
+      "date": "2010-09-27T06:34:57Z",
+      "subject": "[statnet_help] error with update_statnet",
+      "subject_clean": "[statnet_help] error with update_statnet",
+      "in_reply_to": "<4CA098E3.3020808@uu.nl>",
+      "references": [
+        "<AANLkTikrnrNkKbs1MNUok0ZXsVTgX1SozFNkDAnz2bS=@mail.gmail.com>",
+        "<AANLkTi=WEtc=ys7FcVzvhEppwpi3EFqp7eTfe+EHYNpr@mail.gmail.com>",
+        "<AANLkTimM_63ROVKo+TbxWRax+Rkmc056eeRNUTq4jDde@mail.gmail.com>",
+        "<4CA07C4C.5010800@ucla.edu>",
+        "<AANLkTimUJmQaaN2bpAH-1ZZHuS_cCdzZU+-YQt0xs5ia@mail.gmail.com>",
+        "<4CA098E3.3020808@uu.nl>"
+      ],
+      "body_plain": "Thanks to Michal and Wincent for the very useful contributions!\n\nIndeed, the original update_statnet function was written at a time when R was much less forgiving in its \"detach\"ment that it is now.\n\nI will incorporate your changes and they will be propagated to the next version on CRAN.\nWe will recommend a re-install of statnet at that time to make sure this is taken up.\n\nBest,\n\nMark\n\n----------------------------------------------------\nMark S. Handcock\nProfessor of Statistics\nDepartment of Statistics\nUniversity of California     Phone:  (310) 817-6778\nLos Angeles, CA 90095-1554.   FAX:   (206) 457-1953\nWeb:  www.stat.ucla.edu/~handcock\ninternet:  handcock@ucla.edu\n\n\nOn 9/27/10 9:15 PM, Michal Bojanowski wrote:\n> On 09/27/2010 02:32 PM, Wincent wrote:\n>> Yup, it is quite complex.\n>> Yet, it is deemed to fail in Windows as the dynamic shared object is\n>> *.dll rather than *.so. To solve this problem, the following lines may\n>> be a possibility.\n>>\n>> if (.Platform$OS.type==\"windows\") {\n>> library.dynam.unload(paste(pkg, \".dll\", sep = \"\"),inuse)\n>> } else {\n>> library.dynam.unload(paste(pkg, \".so\", sep = \"\"),inuse)\n>> }\n>\n>\n> To intrude into the discussion:\n>\n> Actually 'library.dynam.unload' is already platform-independent using the default settings (at least in R 2.11 ...). I believe that instead of using 'if' as above, the line 64 of\n> \"update_statnet.R\" could be like:\n>\n> library.dynam.unload( pkg, system.file(package=\"pkg\") )\n>\n> The file extenstion is handled by the 'file.ext' argument which has the default (\".so\"/ \".dll\") set depending on the operating system.\n>\n>\n> As a side note (not tested though): I have a hunch that the complicated detach/unload mechanism in 'update_statnet' is no longer needed as calling 'detach' with unload=TRUE and\n> force=TRUE should detach the package and unload any DLL/SO's irrespectively whether there are other packages loaded that depend on the package being detached (which I presume was\n> the source of errors to be caught by 'capture.output' inside 'really.detach').",
+      "body_snippet": "Thanks to Michal and Wincent for the very useful contributions!\n\nIndeed, the original update_statnet function was written at a time when R was much less forgiving in its \"detach\"ment that it is now.\n\n",
+      "thread_id": "thread-38e85fc693f9",
+      "thread_depth": 4,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-0bef5fe2e01b",
+      "message_id": "<0f27b163af2b7e8e68b7bfff5b5a85bd.squirrel@webmail.stat.unipd.it>",
+      "from_name": "Soriani Nicola",
+      "from_email_hash": "bad2caca9903706f9e3ae9b9200f838b32f69bcb1198b839eb309a817ad8dd27",
+      "date": "2010-09-28T03:06:55Z",
+      "subject": "[statnet_help] error message",
+      "subject_clean": "[statnet_help] error message",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi All,\n\nI am estimating ERG models with some edges set \"NA\" at random.\n\nSometimes statnet return me this error message:\n\nError in is.na.network(nw) :\n  INTEGER() can only be applied to a 'integer', not a 'NULL'\n\nSomebody can help me? What it is the problem?\n\nThanks a lot.\n\nNicola\n\n\n-- \nSoriani Nicola\nScuola di Dottorato in Scienze Statistiche XXIII Ciclo\nDipartimento di Scienze Statistiche, Universit? di Padova\nStanza 122 - Tel. 049 827 4174\nPh.D. Student\nDepartment of Statistical Sciences\nUniversity of Padova, Italy",
+      "body_snippet": "Hi All,\n\nI am estimating ERG models with some edges set \"NA\" at random.\n\nSometimes statnet return me this error message:\n\nError in is.na.network(nw) :\n  INTEGER() can only be applied to a 'integer', n",
+      "thread_id": "thread-0bef5fe2e01b",
+      "thread_depth": 0,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-6c9f3a6dd108",
+      "message_id": "<4CA26D5F.90103@stat.tamu.edu>",
+      "from_name": "Ick Hoon Jin",
+      "from_email_hash": "60ea3323291c210446e5500f2304ead7db34b77a128be681cead1fcaae67439d",
+      "date": "2010-09-28T15:34:07Z",
+      "subject": "[statnet_help] Geodesic Distance",
+      "subject_clean": "[statnet_help] Geodesic Distance",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\nI want to calculate geodesic distances for all possible dyads in my\nnetwork examples.\nHow can I calculate geodesic distance in ergm packages?\nThank you.\n\nSincerely,\nIck Hoon Jin",
+      "body_snippet": "Dear all,\nI want to calculate geodesic distances for all possible dyads in my\nnetwork examples.\nHow can I calculate geodesic distance in ergm packages?\nThank you.\n\nSincerely,\nIck Hoon Jin",
+      "thread_id": "thread-6c9f3a6dd108",
+      "thread_depth": 0,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-395572383c13",
+      "message_id": "<9F7A9A1A-9516-4381-9CB9-7690044EB2C1@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-09-28T15:55:09Z",
+      "subject": "[statnet_help] Geodesic Distance",
+      "subject_clean": "[statnet_help] Geodesic Distance",
+      "in_reply_to": "<4CA26D5F.90103@stat.tamu.edu>",
+      "references": [
+        "<4CA26D5F.90103@stat.tamu.edu>"
+      ],
+      "body_plain": "There is a function in the ergm package (not documented, I'm afraid)  \ncalled \"ergm.geodistdist\" that will give a tabular summary of the  \nfrequencies with which each possible geodesic distance in the network  \noccurs.  Example on a 4-node directed network with 12 possible dyads:\n\n > data(g4)\n > ergm.geodistdist(g4)\n   1   2   3 Inf\n   5   3   1   3\n\nIs this what you want?\n\nDave\n\n\n\n\nOn Sep 28, 2010, at 6:34 PM, Ick Hoon Jin wrote:\n\n> Dear all,\n> I want to calculate geodesic distances for all possible dyads in my\n> network examples.\n> How can I calculate geodesic distance in ergm packages?\n> Thank you.\n>\n> Sincerely,\n> Ick Hoon Jin\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "There is a function in the ergm package (not documented, I'm afraid)  \ncalled \"ergm.geodistdist\" that will give a tabular summary of the  \nfrequencies with which each possible geodesic distance in the",
+      "thread_id": "thread-6c9f3a6dd108",
+      "thread_depth": 1,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-a38e9da7dbd5",
+      "message_id": "<882902D0-4400-4DFE-B585-10A892B9DE64@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-09-28T16:33:01Z",
+      "subject": "[statnet_help] Geodesic Distance",
+      "subject_clean": "[statnet_help] Geodesic Distance",
+      "in_reply_to": "<9F7A9A1A-9516-4381-9CB9-7690044EB2C1@stat.psu.edu>",
+      "references": [
+        "<4CA26D5F.90103@stat.tamu.edu>",
+        "<9F7A9A1A-9516-4381-9CB9-7690044EB2C1@stat.psu.edu>"
+      ],
+      "body_plain": "Sorry to clog your inbox, but I remembered there's also a way to do  \nthis in the sna package that gives the whole nxn matrix (and it's  \ndocumented!):  The geodist function.\n\n > geodist(g4)\n$counts\n      [,1] [,2] [,3] [,4]\n[1,]    1    1    1    1\n[2,]    0    1    0    0\n[3,]    1    1    1    1\n[4,]    1    1    1    1\n\n$gdist\n      [,1] [,2] [,3] [,4]\n[1,]    0    1    1    1\n[2,]  Inf    0  Inf  Inf\n[3,]    1    2    0    2\n[4,]    2    3    1    0\n\n\nDave\n\n\n\nOn Sep 28, 2010, at 6:55 PM, David Hunter wrote:\n\n> There is a function in the ergm package (not documented, I'm afraid)  \n> called \"ergm.geodistdist\" that will give a tabular summary of the  \n> frequencies with which each possible geodesic distance in the  \n> network occurs.  Example on a 4-node directed network with 12  \n> possible dyads:\n>\n> > data(g4)\n> > ergm.geodistdist(g4)\n>  1   2   3 Inf\n>  5   3   1   3\n>\n> Is this what you want?\n>\n> Dave\n>\n>\n>\n>\n> On Sep 28, 2010, at 6:34 PM, Ick Hoon Jin wrote:\n>\n>> Dear all,\n>> I want to calculate geodesic distances for all possible dyads in my\n>> network examples.\n>> How can I calculate geodesic distance in ergm packages?\n>> Thank you.\n>>\n>> Sincerely,\n>> Ick Hoon Jin\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Sorry to clog your inbox, but I remembered there's also a way to do  \nthis in the sna package that gives the whole nxn matrix (and it's  \ndocumented!):  The geodist function.\n\n > geodist(g4)\n$counts\n ",
+      "thread_id": "thread-6c9f3a6dd108",
+      "thread_depth": 2,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-dc1df9098ebe",
+      "message_id": "<4CA2EED8.7000008@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-09-29T00:46:32Z",
+      "subject": "[statnet_help] error message",
+      "subject_clean": "[statnet_help] error message",
+      "in_reply_to": "<0f27b163af2b7e8e68b7bfff5b5a85bd.squirrel@webmail.stat.unipd.it>",
+      "references": [
+        "<0f27b163af2b7e8e68b7bfff5b5a85bd.squirrel@webmail.stat.unipd.it>"
+      ],
+      "body_plain": "Hi, Nicola -\n\nThis is a bug, and is fixed in the new release (which is about ready - I\nam hoping for early next week).\n\nHelp is on the way,\n\n-Carter\n\nSoriani Nicola wrote:\n> Hi All,\n> \n> I am estimating ERG models with some edges set \"NA\" at random.\n> \n> Sometimes statnet return me this error message:\n> \n> Error in is.na.network(nw) :\n>   INTEGER() can only be applied to a 'integer', not a 'NULL'\n> \n> Somebody can help me? What it is the problem?\n> \n> Thanks a lot.\n> \n> Nicola\n> \n>",
+      "body_snippet": "Hi, Nicola -\n\nThis is a bug, and is fixed in the new release (which is about ready - I\nam hoping for early next week).\n\nHelp is on the way,\n\n-Carter\n\nSoriani Nicola wrote:\n> Hi All,\n> \n> I am estimati",
+      "thread_id": "thread-0bef5fe2e01b",
+      "thread_depth": 1,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-e49b4de5f5ad",
+      "message_id": "<DE0C6022F900DD4DA7563AA2659DE662DFFB91@mf-fbw-ex01.fbw.vu.nl>",
+      "from_name": "Wijk, B.C.M. van, (Bernadette)",
+      "from_email_hash": "137784b858a89af3db20b7fd9d4657775e6ecf784d366acdd7b6eb479f0ceb19",
+      "date": "2010-09-29T09:24:46Z",
+      "subject": "[statnet_help] hamming distance as network statistic",
+      "subject_clean": "[statnet_help] hamming distance as network statistic",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet users,\n\nIm trying to understand the use of the Hamming distance as a network statistic (unweighted, and with x as the observed model). To me it seems that optimizing the hamming distance will always (independent of what network you're looking at) result in a network identical to the observed network, as it can also be seen as a goodness of fit measure. In that case, the hamming distance would become zero and the corresponding network parameter goes to infinity (?). Is this the right way of thinking? Would it make sense to include the hamming distance to the observed network as a statistic in the model at all? If so, when and when not?\n\nAny help would be appreciated!\n\nKind regards,\nBernadette van Wijk\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100929/12aabc25/attachment.html>",
+      "body_snippet": "Dear statnet users,\n\nIm trying to understand the use of the Hamming distance as a network statistic (unweighted, and with x as the observed model). To me it seems that optimizing the hamming distance ",
+      "thread_id": "thread-e49b4de5f5ad",
+      "thread_depth": 0,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-3d6e4b0bef34",
+      "message_id": "<DE0C6022F900DD4DA7563AA2659DE662DFFB92@mf-fbw-ex01.fbw.vu.nl>",
+      "from_name": "Wijk, B.C.M. van, (Bernadette)",
+      "from_email_hash": "137784b858a89af3db20b7fd9d4657775e6ecf784d366acdd7b6eb479f0ceb19",
+      "date": "2010-09-29T09:26:44Z",
+      "subject": "[statnet_help] hamming distance as network statistic",
+      "subject_clean": "[statnet_help] hamming distance as network statistic",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet users,\n\nIm trying to understand the use of the Hamming distance as a network statistic (unweighted, and with x as the observed model). To me it seems that optimizing the hamming distance will always (independent of what network you're looking at) result in a network identical to the observed network, as it can also be seen as a goodness of fit measure. In that case, the hamming distance would become zero and the corresponding network parameter goes to infinity (?). Is this the right way of thinking? Would it make sense to include the hamming distance to the observed network as a statistic in the model at all? If so, when and when not?\n\nAny help would be appreciated!\n\nKind regards,\nBernadette van Wijk\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100929/a142bc92/attachment.html>",
+      "body_snippet": "Dear statnet users,\n\nIm trying to understand the use of the Hamming distance as a network statistic (unweighted, and with x as the observed model). To me it seems that optimizing the hamming distance ",
+      "thread_id": "thread-3d6e4b0bef34",
+      "thread_depth": 0,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-95d650f608a0",
+      "message_id": "<AANLkTinRpUPS0bfZg7=icwri3JgjB9pCn_BEx8wUu-j8@mail.gmail.com>",
+      "from_name": "Wincent",
+      "from_email_hash": "6846f5c272f8850077470247e7e6a025c83f8d7387bcf22387269b3b25a06522",
+      "date": "2010-09-29T23:37:05Z",
+      "subject": "[statnet_help] error message",
+      "subject_clean": "[statnet_help] error message",
+      "in_reply_to": "<0f27b163af2b7e8e68b7bfff5b5a85bd.squirrel@webmail.stat.unipd.it>",
+      "references": [
+        "<0f27b163af2b7e8e68b7bfff5b5a85bd.squirrel@webmail.stat.unipd.it>"
+      ],
+      "body_plain": "I can't reproduce the problem.\n\nlibrary(sna)\nlibrary(network)\na=rgraph(10)\na[1,2]<-NA\nnw <- as.network(a)\nis.na.network(nw)\n\nThe above lines work perfectly.\n\nOn 28 September 2010 18:06, Soriani Nicola <soria@stat.unipd.it> wrote:\n> Hi All,\n>\n> I am estimating ERG models with some edges set \"NA\" at random.\n>\n> Sometimes statnet return me this error message:\n>\n> Error in is.na.network(nw) :\n> ?INTEGER() can only be applied to a 'integer', not a 'NULL'\n>\n> Somebody can help me? What it is the problem?\n>\n> Thanks a lot.\n>\n> Nicola\n>\n>\n> --\n> Soriani Nicola\n> Scuola di Dottorato in Scienze Statistiche XXIII Ciclo\n> Dipartimento di Scienze Statistiche, Universit? di Padova\n> Stanza 122 - Tel. 049 827 4174\n> Ph.D. Student\n> Department of Statistical Sciences\n> University of Padova, Italy\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \nWincent Ronggui HUANG (Ph.D.)\nCity University of Hong Kong\nhttp://asrr.r-forge.r-project.org/rghuang.html",
+      "body_snippet": "I can't reproduce the problem.\n\nlibrary(sna)\nlibrary(network)\na=rgraph(10)\na[1,2]<-NA\nnw <- as.network(a)\nis.na.network(nw)\n\nThe above lines work perfectly.\n\nOn 28 September 2010 18:06, Soriani Nicola",
+      "thread_id": "thread-0bef5fe2e01b",
+      "thread_depth": 1,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-38a43e83524a",
+      "message_id": "<CF480D68-431A-48A9-A369-ADCCD10BFD18@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-09-30T05:12:22Z",
+      "subject": "[statnet_help] hamming distance as network statistic",
+      "subject_clean": "[statnet_help] hamming distance as network statistic",
+      "in_reply_to": "<DE0C6022F900DD4DA7563AA2659DE662DFFB91@mf-fbw-ex01.fbw.vu.nl>",
+      "references": [
+        "<DE0C6022F900DD4DA7563AA2659DE662DFFB91@mf-fbw-ex01.fbw.vu.nl>"
+      ],
+      "body_plain": "Hi Bernadette.  You're mostly correct:  If one were to include  \n\"hamming distance from the observed network\" as a statistic in an  \nERGM, then the minimum possible value of the statistic (zero) is  \nachieved by the observed network.   According to well-established  \nexponential family theory, whenever an observed statistic lies on the  \nboundary of the convex hull of possible statistics, no maximum  \nlikelihood estimator exists.  Stated differently, in this case the MLE  \nwould essentially be negative infinity.\n\nSo _if_ one's goal is to obtain a maximum likelihood estimator of ergm  \nparameters, then including \"hamming distance from the observed  \nnetwork\" is never a good idea.  However, there are other conceivable  \ncontexts (e.g., using descriptive statistics to classify networks)  \nwhere it could make sense as a statistic.\n\nI hope this helps.\n\nDave\n\n\n\nOn Sep 29, 2010, at 12:24 PM, Wijk, B.C.M. van, (Bernadette) wrote:\n\n> Dear statnet users,\n>\n> Im trying to understand the use of the Hamming distance as a network  \n> statistic (unweighted, and with x as the observed model). To me it  \n> seems that optimizing the hamming distance will always (independent  \n> of what network you're looking at) result in a network identical to  \n> the observed network, as it can also be seen as a goodness of fit  \n> measure. In that case, the hamming distance would become zero and  \n> the corresponding network parameter goes to infinity (?). Is this  \n> the right way of thinking? Would it make sense to include the  \n> hamming distance to the observed network as a statistic in the model  \n> at all? If so, when and when not?\n>\n> Any help would be appreciated!\n>\n> Kind regards,\n> Bernadette van Wijk\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100930/fb817c96/attachment.html>",
+      "body_snippet": "Hi Bernadette.  You're mostly correct:  If one were to include  \n\"hamming distance from the observed network\" as a statistic in an  \nERGM, then the minimum possible value of the statistic (zero) is  \n",
+      "thread_id": "thread-e49b4de5f5ad",
+      "thread_depth": 1,
+      "month": "2010-09"
+    },
+    {
+      "id": "msg-bd9069dc3340",
+      "message_id": "<4CA4F0CF.2020807@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-09-30T13:19:27Z",
+      "subject": "[statnet_help] hamming distance as network statistic",
+      "subject_clean": "[statnet_help] hamming distance as network statistic",
+      "in_reply_to": "<CF480D68-431A-48A9-A369-ADCCD10BFD18@stat.psu.edu>",
+      "references": [
+        "<DE0C6022F900DD4DA7563AA2659DE662DFFB91@mf-fbw-ex01.fbw.vu.nl>",
+        "<CF480D68-431A-48A9-A369-ADCCD10BFD18@stat.psu.edu>"
+      ],
+      "body_plain": "Just to expand on Dave's remarks...\n\n> On Sep 29, 2010, at 12:24 PM, Wijk, B.C.M. van, (Bernadette) wrote:\n>\n>> Dear statnet users,\n>>\n>> Im trying to understand the use of the Hamming distance as a network\n>> statistic (unweighted, and with x as the observed model). To me it\n>> seems that optimizing the hamming distance will always (independent of\n>> what network you're looking at) result in a network identical to the\n>> observed network, as it can also be seen as a goodness of fit measure.\n>> In that case, the hamming distance would become zero and the\n>> corresponding network parameter goes to infinity (?). Is this the\n>> right way of thinking? Would it make sense to include the hamming\n>> distance to the observed network as a statistic in the model at all?\n>> If so, when and when not?\n>>\n\nTypically, one would not use the dependent network as \"x\" in an \nestimation context (although one might in a _simulation_ context, e.g. \nto generate perturbed data for robustness testing).  The \"x\" in the \nhamming term is usually some other network (e.g., the same system at an \nearlier time point, or another relation to which we believe that the \nmodeled network may be related); its typical usage is thus closely \nanalogous to edgecov.  As Dave noted, Hamming distance is also used in \nother contexts as a tool for graph comparison (see, e.g., hdist in sna), \nbut that's a somewhat different matter.\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "Just to expand on Dave's remarks...\n\n> On Sep 29, 2010, at 12:24 PM, Wijk, B.C.M. van, (Bernadette) wrote:\n>\n>> Dear statnet users,\n>>\n>> Im trying to understand the use of the Hamming distance as a n",
+      "thread_id": "thread-e49b4de5f5ad",
+      "thread_depth": 2,
+      "month": "2010-09"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-b6665976e231",
+      "subject": "[statnet_help] \tfrom network to igraph and back again, and NAMESPACEs",
+      "message_count": 6,
+      "participants": [
+        "Carter T. Butts",
+        "David Hunter",
+        "Martin Klaus",
+        "Michal Bojanowski"
+      ],
+      "started": "2010-09-02T08:54:48Z",
+      "last_reply": "2010-09-03T14:17:02Z",
+      "root_message_id": "msg-b6665976e231"
+    },
+    {
+      "id": "thread-dbed6e06b0f1",
+      "subject": "[statnet_help] Plot edge values",
+      "message_count": 2,
+      "participants": [
+        "Marcus Drescher",
+        "Mark S. Handcock"
+      ],
+      "started": "2010-09-03T05:10:28Z",
+      "last_reply": "2010-09-03T05:41:58Z",
+      "root_message_id": "msg-dbed6e06b0f1"
+    },
+    {
+      "id": "thread-d8b17fee8efc",
+      "subject": "[statnet_help] examine relationship between betweenness and vertex attributes?",
+      "message_count": 4,
+      "participants": [
+        "Carter T. Butts",
+        "Wincent",
+        "dnolin"
+      ],
+      "started": "2010-09-04T20:16:54Z",
+      "last_reply": "2010-09-19T18:41:17Z",
+      "root_message_id": "msg-d8b17fee8efc"
+    },
+    {
+      "id": "thread-50e14f2d2ce4",
+      "subject": "[statnet_help] krackfr data",
+      "message_count": 2,
+      "participants": [
+        "Bojanowski, M.J.  (Michal)",
+        "Soriani Nicola"
+      ],
+      "started": "2010-09-06T07:18:48Z",
+      "last_reply": "2010-09-06T16:15:16Z",
+      "root_message_id": "msg-50e14f2d2ce4"
+    },
+    {
+      "id": "thread-35011e0db60d",
+      "subject": "[statnet_help] Network plot",
+      "message_count": 1,
+      "participants": [
+        "Gabriele Martinelli"
+      ],
+      "started": "2010-09-08T06:47:55Z",
+      "last_reply": "2010-09-08T06:47:55Z",
+      "root_message_id": "msg-35011e0db60d"
+    },
+    {
+      "id": "thread-3bd3e5eca8e5",
+      "subject": "[statnet_help] The license.statnet function",
+      "message_count": 1,
+      "participants": [
+        "Wincent"
+      ],
+      "started": "2010-09-11T22:23:54Z",
+      "last_reply": "2010-09-11T22:23:54Z",
+      "root_message_id": "msg-3bd3e5eca8e5"
+    },
+    {
+      "id": "thread-656ce85ea560",
+      "subject": "[statnet_help] Question about Robbins-Monro style in ergm",
+      "message_count": 1,
+      "participants": [
+        "Saeed Nasehi Moghadam"
+      ],
+      "started": "2010-09-13T00:16:04Z",
+      "last_reply": "2010-09-13T00:16:04Z",
+      "root_message_id": "msg-656ce85ea560"
+    },
+    {
+      "id": "thread-f57425a682ae",
+      "subject": "[statnet_help] Question about netperm",
+      "message_count": 1,
+      "participants": [
+        "Saeed Nasehi Moghadam"
+      ],
+      "started": "2010-09-17T02:36:00Z",
+      "last_reply": "2010-09-17T02:36:00Z",
+      "root_message_id": "msg-f57425a682ae"
+    },
+    {
+      "id": "thread-5291ef899fca",
+      "subject": "[statnet_help] Re: ergm crashes",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Iasonas Lamprianou"
+      ],
+      "started": "2010-09-22T17:46:01Z",
+      "last_reply": "2010-09-22T22:51:22Z",
+      "root_message_id": "msg-5291ef899fca"
+    },
+    {
+      "id": "thread-8dba9cd3c166",
+      "subject": "[statnet_help] error with update_statnet",
+      "message_count": 1,
+      "participants": [
+        "Wincent"
+      ],
+      "started": "2010-09-25T23:16:41Z",
+      "last_reply": "2010-09-25T23:16:41Z",
+      "root_message_id": "msg-8dba9cd3c166"
+    },
+    {
+      "id": "thread-38e85fc693f9",
+      "subject": "[statnet_help] error with update_statnet",
+      "message_count": 5,
+      "participants": [
+        "Mark S. Handcock",
+        "Michal Bojanowski",
+        "Wincent"
+      ],
+      "started": "2010-09-26T22:45:02Z",
+      "last_reply": "2010-09-27T06:34:57Z",
+      "root_message_id": "msg-38e85fc693f9"
+    },
+    {
+      "id": "thread-0bef5fe2e01b",
+      "subject": "[statnet_help] error message",
+      "message_count": 3,
+      "participants": [
+        "Carter T. Butts",
+        "Soriani Nicola",
+        "Wincent"
+      ],
+      "started": "2010-09-28T03:06:55Z",
+      "last_reply": "2010-09-29T23:37:05Z",
+      "root_message_id": "msg-0bef5fe2e01b"
+    },
+    {
+      "id": "thread-6c9f3a6dd108",
+      "subject": "[statnet_help] Geodesic Distance",
+      "message_count": 3,
+      "participants": [
+        "David Hunter",
+        "Ick Hoon Jin"
+      ],
+      "started": "2010-09-28T15:34:07Z",
+      "last_reply": "2010-09-28T16:33:01Z",
+      "root_message_id": "msg-6c9f3a6dd108"
+    },
+    {
+      "id": "thread-e49b4de5f5ad",
+      "subject": "[statnet_help] hamming distance as network statistic",
+      "message_count": 3,
+      "participants": [
+        "Carter T. Butts",
+        "David Hunter",
+        "Wijk, B.C.M. van, (Bernadette)"
+      ],
+      "started": "2010-09-29T09:24:46Z",
+      "last_reply": "2010-09-30T13:19:27Z",
+      "root_message_id": "msg-e49b4de5f5ad"
+    },
+    {
+      "id": "thread-3d6e4b0bef34",
+      "subject": "[statnet_help] hamming distance as network statistic",
+      "message_count": 1,
+      "participants": [
+        "Wijk, B.C.M. van, (Bernadette)"
+      ],
+      "started": "2010-09-29T09:26:44Z",
+      "last_reply": "2010-09-29T09:26:44Z",
+      "root_message_id": "msg-3d6e4b0bef34"
+    }
+  ]
+}

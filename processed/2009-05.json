@@ -1,0 +1,396 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2009-05",
+  "messages": [
+    {
+      "id": "msg-6aa060848fe5",
+      "message_id": "<Pine.WNT.4.61.0905081432070.2968@chandra.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2009-05-08T14:36:38Z",
+      "subject": "[statnet_help] Change statistics",
+      "subject_clean": "[statnet_help] Change statistics",
+      "in_reply_to": "<008801c9c293$93109b90$b931d2b0$@vlegels@ugent.be>",
+      "references": [
+        "<008801c9c293$93109b90$b931d2b0$@vlegels@ugent.be>"
+      ],
+      "body_plain": "Hi Jef,\n\nI don't have an answer to your question exactly, but I have something that \nmay or may not come close enough to be useful to you. That is, how to get \na count of the number of i,j pairs that have each value of a change \nstatistic in a network. That you can find with:\n\ntempfit <- ergm(my.network~statistic.of.interest,MPLEonly=T)\ncbind(tempfit$glm$y,tempfit$glm$data,tempfit$glm$prior.weights)\n\nThe resulting table has three columns:\n\n- The first gives the value of i,j, in the network\n\n- The second gives the change statistic for the statistic you included in \nthe first line of code. Here change stat means the value by which the \nstatistic would change if i,j went from 0 to 1, regardless of whether it \nis currently 0 or 1.\n\n- The third column gives the number of i,j pairs that meet the first two \ncriteria.\n\nHope that helps!\nSteve\n\n\n\n\n\n\nOn Tue, 21 Apr 2009, Jef \nVlegels wrote:\n\n> Date: Tue, 21 Apr 2009 17:12:23 +0200\n> From: Jef Vlegels <jef.vlegels@ugent.be>\n> To: statnet_help@u.washington.edu\n> Subject: [statnet_help] Change statistics\n> \n> Dear statnet users,\n>\n>\n>\n> I've got another question for you all.\n>\n> How can I pull out the change statistics for each dyad i,j in a (directed)\n> network? I mean the change in, for example, transitivity (or 2-in-stars,\n> gwesp, etc) when the dyad between i and j changes. If I get it right, it\n> should give me N x N-1 (every dyad) results for each statistic of a network.\n>\n>\n>\n>\n> Thanks in advance,\n>\n>\n>\n> Jef\n>\n>\n>\n>\n>\n>\n>\n> Jef Vlegels\n> Universiteit Gent\n> Vakgroep Sociologie\n> Korte Meer 3\n> B-9000 Gent\n> Phone: +32 (0)9 264.91.75\n> Fax: +32 (0)9 264.69.75\n> jef.vlegels@ugent.be\n>\n>\n>\n>\n\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k            *\n**************************************************************************",
+      "body_snippet": "Hi Jef,\n\nI don't have an answer to your question exactly, but I have something that \nmay or may not come close enough to be useful to you. That is, how to get \na count of the number of i,j pairs that ",
+      "thread_id": "thread-6aa060848fe5",
+      "thread_depth": 0,
+      "month": "2009-05"
+    },
+    {
+      "id": "msg-87c08834301f",
+      "message_id": "<4A0D3E5D.2010901@wirtschaft.uni-kassel.de>",
+      "from_name": "Martin Klaus",
+      "from_email_hash": "680374c9dbd7ccc76f32cb777ecc5e89798b33d124ebf6364002bbfb51e8fd5a",
+      "date": "2009-05-15T03:05:17Z",
+      "subject": "[statnet_help] Combine Ego networks and more",
+      "subject_clean": "[statnet_help] Combine Ego networks and more",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear  Statnet Team,\n \n\nI am working on an analysis of a social network of web pages. Therefore \nI use the STATNET package which is such a good sna package. Thank you \nfor developing it!\n\nBut now I came to a point where my R skills are not good enough for what \nI want. So I am asking you if you might help me.\n\nThe Problem:\n\nI have a network object and calculated the degree centrality (freeman) \nfor all vertexes. Now I select the first 5 vertexes with the highest \ndegree centrality to take a closer look at their ego networks. For the \nego network analysis I tried and tried for 3 day with ego.extract, \nsapply and gapply but I couldn`t do it.\n\nMy question: I want to look at the development of the relation between \nthe number of egos related to the number of alters they reach with \ndirectly. Let's say with one ego (the vertex with the highest degree \ncentrality) I reach 15 alters in my network. Now I want to combine the \nego networks of the vertex with the highest and the second highest \ndegree centrality and loo how many alters these two egos combined can \nrech. Than I want to look at the three vertexes with the highest degree \ncentralities ... and so on.\n\nAt the end I want to develop a data.frame which lists in the first \ncolumn the number of egos (increasing from 1...N) , in the second column \nthe number of alters which are reached by the egos, the third column the \nnumber of edges and in the third column the density of the subnetwork.\n\nThan I want to decide which ego-combination-networks seems to be the \nbest and want to gplot it.\n\nUnfortunately my R skills are limited and so I could not program this. I \nreally would appreciated it if you could help me!\n\nThank you in advance. Sincerely yours\n\n \n\nMartin Klaus (University of Kassel)\n\nExample Data & Code:\n\n \n\nm<- matrix( c ( 0 , 1 , 1 , 0 , 0 , 0 , 1 , 0 , 0 ,\n\n1 , 0 , 1 , 0 , 0 , 0 , 0 , 1 , 0 ,\n\n1 , 1 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,\n\n0 , 0 , 1 , 0 , 1 , 1 , 1 , 0 , 0 ,\n\n0 , 0 , 0 , 1 , 0 , 1 , 1 , 0 , 0 ,\n\n0 , 0 , 0 , 1 , 1 , 0 , 1 , 0 , 1 ,\n\n0 , 0 , 0 , 1 , 1 , 1 , 0 , 1 , 0 ,\n\n0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,\n\n0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) , ncol=9)\n\n \n\ndiag(m) <- 0\n\ng <- network(m, vertex.attrnames=c(\"a\",\"a\",\"a\",\"a\",\"a\"))\n\nsummary(g)\n\ng\n\ndegree(g)\n\nsort(degree(g))\n\n#-vertex 7 has the highest degree\n\neg<-ego.extract(g)\n\n#- extract and visualize the ego network of vertex 4\n\neg$`7`\n\ngplot(eg$`7`)\n\nstr(eg$`7`)\n\n#- Now I need to count the number of alters and edges and save the \nresults in the first row of a data.frame\n\n \n\n#- Than I need to combine the ego networks of vertex 7 and vertex 6 and \nlook how many alters these two egos reach together\n\n#- The results need to saved in the second row of the data.fram ...\n\n \n\nEXAMPLE data.frame:\n\n \n\n#Egos  /  #Alters   /   #edges   /  ego.net.density\n\n    1      /       8       /      ...  \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090515/ae8c983a/attachment.html>",
+      "body_snippet": "Dear  Statnet Team,\n \n\nI am working on an analysis of a social network of web pages. Therefore \nI use the STATNET package which is such a good sna package. Thank you \nfor developing it!\n\nBut now I cam",
+      "thread_id": "thread-87c08834301f",
+      "thread_depth": 0,
+      "month": "2009-05"
+    },
+    {
+      "id": "msg-43b0e462a1fb",
+      "message_id": "<9AEEF1FB6254224AA355ED285F8491653720625C@EXCHVS2.medctr.ad.wfubmc.edu>",
+      "from_name": "Sean L. Simpson",
+      "from_email_hash": "23eacb2c2cbed5436e4c98b22e4f49db61b6540ea38a73a61605d331f2cfa84b",
+      "date": "2009-05-15T06:58:04Z",
+      "subject": "[statnet_help] Distance Statistic",
+      "subject_clean": "[statnet_help] Distance Statistic",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I noticed that the geodesic distance statistic \"distance\" is available\nfor use in the goodness of fit \"gof\" function but not in the \"ergm\"\nfunction.  Is there a reason for this?  Is there another analogous\n\"distance\" metric that can used in the \"ergm\" function?\n\n \n\nThank you,\n\n \n\nSean\n\n \n\nSean L. Simpson, PhD\n\nWake Forest University School of Medicine\n\nDivision of Public Health Sciences\n\nDepartment of Biostatistical Sciences\n\nSection on Statistical Genetics and Bioinformatics \n\nMedical Center Boulevard\n\nWinston-Salem, NC 27157-1063\n\nOffice phone:  (336) 716-8369\n\nOffice fax:  (336) 716-6427\n\nE-mail:  slsimpso@wfubmc.edu <mailto:slsimpso@wfubmc.edu> \n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090515/714a7a7d/attachment.html>",
+      "body_snippet": "I noticed that the geodesic distance statistic \"distance\" is available\nfor use in the goodness of fit \"gof\" function but not in the \"ergm\"\nfunction.  Is there a reason for this?  Is there another anal",
+      "thread_id": "thread-43b0e462a1fb",
+      "thread_depth": 0,
+      "month": "2009-05"
+    },
+    {
+      "id": "msg-6b6ac67444b4",
+      "message_id": "<9ACB2177-D45B-4CF1-85F5-60D806A52DBC@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-05-15T07:15:13Z",
+      "subject": "[statnet_help] Distance Statistic",
+      "subject_clean": "[statnet_help] Distance Statistic",
+      "in_reply_to": "<9AEEF1FB6254224AA355ED285F8491653720625C@EXCHVS2.medctr.ad.wfubmc.edu>",
+      "references": [
+        "<9AEEF1FB6254224AA355ED285F8491653720625C@EXCHVS2.medctr.ad.wfubmc.edu>"
+      ],
+      "body_plain": "Hi Sean.  The reason has to do with how the gof distance is  \nimplemented; it's done differently from the way the usual ergm terms  \nare implemented.  There is no analogous term for the ergm function  \nthat I know of (it would have to be defined somewhat differently in  \nany case), though perhaps someone else has written something I'm not  \naware of.\n\nDave\n\n\nOn May 15, 2009, at 9:58 AM, Sean L. Simpson wrote:\n\n> I noticed that the geodesic distance statistic ?distance? is  \n> available for use in the goodness of fit ?gof? function but not in  \n> the ?ergm? function.  Is there a reason for this?  Is there another  \n> analogous ?distance? metric that can used in the ?ergm? function?\n>\n> Thank you,\n>\n> Sean\n>\n> Sean L. Simpson, PhD\n> Wake Forest University School of Medicine\n> Division of Public Health Sciences\n> Department of Biostatistical Sciences\n> Section on Statistical Genetics and Bioinformatics\n> Medical Center Boulevard\n> Winston-Salem, NC 27157-1063\n> Office phone:  (336) 716-8369\n> Office fax:  (336) 716-6427\n> E-mail:  slsimpso@wfubmc.edu\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090515/48790c81/attachment.html>",
+      "body_snippet": "Hi Sean.  The reason has to do with how the gof distance is  \nimplemented; it's done differently from the way the usual ergm terms  \nare implemented.  There is no analogous term for the ergm function ",
+      "thread_id": "thread-43b0e462a1fb",
+      "thread_depth": 1,
+      "month": "2009-05"
+    },
+    {
+      "id": "msg-d8505286c3cf",
+      "message_id": "<4A0D7A46.2000809@wirtschaft.uni-kassel.de>",
+      "from_name": "Martin Klaus",
+      "from_email_hash": "680374c9dbd7ccc76f32cb777ecc5e89798b33d124ebf6364002bbfb51e8fd5a",
+      "date": "2009-05-15T07:20:54Z",
+      "subject": "[statnet_help] combine ego networks with different sizes to one new network",
+      "subject_clean": "[statnet_help] combine ego networks with different sizes to one new network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear  Statnet Team,\n \n\nI have a network object and calculated the degree centrality (freeman) \nfor all vertexes. Now I select the first 5 vertexes with the highest \ndegree centrality to take a closer look at their ego networks. For the \nego network analysis I tried and tried for 3 day with ego.extract, \nsapply and gapply but I couldn`t do it.\n\nMy question: I want to look at the development of the relation between \nthe number of egos related to the number of alters they reach with \ndirectly. Let's say with one ego (the vertex with the highest degree \ncentrality) I reach 15 alters in my network. Now I want to combine the \nego networks of the vertex with the highest and the second highest \ndegree centrality and loo how many alters these two egos combined can \nrech. Than I want to look at the three vertexes with the highest degree \ncentralities ... and so on.\n\nAt the end I want to develop a data.frame which lists in the first \ncolumn the number of egos (increasing from 1...N) , in the second column \nthe number of alters which are reached by the egos, the third column the \nnumber of edges and in the third column the density of the subnetwork.\n\nThan I want to decide which ego-combination-networks seems to be the \nbest and want to gplot it.\n\nUnfortunately my R skills are limited and so I could not program this. I \nreally would appreciated it if you could help me!\n\nThank you in advance. Sincerely yours\n\n \n\nMartin Klaus (University of Kassel)\n\nExample Data & Code:\n\n \n\nm<- matrix( c ( 0 , 1 , 1 , 0 , 0 , 0 , 1 , 0 , 0 ,\n\n1 , 0 , 1 , 0 , 0 , 0 , 0 , 1 , 0 ,\n\n1 , 1 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,\n\n0 , 0 , 1 , 0 , 1 , 1 , 1 , 0 , 0 ,\n\n0 , 0 , 0 , 1 , 0 , 1 , 1 , 0 , 0 ,\n\n0 , 0 , 0 , 1 , 1 , 0 , 1 , 0 , 1 ,\n\n0 , 0 , 0 , 1 , 1 , 1 , 0 , 1 , 0 ,\n\n0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,\n\n0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ) , ncol=9)\n\n \n\ndiag(m) <- 0\n\ng <- network(m, vertex.attrnames=c(\"a\",\"a\",\"a\",\"a\",\"a\"))\n\nsummary(g)\n\ng\n\ndegree(g)\n\nsort(degree(g))\n\n#-vertex 7 has the highest degree\n\neg<-ego.extract(g)\n\n#- extract and visualize the ego network of vertex 4\n\neg$`7`\n\ngplot(eg$`7`)\n\nstr(eg$`7`)\n\n#- Now I need to count the number of alters and edges and save the \nresults in the first row of a data.frame\n\n \n\n#- Than I need to combine the ego networks of vertex 7 and vertex 6 and \nlook how many alters these two egos reach together\n\n#- The results need to saved in the second row of the data.fram ...\n\n \n\nEXAMPLE data.frame:\n\n \n\n#Egos  /  #Alters   /   #edges   /  ego.net.density\n\n    1      /       8       /      ...  \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090515/11b53f51/attachment.html>",
+      "body_snippet": "Dear  Statnet Team,\n \n\nI have a network object and calculated the degree centrality (freeman) \nfor all vertexes. Now I select the first 5 vertexes with the highest \ndegree centrality to take a closer ",
+      "thread_id": "thread-d8505286c3cf",
+      "thread_depth": 0,
+      "month": "2009-05"
+    },
+    {
+      "id": "msg-098fbad84c38",
+      "message_id": "<4A11924D.8090102@wirtschaft.uni-kassel.de>",
+      "from_name": "Martin Klaus",
+      "from_email_hash": "680374c9dbd7ccc76f32cb777ecc5e89798b33d124ebf6364002bbfb51e8fd5a",
+      "date": "2009-05-18T09:52:29Z",
+      "subject": "[statnet_help] Combine two Ego Network while taking account of their vertexis and edges",
+      "subject_clean": "[statnet_help] Combine two Ego Network while taking account of their vertexis and edges",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I am searching for a function which mrges/unions/combines two of my \nextracted ego networks baack together with respect to their \nvertex.attribute.names.\nIn the following samll example I create two mini networks. g1 with the \nvertexis A, B and C\nand g2 with the vertexis B, C and D.\nNow I want to combine them and receive a new network g12 with four \nvertexis A,B,C and D and their edges from their origin networks g1 and \ng2. How can I do this with the network package?\n--------------------\n\n#Create a network with three vertexis named A,B,C\nm1<-matrix(0,3,3)\nm1[1,2]<-2; m1[2,3]<-1; m1[3,1]<-2\ng1<-network(m1)\nnetwork.vertex.names(g1) <- LETTERS[1:3]\ng1\n\n#Create a second network with three vertexis named B,C,D\nm2<-matrix(0,3,3)\nm2[1,2]<-1; m2[2,3]<-1; m2[3,1]<-1\ng2<-network(m2)\nnetwork.vertex.names(g2) <- LETTERS[2:4]\ng2\n\nI tried it with the igraph package but this doesn work out at all.How \ncan I do this with at leas one of the packages or any other package???\n\n# Combine the two networks with than FOUR vertexis A,B,C,D\nlibrary(igraph)\ng12<-graph.union(graph.adjacency(g1),graph.adjacency(g2))\nplot(g12)\ndetach(\"package:igraph\")\n\nThank you for your held in advance! Sincerely yours\nMartin Klaus",
+      "body_snippet": "I am searching for a function which mrges/unions/combines two of my \nextracted ego networks baack together with respect to their \nvertex.attribute.names.\nIn the following samll example I create two mi",
+      "thread_id": "thread-098fbad84c38",
+      "thread_depth": 0,
+      "month": "2009-05"
+    },
+    {
+      "id": "msg-59770c56f914",
+      "message_id": "<EACE558E-6B9E-489C-A02E-FF4D89AF8222@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-05-18T10:54:46Z",
+      "subject": "[statnet_help] Combine two Ego Network while taking account of their vertexis and edges",
+      "subject_clean": "[statnet_help] Combine two Ego Network while taking account of their vertexis and edges",
+      "in_reply_to": "<4A11924D.8090102@wirtschaft.uni-kassel.de>",
+      "references": [
+        "<4A11924D.8090102@wirtschaft.uni-kassel.de>"
+      ],
+      "body_plain": "Hi Martin.  Try the following.  First is a simplistic function (beware  \n-- no error-checking!) that changes an edgelist into a \"named  \nedgelist\" where the integers 1 through n are replaced by the vertex  \nnames.  Then, you can stack two such edgelists using the \"rbind\"  \nfunction and convert to a network:\n\nnamed.edgelist <- function(x)\nmatrix((x %v% \"vertex.names\")[as.edgelist(x)], ncol=2)\n\n# Now \"stack\" the two networks created below, called g1 and g2, and  \nchange to a network:\ng12 <- network(rbind(named.edgelist(g1), named.edgelist(g2)))\n\n# See the result:\nas.matrix(g12)\n\n   A B C D\nA 0 1 0 0\nB 0 0 1 0\nC 1 0 0 1\nD 0 1 0 0\n\nHope this helps.\n\nDave\n\nOn May 18, 2009, at 12:52 PM, Martin Klaus wrote:\n\n>\n> I am searching for a function which mrges/unions/combines two of my  \n> extracted ego networks baack together with respect to their  \n> vertex.attribute.names.\n> In the following samll example I create two mini networks. g1 with  \n> the vertexis A, B and C\n> and g2 with the vertexis B, C and D.\n> Now I want to combine them and receive a new network g12 with four  \n> vertexis A,B,C and D and their edges from their origin networks g1  \n> and g2. How can I do this with the network package?\n> --------------------\n>\n> #Create a network with three vertexis named A,B,C\n> m1<-matrix(0,3,3)\n> m1[1,2]<-2; m1[2,3]<-1; m1[3,1]<-2\n> g1<-network(m1)\n> network.vertex.names(g1) <- LETTERS[1:3]\n> g1\n>\n> #Create a second network with three vertexis named B,C,D\n> m2<-matrix(0,3,3)\n> m2[1,2]<-1; m2[2,3]<-1; m2[3,1]<-1\n> g2<-network(m2)\n> network.vertex.names(g2) <- LETTERS[2:4]\n> g2\n>\n> I tried it with the igraph package but this doesn work out at  \n> all.How can I do this with at leas one of the packages or any other  \n> package???\n>\n> # Combine the two networks with than FOUR vertexis A,B,C,D\n> library(igraph)\n> g12<-graph.union(graph.adjacency(g1),graph.adjacency(g2))\n> plot(g12)\n> detach(\"package:igraph\")\n>\n> Thank you for your held in advance! Sincerely yours\n> Martin Klaus\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Martin.  Try the following.  First is a simplistic function (beware  \n-- no error-checking!) that changes an edgelist into a \"named  \nedgelist\" where the integers 1 through n are replaced by the ve",
+      "thread_id": "thread-098fbad84c38",
+      "thread_depth": 1,
+      "month": "2009-05"
+    },
+    {
+      "id": "msg-8bed610735d9",
+      "message_id": "<d89cb5670905181322i68ee6144nf1624c37187bb9f3@mail.gmail.com>",
+      "from_name": "Ofer Engel",
+      "from_email_hash": "0d8b2bc6647c0671a3f96590ef8c20bfc3f070984aea2160b8f7c24f74040577",
+      "date": "2009-05-18T13:22:35Z",
+      "subject": "[statnet_help] help",
+      "subject_clean": "[statnet_help] help",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "dear statnet help mailing list,\nalthough I am subscribed to the mailing list, I do not have\nauthorization access to the archives. When I try logging in to\nhttps://mailman2.u.washington.edu/mailman/private/statnet_help/\nwith my mail address (oengel@gmail.com) and password, the\nauthorization mechanism rejects me.\nPlease advise,\nmany thanks,\nOfer\n\n\n\n\nOn Mon, May 18, 2009 at 8:00 PM,\n<statnet_help-request@mailman2.u.washington.edu> wrote:\n> Send statnet_help mailing list submissions to\n> ? ? ? ?statnet_help@u.washington.edu\n>\n> To subscribe or unsubscribe via the World Wide Web, visit\n> ? ? ? ?http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> or, via email, send a message with subject or body 'help' to\n> ? ? ? ?statnet_help-request@mailman2.u.washington.edu\n>\n> You can reach the person managing the list at\n> ? ? ? ?statnet_help-owner@mailman2.u.washington.edu\n>\n> When replying, please edit your Subject line so it is more specific\n> than \"Re: Contents of statnet_help digest...\"\n>\n> Today's Topics:\n>\n> ? 1. Combine two Ego Network while taking account of their\n> ? ? ?vertexis and edges (Martin Klaus)\n> ? 2. Re: Combine two Ego Network while taking account of ? ? ? their\n> ? ? ?vertexis and edges (David Hunter)\n>\n>\n> ---------- Forwarded message ----------\n> From:?Martin Klaus <mklaus@wirtschaft.uni-kassel.de>\n> To:?statnet_help@u.washington.edu\n> Date:?Mon, 18 May 2009 18:52:29 +0200\n> Subject:?[statnet_help] Combine two Ego Network while taking account of their vertexis and edges\n>\n> I am searching for a function which mrges/unions/combines two of my extracted ego networks baack together with respect to their vertex.attribute.names.\n> In the following samll example I create two mini networks. g1 with the vertexis A, B and C\n> and g2 with the vertexis B, C and D.\n> Now I want to combine them and receive a new network g12 with four vertexis A,B,C and D and their edges from their origin networks g1 and g2. How can I do this with the network package?\n> --------------------\n>\n> #Create a network with three vertexis named A,B,C\n> m1<-matrix(0,3,3)\n> m1[1,2]<-2; m1[2,3]<-1; m1[3,1]<-2\n> g1<-network(m1)\n> network.vertex.names(g1) <- LETTERS[1:3]\n> g1\n>\n> #Create a second network with three vertexis named B,C,D\n> m2<-matrix(0,3,3)\n> m2[1,2]<-1; m2[2,3]<-1; m2[3,1]<-1\n> g2<-network(m2)\n> network.vertex.names(g2) <- LETTERS[2:4]\n> g2\n>\n> I tried it with the igraph package but this doesn work out at all.How can I do this with at leas one of the packages or any other package???\n>\n> # Combine the two networks with than FOUR vertexis A,B,C,D\n> library(igraph)\n> g12<-graph.union(graph.adjacency(g1),graph.adjacency(g2))\n> plot(g12)\n> detach(\"package:igraph\")\n>\n> Thank you for your held in advance! Sincerely yours\n> Martin Klaus\n>\n>\n>\n> ---------- Forwarded message ----------\n> From:?David Hunter <dhunter@stat.psu.edu>\n> To:?Martin Klaus <mklaus@wirtschaft.uni-kassel.de>\n> Date:?Mon, 18 May 2009 13:54:46 -0400\n> Subject:?Re: [statnet_help] Combine two Ego Network while taking account of their vertexis and edges\n> Hi Martin. ?Try the following. ?First is a simplistic function (beware -- no error-checking!) that changes an edgelist into a \"named edgelist\" where the integers 1 through n are replaced by the vertex names. ?Then, you can stack two such edgelists using the \"rbind\" function and convert to a network:\n>\n> named.edgelist <- function(x)\n> matrix((x %v% \"vertex.names\")[as.edgelist(x)], ncol=2)\n>\n> # Now \"stack\" the two networks created below, called g1 and g2, and change to a network:\n> g12 <- network(rbind(named.edgelist(g1), named.edgelist(g2)))\n>\n> # See the result:\n> as.matrix(g12)\n>\n> ?A B C D\n> A 0 1 0 0\n> B 0 0 1 0\n> C 1 0 0 1\n> D 0 1 0 0\n>\n> Hope this helps.\n>\n> Dave\n>\n> On May 18, 2009, at 12:52 PM, Martin Klaus wrote:\n>\n>>\n>> I am searching for a function which mrges/unions/combines two of my extracted ego networks baack together with respect to their vertex.attribute.names.\n>> In the following samll example I create two mini networks. g1 with the vertexis A, B and C\n>> and g2 with the vertexis B, C and D.\n>> Now I want to combine them and receive a new network g12 with four vertexis A,B,C and D and their edges from their origin networks g1 and g2. How can I do this with the network package?\n>> --------------------\n>>\n>> #Create a network with three vertexis named A,B,C\n>> m1<-matrix(0,3,3)\n>> m1[1,2]<-2; m1[2,3]<-1; m1[3,1]<-2\n>> g1<-network(m1)\n>> network.vertex.names(g1) <- LETTERS[1:3]\n>> g1\n>>\n>> #Create a second network with three vertexis named B,C,D\n>> m2<-matrix(0,3,3)\n>> m2[1,2]<-1; m2[2,3]<-1; m2[3,1]<-1\n>> g2<-network(m2)\n>> network.vertex.names(g2) <- LETTERS[2:4]\n>> g2\n>>\n>> I tried it with the igraph package but this doesn work out at all.How can I do this with at leas one of the packages or any other package???\n>>\n>> # Combine the two networks with than FOUR vertexis A,B,C,D\n>> library(igraph)\n>> g12<-graph.union(graph.adjacency(g1),graph.adjacency(g2))\n>> plot(g12)\n>> detach(\"package:igraph\")\n>>\n>> Thank you for your held in advance! Sincerely yours\n>> Martin Klaus\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@mailman2.u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>",
+      "body_snippet": "dear statnet help mailing list,\nalthough I am subscribed to the mailing list, I do not have\nauthorization access to the archives. When I try logging in to\nhttps://mailman2.u.washington.edu/mailman/pri",
+      "thread_id": "thread-8bed610735d9",
+      "thread_depth": 0,
+      "month": "2009-05"
+    },
+    {
+      "id": "msg-8cd7b7cffb19",
+      "message_id": "<9AEEF1FB6254224AA355ED285F849165373C00A0@EXCHVS2.medctr.ad.wfubmc.edu>",
+      "from_name": "Sean L. Simpson",
+      "from_email_hash": "23eacb2c2cbed5436e4c98b22e4f49db61b6540ea38a73a61605d331f2cfa84b",
+      "date": "2009-05-19T11:15:35Z",
+      "subject": "[statnet_help] Hypothesis Testing/Graph Comparison",
+      "subject_clean": "[statnet_help] Hypothesis Testing/Graph Comparison",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "If you fit two separate (independent) graphs with the same network\nstatistics (e.g., edges and GWESP) and both graphs have the same number\nof vertices, are there any issues with statistically comparing the\nparameter estimates of the two graphs based on maximum likelihood\ntheory?  \n\n \n\nThanks,\n\nSean\n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090519/94107e4d/attachment.html>",
+      "body_snippet": "If you fit two separate (independent) graphs with the same network\nstatistics (e.g., edges and GWESP) and both graphs have the same number\nof vertices, are there any issues with statistically comparin",
+      "thread_id": "thread-8cd7b7cffb19",
+      "thread_depth": 0,
+      "month": "2009-05"
+    },
+    {
+      "id": "msg-dd703cc0dfef",
+      "message_id": "<1DDEDFCF-1062-4A7A-BAEB-69F99D6CFE8C@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-05-19T14:04:16Z",
+      "subject": "[statnet_help] Hypothesis Testing/Graph Comparison",
+      "subject_clean": "[statnet_help] Hypothesis Testing/Graph Comparison",
+      "in_reply_to": "<9AEEF1FB6254224AA355ED285F849165373C00A0@EXCHVS2.medctr.ad.wfubmc.edu>",
+      "references": [
+        "<9AEEF1FB6254224AA355ED285F849165373C00A0@EXCHVS2.medctr.ad.wfubmc.edu>"
+      ],
+      "body_plain": "Hi Sean.  Interesting question.\n\nIn that case the parameters would be comparable, though I'm not  \nexactly sure what comparing based on likelihood theory would mean.   \nYou could certainly do things like compute confidence intervals and  \nthen conclude if the intervals do not overlap that the parameters are  \nsignificantly different, though this is not usually such a good way to  \nrun tests (the power is low and if the intervals do overlap then you  \ncan't conclude that the test shouldn't reject the null hypothesis).\n\nDave\n\n\n\nOn May 19, 2009, at 2:15 PM, Sean L. Simpson wrote:\n\n> If you fit two separate (independent) graphs with the same network  \n> statistics (e.g., edges and GWESP) and both graphs have the same  \n> number of vertices, are there any issues with statistically  \n> comparing the parameter estimates of the two graphs based on maximum  \n> likelihood theory?\n>\n> Thanks,\n> Sean\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090519/d7586055/attachment.html>",
+      "body_snippet": "Hi Sean.  Interesting question.\n\nIn that case the parameters would be comparable, though I'm not  \nexactly sure what comparing based on likelihood theory would mean.   \nYou could certainly do things l",
+      "thread_id": "thread-8cd7b7cffb19",
+      "thread_depth": 1,
+      "month": "2009-05"
+    },
+    {
+      "id": "msg-6fe9e5f5f873",
+      "message_id": "<B455EB69-E7D6-420A-8151-58C0CB7AE17C@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-05-20T07:06:27Z",
+      "subject": "[statnet_help] Hypothesis Testing/Graph Comparison",
+      "subject_clean": "[statnet_help] Hypothesis Testing/Graph Comparison",
+      "in_reply_to": "<9AEEF1FB6254224AA355ED285F84916537438D38@EXCHVS2.medctr.ad.wfubmc.edu>",
+      "references": [
+        "<9AEEF1FB6254224AA355ED285F849165373C00A0@EXCHVS2.medctr.ad.wfubmc.edu>",
+        "<1DDEDFCF-1062-4A7A-BAEB-69F99D6CFE8C@stat.psu.edu>",
+        "<9AEEF1FB6254224AA355ED285F84916537438D38@EXCHVS2.medctr.ad.wfubmc.edu>"
+      ],
+      "body_plain": "Hi Sean.  Hope you don't mind I'm responding to the group; this topic  \nseems interesting to a few others.\n\nYes, you're exactly right -- it would be defensible, and in fact this  \nis exactly the observation that Carter Butts made yesterday to me  \noffline.  (Thanks, Carter!)\nThe analogy would be to a 2-sample t-test with unequal variances, in  \nwhich the two estimated variances (or in this case, approximated  \ncovariance matrices) are summed to give the variance of the  \ndifference, which would have mean zero under the null hypothesis of  \nequality.\n\nDave\n\n\nOn May 20, 2009, at 9:14 AM, Sean L. Simpson wrote:\n\n> Hi Dave,\n>\n> For instance, if we appealed to the asymptotic normality of MLEs to  \n> construct an ?approximate? 2-sample z-test of difference, would this  \n> rudimentary approach seem defensible in this context?\n>\n> Thank you,\n> Sean\n>\n> From: David Hunter [mailto:dhunter@stat.psu.edu]\n> Sent: Tuesday, May 19, 2009 5:04 PM\n> To: Sean L. Simpson\n> Cc: statnet_help@u.washington.edu\n> Subject: Re: [statnet_help] Hypothesis Testing/Graph Comparison\n>\n> Hi Sean.  Interesting question.\n>\n> In that case the parameters would be comparable, though I'm not  \n> exactly sure what comparing based on likelihood theory would mean.   \n> You could certainly do things like compute confidence intervals and  \n> then conclude if the intervals do not overlap that the parameters  \n> are significantly different, though this is not usually such a good  \n> way to run tests (the power is low and if the intervals do overlap  \n> then you can't conclude that the test shouldn't reject the null  \n> hypothesis).\n>\n> Dave\n>\n>\n>\n>\n> On May 19, 2009, at 2:15 PM, Sean L. Simpson wrote:\n>\n>\n> If you fit two separate (independent) graphs with the same network  \n> statistics (e.g., edges and GWESP) and both graphs have the same  \n> number of vertices, are there any issues with statistically  \n> comparing the parameter estimates of the two graphs based on maximum  \n> likelihood theory?\n>\n> Thanks,\n> Sean\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090520/fedabbda/attachment.html>",
+      "body_snippet": "Hi Sean.  Hope you don't mind I'm responding to the group; this topic  \nseems interesting to a few others.\n\nYes, you're exactly right -- it would be defensible, and in fact this  \nis exactly the obser",
+      "thread_id": "thread-6fe9e5f5f873",
+      "thread_depth": 0,
+      "month": "2009-05"
+    },
+    {
+      "id": "msg-727b75c7cc41",
+      "message_id": "<!&!AAAAAAAAAAAYAAAAAAAAAG6czEKsEwFCsfIjmFqmgfWCgQAAEAAAADFBht9t/JBJh/Z5eo4cKrQBAAAAAA==@keepnet.de>",
+      "from_name": "Arne Schulz",
+      "from_email_hash": "4d31ad5e64054e9e8760c981d253fd9c3ce23dc3b62ff099461bc52d39fbebfe",
+      "date": "2009-05-24T07:01:29Z",
+      "subject": "[statnet_help] (no subject)",
+      "subject_clean": "[statnet_help] (no subject)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090524/f045f9cb/attachment.html>",
+      "body_snippet": "-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090524/f045f9cb/attachment.html>",
+      "thread_id": "thread-727b75c7cc41",
+      "thread_depth": 0,
+      "month": "2009-05"
+    },
+    {
+      "id": "msg-470fa37e637c",
+      "message_id": "<!&!AAAAAAAAAAAYAAAAAAAAAAGeiHuMpk9DtrOpgQ8eKbHigAAAEAAAAOdPFaKl4aVFoB6v5NvuJfQBAAAAAA==@student.uni-kassel.de>",
+      "from_name": "Arne Schulz",
+      "from_email_hash": "868861b88191aa722814a702f9d81fb6abfd0b1ed7047746ce2bc05b2c971aa7",
+      "date": "2009-05-24T08:22:32Z",
+      "subject": "[statnet_help] Change size of vertex in dynamic networks (slice, rSonia)",
+      "subject_clean": "[statnet_help] Change size of vertex in dynamic networks (slice, rSonia)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear list,\n\nI?m currently working on a problem considering the size-change of vertex in a dynamic network. \n\n \n\nPlease take a look at my attached syntax, the network is based on ??add.edge.dynamic?. The setting of a unique size to all vertex is no problem, like the setting of the specific changes of the vertex. But when I try to get some slices or export the network to rSonia, I get the error according to the wrong number of dimensions. On the other hand, when leaving out the overall-attribute (size = 2), I just get a slice with only one vertex or very small vertex in rSonia with no change in size.\n\n \n\nI tried to figure this out for more than a week now, changing all options that came into my mind, so it would be nice if someone has an idea (or even better, a solution) according to my problem.\n\n \n\nBest regards,\n\nArne Schulz\n\n \n\nP.S.: Please apologize the former empty mail, seems like I clicked on the wrong link?\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090524/1d8991f6/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: dynamic_vertex.r\nType: application/octet-stream\nSize: 1212 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090524/1d8991f6/attachment.obj>",
+      "body_snippet": "Dear list,\n\nI?m currently working on a problem considering the size-change of vertex in a dynamic network. \n\n \n\nPlease take a look at my attached syntax, the network is based on ??add.edge.dynamic?. T",
+      "thread_id": "thread-470fa37e637c",
+      "thread_depth": 0,
+      "month": "2009-05"
+    },
+    {
+      "id": "msg-d46cd66326e8",
+      "message_id": "<d89cb5670905241022s15eac07bu651871ce5ec647e@mail.gmail.com>",
+      "from_name": "Ofer Engel",
+      "from_email_hash": "0d8b2bc6647c0671a3f96590ef8c20bfc3f070984aea2160b8f7c24f74040577",
+      "date": "2009-05-24T10:22:47Z",
+      "subject": "[statnet_help] extracting sub-networks according to edge-weight",
+      "subject_clean": "[statnet_help] extracting sub-networks according to edge-weight",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\ngiven a network with edge-attributes \"weight\", is there any way to extract a\nsub-network comprising only the edges within a certain range of weights (eg\nbetween w1 and w2)?\nAll the vertices that remain isolates should then be removed from the\nnetwork...\n\nIf that is relatively easy, is there a way to create say 10 sub-networks,\nthe first sub-network contains only vertices connected by edges weighted w1\nto w2, the second only with vertices connected with edges weighted w2 to w3\netc...\n\n\nmany thanks,\nOfer\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090524/cbf4ba8e/attachment.html>",
+      "body_snippet": "Dear all,\ngiven a network with edge-attributes \"weight\", is there any way to extract a\nsub-network comprising only the edges within a certain range of weights (eg\nbetween w1 and w2)?\nAll the vertices ",
+      "thread_id": "thread-d46cd66326e8",
+      "thread_depth": 0,
+      "month": "2009-05"
+    },
+    {
+      "id": "msg-61c7837c37b1",
+      "message_id": "<E9A101192BE76249BEF0AEA4AA4E857C395AFBDB29@ITCCRMAIL02.MED.HARVARD.EDU>",
+      "from_name": "Sul, Young L",
+      "from_email_hash": "95ee0a2f57821280b1c62ee8b09f111e0617665d37cc84aa9b4b8b7342d8c533",
+      "date": "2009-05-29T11:18:27Z",
+      "subject": "[statnet_help] Help installing on Solaris 10 Intel",
+      "subject_clean": "[statnet_help] Help installing on Solaris 10 Intel",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI'm trying to install statnet on my Sun X4600, running Solaris 10/Intel.\n\nIt looks like all the packages, except for sna install fine.\n\nThe error I get is:\n\n* Installing *source* package 'sna' ...\n** libs\ngcc -std=gnu99 -I/tmp/rtest/foo/lib/R/include  -I/usr/local/include    -fpic  -g -O2 -c components.c -o components.o\ngcc -std=gnu99 -I/tmp/rtest/foo/lib/R/include  -I/usr/local/include    -fpic  -g -O2 -c geodist.c -o geodist.o\ngcc -std=gnu99 -I/tmp/rtest/foo/lib/R/include  -I/usr/local/include    -fpic  -g -O2 -c gli.c -o gli.o\ngcc -std=gnu99 -I/tmp/rtest/foo/lib/R/include  -I/usr/local/include    -fpic  -g -O2 -c layout.c -o layout.o\ngcc -std=gnu99 -I/tmp/rtest/foo/lib/R/include  -I/usr/local/include    -fpic  -g -O2 -c likelihood.c -o likelihood.o\ngcc -std=gnu99 -I/tmp/rtest/foo/lib/R/include  -I/usr/local/include    -fpic  -g -O2 -c nli.c -o nli.o\ngcc -std=gnu99 -I/tmp/rtest/foo/lib/R/include  -I/usr/local/include    -fpic  -g -O2 -c paths.c -o paths.o\npaths.c: In function 'cycleCensus_R':\npaths.c:383: error: non-floating-point argument to function '__builtin_isnan'\n*** Error code 1\nmake: Fatal error: Command failed for target `paths.o'\nERROR: compilation failed for package 'sna'\n\nI have tried installing using Sun Studio 12, as well as gcc 4.3.3 from opencsw.org. In both cases, I get a complaint about \"isnan\" (I'm assuming this is referring to \"is not a number\").\n\nHas anyone else seen this before?\n\n-y\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090529/4a3c9d3c/attachment.html>",
+      "body_snippet": "Hi,\n\nI'm trying to install statnet on my Sun X4600, running Solaris 10/Intel.\n\nIt looks like all the packages, except for sna install fine.\n\nThe error I get is:\n\n* Installing *source* package 'sna' ..",
+      "thread_id": "thread-61c7837c37b1",
+      "thread_depth": 0,
+      "month": "2009-05"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-6aa060848fe5",
+      "subject": "[statnet_help] Change statistics",
+      "message_count": 1,
+      "participants": [
+        "Steven Goodreau"
+      ],
+      "started": "2009-05-08T14:36:38Z",
+      "last_reply": "2009-05-08T14:36:38Z",
+      "root_message_id": "msg-6aa060848fe5"
+    },
+    {
+      "id": "thread-87c08834301f",
+      "subject": "[statnet_help] Combine Ego networks and more",
+      "message_count": 1,
+      "participants": [
+        "Martin Klaus"
+      ],
+      "started": "2009-05-15T03:05:17Z",
+      "last_reply": "2009-05-15T03:05:17Z",
+      "root_message_id": "msg-87c08834301f"
+    },
+    {
+      "id": "thread-43b0e462a1fb",
+      "subject": "[statnet_help] Distance Statistic",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Sean L. Simpson"
+      ],
+      "started": "2009-05-15T06:58:04Z",
+      "last_reply": "2009-05-15T07:15:13Z",
+      "root_message_id": "msg-43b0e462a1fb"
+    },
+    {
+      "id": "thread-d8505286c3cf",
+      "subject": "[statnet_help] combine ego networks with different sizes to one new network",
+      "message_count": 1,
+      "participants": [
+        "Martin Klaus"
+      ],
+      "started": "2009-05-15T07:20:54Z",
+      "last_reply": "2009-05-15T07:20:54Z",
+      "root_message_id": "msg-d8505286c3cf"
+    },
+    {
+      "id": "thread-098fbad84c38",
+      "subject": "[statnet_help] Combine two Ego Network while taking account of their vertexis and edges",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Martin Klaus"
+      ],
+      "started": "2009-05-18T09:52:29Z",
+      "last_reply": "2009-05-18T10:54:46Z",
+      "root_message_id": "msg-098fbad84c38"
+    },
+    {
+      "id": "thread-8bed610735d9",
+      "subject": "[statnet_help] help",
+      "message_count": 1,
+      "participants": [
+        "Ofer Engel"
+      ],
+      "started": "2009-05-18T13:22:35Z",
+      "last_reply": "2009-05-18T13:22:35Z",
+      "root_message_id": "msg-8bed610735d9"
+    },
+    {
+      "id": "thread-8cd7b7cffb19",
+      "subject": "[statnet_help] Hypothesis Testing/Graph Comparison",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Sean L. Simpson"
+      ],
+      "started": "2009-05-19T11:15:35Z",
+      "last_reply": "2009-05-19T14:04:16Z",
+      "root_message_id": "msg-8cd7b7cffb19"
+    },
+    {
+      "id": "thread-6fe9e5f5f873",
+      "subject": "[statnet_help] Hypothesis Testing/Graph Comparison",
+      "message_count": 1,
+      "participants": [
+        "David Hunter"
+      ],
+      "started": "2009-05-20T07:06:27Z",
+      "last_reply": "2009-05-20T07:06:27Z",
+      "root_message_id": "msg-6fe9e5f5f873"
+    },
+    {
+      "id": "thread-727b75c7cc41",
+      "subject": "[statnet_help] (no subject)",
+      "message_count": 1,
+      "participants": [
+        "Arne Schulz"
+      ],
+      "started": "2009-05-24T07:01:29Z",
+      "last_reply": "2009-05-24T07:01:29Z",
+      "root_message_id": "msg-727b75c7cc41"
+    },
+    {
+      "id": "thread-470fa37e637c",
+      "subject": "[statnet_help] Change size of vertex in dynamic networks (slice, rSonia)",
+      "message_count": 1,
+      "participants": [
+        "Arne Schulz"
+      ],
+      "started": "2009-05-24T08:22:32Z",
+      "last_reply": "2009-05-24T08:22:32Z",
+      "root_message_id": "msg-470fa37e637c"
+    },
+    {
+      "id": "thread-d46cd66326e8",
+      "subject": "[statnet_help] extracting sub-networks according to edge-weight",
+      "message_count": 1,
+      "participants": [
+        "Ofer Engel"
+      ],
+      "started": "2009-05-24T10:22:47Z",
+      "last_reply": "2009-05-24T10:22:47Z",
+      "root_message_id": "msg-d46cd66326e8"
+    },
+    {
+      "id": "thread-61c7837c37b1",
+      "subject": "[statnet_help] Help installing on Solaris 10 Intel",
+      "message_count": 1,
+      "participants": [
+        "Sul, Young L"
+      ],
+      "started": "2009-05-29T11:18:27Z",
+      "last_reply": "2009-05-29T11:18:27Z",
+      "root_message_id": "msg-61c7837c37b1"
+    }
+  ]
+}

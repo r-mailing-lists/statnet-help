@@ -1,0 +1,182 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2011-01",
+  "messages": [
+    {
+      "id": "msg-7f4aca9804f8",
+      "message_id": "<697961.7423.qm@web34404.mail.mud.yahoo.com>",
+      "from_name": "jeremy hackney",
+      "from_email_hash": "9106249490d12d007a96894078543fdeb9b39679e3e8265fdb7d02ea70d61fd9",
+      "date": "2011-01-02T10:10:55Z",
+      "subject": "[statnet_help] Errors with \"simulate\" on our Linux machine",
+      "subject_clean": "[statnet_help] Errors with \"simulate\" on our Linux machine",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello and happy new year,\nI've got the statnet version with the 2.4-0 binary release of latentnet at home and at work. It's fine on my PC (Windows XP) but I'm not able to run \"simulate\" on my Linux machine at work. There is a different complaint depending on the arguments passed. After my models failed, I tried an example from the article published in JSS 24(9). Here is the failure with that standard example, using various arguments for \"simulate\". Any clues? It is R 2.11.1.\n\nThanks\nJeremy\n\nInstitute for Transport Systems and Planning, ETH Zurich\nhttp://www.ivt.ethz.ch/people/jhackney\n\n> fmh<-faux.magnolia.high\n> plot(fmh)\n> model1<-ergm(fmh~edges+nodematch(\"Grade\")+nodematch(\"Race\")+nodematch(\"Sex\"))\n> sim1<-simulate(model1)\nError in ans[test & !nas] <- rep(yes, length.out = length(ans))[test &? :\n? replacement has length zero\n> sim1<-simulate(model1,verbose=TRUE)\nStarting 1 MCMC iteration of? steps.\nError in ans[test & !nas] <- rep(yes, length.out = length(ans))[test &? :\n? replacement has length zero\n> sim1<-simulate(model1,verbose=TRUE,seed=9)\nStarting 1 MCMC iteration of? steps.\nError in ans[test & !nas] <- rep(yes, length.out = length(ans))[test &? :\n? replacement has length zero\n> sim1<-simulate(model1,verbose=TRUE,seed=9,burnin=1e06)\nStarting 1 MCMC iteration of? steps.\n\n *** caught segfault ***\naddress (nil), cause 'memory not mapped'\n\nTraceback:\n 1: .C(\"MCMC_wrapper\", as.integer(Clist$heads), as.integer(Clist$tails),? ???as.integer(Clist$nedges), as.integer(Clist$maxpossibleedges),? ???as.integer(Clist$n), as.integer(Clist$dir), as.integer(Clist$bipartite),? ???as.integer(Clist$nterms), as.character(Clist$fnamestring),? ???as.character(Clist$snamestring), as.character(MHproposal$name),? ???as.character(MHproposal$package), as.double(Clist$inputs),? ???as.double(eta0), as.integer(MCMCparams$samplesize), statsmatrix = double(MCMCparams$nmatrixentries),? ???as.integer(MCMCparams$burnin), as.integer(MCMCparams$interval),? ???newnwheads = integer(MCMCparams$maxedges), newnwtails = integer(MCMCparams$maxedges),? ???as.integer(verbose), as.integer(MHproposal$bd$attribs), as.integer(MHproposal$bd$maxout),? ???as.integer(MHproposal$bd$maxin), as.integer(MHproposal$bd$minout),? ???as.integer(MHproposal$bd$minin), as.integer(MHproposal$bd$condAllDegExact),?\n ???as.integer(length(MHproposal$bd$attribs)),\n as.integer(maxedges),? ???as.integer(MCMCparams$Clist.miss$heads), as.integer(MCMCparams$Clist.miss$tails),? ???as.integer(MCMCparams$Clist.miss$nedges), PACKAGE = \"ergm\")\n 2: ergm.getMCMCsample(Clist, MHproposal, theta0, MCMCparams, verbose)\n 3: simulate.formula(object$formula, nsim = nsim, seed = seed, theta0 = theta0,? ???burnin = burnin, interval = interval, statsonly = statsonly,? ???sequential = sequential, constraints = constraints, control = control,? ???verbose = verbose, ...)\n 4: simulate.ergm(model1, verbose = TRUE, seed = 9, burnin = 1e+06)\n 5: simulate(model1, verbose = TRUE, seed = 9, burnin = 1e+06)\n\nPossible actions:\n1: abort (with core dump, if enabled)\n2: normal R exit\n3: exit R without saving workspace\n4: exit R saving workspace\nSelection:",
+      "body_snippet": "Hello and happy new year,\nI've got the statnet version with the 2.4-0 binary release of latentnet at home and at work. It's fine on my PC (Windows XP) but I'm not able to run \"simulate\" on my Linux ma",
+      "thread_id": "thread-7f4aca9804f8",
+      "thread_depth": 0,
+      "month": "2011-01"
+    },
+    {
+      "id": "msg-5fb1baadb0c5",
+      "message_id": "<308771.1332.qm@web34404.mail.mud.yahoo.com>",
+      "from_name": "jeremy hackney",
+      "from_email_hash": "9106249490d12d007a96894078543fdeb9b39679e3e8265fdb7d02ea70d61fd9",
+      "date": "2011-01-05T10:48:29Z",
+      "subject": "[statnet_help] Correction: Errors with \"simulate\" on our Linux machine",
+      "subject_clean": "[statnet_help] Correction: Errors with \"simulate\" on our Linux machine",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I have an important correction: the Linux machine with the problems with \"simulate\" is running from the source code:\n\n> getOption(\"pkgType\")\n[1] \"source\"\n\nI am running from binary at home on the PC with no problems.\n\nThanks for any help on getting \"simulate\" to run. It might just be something my sys admin needs to do. Meanwhile I may attempt to install my own binary library of statnet on the Linux machine.\n\n-Jeremy\n\n--- On Sun, 1/2/11, jeremy hackney <jkhackney@yahoo.com> wrote:\n\n> From: jeremy hackney <jkhackney@yahoo.com>\n> Subject: [statnet_help] Errors with \"simulate\" on our Linux machine\n> To: statnet_help@u.washington.edu\n> Date: Sunday, January 2, 2011, 11:10 AM\n> Hello and happy new year,\n> I've got the statnet version with the 2.4-0 binary release\n> of latentnet at home and at work. It's fine on my PC\n> (Windows XP) but I'm not able to run \"simulate\" on my Linux\n> machine at work. There is a different complaint depending on\n> the arguments passed. After my models failed, I tried an\n> example from the article published in JSS 24(9). Here is the\n> failure with that standard example, using various arguments\n> for \"simulate\". Any clues? It is R 2.11.1.\n> \n> Thanks\n> Jeremy\n> \n> Institute for Transport Systems and Planning, ETH Zurich\n> http://www.ivt.ethz.ch/people/jhackney\n> \n> > fmh<-faux.magnolia.high\n> > plot(fmh)\n> >\n> model1<-ergm(fmh~edges+nodematch(\"Grade\")+nodematch(\"Race\")+nodematch(\"Sex\"))\n> > sim1<-simulate(model1)\n> Error in ans[test & !nas] <- rep(yes, length.out =\n> length(ans))[test &? :\n> ? replacement has length zero\n> > sim1<-simulate(model1,verbose=TRUE)\n> Starting 1 MCMC iteration of? steps.\n> Error in ans[test & !nas] <- rep(yes, length.out =\n> length(ans))[test &? :\n> ? replacement has length zero\n> > sim1<-simulate(model1,verbose=TRUE,seed=9)\n> Starting 1 MCMC iteration of? steps.\n> Error in ans[test & !nas] <- rep(yes, length.out =\n> length(ans))[test &? :\n> ? replacement has length zero\n> >\n> sim1<-simulate(model1,verbose=TRUE,seed=9,burnin=1e06)\n> Starting 1 MCMC iteration of? steps.\n> \n>  *** caught segfault ***\n> address (nil), cause 'memory not mapped'\n> \n> Traceback:\n>  1: .C(\"MCMC_wrapper\", as.integer(Clist$heads),\n> as.integer(Clist$tails),? ???as.integer(Clist$nedges),\n> as.integer(Clist$maxpossibleedges),?\n> ???as.integer(Clist$n), as.integer(Clist$dir),\n> as.integer(Clist$bipartite),?\n> ???as.integer(Clist$nterms),\n> as.character(Clist$fnamestring),?\n> ???as.character(Clist$snamestring),\n> as.character(MHproposal$name),?\n> ???as.character(MHproposal$package),\n> as.double(Clist$inputs),? ???as.double(eta0),\n> as.integer(MCMCparams$samplesize), statsmatrix =\n> double(MCMCparams$nmatrixentries),?\n> ???as.integer(MCMCparams$burnin),\n> as.integer(MCMCparams$interval),? ???newnwheads =\n> integer(MCMCparams$maxedges), newnwtails =\n> integer(MCMCparams$maxedges),? ???as.integer(verbose),\n> as.integer(MHproposal$bd$attribs),\n> as.integer(MHproposal$bd$maxout),?\n> ???as.integer(MHproposal$bd$maxin),\n> as.integer(MHproposal$bd$minout),?\n> ???as.integer(MHproposal$bd$minin),\n> as.integer(MHproposal$bd$condAllDegExact),?\n>  ???as.integer(length(MHproposal$bd$attribs)),\n>  as.integer(maxedges),?\n> ???as.integer(MCMCparams$Clist.miss$heads),\n> as.integer(MCMCparams$Clist.miss$tails),?\n> ???as.integer(MCMCparams$Clist.miss$nedges), PACKAGE =\n> \"ergm\")\n>  2: ergm.getMCMCsample(Clist, MHproposal, theta0,\n> MCMCparams, verbose)\n>  3: simulate.formula(object$formula, nsim = nsim, seed =\n> seed, theta0 = theta0,? ???burnin = burnin, interval =\n> interval, statsonly = statsonly,? ???sequential =\n> sequential, constraints = constraints, control = control,?\n> ???verbose = verbose, ...)\n>  4: simulate.ergm(model1, verbose = TRUE, seed = 9, burnin\n> = 1e+06)\n>  5: simulate(model1, verbose = TRUE, seed = 9, burnin =\n> 1e+06)\n> \n> Possible actions:\n> 1: abort (with core dump, if enabled)\n> 2: normal R exit\n> 3: exit R without saving workspace\n> 4: exit R saving workspace\n> Selection:\n> \n> \n> \n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "I have an important correction: the Linux machine with the problems with \"simulate\" is running from the source code:\n\n> getOption(\"pkgType\")\n[1] \"source\"\n\nI am running from binary at home on the PC wi",
+      "thread_id": "thread-5fb1baadb0c5",
+      "thread_depth": 0,
+      "month": "2011-01"
+    },
+    {
+      "id": "msg-09cd5b75b9e9",
+      "message_id": "<727304.83333.qm@web34402.mail.mud.yahoo.com>",
+      "from_name": "jeremy hackney",
+      "from_email_hash": "9106249490d12d007a96894078543fdeb9b39679e3e8265fdb7d02ea70d61fd9",
+      "date": "2011-01-05T12:45:37Z",
+      "subject": "Fw: [statnet_help] Correction: Errors with \"simulate\" on our Linux machine",
+      "subject_clean": "[statnet_help] Correction: Errors with \"simulate\" on our Linux machine",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I re-installed the package on the Linux machine in my own home directory and set the library variable to look there, and it's working. I'll ask a sys admin to figure out why his installation was crashing.\n-Jeremy\n\n\n--- On Wed, 1/5/11, jeremy hackney <jkhackney@yahoo.com> wrote:\n\n> From: jeremy hackney <jkhackney@yahoo.com>\n> Subject: [statnet_help] Correction: Errors with \"simulate\" on our Linux machine\n> To: statnet_help@u.washington.edu\n> Date: Wednesday, January 5, 2011, 11:48 AM\n> I have an important correction: the\n> Linux machine with the problems with \"simulate\" is running\n> from the source code:\n> \n> > getOption(\"pkgType\")\n> [1] \"source\"\n> \n> I am running from binary at home on the PC with no\n> problems.\n> \n> Thanks for any help on getting \"simulate\" to run. It might\n> just be something my sys admin needs to do. Meanwhile I may\n> attempt to install my own binary library of statnet on the\n> Linux machine.\n> \n> -Jeremy\n> \n> --- On Sun, 1/2/11, jeremy hackney <jkhackney@yahoo.com>\n> wrote:\n> \n> > From: jeremy hackney <jkhackney@yahoo.com>\n> > Subject: [statnet_help] Errors with \"simulate\" on our\n> Linux machine\n> > To: statnet_help@u.washington.edu\n> > Date: Sunday, January 2, 2011, 11:10 AM\n> > Hello and happy new year,\n> > I've got the statnet version with the 2.4-0 binary\n> release\n> > of latentnet at home and at work. It's fine on my PC\n> > (Windows XP) but I'm not able to run \"simulate\" on my\n> Linux\n> > machine at work. There is a different complaint\n> depending on\n> > the arguments passed. After my models failed, I tried\n> an\n> > example from the article published in JSS 24(9). Here\n> is the\n> > failure with that standard example, using various\n> arguments\n> > for \"simulate\". Any clues? It is R 2.11.1.\n> > \n> > Thanks\n> > Jeremy\n> > \n> > Institute for Transport Systems and Planning, ETH\n> Zurich\n> > http://www.ivt.ethz.ch/people/jhackney\n> > \n> > > fmh<-faux.magnolia.high\n> > > plot(fmh)\n> > >\n> >\n> model1<-ergm(fmh~edges+nodematch(\"Grade\")+nodematch(\"Race\")+nodematch(\"Sex\"))\n> > > sim1<-simulate(model1)\n> > Error in ans[test & !nas] <- rep(yes,\n> length.out =\n> > length(ans))[test &? :\n> > ? replacement has length zero\n> > > sim1<-simulate(model1,verbose=TRUE)\n> > Starting 1 MCMC iteration of? steps.\n> > Error in ans[test & !nas] <- rep(yes,\n> length.out =\n> > length(ans))[test &? :\n> > ? replacement has length zero\n> > > sim1<-simulate(model1,verbose=TRUE,seed=9)\n> > Starting 1 MCMC iteration of? steps.\n> > Error in ans[test & !nas] <- rep(yes,\n> length.out =\n> > length(ans))[test &? :\n> > ? replacement has length zero\n> > >\n> >\n> sim1<-simulate(model1,verbose=TRUE,seed=9,burnin=1e06)\n> > Starting 1 MCMC iteration of? steps.\n> > \n> >? *** caught segfault ***\n> > address (nil), cause 'memory not mapped'\n> > \n> > Traceback:\n> >? 1: .C(\"MCMC_wrapper\", as.integer(Clist$heads),\n> > as.integer(Clist$tails),?\n> ???as.integer(Clist$nedges),\n> > as.integer(Clist$maxpossibleedges),?\n> > ???as.integer(Clist$n), as.integer(Clist$dir),\n> > as.integer(Clist$bipartite),?\n> > ???as.integer(Clist$nterms),\n> > as.character(Clist$fnamestring),?\n> > ???as.character(Clist$snamestring),\n> > as.character(MHproposal$name),?\n> > ???as.character(MHproposal$package),\n> > as.double(Clist$inputs),? ???as.double(eta0),\n> > as.integer(MCMCparams$samplesize), statsmatrix =\n> > double(MCMCparams$nmatrixentries),?\n> > ???as.integer(MCMCparams$burnin),\n> > as.integer(MCMCparams$interval),? ???newnwheads =\n> > integer(MCMCparams$maxedges), newnwtails =\n> > integer(MCMCparams$maxedges),?\n> ???as.integer(verbose),\n> > as.integer(MHproposal$bd$attribs),\n> > as.integer(MHproposal$bd$maxout),?\n> > ???as.integer(MHproposal$bd$maxin),\n> > as.integer(MHproposal$bd$minout),?\n> > ???as.integer(MHproposal$bd$minin),\n> > as.integer(MHproposal$bd$condAllDegExact),?\n> >?\n> ???as.integer(length(MHproposal$bd$attribs)),\n> >? as.integer(maxedges),?\n> > ???as.integer(MCMCparams$Clist.miss$heads),\n> > as.integer(MCMCparams$Clist.miss$tails),?\n> > ???as.integer(MCMCparams$Clist.miss$nedges),\n> PACKAGE =\n> > \"ergm\")\n> >? 2: ergm.getMCMCsample(Clist, MHproposal,\n> theta0,\n> > MCMCparams, verbose)\n> >? 3: simulate.formula(object$formula, nsim = nsim,\n> seed =\n> > seed, theta0 = theta0,? ???burnin = burnin,\n> interval =\n> > interval, statsonly = statsonly,? ???sequential =\n> > sequential, constraints = constraints, control =\n> control,?\n> > ???verbose = verbose, ...)\n> >? 4: simulate.ergm(model1, verbose = TRUE, seed =\n> 9, burnin\n> > = 1e+06)\n> >? 5: simulate(model1, verbose = TRUE, seed = 9,\n> burnin =\n> > 1e+06)\n> > \n> > Possible actions:\n> > 1: abort (with core dump, if enabled)\n> > 2: normal R exit\n> > 3: exit R without saving workspace\n> > 4: exit R saving workspace\n> > Selection:\n> > \n> > \n> > \n> > \n> > \n> > _______________________________________________\n> > statnet_help mailing list\n> > statnet_help@u.washington.edu\n> > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> > \n> \n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "I re-installed the package on the Linux machine in my own home directory and set the library variable to look there, and it's working. I'll ask a sys admin to figure out why his installation was crash",
+      "thread_id": "thread-09cd5b75b9e9",
+      "thread_depth": 0,
+      "month": "2011-01"
+    },
+    {
+      "id": "msg-216a5246e581",
+      "message_id": "<alpine.WNT.2.00.1101051327260.2336@Martina-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2011-01-05T13:27:35Z",
+      "subject": "Fw: [statnet_help] Correction: Errors with \"simulate\" on our Linux machine",
+      "subject_clean": "[statnet_help] Correction: Errors with \"simulate\" on our Linux machine",
+      "in_reply_to": "<727304.83333.qm@web34402.mail.mud.yahoo.com>",
+      "references": [
+        "<727304.83333.qm@web34402.mail.mud.yahoo.com>"
+      ],
+      "body_plain": "Thanks Jeremy -- good to hear.\n\nOn Wed, 5 Jan 2011, jeremy hackney wrote:\n\n> I re-installed the package on the Linux machine in my own home directory and set the library variable to look there, and it's working. I'll ask a sys admin to figure out why his installation was crashing.\n> -Jeremy\n>\n>\n> --- On Wed, 1/5/11, jeremy hackney <jkhackney@yahoo.com> wrote:\n>\n>> From: jeremy hackney <jkhackney@yahoo.com>\n>> Subject: [statnet_help] Correction: Errors with \"simulate\" on our Linux machine\n>> To: statnet_help@u.washington.edu\n>> Date: Wednesday, January 5, 2011, 11:48 AM\n>> I have an important correction: the\n>> Linux machine with the problems with \"simulate\" is running\n>> from the source code:\n>> \n>> > getOption(\"pkgType\")\n>> [1] \"source\"\n>> \n>> I am running from binary at home on the PC with no\n>> problems.\n>> \n>> Thanks for any help on getting \"simulate\" to run. It might\n>> just be something my sys admin needs to do. Meanwhile I may\n>> attempt to install my own binary library of statnet on the\n>> Linux machine.\n>> \n>> -Jeremy\n>> \n>> --- On Sun, 1/2/11, jeremy hackney <jkhackney@yahoo.com>\n>> wrote:\n>> \n>> > From: jeremy hackney <jkhackney@yahoo.com>\n>> > Subject: [statnet_help] Errors with \"simulate\" on our\n>> Linux machine\n>> > To: statnet_help@u.washington.edu\n>> > Date: Sunday, January 2, 2011, 11:10 AM\n>> > Hello and happy new year,\n>> > I've got the statnet version with the 2.4-0 binary\n>> release\n>> > of latentnet at home and at work. It's fine on my PC\n>> > (Windows XP) but I'm not able to run \"simulate\" on my\n>> Linux\n>> > machine at work. There is a different complaint\n>> depending on\n>> > the arguments passed. After my models failed, I tried\n>> an\n>> > example from the article published in JSS 24(9). Here\n>> is the\n>> > failure with that standard example, using various\n>> arguments\n>> > for \"simulate\". Any clues? It is R 2.11.1.\n>> > \n>> > Thanks\n>> > Jeremy\n>> > \n>> > Institute for Transport Systems and Planning, ETH\n>> Zurich\n>> > http://www.ivt.ethz.ch/people/jhackney\n>> > \n>> > > fmh<-faux.magnolia.high\n>> > > plot(fmh)\n>> > >\n>> >\n>> model1<-ergm(fmh~edges+nodematch(\"Grade\")+nodematch(\"Race\")+nodematch(\"Sex\"))\n>> > > sim1<-simulate(model1)\n>> > Error in ans[test & !nas] <- rep(yes,\n>> length.out =\n>> > length(ans))[test &? :\n>> > ? replacement has length zero\n>> > > sim1<-simulate(model1,verbose=TRUE)\n>> > Starting 1 MCMC iteration of? steps.\n>> > Error in ans[test & !nas] <- rep(yes,\n>> length.out =\n>> > length(ans))[test &? :\n>> > ? replacement has length zero\n>> > > sim1<-simulate(model1,verbose=TRUE,seed=9)\n>> > Starting 1 MCMC iteration of? steps.\n>> > Error in ans[test & !nas] <- rep(yes,\n>> length.out =\n>> > length(ans))[test &? :\n>> > ? replacement has length zero\n>> > >\n>> >\n>> sim1<-simulate(model1,verbose=TRUE,seed=9,burnin=1e06)\n>> > Starting 1 MCMC iteration of? steps.\n>> > \n>> >? *** caught segfault ***\n>> > address (nil), cause 'memory not mapped'\n>> > \n>> > Traceback:\n>> >? 1: .C(\"MCMC_wrapper\", as.integer(Clist$heads),\n>> > as.integer(Clist$tails),\n>> ???as.integer(Clist$nedges),\n>> > as.integer(Clist$maxpossibleedges), \n>> > ???as.integer(Clist$n), as.integer(Clist$dir),\n>> > as.integer(Clist$bipartite), \n>> > ???as.integer(Clist$nterms),\n>> > as.character(Clist$fnamestring), \n>> > ???as.character(Clist$snamestring),\n>> > as.character(MHproposal$name), \n>> > ???as.character(MHproposal$package),\n>> > as.double(Clist$inputs),? ???as.double(eta0),\n>> > as.integer(MCMCparams$samplesize), statsmatrix =\n>> > double(MCMCparams$nmatrixentries), \n>> > ???as.integer(MCMCparams$burnin),\n>> > as.integer(MCMCparams$interval),? ???newnwheads =\n>> > integer(MCMCparams$maxedges), newnwtails =\n>> > integer(MCMCparams$maxedges),\n>> ???as.integer(verbose),\n>> > as.integer(MHproposal$bd$attribs),\n>> > as.integer(MHproposal$bd$maxout), \n>> > ???as.integer(MHproposal$bd$maxin),\n>> > as.integer(MHproposal$bd$minout), \n>> > ???as.integer(MHproposal$bd$minin),\n>> > as.integer(MHproposal$bd$condAllDegExact), \n>> >\n>> ???as.integer(length(MHproposal$bd$attribs)),\n>> >? as.integer(maxedges), \n>> > ???as.integer(MCMCparams$Clist.miss$heads),\n>> > as.integer(MCMCparams$Clist.miss$tails), \n>> > ???as.integer(MCMCparams$Clist.miss$nedges),\n>> PACKAGE =\n>> > \"ergm\")\n>> >? 2: ergm.getMCMCsample(Clist, MHproposal,\n>> theta0,\n>> > MCMCparams, verbose)\n>> >? 3: simulate.formula(object$formula, nsim = nsim,\n>> seed =\n>> > seed, theta0 = theta0,? ???burnin = burnin,\n>> interval =\n>> > interval, statsonly = statsonly,? ???sequential =\n>> > sequential, constraints = constraints, control =\n>> control, \n>> > ???verbose = verbose, ...)\n>> >? 4: simulate.ergm(model1, verbose = TRUE, seed =\n>> 9, burnin\n>> > = 1e+06)\n>> >? 5: simulate(model1, verbose = TRUE, seed = 9,\n>> burnin =\n>> > 1e+06)\n>> > \n>> > Possible actions:\n>> > 1: abort (with core dump, if enabled)\n>> > 2: normal R exit\n>> > 3: exit R without saving workspace\n>> > 4: exit R saving workspace\n>> > Selection:\n>> > \n>> > \n>> > \n>> > \n>> > \n>> > _______________________________________________\n>> > statnet_help mailing list\n>> > statnet_help@u.washington.edu\n>> > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>> > \n>> \n>> \n>> \n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Thanks Jeremy -- good to hear.\n\nOn Wed, 5 Jan 2011, jeremy hackney wrote:\n\n> I re-installed the package on the Linux machine in my own home directory and set the library variable to look there, and it",
+      "thread_id": "thread-09cd5b75b9e9",
+      "thread_depth": 1,
+      "month": "2011-01"
+    },
+    {
+      "id": "msg-f227e5aaddcf",
+      "message_id": "<860081.81070.qm@web29201.mail.ird.yahoo.com>",
+      "from_name": "Ben Rhelp",
+      "from_email_hash": "c711eadcd1f52a33045f18afa955f4ec0ea4e06b1c3104602b7823d0b024d1a5",
+      "date": "2011-01-28T09:34:12Z",
+      "subject": "[statnet_help] Estimating alpha with \"large\" network & running out of RAM with MCMC",
+      "subject_clean": "[statnet_help] Estimating alpha with \"large\" network & running out of RAM with MCMC",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi All,\n\nI am trying to model the following network but I am running out of memory very \nquickly:\n\n> net \n Network attributes:\n  vertices = 2391 \n  directed = FALSE \n  hyper = FALSE \n  loops = FALSE \n  multiple = FALSE \n  bipartite = FALSE \n  total edges= 2170 \n    missing edges= 0 \n    non-missing edges= 2170 \n\n\nI am using a R 64 bit installation on a Windows 7 64 bit with 4Gb of RAM. After \nreading the documentation on gwdsp and MCMC estimation, I understand it may take \na lot of space in memory which may explain this. In [1], David recommanded using \nfixed=TRUE, but I would need a good approximation for alpha. What would be the \nrecommanded approach in this case?\n\nregards,\n\nBen\n\n> big.enough <- 2391 * 2390*4\n> summary(model1<-ergm(net ~ \n+      gwdsp(1,fixed=FALSE)\n+          \n,MCMCsamplesize=1000),control=control.ergm(maxNumDyadTypes=big.enough)) \n\nIteration 1 of at most 3 with parameter: \n      gwdsp gwdsp.alpha \n  -2.824872    1.000000 \nthe log-likelihood improved by 19.70 \nIteration 2 of at most 3 with parameter: \n      gwdsp gwdsp.alpha \n  -2.797609    1.126067 \nthe log-likelihood improved by 19.87 \nIteration 3 of at most 3 with parameter: \n      gwdsp gwdsp.alpha \n  -2.764455    1.320654 \nthe log-likelihood improved by 18.66 \nError: cannot allocate vector of size 479.4 Mb\nIn addition: Warning messages:\n1: In attributes(.Data) <- c(attributes(.Data), attrib) :\n  Reached total allocation of 4022Mb: see help(memory.size)\n2: In attributes(.Data) <- c(attributes(.Data), attrib) :\n  Reached total allocation of 4022Mb: see help(memory.size)\n3: In attributes(.Data) <- c(attributes(.Data), attrib) :\n  Reached total allocation of 4022Mb: see help(memory.size)\n4: In attributes(.Data) <- c(attributes(.Data), attrib) :\n  Reached total allocation of 4022Mb: see help(memory.size)\n\n\n[1] \nhttps://mailman2.u.washington.edu/mailman/htdig/statnet_help/2008/000325.html",
+      "body_snippet": "Hi All,\n\nI am trying to model the following network but I am running out of memory very \nquickly:\n\n> net \n Network attributes:\n  vertices = 2391 \n  directed = FALSE \n  hyper = FALSE \n  loops = FALSE \n",
+      "thread_id": "thread-f227e5aaddcf",
+      "thread_depth": 0,
+      "month": "2011-01"
+    },
+    {
+      "id": "msg-c7bc5dd9af9a",
+      "message_id": "<78FF2CBC-889E-480F-BFDF-47FDA3DB12FC@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2011-01-30T08:43:53Z",
+      "subject": "[statnet_help] Estimating alpha with \"large\" network & running out of RAM with MCMC",
+      "subject_clean": "[statnet_help] Estimating alpha with \"large\" network & running out of RAM with MCMC",
+      "in_reply_to": "<860081.81070.qm@web29201.mail.ird.yahoo.com>",
+      "references": [
+        "<860081.81070.qm@web29201.mail.ird.yahoo.com>"
+      ],
+      "body_plain": "In a nutshell, networks this size are simply way too large to try to  \nfit curved EF parameters currently.  This is due to the memory  \nrequirements (gwdsp with fixed=FALSE requires a huge amount of memory,  \nunlike when fixed=TRUE).  Try several different values of alpha in the  \nrange (say) 0 to 1, then look at the estimated likelihoods and go with  \nthe value that gives the largest estimated likelihood.  If the  \nestimated likelihoods are all pretty close, it probably doesn't matter  \nmuch which alpha you choose since the likelihood estimates themselves  \nare subject to MCMC error.\n\nDave\n\n\n\nOn Jan 28, 2011, at 12:34 PM, Ben Rhelp wrote:\n\n> Hi All,\n>\n> I am trying to model the following network but I am running out of  \n> memory very\n> quickly:\n>\n>> net\n> Network attributes:\n>  vertices = 2391\n>  directed = FALSE\n>  hyper = FALSE\n>  loops = FALSE\n>  multiple = FALSE\n>  bipartite = FALSE\n>  total edges= 2170\n>    missing edges= 0\n>    non-missing edges= 2170\n>\n>\n> I am using a R 64 bit installation on a Windows 7 64 bit with 4Gb of  \n> RAM. After\n> reading the documentation on gwdsp and MCMC estimation, I understand  \n> it may take\n> a lot of space in memory which may explain this. In [1], David  \n> recommanded using\n> fixed=TRUE, but I would need a good approximation for alpha. What  \n> would be the\n> recommanded approach in this case?\n>\n> regards,\n>\n> Ben\n>\n>> big.enough <- 2391 * 2390*4\n>> summary(model1<-ergm(net ~\n> +      gwdsp(1,fixed=FALSE)\n> +\n> ,MCMCsamplesize \n> =1000),control=control.ergm(maxNumDyadTypes=big.enough))\n>\n> Iteration 1 of at most 3 with parameter:\n>      gwdsp gwdsp.alpha\n>  -2.824872    1.000000\n> the log-likelihood improved by 19.70\n> Iteration 2 of at most 3 with parameter:\n>      gwdsp gwdsp.alpha\n>  -2.797609    1.126067\n> the log-likelihood improved by 19.87\n> Iteration 3 of at most 3 with parameter:\n>      gwdsp gwdsp.alpha\n>  -2.764455    1.320654\n> the log-likelihood improved by 18.66\n> Error: cannot allocate vector of size 479.4 Mb\n> In addition: Warning messages:\n> 1: In attributes(.Data) <- c(attributes(.Data), attrib) :\n>  Reached total allocation of 4022Mb: see help(memory.size)\n> 2: In attributes(.Data) <- c(attributes(.Data), attrib) :\n>  Reached total allocation of 4022Mb: see help(memory.size)\n> 3: In attributes(.Data) <- c(attributes(.Data), attrib) :\n>  Reached total allocation of 4022Mb: see help(memory.size)\n> 4: In attributes(.Data) <- c(attributes(.Data), attrib) :\n>  Reached total allocation of 4022Mb: see help(memory.size)\n>\n>\n> [1]\n> https://mailman2.u.washington.edu/mailman/htdig/statnet_help/2008/000325.html\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "In a nutshell, networks this size are simply way too large to try to  \nfit curved EF parameters currently.  This is due to the memory  \nrequirements (gwdsp with fixed=FALSE requires a huge amount of m",
+      "thread_id": "thread-f227e5aaddcf",
+      "thread_depth": 1,
+      "month": "2011-01"
+    },
+    {
+      "id": "msg-f963502b47fb",
+      "message_id": "<4D465D82.9040707@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2011-01-30T22:58:10Z",
+      "subject": "[statnet_help] network v1.6 released",
+      "subject_clean": "[statnet_help] network v1.6 released",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Greetings, all.  This is a quick note to let you know that network v1.6 \nis now on CRAN.  This is a minor bugfix release, but resolves two \nannoying issues: the plot.network bug in which edge colors failed if \nspecified by a single character string that was not in reference to an \nedge attribute, and the \"spooky action at a distance\" bug in which \nchanging a network object could sometimes modify another object from \nwhich it had been copied.*\n\nThanks as always to those who submitted fixes or bug reports -- props \nare given in the ChangeLog.\n\nEnjoy,\n\n-Carter\n\n* The latter is due to what I impertinently regard as a flaw in R's lazy \nevaluation system, coupled with a ban on overloading certain operators \nthat were used to avoid the problem in older versions of R.  We now use \na different workaround.",
+      "body_snippet": "Greetings, all.  This is a quick note to let you know that network v1.6 \nis now on CRAN.  This is a minor bugfix release, but resolves two \nannoying issues: the plot.network bug in which edge colors f",
+      "thread_id": "thread-f963502b47fb",
+      "thread_depth": 0,
+      "month": "2011-01"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-7f4aca9804f8",
+      "subject": "[statnet_help] Errors with \"simulate\" on our Linux machine",
+      "message_count": 1,
+      "participants": [
+        "jeremy hackney"
+      ],
+      "started": "2011-01-02T10:10:55Z",
+      "last_reply": "2011-01-02T10:10:55Z",
+      "root_message_id": "msg-7f4aca9804f8"
+    },
+    {
+      "id": "thread-5fb1baadb0c5",
+      "subject": "[statnet_help] Correction: Errors with \"simulate\" on our Linux machine",
+      "message_count": 1,
+      "participants": [
+        "jeremy hackney"
+      ],
+      "started": "2011-01-05T10:48:29Z",
+      "last_reply": "2011-01-05T10:48:29Z",
+      "root_message_id": "msg-5fb1baadb0c5"
+    },
+    {
+      "id": "thread-09cd5b75b9e9",
+      "subject": "[statnet_help] Correction: Errors with \"simulate\" on our Linux machine",
+      "message_count": 2,
+      "participants": [
+        "Martina Morris",
+        "jeremy hackney"
+      ],
+      "started": "2011-01-05T12:45:37Z",
+      "last_reply": "2011-01-05T13:27:35Z",
+      "root_message_id": "msg-09cd5b75b9e9"
+    },
+    {
+      "id": "thread-f227e5aaddcf",
+      "subject": "[statnet_help] Estimating alpha with \"large\" network & running out of RAM with MCMC",
+      "message_count": 2,
+      "participants": [
+        "Ben Rhelp",
+        "David Hunter"
+      ],
+      "started": "2011-01-28T09:34:12Z",
+      "last_reply": "2011-01-30T08:43:53Z",
+      "root_message_id": "msg-f227e5aaddcf"
+    },
+    {
+      "id": "thread-f963502b47fb",
+      "subject": "[statnet_help] network v1.6 released",
+      "message_count": 1,
+      "participants": [
+        "Carter T. Butts"
+      ],
+      "started": "2011-01-30T22:58:10Z",
+      "last_reply": "2011-01-30T22:58:10Z",
+      "root_message_id": "msg-f963502b47fb"
+    }
+  ]
+}

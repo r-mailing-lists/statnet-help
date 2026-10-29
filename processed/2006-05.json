@@ -1,0 +1,181 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2006-05",
+  "messages": [
+    {
+      "id": "msg-13147d71b883",
+      "message_id": "<p06010205c08972a24deb@[192.168.0.10]>",
+      "from_name": "Skye Bender-deMoll",
+      "from_email_hash": "016c31bf83672a8e8fce6b664eb68ddff364b5df6912775ec31eeceebce90340",
+      "date": "2006-05-11T16:32:23Z",
+      "subject": "[statnet_help] setting attributes of a single edge",
+      "subject_clean": "[statnet_help] setting attributes of a single edge",
+      "in_reply_to": "<033701c6662f$01419890$5d0fa8c0@pavo>",
+      "references": [
+        "<033701c6662f$01419890$5d0fa8c0@pavo>"
+      ],
+      "body_plain": "hi folks,\n\n   Ok, maybe this is a stupid question, but if I want to set an \n\nattribute of an edge between vertices i and j is the only way to do \n\nit:\n\n\n\nset.edge.attribute(myNetwork,\"myAttribute\",value=myValue,get.edgeIDs(myNetwork,i,alter=j))\n\n\n\n\n\nI realize that it is a complicated operation because there may be \n\ndirected and/or multiple edges between i and j, but maybe we should \n\nhave a basic default form?  It is confusing when you can assign to \n\nall edges with\n\n\n\n  myNetwork%e%\"myAttribute\" <- myVal\n\n\n\nSomething that uses the same conventions as the myNetwork[i,j] \n\nassignment?  Or maybe we just need to add an example and some more \n\nexplanation to the attribute methods man page.  The edge ID lookup \n\nmakes sense once you understand it, but it isn't clear from looking \n\nat the man for set.edge.attribute how you can discover the edge ids.\n\n\n\nthoughts?\n\n\n\nbest,\n\n   -skye\n\n\n\nP.S.  maybe we should also add an example and a \"see also\" for \n\nget.edge to the main network man page.  It is a little hard to find \n\nwithout looking through the whole package listing.",
+      "body_snippet": "hi folks,\n\n   Ok, maybe this is a stupid question, but if I want to set an \n\nattribute of an edge between vertices i and j is the only way to do \n\nit:\n\n\n\nset.edge.attribute(myNetwork,\"myAttribute\",val",
+      "thread_id": "thread-13147d71b883",
+      "thread_depth": 0,
+      "month": "2006-05"
+    },
+    {
+      "id": "msg-f84ac3d41ed0",
+      "message_id": "<4465779F.5060803@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2006-05-12T23:07:27Z",
+      "subject": "[statnet_help] setting attributes of a single edge",
+      "subject_clean": "[statnet_help] setting attributes of a single edge",
+      "in_reply_to": "<p06010205c08972a24deb@[192.168.0.10]>",
+      "references": [
+        "<033701c6662f$01419890$5d0fa8c0@pavo>",
+        "<p06010205c08972a24deb@[192.168.0.10]>"
+      ],
+      "body_plain": "As Mark pointed out, this is an internal development question.  However, \n\nI will cc: the response to statnet_help, since I suspect that some of \n\nthe folks there will find some of this to be of use.  In general, \n\ndevelopment questions should be kept out of statnet_help, to avoid \n\ndeluging everyone with a lot of inside baseball.  :-)\n\n\n\nSkye Bender-deMoll wrote:\n\n> hi folks,\n\n>   Ok, maybe this is a stupid question, but if I want to set an attribute \n\n> of an edge between vertices i and j is the only way to do it:\n\n> \n\n> set.edge.attribute(myNetwork,\"myAttribute\",value=myValue,get.edgeIDs(myNetwork,i,alter=j)) \n\n> \n\n\n\nThat's the direct way, but not the only way to accomplish this.\n\n\n\n> \n\n> \n\n> I realize that it is a complicated operation because there may be \n\n> directed and/or multiple edges between i and j, but maybe we should have \n\n> a basic default form?  It is confusing when you can assign to all edges \n\n> with\n\n> \n\n>  myNetwork%e%\"myAttribute\" <- myVal\n\n> \n\n> Something that uses the same conventions as the myNetwork[i,j] \n\n> assignment?  Or maybe we just need to add an example and some more \n\n> explanation to the attribute methods man page.  The edge ID lookup makes \n\n> sense once you understand it, but it isn't clear from looking at the man \n\n> for set.edge.attribute how you can discover the edge ids.\n\n> \n\n> thoughts?\n\n> \n\n\n\nWell, I am sure that it wouldn't hurt to add more docs to the man page \n\nre: dealing with edge IDs.  You are correct that they are needed because \n\nof multiplex networks (since there is no other way to keep track of \n\nwhich edge is which)....their usage can be a bit arcane, and it is \n\npossible that the current documentation does not provide enough detail \n\non the matter.  I'll add that to my TODO file for the next release.\n\n\n\nThat said, I should note that you do not have to use the long-form \n\nsyntax to achieve this goal in most settings.  The syntax\n\n\n\ng[i,j,names.eval=\"boo\"]<-val\n\n\n\nwill assign val to an attribute named \"boo\" for every i,j edge in g.  By \n\ndefault, this will not add new edges to the graph, although this \n\nbehavior can be changed using the add.edges argument.  (See the \n\nnetwork.extraction man page for details.)  This syntax can be adapted in \n\nthe usual manner to, say, set values for all edges incident upon a given \n\nvertex, and so forth.  I suspect that this will solve your problem.\n\n\n\n> P.S.  maybe we should also add an example and a \"see also\" for get.edge \n\n> to the main network man page.  It is a little hard to find without \n\n> looking through the whole package listing.\n\n\n\nI like Mark's \"getting started\" page for statnet...it seems to me that \n\nsomething of that form might be added for the next release.  Such a page \n\nwould be the appropriate spot for pointers of the form you suggest.\n\n\n\nAgain, apologies to the statnet_help folks for the development \n\ndiscussion (though I think that some will appreciate the names.eval \n\ntrick).  Follow-ups should go off-list.\n\n\n\nEnjoy,\n\n\n\n-Carter",
+      "body_snippet": "As Mark pointed out, this is an internal development question.  However, \n\nI will cc: the response to statnet_help, since I suspect that some of \n\nthe folks there will find some of this to be of use. ",
+      "thread_id": "thread-13147d71b883",
+      "thread_depth": 1,
+      "month": "2006-05"
+    },
+    {
+      "id": "msg-16e38113f47d",
+      "message_id": "<CB955332C117AB49A1108AA754BE36D60263F8D6@MAILSERVER01.MED.HARVARD.EDU>",
+      "from_name": "Sul, Young L",
+      "from_email_hash": "95ee0a2f57821280b1c62ee8b09f111e0617665d37cc84aa9b4b8b7342d8c533",
+      "date": "2006-05-23T09:02:48Z",
+      "subject": "[statnet_help] statnet install under solaris",
+      "subject_clean": "[statnet_help] statnet install under solaris",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi!\n\n\n\nI'm trying to install statnet on our solaris server. I notice that the\n\ninstall.packages will download the version .99 of statnet. Updating\n\nshows that there is a version of statnet that is 1.0-1, but I discovered\n\nthat it is precompiled for linux and compiled under R 2.3.0.\n\n\n\n \n\n\n\nIs there a source version of statnet available? Also, will the latest\n\nversion run under R v2.2.1? \n\n\n\n \n\n\n\nTia,\n\n\n\n \n\n\n\n-y\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20060523/d5dd1b0b/attachment.html>",
+      "body_snippet": "Hi!\n\n\n\nI'm trying to install statnet on our solaris server. I notice that the\n\ninstall.packages will download the version .99 of statnet. Updating\n\nshows that there is a version of statnet that is 1.0",
+      "thread_id": "thread-16e38113f47d",
+      "thread_depth": 0,
+      "month": "2006-05"
+    },
+    {
+      "id": "msg-fdffba185378",
+      "message_id": "<C0988A7C.6A68%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2006-05-23T09:46:36Z",
+      "subject": "[statnet_help] statnet install under solaris",
+      "subject_clean": "[statnet_help] statnet install under solaris",
+      "in_reply_to": "<CB955332C117AB49A1108AA754BE36D60263F8D6@MAILSERVER01.MED.HARVARD.EDU>",
+      "references": [],
+      "body_plain": "Dear y,\n\n\n\nThe version is precompiled for linux. We have a version for solaris, but ou\nr\n\ncompiler is broken at the moment. When it is fixed I?ll post a note to the\n\nmailing list.\n\nCan you use the Windows, Linux or Mac version in the interim?\n\n\n\nBest,\n\n\n\nMark\n\n\n\n\n\nOn 5/23/06 9:02 AM, \"Sul, Young L\" <Sul@hcp.med.harvard.edu> wrote:\n\n\n\n> Hi!\n\n> I?m trying to install statnet on our solaris server. I notice that the\n\n> install.packages will download the version .99 of statnet. Updating shows\n that\n\n> there is a version of statnet that is 1.0-1, but I discovered that it is\n\n> precompiled for linux and compiled under R 2.3.0.\n\n>  \n\n> Is there a source version of statnet available? Also, will the latest ver\nsion\n\n> run under R v2.2.1?\n\n>  \n\n> Tia,\n\n>  \n\n> -y\n\n> \n\n> \n\n> _______________________________________________\n\n> statnet_help mailing list\n\n> statnet_help@u.washington.edu\n\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20060523/b4625e99/attachment.html>",
+      "body_snippet": "Dear y,\n\n\n\nThe version is precompiled for linux. We have a version for solaris, but ou\nr\n\ncompiler is broken at the moment. When it is fixed I?ll post a note to the\n\nmailing list.\n\nCan you use the Win",
+      "thread_id": "thread-16e38113f47d",
+      "thread_depth": 1,
+      "month": "2006-05"
+    },
+    {
+      "id": "msg-f3974c211e50",
+      "message_id": "<018f01c67eb3$20ca1c40$800110ac@capel>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2006-05-23T14:52:01Z",
+      "subject": "[statnet_help] statnet install under solaris",
+      "subject_clean": "[statnet_help] statnet install under solaris",
+      "in_reply_to": "<CB955332C117AB49A1108AA754BE36D60263F8D6@MAILSERVER01.MED.HARVARD.EDU>",
+      "references": [],
+      "body_plain": "Dear Young Sul,\n\n \n\nA solaris version is available at\n\nhttp://csde.washington.edu/statnet/statnet_1.0-1_R_sparc-sun-solaris2.9.tar.gz\n\n \n\nRegards,\n\n \n\nMark\n\n\n\n-------------------------------------------------\n\nMark S. Handcock\n\nProfessor of Statistics and Sociology    \n\nDepartment of Statistics, C014-B Padelford Hall\n\nUniversity of Washington, Box 354322     Phone: (206) 221-6930\n\nSeattle, WA 98195-4322.          FAX:   (206) 685-7419\n\nWeb: www.stat.washington.edu/handcock\n\ninternet: handcock@stat.washington.edu \n\n________________________________\n\n\n\n\tFrom: statnet_help-bounces@mailman1.u.washington.edu [mailto:statnet_help-bounces@mailman1.u.washington.edu] On Behalf Of\n\nSul, Young L\n\n\tSent: Tuesday, May 23, 2006 9:03 AM\n\n\tTo: statnet_help@u.washington.edu\n\n\tSubject: [statnet_help] statnet install under solaris\n\n\t\n\n\t\n\n\n\n\tHi!\n\n\n\n\tI'm trying to install statnet on our solaris server. I notice that the install.packages will download the version .99 of\n\nstatnet. Updating shows that there is a version of statnet that is 1.0-1, but I discovered that it is precompiled for linux and\n\ncompiled under R 2.3.0.\n\n\n\n\t \n\n\n\n\tIs there a source version of statnet available? Also, will the latest version run under R v2.2.1? \n\n\n\n\t \n\n\n\n\tTia,\n\n\n\n\t \n\n\n\n\t-y",
+      "body_snippet": "Dear Young Sul,\n\n \n\nA solaris version is available at\n\nhttp://csde.washington.edu/statnet/statnet_1.0-1_R_sparc-sun-solaris2.9.tar.gz\n\n \n\nRegards,\n\n \n\nMark\n\n\n\n-----------------------------------------",
+      "thread_id": "thread-16e38113f47d",
+      "thread_depth": 1,
+      "month": "2006-05"
+    },
+    {
+      "id": "msg-cb0c5e2bbe9d",
+      "message_id": "<20060531011533.l2zw4wafcf4gw4k8@webmail.mit.edu>",
+      "from_name": "Brian Rubineau",
+      "from_email_hash": "c4584907e8de2ef2b8940c0fda3bd9c0752ea080609cdbef7204d0c1f0eaccbe",
+      "date": "2006-05-30T22:15:33Z",
+      "subject": "[statnet_help] ergm(net~edges) is not yielding density",
+      "subject_clean": "[statnet_help] ergm(net~edges) is not yielding density",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statner Sages,\n\nI'm attaching my network as an R-image.\n\nIt has 105 nodes and 1337 edges (density=0.245), and is named ta2.\n\nwhen i run:\n\nta_plain<-ergm(ta2~edges)\n\nthe resulting coefficient is -2.062.\n\nTurning this into a probability:\n\nexp(-2.062) / (1+exp(-2.062)) = 0.113\n\n\n\nShouldn't the coefficient for this ergm yield a\n\nprobability equal to the network density?\n\n\n\nWhat am i missing?\n\n\n\nThanks\n\nBrian\n\n\n\n\n\n-- \n\nBrian Rubineau                             PhD Candidate, Organization Studies\n\nbrubineau@sloan.mit.edu                         MIT Sloan School of Management\n\ntel: 617.253.6680                                   50 Memorial Drive, E52-511\n\nfax: 810.963.2738                                         Cambridge, MA  02142\n\n\n\n\n\n\n\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: ta.Rdata\nType: application/octet-stream\nSize: 274511 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20060531/7e3ab364/attachment.obj>",
+      "body_snippet": "Dear Statner Sages,\n\nI'm attaching my network as an R-image.\n\nIt has 105 nodes and 1337 edges (density=0.245), and is named ta2.\n\nwhen i run:\n\nta_plain<-ergm(ta2~edges)\n\nthe resulting coefficient is -",
+      "thread_id": "thread-cb0c5e2bbe9d",
+      "thread_depth": 0,
+      "month": "2006-05"
+    },
+    {
+      "id": "msg-896a656e1749",
+      "message_id": "<447D2FD4.5070707@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2006-05-30T22:55:32Z",
+      "subject": "[statnet_help] ergm(net~edges) is not yielding density",
+      "subject_clean": "[statnet_help] ergm(net~edges) is not yielding density",
+      "in_reply_to": "<20060531011533.l2zw4wafcf4gw4k8@webmail.mit.edu>",
+      "references": [
+        "<20060531011533.l2zw4wafcf4gw4k8@webmail.mit.edu>"
+      ],
+      "body_plain": "Brian Rubineau wrote:\n\n> Dear Statner Sages,\n\n> I'm attaching my network as an R-image.\n\n> It has 105 nodes and 1337 edges (density=0.245), and is named ta2.\n\n> when i run:\n\n> ta_plain<-ergm(ta2~edges)\n\n> the resulting coefficient is -2.062.\n\n> Turning this into a probability:\n\n> exp(-2.062) / (1+exp(-2.062)) = 0.113\n\n> \n\n> Shouldn't the coefficient for this ergm yield a\n\n> probability equal to the network density?\n\n> \n\n> What am i missing?\n\n> \n\n> Thanks\n\n> Brian\n\n\n\nBased on your density calculations, I am assuming that this is an \n\nundirected graph?  In that case, you need to be sure to set \n\ndirected=FALSE when creating your network object; the results you are \n\nnow obtaining appear to be consistent with what you would expect for a \n\ndigraph of order 105 with 1337 edges (which is what you'll get if you \n\nleave directed=TRUE).  Check this, and let us know if the issue persists.\n\n\n\nBTW, it would be helpful if petitioners would 1) report the versions of \n\nR and the statnet packages they are using, and 2) include a short R \n\nscript which will regenerate the problem.  Please do _not_ include large \n\nattachments (e.g., Rdata files), since this will flood readers' inboxes \n\nand anger various eldritch powers who must not be named.\n\n\n\nHope that helps,\n\n\n\n-Carter",
+      "body_snippet": "Brian Rubineau wrote:\n\n> Dear Statner Sages,\n\n> I'm attaching my network as an R-image.\n\n> It has 105 nodes and 1337 edges (density=0.245), and is named ta2.\n\n> when i run:\n\n> ta_plain<-ergm(ta2~edges",
+      "thread_id": "thread-cb0c5e2bbe9d",
+      "thread_depth": 1,
+      "month": "2006-05"
+    },
+    {
+      "id": "msg-edd492db3bb3",
+      "message_id": "<031001c6847d$ace009e0$e10fa8c0@pavo>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "2a2235b3aaa47934423ee660a8b4e2d5ca7a668857f0a7f074321e5baef81189",
+      "date": "2006-05-30T23:44:32Z",
+      "subject": "[statnet_help] ergm(net~edges) is not yielding density",
+      "subject_clean": "[statnet_help] ergm(net~edges) is not yielding density",
+      "in_reply_to": "<20060531011533.l2zw4wafcf4gw4k8@webmail.mit.edu>",
+      "references": [],
+      "body_plain": "Hi Brian,\n\n\n\nThanks for the message. \n\n\n\nThe problem appears to be that the network was created from a \nsociomatrix\n\nwith diagonal 1's. That is, all actors have self-ties, but the \"loops\" \noption to network is not set. Thus the network object is not stored in a \nself-consistent way.\n\n\n\nTo fix it you can do something like:\n\n\n\nta2.loops <- ta2[,]\n\ndiag(ta2.loops) <- 0\n\nta2.noloops <- network(ta2.loops, directed=F)\n\n\n\nand then add the covariates back.\n\n\n\nI hope this helps!\n\n\n\nMark\n\n\n\n-------------------------------------------------\n\nMark S. Handcock\n\nProfessor of Statistics and Sociology    \n\nDepartment of Statistics, C014-B Padelford Hall\n\nUniversity of Washington, Box 354322     Phone: (206) 221-6930\n\nSeattle, WA 98195-4322.          FAX:   (206) 685-7419\n\nWeb: www.stat.washington.edu/~handcock\n\ninternet: handcock@stat.washington.edu\n\n \n\n\n\n----Original Message----\n\nFrom: statnet_help-bounces@mailman1.u.washington.edu\n\n[mailto:statnet_help-bounces@mailman1.u.washington.edu] On\n\nBehalf Of Brian Rubineau\n\nSent: Tuesday, May 30, 2006 10:16 PM\n\nTo: statnet_help@u.washington.edu\n\nSubject: [statnet_help] ergm(net~edges) is not yielding density\n\n\n\n> Dear Statner Sages,\n\n> I'm attaching my network as an R-image.\n\n> It has 105 nodes and 1337 edges (density=0.245), and is named ta2. \nwhen i run:\n\n> ta_plain<-ergm(ta2~edges)\n\n> the resulting coefficient is -2.062.\n\n> Turning this into a probability:\n\n> exp(-2.062) / (1+exp(-2.062)) = 0.113\n\n> \n\n> Shouldn't the coefficient for this ergm yield a probability\n\n> equal to the network density?\n\n> \n\n> What am i missing?\n\n> \n\n> Thanks\n\n> Brian",
+      "body_snippet": "Hi Brian,\n\n\n\nThanks for the message. \n\n\n\nThe problem appears to be that the network was created from a \nsociomatrix\n\nwith diagonal 1's. That is, all actors have self-ties, but the \"loops\" \noption to n",
+      "thread_id": "thread-cb0c5e2bbe9d",
+      "thread_depth": 1,
+      "month": "2006-05"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-13147d71b883",
+      "subject": "[statnet_help] setting attributes of a single edge",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Skye Bender-deMoll"
+      ],
+      "started": "2006-05-11T16:32:23Z",
+      "last_reply": "2006-05-12T23:07:27Z",
+      "root_message_id": "msg-13147d71b883"
+    },
+    {
+      "id": "thread-16e38113f47d",
+      "subject": "[statnet_help] statnet install under solaris",
+      "message_count": 3,
+      "participants": [
+        "Mark S. Handcock",
+        "Sul, Young L"
+      ],
+      "started": "2006-05-23T09:02:48Z",
+      "last_reply": "2006-05-23T14:52:01Z",
+      "root_message_id": "msg-16e38113f47d"
+    },
+    {
+      "id": "thread-cb0c5e2bbe9d",
+      "subject": "[statnet_help] ergm(net~edges) is not yielding density",
+      "message_count": 3,
+      "participants": [
+        "Brian Rubineau",
+        "Carter T. Butts",
+        "Mark S. Handcock"
+      ],
+      "started": "2006-05-30T22:15:33Z",
+      "last_reply": "2006-05-30T23:44:32Z",
+      "root_message_id": "msg-cb0c5e2bbe9d"
+    }
+  ]
+}

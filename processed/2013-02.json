@@ -1,0 +1,1040 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2013-02",
+  "messages": [
+    {
+      "id": "msg-4b7664e7a715",
+      "message_id": "<CABO5ygj4OA2g9My=re5eatg9y8UV9YO8BYcoR+dzg4+dpqTfRA@mail.gmail.com>",
+      "from_name": "Brooks Ambrose",
+      "from_email_hash": "b074eb3367d0a086fd0652230df27764abe3b2890c5aac1454953f70fa7d164c",
+      "date": "2013-02-01T01:47:50Z",
+      "subject": "[statnet_help] mixed up edge attributes",
+      "subject_clean": "[statnet_help] mixed up edge attributes",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI'm nonplussed about entering a simple edge weight vector as an edge\nattribute to an undirected citation network. In a data frame that is sorted\nby the first column and then the second column I have:\n\n> head(cr,10)\n\nV1                                            V2 V3\n1                 ADAMS HB, STUDY HIST AM COLL U                 WARD,\n1883, DYNAMIC SOCIOLOGY  1\n2  Allport FH, 1925, AM POLIT SCI REV, V19, P735         Burtt HE, 1923,\nSCHOOL SOC, V17, P444  1\n3  Allport FH, 1925, AM POLIT SCI REV, V19, P735           RICE SA, 1928,\nQUANTITATIVE METHODS  1\n4                         ANDERSON, SOCIAL VALUE\nARISTOTLE, POLITICS  1\n5                         ANDERSON, SOCIAL VALUE            BERNARD, AM J\nSOCIOLOGY, V25, P298  1\n6                            ARISTOTLE, POLITICS            BERNARD, AM J\nSOCIOLOGY, V25, P298  1\n7          Bain R, 1925, J APPL SOCIOL, V9, P356                Buell B,\n1925, FAMILY, V6, P86  2\n8          Bain R, 1925, J APPL SOCIOL, V9, P356         Burtt HE, 1923,\nSCHOOL SOC, V17, P444  1\n9          Bain R, 1925, J APPL SOCIOL, V9, P356       Clark WW, 1924, J\nAPPL SOCIOL, V8, P345  1\n10         Bain R, 1925, J APPL SOCIOL, V9, P356 Gilliland AR, 1926, J APPL\nPSYCHOL, V10, P315  1\n\nI try to construct a network and get an error:\n\n> crnet<-network(cr,directed=F)\nError in X[nactors + (1:nevents), 1:nactors] <- t(x) :\n  incorrect number of subscripts on matrix\n\nNotwithstanding the following claim for the network function--from Butts,\nC. T. 2008. ?network: a Package for Managing Relational Data in R.? Journal\nof Statistical Software 24(2)--that:\n\n'Edge list: This must consist of a rectangular matrix or two-dimensional\narray whose row\nelements represent edges. The i; 1st cell of this structure is taken to be\nthe ID of the\ntail vertex for the edge with ID i, with the i; 2st cell containing the ID\nof the edge's\nhead vertex. (Only dyadic networks may be input in this fashion.)\n**Additional columns,\nif present, are taken to contain edge attribute values.** The matrix.type\nfor an edge list\nis \"edgelist\".'\n\n> crnet<-network(cr,directed=F,matrix.type=\"edgelist\")\n\nWhich works without an error, yet a summary reveals no edge attributes.\n\n> summary(crnet,print.adj=F)\nNetwork attributes:\n  vertices = 94\n  directed = FALSE\n  hyper = FALSE\n  loops = FALSE\n  multiple = FALSE\n  bipartite = FALSE\n total edges = 417\n   missing edges = 0\n   non-missing edges = 417\n density = 0.09540151\n\nVertex attributes:\n  vertex.names:\n   character valued attribute\n   94 valid vertex names\n\nNo edge attributes\n\nThe edge weights were ignored, so I try:\n\n> crnet%e%\"ew\"<-cr[,3]\n\nWhich seems to work ok, a summary revealing the edge attribute. Later I\nnotice something is amiss, the edge weights don't appear to be assigned to\nthe correct edges. A test:\n\n> all(crnet%e%\"ew\"==cr[,3])\n[1] FALSE\n\nAu Secours! The attribute vector is different than the vector in the\noriginal data? There must be something I'm missing, but it feels like a\nbug. A problem with how I am sorting the data on input?\n\nThanks, session info below:\n\n>   sessionInfo()\nR version 2.15.2 (2012-10-26)\nPlatform: i386-apple-darwin9.8.0/i386 (32-bit)\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base\n\nother attached packages:\n [1] statnet_3.0-1          networkDynamic_0.3.1   sna_2.2-2\nergm_3.0-999\n [5] coda_0.14-7            nlme_3.1-105           trust_0.1-2\nMatrix_1.0-9\n [9] lattice_0.20-10        robustbase_0.9-1       statnet.common_3.0-999\nnetwork_1.7-1\n[13] linkcomm_1.0-6         RColorBrewer_1.0-5     igraph0_0.5.5-3\n\nloaded via a namespace (and not attached):\n[1] grid_2.15.2  tools_2.15.2\n>   getOption(\"pkgType\")\n[1] \"mac.binary.leopard\"\n\n\n-- \nBrooks Ambrose, M.A.\nDoctoral Student, Dept. of Sociology\nUniversity of California, Los Angeles\nT: 610-304-0318 and F: 310-206-9838\nbambrose@ucla.edu\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130201/cb11535e/attachment.html>",
+      "body_snippet": "Hello,\n\nI'm nonplussed about entering a simple edge weight vector as an edge\nattribute to an undirected citation network. In a data frame that is sorted\nby the first column and then the second column ",
+      "thread_id": "thread-4b7664e7a715",
+      "thread_depth": 0,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-9967a824973d",
+      "message_id": "<CABO5yggAwMPgfye2b7xdLNNKgxLuY_XqOiZ-dgDSPKQmQrroBA@mail.gmail.com>",
+      "from_name": "Brooks Ambrose",
+      "from_email_hash": "b074eb3367d0a086fd0652230df27764abe3b2890c5aac1454953f70fa7d164c",
+      "date": "2013-02-01T02:17:26Z",
+      "subject": "[statnet_help] mixed up edge attributes",
+      "subject_clean": "[statnet_help] mixed up edge attributes",
+      "in_reply_to": "<CABO5ygj4OA2g9My=re5eatg9y8UV9YO8BYcoR+dzg4+dpqTfRA@mail.gmail.com>",
+      "references": [
+        "<CABO5ygj4OA2g9My=re5eatg9y8UV9YO8BYcoR+dzg4+dpqTfRA@mail.gmail.com>"
+      ],
+      "body_plain": "Redux: Hoping this comes through as plain fixed-width text this time. Apologies!\n\nHello,\n\nI'm nonplussed about entering a simple edge weight vector as an edge\nattribute to an undirected citation network. In a data frame that is\nsorted by the first column and then the second column I have:\n\n> head(cr,10)\n                                              V1\n                     V2 V3\n1                 ADAMS HB, STUDY HIST AM COLL U                 WARD,\n1883, DYNAMIC SOCIOLOGY  1\n2  Allport FH, 1925, AM POLIT SCI REV, V19, P735         Burtt HE,\n1923, SCHOOL SOC, V17, P444  1\n3  Allport FH, 1925, AM POLIT SCI REV, V19, P735           RICE SA,\n1928, QUANTITATIVE METHODS  1\n4                         ANDERSON, SOCIAL VALUE\n    ARISTOTLE, POLITICS  1\n5                         ANDERSON, SOCIAL VALUE            BERNARD,\nAM J SOCIOLOGY, V25, P298  1\n6                            ARISTOTLE, POLITICS            BERNARD,\nAM J SOCIOLOGY, V25, P298  1\n7          Bain R, 1925, J APPL SOCIOL, V9, P356                Buell\nB, 1925, FAMILY, V6, P86  2\n8          Bain R, 1925, J APPL SOCIOL, V9, P356         Burtt HE,\n1923, SCHOOL SOC, V17, P444  1\n9          Bain R, 1925, J APPL SOCIOL, V9, P356       Clark WW, 1924,\nJ APPL SOCIOL, V8, P345  1\n10         Bain R, 1925, J APPL SOCIOL, V9, P356 Gilliland AR, 1926, J\nAPPL PSYCHOL, V10, P315  1\n\nI try to construct a network and get an error:\n\n> crnet<-network(cr,directed=F)\nError in X[nactors + (1:nevents), 1:nactors] <- t(x) :\n  incorrect number of subscripts on matrix\n\nNotwithstanding the following claim for the network function--from\nButts, C. T. 2008. ?network: a Package for Managing Relational Data in\nR.? Journal of Statistical Software 24(2)--that:\n\n'Edge list: This must consist of a rectangular matrix or\ntwo-dimensional array whose row\nelements represent edges. The i; 1st cell of this structure is taken\nto be the ID of the\ntail vertex for the edge with ID i, with the i; 2st cell containing\nthe ID of the edge's\nhead vertex. (Only dyadic networks may be input in this fashion.)\n**Additional columns,\nif present, are taken to contain edge attribute values.** The\nmatrix.type for an edge list\nis \"edgelist\".'\n\n> crnet<-network(cr,directed=F,matrix.type=\"edgelist\")\n\nWhich works without an error, yet a summary reveals no edge attributes.\n\n> summary(crnet,print.adj=F)\nNetwork attributes:\n  vertices = 94\n  directed = FALSE\n  hyper = FALSE\n  loops = FALSE\n  multiple = FALSE\n  bipartite = FALSE\n total edges = 417\n   missing edges = 0\n   non-missing edges = 417\n density = 0.09540151\n\nVertex attributes:\n  vertex.names:\n   character valued attribute\n   94 valid vertex names\n\nNo edge attributes\n\nThe edge weights were ignored, so I try:\n\n> crnet%e%\"ew\"<-cr[,3]\n\nWhich seems to work ok, a summary revealing the edge attribute. Later\nI notice something is amiss, the edge weights don't appear to be\nassigned to the correct edges. A test:\n\n> all(crnet%e%\"ew\"==cr[,3])\n[1] FALSE\n\nAu Secours! The attribute vector is different than the vector in the\noriginal data? There must be something I'm missing, but it feels like\na bug. A problem with how I am sorting the data on input?\n\nThanks, session info below:\n\n>   sessionInfo()\nR version 2.15.2 (2012-10-26)\nPlatform: i386-apple-darwin9.8.0/i386 (32-bit)\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base\n\nother attached packages:\n [1] statnet_3.0-1          networkDynamic_0.3.1   sna_2.2-2\n   ergm_3.0-999\n [5] coda_0.14-7            nlme_3.1-105           trust_0.1-2\n   Matrix_1.0-9\n [9] lattice_0.20-10        robustbase_0.9-1\nstatnet.common_3.0-999 network_1.7-1\n[13] linkcomm_1.0-6         RColorBrewer_1.0-5     igraph0_0.5.5-3\n\nloaded via a namespace (and not attached):\n[1] grid_2.15.2  tools_2.15.2\n>   getOption(\"pkgType\")\n[1] \"mac.binary.leopard\"\n\n\n--\nBrooks Ambrose, M.A.\nDoctoral Student, Dept. of Sociology\nUniversity of California, Los Angeles\nT: 610-304-0318 and F: 310-206-9838\nbambrose@ucla.edu",
+      "body_snippet": "Redux: Hoping this comes through as plain fixed-width text this time. Apologies!\n\nHello,\n\nI'm nonplussed about entering a simple edge weight vector as an edge\nattribute to an undirected citation netwo",
+      "thread_id": "thread-4b7664e7a715",
+      "thread_depth": 1,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-1a4091347010",
+      "message_id": "<alpine.WNT.1.10.1302011349510.7552@morrism-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-02-01T13:50:59Z",
+      "subject": "[statnet_help] mixed up edge attributes",
+      "subject_clean": "[statnet_help] mixed up edge attributes",
+      "in_reply_to": "<CABO5ygj4OA2g9My=re5eatg9y8UV9YO8BYcoR+dzg4+dpqTfRA@mail.gmail.com>",
+      "references": [
+        "<CABO5ygj4OA2g9My=re5eatg9y8UV9YO8BYcoR+dzg4+dpqTfRA@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Brooks,\n\nI believe the node ids have to be numeric, not alphabetic.\n\nHTH,\nMartina\n\nOn Fri, 1 Feb 2013, Brooks Ambrose wrote:\n\n> Hello,\n> \n> I'm nonplussed about entering a simple edge weight vector as an edge attribute to an undirected citation network. In a data frame\n> that is sorted by the first column and then the second column I have:\n> \n> > head(cr,10)\n> ????????????????????????????????????????????? V1??????????????????????????????????????????? V2 V3\n> 1???????????????? ADAMS HB, STUDY HIST AM COLL U???????????????? WARD, 1883, DYNAMIC SOCIOLOGY? 1\n> 2? Allport FH, 1925, AM POLIT SCI REV, V19, P735???????? Burtt HE, 1923, SCHOOL SOC, V17, P444? 1\n> 3? Allport FH, 1925, AM POLIT SCI REV, V19, P735?????????? RICE SA, 1928, QUANTITATIVE METHODS? 1\n> 4???????????????????????? ANDERSON, SOCIAL VALUE?????????????????????????? ARISTOTLE, POLITICS? 1\n> 5???????????????????????? ANDERSON, SOCIAL VALUE??????????? BERNARD, AM J SOCIOLOGY, V25, P298? 1\n> 6??????????????????????????? ARISTOTLE, POLITICS??????????? BERNARD, AM J SOCIOLOGY, V25, P298? 1\n> 7????????? Bain R, 1925, J APPL SOCIOL, V9, P356??????????????? Buell B, 1925, FAMILY, V6, P86? 2\n> 8????????? Bain R, 1925, J APPL SOCIOL, V9, P356???????? Burtt HE, 1923, SCHOOL SOC, V17, P444? 1\n> 9????????? Bain R, 1925, J APPL SOCIOL, V9, P356?????? Clark WW, 1924, J APPL SOCIOL, V8, P345? 1\n> 10???????? Bain R, 1925, J APPL SOCIOL, V9, P356 Gilliland AR, 1926, J APPL PSYCHOL, V10, P315? 1\n> \n> I try to construct a network and get an error:\n> \n> > crnet<-network(cr,directed=F)\n> Error in X[nactors + (1:nevents), 1:nactors] <- t(x) :\n> ? incorrect number of subscripts on matrix\n> \n> Notwithstanding the following claim for the network function--from Butts, C. T. 2008. ?network: a Package for Managing Relational\n> Data in R.? Journal of Statistical Software 24(2)--that:\n> \n> 'Edge list: This must consist of a rectangular matrix or two-dimensional array whose row\n> elements represent edges. The i; 1st cell of this structure is taken to be the ID of the\n> tail vertex for the edge with ID i, with the i; 2st cell containing the ID of the edge's\n> head vertex. (Only dyadic networks may be input in this fashion.) **Additional columns,\n> if present, are taken to contain edge attribute values.** The matrix.type for an edge list\n> is \"edgelist\".'\n> \n> > crnet<-network(cr,directed=F,matrix.type=\"edgelist\")\n> \n> Which works without an error, yet a summary reveals no edge attributes.\n> \n> > summary(crnet,print.adj=F)\n> Network attributes:\n> ? vertices = 94\n> ? directed = FALSE\n> ? hyper = FALSE\n> ? loops = FALSE\n> ? multiple = FALSE\n> ? bipartite = FALSE\n> ?total edges = 417\n> ?? missing edges = 0\n> ?? non-missing edges = 417\n> ?density = 0.09540151\n> \n> Vertex attributes:\n> ? vertex.names:\n> ?? character valued attribute\n> ?? 94 valid vertex names\n> \n> No edge attributes\n> \n> The edge weights were ignored, so I try:\n> \n> > crnet%e%\"ew\"<-cr[,3]\n> \n> Which seems to work ok, a summary revealing the edge attribute. Later I notice something is amiss, the edge weights don't appear to\n> be assigned to the correct edges. A test:\n> \n> > all(crnet%e%\"ew\"==cr[,3])\n> [1] FALSE\n> \n> Au Secours! The attribute vector is different than the vector in the original data? There must be something I'm missing, but it\n> feels like a bug. A problem with how I am sorting the data on input?\n> \n> Thanks, session info below:\n> \n> >?? sessionInfo()\n> R version 2.15.2 (2012-10-26)\n> Platform: i386-apple-darwin9.8.0/i386 (32-bit)\n> \n> locale:\n> [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n> \n> attached base packages:\n> [1] stats???? graphics? grDevices utils???? datasets? methods?? base \n> \n> other attached packages:\n> ?[1] statnet_3.0-1????????? networkDynamic_0.3.1?? sna_2.2-2????????????? ergm_3.0-999\n> ?[5] coda_0.14-7??????????? nlme_3.1-105?????????? trust_0.1-2??????????? Matrix_1.0-9\n> ?[9] lattice_0.20-10??????? robustbase_0.9-1?????? statnet.common_3.0-999 network_1.7-1 \n> [13] linkcomm_1.0-6???????? RColorBrewer_1.0-5???? igraph0_0.5.5-3 \n> \n> loaded via a namespace (and not attached):\n> [1] grid_2.15.2? tools_2.15.2\n> >?? getOption(\"pkgType\")\n> [1] \"mac.binary.leopard\"\n> \n> \n> --\n> Brooks Ambrose, M.A.\n> Doctoral Student, Dept. of Sociology\n> University of California, Los Angeles\n> T: 610-304-0318 and F: 310-206-9838\n> bambrose@ucla.edu\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Brooks,\n\nI believe the node ids have to be numeric, not alphabetic.\n\nHTH,\nMartina\n\nOn Fri, 1 Feb 2013, Brooks Ambrose wrote:\n\n> Hello,\n> \n> I'm nonplussed about entering a simple edge weight vector",
+      "thread_id": "thread-4b7664e7a715",
+      "thread_depth": 1,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-d0079057aea7",
+      "message_id": "<CABO5ygihmK7i9HH9TAotyRBGnjUuf-k-7u-d1R=guf8RjBi_HQ@mail.gmail.com>",
+      "from_name": "Brooks Ambrose",
+      "from_email_hash": "b074eb3367d0a086fd0652230df27764abe3b2890c5aac1454953f70fa7d164c",
+      "date": "2013-02-01T14:47:41Z",
+      "subject": "[statnet_help] mixed up edge attributes",
+      "subject_clean": "[statnet_help] mixed up edge attributes",
+      "in_reply_to": "<alpine.WNT.1.10.1302011349510.7552@morrism-PC>",
+      "references": [
+        "<CABO5ygj4OA2g9My=re5eatg9y8UV9YO8BYcoR+dzg4+dpqTfRA@mail.gmail.com>",
+        "<alpine.WNT.1.10.1302011349510.7552@morrism-PC>"
+      ],
+      "body_plain": "Hello Martina,\n\nThanks for the response. It is very useful that network compiles a\nlist of vertex.names when you input the data this way; it brings some\npiece of mind also that the numerical ID codes are attached to the\nproper names, and saves extra work since the data may come naturally\nwith names. Network is assigning these codes somehow, presumably\nsorting the data in a way similar to the factor process. My input data\nis sorted in the exact same way that the as.edgelist.sna command\noutputs the data, so I was hoping this would be straightforward. I\nwill try feeding it the encoded data however as you suggest and see if\nthis solves the problem. I used the following somewhat ugly loop to\nmatch each element, and that worked, but a more convenient solution,\nand some clarity on the order in which the edges are stored, would be\nwelcome. Use the %e% operator is certainly convenient, so I hope to\nget it up and running!\n\nfor(i in 1:(crnet$gal$mnext-1))\ncrnet$mel[[i]]$atl$ew<-cr[which(crnet$val[[crnet$mel[[i]]$outl]][[2]]==cr[,1]&crnet$val[[crnet$mel[[i]]$inl]][[2]]==cr[,2]),3]\n\nBest,\nBrooks\n\nOn Fri, Feb 1, 2013 at 1:50 PM, Martina Morris <morrism@u.washington.edu> wrote:\n>\n> Hi Brooks,\n>\n> I believe the node ids have to be numeric, not alphabetic.\n>\n> HTH,\n> Martina\n>\n>\n\n\n--\nBrooks Ambrose, M.A.\nDoctoral Student, Dept. of Sociology\nUniversity of California, Los Angeles\nT: 610-304-0318 and F: 310-206-9838\nbambrose@ucla.edu",
+      "body_snippet": "Hello Martina,\n\nThanks for the response. It is very useful that network compiles a\nlist of vertex.names when you input the data this way; it brings some\npiece of mind also that the numerical ID codes ",
+      "thread_id": "thread-4b7664e7a715",
+      "thread_depth": 2,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-7d4dadadceaa",
+      "message_id": "<510C463D.2030301@skyeome.net>",
+      "from_name": "Skye Bender-deMoll",
+      "from_email_hash": "016c31bf83672a8e8fce6b664eb68ddff364b5df6912775ec31eeceebce90340",
+      "date": "2013-02-01T14:48:29Z",
+      "subject": "[statnet_help] mixed up edge attributes",
+      "subject_clean": "[statnet_help] mixed up edge attributes",
+      "in_reply_to": "<CABO5ygj4OA2g9My=re5eatg9y8UV9YO8BYcoR+dzg4+dpqTfRA@mail.gmail.com>",
+      "references": [
+        "<CABO5ygj4OA2g9My=re5eatg9y8UV9YO8BYcoR+dzg4+dpqTfRA@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Brooks Ambrose,\n\n  Thanks for contacting us with the network question.\n\nOn 02/01/2013 01:47 AM, Brooks Ambrose wrote:\n> Hello,\n>\n> I'm nonplussed about entering a simple edge weight vector as an edge\n> attribute to an undirected citation network. In a data frame that is sorted\n> by the first column and then the second column I have:\n\n\n From looking at the code, it appears you need also need to tell it to \nnot ignore the edge weights, and ideally name the edge attributes you \nare adding:\n\ncrnet<-network(cr,directed=F,matrix.type='edgelist',ignore.eval=FALSE,names.eval='publication_count')\n\n\nThe docs should probably be improved to make this clearer. I was not \naware that building networks with non-numeric edgelists was even \npossible until you asked this question.\n\n\n>\n> Au Secours! The attribute vector is different than the vector in the\n> original data? There must be something I'm missing, but it feels like a\n> bug. A problem with how I am sorting the data on input?\n\nI can reproduce your issue with a small synthetic example.  You clearly \ncan't know in what order the edges will  to safely use direct edge \nattribute assignment when you are using character (instead of numeric) \nids on the edges.\n\n  It seems that sorting must be part of the explanation. From looking at \nthe code, it appears that when you give it non-numeric ids it is doing \nsome sorting before converting them to numeric.  This may be complicated \nby the dataframe's numeric expression of the factor levels which seems \nto be independent of the input order in the data frame. I don't have \nenough brain at the moment to figure out how this is going wrong. \nhopefly ignore.eval=FALSE will solve your issue.\n\n\n  mat <- as.data.frame(list(c(\"z\",\"y\",\"x\"), c(\"y\",\"x\",\"w\"),c(10,11,12)))\n > net <- \nnetwork(mat,matrix.type='edgelist',ignore.eval=FALSE,names.eval=\"myEdges\")\n > net%e%'myEdges'\nvals vals vals\n   10   11   12\n > as.matrix.network.edgelist(net)\n      [,1] [,2]\n[1,]    4    3\n[2,]    3    2\n[3,]    2    1\nattr(,\"n\")\n[1] 4\nattr(,\"vnames\")\n[1] \"w\" \"x\" \"y\" \"z\"\n >\n > net2 <- network(mat,matrix.type='edgelist')\n > net2%e%'myEdges'<-mat[,3]\n > net2%e%'myEdges'\n[1] 12 10 11\n > as.matrix.network.edgelist(net2)\n      [,1] [,2]\n[1,]    4    3\n[2,]    3    2\n[3,]    2    1\nattr(,\"n\")\n[1] 4\nattr(,\"vnames\")\n[1] \"w\" \"x\" \"y\" \"z\"\n >\n >\n > mat2 <- as.data.frame(list(c(\"x\",\"y\",\"z\"), c(\"w\",\"x\",\"y\"),c(10,11,12)))\n > net3 <- network(mat2,matrix.type='edgelist')\n > net%e%'myEdges'\nvals vals vals\n   10   11   12\n > as.matrix.network.edgelist(net3)\n      [,1] [,2]\n[1,]    2    1\n[2,]    3    2\n[3,]    4    3\nattr(,\"n\")\n[1] 4\nattr(,\"vnames\")\n[1] \"w\" \"x\" \"y\" \"z\"\n >\n > # input order doesn't seem to matter for data.frames\n > mat[1,1]\n[1] z\nLevels: x y z\n > as.numeric(mat[1,1])\n[1] 3\n >\n > mat2[3,1]\n[1] z\nLevels: x y z\n > as.numeric(mat2[3,1])\n[1] 3\n\nbest,\n  -skye",
+      "body_snippet": "Dear Brooks Ambrose,\n\n  Thanks for contacting us with the network question.\n\nOn 02/01/2013 01:47 AM, Brooks Ambrose wrote:\n> Hello,\n>\n> I'm nonplussed about entering a simple edge weight vector as an ",
+      "thread_id": "thread-4b7664e7a715",
+      "thread_depth": 1,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-9f6f23beb0f4",
+      "message_id": "<25448_1359759733_r11N2Cls031325_2BC85601-C7FA-4F55-AA7F-365F27C2F1D4@ucla.edu>",
+      "from_name": "Brooks Ambrose",
+      "from_email_hash": "b074eb3367d0a086fd0652230df27764abe3b2890c5aac1454953f70fa7d164c",
+      "date": "2013-02-01T15:01:19Z",
+      "subject": "[statnet_help] Help with ergm",
+      "subject_clean": "[statnet_help] Help with ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "To piggyback on Juha Itkonen's thread (https://mailman2.u.washington.edu/mailman/htdig/statnet_help/2013/001345.html), I have a general question:\n\nMight there be a way to estimate what levels of the ergmm.control arguments (e.g. burnin, sample.size) to set prior to running the model? For instance, if we know the size of our network in terms of nodes and density, is there a way to estimate what levels to set to improve the likelihood of convergence, or at least to save time calibrating it by setting realistic levels? And how large can the network get before convergence is impossible? If some of these are still unknowns, are there rules of thumb? My strategy is to just set very large numbers, but this is totally arbitrary and probably wasteful.\n\nThanks!\n\n-- \nBrooks Ambrose, M.A.\nDoctoral Student, Dept. of Sociology\nUniversity of California, Los Angeles\nT: 610-304-0318 and F: 310-206-9838\nbambrose@ucla.edu",
+      "body_snippet": "To piggyback on Juha Itkonen's thread (https://mailman2.u.washington.edu/mailman/htdig/statnet_help/2013/001345.html), I have a general question:\n\nMight there be a way to estimate what levels of the e",
+      "thread_id": "thread-9f6f23beb0f4",
+      "thread_depth": 0,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-3c2b76e23193",
+      "message_id": "<72E8CAED492B92449DEDAD0250390A361D9328C0@exch-mbx-02.utu.fi>",
+      "from_name": "Shupin Li",
+      "from_email_hash": "38700f5808ab105ec199cbb8075d83f0e4e2f5a90ba6f54b05dba2c790f968a0",
+      "date": "2013-02-04T10:04:35Z",
+      "subject": "[statnet_help] Covariate effects in ergm model",
+      "subject_clean": "[statnet_help] Covariate effects in ergm model",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI have put SPSS quantitative data into R and want to test whether edge probabilities are a function of gender, so I wrote below command and received error also.....\n\n> net1model.03 <- ergm(net1~edges+nodecov(\"gender\"))\nError: Attribute gender named in nodecov model term is not contained in vertex attribute list.\n\nHow could I correct the error? \n\nAny hint is appreciated:)\n\nThank you in advanced!\n\nBest regards,\nShupin",
+      "body_snippet": "Dear all,\n\nI have put SPSS quantitative data into R and want to test whether edge probabilities are a function of gender, so I wrote below command and received error also.....\n\n> net1model.03 <- ergm(",
+      "thread_id": "thread-3c2b76e23193",
+      "thread_depth": 0,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-4de295709510",
+      "message_id": "<alpine.WNT.1.10.1302041233540.26296@TS3.csde.washington.edu>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-02-04T12:39:07Z",
+      "subject": "[statnet_help] Covariate effects in ergm model",
+      "subject_clean": "[statnet_help] Covariate effects in ergm model",
+      "in_reply_to": "<72E8CAED492B92449DEDAD0250390A361D9328C0@exch-mbx-02.utu.fi>",
+      "references": [
+        "<72E8CAED492B92449DEDAD0250390A361D9328C0@exch-mbx-02.utu.fi>"
+      ],
+      "body_plain": "Shupin,\n\nIt sounds like your net1 object does not have the \"gender\" \nvariable properly identified as a vertex attribute.\n\nYou can check by:\nlist.vertex.attributes(net1)\n\nThe tutorial \"Introduction to SNA in R\" has more information -- \nspecifically, section 3.6 of this document\n\nhttps://statnet.csde.washington.edu/trac/attachment/wiki/Resources/introToSNAinR_sunbelt_2012_tutorial.pdf\n\nbest,\nMartina\n\nOn Mon, 4 Feb 2013, Shupin Li wrote:\n\n> Dear all,\n>\n> I have put SPSS quantitative data into R and want to test whether edge probabilities are a function of gender, so I wrote below command and received error also.....\n>\n>> net1model.03 <- ergm(net1~edges+nodecov(\"gender\"))\n> Error: Attribute gender named in nodecov model term is not contained in vertex attribute list.\n>\n> How could I correct the error?\n>\n> Any hint is appreciated:)\n>\n> Thank you in advanced!\n>\n> Best regards,\n> Shupin_______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Shupin,\n\nIt sounds like your net1 object does not have the \"gender\" \nvariable properly identified as a vertex attribute.\n\nYou can check by:\nlist.vertex.attributes(net1)\n\nThe tutorial \"Introduction to ",
+      "thread_id": "thread-3c2b76e23193",
+      "thread_depth": 1,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-987ba6b42785",
+      "message_id": "<5110F3C0.60301@ipgovernance.eu>",
+      "from_name": "Sebastian Haunss",
+      "from_email_hash": "05dba600bd153ce6aeccb3f221011d77b705ea60745a3f411436b0feefc8a70c",
+      "date": "2013-02-05T03:57:52Z",
+      "subject": "[statnet_help] convert adjacency list to non-symmetric matrix",
+      "subject_clean": "[statnet_help] convert adjacency list to non-symmetric matrix",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nis there an easy way to convert an adjacency list (or a data-frame) to a non-symmetric matrix?\n\nThe adjacency list has the following form:\n\nperson group\n1 Sam  a\n2 Sam  b\n3 Sam  c\n4 Greg a\n5 Tom  b\n6 Tom  c\n7 Tom  d\n8 Mary b\n9 Mary d\n\nI need the data in a matrix with persons as rows and groups as columns:\n\n     a b c d\nSam  1 1 1 0\nGreg 1 0 0 0\nTom  0 1 1 1\nMary 0 1 0 1\n\nI know that there are several possibilities in some of the network packages to convert adjacency lists to symmetric or sparse matrices, but I couldn't find a way to coerce them into non-symmetric affiliation matrices.\n\n\nKind regards\nSebastian\n\n-- \n\nPD Dr. Sebastian Haunss\nSfB 597 - Transformations of the State\nUniversit?t Bremen\nLinzer Str. 9a\n28359 Bremen\nT: +49-(0)421-218-56654\nhttp://shaunss.ipgovernance.eu/",
+      "body_snippet": "Dear all,\n\nis there an easy way to convert an adjacency list (or a data-frame) to a non-symmetric matrix?\n\nThe adjacency list has the following form:\n\nperson group\n1 Sam  a\n2 Sam  b\n3 Sam  c\n4 Greg a\n",
+      "thread_id": "thread-987ba6b42785",
+      "thread_depth": 0,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-24405446035f",
+      "message_id": "<5110FAA6.1030602@eawag.ch>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "5ca3a759bddb9505661daafb6664f38c57cb4d334ac3b6411b49b7d1a9d8d151",
+      "date": "2013-02-05T04:27:18Z",
+      "subject": "[statnet_help] convert adjacency list to non-symmetric matrix",
+      "subject_clean": "[statnet_help] convert adjacency list to non-symmetric matrix",
+      "in_reply_to": "<5110F3C0.60301@ipgovernance.eu>",
+      "references": [
+        "<5110F3C0.60301@ipgovernance.eu>"
+      ],
+      "body_plain": "Hi Sebastian,\n\nTry this:\n\npersons <- c(\"Sam\", \"Sam\", \"Sam\", \"Greg\", \"Tom\", \"Tom\", \"Tom\", \"Mary\", \n\"Mary\")\ngroups <- c(\"a\", \"b\", \"c\", \"a\", \"b\", \"c\", \"d\", \"b\", \"d\")\ndf <- data.frame(cbind(persons, groups))\ntab <- table(df)\n\nThe 'tab' object contains your matrix.\n\nBest,\nPhilip\n\nAm 05.02.2013 12:57, schrieb Sebastian Haunss:\n> Dear all,\n>\n> is there an easy way to convert an adjacency list (or a data-frame) to a non-symmetric matrix?\n>\n> The adjacency list has the following form:\n>\n> person group\n> 1 Sam  a\n> 2 Sam  b\n> 3 Sam  c\n> 4 Greg a\n> 5 Tom  b\n> 6 Tom  c\n> 7 Tom  d\n> 8 Mary b\n> 9 Mary d\n>\n> I need the data in a matrix with persons as rows and groups as columns:\n>\n>       a b c d\n> Sam  1 1 1 0\n> Greg 1 0 0 0\n> Tom  0 1 1 1\n> Mary 0 1 0 1\n>\n> I know that there are several possibilities in some of the network packages to convert adjacency lists to symmetric or sparse matrices, but I couldn't find a way to coerce them into non-symmetric affiliation matrices.\n>\n>\n> Kind regards\n> Sebastian\n>\n\n-- \nDr. Philip Leifeld\n\nEawag: Das Wasserforschungsinstitut des ETH-Bereichs\nSwiss Federal Institute of Aquatic Science and Technology\n\nUniversit?t Bern, Institut f?r Politikwissenschaft\nUniversity of Bern, Institute of Political Science\n\nEawag, ?berlandstr. 133, 8600 D?bendorf, Switzerland\nPhone: +41 58 765 5673 | E-mail: philip.leifeld@eawag.ch\nOffice: FC-E18 | Homepage: http://www.philipleifeld.de",
+      "body_snippet": "Hi Sebastian,\n\nTry this:\n\npersons <- c(\"Sam\", \"Sam\", \"Sam\", \"Greg\", \"Tom\", \"Tom\", \"Tom\", \"Mary\", \n\"Mary\")\ngroups <- c(\"a\", \"b\", \"c\", \"a\", \"b\", \"c\", \"d\", \"b\", \"d\")\ndf <- data.frame(cbind(persons, group",
+      "thread_id": "thread-987ba6b42785",
+      "thread_depth": 1,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-794973736a58",
+      "message_id": "<51141502.9010900@siu.edu>",
+      "from_name": "Shane Gleason",
+      "from_email_hash": "ac41ec97f21ad08d483932a77d2108a01f71b70e5a177513a1cd409ce7614ba0",
+      "date": "2013-02-07T12:56:34Z",
+      "subject": "[statnet_help] simulate.stergm does not run in tutorial",
+      "subject_clean": "[statnet_help] simulate.stergm does not run in tutorial",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone,\n\nI am working through Krivitsky and Goodreau's (2012) STERGM tutorial, \nbut I come up on a strange problem when I attempt to run the \nsimulate.stergm command:\n\nstergm.sim.1 <- simulate.stergm(stergm.fit.1, nsim=1, time.slices = 1000)\n\n\nError in UseMethod(\"as.networkDynamic\") :\n\n   no applicable method for 'as.networkDynamic' applied to an object of class \"network\"\n\nIn addition: Warning message:\n\nnetworkDynamic converter and data merge functions are being refactored to avoid `as.networkDynamic.*' methods and S3 calls.  See networkDynamic function instead.\nIn the future as.networkDynamic will only set a networkDynamic class on its argument.\n\nIt seems to me the command is \"evolving \" and I simply have the old \nsyntax.  But, a look at the networkDynamic package shows the \ndocumentation was last updated 11 months ago... so I am not sure what I \nam missing.\n\nThanks in advance everyone,\n\nShane\n\n-- \nShane Gleason\nDoctoral Candidate\nSouthern Illinois University:Carbondale\nDepartment of Political Science\nFaner 3172",
+      "body_snippet": "Hi everyone,\n\nI am working through Krivitsky and Goodreau's (2012) STERGM tutorial, \nbut I come up on a strange problem when I attempt to run the \nsimulate.stergm command:\n\nstergm.sim.1 <- simulate.st",
+      "thread_id": "thread-794973736a58",
+      "thread_depth": 0,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-bc20a10146c1",
+      "message_id": "<alpine.WNT.1.10.1302071310370.5260@morrism-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-02-07T13:11:17Z",
+      "subject": "[statnet_help] simulate.stergm does not run in tutorial",
+      "subject_clean": "[statnet_help] simulate.stergm does not run in tutorial",
+      "in_reply_to": "<51141502.9010900@siu.edu>",
+      "references": [
+        "<51141502.9010900@siu.edu>"
+      ],
+      "body_plain": "Hi Shane,\n\nWhat versions of ergm and networkDynamic are you using?\n\nthanks,\nMartina\n\nOn Thu, 7 Feb 2013, Shane Gleason wrote:\n\n> Hi everyone,\n>\n> I am working through Krivitsky and Goodreau's (2012) STERGM tutorial, but I \n> come up on a strange problem when I attempt to run the simulate.stergm \n> command:\n>\n> stergm.sim.1 <- simulate.stergm(stergm.fit.1, nsim=1, time.slices = 1000)\n>\n>\n> Error in UseMethod(\"as.networkDynamic\") :\n>\n>  no applicable method for 'as.networkDynamic' applied to an object of class \n> \"network\"\n>\n> In addition: Warning message:\n>\n> networkDynamic converter and data merge functions are being refactored to \n> avoid `as.networkDynamic.*' methods and S3 calls.  See networkDynamic \n> function instead.\n> In the future as.networkDynamic will only set a networkDynamic class on its \n> argument.\n>\n> It seems to me the command is \"evolving \" and I simply have the old syntax. \n> But, a look at the networkDynamic package shows the documentation was last \n> updated 11 months ago... so I am not sure what I am missing.\n>\n> Thanks in advance everyone,\n>\n> Shane\n>\n> -- \n> Shane Gleason\n> Doctoral Candidate\n> Southern Illinois University:Carbondale\n> Department of Political Science\n> Faner 3172\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Shane,\n\nWhat versions of ergm and networkDynamic are you using?\n\nthanks,\nMartina\n\nOn Thu, 7 Feb 2013, Shane Gleason wrote:\n\n> Hi everyone,\n>\n> I am working through Krivitsky and Goodreau's (2012) S",
+      "thread_id": "thread-794973736a58",
+      "thread_depth": 1,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-2667b8880525",
+      "message_id": "<9BE53A93D17D4B63B86B997ACC98035D@alperin.ca>",
+      "from_name": "Juan Pablo Alperin",
+      "from_email_hash": "c751a4e2599de680f055499bfcb7c1ebf69cc9e384a2141ea91edcf699d92dcc",
+      "date": "2013-02-08T21:26:18Z",
+      "subject": "[statnet_help] using ergm on large networks",
+      "subject_clean": "[statnet_help] using ergm on large networks",
+      "in_reply_to": "<mailman.742.1360387443.6673.statnet_help@mailman2.u.washington.edu>",
+      "references": [
+        "<mailman.742.1360387443.6673.statnet_help@mailman2.u.washington.edu>"
+      ],
+      "body_plain": "Hello all, \n\nI am a newcomer to statnet and ergms and struggling to run my first models. I have a network with ~9000 nodes, but even when I try to run on a smaller part of the network I get an error. I've tried with ~3000 nodes (43000 edges) and had the exact same error: \n\n> m1 = ergm(net ~ edges + mutual + receiver)\nObserved statistic(s) receiver157, receiver261, receiver444, receiver1003, receiver1154, receiver1524, receiver2801, and receiver2826 are at their smallest attainable values. Their coefficients will be fixed at -Inf.\nError in double(maxNumDyadTypes * Clist$nstats) : \n  vector size specified is too large\n\nI've tried searching the list and google for answers, but have not succeeded. I tried setting MPLE.max.dyad.types to small values (which I saw suggested elsewhere) and I get the same error. Any insights as to what is happening? \n\nA follow-up question: I've read of difficulties fitting ergm's to large networks. Does anyone have a good resource or a set of tips on working with ergms on large networks?  \n\nReally hope someone can help. Thanks!\n\nJuan \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130208/24efab0d/attachment.html>",
+      "body_snippet": "Hello all, \n\nI am a newcomer to statnet and ergms and struggling to run my first models. I have a network with ~9000 nodes, but even when I try to run on a smaller part of the network I get an error. ",
+      "thread_id": "thread-2667b8880525",
+      "thread_depth": 0,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-241d4b4c655c",
+      "message_id": "<C3BCDED2E211465AA01F0B9DBCD1CA7E@alperin.ca>",
+      "from_name": "Juan Pablo Alperin",
+      "from_email_hash": "c751a4e2599de680f055499bfcb7c1ebf69cc9e384a2141ea91edcf699d92dcc",
+      "date": "2013-02-11T23:43:59Z",
+      "subject": "[statnet_help] ERGM - too many unique dyads",
+      "subject_clean": "[statnet_help] ERGM - too many unique dyads",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi again! \n\nI made some progress since my last email, but still having problems. Wondering if I can pick up an old thread, as I am running into the same problem as a previous poster, but the suggested fix is not working. \n\nhttp://mailman2.u.washington.edu/pipermail/statnet_help/2010/000675.html\n\nI'm getting the same error: \nError in ergm.pl (http://ergm.pl)(Clist = Clist, Clist.miss = Clist.miss, m = m, \ntheta.offset = theta.offset, : \nToo many unique dyads! \n\nMy network has 3042 nodes. I tried setting the Max Dyad Types with the following:\n\nbig.enough <- 3042*3042\n     (note: also tried 3042*3041/2 as in original post, also tried 3042*3042*2\ncontrol = control.ergm(MPLE.max.dyad.types=big.enough)\n\nBut the error persists. I have 16Gb RAM + 64Gb Swap, running 64-big R on ubuntu.\n\nAny ideas? \n\nJuan\n\nPS: still also looking for a good resource on fitting models to large networks. \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130211/78d029c7/attachment.html>",
+      "body_snippet": "Hi again! \n\nI made some progress since my last email, but still having problems. Wondering if I can pick up an old thread, as I am running into the same problem as a previous poster, but the suggested",
+      "thread_id": "thread-241d4b4c655c",
+      "thread_depth": 0,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-19c1827b9bc2",
+      "message_id": "<alpine.WNT.1.10.1302120937330.4780@morrism-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-02-12T10:11:54Z",
+      "subject": "[statnet_help] simulate.stergm does not run in tutorial",
+      "subject_clean": "[statnet_help] simulate.stergm does not run in tutorial",
+      "in_reply_to": "<51197924.1080102@siu.edu>",
+      "references": [
+        "<51141502.9010900@siu.edu>",
+        "<alpine.WNT.1.10.1302071310370.5260@morrism-PC>",
+        "<51141EF3.4000507@siu.edu>",
+        "<51197924.1080102@siu.edu>"
+      ],
+      "body_plain": "Hi Shane,\n\nSorry for the delay.  I've replicated your error on my laptop, so\nhave sent the query on to other members of the development team to see \nif we can get it resolved.  Thanks for reporting it.\n\nThe good news is we have a new release in the pipeline, and there's a \npreview you can download at: http://statnet.csde.washington.edu/preview/\nIf you install \"ergm\" and \"tergm\" from there, the dependencies will also \nbe downloaded.\n\nWe've changed some things that affect the commands used in the stergm \ntutorial from last year's workshop.  In particular, at the top you'll need \nto add the command:\n\nlibrary(tergm)\n\nThe tergm package is new, and will contain all the temporal (dynamic) ergm \nmodeling code as we move forward.\n\nI tried it up to the line with the problem, and it now works.\n\nHTH,\nMartina\n\nOn Mon, 11 Feb 2013, Shane Gleason wrote:\n\n> Hi Martina,\n>\n> I just wanted to make sure my reply to your question on the statnet listserv \n> did not get caught by the spam filter.  You had asked what version of R and \n> statnet I am using.  That information is below in the quoted message.\n>\n> Thanks,\n>\n> Shane\n>\n> On 02/07/2013 03:38 PM, Shane Gleason wrote:\n>> Hi Martina,\n>> \n>> I am using statnet 3.0-1,  networkDynamic_0.3.1, and ergm_3.0-3.\n>> \n>> The output of my sessionInfo() is below.\n>> \n>> Much thanks,\n>> \n>> Shane\n>> \n>> sessionInfo()\n>> R version 2.15.2 (2012-10-26)\n>> Platform: i686-pc-linux-gnu (32-bit)\n>> \n>> locale:\n>>  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C LC_TIME=en_US.UTF-8\n>>  [4] LC_COLLATE=en_US.UTF-8     LC_MONETARY=en_US.UTF-8 \n>> LC_MESSAGES=en_US.UTF-8\n>>  [7] LC_PAPER=C                 LC_NAME=C LC_ADDRESS=C\n>> [10] LC_TELEPHONE=C             LC_MEASUREMENT=en_US.UTF-8 \n>> LC_IDENTIFICATION=C\n>> \n>> attached base packages:\n>> [1] stats     graphics  grDevices utils     datasets  methods base\n>> \n>> other attached packages:\n>>  [1] statnet_3.0-1        sna_2.2-2 latticeExtra_0.6-24  RColorBrewer_1.0-5\n>>  [5] ergm_3.0-3           coda_0.16-1 nlme_3.1-105         trust_0.1-2\n>>  [9] Matrix_1.0-10        lattice_0.20-10 robustbase_0.9-4 \n>> networkDynamic_0.3.1\n>> [13] network_1.7-1\n>> \n>> loaded via a namespace (and not attached):\n>> [1] grid_2.15.2  tools_2.15.2\n>> \n>> \n>> \n>> On 02/07/2013 03:11 PM, Martina Morris wrote:\n>>> Hi Shane,\n>>> \n>>> What versions of ergm and networkDynamic are you using?\n>>> \n>>> thanks,\n>>> Martina\n>>> \n>>> On Thu, 7 Feb 2013, Shane Gleason wrote:\n>>> \n>>>> Hi everyone,\n>>>> \n>>>> I am working through Krivitsky and Goodreau's (2012) STERGM tutorial, but \n>>>> I come up on a strange problem when I attempt to run the simulate.stergm \n>>>> command:\n>>>> \n>>>> stergm.sim.1 <- simulate.stergm(stergm.fit.1, nsim=1, time.slices = 1000)\n>>>> \n>>>> \n>>>> Error in UseMethod(\"as.networkDynamic\") :\n>>>>\n>>>>  no applicable method for 'as.networkDynamic' applied to an object of \n>>>> class \"network\"\n>>>> \n>>>> In addition: Warning message:\n>>>> \n>>>> networkDynamic converter and data merge functions are being refactored to \n>>>> avoid `as.networkDynamic.*' methods and S3 calls. See networkDynamic \n>>>> function instead.\n>>>> In the future as.networkDynamic will only set a networkDynamic class on \n>>>> its argument.\n>>>> \n>>>> It seems to me the command is \"evolving \" and I simply have the old \n>>>> syntax. But, a look at the networkDynamic package shows the documentation \n>>>> was last updated 11 months ago... so I am not sure what I am missing.\n>>>> \n>>>> Thanks in advance everyone,\n>>>> \n>>>> Shane\n>>>> \n>>>> -- \n>>>> Shane Gleason\n>>>> Doctoral Candidate\n>>>> Southern Illinois University:Carbondale\n>>>> Department of Political Science\n>>>> Faner 3172\n>>>> \n>>>> _______________________________________________\n>>>> statnet_help mailing list\n>>>> statnet_help@u.washington.edu\n>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>> \n>>> \n>>> ****************************************************************\n>>>  Professor of Sociology and Statistics\n>>>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>>  Box 354322\n>>>  University of Washington\n>>>  Seattle, WA 98195-4322\n>>>\n>>>  Office:    (206) 685-3402\n>>>  Dept Office:     (206) 543-5882, 543-7237\n>>>  Fax:         (206) 685-7419\n>>> \n>>> morrism@u.washington.edu\n>>> http://faculty.washington.edu/morrism/\n>> \n>\n> -- \n> Shane Gleason\n> Doctoral Candidate\n> Southern Illinois University:Carbondale\n> Department of Political Science\n> Faner 3172\n>\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Shane,\n\nSorry for the delay.  I've replicated your error on my laptop, so\nhave sent the query on to other members of the development team to see \nif we can get it resolved.  Thanks for reporting it",
+      "thread_id": "thread-19c1827b9bc2",
+      "thread_depth": 0,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-f45e345621b3",
+      "message_id": "<1360827077.1765.29.camel@Navi.krivitsky.homeip.net>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "460258cbd680ea347ee0196adc8a17e139024de6f74b950cba8add8e35654b6f",
+      "date": "2013-02-13T23:31:17Z",
+      "subject": "[statnet_help] ERGM - too many unique dyads",
+      "subject_clean": "[statnet_help] ERGM - too many unique dyads",
+      "in_reply_to": "<C3BCDED2E211465AA01F0B9DBCD1CA7E@alperin.ca>",
+      "references": [
+        "<C3BCDED2E211465AA01F0B9DBCD1CA7E@alperin.ca>"
+      ],
+      "body_plain": "Hi, Juan,\n\nJust to be clear, are you passing \"control = ...\" to ergm()? If so, can\nyou tell me what version you are using? There is a preview release up at\nhttp://www.statnet.org/preview . Does the bug persist there?\n\n                      Thanks,\n                      Pavel\n\n\nOn Mon, 2013-02-11 at 23:43 -0800, Juan Pablo Alperin wrote:\n> Hi again! \n> \n> I made some progress since my last email, but still having\n> problems. Wondering if I can pick up an old thread, as I am running\n> into the same problem as a previous poster, but the suggested fix is\n> not working. \n> \n> http://mailman2.u.washington.edu/pipermail/statnet_help/2010/000675.html\n> \n> I'm getting the same error: \n> Error in ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m, \n> theta.offset = theta.offset, : \n> Too many unique dyads! \n> \n> My network has 3042 nodes. I tried setting the Max Dyad Types with the\n> following:\n> \n> big.enough <- 3042*3042\n>      (note: also tried 3042*3041/2 as in original post, also tried\n> 3042*3042*2\n> control = control.ergm(MPLE.max.dyad.types=big.enough)\n> \n> But the error persists. I have 16Gb RAM + 64Gb Swap, running 64-big R\n> on ubuntu.\n> \n> Any ideas? \n> \n> Juan\n> \n> PS: still also looking for a good resource on fitting models to large\n> networks. \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi, Juan,\n\nJust to be clear, are you passing \"control = ...\" to ergm()? If so, can\nyou tell me what version you are using? There is a preview release up at\nhttp://www.statnet.org/preview . Does the bu",
+      "thread_id": "thread-241d4b4c655c",
+      "thread_depth": 1,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-13e2c59ae032",
+      "message_id": "<1360829599.1765.39.camel@Navi.krivitsky.homeip.net>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "460258cbd680ea347ee0196adc8a17e139024de6f74b950cba8add8e35654b6f",
+      "date": "2013-02-14T00:13:19Z",
+      "subject": "[statnet_help] using ergm on large networks",
+      "subject_clean": "[statnet_help] using ergm on large networks",
+      "in_reply_to": "<9BE53A93D17D4B63B86B997ACC98035D@alperin.ca>",
+      "references": [
+        "<mailman.742.1360387443.6673.statnet_help@mailman2.u.washington.edu>",
+        "<9BE53A93D17D4B63B86B997ACC98035D@alperin.ca>"
+      ],
+      "body_plain": "Hi, Juan,\n\nThe problem here is that you are using the receiver term, which adds a\nparameter for every node (but one), so you are trying to fit a model\nwith ~9000 parameters. The MPLE procedure tries to allocate a vector to\nstore all of them --- which is 9000*MPLE.max.dyad.types, which, by\ndefault, asks for a vector about 9e+9*8 = 72 gigabytes in length.\n\nSetting MPLE.max.dyad.types to too small a value means that the MPLE\nprocedure cannot run, resulting in the \"Too many unique dyad values\"\nerror.\n\nIn other words, the problem is not so much that the network is too big,\nbut that the model calls for too many parameters. My recommendation is\nto try modeling degree heterogeneity in some other way (e.g., using\ngwidegree).\n\n                        I hope this helps,\n                        Pavel\n\nOn Fri, 2013-02-08 at 21:26 -0800, Juan Pablo Alperin wrote:\n> Hello all, \n> \n> I am a newcomer to statnet and ergms and struggling to run my first\n> models. I have a network with ~9000 nodes, but even when I try to run\n> on a smaller part of the network I get an error. I've tried with ~3000\n> nodes (43000 edges) and had the exact same error: \n> \n> > m1 = ergm(net ~ edges + mutual + receiver)\n> Observed statistic(s) receiver157, receiver261, receiver444,\n> receiver1003, receiver1154, receiver1524, receiver2801, and\n> receiver2826 are at their smallest attainable values. Their\n> coefficients will be fixed at -Inf.\n> Error in double(maxNumDyadTypes * Clist$nstats) : \n>   vector size specified is too large\n> \n> I've tried searching the list and google for answers, but have not\n> succeeded. I tried setting MPLE.max.dyad.types to small values (which\n> I saw suggested elsewhere) and I get the same error. Any insights as\n> to what is happening? \n> \n> A follow-up question: I've read of difficulties fitting ergm's to\n> large networks. Does anyone have a good resource or a set of tips on\n> working with ergms on large networks?  \n> \n> Really hope someone can help. Thanks!\n> \n> Juan\n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi, Juan,\n\nThe problem here is that you are using the receiver term, which adds a\nparameter for every node (but one), so you are trying to fit a model\nwith ~9000 parameters. The MPLE procedure tries t",
+      "thread_id": "thread-2667b8880525",
+      "thread_depth": 1,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-3e9faab52eaf",
+      "message_id": "<BC029A53F7424D8DA7E04DFB570F32AA@alperin.ca>",
+      "from_name": "Juan Pablo Alperin",
+      "from_email_hash": "c751a4e2599de680f055499bfcb7c1ebf69cc9e384a2141ea91edcf699d92dcc",
+      "date": "2013-02-14T13:05:27Z",
+      "subject": "[statnet_help] using ergm on large networks",
+      "subject_clean": "[statnet_help] using ergm on large networks",
+      "in_reply_to": "<1360829599.1765.39.camel@Navi.krivitsky.homeip.net>",
+      "references": [
+        "<mailman.742.1360387443.6673.statnet_help@mailman2.u.washington.edu>",
+        "<9BE53A93D17D4B63B86B997ACC98035D@alperin.ca>",
+        "<1360829599.1765.39.camel@Navi.krivitsky.homeip.net>"
+      ],
+      "body_plain": "Pavel,  \n\nThanks for the response! \n\nFor other's benefit, I wanted to point out that I did eventually manage to run that particular model by increasing the memory/swap space on the machine I was running it on. I actually just added 64Gb of Swap space and it got around the problem. This resource was useful in adding in swap on the fly, at least for those using Ubuntu (and possibly other UNIX flavours): \nhttp://askubuntu.com/questions/178712/how-to-increase-swap-space-in-ubuntu\n\nBut you're right, I did realize it wasn't the right way to model the degree distribution. \n\nSo, let me ask: what is the right way to model a network that has a power-law degree distribution? Is gwidegree the only type of preferential attachment model currently possible? \n\nI will follow-up on the other issue in the other thread. Thanks.\n\nJuan\n\n\nOn Thursday, 14 February, 2013 at 12:13 AM, Pavel N. Krivitsky wrote:\n\n> Hi, Juan,\n> \n> The problem here is that you are using the receiver term, which adds a\n> parameter for every node (but one), so you are trying to fit a model\n> with ~9000 parameters. The MPLE procedure tries to allocate a vector to\n> store all of them --- which is 9000*MPLE.max.dyad.types, which, by\n> default, asks for a vector about 9e+9*8 = 72 gigabytes in length.\n> \n> Setting MPLE.max.dyad.types to too small a value means that the MPLE\n> procedure cannot run, resulting in the \"Too many unique dyad values\"\n> error.\n> \n> In other words, the problem is not so much that the network is too big,\n> but that the model calls for too many parameters. My recommendation is\n> to try modeling degree heterogeneity in some other way (e.g., using\n> gwidegree).\n> \n> I hope this helps,\n> Pavel\n> \n> On Fri, 2013-02-08 at 21:26 -0800, Juan Pablo Alperin wrote:\n> > Hello all, \n> > \n> > I am a newcomer to statnet and ergms and struggling to run my first\n> > models. I have a network with ~9000 nodes, but even when I try to run\n> > on a smaller part of the network I get an error. I've tried with ~3000\n> > nodes (43000 edges) and had the exact same error: \n> > \n> > > m1 = ergm(net ~ edges + mutual + receiver)\n> > Observed statistic(s) receiver157, receiver261, receiver444,\n> > receiver1003, receiver1154, receiver1524, receiver2801, and\n> > receiver2826 are at their smallest attainable values. Their\n> > coefficients will be fixed at -Inf.\n> > Error in double(maxNumDyadTypes * Clist$nstats) : \n> > vector size specified is too large\n> > \n> > I've tried searching the list and google for answers, but have not\n> > succeeded. I tried setting MPLE.max.dyad.types to small values (which\n> > I saw suggested elsewhere) and I get the same error. Any insights as\n> > to what is happening? \n> > \n> > A follow-up question: I've read of difficulties fitting ergm's to\n> > large networks. Does anyone have a good resource or a set of tips on\n> > working with ergms on large networks? \n> > \n> > Really hope someone can help. Thanks!\n> > \n> > Juan\n> > \n> > \n> > _______________________________________________\n> > statnet_help mailing list\n> > statnet_help@u.washington.edu (mailto:statnet_help@u.washington.edu)\n> > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> > \n> \n> \n> \n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130214/38ec0f0c/attachment.html>",
+      "body_snippet": "Pavel,  \n\nThanks for the response! \n\nFor other's benefit, I wanted to point out that I did eventually manage to run that particular model by increasing the memory/swap space on the machine I was runni",
+      "thread_id": "thread-2667b8880525",
+      "thread_depth": 2,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-bf3c114c96fe",
+      "message_id": "<CAJaaoQ1ph6xtioz09tMQSy=k=J3O8MD3o7qYA+T3sjh-mEDm+A@mail.gmail.com>",
+      "from_name": "Michael Bishop",
+      "from_email_hash": "935da6619ad76b76b55c713d398b9d0e5a0e3a795674669373d65f9c2fcab9f6",
+      "date": "2013-02-14T13:42:13Z",
+      "subject": "[statnet_help] using ergm on large networks",
+      "subject_clean": "[statnet_help] using ergm on large networks",
+      "in_reply_to": "<BC029A53F7424D8DA7E04DFB570F32AA@alperin.ca>",
+      "references": [
+        "<mailman.742.1360387443.6673.statnet_help@mailman2.u.washington.edu>",
+        "<9BE53A93D17D4B63B86B997ACC98035D@alperin.ca>",
+        "<1360829599.1765.39.camel@Navi.krivitsky.homeip.net>",
+        "<BC029A53F7424D8DA7E04DFB570F32AA@alperin.ca>"
+      ],
+      "body_plain": "Hi Juan,\n\nPerhaps you've already done this, but allow me to take this opportunity to\nencourage all people on the list to submit apparent power-law distributions\nto strong tests.\nhttp://vserver1.cscs.lsa.umich.edu/~crshalizi/weblog/491.html provides some\nbackground and links to a publication.  See also:\nhttp://www.sciencemag.org/content/335/6069/665\n\np.s. I like your papers on open access.  :)\n\n\nOn Thu, Feb 14, 2013 at 3:05 PM, Juan Pablo Alperin <alperin@stanford.edu>wrote:\n\n>  Pavel,\n>\n> Thanks for the response!\n>\n> For other's benefit, I wanted to point out that I did eventually manage to\n> run that particular model by increasing the memory/swap space on the\n> machine I was running it on. I actually just added 64Gb of Swap space and\n> it got around the problem. This resource was useful in adding in swap on\n> the fly, at least for those using Ubuntu (and possibly other UNIX\n> flavours):\n> http://askubuntu.com/questions/178712/how-to-increase-swap-space-in-ubuntu\n>\n> But you're right, I did realize it wasn't the right way to model the\n> degree distribution.\n>\n> So, let me ask: what is the right way to model a network that has a\n> power-law degree distribution? Is gwidegree the only type of preferential\n> attachment model currently possible?\n>\n>  I will follow-up on the other issue in the other thread. Thanks.\n>\n> Juan\n>\n> On Thursday, 14 February, 2013 at 12:13 AM, Pavel N. Krivitsky wrote:\n>\n> Hi, Juan,\n>\n> The problem here is that you are using the receiver term, which adds a\n> parameter for every node (but one), so you are trying to fit a model\n> with ~9000 parameters. The MPLE procedure tries to allocate a vector to\n> store all of them --- which is 9000*MPLE.max.dyad.types, which, by\n> default, asks for a vector about 9e+9*8 = 72 gigabytes in length.\n>\n> Setting MPLE.max.dyad.types to too small a value means that the MPLE\n> procedure cannot run, resulting in the \"Too many unique dyad values\"\n> error.\n>\n> In other words, the problem is not so much that the network is too big,\n> but that the model calls for too many parameters. My recommendation is\n> to try modeling degree heterogeneity in some other way (e.g., using\n> gwidegree).\n>\n> I hope this helps,\n>  Pavel\n>\n> On Fri, 2013-02-08 at 21:26 -0800, Juan Pablo Alperin wrote:\n>\n> Hello all,\n>\n> I am a newcomer to statnet and ergms and struggling to run my first\n> models. I have a network with ~9000 nodes, but even when I try to run\n> on a smaller part of the network I get an error. I've tried with ~3000\n> nodes (43000 edges) and had the exact same error:\n>\n> m1 = ergm(net ~ edges + mutual + receiver)\n>\n> Observed statistic(s) receiver157, receiver261, receiver444,\n> receiver1003, receiver1154, receiver1524, receiver2801, and\n> receiver2826 are at their smallest attainable values. Their\n> coefficients will be fixed at -Inf.\n> Error in double(maxNumDyadTypes * Clist$nstats) :\n> vector size specified is too large\n>\n> I've tried searching the list and google for answers, but have not\n> succeeded. I tried setting MPLE.max.dyad.types to small values (which\n> I saw suggested elsewhere) and I get the same error. Any insights as\n> to what is happening?\n>\n> A follow-up question: I've read of difficulties fitting ergm's to\n> large networks. Does anyone have a good resource or a set of tips on\n> working with ergms on large networks?\n>\n> Really hope someone can help. Thanks!\n>\n> Juan\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n\n-- \n-----------------------------------------------\nMichael M. Bishop, Ph.D. Student\nDepartment of Sociology\nUniversity of Chicago\nhttp://michaelmbishop.github.com/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130214/b78b074e/attachment.html>",
+      "body_snippet": "Hi Juan,\n\nPerhaps you've already done this, but allow me to take this opportunity to\nencourage all people on the list to submit apparent power-law distributions\nto strong tests.\nhttp://vserver1.cscs.l",
+      "thread_id": "thread-2667b8880525",
+      "thread_depth": 3,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-2dcc0e8727c7",
+      "message_id": "<alpine.WNT.1.10.1302141341380.9688@TS3.csde.washington.edu>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-02-14T13:49:31Z",
+      "subject": "[statnet_help] using ergm on large networks",
+      "subject_clean": "[statnet_help] using ergm on large networks",
+      "in_reply_to": "<BC029A53F7424D8DA7E04DFB570F32AA@alperin.ca>",
+      "references": [
+        "<mailman.742.1360387443.6673.statnet_help@mailman2.u.washington.edu>",
+        "<9BE53A93D17D4B63B86B997ACC98035D@alperin.ca>",
+        "<1360829599.1765.39.camel@Navi.krivitsky.homeip.net>",
+        "<BC029A53F7424D8DA7E04DFB570F32AA@alperin.ca>"
+      ],
+      "body_plain": "On Thu, 14 Feb 2013, Juan Pablo Alperin wrote:\n\n> So, let me ask: what is the right way to model a network that has a power-law degree\n> distribution? Is gwidegree the only type of preferential attachment model currently\n> possible?\n\nA better question might be how to use ergm to *test* whether a \nnetwork has a power-law degree distribution.\n\nThere's a paper you might want to look at on this exact topic:\n\n\nDegree distributions in sexual networks: a framework for evaluating \nevidence.\nHamilton DT, Handcock MS, Morris M.\nSex Transm Dis. 2008 Jan;35(1):30-40.\n\nMark Handcock has made the code available in a CRAN package called \n\"degreenet\".\n\nbest,\nmm\n\n> I will follow-up on the other issue in the other thread. Thanks.\n> \n> Juan\n> \n> On Thursday, 14 February, 2013 at 12:13 AM, Pavel N. Krivitsky wrote:\n>\n>       Hi, Juan,\n> \n> The problem here is that you are using the receiver term, which adds a\n> parameter for every node (but one), so you are trying to fit a model\n> with ~9000 parameters. The MPLE procedure tries to allocate a vector to\n> store all of them --- which is 9000*MPLE.max.dyad.types, which, by\n> default, asks for a vector about 9e+9*8 = 72 gigabytes in length.\n> \n> Setting MPLE.max.dyad.types to too small a value means that the MPLE\n> procedure cannot run, resulting in the \"Too many unique dyad values\"\n> error.\n> \n> In other words, the problem is not so much that the network is too big,\n> but that the model calls for too many parameters. My recommendation is\n> to try modeling degree heterogeneity in some other way (e.g., using\n> gwidegree).\n> \n> I hope this helps,\n> Pavel\n> \n> On Fri, 2013-02-08 at 21:26 -0800, Juan Pablo Alperin wrote:\n>       Hello all,\n> \n> I am a newcomer to statnet and ergms and struggling to run my first\n> models. I have a network with ~9000 nodes, but even when I try to run\n> on a smaller part of the network I get an error. I've tried with ~3000\n> nodes (43000 edges) and had the exact same error:\n>\n>       m1 = ergm(net ~ edges + mutual + receiver)\n> \n> Observed statistic(s) receiver157, receiver261, receiver444,\n> receiver1003, receiver1154, receiver1524, receiver2801, and\n> receiver2826 are at their smallest attainable values. Their\n> coefficients will be fixed at -Inf.\n> Error in double(maxNumDyadTypes * Clist$nstats) :\n> vector size specified is too large\n> \n> I've tried searching the list and google for answers, but have not\n> succeeded. I tried setting MPLE.max.dyad.types to small values (which\n> I saw suggested elsewhere) and I get the same error. Any insights as\n> to what is happening?\n> \n> A follow-up question: I've read of difficulties fitting ergm's to\n> large networks. Does anyone have a good resource or a set of tips on\n> working with ergms on large networks?\n> \n> Really hope someone can help. Thanks!\n> \n> Juan\n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> \n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "On Thu, 14 Feb 2013, Juan Pablo Alperin wrote:\n\n> So, let me ask: what is the right way to model a network that has a power-law degree\n> distribution? Is gwidegree the only type of preferential attach",
+      "thread_id": "thread-2667b8880525",
+      "thread_depth": 3,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-6b092b6134a0",
+      "message_id": "<CA894B2CCC5E434F9F3C9CE617B95F25@alperin.ca>",
+      "from_name": "Juan Pablo Alperin",
+      "from_email_hash": "c751a4e2599de680f055499bfcb7c1ebf69cc9e384a2141ea91edcf699d92dcc",
+      "date": "2013-02-14T19:23:06Z",
+      "subject": "[statnet_help] ERGM - too many unique dyads",
+      "subject_clean": "[statnet_help] ERGM - too many unique dyads",
+      "in_reply_to": "<1360827077.1765.29.camel@Navi.krivitsky.homeip.net>",
+      "references": [
+        "<C3BCDED2E211465AA01F0B9DBCD1CA7E@alperin.ca>",
+        "<1360827077.1765.29.camel@Navi.krivitsky.homeip.net>"
+      ],
+      "body_plain": "Pavel,  \n\nPassing in the control variable to the ergm, now there is a good idea! No, I wasn't! I am pretty new to R and I just assumed that calling control.ergm was akin to setting a global variable. \n\nHowever, the solution does not appear to be so simple. I am still experiencing the problem, at least when I try to fit a model with several terms. I have not tried all combinations, but I get the error if I add the nodecov(\"missing\") to the following. \n\nAm I doing something obviously wrong? \n\nThanks for your help\n\nJuan\n\ndebug info: \n=========\n\n> typeof(net %v% \"missing\")\n[1] \"double\"\n\n\n> maxNumDyads=network.size(net)^2/2\n> maxNumDyads\n[1] 4626882\n\n> control=control.ergm(MPLE.max.dyad.types=maxNumDyads, MCMC.burnin=1000000, MCMC.samplesize=300000, parallel=6)\n\n> fit = ergm(net ~ mutual + transitive+ nodecov(\"missing\") + nodematch(\"region\") + nodematch(\"income_level\") + gwidegree(0.3), control=control, verbose=TRUE)\n\n> sessionInfo()\nR version 2.14.1 (2011-12-22)\nPlatform: x86_64-pc-linux-gnu (64-bit)\n\nlocale:\n[1] C\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n[1] ergm_3.0-999           coda_0.16-1            nlme_3.1-102          \n[4] trust_0.1-2            Matrix_1.0-2           lattice_0.20-0        \n[7] robustbase_0.9-4       network_1.7-1          statnet.common_3.0-999\n\nloaded via a namespace (and not attached):\n[1] grid_2.14.1\n\n\n\n\n\nOn Wednesday, 13 February, 2013 at 11:31 PM, Pavel N. Krivitsky wrote:\n\n> Hi, Juan,\n> \n> Just to be clear, are you passing \"control = ...\" to ergm()? If so, can\n> you tell me what version you are using? There is a preview release up at\n> http://www.statnet.org/preview . Does the bug persist there?\n> \n> Thanks,\n> Pavel\n> \n> \n> On Mon, 2013-02-11 at 23:43 -0800, Juan Pablo Alperin wrote:\n> > Hi again! \n> > \n> > I made some progress since my last email, but still having\n> > problems. Wondering if I can pick up an old thread, as I am running\n> > into the same problem as a previous poster, but the suggested fix is\n> > not working. \n> > \n> > http://mailman2.u.washington.edu/pipermail/statnet_help/2010/000675.html\n> > \n> > I'm getting the same error: \n> > Error in ergm.pl (http://ergm.pl)(Clist = Clist, Clist.miss = Clist.miss, m = m, \n> > theta.offset = theta.offset, : \n> > Too many unique dyads! \n> > \n> > My network has 3042 nodes. I tried setting the Max Dyad Types with the\n> > following:\n> > \n> > big.enough <- 3042*3042\n> > (note: also tried 3042*3041/2 as in original post, also tried\n> > 3042*3042*2\n> > control = control.ergm(MPLE.max.dyad.types=big.enough)\n> > \n> > But the error persists. I have 16Gb RAM + 64Gb Swap, running 64-big R\n> > on ubuntu.\n> > \n> > Any ideas? \n> > \n> > Juan\n> > \n> > PS: still also looking for a good resource on fitting models to large\n> > networks. \n> > _______________________________________________\n> > statnet_help mailing list\n> > statnet_help@u.washington.edu (mailto:statnet_help@u.washington.edu)\n> > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> > \n> \n> \n> \n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130214/1eb6db2e/attachment.html>",
+      "body_snippet": "Pavel,  \n\nPassing in the control variable to the ergm, now there is a good idea! No, I wasn't! I am pretty new to R and I just assumed that calling control.ergm was akin to setting a global variable. ",
+      "thread_id": "thread-241d4b4c655c",
+      "thread_depth": 2,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-824ece3a65e5",
+      "message_id": "<1360899246.1765.79.camel@Navi.krivitsky.homeip.net>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "460258cbd680ea347ee0196adc8a17e139024de6f74b950cba8add8e35654b6f",
+      "date": "2013-02-14T19:34:06Z",
+      "subject": "[statnet_help] ERGM - too many unique dyads",
+      "subject_clean": "[statnet_help] ERGM - too many unique dyads",
+      "in_reply_to": "<CA894B2CCC5E434F9F3C9CE617B95F25@alperin.ca>",
+      "references": [
+        "<C3BCDED2E211465AA01F0B9DBCD1CA7E@alperin.ca>",
+        "<1360827077.1765.29.camel@Navi.krivitsky.homeip.net>",
+        "<CA894B2CCC5E434F9F3C9CE617B95F25@alperin.ca>"
+      ],
+      "body_plain": "Juan,\n\nTry replacing\n\nmaxNumDyads=network.size(net)^2/2\n\nwith\n\nmaxNumDyads=network.size(net)^2\n\nor\n\nmaxNumDyads=network.dyadcount(net)\n\nsince your network appears to be directed.\n\n                             Pavel\n\nOn Thu, 2013-02-14 at 19:23 -0800, Juan Pablo Alperin wrote:\n> Pavel,  \n> \n> \n> Passing in the control variable to the ergm, now there is a good idea!\n> No, I wasn't! I am pretty new to R and I just assumed that calling\n> control.ergm was akin to setting a global variable. \n> \n> \n> However, the solution does not appear to be so simple. I am still\n> experiencing the problem, at least when I try to fit a model with\n> several terms. I have not tried all combinations, but I get the error\n> if I add the nodecov(\"missing\") to the following. \n> \n> \n> Am I doing something obviously wrong? \n> \n> \n> Thanks for your help\n> \n> \n> Juan\n> \n> \n> debug info: \n> =========\n> \n> \n> > typeof(net %v% \"missing\")\n> [1] \"double\"\n> \n> \n> > maxNumDyads=network.size(net)^2/2\n> > maxNumDyads\n> [1] 4626882\n> > control=control.ergm(MPLE.max.dyad.types=maxNumDyads,\n> MCMC.burnin=1000000, MCMC.samplesize=300000, parallel=6)\n> \n> \n> > fit = ergm(net ~ mutual + transitive+ nodecov(\"missing\") +\n> nodematch(\"region\") + nodematch(\"income_level\") + gwidegree(0.3),\n> control=control, verbose=TRUE)\n> \n> \n> > sessionInfo()\n> R version 2.14.1 (2011-12-22)\n> Platform: x86_64-pc-linux-gnu (64-bit)\n> \n> \n> locale:\n> [1] C\n> \n> \n> attached base packages:\n> [1] stats     graphics  grDevices utils     datasets  methods   base\n>     \n> \n> \n> other attached packages:\n> [1] ergm_3.0-999           coda_0.16-1            nlme_3.1-102\n>    \n> [4] trust_0.1-2            Matrix_1.0-2           lattice_0.20-0\n>    \n> [7] robustbase_0.9-4       network_1.7-1\n>  statnet.common_3.0-999\n> \n> \n> loaded via a namespace (and not attached):\n> [1] grid_2.14.1\n> \n> \n> \n> \n> \n> \n> \n> On Wednesday, 13 February, 2013 at 11:31 PM, Pavel N. Krivitsky wrote:\n> \n> > Hi, Juan,\n> > \n> > \n> > Just to be clear, are you passing \"control = ...\" to ergm()? If so,\n> > can\n> > you tell me what version you are using? There is a preview release\n> > up at\n> > http://www.statnet.org/preview . Does the bug persist there?\n> > \n> > \n> > Thanks,\n> > Pavel\n> > \n> > \n> > \n> > \n> > On Mon, 2013-02-11 at 23:43 -0800, Juan Pablo Alperin wrote:\n> > > Hi again! \n> > > \n> > > \n> > > I made some progress since my last email, but still having\n> > > problems. Wondering if I can pick up an old thread, as I am\n> > > running\n> > > into the same problem as a previous poster, but the suggested fix\n> > > is\n> > > not working. \n> > > \n> > > \n> > > http://mailman2.u.washington.edu/pipermail/statnet_help/2010/000675.html\n> > > \n> > > \n> > > I'm getting the same error: \n> > > Error in ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m, \n> > > theta.offset = theta.offset, : \n> > > Too many unique dyads! \n> > > \n> > > \n> > > My network has 3042 nodes. I tried setting the Max Dyad Types with\n> > > the\n> > > following:\n> > > \n> > > \n> > > big.enough <- 3042*3042\n> > > (note: also tried 3042*3041/2 as in original post, also tried\n> > > 3042*3042*2\n> > > control = control.ergm(MPLE.max.dyad.types=big.enough)\n> > > \n> > > \n> > > But the error persists. I have 16Gb RAM + 64Gb Swap, running\n> > > 64-big R\n> > > on ubuntu.\n> > > \n> > > \n> > > Any ideas? \n> > > \n> > > \n> > > Juan\n> > > \n> > > \n> > > PS: still also looking for a good resource on fitting models to\n> > > large\n> > > networks. \n> > > _______________________________________________\n> > > statnet_help mailing list\n> > > statnet_help@u.washington.edu\n> > > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> \n>",
+      "body_snippet": "Juan,\n\nTry replacing\n\nmaxNumDyads=network.size(net)^2/2\n\nwith\n\nmaxNumDyads=network.size(net)^2\n\nor\n\nmaxNumDyads=network.dyadcount(net)\n\nsince your network appears to be directed.\n\n                    ",
+      "thread_id": "thread-241d4b4c655c",
+      "thread_depth": 3,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-a17293d87a4f",
+      "message_id": "<68A64F7A30554C3D844897BC9CD162CE@alperin.ca>",
+      "from_name": "Juan Pablo Alperin",
+      "from_email_hash": "c751a4e2599de680f055499bfcb7c1ebf69cc9e384a2141ea91edcf699d92dcc",
+      "date": "2013-02-14T19:44:55Z",
+      "subject": "[statnet_help] ERGM - too many unique dyads",
+      "subject_clean": "[statnet_help] ERGM - too many unique dyads",
+      "in_reply_to": "<1360899246.1765.79.camel@Navi.krivitsky.homeip.net>",
+      "references": [
+        "<C3BCDED2E211465AA01F0B9DBCD1CA7E@alperin.ca>",
+        "<1360827077.1765.29.camel@Navi.krivitsky.homeip.net>",
+        "<CA894B2CCC5E434F9F3C9CE617B95F25@alperin.ca>",
+        "<1360899246.1765.79.camel@Navi.krivitsky.homeip.net>"
+      ],
+      "body_plain": "Pavel,  \n\nI tried maxNumDyads=network.size(net)^2 (as well as a few bigger numbers). No difference. \n\nAny other ideas? \n\nJuan\n\n\nOn Thursday, 14 February, 2013 at 7:34 PM, Pavel N. Krivitsky wrote:\n\n> Juan,\n> \n> Try replacing\n> \n> maxNumDyads=network.size(net)^2/2\n> \n> with\n> \n> maxNumDyads=network.size(net)^2\n> \n> or\n> \n> maxNumDyads=network.dyadcount(net)\n> \n> since your network appears to be directed.\n> \n> Pavel\n> \n> On Thu, 2013-02-14 at 19:23 -0800, Juan Pablo Alperin wrote:\n> > Pavel, \n> > \n> > \n> > Passing in the control variable to the ergm, now there is a good idea!\n> > No, I wasn't! I am pretty new to R and I just assumed that calling\n> > control.ergm was akin to setting a global variable. \n> > \n> > \n> > However, the solution does not appear to be so simple. I am still\n> > experiencing the problem, at least when I try to fit a model with\n> > several terms. I have not tried all combinations, but I get the error\n> > if I add the nodecov(\"missing\") to the following. \n> > \n> > \n> > Am I doing something obviously wrong? \n> > \n> > \n> > Thanks for your help\n> > \n> > \n> > Juan\n> > \n> > \n> > debug info: \n> > =========\n> > \n> > \n> > > typeof(net %v% \"missing\")\n> > [1] \"double\"\n> > \n> > \n> > > maxNumDyads=network.size(net)^2/2\n> > > maxNumDyads\n> > > \n> > \n> > [1] 4626882\n> > > control=control.ergm(MPLE.max.dyad.types=maxNumDyads,\n> > \n> > MCMC.burnin=1000000, MCMC.samplesize=300000, parallel=6)\n> > \n> > \n> > > fit = ergm(net ~ mutual + transitive+ nodecov(\"missing\") +\n> > nodematch(\"region\") + nodematch(\"income_level\") + gwidegree(0.3),\n> > control=control, verbose=TRUE)\n> > \n> > \n> > > sessionInfo()\n> > R version 2.14.1 (2011-12-22)\n> > Platform: x86_64-pc-linux-gnu (64-bit)\n> > \n> > \n> > locale:\n> > [1] C\n> > \n> > \n> > attached base packages:\n> > [1] stats graphics grDevices utils datasets methods base\n> > \n> > \n> > \n> > other attached packages:\n> > [1] ergm_3.0-999 coda_0.16-1 nlme_3.1-102\n> > \n> > [4] trust_0.1-2 Matrix_1.0-2 lattice_0.20-0\n> > \n> > [7] robustbase_0.9-4 network_1.7-1\n> > statnet.common_3.0-999\n> > \n> > \n> > loaded via a namespace (and not attached):\n> > [1] grid_2.14.1\n> > \n> > \n> > \n> > \n> > \n> > \n> > \n> > On Wednesday, 13 February, 2013 at 11:31 PM, Pavel N. Krivitsky wrote:\n> > \n> > > Hi, Juan,\n> > > \n> > > \n> > > Just to be clear, are you passing \"control = ...\" to ergm()? If so,\n> > > can\n> > > you tell me what version you are using? There is a preview release\n> > > up at\n> > > http://www.statnet.org/preview . Does the bug persist there?\n> > > \n> > > \n> > > Thanks,\n> > > Pavel\n> > > \n> > > \n> > > \n> > > \n> > > On Mon, 2013-02-11 at 23:43 -0800, Juan Pablo Alperin wrote:\n> > > > Hi again! \n> > > > \n> > > > \n> > > > I made some progress since my last email, but still having\n> > > > problems. Wondering if I can pick up an old thread, as I am\n> > > > running\n> > > > into the same problem as a previous poster, but the suggested fix\n> > > > is\n> > > > not working. \n> > > > \n> > > > \n> > > > http://mailman2.u.washington.edu/pipermail/statnet_help/2010/000675.html\n> > > > \n> > > > \n> > > > I'm getting the same error: \n> > > > Error in ergm.pl (http://ergm.pl)(Clist = Clist, Clist.miss = Clist.miss, m = m, \n> > > > theta.offset = theta.offset, : \n> > > > Too many unique dyads! \n> > > > \n> > > > \n> > > > My network has 3042 nodes. I tried setting the Max Dyad Types with\n> > > > the\n> > > > following:\n> > > > \n> > > > \n> > > > big.enough <- 3042*3042\n> > > > (note: also tried 3042*3041/2 as in original post, also tried\n> > > > 3042*3042*2\n> > > > control = control.ergm(MPLE.max.dyad.types=big.enough)\n> > > > \n> > > > \n> > > > But the error persists. I have 16Gb RAM + 64Gb Swap, running\n> > > > 64-big R\n> > > > on ubuntu.\n> > > > \n> > > > \n> > > > Any ideas? \n> > > > \n> > > > \n> > > > Juan\n> > > > \n> > > > \n> > > > PS: still also looking for a good resource on fitting models to\n> > > > large\n> > > > networks. \n> > > > _______________________________________________\n> > > > statnet_help mailing list\n> > > > statnet_help@u.washington.edu (mailto:statnet_help@u.washington.edu)\n> > > > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> > > > \n> > > \n> > > \n> > \n> > \n> \n> \n> \n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130214/f38c82ab/attachment.html>",
+      "body_snippet": "Pavel,  \n\nI tried maxNumDyads=network.size(net)^2 (as well as a few bigger numbers). No difference. \n\nAny other ideas? \n\nJuan\n\n\nOn Thursday, 14 February, 2013 at 7:34 PM, Pavel N. Krivitsky wrote:\n\n> ",
+      "thread_id": "thread-241d4b4c655c",
+      "thread_depth": 4,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-1b294cbd77c3",
+      "message_id": "<1360900105.1765.80.camel@Navi.krivitsky.homeip.net>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "460258cbd680ea347ee0196adc8a17e139024de6f74b950cba8add8e35654b6f",
+      "date": "2013-02-14T19:48:25Z",
+      "subject": "[statnet_help] ERGM - too many unique dyads",
+      "subject_clean": "[statnet_help] ERGM - too many unique dyads",
+      "in_reply_to": "<68A64F7A30554C3D844897BC9CD162CE@alperin.ca>",
+      "references": [
+        "<C3BCDED2E211465AA01F0B9DBCD1CA7E@alperin.ca>",
+        "<1360827077.1765.29.camel@Navi.krivitsky.homeip.net>",
+        "<CA894B2CCC5E434F9F3C9CE617B95F25@alperin.ca>",
+        "<1360899246.1765.79.camel@Navi.krivitsky.homeip.net>",
+        "<68A64F7A30554C3D844897BC9CD162CE@alperin.ca>"
+      ],
+      "body_plain": "Juan,\n\nWhat error message are you getting, again?\n\n                    Pavel\n\nOn Thu, 2013-02-14 at 19:44 -0800, Juan Pablo Alperin wrote:\n> Pavel,  \n> \n> \n> I tried maxNumDyads=network.size(net)^2 (as well as a few bigger\n> numbers). No difference. \n> \n> \n> Any other ideas? \n> \n> \n> Juan\n> \n> \n> On Thursday, 14 February, 2013 at 7:34 PM, Pavel N. Krivitsky wrote:\n> \n> > Juan,\n> > \n> > \n> > Try replacing\n> > \n> > \n> > maxNumDyads=network.size(net)^2/2\n> > \n> > \n> > with\n> > \n> > \n> > maxNumDyads=network.size(net)^2\n> > \n> > \n> > or\n> > \n> > \n> > maxNumDyads=network.dyadcount(net)\n> > \n> > \n> > since your network appears to be directed.\n> > \n> > \n> > Pavel\n> > \n> > \n> > On Thu, 2013-02-14 at 19:23 -0800, Juan Pablo Alperin wrote:\n> > > Pavel, \n> > > \n> > > \n> > > \n> > > \n> > > Passing in the control variable to the ergm, now there is a good\n> > > idea!\n> > > No, I wasn't! I am pretty new to R and I just assumed that calling\n> > > control.ergm was akin to setting a global variable. \n> > > \n> > > \n> > > \n> > > \n> > > However, the solution does not appear to be so simple. I am still\n> > > experiencing the problem, at least when I try to fit a model with\n> > > several terms. I have not tried all combinations, but I get the\n> > > error\n> > > if I add the nodecov(\"missing\") to the following. \n> > > \n> > > \n> > > \n> > > \n> > > Am I doing something obviously wrong? \n> > > \n> > > \n> > > \n> > > \n> > > Thanks for your help\n> > > \n> > > \n> > > \n> > > \n> > > Juan\n> > > \n> > > \n> > > \n> > > \n> > > debug info: \n> > > =========\n> > > \n> > > \n> > > \n> > > \n> > > > typeof(net %v% \"missing\")\n> > > [1] \"double\"\n> > > \n> > > \n> > > \n> > > \n> > > > maxNumDyads=network.size(net)^2/2\n> > > > maxNumDyads\n> > > [1] 4626882\n> > > > control=control.ergm(MPLE.max.dyad.types=maxNumDyads,\n> > > MCMC.burnin=1000000, MCMC.samplesize=300000, parallel=6)\n> > > \n> > > \n> > > \n> > > \n> > > > fit = ergm(net ~ mutual + transitive+ nodecov(\"missing\") +\n> > > nodematch(\"region\") + nodematch(\"income_level\") + gwidegree(0.3),\n> > > control=control, verbose=TRUE)\n> > > \n> > > \n> > > \n> > > \n> > > > sessionInfo()\n> > > R version 2.14.1 (2011-12-22)\n> > > Platform: x86_64-pc-linux-gnu (64-bit)\n> > > \n> > > \n> > > \n> > > \n> > > locale:\n> > > [1] C\n> > > \n> > > \n> > > \n> > > \n> > > attached base packages:\n> > > [1] stats graphics grDevices utils datasets methods base\n> > > \n> > > \n> > > \n> > > \n> > > \n> > > other attached packages:\n> > > [1] ergm_3.0-999 coda_0.16-1 nlme_3.1-102\n> > > \n> > > [4] trust_0.1-2 Matrix_1.0-2 lattice_0.20-0\n> > > \n> > > [7] robustbase_0.9-4 network_1.7-1\n> > > statnet.common_3.0-999\n> > > \n> > > \n> > > \n> > > \n> > > loaded via a namespace (and not attached):\n> > > [1] grid_2.14.1\n> > > \n> > > \n> > > \n> > > \n> > > \n> > > \n> > > \n> > > \n> > > \n> > > \n> > > \n> > > \n> > > \n> > > \n> > > On Wednesday, 13 February, 2013 at 11:31 PM, Pavel N. Krivitsky\n> > > wrote:\n> > > \n> > > \n> > > > Hi, Juan,\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > Just to be clear, are you passing \"control = ...\" to ergm()? If\n> > > > so,\n> > > > can\n> > > > you tell me what version you are using? There is a preview\n> > > > release\n> > > > up at\n> > > > http://www.statnet.org/preview . Does the bug persist there?\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > Thanks,\n> > > > Pavel\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > On Mon, 2013-02-11 at 23:43 -0800, Juan Pablo Alperin wrote:\n> > > > > Hi again! \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > I made some progress since my last email, but still having\n> > > > > problems. Wondering if I can pick up an old thread, as I am\n> > > > > running\n> > > > > into the same problem as a previous poster, but the suggested\n> > > > > fix\n> > > > > is\n> > > > > not working. \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > http://mailman2.u.washington.edu/pipermail/statnet_help/2010/000675.html\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > I'm getting the same error: \n> > > > > Error in ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m =\n> > > > > m, \n> > > > > theta.offset = theta.offset, : \n> > > > > Too many unique dyads! \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > My network has 3042 nodes. I tried setting the Max Dyad Types\n> > > > > with\n> > > > > the\n> > > > > following:\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > big.enough <- 3042*3042\n> > > > > (note: also tried 3042*3041/2 as in original post, also tried\n> > > > > 3042*3042*2\n> > > > > control = control.ergm(MPLE.max.dyad.types=big.enough)\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > But the error persists. I have 16Gb RAM + 64Gb Swap, running\n> > > > > 64-big R\n> > > > > on ubuntu.\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > Any ideas? \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > Juan\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > PS: still also looking for a good resource on fitting models\n> > > > > to\n> > > > > large\n> > > > > networks. \n> > > > > _______________________________________________\n> > > > > statnet_help mailing list\n> > > > > statnet_help@u.washington.edu\n> > > > > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Juan,\n\nWhat error message are you getting, again?\n\n                    Pavel\n\nOn Thu, 2013-02-14 at 19:44 -0800, Juan Pablo Alperin wrote:\n> Pavel,  \n> \n> \n> I tried maxNumDyads=network.size(net)^2 (a",
+      "thread_id": "thread-241d4b4c655c",
+      "thread_depth": 5,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-440ef3fd7419",
+      "message_id": "<1F2D259ADFE141B0A32F4C868B635379@alperin.ca>",
+      "from_name": "Juan Pablo Alperin",
+      "from_email_hash": "c751a4e2599de680f055499bfcb7c1ebf69cc9e384a2141ea91edcf699d92dcc",
+      "date": "2013-02-14T19:51:52Z",
+      "subject": "[statnet_help] ERGM - too many unique dyads",
+      "subject_clean": "[statnet_help] ERGM - too many unique dyads",
+      "in_reply_to": "<1360900105.1765.80.camel@Navi.krivitsky.homeip.net>",
+      "references": [
+        "<C3BCDED2E211465AA01F0B9DBCD1CA7E@alperin.ca>",
+        "<1360827077.1765.29.camel@Navi.krivitsky.homeip.net>",
+        "<CA894B2CCC5E434F9F3C9CE617B95F25@alperin.ca>",
+        "<1360899246.1765.79.camel@Navi.krivitsky.homeip.net>",
+        "<68A64F7A30554C3D844897BC9CD162CE@alperin.ca>",
+        "<1360900105.1765.80.camel@Navi.krivitsky.homeip.net>"
+      ],
+      "body_plain": "> maxNumDyads=network.size(net)^2\n> fit = ergm(net ~ mutual + transitive+ nodecov(\"missing\") + nodematch(\"region\") + nodematch(\"income_level\") + gwidegree(0.3), control=control, verbose=TRUE)\n\nEvaluating network in model\nInitializing Metropolis-Hastings proposal.\nInitializing model.\nFitting initial model.\nError in ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m, theta.offset = init,  : \n  Too many unique dyads!\n\n\n\n\nOn Thursday, 14 February, 2013 at 7:48 PM, Pavel N. Krivitsky wrote:\n\n> Juan,\n> \n> What error message are you getting, again?\n> \n> Pavel\n> \n> On Thu, 2013-02-14 at 19:44 -0800, Juan Pablo Alperin wrote:\n> > Pavel, \n> > \n> > \n> > I tried maxNumDyads=network.size(net)^2 (as well as a few bigger\n> > numbers). No difference. \n> > \n> > \n> > Any other ideas? \n> > \n> > \n> > Juan\n> > \n> > \n> > On Thursday, 14 February, 2013 at 7:34 PM, Pavel N. Krivitsky wrote:\n> > \n> > > Juan,\n> > > \n> > > \n> > > Try replacing\n> > > \n> > > \n> > > maxNumDyads=network.size(net)^2/2\n> > > \n> > > \n> > > with\n> > > \n> > > \n> > > maxNumDyads=network.size(net)^2\n> > > \n> > > \n> > > or\n> > > \n> > > \n> > > maxNumDyads=network.dyadcount(net)\n> > > \n> > > \n> > > since your network appears to be directed.\n> > > \n> > > \n> > > Pavel\n> > > \n> > > \n> > > On Thu, 2013-02-14 at 19:23 -0800, Juan Pablo Alperin wrote:\n> > > > Pavel, \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > Passing in the control variable to the ergm, now there is a good\n> > > > idea!\n> > > > No, I wasn't! I am pretty new to R and I just assumed that calling\n> > > > control.ergm was akin to setting a global variable. \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > However, the solution does not appear to be so simple. I am still\n> > > > experiencing the problem, at least when I try to fit a model with\n> > > > several terms. I have not tried all combinations, but I get the\n> > > > error\n> > > > if I add the nodecov(\"missing\") to the following. \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > Am I doing something obviously wrong? \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > Thanks for your help\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > Juan\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > debug info: \n> > > > =========\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > > typeof(net %v% \"missing\")\n> > > > [1] \"double\"\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > > maxNumDyads=network.size(net)^2/2\n> > > > > maxNumDyads\n> > > > > \n> > > > \n> > > > [1] 4626882\n> > > > > control=control.ergm(MPLE.max.dyad.types=maxNumDyads,\n> > > > \n> > > > MCMC.burnin=1000000, MCMC.samplesize=300000, parallel=6)\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > > fit = ergm(net ~ mutual + transitive+ nodecov(\"missing\") +\n> > > > nodematch(\"region\") + nodematch(\"income_level\") + gwidegree(0.3),\n> > > > control=control, verbose=TRUE)\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > > sessionInfo()\n> > > > R version 2.14.1 (2011-12-22)\n> > > > Platform: x86_64-pc-linux-gnu (64-bit)\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > locale:\n> > > > [1] C\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > attached base packages:\n> > > > [1] stats graphics grDevices utils datasets methods base\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > other attached packages:\n> > > > [1] ergm_3.0-999 coda_0.16-1 nlme_3.1-102\n> > > > \n> > > > [4] trust_0.1-2 Matrix_1.0-2 lattice_0.20-0\n> > > > \n> > > > [7] robustbase_0.9-4 network_1.7-1\n> > > > statnet.common_3.0-999\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > loaded via a namespace (and not attached):\n> > > > [1] grid_2.14.1\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > On Wednesday, 13 February, 2013 at 11:31 PM, Pavel N. Krivitsky\n> > > > wrote:\n> > > > \n> > > > \n> > > > > Hi, Juan,\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > Just to be clear, are you passing \"control = ...\" to ergm()? If\n> > > > > so,\n> > > > > can\n> > > > > you tell me what version you are using? There is a preview\n> > > > > release\n> > > > > up at\n> > > > > http://www.statnet.org/preview . Does the bug persist there?\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > Thanks,\n> > > > > Pavel\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > On Mon, 2013-02-11 at 23:43 -0800, Juan Pablo Alperin wrote:\n> > > > > > Hi again! \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > I made some progress since my last email, but still having\n> > > > > > problems. Wondering if I can pick up an old thread, as I am\n> > > > > > running\n> > > > > > into the same problem as a previous poster, but the suggested\n> > > > > > fix\n> > > > > > is\n> > > > > > not working. \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > http://mailman2.u.washington.edu/pipermail/statnet_help/2010/000675.html\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > I'm getting the same error: \n> > > > > > Error in ergm.pl (http://ergm.pl)(Clist = Clist, Clist.miss = Clist.miss, m =\n> > > > > > m, \n> > > > > > theta.offset = theta.offset, : \n> > > > > > Too many unique dyads! \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > My network has 3042 nodes. I tried setting the Max Dyad Types\n> > > > > > with\n> > > > > > the\n> > > > > > following:\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > big.enough <- 3042*3042\n> > > > > > (note: also tried 3042*3041/2 as in original post, also tried\n> > > > > > 3042*3042*2\n> > > > > > control = control.ergm(MPLE.max.dyad.types=big.enough)\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > But the error persists. I have 16Gb RAM + 64Gb Swap, running\n> > > > > > 64-big R\n> > > > > > on ubuntu.\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > Any ideas? \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > Juan\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > PS: still also looking for a good resource on fitting models\n> > > > > > to\n> > > > > > large\n> > > > > > networks. \n> > > > > > _______________________________________________\n> > > > > > statnet_help mailing list\n> > > > > > statnet_help@u.washington.edu (mailto:statnet_help@u.washington.edu)\n> > > > > > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> > > > > > \n> > > > > \n> > > > > \n> > > > \n> > > > \n> > > \n> > > \n> > \n> > \n> > \n> > _______________________________________________\n> > statnet_help mailing list\n> > statnet_help@u.washington.edu (mailto:statnet_help@u.washington.edu)\n> > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> > \n> \n> \n> \n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130214/ab4c9de2/attachment.html>",
+      "body_snippet": "> maxNumDyads=network.size(net)^2\n> fit = ergm(net ~ mutual + transitive+ nodecov(\"missing\") + nodematch(\"region\") + nodematch(\"income_level\") + gwidegree(0.3), control=control, verbose=TRUE)\n\nEvaluat",
+      "thread_id": "thread-241d4b4c655c",
+      "thread_depth": 6,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-44855fec7819",
+      "message_id": "<1360900475.1765.82.camel@Navi.krivitsky.homeip.net>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "460258cbd680ea347ee0196adc8a17e139024de6f74b950cba8add8e35654b6f",
+      "date": "2013-02-14T19:54:35Z",
+      "subject": "[statnet_help] ERGM - too many unique dyads",
+      "subject_clean": "[statnet_help] ERGM - too many unique dyads",
+      "in_reply_to": "<1F2D259ADFE141B0A32F4C868B635379@alperin.ca>",
+      "references": [
+        "<C3BCDED2E211465AA01F0B9DBCD1CA7E@alperin.ca>",
+        "<1360827077.1765.29.camel@Navi.krivitsky.homeip.net>",
+        "<CA894B2CCC5E434F9F3C9CE617B95F25@alperin.ca>",
+        "<1360899246.1765.79.camel@Navi.krivitsky.homeip.net>",
+        "<68A64F7A30554C3D844897BC9CD162CE@alperin.ca>",
+        "<1360900105.1765.80.camel@Navi.krivitsky.homeip.net>",
+        "<1F2D259ADFE141B0A32F4C868B635379@alperin.ca>"
+      ],
+      "body_plain": "Hi,\n\nYou need to recreate the control list. I.e.,\n\nmaxNumDyads=network.size(net)^2\ncontrol=control.ergm(MPLE.max.dyad.types=maxNumDyads, MCMC.burnin=1000000, MCMC.samplesize=300000, parallel=6)\nfit = ergm(net ~ mutual + transitive+ nodecov(\"missing\") + nodematch(\"region\") + nodematch(\"income_level\") + gwidegree(0.3), control=control, verbose=TRUE)\n\n                                    Pavel\n\nOn Thu, 2013-02-14 at 19:51 -0800, Juan Pablo Alperin wrote:\n> > maxNumDyads=network.size(net)^2\n> > fit = ergm(net ~ mutual + transitive+ nodecov(\"missing\") +\n> nodematch(\"region\") + nodematch(\"income_level\") + gwidegree(0.3),\n> control=control, verbose=TRUE)\n> \n> \n> Evaluating network in model\n> Initializing Metropolis-Hastings proposal.\n> Initializing model.\n> Fitting initial model.\n> Error in ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m,\n> theta.offset = init,  : \n>   Too many unique dyads!\n> \n> \n> \n> \n> On Thursday, 14 February, 2013 at 7:48 PM, Pavel N. Krivitsky wrote:\n> \n> > Juan,\n> > \n> > \n> > What error message are you getting, again?\n> > \n> > \n> > Pavel\n> > \n> > \n> > On Thu, 2013-02-14 at 19:44 -0800, Juan Pablo Alperin wrote:\n> > > Pavel, \n> > > \n> > > \n> > > \n> > > \n> > > I tried maxNumDyads=network.size(net)^2 (as well as a few bigger\n> > > numbers). No difference. \n> > > \n> > > \n> > > \n> > > \n> > > Any other ideas? \n> > > \n> > > \n> > > \n> > > \n> > > Juan\n> > > \n> > > \n> > > \n> > > \n> > > On Thursday, 14 February, 2013 at 7:34 PM, Pavel N. Krivitsky\n> > > wrote:\n> > > \n> > > \n> > > > Juan,\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > Try replacing\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > maxNumDyads=network.size(net)^2/2\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > with\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > maxNumDyads=network.size(net)^2\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > or\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > maxNumDyads=network.dyadcount(net)\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > since your network appears to be directed.\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > Pavel\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > On Thu, 2013-02-14 at 19:23 -0800, Juan Pablo Alperin wrote:\n> > > > > Pavel, \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > Passing in the control variable to the ergm, now there is a\n> > > > > good\n> > > > > idea!\n> > > > > No, I wasn't! I am pretty new to R and I just assumed that\n> > > > > calling\n> > > > > control.ergm was akin to setting a global variable. \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > However, the solution does not appear to be so simple. I am\n> > > > > still\n> > > > > experiencing the problem, at least when I try to fit a model\n> > > > > with\n> > > > > several terms. I have not tried all combinations, but I get\n> > > > > the\n> > > > > error\n> > > > > if I add the nodecov(\"missing\") to the following. \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > Am I doing something obviously wrong? \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > Thanks for your help\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > Juan\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > debug info: \n> > > > > =========\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > > typeof(net %v% \"missing\")\n> > > > > [1] \"double\"\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > > maxNumDyads=network.size(net)^2/2\n> > > > > > maxNumDyads\n> > > > > [1] 4626882\n> > > > > > control=control.ergm(MPLE.max.dyad.types=maxNumDyads,\n> > > > > MCMC.burnin=1000000, MCMC.samplesize=300000, parallel=6)\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > > fit = ergm(net ~ mutual + transitive+ nodecov(\"missing\") +\n> > > > > nodematch(\"region\") + nodematch(\"income_level\") +\n> > > > > gwidegree(0.3),\n> > > > > control=control, verbose=TRUE)\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > > sessionInfo()\n> > > > > R version 2.14.1 (2011-12-22)\n> > > > > Platform: x86_64-pc-linux-gnu (64-bit)\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > locale:\n> > > > > [1] C\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > attached base packages:\n> > > > > [1] stats graphics grDevices utils datasets methods base\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > other attached packages:\n> > > > > [1] ergm_3.0-999 coda_0.16-1 nlme_3.1-102\n> > > > > \n> > > > > \n> > > > > [4] trust_0.1-2 Matrix_1.0-2 lattice_0.20-0\n> > > > > \n> > > > > \n> > > > > [7] robustbase_0.9-4 network_1.7-1\n> > > > > statnet.common_3.0-999\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > loaded via a namespace (and not attached):\n> > > > > [1] grid_2.14.1\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > On Wednesday, 13 February, 2013 at 11:31 PM, Pavel N.\n> > > > > Krivitsky\n> > > > > wrote:\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > > Hi, Juan,\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > Just to be clear, are you passing \"control = ...\" to ergm()?\n> > > > > > If\n> > > > > > so,\n> > > > > > can\n> > > > > > you tell me what version you are using? There is a preview\n> > > > > > release\n> > > > > > up at\n> > > > > > http://www.statnet.org/preview . Does the bug persist there?\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > Thanks,\n> > > > > > Pavel\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > On Mon, 2013-02-11 at 23:43 -0800, Juan Pablo Alperin wrote:\n> > > > > > > Hi again! \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > I made some progress since my last email, but still having\n> > > > > > > problems. Wondering if I can pick up an old thread, as I\n> > > > > > > am\n> > > > > > > running\n> > > > > > > into the same problem as a previous poster, but the\n> > > > > > > suggested\n> > > > > > > fix\n> > > > > > > is\n> > > > > > > not working. \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > http://mailman2.u.washington.edu/pipermail/statnet_help/2010/000675.html\n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > I'm getting the same error: \n> > > > > > > Error in ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m\n> > > > > > > =\n> > > > > > > m, \n> > > > > > > theta.offset = theta.offset, : \n> > > > > > > Too many unique dyads! \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > My network has 3042 nodes. I tried setting the Max Dyad\n> > > > > > > Types\n> > > > > > > with\n> > > > > > > the\n> > > > > > > following:\n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > big.enough <- 3042*3042\n> > > > > > > (note: also tried 3042*3041/2 as in original post, also\n> > > > > > > tried\n> > > > > > > 3042*3042*2\n> > > > > > > control = control.ergm(MPLE.max.dyad.types=big.enough)\n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > But the error persists. I have 16Gb RAM + 64Gb Swap,\n> > > > > > > running\n> > > > > > > 64-big R\n> > > > > > > on ubuntu.\n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > Any ideas? \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > Juan\n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > PS: still also looking for a good resource on fitting\n> > > > > > > models\n> > > > > > > to\n> > > > > > > large\n> > > > > > > networks. \n> > > > > > > _______________________________________________\n> > > > > > > statnet_help mailing list\n> > > > > > > statnet_help@u.washington.edu\n> > > > > > > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> > > \n> > > \n> > > \n> > > \n> > > _______________________________________________\n> > > statnet_help mailing list\n> > > statnet_help@u.washington.edu\n> > > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> \n>",
+      "body_snippet": "Hi,\n\nYou need to recreate the control list. I.e.,\n\nmaxNumDyads=network.size(net)^2\ncontrol=control.ergm(MPLE.max.dyad.types=maxNumDyads, MCMC.burnin=1000000, MCMC.samplesize=300000, parallel=6)\nfit = ",
+      "thread_id": "thread-241d4b4c655c",
+      "thread_depth": 7,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-82218d965a9a",
+      "message_id": "<2B2F284C9BC841C39C9D9A717038CC77@alperin.ca>",
+      "from_name": "Juan Pablo Alperin",
+      "from_email_hash": "c751a4e2599de680f055499bfcb7c1ebf69cc9e384a2141ea91edcf699d92dcc",
+      "date": "2013-02-14T20:15:14Z",
+      "subject": "[statnet_help] ERGM - too many unique dyads",
+      "subject_clean": "[statnet_help] ERGM - too many unique dyads",
+      "in_reply_to": "<1360900475.1765.82.camel@Navi.krivitsky.homeip.net>",
+      "references": [
+        "<C3BCDED2E211465AA01F0B9DBCD1CA7E@alperin.ca>",
+        "<1360827077.1765.29.camel@Navi.krivitsky.homeip.net>",
+        "<CA894B2CCC5E434F9F3C9CE617B95F25@alperin.ca>",
+        "<1360899246.1765.79.camel@Navi.krivitsky.homeip.net>",
+        "<68A64F7A30554C3D844897BC9CD162CE@alperin.ca>",
+        "<1360900105.1765.80.camel@Navi.krivitsky.homeip.net>",
+        "<1F2D259ADFE141B0A32F4C868B635379@alperin.ca>",
+        "<1360900475.1765.82.camel@Navi.krivitsky.homeip.net>"
+      ],
+      "body_plain": "Sigh. Sorry, my head hurts from all this ERGM reading and I am overlooking things I shouldn't be. \n\nIts running now, so now onto the challenge of finding a model that converges. \n\nThanks, and apologies again for the silly error. I can only hope it saves someone else the trouble in the future!\n\nJuan \n\nOn Thursday, 14 February, 2013 at 7:54 PM, Pavel N. Krivitsky wrote:\n\n> Hi,\n> \n> You need to recreate the control list. I.e.,\n> \n> maxNumDyads=network.size(net)^2\n> control=control.ergm(MPLE.max.dyad.types=maxNumDyads, MCMC.burnin=1000000, MCMC.samplesize=300000, parallel=6)\n> fit = ergm(net ~ mutual + transitive+ nodecov(\"missing\") + nodematch(\"region\") + nodematch(\"income_level\") + gwidegree(0.3), control=control, verbose=TRUE)\n> \n> Pavel\n> \n> On Thu, 2013-02-14 at 19:51 -0800, Juan Pablo Alperin wrote:\n> > > maxNumDyads=network.size(net)^2\n> > > fit = ergm(net ~ mutual + transitive+ nodecov(\"missing\") +\n> > > \n> > \n> > nodematch(\"region\") + nodematch(\"income_level\") + gwidegree(0.3),\n> > control=control, verbose=TRUE)\n> > \n> > \n> > Evaluating network in model\n> > Initializing Metropolis-Hastings proposal.\n> > Initializing model.\n> > Fitting initial model.\n> > Error in ergm.pl (http://ergm.pl)(Clist = Clist, Clist.miss = Clist.miss, m = m,\n> > theta.offset = init, : \n> > Too many unique dyads!\n> > \n> > \n> > \n> > \n> > On Thursday, 14 February, 2013 at 7:48 PM, Pavel N. Krivitsky wrote:\n> > \n> > > Juan,\n> > > \n> > > \n> > > What error message are you getting, again?\n> > > \n> > > \n> > > Pavel\n> > > \n> > > \n> > > On Thu, 2013-02-14 at 19:44 -0800, Juan Pablo Alperin wrote:\n> > > > Pavel, \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > I tried maxNumDyads=network.size(net)^2 (as well as a few bigger\n> > > > numbers). No difference. \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > Any other ideas? \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > Juan\n> > > > \n> > > > \n> > > > \n> > > > \n> > > > On Thursday, 14 February, 2013 at 7:34 PM, Pavel N. Krivitsky\n> > > > wrote:\n> > > > \n> > > > \n> > > > > Juan,\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > Try replacing\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > maxNumDyads=network.size(net)^2/2\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > with\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > maxNumDyads=network.size(net)^2\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > or\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > maxNumDyads=network.dyadcount(net)\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > since your network appears to be directed.\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > Pavel\n> > > > > \n> > > > > \n> > > > > \n> > > > > \n> > > > > On Thu, 2013-02-14 at 19:23 -0800, Juan Pablo Alperin wrote:\n> > > > > > Pavel, \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > Passing in the control variable to the ergm, now there is a\n> > > > > > good\n> > > > > > idea!\n> > > > > > No, I wasn't! I am pretty new to R and I just assumed that\n> > > > > > calling\n> > > > > > control.ergm was akin to setting a global variable. \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > However, the solution does not appear to be so simple. I am\n> > > > > > still\n> > > > > > experiencing the problem, at least when I try to fit a model\n> > > > > > with\n> > > > > > several terms. I have not tried all combinations, but I get\n> > > > > > the\n> > > > > > error\n> > > > > > if I add the nodecov(\"missing\") to the following. \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > Am I doing something obviously wrong? \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > Thanks for your help\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > Juan\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > debug info: \n> > > > > > =========\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > > typeof(net %v% \"missing\")\n> > > > > > [1] \"double\"\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > > maxNumDyads=network.size(net)^2/2\n> > > > > > > maxNumDyads\n> > > > > > > \n> > > > > > \n> > > > > > [1] 4626882\n> > > > > > > control=control.ergm(MPLE.max.dyad.types=maxNumDyads,\n> > > > > > \n> > > > > > MCMC.burnin=1000000, MCMC.samplesize=300000, parallel=6)\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > > fit = ergm(net ~ mutual + transitive+ nodecov(\"missing\") +\n> > > > > > nodematch(\"region\") + nodematch(\"income_level\") +\n> > > > > > gwidegree(0.3),\n> > > > > > control=control, verbose=TRUE)\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > > sessionInfo()\n> > > > > > R version 2.14.1 (2011-12-22)\n> > > > > > Platform: x86_64-pc-linux-gnu (64-bit)\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > locale:\n> > > > > > [1] C\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > attached base packages:\n> > > > > > [1] stats graphics grDevices utils datasets methods base\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > other attached packages:\n> > > > > > [1] ergm_3.0-999 coda_0.16-1 nlme_3.1-102\n> > > > > > \n> > > > > > \n> > > > > > [4] trust_0.1-2 Matrix_1.0-2 lattice_0.20-0\n> > > > > > \n> > > > > > \n> > > > > > [7] robustbase_0.9-4 network_1.7-1\n> > > > > > statnet.common_3.0-999\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > loaded via a namespace (and not attached):\n> > > > > > [1] grid_2.14.1\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > On Wednesday, 13 February, 2013 at 11:31 PM, Pavel N.\n> > > > > > Krivitsky\n> > > > > > wrote:\n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > \n> > > > > > > Hi, Juan,\n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > Just to be clear, are you passing \"control = ...\" to ergm()?\n> > > > > > > If\n> > > > > > > so,\n> > > > > > > can\n> > > > > > > you tell me what version you are using? There is a preview\n> > > > > > > release\n> > > > > > > up at\n> > > > > > > http://www.statnet.org/preview . Does the bug persist there?\n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > Thanks,\n> > > > > > > Pavel\n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > > On Mon, 2013-02-11 at 23:43 -0800, Juan Pablo Alperin wrote:\n> > > > > > > > Hi again! \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > I made some progress since my last email, but still having\n> > > > > > > > problems. Wondering if I can pick up an old thread, as I\n> > > > > > > > am\n> > > > > > > > running\n> > > > > > > > into the same problem as a previous poster, but the\n> > > > > > > > suggested\n> > > > > > > > fix\n> > > > > > > > is\n> > > > > > > > not working. \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > http://mailman2.u.washington.edu/pipermail/statnet_help/2010/000675.html\n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > I'm getting the same error: \n> > > > > > > > Error in ergm.pl (http://ergm.pl)(Clist = Clist, Clist.miss = Clist.miss, m\n> > > > > > > > =\n> > > > > > > > m, \n> > > > > > > > theta.offset = theta.offset, : \n> > > > > > > > Too many unique dyads! \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > My network has 3042 nodes. I tried setting the Max Dyad\n> > > > > > > > Types\n> > > > > > > > with\n> > > > > > > > the\n> > > > > > > > following:\n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > big.enough <- 3042*3042\n> > > > > > > > (note: also tried 3042*3041/2 as in original post, also\n> > > > > > > > tried\n> > > > > > > > 3042*3042*2\n> > > > > > > > control = control.ergm(MPLE.max.dyad.types=big.enough)\n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > But the error persists. I have 16Gb RAM + 64Gb Swap,\n> > > > > > > > running\n> > > > > > > > 64-big R\n> > > > > > > > on ubuntu.\n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > Any ideas? \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > Juan\n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > \n> > > > > > > > PS: still also looking for a good resource on fitting\n> > > > > > > > models\n> > > > > > > > to\n> > > > > > > > large\n> > > > > > > > networks. \n> > > > > > > > _______________________________________________\n> > > > > > > > statnet_help mailing list\n> > > > > > > > statnet_help@u.washington.edu (mailto:statnet_help@u.washington.edu)\n> > > > > > > > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> > > > > > > > \n> > > > > > > \n> > > > > > > \n> > > > > > \n> > > > > > \n> > > > > \n> > > > > \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > \n> > > > _______________________________________________\n> > > > statnet_help mailing list\n> > > > statnet_help@u.washington.edu (mailto:statnet_help@u.washington.edu)\n> > > > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> > > > \n> > > \n> > > \n> > \n> > \n> \n> \n> \n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130214/5c02d549/attachment.html>",
+      "body_snippet": "Sigh. Sorry, my head hurts from all this ERGM reading and I am overlooking things I shouldn't be. \n\nIts running now, so now onto the challenge of finding a model that converges. \n\nThanks, and apologie",
+      "thread_id": "thread-241d4b4c655c",
+      "thread_depth": 8,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-e4e7a3271e6b",
+      "message_id": "<3ae47f08.9291.13ce283fcc2.Coremail.xinxi813@126.com>",
+      "from_name": "YA",
+      "from_email_hash": "bdb50df08d91a8322aab32f6d653237eb97395be0cf167c21b33616e6be32050",
+      "date": "2013-02-16T02:19:26Z",
+      "subject": "[statnet_help] meta analysis for ergm",
+      "subject_clean": "[statnet_help] meta analysis for ergm",
+      "in_reply_to": "<1360900475.1765.82.camel@Navi.krivitsky.homeip.net>",
+      "references": [
+        "<C3BCDED2E211465AA01F0B9DBCD1CA7E@alperin.ca>",
+        "<1360827077.1765.29.camel@Navi.krivitsky.homeip.net>",
+        "<CA894B2CCC5E434F9F3C9CE617B95F25@alperin.ca>",
+        "<1360899246.1765.79.camel@Navi.krivitsky.homeip.net>",
+        "<68A64F7A30554C3D844897BC9CD162CE@alperin.ca>",
+        "<1360900105.1765.80.camel@Navi.krivitsky.homeip.net>",
+        "<1F2D259ADFE141B0A32F4C868B635379@alperin.ca>",
+        "<1360900475.1765.82.camel@Navi.krivitsky.homeip.net>"
+      ],
+      "body_plain": "Hi list,\n\nThank you very much for reading this email.\n\nI am trying to understand the proccess of doing multilevel ergm. From the literature, I got that the multilevel ergm was usually done via meta-analysis procedure (for combining the results from each first level unit), but I could not find the meta-analysis function in statnet manuals. I know that Rsiena has this function, does it mean that for cross-sectional multilevel ergm, the sienaMeta in Rsiena is the function I should use?\n\nThank you very much.\n\nBest regards,\n\nya\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130216/01af843c/attachment.html>",
+      "body_snippet": "Hi list,\n\nThank you very much for reading this email.\n\nI am trying to understand the proccess of doing multilevel ergm. From the literature, I got that the multilevel ergm was usually done via meta-an",
+      "thread_id": "thread-241d4b4c655c",
+      "thread_depth": 8,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-be04713c0c52",
+      "message_id": "<CAPSYugPnWAe+UL52JaVp77JCzNOjCufkgLNA36=nmpA5PK+HLA@mail.gmail.com>",
+      "from_name": "Steve Vaisey",
+      "from_email_hash": "aa98b60c36985074f884740bf5a02b2edd57b1ddb92675069e72d2ef0c599b92",
+      "date": "2013-02-20T12:50:45Z",
+      "subject": "[statnet_help] latentnet with Poisson edges",
+      "subject_clean": "[statnet_help] latentnet with Poisson edges",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello there,\n\nI have successfully used latentnet many times with binary edges. I am now\ntrying to use it with valued edges (integers 0 to 9).\n\nThe command I am trying to run is:\n\npd2.fit <- ergmm(nnet ~ nodematch(\"scale\") + euclidean(d=2, G=1),\nfamily=\"Poisson\")\n\nI just keep getting the error message:\n\nError in as.matrix.network.adjacency(x = x, attrname = attrname, ...) :\n  Multigraphs not currently supported in as.matrix.network.adjacency.\n Exiting.\n\nI am sure there's an answer to this, but I can't seem to figure it out. Any\nhelp would be greatly appreciated!\n\nBest,\nSteve\n\n\nStephen Vaisey\nAssociate Professor\nDuke University\nDepartment of Sociology\nBox 90088\nDurham, NC 27708-0088\n\nWEBSITE: www.stephenvaisey.com\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130220/c14dc654/attachment.html>",
+      "body_snippet": "Hello there,\n\nI have successfully used latentnet many times with binary edges. I am now\ntrying to use it with valued edges (integers 0 to 9).\n\nThe command I am trying to run is:\n\npd2.fit <- ergmm(nnet",
+      "thread_id": "thread-be04713c0c52",
+      "thread_depth": 0,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-5b2accbc3fb3",
+      "message_id": "<1361398529.31926.303.camel@krivitsky.heinz.win.cmu.edu>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "460258cbd680ea347ee0196adc8a17e139024de6f74b950cba8add8e35654b6f",
+      "date": "2013-02-20T14:15:29Z",
+      "subject": "[statnet_help] latentnet with Poisson edges",
+      "subject_clean": "[statnet_help] latentnet with Poisson edges",
+      "in_reply_to": "<CAPSYugPnWAe+UL52JaVp77JCzNOjCufkgLNA36=nmpA5PK+HLA@mail.gmail.com>",
+      "references": [
+        "<CAPSYugPnWAe+UL52JaVp77JCzNOjCufkgLNA36=nmpA5PK+HLA@mail.gmail.com>"
+      ],
+      "body_plain": "Hello, Steve,\n\nYou also need to specify the edge attribute to use as the response\nvariable via the response= argument. See ? ergmm for more information.\n\n                                 I hope this helps,\n                                 Pavel \n\nOn Wed, 2013-02-20 at 15:50 -0500, Steve Vaisey wrote:\n> Hello there,\n> \n> \n> I have successfully used latentnet many times with binary edges. I am\n> now trying to use it with valued edges (integers 0 to 9).\n> \n> \n> The command I am trying to run is:\n> \n> \n> pd2.fit <- ergmm(nnet ~ nodematch(\"scale\") + euclidean(d=2, G=1),\n> family=\"Poisson\")\n> \n> \n> \n> I just keep getting the error message:\n> \n> \n> Error in as.matrix.network.adjacency(x = x, attrname =\n> attrname, ...) : \n>   Multigraphs not currently supported in as.matrix.network.adjacency.\n>  Exiting.\n> \n> I am sure there's an answer to this, but I can't seem to figure it\n> out. Any help would be greatly appreciated!\n> \n> \n> Best,\n> Steve\n> \n> \n> \n> Stephen Vaisey\n> Associate Professor\n> Duke University\n> Department of Sociology\n> Box 90088\n> Durham, NC 27708-0088\n> \n> WEBSITE: www.stephenvaisey.com\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hello, Steve,\n\nYou also need to specify the edge attribute to use as the response\nvariable via the response= argument. See ? ergmm for more information.\n\n                                 I hope this h",
+      "thread_id": "thread-be04713c0c52",
+      "thread_depth": 1,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-176551239161",
+      "message_id": "<2ccc0f6a.4bf9.13cfabc815d.Coremail.xinxi813@126.com>",
+      "from_name": "YA",
+      "from_email_hash": "bdb50df08d91a8322aab32f6d653237eb97395be0cf167c21b33616e6be32050",
+      "date": "2013-02-20T19:12:03Z",
+      "subject": "[statnet_help] ERGM involving covariates",
+      "subject_clean": "[statnet_help] ERGM involving covariates",
+      "in_reply_to": "<alpine.WNT.1.10.1207271108490.5616@morrism-PC>",
+      "references": [
+        "<201207261806061948053@126.com>",
+        "<alpine.WNT.1.10.1207261122230.7568@morrism-PC>",
+        "<201207271117423533142@126.com>",
+        "<alpine.WNT.1.10.1207270847410.8824@morrism-PC>",
+        "<201207271645274897462@126.com>",
+        "<alpine.WNT.1.10.1207271108490.5616@morrism-PC>"
+      ],
+      "body_plain": "Dear list,\n\nThank you very much for reading this email.\n\nI have a question about how to involve covariates in a ergm model. I followed the example as below:\n\nWe've seen how to add a dependence term to a model.  Now, let's consider covariate effects.  In the case of the Florentine families, marriage ties were part of a larger struggle over power and wealth.  Could family wealth be related to the marriage network?\n> wealth <- flomarriage %v% \"wealth\" # the %v% extracts vertex attributes from a network\n> wealth\n> plot(flomarriage, vertex.cex=wealth/25) # network plot with vertex size proportional to wealth\n> flomodel.03 <- ergm(flomarriage~edges+nodecov(\"wealth\"))\n\nWhat I do not understand is, why the data of \"wealth\" was extracted from a network? I thought the network only include information about ties, the data about covariates should be coded as another set of data. Since I have not get the idea of this behaivor, I could not find a way to read in the data of the covariates. Could you give me some advice please?\n\nThank you very much.\n\nSincerely,\n\nya\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130221/37989d89/attachment.html>",
+      "body_snippet": "Dear list,\n\nThank you very much for reading this email.\n\nI have a question about how to involve covariates in a ergm model. I followed the example as below:\n\nWe've seen how to add a dependence term to",
+      "thread_id": "thread-176551239161",
+      "thread_depth": 0,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-3a21134aeb97",
+      "message_id": "<alpine.WNT.1.10.1302202256560.7372@morrism-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-02-20T22:57:18Z",
+      "subject": "[statnet_help] ERGM involving covariates",
+      "subject_clean": "[statnet_help] ERGM involving covariates",
+      "in_reply_to": "<2ccc0f6a.4bf9.13cfabc815d.Coremail.xinxi813@126.com>",
+      "references": [
+        "<201207261806061948053@126.com>",
+        "<alpine.WNT.1.10.1207261122230.7568@morrism-PC>",
+        "<201207271117423533142@126.com>",
+        "<alpine.WNT.1.10.1207270847410.8824@morrism-PC>",
+        "<201207271645274897462@126.com>",
+        "<alpine.WNT.1.10.1207271108490.5616@morrism-PC>",
+        "<2ccc0f6a.4bf9.13cfabc815d.Coremail.xinxi813@126.com>"
+      ],
+      "body_plain": "Ya,\n\nSee the tutorial for the Introduction to SNA in R.\n\nbest,\nMartina\n\nOn Thu, 21 Feb 2013, YA wrote:\n\n> Dear list,\n> \n> Thank you very much for reading this email.\n> \n> I have a question about how to involve covariates in a ergm model. I followed the example as\n> below:\n> \n> We've seen how to add a dependence term to a model.? Now, let's consider covariate effects. \n> In the case of the Florentine families, marriage ties were part of a larger struggle over\n> power and wealth.? Could family wealth be related to the marriage network?\n> > wealth <- flomarriage %v% \"wealth\" # the %v% extracts vertex attributes from a network\n> > wealth\n> > plot(flomarriage, vertex.cex=wealth/25) # network plot with vertex size proportional to\n> wealth\n> > flomodel.03 <- ergm(flomarriage~edges+nodecov(\"wealth\"))\n> \n> What I do not understand is, why the data of \"wealth\" was extracted from a network? I thought\n> the network only include information about ties, the data about covariates shou! ld be coded\n> as another set of data. Since I have not get the idea of this behaivor, I could not find a\n> way to read in the data of the covariates. Could you give me some advice please?\n> \n> Thank you very much.\n> \n> Sincerely,\n> \n> ya\n> \n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Ya,\n\nSee the tutorial for the Introduction to SNA in R.\n\nbest,\nMartina\n\nOn Thu, 21 Feb 2013, YA wrote:\n\n> Dear list,\n> \n> Thank you very much for reading this email.\n> \n> I have a question about how t",
+      "thread_id": "thread-176551239161",
+      "thread_depth": 1,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-8d4fbb21f02a",
+      "message_id": "<alpine.WNT.1.10.1302211227140.3568@morrism-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-02-21T12:30:08Z",
+      "subject": "[statnet_help] meta analysis for ergm",
+      "subject_clean": "[statnet_help] meta analysis for ergm",
+      "in_reply_to": "<3ae47f08.9291.13ce283fcc2.Coremail.xinxi813@126.com>",
+      "references": [
+        "<C3BCDED2E211465AA01F0B9DBCD1CA7E@alperin.ca>",
+        "<1360827077.1765.29.camel@Navi.krivitsky.homeip.net>",
+        "<CA894B2CCC5E434F9F3C9CE617B95F25@alperin.ca>",
+        "<1360899246.1765.79.camel@Navi.krivitsky.homeip.net>",
+        "<68A64F7A30554C3D844897BC9CD162CE@alperin.ca>",
+        "<1360900105.1765.80.camel@Navi.krivitsky.homeip.net>",
+        "<1F2D259ADFE141B0A32F4C868B635379@alperin.ca>",
+        "<1360900475.1765.82.camel@Navi.krivitsky.homeip.net>",
+        "<3ae47f08.9291.13ce283fcc2.Coremail.xinxi813@126.com>"
+      ],
+      "body_plain": "Ya,\n\nYou might want to take a look at the \"hergm\" package on CRAN to see if \nit has the functionality you need.\n\nI've cc'd the author of that package here.\n\nbest,\nMartina\n\nOn Sat, 16 Feb 2013, YA wrote:\n\n> Hi list,\n> \n> Thank you very much for reading this email.\n> \n> I am trying to understand the proccess of doing multilevel ergm. From the literature, I got\n> that the multilevel ergm was usually done via meta-analysis procedure (for combining the\n> results from each first level unit), but I could not find the meta-analysis function in\n> statnet manuals. I know that Rsiena has this function, does it mean that for cross-sectional\n> multilevel ergm, the sienaMeta in Rsiena is the function I should use?\n> \n> Thank you very much.\n> \n> Best regards,\n> \n> ya\n> \n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Ya,\n\nYou might want to take a look at the \"hergm\" package on CRAN to see if \nit has the functionality you need.\n\nI've cc'd the author of that package here.\n\nbest,\nMartina\n\nOn Sat, 16 Feb 2013, YA wrot",
+      "thread_id": "thread-241d4b4c655c",
+      "thread_depth": 9,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-dc7bc5a6043e",
+      "message_id": "<19B9CCE07FB249C0B3587353A3DECE4C@alperin.ca>",
+      "from_name": "Juan Pablo Alperin",
+      "from_email_hash": "c751a4e2599de680f055499bfcb7c1ebf69cc9e384a2141ea91edcf699d92dcc",
+      "date": "2013-02-24T23:27:54Z",
+      "subject": "[statnet_help] ergm.count",
+      "subject_clean": "[statnet_help] ergm.count",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Pavel, \n\nIs there any documentation/examples of using the ergm.count module? I've been going through the accompanying paper, but something more practical would be welcome. \n\nThanks, \n\nJuan \n@juancommander\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130224/97b31ee8/attachment.html>",
+      "body_snippet": "Pavel, \n\nIs there any documentation/examples of using the ergm.count module? I've been going through the accompanying paper, but something more practical would be welcome. \n\nThanks, \n\nJuan \n@juancomma",
+      "thread_id": "thread-dc7bc5a6043e",
+      "thread_depth": 0,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-03abcb38e725",
+      "message_id": "<5B6C356B28734ED79F29BA8F098CB28E@alperin.ca>",
+      "from_name": "Juan Pablo Alperin",
+      "from_email_hash": "c751a4e2599de680f055499bfcb7c1ebf69cc9e384a2141ea91edcf699d92dcc",
+      "date": "2013-02-24T23:34:19Z",
+      "subject": "[statnet_help] Re: ergm.count",
+      "subject_clean": "[statnet_help] Re: ergm.count",
+      "in_reply_to": "<19B9CCE07FB249C0B3587353A3DECE4C@alperin.ca>",
+      "references": [
+        "<19B9CCE07FB249C0B3587353A3DECE4C@alperin.ca>"
+      ],
+      "body_plain": "I should clarify, I am looking for some examples or tutorials, beyond the included R documentation and the published paper. \n\nThanks, \n\nJuan\n@juancommander\n\n\nOn Sunday, 24 February, 2013 at 11:27 PM, Juan Pablo Alperin wrote:\n\n> Pavel, \n> \n> Is there any documentation/examples of using the ergm.count module? I've been going through the accompanying paper, but something more practical would be welcome. \n> \n> Thanks, \n> \n> Juan \n> @juancommander\n> \n> \n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130224/8044a5d8/attachment.html>",
+      "body_snippet": "I should clarify, I am looking for some examples or tutorials, beyond the included R documentation and the published paper. \n\nThanks, \n\nJuan\n@juancommander\n\n\nOn Sunday, 24 February, 2013 at 11:27 PM, ",
+      "thread_id": "thread-dc7bc5a6043e",
+      "thread_depth": 1,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-47aef7eee91e",
+      "message_id": "<A282B3955FBD4475AB18CE99A1E9A773@alperin.ca>",
+      "from_name": "Juan Pablo Alperin",
+      "from_email_hash": "c751a4e2599de680f055499bfcb7c1ebf69cc9e384a2141ea91edcf699d92dcc",
+      "date": "2013-02-25T11:49:05Z",
+      "subject": "[statnet_help] more questions",
+      "subject_clean": "[statnet_help] more questions",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Apologies if its not OK to keep sending in questions, too many unknowns?\n\n\nTwo questions:  \n1) Why don't nodematch and nodemix make sense for valued networks?  \n\n2) I am trying to write my own userterm to do a nodematch, but with a different definition of what it means to match. I want to match if two of the categories share a 2-character substring (instead of matching 100%).  \n\nI have made progress: I have defined my userterm, its being loaded, but I am having a hard time figuring out the C code for what I want to do.  \n\nI am borrowing code from d_nodematch, but I have a question (added in a comment below).\n\nThanks again!\n\nJuan\n\n\n/*****************\n changestat: d_nodematchsubstr\n*****************/\nCHANGESTAT_FN(d_nodematchsubstr) {\n  double matchval;\n  Vertex tail, head, ninputs;\n  int i, j, edgeflag;\n\n  ninputs = N_INPUT_PARAMS - N_NODES;\n\n  /* *** don't forget tail -> head */\n  ZERO_ALL_CHANGESTATS(i);\n  FOR_EACH_TOGGLE(i) {\n    tail=TAIL(i);\n    head=HEAD(i);\n    matchval = INPUT_PARAM[tail+ninputs-1];\n\n    //\n    // what is the type of matchval here?  \n    // how do I get at the String of this attribute for my head and tail nodes?  \n    //   \n\n    if (matchval == INPUT_PARAM[head+ninputs-1]) { /* We have a match! */\n      edgeflag = IS_OUTEDGE(tail, head);\n      if (ninputs==0) {/* diff=F in network statistic specification */\n        CHANGE_STAT[0] += edgeflag ? -1.0 : 1.0;\n      } else { /* diff=T */\n        for (j=0; j<ninputs; j++) {\n          if (matchval == INPUT_PARAM[j])\n            CHANGE_STAT[j] += edgeflag ? -1.0 : 1.0;\n        }\n      }\n    }\n    TOGGLE_IF_MORE_TO_COME(i);\n  }\n  UNDO_PREVIOUS_TOGGLES(i);\n}\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130225/3dab3d0f/attachment.html>",
+      "body_snippet": "Apologies if its not OK to keep sending in questions, too many unknowns?\n\n\nTwo questions:  \n1) Why don't nodematch and nodemix make sense for valued networks?  \n\n2) I am trying to write my own userter",
+      "thread_id": "thread-47aef7eee91e",
+      "thread_depth": 0,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-ade38c827dfe",
+      "message_id": "<1361824154.1765.232.camel@Navi.krivitsky.homeip.net>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "460258cbd680ea347ee0196adc8a17e139024de6f74b950cba8add8e35654b6f",
+      "date": "2013-02-25T12:29:14Z",
+      "subject": "[statnet_help] Re: ergm.count",
+      "subject_clean": "[statnet_help] Re: ergm.count",
+      "in_reply_to": "<5B6C356B28734ED79F29BA8F098CB28E@alperin.ca>",
+      "references": [
+        "<19B9CCE07FB249C0B3587353A3DECE4C@alperin.ca>",
+        "<5B6C356B28734ED79F29BA8F098CB28E@alperin.ca>"
+      ],
+      "body_plain": "Hi, Juan,\n\nUnfortunately, no. We are hoping to release the package to CRAN soon,\nand I will be running a Sunbelt conference Workshop on using it, but\nthere is no tutorial yet.\n\n                           Pavel\n\nOn Sun, 2013-02-24 at 23:34 -0800, Juan Pablo Alperin wrote:\n> I should clarify, I am looking for some examples or tutorials, beyond\n> the included R documentation and the published paper. \n> \n> \n> Thanks, \n> \n> \n> Juan\n> @juancommander\n> \n> \n> On Sunday, 24 February, 2013 at 11:27 PM, Juan Pablo Alperin wrote:\n> \n> > Pavel, \n> > \n> > \n> > Is there any documentation/examples of using the ergm.count module?\n> > I've been going through the accompanying paper, but something more\n> > practical would be welcome. \n> > \n> > \n> > Thanks, \n> > \n> > \n> > Juan \n> > @juancommander\n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi, Juan,\n\nUnfortunately, no. We are hoping to release the package to CRAN soon,\nand I will be running a Sunbelt conference Workshop on using it, but\nthere is no tutorial yet.\n\n                       ",
+      "thread_id": "thread-dc7bc5a6043e",
+      "thread_depth": 2,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-35e55c699a36",
+      "message_id": "<1361824454.1765.235.camel@Navi.krivitsky.homeip.net>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "460258cbd680ea347ee0196adc8a17e139024de6f74b950cba8add8e35654b6f",
+      "date": "2013-02-25T12:34:14Z",
+      "subject": "[statnet_help] more questions",
+      "subject_clean": "[statnet_help] more questions",
+      "in_reply_to": "<A282B3955FBD4475AB18CE99A1E9A773@alperin.ca>",
+      "references": [
+        "<A282B3955FBD4475AB18CE99A1E9A773@alperin.ca>"
+      ],
+      "body_plain": "Hi, Juan,\n\n> Two questions: \n> 1) Why don't nodematch and nodemix make sense for valued networks? \n\nThey make perfect sense, but I haven't gotten around to implementing\ntheir valued versions yet.\n\n> 2) I am trying to write my own userterm to do a nodematch, but with a\n> different definition of what it means to match. I want to match if two\n> of the categories share a 2-character substring (instead of matching\n> 100%). \n> \n\nBefore I take a look, is this for the binary or the valued ERGM?\n\n                        Best,\n                        Pavel",
+      "body_snippet": "Hi, Juan,\n\n> Two questions: \n> 1) Why don't nodematch and nodemix make sense for valued networks? \n\nThey make perfect sense, but I haven't gotten around to implementing\ntheir valued versions yet.\n\n> 2",
+      "thread_id": "thread-47aef7eee91e",
+      "thread_depth": 1,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-312556a00faa",
+      "message_id": "<55928.130.203.167.0.1361828559.squirrel@email.science.psu.edu>",
+      "from_name": "Michael Schweinberger",
+      "from_email_hash": "9c456c9dc13a75cc8143b9e35946f93863a7b268c2ec2aed6f0836bc6274cb73",
+      "date": "2013-02-25T13:42:39Z",
+      "subject": "[statnet_help] meta analysis for ergm",
+      "subject_clean": "[statnet_help] meta analysis for ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Ya,\n\nThe R package hergm is trying to do something more complicated than you\nwant, although it could be adapted to multilevel analysis.\nThe R package RSiena aka Siena 4 cannot handle cross-sectional data, but\nSiena 3 and multilevel p2 could.\n\nhergm is trying to do something more complicated than you want:\nwhereas in multilevel analysis you may have, e.g., students nested in\nschools and you know which student is nested in which school, hergm\nassumes that you do not know which node (e.g., student) belongs to which\nsubset of nodes (e.g., school).\nIt attempts to learn the memberships of nodes to subsets of nodes from the\nobserved network (under some assumptions on the data-generating process).\nHowever, hergm could be adapted to multilevel analysis.\nI would be happy to do so, but I have been traveling a lot lately and I\ncannot do it in the near future.\n\nRSiena aka Siena 4 deals with longitudinal network data.\nIf you have cross-sectional data, you cannot use Siena 4, but you could\nuse Siena 3, which allows you to do meta-analysis.\nSiena 3 is no longer maintained, but you can find it here:\nhttp://www.gmw.rug.nl/~stocnet/StOCNET.htm\n\nAn alternative would be the multilevel p2 model of Bonne Zijlstra\n(B.J.H.Zijlstra@uva.nl) and Marijtje van Duijn (m.a.j.van.duijn@rug.nl).\nThe multilevel p2 model, as the name suggests, is a multilevel model and\ntherefore preferable to the meta-analytic approach of Siena 3.\nBut the downside is that it assumes dyad-independence:\nhttp://www.gmw.rug.nl/~stocnet/StOCNET.htm\n\nHope this helps,\nMichael\n\n\nRSiena does not allow you\n\nOn Thu, Feb 21, 2013 at 3:30 PM, Martina Morris <morrism@u.washington.edu>\nwrote:\n> Ya,\n>\n> You might want to take a look at the \"hergm\" package on CRAN to see if it\n> has the functionality you need.\n>\n> I've cc'd the author of that package here.\n>\n> best,\n> Martina\n>\n> On Sat, 16 Feb 2013, YA wrote:\n>\n>> Hi list,\n>>\n>> Thank you very much for reading this email.\n>>\n>> I am trying to understand the proccess of doing multilevel ergm. From the\n>> literature, I got\n>> that the multilevel ergm was usually done via meta-analysis procedure (for\n>> combining the\n>> results from each first level unit), but I could not find the\n>> meta-analysis function in\n>> statnet manuals. I know that Rsiena has this function, does it mean that\n>> for cross-sectional\n>> multilevel ergm, the sienaMeta in Rsiena is the function I should use?\n>>\n>> Thank you very much.\n>>\n>> Best regards,\n>>\n>> ya\n>>\n>>\n>>\n>>\n>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Ya,\n\nThe R package hergm is trying to do something more complicated than you\nwant, although it could be adapted to multilevel analysis.\nThe R package RSiena aka Siena 4 cannot handle cross-sectiona",
+      "thread_id": "thread-312556a00faa",
+      "thread_depth": 0,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-20bee413651f",
+      "message_id": "<6D23A2F22CC94D3FBA8F667EC405C1C9@alperin.ca>",
+      "from_name": "Juan Pablo Alperin",
+      "from_email_hash": "c751a4e2599de680f055499bfcb7c1ebf69cc9e384a2141ea91edcf699d92dcc",
+      "date": "2013-02-25T13:43:30Z",
+      "subject": "[statnet_help] more questions",
+      "subject_clean": "[statnet_help] more questions",
+      "in_reply_to": "<1361824454.1765.235.camel@Navi.krivitsky.homeip.net>",
+      "references": [
+        "<A282B3955FBD4475AB18CE99A1E9A773@alperin.ca>",
+        "<1361824454.1765.235.camel@Navi.krivitsky.homeip.net>"
+      ],
+      "body_plain": "Pavel, \n\n> > 1) Why don't nodematch and nodemix make sense for valued networks? \n> \n> They make perfect sense, but I haven't gotten around to implementing\n> their valued versions yet.\n> \n> \n\nOK, good to know. I couldn't figure out why they would not apply! Is there a development roadmap somewhere? Do you have an idea when these might appear in the preview? \n \n> \n> > 2) I am trying to write my own userterm to do a nodematch, but with a\n> > different definition of what it means to match. I want to match if two\n> > of the categories share a 2-character substring (instead of matching\n> > 100%). \n> > \n> \n> \n> \n\nFor the time being, I would like to have them on a binary. Eventually, once node match and node mix are implemented for valued networks, I will want to port my user term there as well.  \n\nThanks\n\nJuan\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130225/63b1e6e5/attachment.html>",
+      "body_snippet": "Pavel, \n\n> > 1) Why don't nodematch and nodemix make sense for valued networks? \n> \n> They make perfect sense, but I haven't gotten around to implementing\n> their valued versions yet.\n> \n> \n\nOK, good ",
+      "thread_id": "thread-47aef7eee91e",
+      "thread_depth": 2,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-5353b4bf6b0c",
+      "message_id": "<B309BD28BA544AA4BFB6234CC1AB4435@alperin.ca>",
+      "from_name": "Juan Pablo Alperin",
+      "from_email_hash": "c751a4e2599de680f055499bfcb7c1ebf69cc9e384a2141ea91edcf699d92dcc",
+      "date": "2013-02-25T20:30:45Z",
+      "subject": "[statnet_help] Re: ergm.count",
+      "subject_clean": "[statnet_help] Re: ergm.count",
+      "in_reply_to": "<1361824154.1765.232.camel@Navi.krivitsky.homeip.net>",
+      "references": [
+        "<19B9CCE07FB249C0B3587353A3DECE4C@alperin.ca>",
+        "<5B6C356B28734ED79F29BA8F098CB28E@alperin.ca>",
+        "<1361824154.1765.232.camel@Navi.krivitsky.homeip.net>"
+      ],
+      "body_plain": "Pavel (and others of the statnet community!), \n\nWhile you're pondering the other email thread (I'd still love a response there!) , can I ask a potentially stupid question? How do you set up a valued network with the network package for the ergm.count module to understand? The documentation I have for the network package does not mention weighted networks explicitly. I've tried loading an adjacency matrix with values and adding a \"weight\" edge attribute with no success. \n\nWhat edge attribute does ergm.count expect for the edge values? \n\nPotentially related: \nWhen I try to use a valued version of the \"mutual\" ergm-term, I am seeing the following error: \nError: mutual model term does not recognize form argument\n\nThanks, and again, apologies for the continuous stream of questions. I am really investing a lot of time in trying to work with the statnet software, but I am finding it incredibly frustrating.\n\nJuan\n\n\n\nOn Monday, 25 February, 2013 at 12:29 PM, Pavel N. Krivitsky wrote: \n> Hi, Juan,\n> \n> Unfortunately, no. We are hoping to release the package to CRAN soon,\n> and I will be running a Sunbelt conference Workshop on using it, but\n> there is no tutorial yet.\n> \n> Pavel\n> \n> On Sun, 2013-02-24 at 23:34 -0800, Juan Pablo Alperin wrote:\n> > I should clarify, I am looking for some examples or tutorials, beyond\n> > the included R documentation and the published paper. \n> > \n> > \n> > Thanks, \n> > \n> > \n> > Juan\n> > @juancommander\n> > \n> > \n> > On Sunday, 24 February, 2013 at 11:27 PM, Juan Pablo Alperin wrote:\n> > \n> > > Pavel, \n> > > \n> > > \n> > > Is there any documentation/examples of using the ergm.count module?\n> > > I've been going through the accompanying paper, but something more\n> > > practical would be welcome. \n> > > \n> > > \n> > > Thanks, \n> > > \n> > > \n> > > Juan \n> > > @juancommander\n> > > \n> > \n> > \n> > \n> > _______________________________________________\n> > statnet_help mailing list\n> > statnet_help@u.washington.edu (mailto:statnet_help@u.washington.edu)\n> > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> > \n> \n> \n> \n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130225/6fa8cf60/attachment.html>",
+      "body_snippet": "Pavel (and others of the statnet community!), \n\nWhile you're pondering the other email thread (I'd still love a response there!) , can I ask a potentially stupid question? How do you set up a valued n",
+      "thread_id": "thread-dc7bc5a6043e",
+      "thread_depth": 3,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-dfdcfd4ed16a",
+      "message_id": "<512D48C3.50905@siu.edu>",
+      "from_name": "Shane Gleason",
+      "from_email_hash": "ac41ec97f21ad08d483932a77d2108a01f71b70e5a177513a1cd409ce7614ba0",
+      "date": "2013-02-26T15:44:03Z",
+      "subject": "[statnet_help] setting edge attributes",
+      "subject_clean": "[statnet_help] setting edge attributes",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello everyone,\n\nI have a network with a number of attributes, most of them are vertex \nspecific and I have no problem setting them with:\n\n               network %v% \"attribute_name\" <- dataset$attribute_name\n\nHowever, one of my variables is edge specific instead of vertex \nspecific.  I have been unable to import that measure into my network.\n\nI tried the method outlined in ?attribute.methods:\n\n\tset.edge.attribute(x, attrname, value, e=1: length(x$mel)\n\nAttempting to translate this into my data, I import a matrix which holds \nmy edge values, very creatively I call it matrix_of_edge_values.\n\n\tset.edge.attribute(network, attr_name, matrix_of_edge_values, e=FIRST_ID_IN_BOTH_MATRICES:length(x$mel))\n\nI am not sure what length(x$mel) is looking for.  The documentation is \npretty sparse on that particular length of code.  The only solution I \ncan think of is to coerce the data into a sociomatrix, but then it is \nnot clear what would come after the $\n\nCan any one provide any insight into how I can pull these edge values \ninto the data?  Much thanks in advance.\n\nShane\n\n\n-- \nShane Gleason\nDoctoral Candidate\nSouthern Illinois University:Carbondale\nDepartment of Political Science\nFaner 3172",
+      "body_snippet": "Hello everyone,\n\nI have a network with a number of attributes, most of them are vertex \nspecific and I have no problem setting them with:\n\n               network %v% \"attribute_name\" <- dataset$attrib",
+      "thread_id": "thread-dfdcfd4ed16a",
+      "thread_depth": 0,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-600a82782e3f",
+      "message_id": "<Prayer.1.3.5.1302271442170.27151@hermes-1.csi.cam.ac.uk>",
+      "from_name": "Dr I. Tikhonova",
+      "from_email_hash": "8fb514c2bea62e0e5d3f17a36c24229bf796b551be94c40576d2ec8999a92172",
+      "date": "2013-02-27T06:42:17Z",
+      "subject": "[statnet_help] gof (latentnet)",
+      "subject_clean": "[statnet_help] gof (latentnet)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI have a question on the \"gof\"-function, package \"latentnet\", the preview \nversion 2.4-3 created on 10/21/2012.\n\nI fitted a latent position model to an undirected network and then invoked \n\"gof\" which produced the following error:\n\ngof(ERGMM.fitted)\nError in check.ErgmTerm(nw, arglist, directed = TRUE, varnames = c(\"d\",  : \n  The ERGM term odegree may not be used with networks with directed==FALSE\n\nCan you please help? Thank you.\n\nIrina Tikhonova\n-- \nResearch Associate\nUniversity of Cambridge Veterinary School\nMadingley Road\nCambridge\nCB3 0ES",
+      "body_snippet": "Hello,\n\nI have a question on the \"gof\"-function, package \"latentnet\", the preview \nversion 2.4-3 created on 10/21/2012.\n\nI fitted a latent position model to an undirected network and then invoked \n\"go",
+      "thread_id": "thread-600a82782e3f",
+      "thread_depth": 0,
+      "month": "2013-02"
+    },
+    {
+      "id": "msg-68f7da36d8d4",
+      "message_id": "<512E6575.5010201@siu.edu>",
+      "from_name": "Shane Gleason",
+      "from_email_hash": "ac41ec97f21ad08d483932a77d2108a01f71b70e5a177513a1cd409ce7614ba0",
+      "date": "2013-02-27T11:58:45Z",
+      "subject": "[statnet_help] setting edge attributes",
+      "subject_clean": "[statnet_help] setting edge attributes",
+      "in_reply_to": "<82FE3283-1598-4941-887C-3F790E255671@gmail.com>",
+      "references": [
+        "<512D48C3.50905@siu.edu>",
+        "<82FE3283-1598-4941-887C-3F790E255671@gmail.com>"
+      ],
+      "body_plain": "Hi again,\n\nMark sent me a helpful suggestion on how to assign edge attributes to a \nnetwork, which is available in his blog post below in the quoted \nmessage.  I cleaned the example up a bit with more documentation and \nprovide it here.\n\nI am, however, unable to get around this error message after the ERGM:\n\n[1] \"Warning:  This network contains loops\"\n\n\nI suspect the error is from the edge attributes.  My data is \ninteractions between states and my edge attribute is the distance \nbetween state capitals.  I put the distance between (Alabama:Alabama) as \n0.  If I put that same distance as blank I get another (more serious) \nerror after the ERGM:\n\n[1] \"Warning:  This network contains loops\"\nError in ergm.getglobalstats(nw, model) :\n   NA/NaN/Inf in foreign function call (arg 13)\nIn addition: Warning message:\nIn InitErgmTerm.dyadcov(list(mel = list(list(inl = 1L, outl = 1L,  :\n   NAs introduced by coercion\n\nIs this something I should be concerned about?  Or is this just a matter \nof course error message?\n\nEither way, here is the code from Mark's example with a bit more \ndocumentation to it.\n\n#read in the state data\nmatrix_state <- read.csv(\"state_relations.csv\", header=F, stringsAsFactors=F, sep=\"\\t\")\nmatrix_state <- as.matrix(matrix_state,supress.diag=T)\n#Let's make this all into an edgelist\ne_state <- as.edgelist.sna(matrix_state)\n#And now a network\nnet_state <- network(e_state, directed=F, supress.diag=T)\n\n#Attributes for vertices\nattr_state <- read.csv(\"attr.csv\", header=T, stringsAsFactors=F, sep=\"\\t\")\n#Set attributes\nnet_state %v% \"population\" <- attr$population\n\n#Bring in the distance variable (edge attribute)\ndistances <- read.csv(\"statedistances.csv\", header=F, stringsAsFactors=F, sep=\"\\t\")\ndistances_matrix <- as.matrix(distances,supress.diag=T)\ndistances_edge <- as.edgelist.sna(distances_matrix)\n#Create a network object of dyads:\nall_pairs_n <- network(distances_edge[,1:2], directed=F, supress.diag=T)\n#Now assign the attribute\nset.edge.attribute(all_pairs_n, 'dist', distances_edge[,3])\n#test\nm0 <- ergm(net_state ~ edges + dyadcov(all_pairs_n, 'dist'))\n#ERROR COMES IN HERE:\n#[1] \"Warning:  This network contains loops\"\nsummary(m0)\n\n\nThanks everyone,\n\nShane\n\nOn 02/27/2013 12:36 AM, Mark Handel wrote:\n> Hi-\n>\n> I had a lot of trouble with edge attributes as well: the examples are \n> a little sparse and not well explained.\n>\n> I wrote a short blog post about what ended up working for me here:\n>\n> http://mjh4.blogspot.com/2012/09/ergm-edgecov-and-dyadcov-specifications.html?m=1\n>\n> I'm on the road right now, so can't really take a close look at your \n> examples currently. But, when I get back home, I'll see if I can write \n> a longer example.\n>\n> Also: when you do figure out what helps, take a moment to summarize \n> and post to the list. That way people searching can find the overview \n> answer.\n>\n> MJH\n>\n> MJH - 734 516 6907\n> Sent from my Memex\n>\n> On Feb 26, 2013, at 17:44, Shane Gleason <sgleason@siu.edu \n> <mailto:sgleason@siu.edu>> wrote:\n>\n>> Hello everyone,\n>>\n>> I have a network with a number of attributes, most of them are vertex \n>> specific and I have no problem setting them with:\n>>\n>>              network %v% \"attribute_name\" <- dataset$attribute_name\n>>\n>> However, one of my variables is edge specific instead of vertex \n>> specific.  I have been unable to import that measure into my network.\n>>\n>> I tried the method outlined in ?attribute.methods:\n>>\n>>    set.edge.attribute(x, attrname, value, e=1: length(x$mel)\n>>\n>> Attempting to translate this into my data, I import a matrix which \n>> holds my edge values, very creatively I call it matrix_of_edge_values.\n>>\n>>    set.edge.attribute(network, attr_name, matrix_of_edge_values, \n>> e=FIRST_ID_IN_BOTH_MATRICES:length(x$mel))\n>>\n>> I am not sure what length(x$mel) is looking for.  The documentation \n>> is pretty sparse on that particular length of code.  The only \n>> solution I can think of is to coerce the data into a sociomatrix, but \n>> then it is not clear what would come after the $\n>>\n>> Can any one provide any insight into how I can pull these edge values \n>> into the data?  Much thanks in advance.\n>>\n>> Shane\n>>\n>>\n>> -- \n>> Shane Gleason\n>> Doctoral Candidate\n>> Southern Illinois University:Carbondale\n>> Department of Political Science\n>> Faner 3172\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nShane Gleason\nDoctoral Candidate\nSouthern Illinois University:Carbondale\nDepartment of Political Science\nFaner 3172\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130227/a52d0345/attachment.html>",
+      "body_snippet": "Hi again,\n\nMark sent me a helpful suggestion on how to assign edge attributes to a \nnetwork, which is available in his blog post below in the quoted \nmessage.  I cleaned the example up a bit with more",
+      "thread_id": "thread-68f7da36d8d4",
+      "thread_depth": 0,
+      "month": "2013-02"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-4b7664e7a715",
+      "subject": "[statnet_help] mixed up edge attributes",
+      "message_count": 5,
+      "participants": [
+        "Brooks Ambrose",
+        "Martina Morris",
+        "Skye Bender-deMoll"
+      ],
+      "started": "2013-02-01T01:47:50Z",
+      "last_reply": "2013-02-01T14:48:29Z",
+      "root_message_id": "msg-4b7664e7a715"
+    },
+    {
+      "id": "thread-9f6f23beb0f4",
+      "subject": "[statnet_help] Help with ergm",
+      "message_count": 1,
+      "participants": [
+        "Brooks Ambrose"
+      ],
+      "started": "2013-02-01T15:01:19Z",
+      "last_reply": "2013-02-01T15:01:19Z",
+      "root_message_id": "msg-9f6f23beb0f4"
+    },
+    {
+      "id": "thread-3c2b76e23193",
+      "subject": "[statnet_help] Covariate effects in ergm model",
+      "message_count": 2,
+      "participants": [
+        "Martina Morris",
+        "Shupin Li"
+      ],
+      "started": "2013-02-04T10:04:35Z",
+      "last_reply": "2013-02-04T12:39:07Z",
+      "root_message_id": "msg-3c2b76e23193"
+    },
+    {
+      "id": "thread-987ba6b42785",
+      "subject": "[statnet_help] convert adjacency list to non-symmetric matrix",
+      "message_count": 2,
+      "participants": [
+        "Philip Leifeld",
+        "Sebastian Haunss"
+      ],
+      "started": "2013-02-05T03:57:52Z",
+      "last_reply": "2013-02-05T04:27:18Z",
+      "root_message_id": "msg-987ba6b42785"
+    },
+    {
+      "id": "thread-794973736a58",
+      "subject": "[statnet_help] simulate.stergm does not run in tutorial",
+      "message_count": 2,
+      "participants": [
+        "Martina Morris",
+        "Shane Gleason"
+      ],
+      "started": "2013-02-07T12:56:34Z",
+      "last_reply": "2013-02-07T13:11:17Z",
+      "root_message_id": "msg-794973736a58"
+    },
+    {
+      "id": "thread-2667b8880525",
+      "subject": "[statnet_help] using ergm on large networks",
+      "message_count": 5,
+      "participants": [
+        "Juan Pablo Alperin",
+        "Martina Morris",
+        "Michael Bishop",
+        "Pavel N. Krivitsky"
+      ],
+      "started": "2013-02-08T21:26:18Z",
+      "last_reply": "2013-02-14T13:49:31Z",
+      "root_message_id": "msg-2667b8880525"
+    },
+    {
+      "id": "thread-241d4b4c655c",
+      "subject": "[statnet_help] ERGM - too many unique dyads",
+      "message_count": 11,
+      "participants": [
+        "Juan Pablo Alperin",
+        "Martina Morris",
+        "Pavel N. Krivitsky",
+        "YA"
+      ],
+      "started": "2013-02-11T23:43:59Z",
+      "last_reply": "2013-02-21T12:30:08Z",
+      "root_message_id": "msg-241d4b4c655c"
+    },
+    {
+      "id": "thread-19c1827b9bc2",
+      "subject": "[statnet_help] simulate.stergm does not run in tutorial",
+      "message_count": 1,
+      "participants": [
+        "Martina Morris"
+      ],
+      "started": "2013-02-12T10:11:54Z",
+      "last_reply": "2013-02-12T10:11:54Z",
+      "root_message_id": "msg-19c1827b9bc2"
+    },
+    {
+      "id": "thread-be04713c0c52",
+      "subject": "[statnet_help] latentnet with Poisson edges",
+      "message_count": 2,
+      "participants": [
+        "Pavel N. Krivitsky",
+        "Steve Vaisey"
+      ],
+      "started": "2013-02-20T12:50:45Z",
+      "last_reply": "2013-02-20T14:15:29Z",
+      "root_message_id": "msg-be04713c0c52"
+    },
+    {
+      "id": "thread-176551239161",
+      "subject": "[statnet_help] ERGM involving covariates",
+      "message_count": 2,
+      "participants": [
+        "Martina Morris",
+        "YA"
+      ],
+      "started": "2013-02-20T19:12:03Z",
+      "last_reply": "2013-02-20T22:57:18Z",
+      "root_message_id": "msg-176551239161"
+    },
+    {
+      "id": "thread-dc7bc5a6043e",
+      "subject": "[statnet_help] ergm.count",
+      "message_count": 4,
+      "participants": [
+        "Juan Pablo Alperin",
+        "Pavel N. Krivitsky"
+      ],
+      "started": "2013-02-24T23:27:54Z",
+      "last_reply": "2013-02-25T20:30:45Z",
+      "root_message_id": "msg-dc7bc5a6043e"
+    },
+    {
+      "id": "thread-47aef7eee91e",
+      "subject": "[statnet_help] more questions",
+      "message_count": 3,
+      "participants": [
+        "Juan Pablo Alperin",
+        "Pavel N. Krivitsky"
+      ],
+      "started": "2013-02-25T11:49:05Z",
+      "last_reply": "2013-02-25T13:43:30Z",
+      "root_message_id": "msg-47aef7eee91e"
+    },
+    {
+      "id": "thread-312556a00faa",
+      "subject": "[statnet_help] meta analysis for ergm",
+      "message_count": 1,
+      "participants": [
+        "Michael Schweinberger"
+      ],
+      "started": "2013-02-25T13:42:39Z",
+      "last_reply": "2013-02-25T13:42:39Z",
+      "root_message_id": "msg-312556a00faa"
+    },
+    {
+      "id": "thread-dfdcfd4ed16a",
+      "subject": "[statnet_help] setting edge attributes",
+      "message_count": 1,
+      "participants": [
+        "Shane Gleason"
+      ],
+      "started": "2013-02-26T15:44:03Z",
+      "last_reply": "2013-02-26T15:44:03Z",
+      "root_message_id": "msg-dfdcfd4ed16a"
+    },
+    {
+      "id": "thread-600a82782e3f",
+      "subject": "[statnet_help] gof (latentnet)",
+      "message_count": 1,
+      "participants": [
+        "Dr I. Tikhonova"
+      ],
+      "started": "2013-02-27T06:42:17Z",
+      "last_reply": "2013-02-27T06:42:17Z",
+      "root_message_id": "msg-600a82782e3f"
+    },
+    {
+      "id": "thread-68f7da36d8d4",
+      "subject": "[statnet_help] setting edge attributes",
+      "message_count": 1,
+      "participants": [
+        "Shane Gleason"
+      ],
+      "started": "2013-02-27T11:58:45Z",
+      "last_reply": "2013-02-27T11:58:45Z",
+      "root_message_id": "msg-68f7da36d8d4"
+    }
+  ]
+}

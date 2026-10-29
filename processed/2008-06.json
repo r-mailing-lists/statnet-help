@@ -1,0 +1,284 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2008-06",
+  "messages": [
+    {
+      "id": "msg-a218a4d4ce97",
+      "message_id": "<Pine.WNT.4.61.0806031455580.3548@chandra.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2008-06-04T08:17:54Z",
+      "subject": "[statnet_help] Helpful info on the degeneracy warning in the ergm output",
+      "subject_clean": "[statnet_help] Helpful info on the degeneracy warning in the ergm output",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello all,\n\nMany of you may have noticed a warning about possible degeneracy that \nappears at the end of many calls to the function \"ergm\" in the latest \nversion of statnet. After a number of questions on the topic, and some of \nour own research into the matter, we've determined that this diagnostic \ncan be rather liberal in its diagnosis of degeneracy.  That is, it often \nsuggests that degeneracy is present, when it actually is not.\n\nOur advice is to treat the warning as it was intended to be - a \nsuggestion, not a definitive diagnosis.  We strongly advise that users \ncheck all of their models that are fit through MCMC by using the much more \nextensive built-in MCMC diagnostics. These can be accessed using the \nfunction mcmc.diagnostics(). Note that this command generates two plots \nfor each statistic in your model, so it is generally wise to send the \noutput to an external file.  For example:\n\npdf(\"my.diagnostic.plots.pdf\")\nmcmc.diagnostics(my.ergm.fit)\ndev.off()\n\nYou can see examples of these plots and advice on how to interpret them in \nthe JSS statnet tutorial:\n\nhttp://www.jstatsoft.org/v24/i09\n\nand read more about degeneracy diagnostics in the JSS ergm paper:\n\nhttp://www.jstatsoft.org/v24/i03\n\nIn future versions of ergm, we will be turning off the warning as a \ndefault, and perhaps making changes to its parameters.  In the meanwhile, \nthose users who wish to turn it off can add the following argument to \nany of their calls to the ergm function:\n\ncontrol.ergm(check.degeneracy=FALSE)\n\nHappy fitting!\nSteve\nOn behalf of the Statnet team\n\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65855,-122.3091&z=18&t=k             *\n**************************************************************************",
+      "body_snippet": "Hello all,\n\nMany of you may have noticed a warning about possible degeneracy that \nappears at the end of many calls to the function \"ergm\" in the latest \nversion of statnet. After a number of question",
+      "thread_id": "thread-a218a4d4ce97",
+      "thread_depth": 0,
+      "month": "2008-06"
+    },
+    {
+      "id": "msg-7a96b63e1986",
+      "message_id": "<60071052-158B-425B-A800-F17517617089@uci.edu>",
+      "from_name": "Ryan M. Acton",
+      "from_email_hash": "c33291c31bc0a8b4079239cfcae2fcd41ff6a3e6fa2eee5943162a9c1aebf1a6",
+      "date": "2008-06-06T12:10:22Z",
+      "subject": "[statnet_help] Issue with installing/loading statnet on a Mac",
+      "subject_clean": "[statnet_help] Issue with installing/loading statnet on a Mac",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello everyone-\n\nCarter suggested I post this issue that I'm having to this list...\n\nI am running R version 2.7.0 on Mac OS X v. 10.4.11.  When I run  \ninstall.packages(\"statnet\"), everything seems to work fine.  When I  \nthen run library(statnet), I get the following error message: \"Error:  \npackage 'degreenet' required by 'statnet' could not be found.\"\n\nI am able to install and load degreenet separately by using  \ninstall.packages() and then library().  Carter said that the error  \nmessage I received should not have occurred, so for what it's worth  \nI'm sharing my situation with you.\n\n-Ryan\n---------------------------------------------------------\nRyan M. Acton\nDoctoral student, Department of Sociology\nUniversity of California, Irvine\nracton@uci.edu\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080606/f60e58d1/attachment.html>",
+      "body_snippet": "Hello everyone-\n\nCarter suggested I post this issue that I'm having to this list...\n\nI am running R version 2.7.0 on Mac OS X v. 10.4.11.  When I run  \ninstall.packages(\"statnet\"), everything seems to",
+      "thread_id": "thread-7a96b63e1986",
+      "thread_depth": 0,
+      "month": "2008-06"
+    },
+    {
+      "id": "msg-4edda0ac583b",
+      "message_id": "<485A96AA.803@cornell.edu>",
+      "from_name": "Brian Rubineau",
+      "from_email_hash": "07982f3e85165fce9ba79b68bac170d226a27f1270c3b55761e6817dde7ac78b",
+      "date": "2008-06-19T10:26:02Z",
+      "subject": "[statnet_help] Options for testing for triad closure effects",
+      "subject_clean": "[statnet_help] Options for testing for triad closure effects",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Statnet-ers!\nWhat are your preferred methods for testing for triad closure effects in\nyour erg models of graphs & digraphs, and do you have an implicit\n(or even explicit) decision tree to decide among the options?\n\nSome of the apparently relevant ergm-terms include:\n* ctriad, ttriad (directed only)\n* dsp, esp\n* gwdsp, gwesp\n* localtriangle\n* triangle (usually with a \"star\" variant)\n* tripercent\n\nI read David's 2007 \"Curved Exponential Family Models for Social Networks\"\narticle as suggesting that the geometrically weighted methods may be \nsuperior\nto the kstar(2)+triangle construction, but was left with a number of \nquestions:\n* if using a geometrically weighted term, must all the terms (gwdegree, \ngwdsp,\n   gwesp)be used together, or which subsets are sufficient for triad \nclosure?\n* how does one choose appropriate alphas for gwdsp & gwesp (in the article,\n   the alphas appeared to be 1 or 0 only).\n \nThanks!\nBrian\n\n-- \nBrian Rubineau\nAssistant Professor, Organizational Behavior       146K Ives Hall\nSchool of Industrial and Labor Relations         ph. 607.255.3048\nCornell University                              fax. 810.963.2738\nIthaca, NY 14853                            brubineau@cornell.edu",
+      "body_snippet": "Hi Statnet-ers!\nWhat are your preferred methods for testing for triad closure effects in\nyour erg models of graphs & digraphs, and do you have an implicit\n(or even explicit) decision tree to decide am",
+      "thread_id": "thread-4edda0ac583b",
+      "thread_depth": 0,
+      "month": "2008-06"
+    },
+    {
+      "id": "msg-7729a750829c",
+      "message_id": "<7EDBA7DA-35B9-47C6-8D35-159859212997@reed.edu>",
+      "from_name": "Alexander H. Montgomery",
+      "from_email_hash": "d1c48c3c695c97a51e653a3cc66bc8e8fd7c5c03b9e0a43fd4b72da306733d40",
+      "date": "2008-06-19T14:15:20Z",
+      "subject": "[statnet_help] Limited capabilities of read.paj routine in network package",
+      "subject_clean": "[statnet_help] Limited capabilities of read.paj routine in network package",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I've been experimenting with importing pajek data using the read.paj  \nroutine in the network package; it appears to only import the vertex  \nnames as attributes, while ignoring the other verted attributes. For  \nexample, in the read.paj documentation, one of the examples is:\n\ntest.net.1 <- read.paj(\"http://vlado.fmf.uni-lj.si/pub/networks/data/GD/gd98/A98.net \n\")\n\nHowever, the object imported only has vertex.names attribute, ignoring  \nthe other three columns of data attached to each vertex in the file,  \ne.g. vertex 1 in the file is:\n\n      1 \"www.att.com/catalog/consumer\"           0.2512    0.4239     \n0.5000\n\nBut in R, only the names are brought in:\n\n > list.vertex.attributes(test.net.1)\n[1] \"na\"           \"vertex.names\"\n\n > get.vertex.attribute(test.net.1,\"vertex.names\")[1]\n[1] \"www.att.com/catalog/consumer\"\n\nAre there plans to expand the import function? I'm not familiar enough  \nwith the package to contribute a patch at the moment.\n\nThanks\n-AHM",
+      "body_snippet": "I've been experimenting with importing pajek data using the read.paj  \nroutine in the network package; it appears to only import the vertex  \nnames as attributes, while ignoring the other verted attri",
+      "thread_id": "thread-7729a750829c",
+      "thread_depth": 0,
+      "month": "2008-06"
+    },
+    {
+      "id": "msg-0989617097bf",
+      "message_id": "<485ADF88.4000701@fas.harvard.edu>",
+      "from_name": "Kevin Lewis",
+      "from_email_hash": "3e16f115495b0e59b9f7583fd0cfe6f012b826a6e99dfab804f7275bfb0c581c",
+      "date": "2008-06-19T15:36:56Z",
+      "subject": "[statnet_help] Limited capabilities of read.paj routine in network package",
+      "subject_clean": "[statnet_help] Limited capabilities of read.paj routine in network package",
+      "in_reply_to": "<7EDBA7DA-35B9-47C6-8D35-159859212997@reed.edu>",
+      "references": [
+        "<7EDBA7DA-35B9-47C6-8D35-159859212997@reed.edu>"
+      ],
+      "body_plain": "also, fyi, it looks to me like the command still imports networks \n\"backwards,\" i.e. the transpose- for example, the end of my original \n.net file looks like:\n\n...\n     189      684 1\n     191       29 1\n     191       86 1\n     191      202 1\n     191      241 1\n     191      287 1\n     191      569 1\n     191      594 1\n     191      724 1\n\nbut the end of the same network file, after importing to statnet using \nread.paj, looks like:\n\n...\n[5633,]  684  189\n[5634,]   29  191\n[5635,]   86  191\n[5636,]  202  191\n[5637,]  241  191\n[5638,]  287  191\n[5639,]  569  191\n[5640,]  594  191\n[5641,]  724  191\n\nor am i missing something?\n\n-kevin\n\nOn 6/19/2008 5:15 PM, Alexander H. Montgomery wrote:\n> I've been experimenting with importing pajek data using the read.paj \n> routine in the network package; it appears to only import the vertex \n> names as attributes, while ignoring the other verted attributes. For \n> example, in the read.paj documentation, one of the examples is:\n>\n> test.net.1 <- \n> read.paj(\"http://vlado.fmf.uni-lj.si/pub/networks/data/GD/gd98/A98.net\")\n>\n> However, the object imported only has vertex.names attribute, ignoring \n> the other three columns of data attached to each vertex in the file, \n> e.g. vertex 1 in the file is:\n>\n>      1 \"www.att.com/catalog/consumer\"           0.2512    0.4239    \n> 0.5000\n>\n> But in R, only the names are brought in:\n>\n> > list.vertex.attributes(test.net.1)\n> [1] \"na\"           \"vertex.names\"\n>\n> > get.vertex.attribute(test.net.1,\"vertex.names\")[1]\n> [1] \"www.att.com/catalog/consumer\"\n>\n> Are there plans to expand the import function? I'm not familiar enough \n> with the package to contribute a patch at the moment.\n>\n> Thanks\n> -AHM\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nKevin Lewis\nPh.D. Candidate in Sociology\nHarvard University\n641 William James Hall\n33 Kirkland Street\nCambridge, MA 02138",
+      "body_snippet": "also, fyi, it looks to me like the command still imports networks \n\"backwards,\" i.e. the transpose- for example, the end of my original \n.net file looks like:\n\n...\n     189      684 1\n     191       2",
+      "thread_id": "thread-7729a750829c",
+      "thread_depth": 1,
+      "month": "2008-06"
+    },
+    {
+      "id": "msg-34431330afe1",
+      "message_id": "<20080620203840.s53pp9x34wowskwk@webmail.u-strasbg.fr>",
+      "from_name": "mueller@cournot.u-strasbg.fr",
+      "from_email_hash": "b1d29234cf40c9b257a1928b25335f08eb4c2b1dd90e9221954da27761f37d7d",
+      "date": "2008-06-20T11:38:40Z",
+      "subject": "[statnet_help] actor specific random effects",
+      "subject_clean": "[statnet_help] actor specific random effects",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello dear all,\n\nI want to estimate a logit model of link formation in the random  \neffects tradition. I assume that when actor-specific effects (e.g. a_i  \nis effect for actor i) are given, link formation becomes independent  \nfrom the rest of the network. The actor-specific effects are assumed  \nto be uncorrelated with covariates. The LOGIT MODEL can be written as:\n\nProb(y_ij = 1|x_ij,beta,a_i,a_j) = exp(x_ij' %*% beta + a_i + a_j)/ (1  \n+ exp(x_ij' %*% beta + a_i + a_j))\n\n, where y_ij = y_ji = 1 if i has link with j, x_ij dyad covariates,  \nbeta are coefficients and the actor specific effects a_i are  \ndistributed iid Normal(0,sig^2).\n\nThe usual way is to integrate out the a's for estimation. This case is  \nspecial because integration needs to be done over the whole quality  \nfunction not only the contribution of one observation (one firm-pair).\n\nAs OPTIMIZATION EXAMPLE take MLE, where the likelihood of one network would be\n\nL(Y | X,beta,a_1,...,a_n) = Product_(i=1)_(n-1) ( Product_(j=i+1)_(n)  \n( Prob(y_ij = 1|x_ij,beta,a_i,a_j)))\n\nand optimization should be done for L(Y | X,beta,sig_a), which is an  \nintegral of L(Y | X,beta,a_1,...,a_n) with respect to a_1..a_n.\n\nTHE PROBLEM is that neither in the statnet package nor any other  \npackage I found an appropriate function to estimate the model.\n\n1. Is anybody aware of such a function????\n2. If not, which algorithms would you suggest to solve the problem?  \n(B.t.w. the network consists of 240 nodes.)\n\nThank you very much\nMoritz Mueller",
+      "body_snippet": "Hello dear all,\n\nI want to estimate a logit model of link formation in the random  \neffects tradition. I assume that when actor-specific effects (e.g. a_i  \nis effect for actor i) are given, link form",
+      "thread_id": "thread-34431330afe1",
+      "thread_depth": 0,
+      "month": "2008-06"
+    },
+    {
+      "id": "msg-f01d8bfa458d",
+      "message_id": "<A0C76BB8-DF30-4884-A421-A15D7DA5F122@biomail.ucsd.edu>",
+      "from_name": "Art Poon",
+      "from_email_hash": "f24b65dfd7492932fef4587ed4f65bd2d157ca0dcb81041364d2041e415469d7",
+      "date": "2008-06-23T16:58:41Z",
+      "subject": "[statnet_help] Re: problems coding a custom term",
+      "subject_clean": "[statnet_help] Re: problems coding a custom term",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet_help,\n\nI've coded a new user term into the most recent ergm package source  \ncode, which I call \"wagonwheels\".  The most basic wagonwheel is  \nequivalent to a triangle and I've been able to obtain the same counts  \non a given network from:\n\n > summary(nw ~ wagonwheel(1))\n\nas\n\n > summary(nw ~ triangle)\n\nUsing 'summary' for more complex wagonwheels also obtains correct  \ncounts for my own toy examples.\n\nHowever, when I attempt to fit a model with ergm(nw ~ wagonwheels(1)),  \nthings go horribly awry!  Specifically, \"all the MCMC sample  \nstatistics are the same\"; as a result, the wagonwheels1 estimate is  \nstuck on the initial value.\n\nDoes anyone have any ideas as to what might be going wrong?\n\nThanks in advance,\n- Art.",
+      "body_snippet": "Dear statnet_help,\n\nI've coded a new user term into the most recent ergm package source  \ncode, which I call \"wagonwheels\".  The most basic wagonwheel is  \nequivalent to a triangle and I've been able ",
+      "thread_id": "thread-f01d8bfa458d",
+      "thread_depth": 0,
+      "month": "2008-06"
+    },
+    {
+      "id": "msg-904c88ebd600",
+      "message_id": "<mailman.0.1528395628.3556.statnet_help@mailman13.u.washington.edu>",
+      "from_name": "Alexander H. Montgomery",
+      "from_email_hash": "d1c48c3c695c97a51e653a3cc66bc8e8fd7c5c03b9e0a43fd4b72da306733d40",
+      "date": "2008-06-24T13:56:53Z",
+      "subject": "[statnet_help] Limited capabilities of read.paj routine in network package",
+      "subject_clean": "[statnet_help] Limited capabilities of read.paj routine in network package",
+      "in_reply_to": "<485ADF88.4000701@fas.harvard.edu>",
+      "references": [
+        "<7EDBA7DA-35B9-47C6-8D35-159859212997@reed.edu>",
+        "<485ADF88.4000701@fas.harvard.edu>"
+      ],
+      "body_plain": "Looks to me like it's reading it backwards, too. Authors?\n\nHere's a hacked-together patch that will read in additional vertex  \nattributes, based on pages 69-70 of the pajek manual:\n\nhttp://vlado.fmf.uni-lj.si/pub/networks/pajek/doc/pajekman.pdf\n\nIt replaces the lines in read.paj that usually just read in the vertex  \nnames.\n\nI don't know if there's a test suite of .net or .paj files against  \nwhich to check these...  the code currently makes some assumptions  \nabout the first three attributes being coordinates...\n\n            if (nrow(as.data.frame(vertex)) == network.size(temp)) {\n                temp <- set.vertex.attribute(temp, \"vertex.names\",\n                  as.character(vertex[as.numeric(vertex[,1]),2]))\n                if (ncol(vertex)>2) { # number of columns > 2 ->  \nvertex has attributes\n                  vert.attr.nam <- c(\"na\",\"vertex.names\",\"x\",\"y\",\"z\")  \n#assume first three are coords (true?)\n                  if (ncol(vertex)>5) vert.attr.nam <- c(vert.attr.nam, \n6:ncol(vertex)) #temp names for rest\n                  for (vert.attr.i in 3:ncol(vertex)){\n                    v <- vertex[,vert.attr.i]\n                    if (is.factor(v)){ # if it's a factor, then\n                      vert.attr.nam.tmp <- levels(v)[1] # see if the  \nfirst factor is an attribute name\n                      if (vert.attr.nam.tmp==\"\") vert.attr.nam.tmp <-  \nlevels(v)[2] # in case of missing data\n                      if (nlevels(v)<=2&! \nis.na(match(vert.attr.nam.tmp, # check for match if # factors <=2\n                                    \nc(\"s_size\",\"x_fact\",\"y_fact\",\"phi\",\"r\",\"q\",\n                                     \"ic\",\"bc\",\"bw\",\"lc\",\"la\",\"lr\",\n                                     \"lphi\",\"fos\",\"font\")))) { #from  \npajekman.pdf v1.2.3 p.69-70\n                        vert.attr.nam[vert.attr.i+1] <-  \nvert.attr.nam.tmp #if match, name the next column\n                      } else { #if not, set the attribute, converting  \nto character (networks incompat w/factors)\n                        temp <-  \nset.vertex.attribute(temp,vert.attr.nam[vert.attr.i],\n                                                      \nas.character(vertex[as.numeric(vertex[,1]),vert.attr.i]))\n                      }\n                    } else { #not a factor, set the attribute and  \ndon't convert to character\n                      temp <-  \nset.vertex.attribute(temp,vert.attr.nam[vert.attr.i],\n                                                    \nvertex[as.numeric(vertex[,1]),vert.attr.i])\n                    }\n                  }\n                }\n               if (debug)\n                  print(\"set vertex names to matrix\")\n            }\n\n\nOn 2008-06-19, at 3:36 PM, Kevin Lewis wrote:\n\n> also, fyi, it looks to me like the command still imports networks  \n> \"backwards,\" i.e. the transpose- for example, the end of my  \n> original .net file looks like:\n>\n> ...\n>   189      684 1\n>   191       29 1\n>   191       86 1\n>   191      202 1\n>   191      241 1\n>   191      287 1\n>   191      569 1\n>   191      594 1\n>   191      724 1\n>\n> but the end of the same network file, after importing to statnet  \n> using read.paj, looks like:\n>\n> ...\n> [5633,]  684  189\n> [5634,]   29  191\n> [5635,]   86  191\n> [5636,]  202  191\n> [5637,]  241  191\n> [5638,]  287  191\n> [5639,]  569  191\n> [5640,]  594  191\n> [5641,]  724  191\n>\n> or am i missing something?\n>\n> -kevin\n>\n> On 6/19/2008 5:15 PM, Alexander H. Montgomery wrote:\n>> I've been experimenting with importing pajek data using the  \n>> read.paj routine in the network package; it appears to only import  \n>> the vertex names as attributes, while ignoring the other verted  \n>> attributes. For example, in the read.paj documentation, one of the  \n>> examples is:\n>>\n>> test.net.1 <- read.paj(\"http://vlado.fmf.uni-lj.si/pub/networks/data/GD/gd98/A98.net \n>> \")\n>>\n>> However, the object imported only has vertex.names attribute,  \n>> ignoring the other three columns of data attached to each vertex in  \n>> the file, e.g. vertex 1 in the file is:\n>>\n>>    1 \"www.att.com/catalog/consumer\"           0.2512    0.4239     \n>> 0.5000\n>>\n>> But in R, only the names are brought in:\n>>\n>> > list.vertex.attributes(test.net.1)\n>> [1] \"na\"           \"vertex.names\"\n>>\n>> > get.vertex.attribute(test.net.1,\"vertex.names\")[1]\n>> [1] \"www.att.com/catalog/consumer\"\n>>\n>> Are there plans to expand the import function? I'm not familiar  \n>> enough with the package to contribute a patch at the moment.\n>>\n>> Thanks\n>> -AHM\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n> -- \n> Kevin Lewis\n> Ph.D. Candidate in Sociology\n> Harvard University\n> 641 William James Hall\n> 33 Kirkland Street\n> Cambridge, MA 02138\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Looks to me like it's reading it backwards, too. Authors?\n\nHere's a hacked-together patch that will read in additional vertex  \nattributes, based on pages 69-70 of the pajek manual:\n\nhttp://vlado.fmf.",
+      "thread_id": "thread-7729a750829c",
+      "thread_depth": 2,
+      "month": "2008-06"
+    },
+    {
+      "id": "msg-21ecfde672ef",
+      "message_id": "<E414A133-5B4E-4516-932E-1C9CF4F19D3F@biomail.ucsd.edu>",
+      "from_name": "Art Poon",
+      "from_email_hash": "f24b65dfd7492932fef4587ed4f65bd2d157ca0dcb81041364d2041e415469d7",
+      "date": "2008-06-25T11:27:34Z",
+      "subject": "[statnet_help] Issue with installing/loading statnet on a Mac",
+      "subject_clean": "[statnet_help] Issue with installing/loading statnet on a Mac",
+      "in_reply_to": "<60071052-158B-425B-A800-F17517617089@uci.edu>",
+      "references": [
+        "<60071052-158B-425B-A800-F17517617089@uci.edu>"
+      ],
+      "body_plain": "Hi Ryan,\n\nI'm using R 2.7.0 on Mac OS X 10.5.3, so I thought I'd have a try at  \nreproducing your problem.  And I did find that I was unable to load  \nthe statnet library after following your procedure, due to missing the  \n'degreenet' package.  So I manually installed 'degreenet' from the  \nrepository:\n\n > install.packages('degreenet')\n > library(statnet)\n[...]\nError: package 'networksis' required by 'statnet' could not be found\n\nInstalling the missing 'networksis' package allowed me to finally  \nactivate the statnet library.\n\nMy hunch is that the statnet package dependencies aren't correctly  \nconfigured in the respository, as using install.packages() with the  \nargument 'dependencies=TRUE' failed to correct the problem.\n\nCheers,\n- Art.\n\n\n\nOn Jun 6, 2008, at 12:10 PM, Ryan M. Acton wrote:\n\n> Hello everyone-\n>\n> Carter suggested I post this issue that I'm having to this list...\n>\n> I am running R version 2.7.0 on Mac OS X v. 10.4.11.  When I run  \n> install.packages(\"statnet\"), everything seems to work fine.  When I  \n> then run library(statnet), I get the following error message:  \n> \"Error: package 'degreenet' required by 'statnet' could not be found.\"\n>\n> I am able to install and load degreenet separately by using  \n> install.packages() and then library().  Carter said that the error  \n> message I received should not have occurred, so for what it's worth  \n> I'm sharing my situation with you.\n>\n> -Ryan\n> ---------------------------------------------------------\n> Ryan M. Acton\n> Doctoral student, Department of Sociology\n> University of California, Irvine\n> racton@uci.edu\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Ryan,\n\nI'm using R 2.7.0 on Mac OS X 10.5.3, so I thought I'd have a try at  \nreproducing your problem.  And I did find that I was unable to load  \nthe statnet library after following your procedur",
+      "thread_id": "thread-7a96b63e1986",
+      "thread_depth": 1,
+      "month": "2008-06"
+    },
+    {
+      "id": "msg-7faa8279f1a7",
+      "message_id": "<Pine.WNT.4.64.0806261258080.4508@vinaya.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2008-06-26T13:18:48Z",
+      "subject": "[statnet_help] Options for testing for triad closure effects",
+      "subject_clean": "[statnet_help] Options for testing for triad closure effects",
+      "in_reply_to": "<485A96AA.803@cornell.edu>",
+      "references": [
+        "<485A96AA.803@cornell.edu>"
+      ],
+      "body_plain": "Hi,\n\nMy own experience is that triangle, tripercent, ctriad and ttriad are \noften degenerate for all but the smallest networks.  Still, they're the \nsimplest to interpret, so it might be worth giving them a try on your \nnetwork just to see.  But I myself end up using gwesp pretty much all the \ntime now. I've never used localtriangle, but that doesn't mean it wouldn't \nbe useful to others!\n\nIn terms of gwesp, gwdsp, gwd as a group vs. individual; I guess this \ndepends partly on what you're trying to model, and your philosophical \nbent.  If you are coming at your model via a belief that your network \nexhibits the \"realization dependent\" one-step-out-from-Markov dependence \ndiscussed in Snijders et al. (\"New specifications...\") then you should \nprobably include all three.  But, I personally tend to focus more on GWESP \nwhen I'm specifically interested in triangle effects, since that's the one \nthat relates most obviously to them for me. I think GWD's interpretation \nis more related to degrees (hence the name), whereas GWDSP is a bit harder \nto pin down (at least for me.)  It gives one a sense of the tendency for \nany two actors tend to have the same friends in common, regardless of \nwhether they are connected or not; whereas GWESP does this only for actors \nwho are themselves tied.  So I like to think of GWDSP as providing a kind \nof global measure of structural equivalence (in the sense that it captures \nthe process whereby if two actors have a common partner, they're now more \nlikely than otherwise to have their additional partners in common.)\n\nIn some sense (now that I'm on a roll with pondering this issue), \nincluding both GWDSP and GWESP allows for the resulting coefficient of \nGWESP to be more clearly interpretable as a triangle effect than when one \nincludes only GWESP.  That's because there are two different phenomena \nbeing measured in GWESP (the tendency for triangles to close, and the \ntendency for those with partners in common to have various counts of them) \nwhereas GWDSP only includes the latter of these two. including both terms \nmeans GWDSP can model the latter process, and GWESP is free to capture the \nformer process more cleanly.  Now I'm only brainstorming, I've not thought \nabout this deeply.  In some sense it may be a largely academic question, \nsince in every large network I've tried fitting GWDSP to (ie the Add \nHealth schools), its coefficient is very close to 0 and not at all \nsignificant, with or without GWESP in the model as well. You might try it \nas well and see; I'd be interested to see if you get the same thing.\n\nYours,\nSteve\n\n\n\n\nOn Thu, 19 Jun 2008, Brian Rubineau wrote:\n\n> Date: Thu, 19 Jun 2008 13:26:02 -0400\n> From: Brian Rubineau <brubineau@cornell.edu>\n> To: statnet_help@u.washington.edu\n> Subject: [statnet_help] Options for testing for triad closure effects\n> \n> Hi Statnet-ers!\n> What are your preferred methods for testing for triad closure effects in\n> your erg models of graphs & digraphs, and do you have an implicit\n> (or even explicit) decision tree to decide among the options?\n>\n> Some of the apparently relevant ergm-terms include:\n> * ctriad, ttriad (directed only)\n> * dsp, esp\n> * gwdsp, gwesp\n> * localtriangle\n> * triangle (usually with a \"star\" variant)\n> * tripercent\n>\n> I read David's 2007 \"Curved Exponential Family Models for Social Networks\"\n> article as suggesting that the geometrically weighted methods may be superior\n> to the kstar(2)+triangle construction, but was left with a number of \n> questions:\n> * if using a geometrically weighted term, must all the terms (gwdegree, \n> gwdsp,\n>  gwesp)be used together, or which subsets are sufficient for triad closure?\n> * how does one choose appropriate alphas for gwdsp & gwesp (in the article,\n>  the alphas appeared to be 1 or 0 only).\n>\n> Thanks!\n> Brian\n>\n> -- \n> Brian Rubineau\n> Assistant Professor, Organizational Behavior       146K Ives Hall\n> School of Industrial and Labor Relations         ph. 607.255.3048\n> Cornell University                              fax. 810.963.2738\n> Ithaca, NY 14853                            brubineau@cornell.edu\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n                    *PLEASE NOTICE NEW OFFICE LOCATION*\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65855,-122.3091&z=18&t=k             *\n**************************************************************************",
+      "body_snippet": "Hi,\n\nMy own experience is that triangle, tripercent, ctriad and ttriad are \noften degenerate for all but the smallest networks.  Still, they're the \nsimplest to interpret, so it might be worth giving ",
+      "thread_id": "thread-4edda0ac583b",
+      "thread_depth": 1,
+      "month": "2008-06"
+    },
+    {
+      "id": "msg-5f53e07d6111",
+      "message_id": "<Pine.WNT.4.64.0806261319040.4508@vinaya.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2008-06-26T13:22:07Z",
+      "subject": "[statnet_help] Options for testing for triad closure effects",
+      "subject_clean": "[statnet_help] Options for testing for triad closure effects",
+      "in_reply_to": "<485A96AA.803@cornell.edu>",
+      "references": [
+        "<485A96AA.803@cornell.edu>"
+      ],
+      "body_plain": "Oh, and in terms of choosing appropriate alphas: alphas closer to zero are \nless likely to be degenerate, so it's a good rule of thumb to start low \nand move high.  This works whether you're using FIXED=F in these terms and \nallowing the algorithm to find the most likely value of alpha for you, or \nfinding a good value yourself using multiple runs and comapring them by \nsome means.\n\nSteve\n\n\n\nregardless of whetherone \ncan use the fixed=F \nterm for all of them and allow alpha to be estimated itself\n\n\n\nOn Thu, 19 Jun 2008, Brian \nRubineau wrote:\n\n> Date: Thu, 19 Jun 2008 13:26:02 -0400\n> From: Brian Rubineau <brubineau@cornell.edu>\n> To: statnet_help@u.washington.edu\n> Subject: [statnet_help] Options for testing for triad closure effects\n> \n> Hi Statnet-ers!\n> What are your preferred methods for testing for triad closure effects in\n> your erg models of graphs & digraphs, and do you have an implicit\n> (or even explicit) decision tree to decide among the options?\n>\n> Some of the apparently relevant ergm-terms include:\n> * ctriad, ttriad (directed only)\n> * dsp, esp\n> * gwdsp, gwesp\n> * localtriangle\n> * triangle (usually with a \"star\" variant)\n> * tripercent\n>\n> I read David's 2007 \"Curved Exponential Family Models for Social Networks\"\n> article as suggesting that the geometrically weighted methods may be superior\n> to the kstar(2)+triangle construction, but was left with a number of \n> questions:\n> * if using a geometrically weighted term, must all the terms (gwdegree, \n> gwdsp,\n>  gwesp)be used together, or which subsets are sufficient for triad closure?\n> * how does one choose appropriate alphas for gwdsp & gwesp (in the article,\n>  the alphas appeared to be 1 or 0 only).\n>\n> Thanks!\n> Brian\n>\n> -- \n> Brian Rubineau\n> Assistant Professor, Organizational Behavior       146K Ives Hall\n> School of Industrial and Labor Relations         ph. 607.255.3048\n> Cornell University                              fax. 810.963.2738\n> Ithaca, NY 14853                            brubineau@cornell.edu\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n                    *PLEASE NOTICE NEW OFFICE LOCATION*\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65855,-122.3091&z=18&t=k             *\n**************************************************************************",
+      "body_snippet": "Oh, and in terms of choosing appropriate alphas: alphas closer to zero are \nless likely to be degenerate, so it's a good rule of thumb to start low \nand move high.  This works whether you're using FIX",
+      "thread_id": "thread-4edda0ac583b",
+      "thread_depth": 1,
+      "month": "2008-06"
+    },
+    {
+      "id": "msg-08ecc310988d",
+      "message_id": "<Pine.WNT.4.64.0806261430370.6096@vinaya.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2008-06-26T14:36:17Z",
+      "subject": "[statnet_help] Re: problems coding a custom term",
+      "subject_clean": "[statnet_help] Re: problems coding a custom term",
+      "in_reply_to": "<A0C76BB8-DF30-4884-A421-A15D7DA5F122@biomail.ucsd.edu>",
+      "references": [
+        "<A0C76BB8-DF30-4884-A421-A15D7DA5F122@biomail.ucsd.edu>"
+      ],
+      "body_plain": "Hi Art,\n\nA quick check- in one place in the code below you have the term as \n\"wagonwheel\", and in the other as \"wagonwheels.\"  I'm guessing this is \njust a typo in the email, and doesn't actually have anything to do with \ncausing the problem.  Assuming that's right, then the first thing I would \nsuggest doing is fitting the same ergm model with triangle instead of \nwagonwheels(1) -- that is, do:\n\nergm(nw ~ wagonwheels(1))\n\nto see if you get the same problem.  That will help clarify whether there \nis a reason why wagonwheel(1)/triangle doesn't work well for your dataset \n(i.e. it's a degenerate model, perhaps), or whether there's sonething in \nwagonwheel(1) that needs debugging.  You can respond to me individually, \nif you wish.\n\nSteve\n\n\n\nOn Mon, 23 Jun 2008, Art Poon wrote:\n\n> Date: Mon, 23 Jun 2008 16:58:41 -0700\n> From: Art Poon <apoon@biomail.ucsd.edu>\n> To: statnet_help@u.washington.edu\n> Subject: [statnet_help] Re: problems coding a custom term\n> \n> Dear statnet_help,\n>\n> I've coded a new user term into the most recent ergm package source code, \n> which I call \"wagonwheels\".  The most basic wagonwheel is equivalent to a \n> triangle and I've been able to obtain the same counts on a given network \n> from:\n>\n>> summary(nw ~ wagonwheel(1))\n>\n> as\n>\n>> summary(nw ~ triangle)\n>\n> Using 'summary' for more complex wagonwheels also obtains correct counts for \n> my own toy examples.\n>\n> However, when I attempt to fit a model with ergm(nw ~ wagonwheels(1)), things \n> go horribly awry!  Specifically, \"all the MCMC sample statistics are the \n> same\"; as a result, the wagonwheels1 estimate is stuck on the initial value.\n>\n> Does anyone have any ideas as to what might be going wrong?\n>\n> Thanks in advance,\n> - Art.\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n                    *PLEASE NOTICE NEW OFFICE LOCATION*\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65855,-122.3091&z=18&t=k             *\n**************************************************************************",
+      "body_snippet": "Hi Art,\n\nA quick check- in one place in the code below you have the term as \n\"wagonwheel\", and in the other as \"wagonwheels.\"  I'm guessing this is \njust a typo in the email, and doesn't actually have",
+      "thread_id": "thread-f01d8bfa458d",
+      "thread_depth": 1,
+      "month": "2008-06"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-a218a4d4ce97",
+      "subject": "[statnet_help] Helpful info on the degeneracy warning in the ergm output",
+      "message_count": 1,
+      "participants": [
+        "Steven Goodreau"
+      ],
+      "started": "2008-06-04T08:17:54Z",
+      "last_reply": "2008-06-04T08:17:54Z",
+      "root_message_id": "msg-a218a4d4ce97"
+    },
+    {
+      "id": "thread-7a96b63e1986",
+      "subject": "[statnet_help] Issue with installing/loading statnet on a Mac",
+      "message_count": 2,
+      "participants": [
+        "Art Poon",
+        "Ryan M. Acton"
+      ],
+      "started": "2008-06-06T12:10:22Z",
+      "last_reply": "2008-06-25T11:27:34Z",
+      "root_message_id": "msg-7a96b63e1986"
+    },
+    {
+      "id": "thread-4edda0ac583b",
+      "subject": "[statnet_help] Options for testing for triad closure effects",
+      "message_count": 3,
+      "participants": [
+        "Brian Rubineau",
+        "Steven Goodreau"
+      ],
+      "started": "2008-06-19T10:26:02Z",
+      "last_reply": "2008-06-26T13:22:07Z",
+      "root_message_id": "msg-4edda0ac583b"
+    },
+    {
+      "id": "thread-7729a750829c",
+      "subject": "[statnet_help] Limited capabilities of read.paj routine in network package",
+      "message_count": 3,
+      "participants": [
+        "Alexander H. Montgomery",
+        "Kevin Lewis"
+      ],
+      "started": "2008-06-19T14:15:20Z",
+      "last_reply": "2008-06-24T13:56:53Z",
+      "root_message_id": "msg-7729a750829c"
+    },
+    {
+      "id": "thread-34431330afe1",
+      "subject": "[statnet_help] actor specific random effects",
+      "message_count": 1,
+      "participants": [
+        "mueller@cournot.u-strasbg.fr"
+      ],
+      "started": "2008-06-20T11:38:40Z",
+      "last_reply": "2008-06-20T11:38:40Z",
+      "root_message_id": "msg-34431330afe1"
+    },
+    {
+      "id": "thread-f01d8bfa458d",
+      "subject": "[statnet_help] Re: problems coding a custom term",
+      "message_count": 2,
+      "participants": [
+        "Art Poon",
+        "Steven Goodreau"
+      ],
+      "started": "2008-06-23T16:58:41Z",
+      "last_reply": "2008-06-26T14:36:17Z",
+      "root_message_id": "msg-f01d8bfa458d"
+    }
+  ]
+}

@@ -1,0 +1,428 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2006-10",
+  "messages": [
+    {
+      "id": "msg-bac0cd94e762",
+      "message_id": "<BAY124-W54F1EC95227B11A5515916A01C0@phx.gbl>",
+      "from_name": "Hank Green",
+      "from_email_hash": "3ffe890a9f67d24463a3b8702e9fe4ee201a14c8fa4b5472fa5ce4e81912e82a",
+      "date": "2006-10-03T08:51:15Z",
+      "subject": "[statnet_help] question about importing vertex attributes",
+      "subject_clean": "[statnet_help] question about importing vertex attributes",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "hi statnet guys...\n \nhank here again, with another question that probably has a searingly simple answer.\n \ni have a set of vertex attributes saved as a tab delimited text file.\ni would like to assign the values in the text file to my network vertices en mass.\n \ni have read over the set.vertex.attributes help file, but am still not sure exactly how to do this type of work from a file...\n(i assume i use the read.table function in some way, but i'm not entirely sure)\n \nthanks for the help, sorry i'm being dense...\n \ncheers,\nhank\n_________________________________________________________________\nTry the new Live Search today! \nhttp://imagine-windowslive.com/minisites/searchlaunch/?locale=en-us&FORM=WLMTAG \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20061003/69567f8f/attachment.html>\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "hi statnet guys...\n \nhank here again, with another question that probably has a searingly simple answer.\n \ni have a set of vertex attributes saved as a tab delimited text file.\ni would like to assign ",
+      "thread_id": "thread-bac0cd94e762",
+      "thread_depth": 0,
+      "month": "2006-10"
+    },
+    {
+      "id": "msg-65590bb15573",
+      "message_id": "<45236645.2060607@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2006-10-04T00:44:05Z",
+      "subject": "[statnet_help] question about importing vertex attributes",
+      "subject_clean": "[statnet_help] question about importing vertex attributes",
+      "in_reply_to": "<BAY124-W54F1EC95227B11A5515916A01C0@phx.gbl>",
+      "references": [
+        "<BAY124-W54F1EC95227B11A5515916A01C0@phx.gbl>"
+      ],
+      "body_plain": "Hank Green wrote:\n> hi statnet guys...\n>  \n> hank here again, with another question that probably has a searingly \n> simple answer.\n>  \n> i have a set of vertex attributes saved as a tab delimited text file.\n> i would like to assign the values in the text file to my \n> network vertices en mass.\n>  \n> i have read over the set.vertex.attributes help file, but am still not \n> sure exactly how to do this type of work from a file...\n> (i assume i use the read.table function in some way, but i'm not \n> entirely sure)\n>  \n> thanks for the help, sorry i'm being dense...\n>  \n\nHere's one way to do it:\n\ndat<-read.table(\"myfile\",header=T)\nfor(i in 1:NROL(dat))\n   mynet%v%names(dat)[i]<-dat[,i]\n\nThis assumes that you have a header row in \"myfile\" and that your \nnetwork is called \"mynet.\"  Other variants are possible.  (In fact, you \ncan do this in one line, using an apply function....)\n\n-Carter\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hank Green wrote:\n> hi statnet guys...\n>  \n> hank here again, with another question that probably has a searingly \n> simple answer.\n>  \n> i have a set of vertex attributes saved as a tab delimited tex",
+      "thread_id": "thread-bac0cd94e762",
+      "thread_depth": 1,
+      "month": "2006-10"
+    },
+    {
+      "id": "msg-3facf3f55d10",
+      "message_id": "<Pine.LNX.4.64.0610101510130.20025@homer24.u.washington.edu>",
+      "from_name": "D. Stiefel",
+      "from_email_hash": "aa27b42096bab02982dbc1379311946e9af330675bd39c69178846556c98e2ca",
+      "date": "2006-10-10T15:57:31Z",
+      "subject": "[statnet_help] R installing error - csde statnet packages",
+      "subject_clean": "[statnet_help] R installing error - csde statnet packages",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I have a OS X tiger 10.4.7 G5 Mac and I installed R (ver 2.4.0) according \nto your directions at \nhttp://www.csde.washington.edu/statnet/gettingstatnet.shtml\n\nR 2.4.0 installed fine but when I installed your CSDE statnet packages by \ntyping \"library(updatestatnet)\" from the R command line and followed the \nupdate prompts, I the downloads occured but I got errors at the end of \nthat process.\n\nJudging from the error messages, it looks like csde's statnet \ninstalls/updates are really meant for the 2.3.1 version of R and not the \ncurrent 2.4.0 ver. your instructions lead you to at CRAN. (looks like your \nstatnet install instructions are out of date / out of sync with CRAN ...)\n\nI have pasted the buffer text from the CSDE statnet install/update \nterminal below.  Can you look at it and tell me the significance?\n\nDid any of the statnet packages end up updated and usable?\n\nHow will the errors affect my installation and will I have to uninstall \n2.4.0 and install R 2.3.1 instead and can I even do that on a Tiger \nmachine?\n\nI will appreciate the answers to these questions.  Thanks,\n\nDan Stiefel\nstiefeld@u.washington.edu \n> library(updatestatnet)\nUpdating statnet over the Internet...\n--- Please select a CRAN mirror for use in this session ---\nInitializing...\n=========================================\nAttempting to update package 'network'.\ntrying URL \n'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/network_1.1.tgz'\nContent type 'application/x-gzip' length 225311 bytes\nopened URL\n==================================================\ndownloaded 220Kb\n\n\nThe downloaded packages are in\n \t/tmp/Rtmpd6kaht/downloaded_packages\n=========================================\nAttempting to update package 'coda'.\ntrying URL \n'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/coda_0.10-6.tgz'\nContent type 'application/x-gzip' length 169031 bytes\nopened URL\n==================================================\ndownloaded 165Kb\n\n\nThe downloaded packages are in\n \t/tmp/Rtmpd6kaht/downloaded_packages\n=========================================\nAttempting to update package 'statnet'.\ntrying URL 'http://csde.washington.edu/statnet/statnet_1.0-9.tgz'\nContent type 'application/x-tar' length 514346 bytes\nopened URL\n==================================================\ndownloaded 502Kb\n\n\nThe downloaded packages are in\n \t/tmp/Rtmpd6kaht/downloaded_packages\n=========================================\nPackage 'updatestatnet' is now up-to-date.\n=========================================\nAttempting to update package 'sna'.\nIt is recommended you update 'sna'.\nUpdate recommended package 'sna' (y/n)?  y\ntrying URL \n'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/sna_1.2.tgz'\nContent type 'application/x-gzip' length 630916 bytes\nopened URL\n==================================================\ndownloaded 616Kb\n\n\nThe downloaded packages are in\n \t/tmp/Rtmpd6kaht/downloaded_packages\n=========================================\nAttempting to update package 'latentnet'.\nIt is recommended you update 'latentnet'.\nUpdate recommended package 'latentnet' (y/n)?  y\ntrying URL \n'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/latentnet_0.7-3.tgz'\nContent type 'application/x-gzip' length 194786 bytes\nopened URL\n==================================================\ndownloaded 190Kb\n\n\nThe downloaded packages are in\n \t/tmp/Rtmpd6kaht/downloaded_packages\n=========================================\nAttempting to update package 'netperm'.\nIt is optional to update 'netperm'.\nUpdate optional package 'netperm' (y/n)?  y\ntrying URL 'http://csde.washington.edu/statnet/netperm_0.2.tgz'\nContent type 'application/x-tar' length 31548 bytes\nopened URL\n==================================================\ndownloaded 30Kb\n\n\nThe downloaded packages are in\n \t/tmp/Rtmpd6kaht/downloaded_packages\n=========================================\nAttempting to update package 'dnet'.\nIt is optional to update 'dnet'.\nUpdate optional package 'dnet' (y/n)?  y\ntrying URL 'http://csde.washington.edu/statnet/dnet_1.1-2.tgz'\nContent type 'application/x-tar' length 168706 bytes\nopened URL\n==================================================\ndownloaded 164Kb\n\n\nThe downloaded packages are in\n \t/tmp/Rtmpd6kaht/downloaded_packages\n=========================================\nAttempting to update package 'locfit'.\ntrying URL \n'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/locfit_1.5-3.tgz'\nContent type 'application/x-gzip' length 651600 bytes\nopened URL\n==================================================\ndownloaded 636Kb\n\n\nThe downloaded packages are in\n \t/tmp/Rtmpd6kaht/downloaded_packages\n=========================================\nAttempting to update package 'mvtnorm'.\ntrying URL \n'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/mvtnorm_0.7-5.tgz'\nContent type 'application/x-gzip' length 211222 bytes\nopened URL\n==================================================\ndownloaded 206Kb\n\n\nThe downloaded packages are in\n \t/tmp/Rtmpd6kaht/downloaded_packages\n=========================================\nAttempting to update package 'mclust'.\ntrying URL \n'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/mclust_3.0-0.tgz'\nContent type 'application/x-gzip' length 740884 bytes\nopened URL\n==================================================\ndownloaded 723Kb\n\n\nThe downloaded packages are in\n \t/tmp/Rtmpd6kaht/downloaded_packages\n=========================================\nAttempting to update package 'akima'.\ntrying URL \n'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/akima_0.5-1.tgz'\nContent type 'application/x-gzip' length 237712 bytes\nopened URL\n==================================================\ndownloaded 232Kb\n\n\nThe downloaded packages are in\n \t/tmp/Rtmpd6kaht/downloaded_packages\n=========================================\nAttempting to update package 'shapes'.\ntrying URL \n'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/shapes_1.0-9.tgz'\nContent type 'application/x-gzip' length 142542 bytes\nopened URL\n==================================================\ndownloaded 139Kb\n\n\nThe downloaded packages are in\n \t/tmp/Rtmpd6kaht/downloaded_packages\n=========================================\nPackage 'KernSmooth' is now up-to-date.\n=========================================\n'statnet' is now up-to-date.\nLoading required package: statnet\nLoading required package: network\nClasses for Relational Data\nVersion 1.1 created on August 25, 2006.\ncopyright (c) 2005, Carter T. Butts, University of California-Irvine\n                     Mark S. Handcock, University of Washington\n                     David R. Hunter, Penn State University\n                     Martina Morris, University of Washington\nType help(package=\"network\") to get started.\nError in dyn.load(x, as.logical(local), as.logical(now)) :\n \tunable to load shared library \n'/Library/Frameworks/R.framework/Versions/2.4/Resources/library/statnet/libs/ppc/statnet.so':\n\ndlopen(/Library/Frameworks/R.framework/Versions/2.4/Resources/library/statnet/libs/ppc/statnet.so, \n6): Library not loaded: \n/Library/Frameworks/R.framework/Versions/2.3/Resources/lib/libR.dylib\n   Referenced from: \n/Library/Frameworks/R.framework/Versions/2.4/Resources/library/statnet/libs/ppc/statnet.so\n   Reason: image not found\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "I have a OS X tiger 10.4.7 G5 Mac and I installed R (ver 2.4.0) according \nto your directions at \nhttp://www.csde.washington.edu/statnet/gettingstatnet.shtml\n\nR 2.4.0 installed fine but when I install",
+      "thread_id": "thread-3facf3f55d10",
+      "thread_depth": 0,
+      "month": "2006-10"
+    },
+    {
+      "id": "msg-0f68e9c075a7",
+      "message_id": "<9DCE2DC7-BEC1-4E89-9A1A-67ADE8AF03E6@biomail.ucsd.edu>",
+      "from_name": "Art Poon",
+      "from_email_hash": "f24b65dfd7492932fef4587ed4f65bd2d157ca0dcb81041364d2041e415469d7",
+      "date": "2006-10-10T16:47:08Z",
+      "subject": "[statnet_help] R installing error - csde statnet packages",
+      "subject_clean": "[statnet_help] R installing error - csde statnet packages",
+      "in_reply_to": "<Pine.LNX.4.64.0610101510130.20025@homer24.u.washington.edu>",
+      "references": [
+        "<Pine.LNX.4.64.0610101510130.20025@homer24.u.washington.edu>"
+      ],
+      "body_plain": "Dear Dan,\n\nI also just recently updated R on my Mac (which in retrospect  \nprobably wasn't the brightest idea until news of mishaps like this  \nhad time to filter out onto the net :) ), and had the same problem.   \nSo I poked around the R.Framework directory and basically gave R what  \nit wanted, by copying the '/2.4/lib' folder back into the directory / \n2.3.  I'll admit it's a goofy cludge of a patch, but Statnet opens up  \nfine now.\n\n- Art.\n\n\n\nOn Oct 10, 2006, at 3:57 PM, D. Stiefel wrote:\n\n> I have a OS X tiger 10.4.7 G5 Mac and I installed R (ver 2.4.0)  \n> according to your directions at http://www.csde.washington.edu/ \n> statnet/gettingstatnet.shtml\n>\n> R 2.4.0 installed fine but when I installed your CSDE statnet  \n> packages by typing \"library(updatestatnet)\" from the R command line  \n> and followed the update prompts, I the downloads occured but I got  \n> errors at the end of that process.\n>\n> Judging from the error messages, it looks like csde's statnet  \n> installs/updates are really meant for the 2.3.1 version of R and  \n> not the current 2.4.0 ver. your instructions lead you to at CRAN.  \n> (looks like your statnet install instructions are out of date / out  \n> of sync with CRAN ...)\n>\n> I have pasted the buffer text from the CSDE statnet install/update  \n> terminal below.  Can you look at it and tell me the significance?\n>\n> Did any of the statnet packages end up updated and usable?\n>\n> How will the errors affect my installation and will I have to  \n> uninstall 2.4.0 and install R 2.3.1 instead and can I even do that  \n> on a Tiger machine?\n>\n> I will appreciate the answers to these questions.  Thanks,\n>\n> Dan Stiefel\n> stiefeld@u.washington.edu\n>> library(updatestatnet)\n> Updating statnet over the Internet...\n> --- Please select a CRAN mirror for use in this session ---\n> Initializing...\n> =========================================\n> Attempting to update package 'network'.\n> trying URL 'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/ \n> network_1.1.tgz'\n> Content type 'application/x-gzip' length 225311 bytes\n> opened URL\n> ==================================================\n> downloaded 220Kb\n>\n>\n> The downloaded packages are in\n> \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'coda'.\n> trying URL 'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/ \n> coda_0.10-6.tgz'\n> Content type 'application/x-gzip' length 169031 bytes\n> opened URL\n> ==================================================\n> downloaded 165Kb\n>\n>\n> The downloaded packages are in\n> \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'statnet'.\n> trying URL 'http://csde.washington.edu/statnet/statnet_1.0-9.tgz'\n> Content type 'application/x-tar' length 514346 bytes\n> opened URL\n> ==================================================\n> downloaded 502Kb\n>\n>\n> The downloaded packages are in\n> \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Package 'updatestatnet' is now up-to-date.\n> =========================================\n> Attempting to update package 'sna'.\n> It is recommended you update 'sna'.\n> Update recommended package 'sna' (y/n)?  y\n> trying URL 'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/ \n> sna_1.2.tgz'\n> Content type 'application/x-gzip' length 630916 bytes\n> opened URL\n> ==================================================\n> downloaded 616Kb\n>\n>\n> The downloaded packages are in\n> \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'latentnet'.\n> It is recommended you update 'latentnet'.\n> Update recommended package 'latentnet' (y/n)?  y\n> trying URL 'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/ \n> latentnet_0.7-3.tgz'\n> Content type 'application/x-gzip' length 194786 bytes\n> opened URL\n> ==================================================\n> downloaded 190Kb\n>\n>\n> The downloaded packages are in\n> \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'netperm'.\n> It is optional to update 'netperm'.\n> Update optional package 'netperm' (y/n)?  y\n> trying URL 'http://csde.washington.edu/statnet/netperm_0.2.tgz'\n> Content type 'application/x-tar' length 31548 bytes\n> opened URL\n> ==================================================\n> downloaded 30Kb\n>\n>\n> The downloaded packages are in\n> \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'dnet'.\n> It is optional to update 'dnet'.\n> Update optional package 'dnet' (y/n)?  y\n> trying URL 'http://csde.washington.edu/statnet/dnet_1.1-2.tgz'\n> Content type 'application/x-tar' length 168706 bytes\n> opened URL\n> ==================================================\n> downloaded 164Kb\n>\n>\n> The downloaded packages are in\n> \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'locfit'.\n> trying URL 'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/ \n> locfit_1.5-3.tgz'\n> Content type 'application/x-gzip' length 651600 bytes\n> opened URL\n> ==================================================\n> downloaded 636Kb\n>\n>\n> The downloaded packages are in\n> \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'mvtnorm'.\n> trying URL 'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/ \n> mvtnorm_0.7-5.tgz'\n> Content type 'application/x-gzip' length 211222 bytes\n> opened URL\n> ==================================================\n> downloaded 206Kb\n>\n>\n> The downloaded packages are in\n> \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'mclust'.\n> trying URL 'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/ \n> mclust_3.0-0.tgz'\n> Content type 'application/x-gzip' length 740884 bytes\n> opened URL\n> ==================================================\n> downloaded 723Kb\n>\n>\n> The downloaded packages are in\n> \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'akima'.\n> trying URL 'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/ \n> akima_0.5-1.tgz'\n> Content type 'application/x-gzip' length 237712 bytes\n> opened URL\n> ==================================================\n> downloaded 232Kb\n>\n>\n> The downloaded packages are in\n> \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'shapes'.\n> trying URL 'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/ \n> shapes_1.0-9.tgz'\n> Content type 'application/x-gzip' length 142542 bytes\n> opened URL\n> ==================================================\n> downloaded 139Kb\n>\n>\n> The downloaded packages are in\n> \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Package 'KernSmooth' is now up-to-date.\n> =========================================\n> 'statnet' is now up-to-date.\n> Loading required package: statnet\n> Loading required package: network\n> Classes for Relational Data\n> Version 1.1 created on August 25, 2006.\n> copyright (c) 2005, Carter T. Butts, University of California-Irvine\n>                     Mark S. Handcock, University of Washington\n>                     David R. Hunter, Penn State University\n>                     Martina Morris, University of Washington\n> Type help(package=\"network\") to get started.\n> Error in dyn.load(x, as.logical(local), as.logical(now)) :\n> \tunable to load shared library '/Library/Frameworks/R.framework/ \n> Versions/2.4/Resources/library/statnet/libs/ppc/statnet.so':\n>\n> dlopen(/Library/Frameworks/R.framework/Versions/2.4/Resources/ \n> library/statnet/libs/ppc/statnet.so, 6): Library not loaded: / \n> Library/Frameworks/R.framework/Versions/2.3/Resources/lib/libR.dylib\n>   Referenced from: /Library/Frameworks/R.framework/Versions/2.4/ \n> Resources/library/statnet/libs/ppc/statnet.so\n>   Reason: image not found\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Dan,\n\nI also just recently updated R on my Mac (which in retrospect  \nprobably wasn't the brightest idea until news of mishaps like this  \nhad time to filter out onto the net :) ), and had the sa",
+      "thread_id": "thread-3facf3f55d10",
+      "thread_depth": 1,
+      "month": "2006-10"
+    },
+    {
+      "id": "msg-e697ff43b365",
+      "message_id": "<20061014092101.01018EB079@webmail221.herald.ox.ac.uk>",
+      "from_name": "Caroline Buckee",
+      "from_email_hash": "0da61fda4adc12616100406d8e0f6c50c20b45b0d695c615f01b5d3f01a7d06b",
+      "date": "2006-10-14T02:21:01Z",
+      "subject": "[statnet_help] problem loading shared library",
+      "subject_clean": "[statnet_help] problem loading shared library",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "An embedded and charset-unspecified text was scrubbed...\nName: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20061014/e609faed/attachment.ksh>",
+      "body_snippet": "An embedded and charset-unspecified text was scrubbed...\nName: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20061014/e609faed/attachment.ksh>",
+      "thread_id": "thread-e697ff43b365",
+      "thread_depth": 0,
+      "month": "2006-10"
+    },
+    {
+      "id": "msg-9f5090aa3327",
+      "message_id": "<20061015143832.jhd2b9kre3j4cs04@webmail.mit.edu>",
+      "from_name": "Brian Rubineau",
+      "from_email_hash": "c4584907e8de2ef2b8940c0fda3bd9c0752ea080609cdbef7204d0c1f0eaccbe",
+      "date": "2006-10-15T11:38:32Z",
+      "subject": "[statnet_help] generating a predicted network",
+      "subject_clean": "[statnet_help] generating a predicted network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi friends.\nI'd like to generate a weighted graph where the edges\nare the probabilities of a tie existing between vertices\nbased on the results of an ergm.\n\nI know that the probabilities generated by an ergm are\nfor a given tie conditional on the rest of the network.\nThis being the case, simply using the parameter estimates\nfrom the ergm to generate a predicted network doesn't seem\nright.\n\nTo make things easier, my ergm is solely an analysis of\nhomophily, i.e., NetworkTie ~ edge + nodematch(\"race\") + nodematch(\"sex\") ...\n\nIs there an established way to generate a predicted network?\nSince I'm not doing any structural terms (e.g., triangle),\ncan I just use the ergm results?\n\nThank you very much.\n\nKind regards,\nBrian\n\n-- \nBrian Rubineau                             PhD Candidate, Organization Studies\nbrubineau@sloan.mit.edu                         MIT Sloan School of Management\ntel: 617.253.6680                                   50 Memorial Drive, E52-511\nfax: 810.963.2738                                         Cambridge, MA  02142\n\n\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi friends.\nI'd like to generate a weighted graph where the edges\nare the probabilities of a tie existing between vertices\nbased on the results of an ergm.\n\nI know that the probabilities generated by ",
+      "thread_id": "thread-9f5090aa3327",
+      "thread_depth": 0,
+      "month": "2006-10"
+    },
+    {
+      "id": "msg-c72d3271c032",
+      "message_id": "<008901c6f0eb$ce863300$d00fa8c0@CAPELXP>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2006-10-15T23:24:59Z",
+      "subject": "[statnet_help] R installing error - csde statnet packages",
+      "subject_clean": "[statnet_help] R installing error - csde statnet packages",
+      "in_reply_to": "<Pine.LNX.4.64.0610101510130.20025@homer24.u.washington.edu>",
+      "references": [],
+      "body_plain": "Dear Dan,\n \nIt looks like version 2.4.0 of R for the Mac has broken \"statnet\".\nUpdates to R often break packages, and it is advisable to reinstall packages after major updates to R.\n\nIn this case I have remade \"statnet\". If you try\n\n\"library(updatestatnet)\"\n\nfrom R it should update to version 1.0-10 (for the Mac) and resolve the difficulties.\n\nLet me know how it goes.\n\nRegards,\n\nMark\n\n-------------------------------------------------\nMark S. Handcock\nProfessor of Statistics and Sociology    \nDepartment of Statistics, C014-B Padelford Hall\nUniversity of Washington, Box 354322     Phone: (206) 221-6930\nSeattle, WA 98195-4322.          FAX:   (206) 685-7419\nWeb: www.stat.washington.edu/handcock\ninternet: handcock@stat.washington.edu \n\n> I have a OS X tiger 10.4.7 G5 Mac and I installed R (ver \n> 2.4.0) according to your directions at \n> http://www.csde.washington.edu/statnet/gettingstatnet.shtml\n> \n> R 2.4.0 installed fine but when I installed your CSDE statnet \n> packages by typing \"library(updatestatnet)\" from the R \n> command line and followed the update prompts, I the downloads \n> occured but I got errors at the end of that process.\n> \n> Judging from the error messages, it looks like csde's statnet \n> installs/updates are really meant for the 2.3.1 version of R \n> and not the current 2.4.0 ver. your instructions lead you to \n> at CRAN. (looks like your statnet install instructions are \n> out of date / out of sync with CRAN ...)\n> \n> I have pasted the buffer text from the CSDE statnet \n> install/update terminal below.  Can you look at it and tell \n> me the significance?\n> \n> Did any of the statnet packages end up updated and usable?\n> \n> How will the errors affect my installation and will I have to \n> uninstall 2.4.0 and install R 2.3.1 instead and can I even do \n> that on a Tiger machine?\n> \n> I will appreciate the answers to these questions.  Thanks,\n> \n> Dan Stiefel\n> stiefeld@u.washington.edu \n> > library(updatestatnet)\n> Updating statnet over the Internet...\n> --- Please select a CRAN mirror for use in this session --- \n> Initializing...\n> =========================================\n> Attempting to update package 'network'.\n> trying URL\n> 'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/networ\n> k_1.1.tgz'\n> Content type 'application/x-gzip' length 225311 bytes opened \n> URL ==================================================\n> downloaded 220Kb\n> \n> \n> The downloaded packages are in\n>  \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'coda'.\n> trying URL \n> 'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/coda_0\n> .10-6.tgz'\n> Content type 'application/x-gzip' length 169031 bytes\n> opened URL\n> ==================================================\n> downloaded 165Kb\n> \n> \n> The downloaded packages are in\n>  \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'statnet'.\n> trying URL 'http://csde.washington.edu/statnet/statnet_1.0-9.tgz'\n> Content type 'application/x-tar' length 514346 bytes\n> opened URL\n> ==================================================\n> downloaded 502Kb\n> \n> \n> The downloaded packages are in\n>  \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Package 'updatestatnet' is now up-to-date.\n> =========================================\n> Attempting to update package 'sna'.\n> It is recommended you update 'sna'.\n> Update recommended package 'sna' (y/n)?  y\n> trying URL \n> 'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/sna_1.2.tgz'\n> Content type 'application/x-gzip' length 630916 bytes\n> opened URL\n> ==================================================\n> downloaded 616Kb\n> \n> \n> The downloaded packages are in\n>  \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'latentnet'.\n> It is recommended you update 'latentnet'.\n> Update recommended package 'latentnet' (y/n)?  y\n> trying URL \n> 'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/latent\n> net_0.7-3.tgz'\n> Content type 'application/x-gzip' length 194786 bytes\n> opened URL\n> ==================================================\n> downloaded 190Kb\n> \n> \n> The downloaded packages are in\n>  \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'netperm'.\n> It is optional to update 'netperm'.\n> Update optional package 'netperm' (y/n)?  y\n> trying URL 'http://csde.washington.edu/statnet/netperm_0.2.tgz'\n> Content type 'application/x-tar' length 31548 bytes\n> opened URL\n> ==================================================\n> downloaded 30Kb\n> \n> \n> The downloaded packages are in\n>  \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'dnet'.\n> It is optional to update 'dnet'.\n> Update optional package 'dnet' (y/n)?  y\n> trying URL 'http://csde.washington.edu/statnet/dnet_1.1-2.tgz'\n> Content type 'application/x-tar' length 168706 bytes\n> opened URL\n> ==================================================\n> downloaded 164Kb\n> \n> \n> The downloaded packages are in\n>  \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'locfit'.\n> trying URL \n> 'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/locfit\n> _1.5-3.tgz'\n> Content type 'application/x-gzip' length 651600 bytes\n> opened URL\n> ==================================================\n> downloaded 636Kb\n> \n> \n> The downloaded packages are in\n>  \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'mvtnorm'.\n> trying URL \n> 'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/mvtnor\n> m_0.7-5.tgz'\n> Content type 'application/x-gzip' length 211222 bytes\n> opened URL\n> ==================================================\n> downloaded 206Kb\n> \n> \n> The downloaded packages are in\n>  \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'mclust'.\n> trying URL \n> 'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/mclust\n> _3.0-0.tgz'\n> Content type 'application/x-gzip' length 740884 bytes\n> opened URL\n> ==================================================\n> downloaded 723Kb\n> \n> \n> The downloaded packages are in\n>  \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'akima'.\n> trying URL \n> 'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/akima_\n> 0.5-1.tgz'\n> Content type 'application/x-gzip' length 237712 bytes\n> opened URL\n> ==================================================\n> downloaded 232Kb\n> \n> \n> The downloaded packages are in\n>  \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Attempting to update package 'shapes'.\n> trying URL \n> 'http://cran.fhcrc.org/bin/macosx/universal/contrib/2.4/shapes\n> _1.0-9.tgz'\n> Content type 'application/x-gzip' length 142542 bytes\n> opened URL\n> ==================================================\n> downloaded 139Kb\n> \n> \n> The downloaded packages are in\n>  \t/tmp/Rtmpd6kaht/downloaded_packages\n> =========================================\n> Package 'KernSmooth' is now up-to-date.\n> =========================================\n> 'statnet' is now up-to-date.\n> Loading required package: statnet\n> Loading required package: network\n> Classes for Relational Data\n> Version 1.1 created on August 25, 2006.\n> copyright (c) 2005, Carter T. Butts, University of California-Irvine\n>                      Mark S. Handcock, University of Washington\n>                      David R. Hunter, Penn State University\n>                      Martina Morris, University of Washington\n> Type help(package=\"network\") to get started.\n> Error in dyn.load(x, as.logical(local), as.logical(now)) :\n>  \tunable to load shared library \n> '/Library/Frameworks/R.framework/Versions/2.4/Resources/librar\n> y/statnet/libs/ppc/statnet.so':\n> \n> dlopen(/Library/Frameworks/R.framework/Versions/2.4/Resources/\n> library/statnet/libs/ppc/statnet.so, \n> 6): Library not loaded: \n> /Library/Frameworks/R.framework/Versions/2.3/Resources/lib/libR.dylib\n>    Referenced from: \n> /Library/Frameworks/R.framework/Versions/2.4/Resources/library\n> /statnet/libs/ppc/statnet.so\n>    Reason: image not found\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Dan,\n \nIt looks like version 2.4.0 of R for the Mac has broken \"statnet\".\nUpdates to R often break packages, and it is advisable to reinstall packages after major updates to R.\n\nIn this case I ha",
+      "thread_id": "thread-3facf3f55d10",
+      "thread_depth": 1,
+      "month": "2006-10"
+    },
+    {
+      "id": "msg-191f03c3e4a1",
+      "message_id": "<45338C14.7010505@bioss.sari.ac.uk>",
+      "from_name": "Adriano Werhli",
+      "from_email_hash": "5d65c6ee6eb508e993b937418c7e460ae9c4baaa6eaff92a50dca8f31ace1cdc",
+      "date": "2006-10-16T06:41:40Z",
+      "subject": "[statnet_help] help with covariates in latentnet",
+      "subject_clean": "[statnet_help] help with covariates in latentnet",
+      "in_reply_to": "<452F53BF.30804@bioss.sari.ac.uk>",
+      "references": [
+        "<452F53BF.30804@bioss.sari.ac.uk>"
+      ],
+      "body_plain": "Hello,\n\nI would like to use the package latentnet with some observed atributes \nX={x_ij}, these are covariate information for pairs of nodes.\nIs there a way of using it in the actual implementation?\nHow can I pass these observations for latentnet function?\n\nCheers,\n\nAdriano VW\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hello,\n\nI would like to use the package latentnet with some observed atributes \nX={x_ij}, these are covariate information for pairs of nodes.\nIs there a way of using it in the actual implementation?\nH",
+      "thread_id": "thread-191f03c3e4a1",
+      "thread_depth": 0,
+      "month": "2006-10"
+    },
+    {
+      "id": "msg-f1f500e27ecc",
+      "message_id": "<005801c6f564$7bdc55d0$d00fa8c0@GELORUPXP>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2006-10-21T15:58:54Z",
+      "subject": "[statnet_help] help with covariates in latentnet",
+      "subject_clean": "[statnet_help] help with covariates in latentnet",
+      "in_reply_to": "<45338C14.7010505@bioss.sari.ac.uk>",
+      "references": [],
+      "body_plain": "Dear Adriano,\n\nThe \"latentcov\" term is what you want. For example,\n\nsamp.fit <- ergmm(samplike ~ latentcov(samegroup) + latent(k=2))\n\nIt is documented in \"terms.ergmm\" and there is an example in \"ergmm\".\n\nMark\n\n-------------------------------------------------\nMark S. Handcock\nProfessor of Statistics and Sociology    \nDepartment of Statistics, C014-B Padelford Hall\nUniversity of Washington, Box 354322     Phone: (206) 221-6930\nSeattle, WA 98195-4322.          FAX:   (206) 685-7419\nWeb: www.stat.washington.edu/handcock\ninternet: handcock@stat.washington.ed\n> -----Original Message-----\n> From: statnet_help-bounces@mailman1.u.washington.edu \n> [mailto:statnet_help-bounces@mailman1.u.washington.edu] On \n> Behalf Of Adriano Werhli\n> Sent: Monday, October 16, 2006 6:42 AM\n> To: statnet_help@u.washington.edu\n> Subject: [statnet_help] help with covariates in latentnet\n> \n> Hello,\n> \n> I would like to use the package latentnet with some observed \n> atributes X={x_ij}, these are covariate information for pairs \n> of nodes.\n> Is there a way of using it in the actual implementation?\n> How can I pass these observations for latentnet function?\n> \n> Cheers,\n> \n> Adriano VW\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Adriano,\n\nThe \"latentcov\" term is what you want. For example,\n\nsamp.fit <- ergmm(samplike ~ latentcov(samegroup) + latent(k=2))\n\nIt is documented in \"terms.ergmm\" and there is an example in \"ergm",
+      "thread_id": "thread-191f03c3e4a1",
+      "thread_depth": 1,
+      "month": "2006-10"
+    },
+    {
+      "id": "msg-1d996df19d30",
+      "message_id": "<200610212307.k9LN7CCT002485@smtp.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2006-10-21T16:06:49Z",
+      "subject": "[statnet_help] generating a predicted network",
+      "subject_clean": "[statnet_help] generating a predicted network",
+      "in_reply_to": "<20061015143832.jhd2b9kre3j4cs04@webmail.mit.edu>",
+      "references": [],
+      "body_plain": "Dear Brian,\n\nThanks for the question.\n\nAs your model is dyad independence you can obtain an expression analytically\nusing the coefficients in the same way as you do for logistic regression.\nThat is, in this case the conditional and unconditional probabilities are\nthe same.\n\nIt is easier to use the simulate command to generate, e.g., 1000 networks\nfrom the fitted model and take the average sociomatrix from them. This is a\nconsistent estimate of the probabilities, and will work for an arbitrary\n\"ergm\" model to boot.\n\nI hope this helps.\n\nMark\n\n-------------------------------------------------\nMark S.  Handcock\nProfessor of Statistics and  Sociology\nDepartment of Statistics, C014-B Padelford  Hall\nUniversity of Washington, Box 354322     Phone:  (206) 221-6930\nSeattle, WA  98195-4322.           FAX:   (206) 685-7419\nWeb:  www.stat.washington.edu/~handcock\ninternet:  handcock@stat.washington.edu\n\n\n\nOn 10/15/06 11:38 AM, \"Brian Rubineau\" <brubineau@sloan.mit.edu> wrote:\n\n> Hi friends.\n> I'd like to generate a weighted graph where the edges\n> are the probabilities of a tie existing between vertices\n> based on the results of an ergm.\n> \n> I know that the probabilities generated by an ergm are\n> for a given tie conditional on the rest of the network.\n> This being the case, simply using the parameter estimates\n> from the ergm to generate a predicted network doesn't seem\n> right.\n> \n> To make things easier, my ergm is solely an analysis of\n> homophily, i.e., NetworkTie ~ edge + nodematch(\"race\") + nodematch(\"sex\") ...\n> \n> Is there an established way to generate a predicted network?\n> Since I'm not doing any structural terms (e.g., triangle),\n> can I just use the ergm results?\n> \n> Thank you very much.\n> \n> Kind regards,\n> Brian",
+      "body_snippet": "Dear Brian,\n\nThanks for the question.\n\nAs your model is dyad independence you can obtain an expression analytically\nusing the coefficients in the same way as you do for logistic regression.\nThat is, i",
+      "thread_id": "thread-9f5090aa3327",
+      "thread_depth": 1,
+      "month": "2006-10"
+    },
+    {
+      "id": "msg-d9a4a1578ed5",
+      "message_id": "<200610212342.k9LNgC0g001617@smtp.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2006-10-21T16:42:03Z",
+      "subject": "[statnet_help] problem loading shared library",
+      "subject_clean": "[statnet_help] problem loading shared library",
+      "in_reply_to": "<20061014092101.01018EB079@webmail221.herald.ox.ac.uk>",
+      "references": [],
+      "body_plain": "Caroline,\n\nIf you reinstall \"statnet\" this should be fixed (as my prior email message\non this topic indicated).\n\nMark\n\n\nOn 10/14/06 2:21 AM, \"Caroline Buckee\" <caroline.buckee@zoo.ox.ac.uk> wrote:\n\n> Hello\n> \n> I have installed R and statnet onto my Mac (with Tiger operating system).\n> Although some of the data appears to be there, when I access the Package\n> Manager, it says statnet is not loaded, and I get this error message when I\n> try\n> to access anything:\n>  \n>> library(statnet)\n> Error in dyn.load(x, as.logical(local), as.logical(now)) :\n> unable to load shared library\n> '/Library/Frameworks/R.framework/Versions/2.4/Resources/library/statnet/libs/p\n> pc/statnet.so':\n>  \n> dlopen(/Library/Frameworks/R.framework/Versions/2.4/Resources/library/statnet/\n> libs/ppc/statnet.so,\n> 6): Library not loaded:\n> /Library/Frameworks/R.framework/Versions/2.3/Resources/lib/libR.dylib\n>   Referenced from:\n> /Library/Frameworks/R.framework/Versions/2.4/Resources/library/statnet/libs/pp\n> c/statnet.so\n>   Reason: image not found\n> Error in library(statnet) : .First.lib failed for 'statnet'\n> \n> Can you help?\n> Thanks,\n> Caroline Buckee\n> \n> Evolution Group\n> Department of Zoology\n> University of Oxford\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Caroline,\n\nIf you reinstall \"statnet\" this should be fixed (as my prior email message\non this topic indicated).\n\nMark\n\n\nOn 10/14/06 2:21 AM, \"Caroline Buckee\" <caroline.buckee@zoo.ox.ac.uk> wrote:\n\n> ",
+      "thread_id": "thread-e697ff43b365",
+      "thread_depth": 1,
+      "month": "2006-10"
+    },
+    {
+      "id": "msg-3ddbec098d91",
+      "message_id": "<20061023122859.5j6lo3puyq88o4go@webmail.mit.edu>",
+      "from_name": "Brian Rubineau",
+      "from_email_hash": "c4584907e8de2ef2b8940c0fda3bd9c0752ea080609cdbef7204d0c1f0eaccbe",
+      "date": "2006-10-23T09:28:59Z",
+      "subject": "[statnet_help] 2 items: ergm NAs and list archives",
+      "subject_clean": "[statnet_help] 2 items: ergm NAs and list archives",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Many thanks to Mark for answering my previous question\nre:generating a network from a fitted model - it was\nexactly what I needed.\n\n2 new items:\n1. NA trouble in ergm\nI encounter the following error when including a nodemain(\"term\")\nor absdiff(\"term\") term in my ergm, when \"term\" has some NAs:\n\nError in ergm.mple(Clist, m, verbose = verbose, ...) :\n        NA/NaN/Inf in foreign function call (arg 10)\n\nI'm using R 2.3.1 and statnet 1.0-9\n\nIs there a way to ask ergm to only look at non-missing data without\nmaking new networks?  Or otherwise handle this more gracefully?\n\n2. Statnet_help archives\nI thought my question in #1 had probably come up before, so I\nwent to search the statnet mailing list archives, but could\nonly find postings between April and August of this year.\nDid the archive repository move?\n\nThanks again!\nBrian\n\n\n\n-- \nBrian Rubineau                             PhD Candidate, Organization Studies\nbrubineau@sloan.mit.edu                         MIT Sloan School of Management\ntel: 617.253.6680                                   50 Memorial Drive, E52-511\nfax: 810.963.2738                                         Cambridge, MA  02142\n\n\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Many thanks to Mark for answering my previous question\nre:generating a network from a fitted model - it was\nexactly what I needed.\n\n2 new items:\n1. NA trouble in ergm\nI encounter the following error w",
+      "thread_id": "thread-3ddbec098d91",
+      "thread_depth": 0,
+      "month": "2006-10"
+    },
+    {
+      "id": "msg-427694457ed9",
+      "message_id": "<1161980825.4811.287.camel@penguin.local>",
+      "from_name": "Simon Frost",
+      "from_email_hash": "035b0ea7e424ab86c49e75c8ef123f13dce97b7aaadbb47397e5c83707ce33a8",
+      "date": "2006-10-27T13:27:05Z",
+      "subject": "[statnet_help] Wald test P values vs. AIC/LRTs",
+      "subject_clean": "[statnet_help] Wald test P values vs. AIC/LRTs",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet Help,\n\nI've noticed that interpretation of statistical significance in ERGM\nterms can be extremely different depending on whether you use the Wald\ntest (at least, that's what I think they are) P values reported in the\nmodel summary or compare AICs of nested models; sometimes the addition\nof an extra term contributes virtually nothing to improving the\nlikelihood, but the se of the term is very low. Has anyone done any\nsimulations for different kinds of dataset in order to come up with\nguidelines?\n\nBest\nSimon\n-- \nSimon D.W. Frost, D.Phil.\nAssistant Adjunct Professor of Pathology\nUniversity of California, San Diego\nMailcode 8208\nUCSD Antiviral Research Center\n150 W. Washington St.\nSan Diego, CA 92103\nTel: +1 619 543 8898\nFax: +1 619 543 5094\nEmail: sdfrost@ucsd.edu\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Statnet Help,\n\nI've noticed that interpretation of statistical significance in ERGM\nterms can be extremely different depending on whether you use the Wald\ntest (at least, that's what I think they",
+      "thread_id": "thread-427694457ed9",
+      "thread_depth": 0,
+      "month": "2006-10"
+    },
+    {
+      "id": "msg-f589210b10a5",
+      "message_id": "<Pine.LNX.4.64.0610271332070.8633@homer24.u.washington.edu>",
+      "from_name": "D. Stiefel",
+      "from_email_hash": "aa27b42096bab02982dbc1379311946e9af330675bd39c69178846556c98e2ca",
+      "date": "2006-10-27T13:40:37Z",
+      "subject": "[statnet_help] (no subject)",
+      "subject_clean": "[statnet_help] (no subject)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "R help,\n\nI wrote in a couple of weeks ago, that the statnet package installer would \nnot work with the R 2.4.0 binary package I had installed.  You were very \nkind to correct that glitch and when I retried the install yesterday with \none of our G5 Tiger machines the statnet package loaded fine with all the \nextras.\"\n(Note: I do my installs from the admin login...)\n\nHowever, today when I tried to repeat the process with our other Tiger \nG5's, it failed immediately at the first step: installing the new statnet \ninstaller.  Here is the error buffer that is returned:\n\n> install.packages(\"updatestatnet\",contriburl=\"http://csde/washington.edu/statnet\")\nWarning: unable to access index for repository \nhttp://csde/washington.edu/statnet\nWarning in download.packages(pkgs, destdir = tmpd, available = available, \n:\n \t no package 'updatestatnet' at the repositories\n\nI checked and rechecked my entry but it is the same as yesterday as far \nas I can tell.  Has the updatestatnet package been removed from the \nrepository?\n\nPlease advise...\n\nThanks,\n\nDaniel Stiefel\nLinguistics Labs\nstiefeld@u.washington.edu\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "R help,\n\nI wrote in a couple of weeks ago, that the statnet package installer would \nnot work with the R 2.4.0 binary package I had installed.  You were very \nkind to correct that glitch and when I re",
+      "thread_id": "thread-f589210b10a5",
+      "thread_depth": 0,
+      "month": "2006-10"
+    },
+    {
+      "id": "msg-dcce93515620",
+      "message_id": "<C167BE3C.A440%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2006-10-27T13:46:36Z",
+      "subject": "[statnet_help] (no subject)",
+      "subject_clean": "[statnet_help] (no subject)",
+      "in_reply_to": "<Pine.LNX.4.64.0610271332070.8633@homer24.u.washington.edu>",
+      "references": [],
+      "body_plain": "Dear Dan,\n\nThanks for the complements.\n\nThe problem is the address is mistyped: \"http://csde/washington...\"\nin place of the correct \"http://csde.washington...\"\n\nThis is a common error that is easy to do.\n\nCheers,\n\nMark\n\nfor the \"statnet\" team\n\n-------------------------------------------------\nMark S.  Handcock\nProfessor of Statistics and  Sociology\nDepartment of Statistics, C014-B Padelford  Hall\nUniversity of Washington, Box 354322     Phone:  (206) 221-6930\nSeattle, WA  98195-4322.           FAX:   (206) 685-7419\nWeb:  www.stat.washington.edu/~handcock\ninternet:  handcock@stat.washington.edu\n\nOn 10/27/06 1:40 PM, \"D. Stiefel\" <stiefeld@u.washington.edu> wrote:\n\n> R help,\n> \n> I wrote in a couple of weeks ago, that the statnet package installer would\n> not work with the R 2.4.0 binary package I had installed.  You were very\n> kind to correct that glitch and when I retried the install yesterday with\n> one of our G5 Tiger machines the statnet package loaded fine with all the\n> extras.\"\n> (Note: I do my installs from the admin login...)\n> \n> However, today when I tried to repeat the process with our other Tiger\n> G5's, it failed immediately at the first step: installing the new statnet\n> installer.  Here is the error buffer that is returned:\n> \n>> install.packages(\"updatestatnet\",contriburl=\"http://csde/washington.edu/statn\n>> et\")\n> Warning: unable to access index for repository\n> http://csde/washington.edu/statnet\n> Warning in download.packages(pkgs, destdir = tmpd, available = available,\n> :\n> no package 'updatestatnet' at the repositories\n> \n> I checked and rechecked my entry but it is the same as yesterday as far\n> as I can tell.  Has the updatestatnet package been removed from the\n> repository?\n> \n> Please advise...\n> \n> Thanks,\n> \n> Daniel Stiefel\n> Linguistics Labs\n> stiefeld@u.washington.edu\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Dan,\n\nThanks for the complements.\n\nThe problem is the address is mistyped: \"http://csde/washington...\"\nin place of the correct \"http://csde.washington...\"\n\nThis is a common error that is easy to ",
+      "thread_id": "thread-f589210b10a5",
+      "thread_depth": 1,
+      "month": "2006-10"
+    },
+    {
+      "id": "msg-f58e2811a8c2",
+      "message_id": "<1162314749.4811.347.camel@penguin.local>",
+      "from_name": "Simon Frost",
+      "from_email_hash": "035b0ea7e424ab86c49e75c8ef123f13dce97b7aaadbb47397e5c83707ce33a8",
+      "date": "2006-10-31T09:12:29Z",
+      "subject": "[statnet_help] Wald test P values vs. AIC/LRTs",
+      "subject_clean": "[statnet_help] Wald test P values vs. AIC/LRTs",
+      "in_reply_to": "<Pine.WNT.4.61.0610310927230.2596@chandra.csde.washington.edu>",
+      "references": [
+        "<1161980825.4811.287.camel@penguin.local>",
+        "<Pine.WNT.4.61.0610310927230.2596@chandra.csde.washington.edu>"
+      ],
+      "body_plain": "Dear Steve,\n\nOn Tue, 2006-10-31 at 09:32, Steven Goodreau wrote:\n> Hi Simon,\n> \n> I have noticed similar effects like this at times, and have considered \n> that I should at some point explore it more deeply.  Others on the statnet \n> team can probably answer this more rigorously, but in my own casual use I \n> tend to be more interested in the p-values than in the AIC or other model \n> likelihood measures, since the former seem to be more stable across \n> multiple repeated runs on the same data, for what seem like reasonable \n> chain lengths.\n\nI'm just not used to seeing Wald test P values that are soooo different\nfrom doing LRTs (e.g. P<0.0001 for Wald, and P>0.1 for LRT). It might be\nnice to tweak profile() in MASS to work with ergm objects to investigate\nthis further.\n\n> We're looking at other measures of goodness of fit in \n> terms of the degree to which models capture various network statistics \n> that are not includedin the model.  However, I'm not aware of anyone \n> delving very deeply into the question you asked specifically.  Perhaps you \n> could take the first stab?\n\nI have a grant due in February which may have an ergm element, so I may\nplay with some simulated data to characterize type I and type II errors\nfor different kinds of network. We've got a ton of computing power down\nhere, so we could probably do a reasonable job. The tricky part is\nchoosing simulation scenarios; do you have any suggestions for a\nrepresentative set?\n\nBest\nSimon\n\n> Cheers,\n> Steve\n> \n> \n> **************************************************************************\n>   * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n>   * University of Washington / Denny Hall 140 / Campus Box 353100        *\n>   * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n>   * http://faculty.washington.edu/goodreau                               *\n> **************************************************************************\n> \n> \n> \n> On Fri, 27 Oct 2006, Simon Frost wrote:\n> \n> > Dear Statnet Help,\n> >\n> > I've noticed that interpretation of statistical significance in ERGM\n> > terms can be extremely different depending on whether you use the Wald\n> > test (at least, that's what I think they are) P values reported in the\n> > model summary or compare AICs of nested models; sometimes the addition\n> > of an extra term contributes virtually nothing to improving the\n> > likelihood, but the se of the term is very low. Has anyone done any\n> > simulations for different kinds of dataset in order to come up with\n> > guidelines?\n> >\n> > Best\n> > Simon\n> > -- \n> > Simon D.W. Frost, D.Phil.\n> > Assistant Adjunct Professor of Pathology\n> > University of California, San Diego\n> > Mailcode 8208\n> > UCSD Antiviral Research Center\n> > 150 W. Washington St.\n> > San Diego, CA 92103\n> > Tel: +1 619 543 8898\n> > Fax: +1 619 543 5094\n> > Email: sdfrost@ucsd.edu\n> >\n> > _______________________________________________\n> > statnet_help mailing list\n> > statnet_help@u.washington.edu\n> > https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n> >\n-- \nSimon D.W. Frost, D.Phil.\nAssistant Adjunct Professor of Pathology\nUniversity of California, San Diego\nMailcode 8208\nUCSD Antiviral Research Center\n150 W. Washington St.\nSan Diego, CA 92103\nTel: +1 619 543 8898\nFax: +1 619 543 5094\nEmail: sdfrost@ucsd.edu\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Steve,\n\nOn Tue, 2006-10-31 at 09:32, Steven Goodreau wrote:\n> Hi Simon,\n> \n> I have noticed similar effects like this at times, and have considered \n> that I should at some point explore it more ",
+      "thread_id": "thread-427694457ed9",
+      "thread_depth": 2,
+      "month": "2006-10"
+    },
+    {
+      "id": "msg-e62ac0d669f9",
+      "message_id": "<Pine.WNT.4.61.0610310927230.2596@chandra.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2006-10-31T09:32:42Z",
+      "subject": "[statnet_help] Wald test P values vs. AIC/LRTs",
+      "subject_clean": "[statnet_help] Wald test P values vs. AIC/LRTs",
+      "in_reply_to": "<1161980825.4811.287.camel@penguin.local>",
+      "references": [
+        "<1161980825.4811.287.camel@penguin.local>"
+      ],
+      "body_plain": "Hi Simon,\n\nI have noticed similar effects like this at times, and have considered \nthat I should at some point explore it more deeply.  Others on the statnet \nteam can probably answer this more rigorously, but in my own casual use I \ntend to be more interested in the p-values than in the AIC or other model \nlikelihood measures, since the former seem to be more stable across \nmultiple repeated runs on the same data, for what seem like reasonable \nchain lengths.  We're looking at other measures of goodness of fit in \nterms of the degree to which models capture various network statistics \nthat are not includedin the model.  However, I'm not aware of anyone \ndelving very deeply into the question you asked specifically.  Perhaps you \ncould take the first stab?\n\nCheers,\nSteve\n\n\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 140 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n**************************************************************************\n\n\n\nOn Fri, 27 Oct 2006, Simon Frost wrote:\n\n> Dear Statnet Help,\n>\n> I've noticed that interpretation of statistical significance in ERGM\n> terms can be extremely different depending on whether you use the Wald\n> test (at least, that's what I think they are) P values reported in the\n> model summary or compare AICs of nested models; sometimes the addition\n> of an extra term contributes virtually nothing to improving the\n> likelihood, but the se of the term is very low. Has anyone done any\n> simulations for different kinds of dataset in order to come up with\n> guidelines?\n>\n> Best\n> Simon\n> -- \n> Simon D.W. Frost, D.Phil.\n> Assistant Adjunct Professor of Pathology\n> University of California, San Diego\n> Mailcode 8208\n> UCSD Antiviral Research Center\n> 150 W. Washington St.\n> San Diego, CA 92103\n> Tel: +1 619 543 8898\n> Fax: +1 619 543 5094\n> Email: sdfrost@ucsd.edu\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Simon,\n\nI have noticed similar effects like this at times, and have considered \nthat I should at some point explore it more deeply.  Others on the statnet \nteam can probably answer this more rigoro",
+      "thread_id": "thread-427694457ed9",
+      "thread_depth": 1,
+      "month": "2006-10"
+    },
+    {
+      "id": "msg-5b209d74a480",
+      "message_id": "<1162333682.21133.9.camel@penguin.local>",
+      "from_name": "Simon Frost",
+      "from_email_hash": "035b0ea7e424ab86c49e75c8ef123f13dce97b7aaadbb47397e5c83707ce33a8",
+      "date": "2006-10-31T14:28:02Z",
+      "subject": "[statnet_help] Wald test P values vs. AIC/LRTs",
+      "subject_clean": "[statnet_help] Wald test P values vs. AIC/LRTs",
+      "in_reply_to": "<4547D2EC.1020606@uci.edu>",
+      "references": [
+        "<1161980825.4811.287.camel@penguin.local>",
+        "<Pine.WNT.4.61.0610310927230.2596@chandra.csde.washington.edu>",
+        "<4547D2EC.1020606@uci.edu>"
+      ],
+      "body_plain": "Dear Carter,\n\nThanks for the advice.\n\nOn Tue, 2006-10-31 at 14:49, Carter T. Butts wrote: \n>   There is reason to expect that both the noise and the quality of the \n> asymptotic approximation will become worse as dyadic dependence \n> increases, so taking action to reduce excess dependence (e.g., by using \n> covariates where possible) may help.  You can also improve the quality \n> of the log-likelihood estimate by increasing the number of simulation \n> draws, as well as the number of refinement iterations which are \n> performed (see the ergm help).\n\nThe networks I deal with are sparse, with a small number of highly\nconnected clusters. I do have covariates that deal with some of the\nclustering.\n\n> An alternative to both approaches is to employ a parametric bootstrap, \n> as suggested in the recent Hunter and Handcock JCGS paper (unless they \n> took it out of the final version).  This is computationally expensive, \n> but avoids the assumption of an asymptotically log-quadratic likelihood \n> surface.\n\nThis would be pretty straightforward in my case. What about\nnonparametric bootstrapping? What would the unit of sampling be?\n\n> You can also employ approximate Bayesian inference, e.g., by \n> using posterior mode approximations as described in Gelman et al. \n> (2004).  I've not done these with ERGMs yet, but have had good luck with \n> a related family of models.\n\nI'll have a look at this.\n\nBest\nSimon\n-- \nSimon D.W. Frost, D.Phil.\nAssistant Adjunct Professor of Pathology\nUniversity of California, San Diego\nMailcode 8208\nUCSD Antiviral Research Center\n150 W. Washington St.\nSan Diego, CA 92103\nTel: +1 619 543 8898\nFax: +1 619 543 5094\nEmail: sdfrost@ucsd.edu\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Carter,\n\nThanks for the advice.\n\nOn Tue, 2006-10-31 at 14:49, Carter T. Butts wrote: \n>   There is reason to expect that both the noise and the quality of the \n> asymptotic approximation will bec",
+      "thread_id": "thread-427694457ed9",
+      "thread_depth": 3,
+      "month": "2006-10"
+    },
+    {
+      "id": "msg-3ede3da7eaa7",
+      "message_id": "<4547D2EC.1020606@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2006-10-31T14:49:16Z",
+      "subject": "[statnet_help] Wald test P values vs. AIC/LRTs",
+      "subject_clean": "[statnet_help] Wald test P values vs. AIC/LRTs",
+      "in_reply_to": "<Pine.WNT.4.61.0610310927230.2596@chandra.csde.washington.edu>",
+      "references": [
+        "<1161980825.4811.287.camel@penguin.local>",
+        "<Pine.WNT.4.61.0610310927230.2596@chandra.csde.washington.edu>"
+      ],
+      "body_plain": "A quick comment --\n\n> I've noticed that interpretation of statistical significance in ERGM\n> terms can be extremely different depending on whether you use the Wald\n> test (at least, that's what I think they are) P values reported in the\n> model summary or compare AICs of nested models; sometimes the addition\n> of an extra term contributes virtually nothing to improving the\n> likelihood, but the se of the term is very low. Has anyone done any\n> simulations for different kinds of dataset in order to come up with\n> guidelines?\n\nFWIW, the method used to approximate the log-likelihood is (unless it \nhas changed recently) generally less stable than the method used to \nobtain approximate standard errors.  Thus, the log-likelihood estimates \ncan be pretty noisy in some cases.  On the other hand, the reported \nstandard errors are based on the hessian of the (approximate) \nlog-likelihood surface at the MLE, and may or may not represent true SEs \nfor the parameters in question.  (Size asymptotics apply in the case of \nindependent dyads, but otherwise there are no guarantees -- then again, \nasymptotics don't come with finite-sample guarantees anyway, so you may \nnot be losing much.)\n\nThe pessimistic view is thus that you have a choice between a noisier \nestimate of a number which has a principled interpretation, or a cleaner \nestimate of a number which has an unprincipled interpretation.  The fact \nthat the two choices can lead to different test results is not too \nsurprising (although this is cold comfort from a practical standpoint). \n  There is reason to expect that both the noise and the quality of the \nasymptotic approximation will become worse as dyadic dependence \nincreases, so taking action to reduce excess dependence (e.g., by using \ncovariates where possible) may help.  You can also improve the quality \nof the log-likelihood estimate by increasing the number of simulation \ndraws, as well as the number of refinement iterations which are \nperformed (see the ergm help).\n\nAn alternative to both approaches is to employ a parametric bootstrap, \nas suggested in the recent Hunter and Handcock JCGS paper (unless they \ntook it out of the final version).  This is computationally expensive, \nbut avoids the assumption of an asymptotically log-quadratic likelihood \nsurface.  You can also employ approximate Bayesian inference, e.g., by \nusing posterior mode approximations as described in Gelman et al. \n(2004).  I've not done these with ERGMs yet, but have had good luck with \na related family of models.\n\nThat doesn't exactly solve your problem (such is the nature of life at \nthe bleeding edge), but perhaps it provides some useful background.  Now \nthat we're finally getting a handle on how to parameterize and fit these \nmodels, I expect that more attention will be turned to problems such as \nthese....\n\n-Carter\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttps://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "A quick comment --\n\n> I've noticed that interpretation of statistical significance in ERGM\n> terms can be extremely different depending on whether you use the Wald\n> test (at least, that's what I thin",
+      "thread_id": "thread-427694457ed9",
+      "thread_depth": 2,
+      "month": "2006-10"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-bac0cd94e762",
+      "subject": "[statnet_help] question about importing vertex attributes",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Hank Green"
+      ],
+      "started": "2006-10-03T08:51:15Z",
+      "last_reply": "2006-10-04T00:44:05Z",
+      "root_message_id": "msg-bac0cd94e762"
+    },
+    {
+      "id": "thread-3facf3f55d10",
+      "subject": "[statnet_help] R installing error - csde statnet packages",
+      "message_count": 3,
+      "participants": [
+        "Art Poon",
+        "D. Stiefel",
+        "Mark S. Handcock"
+      ],
+      "started": "2006-10-10T15:57:31Z",
+      "last_reply": "2006-10-15T23:24:59Z",
+      "root_message_id": "msg-3facf3f55d10"
+    },
+    {
+      "id": "thread-e697ff43b365",
+      "subject": "[statnet_help] problem loading shared library",
+      "message_count": 2,
+      "participants": [
+        "Caroline Buckee",
+        "Mark S. Handcock"
+      ],
+      "started": "2006-10-14T02:21:01Z",
+      "last_reply": "2006-10-21T16:42:03Z",
+      "root_message_id": "msg-e697ff43b365"
+    },
+    {
+      "id": "thread-9f5090aa3327",
+      "subject": "[statnet_help] generating a predicted network",
+      "message_count": 2,
+      "participants": [
+        "Brian Rubineau",
+        "Mark S. Handcock"
+      ],
+      "started": "2006-10-15T11:38:32Z",
+      "last_reply": "2006-10-21T16:06:49Z",
+      "root_message_id": "msg-9f5090aa3327"
+    },
+    {
+      "id": "thread-191f03c3e4a1",
+      "subject": "[statnet_help] help with covariates in latentnet",
+      "message_count": 2,
+      "participants": [
+        "Adriano Werhli",
+        "Mark S. Handcock"
+      ],
+      "started": "2006-10-16T06:41:40Z",
+      "last_reply": "2006-10-21T15:58:54Z",
+      "root_message_id": "msg-191f03c3e4a1"
+    },
+    {
+      "id": "thread-3ddbec098d91",
+      "subject": "[statnet_help] 2 items: ergm NAs and list archives",
+      "message_count": 1,
+      "participants": [
+        "Brian Rubineau"
+      ],
+      "started": "2006-10-23T09:28:59Z",
+      "last_reply": "2006-10-23T09:28:59Z",
+      "root_message_id": "msg-3ddbec098d91"
+    },
+    {
+      "id": "thread-427694457ed9",
+      "subject": "[statnet_help] Wald test P values vs. AIC/LRTs",
+      "message_count": 5,
+      "participants": [
+        "Carter T. Butts",
+        "Simon Frost",
+        "Steven Goodreau"
+      ],
+      "started": "2006-10-27T13:27:05Z",
+      "last_reply": "2006-10-31T14:49:16Z",
+      "root_message_id": "msg-427694457ed9"
+    },
+    {
+      "id": "thread-f589210b10a5",
+      "subject": "[statnet_help] (no subject)",
+      "message_count": 2,
+      "participants": [
+        "D. Stiefel",
+        "Mark S. Handcock"
+      ],
+      "started": "2006-10-27T13:40:37Z",
+      "last_reply": "2006-10-27T13:46:36Z",
+      "root_message_id": "msg-f589210b10a5"
+    }
+  ]
+}

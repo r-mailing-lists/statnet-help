@@ -1,0 +1,345 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2010-01",
+  "messages": [
+    {
+      "id": "msg-04e32085e2d5",
+      "message_id": "<1629e2bb1001040108naa2ea2dga4485deaef34c4fb@mail.gmail.com>",
+      "from_name": "Moses Boudourides",
+      "from_email_hash": "c5624448747271419acb164061064e1a7b0a1e969681d0b921805e16e6affe4a",
+      "date": "2010-01-04T01:08:22Z",
+      "subject": "[statnet_help] Help with ergm - large network",
+      "subject_clean": "[statnet_help] Help with ergm - large network",
+      "in_reply_to": "<1629e2bb0912291247k51c6f8f6p5836ce9a2e5b66f@mail.gmail.com>",
+      "references": [
+        "<1629e2bb0912291247k51c6f8f6p5836ce9a2e5b66f@mail.gmail.com>"
+      ],
+      "body_plain": "Dear all, Happy New Year!\n\nWe're trying to compute the reciprocity estimate (mutuality) through\nergm. Our network is a directed (binary) graph with more than 260,000\nvertices (this is FollowFriday Twitter data). We're getting the\nfollowing error:\n\n> model2<-ergm(FF_20Nov09~edges+mutual,control=control.ergm(check.degeneracy=FALSE),verbose=TRUE)\nEvaluating network in model\nInitializing model.\nInitializing Metropolis-Hastings proposal.\nFitting initial model.\nError in rep(0, Clist$ndyads) : invalid 'times' argument\nIn addition: Warning message:\nIn ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m, theta.offset\n= theta.offset, ?:\n?NAs introduced by coercion\n\nAny idea/suggestion what we should do to have this run?\n\nBest,\n\n--Moses",
+      "body_snippet": "Dear all, Happy New Year!\n\nWe're trying to compute the reciprocity estimate (mutuality) through\nergm. Our network is a directed (binary) graph with more than 260,000\nvertices (this is FollowFriday Twi",
+      "thread_id": "thread-04e32085e2d5",
+      "thread_depth": 0,
+      "month": "2010-01"
+    },
+    {
+      "id": "msg-f90f509160f0",
+      "message_id": "<EDF0236E-C5D1-452B-97D9-B66D7A103400@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-01-05T10:11:07Z",
+      "subject": "[statnet_help] Help with ergm - large network",
+      "subject_clean": "[statnet_help] Help with ergm - large network",
+      "in_reply_to": "<1629e2bb1001040108naa2ea2dga4485deaef34c4fb@mail.gmail.com>",
+      "references": [
+        "<1629e2bb0912291247k51c6f8f6p5836ce9a2e5b66f@mail.gmail.com>",
+        "<1629e2bb1001040108naa2ea2dga4485deaef34c4fb@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Moses.  Basically, your network is so large that it is producing  \nerrors we never caught using smaller networks.  There is an  \nunnecessary line in the file ergm.pl that causes your error, and  \nremoving this line makes your code run.\n\nYou can source (or copy-and-paste) the attached file *after* loading  \nergm to remove the unnecessary line.\n\nNaturally, this will be fixed in the next version of ergm, which  \nshould actually appear within this month.\n\nDave\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: ergm.pl.R\nType: application/octet-stream\nSize: 5662 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100105/36d236ae/attachment.obj>\n-------------- next part --------------\n\n\n\nOn Jan 4, 2010, at 4:08 AM, Moses Boudourides wrote:\n\n> Dear all, Happy New Year!\n>\n> We're trying to compute the reciprocity estimate (mutuality) through\n> ergm. Our network is a directed (binary) graph with more than 260,000\n> vertices (this is FollowFriday Twitter data). We're getting the\n> following error:\n>\n>> model2<-ergm(FF_20Nov09~edges \n>> +mutual,control=control.ergm(check.degeneracy=FALSE),verbose=TRUE)\n> Evaluating network in model\n> Initializing model.\n> Initializing Metropolis-Hastings proposal.\n> Fitting initial model.\n> Error in rep(0, Clist$ndyads) : invalid 'times' argument\n> In addition: Warning message:\n> In ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m, theta.offset\n> = theta.offset,  :\n>  NAs introduced by coercion\n>\n> Any idea/suggestion what we should do to have this run?\n>\n> Best,\n>\n> --Moses\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Moses.  Basically, your network is so large that it is producing  \nerrors we never caught using smaller networks.  There is an  \nunnecessary line in the file ergm.pl that causes your error, and  \nr",
+      "thread_id": "thread-04e32085e2d5",
+      "thread_depth": 1,
+      "month": "2010-01"
+    },
+    {
+      "id": "msg-410433a5570a",
+      "message_id": "<9AEEF1FB6254224AA355ED285F8491653E9B8B81@EXCHVS2.medctr.ad.wfubmc.edu>",
+      "from_name": "Sean L. Simpson",
+      "from_email_hash": "23eacb2c2cbed5436e4c98b22e4f49db61b6540ea38a73a61605d331f2cfa84b",
+      "date": "2010-01-05T11:22:23Z",
+      "subject": "[statnet_help] Categorizing GWNSP for manuscript",
+      "subject_clean": "[statnet_help] Categorizing GWNSP for manuscript",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all, \n\n\n\nI'm trying to decide how to generally think of and categorize GWNSP in \nterms of more intuitive analogs for a paper that I'm writing utilizing\nERGMs. \n\nI tend to think of GWESP and GWDSP as measures of local\nclustering/efficiency \n\nin the network. Is it fair to think of GWNSP as a measure of global\nefficiency\n\n (somewhat of a minimum geodesic distance analog) or am I completely off\nbase? \n\n\n\nThanks, \n\nSean\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100105/87290495/attachment.html>",
+      "body_snippet": "Hi all, \n\n\n\nI'm trying to decide how to generally think of and categorize GWNSP in \nterms of more intuitive analogs for a paper that I'm writing utilizing\nERGMs. \n\nI tend to think of GWESP and GWDSP a",
+      "thread_id": "thread-410433a5570a",
+      "thread_depth": 0,
+      "month": "2010-01"
+    },
+    {
+      "id": "msg-1b3bb9e3d0fa",
+      "message_id": "<9a680b9b1001052003p372db2a2xcbcfa315de8e67ea@mail.gmail.com>",
+      "from_name": "Michael Koch",
+      "from_email_hash": "c7171993b4abb8be2aea55a5c7fc1035073fe1fe0595eb1d414241b8650654cc",
+      "date": "2010-01-05T20:03:07Z",
+      "subject": "[statnet_help] Help with ergm - large network",
+      "subject_clean": "[statnet_help] Help with ergm - large network",
+      "in_reply_to": "<EDF0236E-C5D1-452B-97D9-B66D7A103400@stat.psu.edu>",
+      "references": [
+        "<1629e2bb0912291247k51c6f8f6p5836ce9a2e5b66f@mail.gmail.com>",
+        "<1629e2bb1001040108naa2ea2dga4485deaef34c4fb@mail.gmail.com>",
+        "<EDF0236E-C5D1-452B-97D9-B66D7A103400@stat.psu.edu>"
+      ],
+      "body_plain": "As a follow up to Moses question, I am going to be evaluating server log\ndata that stretches well into the millions of lines of data (4 column csv\nfile @ over 400mb). The data represents student groups usage of a wiki and\nwe're looking at how they interacted with other groups wikis.\n\nWill similar problems arise with the 'sna' package? Are large datasets not\nwell suited to R?\n\nThanks!\nMike\n\n\nOn Tue, Jan 5, 2010 at 10:11 AM, David Hunter <dhunter@stat.psu.edu> wrote:\n\n> Hi Moses.  Basically, your network is so large that it is producing errors\n> we never caught using smaller networks.  There is an unnecessary line in the\n> file ergm.pl that causes your error, and removing this line makes your\n> code run.\n>\n> You can source (or copy-and-paste) the attached file *after* loading ergm\n> to remove the unnecessary line.\n>\n> Naturally, this will be fixed in the next version of ergm, which should\n> actually appear within this month.\n>\n> Dave\n>\n>\n>\n>\n> On Jan 4, 2010, at 4:08 AM, Moses Boudourides wrote:\n>\n>  Dear all, Happy New Year!\n>>\n>> We're trying to compute the reciprocity estimate (mutuality) through\n>> ergm. Our network is a directed (binary) graph with more than 260,000\n>> vertices (this is FollowFriday Twitter data). We're getting the\n>> following error:\n>>\n>> model2<-ergm(FF_20Nov09~edges+mutual,control=control.ergm(check.degeneracy=FALSE),verbose=TRUE)\n>>>\n>> Evaluating network in model\n>> Initializing model.\n>> Initializing Metropolis-Hastings proposal.\n>> Fitting initial model.\n>> Error in rep(0, Clist$ndyads) : invalid 'times' argument\n>> In addition: Warning message:\n>> In ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m, theta.offset\n>> = theta.offset,  :\n>>  NAs introduced by coercion\n>>\n>> Any idea/suggestion what we should do to have this run?\n>>\n>> Best,\n>>\n>> --Moses\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100105/cdf70fbf/attachment.html>",
+      "body_snippet": "As a follow up to Moses question, I am going to be evaluating server log\ndata that stretches well into the millions of lines of data (4 column csv\nfile @ over 400mb). The data represents student group",
+      "thread_id": "thread-04e32085e2d5",
+      "thread_depth": 2,
+      "month": "2010-01"
+    },
+    {
+      "id": "msg-5f96d23d5e04",
+      "message_id": "<0BE7A636-42FC-4747-A9EA-147076C32BD5@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-01-06T03:44:11Z",
+      "subject": "[statnet_help] Help with ergm - large network",
+      "subject_clean": "[statnet_help] Help with ergm - large network",
+      "in_reply_to": "<9a680b9b1001052003p372db2a2xcbcfa315de8e67ea@mail.gmail.com>",
+      "references": [
+        "<1629e2bb0912291247k51c6f8f6p5836ce9a2e5b66f@mail.gmail.com>",
+        "<1629e2bb1001040108naa2ea2dga4485deaef34c4fb@mail.gmail.com>",
+        "<EDF0236E-C5D1-452B-97D9-B66D7A103400@stat.psu.edu>",
+        "<9a680b9b1001052003p372db2a2xcbcfa315de8e67ea@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Mike.  R is not the problem in any case; but sometimes the software  \nwritten for R (or any platform) is not written with datasets of this  \nsize in mind, which can cause unforeseen problems (as was the case  \nwith Moses's dataset).  I'm afraid I'm not sure whether sna \"off the  \nshelf\" will have troubles with what you're describing.  Perhaps  \nsomeone else has some experience here?\n\nDave\n\n\nOn Jan 5, 2010, at 11:03 PM, Michael Koch wrote:\n\n> As a follow up to Moses question, I am going to be evaluating server  \n> log data that stretches well into the millions of lines of data (4  \n> column csv file @ over 400mb). The data represents student groups  \n> usage of a wiki and we're looking at how they interacted with other  \n> groups wikis.\n>\n> Will similar problems arise with the 'sna' package? Are large  \n> datasets not well suited to R?\n>\n> Thanks!\n> Mike\n>\n>\n> On Tue, Jan 5, 2010 at 10:11 AM, David Hunter <dhunter@stat.psu.edu>  \n> wrote:\n> Hi Moses.  Basically, your network is so large that it is producing  \n> errors we never caught using smaller networks.  There is an  \n> unnecessary line in the file ergm.pl that causes your error, and  \n> removing this line makes your code run.\n>\n> You can source (or copy-and-paste) the attached file *after* loading  \n> ergm to remove the unnecessary line.\n>\n> Naturally, this will be fixed in the next version of ergm, which  \n> should actually appear within this month.\n>\n> Dave\n>\n>\n>\n>\n> On Jan 4, 2010, at 4:08 AM, Moses Boudourides wrote:\n>\n> Dear all, Happy New Year!\n>\n> We're trying to compute the reciprocity estimate (mutuality) through\n> ergm. Our network is a directed (binary) graph with more than 260,000\n> vertices (this is FollowFriday Twitter data). We're getting the\n> following error:\n>\n> model2<-ergm(FF_20Nov09~edges \n> +mutual,control=control.ergm(check.degeneracy=FALSE),verbose=TRUE)\n> Evaluating network in model\n> Initializing model.\n> Initializing Metropolis-Hastings proposal.\n> Fitting initial model.\n> Error in rep(0, Clist$ndyads) : invalid 'times' argument\n> In addition: Warning message:\n> In ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m, theta.offset\n> = theta.offset,  :\n>  NAs introduced by coercion\n>\n> Any idea/suggestion what we should do to have this run?\n>\n> Best,\n>\n> --Moses\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n>\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100106/a1685b97/attachment.html>",
+      "body_snippet": "Hi Mike.  R is not the problem in any case; but sometimes the software  \nwritten for R (or any platform) is not written with datasets of this  \nsize in mind, which can cause unforeseen problems (as wa",
+      "thread_id": "thread-04e32085e2d5",
+      "thread_depth": 3,
+      "month": "2010-01"
+    },
+    {
+      "id": "msg-ad51c2546cfb",
+      "message_id": "<1262812155.30808.7.camel@murray-server>",
+      "from_name": "Marc Scott",
+      "from_email_hash": "7d7ec0b81324003ae9a5bac59fe19430b8546139b7e52ceaf51de17db5e6be59",
+      "date": "2010-01-06T13:09:15Z",
+      "subject": "[statnet_help] trouble 'finding' statnet on linux system",
+      "subject_clean": "[statnet_help] trouble 'finding' statnet on linux system",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI'm a moderately savvy linux user (meaning, I am the sys admin for my\nown box running ubuntu and can install my own software and upgrades).\nI'm having trouble installing statnet on linux.  I have no trouble on\nthe windows platform.  The basic problem is that i cannot find a mirror\nthat lists statnet (i've tried about 4 in the US) -- at least I can't\nfind a mirror that lists it from this linux install.  Has anyone else\nhad this problem?  I'm working with Nicole Carnegie and we did find that\nSOME mirrors have statnet and others don't (for Windows).  But for\nlinux, I'm unable to find one good mirror...  below is my session info.\nI'll add that I get this error when trying to load statnet from R:\n\n> install.packages('statnet')\nWarning in install.packages(\"statnet\") :\n  argument 'lib' is missing: using\n'/home/mscott/R/x86_64-pc-linux-gnu-library/2.7'\n--- Please select a CRAN mirror for use in this session ---\nLoading Tcl/Tk interface ... done\nWarning message:\nIn install.packages(\"statnet\") : package ?statnet? is not available\n\nA variant on this would be from the linux command line:\nmscott@murray-server:~$ sudo apt-get build-dep statnet\nReading package lists... Done\nBuilding dependency tree       \nReading state information... Done\nE: Unable to find a source package for statnet\n\nAny advice?\n\nThanks in advance.\n\n--Marc\n\n>   sessionInfo()\nR version 2.7.2 (2008-08-25) \nx86_64-pc-linux-gnu \n\nlocale:\nLC_CTYPE=en_US.UTF-8;LC_NUMERIC=C;LC_TIME=en_US.UTF-8;LC_COLLATE=en_US.UTF-8;LC_MONETARY=C;LC_MESSAGES=en_US.UTF-8;LC_PAPER=en_US.UTF-8;LC_NAME=C;LC_ADDRESS=C;LC_TELEPHONE=C;LC_MEASUREMENT=en_US.UTF-8;LC_IDENTIFICATION=C\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods\nbase     \n\nloaded via a namespace (and not attached):\n[1] grid_2.7.2      lattice_0.17-15 nlme_3.1-92    \n>  getOption(\"pkgType\") \n[1] \"source\"",
+      "body_snippet": "Hi,\n\nI'm a moderately savvy linux user (meaning, I am the sys admin for my\nown box running ubuntu and can install my own software and upgrades).\nI'm having trouble installing statnet on linux.  I have",
+      "thread_id": "thread-ad51c2546cfb",
+      "thread_depth": 0,
+      "month": "2010-01"
+    },
+    {
+      "id": "msg-5ba2877d4f22",
+      "message_id": "<1262832575.7484.1492.camel@Nuku>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "cd1ea6859dd82a07a6e7065db186debf94746e1b5f56984d72ac18f696c56776",
+      "date": "2010-01-06T18:49:35Z",
+      "subject": "[statnet_help] Categorizing GWNSP for manuscript",
+      "subject_clean": "[statnet_help] Categorizing GWNSP for manuscript",
+      "in_reply_to": "<9AEEF1FB6254224AA355ED285F8491653E9B8B81@EXCHVS2.medctr.ad.wfubmc.edu>",
+      "references": [
+        "<9AEEF1FB6254224AA355ED285F8491653E9B8B81@EXCHVS2.medctr.ad.wfubmc.edu>"
+      ],
+      "body_plain": "Hi, Sean,\n\nIn short, GWNSP = GWDSP - GWESP  (with all coefficients and parameters\nthe same). I tend to view GWNSP as a measure of tension from having a\npair of actors linked by two-path(s) not having a tie between them, so I\nwouldn't say that it's any more \"global\" than GWDSP.\n\n                         I hope this helps,\n                         Pavel Krivitsky\n\nOn Tue, 2010-01-05 at 14:22 -0500, Sean L. Simpson wrote:\n> Hi all, \n> \n> \n> \n> I'm trying to decide how to generally think of and categorize GWNSP\n> in \n> terms of more intuitive analogs for a paper that I?m writing utilizing\n> ERGMs. \n> \n> I tend to think of GWESP and GWDSP as measures of local\n> clustering/efficiency \n> \n> in the network. Is it fair to think of GWNSP as a measure of global\n> efficiency\n> \n>  (somewhat of a minimum geodesic distance analog) or am I completely\n> off base? \n> \n> \n> \n> Thanks, \n> \n> Sean\n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi, Sean,\n\nIn short, GWNSP = GWDSP - GWESP  (with all coefficients and parameters\nthe same). I tend to view GWNSP as a measure of tension from having a\npair of actors linked by two-path(s) not having ",
+      "thread_id": "thread-410433a5570a",
+      "thread_depth": 1,
+      "month": "2010-01"
+    },
+    {
+      "id": "msg-dd138befe904",
+      "message_id": "<4B454E35.4020804@nyu.edu>",
+      "from_name": "Marc Scott",
+      "from_email_hash": "80896d757a6218e4445b8a07313d6f4161808d47d28ceb40c81e07f75d0ed69e",
+      "date": "2010-01-06T19:00:05Z",
+      "subject": "[statnet_help] resolved: trouble 'finding' statnet on linux system",
+      "subject_clean": "[statnet_help] resolved: trouble 'finding' statnet on linux system",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nThanks to advice from Mark Handcock, two things were giving me trouble \nand are now adequately resolved:\n\n1) I was running a very old version of R: 2.7.2 on Ubuntu 8.04.  It was \nslightly challenging to get ubuntu to load the latest R binary.  It \nrequired adding a line like this:\n\n   deb http://<my.favorite.cran.mirror>/bin/linux/ubuntu <http://%3Cmy.favorite.cran.mirror%3E/bin/linux/ubuntu> hardy/\n\nin my /etc/apt/sources.list file.  Getting that to work should have been \neasier than it was, but that was simply a matter of getting correct syntax.\n\n2) Even with the latest R, I still had a problem: in a nutshell, rgl, \nshapes and then latentnet did not load.  This turns out to be most \nlikely a 64-bit R problem.  So for now, the solution will be either to \nuse ergm, which has most of the same functionality as statnet, or load \n32-bit R.\n\nMarc Scott\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100106/95ea52b6/attachment.html>",
+      "body_snippet": "Hi,\n\nThanks to advice from Mark Handcock, two things were giving me trouble \nand are now adequately resolved:\n\n1) I was running a very old version of R: 2.7.2 on Ubuntu 8.04.  It was \nslightly challen",
+      "thread_id": "thread-dd138befe904",
+      "thread_depth": 0,
+      "month": "2010-01"
+    },
+    {
+      "id": "msg-3359eaf6ba43",
+      "message_id": "<1629e2bb1001071010j4c188a56s8712299b1d5cc9@mail.gmail.com>",
+      "from_name": "Moses Boudourides",
+      "from_email_hash": "c5624448747271419acb164061064e1a7b0a1e969681d0b921805e16e6affe4a",
+      "date": "2010-01-07T10:10:31Z",
+      "subject": "[statnet_help] Help with ergm - large network",
+      "subject_clean": "[statnet_help] Help with ergm - large network",
+      "in_reply_to": "<EDF0236E-C5D1-452B-97D9-B66D7A103400@stat.psu.edu>",
+      "references": [
+        "<1629e2bb0912291247k51c6f8f6p5836ce9a2e5b66f@mail.gmail.com>",
+        "<1629e2bb1001040108naa2ea2dga4485deaef34c4fb@mail.gmail.com>",
+        "<EDF0236E-C5D1-452B-97D9-B66D7A103400@stat.psu.edu>"
+      ],
+      "body_plain": "Hi David,\n\nThanks for your help. It did work but somehow it is stuck and\ninterrupted. This is what I'm getting:\n\n> model2 <- ergm(FF_20Nov09 ~ edges + mutual, control = control.ergm(check.degeneracy=FALSE), verbose = TRUE)\nEvaluating network in model\nInitializing model.\nInitializing Metropolis-Hastings proposal..\nFitting initial model.\nCompressed MPLE covariate matrix has 4 rows.\nFitting ERGM.\nIteration 1 of at most 3 with parameter:\n    edges    mutual\n-8.153125  6.210792\nTNT sampler accepted  0.873% of 1000000 proposed steps.\n Warning:\n   The network has more than 50000 edges, and the model is likely to\nbe degenerate.\nBack from unconstrained MCMC....\nThe MCMC sampler is producing degenerate samples.\n Try starting the algorithm at an alternative model\n (That is, changing the 'theta0' argument).\n I am trying something simple...\n The current theta0 is:\n    edges    mutual\n-8.153125  6.210792\nIteration 2 of at most 3 with parameter:\n    edges    mutual\n-7.337813  5.589713\n\nSince I'm only interested in the parameter of mutuality, I was\nwondering if there is a shortcut to get it directly (just MCMLE?).\n\nBest,\n\n--Moses\n\n\nOn Tue, Jan 5, 2010 at 8:11 PM, David Hunter <dhunter@stat.psu.edu> wrote:\n> Hi Moses. ?Basically, your network is so large that it is producing errors\n> we never caught using smaller networks. ?There is an unnecessary line in the\n> file ergm.pl that causes your error, and removing this line makes your code\n> run.\n>\n> You can source (or copy-and-paste) the attached file *after* loading ergm to\n> remove the unnecessary line.\n>\n> Naturally, this will be fixed in the next version of ergm, which should\n> actually appear within this month.\n>\n> Dave\n>\n>\n>\n>\n> On Jan 4, 2010, at 4:08 AM, Moses Boudourides wrote:\n>\n>> Dear all, Happy New Year!\n>>\n>> We're trying to compute the reciprocity estimate (mutuality) through\n>> ergm. Our network is a directed (binary) graph with more than 260,000\n>> vertices (this is FollowFriday Twitter data). We're getting the\n>> following error:\n>>\n>>>\n>>> model2<-ergm(FF_20Nov09~edges+mutual,control=control.ergm(check.degeneracy=FALSE),verbose=TRUE)\n>>\n>> Evaluating network in model\n>> Initializing model.\n>> Initializing Metropolis-Hastings proposal.\n>> Fitting initial model.\n>> Error in rep(0, Clist$ndyads) : invalid 'times' argument\n>> In addition: Warning message:\n>> In ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m, theta.offset\n>> = theta.offset, ?:\n>> ?NAs introduced by coercion\n>>\n>> Any idea/suggestion what we should do to have this run?\n>>\n>> Best,\n>>\n>> --Moses\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>",
+      "body_snippet": "Hi David,\n\nThanks for your help. It did work but somehow it is stuck and\ninterrupted. This is what I'm getting:\n\n> model2 <- ergm(FF_20Nov09 ~ edges + mutual, control = control.ergm(check.degeneracy=F",
+      "thread_id": "thread-04e32085e2d5",
+      "thread_depth": 2,
+      "month": "2010-01"
+    },
+    {
+      "id": "msg-56b9e02c272a",
+      "message_id": "<23711703.1151264071536038.JavaMail.SYSTEM@waterpaymark-lx>",
+      "from_name": "Randall Lewis",
+      "from_email_hash": "66d5e58f4cb248eee62aba61e862ed48eed3f6ea11b8ffaa915d7466411ec5a7",
+      "date": "2010-01-21T02:59:01Z",
+      "subject": "[statnet_help] Simulate and Estimate ERGM(THETA0)?",
+      "subject_clean": "[statnet_help] Simulate and Estimate ERGM(THETA0)?",
+      "in_reply_to": "<14985282.1131264070844811.JavaMail.SYSTEM@waterpaymark-lx>",
+      "references": [],
+      "body_plain": "Hi--\n\nI've been trying to simulate and then estimate ERGM with various THETA values, but have had a really tough time getting the ERGM to estimate properly. I have also been sampling subgraphs to test out the performance of ERGM under Handcock and Giles missing edges framework. \n\nI have included the style of code that I have been trying which follows the following simple algorithm:\n1. Initialize THETA0.\n2. Sample A_N from ERGM(THETA0).\n3. Estimate ERGM(THETA | A_N).\n4. Sample a subgraph, A_M, of A_N.\n5. Estimate ERGM(THETA | A_M+'NA's for unsampled edges). (Graph is still size N.)\n\nI keep having issues with either Step #3 or Step #5 (or perhaps Step #2, since it is hard to validate whether ERGM(THETA0) is actually working well) when I estimate anything more exotic than A_N ~ edges. In particular, I would like to estimate almost anything other than this model, perhaps A_N ~ edges + triangles + kstars(3). However, these statistics are highly collinear (as in Snijder's work), so that may be part of the problem.\n\nI really just want to simulate and estimate ANY ERGM(THETA0) model to see if I can get the parameters back.\n\nI have taken a look at mcmc.diagnostics(), but perhaps don't fully understand how to use it, as even when it says that things have converged, I still have issues.\n\nAny advice on how to get things to estimate properly? Do I need really, really large burn-ins and MCMCsamplesizes with large sampling intervals? Or can those exacerbate my estimation problems?\n\nThanks!\n\n--Randall\n\nP.S. See the code below that I have been testing using StatNet on R v2.8.1 (I've had a hard time downloading StatNet for the most recent versions of R. Is there a particular \"best\" server to get the full package from?). Thanks!\nP.P.S. Is there a way to see the StatNet help archives without a UW account?\n\n# #################### START CODE ###################\nrm(list=ls())\n\nlibrary(\"ergm\")\n\n# \"Get\" the \"W\"orking \"D\"irectory.\ngetwd()\n# \"Set\" the \"W\"orking \"D\"irectory.\nsetwd('C:\\\\Documents\\ and\\ Settings\\\\ralewis\\\\My\\ Documents\\\\Arun-Spectrum-Indo')\n# dir.create(\"ERGMsim\")\n\n\nN <- 30\npsi <- .7 # Fraction of Network's Nodes that were sampled.\nM <- ceiling(psi*N) # Number of sampled nodes.\n\n\ntheta <- c( 1.0*2*(runif(1)-.5), .05*2*(runif(1)*-.5), .05*2*(runif(1)-.5) )\n\n\n# Generate a Network from ERGM(theta) of size N.\n#A_N <- simulate(network(N,directed=FALSE) ~ edges                       , theta0 = theta[1], burnin = 250000, maxit = 5)\n#A_N <- simulate(network(N,directed=FALSE) ~ edges + cycle(3)           , theta0 = theta[1:2], basis = A_N, burnin = 250000, maxit = 5)\n#A_N <- simulate(network(N,directed=FALSE) ~ edges + cycle(3) + kstar(2), theta0 = theta, basis = A_N, burnin = 250000, maxit = 5)\nA_N <- simulate(network(N,directed=FALSE) ~ edges + degree( , theta0 = theta[1:2], burnin = 250000, MCMCsamplesize=100000, maxit = 5)\n\n# Estimate the First ERGM\n# TrueFit <- ergm(A_N ~ edges )\n# summary(TrueFit)\n#TrueFit2 <- ergm(A_N ~ edges                       , burnin = 250000, maxit = 5)\n#TrueFit2 <- ergm(A_N ~ edges + cycle(3)           , burnin = 250000, theta0 = c(TrueFit2$MCMCtheta[1],.01), maxit = 5)\nTrueFit2 <- ergm(A_N ~ edges + cycle(3) , burnin = 250000, MCMCsamplesize=100000, interval=200, theta0 = theta[1:2]+c(-.2,.1), maxit = 5)\nsummary(TrueFit2)\nmcmc.diagnostics(TrueFit2)\n\n# Initialize the sampled network.\nA_Nmissingmat <- A_N[,]\n\n# Randomly Order the Nodes.\nSampled <- (order(runif(N))<=M)\n# AllSampled[g,] <- Sampled\n\n# Then replace the selected missing ones with 'NA'.\nA_Nmissingmat[,!Sampled] <- NA\nA_Nmissingmat[!Sampled,] <- NA\nA_Nmissing <- network(A_Nmissingmat, directed=FALSE)\n\n# Fit the ERGM with the Observed data.\n# MissingFit <- ergm(A_Nmissing ~ edges , burnin = 250000, maxit = 5)\n# summary(MissingFit)\n\nMissingFit2 <- ergm(A_Nmissing ~ edges + cycle(3) , burnin = 250000, MCMCsamplesize=100000, interval=200, maxit = 10)#, theta0 = MissingFit2$MCMCtheta)\nsummary(MissingFit2)\nmcmc.diagnostics(MissingFit2)\n\ntheta\nTrueFit2$MCMCtheta\nMissingFit2$MCMCtheta",
+      "body_snippet": "Hi--\n\nI've been trying to simulate and then estimate ERGM with various THETA values, but have had a really tough time getting the ERGM to estimate properly. I have also been sampling subgraphs to test",
+      "thread_id": "thread-56b9e02c272a",
+      "thread_depth": 0,
+      "month": "2010-01"
+    },
+    {
+      "id": "msg-01c61e4ff297",
+      "message_id": "<Pine.LNX.4.43.1001211036200.31186@hymn33.u.washington.edu>",
+      "from_name": "stanj@u.washington.edu",
+      "from_email_hash": "67c87847c37c18e652cb63f9975cd85d256dc0a7b95ab36680da1e84be17d41b",
+      "date": "2010-01-21T10:36:20Z",
+      "subject": "[statnet_help] ERGM with Loops",
+      "subject_clean": "[statnet_help] ERGM with Loops",
+      "in_reply_to": "<Pine.LNX.4.43.0908211227070.30760@hymn32.u.washington.edu>",
+      "references": [],
+      "body_plain": "Hello,\nI am working with a network that has loops (self-ties) and was wondering if there is a way to add a statistic to the ERGM estimation that counts the number of loops?\n\nI tried setting the vertex names as a vertex attribute and then ran nodematch using the names as the attribute.  This returned a 0 statistic, so it seems like it didn't consider the edges that are loops.\n\nHow does ERGM estimate with loops?  Does it consider the attributes just as it would another edge, or are the edges simply ignored?  Thanks for your help!\n\nSincerely,\n\nJared Stanfield\nUniversity of Washington",
+      "body_snippet": "Hello,\nI am working with a network that has loops (self-ties) and was wondering if there is a way to add a statistic to the ERGM estimation that counts the number of loops?\n\nI tried setting the vertex",
+      "thread_id": "thread-01c61e4ff297",
+      "thread_depth": 0,
+      "month": "2010-01"
+    },
+    {
+      "id": "msg-5c4f35b1a95e",
+      "message_id": "<alpine.LRH.2.01.1001211141270.17222@hymn11.u.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2010-01-21T11:41:27Z",
+      "subject": "[statnet_help] ERGM with Loops",
+      "subject_clean": "[statnet_help] ERGM with Loops",
+      "in_reply_to": "<Pine.LNX.4.43.1001211036200.31186@hymn33.u.washington.edu>",
+      "references": [],
+      "body_plain": "Hi Jared,\n\nErgm was not written to handle loops, so it ignores that information.  If you want to consider the presence of a loop on a node as a fixed attribute and a predictor of other ties, you could code it as a binary nodal attribute.  But unfortunately there's no way to have nodal loops be an outcome of the stochastic process of tie formation in ergm.\n\nSteve\n\n\nOn Thu, 21 Jan 2010, stanj@u.washington.edu wrote:\n\n> Date: Thu, 21 Jan 2010 10:36:20 -0800 (PST)\n> From: stanj@u.washington.edu\n> To: statnet_help@u.washington.edu\n> Subject: [statnet_help] ERGM with Loops\n> \n> Hello,\n> I am working with a network that has loops (self-ties) and was wondering if \n> there is a way to add a statistic to the ERGM estimation that counts the \n> number of loops?\n>\n> I tried setting the vertex names as a vertex attribute and then ran nodematch \n> using the names as the attribute.  This returned a 0 statistic, so it seems \n> like it didn't consider the edges that are loops.\n>\n> How does ERGM estimate with loops?  Does it consider the attributes just as \n> it would another edge, or are the edges simply ignored?  Thanks for your \n> help!\n>\n> Sincerely,\n>\n> Jared Stanfield\n> University of Washington\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi Jared,\n\nErgm was not written to handle loops, so it ignores that information.  If you want to consider the presence of a loop on a node as a fixed attribute and a predictor of other ties, you could",
+      "thread_id": "thread-01c61e4ff297",
+      "thread_depth": 1,
+      "month": "2010-01"
+    },
+    {
+      "id": "msg-81b3c031ae40",
+      "message_id": "<4B5EEA7F.7010803@coll.mpg.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "be636dde28cefa502024155d2c668f78a853d393127e9415ccd248c0c80cf950",
+      "date": "2010-01-26T05:13:35Z",
+      "subject": "[statnet_help] GWESP - parameter setting",
+      "subject_clean": "[statnet_help] GWESP - parameter setting",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI am conducting my first analysis with statnet. More precisely, I am \nmodeling information exchange between organizations in a directed \nnetwork. For this purpose, I am including some edge covariates like \npreference similarity or common membership in policy committees, and \nsome node factors like organizational type.\n\nI would also like to capture the effect of transitivity: I have found \nstrong theoretical hints that an actor is more likely to send \ninformation to another actor if the sender has an outgoing tie to a \nthird party which in turn has an outgoing tie to the receiver. My hunch \nis that GWESP should be the 'weapon of choice'.\n\nHowever, I do not fully understand what is captured by the scaling \nparameter alpha (or lambda?). If I do not fix this parameter (i.e. the \ndefault setting), the model fit as indicated by AIC and BIC is quite \ngood, but the graphical goodness of fit assessment does *not* look very \nnice. If I fix the parameter at 0 or 0.1, the gof is really good, but \nAIC and BIC are much larger. If I increase the parameter value, AIC and \nBIC are decreased, but the graphical gof gets worse. How can I interpret \nthe parameter and the 'fixed' option?\n\nMany thanks!\n\nPhilip\n\n-- \nPhilip Leifeld\nMax Planck Institute for     | +49 (0) 1577 6830349 (mobile)\nResearch on Collective Goods | +49 (0) 228 91416-73 (phone)\nMaxNetAging Doctoral Fellow  | +49 (0) 228 91416-62 (fax)\nKurt-Schumacher-Str. 10      | Leifeld@coll.mpg.de\n53113 Bonn, Germany          | http://www.philipleifeld.de",
+      "body_snippet": "Dear all,\n\nI am conducting my first analysis with statnet. More precisely, I am \nmodeling information exchange between organizations in a directed \nnetwork. For this purpose, I am including some edge ",
+      "thread_id": "thread-81b3c031ae40",
+      "thread_depth": 0,
+      "month": "2010-01"
+    },
+    {
+      "id": "msg-9cff29a0239a",
+      "message_id": "<4B635634.8010803@coll.mpg.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "be636dde28cefa502024155d2c668f78a853d393127e9415ccd248c0c80cf950",
+      "date": "2010-01-29T13:42:12Z",
+      "subject": "[statnet_help] Looking for volunteers to criticize my model",
+      "subject_clean": "[statnet_help] Looking for volunteers to criticize my model",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI have drafted a preliminary version of a paper on policy networks, \nwhere I employ the ergm package to analyze information exchange among \norganizations.\n\nWould anyone be so kind and look over my paper, especially the \nmethodology part, and tell me whether there is something to improve? \nSince I have never used an ERGM before, I am not sure if I have \ninterpreted and modeled everything correctly. If you would like to \nvolunteer, please send me an e-mail, and I will send you the paper.\n\nThanks a lot!\n\nPhilip\n\n-- \nPhilip Leifeld\nMax Planck Institute for     | +49 (0) 1577 6830349 (mobile)\nResearch on Collective Goods | +49 (0) 228 91416-73 (phone)\nMaxNetAging Doctoral Fellow  | +49 (0) 228 91416-62 (fax)\nKurt-Schumacher-Str. 10      | Leifeld@coll.mpg.de\n53113 Bonn, Germany          | http://www.philipleifeld.de",
+      "body_snippet": "Hi,\n\nI have drafted a preliminary version of a paper on policy networks, \nwhere I employ the ergm package to analyze information exchange among \norganizations.\n\nWould anyone be so kind and look over m",
+      "thread_id": "thread-9cff29a0239a",
+      "thread_depth": 0,
+      "month": "2010-01"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-04e32085e2d5",
+      "subject": "[statnet_help] Help with ergm - large network",
+      "message_count": 5,
+      "participants": [
+        "David Hunter",
+        "Michael Koch",
+        "Moses Boudourides"
+      ],
+      "started": "2010-01-04T01:08:22Z",
+      "last_reply": "2010-01-07T10:10:31Z",
+      "root_message_id": "msg-04e32085e2d5"
+    },
+    {
+      "id": "thread-410433a5570a",
+      "subject": "[statnet_help] Categorizing GWNSP for manuscript",
+      "message_count": 2,
+      "participants": [
+        "Pavel N. Krivitsky",
+        "Sean L. Simpson"
+      ],
+      "started": "2010-01-05T11:22:23Z",
+      "last_reply": "2010-01-06T18:49:35Z",
+      "root_message_id": "msg-410433a5570a"
+    },
+    {
+      "id": "thread-ad51c2546cfb",
+      "subject": "[statnet_help] trouble 'finding' statnet on linux system",
+      "message_count": 1,
+      "participants": [
+        "Marc Scott"
+      ],
+      "started": "2010-01-06T13:09:15Z",
+      "last_reply": "2010-01-06T13:09:15Z",
+      "root_message_id": "msg-ad51c2546cfb"
+    },
+    {
+      "id": "thread-dd138befe904",
+      "subject": "[statnet_help] resolved: trouble 'finding' statnet on linux system",
+      "message_count": 1,
+      "participants": [
+        "Marc Scott"
+      ],
+      "started": "2010-01-06T19:00:05Z",
+      "last_reply": "2010-01-06T19:00:05Z",
+      "root_message_id": "msg-dd138befe904"
+    },
+    {
+      "id": "thread-56b9e02c272a",
+      "subject": "[statnet_help] Simulate and Estimate ERGM(THETA0)?",
+      "message_count": 1,
+      "participants": [
+        "Randall Lewis"
+      ],
+      "started": "2010-01-21T02:59:01Z",
+      "last_reply": "2010-01-21T02:59:01Z",
+      "root_message_id": "msg-56b9e02c272a"
+    },
+    {
+      "id": "thread-01c61e4ff297",
+      "subject": "[statnet_help] ERGM with Loops",
+      "message_count": 2,
+      "participants": [
+        "Steven Goodreau",
+        "stanj@u.washington.edu"
+      ],
+      "started": "2010-01-21T10:36:20Z",
+      "last_reply": "2010-01-21T11:41:27Z",
+      "root_message_id": "msg-01c61e4ff297"
+    },
+    {
+      "id": "thread-81b3c031ae40",
+      "subject": "[statnet_help] GWESP - parameter setting",
+      "message_count": 1,
+      "participants": [
+        "Philip Leifeld"
+      ],
+      "started": "2010-01-26T05:13:35Z",
+      "last_reply": "2010-01-26T05:13:35Z",
+      "root_message_id": "msg-81b3c031ae40"
+    },
+    {
+      "id": "thread-9cff29a0239a",
+      "subject": "[statnet_help] Looking for volunteers to criticize my model",
+      "message_count": 1,
+      "participants": [
+        "Philip Leifeld"
+      ],
+      "started": "2010-01-29T13:42:12Z",
+      "last_reply": "2010-01-29T13:42:12Z",
+      "root_message_id": "msg-9cff29a0239a"
+    }
+  ]
+}

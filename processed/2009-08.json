@@ -1,0 +1,754 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2009-08",
+  "messages": [
+    {
+      "id": "msg-90429c8b9b55",
+      "message_id": "<1ea8d8280908061519w86a71f9o8b2ab262b831f252@mail.gmail.com>",
+      "from_name": "Jenine Harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2009-08-06T15:19:19Z",
+      "subject": "[statnet_help] interpreting GWDSP?",
+      "subject_clean": "[statnet_help] interpreting GWDSP?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI was wondering if anyone has an example of how a GWDSP term would be\ninterpreted in somewhat lay terms. From my understanding GWDSP accounts for\nthe distribution of shared partnership for each dyad in a network, but I'm\nnot sure how to go about interpreting a negative signficant GWDSP\ncoefficient of -0.25 in an actual ERGM model. What does this say about the\ndistribution and how does it influence the likelihood of a tie?\n\nAny help is greatly appreciated.\n\nThanks in advance,\nJenine\n-- \n************************************\nJenine K. Harris, Ph.D.\nAssistant Professor of Community Health\nBiostatistics Division\nSaint Louis University School of Public Health\nAssistant Director of Research\nCenter for Tobacco Policy Research\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210 (SLU phone)\n314.977.3234 (SLU fax)\n314.935.3744 (WU phone)\n314.935.3756 (WU fax)\nhttp://ctpr.wustl.edu/\n\nPlease note: I split my time between two offices, email is typically the\nbest way to reach me.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090806/6abc83d3/attachment.html>",
+      "body_snippet": "Hi,\n\nI was wondering if anyone has an example of how a GWDSP term would be\ninterpreted in somewhat lay terms. From my understanding GWDSP accounts for\nthe distribution of shared partnership for each d",
+      "thread_id": "thread-90429c8b9b55",
+      "thread_depth": 0,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-1d2c145ebaef",
+      "message_id": "<1ea8d8280908111124j40c665ei78e35323e09e0b56@mail.gmail.com>",
+      "from_name": "Jenine Harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2009-08-11T11:24:23Z",
+      "subject": "[statnet_help] non-significant estimates but significant odds ratios?",
+      "subject_clean": "[statnet_help] non-significant estimates but significant odds ratios?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "HI all,\n\nWe have developed a model which we think represents our data well, however,\nin writing up our results we are finding significant odds ratios (confidence\nintervals do not include 1) for some of the estimates which are shown as\nnon-significant in our output. We are aware that large standard errors can\nbe the culprit in cases of Type II error, but this typically happens when\nthe estimate is large and the Wald test is used to determine significance.\nThis doesn't seem to be the case for us. Any thoughts on this would be great\n--- should we interpret the statnet output as a Type II error, or are we\ndoing something wrong with our OR/CI calculations? Or neither of these?\n\nAs an example, the estimate in the output pasted below for LocalRegion.2 is\n0.458518 with a SE of 0.30 -- non-significant. When we calculate the OR and\nCI we get an OR=1.58 with 95%CI: 1.20-2.09 --- which is definitely\nsignificant.\n\n\n==========================\n\nSummary of model fit\n\n==========================\n\n\n\nFormula:   integration_d_s ~ edges + nodefactor(\"LocalRegion\") +\nnodecov(\"years_workingPA\") +\n\n    nodefactor(\"guia_mem\") + nodematch(\"area_PA_One\", diff = T)\n\n\n\nNewton-Raphson iterations:  4\n\n\n\nMaximum Likelihood Results:\n\n                          Estimate Std. Error MCMC s.e. p-value\n\nedges                    -2.835442   0.334016        NA < 1e-04 ***\n\nnodefactor.LocalRegion.2  0.458518   0.308264        NA 0.13744\n\nnodefactor.LocalRegion.3  1.206871   0.206144        NA < 1e-04 ***\n\nnodefactor.LocalRegion.4  0.619903   0.197188        NA 0.00175 **\n\nnodefactor.LocalRegion.5  0.118244   0.297919        NA 0.69159\n\nnodecov.years_workingPA   0.032360   0.009881        NA 0.00112 **\n\nnodefactor.guia_mem.2     1.178680   0.183902        NA < 1e-04 ***\n\nnodematch.area_PA_One.1   0.830897   0.334836        NA 0.01336 *\n\nnodematch.area_PA_One.2  -1.094461   1.099421        NA 0.31991\n\nnodematch.area_PA_One.3   0.523736   0.645961        NA 0.41782\n\nnodematch.area_PA_One.4   0.635109   0.340589        NA 0.06272 .\n\n---\n\nSignif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n\n\n\nFor this model, the pseudolikelihood is the same as the likelihood.\n\n\n\n    Null  Deviance: 824.85  on 595  degrees of freedom\n\n\n-- \n************************************\nJenine K. Harris, Ph.D.\nAssistant Professor of Community Health\nBiostatistics Division\nSaint Louis University School of Public Health\nAssistant Director of Research\nCenter for Tobacco Policy Research\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210 (SLU phone)\n314.977.3234 (SLU fax)\n314.935.3744 (WU phone)\n314.935.3756 (WU fax)\nhttp://ctpr.wustl.edu/\n\nPlease note: I split my time between two offices, email is typically the\nbest way to reach me.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090811/b2c1e6a6/attachment.html>",
+      "body_snippet": "HI all,\n\nWe have developed a model which we think represents our data well, however,\nin writing up our results we are finding significant odds ratios (confidence\nintervals do not include 1) for some o",
+      "thread_id": "thread-1d2c145ebaef",
+      "thread_depth": 0,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-e2742a51c969",
+      "message_id": "<C6A7088B.23DCD%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2009-08-11T11:37:47Z",
+      "subject": "[statnet_help] non-significant estimates but significant odds ratios?",
+      "subject_clean": "[statnet_help] non-significant estimates but significant odds ratios?",
+      "in_reply_to": "<1ea8d8280908111124j40c665ei78e35323e09e0b56@mail.gmail.com>",
+      "references": [],
+      "body_plain": "Dear Jenine,\n\nThanks for the question.\n\nThe issues here is not the model fits, but the various asymptotic\napproximations to the test statistics. Specifically, the Normal approximate\nCI for the log odds ratio is 0.458518+/-1.96*0.308264 = (-0.146, 1.063).\nThis is based on the Central Limit Theorem for the log odds ratio. To get a\nCI for the odds ratio we can exponential the limits to get (0.864,2.894).\nThe CI you give for the OR is based on the Normal approximation for the OR.\nTypically, the approximation is better for the log OR rather than the OR,\nbut this is an empirical question.\n\nI hope this helps!\n\nMark\n\nfor the statnet team\n\n-------------------------------------------------\nMark S. Handcock\nProfessor of Statistics\nDepartment of Statistics, B313 Padelford Hall\nUniversity of Washington, Box 354322     Phone:  (206) 543-6774\nSeattle, WA  98195-4322.           FAX:   (206) 457-1953\nWeb:  www.stat.washington.edu/~handcock\ninternet:  handcock@stat.washington.edu\n\nOn 8/11/09 11:24 AM, \"Jenine Harris\" <harrisjk@slu.edu> wrote:\n\n> HI all,\n> \n> We have developed a model which we think represents our data well, however,\n> in writing up our results we are finding significant odds ratios (confidence\n> intervals do not include 1) for some of the estimates which are shown as\n> non-significant in our output. We are aware that large standard errors can\n> be the culprit in cases of Type II error, but this typically happens when\n> the estimate is large and the Wald test is used to determine significance.\n> This doesn't seem to be the case for us. Any thoughts on this would be great\n> --- should we interpret the statnet output as a Type II error, or are we\n> doing something wrong with our OR/CI calculations? Or neither of these?\n> \n> As an example, the estimate in the output pasted below for LocalRegion.2 is\n> 0.458518 with a SE of 0.30 -- non-significant. When we calculate the OR and\n> CI we get an OR=1.58 with 95%CI: 1.20-2.09 --- which is definitely\n> significant.\n> \n> \n> ==========================\n> \n> Summary of model fit\n> \n> ==========================\n> \n> \n> \n> Formula:   integration_d_s ~ edges + nodefactor(\"LocalRegion\") +\n> nodecov(\"years_workingPA\") +\n> \n>     nodefactor(\"guia_mem\") + nodematch(\"area_PA_One\", diff = T)\n> \n> \n> \n> Newton-Raphson iterations:  4\n> \n> \n> \n> Maximum Likelihood Results:\n> \n>                           Estimate Std. Error MCMC s.e. p-value\n> \n> edges                    -2.835442   0.334016        NA < 1e-04 ***\n> \n> nodefactor.LocalRegion.2  0.458518   0.308264        NA 0.13744\n> \n> nodefactor.LocalRegion.3  1.206871   0.206144        NA < 1e-04 ***\n> \n> nodefactor.LocalRegion.4  0.619903   0.197188        NA 0.00175 **\n> \n> nodefactor.LocalRegion.5  0.118244   0.297919        NA 0.69159\n> \n> nodecov.years_workingPA   0.032360   0.009881        NA 0.00112 **\n> \n> nodefactor.guia_mem.2     1.178680   0.183902        NA < 1e-04 ***\n> \n> nodematch.area_PA_One.1   0.830897   0.334836        NA 0.01336 *\n> \n> nodematch.area_PA_One.2  -1.094461   1.099421        NA 0.31991\n> \n> nodematch.area_PA_One.3   0.523736   0.645961        NA 0.41782\n> \n> nodematch.area_PA_One.4   0.635109   0.340589        NA 0.06272 .\n> \n> ---\n> \n> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n> \n> \n> \n> For this model, the pseudolikelihood is the same as the likelihood.\n> \n> \n> \n>     Null  Deviance: 824.85  on 595  degrees of freedom\n>",
+      "body_snippet": "Dear Jenine,\n\nThanks for the question.\n\nThe issues here is not the model fits, but the various asymptotic\napproximations to the test statistics. Specifically, the Normal approximate\nCI for the log odd",
+      "thread_id": "thread-1d2c145ebaef",
+      "thread_depth": 1,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-2fa53584018d",
+      "message_id": "<1ea8d8280908111240w27bb6bf2qabfa7d8001f87dcd@mail.gmail.com>",
+      "from_name": "Jenine Harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2009-08-11T12:40:06Z",
+      "subject": "[statnet_help] non-significant estimates but significant odds  ratios?",
+      "subject_clean": "[statnet_help] non-significant estimates but significant odds  ratios?",
+      "in_reply_to": "<C6A7088B.23DCD%handcock@stat.washington.edu>",
+      "references": [
+        "<1ea8d8280908111124j40c665ei78e35323e09e0b56@mail.gmail.com>",
+        "<C6A7088B.23DCD%handcock@stat.washington.edu>"
+      ],
+      "body_plain": "Excellent, that makes sense. Thank you.\nJenine\n\nOn Tue, Aug 11, 2009 at 1:37 PM, Mark S. Handcock <\nhandcock@stat.washington.edu> wrote:\n\n> Dear Jenine,\n>\n> Thanks for the question.\n>\n> The issues here is not the model fits, but the various asymptotic\n> approximations to the test statistics. Specifically, the Normal approximate\n> CI for the log odds ratio is 0.458518+/-1.96*0.308264 = (-0.146, 1.063).\n> This is based on the Central Limit Theorem for the log odds ratio. To get a\n> CI for the odds ratio we can exponential the limits to get (0.864,2.894).\n> The CI you give for the OR is based on the Normal approximation for the OR.\n> Typically, the approximation is better for the log OR rather than the OR,\n> but this is an empirical question.\n>\n> I hope this helps!\n>\n> Mark\n>\n> for the statnet team\n>\n> -------------------------------------------------\n> Mark S. Handcock\n> Professor of Statistics\n> Department of Statistics, B313 Padelford Hall\n> University of Washington, Box 354322     Phone:  (206) 543-6774\n> Seattle, WA  98195-4322.           FAX:   (206) 457-1953\n> Web:  www.stat.washington.edu/~handcock<http://www.stat.washington.edu/%7Ehandcock>\n> internet:  handcock@stat.washington.edu\n>\n> On 8/11/09 11:24 AM, \"Jenine Harris\" <harrisjk@slu.edu> wrote:\n>\n> > HI all,\n> >\n> > We have developed a model which we think represents our data well,\n> however,\n> > in writing up our results we are finding significant odds ratios\n> (confidence\n> > intervals do not include 1) for some of the estimates which are shown as\n> > non-significant in our output. We are aware that large standard errors\n> can\n> > be the culprit in cases of Type II error, but this typically happens when\n> > the estimate is large and the Wald test is used to determine\n> significance.\n> > This doesn't seem to be the case for us. Any thoughts on this would be\n> great\n> > --- should we interpret the statnet output as a Type II error, or are we\n> > doing something wrong with our OR/CI calculations? Or neither of these?\n> >\n> > As an example, the estimate in the output pasted below for LocalRegion.2\n> is\n> > 0.458518 with a SE of 0.30 -- non-significant. When we calculate the OR\n> and\n> > CI we get an OR=1.58 with 95%CI: 1.20-2.09 --- which is definitely\n> > significant.\n> >\n> >\n> > ==========================\n> >\n> > Summary of model fit\n> >\n> > ==========================\n> >\n> >\n> >\n> > Formula:   integration_d_s ~ edges + nodefactor(\"LocalRegion\") +\n> > nodecov(\"years_workingPA\") +\n> >\n> >     nodefactor(\"guia_mem\") + nodematch(\"area_PA_One\", diff = T)\n> >\n> >\n> >\n> > Newton-Raphson iterations:  4\n> >\n> >\n> >\n> > Maximum Likelihood Results:\n> >\n> >                           Estimate Std. Error MCMC s.e. p-value\n> >\n> > edges                    -2.835442   0.334016        NA < 1e-04 ***\n> >\n> > nodefactor.LocalRegion.2  0.458518   0.308264        NA 0.13744\n> >\n> > nodefactor.LocalRegion.3  1.206871   0.206144        NA < 1e-04 ***\n> >\n> > nodefactor.LocalRegion.4  0.619903   0.197188        NA 0.00175 **\n> >\n> > nodefactor.LocalRegion.5  0.118244   0.297919        NA 0.69159\n> >\n> > nodecov.years_workingPA   0.032360   0.009881        NA 0.00112 **\n> >\n> > nodefactor.guia_mem.2     1.178680   0.183902        NA < 1e-04 ***\n> >\n> > nodematch.area_PA_One.1   0.830897   0.334836        NA 0.01336 *\n> >\n> > nodematch.area_PA_One.2  -1.094461   1.099421        NA 0.31991\n> >\n> > nodematch.area_PA_One.3   0.523736   0.645961        NA 0.41782\n> >\n> > nodematch.area_PA_One.4   0.635109   0.340589        NA 0.06272 .\n> >\n> > ---\n> >\n> > Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n> >\n> >\n> >\n> > For this model, the pseudolikelihood is the same as the likelihood.\n> >\n> >\n> >\n> >     Null  Deviance: 824.85  on 595  degrees of freedom\n> >\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \n************************************\nJenine K. Harris, Ph.D.\nAssistant Professor of Community Health\nBiostatistics Division\nSaint Louis University School of Public Health\nAssistant Director of Research\nCenter for Tobacco Policy Research\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210 (SLU phone)\n314.977.3234 (SLU fax)\n314.935.3744 (WU phone)\n314.935.3756 (WU fax)\nhttp://ctpr.wustl.edu/\n\nPlease note: I split my time between two offices, email is typically the\nbest way to reach me.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090811/4ca69e0e/attachment.html>",
+      "body_snippet": "Excellent, that makes sense. Thank you.\nJenine\n\nOn Tue, Aug 11, 2009 at 1:37 PM, Mark S. Handcock <\nhandcock@stat.washington.edu> wrote:\n\n> Dear Jenine,\n>\n> Thanks for the question.\n>\n> The issues her",
+      "thread_id": "thread-1d2c145ebaef",
+      "thread_depth": 2,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-b65f77841ed6",
+      "message_id": "<3f1ad21a0908140643u29c4eb0ud9c21a5ae2c7b38d@mail.gmail.com>",
+      "from_name": "Ze grisi",
+      "from_email_hash": "5563b85a5c7ae953c231c3d90d0d529c962c93e22743b696520be5ddde7a065d",
+      "date": "2009-08-14T06:43:29Z",
+      "subject": "[statnet_help] large networks and SparseM",
+      "subject_clean": "[statnet_help] large networks and SparseM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi there,\n\nI was told that statnet could convert matrices of 'SparseM' into networks,\nis that true?\nI'm trying to convert a matrix of .csr type (package SparseM) into a\nnetwork, but I'm doing something wrong:\n> tmp <- as.matrix.csr(rep(c(0,1),100),100,100)\n> tmp2 <- as.network(tmp,matrix.type='adjacency')\nError in validObject(.Object) :\n  invalid class \"matrix.csr\" object: last element of ia doesn't conform\nWarning message:\nIn is.na(x) : is.na() applied to non-(list or vector) of type 'S4'\nError in as.matrix.coo(as.matrix.csr(value, nrow = length(rw), ncol =\nlength(cl))) :\n  error in evaluating the argument 'x' in selecting a method for function\n'as.matrix.coo'\n\nDoes statnet work with some other type of sparse matrices?\n\nAlso, I need to create a large network about 1,000,000 nodes and 500,000\nedges. I suppose that statnet works fine for large amounts of data, right?\nFor purpose of testing, I tried to create a network with 200,000 edges and\n400,000 nodes and get this:\n> tmp4 <- matrix(1:400000,ncol=2) #create an edgelist\n> tmp5 <- as.network(tmp4,matrix.type='edgelist')\n> tmp5\n Network attributes:\n  vertices = 400000\n  directed = TRUE\n  hyper = FALSE\n  loops = FALSE\n  multiple = FALSE\n  bipartite = FALSE\n  total edges= 200000\n    missing edges= 0\n    non-missing edges= 200000\n\n Vertex attribute names:\n    vertex.names\nError in if ((n <- x$gal$n) < 14 || x$gal$mnext > n * n/2) out <-\n\"adjacency\" else out <- \"edgelist\" :\n  missing value where TRUE/FALSE needed\nWarning message:\nIn n * n : NAs produced by integer overflow\"\n\nIn the two cases, I have no idea of what I'm doing wrong.\nThank you very much.\nJos?\nPS: I'm very sorry for the newbie questions and for my poor English.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090814/60d5d893/attachment.html>",
+      "body_snippet": "Hi there,\n\nI was told that statnet could convert matrices of 'SparseM' into networks,\nis that true?\nI'm trying to convert a matrix of .csr type (package SparseM) into a\nnetwork, but I'm doing somethin",
+      "thread_id": "thread-b65f77841ed6",
+      "thread_depth": 0,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-a34f41731413",
+      "message_id": "<53f641360908170122n1af041b6sdd1432b362eb1c27@mail.gmail.com>",
+      "from_name": "Elena Grewal",
+      "from_email_hash": "82405de478d2a4af660d23848680f3c2a591c80e9451bcbddb6fe3ad2968a022",
+      "date": "2009-08-17T01:22:45Z",
+      "subject": "[statnet_help] making tables",
+      "subject_clean": "[statnet_help] making tables",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi All,\nI was wondering if anyone had ever used something like memisc or apsrtable()\nto output publication style tables of ergm coefficients to something like an\nexcel spreadsheet. I'd like to if its possible but wasn't sure what would\nwork.\n\nThanks!\n\nElena\n\n-- \nElena Grewal\nDoctoral Student\nStanford University School of Education\n(203) 887-4858\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090817/68e7d305/attachment.html>",
+      "body_snippet": "Hi All,\nI was wondering if anyone had ever used something like memisc or apsrtable()\nto output publication style tables of ergm coefficients to something like an\nexcel spreadsheet. I'd like to if its ",
+      "thread_id": "thread-a34f41731413",
+      "thread_depth": 0,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-0b86744cb7ba",
+      "message_id": "<4A89CC43.7040304@tufts.edu>",
+      "from_name": "Ben Mazzotta",
+      "from_email_hash": "e3b7bb66833e18b80f0b0e1488872a543b5fb41659911219dfdfb13909d49598",
+      "date": "2009-08-17T14:31:47Z",
+      "subject": "[statnet_help] how to use nodematch() when each vertex can have more than one value for an attribute",
+      "subject_clean": "[statnet_help] how to use nodematch() when each vertex can have more than one value for an attribute",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Greetings, and many thanks for any insight you can offer.\n\nI have a network object on which I'd like to simulate an ergm() using\n{statnet}. Since the network object is large, I have not copied it here.\n\nEach vertex has an attribute \"language\" which can take on either a single value, or as many as three values. Each value of the attribute \"language\" is a character string.\n\nIs there a way to use the nodematch argument of ergm(), such that it\nsearches for any matches in the vertex attributes, rather than a 1-to-1\nmatch?\n\nFor example, given\n\nmat <- matrix(1, ncol=4, nrow=4)\nnet <- network(mat)\n\n\nlang <- list(\"A\", c(\"A\",\"B\"), \"B\", \"C\")\nnet %v% \"languages\" <- lang\n\n\nThe truth table for the matches should read\nH   T   V (for head, tail, value)\n1   2   1\n1   3   1\n1   4   0\n2   3   1\n2   4   0\n3   4   0\n\n\n\nThis is the standard implementation of ergm(... , nodematch()), I believe.\nmodel2 <- ergm(net ~ nodematch(languages))\n\n\n\nIn the course of writing this post, I discovered that the net %v%\n\"languages\" command above coerces the list \"lang\" to a vector.\n\n\nI also have a dataset that specifies exhaustively whether dyads share a\nlanguage or not; but I am not sure how to enter dyad information\ndirectly into the ergm() function.\n\n-- \nBen Mazzotta\nPhD Candidate\nFletcher School, Tufts University\n160 Packard Ave, Medford MA 02155\nbenjamin.mazzotta@tufts.edu\n+1.617.462.4486",
+      "body_snippet": "Greetings, and many thanks for any insight you can offer.\n\nI have a network object on which I'd like to simulate an ergm() using\n{statnet}. Since the network object is large, I have not copied it here",
+      "thread_id": "thread-0b86744cb7ba",
+      "thread_depth": 0,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-f0752859e4f2",
+      "message_id": "<280D465C-1DF2-4DF5-BE18-A4C13453754E@access.ch>",
+      "from_name": "Rico Leuthold",
+      "from_email_hash": "5a2194e2269f172eebed43c0b69e06d83e66d85093fabbec633d04f1487f9686",
+      "date": "2009-08-18T07:18:32Z",
+      "subject": "[statnet_help] statnet and igraph function masking",
+      "subject_clean": "[statnet_help] statnet and igraph function masking",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nThis is my first post to this list. I started using R and statnet only  \na few weeks ago, so I hope that my question is simple to answer.\n\nI found a lot of useful functions in the statnet packages. But there  \nare a few I like to use from the igraph package.  There comes the  \ntrouble. If i load the igraph library it says something about masked  \nfunctions.\n\nTherefore, when i would like to get the summary for a network object  \nby issuing the command : summary.network(g_08_06_1h)\n\nI get :\n\nNetwork attributes:\nvertices = 74\ndirected = FALSE\nhyper = FALSE\nloops = FALSE\nmultiple = FALSE\nbipartite = FALSE\ntitle = network_2008_6.paj\nLABEL = June `08\ntotal edges = 161\nFehler in get.edge.attribute(x$mel, \"na\") : Not a graph object\n\nSo it seems that the function \"get.edge.attribute\" from the network  \npackacke is really masked. My question, is there a way to get around  \nthis, else then unloading the igraph package when i would like to use  \nthe function from the network package?\n\nThank's\nrico",
+      "body_snippet": "Hi,\n\nThis is my first post to this list. I started using R and statnet only  \na few weeks ago, so I hope that my question is simple to answer.\n\nI found a lot of useful functions in the statnet package",
+      "thread_id": "thread-f0752859e4f2",
+      "thread_depth": 0,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-0613e03af5c1",
+      "message_id": "<4A8AB9E0.50705@tufts.edu>",
+      "from_name": "Ben Mazzotta",
+      "from_email_hash": "e3b7bb66833e18b80f0b0e1488872a543b5fb41659911219dfdfb13909d49598",
+      "date": "2009-08-18T07:25:36Z",
+      "subject": "[statnet_help] statnet and igraph function masking",
+      "subject_clean": "[statnet_help] statnet and igraph function masking",
+      "in_reply_to": "<280D465C-1DF2-4DF5-BE18-A4C13453754E@access.ch>",
+      "references": [
+        "<280D465C-1DF2-4DF5-BE18-A4C13453754E@access.ch>"
+      ],
+      "body_plain": "I received this in reply to a similar query yesterday. It suggests that\nthe last-loaded package controls the definition of a given function\nfoo() in R.\n\nMy question was about the network() function, which is defined\ndifferently by each package {statnet} and {igraph}.\n\n    Ben,\n\n    I believe that the reason for this is that both packages define\n    functions with the same name and the 'network' package does not have a\n    NAMESPACE.\n\n    A possible workaround is to load the 'igraph' package first, and then\n    'statnet' (which loads 'network', etc.) next. At least\n\n    library(igraph)\n    library(statnet)\n    example(network)\n\n    works fine. Best,\n    Gabor\n\n    Dear R users:\n    >\n    > There appears to be a conflict between the statnet package and the\n    > igraph package.\n    >\n    > With igraph loaded into memory, the network() function of statnet\n    > failed, returning the error to the effect that the matrix being\n    > converted was \"not a graph object.\" Removing igraph from memory restored\n    > statnet to proper function.\n    >\n    > Apologies if this is redundant. I could not find this documented in the\n    > help archives or in the docs for either package.\n    >\n    > Best,\n    > Ben\n      \n\n\nRico Leuthold wrote:\n> Hi,\n>\n> This is my first post to this list. I started using R and statnet only\n> a few weeks ago, so I hope that my question is simple to answer.\n>\n> I found a lot of useful functions in the statnet packages. But there\n> are a few I like to use from the igraph package.  There comes the\n> trouble. If i load the igraph library it says something about masked\n> functions.\n>\n> Therefore, when i would like to get the summary for a network object\n> by issuing the command : summary.network(g_08_06_1h)\n>\n> I get :\n>\n> Network attributes:\n> vertices = 74\n> directed = FALSE\n> hyper = FALSE\n> loops = FALSE\n> multiple = FALSE\n> bipartite = FALSE\n> title = network_2008_6.paj\n> LABEL = June `08\n> total edges = 161\n> Fehler in get.edge.attribute(x$mel, \"na\") : Not a graph object\n>\n> So it seems that the function \"get.edge.attribute\" from the network\n> packacke is really masked. My question, is there a way to get around\n> this, else then unloading the igraph package when i would like to use\n> the function from the network package?\n>\n> Thank's\n> rico\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nBen Mazzotta\nPhD Candidate\nFletcher School, Tufts University",
+      "body_snippet": "I received this in reply to a similar query yesterday. It suggests that\nthe last-loaded package controls the definition of a given function\nfoo() in R.\n\nMy question was about the network() function, w",
+      "thread_id": "thread-f0752859e4f2",
+      "thread_depth": 1,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-5f818d311a28",
+      "message_id": "<Pine.WNT.4.64.0908180750260.3180@vinaya.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2009-08-18T08:22:03Z",
+      "subject": "[statnet_help] interpreting GWDSP?",
+      "subject_clean": "[statnet_help] interpreting GWDSP?",
+      "in_reply_to": "<1ea8d8280908061519w86a71f9o8b2ab262b831f252@mail.gmail.com>",
+      "references": [
+        "<1ea8d8280908061519w86a71f9o8b2ab262b831f252@mail.gmail.com>"
+      ],
+      "body_plain": "On Thu, 6 Aug 2009, Jenine Harris wrote:\n\n> I was wondering if anyone has an example of how a GWDSP term would be\n> interpreted in somewhat lay terms. From my understanding GWDSP accounts for\n> the distribution of shared partnership for each dyad in a network, but I'm\n> not sure how to go about interpreting a negative signficant GWDSP\n> coefficient of -0.25 in an actual ERGM model. What does this say about the\n> distribution and how does it influence the likelihood of a tie?\n\n\nHi Jenine,\n\nA great question.  Yes, I do think GWDSP is a bit trickier than interpret \nthan any of the other terms we commonly work with.  I can give you my own \nidiosyncratic approach.\n\nFirst, as technical background: As you probably know, GWDSP is a \nparametric summary measure of the tendency for two actors to have x \npartners in common, regardless of whether the two actors themselves are \ntied.  GWESP is the same measure, but only counted across two actors who \nare tied.  The two are comparable to the \"alternating 2-paths\" and \n\"alternating k-triangles\" that Snijders et al discuss in a series of \npapers. The two measures, combined with a third (GW degree, or the \ncomparable alternating k-stars) are derived in those papers by placing a \nparametric constraint on three sets of statistics that emerge when making \na very sociologically reasonable set of assumptions about relational \ndependence.  The three parametric stats are also seen to work well in \npractice at modeling real-world social networks and avoiding degeneracy \nwhen doing so.\n\nSo, on to interpretation.  As I said, I agree that GWDSP is the hardest to \ninterpret.  In fact, I personally never use a GWDSP term without also \nusing a GWESP term. And once I combined the two, I always find that the \nGWDSP coefficient is close to zero, and non-significant. Let me see if I \ncan give good intuition as to why.\n\nGWESP has some relatively clear interpetations (which I discuss in a few \nof my papers). In real-world data of friendship or collaboration or \nsimilar kinds of networks, it is generally significantly positive. This \nmeans that those who are tied are more likely than chance to have multiple \nshared partners.\n\nGWDSP tells whether shared partners tend to clump together, regardless of \nwhether two people are tied or not.  For example, whether or not you and I \nare friends, if we have one friend in common, are we more likely than \nexpected by chance to have a second friend in common?  And so on.  If yes, \nthe GWDSP coefficient will be positive.  If it is zero, then we are as \nlikely as chance to have one in common; if negative, then less.\n\nIf one only uses GWDSP and not GWESP, then it's hard to know whether an \nobserved non-random shared partner distribution is driven by pairs who are \nthemselves tied, pairs who are not tied, or both.  If you include both \nGWESP and GWDSP, then it becomes clear - GWDSP is the base effect (which \nnow isolates the effect for those not tied only); GWESP occurs on top of \nthis base, and isolates the effect for those who are tied.  And what I \nhave always found is that the GWESP effect is then strong and significant, \nand the GWDSP is tiny and insignificant.  It may be that in different \nkinds of data GWDSP would be significant itself, though.\n\nMy questions for you are: is your GWDSP term significant? Does it remain \nso when GWESP is added?  If the answer to both questions is yes, then you \nhave something particuarly interesting (and unprecendented, at least for \nme) on your hands. If it remains negative and significant, then that says \nthat people who are not tied tend not to have multiple shared partners. \nOnce two unconnected people have one shared partner, they're less likely \nthan chance to have a second; if they do have a second, they're less \nlikely than chance to have a third, and so on. I can't think of a type of \nsocial relationship I would anticipate this pattern for, but it could just \nbe that I've never thought about the kind of relaitonship that you're \nstudying, and it makes perfect sense to you.\n\nMy other quesiton would be what your alpha is; that changes the fine \nquantitative details of the interpretation, but not the general \nqualitative interpretation. Unless your alpha is either essentially 0 or \nvery very high, in which case it would change the latter as well. If it's \nin the 0.1 - 2.0 range, I don't think it would.\n\nI hope that helps!\nSteve\n\n\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k            *\n**************************************************************************",
+      "body_snippet": "On Thu, 6 Aug 2009, Jenine Harris wrote:\n\n> I was wondering if anyone has an example of how a GWDSP term would be\n> interpreted in somewhat lay terms. From my understanding GWDSP accounts for\n> the di",
+      "thread_id": "thread-90429c8b9b55",
+      "thread_depth": 1,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-8c85d3088fdc",
+      "message_id": "<1ea8d8280908180914k5bbdb577ndbe7067820ca88e3@mail.gmail.com>",
+      "from_name": "Jenine Harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2009-08-18T09:14:49Z",
+      "subject": "[statnet_help] interpreting GWDSP?",
+      "subject_clean": "[statnet_help] interpreting GWDSP?",
+      "in_reply_to": "<Pine.WNT.4.64.0908180750260.3180@vinaya.csde.washington.edu>",
+      "references": [
+        "<1ea8d8280908061519w86a71f9o8b2ab262b831f252@mail.gmail.com>",
+        "<Pine.WNT.4.64.0908180750260.3180@vinaya.csde.washington.edu>"
+      ],
+      "body_plain": "Wow, thank you for the very thorough and detailed response, this helps\nimmensely. Yes, we did include GWESP and GWDSP and I believe both were\nsignificant. We are, however, looking at collaborative relationships between\norganizations rather than individuals. Interesting that this result is\nunusual! We'll have to think through why this might be.\n\nJenine\n\nOn Tue, Aug 18, 2009 at 10:22 AM, Steven Goodreau <goodreau@u.washington.edu\n> wrote:\n\n>\n> On Thu, 6 Aug 2009, Jenine Harris wrote:\n>\n>  I was wondering if anyone has an example of how a GWDSP term would be\n>> interpreted in somewhat lay terms. From my understanding GWDSP accounts\n>> for\n>> the distribution of shared partnership for each dyad in a network, but I'm\n>> not sure how to go about interpreting a negative signficant GWDSP\n>> coefficient of -0.25 in an actual ERGM model. What does this say about the\n>> distribution and how does it influence the likelihood of a tie?\n>>\n>\n>\n> Hi Jenine,\n>\n> A great question.  Yes, I do think GWDSP is a bit trickier than interpret\n> than any of the other terms we commonly work with.  I can give you my own\n> idiosyncratic approach.\n>\n> First, as technical background: As you probably know, GWDSP is a parametric\n> summary measure of the tendency for two actors to have x partners in common,\n> regardless of whether the two actors themselves are tied.  GWESP is the same\n> measure, but only counted across two actors who are tied.  The two are\n> comparable to the \"alternating 2-paths\" and \"alternating k-triangles\" that\n> Snijders et al discuss in a series of papers. The two measures, combined\n> with a third (GW degree, or the comparable alternating k-stars) are derived\n> in those papers by placing a parametric constraint on three sets of\n> statistics that emerge when making a very sociologically reasonable set of\n> assumptions about relational dependence.  The three parametric stats are\n> also seen to work well in practice at modeling real-world social networks\n> and avoiding degeneracy when doing so.\n>\n> So, on to interpretation.  As I said, I agree that GWDSP is the hardest to\n> interpret.  In fact, I personally never use a GWDSP term without also using\n> a GWESP term. And once I combined the two, I always find that the GWDSP\n> coefficient is close to zero, and non-significant. Let me see if I can give\n> good intuition as to why.\n>\n> GWESP has some relatively clear interpetations (which I discuss in a few of\n> my papers). In real-world data of friendship or collaboration or similar\n> kinds of networks, it is generally significantly positive. This means that\n> those who are tied are more likely than chance to have multiple shared\n> partners.\n>\n> GWDSP tells whether shared partners tend to clump together, regardless of\n> whether two people are tied or not.  For example, whether or not you and I\n> are friends, if we have one friend in common, are we more likely than\n> expected by chance to have a second friend in common?  And so on.  If yes,\n> the GWDSP coefficient will be positive.  If it is zero, then we are as\n> likely as chance to have one in common; if negative, then less.\n>\n> If one only uses GWDSP and not GWESP, then it's hard to know whether an\n> observed non-random shared partner distribution is driven by pairs who are\n> themselves tied, pairs who are not tied, or both.  If you include both GWESP\n> and GWDSP, then it becomes clear - GWDSP is the base effect (which now\n> isolates the effect for those not tied only); GWESP occurs on top of this\n> base, and isolates the effect for those who are tied.  And what I have\n> always found is that the GWESP effect is then strong and significant, and\n> the GWDSP is tiny and insignificant.  It may be that in different kinds of\n> data GWDSP would be significant itself, though.\n>\n> My questions for you are: is your GWDSP term significant? Does it remain so\n> when GWESP is added?  If the answer to both questions is yes, then you have\n> something particuarly interesting (and unprecendented, at least for me) on\n> your hands. If it remains negative and significant, then that says that\n> people who are not tied tend not to have multiple shared partners. Once two\n> unconnected people have one shared partner, they're less likely than chance\n> to have a second; if they do have a second, they're less likely than chance\n> to have a third, and so on. I can't think of a type of social relationship I\n> would anticipate this pattern for, but it could just be that I've never\n> thought about the kind of relaitonship that you're studying, and it makes\n> perfect sense to you.\n>\n> My other quesiton would be what your alpha is; that changes the fine\n> quantitative details of the interpretation, but not the general qualitative\n> interpretation. Unless your alpha is either essentially 0 or very very high,\n> in which case it would change the latter as well. If it's in the 0.1 - 2.0\n> range, I don't think it would.\n>\n> I hope that helps!\n> Steve\n>\n>\n> **************************************************************************\n>  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n>  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n>  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n>  * http://faculty.washington.edu/goodreau                               *\n>  * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k            *\n> **************************************************************************\n>\n>\n>\n>\n\n\n-- \n************************************\nJenine K. Harris, Ph.D.\nAssistant Professor of Community Health\nBiostatistics Division\nSaint Louis University School of Public Health\nAssistant Director of Research\nCenter for Tobacco Policy Research\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210 (SLU phone)\n314.977.3234 (SLU fax)\n314.935.3744 (WU phone)\n314.935.3756 (WU fax)\nhttp://ctpr.wustl.edu/\n\nPlease note: I split my time between two offices, email is typically the\nbest way to reach me.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090818/9d45052d/attachment.html>",
+      "body_snippet": "Wow, thank you for the very thorough and detailed response, this helps\nimmensely. Yes, we did include GWESP and GWDSP and I believe both were\nsignificant. We are, however, looking at collaborative rel",
+      "thread_id": "thread-90429c8b9b55",
+      "thread_depth": 2,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-64cb97b638b8",
+      "message_id": "<5A20B2D4-BBFE-452B-8CA6-04BFEF22D6E1@access.ch>",
+      "from_name": "Rico Leuthold",
+      "from_email_hash": "5a2194e2269f172eebed43c0b69e06d83e66d85093fabbec633d04f1487f9686",
+      "date": "2009-08-19T02:01:13Z",
+      "subject": "[statnet_help] Convert network adjacency matrix to indexed matrix",
+      "subject_clean": "[statnet_help] Convert network adjacency matrix to indexed matrix",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI would like to extract the adjacency matrix from a network object, to  \nuse it as the tprob parameter in the rgraph function. The command -   \nas.matrix(net,matrix.type=\"adjacency\") - gets the matrix,  \nunfortunately with named columns and rows, which is obviously not  \naccepted in the tprob parameter. Is there a way to convert a \"named\"  \nmatrix to an indexed one?\n\nI tried the following which doesn't work:\nas.matrix(net_obj,matrix.type=\"adjacency\",  \ndimnames=list(c(1:network.size(net)),c(1: network.size(net))))\n\nThank's\nrico",
+      "body_snippet": "Hi,\n\nI would like to extract the adjacency matrix from a network object, to  \nuse it as the tprob parameter in the rgraph function. The command -   \nas.matrix(net,matrix.type=\"adjacency\") - gets the m",
+      "thread_id": "thread-64cb97b638b8",
+      "thread_depth": 0,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-915997af1adf",
+      "message_id": "<4A8DFC32.3060103@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2009-08-20T18:45:22Z",
+      "subject": "[statnet_help] Convert network adjacency matrix to indexed matrix",
+      "subject_clean": "[statnet_help] Convert network adjacency matrix to indexed matrix",
+      "in_reply_to": "<5A20B2D4-BBFE-452B-8CA6-04BFEF22D6E1@access.ch>",
+      "references": [
+        "<5A20B2D4-BBFE-452B-8CA6-04BFEF22D6E1@access.ch>"
+      ],
+      "body_plain": "Hi, Rico-\n\nRico Leuthold wrote:\n> Hi,\n> \n> I would like to extract the adjacency matrix from a network object, to \n> use it as the tprob parameter in the rgraph function. The command -  \n> as.matrix(net,matrix.type=\"adjacency\") - gets the matrix, unfortunately \n> with named columns and rows, which is obviously not accepted in the \n> tprob parameter. Is there a way to convert a \"named\" matrix to an \n> indexed one?\n> \n> I tried the following which doesn't work:\n> as.matrix(net_obj,matrix.type=\"adjacency\", \n> dimnames=list(c(1:network.size(net)),c(1: network.size(net))))\n\nThe rgraph tprob parameter ignores dimnames, so this will not affect the \nresults.  In fact, here's a (working) example:\n\nlibrary(network)\nlibrary(sna)\ndata(emon)\ng<-rgraph(network.size(emon[[1]]),tprob=as.matrix(emon[[1]])*0.8+0.1)\n\nCheck to be sure that you are passing the right size parameter to \nrgraph, and that your matrix output is a full adjacency matrix (i.e., \nthat this is not a bipartite matrix).  These are the more likely errors \nin your case.\n\n-Carter",
+      "body_snippet": "Hi, Rico-\n\nRico Leuthold wrote:\n> Hi,\n> \n> I would like to extract the adjacency matrix from a network object, to \n> use it as the tprob parameter in the rgraph function. The command -  \n> as.matrix(n",
+      "thread_id": "thread-64cb97b638b8",
+      "thread_depth": 1,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-b1ebcbbba2c6",
+      "message_id": "<Pine.LNX.4.43.0908211227070.30760@hymn32.u.washington.edu>",
+      "from_name": "stanj@u.washington.edu",
+      "from_email_hash": "67c87847c37c18e652cb63f9975cd85d256dc0a7b95ab36680da1e84be17d41b",
+      "date": "2009-08-21T12:27:07Z",
+      "subject": "[statnet_help] Valued Edges Help",
+      "subject_clean": "[statnet_help] Valued Edges Help",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\nI have a csv file in the following format that I would like to perform some analysis on using statnet but have been unable to figure out a few issues so far:\n\n    V1 V2 V3     V4         V5         V6         V7         V8\n1   1  1  0    0.0 6.8215e-02 6.8215e-02 1.2803e-01 1.2803e-01\n2   1  2  3  500.0 2.8331e-03 9.1142e-04 2.3735e-03 2.9833e-03\n3   1  3  1   53.7 1.1194e-03 2.8286e-04 2.9611e-03 3.4767e-04\n4   2  1  0    0.0 3.0283e-04 6.6601e-04 4.3402e-03 1.2448e-04\n5   2  2  0    0.0 1.4109e-03 6.0181e-04 3.6538e-03 5.7517e-04\n6   2  3  5 1681.2 4.0816e-04 1.4469e-03 1.2110e-03 2.1143e-03\n7   3  1  0    0.0 1.7205e-04 7.0602e-04 1.9867e-03 1.9614e-04\n8   3  2  1   83.8 1.6656e-03 6.7566e-04 6.3784e-03 4.1213e-04\n9   3  3  0    0.0 1.9568e-04 1.2461e-03 2.3169e-03 2.3607e-04\n\nThe first two columns are the possible node combinations within the network.  Columns 3 and 5-8 are the values of 5 different types of edges.  For example, using the V5 edge, there is an edge between every possible node combination and the edges are valued given the V5 values.  Using the V3 edge, only 1->2, 1->3, 2->3, and 3->2 have edges and those edges are valued at 3,1,5, and 1 respectively.\n\nWhat I would like to do is compute centrality measures for each type of edge (I'm unsure if these can be considered edge attributes) and finally compute the correlation between the different types of edges.  For example, is a larger valued V5 edge correlated with a larger valued V3 edge.  I think the edgecov function in ERGM would be able to do this but I'm not sure.\n\nI tried entering in the edgelist as columns 1 & 2, and then assign values to the edges following the instructions given in a previous response to a questions on 2/2/08 entitled \"Creating valued edges from an edgelist\" but R returns \"Error in set.edge.value(CSVnetwork, CSVfile[, 5]) : element 1 is empty;\n    the part of the args list of 'is.matrix' being evaluated was:\n    (value)\n\nHow would I go about computing these statistics?  Thank you so much for your help!\n\nSincerely,\nJared",
+      "body_snippet": "Hello,\nI have a csv file in the following format that I would like to perform some analysis on using statnet but have been unable to figure out a few issues so far:\n\n    V1 V2 V3     V4         V5    ",
+      "thread_id": "thread-b1ebcbbba2c6",
+      "thread_depth": 0,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-0ca596cc9ee7",
+      "message_id": "<17407172.341251134109143.JavaMail.SYSTEM@waterpaymark-lx>",
+      "from_name": "Randall Lewis",
+      "from_email_hash": "66d5e58f4cb248eee62aba61e862ed48eed3f6ea11b8ffaa915d7466411ec5a7",
+      "date": "2009-08-24T10:15:09Z",
+      "subject": "[statnet_help] coef(ergm(Network ~ edges + triangles) )?",
+      "subject_clean": "[statnet_help] coef(ergm(Network ~ edges + triangles) )?",
+      "in_reply_to": "<200908221900.n7MJ0GDk003685@mxout2.cac.washington.edu>",
+      "references": [],
+      "body_plain": "Hi--\n\ncoef(ergm(Network ~ edges + triangles) )\n\nWhy don't I get SE's, t-stats, and p-values back when I run this command? I seem to only be able to extract the coefficients, and not the k x 4 matrix that I should receive. I'm running R v2.7. Do I need to update it?\n\nAlso, generally in R, is there a function that bypasses the \"summary()\" command to let you see all of the subfields accessible within a particular object? For example, I would like to see how to access all the fields without using the help command to tell me what network$coef (or $field) values are accessible.\n\nThanks!\n\n--Randall",
+      "body_snippet": "Hi--\n\ncoef(ergm(Network ~ edges + triangles) )\n\nWhy don't I get SE's, t-stats, and p-values back when I run this command? I seem to only be able to extract the coefficients, and not the k x 4 matrix t",
+      "thread_id": "thread-0ca596cc9ee7",
+      "thread_depth": 0,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-b9fe71eef769",
+      "message_id": "<alpine.WNT.1.10.0908241034050.736@stevegT400.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2009-08-24T10:38:30Z",
+      "subject": "[statnet_help] coef(ergm(Network ~ edges + triangles) )?",
+      "subject_clean": "[statnet_help] coef(ergm(Network ~ edges + triangles) )?",
+      "in_reply_to": "<17407172.341251134109143.JavaMail.SYSTEM@waterpaymark-lx>",
+      "references": [
+        "<17407172.341251134109143.JavaMail.SYSTEM@waterpaymark-lx>"
+      ],
+      "body_plain": "Hi Randall,\n\n> coef(ergm(Network ~ edges + triangles) )\n>\n> Why don't I get SE's, t-stats, and p-values back when I run this \n> command? I seem to only be able to extract the coefficients, and not the \n> k x 4 matrix that I should receive. I'm running R v2.7. Do I need to \n> update it?\n\nYou'd need to give us a bit more information before we could diagnose what \nis happening.  I assume that you are assigning your ergm fit to an object \n(let's say RL.ergm) and then querying it with summary(RL.ergm)? If so, is \nit not displaying the Monte Carlo MLE results at all when you do, or it \nshows the table but it is filled with NA's?\n\n> Also, generally in R, is there a function that bypasses the \"summary()\" \n> command to let you see all of the subfields accessible within a \n> particular object? For example, I would like to see how to access all \n> the fields without using the help command to tell me what network$coef \n> (or $field) values are accessible.\n\nYes, as with any object in R that is stored as a list, you can just type \n\"names(object)\" to find out all the components of object.\n\nSteve\n\n\n\n\n>\n> Thanks!\n>\n> --Randall\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k            *\n**************************************************************************",
+      "body_snippet": "Hi Randall,\n\n> coef(ergm(Network ~ edges + triangles) )\n>\n> Why don't I get SE's, t-stats, and p-values back when I run this \n> command? I seem to only be able to extract the coefficients, and not the",
+      "thread_id": "thread-0ca596cc9ee7",
+      "thread_depth": 1,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-e1a3351be5d9",
+      "message_id": "<D0D910FF-AC29-4575-BF33-86276F7C3183@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-08-24T10:48:55Z",
+      "subject": "[statnet_help] coef(ergm(Network ~ edges + triangles) )?",
+      "subject_clean": "[statnet_help] coef(ergm(Network ~ edges + triangles) )?",
+      "in_reply_to": "<alpine.WNT.1.10.0908241034050.736@stevegT400.csde.washington.edu>",
+      "references": [
+        "<17407172.341251134109143.JavaMail.SYSTEM@waterpaymark-lx>",
+        "<alpine.WNT.1.10.0908241034050.736@stevegT400.csde.washington.edu>"
+      ],
+      "body_plain": "Just to add to what Steve says:\n\nThe 'coef' function is really an R function, and the ergm version is  \ncalled 'coef.ergm'.  I believe that coef.ergm does for an ergm what  \ncoef does for an lm -- that is, provide only the coefficients.  This  \nseems the logical way to write coef.ergm to me (i.e., to do exactly  \nwhat coef does in other non-ergm instances).  So when you say \"that I  \nshould receive\", I'm not sure I'd say that's the case.\n\nDave\n\n\nOn Aug 24, 2009, at 1:38 PM, Steven Goodreau wrote:\n\n>\n> Hi Randall,\n>\n>> coef(ergm(Network ~ edges + triangles) )\n>>\n>> Why don't I get SE's, t-stats, and p-values back when I run this  \n>> command? I seem to only be able to extract the coefficients, and  \n>> not the k x 4 matrix that I should receive. I'm running R v2.7. Do  \n>> I need to update it?\n>\n> You'd need to give us a bit more information before we could  \n> diagnose what is happening.  I assume that you are assigning your  \n> ergm fit to an object (let's say RL.ergm) and then querying it with  \n> summary(RL.ergm)? If so, is it not displaying the Monte Carlo MLE  \n> results at all when you do, or it shows the table but it is filled  \n> with NA's?\n>\n>> Also, generally in R, is there a function that bypasses the  \n>> \"summary()\" command to let you see all of the subfields accessible  \n>> within a particular object? For example, I would like to see how to  \n>> access all the fields without using the help command to tell me  \n>> what network$coef (or $field) values are accessible.\n>\n> Yes, as with any object in R that is stored as a list, you can just  \n> type \"names(object)\" to find out all the components of object.\n>\n> Steve\n>\n>\n>\n>\n>>\n>> Thanks!\n>>\n>> --Randall\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n> **************************************************************************\n> * Steven M. Goodreau / Assistant Professor / Dept. of  \n> Anthropology     *\n> * University of Washington / Denny Hall 452 / Campus Box  \n> 353100        *\n> * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285  \n> (fax)      *\n> * http://faculty.washington.edu/ \n> goodreau                               *\n> * http://maps.google.com/?q= \n> %2047.65853,-122.30896&z=18&t=k            *\n> **************************************************************************\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Just to add to what Steve says:\n\nThe 'coef' function is really an R function, and the ergm version is  \ncalled 'coef.ergm'.  I believe that coef.ergm does for an ergm what  \ncoef does for an lm -- tha",
+      "thread_id": "thread-0ca596cc9ee7",
+      "thread_depth": 2,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-7d419cc7e99d",
+      "message_id": "<C6B8218F.24289%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2009-08-24T10:53:03Z",
+      "subject": "[statnet_help] coef(ergm(Network ~ edges + triangles) )?",
+      "subject_clean": "[statnet_help] coef(ergm(Network ~ edges + triangles) )?",
+      "in_reply_to": "<alpine.WNT.1.10.0908241034050.736@stevegT400.csde.washington.edu>",
+      "references": [],
+      "body_plain": "Hi Randall,\n\nIf you use:\n\nsumfit <- summary(ergm(Network ~ edges + triangles) )\n\nthen sumfit will be a list with all the \"subfields\" (as components) in it.\nThen, e.g.\n\nsumfit\n\nwill print the usual summary you want and you can see the components via,\ne.g., \n\n> names(sumfit)\n [1] \"formula\"          \"randomeffects\"    \"digits\"           \"correlation\"\n [5] \"degeneracy.value\" \"offset\"           \"drop\"             \"covariance\"\n [9] \"pseudolikelihood\" \"independence\"     \"iterations\"       \"samplesize\"\n[13] \"message\"          \"devtable\"         \"aic\"              \"bic\"\n[17] \"coefs\"            \"asycov\"           \"asyse\"\n\nCheers,\n\nMark\nfor the statnet team.\n\n-------------------------------------------------\nMark S. Handcock\nProfessor of Statistics\nDepartment of Statistics, B313 Padelford Hall\nUniversity of Washington, Box 354322     Phone:  (206) 543-6774\nSeattle, WA  98195-4322.           FAX:   (206) 457-1953\nWeb:  www.stat.washington.edu/~handcock\ninternet:  handcock@stat.washington.edu\n\n\n\nOn 8/24/09 10:38 AM, \"Steven Goodreau\" <goodreau@u.washington.edu> wrote:\n\n> \n> Hi Randall,\n> \n>> coef(ergm(Network ~ edges + triangles) )\n>> \n>> Why don't I get SE's, t-stats, and p-values back when I run this\n>> command? I seem to only be able to extract the coefficients, and not the\n>> k x 4 matrix that I should receive. I'm running R v2.7. Do I need to\n>> update it?\n> \n> You'd need to give us a bit more information before we could diagnose what\n> is happening.  I assume that you are assigning your ergm fit to an object\n> (let's say RL.ergm) and then querying it with summary(RL.ergm)? If so, is\n> it not displaying the Monte Carlo MLE results at all when you do, or it\n> shows the table but it is filled with NA's?\n> \n>> Also, generally in R, is there a function that bypasses the \"summary()\"\n>> command to let you see all of the subfields accessible within a\n>> particular object? For example, I would like to see how to access all\n>> the fields without using the help command to tell me what network$coef\n>> (or $field) values are accessible.\n> \n> Yes, as with any object in R that is stored as a list, you can just type\n> \"names(object)\" to find out all the components of object.\n> \n> Steve\n> \n> \n> \n> \n>> \n>> Thanks!\n>> \n>> --Randall\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>> \n> \n> **************************************************************************\n>   * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n>   * University of Washington / Denny Hall 452 / Campus Box 353100        *\n>   * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n>   * http://faculty.washington.edu/goodreau                               *\n>   * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k            *\n> **************************************************************************\n> \n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi Randall,\n\nIf you use:\n\nsumfit <- summary(ergm(Network ~ edges + triangles) )\n\nthen sumfit will be a list with all the \"subfields\" (as components) in it.\nThen, e.g.\n\nsumfit\n\nwill print the usual sum",
+      "thread_id": "thread-0ca596cc9ee7",
+      "thread_depth": 2,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-f5b1a881aaee",
+      "message_id": "<alpine.WNT.1.10.0908241051380.736@stevegT400.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2009-08-24T10:55:07Z",
+      "subject": "[statnet_help] coef(ergm(Network ~ edges + triangles) )?",
+      "subject_clean": "[statnet_help] coef(ergm(Network ~ edges + triangles) )?",
+      "in_reply_to": "<D0D910FF-AC29-4575-BF33-86276F7C3183@stat.psu.edu>",
+      "references": [
+        "<17407172.341251134109143.JavaMail.SYSTEM@waterpaymark-lx>",
+        "<alpine.WNT.1.10.0908241034050.736@stevegT400.csde.washington.edu>",
+        "<D0D910FF-AC29-4575-BF33-86276F7C3183@stat.psu.edu>"
+      ],
+      "body_plain": "Thanks, Dave.  I didn't even notice the \"coef\" part at the beginning of \nthe command. So yes, to fully clarify, Randall, the syntax for getting \nwhat you want is:\n\nergm.object <- ergm(Network~edges+triangle)\nsummary(ergm.object)\n\nOr, if you really just want to look at it, and not save it, then you can \njust do:\n\nsummary(ergm(Network~edges+triangle))\n\nIt seems like you're likely a new user.  I would recommend (for you, or \nanyone just beginning to explore ergm) to check out the special issue of \nstatnet in the Journal of Statistical Software, accessible fron the \nstatnet project webpage (www.statnetproject.org).\n\nHappy networking,\nSteve\n\n\n\n\nOn Mon, 24 Aug 2009, David Hunter wrote:\n\n> Date: Mon, 24 Aug 2009 13:48:55 -0400\n> From: David Hunter <dhunter@stat.psu.edu>\n> To: statnet help mailing list <statnet_help@u.washington.edu>\n> Subject: Re: [statnet_help] coef(ergm(Network ~ edges + triangles) )?\n> \n> Just to add to what Steve says:\n>\n> The 'coef' function is really an R function, and the ergm version is called \n> 'coef.ergm'.  I believe that coef.ergm does for an ergm what coef does for an \n> lm -- that is, provide only the coefficients.  This seems the logical way to \n> write coef.ergm to me (i.e., to do exactly what coef does in other non-ergm \n> instances).  So when you say \"that I should receive\", I'm not sure I'd say \n> that's the case.\n>\n> Dave\n>\n>\n> On Aug 24, 2009, at 1:38 PM, Steven Goodreau wrote:\n>\n>> \n>> Hi Randall,\n>> \n>>> coef(ergm(Network ~ edges + triangles) )\n>>> \n>>> Why don't I get SE's, t-stats, and p-values back when I run this command? \n>>> I seem to only be able to extract the coefficients, and not the k x 4 \n>>> matrix that I should receive. I'm running R v2.7. Do I need to update it?\n>> \n>> You'd need to give us a bit more information before we could diagnose what \n>> is happening.  I assume that you are assigning your ergm fit to an object \n>> (let's say RL.ergm) and then querying it with summary(RL.ergm)? If so, is \n>> it not displaying the Monte Carlo MLE results at all when you do, or it \n>> shows the table but it is filled with NA's?\n>> \n>>> Also, generally in R, is there a function that bypasses the \"summary()\" \n>>> command to let you see all of the subfields accessible within a particular \n>>> object? For example, I would like to see how to access all the fields \n>>> without using the help command to tell me what network$coef (or $field) \n>>> values are accessible.\n>> \n>> Yes, as with any object in R that is stored as a list, you can just type \n>> \"names(object)\" to find out all the components of object.\n>> \n>> Steve\n>> \n>> \n>> \n>> \n>>> \n>>> Thanks!\n>>> \n>>> --Randall\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>> \n>> \n>> **************************************************************************\n>> * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n>> * University of Washington / Denny Hall 452 / Campus Box 353100        *\n>> * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n>> * http://faculty.washington.edu/goodreau                               *\n>> * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k            *\n>> **************************************************************************\n>> \n>> \n>> \n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k            *\n**************************************************************************",
+      "body_snippet": "Thanks, Dave.  I didn't even notice the \"coef\" part at the beginning of \nthe command. So yes, to fully clarify, Randall, the syntax for getting \nwhat you want is:\n\nergm.object <- ergm(Network~edges+tr",
+      "thread_id": "thread-0ca596cc9ee7",
+      "thread_depth": 3,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-89f0616a14cd",
+      "message_id": "<Pine.LNX.4.43.0908261050180.5856@hymn33.u.washington.edu>",
+      "from_name": "stanj@u.washington.edu",
+      "from_email_hash": "67c87847c37c18e652cb63f9975cd85d256dc0a7b95ab36680da1e84be17d41b",
+      "date": "2009-08-26T10:50:18Z",
+      "subject": "[statnet_help] Centrality Measures Using Valued Edges?",
+      "subject_clean": "[statnet_help] Centrality Measures Using Valued Edges?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\nI apologize but I had actually posted a question a couple of days ago, but I have figured some things out and would actually have a slightly different question.\n\nSay I have the following adjacency matrix:\n\n      1    2    3\n1    0   .15   .25\n2   .3   .5    .2\n3   .08  .7    0\n\n\nI would like to compute centrality measures incorporating the edge values.  Are there centrality measures in statnet that can perform this?  For example, a weighted degree measure (the outdegree of node 1 would be .15 + .25 = .4 instead of 1 + 1 = 2).  I just need something to capture not only the existence of the edge but the value of the edge.  Thank you for your help!\n\nSincerely,\nJared",
+      "body_snippet": "Hello,\nI apologize but I had actually posted a question a couple of days ago, but I have figured some things out and would actually have a slightly different question.\n\nSay I have the following adjace",
+      "thread_id": "thread-89f0616a14cd",
+      "thread_depth": 0,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-17bff0e95655",
+      "message_id": "<7A54D116-7D3B-42BA-900E-5CE2D2AB30C5@sunrise.ch>",
+      "from_name": "Rico Leuthold",
+      "from_email_hash": "5a2194e2269f172eebed43c0b69e06d83e66d85093fabbec633d04f1487f9686",
+      "date": "2009-08-31T00:57:01Z",
+      "subject": "[statnet_help] Extracting subgraph based on vertex attribute or restrict calculation of node level indices",
+      "subject_clean": "[statnet_help] Extracting subgraph based on vertex attribute or restrict calculation of node level indices",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nFor my thesis, I need to compare the subgraphs of a network based on  \nthe gender attribute. The gender data is stored as vertex attribute.  \nWhat I need is a comparison of some node level indices, such as the  \ndegree, within a gender and between the genders.\n\nIs there a way to extract a subgraph by gender, or to restrict the  \ncalculation of the indices to the gender?\n\nAny help is appreciated - thank you ...\n\n-rico",
+      "body_snippet": "Hi,\n\nFor my thesis, I need to compare the subgraphs of a network based on  \nthe gender attribute. The gender data is stored as vertex attribute.  \nWhat I need is a comparison of some node level indice",
+      "thread_id": "thread-17bff0e95655",
+      "thread_depth": 0,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-fc2417c1342c",
+      "message_id": "<52FE1BA1-E9B5-4740-9637-E360A63DC526@sunrise.ch>",
+      "from_name": "Rico Leuthold",
+      "from_email_hash": "5a2194e2269f172eebed43c0b69e06d83e66d85093fabbec633d04f1487f9686",
+      "date": "2009-08-31T04:02:21Z",
+      "subject": "[statnet_help] Edgelist (two dimensional array) to network object",
+      "subject_clean": "[statnet_help] Edgelist (two dimensional array) to network object",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI sent the message below earlier this morning. In the meantime I wrote  \na function to extract an edgelist for the desired subgraphs.\n\nBut when I try to get a network object from the edgelist I get an error:\n\n > edgelist\n      [,1] [,2]\n[1,] 36   32\n[2,] 36   40\n[3,] 48   47\n[4,] 61   57\n[5,] 61   69\n[6,] 61   62\n[7,] 71   62\n[8,] 61   73\n > network(edgelist,matrix.type=\"edgelist\",directed=FALSE)\nFehler in max(x[, 1:2]) : ung?ltiger 'type' (list) des Argumentes\n\nSorry for spamming this list, but I have no idea whats going wrong.\n\n-rico\n\n\n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n= \n========================================================================\nHi,\n\nFor my thesis, I need to compare the subgraphs of a network based on  \nthe gender attribute. The gender data is stored as vertex attribute.  \nWhat I need is a comparison of some node level indices, such as the  \ndegree, within a gender and between the genders.\n\nIs there a way to extract a subgraph by gender, or to restrict the  \ncalculation of the indices to the gender?\n\nAny help is appreciated - thank you ...\n\n-rico",
+      "body_snippet": "Hi,\n\nI sent the message below earlier this morning. In the meantime I wrote  \na function to extract an edgelist for the desired subgraphs.\n\nBut when I try to get a network object from the edgelist I g",
+      "thread_id": "thread-fc2417c1342c",
+      "thread_depth": 0,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-c40b87590105",
+      "message_id": "<4A9BAF01.8080903@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2009-08-31T04:07:45Z",
+      "subject": "[statnet_help] Use of network() with a charactere edgelist: the edgelist is ranked in alphabetical order in the network object.",
+      "subject_clean": "[statnet_help] Use of network() with a charactere edgelist: the edgelist is ranked in alphabetical order in the network object.",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet users,\n\nI have discovered a potential problem with the network command. Here is \nan example code:\n\nlibrary(statnet)\nresp1<-c(\"Victorin\",\"Alice\",\"Gabrielle\",\"Jonas\",\"Thibault\", \"Nad?ge\")\nx<-c(\"Victorin\",\"Alice\",\"Gabrielle\",\"Jonas\",\"Thibault\",\"Nad?ge\",\"Nad?ge\",\"Gabrielle\",\"Victorin\",\"Victorin\")\ny<-c(\"Alice\",\"Victorin\",\"Victorin\",\"Victorin\",\"Jonas\", \n\"Jonas\",\"Victorin\",\"Jonas\",\"Alice\",\"\")\nel1<-matrix(c(x,y),ncol=2) #charactere edgelist\nn1<-network(el1,matrix.type=\"edgelist\")\nn1\n\nAs I discovered, the charactere edgelist in n1 is ranked in alphabetical \norder and not in the order of appearance of el1. For me it's a problem \nbecause you cannot easily add other variables (like vertex variables) in \nn1 and you will probably have corrupted data.\n\nBest Regards,\nVictorin Luisier\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Dear Statnet users,\n\nI have discovered a potential problem with the network command. Here is \nan example code:\n\nlibrary(statnet)\nresp1<-c(\"Victorin\",\"Alice\",\"Gabrielle\",\"Jonas\",\"Thibault\", \"Nad?ge\")\nx",
+      "thread_id": "thread-c40b87590105",
+      "thread_depth": 0,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-88fb18588605",
+      "message_id": "<4A9BB5E1.5090107@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2009-08-31T04:37:05Z",
+      "subject": "[statnet_help] Use of network() with a charactere edgelist: the edgelist is ranked in alphabetical order in the network object.",
+      "subject_clean": "[statnet_help] Use of network() with a charactere edgelist: the edgelist is ranked in alphabetical order in the network object.",
+      "in_reply_to": "<4A9BAF01.8080903@unige.ch>",
+      "references": [
+        "<4A9BAF01.8080903@unige.ch>"
+      ],
+      "body_plain": "Hi, Victorin -\n\nVictorin Luisier wrote:\n> Dear Statnet users,\n> \n> I have discovered a potential problem with the network command. Here is \n> an example code:\n> \n> library(statnet)\n> resp1<-c(\"Victorin\",\"Alice\",\"Gabrielle\",\"Jonas\",\"Thibault\", \"Nad?ge\")\n> x<-c(\"Victorin\",\"Alice\",\"Gabrielle\",\"Jonas\",\"Thibault\",\"Nad?ge\",\"Nad?ge\",\"Gabrielle\",\"Victorin\",\"Victorin\") \n> \n> y<-c(\"Alice\",\"Victorin\",\"Victorin\",\"Victorin\",\"Jonas\", \n> \"Jonas\",\"Victorin\",\"Jonas\",\"Alice\",\"\")\n> el1<-matrix(c(x,y),ncol=2) #charactere edgelist\n> n1<-network(el1,matrix.type=\"edgelist\")\n> n1\n> \n> As I discovered, the charactere edgelist in n1 is ranked in alphabetical \n> order and not in the order of appearance of el1. For me it's a problem \n> because you cannot easily add other variables (like vertex variables) in \n> n1 and you will probably have corrupted data.\n\nThis is standard behavior: vertices are coded in sorted ID order for \nedgelist entry, not by the (arbitrary) order they may happen to appear \nin your edgelist.  If you want a different vertex order, then I \nrecommend either naming them in the desired order or permuting them ex \npost facto (see permute.vertexIDs).  The more natural thing to do, \nhowever, is to sort your vertex covariates in the order of the vertices \nprior to entry.\n\nI should also point out, by the way, that edges _are_ stored within the \nnetwork object in the order of entry, as you can verify by using \nas.matrix(n1,\"edgelist\").  Thus, any edge covariates can be entered in \nthe same order as the original edges, without ill effect.\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "Hi, Victorin -\n\nVictorin Luisier wrote:\n> Dear Statnet users,\n> \n> I have discovered a potential problem with the network command. Here is \n> an example code:\n> \n> library(statnet)\n> resp1<-c(\"Victori",
+      "thread_id": "thread-c40b87590105",
+      "thread_depth": 1,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-41a3cbcc055f",
+      "message_id": "<4A9BB6B6.3050207@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2009-08-31T04:40:38Z",
+      "subject": "[statnet_help] Extracting subgraph based on vertex attribute or\trestrict calculation of node level indices",
+      "subject_clean": "[statnet_help] Extracting subgraph based on vertex attribute or\trestrict calculation of node level indices",
+      "in_reply_to": "<7A54D116-7D3B-42BA-900E-5CE2D2AB30C5@sunrise.ch>",
+      "references": [
+        "<7A54D116-7D3B-42BA-900E-5CE2D2AB30C5@sunrise.ch>"
+      ],
+      "body_plain": "Try help(network.extraction).\n\n-Carter\n\nRico Leuthold wrote:\n> Hi,\n> \n> For my thesis, I need to compare the subgraphs of a network based on the \n> gender attribute. The gender data is stored as vertex attribute. What I \n> need is a comparison of some node level indices, such as the degree, \n> within a gender and between the genders.\n> \n> Is there a way to extract a subgraph by gender, or to restrict the \n> calculation of the indices to the gender?\n> \n> Any help is appreciated - thank you ...\n> \n> -rico\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Try help(network.extraction).\n\n-Carter\n\nRico Leuthold wrote:\n> Hi,\n> \n> For my thesis, I need to compare the subgraphs of a network based on the \n> gender attribute. The gender data is stored as verte",
+      "thread_id": "thread-17bff0e95655",
+      "thread_depth": 1,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-a2c6cfc8bd1b",
+      "message_id": "<4A9BB876.9080303@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2009-08-31T04:48:06Z",
+      "subject": "[statnet_help] Centrality Measures Using Valued Edges?",
+      "subject_clean": "[statnet_help] Centrality Measures Using Valued Edges?",
+      "in_reply_to": "<Pine.LNX.4.43.0908261050180.5856@hymn33.u.washington.edu>",
+      "references": [
+        "<Pine.LNX.4.43.0908261050180.5856@hymn33.u.washington.edu>"
+      ],
+      "body_plain": "Hi, Jared -\n\nstanj@u.washington.edu wrote:\n> Hello,\n> I apologize but I had actually posted a question a couple of days ago, \n> but I have figured some things out and would actually have a slightly \n> different question.\n> \n> Say I have the following adjacency matrix:\n> \n>      1    2    3\n> 1    0   .15   .25\n> 2   .3   .5    .2\n> 3   .08  .7    0\n> \n> \n> I would like to compute centrality measures incorporating the edge \n> values.  Are there centrality measures in statnet that can perform \n> this?  For example, a weighted degree measure (the outdegree of node 1 \n> would be .15 + .25 = .4 instead of 1 + 1 = 2).  I just need something to \n> capture not only the existence of the edge but the value of the edge.  \n> Thank you for your help!\n> \n\nIf you peruse the documentation for the various centrality routines in \nthe sna package, you will discover that several such variants are \nsupported.  Details depend on the measure, and are described in the \naforesaid man pages.\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "Hi, Jared -\n\nstanj@u.washington.edu wrote:\n> Hello,\n> I apologize but I had actually posted a question a couple of days ago, \n> but I have figured some things out and would actually have a slightly \n>",
+      "thread_id": "thread-89f0616a14cd",
+      "thread_depth": 1,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-32c520498f0e",
+      "message_id": "<79E1365F-205C-44A1-8B9A-50D670D9EFA9@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-08-31T04:56:46Z",
+      "subject": "[statnet_help] Edgelist (two dimensional array) to network object",
+      "subject_clean": "[statnet_help] Edgelist (two dimensional array) to network object",
+      "in_reply_to": "<52FE1BA1-E9B5-4740-9637-E360A63DC526@sunrise.ch>",
+      "references": [
+        "<52FE1BA1-E9B5-4740-9637-E360A63DC526@sunrise.ch>"
+      ],
+      "body_plain": "Hi Rico.  It's hard to know for sure without seeing how your  \n\"edgelist\" object was created, but it sounds like you've managed to  \ncreate a matrix of lists.\nTry typing \"edgelist <- matrix(unlist(edgelist), ncol=2)\" before the  \n\"network\" command.\n\nDavid Hunter\nAssociate professor\nDepartment of Statistics\nPenn State University\nPhone:  (814) 863-0979\nFax:  (814) 863-7114\nwww.stat.psu.edu/~dhunter\n\n\n\nOn Aug 31, 2009, at 7:02 AM, Rico Leuthold wrote:\n\n> Hi,\n>\n> I sent the message below earlier this morning. In the meantime I  \n> wrote a function to extract an edgelist for the desired subgraphs.\n>\n> But when I try to get a network object from the edgelist I get an  \n> error:\n>\n> > edgelist\n>     [,1] [,2]\n> [1,] 36   32\n> [2,] 36   40\n> [3,] 48   47\n> [4,] 61   57\n> [5,] 61   69\n> [6,] 61   62\n> [7,] 71   62\n> [8,] 61   73\n> > network(edgelist,matrix.type=\"edgelist\",directed=FALSE)\n> Fehler in max(x[, 1:2]) : ung?ltiger 'type' (list) des Argumentes\n>\n> Sorry for spamming this list, but I have no idea whats going wrong.\n>\n> -rico\n>\n>\n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> = \n> ======================================================================\n> Hi,\n>\n> For my thesis, I need to compare the subgraphs of a network based on  \n> the gender attribute. The gender data is stored as vertex attribute.  \n> What I need is a comparison of some node level indices, such as the  \n> degree, within a gender and between the genders.\n>\n> Is there a way to extract a subgraph by gender, or to restrict the  \n> calculation of the indices to the gender?\n>\n> Any help is appreciated - thank you ...\n>\n> -rico\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Rico.  It's hard to know for sure without seeing how your  \n\"edgelist\" object was created, but it sounds like you've managed to  \ncreate a matrix of lists.\nTry typing \"edgelist <- matrix(unlist(edg",
+      "thread_id": "thread-fc2417c1342c",
+      "thread_depth": 1,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-13a62ffb886e",
+      "message_id": "<4A9BBC24.7050901@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2009-08-31T05:03:48Z",
+      "subject": "[statnet_help] Edgelist (two dimensional array) to network object",
+      "subject_clean": "[statnet_help] Edgelist (two dimensional array) to network object",
+      "in_reply_to": "<52FE1BA1-E9B5-4740-9637-E360A63DC526@sunrise.ch>",
+      "references": [
+        "<52FE1BA1-E9B5-4740-9637-E360A63DC526@sunrise.ch>"
+      ],
+      "body_plain": "Hi, Rico -\n\nRico Leuthold wrote:\n> Hi,\n> \n> I sent the message below earlier this morning. In the meantime I wrote a \n> function to extract an edgelist for the desired subgraphs.\n> \n> But when I try to get a network object from the edgelist I get an error:\n> \n>  > edgelist\n>      [,1] [,2]\n> [1,] 36   32\n> [2,] 36   40\n> [3,] 48   47\n> [4,] 61   57\n> [5,] 61   69\n> [6,] 61   62\n> [7,] 71   62\n> [8,] 61   73\n>  > network(edgelist,matrix.type=\"edgelist\",directed=FALSE)\n> Fehler in max(x[, 1:2]) : ung?ltiger 'type' (list) des Argumentes\n> \n> Sorry for spamming this list, but I have no idea whats going wrong.\n\nHmm, I can't seem to replicate your error -- the above code works fine \nfor me on the current release version of network.  Are you sure that \nyour edgelist entries are numeric (as opposed, say, to factors)?  That \nerror message (to the extent that I can make it out) seems to imply that \nthe input data is of the wrong type.  Try re-entering the data, like so, \nand see if you get the same problem:\n\nel<-rbind(\nc(36, 32),\nc(36, 40),\nc(48, 47),\nc(61, 57),\nc(61, 69),\nc(61, 62),\nc(71, 62),\nc(61, 73)\n)\nn<-network(el,matrix.type=\"edgelist\",directed=F)\n\nIf so, then let me know what the error message is.  If not, the problem \nis probably with your input data.\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "Hi, Rico -\n\nRico Leuthold wrote:\n> Hi,\n> \n> I sent the message below earlier this morning. In the meantime I wrote a \n> function to extract an edgelist for the desired subgraphs.\n> \n> But when I try t",
+      "thread_id": "thread-fc2417c1342c",
+      "thread_depth": 1,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-7d34b51b50f5",
+      "message_id": "<4A9BBC4E.4080207@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2009-08-31T05:04:30Z",
+      "subject": "[statnet_help] Use of network() with a charactere edgelist: the edgelist is ranked in alphabetical order in the network object.",
+      "subject_clean": "[statnet_help] Use of network() with a charactere edgelist: the edgelist is ranked in alphabetical order in the network object.",
+      "in_reply_to": "<4A9BB5E1.5090107@uci.edu>",
+      "references": [
+        "<4A9BAF01.8080903@unige.ch>",
+        "<4A9BB5E1.5090107@uci.edu>"
+      ],
+      "body_plain": "Thanks a lot, it helped me a lot!\n\nCarter T. Butts a ?crit :\n> Hi, Victorin -\n> \n> Victorin Luisier wrote:\n>> Dear Statnet users,\n>>\n>> I have discovered a potential problem with the network command. Here \n>> is an example code:\n>>\n>> library(statnet)\n>> resp1<-c(\"Victorin\",\"Alice\",\"Gabrielle\",\"Jonas\",\"Thibault\", \"Nad?ge\")\n>> x<-c(\"Victorin\",\"Alice\",\"Gabrielle\",\"Jonas\",\"Thibault\",\"Nad?ge\",\"Nad?ge\",\"Gabrielle\",\"Victorin\",\"Victorin\") \n>>\n>> y<-c(\"Alice\",\"Victorin\",\"Victorin\",\"Victorin\",\"Jonas\", \n>> \"Jonas\",\"Victorin\",\"Jonas\",\"Alice\",\"\")\n>> el1<-matrix(c(x,y),ncol=2) #charactere edgelist\n>> n1<-network(el1,matrix.type=\"edgelist\")\n>> n1\n>>\n>> As I discovered, the charactere edgelist in n1 is ranked in \n>> alphabetical order and not in the order of appearance of el1. For me \n>> it's a problem because you cannot easily add other variables (like \n>> vertex variables) in n1 and you will probably have corrupted data.\n> \n> This is standard behavior: vertices are coded in sorted ID order for \n> edgelist entry, not by the (arbitrary) order they may happen to appear \n> in your edgelist.  If you want a different vertex order, then I \n> recommend either naming them in the desired order or permuting them ex \n> post facto (see permute.vertexIDs).  The more natural thing to do, \n> however, is to sort your vertex covariates in the order of the vertices \n> prior to entry.\n> \n> I should also point out, by the way, that edges _are_ stored within the \n> network object in the order of entry, as you can verify by using \n> as.matrix(n1,\"edgelist\").  Thus, any edge covariates can be entered in \n> the same order as the original edges, without ill effect.\n> \n> Hope that helps,\n> \n> -Carter\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> \n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Thanks a lot, it helped me a lot!\n\nCarter T. Butts a ?crit :\n> Hi, Victorin -\n> \n> Victorin Luisier wrote:\n>> Dear Statnet users,\n>>\n>> I have discovered a potential problem with the network command. ",
+      "thread_id": "thread-c40b87590105",
+      "thread_depth": 2,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-3c3b6e246729",
+      "message_id": "<4A9BC01F.5010405@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2009-08-31T05:20:47Z",
+      "subject": "[statnet_help] the vertex.attributes option of network()",
+      "subject_clean": "[statnet_help] the vertex.attributes option of network()",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet team,\n\nI think that the \"vertex.attributes\" option of network() doesnt work \n(sorry if this problem is already known, or if i'm wrong :-) :\n\nlibrary(statnet)\nresp2<-paste(\"subj\",1:220,sep=\"\") #list of respondant\nt<-c(182,170,150,180,100,170,220)\nh<-c(1,1,2,2,3,3,3)\nel2<-matrix(c(t,h),ncol=2) #numeric edglist\nn2<-network(el2,vertex.attrnames=resp2)\nn2 %v% \"vertex.names\" # the vertex.attrnames option appears not to work\n\nn2<-network(el2,vertex.attr=list(vertex.names=resp2))\nn2 %v% \"vertex.names\" # seems to work now\n\n\nAnyway, thanks a lot for your work,\nVictorin Luisier\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Dear Statnet team,\n\nI think that the \"vertex.attributes\" option of network() doesnt work \n(sorry if this problem is already known, or if i'm wrong :-) :\n\nlibrary(statnet)\nresp2<-paste(\"subj\",1:220,sep",
+      "thread_id": "thread-3c3b6e246729",
+      "thread_depth": 0,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-56265b37e061",
+      "message_id": "<4A9BC52D.7030105@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2009-08-31T05:42:21Z",
+      "subject": "[statnet_help] the vertex.attributes option of network()",
+      "subject_clean": "[statnet_help] the vertex.attributes option of network()",
+      "in_reply_to": "<4A9BC01F.5010405@unige.ch>",
+      "references": [
+        "<4A9BC01F.5010405@unige.ch>"
+      ],
+      "body_plain": "Hi, Victorin -\n\nVictorin Luisier wrote:\n> Dear Statnet team,\n> \n> I think that the \"vertex.attributes\" option of network() doesnt work \n> (sorry if this problem is already known, or if i'm wrong :-) :\n> \n> library(statnet)\n> resp2<-paste(\"subj\",1:220,sep=\"\") #list of respondant\n> t<-c(182,170,150,180,100,170,220)\n> h<-c(1,1,2,2,3,3,3)\n> el2<-matrix(c(t,h),ncol=2) #numeric edglist\n> n2<-network(el2,vertex.attrnames=resp2)\n> n2 %v% \"vertex.names\" # the vertex.attrnames option appears not to work\n> \n> n2<-network(el2,vertex.attr=list(vertex.names=resp2))\n> n2 %v% \"vertex.names\" # seems to work now\n> \n> \n> Anyway, thanks a lot for your work,\n> Victorin Luisier\n> \n\nYour first call uses the vertex.attrnames argument incorrectly.  This \nargument supplies a list of attribute name vectors (or something that \ncan be sensibly coerced to this.  If you wanted to make such a call, you \nwould do it like so:\n\nn2<-network(el2,vertex.attrnames=rep(\"vertex.names\",220),vertex.attr=list(as.list(resp2)))\n\nThis is cumbersome (though flexible), which is why we do not recommend \nit for general use.  A more obvious thing to do would be\n\nn2 %v% \"vertex.names\" <- resp2\n\nafter having created n2.  In any event, this appears to be a non-error.\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "Hi, Victorin -\n\nVictorin Luisier wrote:\n> Dear Statnet team,\n> \n> I think that the \"vertex.attributes\" option of network() doesnt work \n> (sorry if this problem is already known, or if i'm wrong :-) :",
+      "thread_id": "thread-3c3b6e246729",
+      "thread_depth": 1,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-eaf6c3540dae",
+      "message_id": "<4A9BC99E.4090400@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2009-08-31T06:01:18Z",
+      "subject": "[statnet_help] the vertex.attributes option of network()",
+      "subject_clean": "[statnet_help] the vertex.attributes option of network()",
+      "in_reply_to": "<4A9BC52D.7030105@uci.edu>",
+      "references": [
+        "<4A9BC01F.5010405@unige.ch>",
+        "<4A9BC52D.7030105@uci.edu>"
+      ],
+      "body_plain": "Thanks a lot for this quick response!\n\nHave a nice day,\nVictorin Luisier\n\nCarter T. Butts a ?crit :\n> Hi, Victorin -\n> \n> Victorin Luisier wrote:\n>> Dear Statnet team,\n>>\n>> I think that the \"vertex.attributes\" option of network() doesnt work \n>> (sorry if this problem is already known, or if i'm wrong :-) :\n>>\n>> library(statnet)\n>> resp2<-paste(\"subj\",1:220,sep=\"\") #list of respondant\n>> t<-c(182,170,150,180,100,170,220)\n>> h<-c(1,1,2,2,3,3,3)\n>> el2<-matrix(c(t,h),ncol=2) #numeric edglist\n>> n2<-network(el2,vertex.attrnames=resp2)\n>> n2 %v% \"vertex.names\" # the vertex.attrnames option appears not to work\n>>\n>> n2<-network(el2,vertex.attr=list(vertex.names=resp2))\n>> n2 %v% \"vertex.names\" # seems to work now\n>>\n>>\n>> Anyway, thanks a lot for your work,\n>> Victorin Luisier\n>>\n> \n> Your first call uses the vertex.attrnames argument incorrectly.  This \n> argument supplies a list of attribute name vectors (or something that \n> can be sensibly coerced to this.  If you wanted to make such a call, you \n> would do it like so:\n> \n> n2<-network(el2,vertex.attrnames=rep(\"vertex.names\",220),vertex.attr=list(as.list(resp2))) \n> \n> \n> This is cumbersome (though flexible), which is why we do not recommend \n> it for general use.  A more obvious thing to do would be\n> \n> n2 %v% \"vertex.names\" <- resp2\n> \n> after having created n2.  In any event, this appears to be a non-error.\n> \n> Hope that helps,\n> \n> -Carter\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Thanks a lot for this quick response!\n\nHave a nice day,\nVictorin Luisier\n\nCarter T. Butts a ?crit :\n> Hi, Victorin -\n> \n> Victorin Luisier wrote:\n>> Dear Statnet team,\n>>\n>> I think that the \"vertex.a",
+      "thread_id": "thread-3c3b6e246729",
+      "thread_depth": 2,
+      "month": "2009-08"
+    },
+    {
+      "id": "msg-4807bb4514e2",
+      "message_id": "<509D651AE296014F98C513FA268B4D340E576661@nrccenexb1.nrc.ca>",
+      "from_name": "Demaine, Jeffrey",
+      "from_email_hash": "4d8b15ad936cf3e14262add86332f1358346177b3cebb84888c69bd655b0a39e",
+      "date": "2009-08-31T13:21:02Z",
+      "subject": "[statnet_help] Networksis package unavailable?",
+      "subject_clean": "[statnet_help] Networksis package unavailable?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnetters,\n\nI'm having trouble installing statnet. (This would normally be an\ninexcusably newbie question to post, but I've run statnet before with no\nproblems, so I'm not a total newbie.) The problem stems from the\ninability to retrieve the \"networksis\" package during download:\n\n> install.packages(\"statnet\")\n--- Please select a CRAN mirror for use in this session ---\nWarning: dependency 'networksis' is not available\ntrying URL\n'http://cran.fhcrc.org/bin/windows/contrib/2.9/statnet_2.1.zip'\nContent type 'application/zip' length 58828 bytes (57 Kb)\nopened URL\ndownloaded 57 Kb\n\nI've tried the CRAN mirrors in Ontario, Quebec, and Washington, but get\nthe same message. I'm running version 2.9.2 of R (on a Windows machine).\nIs this just a server issue?\n\nThanks,\n\nJeffrey Demaine\n\nResearcher-Information Science\nCISTI Research\nNational Research Council Canada\n1200 Montreal road\nOttawa, ON \nK1A 0R6\n\ntel. (613) 990-6221\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090831/d51c266a/attachment.html>",
+      "body_snippet": "Dear statnetters,\n\nI'm having trouble installing statnet. (This would normally be an\ninexcusably newbie question to post, but I've run statnet before with no\nproblems, so I'm not a total newbie.) The ",
+      "thread_id": "thread-4807bb4514e2",
+      "thread_depth": 0,
+      "month": "2009-08"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-90429c8b9b55",
+      "subject": "[statnet_help] interpreting GWDSP?",
+      "message_count": 3,
+      "participants": [
+        "Jenine Harris",
+        "Steven Goodreau"
+      ],
+      "started": "2009-08-06T15:19:19Z",
+      "last_reply": "2009-08-18T09:14:49Z",
+      "root_message_id": "msg-90429c8b9b55"
+    },
+    {
+      "id": "thread-1d2c145ebaef",
+      "subject": "[statnet_help] non-significant estimates but significant odds ratios?",
+      "message_count": 3,
+      "participants": [
+        "Jenine Harris",
+        "Mark S. Handcock"
+      ],
+      "started": "2009-08-11T11:24:23Z",
+      "last_reply": "2009-08-11T12:40:06Z",
+      "root_message_id": "msg-1d2c145ebaef"
+    },
+    {
+      "id": "thread-b65f77841ed6",
+      "subject": "[statnet_help] large networks and SparseM",
+      "message_count": 1,
+      "participants": [
+        "Ze grisi"
+      ],
+      "started": "2009-08-14T06:43:29Z",
+      "last_reply": "2009-08-14T06:43:29Z",
+      "root_message_id": "msg-b65f77841ed6"
+    },
+    {
+      "id": "thread-a34f41731413",
+      "subject": "[statnet_help] making tables",
+      "message_count": 1,
+      "participants": [
+        "Elena Grewal"
+      ],
+      "started": "2009-08-17T01:22:45Z",
+      "last_reply": "2009-08-17T01:22:45Z",
+      "root_message_id": "msg-a34f41731413"
+    },
+    {
+      "id": "thread-0b86744cb7ba",
+      "subject": "[statnet_help] how to use nodematch() when each vertex can have more than one value for an attribute",
+      "message_count": 1,
+      "participants": [
+        "Ben Mazzotta"
+      ],
+      "started": "2009-08-17T14:31:47Z",
+      "last_reply": "2009-08-17T14:31:47Z",
+      "root_message_id": "msg-0b86744cb7ba"
+    },
+    {
+      "id": "thread-f0752859e4f2",
+      "subject": "[statnet_help] statnet and igraph function masking",
+      "message_count": 2,
+      "participants": [
+        "Ben Mazzotta",
+        "Rico Leuthold"
+      ],
+      "started": "2009-08-18T07:18:32Z",
+      "last_reply": "2009-08-18T07:25:36Z",
+      "root_message_id": "msg-f0752859e4f2"
+    },
+    {
+      "id": "thread-64cb97b638b8",
+      "subject": "[statnet_help] Convert network adjacency matrix to indexed matrix",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Rico Leuthold"
+      ],
+      "started": "2009-08-19T02:01:13Z",
+      "last_reply": "2009-08-20T18:45:22Z",
+      "root_message_id": "msg-64cb97b638b8"
+    },
+    {
+      "id": "thread-b1ebcbbba2c6",
+      "subject": "[statnet_help] Valued Edges Help",
+      "message_count": 1,
+      "participants": [
+        "stanj@u.washington.edu"
+      ],
+      "started": "2009-08-21T12:27:07Z",
+      "last_reply": "2009-08-21T12:27:07Z",
+      "root_message_id": "msg-b1ebcbbba2c6"
+    },
+    {
+      "id": "thread-0ca596cc9ee7",
+      "subject": "[statnet_help] coef(ergm(Network ~ edges + triangles) )?",
+      "message_count": 5,
+      "participants": [
+        "David Hunter",
+        "Mark S. Handcock",
+        "Randall Lewis",
+        "Steven Goodreau"
+      ],
+      "started": "2009-08-24T10:15:09Z",
+      "last_reply": "2009-08-24T10:55:07Z",
+      "root_message_id": "msg-0ca596cc9ee7"
+    },
+    {
+      "id": "thread-89f0616a14cd",
+      "subject": "[statnet_help] Centrality Measures Using Valued Edges?",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "stanj@u.washington.edu"
+      ],
+      "started": "2009-08-26T10:50:18Z",
+      "last_reply": "2009-08-31T04:48:06Z",
+      "root_message_id": "msg-89f0616a14cd"
+    },
+    {
+      "id": "thread-17bff0e95655",
+      "subject": "[statnet_help] Extracting subgraph based on vertex attribute or restrict calculation of node level indices",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Rico Leuthold"
+      ],
+      "started": "2009-08-31T00:57:01Z",
+      "last_reply": "2009-08-31T04:40:38Z",
+      "root_message_id": "msg-17bff0e95655"
+    },
+    {
+      "id": "thread-fc2417c1342c",
+      "subject": "[statnet_help] Edgelist (two dimensional array) to network object",
+      "message_count": 3,
+      "participants": [
+        "Carter T. Butts",
+        "David Hunter",
+        "Rico Leuthold"
+      ],
+      "started": "2009-08-31T04:02:21Z",
+      "last_reply": "2009-08-31T05:03:48Z",
+      "root_message_id": "msg-fc2417c1342c"
+    },
+    {
+      "id": "thread-c40b87590105",
+      "subject": "[statnet_help] Use of network() with a charactere edgelist: the edgelist is ranked in alphabetical order in the network object.",
+      "message_count": 3,
+      "participants": [
+        "Carter T. Butts",
+        "Victorin Luisier"
+      ],
+      "started": "2009-08-31T04:07:45Z",
+      "last_reply": "2009-08-31T05:04:30Z",
+      "root_message_id": "msg-c40b87590105"
+    },
+    {
+      "id": "thread-3c3b6e246729",
+      "subject": "[statnet_help] the vertex.attributes option of network()",
+      "message_count": 3,
+      "participants": [
+        "Carter T. Butts",
+        "Victorin Luisier"
+      ],
+      "started": "2009-08-31T05:20:47Z",
+      "last_reply": "2009-08-31T06:01:18Z",
+      "root_message_id": "msg-3c3b6e246729"
+    },
+    {
+      "id": "thread-4807bb4514e2",
+      "subject": "[statnet_help] Networksis package unavailable?",
+      "message_count": 1,
+      "participants": [
+        "Demaine, Jeffrey"
+      ],
+      "started": "2009-08-31T13:21:02Z",
+      "last_reply": "2009-08-31T13:21:02Z",
+      "root_message_id": "msg-4807bb4514e2"
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2009-04",
+  "messages": [
+    {
+      "id": "msg-b6db7099b138",
+      "message_id": "<49E36E3E.7080900@codexdata.com>",
+      "from_name": "Sean Downey",
+      "from_email_hash": "60c0cfa2fede86c1d1d1282d028eacc5f162e16618da006be9cab8556852b6ba",
+      "date": "2009-04-13T09:54:22Z",
+      "subject": "[statnet_help] Importing Pajek file with partition?",
+      "subject_clean": "[statnet_help] Importing Pajek file with partition?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI've been going through for various Statnet tutorials and papers for the \nlast couple weeks now, and am finally getting down to running some of my \nown data. Right now I am trying to figure out the easiest was to load my \nnetwork which has node attributes into the network object. So far I've \ndone this with the read.paj command. I can get this to work with both a \n.net and .paj file and I can visualize the network. However, it seems to \nme like I need to somehow convert the partition (node attributes) into \nvertex attributes before I can use those attributes to fit an ERGM. Any \nhelp is greatly appreciated.\n\nThanks,\n\nSean\n-- \n\nSean Downey\n\nDepartment of Anthropology\n\nUniversity of Arizona\n\n1009 East South Campus Drive\n\nP.O. Box 210030 \n\nTucson, AZ 85721-0030\n\n\nOffice: 520-621-6310 \n\nFax: 860-540-9523\n\nEmail: sean@codexdata.com \n\nWebsite: http://www.u.arizona.edu/~sdowney/",
+      "body_snippet": "Hello,\n\nI've been going through for various Statnet tutorials and papers for the \nlast couple weeks now, and am finally getting down to running some of my \nown data. Right now I am trying to figure ou",
+      "thread_id": "thread-b6db7099b138",
+      "thread_depth": 0,
+      "month": "2009-04"
+    },
+    {
+      "id": "msg-035e64f70dca",
+      "message_id": "<7363ACF6765958459F9FD54410108A48A4FAD6@HOLLY.ads.warwick.ac.uk>",
+      "from_name": "Goudie, Robert",
+      "from_email_hash": "5199984aa8aede3f376c456ba16782c542ad430afe2baba5712693f4734c4f9e",
+      "date": "2009-04-13T12:33:02Z",
+      "subject": "[statnet_help] TNT MCMC Sampler",
+      "subject_clean": "[statnet_help] TNT MCMC Sampler",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI'm looking into the details of Statnet's implementation of the MCMC algorithm for simulating draws from ERGM.\n\nMorris et al (\"Specification of Exponential-Family Random Graph Models: Terms and Computational Aspects.\" 2008, in J. Stat. Soft. v24) says that Statnet by default implements a \"tie-no-tie sampler\". The paper says the sampler \"chooses an empty dyad with probability 1/2\".\n\nHowever, I have been looking at the C source code for the sampler (MH_TNT() in MHproposals.c - version from CRAN today), and my reading of this implies a slightly different algorithm has been implemented. It appears to me a tie (rather than empty dyad) is selected at random with probability 1/2, and otherwise any dyad is selected. This doesn't seem to me to be the same as the sampler described in Morris et al. It is very possible I am not fully understanding the C though - I wonder if there is documentation somewhere that confirms whether this has changed?\n\nI'd be grateful for any help.\n\nMany thanks,\n\nRobert Goudie\n\n-- \nPh.D. Student\nDepartment of Statistics\nUniversity of Warwick\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090413/ec5d9d3e/attachment.html>",
+      "body_snippet": "Hi all,\n\nI'm looking into the details of Statnet's implementation of the MCMC algorithm for simulating draws from ERGM.\n\nMorris et al (\"Specification of Exponential-Family Random Graph Models: Terms a",
+      "thread_id": "thread-035e64f70dca",
+      "thread_depth": 0,
+      "month": "2009-04"
+    },
+    {
+      "id": "msg-ab5ecc4847ed",
+      "message_id": "<7B16BC5E-5AA0-4507-BC59-5A5EF69CCD08@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-04-16T12:40:10Z",
+      "subject": "[statnet_help] TNT MCMC Sampler",
+      "subject_clean": "[statnet_help] TNT MCMC Sampler",
+      "in_reply_to": "<7363ACF6765958459F9FD54410108A48A4FAD6@HOLLY.ads.warwick.ac.uk>",
+      "references": [
+        "<7363ACF6765958459F9FD54410108A48A4FAD6@HOLLY.ads.warwick.ac.uk>"
+      ],
+      "body_plain": "Hi Robert.  Coincidentally, I was just looking at that same patch of  \ncode with a grad student.  You are correct:  The TNT proposal does not  \nchoose an empty dyad with probability 1/2; in fact, this probability  \nis actually somewhat less than 50% in the current implementation.  It  \nwould certainly be possible to modify this code (by allowing the  \nfunction to change the value of the \"comp\" variable) so that the  \nprobability is exactly 50%, but when comp=0.5 as it is presently set,  \nyour description below is correct.\n\nFor a sparse graph, the probability of choosing an empty dyad is close  \nto 50%, but nevertheless the description in the article is not accurate.\n\nSorry we did not catch that error in the article!\n\nDave\n\n\n\nOn Apr 13, 2009, at 3:33 PM, Goudie, Robert wrote:\n\n> Hi all,\n>\n> I'm looking into the details of Statnet's implementation of the MCMC  \n> algorithm for simulating draws from ERGM.\n>\n> Morris et al (\"Specification of Exponential-Family Random Graph  \n> Models: Terms and Computational Aspects.\" 2008, in J. Stat. Soft.  \n> v24) says that Statnet by default implements a \"tie-no-tie sampler\".  \n> The paper says the sampler \"chooses an empty dyad with probability  \n> 1/2\".\n>\n> However, I have been looking at the C source code for the sampler  \n> (MH_TNT() in MHproposals.c - version from CRAN today), and my  \n> reading of this implies a slightly different algorithm has been  \n> implemented. It appears to me a tie (rather than empty dyad) is  \n> selected at random with probability 1/2, and otherwise any dyad is  \n> selected. This doesn't seem to me to be the same as the sampler  \n> described in Morris et al. It is very possible I am not fully  \n> understanding the C though - I wonder if there is documentation  \n> somewhere that confirms whether this has changed?\n>\n> I'd be grateful for any help.\n>\n> Many thanks,\n>\n> Robert Goudie\n>\n> --\n> Ph.D. Student\n> Department of Statistics\n> University of Warwick\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090416/bc00e045/attachment.html>",
+      "body_snippet": "Hi Robert.  Coincidentally, I was just looking at that same patch of  \ncode with a grad student.  You are correct:  The TNT proposal does not  \nchoose an empty dyad with probability 1/2; in fact, this",
+      "thread_id": "thread-035e64f70dca",
+      "thread_depth": 1,
+      "month": "2009-04"
+    },
+    {
+      "id": "msg-2b31fa726443",
+      "message_id": "<Pine.LNX.4.43.0904171155560.7002@hymn33.u.washington.edu>",
+      "from_name": "David A. Nolin",
+      "from_email_hash": "9bdba4bb84525b0697b0c9619af7e9af2b1f5002747878ee0c904c5a04fc85a6",
+      "date": "2009-04-17T11:55:56Z",
+      "subject": "[statnet_help] TNT MCMC Sampler",
+      "subject_clean": "[statnet_help] TNT MCMC Sampler",
+      "in_reply_to": "<7B16BC5E-5AA0-4507-BC59-5A5EF69CCD08@stat.psu.edu>",
+      "references": [],
+      "body_plain": "Am I correct that this only affects the efficiency of the MCMC sampling and should have no effect on the estimated coefficients?\n\n\nOn Thu, 16 Apr 2009, David Hunter wrote:\n\n> Hi Robert.  Coincidentally, I was just looking at that same patch of code with \n> a grad student.  You are correct:  The TNT proposal does not choose an empty \n> dyad with probability 1/2; in fact, this probability is actually somewhat less \n> than 50% in the current implementation.  It would certainly be possible to \n> modify this code (by allowing the function to change the value of the \"comp\" \n> variable) so that the probability is exactly 50%, but when comp=0.5 as it is \n> presently set, your description below is correct.\n>\n> For a sparse graph, the probability of choosing an empty dyad is close to 50%, \n> but nevertheless the description in the article is not accurate.\n>\n> Sorry we did not catch that error in the article!\n>\n> Dave\n>\n>\n>\n> On Apr 13, 2009, at 3:33 PM, Goudie, Robert wrote:\n>\n>> Hi all,\n>> \n>> I'm looking into the details of Statnet's implementation of the MCMC \n>> algorithm for simulating draws from ERGM.\n>> \n>> Morris et al (\"Specification of Exponential-Family Random Graph Models: \n>> Terms and Computational Aspects.\" 2008, in J. Stat. Soft. v24) says that \n>> Statnet by default implements a \"tie-no-tie sampler\". The paper says the \n>> sampler \"chooses an empty dyad with probability 1/2\".\n>> \n>> However, I have been looking at the C source code for the sampler (MH_TNT() \n>> in MHproposals.c - version from CRAN today), and my reading of this implies \n>> a slightly different algorithm has been implemented. It appears to me a tie \n>> (rather than empty dyad) is selected at random with probability 1/2, and \n>> otherwise any dyad is selected. This doesn't seem to me to be the same as \n>> the sampler described in Morris et al. It is very possible I am not fully \n>> understanding the C though - I wonder if there is documentation somewhere \n>> that confirms whether this has changed?\n>> \n>> I'd be grateful for any help.\n>> \n>> Many thanks,\n>> \n>> Robert Goudie\n>> \n>> --\n>> Ph.D. Student\n>> Department of Statistics\n>> University of Warwick\n>> \n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>",
+      "body_snippet": "Am I correct that this only affects the efficiency of the MCMC sampling and should have no effect on the estimated coefficients?\n\n\nOn Thu, 16 Apr 2009, David Hunter wrote:\n\n> Hi Robert.  Coincidentall",
+      "thread_id": "thread-035e64f70dca",
+      "thread_depth": 2,
+      "month": "2009-04"
+    },
+    {
+      "id": "msg-9038900e983a",
+      "message_id": "<6F273031-3F60-461B-BDAF-5A39A7E033F0@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-04-17T13:23:04Z",
+      "subject": "[statnet_help] TNT MCMC Sampler",
+      "subject_clean": "[statnet_help] TNT MCMC Sampler",
+      "in_reply_to": "<Pine.LNX.4.43.0904171155560.7002@hymn33.u.washington.edu>",
+      "references": [
+        "<Pine.LNX.4.43.0904171155560.7002@hymn33.u.washington.edu>"
+      ],
+      "body_plain": "Yes, you are exactly right.\n\nDave\n\nOn Apr 17, 2009, at 2:55 PM, David A. Nolin wrote:\n\n> Am I correct that this only affects the efficiency of the MCMC  \n> sampling and should have no effect on the estimated coefficients?\n>\n>\n> On Thu, 16 Apr 2009, David Hunter wrote:\n>\n>> Hi Robert.  Coincidentally, I was just looking at that same patch  \n>> of code with a grad student.  You are correct:  The TNT proposal  \n>> does not choose an empty dyad with probability 1/2; in fact, this  \n>> probability is actually somewhat less than 50% in the current  \n>> implementation.  It would certainly be possible to modify this code  \n>> (by allowing the function to change the value of the \"comp\"  \n>> variable) so that the probability is exactly 50%, but when comp=0.5  \n>> as it is presently set, your description below is correct.\n>>\n>> For a sparse graph, the probability of choosing an empty dyad is  \n>> close to 50%, but nevertheless the description in the article is  \n>> not accurate.\n>>\n>> Sorry we did not catch that error in the article!\n>>\n>> Dave\n>>\n>>\n>>\n>> On Apr 13, 2009, at 3:33 PM, Goudie, Robert wrote:\n>>\n>>> Hi all,\n>>> I'm looking into the details of Statnet's implementation of the  \n>>> MCMC algorithm for simulating draws from ERGM.\n>>> Morris et al (\"Specification of Exponential-Family Random Graph  \n>>> Models: Terms and Computational Aspects.\" 2008, in J. Stat. Soft.  \n>>> v24) says that Statnet by default implements a \"tie-no-tie  \n>>> sampler\". The paper says the sampler \"chooses an empty dyad with  \n>>> probability 1/2\".\n>>> However, I have been looking at the C source code for the sampler  \n>>> (MH_TNT() in MHproposals.c - version from CRAN today), and my  \n>>> reading of this implies a slightly different algorithm has been  \n>>> implemented. It appears to me a tie (rather than empty dyad) is  \n>>> selected at random with probability 1/2, and otherwise any dyad is  \n>>> selected. This doesn't seem to me to be the same as the sampler  \n>>> described in Morris et al. It is very possible I am not fully  \n>>> understanding the C though - I wonder if there is documentation  \n>>> somewhere that confirms whether this has changed?\n>>> I'd be grateful for any help.\n>>> Many thanks,\n>>> Robert Goudie\n>>> --\n>>> Ph.D. Student\n>>> Department of Statistics\n>>> University of Warwick\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Yes, you are exactly right.\n\nDave\n\nOn Apr 17, 2009, at 2:55 PM, David A. Nolin wrote:\n\n> Am I correct that this only affects the efficiency of the MCMC  \n> sampling and should have no effect on the es",
+      "thread_id": "thread-035e64f70dca",
+      "thread_depth": 3,
+      "month": "2009-04"
+    },
+    {
+      "id": "msg-7d85e6e5f547",
+      "message_id": "<7363ACF6765958459F9FD54410108A48A4FB58@HOLLY.ads.warwick.ac.uk>",
+      "from_name": "Goudie, Robert",
+      "from_email_hash": "5199984aa8aede3f376c456ba16782c542ad430afe2baba5712693f4734c4f9e",
+      "date": "2009-04-18T13:23:28Z",
+      "subject": "[statnet_help] TNT MCMC Sampler",
+      "subject_clean": "[statnet_help] TNT MCMC Sampler",
+      "in_reply_to": null,
+      "references": [
+        "<Pine.LNX.4.43.0904171155560.7002@hymn33.u.washington.edu>",
+        "<6F273031-3F60-461B-BDAF-5A39A7E033F0@stat.psu.edu>"
+      ],
+      "body_plain": "Hi David. Many thanks for your emails clearing up my question about the sampler.\n\nFor the sampler implemented, I think there may be a problem with a minor edge case. (Again, it is very possible I am not fully understanding the C.) The case involves proposals to and from the empty graph - so clearly in practice this isn't an important issue.\n\nSuppose current graph y. Draw proposal y' from proposal density Q. Suppose y has 1 edge, and y' is the empty graph. Then,\n\nQ(y |y') = 1/ndyads [rather than (1-comp)/ndyads, since can't remove an edge from an empty graph]\nQ(y'|y ) = comp/nedges + (1 - comp)/ndyads = comp + (1 - comp)/ndyads\n\nHastings factor \n= 1/(comp * ndyads + (1 - comp))\n!= nedges/(odds * ndyads + nedges)\n= 1/(odds * ndyads + 1)\n\nThe case when y is the empty graph, y' is a graph with 1 edge is similar.\n\nThanks again,\n\nRobert Goudie\n\n-- \nPh.D. Student\nDepartment of Statistics\nUniversity of Warwick\n\n\n-----Original Message-----\nFrom: statnet_help-bounces@mailman2.u.washington.edu on behalf of David Hunter\nSent: Fri 4/17/2009 9:23 PM\nTo: statnet help mailing list\nSubject: Re: [statnet_help] TNT MCMC Sampler\n \nYes, you are exactly right.\n\nDave\n\nOn Apr 17, 2009, at 2:55 PM, David A. Nolin wrote:\n\n> Am I correct that this only affects the efficiency of the MCMC  \n> sampling and should have no effect on the estimated coefficients?\n>\n>\n> On Thu, 16 Apr 2009, David Hunter wrote:\n>\n>> Hi Robert.  Coincidentally, I was just looking at that same patch  \n>> of code with a grad student.  You are correct:  The TNT proposal  \n>> does not choose an empty dyad with probability 1/2; in fact, this  \n>> probability is actually somewhat less than 50% in the current  \n>> implementation.  It would certainly be possible to modify this code  \n>> (by allowing the function to change the value of the \"comp\"  \n>> variable) so that the probability is exactly 50%, but when comp=0.5  \n>> as it is presently set, your description below is correct.\n>>\n>> For a sparse graph, the probability of choosing an empty dyad is  \n>> close to 50%, but nevertheless the description in the article is  \n>> not accurate.\n>>\n>> Sorry we did not catch that error in the article!\n>>\n>> Dave\n>>\n>>\n>>\n>> On Apr 13, 2009, at 3:33 PM, Goudie, Robert wrote:\n>>\n>>> Hi all,\n>>> I'm looking into the details of Statnet's implementation of the  \n>>> MCMC algorithm for simulating draws from ERGM.\n>>> Morris et al (\"Specification of Exponential-Family Random Graph  \n>>> Models: Terms and Computational Aspects.\" 2008, in J. Stat. Soft.  \n>>> v24) says that Statnet by default implements a \"tie-no-tie  \n>>> sampler\". The paper says the sampler \"chooses an empty dyad with  \n>>> probability 1/2\".\n>>> However, I have been looking at the C source code for the sampler  \n>>> (MH_TNT() in MHproposals.c - version from CRAN today), and my  \n>>> reading of this implies a slightly different algorithm has been  \n>>> implemented. It appears to me a tie (rather than empty dyad) is  \n>>> selected at random with probability 1/2, and otherwise any dyad is  \n>>> selected. This doesn't seem to me to be the same as the sampler  \n>>> described in Morris et al. It is very possible I am not fully  \n>>> understanding the C though - I wonder if there is documentation  \n>>> somewhere that confirms whether this has changed?\n>>> I'd be grateful for any help.\n>>> Many thanks,\n>>> Robert Goudie\n>>> --\n>>> Ph.D. Student\n>>> Department of Statistics\n>>> University of Warwick\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090418/7ede1c9e/attachment.html>",
+      "body_snippet": "Hi David. Many thanks for your emails clearing up my question about the sampler.\n\nFor the sampler implemented, I think there may be a problem with a minor edge case. (Again, it is very possible I am n",
+      "thread_id": "thread-035e64f70dca",
+      "thread_depth": 4,
+      "month": "2009-04"
+    },
+    {
+      "id": "msg-0333fda872c9",
+      "message_id": "<008801c9c293$93109b90$b931d2b0$@vlegels@ugent.be>",
+      "from_name": "Jef Vlegels",
+      "from_email_hash": "2c9ae18a029cd39586b4e15b856c86d0cc1fdfd9dda1c4b1b282a6e2cfb21479",
+      "date": "2009-04-21T08:12:23Z",
+      "subject": "[statnet_help] Change statistics",
+      "subject_clean": "[statnet_help] Change statistics",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet users,\n\n \n\nI've got another question for you all.\n\nHow can I pull out the change statistics for each dyad i,j in a (directed)\nnetwork? I mean the change in, for example, transitivity (or 2-in-stars,\ngwesp, etc) when the dyad between i and j changes. If I get it right, it\nshould give me N x N-1 (every dyad) results for each statistic of a network.\n\n\n \n\nThanks in advance,\n\n \n\nJef\n\n \n\n \n\n \n\nJef Vlegels\nUniversiteit Gent\nVakgroep Sociologie\nKorte Meer 3 \nB-9000 Gent\nPhone: +32 (0)9 264.91.75\nFax: +32 (0)9 264.69.75\njef.vlegels@ugent.be\n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090421/e154dc70/attachment.html>",
+      "body_snippet": "Dear statnet users,\n\n \n\nI've got another question for you all.\n\nHow can I pull out the change statistics for each dyad i,j in a (directed)\nnetwork? I mean the change in, for example, transitivity (or ",
+      "thread_id": "thread-0333fda872c9",
+      "thread_depth": 0,
+      "month": "2009-04"
+    },
+    {
+      "id": "msg-56852ebe2cf3",
+      "message_id": "<1629e2bb0904270245n363522aes314ae292c224d1b3@mail.gmail.com>",
+      "from_name": "Moses Boudourides",
+      "from_email_hash": "c5624448747271419acb164061064e1a7b0a1e969681d0b921805e16e6affe4a",
+      "date": "2009-04-27T02:45:56Z",
+      "subject": "[statnet_help] Question about ERGM on valued networks",
+      "subject_clean": "[statnet_help] Question about ERGM on valued networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nCould you please inform me of any works applying the ERGM analyses on\nvalued networks? If there exist such analyses, I would be interested\nfor both the case of 1-mode valued networks and 2-mode valued\nnetworks.\n\nBest,\n\n--Moses",
+      "body_snippet": "Hello,\n\nCould you please inform me of any works applying the ERGM analyses on\nvalued networks? If there exist such analyses, I would be interested\nfor both the case of 1-mode valued networks and 2-mod",
+      "thread_id": "thread-56852ebe2cf3",
+      "thread_depth": 0,
+      "month": "2009-04"
+    },
+    {
+      "id": "msg-49166e472cb4",
+      "message_id": "<6A2FE670-5D69-4C40-BE02-AB6143648F8A@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-04-30T02:13:32Z",
+      "subject": "[statnet_help] TNT MCMC Sampler",
+      "subject_clean": "[statnet_help] TNT MCMC Sampler",
+      "in_reply_to": "<7363ACF6765958459F9FD54410108A48A4FB58@HOLLY.ads.warwick.ac.uk>",
+      "references": [
+        "<Pine.LNX.4.43.0904171155560.7002@hymn33.u.washington.edu>",
+        "<6F273031-3F60-461B-BDAF-5A39A7E033F0@stat.psu.edu>",
+        "<7363ACF6765958459F9FD54410108A48A4FB58@HOLLY.ads.warwick.ac.uk>"
+      ],
+      "body_plain": "Hi Robert.   Nice catch -- you're correct about the case of moving  \nfrom the empty graph to the one-edge graph and vice-versa.  We will  \nfix this in the next release of ergm.\n\nIncidentally, this bug is as you point out almost never an issue in  \npractice, but it is possible to construct an example specifically to  \nreveal it:\nx <- network(1-diag(3),dir=F)\ns <- simulate(x~edges, nsim=1e+4, theta0=-2, interval=100, statsonly=T)\n\nIn this example of an undirected 3-node network, the expected number  \nof edges is 3*exp(-2)/(1+exp(-2)), which is\n > 3*exp(-2)/(1+exp(-2))\n[1] 0.3576088\n\nYet what I get from the simulation is consistently too high.\n > mean(s)\n[1] 0.5404\n\nI suspect this may be due to the bias introduced by the Hastings ratio  \nproblem.\n\nDave\n\n\nOn Apr 18, 2009, at 4:23 PM, Goudie, Robert wrote:\n\n> Hi David. Many thanks for your emails clearing up my question about  \n> the sampler.\n>\n> For the sampler implemented, I think there may be a problem with a  \n> minor edge case. (Again, it is very possible I am not fully  \n> understanding the C.) The case involves proposals to and from the  \n> empty graph - so clearly in practice this isn't an important issue.\n>\n> Suppose current graph y. Draw proposal y' from proposal density Q.  \n> Suppose y has 1 edge, and y' is the empty graph. Then,\n>\n> Q(y |y') = 1/ndyads [rather than (1-comp)/ndyads, since can't remove  \n> an edge from an empty graph]\n> Q(y'|y ) = comp/nedges + (1 - comp)/ndyads = comp + (1 - comp)/ndyads\n>\n> Hastings factor\n> = 1/(comp * ndyads + (1 - comp))\n> != nedges/(odds * ndyads + nedges)\n> = 1/(odds * ndyads + 1)\n>\n> The case when y is the empty graph, y' is a graph with 1 edge is  \n> similar.\n>\n> Thanks again,\n>\n> Robert Goudie\n>\n> --\n> Ph.D. Student\n> Department of Statistics\n> University of Warwick\n>\n>\n> -----Original Message-----\n> From: statnet_help-bounces@mailman2.u.washington.edu on behalf of  \n> David Hunter\n> Sent: Fri 4/17/2009 9:23 PM\n> To: statnet help mailing list\n> Subject: Re: [statnet_help] TNT MCMC Sampler\n>\n> Yes, you are exactly right.\n>\n> Dave\n>\n> On Apr 17, 2009, at 2:55 PM, David A. Nolin wrote:\n>\n> > Am I correct that this only affects the efficiency of the MCMC\n> > sampling and should have no effect on the estimated coefficients?\n> >\n> >\n> > On Thu, 16 Apr 2009, David Hunter wrote:\n> >\n> >> Hi Robert.  Coincidentally, I was just looking at that same patch\n> >> of code with a grad student.  You are correct:  The TNT proposal\n> >> does not choose an empty dyad with probability 1/2; in fact, this\n> >> probability is actually somewhat less than 50% in the current\n> >> implementation.  It would certainly be possible to modify this code\n> >> (by allowing the function to change the value of the \"comp\"\n> >> variable) so that the probability is exactly 50%, but when comp=0.5\n> >> as it is presently set, your description below is correct.\n> >>\n> >> For a sparse graph, the probability of choosing an empty dyad is\n> >> close to 50%, but nevertheless the description in the article is\n> >> not accurate.\n> >>\n> >> Sorry we did not catch that error in the article!\n> >>\n> >> Dave\n> >>\n> >>\n> >>\n> >> On Apr 13, 2009, at 3:33 PM, Goudie, Robert wrote:\n> >>\n> >>> Hi all,\n> >>> I'm looking into the details of Statnet's implementation of the\n> >>> MCMC algorithm for simulating draws from ERGM.\n> >>> Morris et al (\"Specification of Exponential-Family Random Graph\n> >>> Models: Terms and Computational Aspects.\" 2008, in J. Stat. Soft.\n> >>> v24) says that Statnet by default implements a \"tie-no-tie\n> >>> sampler\". The paper says the sampler \"chooses an empty dyad with\n> >>> probability 1/2\".\n> >>> However, I have been looking at the C source code for the sampler\n> >>> (MH_TNT() in MHproposals.c - version from CRAN today), and my\n> >>> reading of this implies a slightly different algorithm has been\n> >>> implemented. It appears to me a tie (rather than empty dyad) is\n> >>> selected at random with probability 1/2, and otherwise any dyad is\n> >>> selected. This doesn't seem to me to be the same as the sampler\n> >>> described in Morris et al. It is very possible I am not fully\n> >>> understanding the C though - I wonder if there is documentation\n> >>> somewhere that confirms whether this has changed?\n> >>> I'd be grateful for any help.\n> >>> Many thanks,\n> >>> Robert Goudie\n> >>> --\n> >>> Ph.D. Student\n> >>> Department of Statistics\n> >>> University of Warwick\n> >>> _______________________________________________\n> >>> statnet_help mailing list\n> >>> statnet_help@u.washington.edu\n> >>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> >>\n> >>\n> >\n> >\n> > _______________________________________________\n> > statnet_help mailing list\n> > statnet_help@u.washington.edu\n> > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090430/94273634/attachment.html>",
+      "body_snippet": "Hi Robert.   Nice catch -- you're correct about the case of moving  \nfrom the empty graph to the one-edge graph and vice-versa.  We will  \nfix this in the next release of ergm.\n\nIncidentally, this bug",
+      "thread_id": "thread-035e64f70dca",
+      "thread_depth": 5,
+      "month": "2009-04"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-b6db7099b138",
+      "subject": "[statnet_help] Importing Pajek file with partition?",
+      "message_count": 1,
+      "participants": [
+        "Sean Downey"
+      ],
+      "started": "2009-04-13T09:54:22Z",
+      "last_reply": "2009-04-13T09:54:22Z",
+      "root_message_id": "msg-b6db7099b138"
+    },
+    {
+      "id": "thread-035e64f70dca",
+      "subject": "[statnet_help] TNT MCMC Sampler",
+      "message_count": 6,
+      "participants": [
+        "David A. Nolin",
+        "David Hunter",
+        "Goudie, Robert"
+      ],
+      "started": "2009-04-13T12:33:02Z",
+      "last_reply": "2009-04-30T02:13:32Z",
+      "root_message_id": "msg-035e64f70dca"
+    },
+    {
+      "id": "thread-0333fda872c9",
+      "subject": "[statnet_help] Change statistics",
+      "message_count": 1,
+      "participants": [
+        "Jef Vlegels"
+      ],
+      "started": "2009-04-21T08:12:23Z",
+      "last_reply": "2009-04-21T08:12:23Z",
+      "root_message_id": "msg-0333fda872c9"
+    },
+    {
+      "id": "thread-56852ebe2cf3",
+      "subject": "[statnet_help] Question about ERGM on valued networks",
+      "message_count": 1,
+      "participants": [
+        "Moses Boudourides"
+      ],
+      "started": "2009-04-27T02:45:56Z",
+      "last_reply": "2009-04-27T02:45:56Z",
+      "root_message_id": "msg-56852ebe2cf3"
+    }
+  ]
+}

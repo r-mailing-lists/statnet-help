@@ -1,0 +1,281 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2007-03",
+  "messages": [
+    {
+      "id": "msg-b32fe3ac8b2b",
+      "message_id": "<C20F20BE.C872%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2007-03-03T12:55:26Z",
+      "subject": "[statnet_help] Feature Request",
+      "subject_clean": "[statnet_help] Feature Request",
+      "in_reply_to": "<45DF4BC7.8080701@uci.edu>",
+      "references": [],
+      "body_plain": "Hi Ben,\n\nThanks for the suggestions. We are in the process of adding a lot of\nfeatures in preparation for the Workshop at this year's Sunbelt Conference\nin Corfu (http://nicomedia.math.upatras.gr/conf/Sunbelt2007).\n\nThese are good ideas and we have updated \"statnet\" to version 1.0-14 to\naccommodate them. Explicitly:\n\n1) To force the use of the MCMC algorithm for dyad independence models, give\nthe option \"force.mcmc\" e.g.,\n\nfit <- ergm(flomarriage ~ edges, algorithm.control=list(force.mcmc=T))\n\n2) There is a new summary command called \"Summary.ergm\" that returns all the\nobjects it prints. For example,\n\n# The usual summary\nSummary.ergm(fit)\n# Save the results\nout <- Summary.ergm(fit)\nnames(out)\nout$aic\nout$asycov\n\nout\n\nThis will be made the default is an upcoming version.\n\nTo get the new version, as usual, enter:\n\nlibrary(updatestatnet)\n\nMark\n\n-------------------------------------------------\nMark S. Handcock\nProfessor of Statistics\nDepartment of Statistics, C014-B Padelford Hall\nUniversity of Washington, Box 354322     Phone:  (206) 221-6930\nSeattle, WA  98195-4322.                 FAX:    (360) 365-6324\nWeb:  www.stat.washington.edu/~handcock\ninternet:  handcock@stat.washington.edu\n\n\nOn 2/23/07 12:17 PM, \"Benjamin Lind\" <blind@uci.edu> wrote:\n\n> Hi Statnet List,\n> \n> I heard there had been a suggestion passed your way awhile back for a\n> few feature requests, including a \"Force MCMC\" parameter and the ability\n> to extract objects from the summary.ergm command (i.e. summary.ergm can\n> return objects from the output it prints).  By a \"Force MCMC\" parameter\n> I mean a feature that can force ergm to use the MCMC, even if the model\n> has no dependence terms, so that I can use the proposal constraints.\n> Additionally, I've noticed a bug where I cannot extracting the AIC\n> through ergm.object$aic when I use the triangle parameter.\n> \n> Has there been any improvements or modifications to these features?  I\n> understand all contribution to statnet is entirely voluntary so any help\n> on these matters would be greatly appreciated.\n> \n> Thanks for putting together such a useful package.\n> \n> -Ben\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Ben,\n\nThanks for the suggestions. We are in the process of adding a lot of\nfeatures in preparation for the Workshop at this year's Sunbelt Conference\nin Corfu (http://nicomedia.math.upatras.gr/conf",
+      "thread_id": "thread-b32fe3ac8b2b",
+      "thread_depth": 0,
+      "month": "2007-03"
+    },
+    {
+      "id": "msg-12053938a095",
+      "message_id": "<C20F8E8C.C8B6%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2007-03-03T20:43:56Z",
+      "subject": "[statnet_help] Feature Request",
+      "subject_clean": "[statnet_help] Feature Request",
+      "in_reply_to": "<45EA4D83.10000@uci.edu>",
+      "references": [],
+      "body_plain": "Ben,\n\nNo problem. We welcome feature requests and will likely incorporate them as\nsoon as we can. The \"statnet\" project will be undergoing long-term\ndevelopment and we do want to make sure that it is both flexible and\npowerful.\n\nCheers,\n\nMark\n\n\nOn 3/3/07 8:39 PM, \"Benjamin Lind\" <blind@uci.edu> wrote:\n\n> Thank you, Mark. This'll be a big help for me.\n> \n> -Ben\n> \n> \n> Mark S. Handcock wrote:\n>> Hi Ben,\n>> \n>> Thanks for the suggestions. We are in the process of adding a lot of\n>> features in preparation for the Workshop at this year's Sunbelt Conference\n>> in Corfu (http://nicomedia.math.upatras.gr/conf/Sunbelt2007).\n>> \n>> These are good ideas and we have updated \"statnet\" to version 1.0-14 to\n>> accommodate them. Explicitly:\n>> \n>> 1) To force the use of the MCMC algorithm for dyad independence models, give\n>> the option \"force.mcmc\" e.g.,\n>> \n>> fit <- ergm(flomarriage ~ edges, algorithm.control=list(force.mcmc=T))\n>> \n>> 2) There is a new summary command called \"Summary.ergm\" that returns all the\n>> objects it prints. For example,\n>> \n>> # The usual summary\n>> Summary.ergm(fit)\n>> # Save the results\n>> out <- Summary.ergm(fit)\n>> names(out)\n>> out$aic\n>> out$asycov\n>> \n>> out\n>> \n>> This will be made the default is an upcoming version.\n>> \n>> To get the new version, as usual, enter:\n>> \n>> library(updatestatnet)\n>> \n>> Mark\n>> \n>> -------------------------------------------------\n>> Mark S. Handcock\n>> Professor of Statistics\n>> Department of Statistics, C014-B Padelford Hall\n>> University of Washington, Box 354322     Phone:  (206) 221-6930\n>> Seattle, WA  98195-4322.                 FAX:    (360) 365-6324\n>> Web:  www.stat.washington.edu/~handcock\n>> internet:  handcock@stat.washington.edu\n>> \n>> \n>> On 2/23/07 12:17 PM, \"Benjamin Lind\" <blind@uci.edu> wrote:\n>> \n>>   \n>>> Hi Statnet List,\n>>> \n>>> I heard there had been a suggestion passed your way awhile back for a\n>>> few feature requests, including a \"Force MCMC\" parameter and the ability\n>>> to extract objects from the summary.ergm command (i.e. summary.ergm can\n>>> return objects from the output it prints).  By a \"Force MCMC\" parameter\n>>> I mean a feature that can force ergm to use the MCMC, even if the model\n>>> has no dependence terms, so that I can use the proposal constraints.\n>>> Additionally, I've noticed a bug where I cannot extracting the AIC\n>>> through ergm.object$aic when I use the triangle parameter.\n>>> \n>>> Has there been any improvements or modifications to these features?  I\n>>> understand all contribution to statnet is entirely voluntary so any help\n>>> on these matters would be greatly appreciated.\n>>> \n>>> Thanks for putting together such a useful package.\n>>> \n>>> -Ben\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>>>     \n>> \n>> \n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>>   \n>",
+      "body_snippet": "Ben,\n\nNo problem. We welcome feature requests and will likely incorporate them as\nsoon as we can. The \"statnet\" project will be undergoing long-term\ndevelopment and we do want to make sure that it is ",
+      "thread_id": "thread-12053938a095",
+      "thread_depth": 0,
+      "month": "2007-03"
+    },
+    {
+      "id": "msg-f8e0b2e069ee",
+      "message_id": "<1173589221.45f38ce571e93@webmail3.stanford.edu>",
+      "from_name": "Denis Trapido",
+      "from_email_hash": "8135246405beaaa7de215084c8229ffb667be586d38790f6488f01f7f00b702a",
+      "date": "2007-03-10T21:00:21Z",
+      "subject": "[statnet_help] importing edgelist with multiple attributes",
+      "subject_clean": "[statnet_help] importing edgelist with multiple attributes",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI am stuck trying to import an edgelist with multiple attributes into\nStatnet. My nonexistent experience with R is certainly a disadvantage. This\nis the structure of my data in Excel:\n\nnodeID1   nodeID2   edgeAttribute1   edgeAttribute2   edgeAttribute3\n      1         2             2.5              566              1\n      1         3             5.2              548              0\n      2         4             10.0             250              0\n      3         4             58               365              1\n\nI need R and Statnet to recognize this as network data. Please advise how I\ncan do this.\n\nBest,\n\nDenis Trapido\n\n--\nDenis Trapido\nPh.D. Candidate\nStanford University\nDepartment of Sociology\nStanford, CA 94305-2047\nPhone: (650) 497-9140\nFAX: (650) 725-6471",
+      "body_snippet": "Hi,\n\nI am stuck trying to import an edgelist with multiple attributes into\nStatnet. My nonexistent experience with R is certainly a disadvantage. This\nis the structure of my data in Excel:\n\nnodeID1   ",
+      "thread_id": "thread-f8e0b2e069ee",
+      "thread_depth": 0,
+      "month": "2007-03"
+    },
+    {
+      "id": "msg-468e475abbd8",
+      "message_id": "<C21A1B01.181FF%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2007-03-11T20:45:50Z",
+      "subject": "[statnet_help] importing edgelist with multiple attributes",
+      "subject_clean": "[statnet_help] importing edgelist with multiple attributes",
+      "in_reply_to": "<1173589221.45f38ce571e93@webmail3.stanford.edu>",
+      "references": [],
+      "body_plain": "Hi Denis,\n\nThis is a canonical question. Let's consider your example.\nIf the file is saved from Excel as a CSV file, R can read it in and\n\"statnet\" can create the network. Explicitly,\n\n> # read in the Excel file saved as a CSV\n> x <- read.csv(\"example1.csv\",header=T)\n> x\n  nodeID1 nodeID2 edgeAttribute1 edgeAttribute2 edgeAttribute3\n1       1       2            2.5            566              1\n2       1       3            5.2            548              0\n3       2       4           10.0            250              0\n4       3       4           58.0            365              1\n> # Load statnet (network is all that is required)\n> library(statnet)\nLoading required package: network\n...\nType help(package=\"statnet\") to get started.\nTo cite, see citation(\"statnet\")\n> # Create the network fron the edgelist\n> g <- network(x[,1:2])\n> # Sequentially add each of the edge values\n> for(i in 3:5){\n+  set.edge.value(g,colnames(x)[i],x[,i])\n+ }\n> # List them \n> list.edge.attributes(g)\n[1] \"edgeAttribute1\" \"edgeAttribute2\" \"edgeAttribute3\" \"na\"\n> # Print out some examples\n> as.sociomatrix(g)\n  1 2 3 4\n1 0 1 1 0\n2 0 0 0 1\n3 0 0 0 1\n4 0 0 0 0\n> as.sociomatrix(g, \"edgeAttribute2\")\n  1   2   3   4\n1 0 566 566   0\n2 0   0   0 548\n3 0   0   0 250\n4 0   0   0   0\n> \n\nI have attached the example file so you and others can reconstruct it.\n\nThis help for the \"network\" function in Carter Butt's excellent \"network\"\npackage has a lot of details in it!\n\nRegards,\n\nMark\n\nOn 3/10/07 9:00 PM, \"Denis Trapido\" <dtrapido@stanford.edu> wrote:\n\n> Hi,\n> \n> I am stuck trying to import an edgelist with multiple attributes into\n> Statnet. My nonexistent experience with R is certainly a disadvantage. This\n> is the structure of my data in Excel:\n> \n> nodeID1   nodeID2   edgeAttribute1   edgeAttribute2   edgeAttribute3\n>       1         2             2.5              566              1\n>       1         3             5.2              548              0\n>       2         4             10.0             250              0\n>       3         4             58               365              1\n> \n> I need R and Statnet to recognize this as network data. Please advise how I\n> can do this.\n> \n> Best,\n> \n> Denis Trapido\n> \n> --\n> Denis Trapido\n> Ph.D. Candidate\n> Stanford University\n> Department of Sociology\n> Stanford, CA 94305-2047\n> Phone: (650) 497-9140\n> FAX: (650) 725-6471\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: example1.csv\nType: application/octet-stream\nSize: 330 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20070311/6a42c54c/attachment.obj>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: example1.r\nType: application/octet-stream\nSize: 425 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20070311/6a42c54c/attachment-0001.obj>",
+      "body_snippet": "Hi Denis,\n\nThis is a canonical question. Let's consider your example.\nIf the file is saved from Excel as a CSV file, R can read it in and\n\"statnet\" can create the network. Explicitly,\n\n> # read in the",
+      "thread_id": "thread-f8e0b2e069ee",
+      "thread_depth": 1,
+      "month": "2007-03"
+    },
+    {
+      "id": "msg-45def1347a74",
+      "message_id": "<Pine.WNT.4.64.0703191134410.3936@sushmila.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2007-03-19T11:35:40Z",
+      "subject": "[statnet_help] centrality term not found [fwd]",
+      "subject_clean": "[statnet_help] centrality term not found [fwd]",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Date: Mon, 19 Mar 2007 14:28:05 +0100\nFrom: Svetlana Bulashevska <s.bulashevska@dkfz-heidelberg.de>\nTo: statnet_help@u.washington.edu\nSubject: centrality term not found\n\n     [ The following text is in the \"ISO-8859-1\" character set. ]\n     [ Your display is set for the \"CP1252\" character set.  ]\n     [ Some characters may be displayed incorrectly. ]\n\nDear colleagues,\nI am using the package statnet Version 1.0-12 created on July 4, 2006.\nWhen I try to use the term 'centrality'  as described in the documentation \nfor Version 1.0 from April 2006,\nI get: \"The term centrality does not exist. Are you sure you have the \nright name?\"\nCould you please give me a tip, where can I find the most up-to-date list \nof ergm-terms and the most recent documentation of statnet.\nThank you very much,\nSvetlana Bulashevska",
+      "body_snippet": "Date: Mon, 19 Mar 2007 14:28:05 +0100\nFrom: Svetlana Bulashevska <s.bulashevska@dkfz-heidelberg.de>\nTo: statnet_help@u.washington.edu\nSubject: centrality term not found\n\n     [ The following text is i",
+      "thread_id": "thread-45def1347a74",
+      "thread_depth": 0,
+      "month": "2007-03"
+    },
+    {
+      "id": "msg-a2bc7fd935e2",
+      "message_id": "<C2242EDD.C79A%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2007-03-19T12:13:17Z",
+      "subject": "[statnet_help] centrality term not found [fwd]",
+      "subject_clean": "[statnet_help] centrality term not found [fwd]",
+      "in_reply_to": "<Pine.WNT.4.64.0703191134410.3936@sushmila.csde.washington.edu>",
+      "references": [],
+      "body_plain": "Dear Svetlana,\n\nThe current list of available terms is available via:\n\nhelp(\"ergm-terms\")\n\nWe are have expanded the set of terms and consolidated some of them. In\nparticular the \"centrality\" term has been depreciated and will be replaced\nwith a richer set of measures of centrality and prestige.\n\nThese will be demonstrated at the \"statnet\" workshop at the up coming\nSunbelt conference in Corfu\n(http://nicomedia.math.upatras.gr/conf/Sunbelt2007/workshops/workshops.html)\n\nMark\n\n-------------------------------------------------\nMark S.  Handcock\nProfessor of Statistics\nDepartment of Statistics, C014-B Padelford  Hall\nUniversity of Washington, Box 354322     Phone:  (206) 221-6930\nSeattle, WA  98195-4322.           FAX:   (206) 685-7419\nWeb:  www.stat.washington.edu/~handcock\ninternet:  handcock@stat.washington.edu\n\nOn 3/19/07 11:35 AM, \"Steven Goodreau\" <goodreau@u.washington.edu> wrote:\n\n> \n> Date: Mon, 19 Mar 2007 14:28:05 +0100\n> From: Svetlana Bulashevska <s.bulashevska@dkfz-heidelberg.de>\n> To: statnet_help@u.washington.edu\n> Subject: centrality term not found\n> \n>      [ The following text is in the \"ISO-8859-1\" character set. ]\n>      [ Your display is set for the \"CP1252\" character set.  ]\n>      [ Some characters may be displayed incorrectly. ]\n> \n> Dear colleagues,\n> I am using the package statnet Version 1.0-12 created on July 4, 2006.\n> When I try to use the term 'centrality'  as described in the documentation\n> for Version 1.0 from April 2006,\n> I get: \"The term centrality does not exist. Are you sure you have the\n> right name?\"\n> Could you please give me a tip, where can I find the most up-to-date list\n> of ergm-terms and the most recent documentation of statnet.\n> Thank you very much,\n> Svetlana Bulashevska\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Svetlana,\n\nThe current list of available terms is available via:\n\nhelp(\"ergm-terms\")\n\nWe are have expanded the set of terms and consolidated some of them. In\nparticular the \"centrality\" term has ",
+      "thread_id": "thread-45def1347a74",
+      "thread_depth": 1,
+      "month": "2007-03"
+    },
+    {
+      "id": "msg-84e5b66a5bb2",
+      "message_id": "<Pine.WNT.4.64.0703262002420.2192@orion>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2007-03-26T20:02:54Z",
+      "subject": "[statnet_help] two yes/no questions on ERGM in R (fwd)",
+      "subject_clean": "[statnet_help] two yes/no questions on ERGM in R (fwd)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "---------- Forwarded message ----------\nDate: Sun, 24 Dec 2006 20:37:30 -0800\nFrom: Denis Trapido <dtrapido@stanford.edu>\nTo: morrism@u.washington.edu\nSubject: two yes/no questions on ERGM in R\n\nDear Professor Morris,\n\nMy recent analysis which models some properties of network dyads is now\nconditionally accepted by Social Forces. I am considering improving the\nmethodology before I send the final version to SF. Dan McFarland has\nbrought to my attention your implementation of ERGM in R. I have two\nquestions in this regard:\n\n1. My network is very large and I heard that ERGM is computation-intensive.\nIs ERG modeling in R feasible for networks of 1000x1000 or larger?\n\n2. Does ERGM in R enable correcting for underselection of non-existing ties\nin the way rare event logit (relogit) does it in Stata?\n\nKnowing this would help me a lot. Please advise.\n\nSincerely,\n\nDenis Trapido\n\n-- \nDenis Trapido\nPh.D. Candidate\nStanford University\nDepartment of Sociology\nStanford, CA 94305-2047\nPhone: (650) 497-9140\nFAX: (650) 725-6471",
+      "body_snippet": "---------- Forwarded message ----------\nDate: Sun, 24 Dec 2006 20:37:30 -0800\nFrom: Denis Trapido <dtrapido@stanford.edu>\nTo: morrism@u.washington.edu\nSubject: two yes/no questions on ERGM in R\n\nDear ",
+      "thread_id": "thread-84e5b66a5bb2",
+      "thread_depth": 0,
+      "month": "2007-03"
+    },
+    {
+      "id": "msg-0a4f387338b5",
+      "message_id": "<F16CD5EC-7F85-4572-893E-CEC9F305F5C5@indiana.edu>",
+      "from_name": "John Paolillo",
+      "from_email_hash": "ed2e68fe12ef43cbfc7788a6c13cbec0a20962ceea4b203142fa86e549628685",
+      "date": "2007-03-26T21:06:37Z",
+      "subject": "[statnet_help] two yes/no questions on ERGM in R (fwd)",
+      "subject_clean": "[statnet_help] two yes/no questions on ERGM in R (fwd)",
+      "in_reply_to": "<Pine.WNT.4.64.0703262002420.2192@orion>",
+      "references": [
+        "<Pine.WNT.4.64.0703262002420.2192@orion>"
+      ],
+      "body_plain": "> 1. My network is very large and I heard that ERGM is computation- \n> intensive.\n> Is ERG modeling in R feasible for networks of 1000x1000 or larger?\n\nI can't speak to Statnet in specific, but 1000*1000 may or may not be  \nlarge depending on what you are trying to do. If the goal is a  \nstatistical analysis in R, it is not too large although one should be  \naware of the way R uses memory. If you're trying to plot such a  \nthing, or use certain forms of analysis, then you need to be even  \nmore careful.\n\nThings to be alert to are:\n\n(1) R uses approximately 8 bytes per cell of a numeric matrix, not  \ncounting any row and column labels and/or other descriptive vectors  \n(partitions from cluster analyses, etc.) This means that the 1k*1K  \nmatrix you describe consumes 8MB of memory. So this is not at all a  \nproblem on modern machines.\n\n(2) Data objects that R works with must be entirely in memory. Most  \nsystems will use some form of virtual memory (on disk) if you exceed  \nthe available physical memory, but when your computer starts swapping  \nR objects in and out of memory, things start to really bog down.  \nTreat the available physical memory as an upper limit on what you  \nshould use.\n\n(3) Many operations in R require copying an entire object. For  \nexample, changing the value of a cell in a matrix by assignment (e.g.  \nm[96,42] <- 7) requires copying the entire matrix. If you do this in  \na loop for several elements, that's one entire copy of the matrix for  \neach assignment. This is costly both in space and time. In loops, the  \nissue generally is time. Use R's vectorized computations (including  \nassignment) to advantage if at all possible, to minimize this  \nproblem. Other times the issue is (or rapidly becomes) space. For  \nexample if you conduct a cluster analysis of your matrix, you may  \nhave a distance matrix that you compute and want to save. This will  \nbe true for each version of distance you use and want to keep for  \nlater. If these objects are saved in your .RData file, then they all  \nmust live in memory together at the same time. This becomes an issue  \nas you iterate through solutions to a problem.\n\n(4) Some R functions do very bad things when it comes to memory  \nusage, at least when large data sets are being used. For example, glm \n() and lm() create entire copies of your data that are obligatorily  \nsaved into an object that is returned. Since you often need to save  \nthese for future use, you may be saving multiple copies of the data  \nunnecessarily. I don't know if the ergm package does this, but I  \nwouldn't be surprised if it does as this is something of an R  \nconvention. Also, analyses can create very large data objects that  \nare not copies of the data, and these can also get out of control.\n\n(5) Plotting can be very inefficient in R, depending on the package  \nused. Again, there are data copying issues (a copy is made to  \nrepresent in the output device), but I know less of the specifics  \nhere, just that certain reasonable things can work out pretty badly  \nif care is not exercised. For example, plotting an hclust object with  \n1000 leaves can be reasonably fast, but the same analysis cast as a  \ndendrogram object plots exceedingly slowly. I believe this is because  \nof the hierarchically structured representation of the dendrogram  \nobject, as opposed to hclust, which is flatter (for the exact same  \ninformation). Since ergm/statnet/network packages adopt a structured  \nrepresentation of their data object, there may be similar performance  \nproblems, but I wouldn't know for sure.\n\nSome general guidelines of use would be, (i) use a utility such as  \nActivity monitor (mac) or top (unix) to keep an eye on the memory  \nusage as you work, (ii) force garbage collection if you need to with  \ngc(), though keep in mind this may not always free up memory, and  \n(iii) save out objects that you are not immediately working with to  \nseparate RData files. If you don't do these, in the worst case you  \ncan hang your system. Most OS's will allow you to kill the offending  \nprocess if you get stuck (R), but doing so loses your changes in the  \ndata since your last save as well as your command history, so do  \neverything to avoid this and you will be happier.\n\nIf you have a system with, say, 2 GB of ram (reasonably standard  \nthese days) then for 1M cell matrices you probably will not run into  \ntoo many problems with memory within R, would be my guess. At the  \nsame time, someone from the statnet team should comment on the memory  \nuse and time complexity of statnet-specific functions.\n\nHope this helps,\n\nJohn Paolillo\nInformatics, Indiana University\n\n> 2. Does ERGM in R enable correcting for underselection of non- \n> existing ties\n> in the way rare event logit (relogit) does it in Stata?\n>\n> Knowing this would help me a lot. Please advise.\n>\n> Sincerely,\n>\n> Denis Trapido\n>\n> -- \n> Denis Trapido\n> Ph.D. Candidate\n> Stanford University\n> Department of Sociology\n> Stanford, CA 94305-2047\n> Phone: (650) 497-9140\n> FAX: (650) 725-6471\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "> 1. My network is very large and I heard that ERGM is computation- \n> intensive.\n> Is ERG modeling in R feasible for networks of 1000x1000 or larger?\n\nI can't speak to Statnet in specific, but 1000*1",
+      "thread_id": "thread-84e5b66a5bb2",
+      "thread_depth": 1,
+      "month": "2007-03"
+    },
+    {
+      "id": "msg-232e56206aeb",
+      "message_id": "<Pine.WNT.4.64.0703262106210.2192@orion>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2007-03-26T21:07:13Z",
+      "subject": "[statnet_help] two yes/no questions on ERGM in R (fwd)",
+      "subject_clean": "[statnet_help] two yes/no questions on ERGM in R (fwd)",
+      "in_reply_to": "<F16CD5EC-7F85-4572-893E-CEC9F305F5C5@indiana.edu>",
+      "references": [
+        "<Pine.WNT.4.64.0703262002420.2192@orion>",
+        "<F16CD5EC-7F85-4572-893E-CEC9F305F5C5@indiana.edu>"
+      ],
+      "body_plain": "Note that most of statnet is coded in C.  The user interface in in R, but \nnot much of the computation -- so the well known limitations of R in \ngeneral do not hold.\n\nbest,\nmm\n\n\nOn Tue, 27 Mar 2007, John Paolillo wrote:\n\n>> 1. My network is very large and I heard that ERGM is computation-intensive.\n>> Is ERG modeling in R feasible for networks of 1000x1000 or larger?\n>\n> I can't speak to Statnet in specific, but 1000*1000 may or may not be large \n> depending on what you are trying to do. If the goal is a statistical analysis \n> in R, it is not too large although one should be aware of the way R uses \n> memory. If you're trying to plot such a thing, or use certain forms of \n> analysis, then you need to be even more careful.\n>\n> Things to be alert to are:\n>\n> (1) R uses approximately 8 bytes per cell of a numeric matrix, not counting \n> any row and column labels and/or other descriptive vectors (partitions from \n> cluster analyses, etc.) This means that the 1k*1K matrix you describe \n> consumes 8MB of memory. So this is not at all a problem on modern machines.\n>\n> (2) Data objects that R works with must be entirely in memory. Most systems \n> will use some form of virtual memory (on disk) if you exceed the available \n> physical memory, but when your computer starts swapping R objects in and out \n> of memory, things start to really bog down. Treat the available physical \n> memory as an upper limit on what you should use.\n>\n> (3) Many operations in R require copying an entire object. For example, \n> changing the value of a cell in a matrix by assignment (e.g. m[96,42] <- 7) \n> requires copying the entire matrix. If you do this in a loop for several \n> elements, that's one entire copy of the matrix for each assignment. This is \n> costly both in space and time. In loops, the issue generally is time. Use R's \n> vectorized computations (including assignment) to advantage if at all \n> possible, to minimize this problem. Other times the issue is (or rapidly \n> becomes) space. For example if you conduct a cluster analysis of your matrix, \n> you may have a distance matrix that you compute and want to save. This will \n> be true for each version of distance you use and want to keep for later. If \n> these objects are saved in your .RData file, then they all must live in \n> memory together at the same time. This becomes an issue as you iterate \n> through solutions to a problem.\n>\n> (4) Some R functions do very bad things when it comes to memory usage, at \n> least when large data sets are being used. For example, glm() and lm() create \n> entire copies of your data that are obligatorily saved into an object that is \n> returned. Since you often need to save these for future use, you may be \n> saving multiple copies of the data unnecessarily. I don't know if the ergm \n> package does this, but I wouldn't be surprised if it does as this is \n> something of an R convention. Also, analyses can create very large data \n> objects that are not copies of the data, and these can also get out of \n> control.\n>\n> (5) Plotting can be very inefficient in R, depending on the package used. \n> Again, there are data copying issues (a copy is made to represent in the \n> output device), but I know less of the specifics here, just that certain \n> reasonable things can work out pretty badly if care is not exercised. For \n> example, plotting an hclust object with 1000 leaves can be reasonably fast, \n> but the same analysis cast as a dendrogram object plots exceedingly slowly. I \n> believe this is because of the hierarchically structured representation of \n> the dendrogram object, as opposed to hclust, which is flatter (for the exact \n> same information). Since ergm/statnet/network packages adopt a structured \n> representation of their data object, there may be similar performance \n> problems, but I wouldn't know for sure.\n>\n> Some general guidelines of use would be, (i) use a utility such as Activity \n> monitor (mac) or top (unix) to keep an eye on the memory usage as you work, \n> (ii) force garbage collection if you need to with gc(), though keep in mind \n> this may not always free up memory, and (iii) save out objects that you are \n> not immediately working with to separate RData files. If you don't do these, \n> in the worst case you can hang your system. Most OS's will allow you to kill \n> the offending process if you get stuck (R), but doing so loses your changes \n> in the data since your last save as well as your command history, so do \n> everything to avoid this and you will be happier.\n>\n> If you have a system with, say, 2 GB of ram (reasonably standard these days) \n> then for 1M cell matrices you probably will not run into too many problems \n> with memory within R, would be my guess. At the same time, someone from the \n> statnet team should comment on the memory use and time complexity of \n> statnet-specific functions.\n>\n> Hope this helps,\n>\n> John Paolillo\n> Informatics, Indiana University\n>\n>> 2. Does ERGM in R enable correcting for underselection of non-existing ties\n>> in the way rare event logit (relogit) does it in Stata?\n>> \n>> Knowing this would help me a lot. Please advise.\n>> \n>> Sincerely,\n>> \n>> Denis Trapido\n>> \n>> -- \n>> Denis Trapido\n>> Ph.D. Candidate\n>> Stanford University\n>> Department of Sociology\n>> Stanford, CA 94305-2047\n>> Phone: (650) 497-9140\n>> FAX: (650) 725-6471\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 353340\n  University of Washington\n  Seattle, WA 98195-3340\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882\n  Fax: \t\t(206) 543-2516\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Note that most of statnet is coded in C.  The user interface in in R, but \nnot much of the computation -- so the well known limitations of R in \ngeneral do not hold.\n\nbest,\nmm\n\n\nOn Tue, 27 Mar 2007, J",
+      "thread_id": "thread-84e5b66a5bb2",
+      "thread_depth": 2,
+      "month": "2007-03"
+    },
+    {
+      "id": "msg-5e7eea38a1d3",
+      "message_id": "<4608BC42.3080702@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2007-03-26T23:40:02Z",
+      "subject": "[statnet_help] two yes/no questions on ERGM in R (fwd)",
+      "subject_clean": "[statnet_help] two yes/no questions on ERGM in R (fwd)",
+      "in_reply_to": "<Pine.WNT.4.64.0703262002420.2192@orion>",
+      "references": [
+        "<Pine.WNT.4.64.0703262002420.2192@orion>"
+      ],
+      "body_plain": "Martina Morris wrote:\n> \n> ---------- Forwarded message ----------\n> Date: Sun, 24 Dec 2006 20:37:30 -0800\n> From: Denis Trapido <dtrapido@stanford.edu>\n> To: morrism@u.washington.edu\n> Subject: two yes/no questions on ERGM in R\n> \n...\n> 1. My network is very large and I heard that ERGM is computation-intensive.\n> Is ERG modeling in R feasible for networks of 1000x1000 or larger?\n\nDepends on the terms you employ.  Some of the AddHealth networks are \nlarger than that, and I've also run models on some large \ninterorganizational interaction networks.  The main issues are:\n\n   1. Making sure you pick terms whose changescores scale well.  Most \nwhich are in current use are constant or linear time, but this isn't the \ncase for all terms (e.g., cycles).\n\n   2. Making sure that the number of parameters and statistics remains \nconstrained.  Optimization on 1000+ fixed effects is not pleasant; nor \nare computations for curved models with 1000+ statistics going to scale \nwell (unless the way those calculations are internally performed has \nchanged recently).\n\nOtherwise, ergm should work just fine -- especially if the graph is sparse.\n\n> \n> 2. Does ERGM in R enable correcting for underselection of non-existing ties\n> in the way rare event logit (relogit) does it in Stata?\n> \n\nI don't see that this would be relevant here, but Mark or Dave might \nhave other ideas.  (BTW, these are not logit models, except in the case \nof independent dyads.  Or, if you like, the whole thing is a huge \nmultinomial logit with one observation, but that's another matter...)\n\n-Carter",
+      "body_snippet": "Martina Morris wrote:\n> \n> ---------- Forwarded message ----------\n> Date: Sun, 24 Dec 2006 20:37:30 -0800\n> From: Denis Trapido <dtrapido@stanford.edu>\n> To: morrism@u.washington.edu\n> Subject: two y",
+      "thread_id": "thread-84e5b66a5bb2",
+      "thread_depth": 1,
+      "month": "2007-03"
+    },
+    {
+      "id": "msg-035e4d6ca931",
+      "message_id": "<4608C7C6.9090409@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2007-03-27T00:29:10Z",
+      "subject": "[statnet_help] two yes/no questions on ERGM in R (fwd)",
+      "subject_clean": "[statnet_help] two yes/no questions on ERGM in R (fwd)",
+      "in_reply_to": "<F16CD5EC-7F85-4572-893E-CEC9F305F5C5@indiana.edu>",
+      "references": [
+        "<Pine.WNT.4.64.0703262002420.2192@orion>",
+        "<F16CD5EC-7F85-4572-893E-CEC9F305F5C5@indiana.edu>"
+      ],
+      "body_plain": "John Paolillo wrote:\n> (1) R uses approximately 8 bytes per cell of a numeric matrix, not \n> counting any row and column labels and/or other descriptive vectors \n> (partitions from cluster analyses, etc.) This means that the 1k*1K \n> matrix you describe consumes 8MB of memory. So this is not at all a \n> problem on modern machines.\n\nThis is true.  Also, note that network objects are stored as edge lists \n(with some indexing and other mojo), so sparse graph storage will not \nscale quadratically in the number of vertices.  (There's some overhead, \nbut it's linear.)  Whether this is honored by the various statnet \nroutines varies: ergm keeps the network in edgelist form (although some \nterm initialization routines might not), but current sna routines \nconvert network objects to matrix form prior to analysis.  Such are the \njoys of legacy code.\n\n> \n> (2) Data objects that R works with must be entirely in memory. Most \n> systems will use some form of virtual memory (on disk) if you exceed the \n> available physical memory, but when your computer starts swapping R \n> objects in and out of memory, things start to really bog down. Treat the \n> available physical memory as an upper limit on what you should use.\n\nAlso, be aware that the Windows implementation of R seems to have some \nlow ceilings on memory allocation.  Those of us in the Linux world \nremain happily immune to this, but we hear of it from our students....\n\n> \n> (3) Many operations in R require copying an entire object. For example, \n> changing the value of a cell in a matrix by assignment (e.g. m[96,42] <- \n> 7) requires copying the entire matrix.\n\nNot always true -- this depends on how the appropriate assignment method \n  is written.  IIRC, most of the standard data types support in-place \nmodification, so long as the dimensions of the object are not changed. \nThis is also true of network objects, which are almost always modified \nin place.\n\n> If you do this in a loop for \n> several elements, that's one entire copy of the matrix for each \n> assignment. This is costly both in space and time. In loops, the issue \n> generally is time. Use R's vectorized computations (including \n> assignment) to advantage if at all possible, to minimize this problem. \n> Other times the issue is (or rapidly becomes) space. For example if you \n> conduct a cluster analysis of your matrix, you may have a distance \n> matrix that you compute and want to save. This will be true for each \n> version of distance you use and want to keep for later. If these objects \n> are saved in your .RData file, then they all must live in memory \n> together at the same time. This becomes an issue as you iterate through \n> solutions to a problem.\n\nAgain, this varies -- R's garbage collection system recaptures most of \nthis memory, and many assignments are implemented without copying. \nBecause of this, loops are not always faster than the *apply methods, \ndespite folk wisdom to the contrary.  However, you are right that R's \nloops are generally pretty slow, and are in some cases space \ninefficient.  Backending can often accelerate highly iterative \ncalculations, especially those which would require a lot of object \nhandling if performed in the interpreted code.  (My sense, however, is \nthat the latter is the real culprit in most of these cases -- working \nwith the .Call interface for a while gives one a sense of the vast \namount of overhead which is involved in supporting R's friendly, \nobject-oriented interface.)\n\n> \n> (4) Some R functions do very bad things when it comes to memory usage, \n> at least when large data sets are being used. For example, glm() and \n> lm() create entire copies of your data that are obligatorily saved into \n> an object that is returned. Since you often need to save these for \n> future use, you may be saving multiple copies of the data unnecessarily. \n> I don't know if the ergm package does this, but I wouldn't be surprised \n> if it does as this is something of an R convention. Also, analyses can \n> create very large data objects that are not copies of the data, and \n> these can also get out of control.\n\nThis is a very common trope -- it allows secondary methods to perform \n\"smart\" diagnostics on analysis objects, but does consume a lot of \nmemory in some cases.  Similarly, most high-level analysis routines \nperform a number of handy subsidiary calculations which are useful for \nend users, but which consume processor time.  If you are dealing in huge \ndata sets, or if you simply need to repeat a specific calculation many \ntimes (e.g., as do the netlm qap tests), then you should avoid using the \nhigh-level routines.  Instead, you should employ a function which is \nmore appropriately tailored to your particular time/space constraints -- \nmost of these routines have back-end components which can be used for \nthis purpose.\n\n> \n> (5) Plotting can be very inefficient in R, depending on the package \n> used. Again, there are data copying issues (a copy is made to represent \n> in the output device), but I know less of the specifics here, just that \n> certain reasonable things can work out pretty badly if care is not \n> exercised. For example, plotting an hclust object with 1000 leaves can \n> be reasonably fast, but the same analysis cast as a dendrogram object \n> plots exceedingly slowly. I believe this is because of the \n> hierarchically structured representation of the dendrogram object, as \n> opposed to hclust, which is flatter (for the exact same information). \n> Since ergm/statnet/network packages adopt a structured representation of \n> their data object, there may be similar performance problems, but I \n> wouldn't know for sure.\n\nWell, plot.network (which is a clone of gplot) still coerces its input \nto matrix form for certain purposes, so you'll take a hit there; that's \nrarely a major constraint, however.  IIRC, a bigger issue is the \noverhead involved in creating the polygons to represent the \nedges/vertices, and in having R print them.  I don't worry about this \ntoo much, however -- by the time this becomes a problem, one's network \nhas usually become too large to visualize without more exotic methods \n(especially on a low-resolution display).  A sparse 1000 node network \nshould be no problem, in any event.\n\n> \n> Some general guidelines of use would be, (i) use a utility such as \n> Activity monitor (mac) or top (unix) to keep an eye on the memory usage \n> as you work, (ii) force garbage collection if you need to with gc(), \n> though keep in mind this may not always free up memory, and (iii) save \n> out objects that you are not immediately working with to separate RData \n> files. If you don't do these, in the worst case you can hang your \n> system. Most OS's will allow you to kill the offending process if you \n> get stuck (R), but doing so loses your changes in the data since your \n> last save as well as your command history, so do everything to avoid \n> this and you will be happier.\n> \n> If you have a system with, say, 2 GB of ram (reasonably standard these \n> days) then for 1M cell matrices you probably will not run into too many \n> problems with memory within R, would be my guess. At the same time, \n> someone from the statnet team should comment on the memory use and time \n> complexity of statnet-specific functions.\n\nFWIW, I don't think that memory is going to be a major constraint for \nmost operations on a 1k network (with certain exceptions, such as 1000+ \nparameter models).  I've run diffusion models in R on sparse networks of \nover 100,000 nodes on an Athlon w/2GB of RAM, and nothing was in \nimminent danger of crashing.  Of course, many functions would not be \nfeasible on such a network....common sense applies, and YMMV.  The \nstatnet library has to balance the disparate demands of versatility, \nperformance, and ease-of-use, and users whose requirements push very \nhard on the performance end may find it worthwhile to code something \nmore narrowly focused on their specific application.  Of course, no \nsoftware on earth is going to change the fact that many interesting \nnetwork analytic calculations are intrinsically expensive, and you may \nnot have enough Time*Iron to get the answer you desire.  Still, \noptimization can sometimes have benefits, if done properly.\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "John Paolillo wrote:\n> (1) R uses approximately 8 bytes per cell of a numeric matrix, not \n> counting any row and column labels and/or other descriptive vectors \n> (partitions from cluster analyses, e",
+      "thread_id": "thread-84e5b66a5bb2",
+      "thread_depth": 2,
+      "month": "2007-03"
+    },
+    {
+      "id": "msg-bbb46b0bde22",
+      "message_id": "<2A1F3E27491CBF46BC14ACB3E5C7D89A01E3984F@icex3.ic.ac.uk>",
+      "from_name": "Criscuolo, Paola",
+      "from_email_hash": "e88feee832a858e64fc890c1931ebab4727c70a997ea38d69087b23003aa7ae2",
+      "date": "2007-03-28T00:08:49Z",
+      "subject": "[statnet_help] Importing valued networks in R",
+      "subject_clean": "[statnet_help] Importing valued networks in R",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet Users,\n \nI am having troubles to import valued networks into R.\nI have tried both importing data as sociomatrices using this set of commands\nloc_density<-read.table(\"differenceloc_density.txt\")\nloc_density.dat<-as.matrix(loc_density)\nloc_density.net<-as.network(loc_density.dat,loops=T, directected=F)\nand importing data as edgelist.loc_density<-read.table(\"differenceloc_density_edgelist.txt\")\nloc_density.net<-as.network(loc_density.dat,loops=T, directected=F)\n \nI do not get error messages but somehow the value of the network is transformed into binary data.\nDo you need to specify somewhere in the as.network command that the network is a valued networks with real number?\n \nIf I try to get the summary stats for the network I get this error message:\n \nError: protect(): protection stack overflow\n \nMy memory settings for R are:\nmax-ppsize=20000  --max-mem-size= 1032662928\n \nCan someone help?\n \nThanks in advanced for your time\n \nRegards\nPaola\n \nPaola Criscuolo Research Associate Innovation Studies Centre Tanaka Business School Imperial College London London, SW7 2AZ, UK Tel: +44-(0)20-75941582Fax: +44-(0)20-75945915web page: www.imperial.ac.uk/innovationstudies\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20070328/ab62ab33/attachment.html>",
+      "body_snippet": "Dear Statnet Users,\n \nI am having troubles to import valued networks into R.\nI have tried both importing data as sociomatrices using this set of commands\nloc_density<-read.table(\"differenceloc_density",
+      "thread_id": "thread-bbb46b0bde22",
+      "thread_depth": 0,
+      "month": "2007-03"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-b32fe3ac8b2b",
+      "subject": "[statnet_help] Feature Request",
+      "message_count": 1,
+      "participants": [
+        "Mark S. Handcock"
+      ],
+      "started": "2007-03-03T12:55:26Z",
+      "last_reply": "2007-03-03T12:55:26Z",
+      "root_message_id": "msg-b32fe3ac8b2b"
+    },
+    {
+      "id": "thread-12053938a095",
+      "subject": "[statnet_help] Feature Request",
+      "message_count": 1,
+      "participants": [
+        "Mark S. Handcock"
+      ],
+      "started": "2007-03-03T20:43:56Z",
+      "last_reply": "2007-03-03T20:43:56Z",
+      "root_message_id": "msg-12053938a095"
+    },
+    {
+      "id": "thread-f8e0b2e069ee",
+      "subject": "[statnet_help] importing edgelist with multiple attributes",
+      "message_count": 2,
+      "participants": [
+        "Denis Trapido",
+        "Mark S. Handcock"
+      ],
+      "started": "2007-03-10T21:00:21Z",
+      "last_reply": "2007-03-11T20:45:50Z",
+      "root_message_id": "msg-f8e0b2e069ee"
+    },
+    {
+      "id": "thread-45def1347a74",
+      "subject": "[statnet_help] centrality term not found [fwd]",
+      "message_count": 2,
+      "participants": [
+        "Mark S. Handcock",
+        "Steven Goodreau"
+      ],
+      "started": "2007-03-19T11:35:40Z",
+      "last_reply": "2007-03-19T12:13:17Z",
+      "root_message_id": "msg-45def1347a74"
+    },
+    {
+      "id": "thread-84e5b66a5bb2",
+      "subject": "[statnet_help] two yes/no questions on ERGM in R (fwd)",
+      "message_count": 5,
+      "participants": [
+        "Carter T. Butts",
+        "John Paolillo",
+        "Martina Morris"
+      ],
+      "started": "2007-03-26T20:02:54Z",
+      "last_reply": "2007-03-27T00:29:10Z",
+      "root_message_id": "msg-84e5b66a5bb2"
+    },
+    {
+      "id": "thread-bbb46b0bde22",
+      "subject": "[statnet_help] Importing valued networks in R",
+      "message_count": 1,
+      "participants": [
+        "Criscuolo, Paola"
+      ],
+      "started": "2007-03-28T00:08:49Z",
+      "last_reply": "2007-03-28T00:08:49Z",
+      "root_message_id": "msg-bbb46b0bde22"
+    }
+  ]
+}

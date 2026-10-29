@@ -1,0 +1,180 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2023-10",
+  "messages": [
+    {
+      "id": "msg-cdfe18fee32a",
+      "message_id": "<CAEM3vH--Wu9f1JXK0E6ioT7t3cno1O=KTynpgHHbTrUdVEzzNA@mail.gmail.com>",
+      "from_name": "SJ C",
+      "from_email_hash": "2b4c49dda46aba13c0c7e51ae5adf5e3ec2a03232acc794d24959fb2d30bd45e",
+      "date": "2023-10-17T16:45:00Z",
+      "subject": "[statnet_help] Question about adding moderating effect in REM",
+      "subject_clean": "[statnet_help] Question about adding moderating effect in REM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI am using REM(relevant event model) for the first time in my research\nproject, and also this is my first time sending questions to statnet_help.\n\nMy question is about entering a moderating effect in REM.\nI consulted REM tutorials uploaded in Statnet website and other workshop\nmaterials, but was not able to find relevant information.\n\nFor instance, how can we test whether the RRecSnd effect is moderated by a\nparticular attribute (e.g., education level) of the original sender in REM?\n\nIt would be greatly appreciated if I can have any responses.\nThank you!\n\nSincerely,\nChoi\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20231018/0ee54aec/attachment.html>",
+      "body_snippet": "Hi all,\n\nI am using REM(relevant event model) for the first time in my research\nproject, and also this is my first time sending questions to statnet_help.\n\nMy question is about entering a moderating e",
+      "thread_id": "thread-cdfe18fee32a",
+      "thread_depth": 0,
+      "month": "2023-10"
+    },
+    {
+      "id": "msg-fbacb2b1d807",
+      "message_id": "<27ab70b1-8e99-b01e-723e-35e285358950@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2023-10-17T19:06:01Z",
+      "subject": "[statnet_help] Question about adding moderating effect in REM",
+      "subject_clean": "[statnet_help] Question about adding moderating effect in REM",
+      "in_reply_to": "<CAEM3vH--Wu9f1JXK0E6ioT7t3cno1O=KTynpgHHbTrUdVEzzNA@mail.gmail.com>",
+      "references": [
+        "<CAEM3vH--Wu9f1JXK0E6ioT7t3cno1O=KTynpgHHbTrUdVEzzNA@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Choi -\n\nTo be clear, I presume that by \"moderation\" you mean an interaction \neffect (i.e., a product term between e.g. the RRecSnd statistic and \nanother statistic).? This can be done, but currently it is DIY: what you \nhave to do is compute the statistics you want, and enter them as dynamic \nedge (aka event) covariates.? (It is a basic property of these models \nthat any and all effects can be implemented as (dynamic) edge \ncovariates, which is a handy thing to keep in mind if you want to \nimplement your own statistics.)\n\nThere is an internal function accum.rrl that may be handy for this \npurpose; it is part of the black magic of the package (and thus not very \ndocumented), but can be used.? If you call accum.rrl with an eventlist, \nit will return a list with two elements.? The first is a list, with one \nentry per event in the data, whose ith entry is an ordered list of the \nmost recent senders for every node that has received an event (/going \ninto/ the ith event).? The second is the corresponding list for most \nrecent receivers for every node that has sent an event (again, the ith \nentry is the state headed into the ith event).? Nodes that have never \nsent/received by a given event do not have entries.? This function is \nused \"backstage\" to help compute the hazards for RRecSnd and RSndSnd, so \ncan be helpful for you if you want to make your own term.? But of \ncourse, it is just a tool for tabulation, and you can write your own if \nyou prefer.\n\nHope that helps!\n\n-Carter\n\nOn 10/17/23 4:45 PM, SJ C wrote:\n> Hi all,\n>\n> I am using REM(relevant event model) for the first time in my?research \n> project, and also this is my first time sending questions to statnet_help.\n>\n> My question is about entering a moderating effect in REM.\n> I consulted REM tutorials uploaded in Statnet website and other \n> workshop materials, but was not able to find relevant information.\n>\n> For instance, how can we test whether the RRecSnd?effect is moderated \n> by a particular attribute (e.g., education level) of the original \n> sender in REM?\n>\n> It would be greatly?appreciated if I can have any responses.\n> Thank you!\n>\n> Sincerely,\n> Choi\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://urldefense.com/v3/__http://mailman13.u.washington.edu/mailman/listinfo/statnet_help__;!!CzAuKJ42GuquVTTmVmPViYEvSg!PshxIW-NTXvNytOo2UNgN4BoECliq11-0VSkV_z-sFJoai8EOjfULJwZkLbKfA2fj43MiNC_6GfJ1WxJ9mMkHCpc$  \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20231017/00d8c4c7/attachment.html>",
+      "body_snippet": "Hi, Choi -\n\nTo be clear, I presume that by \"moderation\" you mean an interaction \neffect (i.e., a product term between e.g. the RRecSnd statistic and \nanother statistic).? This can be done, but current",
+      "thread_id": "thread-cdfe18fee32a",
+      "thread_depth": 1,
+      "month": "2023-10"
+    },
+    {
+      "id": "msg-4f256ba06002",
+      "message_id": "<CAOtpZkm3A4h5xcsMyebEaoc9ZMLOgkxMfRknpyQg+m9nzfoOZw@mail.gmail.com>",
+      "from_name": "Khanna, Aditya",
+      "from_email_hash": "fedf55373b973bf32a945381c004b0ed5e0ebd7146bfad006ab10b6c4d0702f6",
+      "date": "2023-10-25T13:06:41Z",
+      "subject": "[statnet_help] ERGM error",
+      "subject_clean": "[statnet_help] ERGM error",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello Statnet Dev Team and All,\n\nI have some code for an ERGM that I developed in v 3.10.4 (and R 3.6.0). I\ndidn't upgrade it to the latest ERGM because it had a custom term and used\na very large underlying dataset. Until recently, the code and the\nenvironment both worked just fine, I periodically re-ran the code on new\ndata as updates were needed.\n\nToday I tried to run the code again, but it, and simpler versions of the\nERGM (i.e., a model as simple as just including the edges term), but all\nfailed. I then tried running a standard tutorial example, and it produces\nthe same error:\n\n> data(florentine)\n> summary(flomarriage ~ edges)\nedges\n   20\n> ergm(formula = flomarriage ~ edges)\nError in rep(rle(v), r, scale = \"run\") : invalid 'times' argument\n>\n\nI have been managing the project using renv, so I don't know what\nunderlying thing might have changed.I would be grateful for any thoughts on\nhow to debug this. The sessionInfo() is included below.\nAditya\n\n> sessionInfo()\nR version 3.6.0 (2019-04-26)\nPlatform: x86_64-pc-linux-gnu (64-bit)\nRunning under: Red Hat Enterprise Linux Server 7.9 (Maipo)\n\nMatrix products: default\nBLAS/LAPACK:\n/oscar/rt/7.2/opt/intel/2017.0/compilers_and_libraries_2017.0.098/linux/mkl/lib/intel64_lin/libmkl_gf_lp64.so\n\nlocale:\n [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C\n [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8\n [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8\n [7] LC_PAPER=en_US.UTF-8       LC_NAME=C\n [9] LC_ADDRESS=C               LC_TELEPHONE=C\n[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C\n\nattached base packages:\n[1] stats     graphics  grDevices datasets  utils     methods   base\n\nother attached packages:\n[1] here_1.0.1           ergm.userterms_3.1.1 statnet.common_4.7.0\n[4] dplyr_1.1.0          ergm_3.10.4          network_1.18.1\n\nloaded via a namespace (and not attached):\n [1] magrittr_2.0.3    MASS_7.3-51.4     tidyselect_1.2.0  lattice_0.20-38\n [5] R6_2.5.1          rlang_1.1.1       fansi_1.0.4       tools_3.6.0\n [9] parallel_3.6.0    grid_3.6.0        lpSolve_5.6.18    utf8_1.2.3\n[13] cli_3.6.0         coda_0.19-4       withr_2.5.0       rprojroot_2.0.3\n[17] tibble_3.1.8      lifecycle_1.0.3   Matrix_1.2-17     purrr_1.0.1\n[21] vctrs_0.5.2       trust_0.1-8       robustbase_0.95-0 glue_1.6.2\n[25] DEoptimR_1.0-11   compiler_3.6.0    pillar_1.8.1      generics_0.1.3\n[29] jsonlite_1.8.7    renv_1.0.0        pkgconfig_2.0.3\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20231025/f23853f7/attachment.html>",
+      "body_snippet": "Hello Statnet Dev Team and All,\n\nI have some code for an ERGM that I developed in v 3.10.4 (and R 3.6.0). I\ndidn't upgrade it to the latest ERGM because it had a custom term and used\na very large unde",
+      "thread_id": "thread-4f256ba06002",
+      "thread_depth": 0,
+      "month": "2023-10"
+    },
+    {
+      "id": "msg-bb5dfc9f78aa",
+      "message_id": "<A4F8C11C-3E4E-417C-9274-584BC7E8B1D8@brown.edu>",
+      "from_name": "Aditya Khanna",
+      "from_email_hash": "fedf55373b973bf32a945381c004b0ed5e0ebd7146bfad006ab10b6c4d0702f6",
+      "date": "2023-10-26T08:41:53Z",
+      "subject": "[statnet_help] ERGM error",
+      "subject_clean": "[statnet_help] ERGM error",
+      "in_reply_to": "<CAOtpZkm3A4h5xcsMyebEaoc9ZMLOgkxMfRknpyQg+m9nzfoOZw@mail.gmail.com>",
+      "references": [
+        "<CAOtpZkm3A4h5xcsMyebEaoc9ZMLOgkxMfRknpyQg+m9nzfoOZw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi All,\n\nI created the environment again with a fresh install of the package versions I am using. The flomarriage example and my own code are both working now.\nAditya \n\n> On Oct 25, 2023, at 4:06 PM, Khanna, Aditya <aditya_khanna@brown.edu> wrote:\n> \n> Hello Statnet Dev Team and All,\n> \n> I have some code for an ERGM that I developed in v 3.10.4 (and R 3.6.0). I didn't upgrade it to the latest ERGM because it had a custom term and used a very large underlying dataset. Until recently, the code and the environment both worked just fine, I periodically re-ran the code on new data as updates were needed. \n> \n> Today I tried to run the code again, but it, and simpler versions of the ERGM (i.e., a model as simple as just including the edges term), but all failed. I then tried running a standard tutorial example, and it produces the same error:\n> \n> > data(florentine)\n> > summary(flomarriage ~ edges)\n> edges \n>    20 \n> > ergm(formula = flomarriage ~ edges)\n> Error in rep(rle(v), r, scale = \"run\") : invalid 'times' argument\n> > \n> \n> I have been managing the project using renv, so I don't know what underlying thing might have changed.I would be grateful for any thoughts on how to debug this. The sessionInfo() is included below.\n> Aditya\n> \n> > sessionInfo()\n> R version 3.6.0 (2019-04-26)\n> Platform: x86_64-pc-linux-gnu (64-bit)\n> Running under: Red Hat Enterprise Linux Server 7.9 (Maipo)\n> \n> Matrix products: default\n> BLAS/LAPACK: /oscar/rt/7.2/opt/intel/2017.0/compilers_and_libraries_2017.0.098/linux/mkl/lib/intel64_lin/libmkl_gf_lp64.so\n> \n> locale:\n>  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              \n>  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    \n>  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   \n>  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 \n>  [9] LC_ADDRESS=C               LC_TELEPHONE=C            \n> [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       \n> \n> attached base packages:\n> [1] stats     graphics  grDevices datasets  utils     methods   base     \n> \n> other attached packages:\n> [1] here_1.0.1           ergm.userterms_3.1.1 statnet.common_4.7.0\n> [4] dplyr_1.1.0          ergm_3.10.4          network_1.18.1      \n> \n> loaded via a namespace (and not attached):\n>  [1] magrittr_2.0.3    MASS_7.3-51.4     tidyselect_1.2.0  lattice_0.20-38  \n>  [5] R6_2.5.1          rlang_1.1.1       fansi_1.0.4       tools_3.6.0      \n>  [9] parallel_3.6.0    grid_3.6.0        lpSolve_5.6.18    utf8_1.2.3       \n> [13] cli_3.6.0         coda_0.19-4       withr_2.5.0       rprojroot_2.0.3  \n> [17] tibble_3.1.8      lifecycle_1.0.3   Matrix_1.2-17     purrr_1.0.1      \n> [21] vctrs_0.5.2       trust_0.1-8       robustbase_0.95-0 glue_1.6.2       \n> [25] DEoptimR_1.0-11   compiler_3.6.0    pillar_1.8.1      generics_0.1.3   \n> [29] jsonlite_1.8.7    renv_1.0.0        pkgconfig_2.0.3  \n> > \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20231026/a1251d6a/attachment.html>",
+      "body_snippet": "Hi All,\n\nI created the environment again with a fresh install of the package versions I am using. The flomarriage example and my own code are both working now.\nAditya \n\n> On Oct 25, 2023, at 4:06 PM, ",
+      "thread_id": "thread-4f256ba06002",
+      "thread_depth": 1,
+      "month": "2023-10"
+    },
+    {
+      "id": "msg-1e38243d37b5",
+      "message_id": "<CAByPayHVAgS1j2Uv2hfpewV6r0K_qZLczA8kjq4yyy3u4UrE3A@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2023-10-27T04:12:56Z",
+      "subject": "[statnet_help] ERGM error",
+      "subject_clean": "[statnet_help] ERGM error",
+      "in_reply_to": "<A4F8C11C-3E4E-417C-9274-584BC7E8B1D8@brown.edu>",
+      "references": [
+        "<CAOtpZkm3A4h5xcsMyebEaoc9ZMLOgkxMfRknpyQg+m9nzfoOZw@mail.gmail.com>",
+        "<A4F8C11C-3E4E-417C-9274-584BC7E8B1D8@brown.edu>"
+      ],
+      "body_plain": "Dear Aditya,\n\nYeah, running old versions of the Statnet in an even older version of\nR might be tricky... It's strange that suddenly stopped working\nthough, given that you managed the environment with 'renv'. You must\nhave updated something, right?\n\nIt was all already some time but I believe the issues might be related\nto the rle functionality which for the moment was part of\nstatnet.common (or ergm) and was later externalized to a separate\npackage 'rle'.\n\nI'm glad that all worked-out in the end.\n\nBest,\nMichal\n\nOn Thu, Oct 26, 2023 at 5:43?PM Aditya Khanna <aditya_khanna@brown.edu> wrote:\n>\n> Hi All,\n>\n> I created the environment again with a fresh install of the package versions I am using. The flomarriage example and my own code are both working now.\n> Aditya\n>\n> On Oct 25, 2023, at 4:06 PM, Khanna, Aditya <aditya_khanna@brown.edu> wrote:\n>\n> Hello Statnet Dev Team and All,\n>\n> I have some code for an ERGM that I developed in v 3.10.4 (and R 3.6.0). I didn't upgrade it to the latest ERGM because it had a custom term and used a very large underlying dataset. Until recently, the code and the environment both worked just fine, I periodically re-ran the code on new data as updates were needed.\n>\n> Today I tried to run the code again, but it, and simpler versions of the ERGM (i.e., a model as simple as just including the edges term), but all failed. I then tried running a standard tutorial example, and it produces the same error:\n>\n> > data(florentine)\n> > summary(flomarriage ~ edges)\n> edges\n>    20\n> > ergm(formula = flomarriage ~ edges)\n> Error in rep(rle(v), r, scale = \"run\") : invalid 'times' argument\n> >\n>\n> I have been managing the project using renv, so I don't know what underlying thing might have changed.I would be grateful for any thoughts on how to debug this. The sessionInfo() is included below.\n> Aditya\n>\n> > sessionInfo()\n> R version 3.6.0 (2019-04-26)\n> Platform: x86_64-pc-linux-gnu (64-bit)\n> Running under: Red Hat Enterprise Linux Server 7.9 (Maipo)\n>\n> Matrix products: default\n> BLAS/LAPACK: /oscar/rt/7.2/opt/intel/2017.0/compilers_and_libraries_2017.0.098/linux/mkl/lib/intel64_lin/libmkl_gf_lp64.so\n>\n> locale:\n>  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C\n>  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8\n>  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8\n>  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C\n>  [9] LC_ADDRESS=C               LC_TELEPHONE=C\n> [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C\n>\n> attached base packages:\n> [1] stats     graphics  grDevices datasets  utils     methods   base\n>\n> other attached packages:\n> [1] here_1.0.1           ergm.userterms_3.1.1 statnet.common_4.7.0\n> [4] dplyr_1.1.0          ergm_3.10.4          network_1.18.1\n>\n> loaded via a namespace (and not attached):\n>  [1] magrittr_2.0.3    MASS_7.3-51.4     tidyselect_1.2.0  lattice_0.20-38\n>  [5] R6_2.5.1          rlang_1.1.1       fansi_1.0.4       tools_3.6.0\n>  [9] parallel_3.6.0    grid_3.6.0        lpSolve_5.6.18    utf8_1.2.3\n> [13] cli_3.6.0         coda_0.19-4       withr_2.5.0       rprojroot_2.0.3\n> [17] tibble_3.1.8      lifecycle_1.0.3   Matrix_1.2-17     purrr_1.0.1\n> [21] vctrs_0.5.2       trust_0.1-8       robustbase_0.95-0 glue_1.6.2\n> [25] DEoptimR_1.0-11   compiler_3.6.0    pillar_1.8.1      generics_0.1.3\n> [29] jsonlite_1.8.7    renv_1.0.0        pkgconfig_2.0.3\n> >\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Aditya,\n\nYeah, running old versions of the Statnet in an even older version of\nR might be tricky... It's strange that suddenly stopped working\nthough, given that you managed the environment with ",
+      "thread_id": "thread-4f256ba06002",
+      "thread_depth": 2,
+      "month": "2023-10"
+    },
+    {
+      "id": "msg-3c8867e4a52e",
+      "message_id": "<CAOtpZkk7jSximO_jj14OxYmcPBva8pdo5xXhKPiBAUuHY==4Mg@mail.gmail.com>",
+      "from_name": "Khanna, Aditya",
+      "from_email_hash": "fedf55373b973bf32a945381c004b0ed5e0ebd7146bfad006ab10b6c4d0702f6",
+      "date": "2023-10-27T05:44:43Z",
+      "subject": "[statnet_help] ERGM error",
+      "subject_clean": "[statnet_help] ERGM error",
+      "in_reply_to": "<CAByPayHVAgS1j2Uv2hfpewV6r0K_qZLczA8kjq4yyy3u4UrE3A@mail.gmail.com>",
+      "references": [
+        "<CAOtpZkm3A4h5xcsMyebEaoc9ZMLOgkxMfRknpyQg+m9nzfoOZw@mail.gmail.com>",
+        "<A4F8C11C-3E4E-417C-9274-584BC7E8B1D8@brown.edu>",
+        "<CAByPayHVAgS1j2Uv2hfpewV6r0K_qZLczA8kjq4yyy3u4UrE3A@mail.gmail.com>"
+      ],
+      "body_plain": "Thanks Michal! I had installed the languageserver and httpgd packages to\nuse the vscode extension for R. I haven?t install them in my fresh\nenvironment that is working.\n\nAditya\n\nOn Fri, Oct 27, 2023 at 7:13 AM Micha? Bojanowski <michal2992@gmail.com>\nwrote:\n\n> Dear Aditya,\n>\n> Yeah, running old versions of the Statnet in an even older version of\n> R might be tricky... It's strange that suddenly stopped working\n> though, given that you managed the environment with 'renv'. You must\n> have updated something, right?\n>\n> It was all already some time but I believe the issues might be related\n> to the rle functionality which for the moment was part of\n> statnet.common (or ergm) and was later externalized to a separate\n> package 'rle'.\n>\n> I'm glad that all worked-out in the end.\n>\n> Best,\n> Michal\n>\n> On Thu, Oct 26, 2023 at 5:43?PM Aditya Khanna <aditya_khanna@brown.edu>\n> wrote:\n> >\n> > Hi All,\n> >\n> > I created the environment again with a fresh install of the package\n> versions I am using. The flomarriage example and my own code are both\n> working now.\n> > Aditya\n> >\n> > On Oct 25, 2023, at 4:06 PM, Khanna, Aditya <aditya_khanna@brown.edu>\n> wrote:\n> >\n> > Hello Statnet Dev Team and All,\n> >\n> > I have some code for an ERGM that I developed in v 3.10.4 (and R 3.6.0).\n> I didn't upgrade it to the latest ERGM because it had a custom term and\n> used a very large underlying dataset. Until recently, the code and the\n> environment both worked just fine, I periodically re-ran the code on new\n> data as updates were needed.\n> >\n> > Today I tried to run the code again, but it, and simpler versions of the\n> ERGM (i.e., a model as simple as just including the edges term), but all\n> failed. I then tried running a standard tutorial example, and it produces\n> the same error:\n> >\n> > > data(florentine)\n> > > summary(flomarriage ~ edges)\n> > edges\n> >    20\n> > > ergm(formula = flomarriage ~ edges)\n> > Error in rep(rle(v), r, scale = \"run\") : invalid 'times' argument\n> > >\n> >\n> > I have been managing the project using renv, so I don't know what\n> underlying thing might have changed.I would be grateful for any thoughts on\n> how to debug this. The sessionInfo() is included below.\n> > Aditya\n> >\n> > > sessionInfo()\n> > R version 3.6.0 (2019-04-26)\n> > Platform: x86_64-pc-linux-gnu (64-bit)\n> > Running under: Red Hat Enterprise Linux Server 7.9 (Maipo)\n> >\n> > Matrix products: default\n> > BLAS/LAPACK:\n> /oscar/rt/7.2/opt/intel/2017.0/compilers_and_libraries_2017.0.098/linux/mkl/lib/intel64_lin/libmkl_gf_lp64.so\n> >\n> > locale:\n> >  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C\n> >  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8\n> >  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8\n> >  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C\n> >  [9] LC_ADDRESS=C               LC_TELEPHONE=C\n> > [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C\n> >\n> > attached base packages:\n> > [1] stats     graphics  grDevices datasets  utils     methods   base\n> >\n> > other attached packages:\n> > [1] here_1.0.1           ergm.userterms_3.1.1 statnet.common_4.7.0\n> > [4] dplyr_1.1.0          ergm_3.10.4          network_1.18.1\n> >\n> > loaded via a namespace (and not attached):\n> >  [1] magrittr_2.0.3    MASS_7.3-51.4     tidyselect_1.2.0\n> lattice_0.20-38\n> >  [5] R6_2.5.1          rlang_1.1.1       fansi_1.0.4       tools_3.6.0\n> >  [9] parallel_3.6.0    grid_3.6.0        lpSolve_5.6.18    utf8_1.2.3\n> > [13] cli_3.6.0         coda_0.19-4       withr_2.5.0\n>  rprojroot_2.0.3\n> > [17] tibble_3.1.8      lifecycle_1.0.3   Matrix_1.2-17     purrr_1.0.1\n> > [21] vctrs_0.5.2       trust_0.1-8       robustbase_0.95-0 glue_1.6.2\n> > [25] DEoptimR_1.0-11   compiler_3.6.0    pillar_1.8.1      generics_0.1.3\n> > [29] jsonlite_1.8.7    renv_1.0.0        pkgconfig_2.0.3\n> > >\n> >\n> >\n> > _______________________________________________\n> > statnet_help mailing list\n> > statnet_help@u.washington.edu\n> > http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20231027/85aea9df/attachment.html>",
+      "body_snippet": "Thanks Michal! I had installed the languageserver and httpgd packages to\nuse the vscode extension for R. I haven?t install them in my fresh\nenvironment that is working.\n\nAditya\n\nOn Fri, Oct 27, 2023 a",
+      "thread_id": "thread-4f256ba06002",
+      "thread_depth": 3,
+      "month": "2023-10"
+    },
+    {
+      "id": "msg-fb0bc8d87028",
+      "message_id": "<CAEM3vH9MNk9DvPw3gCevg=eTRcEYZ18Ak+EvEXwCvNzFxQq1Ow@mail.gmail.com>",
+      "from_name": "SJ C",
+      "from_email_hash": "2b4c49dda46aba13c0c7e51ae5adf5e3ec2a03232acc794d24959fb2d30bd45e",
+      "date": "2023-10-30T02:31:30Z",
+      "subject": "[statnet_help] Question about adding moderating effect in REM",
+      "subject_clean": "[statnet_help] Question about adding moderating effect in REM",
+      "in_reply_to": "<27ab70b1-8e99-b01e-723e-35e285358950@uci.edu>",
+      "references": [
+        "<CAEM3vH--Wu9f1JXK0E6ioT7t3cno1O=KTynpgHHbTrUdVEzzNA@mail.gmail.com>",
+        "<27ab70b1-8e99-b01e-723e-35e285358950@uci.edu>"
+      ],
+      "body_plain": "Dear Carter,\n\nI appreciate your detailed response!\n\nBased on my understanding of your explanation, I can create an interaction\nterm by multiplying two matrices (e.g., one matrix of RRecSnd retrieved\nfrom accum.rrl and the other matrix which is transformed from node\nattributes) and enter the interaction term as a CovEvent in the rem.dyad.\nAm I correct?\n\nAssuming that I am correct, I entered the interaction term and the\nattribute-transformed matrix as if they are the covariates of CovEvent in\nrem.dyad as follows:\ncovar = list(CovEvent = cbind(attribute-transformed matrix, interaction\nmatrix))\n\nHowever, this code did not work.\nIf I separate this code into two as follows, the rem.dyad gives me a result\nof only one variable.\ncovar = list(CovEvent = attribute-transformed matrix, CovEvent =\ninteraction matrix)\n\nSince we have to enter lower-order terms of the interaction term, I need to\nenter these two terms as CovEvent.\nCan you please let me know how to handle this?\n\nThank you for your time paying attention to this!\n\nSincerely,\nChoi\n\n2023? 10? 18? (?) ?? 11:06, Carter T. Butts <buttsc@uci.edu>?? ??:\n\n> Hi, Choi -\n>\n> To be clear, I presume that by \"moderation\" you mean an interaction effect\n> (i.e., a product term between e.g. the RRecSnd statistic and another\n> statistic).  This can be done, but currently it is DIY: what you have to do\n> is compute the statistics you want, and enter them as dynamic edge (aka\n> event) covariates.  (It is a basic property of these models that any and\n> all effects can be implemented as (dynamic) edge covariates, which is a\n> handy thing to keep in mind if you want to implement your own statistics.)\n>\n> There is an internal function accum.rrl that may be handy for this\n> purpose; it is part of the black magic of the package (and thus not very\n> documented), but can be used.  If you call accum.rrl with an eventlist, it\n> will return a list with two elements.  The first is a list, with one entry\n> per event in the data, whose ith entry is an ordered list of the most\n> recent senders for every node that has received an event (*going into*\n> the ith event).  The second is the corresponding list for most recent\n> receivers for every node that has sent an event (again, the ith entry is\n> the state headed into the ith event).  Nodes that have never sent/received\n> by a given event do not have entries.  This function is used \"backstage\" to\n> help compute the hazards for RRecSnd and RSndSnd, so can be helpful for you\n> if you want to make your own term.  But of course, it is just a tool for\n> tabulation, and you can write your own if you prefer.\n>\n> Hope that helps!\n>\n> -Carter\n> On 10/17/23 4:45 PM, SJ C wrote:\n>\n> Hi all,\n>\n> I am using REM(relevant event model) for the first time in my research\n> project, and also this is my first time sending questions to statnet_help.\n>\n> My question is about entering a moderating effect in REM.\n> I consulted REM tutorials uploaded in Statnet website and other workshop\n> materials, but was not able to find relevant information.\n>\n> For instance, how can we test whether the RRecSnd effect is moderated by a\n> particular attribute (e.g., education level) of the original sender in REM?\n>\n> It would be greatly appreciated if I can have any responses.\n> Thank you!\n>\n> Sincerely,\n> Choi\n>\n>\n> _______________________________________________\n> statnet_help mailing liststatnet_help@u.washington.eduhttps://urldefense.com/v3/__http://mailman13.u.washington.edu/mailman/listinfo/statnet_help__;!!CzAuKJ42GuquVTTmVmPViYEvSg!PshxIW-NTXvNytOo2UNgN4BoECliq11-0VSkV_z-sFJoai8EOjfULJwZkLbKfA2fj43MiNC_6GfJ1WxJ9mMkHCpc$\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20231030/78472df7/attachment.html>",
+      "body_snippet": "Dear Carter,\n\nI appreciate your detailed response!\n\nBased on my understanding of your explanation, I can create an interaction\nterm by multiplying two matrices (e.g., one matrix of RRecSnd retrieved\nf",
+      "thread_id": "thread-cdfe18fee32a",
+      "thread_depth": 2,
+      "month": "2023-10"
+    },
+    {
+      "id": "msg-6e9853c1508d",
+      "message_id": "<7f071c2d-388b-fc6b-4bfd-d5a7e169f02e@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2023-10-30T21:00:36Z",
+      "subject": "[statnet_help] Question about adding moderating effect in REM",
+      "subject_clean": "[statnet_help] Question about adding moderating effect in REM",
+      "in_reply_to": "<CAEM3vH9MNk9DvPw3gCevg=eTRcEYZ18Ak+EvEXwCvNzFxQq1Ow@mail.gmail.com>",
+      "references": [
+        "<CAEM3vH--Wu9f1JXK0E6ioT7t3cno1O=KTynpgHHbTrUdVEzzNA@mail.gmail.com>",
+        "<27ab70b1-8e99-b01e-723e-35e285358950@uci.edu>",
+        "<CAEM3vH9MNk9DvPw3gCevg=eTRcEYZ18Ak+EvEXwCvNzFxQq1Ow@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Choi -\n\nYour covariate is time varying, so will need to be specified in an array \nof dimension m x p x n x n, where n is the number of nodes, p is the \nnumber of covariates (here 1, if you are only using the one effect), and \nm is the number of events in the data set.? The value X[i,j,k,l] in this \narray is then the value of the jth covariate for the k->l interaction \nleading into the ith event.? (See ?rem.dyad for documentation on \nformat.)? You can construct that array using the information in \naccum.rrl, or by other means (but either way, some processing is \ninvolved).? Once you have the covariate array, you indeed pass it to the \ncovar argument by a CovEvent entry.? In your case, it looks like your \ndata was not formatted correctly for this purpose; in that case, it will \nnot function correctly.\n\nHope that helps!\n\n-Carter\n\nOn 10/30/23 2:31 AM, SJ C wrote:\n> Dear Carter,\n>\n> I appreciate your detailed response!\n>\n> Based on my understanding of your explanation, I can create an \n> interaction term by multiplying two matrices (e.g., one matrix of \n> RRecSnd retrieved from accum.rrl and the other matrix which is \n> transformed?from node attributes) and enter the interaction term as a \n> CovEvent in the rem.dyad. Am I correct?\n>\n> Assuming that I am correct, I entered the interaction term and the \n> attribute-transformed matrix as if they are the covariates of CovEvent \n> in rem.dyad as follows:\n> covar = list(CovEvent = cbind(attribute-transformed matrix, \n> interaction matrix))\n>\n> However, this code did not work.\n> If I separate this code into two as follows, the rem.dyad gives me a \n> result of only one variable.\n> covar = list(CovEvent = attribute-transformed matrix, CovEvent = \n> interaction matrix)\n>\n> Since we have to enter lower-order terms?of the interaction term, I \n> need to enter these two terms as CovEvent.\n> Can you please let me know how to handle this?\n>\n> Thank you for your time paying attention to this!\n>\n> Sincerely,\n> Choi\n>\n> 2023? 10? 18? (?) ?? 11:06, Carter T. Butts <buttsc@uci.edu>?? \n> ??:\n>\n>     Hi, Choi -\n>\n>     To be clear, I presume that by \"moderation\" you mean an\n>     interaction effect (i.e., a product term between e.g. the RRecSnd\n>     statistic and another statistic).? This can be done, but currently\n>     it is DIY: what you have to do is compute the statistics you want,\n>     and enter them as dynamic edge (aka event) covariates.? (It is a\n>     basic property of these models that any and all effects can be\n>     implemented as (dynamic) edge covariates, which is a handy thing\n>     to keep in mind if you want to implement your own statistics.)\n>\n>     There is an internal function accum.rrl that may be handy for this\n>     purpose; it is part of the black magic of the package (and thus\n>     not very documented), but can be used. If you call accum.rrl with\n>     an eventlist, it will return a list with two elements.? The first\n>     is a list, with one entry per event in the data, whose ith entry\n>     is an ordered list of the most recent senders for every node that\n>     has received an event (/going into/ the ith event).? The second is\n>     the corresponding list for most recent receivers for every node\n>     that has sent an event (again, the ith entry is the state headed\n>     into the ith event).? Nodes that have never sent/received by a\n>     given event do not have entries.? This function is used\n>     \"backstage\" to help compute the hazards for RRecSnd and RSndSnd,\n>     so can be helpful for you if you want to make your own term.? But\n>     of course, it is just a tool for tabulation, and you can write\n>     your own if you prefer.\n>\n>     Hope that helps!\n>\n>     -Carter\n>\n>     On 10/17/23 4:45 PM, SJ C wrote:\n>>     Hi all,\n>>\n>>     I am using REM(relevant event model) for the first time in\n>>     my?research project, and also this is my first time sending\n>>     questions to statnet_help.\n>>\n>>     My question is about entering a moderating effect in REM.\n>>     I consulted REM tutorials uploaded in Statnet website and other\n>>     workshop materials, but was not able to find relevant information.\n>>\n>>     For instance, how can we test whether the RRecSnd?effect is\n>>     moderated by a particular attribute (e.g., education level) of\n>>     the original sender in REM?\n>>\n>>     It would be greatly?appreciated if I can have any responses.\n>>     Thank you!\n>>\n>>     Sincerely,\n>>     Choi\n>>\n>>\n>>     _______________________________________________\n>>     statnet_help mailing list\n>>     statnet_help@u.washington.edu\n>>     https://urldefense.com/v3/__http://mailman13.u.washington.edu/mailman/listinfo/statnet_help__;!!CzAuKJ42GuquVTTmVmPViYEvSg!PshxIW-NTXvNytOo2UNgN4BoECliq11-0VSkV_z-sFJoai8EOjfULJwZkLbKfA2fj43MiNC_6GfJ1WxJ9mMkHCpc$  \n>     _______________________________________________\n>     statnet_help mailing list\n>     statnet_help@u.washington.edu\n>     http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>     <https://urldefense.com/v3/__http://mailman13.u.washington.edu/mailman/listinfo/statnet_help__;!!CzAuKJ42GuquVTTmVmPViYEvSg!PIMlwD8u8-cpeHuP5HSDGbuoFoVxNJpNHWFNRR4wtPvoklBOIcaXy0NuvyJDTa4NoNuxLaZRtd5xgfO0cCQ5640i$>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20231030/8001781d/attachment.html>",
+      "body_snippet": "Hi, Choi -\n\nYour covariate is time varying, so will need to be specified in an array \nof dimension m x p x n x n, where n is the number of nodes, p is the \nnumber of covariates (here 1, if you are onl",
+      "thread_id": "thread-cdfe18fee32a",
+      "thread_depth": 3,
+      "month": "2023-10"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-cdfe18fee32a",
+      "subject": "[statnet_help] Question about adding moderating effect in REM",
+      "message_count": 4,
+      "participants": [
+        "Carter T. Butts",
+        "SJ C"
+      ],
+      "started": "2023-10-17T16:45:00Z",
+      "last_reply": "2023-10-30T21:00:36Z",
+      "root_message_id": "msg-cdfe18fee32a"
+    },
+    {
+      "id": "thread-4f256ba06002",
+      "subject": "[statnet_help] ERGM error",
+      "message_count": 4,
+      "participants": [
+        "Aditya Khanna",
+        "Khanna, Aditya",
+        "Michał Bojanowski"
+      ],
+      "started": "2023-10-25T13:06:41Z",
+      "last_reply": "2023-10-27T05:44:43Z",
+      "root_message_id": "msg-4f256ba06002"
+    }
+  ]
+}

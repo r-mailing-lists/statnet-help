@@ -1,0 +1,96 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2006-07",
+  "messages": [
+    {
+      "id": "msg-6af85d2c019a",
+      "message_id": "<017701c6a50a$f8576190$41787d80@sppd.usc.edu>",
+      "from_name": "Chris Weare",
+      "from_email_hash": "77db26d1955d49d6e9e971fdb674277f19ca6b9ce8621ac74f3ed48805eac322",
+      "date": "2006-07-11T09:56:35Z",
+      "subject": "[statnet_help] ERGM and affiliation networks",
+      "subject_clean": "[statnet_help] ERGM and affiliation networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I attended the workshop at the Sunbelt, and I am now sitting down to figure\n\nout whether I can and should structure a project I am working on to employ\n\nERGM statistical analysis.\n\n \n\nWe are interested in the role voluntary associations play in generating\n\nforms of political participation and civic attitudes. We are collecting data\n\non an affiliation network employing a random survey of individuals and then\n\nthe associations to which they are members.  Our methods are similar to the\n\nhypernetworks described by McPherson in his 1982 Social Networks article.   \n\n \n\nI just wanted to clarify two points before investing a lot of time building\n\nskills in understanding and using ERGM models:\n\n \n\n1.  First, the examples employed in the workshop and the manual are of\n\ncomplete networks, and I have not seen a discussion of sampling error.  Are\n\nthese EPRM techniques appropriate for the analysis of population samples?\n\nIf so, are there modifications to the models that are necessary to\n\nincorporate sampling error?\n\n \n\n2.  You do have an example of a bipartite graph in the manual, and mention\n\nthe extension of the ERGM techniques to bipartite graphs.  Still, is it not\n\nclear to me whether the current implementation of statnet allows you to\n\nanalyze that type of network data.  Does it?\n\n \n\nThanks  in advance\n\n \n\nChris\n\n \n\n\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n\nChristopher Weare \n\nResearch Associate Professor \n\nSchool of Policy, Planning, and Development \n\n\n\nVKC 371\n\nUniversity of Southern California \n\n\n\nLos Angeles, CA 90089-0626\n\n\n\n 213-740-4690 voice \n\nweare@usc.edu \n\n\n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20060711/03c3d0b0/attachment.html>",
+      "body_snippet": "I attended the workshop at the Sunbelt, and I am now sitting down to figure\n\nout whether I can and should structure a project I am working on to employ\n\nERGM statistical analysis.\n\n \n\nWe are intereste",
+      "thread_id": "thread-6af85d2c019a",
+      "thread_depth": 0,
+      "month": "2006-07"
+    },
+    {
+      "id": "msg-661e1acd8686",
+      "message_id": "<BAY110-W65C0142F20C6CDBF7ABACA0610@phx.gbl>",
+      "from_name": "Hank Green",
+      "from_email_hash": "3ffe890a9f67d24463a3b8702e9fe4ee201a14c8fa4b5472fa5ce4e81912e82a",
+      "date": "2006-07-20T13:32:06Z",
+      "subject": "[statnet_help] newbie question about importing edgelists",
+      "subject_clean": "[statnet_help] newbie question about importing edgelists",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "hi statnet guys:\n\n \n\ni have what i'm sure is a very simple question to answer.\n\n \n\ni'm trying to import a tab delimited edgelist into R so that i can use it f\nor modeling.\n\n \n\ni'm trying to use the padgett data files as exemplars, but wondered if some\none could provide some verbose explanation of the first few lines of the fi\nle (header, and a data line or two) so that i can understand what i'd need \nto add to my header-less edgelist to make it play well with others.\n\n \n\nfurther, some suggestions as to the appropriate parameters to set for the i\nmport? do i use read.delim? if so what parameters should i use?\n\n \n\nthanks for any help you can give.\n\n \n\nhank green\n\n_________________________________________________________________\n\nTry Live.com - your fast, personalized homepage with all the things you car\ne about in one place.\n\nhttp://www.live.com/getstarted\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20060720/177fc21f/attachment.html>",
+      "body_snippet": "hi statnet guys:\n\n \n\ni have what i'm sure is a very simple question to answer.\n\n \n\ni'm trying to import a tab delimited edgelist into R so that i can use it f\nor modeling.\n\n \n\ni'm trying to use the pa",
+      "thread_id": "thread-661e1acd8686",
+      "thread_depth": 0,
+      "month": "2006-07"
+    },
+    {
+      "id": "msg-ee74ad05e664",
+      "message_id": "<C0E5C283.7FC5%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2006-07-20T23:30:07Z",
+      "subject": "[statnet_help] newbie question about importing edgelists",
+      "subject_clean": "[statnet_help] newbie question about importing edgelists",
+      "in_reply_to": "<BAY110-W65C0142F20C6CDBF7ABACA0610@phx.gbl>",
+      "references": [],
+      "body_plain": "Dear Hank,\n\n\n\nIt is pretty easy in R, perhaps that is what makes it harder for those who\n\nknow a lot!\n\nSuppose the file is based on an Excel spread sheet called ?trial.xls? with\n\nthe first two columns:\n\n3 5\n\n3 7\n\n4 2\n\n5 7\n\n5 8\n\n\n\n1. Save it as a tab-delimited file called, e.g.,  ?trial.txt? .\n\n2. In R say, e.g., :\n\n\n\nel <- read.table(\"trial.txt\")\n\neln <- network(el)\n\n\n\nand you are done. The variable names can be anything.\n\nHere is a transcript. I have attached the two files.\n\n\n\n> el <- read.table(\"trial.txt\")\n\n> el\n\n  V1 V2\n\n1  3  5\n\n2  3  7\n\n3  4  2\n\n4  5  7\n\n5  5  8\n\n> eln <- network(el)\n\n> eln\n\nNetwork attributes:\n\n   vertices = 8 \n\n   directed = TRUE \n\n   hyper = FALSE \n\n   loops = FALSE \n\n   multiple = FALSE\n\n   bipartite = FALSE\n\n   total edges= 5 \n\n\n\nNo nodal attributes\n\n\n\n adjacency matrix:\n\n  1 2 3 4 5 6 7 8\n\n1 0 0 0 0 0 0 0 0\n\n2 0 0 0 0 0 0 0 0\n\n3 0 0 0 0 1 0 1 0\n\n4 0 1 0 0 0 0 0 0\n\n5 0 0 0 0 0 0 1 1\n\n6 0 0 0 0 0 0 0 0\n\n7 0 0 0 0 0 0 0 0\n\n8 0 0 0 0 0 0 0 0\n\n\n\n\n\nSincerely,\n\n\n\nThe ?statnet? team\n\n\n\n\n\np.s. Suppose you wanted to have a network with 10 nodes but the last two\n\n(labeled 9 and 10) did not have any edges. Then this will work: > eln <-\n\nnetwork.initialize(10) > add.edges(eln, el[,1], el[,2])\n\n> eln\n\nNetwork attributes:\n\n   vertices = 10 \n\n   directed = TRUE \n\n   hyper = FALSE \n\n   loops = FALSE \n\n   multiple = FALSE\n\n   bipartite = FALSE\n\n   total edges= 5 \n\n\n\nNo nodal attributes\n\n\n\n adjacency matrix:\n\n   1 2 3 4 5 6 7 8 9 10\n\n1  0 0 0 0 0 0 0 0 0  0\n\n2  0 0 0 0 0 0 0 0 0  0\n\n3  0 0 0 0 1 0 1 0 0  0\n\n4  0 1 0 0 0 0 0 0 0  0\n\n5  0 0 0 0 0 0 1 1 0  0\n\n6  0 0 0 0 0 0 0 0 0  0\n\n7  0 0 0 0 0 0 0 0 0  0\n\n8  0 0 0 0 0 0 0 0 0  0\n\n9  0 0 0 0 0 0 0 0 0  0\n\n10 0 0 0 0 0 0 0 0 0  0\n\n\n\nOn 7/20/06 1:32 PM, \"Hank Green\" <hankgreenjr@hotmail.com> wrote:\n\n\n\n> hi statnet guys:\n\n>  \n\n> i have what i'm sure is a very simple question to answer.\n\n>  \n\n> i'm trying to import a tab delimited edgelist into R so that i can use it\n for\n\n> modeling.\n\n>  \n\n> i'm trying to use the padgett data files as exemplars, but wondered if so\nmeone\n\n> could provide some verbose explanation of the first few lines of the file\n\n> (header, and a data line or two) so that i can understand what i'd need t\no add\n\n> to my header-less edgelist to make it play well with others.\n\n>  \n\n> further, some suggestions as to the appropriate parameters to set for the\n\n> import? do i use read.delim? if so what parameters should i use?\n\n>  \n\n> thanks for any help you can give.\n\n>  \n\n> hank green\n\n> \n\n> \n\n> \n\n> \n\n> \n\n> \n\n> Be one of the first to try  Windows Live Mail beta\n\n> <http://ideas.live.com/programpage.aspx?versionId=5d21c51a-b161-4314-9b0e\n-4911\n\n> fb2b2e6d> \n\n> \n\n> _______________________________________________\n\n> statnet_help mailing list\n\n> statnet_help@u.washington.edu\n\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20060720/d9f508b8/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: trial.txt\nType: application/octet-stream\nSize: 25 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20060720/d9f508b8/attachment.obj>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: trial.xls\nType: application/octet-stream\nSize: 13824 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20060720/d9f508b8/attachment-0001.obj>",
+      "body_snippet": "Dear Hank,\n\n\n\nIt is pretty easy in R, perhaps that is what makes it harder for those who\n\nknow a lot!\n\nSuppose the file is based on an Excel spread sheet called ?trial.xls? with\n\nthe first two columns",
+      "thread_id": "thread-661e1acd8686",
+      "thread_depth": 1,
+      "month": "2006-07"
+    },
+    {
+      "id": "msg-9331139ac692",
+      "message_id": "<C0E68457.7FE6%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2006-07-21T13:17:11Z",
+      "subject": "[statnet_help] FAQ: Installing and Updating \"statnet\" procedure.",
+      "subject_clean": "[statnet_help] FAQ: Installing and Updating \"statnet\" procedure.",
+      "in_reply_to": "<BAY110-W65C0142F20C6CDBF7ABACA0610@phx.gbl>",
+      "references": [],
+      "body_plain": "Hi all,\n\n\n\nThis posting is describes the procedure to install and update to the current\n\nversion of \"statnet\".\n\n\n\nA new installation involves two main steps: downloading R, and then\n\ninstalling the \"statnet\" package within R.  Those of you who already have\n\nthe most recent version of R (2.3.1) may skip over Step 1 of the\n\ninstructions. Those with a previous version of R, please be sure to follow\n\nStep 1 in order to update.\n\n\n\n****************************************\n\nStep 1.  Downloading R version 2.3.1:\n\n\n\na.  Go to http://cran.r-project.org/, and select Mirrors from the left-hand\n\nmenu.\n\n\n\nb.  Select a location near you.\n\n\n\nc.  From the \"Download and Install R\" section, select the link for your\n\noperating system.  Follow the instructions on the relevant page.  Note that\n\nyou need to download only the base distribution, not the contributed\n\npackages.\n\n\n\nd.  Once you've downloaded the installation file, follow the instructions\n\nfor installation.\n\n\n\n\n\n****************************************\n\n2.  Downloading and installing \"statnet\":\n\n\n\na.  Open the version of R that you've just installed (method varies by\n\nplatform but is fairly typical on each).\n\n\n\nb.  First you need to install the \"statnet\" installer. At the R cursor,\n\ntype:\n\n\n\ninstall.packages(\"updatestatnet\",\n\ncontriburl=\"http://csde.washington.edu/statnet\")\n\n\n\nc.  Now, and in the future, you can update \"statnet\" at any point using the\n\ninstaller. To do this, at the R cursor, type:\n\n\n\nlibrary(updatestatnet)\n\n\n\nd.  Follow the directions; feel free to say no to any optional\n\n(recommended) packages, although we recommend saying yes.\n\n\n\n\n\n****************************************\n\n3.  If you have time, we recommend that you familiarize yourself with the\n\nbasics of R, although this is not required.  A good place for doing so is\n\nby using any one of the many R tutorials at:\n\n\n\nhttp://cran.r-project.org/other-docs.html\n\n\n\n****************************************\n\nThere is much more information available on the \"statnet\" website:\n\n\n\nhttp://csde.washington.edu/statnet\n\n\n\n****************************************\n\nIf you have problems installing, or other issues arise, email\n\n\"statnet_help at u.washington.edu\"\n\n\n\nThe \"statnet\" team\n\n\n\nMark S. Handcock <handcock at stat.washington.edu>\n\nDavid R. Hunter <dhunter at stat.psu.edu>\n\nCarter T. Butts <buttsc at uci.edu>\n\nSteven M. Goodreau <goodreau at u.washington.edu>\n\nMartina Morris <morrism at u.washington.edu>",
+      "body_snippet": "Hi all,\n\n\n\nThis posting is describes the procedure to install and update to the current\n\nversion of \"statnet\".\n\n\n\nA new installation involves two main steps: downloading R, and then\n\ninstalling the \"s",
+      "thread_id": "thread-661e1acd8686",
+      "thread_depth": 1,
+      "month": "2006-07"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-6af85d2c019a",
+      "subject": "[statnet_help] ERGM and affiliation networks",
+      "message_count": 1,
+      "participants": [
+        "Chris Weare"
+      ],
+      "started": "2006-07-11T09:56:35Z",
+      "last_reply": "2006-07-11T09:56:35Z",
+      "root_message_id": "msg-6af85d2c019a"
+    },
+    {
+      "id": "thread-661e1acd8686",
+      "subject": "[statnet_help] newbie question about importing edgelists",
+      "message_count": 3,
+      "participants": [
+        "Hank Green",
+        "Mark S. Handcock"
+      ],
+      "started": "2006-07-20T13:32:06Z",
+      "last_reply": "2006-07-21T13:17:11Z",
+      "root_message_id": "msg-661e1acd8686"
+    }
+  ]
+}

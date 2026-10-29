@@ -1,0 +1,92 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2012-09",
+  "messages": [
+    {
+      "id": "msg-5819a7632228",
+      "message_id": "<CAKf=sNJFCG4Hv-t90O5-vyL_x6z2vJHObeZpDy5DSwQvNj48hA@mail.gmail.com>",
+      "from_name": "Mark Handel",
+      "from_email_hash": "a6db9de4592b70038c3bab6c26edde58238b145c87ca1d1c89da8f2b51dd732c",
+      "date": "2012-09-10T21:41:02Z",
+      "subject": "[statnet_help] Edgecov and Dyadcov matrix / syntax specification",
+      "subject_clean": "[statnet_help] Edgecov and Dyadcov matrix / syntax specification",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi-\n\nI've been trying to use the edgecov / dyadcov terms in my models, and\nhave been encountering two problems. First, the models rarely, if\never, run to completion, with frequent out of memory errors. Second,\nwhen they do, the results do not make intuitive sense. This makes me\nthink that I'm not specifying the model correctly, and was hoping for\nsome assistance. I've searched the archives, but nothing seemed to\ndeal with my specific situation.\n\nI have a network, with edge values. These values are distances between\npairs. The general syntax I've been using is this:\n\n# dist.net is in edge-list format:\n# id1, id2, distance,\n# All distances >= 0, and the network is extremely sparse\n# (~20K edges for 13.5K vertices)\n\nedge <- read.csv('dist.net')\nnet <- network(edge[,1:2])\n\nset.edge.value(net, \"dist\", dist[,3])\nm1 <- ergm(net ~ edges + dyadcov(net, \"dist\"))\n\nI haven't found any examples where an edge attribute of the same\nnetwork being modeled is used in edge/dyadcov. Is it possible to do\nthis?\n\nThanks!\n\nMJH",
+      "body_snippet": "Hi-\n\nI've been trying to use the edgecov / dyadcov terms in my models, and\nhave been encountering two problems. First, the models rarely, if\never, run to completion, with frequent out of memory errors",
+      "thread_id": "thread-5819a7632228",
+      "thread_depth": 0,
+      "month": "2012-09"
+    },
+    {
+      "id": "msg-addaaf010e38",
+      "message_id": "<817A55992D486242A2E97C6F423CF49D67110500@EXCHDB8.medctr.ad.wfubmc.edu>",
+      "from_name": "Sean L. Simpson",
+      "from_email_hash": "ce52a4fe9456406ce79dbd4a41a8f5a91b4692525eeaea68c08a26a640f23a73",
+      "date": "2012-09-24T17:16:57Z",
+      "subject": "[statnet_help] Dyad Statistics",
+      "subject_clean": "[statnet_help] Dyad Statistics",
+      "in_reply_to": "<817A55992D486242A2E97C6F423CF49D67110419@EXCHDB8.medctr.ad.wfubmc.edu>",
+      "references": [
+        "<817A55992D486242A2E97C6F423CF49D67110419@EXCHDB8.medctr.ad.wfubmc.edu>"
+      ],
+      "body_plain": "Hi All,\n\nI know that the Summary statement produces summary statistics for the network, but is there a way to get statistics for each dyad? For instance, if I have Two-Path and GWDSP in my model, can I produce two vectors of length N*(N-1)/2 with\n1) the number of 2-paths for each dyad, and\n2) the number of shared partners for each dyad?\n\nThanks,\nSean\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20120925/3b52a42a/attachment.html>",
+      "body_snippet": "Hi All,\n\nI know that the Summary statement produces summary statistics for the network, but is there a way to get statistics for each dyad? For instance, if I have Two-Path and GWDSP in my model, can ",
+      "thread_id": "thread-addaaf010e38",
+      "thread_depth": 0,
+      "month": "2012-09"
+    },
+    {
+      "id": "msg-530a7f7bf0f2",
+      "message_id": "<2BC8EF1B6EDDA7468E877705C81C83E101C0984C31@aucal08>",
+      "from_name": "Braddon Lance",
+      "from_email_hash": "b278109d87de955b82cd0eb70127d27148fa26d70d8d4b06c33a6e50c72265d2",
+      "date": "2012-09-26T23:02:06Z",
+      "subject": "[statnet_help] components of a large network",
+      "subject_clean": "[statnet_help] components of a large network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI'm trying to separate the components of a large network with approximately 250,000 vertices.\n\nI understand that for a small network this can be achieved using the 'components' function from sna.\n\nDoes there exist an equivalent command suitable for large graphs?\n\nMany thanks,\nBrad\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20120927/135dd432/attachment.html>",
+      "body_snippet": "Hi,\n\nI'm trying to separate the components of a large network with approximately 250,000 vertices.\n\nI understand that for a small network this can be achieved using the 'components' function from sna.",
+      "thread_id": "thread-530a7f7bf0f2",
+      "thread_depth": 0,
+      "month": "2012-09"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-5819a7632228",
+      "subject": "[statnet_help] Edgecov and Dyadcov matrix / syntax specification",
+      "message_count": 1,
+      "participants": [
+        "Mark Handel"
+      ],
+      "started": "2012-09-10T21:41:02Z",
+      "last_reply": "2012-09-10T21:41:02Z",
+      "root_message_id": "msg-5819a7632228"
+    },
+    {
+      "id": "thread-addaaf010e38",
+      "subject": "[statnet_help] Dyad Statistics",
+      "message_count": 1,
+      "participants": [
+        "Sean L. Simpson"
+      ],
+      "started": "2012-09-24T17:16:57Z",
+      "last_reply": "2012-09-24T17:16:57Z",
+      "root_message_id": "msg-addaaf010e38"
+    },
+    {
+      "id": "thread-530a7f7bf0f2",
+      "subject": "[statnet_help] components of a large network",
+      "message_count": 1,
+      "participants": [
+        "Braddon Lance"
+      ],
+      "started": "2012-09-26T23:02:06Z",
+      "last_reply": "2012-09-26T23:02:06Z",
+      "root_message_id": "msg-530a7f7bf0f2"
+    }
+  ]
+}

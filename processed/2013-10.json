@@ -1,0 +1,271 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2013-10",
+  "messages": [
+    {
+      "id": "msg-71ead3c389af",
+      "message_id": "<DF9A08F6-FBF4-4D01-9E7D-223F7A578D05@nd.edu>",
+      "from_name": "Szabolcs Horvat",
+      "from_email_hash": "2da04a22d70193ed52d5e3cd6078d87bdd9f644e506f5395e1c9e3091c66ec38",
+      "date": "2013-10-04T12:57:41Z",
+      "subject": "[statnet_help] ergm: calculate values of terms for given network",
+      "subject_clean": "[statnet_help] ergm: calculate values of terms for given network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet users,\n\nThe ergm package supports a number of \"terms\" that can be used to construct ERG models.  Is there any functionality in statnet that will let me calculate the values of these \"terms\" for a given network?\n\nFor example, we have the terms 'edges', 'triangle', 'gwdsp'.  Are there corresponding functions for calculating the number of edges, triangles, GWDSP(?) for a given network object?\n\nIf I'm correct, the internally ergm package is only using changes of these quantities when a single edge is added or removed from the graph.  Are there any utility functions for the convenience of users that can calculate these quantities though, at least the ones that are supported out of the box?\n\nSzabolcs",
+      "body_snippet": "Dear statnet users,\n\nThe ergm package supports a number of \"terms\" that can be used to construct ERG models.  Is there any functionality in statnet that will let me calculate the values of these \"term",
+      "thread_id": "thread-71ead3c389af",
+      "thread_depth": 0,
+      "month": "2013-10"
+    },
+    {
+      "id": "msg-40b4a055d50e",
+      "message_id": "<1C00EB18-638E-4483-9C72-E6843533FD12@nd.edu>",
+      "from_name": "Szabolcs Horvat",
+      "from_email_hash": "2da04a22d70193ed52d5e3cd6078d87bdd9f644e506f5395e1c9e3091c66ec38",
+      "date": "2013-10-04T13:07:46Z",
+      "subject": "[statnet_help] ergm: calculate values of terms for given network",
+      "subject_clean": "[statnet_help] ergm: calculate values of terms for given network",
+      "in_reply_to": "<C627B784-3E45-45C8-B438-55DC25F8C8D0@stat.ucla.edu>",
+      "references": [
+        "<DF9A08F6-FBF4-4D01-9E7D-223F7A578D05@nd.edu>",
+        "<C627B784-3E45-45C8-B438-55DC25F8C8D0@stat.ucla.edu>"
+      ],
+      "body_plain": "Hi Ian,\n\nThis is precisely what I needed.  Thank you!\n\nSzabolcs\n\nOn Oct 4, 2013, at 16:05 , Ian Fellows <ian.fellows@stat.ucla.edu> wrote:\n\n> Hi Szabolcs,\n> \n> I believe you are looking for the summary formula...\n> \n> data(sampson)\n> summary(samplike ~ edges + triangle + gwesp(.3,fixed=TRUE))\n> \n> best,\n> Ian\n> \n> \n> On Oct 4, 2013, at 12:57 PM, Szabolcs Horvat <szhorvat@nd.edu> wrote:\n> \n>> Dear statnet users,\n>> \n>> The ergm package supports a number of \"terms\" that can be used to construct ERG models.  Is there any functionality in statnet that will let me calculate the values of these \"terms\" for a given network?\n>> \n>> For example, we have the terms 'edges', 'triangle', 'gwdsp'.  Are there corresponding functions for calculating the number of edges, triangles, GWDSP(?) for a given network object?\n>> \n>> If I'm correct, the internally ergm package is only using changes of these quantities when a single edge is added or removed from the graph.  Are there any utility functions for the convenience of users that can calculate these quantities though, at least the ones that are supported out of the box?\n>> \n>> Szabolcs_______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi Ian,\n\nThis is precisely what I needed.  Thank you!\n\nSzabolcs\n\nOn Oct 4, 2013, at 16:05 , Ian Fellows <ian.fellows@stat.ucla.edu> wrote:\n\n> Hi Szabolcs,\n> \n> I believe you are looking for the summar",
+      "thread_id": "thread-40b4a055d50e",
+      "thread_depth": 0,
+      "month": "2013-10"
+    },
+    {
+      "id": "msg-df40df1bf21d",
+      "message_id": "<524F20A2.4040707@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2013-10-04T13:10:10Z",
+      "subject": "[statnet_help] ergm: calculate values of terms for given network",
+      "subject_clean": "[statnet_help] ergm: calculate values of terms for given network",
+      "in_reply_to": "<DF9A08F6-FBF4-4D01-9E7D-223F7A578D05@nd.edu>",
+      "references": [
+        "<DF9A08F6-FBF4-4D01-9E7D-223F7A578D05@nd.edu>"
+      ],
+      "body_plain": "Hello Szabolcs,\nYes, the function you are looking for is summary. E.g.:\n\n > summary(mynet~edges+kstar(2)\n  edges kstar2\n    421    220\n\nSteve\n\n\n\nOn 10/4/2013 12:57 PM, Szabolcs Horvat wrote:\n> Dear statnet users,\n>\n> The ergm package supports a number of \"terms\" that can be used to construct ERG models.  Is there any functionality in statnet that will let me calculate the values of these \"terms\" for a given network?\n>\n> For example, we have the terms 'edges', 'triangle', 'gwdsp'.  Are there corresponding functions for calculating the number of edges, triangles, GWDSP(?) for a given network object?\n>\n> If I'm correct, the internally ergm package is only using changes of these quantities when a single edge is added or removed from the graph.  Are there any utility functions for the convenience of users that can calculate these quantities though, at least the ones that are supported out of the box?\n>\n> Szabolcs\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n*********************************************************************\nSteven M. Goodreau / Assoc. Professor / Dept. of Anthropology\nUniversity of Washington / Denny Hall 423 / Campus Box 353100\nSeattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau\n*********************************************************************",
+      "body_snippet": "Hello Szabolcs,\nYes, the function you are looking for is summary. E.g.:\n\n > summary(mynet~edges+kstar(2)\n  edges kstar2\n    421    220\n\nSteve\n\n\n\nOn 10/4/2013 12:57 PM, Szabolcs Horvat wrote:\n> Dear st",
+      "thread_id": "thread-71ead3c389af",
+      "thread_depth": 1,
+      "month": "2013-10"
+    },
+    {
+      "id": "msg-a9092331a0cf",
+      "message_id": "<979436EC-8178-4673-A46A-620DB93F26CD@nd.edu>",
+      "from_name": "Szabolcs Horvat",
+      "from_email_hash": "2da04a22d70193ed52d5e3cd6078d87bdd9f644e506f5395e1c9e3091c66ec38",
+      "date": "2013-10-04T13:52:17Z",
+      "subject": "[statnet_help] ergm: calculate values of terms for given network",
+      "subject_clean": "[statnet_help] ergm: calculate values of terms for given network",
+      "in_reply_to": "<524F20A2.4040707@uw.edu>",
+      "references": [
+        "<DF9A08F6-FBF4-4D01-9E7D-223F7A578D05@nd.edu>",
+        "<524F20A2.4040707@uw.edu>"
+      ],
+      "body_plain": "Hello Steve,\n\nI'm still quite new to R.  Is this syntax something that would be clear (easy to guess) for experienced R users, or is it specific to the ergm package?  In other words, how could I have figured it out on my own (other than coming across it in the documentation, which I didn't)?\n\nSzabolcs\n\n\nOn Oct 4, 2013, at 16:10 , Steven Goodreau <goodreau@uw.edu> wrote:\n\n> Hello Szabolcs,\n> Yes, the function you are looking for is summary. E.g.:\n> \n>> summary(mynet~edges+kstar(2)\n>  edges kstar2\n>    421    220\n> \n> Steve\n> \n> \n> \n> On 10/4/2013 12:57 PM, Szabolcs Horvat wrote:\n>> Dear statnet users,\n>> \n>> The ergm package supports a number of \"terms\" that can be used to construct ERG models.  Is there any functionality in statnet that will let me calculate the values of these \"terms\" for a given network?\n>> \n>> For example, we have the terms 'edges', 'triangle', 'gwdsp'.  Are there corresponding functions for calculating the number of edges, triangles, GWDSP(?) for a given network object?\n>> \n>> If I'm correct, the internally ergm package is only using changes of these quantities when a single edge is added or removed from the graph.  Are there any utility functions for the convenience of users that can calculate these quantities though, at least the ones that are supported out of the box?\n>> \n>> Szabolcs\n>> \n>> \n>> \n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>> \n> \n> *********************************************************************\n> Steven M. Goodreau / Assoc. Professor / Dept. of Anthropology\n> University of Washington / Denny Hall 423 / Campus Box 353100\n> Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)\n> http://faculty.washington.edu/goodreau\n> *********************************************************************\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hello Steve,\n\nI'm still quite new to R.  Is this syntax something that would be clear (easy to guess) for experienced R users, or is it specific to the ergm package?  In other words, how could I have ",
+      "thread_id": "thread-71ead3c389af",
+      "thread_depth": 2,
+      "month": "2013-10"
+    },
+    {
+      "id": "msg-7e2352634cb4",
+      "message_id": "<2607BAC3-3ED9-43DE-8863-2BAF194235B9@stat.ucla.edu>",
+      "from_name": "Ian Fellows",
+      "from_email_hash": "aa2c780fbe5343d29316529dbad2b61e2a8735d64e323f572a06de636ac36465",
+      "date": "2013-10-04T14:01:22Z",
+      "subject": "[statnet_help] ergm: calculate values of terms for given network",
+      "subject_clean": "[statnet_help] ergm: calculate values of terms for given network",
+      "in_reply_to": "<979436EC-8178-4673-A46A-620DB93F26CD@nd.edu>",
+      "references": [
+        "<DF9A08F6-FBF4-4D01-9E7D-223F7A578D05@nd.edu>",
+        "<524F20A2.4040707@uw.edu>",
+        "<979436EC-8178-4673-A46A-620DB93F26CD@nd.edu>"
+      ],
+      "body_plain": "Well, learning to program will take some time, and you shouldn't expect _not_ to have to read the documentation. That said, it is covered briefly in section 6.3 of\n\nhttp://www.jstatsoft.org/v24/i03/paper\n\nalso the function documentation:\n\nhttp://cran.r-project.org/web/packages/ergm/ergm.pdf\n\n\nbest,\nIan\n\n\n\nOn Oct 4, 2013, at 1:52 PM, Szabolcs Horvat <szhorvat@nd.edu> wrote:\n\n> Hello Steve,\n> \n> I'm still quite new to R.  Is this syntax something that would be clear (easy to guess) for experienced R users, or is it specific to the ergm package?  In other words, how could I have figured it out on my own (other than coming across it in the documentation, which I didn't)?\n> \n> Szabolcs\n> \n> \n> On Oct 4, 2013, at 16:10 , Steven Goodreau <goodreau@uw.edu> wrote:\n> \n>> Hello Szabolcs,\n>> Yes, the function you are looking for is summary. E.g.:\n>> \n>>> summary(mynet~edges+kstar(2)\n>> edges kstar2\n>>   421    220\n>> \n>> Steve\n>> \n>> \n>> \n>> On 10/4/2013 12:57 PM, Szabolcs Horvat wrote:\n>>> Dear statnet users,\n>>> \n>>> The ergm package supports a number of \"terms\" that can be used to construct ERG models.  Is there any functionality in statnet that will let me calculate the values of these \"terms\" for a given network?\n>>> \n>>> For example, we have the terms 'edges', 'triangle', 'gwdsp'.  Are there corresponding functions for calculating the number of edges, triangles, GWDSP(?) for a given network object?\n>>> \n>>> If I'm correct, the internally ergm package is only using changes of these quantities when a single edge is added or removed from the graph.  Are there any utility functions for the convenience of users that can calculate these quantities though, at least the ones that are supported out of the box?\n>>> \n>>> Szabolcs\n>>> \n>>> \n>>> \n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>> \n>> \n>> *********************************************************************\n>> Steven M. Goodreau / Assoc. Professor / Dept. of Anthropology\n>> University of Washington / Denny Hall 423 / Campus Box 353100\n>> Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)\n>> http://faculty.washington.edu/goodreau\n>> *********************************************************************\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Well, learning to program will take some time, and you shouldn't expect _not_ to have to read the documentation. That said, it is covered briefly in section 6.3 of\n\nhttp://www.jstatsoft.org/v24/i03/pa",
+      "thread_id": "thread-71ead3c389af",
+      "thread_depth": 3,
+      "month": "2013-10"
+    },
+    {
+      "id": "msg-37dcb7595813",
+      "message_id": "<0566BAEA44C37C47BBC3993326A091CD0ABC14@APSWP0542.ms.ds.uhc.com>",
+      "from_name": "Hane, Christopher A",
+      "from_email_hash": "ae5624c758d98b4f2ba1bc1ac166c1c119822048aebf39a50f8c13ff77dcebf2",
+      "date": "2013-10-09T12:27:38Z",
+      "subject": "[statnet_help] Basic modeling of medical facts",
+      "subject_clean": "[statnet_help] Basic modeling of medical facts",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI am new to network modeling and am trying to figure out if the data I have is suitable for use in ERGM, or if some transformation of it would be.\n\nI have medical history data on millions of people.  From this data, I computed a network where nodes are conditions and a link (i,j) indicates the number of people who had condition i prior to condition j. The conditions are summarized into roughly 500 conditions.  For each link I can define the probability of of the link (i,j) from the observed data (number of people who have j after i / number with i ), or a suitable weight for the strength of the association.\n\nI can analyse this network assuming the edge weights are deterministic but that hasn't been very fruitful so far. I am not sure ERGM applies because all the examples I see involve unweighted edges.\n\nI think I need to look into bnlearn or other Bayesian networks, but wanted to check here to see if there are any ideas on how to apply ERGM to this type of data.\n\nThanks,\nChris\n\nThis e-mail, including attachments, may include confidential and/or\nproprietary information, and may be used only by the person or entity\nto which it is addressed. If the reader of this e-mail is not the intended\nrecipient or his or her authorized agent, the reader is hereby notified\nthat any dissemination, distribution or copying of this e-mail is\nprohibited. If you have received this e-mail in error, please notify the\nsender by replying to this message and delete this e-mail immediately.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20131009/d9b61cc4/attachment.html>",
+      "body_snippet": "Hello,\n\nI am new to network modeling and am trying to figure out if the data I have is suitable for use in ERGM, or if some transformation of it would be.\n\nI have medical history data on millions of p",
+      "thread_id": "thread-37dcb7595813",
+      "thread_depth": 0,
+      "month": "2013-10"
+    },
+    {
+      "id": "msg-d90b789be3c2",
+      "message_id": "<alpine.WNT.1.10.1310091301040.7476@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-10-09T13:11:58Z",
+      "subject": "[statnet_help] Basic modeling of medical facts",
+      "subject_clean": "[statnet_help] Basic modeling of medical facts",
+      "in_reply_to": "<0566BAEA44C37C47BBC3993326A091CD0ABC14@APSWP0542.ms.ds.uhc.com>",
+      "references": [
+        "<0566BAEA44C37C47BBC3993326A091CD0ABC14@APSWP0542.ms.ds.uhc.com>"
+      ],
+      "body_plain": "On Wed, 9 Oct 2013, Hane, Christopher A wrote:\n\nHi Chris,\n\n> I have medical history data on millions of people.? From this data, I computed a network where nodes are conditions\n> and a link (i,j) indicates the number of people who had condition i prior to condition j. The conditions are\n> summarized into roughly 500 conditions.? For each link I can define the probability of of the link (i,j) from the\n> observed data (number of people who have j after i / number with i ), or a suitable weight for the strength of the\n> association.\n\nThis is a fascinating use of network analysis -- it reminds me of a \nsimilar approach to modeling the occupational structure, using job titles \nas nodes, and people's job changes as links or link weights.\n\nNote that you could also treat this as a 2 mode network: persons and \nconditions.  That would remove the temporal ordering, but would pick up \nclustering.\n\n> I can analyse this network assuming the edge weights are deterministic but that hasn?t been very fruitful so far. I am\n> not sure ERGM applies because all the examples I see involve unweighted edges.\n\nYou're in luck, if you call being first in line lucky.  Pavel Krivitsky \nhas developed the theory, methods and code for analyzing networks with \nvalued/weighted edges.  He taught a workshop on this at the Sunbelt \nmeetings last May in Hamburg, and the materials from that tutorial are \nhere:\n\nhttps://statnet.csde.washington.edu/trac/attachment/wiki/Sunbelt2013/Valued.pdf\n(all the tutorial materials are on the Sunbelt2013 page)\n\nand the paper is here:\n\nPavel~N. Krivitsky. Exponential-family random graph models for valued \nnetworks. Electronic Journal of Statistics, 6:1100{1128, 2012. doi: \n10.1214/12-EJS696.\n\nThe key issue in valued ties is how to aggregate the values into the \nstatistics that will be used in the model to represent processes of \ninterest.  For binary ties, we typically use sums and sums of products, \nwhich is pretty simple.  With valued ties there is both the question of \nwhat summary (mean, max, min, sum, etc.) and what distributional \nassumptions to make for inference.\n\nTake a look at the tutorial materials and let us know what you think.\n\nbest,\nMartina\n\n  > \n> \n> I think I need to look into bnlearn or other Bayesian networks, but wanted to check here to see if there are any ideas\n> on how to apply ERGM to this type of data.\n>\n> \n> \n> Thanks,\n> \n> Chris\n> \n> \n> This e-mail, including attachments, may include confidential and/or\n> proprietary information, and may be used only by the person or entity\n> to which it is addressed. If the reader of this e-mail is not the intended\n> recipient or his or her authorized agent, the reader is hereby notified\n> that any dissemination, distribution or copying of this e-mail is\n> prohibited. If you have received this e-mail in error, please notify the\n> sender by replying to this message and delete this e-mail immediately.\n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "On Wed, 9 Oct 2013, Hane, Christopher A wrote:\n\nHi Chris,\n\n> I have medical history data on millions of people.? From this data, I computed a network where nodes are conditions\n> and a link (i,j) indi",
+      "thread_id": "thread-37dcb7595813",
+      "thread_depth": 1,
+      "month": "2013-10"
+    },
+    {
+      "id": "msg-b0db24f28046",
+      "message_id": "<CE7C4A54.1995A%vhertzb@emory.edu>",
+      "from_name": "Hertzberg, Vicki S",
+      "from_email_hash": "19455405c43edc3aa9cb4dbb992bf180037bf314a3be9428520ec8a4378729c6",
+      "date": "2013-10-10T09:13:09Z",
+      "subject": "[statnet_help] Need help with an error",
+      "subject_clean": "[statnet_help] Need help with an error",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI apologize if this is on the forum, but in my scan I'm not seeing it. And this might be a question with a really obvious answer.\n\nI am fitting a very simple ergm model (basically of the form \"model_name <- ergm(network_name ~ triangle)\"), and I get the following error:\n\n\"Number of edges in a simulated network exceeds that in the observed by a factor of more than 20. This is a strong indicator of model degeneracy. If you are reasonably certain that this is not the case, increase the MCMLE.density.guard control.ergm() parameter.\"\n\nSo how exactly do I increase the MCMLE.density.guard control.ergm() parameter? I tried \"model_name <- ergm(network_name ~ triangle, MCMLE.density.guard=large_number)\", but I got the same error again. There must be something more to it, but I'm so bad at R that I can't figure it out.\n\nThanks,\nVicki Hertzberg\n\n________________________________\n\nThis e-mail message (including any attachments) is for the sole use of\nthe intended recipient(s) and may contain confidential and privileged\ninformation. If the reader of this message is not the intended\nrecipient, you are hereby notified that any dissemination, distribution\nor copying of this message (including any attachments) is strictly\nprohibited.\n\nIf you have received this message in error, please contact\nthe sender by reply e-mail message and destroy all copies of the\noriginal message (including attachments).\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20131010/9828bf93/attachment.html>",
+      "body_snippet": "Hi all,\n\nI apologize if this is on the forum, but in my scan I'm not seeing it. And this might be a question with a really obvious answer.\n\nI am fitting a very simple ergm model (basically of the form",
+      "thread_id": "thread-b0db24f28046",
+      "thread_depth": 0,
+      "month": "2013-10"
+    },
+    {
+      "id": "msg-25b74a68615a",
+      "message_id": "<CA+okLw8sBbT0FXWTOnCh-xajKmrsfNY7vc=Da85k0AZDFv=e6g@mail.gmail.com>",
+      "from_name": "ND",
+      "from_email_hash": "f61bb204c3d79d6cfb66539bdd5292e6b3f57b321ec9501d6a5c10b0243238d9",
+      "date": "2013-10-10T09:53:34Z",
+      "subject": "[statnet_help] Need help with an error",
+      "subject_clean": "[statnet_help] Need help with an error",
+      "in_reply_to": "<CE7C4A54.1995A%vhertzb@emory.edu>",
+      "references": [
+        "<CE7C4A54.1995A%vhertzb@emory.edu>"
+      ],
+      "body_plain": "Hi Vicki.\n\nI think you should try including an \"edges\" term before altering software\nparameters. The edges term controls for the observed number of edges. It's\nmuch like an intercept term, except it isn't included by default. There\ncould be more to that story...\n\nNathan Doogan\n\n\nOn Thu, Oct 10, 2013 at 12:13 PM, Hertzberg, Vicki S <vhertzb@emory.edu>wrote:\n\n>  Hi all,\n>\n>  I apologize if this is on the forum, but in my scan I'm not seeing it.\n> And this might be a question with a really obvious answer.\n>\n>  I am fitting a very simple ergm model (basically of the form \"model_name\n> <- ergm(network_name ~ triangle)\"), and I get the following error:\n>\n>  \"Number of edges in a simulated network exceeds that in the observed by\n> a factor of more than 20. This is a strong indicator of model degeneracy.\n> If you are reasonably certain that this is not the case, increase the\n> MCMLE.density.guard control.ergm() parameter.\"\n>\n>  So how exactly do I increase the MCMLE.density.guard control.ergm()\n> parameter? I tried \"model_name <- ergm(network_name ~\n> triangle, MCMLE.density.guard=large_number)\", but I got the same error\n> again. There must be something more to it, but I'm so bad at R that I can't\n> figure it out.\n>\n>  Thanks,\n> Vicki Hertzberg\n>\n> ------------------------------\n>\n> This e-mail message (including any attachments) is for the sole use of\n> the intended recipient(s) and may contain confidential and privileged\n> information. If the reader of this message is not the intended\n> recipient, you are hereby notified that any dissemination, distribution\n> or copying of this message (including any attachments) is strictly\n> prohibited.\n>\n> If you have received this message in error, please contact\n> the sender by reply e-mail message and destroy all copies of the\n> original message (including attachments).\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20131010/a608c182/attachment.html>",
+      "body_snippet": "Hi Vicki.\n\nI think you should try including an \"edges\" term before altering software\nparameters. The edges term controls for the observed number of edges. It's\nmuch like an intercept term, except it i",
+      "thread_id": "thread-b0db24f28046",
+      "thread_depth": 1,
+      "month": "2013-10"
+    },
+    {
+      "id": "msg-a22a447cd455",
+      "message_id": "<CE7C587E.19971%vhertzb@emory.edu>",
+      "from_name": "Hertzberg, Vicki S",
+      "from_email_hash": "19455405c43edc3aa9cb4dbb992bf180037bf314a3be9428520ec8a4378729c6",
+      "date": "2013-10-10T10:18:54Z",
+      "subject": "[statnet_help] Need help with an error",
+      "subject_clean": "[statnet_help] Need help with an error",
+      "in_reply_to": "<CA+okLw8sBbT0FXWTOnCh-xajKmrsfNY7vc=Da85k0AZDFv=e6g@mail.gmail.com>",
+      "references": [],
+      "body_plain": "Thanks to Zane I was able to \"sort of\" get this to work. Nathan indicated that I needed an edges term. I knew that but wanted to keep my request as simple as possible. Now I have another problem.\n\nNow it works fine with no \"edges\" term (I.e., only the triangle term), but increasing parameters in the control. I don't have to monkey with the parameters to do just an edges term. However, when I try edges+triangle on the following statement:\n\nmodel7 <- ergm(billavf2 ~ edges + triangle, control = control.ergm(MCMLE.density.guard.min = 400000, MCMLE.density.guard = exp(3))\n+ )\n\nI get the following error:\n\nError in if (order) coefs[order, seq_len(order)] else numeric() :\n  argument is not interpretable as logical\nIn addition: Warning message:\nIn if (order) coefs[order, seq_len(order)] else numeric() :\n  the condition has length > 1 and only the first element will be used\n\nI'm not sure I can even decipher this. Any thoughts?\n\nThanks\nVicki\n\n\n\nFrom: ND <doogan.1@osu.edu<mailto:doogan.1@osu.edu>>\nDate: Thursday, October 10, 2013 12:53 PM\nTo: mememe Hertzberg <vhertzb@emory.edu<mailto:vhertzb@emory.edu>>\nCc: \"statnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\" <statnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>>\nSubject: Re: [statnet_help] Need help with an error\n\nHi Vicki.\n\nI think you should try including an \"edges\" term before altering software parameters. The edges term controls for the observed number of edges. It's much like an intercept term, except it isn't included by default. There could be more to that story...\n\nNathan Doogan\n\n\nOn Thu, Oct 10, 2013 at 12:13 PM, Hertzberg, Vicki S <vhertzb@emory.edu<mailto:vhertzb@emory.edu>> wrote:\nHi all,\n\nI apologize if this is on the forum, but in my scan I'm not seeing it. And this might be a question with a really obvious answer.\n\nI am fitting a very simple ergm model (basically of the form \"model_name <- ergm(network_name ~ triangle)\"), and I get the following error:\n\n\"Number of edges in a simulated network exceeds that in the observed by a factor of more than 20. This is a strong indicator of model degeneracy. If you are reasonably certain that this is not the case, increase the MCMLE.density.guard control.ergm() parameter.\"\n\nSo how exactly do I increase the MCMLE.density.guard control.ergm() parameter? I tried \"model_name <- ergm(network_name ~ triangle, MCMLE.density.guard=large_number)\", but I got the same error again. There must be something more to it, but I'm so bad at R that I can't figure it out.\n\nThanks,\nVicki Hertzberg\n\n________________________________\n\nThis e-mail message (including any attachments) is for the sole use of\nthe intended recipient(s) and may contain confidential and privileged\ninformation. If the reader of this message is not the intended\nrecipient, you are hereby notified that any dissemination, distribution\nor copying of this message (including any attachments) is strictly\nprohibited.\n\nIf you have received this message in error, please contact\nthe sender by reply e-mail message and destroy all copies of the\noriginal message (including attachments).\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20131010/d98c1d0c/attachment.html>",
+      "body_snippet": "Thanks to Zane I was able to \"sort of\" get this to work. Nathan indicated that I needed an edges term. I knew that but wanted to keep my request as simple as possible. Now I have another problem.\n\nNow",
+      "thread_id": "thread-b0db24f28046",
+      "thread_depth": 2,
+      "month": "2013-10"
+    },
+    {
+      "id": "msg-450651eda4e4",
+      "message_id": "<alpine.WNT.1.10.1310101048280.7476@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-10-10T10:56:56Z",
+      "subject": "[statnet_help] Need help with an error",
+      "subject_clean": "[statnet_help] Need help with an error",
+      "in_reply_to": "<CE7C587E.19971%vhertzb@emory.edu>",
+      "references": [
+        "<CE7C587E.19971%vhertzb@emory.edu>"
+      ],
+      "body_plain": "Vicki,\n\nYou are trying to fit a model that is the cannonical example of a model \nthat is almost always degenerate.  There is a great deal written on the \nproblem of degeneracy when using this kind of homogenous reduced Markov \nmodel.  There's some discussion of it in the ERGM tutorial on the statnet \nwiki:\n\nhttps://statnet.csde.washington.edu/trac/wiki/Sunbelt2013#WorkshopMaterials\n\nA more thorough discussion here:\n\nNEW SPECIFICATIONS FOR EXPONENTIAL RANDOM GRAPH MODELS\nTom A. B. Snijders1, Philippa E. Pattison2, Garry L. Robins2, Mark S. \nHandcock3\nhttp://onlinelibrary.wiley.com/doi/10.1111/j.1467-9531.2006.00176.x/abstract\n\nAnd a good technical discussion is found here:\n\nMark S Handcock\n?Assessing Degeneracy in Statistical Models of Social Networks?\nhttp://www.csss.washington.edu/Papers/wp39.ps\n\nThe alternative is to use the gwesp term to capture triad closure instead. \nYou can read about that in this paper:\n\nGoodreau S, Kitts J, Morris M: Birds of a Feather, or Friend of a \nFriend? Using Statistical Network Analysis to Investigate Adolescent \nSocial Networks. Demography 2009, 46(1):103?125.\n\n  On Thu, 10 Oct 2013, \nHertzberg, Vicki S wrote:\n\n> Thanks to Zane I was able to \"sort of\" get this to work. Nathan indicated that I needed an edges term. I knew that but\n> wanted to keep my request as simple as possible. Now I have another problem.\n> \n> Now it works fine with no \"edges\" term (I.e., only the triangle term), but increasing parameters in the control. I\n> don't have to monkey with the parameters to do just an edges term. However, when I try edges+triangle on the following\n> statement:\n> \n> model7 <- ergm(billavf2 ~ edges + triangle, control = control.ergm(MCMLE.density.guard.min = 400000,\n> MCMLE.density.guard = exp(3))\n> + )\n> \n> I get the following error:\n> \n> Error in if (order) coefs[order, seq_len(order)] else numeric() :\n> ? argument is not interpretable as logical\n> In addition: Warning message:\n> In if (order) coefs[order, seq_len(order)] else numeric() :\n> ? the condition has length > 1 and only the first element will be used\n> \n> I'm not sure I can even decipher this. Any thoughts?\n> \n> Thanks\n> Vicki\n> \n> \n> \n> From: ND <doogan.1@osu.edu>\n> Date: Thursday, October 10, 2013 12:53 PM\n> To: mememe Hertzberg <vhertzb@emory.edu>\n> Cc: \"statnet_help@u.washington.edu\" <statnet_help@u.washington.edu>\n> Subject: Re: [statnet_help] Need help with an error\n> \n> Hi Vicki.\n> \n> I think you should try including an \"edges\" term before altering software parameters. The edges term controls for the\n> observed number of edges. It's much like an intercept term, except it isn't included by default. There could be more\n> to that story...\n> \n> Nathan Doogan\n> \n> \n> On Thu, Oct 10, 2013 at 12:13 PM, Hertzberg, Vicki S <vhertzb@emory.edu> wrote:\n>       Hi all,\n> \n> I apologize if this is on the forum, but in my scan I'm not seeing it. And this might be a question with a\n> really obvious answer.\n> \n> I am fitting a very simple ergm model (basically of the form \"model_name <- ergm(network_name ~ triangle)\"), and\n> I get the following error:\n> \n> \"Number of edges in a simulated network exceeds that in the observed by a factor of more than 20. This is a\n> strong indicator of model degeneracy. If you are reasonably certain that this is not the case, increase the\n> MCMLE.density.guard control.ergm() parameter.\"\n> \n> So how exactly do I increase the MCMLE.density.guard control.ergm() parameter? I tried \"model_name <-\n> ergm(network_name ~ triangle,?MCMLE.density.guard=large_number)\", but I got the same error again. There must be\n> something more to it, but I'm so bad at R that I can't figure it out.\n> \n> Thanks,\n> Vicki Hertzberg\n> \n> _____________________________________________________________________________________________________________________________\n> \n> This e-mail message (including any attachments) is for the sole use of\n> the intended recipient(s) and may contain confidential and privileged\n> information. If the reader of this message is not the intended\n> recipient, you are hereby notified that any dissemination, distribution\n> or copying of this message (including any attachments) is strictly\n> prohibited.\n> \n> If you have received this message in error, please contact\n> the sender by reply e-mail message and destroy all copies of the\n> original message (including attachments).\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> \n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Vicki,\n\nYou are trying to fit a model that is the cannonical example of a model \nthat is almost always degenerate.  There is a great deal written on the \nproblem of degeneracy when using this kind of ",
+      "thread_id": "thread-b0db24f28046",
+      "thread_depth": 3,
+      "month": "2013-10"
+    },
+    {
+      "id": "msg-6a3255a8c460",
+      "message_id": "<B4A5CD8B-7EB1-4534-A516-C1EA35E92B60@emory.edu>",
+      "from_name": "Hertzberg, Vicki S",
+      "from_email_hash": "19455405c43edc3aa9cb4dbb992bf180037bf314a3be9428520ec8a4378729c6",
+      "date": "2013-10-10T11:02:33Z",
+      "subject": "[statnet_help] Need help with an error",
+      "subject_clean": "[statnet_help] Need help with an error",
+      "in_reply_to": "<alpine.WNT.1.10.1310101048280.7476@morrism-PC>",
+      "references": [
+        "<CE7C587E.19971%vhertzb@emory.edu>",
+        "<alpine.WNT.1.10.1310101048280.7476@morrism-PC>"
+      ],
+      "body_plain": "Thanks, Martina!\n\nSent from my iPhone\n\n> On Oct 10, 2013, at 1:57 PM, \"martina morris\" <morrism@u.washington.edu> wrote:\n> \n> Vicki,\n> \n> You are trying to fit a model that is the cannonical example of a model that is almost always degenerate.  There is a great deal written on the problem of degeneracy when using this kind of homogenous reduced Markov model.  There's some discussion of it in the ERGM tutorial on the statnet wiki:\n> \n> https://statnet.csde.washington.edu/trac/wiki/Sunbelt2013#WorkshopMaterials\n> \n> A more thorough discussion here:\n> \n> NEW SPECIFICATIONS FOR EXPONENTIAL RANDOM GRAPH MODELS\n> Tom A. B. Snijders1, Philippa E. Pattison2, Garry L. Robins2, Mark S. Handcock3\n> http://onlinelibrary.wiley.com/doi/10.1111/j.1467-9531.2006.00176.x/abstract\n> \n> And a good technical discussion is found here:\n> \n> Mark S Handcock\n> ?Assessing Degeneracy in Statistical Models of Social Networks?\n> http://www.csss.washington.edu/Papers/wp39.ps\n> \n> The alternative is to use the gwesp term to capture triad closure instead. You can read about that in this paper:\n> \n> Goodreau S, Kitts J, Morris M: Birds of a Feather, or Friend of a Friend? Using Statistical Network Analysis to Investigate Adolescent Social Networks. Demography 2009, 46(1):103?125.\n> \n>> On Thu, 10 Oct 2013, Hertzberg, Vicki S wrote:\n>> \n>> Thanks to Zane I was able to \"sort of\" get this to work. Nathan indicated that I needed an edges term. I knew that but\n>> wanted to keep my request as simple as possible. Now I have another problem.\n>> Now it works fine with no \"edges\" term (I.e., only the triangle term), but increasing parameters in the control. I\n>> don't have to monkey with the parameters to do just an edges term. However, when I try edges+triangle on the following\n>> statement:\n>> model7 <- ergm(billavf2 ~ edges + triangle, control = control.ergm(MCMLE.density.guard.min = 400000,\n>> MCMLE.density.guard = exp(3))\n>> + )\n>> I get the following error:\n>> Error in if (order) coefs[order, seq_len(order)] else numeric() :\n>>   argument is not interpretable as logical\n>> In addition: Warning message:\n>> In if (order) coefs[order, seq_len(order)] else numeric() :\n>>   the condition has length > 1 and only the first element will be used\n>> I'm not sure I can even decipher this. Any thoughts?\n>> Thanks\n>> Vicki\n>> From: ND <doogan.1@osu.edu>\n>> Date: Thursday, October 10, 2013 12:53 PM\n>> To: mememe Hertzberg <vhertzb@emory.edu>\n>> Cc: \"statnet_help@u.washington.edu\" <statnet_help@u.washington.edu>\n>> Subject: Re: [statnet_help] Need help with an error\n>> Hi Vicki.\n>> I think you should try including an \"edges\" term before altering software parameters. The edges term controls for the\n>> observed number of edges. It's much like an intercept term, except it isn't included by default. There could be more\n>> to that story...\n>> Nathan Doogan\n>> On Thu, Oct 10, 2013 at 12:13 PM, Hertzberg, Vicki S <vhertzb@emory.edu> wrote:\n>>      Hi all,\n>> I apologize if this is on the forum, but in my scan I'm not seeing it. And this might be a question with a\n>> really obvious answer.\n>> I am fitting a very simple ergm model (basically of the form \"model_name <- ergm(network_name ~ triangle)\"), and\n>> I get the following error:\n>> \"Number of edges in a simulated network exceeds that in the observed by a factor of more than 20. This is a\n>> strong indicator of model degeneracy. If you are reasonably certain that this is not the case, increase the\n>> MCMLE.density.guard control.ergm() parameter.\"\n>> So how exactly do I increase the MCMLE.density.guard control.ergm() parameter? I tried \"model_name <-\n>> ergm(network_name ~ triangle, MCMLE.density.guard=large_number)\", but I got the same error again. There must be\n>> something more to it, but I'm so bad at R that I can't figure it out.\n>> Thanks,\n>> Vicki Hertzberg\n>> _____________________________________________________________________________________________________________________________\n>> This e-mail message (including any attachments) is for the sole use of\n>> the intended recipient(s) and may contain confidential and privileged\n>> information. If the reader of this message is not the intended\n>> recipient, you are hereby notified that any dissemination, distribution\n>> or copying of this message (including any attachments) is strictly\n>> prohibited.\n>> If you have received this message in error, please contact\n>> the sender by reply e-mail message and destroy all copies of the\n>> original message (including attachments).\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> \n> ****************************************************************\n> Professor of Sociology and Statistics\n> Director, UWCFAR Sociobehavioral and Prevention Research Core\n> Box 354322\n> University of Washington\n> Seattle, WA 98195-4322\n> \n> Office:        (206) 685-3402\n> Dept Office:   (206) 543-5882, 543-7237\n> Fax:           (206) 685-7419\n> \n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Thanks, Martina!\n\nSent from my iPhone\n\n> On Oct 10, 2013, at 1:57 PM, \"martina morris\" <morrism@u.washington.edu> wrote:\n> \n> Vicki,\n> \n> You are trying to fit a model that is the cannonical example o",
+      "thread_id": "thread-b0db24f28046",
+      "thread_depth": 4,
+      "month": "2013-10"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-71ead3c389af",
+      "subject": "[statnet_help] ergm: calculate values of terms for given network",
+      "message_count": 4,
+      "participants": [
+        "Ian Fellows",
+        "Steven Goodreau",
+        "Szabolcs Horvat"
+      ],
+      "started": "2013-10-04T12:57:41Z",
+      "last_reply": "2013-10-04T14:01:22Z",
+      "root_message_id": "msg-71ead3c389af"
+    },
+    {
+      "id": "thread-40b4a055d50e",
+      "subject": "[statnet_help] ergm: calculate values of terms for given network",
+      "message_count": 1,
+      "participants": [
+        "Szabolcs Horvat"
+      ],
+      "started": "2013-10-04T13:07:46Z",
+      "last_reply": "2013-10-04T13:07:46Z",
+      "root_message_id": "msg-40b4a055d50e"
+    },
+    {
+      "id": "thread-37dcb7595813",
+      "subject": "[statnet_help] Basic modeling of medical facts",
+      "message_count": 2,
+      "participants": [
+        "Hane, Christopher A",
+        "martina morris"
+      ],
+      "started": "2013-10-09T12:27:38Z",
+      "last_reply": "2013-10-09T13:11:58Z",
+      "root_message_id": "msg-37dcb7595813"
+    },
+    {
+      "id": "thread-b0db24f28046",
+      "subject": "[statnet_help] Need help with an error",
+      "message_count": 5,
+      "participants": [
+        "Hertzberg, Vicki S",
+        "ND",
+        "martina morris"
+      ],
+      "started": "2013-10-10T09:13:09Z",
+      "last_reply": "2013-10-10T11:02:33Z",
+      "root_message_id": "msg-b0db24f28046"
+    }
+  ]
+}

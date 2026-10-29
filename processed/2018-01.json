@@ -1,0 +1,487 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2018-01",
+  "messages": [
+    {
+      "id": "msg-6e3257b827ac",
+      "message_id": "<CAJU0j=d7S4smHNznmhsuSZiTF_zh0jJnMOwWo70-+sLq9XQGWw@mail.gmail.com>",
+      "from_name": "Allan Clifton",
+      "from_email_hash": "b3b0761d2a2c633c1e4537b79af5c66781ba101a5710b09be29d32b49a7b3f31",
+      "date": "2018-01-05T15:22:01Z",
+      "subject": "[statnet_help] Standard Error and p-values reported as NA",
+      "subject_clean": "[statnet_help] Standard Error and p-values reported as NA",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all- I'm trying to run an ERGM on a friendship network of 41 nodes. I'm\nlooking at a number of individual differences (e.g., class, age, binge\neating) as predictors of friendship ties.\n\nHowever, when I add in a structural variable like gwesp, gwdsp, or mutual,\nit results in one or all of the variables showing no variability in the MLE\nresults. The standard error, MCMC %, and p-value for the variable(s) all\nshow NA.\n\nOne of the individual difference variables I'm using (\"Class\", which is an\nordinal categorical variable with 4 levels)  seems to be contributing to\nthe problem. When I remove that variable from the model, the model runs\neven with gwesp included. However, Class is an important variable in my\nanalysis, and seems to be a strong predictor of friendship ties based on\nearlier analyses, so I'd rather not simply omit it. Is there some reason\nthis particular variable would be breaking the analysis?\n\nThe model I'm trying to run, and the MLE output from this model, are below.\nThank you for any insight you can provide on this.\n\n\nmodel4<- ergm(com ~ edges  + gwesp(alpha = 0, fixed=TRUE) +\nnodematch(\"Class\") + absdiff(\"Age\") + nodecov(\"Age\") +\nabsdiff(\"GlobalEDEQ\") + nodecov(\"GlobalEDEQ\") + absdiff(\"Binge\") +\nnodecov(\"Binge\") + absdiff(\"BMI\") + nodecov(\"BMI\") + absdiff(\"TRIFINAL\") +\nnodecov(\"TRIFINAL\"), control = control.ergm(MCMC.interval=20000) )\n\nMonte Carlo MLE Results:\n                    Estimate Std. Error MCMC % p-value\nedges              -6.918149         NA     NA      NA\ngwesp.fixed.0       0.902981         NA     NA      NA\nnodematch.Class     2.240454         NA     NA      NA\nabsdiff.Age        -0.333982         NA     NA      NA\nnodecov.Age        -0.003184         NA     NA      NA\nabsdiff.GlobalEDEQ  0.209944         NA     NA      NA\nnodecov.GlobalEDEQ -0.193261         NA     NA      NA\nabsdiff.Binge       0.001633         NA     NA      NA\nnodecov.Binge      -0.034391         NA     NA      NA\nabsdiff.BMI        -0.083725         NA     NA      NA\nnodecov.BMI         0.090558         NA     NA      NA\nabsdiff.TRIFINAL    0.001580         NA     NA      NA\nnodecov.TRIFINAL    0.003293         NA     NA      NA\n\n     Null Deviance: 2272  on 1639  degrees of freedom\n Residual Deviance: 1309  on 1626  degrees of freedom\n\nAIC: 1335    BIC: 1405    (Smaller is better.)\n\n\n\n\nBest,\nAllan Clifton\n\n\n-- \nAllan Clifton, PhD\nAssociate Professor\nDepartment of Psychological Science\nVassar College\n(845) 437-7381\n\nalclifton@vassar.edu\nwww.personalitystudies.org\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180105/310d8683/attachment.html>",
+      "body_snippet": "Hi all- I'm trying to run an ERGM on a friendship network of 41 nodes. I'm\nlooking at a number of individual differences (e.g., class, age, binge\neating) as predictors of friendship ties.\n\nHowever, wh",
+      "thread_id": "thread-6e3257b827ac",
+      "thread_depth": 0,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-a910a4d9c420",
+      "message_id": "<62e2dc841e193f38afa13c767b8e6f8e@iimk.ac.in>",
+      "from_name": "Subhasree Mukherjee",
+      "from_email_hash": "6a557ea1b2d807b3b102bf454bd716b60678dce7ad4ba76064e4dbd654f97de9",
+      "date": "2018-01-08T09:45:15Z",
+      "subject": "[statnet_help] rbind error in ergm",
+      "subject_clean": "[statnet_help] rbind error in ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear members, \n\nI'm receiving an error when fitting ERGMs using endogenous network\nstatistics (e.g. mutual, cyclicalties etc). The following error is\nreturned: \n\nError in rbind(if (!is.null(x2)) t(gamma * t(x2crs) + (1 - margin *\ngamma) * : \nobject 'm2crs' not found\nIn addition: Warning message:\nIn ergm.mple(Clist, Clist.miss, m, MPLEtype = MPLEtype, init = init, :\nglm.fit: fitted probabilities numerically 0 or 1 occurred \n\nCould you please help me out in handling this.\n\nThanks! \n\nSubhasree Mukherjee\nIndian Institute of Management Kozhikode \n\n \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180108/fab832ff/attachment.html>",
+      "body_snippet": "Dear members, \n\nI'm receiving an error when fitting ERGMs using endogenous network\nstatistics (e.g. mutual, cyclicalties etc). The following error is\nreturned: \n\nError in rbind(if (!is.null(x2)) t(gam",
+      "thread_id": "thread-a910a4d9c420",
+      "thread_depth": 0,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-afc5b83857a4",
+      "message_id": "<CAByPayEYRmtFiGNp+qU+Y5E7Wj2J_J+VS81r1cN1RGTUkZkmsw@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2018-01-08T15:38:08Z",
+      "subject": "[statnet_help] rbind error in ergm",
+      "subject_clean": "[statnet_help] rbind error in ergm",
+      "in_reply_to": "<62e2dc841e193f38afa13c767b8e6f8e@iimk.ac.in>",
+      "references": [
+        "<62e2dc841e193f38afa13c767b8e6f8e@iimk.ac.in>"
+      ],
+      "body_plain": "Hi Subhasree Mukherjee,\n\nCan you provide :\n\n1. The code you used that caused R to give you the error; the model\nyou are trying to fit in particular\n2. Version of `ergm` package you are using.\n\nThanks.\n\nMichal\n\nOn Mon, Jan 8, 2018 at 6:45 PM, Subhasree Mukherjee\n<subhasreem08fpm@iimk.ac.in> wrote:\n>\n>\n> Dear members,\n>\n>\n> I'm receiving an error when fitting ERGMs using endogenous network\n> statistics (e.g. mutual, cyclicalties etc). The following error is returned:\n>\n> Error in rbind(if (!is.null(x2)) t(gamma * t(x2crs) + (1 - margin * gamma) *\n> :\n> object 'm2crs' not found\n> In addition: Warning message:\n> In ergm.mple(Clist, Clist.miss, m, MPLEtype = MPLEtype, init = init, :\n> glm.fit: fitted probabilities numerically 0 or 1 occurred\n>\n>\n> Could you please help me out in handling this.\n>\n> Thanks!\n>\n> Subhasree Mukherjee\n> Indian Institute of Management Kozhikode\n>\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi Subhasree Mukherjee,\n\nCan you provide :\n\n1. The code you used that caused R to give you the error; the model\nyou are trying to fit in particular\n2. Version of `ergm` package you are using.\n\nThanks.",
+      "thread_id": "thread-a910a4d9c420",
+      "thread_depth": 1,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-76263a40d06c",
+      "message_id": "<CAByPayETs-BAY_rRqzCVEmSrt+8xBathKFm-56rF_zTN9on-yQ@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2018-01-09T06:12:08Z",
+      "subject": "[statnet_help] rbind error in ergm",
+      "subject_clean": "[statnet_help] rbind error in ergm",
+      "in_reply_to": "<6fc04887604d1ae2c9112e00ff31a1c9@iimk.ac.in>",
+      "references": [
+        "<62e2dc841e193f38afa13c767b8e6f8e@iimk.ac.in>",
+        "<CAByPayEYRmtFiGNp+qU+Y5E7Wj2J_J+VS81r1cN1RGTUkZkmsw@mail.gmail.com>",
+        "<6fc04887604d1ae2c9112e00ff31a1c9@iimk.ac.in>"
+      ],
+      "body_plain": "Thanks Subhasree,\n\nYour model runs on my machine (no errors), but does not converge\n(which is a different kind of a problem).\nPlease make sure you have the most recent versions of R and the ergm\npackage and try rerunning your analysis.\n\nMichal\n\nOn Tue, Jan 9, 2018 at 3:24 AM, Subhasree Mukherjee\n<subhasreem08fpm@iimk.ac.in> wrote:\n> Hello Michal,\n>\n> Thank you for your email. Kindly find attached the code and also the data\n> files.\n>\n> I am using the following version of ergm:\n>\n> ergm.count_3.2.2\n> ergm_3.6.1\n>\n> Thanks\n> Subhasree\n>\n>\n>\n> On 2018-01-09 05:08, Micha? Bojanowski wrote:\n>\n> Hi Subhasree Mukherjee,\n>\n> Can you provide :\n>\n> 1. The code you used that caused R to give you the error; the model\n> you are trying to fit in particular\n> 2. Version of `ergm` package you are using.\n>\n> Thanks.\n>\n> Michal\n>\n> On Mon, Jan 8, 2018 at 6:45 PM, Subhasree Mukherjee\n> <subhasreem08fpm@iimk.ac.in> wrote:\n>\n> Dear members, I'm receiving an error when fitting ERGMs using endogenous\n> network statistics (e.g. mutual, cyclicalties etc). The following error is\n> returned: Error in rbind(if (!is.null(x2)) t(gamma * t(x2crs) + (1 - margin\n> * gamma) * : object 'm2crs' not found In addition: Warning message: In\n> ergm.mple(Clist, Clist.miss, m, MPLEtype = MPLEtype, init = init, : glm.fit:\n> fitted probabilities numerically 0 or 1 occurred Could you please help me\n> out in handling this. Thanks! Subhasree Mukherjee Indian Institute of\n> Management Kozhikode _______________________________________________\n> statnet_help mailing list statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Thanks Subhasree,\n\nYour model runs on my machine (no errors), but does not converge\n(which is a different kind of a problem).\nPlease make sure you have the most recent versions of R and the ergm\npacka",
+      "thread_id": "thread-76263a40d06c",
+      "thread_depth": 0,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-aa3388740905",
+      "message_id": "<CAMWRAUeonubJT_11jAgNr2Jo6Keh2pY08+rR88taZq6H_s=Vaw@mail.gmail.com>",
+      "from_name": "Filippo Santi",
+      "from_email_hash": "fe866f87570f9372a85c6cc3b13ab3050273b6bbece0449398731acc19ed2d4d",
+      "date": "2018-01-17T08:37:43Z",
+      "subject": "[statnet_help] Missing Edges",
+      "subject_clean": "[statnet_help] Missing Edges",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI am quite new to network analysis, and even newer to the STATNET suite.\n\nTHE BACKGROUND: I am working on FDI global network, and I have a\nrectangular directed edge list of 228x227 country, where each 'from'\ncountry is matched with a 'to' country. The result should be a definitely\nlarge network. Of course, only a part of the nodes are connected, with the\nmajority of nodes not receiving any investment from a country, some of them\nnot receiving any investment at all.\n\nTHE QUESTION: I have not been able to build a network with all possible\nedges. Rather, I had to modify my edgelist to select only the from-to pairs\nwhose edges is not null. Nonetheless, from the network inspection, the item\nNULL EDGES exists (and in this case is set equal to zero). How can I get\nrid of this problem? can you suggest me any solution?\n\nThanks in advance for any help you will give me,\n\ncheers,\n\n\nFilippo Santi\nPhD Candidate in Development Economics\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180117/54146041/attachment.html>",
+      "body_snippet": "Dear all,\n\nI am quite new to network analysis, and even newer to the STATNET suite.\n\nTHE BACKGROUND: I am working on FDI global network, and I have a\nrectangular directed edge list of 228x227 country,",
+      "thread_id": "thread-aa3388740905",
+      "thread_depth": 0,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-6e7d6a3bd6a0",
+      "message_id": "<alpine.WNT.2.00.1801170949430.8392@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2018-01-17T09:51:37Z",
+      "subject": "[statnet_help] Missing Edges",
+      "subject_clean": "[statnet_help] Missing Edges",
+      "in_reply_to": "<CAMWRAUeonubJT_11jAgNr2Jo6Keh2pY08+rR88taZq6H_s=Vaw@mail.gmail.com>",
+      "references": [
+        "<CAMWRAUeonubJT_11jAgNr2Jo6Keh2pY08+rR88taZq6H_s=Vaw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Filippo,\n\nI'm not sure from your description exactly how you constructed your \nnetwork -- nor what your goal is.\n\nCan you send the code you're using, and explain exactly what you want \nthe edge values to represent, and when (if ever) they should be coded NA \nrather than 0.\n\nthx,\nMartina\n\nOn Wed, 17 Jan 2018, Filippo Santi wrote:\n\n> \n> Dear all, \n> I am quite new to network analysis, and even newer to the STATNET suite. \n> \n> THE BACKGROUND: I am working on FDI global network, and I have a rectangular directed edge list of 228x227 country, where\n> each 'from' country is matched with a 'to' country. The result should be a definitely large network. Of course, only a\n> part of the nodes are connected, with the majority of nodes not receiving any investment from a country, some of them not\n> receiving any investment at all. \n> \n> THE QUESTION: I have not been able to build a network with all possible edges. Rather, I had to modify my edgelist to\n> select only the from-to pairs whose edges is not null. Nonetheless, from the network inspection, the item NULL EDGES\n> exists (and in this case is set equal to zero). How can I get rid of this problem? can you suggest me any solution?\n> \n> Thanks in advance for any help you will give me,\n> \n> cheers, \n>\n> \n> Filippo Santi\n> PhD Candidate in Development Economics\n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Filippo,\n\nI'm not sure from your description exactly how you constructed your \nnetwork -- nor what your goal is.\n\nCan you send the code you're using, and explain exactly what you want \nthe edge val",
+      "thread_id": "thread-aa3388740905",
+      "thread_depth": 1,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-c5d85339b1b7",
+      "message_id": "<CAEZJSfd-4fNmb9e38O+YE0XS5UA73NcROHjYgeOM=H6MQKV_Ww@mail.gmail.com>",
+      "from_name": "Ahmed Tarek Hammad",
+      "from_email_hash": "b77ecdf436bd21f92942e52bb02e4ae53cff88cb4a1397f6104c4ea383ac3dd2",
+      "date": "2018-01-17T23:05:07Z",
+      "subject": "[statnet_help] MRQAP with multiple networks and degree by attribute",
+      "subject_clean": "[statnet_help] MRQAP with multiple networks and degree by attribute",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet users,\n\n\nI have collected  friendship network data for *multiple classes* in\ndifferent schools.\n\n*I would like to:*\n\n*1)* compare the indegree of some students that took a course with those\nwho didn?t took it, controlling for some variables and baseline indegree\nusing MRQAP.\n\n?*Course*? is an attribute of each node and is equal to ?1? for those who\ntook the course, ?0? for those who didn?t took it and ?NA? for those who\ndidn?t know about it.\n\n\n*However, the problem is that:*\n*A)* since students were asked to nominate only classmates I have multiple\nnetworks not a single big network.\n*B)* in some of them I have just one student who is either part of the\n?course group? or the ?non-course group?. Therefore, I don't think running\nMRQAP for each class and then using meta-analysis will work.\n\n\nThe other option that I found is to use \"structural zeros\" to create a\nsingle big matrix and run MRQAP, but since I?m very new in R and I couldn?t\nfind examples I don?t have any idea on how it should be done.\n\n\n*2)* I would like to know for each node how many nominations out of the\ntotal nominations  (freeman) are from and to students who took the course.\nStated in a different way, I want to answer to the following question: ?*How\nmany of your friends took the course??*\n\nI have tried to use the degree function and the given options but with no\nsuccess\n\n\nBelow you can find an example with 3 classes in one single network and\nnode?s attributes including:\n\n*class*=The class id, from 1 to 3\n\n*course*=course status coded\n\n*1* for students that took the course\n\n*0* for those who did not take the course\n\n*NA* for those who did not know about it\n\n\n#########################\n\nlibrary(statnet)\n\nset.seed(123)\n\nmynet<-network.initialize(60, directed=TRUE)\n\nmynet[1:20,1:20] <- rbinom(100, 1, 0.15)\n\nmynet[21:34,21:34] <- rbinom(120, 1, 0.15)\n\nmynet[35:60,35:60] <- rbinom(96, 1, 0.15)\n\n#class id\n\nclass<-60\n\nclass[1:20]<-1\n\nclass[21:34]<-2\n\nclass[35:60]<-3\n\n# course variable:\n\ncourse<-rbinom(60,c(1,0,NA),0.5)\n\nmynet %v% \"class\"<-class\n\nmynet %v% \" course \"<- course\n\nlist.vertex.attributes(mynet)\n\n\nThanks in advance for your support,\n\nAhmed Hammad\n\n\nPhD student, Department of Political Science\nCatholic University of the Sacred Heart\nLargo Agostino Gemelli, 1, 20123 Milano MI, Italy\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180118/68eeb284/attachment.html>",
+      "body_snippet": "Dear statnet users,\n\n\nI have collected  friendship network data for *multiple classes* in\ndifferent schools.\n\n*I would like to:*\n\n*1)* compare the indegree of some students that took a course with tho",
+      "thread_id": "thread-c5d85339b1b7",
+      "thread_depth": 0,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-351233badb93",
+      "message_id": "<CAMWRAUfB1pdkbM=xn1D6LiKYJv1zHr2wH-hY+Vy6ym7AnwvFCQ@mail.gmail.com>",
+      "from_name": "Filippo Santi",
+      "from_email_hash": "fe866f87570f9372a85c6cc3b13ab3050273b6bbece0449398731acc19ed2d4d",
+      "date": "2018-01-17T23:56:26Z",
+      "subject": "[statnet_help] Missing Edges",
+      "subject_clean": "[statnet_help] Missing Edges",
+      "in_reply_to": "<alpine.WNT.2.00.1801170949430.8392@morrism-laptop>",
+      "references": [
+        "<CAMWRAUeonubJT_11jAgNr2Jo6Keh2pY08+rR88taZq6H_s=Vaw@mail.gmail.com>",
+        "<alpine.WNT.2.00.1801170949430.8392@morrism-laptop>"
+      ],
+      "body_plain": "Dear Martina,\n\nMy attempt is currently to understand how do STATNET deals with my data\n(and I am actually failing...)\n\nMy data concern international Foreign Direct Investments (FDI) position of\nall countries worlwide. For a given year, it consist of an edge list with\n51984 potential country relationships (228*228), with just 1781 existing\nedges (number of investments > 0). In order to be able to convert the data,\nI had to select only those edges with positive values that are, 1781. But,\nwhen I got to the network description, I saw the \"missing edges\" feature,\ncorrectly marked as equal to zero.\n\nThe code I use is\n\n*fdi.net.2003 <- network(fdi.edge.2003, matrix.type = \"edgelist\",*\n*                    directed = T,*\n*                    ignore.eval = F)*\n\n to load the data into network format.\n\nRecalling the object, i find\n\n*> fdi.net.2003*\n* Network attributes:*\n*  vertices = 164 *\n*  directed = TRUE *\n*  hyper = FALSE *\n*  loops = FALSE *\n*  multiple = FALSE *\n*  bipartite = FALSE *\n*  total edges= 1781 *\n*    missing edges= 0 *\n*    non-missing edges= 1781 *\n\n* Vertex attribute names: *\n*    vertex.names *\n\n* Edge attribute names not shown *\n\nThis outcome fit my expectation, since I had to select out of my dataset\nonly edges with non null value, in order to be able to convert them into\nnetwork. Actually, I don't know why network did not work with the full edge\nlist.\n\nWhat I would like to know is, does this arbitrary selection affects my\nanalysis? should I avoid to get rid of missing edges? Does a best practice\nto code null edges exist (say, assigning NA rather than 0 as I am doing)? I\nsearched along the various blog, but I could not find an answer to how\nSTATNET deals with this issue.\n\nI hope the issue is clearer now, sorry for the fuzziness of my previous\nquestion!\n\nBest,\n\nFilippo\n>\n\n2018-01-17 18:51 GMT+01:00 martina morris <morrism@u.washington.edu>:\n\n> Hi Filippo,\n>\n> I'm not sure from your description exactly how you constructed your\n> network -- nor what your goal is.\n>\n> Can you send the code you're using, and explain exactly what you want the\n> edge values to represent, and when (if ever) they should be coded NA rather\n> than 0.\n>\n> thx,\n> Martina\n>\n>\n> On Wed, 17 Jan 2018, Filippo Santi wrote:\n>\n>\n>> Dear all, I am quite new to network analysis, and even newer to the\n>> STATNET suite.\n>> THE BACKGROUND: I am working on FDI global network, and I have a\n>> rectangular directed edge list of 228x227 country, where\n>> each 'from' country is matched with a 'to' country. The result should be\n>> a definitely large network. Of course, only a\n>> part of the nodes are connected, with the majority of nodes not receiving\n>> any investment from a country, some of them not\n>> receiving any investment at all.\n>> THE QUESTION: I have not been able to build a network with all possible\n>> edges. Rather, I had to modify my edgelist to\n>> select only the from-to pairs whose edges is not null. Nonetheless, from\n>> the network inspection, the item NULL EDGES\n>> exists (and in this case is set equal to zero). How can I get rid of this\n>> problem? can you suggest me any solution?\n>>\n>> Thanks in advance for any help you will give me,\n>>\n>> cheers,\n>>\n>> Filippo Santi\n>> PhD Candidate in Development Economics\n>>\n>>\n>>\n>>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n\n-- \nFilippo Santi\nPhD Candidate in Development Economics\nmobile +39 3283540720 skype filippo.santi\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180118/943335fa/attachment.html>",
+      "body_snippet": "Dear Martina,\n\nMy attempt is currently to understand how do STATNET deals with my data\n(and I am actually failing...)\n\nMy data concern international Foreign Direct Investments (FDI) position of\nall co",
+      "thread_id": "thread-aa3388740905",
+      "thread_depth": 2,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-f8d124bbfad8",
+      "message_id": "<CA+CFxkXAyfDKVkgZfYe_ofM0wqF_E-_iCMmrzcFHFWadpAL6qg@mail.gmail.com>",
+      "from_name": "Jesse Sayles",
+      "from_email_hash": "66b1d382040bb381e54b6d659aa9c3a124dc209c0d2735793f5592d6518a6a15",
+      "date": "2018-01-18T07:01:36Z",
+      "subject": "[statnet_help] MRQAP with multiple networks and degree by attribute",
+      "subject_clean": "[statnet_help] MRQAP with multiple networks and degree by attribute",
+      "in_reply_to": "<CAEZJSfd-4fNmb9e38O+YE0XS5UA73NcROHjYgeOM=H6MQKV_Ww@mail.gmail.com>",
+      "references": [
+        "<CAEZJSfd-4fNmb9e38O+YE0XS5UA73NcROHjYgeOM=H6MQKV_Ww@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Ahmed,\n\nSeveral years ago I took the MRQAP workshop with David Dekker at Sunbelt\nand he showed us how to you could partition your matrix by column/row so\nthat you would only permute your outcome matrix within partitions and not\nbetween them. It seems to me that if you have your three courses as\nunconnected sub-graphs within one network you could make use of such\npartitioning so that you permute within classes, but not among them. I\ncannot find the sample code that David gave us in the workshop, but perhaps\nyou can reach out to him and ask if he can share the code he uses in his\nworkshops.\n\nBest wishes\nJesse Sayles\n\nOn Thu, Jan 18, 2018 at 2:05 AM, Ahmed Tarek Hammad <\na.hammad@campus.unimib.it> wrote:\n\n> Dear statnet users,\n>\n>\n> I have collected  friendship network data for *multiple classes* in\n> different schools.\n>\n> *I would like to:*\n>\n> *1)* compare the indegree of some students that took a course with those\n> who didn?t took it, controlling for some variables and baseline indegree\n> using MRQAP.\n>\n> ?*Course*? is an attribute of each node and is equal to ?1? for those who\n> took the course, ?0? for those who didn?t took it and ?NA? for those who\n> didn?t know about it.\n>\n>\n> *However, the problem is that:*\n> *A)* since students were asked to nominate only classmates I have\n> multiple networks not a single big network.\n> *B)* in some of them I have just one student who is either part of the\n> ?course group? or the ?non-course group?. Therefore, I don't think running\n> MRQAP for each class and then using meta-analysis will work.\n>\n>\n> The other option that I found is to use \"structural zeros\" to create a\n> single big matrix and run MRQAP, but since I?m very new in R and I couldn?t\n> find examples I don?t have any idea on how it should be done.\n>\n>\n> *2)* I would like to know for each node how many nominations out of the\n> total nominations  (freeman) are from and to students who took the course.\n> Stated in a different way, I want to answer to the following question: ?*How\n> many of your friends took the course??*\n>\n> I have tried to use the degree function and the given options but with no\n> success\n>\n>\n> Below you can find an example with 3 classes in one single network and\n> node?s attributes including:\n>\n> *class*=The class id, from 1 to 3\n>\n> *course*=course status coded\n>\n> *1* for students that took the course\n>\n> *0* for those who did not take the course\n>\n> *NA* for those who did not know about it\n>\n>\n> #########################\n>\n> library(statnet)\n>\n> set.seed(123)\n>\n> mynet<-network.initialize(60, directed=TRUE)\n>\n> mynet[1:20,1:20] <- rbinom(100, 1, 0.15)\n>\n> mynet[21:34,21:34] <- rbinom(120, 1, 0.15)\n>\n> mynet[35:60,35:60] <- rbinom(96, 1, 0.15)\n>\n> #class id\n>\n> class<-60\n>\n> class[1:20]<-1\n>\n> class[21:34]<-2\n>\n> class[35:60]<-3\n>\n> # course variable:\n>\n> course<-rbinom(60,c(1,0,NA),0.5)\n>\n> mynet %v% \"class\"<-class\n>\n> mynet %v% \" course \"<- course\n>\n> list.vertex.attributes(mynet)\n>\n>\n> Thanks in advance for your support,\n>\n> Ahmed Hammad\n>\n>\n> PhD student, Department of Political Science\n> Catholic University of the Sacred Heart\n> Largo Agostino Gemelli, 1, 20123 Milano MI, Italy\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n\n-- \n\n*Jesse Sayles, PhD*\n\n*saylesunchartedwaters.com <http://saylesunchartedwaters.com/>*\n\n\n*ORISE Postdoctoral Fellow*\n\n*Appointed with the U.S. Environmental Protection Agency, Office of\nResearch and DevelopmentNational Health and Environmental Effects\nLaboratory, Atlantic Ecology Division*\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180118/68964407/attachment.html>",
+      "body_snippet": "Hi Ahmed,\n\nSeveral years ago I took the MRQAP workshop with David Dekker at Sunbelt\nand he showed us how to you could partition your matrix by column/row so\nthat you would only permute your outcome ma",
+      "thread_id": "thread-c5d85339b1b7",
+      "thread_depth": 1,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-25dd2ea60b93",
+      "message_id": "<alpine.WNT.2.00.1801191003120.8348@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2018-01-19T10:05:05Z",
+      "subject": "[statnet_help] Missing Edges",
+      "subject_clean": "[statnet_help] Missing Edges",
+      "in_reply_to": "<CAMWRAUfB1pdkbM=xn1D6LiKYJv1zHr2wH-hY+Vy6ym7AnwvFCQ@mail.gmail.com>",
+      "references": [
+        "<CAMWRAUeonubJT_11jAgNr2Jo6Keh2pY08+rR88taZq6H_s=Vaw@mail.gmail.com>",
+        "<alpine.WNT.2.00.1801170949430.8392@morrism-laptop>",
+        "<CAMWRAUfB1pdkbM=xn1D6LiKYJv1zHr2wH-hY+Vy6ym7AnwvFCQ@mail.gmail.com>"
+      ],
+      "body_plain": "Ok, I think what you're asking is how to set up a network with \nedges and isolates, using an edgelist representation of your data.\n\nThere are a couple of ways to do this:\n\n1. You can first create an empty network of the appropriate size using \nnetwork.initialize, and then add the edges from the edgelist using e.g. \nadd.edges or network.edgelist.\n\n2. You can add size information to the edgelist by setting the \"n\" \nattribute (e.g., attr(myedgelist,\"n\")<-numberofnodes) and then passing it \nto network or as.network.?The size information will be incorporated \nautomagically.?(See also ?as.edgelist.sna.)\n\n(all thx go to Carter for this :)\n\nhth,\nmm\n\nOn Thu, 18 Jan 2018, Filippo Santi wrote:\n\n> Dear Martina, \n> My attempt is currently to understand how do STATNET deals with my data (and I am actually failing...)\n> \n> My data concern international Foreign Direct Investments (FDI) position of all countries worlwide. For a given year, it\n> consist of an edge list with 51984 potential country relationships (228*228), with just 1781 existing edges (number of\n> investments > 0). In order to be able to convert the data, I had to select only those edges with positive values that\n> are, 1781. But, when I got to the network description, I saw the \"missing edges\" feature, correctly marked as equal to\n> zero.\n> \n> The code I use is \n> \n> fdi.net.2003 <- network(fdi.edge.2003, matrix.type = \"edgelist\",\n> ? ? ? ? ? ? ? ? ? ? directed = T,\n> ? ? ? ? ? ? ? ? ? ? ignore.eval = F)\n>\n> ?to load the data into network format.\n> \n> Recalling the object, i find \n> \n> > fdi.net.2003\n> ?Network attributes:\n> ? vertices = 164\n> ? directed = TRUE\n> ? hyper = FALSE\n> ? loops = FALSE\n> ? multiple = FALSE\n> ? bipartite = FALSE\n> ? total edges= 1781\n> ? ? missing edges= 0\n> ? ? non-missing edges= 1781 \n>\n> ?Vertex attribute names:\n> ? ? vertex.names \n>\n> ?Edge attribute names not shown \n> \n> This outcome fit my expectation, since I had to select out of my dataset only edges with non null value, in order to be\n> able to convert them into network. Actually, I don't know why network did not work with the full edge list. \n> \n> What I would like to know is, does this arbitrary selection affects my analysis? should I avoid to get rid of missing\n> edges? Does a best practice to code null edges exist (say, assigning NA rather than 0 as I am doing)? I searched along\n> the various blog, but I could not find an answer to how STATNET deals with this issue.\n> \n> I hope the issue is clearer now, sorry for the fuzziness of my previous question!\n> \n> Best, \n> \n> Filippo\n> > \n> \n> 2018-01-17 18:51 GMT+01:00 martina morris <morrism@u.washington.edu>:\n>       Hi Filippo,\n>\n>       I'm not sure from your description exactly how you constructed your network -- nor what your goal is.\n>\n>       Can you send the code you're using, and explain exactly what you want the edge values to represent, and when\n>       (if ever) they should be coded NA rather than 0.\n>\n>       thx,\n>       Martina\n>\n>       On Wed, 17 Jan 2018, Filippo Santi wrote:\n> \n>\n>             Dear all, I am quite new to network analysis, and even newer to the STATNET suite.\n>             THE BACKGROUND: I am working on FDI global network, and I have a rectangular directed edge list\n>             of 228x227 country, where\n>             each 'from' country is matched with a 'to' country. The result should be a definitely large\n>             network. Of course, only a\n>             part of the nodes are connected, with the majority of nodes not receiving any investment from a\n>             country, some of them not\n>             receiving any investment at all.\n>             THE QUESTION: I have not been able to build a network with all possible edges. Rather, I had to\n>             modify my edgelist to\n>             select only the from-to pairs whose edges is not null. Nonetheless, from the network inspection,\n>             the item NULL EDGES\n>             exists (and in this case is set equal to zero). How can I get rid of this problem? can you\n>             suggest me any solution?\n>\n>             Thanks in advance for any help you will give me,\n>\n>             cheers,\n>\n>             Filippo Santi\n>             PhD Candidate in Development Economics\n> \n> \n> \n> \n> ****************************************************************\n> ?Professor of Sociology and Statistics\n> ?Director, UWCFAR Sociobehavioral and Prevention Research Core\n> ?Box 354322\n> ?University of Washington\n> ?Seattle, WA 98195-4322\n>\n> ?Office:? ? ? ? (206) 685-3402\n> ?Dept Office:? ?(206) 543-5882, 543-7237\n> ?Fax:? ? ? ? ? ?(206) 685-7419\n> \n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> \n> \n> \n> \n> --\n> Filippo Santi\n> PhD Candidate in Development Economics\n> mobile +39 3283540720 skype filippo.santi\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Ok, I think what you're asking is how to set up a network with \nedges and isolates, using an edgelist representation of your data.\n\nThere are a couple of ways to do this:\n\n1. You can first create an e",
+      "thread_id": "thread-aa3388740905",
+      "thread_depth": 3,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-9f9d11f2697f",
+      "message_id": "<CAMWRAUdrD=eBb0iV5jTwsS37t_GV5VJm6C=ejk7jF2MCebssPQ@mail.gmail.com>",
+      "from_name": "Filippo Santi",
+      "from_email_hash": "fe866f87570f9372a85c6cc3b13ab3050273b6bbece0449398731acc19ed2d4d",
+      "date": "2018-01-20T04:58:31Z",
+      "subject": "[statnet_help] Missing Edges",
+      "subject_clean": "[statnet_help] Missing Edges",
+      "in_reply_to": "<alpine.WNT.2.00.1801191003120.8348@morrism-laptop>",
+      "references": [
+        "<CAMWRAUeonubJT_11jAgNr2Jo6Keh2pY08+rR88taZq6H_s=Vaw@mail.gmail.com>",
+        "<alpine.WNT.2.00.1801170949430.8392@morrism-laptop>",
+        "<CAMWRAUfB1pdkbM=xn1D6LiKYJv1zHr2wH-hY+Vy6ym7AnwvFCQ@mail.gmail.com>",
+        "<alpine.WNT.2.00.1801191003120.8348@morrism-laptop>"
+      ],
+      "body_plain": "Dear Martina,\n\nThank you and Carter for the help. This is exactly what I was looking for,\nsorry for the little knowledge of the proper terminology. All the best,\n\nFilippo\n\n2018-01-19 19:05 GMT+01:00 martina morris <morrism@u.washington.edu>:\n\n> Ok, I think what you're asking is how to set up a network with edges and\n> isolates, using an edgelist representation of your data.\n>\n> There are a couple of ways to do this:\n>\n> 1. You can first create an empty network of the appropriate size using\n> network.initialize, and then add the edges from the edgelist using e.g.\n> add.edges or network.edgelist.\n>\n> 2. You can add size information to the edgelist by setting the \"n\"\n> attribute (e.g., attr(myedgelist,\"n\")<-numberofnodes) and then passing it\n> to network or as.network. The size information will be incorporated\n> automagically. (See also ?as.edgelist.sna.)\n>\n> (all thx go to Carter for this :)\n>\n> hth,\n> mm\n>\n>\n> On Thu, 18 Jan 2018, Filippo Santi wrote:\n>\n> Dear Martina, My attempt is currently to understand how do STATNET deals\n>> with my data (and I am actually failing...)\n>>\n>> My data concern international Foreign Direct Investments (FDI) position\n>> of all countries worlwide. For a given year, it\n>> consist of an edge list with 51984 potential country relationships\n>> (228*228), with just 1781 existing edges (number of\n>> investments > 0). In order to be able to convert the data, I had to\n>> select only those edges with positive values that\n>> are, 1781. But, when I got to the network description, I saw the \"missing\n>> edges\" feature, correctly marked as equal to\n>> zero.\n>>\n>> The code I use is\n>> fdi.net.2003 <- network(fdi.edge.2003, matrix.type = \"edgelist\",\n>>                     directed = T,\n>>                     ignore.eval = F)\n>>\n>>  to load the data into network format.\n>>\n>> Recalling the object, i find\n>> > fdi.net.2003\n>>  Network attributes:\n>>   vertices = 164\n>>   directed = TRUE\n>>   hyper = FALSE\n>>   loops = FALSE\n>>   multiple = FALSE\n>>   bipartite = FALSE\n>>   total edges= 1781\n>>     missing edges= 0\n>>     non-missing edges= 1781\n>>  Vertex attribute names:\n>>     vertex.names\n>>  Edge attribute names not shown\n>> This outcome fit my expectation, since I had to select out of my dataset\n>> only edges with non null value, in order to be\n>> able to convert them into network. Actually, I don't know why network did\n>> not work with the full edge list.\n>> What I would like to know is, does this arbitrary selection affects my\n>> analysis? should I avoid to get rid of missing\n>> edges? Does a best practice to code null edges exist (say, assigning NA\n>> rather than 0 as I am doing)? I searched along\n>> the various blog, but I could not find an answer to how STATNET deals\n>> with this issue.\n>>\n>> I hope the issue is clearer now, sorry for the fuzziness of my previous\n>> question!\n>>\n>> Best,\n>> Filippo\n>> >\n>> 2018-01-17 18:51 GMT+01:00 martina morris <morrism@u.washington.edu>:\n>>       Hi Filippo,\n>>\n>>       I'm not sure from your description exactly how you constructed your\n>> network -- nor what your goal is.\n>>\n>>       Can you send the code you're using, and explain exactly what you\n>> want the edge values to represent, and when\n>>       (if ever) they should be coded NA rather than 0.\n>>\n>>       thx,\n>>       Martina\n>>\n>>       On Wed, 17 Jan 2018, Filippo Santi wrote:\n>>\n>>\n>>             Dear all, I am quite new to network analysis, and even newer\n>> to the STATNET suite.\n>>             THE BACKGROUND: I am working on FDI global network, and I\n>> have a rectangular directed edge list\n>>             of 228x227 country, where\n>>             each 'from' country is matched with a 'to' country. The\n>> result should be a definitely large\n>>             network. Of course, only a\n>>             part of the nodes are connected, with the majority of nodes\n>> not receiving any investment from a\n>>             country, some of them not\n>>             receiving any investment at all.\n>>             THE QUESTION: I have not been able to build a network with\n>> all possible edges. Rather, I had to\n>>             modify my edgelist to\n>>             select only the from-to pairs whose edges is not null.\n>> Nonetheless, from the network inspection,\n>>             the item NULL EDGES\n>>             exists (and in this case is set equal to zero). How can I get\n>> rid of this problem? can you\n>>             suggest me any solution?\n>>\n>>             Thanks in advance for any help you will give me,\n>>\n>>             cheers,\n>>\n>>             Filippo Santi\n>>             PhD Candidate in Development Economics\n>>\n>>\n>>\n>>\n>> ****************************************************************\n>>  Professor of Sociology and Statistics\n>>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>  Box 354322\n>>  University of Washington\n>>  Seattle, WA 98195-4322\n>>\n>>  Office:        (206) 685-3402\n>>  Dept Office:   (206) 543-5882, 543-7237\n>>  Fax:           (206) 685-7419\n>>\n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>>\n>>\n>> --\n>> Filippo Santi\n>> PhD Candidate in Development Economics\n>> mobile +39 3283540720 skype filippo.santi\n>>\n>>\n>>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n>\n\n\n\n-- \nFilippo Santi\nPhD Candidate in Development Economics\nmobile +39 3283540720 skype filippo.santi\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180120/2398d4f9/attachment.html>",
+      "body_snippet": "Dear Martina,\n\nThank you and Carter for the help. This is exactly what I was looking for,\nsorry for the little knowledge of the proper terminology. All the best,\n\nFilippo\n\n2018-01-19 19:05 GMT+01:00 m",
+      "thread_id": "thread-aa3388740905",
+      "thread_depth": 4,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-8e4f4c7689a6",
+      "message_id": "<CAEZJSfeHfbx5GxJbr5x=Hcn6N6M=g6ikW5juwapCJSO11dP_CA@mail.gmail.com>",
+      "from_name": "Ahmed Tarek Hammad",
+      "from_email_hash": "b77ecdf436bd21f92942e52bb02e4ae53cff88cb4a1397f6104c4ea383ac3dd2",
+      "date": "2018-01-21T19:22:26Z",
+      "subject": "[statnet_help] MRQAP with multiple networks and degree by attribute",
+      "subject_clean": "[statnet_help] MRQAP with multiple networks and degree by attribute",
+      "in_reply_to": "<CA+CFxkXAyfDKVkgZfYe_ofM0wqF_E-_iCMmrzcFHFWadpAL6qg@mail.gmail.com>",
+      "references": [
+        "<CAEZJSfd-4fNmb9e38O+YE0XS5UA73NcROHjYgeOM=H6MQKV_Ww@mail.gmail.com>",
+        "<CA+CFxkXAyfDKVkgZfYe_ofM0wqF_E-_iCMmrzcFHFWadpAL6qg@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Jesse,\n\nthank you for the suggestion! I will contact David Dekker.\nRegarding my second problem, do you have any suggestion on how to count the\nnumber of connected nodes that have a specific attribute?\n\nRegards,\nAhmed\n\n2018-01-18 23:01 GMT+08:00 Jesse Sayles <Jesse.Sayles@asu.edu>:\n\n> Hi Ahmed,\n>\n> Several years ago I took the MRQAP workshop with David Dekker at Sunbelt\n> and he showed us how to you could partition your matrix by column/row so\n> that you would only permute your outcome matrix within partitions and not\n> between them. It seems to me that if you have your three courses as\n> unconnected sub-graphs within one network you could make use of such\n> partitioning so that you permute within classes, but not among them. I\n> cannot find the sample code that David gave us in the workshop, but perhaps\n> you can reach out to him and ask if he can share the code he uses in his\n> workshops.\n>\n> Best wishes\n> Jesse Sayles\n>\n> On Thu, Jan 18, 2018 at 2:05 AM, Ahmed Tarek Hammad <\n> a.hammad@campus.unimib.it> wrote:\n>\n>> Dear statnet users,\n>>\n>>\n>> I have collected  friendship network data for *multiple classes* in\n>> different schools.\n>>\n>> *I would like to:*\n>>\n>> *1)* compare the indegree of some students that took a course with those\n>> who didn?t took it, controlling for some variables and baseline indegree\n>> using MRQAP.\n>>\n>> ?*Course*? is an attribute of each node and is equal to ?1? for those\n>> who took the course, ?0? for those who didn?t took it and ?NA? for those\n>> who didn?t know about it.\n>>\n>>\n>> *However, the problem is that:*\n>> *A)* since students were asked to nominate only classmates I have\n>> multiple networks not a single big network.\n>> *B)* in some of them I have just one student who is either part of the\n>> ?course group? or the ?non-course group?. Therefore, I don't think running\n>> MRQAP for each class and then using meta-analysis will work.\n>>\n>>\n>> The other option that I found is to use \"structural zeros\" to create a\n>> single big matrix and run MRQAP, but since I?m very new in R and I couldn?t\n>> find examples I don?t have any idea on how it should be done.\n>>\n>>\n>> *2)* I would like to know for each node how many nominations out of the\n>> total nominations  (freeman) are from and to students who took the course.\n>> Stated in a different way, I want to answer to the following question: ?*How\n>> many of your friends took the course??*\n>>\n>> I have tried to use the degree function and the given options but with no\n>> success\n>>\n>>\n>> Below you can find an example with 3 classes in one single network and\n>> node?s attributes including:\n>>\n>> *class*=The class id, from 1 to 3\n>>\n>> *course*=course status coded\n>>\n>> *1* for students that took the course\n>>\n>> *0* for those who did not take the course\n>>\n>> *NA* for those who did not know about it\n>>\n>>\n>> #########################\n>>\n>> library(statnet)\n>>\n>> set.seed(123)\n>>\n>> mynet<-network.initialize(60, directed=TRUE)\n>>\n>> mynet[1:20,1:20] <- rbinom(100, 1, 0.15)\n>>\n>> mynet[21:34,21:34] <- rbinom(120, 1, 0.15)\n>>\n>> mynet[35:60,35:60] <- rbinom(96, 1, 0.15)\n>>\n>> #class id\n>>\n>> class<-60\n>>\n>> class[1:20]<-1\n>>\n>> class[21:34]<-2\n>>\n>> class[35:60]<-3\n>>\n>> # course variable:\n>>\n>> course<-rbinom(60,c(1,0,NA),0.5)\n>>\n>> mynet %v% \"class\"<-class\n>>\n>> mynet %v% \" course \"<- course\n>>\n>> list.vertex.attributes(mynet)\n>>\n>>\n>> Thanks in advance for your support,\n>>\n>> Ahmed Hammad\n>>\n>>\n>> PhD student, Department of Political Science\n>> Catholic University of the Sacred Heart\n>> Largo Agostino Gemelli, 1, 20123 Milano MI, Italy\n>> <https://maps.google.com/?q=Largo+Agostino+Gemelli,+1,+20123+Milano+MI,+Italy&entry=gmail&source=g>\n>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>\n>\n> --\n>\n> *Jesse Sayles, PhD*\n>\n> *saylesunchartedwaters.com <http://saylesunchartedwaters.com/>*\n>\n>\n> *ORISE Postdoctoral Fellow*\n>\n> *Appointed with the U.S. Environmental Protection Agency, Office of\n> Research and DevelopmentNational Health and Environmental Effects\n> Laboratory, Atlantic Ecology Division*\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180122/3f0b3db4/attachment.html>",
+      "body_snippet": "Dear Jesse,\n\nthank you for the suggestion! I will contact David Dekker.\nRegarding my second problem, do you have any suggestion on how to count the\nnumber of connected nodes that have a specific attri",
+      "thread_id": "thread-c5d85339b1b7",
+      "thread_depth": 2,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-85daed7e607d",
+      "message_id": "<alpine.WNT.2.00.1801241109560.16416@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2018-01-24T11:15:10Z",
+      "subject": "[statnet_help] MRQAP with multiple networks and degree by attribute",
+      "subject_clean": "[statnet_help] MRQAP with multiple networks and degree by attribute",
+      "in_reply_to": "<CAEZJSfeHfbx5GxJbr5x=Hcn6N6M=g6ikW5juwapCJSO11dP_CA@mail.gmail.com>",
+      "references": [
+        "<CAEZJSfd-4fNmb9e38O+YE0XS5UA73NcROHjYgeOM=H6MQKV_Ww@mail.gmail.com>",
+        "<CA+CFxkXAyfDKVkgZfYe_ofM0wqF_E-_iCMmrzcFHFWadpAL6qg@mail.gmail.com>",
+        "<CAEZJSfeHfbx5GxJbr5x=Hcn6N6M=g6ikW5juwapCJSO11dP_CA@mail.gmail.com>"
+      ],
+      "body_plain": "On Mon, 22 Jan 2018, Ahmed Tarek Hammad wrote:\n\n\n> 2) I would like to know for each node how many nominations out of the total nominations ?(freeman) are from\n> and to students who took the course. Stated in a different way, I want to answer to the following question:\n> ?How many of your friends took the course??\n\nyou should be able to get this using the nodematch term, but a better \napproach to the coding would be to have 3 different variables for the 3 \nclasses, all coded (0,1).  then you can use:\n\nsummary(network ~ nodematch(\"class1\")) for each of the class#s\n\n\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "On Mon, 22 Jan 2018, Ahmed Tarek Hammad wrote:\n\n\n> 2) I would like to know for each node how many nominations out of the total nominations ?(freeman) are from\n> and to students who took the course. St",
+      "thread_id": "thread-c5d85339b1b7",
+      "thread_depth": 3,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-4b43e1905f0a",
+      "message_id": "<CAMWRAUchScy9fS01yvLwmuvE62VbmTN9Y=BP-dsFpgsRUutD4A@mail.gmail.com>",
+      "from_name": "Filippo Santi",
+      "from_email_hash": "fe866f87570f9372a85c6cc3b13ab3050273b6bbece0449398731acc19ed2d4d",
+      "date": "2018-01-25T02:46:51Z",
+      "subject": "[statnet_help] Missing Edges",
+      "subject_clean": "[statnet_help] Missing Edges",
+      "in_reply_to": "<CAMWRAUdrD=eBb0iV5jTwsS37t_GV5VJm6C=ejk7jF2MCebssPQ@mail.gmail.com>",
+      "references": [
+        "<CAMWRAUeonubJT_11jAgNr2Jo6Keh2pY08+rR88taZq6H_s=Vaw@mail.gmail.com>",
+        "<alpine.WNT.2.00.1801170949430.8392@morrism-laptop>",
+        "<CAMWRAUfB1pdkbM=xn1D6LiKYJv1zHr2wH-hY+Vy6ym7AnwvFCQ@mail.gmail.com>",
+        "<alpine.WNT.2.00.1801191003120.8348@morrism-laptop>",
+        "<CAMWRAUdrD=eBb0iV5jTwsS37t_GV5VJm6C=ejk7jF2MCebssPQ@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Martina,\n\nSorry for resuscitating this question I thought you solved with your last\nemail last week, but I am still encountering problems.\n\n1) I tried to apply the first strategy, you mentioned (You can first create\nan empty network of the appropriate size using network.initialize, and then\nadd the edges from the edgelist using e.g. add.edges or network.edgelist.)\n\n*> fdi.net.2003 <- network.initialize(228, directed = T, hyper = F, loops =\nF, multiple = F, bipartite = F)*\n\nThen I set the names of the vertices, in order to match them with the\nedgelist ids\n\n> a_attributes.prova.2003 <- a_attributes.all %>%\n+   filter(year == 2003) %>%\n+   arrange(iso)\n*> ids <- unique(as.character(a_attributes.prova.2003$iso))*\n*> network.vertex.names(fdi.net.2003) <- ids*\n\nFinally, I added the edges applying the network.edgelist function. However,\nI got this error back\n\n*> fdi.net.2003 <- network.edgelist(fdi.edge.2003, fdi.net.2003,\nignore.eval = F)*\nError in add.edges.network(g, as.list(x[, 1]), as.list(x[, 2]),\neattrnames,  :\n  (edge check) Illegal vertex reference in addEdges_R.  Exiting.\nInoltre: Warning messages:\n1: In add.edges.network(g, as.list(x[, 1]), as.list(x[, 2]), eattrnames,  :\n  si ? prodotto un NA per coercizione (NA produced by coercion)\n2: In add.edges.network(g, as.list(x[, 1]), as.list(x[, 2]), eattrnames,  :\n  si ? prodotto un NA per coercizione (NA produced by coercion)\n\nI tried to do the same with add.edges, but with the same results.\n\n*> add.edges(fdi.net.2003, fdi.edge.2003[,1], fdi.edge.2003[,2])*\nError in add.edges.network(fdi.net.2003, fdi.edge.2003[, 1],\nfdi.edge.2003[,  :\n  (edge check) Illegal vertex reference in addEdges_R.  Exiting.\nInoltre: Warning messages:\n1: In add.edges.network(fdi.net.2003, fdi.edge.2003[, 1], fdi.edge.2003[,  :\n  si ? prodotto un NA per coercizione\n2: In add.edges.network(fdi.net.2003, fdi.edge.2003[, 1], fdi.edge.2003[,  :\n  si ? prodotto un NA per coercizione\n\n2) Then, i tried with the second procedure you mentioned (2. You can add\nsize information to the edgelist by setting the \"n\" attribute (e.g.,\nattr(myedgelist,\"n\")<-numberofnodes) and then passing it to network or\nas.network. The size information will be incorporated automagically. (See\nalso ?as.edgelist.sna.)\n\n*> n <- nrow((a_attributes.prova.2003))*\n*> attr(fdi.edge.2003, 'n') <- n*\n\nbut the I fails to work too\n\n*> fdi.net.2003.3 <- network(fdi.edge.2003, directed = T, hyper = F, loops\n= F, multiple = F, bipartite = F)*\nError in add.edges.network(g, as.list(1 + e%%n), as.list(1 + e%/%n),\nnames.eval = en,  :\n  (edge check) Illegal vertex reference in addEdges_R.  Exiting.\n\nI think the problem is related to the data I am using. I set up the empty\nnetwork with 228 vertices, named accordingly ti my vertex attribute\ndata.frame. Up to that point, no problem are encountered. The troubles\narise when I try to add edges. The ids are characters, with the same format\nas the names I set. I have 1781 edges, involving just 164 vertices with\nvarious attributes (around 10 of them could potentially constitute a\nweight, but it should not be a problem as I set ignore.evals = F). Clearly,\nthe potential edges are far more numerous than the actual one I am adding\n(228*227 = 51756). The reason I want to add more vertices is that i have\nthe same network over 13 years,  to which not all vertices are active at\nthe same time, but over the year all 228 vertices are called in at least\nonce.\n\nI tried in the last few days to solve these problems, but I have not been\nable to come up with a solution. I hope I provided you with enough detail.\n\nBest,\n\nFilippo\n\n\n\n\n2018-01-20 13:58 GMT+01:00 Filippo Santi <filippo.santi@unitn.it>:\n\n> Dear Martina,\n>\n> Thank you and Carter for the help. This is exactly what I was looking for,\n> sorry for the little knowledge of the proper terminology. All the best,\n>\n> Filippo\n>\n> 2018-01-19 19:05 GMT+01:00 martina morris <morrism@u.washington.edu>:\n>\n>> Ok, I think what you're asking is how to set up a network with edges and\n>> isolates, using an edgelist representation of your data.\n>>\n>> There are a couple of ways to do this:\n>>\n>> 1. You can first create an empty network of the appropriate size using\n>> network.initialize, and then add the edges from the edgelist using e.g.\n>> add.edges or network.edgelist.\n>>\n>> 2. You can add size information to the edgelist by setting the \"n\"\n>> attribute (e.g., attr(myedgelist,\"n\")<-numberofnodes) and then passing\n>> it to network or as.network. The size information will be incorporated\n>> automagically. (See also ?as.edgelist.sna.)\n>>\n>> (all thx go to Carter for this :)\n>>\n>> hth,\n>> mm\n>>\n>>\n>> On Thu, 18 Jan 2018, Filippo Santi wrote:\n>>\n>> Dear Martina, My attempt is currently to understand how do STATNET deals\n>>> with my data (and I am actually failing...)\n>>>\n>>> My data concern international Foreign Direct Investments (FDI) position\n>>> of all countries worlwide. For a given year, it\n>>> consist of an edge list with 51984 potential country relationships\n>>> (228*228), with just 1781 existing edges (number of\n>>> investments > 0). In order to be able to convert the data, I had to\n>>> select only those edges with positive values that\n>>> are, 1781. But, when I got to the network description, I saw the\n>>> \"missing edges\" feature, correctly marked as equal to\n>>> zero.\n>>>\n>>> The code I use is\n>>> fdi.net.2003 <- network(fdi.edge.2003, matrix.type = \"edgelist\",\n>>>                     directed = T,\n>>>                     ignore.eval = F)\n>>>\n>>>  to load the data into network format.\n>>>\n>>> Recalling the object, i find\n>>> > fdi.net.2003\n>>>  Network attributes:\n>>>   vertices = 164\n>>>   directed = TRUE\n>>>   hyper = FALSE\n>>>   loops = FALSE\n>>>   multiple = FALSE\n>>>   bipartite = FALSE\n>>>   total edges= 1781\n>>>     missing edges= 0\n>>>     non-missing edges= 1781\n>>>  Vertex attribute names:\n>>>     vertex.names\n>>>  Edge attribute names not shown\n>>> This outcome fit my expectation, since I had to select out of my dataset\n>>> only edges with non null value, in order to be\n>>> able to convert them into network. Actually, I don't know why network\n>>> did not work with the full edge list.\n>>> What I would like to know is, does this arbitrary selection affects my\n>>> analysis? should I avoid to get rid of missing\n>>> edges? Does a best practice to code null edges exist (say, assigning NA\n>>> rather than 0 as I am doing)? I searched along\n>>> the various blog, but I could not find an answer to how STATNET deals\n>>> with this issue.\n>>>\n>>> I hope the issue is clearer now, sorry for the fuzziness of my previous\n>>> question!\n>>>\n>>> Best,\n>>> Filippo\n>>> >\n>>> 2018-01-17 18:51 GMT+01:00 martina morris <morrism@u.washington.edu>:\n>>>       Hi Filippo,\n>>>\n>>>       I'm not sure from your description exactly how you constructed\n>>> your network -- nor what your goal is.\n>>>\n>>>       Can you send the code you're using, and explain exactly what you\n>>> want the edge values to represent, and when\n>>>       (if ever) they should be coded NA rather than 0.\n>>>\n>>>       thx,\n>>>       Martina\n>>>\n>>>       On Wed, 17 Jan 2018, Filippo Santi wrote:\n>>>\n>>>\n>>>             Dear all, I am quite new to network analysis, and even newer\n>>> to the STATNET suite.\n>>>             THE BACKGROUND: I am working on FDI global network, and I\n>>> have a rectangular directed edge list\n>>>             of 228x227 country, where\n>>>             each 'from' country is matched with a 'to' country. The\n>>> result should be a definitely large\n>>>             network. Of course, only a\n>>>             part of the nodes are connected, with the majority of nodes\n>>> not receiving any investment from a\n>>>             country, some of them not\n>>>             receiving any investment at all.\n>>>             THE QUESTION: I have not been able to build a network with\n>>> all possible edges. Rather, I had to\n>>>             modify my edgelist to\n>>>             select only the from-to pairs whose edges is not null.\n>>> Nonetheless, from the network inspection,\n>>>             the item NULL EDGES\n>>>             exists (and in this case is set equal to zero). How can I\n>>> get rid of this problem? can you\n>>>             suggest me any solution?\n>>>\n>>>             Thanks in advance for any help you will give me,\n>>>\n>>>             cheers,\n>>>\n>>>             Filippo Santi\n>>>             PhD Candidate in Development Economics\n>>>\n>>>\n>>>\n>>>\n>>> ****************************************************************\n>>>  Professor of Sociology and Statistics\n>>>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>>  Box 354322\n>>>  University of Washington\n>>>  Seattle, WA 98195-4322\n>>>\n>>>  Office:        (206) 685-3402\n>>>  Dept Office:   (206) 543-5882, 543-7237\n>>>  Fax:           (206) 685-7419\n>>>\n>>> morrism@u.washington.edu\n>>> http://faculty.washington.edu/morrism/\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>>>\n>>>\n>>>\n>>> --\n>>> Filippo Santi\n>>> PhD Candidate in Development Economics\n>>> mobile +39 3283540720 skype filippo.santi\n>>>\n>>>\n>>>\n>> ****************************************************************\n>>  Professor of Sociology and Statistics\n>>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>  Box 354322\n>>  University of Washington\n>>  Seattle, WA 98195-4322\n>>\n>>  Office:        (206) 685-3402\n>>  Dept Office:   (206) 543-5882, 543-7237\n>>  Fax:           (206) 685-7419\n>>\n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>>\n>\n>\n>\n> --\n> Filippo Santi\n> PhD Candidate in Development Economics\n> mobile +39 3283540720 <+39%20328%20354%200720> skype filippo.santi\n>\n\n\n\n-- \nFilippo Santi\nPhD Candidate in Development Economics\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180125/09ed9588/attachment.html>",
+      "body_snippet": "Dear Martina,\n\nSorry for resuscitating this question I thought you solved with your last\nemail last week, but I am still encountering problems.\n\n1) I tried to apply the first strategy, you mentioned (",
+      "thread_id": "thread-aa3388740905",
+      "thread_depth": 5,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-2374c16dcb6e",
+      "message_id": "<CE54586E-916B-4912-82A8-16F4F72649B7@purdue.edu>",
+      "from_name": "Jiasen Yang",
+      "from_email_hash": "500174d9cfbc36981359ec3c73c901a283553b251d79b5de4053b8b38600eca9",
+      "date": "2018-01-25T16:15:11Z",
+      "subject": "[statnet_help] Simulating networks from a pre-specified ERGM model",
+      "subject_clean": "[statnet_help] Simulating networks from a pre-specified ERGM model",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone,\n\nPlease pardon the naiveness of my question as I am new to the statnet package and this mailing list.\n\nSince ERGM is a generative model, I would like to simulate networks of varying sizes from a pre-specified distribution (that is not estimated from any dataset).\nFor instance, I would like to simulate networks of 10 nodes, 50 nodes and 100 nodes from the distribution\nP(y) = 1/Z exp(a * num_edges(y) + b * num_triangles(y))\nwhere a and b are certain parameter values.\n\n>From a tutorial I found online (https://statnet.org/trac/raw-attachment/wiki/Sunbelt2016/), I am able to simulate a list of networks from a previously estimated model.\nHowever, in my case, how should I go about writing an ergm model formula that specifies the desired information as well as the number of nodes?\n\nIn addition, I wonder if there?s a list of possible sufficient statistics I could put in the formula? For instance, if I would like to specify the number of 4-cliques or other subgraph patterns, etc.\n\nThank you very much in advance!\n\nBest,\nJiasen\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180126/d97666b6/attachment.html>",
+      "body_snippet": "Hi everyone,\n\nPlease pardon the naiveness of my question as I am new to the statnet package and this mailing list.\n\nSince ERGM is a generative model, I would like to simulate networks of varying sizes",
+      "thread_id": "thread-2374c16dcb6e",
+      "thread_depth": 0,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-fca88d293863",
+      "message_id": "<1516934088.5378.38.camel@uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2018-01-25T18:34:52Z",
+      "subject": "[statnet_help] expanding the size of the network",
+      "subject_clean": "[statnet_help] expanding the size of the network",
+      "in_reply_to": "<2be1d35a-e429-234d-61ae-725a77586e68@uw.edu>",
+      "references": [
+        "<54CBB72F-21F8-40AD-8770-5C350AAA2CC5@hsph.harvard.edu>",
+        "<2be1d35a-e429-234d-61ae-725a77586e68@uw.edu>"
+      ],
+      "body_plain": "Hi, Lin and Steve,\n\nSomewhat belatedly, adjusting the density alone will not help with triadic effects. What might help (although only very approximately) is a triadic offset of the form\n\noffset(edges)+offset(gwesp(0, fixed=TRUE))\n\nwith\n\noffset.coef=c(-1,+1/3) * (log(Nsim)-log(Nfit))\n\nwhere Nsim is the network size you are simulating and Nfit is the network size you estimated from.\n\nMore details can be found in\nKrivitsky, P. N. & Kolaczyk, E. D. (2015) On the Question of Effective Sample Size in Network Modeling: An Asymptotic Inquiry. Statistical Science, 30(2): 184-198.\nI hope this helps,\nPavel\nOn Thu, 2017-12-07 at 08:29 -0800, Steven M Goodreau wrote:\n\nHi Lin,\n\nWhen changing the network size, the key is to update the edges coefficient in your model.  The basic idea is to take the edges coefficient and add the natural log of the old network size and then subtract the natural log of the new network size. Equivalently, one can think about partitioning the edges coefficient into two parts: one an offset based on the network size and another the remainder, and then update the offset. Without this update, ergms will preserve density as one changes network size, but with this update, they preserve mean degree. Although the former may seem reasonable on first pass, for most social phenomena the latter makes muc more sense and matches observed behavior much more closely. Note that you do *not* have to update any other coefficients besides the edges.\n\nAll this is explained in:\n\nPavel N. Krivitsky, Mark S. Handcock, and Martina Morris (2011). Adjusting for Network Size and Composition Effects in Exponential-Family Random Graph Models. Statistical Methodology, 8(4): 319?339.\n\nand is also talked about in our Network Modeling for Epidemics course: http://statnet.github.io/nme/\n\nNote, however, that Kirivitsky, Handcock and Morris have - in the paper below, and in subsequent explorations - proven that this works perfectly for dyadic independent terms, and behaves reasonably for some common dyadic dependent terms, but haven't proven it works exactly for the latter. (Co-authors - correct me if I'm wrong on that!!!)\n\nIt's not actually 100% clear (at least to me) what the expected behavior should be for something like GWESP when networks change in size - how do we believe explicit triangle closure behaves as networks scale in size, such that the background probably of a triangle being closed declines for the same density? Will the magnitude of the force stay the same, or will people exert more effort to close trinagle in order to get back to the same prportion of their triangles being closed as in a smaller network?  It's tricky stuff, but very intersting, for someone who wanted to explore it in depth with comparative empirical data, like Add Health.\n\nNevertheless, I believe this simple method should get you close to where you want to be.\n\nHere is some basic example code using a network of size 100 with mean degree of 1, then simulating a network of size 1000 that also has a mean degree of 1, by updating the coefficient form the first model. You should be able to use this as a base, and add in you GWESP and other terms.\n\nlibrary(statnet)\nsmallnet <- network.initialize(100, directed=F)\nsmallnet <- san(smallnet~edges, target.stats = 50) # mean deg = 1\nsmallergm <- ergm(smallnet~edges)\n\nlargenet <- network.initialize(1000, directed=F)\nlargecoef <- smallergm$coef[1] + log(100) - log(1000)\nlargenet <- simulate(largenet~edges, coef=largecoef)\n\n\nCheers,\n\nSteve\n\nOn 12/5/2017 9:59 AM, Zhu, Lin wrote:\nHello all,\n\nI have a question about expanding the size of the network.\n\nSo for example, if we have data for 200 injection drug users (IDU), and then we want to simulate an IDU network of 2000, and we have dyad-dependent term such as gwesp in the model, wha?t the best way to simulate the expanded network?\n\nI tried to fit the model with the small network, and then initialize a network of 2000 (with node attributes but no edge information) and pass it to the ?network? of the fitted ergm object, and use the updated ergm to simulate, but it didn?t work.\n\nAnother way may be to use the egocentric method, that?s first initializing the network of 2000 and then using target stats to estimate/fit ergm, and then simulate from that. If this is the only way, are there built-in functions to calculate the target stats for the network of 2000 from the network of 200? Is there any document on it?\n\nThank you so much.\n\nBest,\nLin\n\n\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n--\n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA)<http://niasra.uow.edu.au/index.html> | Web (Personal)<http://www.krivitsky.net/research> | ResearchGate<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID: 0000-0002-9101-3362<orcid.org/0000-0002-9101-3362>\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180126/392a36f9/attachment.html>",
+      "body_snippet": "Hi, Lin and Steve,\n\nSomewhat belatedly, adjusting the density alone will not help with triadic effects. What might help (although only very approximately) is a triadic offset of the form\n\noffset(edges",
+      "thread_id": "thread-fca88d293863",
+      "thread_depth": 0,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-ead8258ef841",
+      "message_id": "<1516934169.5378.40.camel@uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2018-01-25T18:36:12Z",
+      "subject": "[statnet_help] Simulating networks from a pre-specified ERGM model",
+      "subject_clean": "[statnet_help] Simulating networks from a pre-specified ERGM model",
+      "in_reply_to": "<CE54586E-916B-4912-82A8-16F4F72649B7@purdue.edu>",
+      "references": [
+        "<CE54586E-916B-4912-82A8-16F4F72649B7@purdue.edu>"
+      ],
+      "body_plain": "Hi, Jiasen,\n\nPlease pardon the naiveness of my question as I am new to the statnet package and this mailing list.\n\nSince ERGM is a generative model, I would like to simulate networks of varying sizes from a pre-specified distribution (that is not estimated from any dataset).\nFor instance, I would like to simulate networks of 10 nodes, 50 nodes and 100 nodes from the distribution\nP(y) = 1/Z exp(a * num_edges(y) + b * num_triangles(y))\nwhere a and b are certain parameter values.\n\n>From a tutorial I found online (https://statnet.org/trac/raw-attachment/wiki/Sunbelt2016/), I am able to simulate a list of networks from a previously estimated model.\nHowever, in my case, how should I go about writing an ergm model formula that specifies the desired information as well as the number of nodes?\n\nTake a look at help for \"simulate.ergm\".\n\n\nIn addition, I wonder if there?s a list of possible sufficient statistics I could put in the formula? For instance, if I would like to specify the number of 4-cliques or other subgraph patterns, etc.\n\nTake a look at help for 'ergm-terms'. There is also a vignette available.\n\nI hope this helps,\nPavel\n\n\n\nThank you very much in advance!\n\nBest,\nJiasen\n\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n--\n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA)<http://niasra.uow.edu.au/index.html> | Web (Personal)<http://www.krivitsky.net/research> | ResearchGate<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID: 0000-0002-9101-3362<orcid.org/0000-0002-9101-3362>\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180126/857545fb/attachment.html>",
+      "body_snippet": "Hi, Jiasen,\n\nPlease pardon the naiveness of my question as I am new to the statnet package and this mailing list.\n\nSince ERGM is a generative model, I would like to simulate networks of varying sizes ",
+      "thread_id": "thread-2374c16dcb6e",
+      "thread_depth": 1,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-fc7e36f7244c",
+      "message_id": "<C603A16D-6F00-4E74-B7AC-9BA8B85A9678@purdue.edu>",
+      "from_name": "Jiasen Yang",
+      "from_email_hash": "500174d9cfbc36981359ec3c73c901a283553b251d79b5de4053b8b38600eca9",
+      "date": "2018-01-25T19:19:22Z",
+      "subject": "[statnet_help] Simulating networks from a pre-specified ERGM model",
+      "subject_clean": "[statnet_help] Simulating networks from a pre-specified ERGM model",
+      "in_reply_to": "<1516934169.5378.40.camel@uow.edu.au>",
+      "references": [
+        "<CE54586E-916B-4912-82A8-16F4F72649B7@purdue.edu>",
+        "<1516934169.5378.40.camel@uow.edu.au>"
+      ],
+      "body_plain": "Hi Pavel,\n\nThank you for the prompt reply! Yes, the examples in the documentation of simulate.ergm was very helpful; I did not realize one can put network(n) to initialize a network in the formula.\n\nThanks,\nJiasen\n\nOn Jan 25, 2018, at 9:36 PM, Pavel Krivitsky <pavel@uow.edu.au<mailto:pavel@uow.edu.au>> wrote:\n\nHi, Jiasen,\n\nPlease pardon the naiveness of my question as I am new to the statnet package and this mailing list.\n\nSince ERGM is a generative model, I would like to simulate networks of varying sizes from a pre-specified distribution (that is not estimated from any dataset).\nFor instance, I would like to simulate networks of 10 nodes, 50 nodes and 100 nodes from the distribution\nP(y) = 1/Z exp(a * num_edges(y) + b * num_triangles(y))\nwhere a and b are certain parameter values.\n\n>From a tutorial I found online (https://statnet.org/trac/raw-attachment/wiki/Sunbelt2016/), I am able to simulate a list of networks from a previously estimated model.\nHowever, in my case, how should I go about writing an ergm model formula that specifies the desired information as well as the number of nodes?\n\nTake a look at help for \"simulate.ergm\".\n\n\nIn addition, I wonder if there?s a list of possible sufficient statistics I could put in the formula? For instance, if I would like to specify the number of 4-cliques or other subgraph patterns, etc.\n\nTake a look at help for 'ergm-terms'. There is also a vignette available.\n\nI hope this helps,\nPavel\n\n\n\nThank you very much in advance!\n\nBest,\nJiasen\n\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n--\n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA)<http://niasra.uow.edu.au/index.html> | Web (Personal)<http://www.krivitsky.net/research> | ResearchGate<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID: 0000-0002-9101-3362<x-msg://3/orcid.org/0000-0002-9101-3362>\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180126/3f476f28/attachment.html>",
+      "body_snippet": "Hi Pavel,\n\nThank you for the prompt reply! Yes, the examples in the documentation of simulate.ergm was very helpful; I did not realize one can put network(n) to initialize a network in the formula.\n\nT",
+      "thread_id": "thread-2374c16dcb6e",
+      "thread_depth": 2,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-c666e89145f5",
+      "message_id": "<CAE6Ficd6JF3B_Pd0vYRopB5O7pTnq08Qzf59ayHJNLq13ZcWbw@mail.gmail.com>",
+      "from_name": "Juan Arroyo Flores",
+      "from_email_hash": "9eb435d34d578d27a98d3759fc3cff10ef122b2451095c640d92f2924286933b",
+      "date": "2018-01-30T14:00:26Z",
+      "subject": "[statnet_help] Constraining metrics for simulated graphs (degcor) ERGMs",
+      "subject_clean": "[statnet_help] Constraining metrics for simulated graphs (degcor) ERGMs",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello all,\n\nI am in the process of creating simulated graphs out of real-life networks\nfor a project. I am required to produce graphs that resemble certain\nmetrics of the original graph. I've been able to constrain values, to a\ncertain extent, for clustering and average path length by using ergm-terms\n(e.g., twopath and triangle).\n\nHowever, I haven't been able to do it with degcor/assortativity.\n\nIs there any way of constraining the degcor values of the simulated graphs\nto a specific range?\n\nExample model and simulation:\n\nmod.e<- ergm(g ~edges + degcor,directed=F, control =\ncontrol.ergm(MCMLE.maxit=30,seed=27))\nn.sim<-simulate(mod.e,nsim=100,seed=27,constraints = ~edges)\n\nBest,\n\n\nJuan G. Arroyo-Flores\nDoctoral Candidate\nSociology\nUniversity of South Florida\nhttp://sociology.usf.edu/graduate/jga/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180130/6f3d2014/attachment.html>",
+      "body_snippet": "Hello all,\n\nI am in the process of creating simulated graphs out of real-life networks\nfor a project. I am required to produce graphs that resemble certain\nmetrics of the original graph. I've been abl",
+      "thread_id": "thread-c666e89145f5",
+      "thread_depth": 0,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-99f3c760999b",
+      "message_id": "<CAO9oa+nT5hVMz3UPFzsVLz2Hn0=0hFjG4zhPDQCgVLYAPtvhzQ@mail.gmail.com>",
+      "from_name": "Krause, R.W.",
+      "from_email_hash": "cd1e92998bfba6b0bbc2c456126c7c4554bc697383768f2795e6fd169ef1619f",
+      "date": "2018-01-30T23:39:27Z",
+      "subject": "[statnet_help] Constraining metrics for simulated graphs (degcor) ERGMs",
+      "subject_clean": "[statnet_help] Constraining metrics for simulated graphs (degcor) ERGMs",
+      "in_reply_to": "<CAE6Ficd6JF3B_Pd0vYRopB5O7pTnq08Qzf59ayHJNLq13ZcWbw@mail.gmail.com>",
+      "references": [
+        "<CAE6Ficd6JF3B_Pd0vYRopB5O7pTnq08Qzf59ayHJNLq13ZcWbw@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Juan,\n\nI would estimate an ERGM on the network that you have observed with\nparameters for all the statistics of interest (excluding edges) and then\nuse those parameters in your simulate() function.\nIf the goal is to simulate 100 networks, then I would simulate a lot of\nnetworks, say 2000, and from these select those networks that are closest\nto the target statistics.\nE.g. by calculating all statistics for each network and then calculate the\ndistance between the statistic vectors of the simulated networks and the\nobserved statistics. Further, I would exclude deviations you consider too\nfar.\nAnother option is to go through every statistic and except say a 2.5%\ndeviation and exclude all networks that do not meet this criterion for all\nstatistics.\nIf 2000 is not enough to get you 100 networks that you like, you can just\nadd more by simulating with another random number seed. Be careful when\nsimulating a lot of networks as they tend to be rather big when saved as\nnetwork objects in R and several thousand might exceed the RAM of your\nmachine.\n\nLastly, if you estimate your ERGM with an edges parameter your other\nparameters are estimated conditional on this parameter. Thus, the other\nparameters correspond to different statistics, if you exclude the parameter\nor fix its statistic to a certain value. This holds of course for every\nparamter, but I think the edges parameter, as a sort of intercept, is most\ninfluential here. So, if you use the parameter estimated in mod.e to\nsimulate, your statistics will not be met. You should condition the\nestimation of mod.e also on the number of edges, as you do the\nsimulation: constraints\n= ~edges. That is why I said \"excluding edges\" above.\n\nThe ERGM experts might have a more efficient way how to do it, but this\nshould work.\n\nBest Regards,\n\nRobert Krause\n\nICS Sociology, PhD Candidate\nUniversity of Groningen\nGrote Rozenstraat 31,\nRoom B119\n9712 TG Groningen, The Netherlands\n\nOn Tue, Jan 30, 2018 at 11:00 PM, Juan Arroyo Flores <jga@mail.usf.edu>\nwrote:\n\n> Hello all,\n>\n> I am in the process of creating simulated graphs out of real-life networks\n> for a project. I am required to produce graphs that resemble certain\n> metrics of the original graph. I've been able to constrain values, to a\n> certain extent, for clustering and average path length by using ergm-terms\n> (e.g., twopath and triangle).\n>\n> However, I haven't been able to do it with degcor/assortativity.\n>\n> Is there any way of constraining the degcor values of the simulated graphs\n> to a specific range?\n>\n> Example model and simulation:\n>\n> mod.e<- ergm(g ~edges + degcor,directed=F, control =\n> control.ergm(MCMLE.maxit=30,seed=27))\n> n.sim<-simulate(mod.e,nsim=100,seed=27,constraints = ~edges)\n>\n> Best,\n>\n>\n> Juan G. Arroyo-Flores\n> Doctoral Candidate\n> Sociology\n> University of South Florida\n> http://sociology.usf.edu/graduate/jga/\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180131/3af48ce5/attachment.html>",
+      "body_snippet": "Dear Juan,\n\nI would estimate an ERGM on the network that you have observed with\nparameters for all the statistics of interest (excluding edges) and then\nuse those parameters in your simulate() functio",
+      "thread_id": "thread-c666e89145f5",
+      "thread_depth": 1,
+      "month": "2018-01"
+    },
+    {
+      "id": "msg-3555b4bcdd8a",
+      "message_id": "<CAE6FicfzMvcsx=9xqNyEyk_8fAsWCxBWsiM9QsjhktT0u8hs6A@mail.gmail.com>",
+      "from_name": "Juan Arroyo Flores",
+      "from_email_hash": "9eb435d34d578d27a98d3759fc3cff10ef122b2451095c640d92f2924286933b",
+      "date": "2018-01-31T06:42:51Z",
+      "subject": "[statnet_help] Constraining metrics for simulated graphs (degcor) ERGMs",
+      "subject_clean": "[statnet_help] Constraining metrics for simulated graphs (degcor) ERGMs",
+      "in_reply_to": "<CAO9oa+nT5hVMz3UPFzsVLz2Hn0=0hFjG4zhPDQCgVLYAPtvhzQ@mail.gmail.com>",
+      "references": [
+        "<CAE6Ficd6JF3B_Pd0vYRopB5O7pTnq08Qzf59ayHJNLq13ZcWbw@mail.gmail.com>",
+        "<CAO9oa+nT5hVMz3UPFzsVLz2Hn0=0hFjG4zhPDQCgVLYAPtvhzQ@mail.gmail.com>"
+      ],
+      "body_plain": "Thank you Robert,\n\nOne thing I forgot to mention is that I am working with large networks and\nit takes a lot of time to converge the model and then simulate. I have\ntried doing the cherry picking of simulations for smaller networks, it's a\nbit cumbersome but it works since I can generate simulations a lot faster.\n\nI haven't thought about changing the seed, that could probably be a nice\nworkaround. What I have found so far is that the first generated network is\nthe closest one to the original. So, theoretically I could do a loop that\nchanges the seed every so often.\n\nAlso as a clarification, I just want to preserve as much as possible the\nassortativity metric of the original and keep the same amount of edges\n(that's why I constraint them during simulation). Are there any other terms\nrelated to degcor for unlabeled and undirected networks?\n\nBest regards,\n\n\n\nOn Jan 31, 2018 2:39 AM, \"Krause, R.W.\" <r.w.krause@rug.nl> wrote:\n\nDear Juan,\n\nI would estimate an ERGM on the network that you have observed with\nparameters for all the statistics of interest (excluding edges) and then\nuse those parameters in your simulate() function.\nIf the goal is to simulate 100 networks, then I would simulate a lot of\nnetworks, say 2000, and from these select those networks that are closest\nto the target statistics.\nE.g. by calculating all statistics for each network and then calculate the\ndistance between the statistic vectors of the simulated networks and the\nobserved statistics. Further, I would exclude deviations you consider too\nfar.\nAnother option is to go through every statistic and except say a 2.5%\ndeviation and exclude all networks that do not meet this criterion for all\nstatistics.\nIf 2000 is not enough to get you 100 networks that you like, you can just\nadd more by simulating with another random number seed. Be careful when\nsimulating a lot of networks as they tend to be rather big when saved as\nnetwork objects in R and several thousand might exceed the RAM of your\nmachine.\n\nLastly, if you estimate your ERGM with an edges parameter your other\nparameters are estimated conditional on this parameter. Thus, the other\nparameters correspond to different statistics, if you exclude the parameter\nor fix its statistic to a certain value. This holds of course for every\nparamter, but I think the edges parameter, as a sort of intercept, is most\ninfluential here. So, if you use the parameter estimated in mod.e to\nsimulate, your statistics will not be met. You should condition the\nestimation of mod.e also on the number of edges, as you do the\nsimulation: constraints\n= ~edges. That is why I said \"excluding edges\" above.\n\nThe ERGM experts might have a more efficient way how to do it, but this\nshould work.\n\nBest Regards,\n\nRobert Krause\n\nICS Sociology, PhD Candidate\nUniversity of Groningen\nGrote Rozenstraat 31,\n<https://maps.google.com/?q=Grote+Rozenstraat+31,%C2%A0Room+B119+9712+TG+Groningen,+The+Netherlands&entry=gmail&source=g>\nRoom B119\n<https://maps.google.com/?q=Grote+Rozenstraat+31,%C2%A0Room+B119+9712+TG+Groningen,+The+Netherlands&entry=gmail&source=g>\n9712 TG Groningen, The Netherlands\n<https://maps.google.com/?q=Grote+Rozenstraat+31,%C2%A0Room+B119+9712+TG+Groningen,+The+Netherlands&entry=gmail&source=g>\n\nOn Tue, Jan 30, 2018 at 11:00 PM, Juan Arroyo Flores <jga@mail.usf.edu>\nwrote:\n\n> Hello all,\n>\n> I am in the process of creating simulated graphs out of real-life networks\n> for a project. I am required to produce graphs that resemble certain\n> metrics of the original graph. I've been able to constrain values, to a\n> certain extent, for clustering and average path length by using ergm-terms\n> (e.g., twopath and triangle).\n>\n> However, I haven't been able to do it with degcor/assortativity.\n>\n> Is there any way of constraining the degcor values of the simulated graphs\n> to a specific range?\n>\n> Example model and simulation:\n>\n> mod.e<- ergm(g ~edges + degcor,directed=F, control =\n> control.ergm(MCMLE.maxit=30,seed=27))\n> n.sim<-simulate(mod.e,nsim=100,seed=27,constraints = ~edges)\n>\n> Best,\n>\n>\n> Juan G. Arroyo-Flores\n> Doctoral Candidate\n> Sociology\n> University of South Florida\n> http://sociology.usf.edu/graduate/jga/\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180131/edca8611/attachment.html>",
+      "body_snippet": "Thank you Robert,\n\nOne thing I forgot to mention is that I am working with large networks and\nit takes a lot of time to converge the model and then simulate. I have\ntried doing the cherry picking of s",
+      "thread_id": "thread-c666e89145f5",
+      "thread_depth": 2,
+      "month": "2018-01"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-6e3257b827ac",
+      "subject": "[statnet_help] Standard Error and p-values reported as NA",
+      "message_count": 1,
+      "participants": [
+        "Allan Clifton"
+      ],
+      "started": "2018-01-05T15:22:01Z",
+      "last_reply": "2018-01-05T15:22:01Z",
+      "root_message_id": "msg-6e3257b827ac"
+    },
+    {
+      "id": "thread-a910a4d9c420",
+      "subject": "[statnet_help] rbind error in ergm",
+      "message_count": 2,
+      "participants": [
+        "Michał Bojanowski",
+        "Subhasree Mukherjee"
+      ],
+      "started": "2018-01-08T09:45:15Z",
+      "last_reply": "2018-01-08T15:38:08Z",
+      "root_message_id": "msg-a910a4d9c420"
+    },
+    {
+      "id": "thread-76263a40d06c",
+      "subject": "[statnet_help] rbind error in ergm",
+      "message_count": 1,
+      "participants": [
+        "Michał Bojanowski"
+      ],
+      "started": "2018-01-09T06:12:08Z",
+      "last_reply": "2018-01-09T06:12:08Z",
+      "root_message_id": "msg-76263a40d06c"
+    },
+    {
+      "id": "thread-aa3388740905",
+      "subject": "[statnet_help] Missing Edges",
+      "message_count": 6,
+      "participants": [
+        "Filippo Santi",
+        "martina morris"
+      ],
+      "started": "2018-01-17T08:37:43Z",
+      "last_reply": "2018-01-25T02:46:51Z",
+      "root_message_id": "msg-aa3388740905"
+    },
+    {
+      "id": "thread-c5d85339b1b7",
+      "subject": "[statnet_help] MRQAP with multiple networks and degree by attribute",
+      "message_count": 4,
+      "participants": [
+        "Ahmed Tarek Hammad",
+        "Jesse Sayles",
+        "martina morris"
+      ],
+      "started": "2018-01-17T23:05:07Z",
+      "last_reply": "2018-01-24T11:15:10Z",
+      "root_message_id": "msg-c5d85339b1b7"
+    },
+    {
+      "id": "thread-2374c16dcb6e",
+      "subject": "[statnet_help] Simulating networks from a pre-specified ERGM model",
+      "message_count": 3,
+      "participants": [
+        "Jiasen Yang",
+        "Pavel Krivitsky"
+      ],
+      "started": "2018-01-25T16:15:11Z",
+      "last_reply": "2018-01-25T19:19:22Z",
+      "root_message_id": "msg-2374c16dcb6e"
+    },
+    {
+      "id": "thread-fca88d293863",
+      "subject": "[statnet_help] expanding the size of the network",
+      "message_count": 1,
+      "participants": [
+        "Pavel Krivitsky"
+      ],
+      "started": "2018-01-25T18:34:52Z",
+      "last_reply": "2018-01-25T18:34:52Z",
+      "root_message_id": "msg-fca88d293863"
+    },
+    {
+      "id": "thread-c666e89145f5",
+      "subject": "[statnet_help] Constraining metrics for simulated graphs (degcor) ERGMs",
+      "message_count": 3,
+      "participants": [
+        "Juan Arroyo Flores",
+        "Krause, R.W."
+      ],
+      "started": "2018-01-30T14:00:26Z",
+      "last_reply": "2018-01-31T06:42:51Z",
+      "root_message_id": "msg-c666e89145f5"
+    }
+  ]
+}

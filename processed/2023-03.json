@@ -1,0 +1,112 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2023-03",
+  "messages": [
+    {
+      "id": "msg-5d105f95df61",
+      "message_id": "<64fae2e8.45515.186bc1a155b.Coremail.chenbc20@mails.tsinghua.edu.cn>",
+      "from_name": "陈博川",
+      "from_email_hash": "2441e90deb0ec7b13d5973c627dc83fe805f590ddf2db7549adfdde8726d4edf",
+      "date": "2023-03-07T04:44:31Z",
+      "subject": "[statnet_help] Question about Statnet ergm model collapse",
+      "subject_clean": "[statnet_help] Question about Statnet ergm model collapse",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Statnet Developer:\nGood morning. Thank you so much for your patience to look into my question. I am encountering some questions beyond my capability so I have no choice but to turn to you for help.\n  I was using ergm model, especially the dependent model, and my original code, which worked well, looked like\n\n\n\"gw1_sup <- ergm(supnet ~ edges + nodefactor(\"edu\") + nodefactor(\"income\") + nodefactor(\"work\") +  nodefactor(\"religious\") + nodefactor(\"gender\") + nodecov(\"age\") + edgecov(kin_sup,\"kinweight\") + gwidegree(.1, T) + gwesp(.1, T) + gwdsp(.1, T), control = control.ergm(MCMC.samplesize = 1e+5, MCMC.burnin = 1e+6, MCMC.interval = 1000, seed = 567), eval.loglik = T, verbose = T) \"\n\n\nbut when I turned the categorical variables \"edu\" and \"income\" into continuous variables and turn to \"nodecov\", like\n\n\n\"gw1_sup <- ergm(supnet ~ edges + nodefactor(\"work\") +  nodefactor(\"religious\") + nodefactor(\"gender\") + nodecov(\"edu\") + nodecov(\"income\") + nodecov(\"age\") + edgecov(kin_sup,\"kinweight\") + gwidegree(.1, T) + gwesp(.1, T) + gwdsp(.1, T), control = control.ergm(MCMC.samplesize = 1e+5, MCMC.burnin = 1e+6, MCMC.interval = 1000, seed = 567), eval.loglik = T, verbose = T) \"\n\n\nthe model at first run well, but at around 8/9 iteration, it collapsed and report: \"Error in T2nullity && verbose : invalid 'x' type in 'x && y'\".\n\n\nI browsed through the internet and some answers said it could be solved by deleting some of the variables, but those variables are important to my research, the only way I can think of is that I could go back to the old way by using nodefatcor for categorical variables.\n\n\nFor a more clear code, you can see the question in github issue: https://github.com/statnet/ergm/issues/519\n\n\nThanks for your time and kindness!!! Best regards!\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20230307/f14d6e37/attachment.html>",
+      "body_snippet": "Statnet Developer:\nGood morning. Thank you so much for your patience to look into my question. I am encountering some questions beyond my capability so I have no choice but to turn to you for help.\n  ",
+      "thread_id": "thread-5d105f95df61",
+      "thread_depth": 0,
+      "month": "2023-03"
+    },
+    {
+      "id": "msg-c9457fc60103",
+      "message_id": "<CANzmWwq2R5xp+gGE3v5FF2CjKuNLP=-B65WVR58gU_5o0HjKnA@mail.gmail.com>",
+      "from_name": "F Benjamin Rosche",
+      "from_email_hash": "9cfd575f71cde728c3da8c775caac602a09681d8da8be57a75a7531e1068730f",
+      "date": "2023-03-18T12:35:34Z",
+      "subject": "[statnet_help] How to replace network on the right-hand side in ergm.simulate?",
+      "subject_clean": "[statnet_help] How to replace network on the right-hand side in ergm.simulate?",
+      "in_reply_to": "<CANzmWwoM1q9=xz=mFNZV9m2k51YcXgn6dQ8D1F5XATHaMMTP4g@mail.gmail.com>",
+      "references": [
+        "<CANzmWwoM1q9=xz=mFNZV9m2k51YcXgn6dQ8D1F5XATHaMMTP4g@mail.gmail.com>"
+      ],
+      "body_plain": "Dear statnet users,\n\nI have a question regarding the simulate.ergm() function. I fitted an ERGM\nthat includes an edge covariate using ergm(g1 ~ edges + edgecov(g2, \"X\") +\n...).\n\nTo do a counterfactual analysis, I would like to replace g2 with another\nstate of this network. While I understand that I can replace the network on\nthe left-hand side in simulate.ergm() using simulate.ergm(ergm.fit,\nbasis=g1*), I don't know how to replace the network on the right-hand side\ng2 with g2*.\n\nI have noticed that simulate.ergm() does not require g2 to be in the R\nenvironment - g2 must thus be stored in ergm.fit but the network stored in\nergm.fit$network seems to be the network on the left-hand side.\n\nThank you for any pointers that you can provide.\n\nBest wishes,\n\nBen\n-- \n*Benjamin Rosche*\nCornell University / Social Dynamics Lab / benrosche.com\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20230318/2129069f/attachment.html>",
+      "body_snippet": "Dear statnet users,\n\nI have a question regarding the simulate.ergm() function. I fitted an ERGM\nthat includes an edge covariate using ergm(g1 ~ edges + edgecov(g2, \"X\") +\n...).\n\nTo do a counterfactual",
+      "thread_id": "thread-c9457fc60103",
+      "thread_depth": 0,
+      "month": "2023-03"
+    },
+    {
+      "id": "msg-c52564d4457c",
+      "message_id": "<6b8dc62e-8ced-9d97-7266-6439e44a0642@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2023-03-18T20:18:41Z",
+      "subject": "[statnet_help] How to replace network on the right-hand side in ergm.simulate?",
+      "subject_clean": "[statnet_help] How to replace network on the right-hand side in ergm.simulate?",
+      "in_reply_to": "<CANzmWwq2R5xp+gGE3v5FF2CjKuNLP=-B65WVR58gU_5o0HjKnA@mail.gmail.com>",
+      "references": [
+        "<CANzmWwoM1q9=xz=mFNZV9m2k51YcXgn6dQ8D1F5XATHaMMTP4g@mail.gmail.com>",
+        "<CANzmWwq2R5xp+gGE3v5FF2CjKuNLP=-B65WVR58gU_5o0HjKnA@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Ben -\n\nFor edgecov, you may find it easier to simply pass a matrix as a \npredictor.? But more generally, the most flexible thing to do is always \nto simply call the simulate command with a formula implementing the \nmodel in lieu of the fitted ergm() object.? That way you can change \nwhatever you like, on the fly, without having to worry about updating \nwhatever was encoded in the ergm() object.\n\nSo, e.g., instead of\n\nmymodel <- ergm(myobsnet ~ edges + edgecov(\"cardboard\") + sunspots)\n\nsim <- simulate(mymodel)\n\nyou'd have an expression like\n\nmymodel <- ergm(myobsnet ~ edges + edgecov(\"cardboard\") + sunspots)\n\nsim <- simulate(mynewstartnet ~ edges + edgecov(\"newcardboard\") + \nsunspots, coef=coef(mymodel))\n\nwhere \"newcardboard\" is whatever you want your covariate to be (could be \nthe old \"cardboard\" - reduce, reuse, recycle and all that), and \n\"mynewstartnet\" could be either the network you used to fit the graph or \nsomething else.? For instance, in settings where independence of draws \nis critical, you might initialize the simulation with e.g. a Bernoulli \ngraph (produced by rgraph()) with the right target density, and take a \nsingle draw from each chain (being sure to set the burn-in to be long \nenough for good convergence).? And of course, it is trivial to use the \nabove as a starting point for adding additional terms to a fitted model \n(e.g., for robustness tests).\n\nAnother occasionally useful bit of Dark Arts is to coerce your ERGM \nformula to a string, manipulate the string, and then coerce the whole \nthing back to a formula (thence to use with simulate() or ergm()).? I've \nused that trick for many things, including to facilitate automated model \ncomparison/selection.? R is very flexible about computing on the \nlanguage, which one can use to one's advantage.\n\nHope that helps,\n\n-Carter\n\nOn 3/18/23 12:35 PM, F Benjamin Rosche wrote:\n> Dear statnet users,\n>\n> I have a question regarding the simulate.ergm() function. I fitted an \n> ERGM that includes an edge covariate using ergm(g1 ~ edges?+ \n> edgecov(g2, \"X\")?+ ...).\n>\n> To do a counterfactual analysis, I would like to replace g2 with \n> another state of this network. While I understand that I can replace \n> the network on the left-hand side in simulate.ergm() using \n> simulate.ergm(ergm.fit, basis=g1*), I don't know how to replace the \n> network on the right-hand side g2 with g2*.\n>\n> I have noticed that simulate.ergm() does not require g2 to be in the R \n> environment - g2 must thus be stored in ergm.fit but the network \n> stored in ergm.fit$network seems to be the network on the left-hand side.\n>\n> Thank you for any pointers that you can provide.\n>\n> Best wishes,\n>\n> Ben\n> -- \n> *Benjamin Rosche*\n> Cornell University / Social Dynamics Lab?/ benrosche.com \n> <https://urldefense.com/v3/__http://benrosche.com__;!!CzAuKJ42GuquVTTmVmPViYEvSg!NVpfvHx6Ve7mI4BS6f0bokRWD37KA-KYGUMDezJQPYwj8vvcsabCBGEUb8kCuHIPuNZ8nM6m8_O_Ezs$>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://urldefense.com/v3/__http://mailman13.u.washington.edu/mailman/listinfo/statnet_help__;!!CzAuKJ42GuquVTTmVmPViYEvSg!NVpfvHx6Ve7mI4BS6f0bokRWD37KA-KYGUMDezJQPYwj8vvcsabCBGEUb8kCuHIPuNZ8nM6mxrbtETI$  \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20230318/ae59d242/attachment.html>",
+      "body_snippet": "Hi, Ben -\n\nFor edgecov, you may find it easier to simply pass a matrix as a \npredictor.? But more generally, the most flexible thing to do is always \nto simply call the simulate command with a formula",
+      "thread_id": "thread-c9457fc60103",
+      "thread_depth": 1,
+      "month": "2023-03"
+    },
+    {
+      "id": "msg-41ccb8b61c4a",
+      "message_id": "<CANzmWwrU+nJwSOHxUGJMTiXDhRZiyuEDZawzENFfijbpJAHCkg@mail.gmail.com>",
+      "from_name": "F Benjamin Rosche",
+      "from_email_hash": "9cfd575f71cde728c3da8c775caac602a09681d8da8be57a75a7531e1068730f",
+      "date": "2023-03-21T07:17:33Z",
+      "subject": "[statnet_help] Degree constraint warning",
+      "subject_clean": "[statnet_help] Degree constraint warning",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet users,\n\nI have a question regarding degree constraints in an ergm. I am using\n\nconstraints=~bd(minout=c(...))\n\nto constrain the minimal outdegree of each node to a specific value. When I\nrun the model, I get the following warning and it is not clear to me\nwhether I can safely ignore this warning or whether I did not implement the\nconstraint correctly:\n\nWarning: In is.na(a$minout) && is.na(a$minin): 'length(x) = 16 > 1' in\ncoercion to 'logical(1)'\n\nHere is a reproducible example:\n\nlibrary(statnet)\ndata(\"florentine\")\nergm(flomarriage~edges,\nconstraints=~bd(minout=c(0,0,0,0,2,1,3,0,0,0,0,0,0,0,0,0)))\n\nThank you very much for any pointers you can provide!\n\nBen\n\n-- \nBenjamin Rosche / Social Dynamics Lab / benrosche.com\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20230321/6f4bfb5d/attachment.html>",
+      "body_snippet": "Dear statnet users,\n\nI have a question regarding degree constraints in an ergm. I am using\n\nconstraints=~bd(minout=c(...))\n\nto constrain the minimal outdegree of each node to a specific value. When I\n",
+      "thread_id": "thread-41ccb8b61c4a",
+      "thread_depth": 0,
+      "month": "2023-03"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-5d105f95df61",
+      "subject": "[statnet_help] Question about Statnet ergm model collapse",
+      "message_count": 1,
+      "participants": [
+        "陈博川"
+      ],
+      "started": "2023-03-07T04:44:31Z",
+      "last_reply": "2023-03-07T04:44:31Z",
+      "root_message_id": "msg-5d105f95df61"
+    },
+    {
+      "id": "thread-c9457fc60103",
+      "subject": "[statnet_help] How to replace network on the right-hand side in ergm.simulate?",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "F Benjamin Rosche"
+      ],
+      "started": "2023-03-18T12:35:34Z",
+      "last_reply": "2023-03-18T20:18:41Z",
+      "root_message_id": "msg-c9457fc60103"
+    },
+    {
+      "id": "thread-41ccb8b61c4a",
+      "subject": "[statnet_help] Degree constraint warning",
+      "message_count": 1,
+      "participants": [
+        "F Benjamin Rosche"
+      ],
+      "started": "2023-03-21T07:17:33Z",
+      "last_reply": "2023-03-21T07:17:33Z",
+      "root_message_id": "msg-41ccb8b61c4a"
+    }
+  ]
+}

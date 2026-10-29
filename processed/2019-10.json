@@ -1,0 +1,82 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2019-10",
+  "messages": [
+    {
+      "id": "msg-088078828e37",
+      "message_id": "<94963d246e6f444cbabf74b56aecb5f2@exch04.ad.uni-heidelberg.de>",
+      "from_name": "Hoffmann, Jakob",
+      "from_email_hash": "99b04be444c4349fb7f8781eb9ceee80cae7b958c2f024cc82ecd332d3d304e3",
+      "date": "2019-10-02T06:46:32Z",
+      "subject": "[statnet_help] Inverse nodematch statistic",
+      "subject_clean": "[statnet_help] Inverse nodematch statistic",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet community,\n\nI am looking for a relatively simple ergm statistic which I however was not able to reconstruct from the available terms.\nThe statistic would be akin to an 'inverse' of the nodematch statistic in that it computes for (a selection of levels of) a nodal grouping attribute not the count of group-internal ties but the count of ties between groups. For specific pairs of levels of the grouping attribute this could be done with the mm() term but what I am looking for would be the sum of several of those pair-wise counts.\n\nDid I miss something or would anyone know how to construct such a statistic from the existing terms?\n\nMany thanks and all the best\nJakob\n\n\nJakob Hoffmann\nResearch Associate\nEconomic Geography Group\nInstitute of Geography, Heidelberg University\nBerliner Str. 48, D-69120 Heidelberg, Germany\n\nFon +49 (6221) 54 4581\nEmail j.hoffmann@uni-heidelberg.de<mailto:j.hoffmann@uni-heidelberg.de>\nwww.uni-heidelberg.de/economic-geography<http://www.uni-heidelberg.de/economic-geography>\nhttp://www.geog.uni-heidelberg.de/wiso/institutionalchange.html\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20191002/0d65273e/attachment.html>",
+      "body_snippet": "Dear statnet community,\n\nI am looking for a relatively simple ergm statistic which I however was not able to reconstruct from the available terms.\nThe statistic would be akin to an 'inverse' of the no",
+      "thread_id": "thread-088078828e37",
+      "thread_depth": 0,
+      "month": "2019-10"
+    },
+    {
+      "id": "msg-fef0a360ae1f",
+      "message_id": "<CAByPayEze3057AP0qx8EPNWH+2uHXyrgF8Y9Ph6u7nfm7Pk=Cw@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2019-10-02T08:46:28Z",
+      "subject": "[statnet_help] Inverse nodematch statistic",
+      "subject_clean": "[statnet_help] Inverse nodematch statistic",
+      "in_reply_to": "<94963d246e6f444cbabf74b56aecb5f2@exch04.ad.uni-heidelberg.de>",
+      "references": [
+        "<94963d246e6f444cbabf74b56aecb5f2@exch04.ad.uni-heidelberg.de>"
+      ],
+      "body_plain": "Jakob,\n\nI believe you can obtain what you need by computing one or more binary\nmatrices which have 1s for dyads that you consider between group, 0s\notherwise, and then using them as input for `dyadcov` term. You will\nhave a complete freedom which dyads you consider a match or a\nnon-match.\n\nIn fact the `nodematch` term is indeed equivalent to one (for\ndichotomous node attribute) or more (for polytomous node attribute)\nbinary dyadic covariates. In the dichotomous case `nodematch` is\nequivalent to a `dyadcov` term with an input matrix that has 1s\nwhenever the nodes in a dyad have the same value of the nodal\nattribute and 0 otherwise.\n\nI will be happy to elaborate if the above is too terse....\n\nhth,\nMichal\n\n\nOn Wed, Oct 2, 2019 at 3:47 PM Hoffmann, Jakob\n<j.hoffmann@uni-heidelberg.de> wrote:\n>\n> Dear statnet community,\n>\n>\n>\n> I am looking for a relatively simple ergm statistic which I however was not able to reconstruct from the available terms.\n>\n> The statistic would be akin to an ?inverse? of the nodematch statistic in that it computes for (a selection of levels of) a nodal grouping attribute not the count of group-internal ties but the count of ties between groups. For specific pairs of levels of the grouping attribute this could be done with the mm() term but what I am looking for would be the sum of several of those pair-wise counts.\n>\n>\n>\n> Did I miss something or would anyone know how to construct such a statistic from the existing terms?\n>\n>\n>\n> Many thanks and all the best\n>\n> Jakob\n>\n>\n>\n>\n>\n> Jakob Hoffmann\n>\n> Research Associate\n>\n> Economic Geography Group\n>\n> Institute of Geography, Heidelberg University\n>\n> Berliner Str. 48, D-69120 Heidelberg, Germany\n>\n>\n>\n> Fon +49 (6221) 54 4581\n>\n> Email j.hoffmann@uni-heidelberg.de\n>\n> www.uni-heidelberg.de/economic-geography\n>\n> http://www.geog.uni-heidelberg.de/wiso/institutionalchange.html\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Jakob,\n\nI believe you can obtain what you need by computing one or more binary\nmatrices which have 1s for dyads that you consider between group, 0s\notherwise, and then using them as input for `dyadcov",
+      "thread_id": "thread-088078828e37",
+      "thread_depth": 1,
+      "month": "2019-10"
+    },
+    {
+      "id": "msg-daa3f33224f6",
+      "message_id": "<CAP5OD_AuW3penCMNbudCCsgyC7cKJU3G_kLhYGe3=cZ11V=8OA@mail.gmail.com>",
+      "from_name": "Sunny Lee",
+      "from_email_hash": "102884647e90da075c4ecf50c0140fb033a47fbc583a67aaf9a23316ab05ab4b",
+      "date": "2019-10-06T12:51:13Z",
+      "subject": "[statnet_help] Valued ERGM",
+      "subject_clean": "[statnet_help] Valued ERGM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI am running valued ERGM for both formal and informal communication\nnetworks of my data (construction meetings of 26 members).\nI was able to find a pretty good fit with the formal network, with Poisson\ndistribution as the reference, and tested the GOF with cyclicalweights\n(\"min\", \"max\", \"min\").\nI was also able to model the informal network with a similar set of\nparameters, but when I tried GOF, it keeps giving me this error message:\n*In cbind(m, get.edge.attribute(x$mel, attrname, na.omit = FALSE,  :\nnumber of rows of result is not a multiple of vector length (arg 2)*\n\nDo you have any idea why I may be getting this, and how to fix the problem?\n\nBest,\n\nSunny\n\n-- \nSun Kyong (Sunny) Lee, Ph.D.\n\nAssociate Professor\nDepartment of Communication\nThe University of Oklahoma\nemail: sunnylee78@gmail.com <sunklee@eden.rutgers.edu>; sunklee@ou.edu\n610 Elem Ave., Norman, OK\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20191007/4ee973a8/attachment.html>",
+      "body_snippet": "Hi all,\n\nI am running valued ERGM for both formal and informal communication\nnetworks of my data (construction meetings of 26 members).\nI was able to find a pretty good fit with the formal network, wi",
+      "thread_id": "thread-daa3f33224f6",
+      "thread_depth": 0,
+      "month": "2019-10"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-088078828e37",
+      "subject": "[statnet_help] Inverse nodematch statistic",
+      "message_count": 2,
+      "participants": [
+        "Hoffmann, Jakob",
+        "Michał Bojanowski"
+      ],
+      "started": "2019-10-02T06:46:32Z",
+      "last_reply": "2019-10-02T08:46:28Z",
+      "root_message_id": "msg-088078828e37"
+    },
+    {
+      "id": "thread-daa3f33224f6",
+      "subject": "[statnet_help] Valued ERGM",
+      "message_count": 1,
+      "participants": [
+        "Sunny Lee"
+      ],
+      "started": "2019-10-06T12:51:13Z",
+      "last_reply": "2019-10-06T12:51:13Z",
+      "root_message_id": "msg-daa3f33224f6"
+    }
+  ]
+}

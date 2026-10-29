@@ -1,0 +1,462 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2017-11",
+  "messages": [
+    {
+      "id": "msg-411eb83d3cfd",
+      "message_id": "<6300EFC3DD5D4048AAC68932176922C941328664@CMS11-01.campus.gla.ac.uk>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "fc15c5af3086c39b452f2c7197d876e960af137e6e952be7313ac1d9a46ba449",
+      "date": "2017-11-01T03:43:30Z",
+      "subject": "[statnet_help] Courses on \"Inferential Network Analysis\" and \"Discourse Network Analysis\"",
+      "subject_clean": "[statnet_help] Courses on \"Inferential Network Analysis\" and \"Discourse Network Analysis\"",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI will offer two courses on network analysis at the ECPR Winter School\nin March 2018:\n\n1. Introduction to Discourse Network Analysis (DNA) - 2-3 March 2018\n\n2. Inferential Network Analysis - 5-9 March 2018\n\nThe first course introduces a combination of qualitative content\nanalysis and social network analysis using the software Discourse\nNetwork Analyzer. More information:\nhttps://ecpr.eu/Events/PanelDetails.aspx?PanelID=7452&EventID=120\n\nThe second course focuses on exponential random graph models (ERGM) and\nalso covers related statistical techniques for network data, such as the\n(temporal) network autocorrelation model, the TERGM, relational event\nmodels, and several other models. The course both contains theoretical\nsessions and applied computer lab sessions using R. More information:\nhttps://ecpr.eu/Events/PanelDetails.aspx?PanelID=7418&EventID=120\n\nThe ECPR Winter School is one of the two training opportunities offered\nby the European Consortium for Political Research. It takes place in\nBamberg (Germany). Registration is open now. Attendants from ECPR member\ninstitutions can get an early registration discount until 3 November.\nMore information and registration:\nhttps://ecpr.eu/Events/EventDetails.aspx?EventID=120\n\nBest regards\n\nPhilip\n\n--\nDr Philip Leifeld\nSenior Lecturer (Associate Professor) in Research Methods\nDirector of Graduate Training\nSchool of Social and Political Sciences\nUniversity of Glasgow\nhttp://www.philipleifeld.com\n\n[University of Glasgow: The Times Scottish University of the Year 2018]",
+      "body_snippet": "Dear all,\n\nI will offer two courses on network analysis at the ECPR Winter School\nin March 2018:\n\n1. Introduction to Discourse Network Analysis (DNA) - 2-3 March 2018\n\n2. Inferential Network Analysis ",
+      "thread_id": "thread-411eb83d3cfd",
+      "thread_depth": 0,
+      "month": "2017-11"
+    },
+    {
+      "id": "msg-f470569e374f",
+      "message_id": "<AM4PR0501MB197014A30CA747EBAD5750D783540@AM4PR0501MB1970.eurprd05.prod.outlook.com>",
+      "from_name": "Chabot, Timothée Pierre Jules",
+      "from_email_hash": "9dd964dd3204c42bc152a170df9ad4a19abd0f619878d76f72d49de17ac77a89",
+      "date": "2017-11-10T01:13:40Z",
+      "subject": "[statnet_help] Comparing levels of homophily between subsets of edges in the same network",
+      "subject_clean": "[statnet_help] Comparing levels of homophily between subsets of edges in the same network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet users,\n\n\nI work on (ethnic) homophily in social networks. An hypothesis I want to test is whether the ties that are embedded in higher level structures are more homophilic, on average, than the ones who are not.\n\n\n>From my original network, I can extract only those edges that are reciprocated (ie, symmetrizing the network); then that are part of a full triad ; that are part of a clique of size 4, 5 and so on. In each case, I am interested in comparing the levels of homophily (\"nodematch\" term) among the edges of the subset with that of the whole network.\n\n\nHow can I do this using ERGMs ? Extracting a subset of my network  and estimating an ERGM model with the \"nodematch\" term for that subset is pretty easy, but how to make sure that the increase in homophily that I may observe in the new subset is not a mechanical result produced by the extraction itself ? For e.g., I guess that if you symmetrize a random network, the homophily rates observed in the symmetrized graph will always be higher than that of the original graph. Is there a way to assess the statistical significance of the increase in homophily that I observe in symmetrical links ?\n\n\nBelow is an example using statnet built-in data. I only show it for reciprocal as opposed to all links, but I ask myself the same question about links within triads or cliques.\n\nlibrary(statnet)\nlibrary(stargazer)\n\ndata(\"faux.dixon.high\")\nnet <- faux.dixon.high\n\nnet.s <- as.sociomatrix(net)\nnet.s <- symmetrize(net.s, rule = \"strong\")\nnet.s <- network(net.s,directed = F)\n\nnet.s%v%\"race\" <- as.character(net%v%\"race\")\n\nm1 <- ergm(net ~ edges + nodematch('race'))\ns1 <- ergm(net.s ~ edges + nodematch('race'))\n\nstargazer(m1,s1,type=\"text\")\n\n# The nodematch coefficient is greater ! Does it mean reciprocal ties are more often homophilic ?\n\nsummary(net ~ edges + nodematch('race'))\nsummary(net.s ~ edges + nodematch('race'))\n\n912/1197\n180/219\n\n# There is indeed a greater proportion of symmetric ties that are homophilic. But is it significant ?\n\nAt some point I thought that it may be done using interaction effects (modelling the interaction effect between the \"mutual\" and \"nodematch\" term in an ERGM model applied to the full network) but I don't know whether the ERGM package can do this. Do you have any ideas or suggestions on how to work around that problem ?\n\n\nMany thanks for the help !\n\n\nBest Regards\n\n\n---------------------------------\n\nTimoth?e Chabot\n\nPhD Researcher\n\nEuropean University Institute\n\nThe information transmitted is intended only for the person or entity to which it is addressed and may contain confidential and/or privileged material. Any review, retransmission, dissemination, distribution, forwarding, or other use of, or taking of any action in reliance upon, this information by persons or entities other than the intended recipient is prohibited without the express permission of the sender. If you received this communication in error, please contact the sender and delete the material from any computer.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171110/7934b77b/attachment.html>",
+      "body_snippet": "Dear Statnet users,\n\n\nI work on (ethnic) homophily in social networks. An hypothesis I want to test is whether the ties that are embedded in higher level structures are more homophilic, on average, th",
+      "thread_id": "thread-f470569e374f",
+      "thread_depth": 0,
+      "month": "2017-11"
+    },
+    {
+      "id": "msg-8edcc7ba7671",
+      "message_id": "<1510649492311.69843@utu.fi>",
+      "from_name": "Shupin Li",
+      "from_email_hash": "38700f5808ab105ec199cbb8075d83f0e4e2f5a90ba6f54b05dba2c790f968a0",
+      "date": "2017-11-14T00:51:30Z",
+      "subject": "[statnet_help] Error in MCMC",
+      "subject_clean": "[statnet_help] Error in MCMC",
+      "in_reply_to": "<CADJVJ56XhY_GS6zJu+0pJ1xnKFWLvWS+E6B=X5o6d7YQXbQ0NQ@mail.gmail.com>",
+      "references": [
+        "<CADJVJ56XhY_GS6zJu+0pJ1xnKFWLvWS+E6B=X5o6d7YQXbQ0NQ@mail.gmail.com>"
+      ],
+      "body_plain": "Hello all,\n\n\nI have a notwork of 84 nodes, undirected.  Ten members of the network were absent at the day of data collection. I estimate a model with edeges and triangle (R 3.4.2; statnet 2016.9).\n\nYet, it brings error:\n\n\n> helpmodel.02 <- ergm(schoolhelp~edges+triangle)\nStarting maximum likelihood estimation via MCMLE:\nIteration 1 of at most 20:\nOptimizing with step length 0.000369932771454251.\nThe log-likelihood improved by 0.09642.\nIteration 2 of at most 20:\nError in ergm.MCMLE(init, nw, model, initialfit = (initialfit <- NULL),  :\n  Unconstrained MCMC sampling did not mix at all. Optimization cannot continue.\n\nHere is the basic info of the network:\n vertices = 84\n  directed = FALSE\n  hyper = FALSE\n  loops = FALSE\n  multiple = FALSE\n  bipartite = FALSE\n total edges = 1208\n   missing edges = 805\n   non-missing edges = 403\n density = 0.1156053\n\nAnd here is the null model:\nFormula:   schoolhelp ~ edges\nIterations:  5 out of 20\nMonte Carlo MLE Results:\n      Estimate Std. Error MCMC % p-value\nedges -1.73212    0.05404      0  <1e-04 ***?\nSignif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n     Null Deviance: 3717  on 2681  degrees of freedom\n Residual Deviance: 2270  on 2680  degrees of freedom\nAIC: 2272    BIC: 2277    (Smaller is better.)\n\nAnyone has ideas how to tackle the problem? Thank you.\n\nBest,\nShupin\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171114/c48e95e2/attachment.html>",
+      "body_snippet": "Hello all,\n\n\nI have a notwork of 84 nodes, undirected.  Ten members of the network were absent at the day of data collection. I estimate a model with edeges and triangle (R 3.4.2; statnet 2016.9).\n\nYe",
+      "thread_id": "thread-8edcc7ba7671",
+      "thread_depth": 0,
+      "month": "2017-11"
+    },
+    {
+      "id": "msg-50d5a8c7d122",
+      "message_id": "<alpine.WNT.2.00.1711151220430.13708@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2017-11-15T12:25:04Z",
+      "subject": "[statnet_help] Error in MCMC",
+      "subject_clean": "[statnet_help] Error in MCMC",
+      "in_reply_to": "<1510649492311.69843@utu.fi>",
+      "references": [
+        "<CADJVJ56XhY_GS6zJu+0pJ1xnKFWLvWS+E6B=X5o6d7YQXbQ0NQ@mail.gmail.com>",
+        "<1510649492311.69843@utu.fi>"
+      ],
+      "body_plain": "Shupin,\n\nThe edges+triangle model is well known in the field for being a \n\"degenerate\" model specification.  There is a substantial literature on \nthe problem of degeneracy in specifying models for ERGs -- it's not a \nproblem with the method, it is a problem of model specification. \nEssentially, this result means \"that model would never have produced \nthe network you observe\"\n\nTry using the gwesp terms instead. And if you're not familiar with them I \nsuggest you take a look at the following papers:\n\nSnijders TAB, Pattison PE, Robins GL, Handcock MS. New \nspecifications for exponential random graph models. In: Stolzenberg RM, \neditor. Sociological Methodology 2006, Vol 362006. p. 99-153.\n\nHunter DR. Curved Exponential Family Models for Social Networks. \nSocial networks. 2007;29(2):216-30. doi: 10.1016/j.socnet.2006.08.005. \nPubMed PMID: PMC2031865.\n\n\n\nbest,\nMartina\n\nOn Tue, 14 Nov 2017, Shupin Li wrote:\n\n> \n> Hello all, \n> \n> \n> I have a notwork of 84 nodes, undirected.??Ten members of the network were absent at the day of data\n> collection. I estimate a model with edeges and?triangle (R?3.4.2; statnet?2016.9). \n> \n> Yet, it brings error: \n> \n> \n> > helpmodel.02 <- ergm(schoolhelp~edges+triangle)\n> Starting maximum likelihood estimation via MCMLE:\n> Iteration 1 of at most 20:\n> Optimizing with step length 0.000369932771454251.\n> The log-likelihood improved by 0.09642.\n> Iteration 2 of at most 20:\n> Error in ergm.MCMLE(init, nw, model, initialfit = (initialfit <- NULL), ?:\n> ? Unconstrained MCMC sampling did not mix at all. Optimization cannot continue.\n> \n> Here is the basic info of the network:\n> ?vertices = 84 ? directed = FALSE\n> ? hyper = FALSE\n> ? loops = FALSE\n> ? multiple = FALSE\n> ? bipartite = FALSE\n> ?total edges = 1208\n> ? ?missing edges = 805\n> ? ?non-missing edges = 403\n> ?density = 0.1156053 \n> \n> And here is the null model: \n> Formula: ? schoolhelp ~ edges\n> Iterations: ?5 out of 20 \n> Monte Carlo MLE Results:\n> ? ? ? Estimate Std. Error MCMC % p-value \n> edges -1.73212 ? ?0.05404 ? ? ?0 ?<1e-04 ***?\n> Signif. codes: ?0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n> ? ? ?Null Deviance: 3717 ?on 2681 ?degrees of freedom\n> ?Residual Deviance: 2270 ?on 2680 ?degrees of freedom\n> AIC: 2272 ? ?BIC: 2277 ? ?(Smaller is better.) \n> \n> Anyone has ideas how to tackle the problem? Thank you.\n> \n> Best,\n> Shupin\n> \n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Shupin,\n\nThe edges+triangle model is well known in the field for being a \n\"degenerate\" model specification.  There is a substantial literature on \nthe problem of degeneracy in specifying models for ER",
+      "thread_id": "thread-8edcc7ba7671",
+      "thread_depth": 1,
+      "month": "2017-11"
+    },
+    {
+      "id": "msg-e69f7528f464",
+      "message_id": "<1510819180948.56713@utu.fi>",
+      "from_name": "Shupin Li",
+      "from_email_hash": "38700f5808ab105ec199cbb8075d83f0e4e2f5a90ba6f54b05dba2c790f968a0",
+      "date": "2017-11-15T23:59:38Z",
+      "subject": "[statnet_help] 答复:  Error in MCMC",
+      "subject_clean": "[statnet_help] 答复:  Error in MCMC",
+      "in_reply_to": "<alpine.WNT.2.00.1711151220430.13708@morrism-laptop>",
+      "references": [
+        "<CADJVJ56XhY_GS6zJu+0pJ1xnKFWLvWS+E6B=X5o6d7YQXbQ0NQ@mail.gmail.com>",
+        "<1510649492311.69843@utu.fi>",
+        "<alpine.WNT.2.00.1711151220430.13708@morrism-laptop>"
+      ],
+      "body_plain": "Dear Martina, \n\nThanks for your information. I have tried various methods that the updated manual of ergm package. For example:\nhelpmodel.03 <-ergm(schoolhelp~ edges +gwesp(0.5,fixed=T)+nodematch('gender'),control = control.ergm(seed=1),verbose=T) \n\nYet, the problem of degeneracy is still there. I am planning to used other terms in ergm or maybe other models to get it done.\n\nBest,\nShupin\n\n\n________________________________________\n???: martina morris <morrism@u.washington.edu>\n????: 2017?11?15? 22:25\n???: Shupin Li\n??: statnet_help@u.washington.edu\n??: Re: [statnet_help] Error in MCMC\n\nShupin,\n\nThe edges+triangle model is well known in the field for being a\n\"degenerate\" model specification.  There is a substantial literature on\nthe problem of degeneracy in specifying models for ERGs -- it's not a\nproblem with the method, it is a problem of model specification.\nEssentially, this result means \"that model would never have produced\nthe network you observe\"\n\nTry using the gwesp terms instead. And if you're not familiar with them I\nsuggest you take a look at the following papers:\n\nSnijders TAB, Pattison PE, Robins GL, Handcock MS. New\nspecifications for exponential random graph models. In: Stolzenberg RM,\neditor. Sociological Methodology 2006, Vol 362006. p. 99-153.\n\nHunter DR. Curved Exponential Family Models for Social Networks.\nSocial networks. 2007;29(2):216-30. doi: 10.1016/j.socnet.2006.08.005.\nPubMed PMID: PMC2031865.\n\n\n\nbest,\nMartina\n\nOn Tue, 14 Nov 2017, Shupin Li wrote:\n\n>\n> Hello all,\n>\n>\n> I have a notwork of 84 nodes, undirected.  Ten members of the network were absent at the day of data\n> collection. I estimate a model with edeges and triangle (R 3.4.2; statnet 2016.9).\n>\n> Yet, it brings error:\n>\n>\n> > helpmodel.02 <- ergm(schoolhelp~edges+triangle)\n> Starting maximum likelihood estimation via MCMLE:\n> Iteration 1 of at most 20:\n> Optimizing with step length 0.000369932771454251.\n> The log-likelihood improved by 0.09642.\n> Iteration 2 of at most 20:\n> Error in ergm.MCMLE(init, nw, model, initialfit = (initialfit <- NULL),  :\n>   Unconstrained MCMC sampling did not mix at all. Optimization cannot continue.\n>\n> Here is the basic info of the network:\n>  vertices = 84   directed = FALSE\n>   hyper = FALSE\n>   loops = FALSE\n>   multiple = FALSE\n>   bipartite = FALSE\n>  total edges = 1208\n>    missing edges = 805\n>    non-missing edges = 403\n>  density = 0.1156053\n>\n> And here is the null model:\n> Formula:   schoolhelp ~ edges\n> Iterations:  5 out of 20\n> Monte Carlo MLE Results:\n>       Estimate Std. Error MCMC % p-value\n> edges -1.73212    0.05404      0  <1e-04 ***?\n> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>      Null Deviance: 3717  on 2681  degrees of freedom\n>  Residual Deviance: 2270  on 2680  degrees of freedom\n> AIC: 2272    BIC: 2277    (Smaller is better.)\n>\n> Anyone has ideas how to tackle the problem? Thank you.\n>\n> Best,\n> Shupin\n>\n>\n>\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Dear Martina, \n\nThanks for your information. I have tried various methods that the updated manual of ergm package. For example:\nhelpmodel.03 <-ergm(schoolhelp~ edges +gwesp(0.5,fixed=T)+nodematch('gen",
+      "thread_id": "thread-8edcc7ba7671",
+      "thread_depth": 2,
+      "month": "2017-11"
+    },
+    {
+      "id": "msg-e74c6129b3a9",
+      "message_id": "<6c6fc57a-6670-e6de-20bd-b64b3726b037@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2017-11-16T00:39:21Z",
+      "subject": "[statnet_help] 答复: Error in MCMC",
+      "subject_clean": "[statnet_help] 答复: Error in MCMC",
+      "in_reply_to": "<1510819180948.56713@utu.fi>",
+      "references": [
+        "<CADJVJ56XhY_GS6zJu+0pJ1xnKFWLvWS+E6B=X5o6d7YQXbQ0NQ@mail.gmail.com>",
+        "<1510649492311.69843@utu.fi>",
+        "<alpine.WNT.2.00.1711151220430.13708@morrism-laptop>",
+        "<1510819180948.56713@utu.fi>"
+      ],
+      "body_plain": "Hi, Shupin -\n\nIf you are using gwesp() and still having issues, this can suggest that \nyou are trying to model clustering associated with an underlying source \nof heterogeneity (e.g., homophily or propinquity on unobserved \nvariables) with a homogeneous mechanism (here, the ESP effects that go \ninto the GWESP term).? Adding more covariate effects, or looking more \ncarefully at how they are parameterized, can often make a huge \ndifference.? (In essence, the issue is that GWESP and friends are trying \nto capture the pattern of triadic closure by positing a uniform tendency \ntowards closure that affects the entire network equally.? If what is \nreally going on is that your clustering is the result of some \ninhomogeneous process, then the model is stuck between the Scylla of not \nproducing enough triangulation in the high-density portions of the graph \nand the Charybdis of producing too much triangulation in the low-density \nportions of the graph.? The way the model resolves this untenable \nsituation is not always to one's liking.)\n\nLowering the alpha coefficient towards 0 (which damps out the marginal \neffect of additional shared partners more aggressively) can also help.? \nBut I would start by doing some exploratory analysis of the network, and \nasking whether it is plausible that you are leaving out some important \nsources of heterogeneity. Control for that first, then worry about \nhomogeneous sources of dependence.\n\nHope that helps,\n\n-Carter\n\n\nOn 11/15/2017 11:59 PM, Shupin Li wrote:\n> Dear Martina,\n>\n> Thanks for your information. I have tried various methods that the updated manual of ergm package. For example:\n> helpmodel.03 <-ergm(schoolhelp~ edges +gwesp(0.5,fixed=T)+nodematch('gender'),control = control.ergm(seed=1),verbose=T)\n>\n> Yet, the problem of degeneracy is still there. I am planning to used other terms in ergm or maybe other models to get it done.\n>\n> Best,\n> Shupin\n>\n>\n> ________________________________________\n> ???: martina morris <morrism@u.washington.edu>\n> ????: 2017?11?15? 22:25\n> ???: Shupin Li\n> ??: statnet_help@u.washington.edu\n> ??: Re: [statnet_help] Error in MCMC\n>\n> Shupin,\n>\n> The edges+triangle model is well known in the field for being a\n> \"degenerate\" model specification.  There is a substantial literature on\n> the problem of degeneracy in specifying models for ERGs -- it's not a\n> problem with the method, it is a problem of model specification.\n> Essentially, this result means \"that model would never have produced\n> the network you observe\"\n>\n> Try using the gwesp terms instead. And if you're not familiar with them I\n> suggest you take a look at the following papers:\n>\n> Snijders TAB, Pattison PE, Robins GL, Handcock MS. New\n> specifications for exponential random graph models. In: Stolzenberg RM,\n> editor. Sociological Methodology 2006, Vol 362006. p. 99-153.\n>\n> Hunter DR. Curved Exponential Family Models for Social Networks.\n> Social networks. 2007;29(2):216-30. doi: 10.1016/j.socnet.2006.08.005.\n> PubMed PMID: PMC2031865.\n>\n>\n>\n> best,\n> Martina\n>\n> On Tue, 14 Nov 2017, Shupin Li wrote:\n>\n>> Hello all,\n>>\n>>\n>> I have a notwork of 84 nodes, undirected.  Ten members of the network were absent at the day of data\n>> collection. I estimate a model with edeges and triangle (R 3.4.2; statnet 2016.9).\n>>\n>> Yet, it brings error:\n>>\n>>\n>>> helpmodel.02 <- ergm(schoolhelp~edges+triangle)\n>> Starting maximum likelihood estimation via MCMLE:\n>> Iteration 1 of at most 20:\n>> Optimizing with step length 0.000369932771454251.\n>> The log-likelihood improved by 0.09642.\n>> Iteration 2 of at most 20:\n>> Error in ergm.MCMLE(init, nw, model, initialfit = (initialfit <- NULL),  :\n>>    Unconstrained MCMC sampling did not mix at all. Optimization cannot continue.\n>>\n>> Here is the basic info of the network:\n>>   vertices = 84   directed = FALSE\n>>    hyper = FALSE\n>>    loops = FALSE\n>>    multiple = FALSE\n>>    bipartite = FALSE\n>>   total edges = 1208\n>>     missing edges = 805\n>>     non-missing edges = 403\n>>   density = 0.1156053\n>>\n>> And here is the null model:\n>> Formula:   schoolhelp ~ edges\n>> Iterations:  5 out of 20\n>> Monte Carlo MLE Results:\n>>        Estimate Std. Error MCMC % p-value\n>> edges -1.73212    0.05404      0  <1e-04 ***?\n>> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>>       Null Deviance: 3717  on 2681  degrees of freedom\n>>   Residual Deviance: 2270  on 2680  degrees of freedom\n>> AIC: 2272    BIC: 2277    (Smaller is better.)\n>>\n>> Anyone has ideas how to tackle the problem? Thank you.\n>>\n>> Best,\n>> Shupin\n>>\n>>\n>>\n>>\n> ****************************************************************\n>    Professor of Sociology and Statistics\n>    Director, UWCFAR Sociobehavioral and Prevention Research Core\n>    Box 354322\n>    University of Washington\n>    Seattle, WA 98195-4322\n>\n>    Office:        (206) 685-3402\n>    Dept Office:   (206) 543-5882, 543-7237\n>    Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi, Shupin -\n\nIf you are using gwesp() and still having issues, this can suggest that \nyou are trying to model clustering associated with an underlying source \nof heterogeneity (e.g., homophily or pro",
+      "thread_id": "thread-8edcc7ba7671",
+      "thread_depth": 3,
+      "month": "2017-11"
+    },
+    {
+      "id": "msg-23b47fb03c28",
+      "message_id": "<CAPOisF7mx3Q47gWhm-Oo_dv2j=_QJ5KEx3=01MmbA0kOxuq9rg@mail.gmail.com>",
+      "from_name": "Owais Golra",
+      "from_email_hash": "d971a16aea71f5886f5cb387042a1ca12391e8c0a72d4b85fa8274017dcec04a",
+      "date": "2017-11-16T03:22:47Z",
+      "subject": "[statnet_help] 答复: Error in MCMC",
+      "subject_clean": "[statnet_help] 答复: Error in MCMC",
+      "in_reply_to": "<1510819180948.56713@utu.fi>",
+      "references": [
+        "<CADJVJ56XhY_GS6zJu+0pJ1xnKFWLvWS+E6B=X5o6d7YQXbQ0NQ@mail.gmail.com>",
+        "<1510649492311.69843@utu.fi>",
+        "<alpine.WNT.2.00.1711151220430.13708@morrism-laptop>",
+        "<1510819180948.56713@utu.fi>"
+      ],
+      "body_plain": "Dear Shupin,\n\nI would suggest you to start with gwesp(0, fixed=TRUE) & then increase it\nstepwise as follows;\n\ngwesp(0.1, fixed=TRUE)\ngwesp(0.2, fixed=TRUE)\ngwesp(0.25, fixed=TRUE) & so on.\n\nCheers!\n\nOwais A. Golra, MSc (Res), BSc (Engg.)\nDoctoral Researcher\n\nUniversity of Edinburgh-Business School, Room 2.02,\n29 Buccleuch Place, EH8 9JS, Edinburgh, UK.\nPhone (UK): +447563557556,\nPhone (PAK): +923335272380\nEmail (s): s1256783@sms.ed.ac.uk,\nowaisanwargolra@gmail.com\n\n\nOn 16 Nov 2017 08:00, \"Shupin Li\" <shupli@utu.fi> wrote:\n\n> Dear Martina,\n>\n> Thanks for your information. I have tried various methods that the updated\n> manual of ergm package. For example:\n> helpmodel.03 <-ergm(schoolhelp~ edges +gwesp(0.5,fixed=T)+nodematch('gender'),control\n> = control.ergm(seed=1),verbose=T)\n>\n> Yet, the problem of degeneracy is still there. I am planning to used other\n> terms in ergm or maybe other models to get it done.\n>\n> Best,\n> Shupin\n>\n>\n> ________________________________________\n> ???: martina morris <morrism@u.washington.edu>\n> ????: 2017?11?15? 22:25\n> ???: Shupin Li\n> ??: statnet_help@u.washington.edu\n> ??: Re: [statnet_help] Error in MCMC\n>\n> Shupin,\n>\n> The edges+triangle model is well known in the field for being a\n> \"degenerate\" model specification.  There is a substantial literature on\n> the problem of degeneracy in specifying models for ERGs -- it's not a\n> problem with the method, it is a problem of model specification.\n> Essentially, this result means \"that model would never have produced\n> the network you observe\"\n>\n> Try using the gwesp terms instead. And if you're not familiar with them I\n> suggest you take a look at the following papers:\n>\n> Snijders TAB, Pattison PE, Robins GL, Handcock MS. New\n> specifications for exponential random graph models. In: Stolzenberg RM,\n> editor. Sociological Methodology 2006, Vol 362006. p. 99-153.\n>\n> Hunter DR. Curved Exponential Family Models for Social Networks.\n> Social networks. 2007;29(2):216-30. doi: 10.1016/j.socnet.2006.08.005.\n> PubMed PMID: PMC2031865.\n>\n>\n>\n> best,\n> Martina\n>\n> On Tue, 14 Nov 2017, Shupin Li wrote:\n>\n> >\n> > Hello all,\n> >\n> >\n> > I have a notwork of 84 nodes, undirected.  Ten members of the network\n> were absent at the day of data\n> > collection. I estimate a model with edeges and triangle (R 3.4.2;\n> statnet 2016.9).\n> >\n> > Yet, it brings error:\n> >\n> >\n> > > helpmodel.02 <- ergm(schoolhelp~edges+triangle)\n> > Starting maximum likelihood estimation via MCMLE:\n> > Iteration 1 of at most 20:\n> > Optimizing with step length 0.000369932771454251.\n> > The log-likelihood improved by 0.09642.\n> > Iteration 2 of at most 20:\n> > Error in ergm.MCMLE(init, nw, model, initialfit = (initialfit <- NULL),\n> :\n> >   Unconstrained MCMC sampling did not mix at all. Optimization cannot\n> continue.\n> >\n> > Here is the basic info of the network:\n> >  vertices = 84   directed = FALSE\n> >   hyper = FALSE\n> >   loops = FALSE\n> >   multiple = FALSE\n> >   bipartite = FALSE\n> >  total edges = 1208\n> >    missing edges = 805\n> >    non-missing edges = 403\n> >  density = 0.1156053\n> >\n> > And here is the null model:\n> > Formula:   schoolhelp ~ edges\n> > Iterations:  5 out of 20\n> > Monte Carlo MLE Results:\n> >       Estimate Std. Error MCMC % p-value\n> > edges -1.73212    0.05404      0  <1e-04 ***?\n> > Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n> >      Null Deviance: 3717  on 2681  degrees of freedom\n> >  Residual Deviance: 2270  on 2680  degrees of freedom\n> > AIC: 2272    BIC: 2277    (Smaller is better.)\n> >\n> > Anyone has ideas how to tackle the problem? Thank you.\n> >\n> > Best,\n> > Shupin\n> >\n> >\n> >\n> >\n>\n> ****************************************************************\n>   Professor of Sociology and Statistics\n>   Director, UWCFAR Sociobehavioral and Prevention Research Core\n>   Box 354322\n>   University of Washington\n>   Seattle, WA 98195-4322\n>\n>   Office:        (206) 685-3402\n>   Dept Office:   (206) 543-5882, 543-7237\n>   Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171116/a599254a/attachment.html>",
+      "body_snippet": "Dear Shupin,\n\nI would suggest you to start with gwesp(0, fixed=TRUE) & then increase it\nstepwise as follows;\n\ngwesp(0.1, fixed=TRUE)\ngwesp(0.2, fixed=TRUE)\ngwesp(0.25, fixed=TRUE) & so on.\n\nCheers!\n\nO",
+      "thread_id": "thread-8edcc7ba7671",
+      "thread_depth": 3,
+      "month": "2017-11"
+    },
+    {
+      "id": "msg-9fb5987247e1",
+      "message_id": "<1510834982421.61134@utu.fi>",
+      "from_name": "Shupin Li",
+      "from_email_hash": "38700f5808ab105ec199cbb8075d83f0e4e2f5a90ba6f54b05dba2c790f968a0",
+      "date": "2017-11-16T04:23:00Z",
+      "subject": "[statnet_help]  Error in MCMC",
+      "subject_clean": "[statnet_help]  Error in MCMC",
+      "in_reply_to": "<6c6fc57a-6670-e6de-20bd-b64b3726b037@uci.edu>",
+      "references": [
+        "<CADJVJ56XhY_GS6zJu+0pJ1xnKFWLvWS+E6B=X5o6d7YQXbQ0NQ@mail.gmail.com>",
+        "<1510649492311.69843@utu.fi>",
+        "<alpine.WNT.2.00.1711151220430.13708@morrism-laptop>",
+        "<1510819180948.56713@utu.fi>",
+        "<6c6fc57a-6670-e6de-20bd-b64b3726b037@uci.edu>"
+      ],
+      "body_plain": "Dear Carter, \n\nThank you for the ideas. They are helpful:)\n\nBest,\nShupin\n\n________________________________________\n???: statnet_help <statnet_help-bounces@mailman13.u.washington.edu> ?? Carter T. Butts <buttsc@uci.edu>\n????: 2017?11?16? 10:39\n???: statnet_help@u.washington.edu\n??: Re: [statnet_help] ??: Error in MCMC\n\nHi, Shupin -\n\nIf you are using gwesp() and still having issues, this can suggest that\nyou are trying to model clustering associated with an underlying source\nof heterogeneity (e.g., homophily or propinquity on unobserved\nvariables) with a homogeneous mechanism (here, the ESP effects that go\ninto the GWESP term).  Adding more covariate effects, or looking more\ncarefully at how they are parameterized, can often make a huge\ndifference.  (In essence, the issue is that GWESP and friends are trying\nto capture the pattern of triadic closure by positing a uniform tendency\ntowards closure that affects the entire network equally.  If what is\nreally going on is that your clustering is the result of some\ninhomogeneous process, then the model is stuck between the Scylla of not\nproducing enough triangulation in the high-density portions of the graph\nand the Charybdis of producing too much triangulation in the low-density\nportions of the graph.  The way the model resolves this untenable\nsituation is not always to one's liking.)\n\nLowering the alpha coefficient towards 0 (which damps out the marginal\neffect of additional shared partners more aggressively) can also help.\nBut I would start by doing some exploratory analysis of the network, and\nasking whether it is plausible that you are leaving out some important\nsources of heterogeneity. Control for that first, then worry about\nhomogeneous sources of dependence.\n\nHope that helps,\n\n-Carter\n\n\nOn 11/15/2017 11:59 PM, Shupin Li wrote:\n> Dear Martina,\n>\n> Thanks for your information. I have tried various methods that the updated manual of ergm package. For example:\n> helpmodel.03 <-ergm(schoolhelp~ edges +gwesp(0.5,fixed=T)+nodematch('gender'),control = control.ergm(seed=1),verbose=T)\n>\n> Yet, the problem of degeneracy is still there. I am planning to used other terms in ergm or maybe other models to get it done.\n>\n> Best,\n> Shupin\n>\n>\n> ________________________________________\n> ???: martina morris <morrism@u.washington.edu>\n> ????: 2017?11?15? 22:25\n> ???: Shupin Li\n> ??: statnet_help@u.washington.edu\n> ??: Re: [statnet_help] Error in MCMC\n>\n> Shupin,\n>\n> The edges+triangle model is well known in the field for being a\n> \"degenerate\" model specification.  There is a substantial literature on\n> the problem of degeneracy in specifying models for ERGs -- it's not a\n> problem with the method, it is a problem of model specification.\n> Essentially, this result means \"that model would never have produced\n> the network you observe\"\n>\n> Try using the gwesp terms instead. And if you're not familiar with them I\n> suggest you take a look at the following papers:\n>\n> Snijders TAB, Pattison PE, Robins GL, Handcock MS. New\n> specifications for exponential random graph models. In: Stolzenberg RM,\n> editor. Sociological Methodology 2006, Vol 362006. p. 99-153.\n>\n> Hunter DR. Curved Exponential Family Models for Social Networks.\n> Social networks. 2007;29(2):216-30. doi: 10.1016/j.socnet.2006.08.005.\n> PubMed PMID: PMC2031865.\n>\n>\n>\n> best,\n> Martina\n>\n> On Tue, 14 Nov 2017, Shupin Li wrote:\n>\n>> Hello all,\n>>\n>>\n>> I have a notwork of 84 nodes, undirected.  Ten members of the network were absent at the day of data\n>> collection. I estimate a model with edeges and triangle (R 3.4.2; statnet 2016.9).\n>>\n>> Yet, it brings error:\n>>\n>>\n>>> helpmodel.02 <- ergm(schoolhelp~edges+triangle)\n>> Starting maximum likelihood estimation via MCMLE:\n>> Iteration 1 of at most 20:\n>> Optimizing with step length 0.000369932771454251.\n>> The log-likelihood improved by 0.09642.\n>> Iteration 2 of at most 20:\n>> Error in ergm.MCMLE(init, nw, model, initialfit = (initialfit <- NULL),  :\n>>    Unconstrained MCMC sampling did not mix at all. Optimization cannot continue.\n>>\n>> Here is the basic info of the network:\n>>   vertices = 84   directed = FALSE\n>>    hyper = FALSE\n>>    loops = FALSE\n>>    multiple = FALSE\n>>    bipartite = FALSE\n>>   total edges = 1208\n>>     missing edges = 805\n>>     non-missing edges = 403\n>>   density = 0.1156053\n>>\n>> And here is the null model:\n>> Formula:   schoolhelp ~ edges\n>> Iterations:  5 out of 20\n>> Monte Carlo MLE Results:\n>>        Estimate Std. Error MCMC % p-value\n>> edges -1.73212    0.05404      0  <1e-04 ***?\n>> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>>       Null Deviance: 3717  on 2681  degrees of freedom\n>>   Residual Deviance: 2270  on 2680  degrees of freedom\n>> AIC: 2272    BIC: 2277    (Smaller is better.)\n>>\n>> Anyone has ideas how to tackle the problem? Thank you.\n>>\n>> Best,\n>> Shupin\n>>\n>>\n>>\n>>\n> ****************************************************************\n>    Professor of Sociology and Statistics\n>    Director, UWCFAR Sociobehavioral and Prevention Research Core\n>    Box 354322\n>    University of Washington\n>    Seattle, WA 98195-4322\n>\n>    Office:        (206) 685-3402\n>    Dept Office:   (206) 543-5882, 543-7237\n>    Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Carter, \n\nThank you for the ideas. They are helpful:)\n\nBest,\nShupin\n\n________________________________________\n???: statnet_help <statnet_help-bounces@mailman13.u.washington.edu> ?? Carter T. Butt",
+      "thread_id": "thread-8edcc7ba7671",
+      "thread_depth": 4,
+      "month": "2017-11"
+    },
+    {
+      "id": "msg-40df4a448ad8",
+      "message_id": "<D64F7C5B-A7C1-4BEC-AA21-D05A1BB61E35@hsph.harvard.edu>",
+      "from_name": "Zhu, Lin",
+      "from_email_hash": "5280f2abfa6237b5d22ac90b7912aff730368420c188eb69c370bd096fa7fec2",
+      "date": "2017-11-16T08:21:04Z",
+      "subject": "[statnet_help] Error term in ERGM",
+      "subject_clean": "[statnet_help] Error term in ERGM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI?m using ERGM to model injection drug user network, and I?m trying to select terms for the formation/dissolution formulas.\n\nGenerally speaking, should we put all the important terms into the formula to try to get a best representation of the network, or should we only include those we are interested in (e.g. some variable related to intervention we will simulate)? If we only include the terms we are interested in, is there an error term in the model to catch the residuals? I assume there is, but haven?t seen much about it, are there any resources on this?\n\nIn addition, if we have a term (e.g. homophily in something) that drives the formation hugely, but we leave out the term because we won?t use it for disease transmission/intervention later, what consequences it can have? Or it doesn?t matter?\n\nThank you.\n\nBest,\nLin\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171116/31fae9ae/attachment.html>",
+      "body_snippet": "Hi all,\n\nI?m using ERGM to model injection drug user network, and I?m trying to select terms for the formation/dissolution formulas.\n\nGenerally speaking, should we put all the important terms into the",
+      "thread_id": "thread-40df4a448ad8",
+      "thread_depth": 0,
+      "month": "2017-11"
+    },
+    {
+      "id": "msg-093fbc461073",
+      "message_id": "<CAByPayHAO1xpi5Bd2cYd6ydSttqvNu+MATmrYLZVObcL185yWQ@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2017-11-16T08:37:50Z",
+      "subject": "[statnet_help] Error term in ERGM",
+      "subject_clean": "[statnet_help] Error term in ERGM",
+      "in_reply_to": "<D64F7C5B-A7C1-4BEC-AA21-D05A1BB61E35@hsph.harvard.edu>",
+      "references": [
+        "<D64F7C5B-A7C1-4BEC-AA21-D05A1BB61E35@hsph.harvard.edu>"
+      ],
+      "body_plain": "Hi Lin,\n\n> Generally speaking, should we put all the important terms into the formula to try to get a best representation of the network, or should we only include those we are interested in (e.g. some variable related to intervention we will simulate)? If we only include the terms we are interested in, is there an error term in the model to catch the residuals? I assume there is, but haven?t seen much about it, are there any resources on this?\n\nAbout the \"error term\" issue:  there are no residuals in the usual\nsense (fitted Y - observed Y) in ERGM nor a single numerical index\nlike R-squared. The main way to asses goodness of fit of an ERGM is to\nsimulate a lot of networks from the fitted model and compare\n(distributions of) their features to the features of the observed\nnetwork. For example you can compare the observed degree distribution\nto the degree distributions of the generated networks. See e.g.\nsection 7 of https://www.jstatsoft.org/article/view/v024i03 and\nhttp://stat.psu.edu/~dhunter/papers/tr0502.pdf .\n\n\n> In addition, if we have a term (e.g. homophily in something) that drives the formation hugely, but we leave out the term because we won?t use it for disease transmission/intervention later, what consequences it can have? Or it doesn?t matter?\n\nAs to the more general issue of model specification: it is hard to say\nnot knowing the details of your research questions and study design.\nMy vague intuition is that you will probably want to estimate a good\nmodel for your data (all necessary terms) and then use it to evaluate\nyour possible interventions. I'm not sure why one would want to omit\nterms that are clearly relevant for the network structure, even though\nthey are not your \"intervention variables\".\n\n\nBest,\nMichal",
+      "body_snippet": "Hi Lin,\n\n> Generally speaking, should we put all the important terms into the formula to try to get a best representation of the network, or should we only include those we are interested in (e.g. som",
+      "thread_id": "thread-40df4a448ad8",
+      "thread_depth": 1,
+      "month": "2017-11"
+    },
+    {
+      "id": "msg-35dd16d2bc84",
+      "message_id": "<CAByPayHdA9jz_fvKpJ73H4sFqdK1Lb+O0i=iJopL+DPZLXDMcw@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2017-11-16T08:53:41Z",
+      "subject": "[statnet_help] Error term in ERGM",
+      "subject_clean": "[statnet_help] Error term in ERGM",
+      "in_reply_to": "<CAByPayHAO1xpi5Bd2cYd6ydSttqvNu+MATmrYLZVObcL185yWQ@mail.gmail.com>",
+      "references": [
+        "<D64F7C5B-A7C1-4BEC-AA21-D05A1BB61E35@hsph.harvard.edu>",
+        "<CAByPayHAO1xpi5Bd2cYd6ydSttqvNu+MATmrYLZVObcL185yWQ@mail.gmail.com>"
+      ],
+      "body_plain": "See also\nhttps://statnet.github.io/Workshops/ergm_tutorial.html#5_examining_the_quality_of_model_fit_?_gof\n\nMichal\n\nOn Nov 16, 2017 5:37 PM, \"Micha? Bojanowski\" <michal2992@gmail.com> wrote:\n\n> Hi Lin,\n>\n> > Generally speaking, should we put all the important terms into the\n> formula to try to get a best representation of the network, or should we\n> only include those we are interested in (e.g. some variable related to\n> intervention we will simulate)? If we only include the terms we are\n> interested in, is there an error term in the model to catch the residuals?\n> I assume there is, but haven?t seen much about it, are there any resources\n> on this?\n>\n> About the \"error term\" issue:  there are no residuals in the usual\n> sense (fitted Y - observed Y) in ERGM nor a single numerical index\n> like R-squared. The main way to asses goodness of fit of an ERGM is to\n> simulate a lot of networks from the fitted model and compare\n> (distributions of) their features to the features of the observed\n> network. For example you can compare the observed degree distribution\n> to the degree distributions of the generated networks. See e.g.\n> section 7 of https://www.jstatsoft.org/article/view/v024i03 and\n> http://stat.psu.edu/~dhunter/papers/tr0502.pdf .\n>\n>\n> > In addition, if we have a term (e.g. homophily in something) that drives\n> the formation hugely, but we leave out the term because we won?t use it for\n> disease transmission/intervention later, what consequences it can have? Or\n> it doesn?t matter?\n>\n> As to the more general issue of model specification: it is hard to say\n> not knowing the details of your research questions and study design.\n> My vague intuition is that you will probably want to estimate a good\n> model for your data (all necessary terms) and then use it to evaluate\n> your possible interventions. I'm not sure why one would want to omit\n> terms that are clearly relevant for the network structure, even though\n> they are not your \"intervention variables\".\n>\n>\n> Best,\n> Michal\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171116/c4e346a3/attachment.html>",
+      "body_snippet": "See also\nhttps://statnet.github.io/Workshops/ergm_tutorial.html#5_examining_the_quality_of_model_fit_?_gof\n\nMichal\n\nOn Nov 16, 2017 5:37 PM, \"Micha? Bojanowski\" <michal2992@gmail.com> wrote:\n\n> Hi Lin",
+      "thread_id": "thread-40df4a448ad8",
+      "thread_depth": 2,
+      "month": "2017-11"
+    },
+    {
+      "id": "msg-9bec55ec5e17",
+      "message_id": "<alpine.WNT.2.00.1711161044290.13708@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2017-11-16T10:47:23Z",
+      "subject": "[statnet_help] 答复: Error in MCMC",
+      "subject_clean": "[statnet_help] 答复: Error in MCMC",
+      "in_reply_to": "<6c6fc57a-6670-e6de-20bd-b64b3726b037@uci.edu>",
+      "references": [
+        "<CADJVJ56XhY_GS6zJu+0pJ1xnKFWLvWS+E6B=X5o6d7YQXbQ0NQ@mail.gmail.com>",
+        "<1510649492311.69843@utu.fi>",
+        "<alpine.WNT.2.00.1711151220430.13708@morrism-laptop>",
+        "<1510819180948.56713@utu.fi>",
+        "<6c6fc57a-6670-e6de-20bd-b64b3726b037@uci.edu>"
+      ],
+      "body_plain": "Only thing I would add is that lowering alpha towards gwesp(0) becomes \nproblematic in dense networks, where every edge is likely to be involved \nin at least one triangle (thx to Steve Goodreau for reminding me of this \nyesterday).\n\nWith a density of 11% that may be reaching that threshold.  So I would \nsuggest looking at summary(netw ~ edges + gwesp(0, fixed=T) + ...) to \nsee whether the summary statistics for the gwesp(0) term is almost equal \nto the number of dyads.\n\nbest,\nmm\n\nOn Thu, 16 Nov 2017, Carter T. Butts wrote:\n\n> Hi, Shupin -\n>\n> If you are using gwesp() and still having issues, this can suggest that you \n> are trying to model clustering associated with an underlying source of \n> heterogeneity (e.g., homophily or propinquity on unobserved variables) with a \n> homogeneous mechanism (here, the ESP effects that go into the GWESP term). \n> Adding more covariate effects, or looking more carefully at how they are \n> parameterized, can often make a huge difference.? (In essence, the issue is \n> that GWESP and friends are trying to capture the pattern of triadic closure \n> by positing a uniform tendency towards closure that affects the entire \n> network equally.? If what is really going on is that your clustering is the \n> result of some inhomogeneous process, then the model is stuck between the \n> Scylla of not producing enough triangulation in the high-density portions of \n> the graph and the Charybdis of producing too much triangulation in the \n> low-density portions of the graph.? The way the model resolves this untenable \n> situation is not always to one's liking.)\n>\n> Lowering the alpha coefficient towards 0 (which damps out the marginal effect \n> of additional shared partners more aggressively) can also help.? But I would \n> start by doing some exploratory analysis of the network, and asking whether \n> it is plausible that you are leaving out some important sources of \n> heterogeneity. Control for that first, then worry about homogeneous sources \n> of dependence.\n>\n> Hope that helps,\n>\n> -Carter\n>\n>\n> On 11/15/2017 11:59 PM, Shupin Li wrote:\n>> Dear Martina,\n>> \n>> Thanks for your information. I have tried various methods that the updated \n>> manual of ergm package. For example:\n>> helpmodel.03 <-ergm(schoolhelp~ edges \n>> +gwesp(0.5,fixed=T)+nodematch('gender'),control = \n>> control.ergm(seed=1),verbose=T)\n>> \n>> Yet, the problem of degeneracy is still there. I am planning to used other \n>> terms in ergm or maybe other models to get it done.\n>> \n>> Best,\n>> Shupin\n>> \n>> \n>> ________________________________________\n>> ???: martina morris <morrism@u.washington.edu>\n>> ????: 2017?11?15? 22:25\n>> ???: Shupin Li\n>> ??: statnet_help@u.washington.edu\n>> ??: Re: [statnet_help] Error in MCMC\n>> \n>> Shupin,\n>> \n>> The edges+triangle model is well known in the field for being a\n>> \"degenerate\" model specification.  There is a substantial literature on\n>> the problem of degeneracy in specifying models for ERGs -- it's not a\n>> problem with the method, it is a problem of model specification.\n>> Essentially, this result means \"that model would never have produced\n>> the network you observe\"\n>> \n>> Try using the gwesp terms instead. And if you're not familiar with them I\n>> suggest you take a look at the following papers:\n>> \n>> Snijders TAB, Pattison PE, Robins GL, Handcock MS. New\n>> specifications for exponential random graph models. In: Stolzenberg RM,\n>> editor. Sociological Methodology 2006, Vol 362006. p. 99-153.\n>> \n>> Hunter DR. Curved Exponential Family Models for Social Networks.\n>> Social networks. 2007;29(2):216-30. doi: 10.1016/j.socnet.2006.08.005.\n>> PubMed PMID: PMC2031865.\n>> \n>> \n>> \n>> best,\n>> Martina\n>> \n>> On Tue, 14 Nov 2017, Shupin Li wrote:\n>> \n>>> Hello all,\n>>> \n>>> \n>>> I have a notwork of 84 nodes, undirected.  Ten members of the network were \n>>> absent at the day of data\n>>> collection. I estimate a model with edeges and triangle (R 3.4.2; statnet \n>>> 2016.9).\n>>> \n>>> Yet, it brings error:\n>>> \n>>> \n>>>> helpmodel.02 <- ergm(schoolhelp~edges+triangle)\n>>> Starting maximum likelihood estimation via MCMLE:\n>>> Iteration 1 of at most 20:\n>>> Optimizing with step length 0.000369932771454251.\n>>> The log-likelihood improved by 0.09642.\n>>> Iteration 2 of at most 20:\n>>> Error in ergm.MCMLE(init, nw, model, initialfit = (initialfit <- NULL),  :\n>>>    Unconstrained MCMC sampling did not mix at all. Optimization cannot \n>>> continue.\n>>> \n>>> Here is the basic info of the network:\n>>>   vertices = 84   directed = FALSE\n>>>    hyper = FALSE\n>>>    loops = FALSE\n>>>    multiple = FALSE\n>>>    bipartite = FALSE\n>>>   total edges = 1208\n>>>     missing edges = 805\n>>>     non-missing edges = 403\n>>>   density = 0.1156053\n>>> \n>>> And here is the null model:\n>>> Formula:   schoolhelp ~ edges\n>>> Iterations:  5 out of 20\n>>> Monte Carlo MLE Results:\n>>>        Estimate Std. Error MCMC % p-value\n>>> edges -1.73212    0.05404      0  <1e-04 ***?\n>>> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>>>       Null Deviance: 3717  on 2681  degrees of freedom\n>>>   Residual Deviance: 2270  on 2680  degrees of freedom\n>>> AIC: 2272    BIC: 2277    (Smaller is better.)\n>>> \n>>> Anyone has ideas how to tackle the problem? Thank you.\n>>> \n>>> Best,\n>>> Shupin\n>>> \n>>> \n>>> \n>>> \n>> ****************************************************************\n>>    Professor of Sociology and Statistics\n>>    Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>    Box 354322\n>>    University of Washington\n>>    Seattle, WA 98195-4322\n>>\n>>    Office:        (206) 685-3402\n>>    Dept Office:   (206) 543-5882, 543-7237\n>>    Fax:           (206) 685-7419\n>> \n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>> \n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Only thing I would add is that lowering alpha towards gwesp(0) becomes \nproblematic in dense networks, where every edge is likely to be involved \nin at least one triangle (thx to Steve Goodreau for re",
+      "thread_id": "thread-8edcc7ba7671",
+      "thread_depth": 4,
+      "month": "2017-11"
+    },
+    {
+      "id": "msg-b6277563c928",
+      "message_id": "<1510902813107.65912@utu.fi>",
+      "from_name": "Shupin Li",
+      "from_email_hash": "38700f5808ab105ec199cbb8075d83f0e4e2f5a90ba6f54b05dba2c790f968a0",
+      "date": "2017-11-16T23:13:29Z",
+      "subject": "[statnet_help]  Error in MCMC",
+      "subject_clean": "[statnet_help]  Error in MCMC",
+      "in_reply_to": "<alpine.WNT.2.00.1711161044290.13708@morrism-laptop>",
+      "references": [
+        "<CADJVJ56XhY_GS6zJu+0pJ1xnKFWLvWS+E6B=X5o6d7YQXbQ0NQ@mail.gmail.com>",
+        "<1510649492311.69843@utu.fi>",
+        "<alpine.WNT.2.00.1711151220430.13708@morrism-laptop>",
+        "<1510819180948.56713@utu.fi>",
+        "<6c6fc57a-6670-e6de-20bd-b64b3726b037@uci.edu>",
+        "<alpine.WNT.2.00.1711161044290.13708@morrism-laptop>"
+      ],
+      "body_plain": "Very useful to know about it. Thanks, Martina:)\n\nBest,\nShupin\n\n________________________________________\n???: statnet_help <statnet_help-bounces@mailman13.u.washington.edu> ?? martina morris <morrism@u.washington.edu>\n????: 2017?11?16? 20:47\n???: Carter T. Butts\n??: statnet_help@u.washington.edu\n??: Re: [statnet_help] ??: Error in MCMC\n\nOnly thing I would add is that lowering alpha towards gwesp(0) becomes\nproblematic in dense networks, where every edge is likely to be involved\nin at least one triangle (thx to Steve Goodreau for reminding me of this\nyesterday).\n\nWith a density of 11% that may be reaching that threshold.  So I would\nsuggest looking at summary(netw ~ edges + gwesp(0, fixed=T) + ...) to\nsee whether the summary statistics for the gwesp(0) term is almost equal\nto the number of dyads.\n\nbest,\nmm\n\nOn Thu, 16 Nov 2017, Carter T. Butts wrote:\n\n> Hi, Shupin -\n>\n> If you are using gwesp() and still having issues, this can suggest that you\n> are trying to model clustering associated with an underlying source of\n> heterogeneity (e.g., homophily or propinquity on unobserved variables) with a\n> homogeneous mechanism (here, the ESP effects that go into the GWESP term).\n> Adding more covariate effects, or looking more carefully at how they are\n> parameterized, can often make a huge difference.  (In essence, the issue is\n> that GWESP and friends are trying to capture the pattern of triadic closure\n> by positing a uniform tendency towards closure that affects the entire\n> network equally.  If what is really going on is that your clustering is the\n> result of some inhomogeneous process, then the model is stuck between the\n> Scylla of not producing enough triangulation in the high-density portions of\n> the graph and the Charybdis of producing too much triangulation in the\n> low-density portions of the graph.  The way the model resolves this untenable\n> situation is not always to one's liking.)\n>\n> Lowering the alpha coefficient towards 0 (which damps out the marginal effect\n> of additional shared partners more aggressively) can also help.  But I would\n> start by doing some exploratory analysis of the network, and asking whether\n> it is plausible that you are leaving out some important sources of\n> heterogeneity. Control for that first, then worry about homogeneous sources\n> of dependence.\n>\n> Hope that helps,\n>\n> -Carter\n>\n>\n> On 11/15/2017 11:59 PM, Shupin Li wrote:\n>> Dear Martina,\n>>\n>> Thanks for your information. I have tried various methods that the updated\n>> manual of ergm package. For example:\n>> helpmodel.03 <-ergm(schoolhelp~ edges\n>> +gwesp(0.5,fixed=T)+nodematch('gender'),control =\n>> control.ergm(seed=1),verbose=T)\n>>\n>> Yet, the problem of degeneracy is still there. I am planning to used other\n>> terms in ergm or maybe other models to get it done.\n>>\n>> Best,\n>> Shupin\n>>\n>>\n>> ________________________________________\n>> ???: martina morris <morrism@u.washington.edu>\n>> ????: 2017?11?15? 22:25\n>> ???: Shupin Li\n>> ??: statnet_help@u.washington.edu\n>> ??: Re: [statnet_help] Error in MCMC\n>>\n>> Shupin,\n>>\n>> The edges+triangle model is well known in the field for being a\n>> \"degenerate\" model specification.  There is a substantial literature on\n>> the problem of degeneracy in specifying models for ERGs -- it's not a\n>> problem with the method, it is a problem of model specification.\n>> Essentially, this result means \"that model would never have produced\n>> the network you observe\"\n>>\n>> Try using the gwesp terms instead. And if you're not familiar with them I\n>> suggest you take a look at the following papers:\n>>\n>> Snijders TAB, Pattison PE, Robins GL, Handcock MS. New\n>> specifications for exponential random graph models. In: Stolzenberg RM,\n>> editor. Sociological Methodology 2006, Vol 362006. p. 99-153.\n>>\n>> Hunter DR. Curved Exponential Family Models for Social Networks.\n>> Social networks. 2007;29(2):216-30. doi: 10.1016/j.socnet.2006.08.005.\n>> PubMed PMID: PMC2031865.\n>>\n>>\n>>\n>> best,\n>> Martina\n>>\n>> On Tue, 14 Nov 2017, Shupin Li wrote:\n>>\n>>> Hello all,\n>>>\n>>>\n>>> I have a notwork of 84 nodes, undirected.  Ten members of the network were\n>>> absent at the day of data\n>>> collection. I estimate a model with edeges and triangle (R 3.4.2; statnet\n>>> 2016.9).\n>>>\n>>> Yet, it brings error:\n>>>\n>>>\n>>>> helpmodel.02 <- ergm(schoolhelp~edges+triangle)\n>>> Starting maximum likelihood estimation via MCMLE:\n>>> Iteration 1 of at most 20:\n>>> Optimizing with step length 0.000369932771454251.\n>>> The log-likelihood improved by 0.09642.\n>>> Iteration 2 of at most 20:\n>>> Error in ergm.MCMLE(init, nw, model, initialfit = (initialfit <- NULL),  :\n>>>    Unconstrained MCMC sampling did not mix at all. Optimization cannot\n>>> continue.\n>>>\n>>> Here is the basic info of the network:\n>>>   vertices = 84   directed = FALSE\n>>>    hyper = FALSE\n>>>    loops = FALSE\n>>>    multiple = FALSE\n>>>    bipartite = FALSE\n>>>   total edges = 1208\n>>>     missing edges = 805\n>>>     non-missing edges = 403\n>>>   density = 0.1156053\n>>>\n>>> And here is the null model:\n>>> Formula:   schoolhelp ~ edges\n>>> Iterations:  5 out of 20\n>>> Monte Carlo MLE Results:\n>>>        Estimate Std. Error MCMC % p-value\n>>> edges -1.73212    0.05404      0  <1e-04 ***?\n>>> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>>>       Null Deviance: 3717  on 2681  degrees of freedom\n>>>   Residual Deviance: 2270  on 2680  degrees of freedom\n>>> AIC: 2272    BIC: 2277    (Smaller is better.)\n>>>\n>>> Anyone has ideas how to tackle the problem? Thank you.\n>>>\n>>> Best,\n>>> Shupin\n>>>\n>>>\n>>>\n>>>\n>> ****************************************************************\n>>    Professor of Sociology and Statistics\n>>    Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>    Box 354322\n>>    University of Washington\n>>    Seattle, WA 98195-4322\n>>\n>>    Office:        (206) 685-3402\n>>    Dept Office:   (206) 543-5882, 543-7237\n>>    Fax:           (206) 685-7419\n>>\n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Very useful to know about it. Thanks, Martina:)\n\nBest,\nShupin\n\n________________________________________\n???: statnet_help <statnet_help-bounces@mailman13.u.washington.edu> ?? martina morris <morrism@u",
+      "thread_id": "thread-8edcc7ba7671",
+      "thread_depth": 5,
+      "month": "2017-11"
+    },
+    {
+      "id": "msg-4624c607a29a",
+      "message_id": "<alpine.WNT.2.00.1711221013280.14708@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2017-11-22T10:19:33Z",
+      "subject": "[statnet_help] Error term in ERGM",
+      "subject_clean": "[statnet_help] Error term in ERGM",
+      "in_reply_to": "<D64F7C5B-A7C1-4BEC-AA21-D05A1BB61E35@hsph.harvard.edu>",
+      "references": [
+        "<D64F7C5B-A7C1-4BEC-AA21-D05A1BB61E35@hsph.harvard.edu>"
+      ],
+      "body_plain": "On Thu, 16 Nov 2017, Zhu, Lin wrote:\n\n> Generally speaking, should we put all the important terms into the formula to try to get a best representation of the\n> network, or should we only include those we are interested in (e.g. some variable related to intervention we will\n> simulate)? If we only include the terms we are interested in, is there an error term in the model to catch the residuals?\n> I assume there is, but haven?t seen much about it, are there any resources on this?\n\nSince Michal responded to this, I won't say much more.  Just that this is \na statistical model, so it does have a predicted and an error component. \nBut it is a generalized linear model, so the relationship between the \nobserved data (0 or 1) and the predicted value (the odds of a tie) is a \nbit more complicated.  Think logistic regression.\n\n> In addition, if we have a term (e.g. homophily in something) that drives the formation hugely, but we leave out the term\n> because we won?t use it for disease transmission/intervention later, what consequences it can have? Or it doesn?t matter?\n\nIf this term is a highly significant driver of formation (and possibly \ndissolution), and you leave it out, the networks you simulate from your \nmodel will not look like the network you observe in the data.  We know \nthat homophily has a strong impact on diffusion processes in networks, so \nwe can also say with some confidence that your diffusion model will also \nnot represent what would happen in the true network.\n\n> \n> Thank you.\n>\n> \n> \n> Best,\n> \n> Lin\n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "On Thu, 16 Nov 2017, Zhu, Lin wrote:\n\n> Generally speaking, should we put all the important terms into the formula to try to get a best representation of the\n> network, or should we only include those",
+      "thread_id": "thread-40df4a448ad8",
+      "thread_depth": 1,
+      "month": "2017-11"
+    },
+    {
+      "id": "msg-4c6edeabbc29",
+      "message_id": "<CAAcZ5k2nDdL9eyDXxhOrPOaVYOJ2JNjgHtJNX-Qp=50Ykab_WQ@mail.gmail.com>",
+      "from_name": "Fabrizio Marini",
+      "from_email_hash": "cf09cb009e7ecd54f4c7893216f5eff5ec8d9fc6f16fc1d6557eecd37ee62e0c",
+      "date": "2017-11-25T03:47:35Z",
+      "subject": "[statnet_help] ERGMs for social contagion",
+      "subject_clean": "[statnet_help] ERGMs for social contagion",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello, I'm totally new to ERGMs and I'm conducting a research on a\ncorporate social network consisting of about 3000 actors and I have the\nnetwork evolution over time.\nI'm interested in modeling and studying the contagion of their political\nideas.\nI'm looking for references about using ERGMs to study this sort of\ncontagion.\nIf possible I would use some examples and some directions on where to study\nthis subject on the manual.\nThanks in advance for your help.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171125/1afaf3dc/attachment.html>",
+      "body_snippet": "Hello, I'm totally new to ERGMs and I'm conducting a research on a\ncorporate social network consisting of about 3000 actors and I have the\nnetwork evolution over time.\nI'm interested in modeling and s",
+      "thread_id": "thread-4c6edeabbc29",
+      "thread_depth": 0,
+      "month": "2017-11"
+    },
+    {
+      "id": "msg-99123d92a0ff",
+      "message_id": "<F87C621D-7AAF-401B-B96A-F35ACBF21FFD@aggiemail.usu.edu>",
+      "from_name": "Emily Long",
+      "from_email_hash": "e9a717e8b9f696378793d9640d3db225ebe6542d12b5465ddbe6cf42e9542680",
+      "date": "2017-11-29T11:38:22Z",
+      "subject": "[statnet_help] Multilevel ERGM / Meta-analysis",
+      "subject_clean": "[statnet_help] Multilevel ERGM / Meta-analysis",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Everyone,\n\nI?m an ERGM novice and have a couple of basic questions regarding summarizing ERGM results across multiple networks. I?ve done some preliminary reading into various approaches, including both the methods of Snijders and Baerveldt (2003) and the use of the metafor package. \n\nMy set-up is fairly simple at this point, as I have one common model applied across 6 networks. It would seem from my quick review of the literature that there is not a standard approach for combining results, nor is there a built-in function within Statnet for doing so. I?m curious if anyone has suggestions for the best way to go about choosing an approach and/or an available tutorial for learning this supplemental step. \n\nThank you,\n\nEmily \n\nEmily Long\nDoctoral Candidate\nPrevention Science Lab\nDepartment of Psychology\nUtah State University\n\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171129/0e694bb6/attachment.html>",
+      "body_snippet": "Hi Everyone,\n\nI?m an ERGM novice and have a couple of basic questions regarding summarizing ERGM results across multiple networks. I?ve done some preliminary reading into various approaches, including",
+      "thread_id": "thread-99123d92a0ff",
+      "thread_depth": 0,
+      "month": "2017-11"
+    },
+    {
+      "id": "msg-302c3c45298b",
+      "message_id": "<CAPOisF54N-qphx2U-Y-2KRez0JaTAKNiQhkomGwVhc9K8j=fXA@mail.gmail.com>",
+      "from_name": "Owais Golra",
+      "from_email_hash": "d971a16aea71f5886f5cb387042a1ca12391e8c0a72d4b85fa8274017dcec04a",
+      "date": "2017-11-29T12:32:04Z",
+      "subject": "[statnet_help] ERGM Convergence Statistics (t-ratio) using R-package 3.4.2",
+      "subject_clean": "[statnet_help] ERGM Convergence Statistics (t-ratio) using R-package 3.4.2",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet Members,\n\nI have question about reporting the goodness of fit statistics of an ERGM\nmodel in a paper, such as p-value or t-ratio. I have read few papers (e.g.\nBrailly, 2016; Lee and Lee, 2014) that have reported convergence statistics\nas t-ratio in order to show the goodness of fit of the models.\n\nHere, I have two questions.\n\nQ1. Can we report p-values as convergence statistics to show the goodness\nof fit of our model?\n\nQ2. If the answer to my first question is No, can we use R-package to\ncalculate the t-ratio to show the goodness of fit of our model. I was\nwondering whether it is possible to calculate the t-ratios in R-package and\nI am not aware of that. Any suggestion will be highly appreciated.\n\nAs far as I know, t-ratio can be calculated by using P-Net software and the\nR package calculates p-values (but, not t-ratio) for the goodness of fit\nstatistics by using the following command;\n\nsummary(network.model.gof)\n\n\nReference:\n\nBrailly, J. (2016). \"Dynamics of networks in trade fairs?A multilevel\nrelational approach to the cooperation among competitors.\" *Journal of\nEconomic Geography* *16*(6): 1279-1301.\n\nLee, S. and C. Lee (2014). \"Creative Interaction and Multiplexity in\nIntraorganizational Networks.\" *Management Communication Quarterly* *29*(1):\n56-83.\nI will be grateful for any help.\n\n\nThank you and regards,\n\nOwais A. Golra, MSc (Res), BSc (Engg.)\nDoctoral Researcher\n\nUniversity of Edinburgh-Business School, Room 2.02,\n29 Buccleuch Place, EH8 9JS, Edinburgh, UK.\nPhone (UK): +447563557556,\nPhone (PAK): +923335272380\nEmail (s): s1256783@sms.ed.ac.uk,\nowaisanwargolra@gmail.com\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171129/ed124f1c/attachment.html>",
+      "body_snippet": "Dear Statnet Members,\n\nI have question about reporting the goodness of fit statistics of an ERGM\nmodel in a paper, such as p-value or t-ratio. I have read few papers (e.g.\nBrailly, 2016; Lee and Lee, ",
+      "thread_id": "thread-302c3c45298b",
+      "thread_depth": 0,
+      "month": "2017-11"
+    },
+    {
+      "id": "msg-fe4d7dbc6ff6",
+      "message_id": "<AM0PR0602MB3633D8ADEEE7CB0C63DD9C2CA1380@AM0PR0602MB3633.eurprd06.prod.outlook.com>",
+      "from_name": "g.berlusconi@surrey.ac.uk",
+      "from_email_hash": "66379228d26735b55eb54dd8af7e48be751ea446a1ddead4beeab2626b7e1840",
+      "date": "2017-11-30T06:14:58Z",
+      "subject": "[statnet_help] system requirements for latentnet",
+      "subject_clean": "[statnet_help] system requirements for latentnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone,\n\nI am using the latentnet package to fit latent position models for networks of N=110. Some models take days to run, also after the package update of last August. The IT services of my university offered to help but they need some outline requirements. Do you have any advice on this?\nThank you.\n\nKind regards,\nGiulia\n\n---\nGiulia Berlusconi\nLecturer in Criminology\n\nDepartment of Sociology\nUniversity of Surrey\nGuildford GU2 7XH\nUnited Kingdom\nT: +44 (0) 1483 686973 | Skype: giulia8610\nE: g.berlusconi@surrey.ac.uk\nTwitter: @GBerlu\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171130/a787fc83/attachment.html>",
+      "body_snippet": "Hi everyone,\n\nI am using the latentnet package to fit latent position models for networks of N=110. Some models take days to run, also after the package update of last August. The IT services of my un",
+      "thread_id": "thread-fe4d7dbc6ff6",
+      "thread_depth": 0,
+      "month": "2017-11"
+    },
+    {
+      "id": "msg-7fa58a80a1e6",
+      "message_id": "<CAPOisF7F6oHYYp6XnupLEwa52ULWuzRbrzqyGbp1eiLDbrLWog@mail.gmail.com>",
+      "from_name": "Owais Golra",
+      "from_email_hash": "d971a16aea71f5886f5cb387042a1ca12391e8c0a72d4b85fa8274017dcec04a",
+      "date": "2017-11-30T06:36:46Z",
+      "subject": "[statnet_help] ERGM CONVERGENCE STATISTICS (t-ratio) USING R-PACKAGE 3.4.2",
+      "subject_clean": "[statnet_help] ERGM CONVERGENCE STATISTICS (t-ratio) USING R-PACKAGE 3.4.2",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet Users,\n\nI have question about reporting the goodness of fit statistics of an ERGM\nmodel in a paper, such as p-value or t-ratio. I have read few papers (e.g.\nBrailly, 2016; Lee and Lee, 2014) that have reported convergence statistics\nas t-ratio in order to show the goodness of fit of the models.\n\nHere, I have two questions.\n\nQ1. Can we report p-values as convergence statistics to show the goodness\nof fit of our model?\n\nQ2. If the answer to my first question is No, can we use R-package to\ncalculate the t-ratio to show the goodness of fit of our model. I was\nwondering whether it is possible to calculate the t-ratios in R-package and\nI am not aware of that. Any suggestion will be highly appreciated.\n\nAs far as I know, t-ratio can be calculated by using P-Net software and the\nR package calculates p-values (but, not t-ratio) for the goodness of fit\nstatistics by using the following command;\n\nsummary(network.model.gof)\n\n\nReference:\n\nBrailly, J. (2016). \"Dynamics of networks in trade fairs?A multilevel\nrelational approach to the cooperation among competitors.\" *Journal of\nEconomic Geography* *16*(6): 1279-1301.\n\nLee, S. and C. Lee (2014). \"Creative Interaction and Multiplexity in\nIntraorganizational Networks.\" *Management Communication Quarterly* *29*(1):\n56-83.\nI will be grateful for any help.\n\n\nThank you and regards,\n\nOwais A. Golra, MSc (Res), BSc (Engg.)\nDoctoral Researcher\n\nUniversity of Edinburgh-Business School, Room 2.02,\n29 Buccleuch Place, EH8 9JS, Edinburgh, UK.\nPhone (UK): +447563557556,\nPhone (PAK): +923335272380\nEmail (s): s1256783@sms.ed.ac.uk,\nowaisanwargolra@gmail.com\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20171130/957295b3/attachment.html>",
+      "body_snippet": "Dear Statnet Users,\n\nI have question about reporting the goodness of fit statistics of an ERGM\nmodel in a paper, such as p-value or t-ratio. I have read few papers (e.g.\nBrailly, 2016; Lee and Lee, 20",
+      "thread_id": "thread-7fa58a80a1e6",
+      "thread_depth": 0,
+      "month": "2017-11"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-411eb83d3cfd",
+      "subject": "[statnet_help] Courses on \"Inferential Network Analysis\" and \"Discourse Network Analysis\"",
+      "message_count": 1,
+      "participants": [
+        "Philip Leifeld"
+      ],
+      "started": "2017-11-01T03:43:30Z",
+      "last_reply": "2017-11-01T03:43:30Z",
+      "root_message_id": "msg-411eb83d3cfd"
+    },
+    {
+      "id": "thread-f470569e374f",
+      "subject": "[statnet_help] Comparing levels of homophily between subsets of edges in the same network",
+      "message_count": 1,
+      "participants": [
+        "Chabot, Timothée Pierre Jules"
+      ],
+      "started": "2017-11-10T01:13:40Z",
+      "last_reply": "2017-11-10T01:13:40Z",
+      "root_message_id": "msg-f470569e374f"
+    },
+    {
+      "id": "thread-8edcc7ba7671",
+      "subject": "[statnet_help] Error in MCMC",
+      "message_count": 8,
+      "participants": [
+        "Carter T. Butts",
+        "Owais Golra",
+        "Shupin Li",
+        "martina morris"
+      ],
+      "started": "2017-11-14T00:51:30Z",
+      "last_reply": "2017-11-16T23:13:29Z",
+      "root_message_id": "msg-8edcc7ba7671"
+    },
+    {
+      "id": "thread-40df4a448ad8",
+      "subject": "[statnet_help] Error term in ERGM",
+      "message_count": 4,
+      "participants": [
+        "Michał Bojanowski",
+        "Zhu, Lin",
+        "martina morris"
+      ],
+      "started": "2017-11-16T08:21:04Z",
+      "last_reply": "2017-11-22T10:19:33Z",
+      "root_message_id": "msg-40df4a448ad8"
+    },
+    {
+      "id": "thread-4c6edeabbc29",
+      "subject": "[statnet_help] ERGMs for social contagion",
+      "message_count": 1,
+      "participants": [
+        "Fabrizio Marini"
+      ],
+      "started": "2017-11-25T03:47:35Z",
+      "last_reply": "2017-11-25T03:47:35Z",
+      "root_message_id": "msg-4c6edeabbc29"
+    },
+    {
+      "id": "thread-99123d92a0ff",
+      "subject": "[statnet_help] Multilevel ERGM / Meta-analysis",
+      "message_count": 1,
+      "participants": [
+        "Emily Long"
+      ],
+      "started": "2017-11-29T11:38:22Z",
+      "last_reply": "2017-11-29T11:38:22Z",
+      "root_message_id": "msg-99123d92a0ff"
+    },
+    {
+      "id": "thread-302c3c45298b",
+      "subject": "[statnet_help] ERGM Convergence Statistics (t-ratio) using R-package 3.4.2",
+      "message_count": 1,
+      "participants": [
+        "Owais Golra"
+      ],
+      "started": "2017-11-29T12:32:04Z",
+      "last_reply": "2017-11-29T12:32:04Z",
+      "root_message_id": "msg-302c3c45298b"
+    },
+    {
+      "id": "thread-fe4d7dbc6ff6",
+      "subject": "[statnet_help] system requirements for latentnet",
+      "message_count": 1,
+      "participants": [
+        "g.berlusconi@surrey.ac.uk"
+      ],
+      "started": "2017-11-30T06:14:58Z",
+      "last_reply": "2017-11-30T06:14:58Z",
+      "root_message_id": "msg-fe4d7dbc6ff6"
+    },
+    {
+      "id": "thread-7fa58a80a1e6",
+      "subject": "[statnet_help] ERGM CONVERGENCE STATISTICS (t-ratio) USING R-PACKAGE 3.4.2",
+      "message_count": 1,
+      "participants": [
+        "Owais Golra"
+      ],
+      "started": "2017-11-30T06:36:46Z",
+      "last_reply": "2017-11-30T06:36:46Z",
+      "root_message_id": "msg-7fa58a80a1e6"
+    }
+  ]
+}

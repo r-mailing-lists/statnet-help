@@ -1,0 +1,407 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2013-05",
+  "messages": [
+    {
+      "id": "msg-6c9fa518bf09",
+      "message_id": "<518254F6.8090402@utalca.cl>",
+      "from_name": "Narciso Cerpa",
+      "from_email_hash": "7d3e10db43efad4b2f1b50a84d24c82413cac639cf3d9c90e25ec50aec361d1c",
+      "date": "2013-05-02T04:58:46Z",
+      "subject": "[statnet_help] ERGM problem",
+      "subject_clean": "[statnet_help] ERGM problem",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi there,\n\nI hope that somebody may be able to help me with this problem\n\nI am running ergm and I get an error. It does not matter how many \niterations I do (I tried with 200, but this example is only with 20), \nthe error is the same (please see at the bottom).\n\nconcepttype is a node attribute that can take three values (i.e., 1, 2, 3)\nmpssupported is a directed network\n\n > model2 <- ergm(mpssupported ~ edges + gwidegree(0.25, fixed=T) + \ngwodegree(0.25,fixed=T)+ nodefactor(\"concepttype\")+ \nnodemix(\"concepttype\"),control=control.ergm(MCMC.samplesize=10000))\n\nIteration 1 of at most 20:\nthe log-likelihood improved by 16.85\nIteration 2 of at most 20:\nthe log-likelihood improved by 14.49\nIteration 3 of at most 20:\nthe log-likelihood improved by 19.67\nIteration 4 of at most 20:\nthe log-likelihood improved by 16.6\nIteration 5 of at most 20:\nthe log-likelihood improved by 18.89\nIteration 6 of at most 20:\nthe log-likelihood improved by 19.76\nIteration 7 of at most 20:\nthe log-likelihood improved by 19.88\nIteration 8 of at most 20:\nthe log-likelihood improved by 10.92\nIteration 9 of at most 20:\nthe log-likelihood improved by 4.979\nIteration 10 of at most 20:\nthe log-likelihood improved by 19.14\nIteration 11 of at most 20:\nthe log-likelihood improved by 19.99\nIteration 12 of at most 20:\nthe log-likelihood improved by 18.81\nIteration 13 of at most 20:\nthe log-likelihood improved by 11.67\nIteration 14 of at most 20:\nthe log-likelihood improved by 19.97\nIteration 15 of at most 20:\nthe log-likelihood improved by 18.5\nIteration 16 of at most 20:\nthe log-likelihood improved by 13.87\nIteration 17 of at most 20:\nthe log-likelihood improved by 7.43\nIteration 18 of at most 20:\nthe log-likelihood improved by 16.36\nIteration 19 of at most 20:\nthe log-likelihood improved by 11.96\nIteration 20 of at most 20:\nthe log-likelihood improved by 19.98\n\nThis model was fit using MCMC.  To examine model diagnostics and check \nfor degeneracy, use the mcmc.diagnostics() function.\nError in simulate.formula(form, coef = theta, nsim = 1, constraints = \nconstraints,  :Illegal value of coef passed to simulate.formula\n\nDr. Narciso Cerpa\nVisiting Research\nTBM - TU Delft\nThe Netherlands.",
+      "body_snippet": "Hi there,\n\nI hope that somebody may be able to help me with this problem\n\nI am running ergm and I get an error. It does not matter how many \niterations I do (I tried with 200, but this example is only",
+      "thread_id": "thread-6c9fa518bf09",
+      "thread_depth": 0,
+      "month": "2013-05"
+    },
+    {
+      "id": "msg-662368344001",
+      "message_id": "<OFD7CCC86D.F87F21C2-ONC1257B5F.006E3723-C1257B5F.006E3724@be.ibm.com>",
+      "from_name": "Tom Kochuyt",
+      "from_email_hash": "46f39e60ea17044367574233c6036a3c2ecdd09badcc49c19d1b5d76f9ccf618",
+      "date": "2013-05-02T13:03:50Z",
+      "subject": "[statnet_help] AUTO: Tom Kochuyt is prepared for DELETION (FREEZE) (returning 05-11-2012)",
+      "subject_clean": "[statnet_help] AUTO: Tom Kochuyt is prepared for DELETION (FREEZE) (returning 05-11-2012)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I am out of the office until 05-11-2012.\n\nTom Kochuyt is prepared for DELETION (FREEZE)\n\n\nNote: This is an automated response to your message  \"statnet_help Digest,\nVol 82, Issue 1\" sent on 02/05/2013 21:04:21.\n\nThis is the only notification you will receive while this person is away.",
+      "body_snippet": "I am out of the office until 05-11-2012.\n\nTom Kochuyt is prepared for DELETION (FREEZE)\n\n\nNote: This is an automated response to your message  \"statnet_help Digest,\nVol 82, Issue 1\" sent on 02/05/2013",
+      "thread_id": "thread-662368344001",
+      "thread_depth": 0,
+      "month": "2013-05"
+    },
+    {
+      "id": "msg-d374ac2dccf6",
+      "message_id": "<5183E1F0.3070007@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2013-05-03T09:12:32Z",
+      "subject": "[statnet_help] ERGM problem",
+      "subject_clean": "[statnet_help] ERGM problem",
+      "in_reply_to": "<518254F6.8090402@utalca.cl>",
+      "references": [
+        "<518254F6.8090402@utalca.cl>"
+      ],
+      "body_plain": "Hello Narciso,\n\nThe error is strange, and not one I've seen before.  Can you let us know \nwhich version of the ergm package you are using?  We just uploaded a new \none to CRAN a week ago.  If you are using an old one, you should try the \nnewest first: upgrade to R 3.0.0 as well, and then all your packages \nwith either update.packages() or with update.packages(\"name.of.package\") \nfor each of the statnet packages.  Let us know if the error is still there.\n\nThat said, from the evidence I am seeing, it would appear that your \nparticular model is likely to be degenerate.  I can tell this by the \nfact that the log-likelihood improvements keep going back up to the \nmaximum cap (around 20). That may not be the result you want, but it is \nstill an informative about the fact that this model is not the right \ngenerative model for your data.  It doesn't explain the error though.\n\nCheers,\nSteve\n\n\n\n\n\nOn 5/2/2013 4:58 AM, Narciso Cerpa wrote:\n> Hi there,\n>\n> I hope that somebody may be able to help me with this problem\n>\n> I am running ergm and I get an error. It does not matter how many \n> iterations I do (I tried with 200, but this example is only with 20), \n> the error is the same (please see at the bottom).\n>\n> concepttype is a node attribute that can take three values (i.e., 1, \n> 2, 3)\n> mpssupported is a directed network\n>\n> > model2 <- ergm(mpssupported ~ edges + gwidegree(0.25, fixed=T) + \n> gwodegree(0.25,fixed=T)+ nodefactor(\"concepttype\")+ \n> nodemix(\"concepttype\"),control=control.ergm(MCMC.samplesize=10000))\n>\n> Iteration 1 of at most 20:\n> the log-likelihood improved by 16.85\n> Iteration 2 of at most 20:\n> the log-likelihood improved by 14.49\n> Iteration 3 of at most 20:\n> the log-likelihood improved by 19.67\n> Iteration 4 of at most 20:\n> the log-likelihood improved by 16.6\n> Iteration 5 of at most 20:\n> the log-likelihood improved by 18.89\n> Iteration 6 of at most 20:\n> the log-likelihood improved by 19.76\n> Iteration 7 of at most 20:\n> the log-likelihood improved by 19.88\n> Iteration 8 of at most 20:\n> the log-likelihood improved by 10.92\n> Iteration 9 of at most 20:\n> the log-likelihood improved by 4.979\n> Iteration 10 of at most 20:\n> the log-likelihood improved by 19.14\n> Iteration 11 of at most 20:\n> the log-likelihood improved by 19.99\n> Iteration 12 of at most 20:\n> the log-likelihood improved by 18.81\n> Iteration 13 of at most 20:\n> the log-likelihood improved by 11.67\n> Iteration 14 of at most 20:\n> the log-likelihood improved by 19.97\n> Iteration 15 of at most 20:\n> the log-likelihood improved by 18.5\n> Iteration 16 of at most 20:\n> the log-likelihood improved by 13.87\n> Iteration 17 of at most 20:\n> the log-likelihood improved by 7.43\n> Iteration 18 of at most 20:\n> the log-likelihood improved by 16.36\n> Iteration 19 of at most 20:\n> the log-likelihood improved by 11.96\n> Iteration 20 of at most 20:\n> the log-likelihood improved by 19.98\n>\n> This model was fit using MCMC.  To examine model diagnostics and check \n> for degeneracy, use the mcmc.diagnostics() function.\n> Error in simulate.formula(form, coef = theta, nsim = 1, constraints = \n> constraints,  :Illegal value of coef passed to simulate.formula\n>\n> Dr. Narciso Cerpa\n> Visiting Research\n> TBM - TU Delft\n> The Netherlands.\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n\n*** NOTE NEW OFFICE LOCATION AS OF MARCH 2012: DENNY 423 ***\n\nSteven M. Goodreau / Assoc. Professor / Dept. of Anthropology\nUniversity of Washington / Denny Hall 423 / Campus Box 353100\nSeattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau",
+      "body_snippet": "Hello Narciso,\n\nThe error is strange, and not one I've seen before.  Can you let us know \nwhich version of the ergm package you are using?  We just uploaded a new \none to CRAN a week ago.  If you are ",
+      "thread_id": "thread-6c9fa518bf09",
+      "thread_depth": 1,
+      "month": "2013-05"
+    },
+    {
+      "id": "msg-323ea79c2f1e",
+      "message_id": "<5183E93E.8030504@utalca.cl>",
+      "from_name": "Narciso Cerpa",
+      "from_email_hash": "7d3e10db43efad4b2f1b50a84d24c82413cac639cf3d9c90e25ec50aec361d1c",
+      "date": "2013-05-03T09:43:42Z",
+      "subject": "[statnet_help] ERGM problem",
+      "subject_clean": "[statnet_help] ERGM problem",
+      "in_reply_to": "<5183E1F0.3070007@uw.edu>",
+      "references": [
+        "<518254F6.8090402@utalca.cl>",
+        "<5183E1F0.3070007@uw.edu>"
+      ],
+      "body_plain": "Hi Steve,\n\nThanks for your response. I will follow your advise and I will use the \nnew ergm package and I will upgrade R to 3.0.0\nI let you know if the error is still there after the upgrade. Yes, you \nare quite right about the model. I will have to investigate a bit more \nabout the model.\n\nThanks,\n\nNarciso.\n\nOn 03/05/13 18:12, Steven Goodreau wrote:\n> Hello Narciso,\n>\n> The error is strange, and not one I've seen before.  Can you let us know\n> which version of the ergm package you are using?  We just uploaded a new\n> one to CRAN a week ago.  If you are using an old one, you should try the\n> newest first: upgrade to R 3.0.0 as well, and then all your packages\n> with either update.packages() or with update.packages(\"name.of.package\")\n> for each of the statnet packages.  Let us know if the error is still there.\n>\n> That said, from the evidence I am seeing, it would appear that your\n> particular model is likely to be degenerate.  I can tell this by the\n> fact that the log-likelihood improvements keep going back up to the\n> maximum cap (around 20). That may not be the result you want, but it is\n> still an informative about the fact that this model is not the right\n> generative model for your data.  It doesn't explain the error though.\n>\n> Cheers,\n> Steve\n>\n>\n>\n>\n>\n> On 5/2/2013 4:58 AM, Narciso Cerpa wrote:\n>> Hi there,\n>>\n>> I hope that somebody may be able to help me with this problem\n>>\n>> I am running ergm and I get an error. It does not matter how many\n>> iterations I do (I tried with 200, but this example is only with 20),\n>> the error is the same (please see at the bottom).\n>>\n>> concepttype is a node attribute that can take three values (i.e., 1,\n>> 2, 3)\n>> mpssupported is a directed network\n>>\n>>> model2 <- ergm(mpssupported ~ edges + gwidegree(0.25, fixed=T) +\n>> gwodegree(0.25,fixed=T)+ nodefactor(\"concepttype\")+\n>> nodemix(\"concepttype\"),control=control.ergm(MCMC.samplesize=10000))\n>>\n>> Iteration 1 of at most 20:\n>> the log-likelihood improved by 16.85\n>> Iteration 2 of at most 20:\n>> the log-likelihood improved by 14.49\n>> Iteration 3 of at most 20:\n>> the log-likelihood improved by 19.67\n>> Iteration 4 of at most 20:\n>> the log-likelihood improved by 16.6\n>> Iteration 5 of at most 20:\n>> the log-likelihood improved by 18.89\n>> Iteration 6 of at most 20:\n>> the log-likelihood improved by 19.76\n>> Iteration 7 of at most 20:\n>> the log-likelihood improved by 19.88\n>> Iteration 8 of at most 20:\n>> the log-likelihood improved by 10.92\n>> Iteration 9 of at most 20:\n>> the log-likelihood improved by 4.979\n>> Iteration 10 of at most 20:\n>> the log-likelihood improved by 19.14\n>> Iteration 11 of at most 20:\n>> the log-likelihood improved by 19.99\n>> Iteration 12 of at most 20:\n>> the log-likelihood improved by 18.81\n>> Iteration 13 of at most 20:\n>> the log-likelihood improved by 11.67\n>> Iteration 14 of at most 20:\n>> the log-likelihood improved by 19.97\n>> Iteration 15 of at most 20:\n>> the log-likelihood improved by 18.5\n>> Iteration 16 of at most 20:\n>> the log-likelihood improved by 13.87\n>> Iteration 17 of at most 20:\n>> the log-likelihood improved by 7.43\n>> Iteration 18 of at most 20:\n>> the log-likelihood improved by 16.36\n>> Iteration 19 of at most 20:\n>> the log-likelihood improved by 11.96\n>> Iteration 20 of at most 20:\n>> the log-likelihood improved by 19.98\n>>\n>> This model was fit using MCMC.  To examine model diagnostics and check\n>> for degeneracy, use the mcmc.diagnostics() function.\n>> Error in simulate.formula(form, coef = theta, nsim = 1, constraints =\n>> constraints,  :Illegal value of coef passed to simulate.formula\n>>\n>> Dr. Narciso Cerpa\n>> Visiting Research\n>> TBM - TU Delft\n>> The Netherlands.\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> *** NOTE NEW OFFICE LOCATION AS OF MARCH 2012: DENNY 423 ***\n>\n> Steven M. Goodreau / Assoc. Professor / Dept. of Anthropology\n> University of Washington / Denny Hall 423 / Campus Box 353100\n> Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)\n> http://faculty.washington.edu/goodreau\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Steve,\n\nThanks for your response. I will follow your advise and I will use the \nnew ergm package and I will upgrade R to 3.0.0\nI let you know if the error is still there after the upgrade. Yes, you",
+      "thread_id": "thread-6c9fa518bf09",
+      "thread_depth": 2,
+      "month": "2013-05"
+    },
+    {
+      "id": "msg-b6624e1b7964",
+      "message_id": "<5183ED0D.2040107@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2013-05-03T09:59:57Z",
+      "subject": "[statnet_help] commands from ergm tutorial take too long to complete",
+      "subject_clean": "[statnet_help] commands from ergm tutorial take too long to complete",
+      "in_reply_to": "<6D94F6F2-833F-49AB-B2DB-2760F6030818@nd.edu>",
+      "references": [
+        "<D5922210-8900-466A-808C-0BB60046A7FE@nd.edu>",
+        "<5176BB73.2090300@uw.edu>",
+        "<6D94F6F2-833F-49AB-B2DB-2760F6030818@nd.edu>"
+      ],
+      "body_plain": "Hello Szabolcs,\n\nIndeed, with that set of versions you had, it appears that the tutorial \ndoes go into silence for a long time there.  As you figured out, this is \na result of the fact that this case is pathological, although the way it \nwas handled then was not ideal.\n\nThe good news it that with the latest versions of the packages (which \njust went up on CRAN a week ago) we have instituted some more \ninformative checks on degeneracy that return much faster.  If you \ninstall those, you'll see that after just 5-10 seconds you'll get an error:\n\nError in ergm.MCMLE(init, nw, model, initialfit, control = control, \nMHproposal = MHproposal,  :\n   Number of edges in a simulated network exceeds that in the observed \nby a factor of more than 20. This is a strong indicator of model \ndegeneracy. If you are reasonably certain that this is not the case, \nincrease the MCMLE.density.guard control.ergm() parameter.\n\nThis means that you get a very quick indication that there is almost \ncertainly a problem, but also have a means of overriding it and \ncontinuing the fit if you so desire.\n\nAlas, with the software always evolving and improving, the old versions \nof tutorials will get out of date in their behavior. More good news: \neach year we upgrade a set of core tutorial materials for the INSNA \nSunbelt Conference to work with the latest versions of the packages.  \nThese will available on the statnet website each year shortly after the \nconference (ie some time in late spring).\n\nCheers,\nSteve\n\n\n\n\n\nOn 4/23/2013 10:52 AM, Szabolcs Horvat wrote:\n> On Apr 23, 2013, at 12:48 , Steven Goodreau <goodreau@uw.edu> wrote:\n>\n>> Hello,\n>>\n>> Can you send me the version numbers for R and ergm that you're using, so\n>> I can take a look?  Nothing has been changed explicitly, but you're\n>> right that since this is a pathological case, whose behavior was tightly\n>> controlled at the time by using a seed, that it might not be\n>> well-behaved in subsequent releases.\n>>\n>> Cheers,\n>> Steve\n>>\n> Hello Steve,\n>\n> Thank you for looking at it.\n>\n> I've attached a full (unaltered) transcript of the R session.  I believe it contains all the version information, but if something's missing, please ask.  The hang happens after the last command.\n>\n> I hope the \"The following object is masked\" are not causing any problems.\n>\n> Greetings,\n> Szabolcs\n>\n>\n> ----\n>\n> Transcript follows:\n>\n>\n> R version 3.0.0 (2013-04-03) -- \"Masked Marvel\"\n> Copyright (C) 2013 The R Foundation for Statistical Computing\n> Platform: x86_64-apple-darwin10.8.0 (64-bit)\n>\n> R is free software and comes with ABSOLUTELY NO WARRANTY.\n> You are welcome to redistribute it under certain conditions.\n> Type 'license()' or 'licence()' for distribution details.\n>\n>   Natural language support but running in an English locale\n>\n> R is a collaborative project with many contributors.\n> Type 'contributors()' for more information and\n> 'citation()' on how to cite R or R packages in publications.\n>\n> Type 'demo()' for some demos, 'help()' for on-line help, or\n> 'help.start()' for an HTML browser interface to help.\n> Type 'q()' to quit R.\n>\n> [R.app GUI 1.60 (6476) x86_64-apple-darwin10.8.0]\n>\n> [History restored from /Users/szhorvat/.Rapp.history]\n>\n>> library(statnet)\n> Loading required package: network\n> network: Classes for Relational Data\n> Version 1.7.2 created on March 15, 2013.\n> copyright (c) 2005, Carter T. Butts, University of California-Irvine\n>                     Mark S. Handcock, University of Washington\n>                     David R. Hunter, Penn State University\n>                     Martina Morris, University of Washington\n> For citation information, type citation(\"network\").\n> Type help(\"network-package\") to get started.\n>\n> Loading required package: ergm\n> Loading required package: robustbase\n> Loading required package: Matrix\n> Loading required package: lattice\n> Loading required package: trust\n> Loading required package: nlme\n> Loading required package: coda\n>\n> ergm: version 3.0-3, created on 2012-05-27\n> Copyright (c) 2003, Mark S. Handcock, University of California-Los Angeles\n>                     David R. Hunter, Penn State University\n>                     Carter T. Butts, University of California-Irvine\n>                     Steven M. Goodreau, University of Washington\n>                     Pavel N. Krivitsky, Penn State University\n>                     Martina Morris, University of Washington\n> Based on \"statnet\" project software (statnet.org).\n> For license and citation information see statnet.org/attribution\n> or type citation(\"ergm\").\n>\n> Loading required package: sna\n> sna: Tools for Social Network Analysis\n> Version 2.3-1 created on 2013-02-28.\n> copyright (c) 2005, Carter T. Butts, University of California-Irvine\n> For citation information, type citation(\"sna\").\n> Type help(package=\"sna\") to get started.\n>\n>\n> Attaching package: ?sna?\n>\n> The following object is masked from ?package:nlme?:\n>\n>     gapply\n>\n> The following object is masked from ?package:network?:\n>\n>     %c%\n>\n> Loading required package: networkDynamic\n> Loading required package: statnet.common\n>\n> Attaching package: ?statnet.common?\n>\n> The following object is masked from ?package:ergm?:\n>\n>     compress.data.frame, paste.and, sort.data.frame\n>\n>\n> networkDynamic: version 0.4, created on 2013-03-19\n> Copyright (c) 2013, Carter T. Butts, University of California -- Irvine\n>                     Ayn Leslie-Cook, University of Washington\n>                     Pavel N. Krivitsky, Penn State University\n>                     Skye Bender-deMoll, University of Washington\n>                     with contributions from\n>                     Zack Almquist, University of California -- Irvine\n>                     David R. Hunter, Penn State University\n>                     Li Wang\n>                     Kirk Li, University of Washington\n>                     Steven M. Goodreau, University of Washington\n>                     Martina Morris, University of Washington\n> Based on \"statnet\" project software (statnet.org).\n> For license and citation information see statnet.org/attribution\n> or type citation(\"networkDynamic\").\n>\n> statnet: Version 3.0-1, created on 2012-07-16\n> statnet is a suite of R packages for the statistical modeling of network data\n> See http://statnet.org for statnet project information\n>> data('faux.magnolia.high')\n>> magnolia <- faux.magnolia.high\n>> fit <- ergm(magnolia~edges+triangle, control=control.ergm(seed=1))\n>\n> (After a few minutes of waiting it's at Iteration 4, but I can't copy that output as the program is frozen.)_______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n\n*** NOTE NEW OFFICE LOCATION AS OF MARCH 2012: DENNY 423 ***\n\nSteven M. Goodreau / Assoc. Professor / Dept. of Anthropology\nUniversity of Washington / Denny Hall 423 / Campus Box 353100\nSeattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau",
+      "body_snippet": "Hello Szabolcs,\n\nIndeed, with that set of versions you had, it appears that the tutorial \ndoes go into silence for a long time there.  As you figured out, this is \na result of the fact that this case ",
+      "thread_id": "thread-b6624e1b7964",
+      "thread_depth": 0,
+      "month": "2013-05"
+    },
+    {
+      "id": "msg-6df9da7c2063",
+      "message_id": "<E37A5117-07C5-44A9-AE5A-3BF335365654@nd.edu>",
+      "from_name": "Szabolcs Horvat",
+      "from_email_hash": "2da04a22d70193ed52d5e3cd6078d87bdd9f644e506f5395e1c9e3091c66ec38",
+      "date": "2013-05-09T11:47:51Z",
+      "subject": "[statnet_help] ergm.useterms questions",
+      "subject_clean": "[statnet_help] ergm.useterms questions",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI have a few questions about writing custom terms for ergm using the ergm.userterms template.  I went through the documentation and I have an (I believe) working implementation, but I still have a few questions remaining:\n\n\nQUESTION 1:\n\nThe tutorial shows a C function defined as\n\nCHANGESTAT_FN(d_something) { }\n\nIf I look at the ergm sources, the terms have two corresponding functions, defined with D_CHANGESTAT_FN and S_CHANGESTAT_FN.  What are these two, and how are they different from CHANGESTAT_FN?  It seems S_CHANGESTAT_FN is for calculating the initial value in CHANGE_STAT, for example:\n\nD_CHANGESTAT_FN(d_edges) {\n  int edgeflag, i;\n  Vertex tail, head;\n  \n  /* *** don't forget tail -> head */    \n  CHANGE_STAT[0] = 0.0;\n  for (i=0; i < ntoggles; i++)\n    {\n      edgeflag = IS_OUTEDGE(tail = TAIL(i), head = HEAD(i));\n      CHANGE_STAT[0] += edgeflag ? - 1 : 1;\n      TOGGLE_IF_MORE_TO_COME(i);\n    }\n  UNDO_PREVIOUS_TOGGLES(i);\n}\n\nS_CHANGESTAT_FN(s_edges) {\n  CHANGE_STAT[0] = N_EDGES;\n}\n\nThis example is copied from the ergm sources.  I tried to re-implement it (as an exercise) like this:\n\nCHANGESTAT_FN(d_edge2) {\n  int i;\n\n  ZERO_ALL_CHANGESTATS(i);\n  FOR_EACH_TOGGLE(i) {\n    if (IS_OUTEDGE(TAIL(i), HEAD(i))) {\n      CHANGE_STAT[0] += -1;\n    }  \n    else {\n      CHANGE_STAT[0] += 1;\n    }\n    TOGGLE_IF_MORE_TO_COME(i);\n  }\n  UNDO_PREVIOUS_TOGGLES(i);\n}\n\nIf I understand ZERO_ALL_CHANGESTATS right, my version starts with a value of 0, while the ergm version starts with the actual edge count.  Why are both acceptable?  Is it because what the algorithm uses is really just the ratio of the exponential terms (exp(a*edges_after) / exp(a*edges_before))?\n\n\nQUESTION 2:\n\nIs it okay to use N_EDGES inside FOR_EACH_TOGGLE?  Does the edge number returned by N_EDGES get updated during toggling edges?  Is it correct to say that N_EDGES, when used inside of FOR_EACH_TOGGLE, will return the number of edges present before the currently considered toggle is executed (but taking into account all previous toggles)?\n\nOr does N_EDGES stay unchanged during a single execution of the d_something function?\n\n\nQUESTION 3:\n\nWhat the ergm() R function does is that it finds \\theta so that the average of the network statistic g_1 over all graphs is going to be the prescribed value (target.stats) if we assign the following probability to each graph: exp(\\theta g_1)/k(\\theta)\n\nI'm using the notations from the ergm tutorial.\n\nIs it possible to use the same model, i.e. assign probabilities exp(\\theta g_1)/k(\\theta) to each graph, but instead of fitting g_1, fit some other quantity g_2 instead?  I.e. find \\theta so that the mean value of g_2 will be what I want, but still use g_1 to assign probabilities to each graph.\n\nCan ergm be extended by users to make this possible?\n\n(I can see how this request might seem strange, but this is indeed what I need, and I would like to know if I can use ergm, or I need to write my own implementation.)\n\nThank you for any replies in advance!\n\nBest regards,\nSzabolcs Horv?t",
+      "body_snippet": "Hello,\n\nI have a few questions about writing custom terms for ergm using the ergm.userterms template.  I went through the documentation and I have an (I believe) working implementation, but I still ha",
+      "thread_id": "thread-6df9da7c2063",
+      "thread_depth": 0,
+      "month": "2013-05"
+    },
+    {
+      "id": "msg-efb94a0e131e",
+      "message_id": "<1A641BAF-0DA6-49D7-AF27-DF6B118A5868@nd.edu>",
+      "from_name": "Szabolcs Horvat",
+      "from_email_hash": "2da04a22d70193ed52d5e3cd6078d87bdd9f644e506f5395e1c9e3091c66ec38",
+      "date": "2013-05-09T20:02:33Z",
+      "subject": "[statnet_help] error with custom ergm terms",
+      "subject_clean": "[statnet_help] error with custom ergm terms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI am using ergm with custom written terms.  The term works well when used on its own, and produces correct results: ergm(nw ~ myterm)\n\nUnfortunately when I use it together with other terms (ergm(nw ~ myterm + kstar(2))), I often, but not always, get an error like this:\n\nError in if (order) coefs[order, seq_len(order)] else numeric() : \n  argument is not interpretable as logical\n\nThe error comes up only after a number of iterations have finished without problems.\nSometimes there's also a warning like this:\n\nIn if (order) coefs[order, seq_len(order)] else numeric() :\n  the condition has length > 1 and only the first element will be used\n\nDoes anyone have any ideas what this might be caused by?  I found references to the same error in the mailing list archive, but no tips on why this might happen.  Unfortunately I am having trouble reproducing the problem with a *simple* example (so I wouldn't have to post the full code for my term as well as the full data).  I'd still appreciate even some vague hints on what may be happening here.\n\nI have the latest version of R and ergm that are available from CRAN.\n\nBest regards,\nSzabolcs Horv?t",
+      "body_snippet": "Hello,\n\nI am using ergm with custom written terms.  The term works well when used on its own, and produces correct results: ergm(nw ~ myterm)\n\nUnfortunately when I use it together with other terms (er",
+      "thread_id": "thread-efb94a0e131e",
+      "thread_depth": 0,
+      "month": "2013-05"
+    },
+    {
+      "id": "msg-b24a7e0bbf10",
+      "message_id": "<AA392C61-E4EA-443E-B308-78BA5440DB47@nd.edu>",
+      "from_name": "Szabolcs Horvat",
+      "from_email_hash": "2da04a22d70193ed52d5e3cd6078d87bdd9f644e506f5395e1c9e3091c66ec38",
+      "date": "2013-05-10T10:59:36Z",
+      "subject": "[statnet_help] ergm crashes with main.method=\"Robbins-Monro\"",
+      "subject_clean": "[statnet_help] ergm crashes with main.method=\"Robbins-Monro\"",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nIt seems ergm crashes with the following commands:\n\nlibrary(ergm)\ndata(\"faux.magnolia.high\")\nergm(faux.magnolia.high ~ edges + triangle, control=control.ergm(main.method=\"Robbins-Monro\"))\n\nI have R 3.0.0 and ergm 3.1-0, created on 2013-04-17 (i.e. the latest versions available on CRAN at this moment)\n\nBest regards,\nSzabolcs Horv?t",
+      "body_snippet": "Hello,\n\nIt seems ergm crashes with the following commands:\n\nlibrary(ergm)\ndata(\"faux.magnolia.high\")\nergm(faux.magnolia.high ~ edges + triangle, control=control.ergm(main.method=\"Robbins-Monro\"))\n\nI h",
+      "thread_id": "thread-b24a7e0bbf10",
+      "thread_depth": 0,
+      "month": "2013-05"
+    },
+    {
+      "id": "msg-37e1ce2cf5af",
+      "message_id": "<210CE99F-3B87-4FD4-8C65-5DE4B531BD96@nd.edu>",
+      "from_name": "Szabolcs Horvat",
+      "from_email_hash": "2da04a22d70193ed52d5e3cd6078d87bdd9f644e506f5395e1c9e3091c66ec38",
+      "date": "2013-05-10T14:19:17Z",
+      "subject": "[statnet_help] error with custom ergm terms",
+      "subject_clean": "[statnet_help] error with custom ergm terms",
+      "in_reply_to": "<1A641BAF-0DA6-49D7-AF27-DF6B118A5868@nd.edu>",
+      "references": [
+        "<1A641BAF-0DA6-49D7-AF27-DF6B118A5868@nd.edu>"
+      ],
+      "body_plain": "Hello,\n\nHere is some additional information on this problem.  Perhaps someone can give me some hints on what may be going wrong based on this.\n\nHere's the traceback() when the error is issued:\n\n8: ar.yw.default(x, aic = aic, order.max = order.max, na.action = na.action, \n       series = series, ...)\n7: ar.yw(x, aic = aic, order.max = order.max, na.action = na.action, \n       series = series, ...)\n6: ar(x[, i], aic = TRUE)\n5: spectrum0.ar(x)\n4: effectiveSize(x)\n3: approx.hotelling.diff.test(esteq, esteq.obs)\n2: ergm.MCMLE(init, nw, model, initialfit, control = control, MHproposal = MHproposal, \n       MHproposal.obs = MHproposal.obs, verbose = verbose, response = response, \n       ...)\n1: ergm(faux.magnolia.high ~ myterm + kstar(2),\n       control = control.ergm(MCMLE.maxit = 20, MCMC.runtime.traceplot = T), \n       verbose = T)\n\nWith verbose=T, the error happens just before \"Average estimating equation values:\" would be printed for this iteration.\n\nThe very last \"traceplot\" shown before the \"crash\" (with MCMC.runtime.traceplot = T) is flat. (This has to be an artefact of the \"crash\", right?)\n\nIf I use MCMLE.maxit to stop the iteration just before ergm() would \"crash\", and then run mcmc.diagnostics on the resulting fit object, I get the same error (mcmc.diagnostics() gives the same error).\n\nIf I examine this fit object, and generate some samples using simulate(), it appears to fit the input data very well.  There's no sign of degeneracy.  (I also expect this based on theoretical considerations.)\n\nMy custom term may produce very large changestats.  They may be as large as several hundred for this particular network.  Does the magnitude of the changestats matter?  (Rescaling them won't help.)\n\n\nBased on these observation I have the impression that it is not the core fitting algorithm that runs into trouble and causes the error, but something else.  Is there a way to disable the part of ergm() that causes the problem?\n\nBest regards,\nSzabolcs Horv?t\n\n\n\nOn May 9, 2013, at 23:02 , Szabolcs Horvat <szhorvat@nd.edu> wrote:\n\n> Hello,\n> \n> I am using ergm with custom written terms.  The term works well when used on its own, and produces correct results: ergm(nw ~ myterm)\n> \n> Unfortunately when I use it together with other terms (ergm(nw ~ myterm + kstar(2))), I often, but not always, get an error like this:\n> \n> Error in if (order) coefs[order, seq_len(order)] else numeric() : \n>  argument is not interpretable as logical\n> \n> The error comes up only after a number of iterations have finished without problems.\n> Sometimes there's also a warning like this:\n> \n> In if (order) coefs[order, seq_len(order)] else numeric() :\n>  the condition has length > 1 and only the first element will be used\n> \n> Does anyone have any ideas what this might be caused by?  I found references to the same error in the mailing list archive, but no tips on why this might happen.  Unfortunately I am having trouble reproducing the problem with a *simple* example (so I wouldn't have to post the full code for my term as well as the full data).  I'd still appreciate even some vague hints on what may be happening here.\n> \n> I have the latest version of R and ergm that are available from CRAN.\n> \n> Best regards,\n> Szabolcs Horv?t\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hello,\n\nHere is some additional information on this problem.  Perhaps someone can give me some hints on what may be going wrong based on this.\n\nHere's the traceback() when the error is issued:\n\n8: ar.",
+      "thread_id": "thread-efb94a0e131e",
+      "thread_depth": 1,
+      "month": "2013-05"
+    },
+    {
+      "id": "msg-1e36b3af6613",
+      "message_id": "<alpine.WNT.1.10.1305101557520.19984@TS3.csde.washington.edu>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-05-10T16:00:39Z",
+      "subject": "[statnet_help] error with custom ergm terms",
+      "subject_clean": "[statnet_help] error with custom ergm terms",
+      "in_reply_to": "<210CE99F-3B87-4FD4-8C65-5DE4B531BD96@nd.edu>",
+      "references": [
+        "<1A641BAF-0DA6-49D7-AF27-DF6B118A5868@nd.edu>",
+        "<210CE99F-3B87-4FD4-8C65-5DE4B531BD96@nd.edu>"
+      ],
+      "body_plain": "Szabolcs,\n\nThe kstar terms are often a problem in models, even if the other terms \nare quite harmless (e.g., edges).  Have you tried using the gwdsp term in \nplace of kstar?  Or any other terms that are dyadic-independent?\n\n\nthanks,\nMartina\n\nOn Fri, 10 May 2013, Szabolcs Horvat wrote:\n\n> Hello,\n>\n> Here is some additional information on this problem.  Perhaps someone can give me some hints on what may be going wrong based on this.\n>\n> Here's the traceback() when the error is issued:\n>\n> 8: ar.yw.default(x, aic = aic, order.max = order.max, na.action = na.action,\n>       series = series, ...)\n> 7: ar.yw(x, aic = aic, order.max = order.max, na.action = na.action,\n>       series = series, ...)\n> 6: ar(x[, i], aic = TRUE)\n> 5: spectrum0.ar(x)\n> 4: effectiveSize(x)\n> 3: approx.hotelling.diff.test(esteq, esteq.obs)\n> 2: ergm.MCMLE(init, nw, model, initialfit, control = control, MHproposal = MHproposal,\n>       MHproposal.obs = MHproposal.obs, verbose = verbose, response = response,\n>       ...)\n> 1: ergm(faux.magnolia.high ~ myterm + kstar(2),\n>       control = control.ergm(MCMLE.maxit = 20, MCMC.runtime.traceplot = T),\n>       verbose = T)\n>\n> With verbose=T, the error happens just before \"Average estimating equation values:\" would be printed for this iteration.\n>\n> The very last \"traceplot\" shown before the \"crash\" (with MCMC.runtime.traceplot = T) is flat. (This has to be an artefact of the \"crash\", right?)\n>\n> If I use MCMLE.maxit to stop the iteration just before ergm() would \"crash\", and then run mcmc.diagnostics on the resulting fit object, I get the same error (mcmc.diagnostics() gives the same error).\n>\n> If I examine this fit object, and generate some samples using simulate(), it appears to fit the input data very well.  There's no sign of degeneracy.  (I also expect this based on theoretical considerations.)\n>\n> My custom term may produce very large changestats.  They may be as large as several hundred for this particular network.  Does the magnitude of the changestats matter?  (Rescaling them won't help.)\n>\n>\n> Based on these observation I have the impression that it is not the core fitting algorithm that runs into trouble and causes the error, but something else.  Is there a way to disable the part of ergm() that causes the problem?\n>\n> Best regards,\n> Szabolcs Horv?t\n>\n>\n>\n> On May 9, 2013, at 23:02 , Szabolcs Horvat <szhorvat@nd.edu> wrote:\n>\n>> Hello,\n>>\n>> I am using ergm with custom written terms.  The term works well when \n>> used on its own, and produces correct results: ergm(nw ~ myterm)\n>>\n>> Unfortunately when I use it together with other terms (ergm(nw ~ myterm \n>> + kstar(2))), I often, but not always, get an error like this:\n>>\n>> Error in if (order) coefs[order, seq_len(order)] else numeric() :\n>>  argument is not interpretable as logical\n>>\n>> The error comes up only after a number of iterations have finished without problems.\n>> Sometimes there's also a warning like this:\n>>\n>> In if (order) coefs[order, seq_len(order)] else numeric() :\n>>  the condition has length > 1 and only the first element will be used\n>>\n>> Does anyone have any ideas what this might be caused by?  I found references to the same error in the mailing list archive, but no tips on why this might happen.  Unfortunately I am having trouble reproducing the problem with a *simple* example (so I wouldn't have to post the full code for my term as well as the full data).  I'd still appreciate even some vague hints on what may be happening here.\n>>\n>> I have the latest version of R and ergm that are available from CRAN.\n>>\n>> Best regards,\n>> Szabolcs Horv?t\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Szabolcs,\n\nThe kstar terms are often a problem in models, even if the other terms \nare quite harmless (e.g., edges).  Have you tried using the gwdsp term in \nplace of kstar?  Or any other terms that a",
+      "thread_id": "thread-efb94a0e131e",
+      "thread_depth": 2,
+      "month": "2013-05"
+    },
+    {
+      "id": "msg-b3a1f31bdee0",
+      "message_id": "<516E1E77-A370-4713-BCCE-E7789B15D6B9@nd.edu>",
+      "from_name": "Szabolcs Horvat",
+      "from_email_hash": "2da04a22d70193ed52d5e3cd6078d87bdd9f644e506f5395e1c9e3091c66ec38",
+      "date": "2013-05-10T17:45:40Z",
+      "subject": "[statnet_help] error with custom ergm terms",
+      "subject_clean": "[statnet_help] error with custom ergm terms",
+      "in_reply_to": "<alpine.WNT.1.10.1305101557520.19984@TS3.csde.washington.edu>",
+      "references": [
+        "<1A641BAF-0DA6-49D7-AF27-DF6B118A5868@nd.edu>",
+        "<210CE99F-3B87-4FD4-8C65-5DE4B531BD96@nd.edu>",
+        "<alpine.WNT.1.10.1305101557520.19984@TS3.csde.washington.edu>"
+      ],
+      "body_plain": "Hello Martina,\n\nThank you for the reply.  My aim was not to just fit the graph with *any* terms, but to fit it specifically with these two terms and show that this works.  It does appear to work save for this \"crash\" (for lack of a better word for the error) in ergm() just before it would finish.  If I use MCMLE.maxit to limit the number of iterations so ergm() will stop just before the error would occur, I do get a result which looks fine (when I simulate() graphs from it) and shows no signs of degeneracy.\n\nI was wondering if you might have a guess about what ergm() (as well as mcmc.diagnostics()) does that goes wrong and causes the error, and if there are any flags to prevent it from doing that.\n\nGreetings,\nSzabolcs\n\n\nOn May 10, 2013, at 19:00 , martina morris <morrism@u.washington.edu> wrote:\n\n> Szabolcs,\n> \n> The kstar terms are often a problem in models, even if the other terms \n> are quite harmless (e.g., edges).  Have you tried using the gwdsp term in \n> place of kstar?  Or any other terms that are dyadic-independent?\n> \n> \n> thanks,\n> Martina\n> \n> On Fri, 10 May 2013, Szabolcs Horvat wrote:\n> \n>> Hello,\n>> \n>> Here is some additional information on this problem.  Perhaps someone can give me some hints on what may be going wrong based on this.\n>> \n>> Here's the traceback() when the error is issued:\n>> \n>> 8: ar.yw.default(x, aic = aic, order.max = order.max, na.action = na.action,\n>>      series = series, ...)\n>> 7: ar.yw(x, aic = aic, order.max = order.max, na.action = na.action,\n>>      series = series, ...)\n>> 6: ar(x[, i], aic = TRUE)\n>> 5: spectrum0.ar(x)\n>> 4: effectiveSize(x)\n>> 3: approx.hotelling.diff.test(esteq, esteq.obs)\n>> 2: ergm.MCMLE(init, nw, model, initialfit, control = control, MHproposal = MHproposal,\n>>      MHproposal.obs = MHproposal.obs, verbose = verbose, response = response,\n>>      ...)\n>> 1: ergm(faux.magnolia.high ~ myterm + kstar(2),\n>>      control = control.ergm(MCMLE.maxit = 20, MCMC.runtime.traceplot = T),\n>>      verbose = T)\n>> \n>> With verbose=T, the error happens just before \"Average estimating equation values:\" would be printed for this iteration.\n>> \n>> The very last \"traceplot\" shown before the \"crash\" (with MCMC.runtime.traceplot = T) is flat. (This has to be an artefact of the \"crash\", right?)\n>> \n>> If I use MCMLE.maxit to stop the iteration just before ergm() would \"crash\", and then run mcmc.diagnostics on the resulting fit object, I get the same error (mcmc.diagnostics() gives the same error).\n>> \n>> If I examine this fit object, and generate some samples using simulate(), it appears to fit the input data very well.  There's no sign of degeneracy.  (I also expect this based on theoretical considerations.)\n>> \n>> My custom term may produce very large changestats.  They may be as large as several hundred for this particular network.  Does the magnitude of the changestats matter?  (Rescaling them won't help.)\n>> \n>> \n>> Based on these observation I have the impression that it is not the core fitting algorithm that runs into trouble and causes the error, but something else.  Is there a way to disable the part of ergm() that causes the problem?\n>> \n>> Best regards,\n>> Szabolcs Horv?t\n>> \n>> \n>> \n>> On May 9, 2013, at 23:02 , Szabolcs Horvat <szhorvat@nd.edu> wrote:\n>> \n>>> Hello,\n>>> \n>>> I am using ergm with custom written terms.  The term works well when \n>>> used on its own, and produces correct results: ergm(nw ~ myterm)\n>>> \n>>> Unfortunately when I use it together with other terms (ergm(nw ~ myterm \n>>> + kstar(2))), I often, but not always, get an error like this:\n>>> \n>>> Error in if (order) coefs[order, seq_len(order)] else numeric() :\n>>> argument is not interpretable as logical\n>>> \n>>> The error comes up only after a number of iterations have finished without problems.\n>>> Sometimes there's also a warning like this:\n>>> \n>>> In if (order) coefs[order, seq_len(order)] else numeric() :\n>>> the condition has length > 1 and only the first element will be used\n>>> \n>>> Does anyone have any ideas what this might be caused by?  I found references to the same error in the mailing list archive, but no tips on why this might happen.  Unfortunately I am having trouble reproducing the problem with a *simple* example (so I wouldn't have to post the full code for my term as well as the full data).  I'd still appreciate even some vague hints on what may be happening here.\n>>> \n>>> I have the latest version of R and ergm that are available from CRAN.\n>>> \n>>> Best regards,\n>>> Szabolcs Horv?t\n>>> \n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>> \n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>> \n> \n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n> \n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n> \n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/",
+      "body_snippet": "Hello Martina,\n\nThank you for the reply.  My aim was not to just fit the graph with *any* terms, but to fit it specifically with these two terms and show that this works.  It does appear to work save ",
+      "thread_id": "thread-efb94a0e131e",
+      "thread_depth": 3,
+      "month": "2013-05"
+    },
+    {
+      "id": "msg-9f2bd1e83537",
+      "message_id": "<38D7D688-33FE-4246-B155-678BB3D344E4@nd.edu>",
+      "from_name": "Szabolcs Horvat",
+      "from_email_hash": "2da04a22d70193ed52d5e3cd6078d87bdd9f644e506f5395e1c9e3091c66ec38",
+      "date": "2013-05-10T19:32:53Z",
+      "subject": "[statnet_help] error with custom ergm terms",
+      "subject_clean": "[statnet_help] error with custom ergm terms",
+      "in_reply_to": "<516E1E77-A370-4713-BCCE-E7789B15D6B9@nd.edu>",
+      "references": [
+        "<1A641BAF-0DA6-49D7-AF27-DF6B118A5868@nd.edu>",
+        "<210CE99F-3B87-4FD4-8C65-5DE4B531BD96@nd.edu>",
+        "<alpine.WNT.1.10.1305101557520.19984@TS3.csde.washington.edu>",
+        "<516E1E77-A370-4713-BCCE-E7789B15D6B9@nd.edu>"
+      ],
+      "body_plain": "Hello,\n\nI managed to trace this error back to this minimal example:\n\n> effectiveSize(rep(1234567,10000))\n\nError in if (order) coefs[order, seq_len(order)] else numeric() : \n  argument is not interpretable as logical\nIn addition: Warning message:\nIn if (order) coefs[order, seq_len(order)] else numeric() :\n  the condition has length > 1 and only the first element will be used\n\n\nOn May 10, 2013, at 20:45 , Szabolcs Horvat <szhorvat@nd.edu> wrote:\n\n> Hello Martina,\n> \n> Thank you for the reply.  My aim was not to just fit the graph with *any* terms, but to fit it specifically with these two terms and show that this works.  It does appear to work save for this \"crash\" (for lack of a better word for the error) in ergm() just before it would finish.  If I use MCMLE.maxit to limit the number of iterations so ergm() will stop just before the error would occur, I do get a result which looks fine (when I simulate() graphs from it) and shows no signs of degeneracy.\n> \n> I was wondering if you might have a guess about what ergm() (as well as mcmc.diagnostics()) does that goes wrong and causes the error, and if there are any flags to prevent it from doing that.\n> \n> Greetings,\n> Szabolcs\n> \n> \n> On May 10, 2013, at 19:00 , martina morris <morrism@u.washington.edu> wrote:\n> \n>> Szabolcs,\n>> \n>> The kstar terms are often a problem in models, even if the other terms \n>> are quite harmless (e.g., edges).  Have you tried using the gwdsp term in \n>> place of kstar?  Or any other terms that are dyadic-independent?\n>> \n>> \n>> thanks,\n>> Martina\n>> \n>> On Fri, 10 May 2013, Szabolcs Horvat wrote:\n>> \n>>> Hello,\n>>> \n>>> Here is some additional information on this problem.  Perhaps someone can give me some hints on what may be going wrong based on this.\n>>> \n>>> Here's the traceback() when the error is issued:\n>>> \n>>> 8: ar.yw.default(x, aic = aic, order.max = order.max, na.action = na.action,\n>>>     series = series, ...)\n>>> 7: ar.yw(x, aic = aic, order.max = order.max, na.action = na.action,\n>>>     series = series, ...)\n>>> 6: ar(x[, i], aic = TRUE)\n>>> 5: spectrum0.ar(x)\n>>> 4: effectiveSize(x)\n>>> 3: approx.hotelling.diff.test(esteq, esteq.obs)\n>>> 2: ergm.MCMLE(init, nw, model, initialfit, control = control, MHproposal = MHproposal,\n>>>     MHproposal.obs = MHproposal.obs, verbose = verbose, response = response,\n>>>     ...)\n>>> 1: ergm(faux.magnolia.high ~ myterm + kstar(2),\n>>>     control = control.ergm(MCMLE.maxit = 20, MCMC.runtime.traceplot = T),\n>>>     verbose = T)\n>>> \n>>> With verbose=T, the error happens just before \"Average estimating equation values:\" would be printed for this iteration.\n>>> \n>>> The very last \"traceplot\" shown before the \"crash\" (with MCMC.runtime.traceplot = T) is flat. (This has to be an artefact of the \"crash\", right?)\n>>> \n>>> If I use MCMLE.maxit to stop the iteration just before ergm() would \"crash\", and then run mcmc.diagnostics on the resulting fit object, I get the same error (mcmc.diagnostics() gives the same error).\n>>> \n>>> If I examine this fit object, and generate some samples using simulate(), it appears to fit the input data very well.  There's no sign of degeneracy.  (I also expect this based on theoretical considerations.)\n>>> \n>>> My custom term may produce very large changestats.  They may be as large as several hundred for this particular network.  Does the magnitude of the changestats matter?  (Rescaling them won't help.)\n>>> \n>>> \n>>> Based on these observation I have the impression that it is not the core fitting algorithm that runs into trouble and causes the error, but something else.  Is there a way to disable the part of ergm() that causes the problem?\n>>> \n>>> Best regards,\n>>> Szabolcs Horv?t\n>>> \n>>> \n>>> \n>>> On May 9, 2013, at 23:02 , Szabolcs Horvat <szhorvat@nd.edu> wrote:\n>>> \n>>>> Hello,\n>>>> \n>>>> I am using ergm with custom written terms.  The term works well when \n>>>> used on its own, and produces correct results: ergm(nw ~ myterm)\n>>>> \n>>>> Unfortunately when I use it together with other terms (ergm(nw ~ myterm \n>>>> + kstar(2))), I often, but not always, get an error like this:\n>>>> \n>>>> Error in if (order) coefs[order, seq_len(order)] else numeric() :\n>>>> argument is not interpretable as logical\n>>>> \n>>>> The error comes up only after a number of iterations have finished without problems.\n>>>> Sometimes there's also a warning like this:\n>>>> \n>>>> In if (order) coefs[order, seq_len(order)] else numeric() :\n>>>> the condition has length > 1 and only the first element will be used\n>>>> \n>>>> Does anyone have any ideas what this might be caused by?  I found references to the same error in the mailing list archive, but no tips on why this might happen.  Unfortunately I am having trouble reproducing the problem with a *simple* example (so I wouldn't have to post the full code for my term as well as the full data).  I'd still appreciate even some vague hints on what may be happening here.\n>>>> \n>>>> I have the latest version of R and ergm that are available from CRAN.\n>>>> \n>>>> Best regards,\n>>>> Szabolcs Horv?t\n>>>> \n>>>> _______________________________________________\n>>>> statnet_help mailing list\n>>>> statnet_help@u.washington.edu\n>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>> \n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>> \n>> \n>> ****************************************************************\n>> Professor of Sociology and Statistics\n>> Director, UWCFAR Sociobehavioral and Prevention Research Core\n>> Box 354322\n>> University of Washington\n>> Seattle, WA 98195-4322\n>> \n>> Office:        (206) 685-3402\n>> Dept Office:   (206) 543-5882, 543-7237\n>> Fax:           (206) 685-7419\n>> \n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hello,\n\nI managed to trace this error back to this minimal example:\n\n> effectiveSize(rep(1234567,10000))\n\nError in if (order) coefs[order, seq_len(order)] else numeric() : \n  argument is not interpret",
+      "thread_id": "thread-efb94a0e131e",
+      "thread_depth": 4,
+      "month": "2013-05"
+    },
+    {
+      "id": "msg-5165d218cffb",
+      "message_id": "<1368247540.16133.324.camel@piPad>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "460258cbd680ea347ee0196adc8a17e139024de6f74b950cba8add8e35654b6f",
+      "date": "2013-05-10T21:45:40Z",
+      "subject": "[statnet_help] error with custom ergm terms",
+      "subject_clean": "[statnet_help] error with custom ergm terms",
+      "in_reply_to": "<38D7D688-33FE-4246-B155-678BB3D344E4@nd.edu>",
+      "references": [
+        "<1A641BAF-0DA6-49D7-AF27-DF6B118A5868@nd.edu>",
+        "<210CE99F-3B87-4FD4-8C65-5DE4B531BD96@nd.edu>",
+        "<alpine.WNT.1.10.1305101557520.19984@TS3.csde.washington.edu>",
+        "<516E1E77-A370-4713-BCCE-E7789B15D6B9@nd.edu>",
+        "<38D7D688-33FE-4246-B155-678BB3D344E4@nd.edu>"
+      ],
+      "body_plain": "Hello,\n\neffectiveSize() is a coda package function. Someone (perhaps me) should\nforward the bug report to its maintainer. Either way, it strongly\nsuggests that the model is bad, since it's not mixing at all.\n\n                     Pavel\n\nOn Fri, 2013-05-10 at 22:32 -0400, Szabolcs Horvat wrote:\n> Hello,\n> \n> I managed to trace this error back to this minimal example:\n> \n> > effectiveSize(rep(1234567,10000))\n> \n> Error in if (order) coefs[order, seq_len(order)] else numeric() : \n>   argument is not interpretable as logical\n> In addition: Warning message:\n> In if (order) coefs[order, seq_len(order)] else numeric() :\n>   the condition has length > 1 and only the first element will be used\n> \n> \n> On May 10, 2013, at 20:45 , Szabolcs Horvat <szhorvat@nd.edu> wrote:\n> \n> > Hello Martina,\n> > \n> > Thank you for the reply.  My aim was not to just fit the graph with *any* terms, but to fit it specifically with these two terms and show that this works.  It does appear to work save for this \"crash\" (for lack of a better word for the error) in ergm() just before it would finish.  If I use MCMLE.maxit to limit the number of iterations so ergm() will stop just before the error would occur, I do get a result which looks fine (when I simulate() graphs from it) and shows no signs of degeneracy.\n> > \n> > I was wondering if you might have a guess about what ergm() (as well as mcmc.diagnostics()) does that goes wrong and causes the error, and if there are any flags to prevent it from doing that.\n> > \n> > Greetings,\n> > Szabolcs\n> > \n> > \n> > On May 10, 2013, at 19:00 , martina morris <morrism@u.washington.edu> wrote:\n> > \n> >> Szabolcs,\n> >> \n> >> The kstar terms are often a problem in models, even if the other terms \n> >> are quite harmless (e.g., edges).  Have you tried using the gwdsp term in \n> >> place of kstar?  Or any other terms that are dyadic-independent?\n> >> \n> >> \n> >> thanks,\n> >> Martina\n> >> \n> >> On Fri, 10 May 2013, Szabolcs Horvat wrote:\n> >> \n> >>> Hello,\n> >>> \n> >>> Here is some additional information on this problem.  Perhaps someone can give me some hints on what may be going wrong based on this.\n> >>> \n> >>> Here's the traceback() when the error is issued:\n> >>> \n> >>> 8: ar.yw.default(x, aic = aic, order.max = order.max, na.action = na.action,\n> >>>     series = series, ...)\n> >>> 7: ar.yw(x, aic = aic, order.max = order.max, na.action = na.action,\n> >>>     series = series, ...)\n> >>> 6: ar(x[, i], aic = TRUE)\n> >>> 5: spectrum0.ar(x)\n> >>> 4: effectiveSize(x)\n> >>> 3: approx.hotelling.diff.test(esteq, esteq.obs)\n> >>> 2: ergm.MCMLE(init, nw, model, initialfit, control = control, MHproposal = MHproposal,\n> >>>     MHproposal.obs = MHproposal.obs, verbose = verbose, response = response,\n> >>>     ...)\n> >>> 1: ergm(faux.magnolia.high ~ myterm + kstar(2),\n> >>>     control = control.ergm(MCMLE.maxit = 20, MCMC.runtime.traceplot = T),\n> >>>     verbose = T)\n> >>> \n> >>> With verbose=T, the error happens just before \"Average estimating equation values:\" would be printed for this iteration.\n> >>> \n> >>> The very last \"traceplot\" shown before the \"crash\" (with MCMC.runtime.traceplot = T) is flat. (This has to be an artefact of the \"crash\", right?)\n> >>> \n> >>> If I use MCMLE.maxit to stop the iteration just before ergm() would \"crash\", and then run mcmc.diagnostics on the resulting fit object, I get the same error (mcmc.diagnostics() gives the same error).\n> >>> \n> >>> If I examine this fit object, and generate some samples using simulate(), it appears to fit the input data very well.  There's no sign of degeneracy.  (I also expect this based on theoretical considerations.)\n> >>> \n> >>> My custom term may produce very large changestats.  They may be as large as several hundred for this particular network.  Does the magnitude of the changestats matter?  (Rescaling them won't help.)\n> >>> \n> >>> \n> >>> Based on these observation I have the impression that it is not the core fitting algorithm that runs into trouble and causes the error, but something else.  Is there a way to disable the part of ergm() that causes the problem?\n> >>> \n> >>> Best regards,\n> >>> Szabolcs Horv?t\n> >>> \n> >>> \n> >>> \n> >>> On May 9, 2013, at 23:02 , Szabolcs Horvat <szhorvat@nd.edu> wrote:\n> >>> \n> >>>> Hello,\n> >>>> \n> >>>> I am using ergm with custom written terms.  The term works well when \n> >>>> used on its own, and produces correct results: ergm(nw ~ myterm)\n> >>>> \n> >>>> Unfortunately when I use it together with other terms (ergm(nw ~ myterm \n> >>>> + kstar(2))), I often, but not always, get an error like this:\n> >>>> \n> >>>> Error in if (order) coefs[order, seq_len(order)] else numeric() :\n> >>>> argument is not interpretable as logical\n> >>>> \n> >>>> The error comes up only after a number of iterations have finished without problems.\n> >>>> Sometimes there's also a warning like this:\n> >>>> \n> >>>> In if (order) coefs[order, seq_len(order)] else numeric() :\n> >>>> the condition has length > 1 and only the first element will be used\n> >>>> \n> >>>> Does anyone have any ideas what this might be caused by?  I found references to the same error in the mailing list archive, but no tips on why this might happen.  Unfortunately I am having trouble reproducing the problem with a *simple* example (so I wouldn't have to post the full code for my term as well as the full data).  I'd still appreciate even some vague hints on what may be happening here.\n> >>>> \n> >>>> I have the latest version of R and ergm that are available from CRAN.\n> >>>> \n> >>>> Best regards,\n> >>>> Szabolcs Horv?t\n> >>>> \n> >>>> _______________________________________________\n> >>>> statnet_help mailing list\n> >>>> statnet_help@u.washington.edu\n> >>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> >>> \n> >>> _______________________________________________\n> >>> statnet_help mailing list\n> >>> statnet_help@u.washington.edu\n> >>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> >>> \n> >> \n> >> ****************************************************************\n> >> Professor of Sociology and Statistics\n> >> Director, UWCFAR Sociobehavioral and Prevention Research Core\n> >> Box 354322\n> >> University of Washington\n> >> Seattle, WA 98195-4322\n> >> \n> >> Office:        (206) 685-3402\n> >> Dept Office:   (206) 543-5882, 543-7237\n> >> Fax:           (206) 685-7419\n> >> \n> >> morrism@u.washington.edu\n> >> http://faculty.washington.edu/morrism/\n> > \n> > _______________________________________________\n> > statnet_help mailing list\n> > statnet_help@u.washington.edu\n> > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hello,\n\neffectiveSize() is a coda package function. Someone (perhaps me) should\nforward the bug report to its maintainer. Either way, it strongly\nsuggests that the model is bad, since it's not mixing ",
+      "thread_id": "thread-efb94a0e131e",
+      "thread_depth": 5,
+      "month": "2013-05"
+    },
+    {
+      "id": "msg-b41d1c43e460",
+      "message_id": "<E32BFBD8-E355-4815-B1D0-F673D8C06F19@nd.edu>",
+      "from_name": "Szabolcs Horvat",
+      "from_email_hash": "2da04a22d70193ed52d5e3cd6078d87bdd9f644e506f5395e1c9e3091c66ec38",
+      "date": "2013-05-15T12:43:36Z",
+      "subject": "[statnet_help] statnet changelog?",
+      "subject_clean": "[statnet_help] statnet changelog?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI notice that statnet (or some of the related packages) get updated from time to time without a version number bump.  It seems to have been updated just 2 days ago.\n\nIs there a document available somewhere that describes all the changes that have been made to statnet ?\n\nThank you,\nSzabolcs",
+      "body_snippet": "Hello,\n\nI notice that statnet (or some of the related packages) get updated from time to time without a version number bump.  It seems to have been updated just 2 days ago.\n\nIs there a document availa",
+      "thread_id": "thread-b41d1c43e460",
+      "thread_depth": 0,
+      "month": "2013-05"
+    },
+    {
+      "id": "msg-d8f65c1c0611",
+      "message_id": "<5194F8A5.5090703@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2013-05-16T08:17:57Z",
+      "subject": "[statnet_help] statnet changelog?",
+      "subject_clean": "[statnet_help] statnet changelog?",
+      "in_reply_to": "<E32BFBD8-E355-4815-B1D0-F673D8C06F19@nd.edu>",
+      "references": [
+        "<E32BFBD8-E355-4815-B1D0-F673D8C06F19@nd.edu>"
+      ],
+      "body_plain": "Hi Szablocs,\n\nStatnet the package did just updated, but indeed there was a version \nnumber change that went with it, although it's an easy one to miss: from \n3.0.1 to 3.1.0. Also, it's still propagating through the mirrors so \ndepending on where you grabbed it from yesterday you might have gotten \nthe old one or the new one. Statnet the package is very simple; \nessentially all it does is \"depend\" on the latest versions of the \npackages in the statnet suite, such that it's an easy way to install and \nload all of them at once. So the only change to it was to update version \nnumbers on other packages.\n\nYours,\nSteve\n\n\n\n\nOn 5/15/2013 12:43 PM, Szabolcs Horvat wrote:\n> Hello,\n>\n> I notice that statnet (or some of the related packages) get updated from time to time without a version number bump.  It seems to have been updated just 2 days ago.\n>\n> Is there a document available somewhere that describes all the changes that have been made to statnet ?\n>\n> Thank you,\n> Szabolcs_______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n\n*** NOTE NEW OFFICE LOCATION AS OF MARCH 2012: DENNY 423 ***\n\nSteven M. Goodreau / Assoc. Professor / Dept. of Anthropology\nUniversity of Washington / Denny Hall 423 / Campus Box 353100\nSeattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau",
+      "body_snippet": "Hi Szablocs,\n\nStatnet the package did just updated, but indeed there was a version \nnumber change that went with it, although it's an easy one to miss: from \n3.0.1 to 3.1.0. Also, it's still propagati",
+      "thread_id": "thread-b41d1c43e460",
+      "thread_depth": 1,
+      "month": "2013-05"
+    },
+    {
+      "id": "msg-f11a72791d5b",
+      "message_id": "<CAO7K4NizyjsQyvvMnkpv-jNsQTiUx=N1SKRV3G_pZRM+0PrEfQ@mail.gmail.com>",
+      "from_name": "Margaux Rat",
+      "from_email_hash": "b853a8f97a7200f9b9d58b777b2497c26dd9157ceaa92622b424668923697cc9",
+      "date": "2013-05-21T06:11:50Z",
+      "subject": "[statnet_help] Bug with the dyad.census function?",
+      "subject_clean": "[statnet_help] Bug with the dyad.census function?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone,\n\nI am new to social network analysis so I apologize in advance if the\nquestion below is without interest for most of you...\n\nI have recently used the sna and statnet package to calculate the\norderliness of hierarchies according to Shizuka et al. 2012.\n\nIt worked fine when I did it a couple of month ago but when I wanted to\nimplement the procedure again today, I was puzzled with the dyad.census\nfunction. The output of this function had \"0\" Null dyad for matrices\ncontaining plenty of null dyads, the command is.na in these matrices showed\nappropriate results.\n\nI have tried with a hypothetical matrix:\n\n#Matrix for 5 inds.: 1 Null dyad, 1 Mutual dyad\n\nvec<-c(NA,1,1,1,NA,0,NA,1,1,1,0,0,NA,1,1,0,0,0,NA,1,NA,0,0,1,NA)\nex<-matrix(vec,nrow=5,ncol=5);ex\ng=network(ex,directed=T)\nndyad<-dyad.census(g); ndyad\n\n##output:\n     #Mut Asym Null\n#[1,]   1    8    0\n\nHere again, no null dyad....\n\n\nIs there something I have not considered running the function? Have you\nimplemented modifications of this function?\n\nThanks in advance for your help,\n\nBest regards,\n\nMargaux Rat\n\n-- \nMargaux Rat\n*\nPhD candidate\nPercy FitzPatrick Institute, DST/NRF Centre of Excellence.\nUniversity of Cape Town\n*\n*email:   margaux.rat@uct.ac.za\n            margaux.rat@gmail.com\nweb:     http://www.fitzpatrick.uct.ac.za/docs/margaux.html\n            http://www.fitzpatrick.uct.ac.za/docs/sociable_weaver.htm<http://www.fitzpatrick.uct.ac.za/docs/sociable_weaver.html>\nPersonal website:\n           http://margaux-rat.com\n\nphone:  (+27)21 650 3310\npost:     Room 2.20,\n            John Day Zoology Building\n            Upper Campus, U.C.T.\n            Rondebosch\n            7701\n\n*\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130521/5a81be17/attachment.html>",
+      "body_snippet": "Hi everyone,\n\nI am new to social network analysis so I apologize in advance if the\nquestion below is without interest for most of you...\n\nI have recently used the sna and statnet package to calculate ",
+      "thread_id": "thread-f11a72791d5b",
+      "thread_depth": 0,
+      "month": "2013-05"
+    },
+    {
+      "id": "msg-d81e57212327",
+      "message_id": "<1369871628.27071.7.camel@piPad>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "460258cbd680ea347ee0196adc8a17e139024de6f74b950cba8add8e35654b6f",
+      "date": "2013-05-29T16:53:48Z",
+      "subject": "[statnet_help] statnet changelog?",
+      "subject_clean": "[statnet_help] statnet changelog?",
+      "in_reply_to": "<E32BFBD8-E355-4815-B1D0-F673D8C06F19@nd.edu>",
+      "references": [
+        "<E32BFBD8-E355-4815-B1D0-F673D8C06F19@nd.edu>"
+      ],
+      "body_plain": "For a list of major changes:\n\nnews(package=\"ergm\")\n\nor whichever package's updates you want to see.\n\n                              Pavel\n\nOn Wed, 2013-05-15 at 15:43 -0400, Szabolcs Horvat wrote:\n> Hello,\n> \n> I notice that statnet (or some of the related packages) get updated from time to time without a version number bump.  It seems to have been updated just 2 days ago.\n> \n> Is there a document available somewhere that describes all the changes that have been made to statnet ?\n> \n> Thank you,\n> Szabolcs_______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "For a list of major changes:\n\nnews(package=\"ergm\")\n\nor whichever package's updates you want to see.\n\n                              Pavel\n\nOn Wed, 2013-05-15 at 15:43 -0400, Szabolcs Horvat wrote:\n> He",
+      "thread_id": "thread-b41d1c43e460",
+      "thread_depth": 1,
+      "month": "2013-05"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-6c9fa518bf09",
+      "subject": "[statnet_help] ERGM problem",
+      "message_count": 3,
+      "participants": [
+        "Narciso Cerpa",
+        "Steven Goodreau"
+      ],
+      "started": "2013-05-02T04:58:46Z",
+      "last_reply": "2013-05-03T09:43:42Z",
+      "root_message_id": "msg-6c9fa518bf09"
+    },
+    {
+      "id": "thread-662368344001",
+      "subject": "[statnet_help] AUTO: Tom Kochuyt is prepared for DELETION (FREEZE) (returning 05-11-2012)",
+      "message_count": 1,
+      "participants": [
+        "Tom Kochuyt"
+      ],
+      "started": "2013-05-02T13:03:50Z",
+      "last_reply": "2013-05-02T13:03:50Z",
+      "root_message_id": "msg-662368344001"
+    },
+    {
+      "id": "thread-b6624e1b7964",
+      "subject": "[statnet_help] commands from ergm tutorial take too long to complete",
+      "message_count": 1,
+      "participants": [
+        "Steven Goodreau"
+      ],
+      "started": "2013-05-03T09:59:57Z",
+      "last_reply": "2013-05-03T09:59:57Z",
+      "root_message_id": "msg-b6624e1b7964"
+    },
+    {
+      "id": "thread-6df9da7c2063",
+      "subject": "[statnet_help] ergm.useterms questions",
+      "message_count": 1,
+      "participants": [
+        "Szabolcs Horvat"
+      ],
+      "started": "2013-05-09T11:47:51Z",
+      "last_reply": "2013-05-09T11:47:51Z",
+      "root_message_id": "msg-6df9da7c2063"
+    },
+    {
+      "id": "thread-efb94a0e131e",
+      "subject": "[statnet_help] error with custom ergm terms",
+      "message_count": 6,
+      "participants": [
+        "Pavel N. Krivitsky",
+        "Szabolcs Horvat",
+        "martina morris"
+      ],
+      "started": "2013-05-09T20:02:33Z",
+      "last_reply": "2013-05-10T21:45:40Z",
+      "root_message_id": "msg-efb94a0e131e"
+    },
+    {
+      "id": "thread-b24a7e0bbf10",
+      "subject": "[statnet_help] ergm crashes with main.method=\"Robbins-Monro\"",
+      "message_count": 1,
+      "participants": [
+        "Szabolcs Horvat"
+      ],
+      "started": "2013-05-10T10:59:36Z",
+      "last_reply": "2013-05-10T10:59:36Z",
+      "root_message_id": "msg-b24a7e0bbf10"
+    },
+    {
+      "id": "thread-b41d1c43e460",
+      "subject": "[statnet_help] statnet changelog?",
+      "message_count": 3,
+      "participants": [
+        "Pavel N. Krivitsky",
+        "Steven Goodreau",
+        "Szabolcs Horvat"
+      ],
+      "started": "2013-05-15T12:43:36Z",
+      "last_reply": "2013-05-29T16:53:48Z",
+      "root_message_id": "msg-b41d1c43e460"
+    },
+    {
+      "id": "thread-f11a72791d5b",
+      "subject": "[statnet_help] Bug with the dyad.census function?",
+      "message_count": 1,
+      "participants": [
+        "Margaux Rat"
+      ],
+      "started": "2013-05-21T06:11:50Z",
+      "last_reply": "2013-05-21T06:11:50Z",
+      "root_message_id": "msg-f11a72791d5b"
+    }
+  ]
+}

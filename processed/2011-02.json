@@ -1,0 +1,954 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2011-02",
+  "messages": [
+    {
+      "id": "msg-03ab6dbba7e3",
+      "message_id": "<000001cbc2c1$2f34b090$8d9e11b0$@edu>",
+      "from_name": "Dalton  Lunga",
+      "from_email_hash": "d6b42668416cc815c2b8bdafa4efd927adf57845b7b5d7178887cb20c80c42c0",
+      "date": "2011-02-02T02:08:48Z",
+      "subject": "[statnet_help] Goodness of fit",
+      "subject_clean": "[statnet_help] Goodness of fit",
+      "in_reply_to": "<201101312000.p0VK0mMR029972@mxout11.cac.washington.edu>",
+      "references": [
+        "<201101312000.p0VK0mMR029972@mxout11.cac.washington.edu>"
+      ],
+      "body_plain": "Dear all,\n\nCan someone help me answer a quick question: What do the grey lines that\naccompany plots for the goodness of fit measures when fitting ERGMs, convey?\nThese are the lines which at some points clip the box plot and at some\npoints they floating on their own.\n\nAny idea how to remove them from the plots? I am attaching an example of\nwhat I am talking about, these lines are not defined on the caption of\nFigure from the paper I pulled it from.\n\nThank you, I appreciate any help. I am not familiar with R-hence such a\nsilly question.\n\n\nDL\n\n-----Original Message-----\nFrom: statnet_help-bounces@mailman2.u.washington.edu\n[mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of\nstatnet_help-request@mailman2.u.washington.edu\nSent: Monday, January 31, 2011 3:01 PM\nTo: statnet_help@u.washington.edu\nSubject: statnet_help Digest, Vol 54, Issue 6\n\nSend statnet_help mailing list submissions to\n\tstatnet_help@u.washington.edu\n\nTo subscribe or unsubscribe via the World Wide Web, visit\n\thttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help\nor, via email, send a message with subject or body 'help' to\n\tstatnet_help-request@mailman2.u.washington.edu\n\nYou can reach the person managing the list at\n\tstatnet_help-owner@mailman2.u.washington.edu\n\nWhen replying, please edit your Subject line so it is more specific than\n\"Re: Contents of statnet_help digest...\"\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: gof.jpg\nType: image/jpeg\nSize: 43011 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110202/0a15ecd3/attachment.jpg>",
+      "body_snippet": "Dear all,\n\nCan someone help me answer a quick question: What do the grey lines that\naccompany plots for the goodness of fit measures when fitting ERGMs, convey?\nThese are the lines which at some point",
+      "thread_id": "thread-03ab6dbba7e3",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-c1ae21c6f09c",
+      "message_id": "<4D496909.7090704@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2011-02-02T06:24:09Z",
+      "subject": "[statnet_help] Goodness of fit",
+      "subject_clean": "[statnet_help] Goodness of fit",
+      "in_reply_to": "<000001cbc2c1$2f34b090$8d9e11b0$@edu>",
+      "references": [
+        "<201101312000.p0VK0mMR029972@mxout11.cac.washington.edu>",
+        "<000001cbc2c1$2f34b090$8d9e11b0$@edu>"
+      ],
+      "body_plain": "Hi,\n\nI think that that these grey lines represent the 95% confidence \nintervals of the log-odds contributions for different statistics of \ninterest. These CI are estimated on the simulated samples.\n\nSo, for example, if I take the graph you gave us and am interested in \nthe \"degree 0\" statistic, I would say that:\n\n1) your observed sample contribute to the log-odds for about -1\n2) 95% of the simulated samples (during the gof()) contributes approx. \nbetween -2.1 and -1.1 to the log-odds.\n\nTechnically speaking, your question should be documented in the \n\"plot.gofobject\" and \"gof.ergm\" documentation pages but is not. However, \nthe code of the \"plot.gofobject\" function indicates that the grey lines \nare drawn using some parts of your gof object (<m.gof>):\n\n<m.gof>$bds.model\n<m.gof>$bds.ideg\n<m.gof>$bds.espart\n<m.gof>$bds.triadcensus\n<m.gof>$bds.dist\n<m.gof>$bds.odeg\n<m.gof>$bds.dspart\n\nHope that helps!\nVictorin\n\nP.S: Really sorry for my faulty english, but I come from the french \nspeaking area of Switzerland :-)\n\n\nLe 02/02/2011 11:08 AM, Dalton Lunga a ?crit :\n> Dear all,\n>\n> Can someone help me answer a quick question: What do the grey lines that\n> accompany plots for the goodness of fit measures when fitting ERGMs, convey?\n> These are the lines which at some points clip the box plot and at some\n> points they floating on their own.\n>\n> Any idea how to remove them from the plots? I am attaching an example of\n> what I am talking about, these lines are not defined on the caption of\n> Figure from the paper I pulled it from.\n>\n> Thank you, I appreciate any help. I am not familiar with R-hence such a\n> silly question.\n>\n>\n> DL\n>\n> -----Original Message-----\n> From: statnet_help-bounces@mailman2.u.washington.edu\n> [mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of\n> statnet_help-request@mailman2.u.washington.edu\n> Sent: Monday, January 31, 2011 3:01 PM\n> To: statnet_help@u.washington.edu\n> Subject: statnet_help Digest, Vol 54, Issue 6\n>\n> Send statnet_help mailing list submissions to\n> \tstatnet_help@u.washington.edu\n>\n> To subscribe or unsubscribe via the World Wide Web, visit\n> \thttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> or, via email, send a message with subject or body 'help' to\n> \tstatnet_help-request@mailman2.u.washington.edu\n>\n> You can reach the person managing the list at\n> \tstatnet_help-owner@mailman2.u.washington.edu\n>\n> When replying, please edit your Subject line so it is more specific than\n> \"Re: Contents of statnet_help digest...\"\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Hi,\n\nI think that that these grey lines represent the 95% confidence \nintervals of the log-odds contributions for different statistics of \ninterest. These CI are estimated on the simulated samples.\n\nS",
+      "thread_id": "thread-03ab6dbba7e3",
+      "thread_depth": 1,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-0ecd4474b509",
+      "message_id": "<4D4982C1.70106@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2011-02-02T08:13:53Z",
+      "subject": "[statnet_help] How much steps?",
+      "subject_clean": "[statnet_help] How much steps?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI have a directed 800 nodes network and not sure how to set the burnin, \nMCMCsamplesize, interval, and maxit arguments.\n\nAs far as I know about MCMC is that I have to set the burnin and \ninterval arguments very large. If not, I won't simulate independant \nrandom samples. So I set these 2 arguments to 1e+06!\n\nI didn't see any reasons to change the default value of the \nMCMCsamplesize argument (10000 by default). But I changed the maxit \nargument to 25 (and sometimes 30), because I saw that maxit=5 was not \nsufficient (the estimated improvment of the log-likelihood was still \nvery high. At maxit=25, the LL improvment is at ~1.5).\n\nWith these settings, my models typically take weeks to be estimated. And \nyou,which settings do you use?\n\nBest regards,\nVictorin\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Hi all,\n\nI have a directed 800 nodes network and not sure how to set the burnin, \nMCMCsamplesize, interval, and maxit arguments.\n\nAs far as I know about MCMC is that I have to set the burnin and \ninte",
+      "thread_id": "thread-0ecd4474b509",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-836b94073306",
+      "message_id": "<4D498E2B.10004@u.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2011-02-02T09:02:35Z",
+      "subject": "[statnet_help] Goodness of fit",
+      "subject_clean": "[statnet_help] Goodness of fit",
+      "in_reply_to": "<4D496909.7090704@unige.ch>",
+      "references": [
+        "<201101312000.p0VK0mMR029972@mxout11.cac.washington.edu>",
+        "<000001cbc2c1$2f34b090$8d9e11b0$@edu>",
+        "<4D496909.7090704@unige.ch>"
+      ],
+      "body_plain": "Thanks Victorin, yes that is right.  Our mistake for not having it \ndocumented - we'll add that in.\n\nSteve\n\n\nOn 2/2/2011 6:24 AM, Victorin Luisier wrote:\n> Hi,\n>\n> I think that that these grey lines represent the 95% confidence\n> intervals of the log-odds contributions for different statistics of\n> interest. These CI are estimated on the simulated samples.\n>\n> So, for example, if I take the graph you gave us and am interested in\n> the \"degree 0\" statistic, I would say that:\n>\n> 1) your observed sample contribute to the log-odds for about -1\n> 2) 95% of the simulated samples (during the gof()) contributes approx.\n> between -2.1 and -1.1 to the log-odds.\n>\n> Technically speaking, your question should be documented in the\n> \"plot.gofobject\" and \"gof.ergm\" documentation pages but is not. However,\n> the code of the \"plot.gofobject\" function indicates that the grey lines\n> are drawn using some parts of your gof object (<m.gof>):\n>\n> <m.gof>$bds.model\n> <m.gof>$bds.ideg\n> <m.gof>$bds.espart\n> <m.gof>$bds.triadcensus\n> <m.gof>$bds.dist\n> <m.gof>$bds.odeg\n> <m.gof>$bds.dspart\n>\n> Hope that helps!\n> Victorin\n>\n> P.S: Really sorry for my faulty english, but I come from the french\n> speaking area of Switzerland :-)\n>\n>\n> Le 02/02/2011 11:08 AM, Dalton Lunga a ?crit :\n>> Dear all,\n>>\n>> Can someone help me answer a quick question: What do the grey lines that\n>> accompany plots for the goodness of fit measures when fitting ERGMs,\n>> convey?\n>> These are the lines which at some points clip the box plot and at some\n>> points they floating on their own.\n>>\n>> Any idea how to remove them from the plots? I am attaching an example of\n>> what I am talking about, these lines are not defined on the caption of\n>> Figure from the paper I pulled it from.\n>>\n>> Thank you, I appreciate any help. I am not familiar with R-hence such a\n>> silly question.\n>>\n>>\n>> DL\n>>\n>> -----Original Message-----\n>> From: statnet_help-bounces@mailman2.u.washington.edu\n>> [mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of\n>> statnet_help-request@mailman2.u.washington.edu\n>> Sent: Monday, January 31, 2011 3:01 PM\n>> To: statnet_help@u.washington.edu\n>> Subject: statnet_help Digest, Vol 54, Issue 6\n>>\n>> Send statnet_help mailing list submissions to\n>> statnet_help@u.washington.edu\n>>\n>> To subscribe or unsubscribe via the World Wide Web, visit\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>> or, via email, send a message with subject or body 'help' to\n>> statnet_help-request@mailman2.u.washington.edu\n>>\n>> You can reach the person managing the list at\n>> statnet_help-owner@mailman2.u.washington.edu\n>>\n>> When replying, please edit your Subject line so it is more specific than\n>> \"Re: Contents of statnet_help digest...\"\n>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n-- \n\n***********************************************************************\n  * Steven M. Goodreau / Assoc. Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100     *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)   *\n  * http://faculty.washington.edu/goodreau                            *\n  * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k         *\n***********************************************************************",
+      "body_snippet": "Thanks Victorin, yes that is right.  Our mistake for not having it \ndocumented - we'll add that in.\n\nSteve\n\n\nOn 2/2/2011 6:24 AM, Victorin Luisier wrote:\n> Hi,\n>\n> I think that that these grey lines r",
+      "thread_id": "thread-03ab6dbba7e3",
+      "thread_depth": 2,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-2b99960f792c",
+      "message_id": "<4D4990FB.9080201@u.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2011-02-02T09:14:35Z",
+      "subject": "[statnet_help] How much steps?",
+      "subject_clean": "[statnet_help] How much steps?",
+      "in_reply_to": "<4D4982C1.70106@unige.ch>",
+      "references": [
+        "<4D4982C1.70106@unige.ch>"
+      ],
+      "body_plain": "On 2/2/2011 8:13 AM, Victorin Luisier wrote:\n> Hi all,\n>\n> I have a directed 800 nodes network and not sure how to set the burnin,\n> MCMCsamplesize, interval, and maxit arguments.\n>\n> As far as I know about MCMC is that I have to set the burnin and\n> interval arguments very large. If not, I won't simulate independant\n> random samples. So I set these 2 arguments to 1e+06!\n>\n> I didn't see any reasons to change the default value of the\n> MCMCsamplesize argument (10000 by default). But I changed the maxit\n> argument to 25 (and sometimes 30), because I saw that maxit=5 was not\n> sufficient (the estimated improvment of the log-likelihood was still\n> very high. At maxit=25, the LL improvment is at ~1.5).\n>\n> With these settings, my models typically take weeks to be estimated. And\n> you,which settings do you use?\n\nWhen I am working with networks in the size range or larger, I usually \nstart out at around MCMCsamplesize = 50,000 or 100,000; interval = 1000; \nmaxit = 5 or so.  I usually don't bother changing the burnin.  Of course \nevery network has different estimation needs, but that's where I usually \nstart, and it often works well (as determined from the mcmc diagnostics, \nand by simulating from the fitted model to see if the sufficient \nstatistics hold in the simulations).  Sometimes I lower the steplength \n(under control.ergm) and bump up the maxit in parallel, and that takes \nmore time.\n\nI just fit an example (for the upcoming Sunbelt tutorial) that has 1,461 \nnodes, 974 edges, and a model involving various dyad-independent terms \nplus GWESP.  I used MCMCsamplesize=50k, interval=1000, maxit=5, and the \ndefault burnin.  It took about 7 minutes on my PC laptop.\n\nA larger interval does get you more independent samples, but as you say, \nit takes a very very long time to run.  The reason why we made the TNT \nproposal the default instead of a simple dyad toggle is that it rapidly \nspeeds up mixing, and can get you much closer to independent samples in \na small interval, especially for sparse networks. So given what you'd \nsaid I'd drop my interval down a lot, and see what happens.\n\nGood luck!\nSteve\n\n\n\n\n\n\n\n>\n> Best regards,\n> Victorin\n>\n\n\n-- \n\n***********************************************************************\n  * Steven M. Goodreau / Assoc. Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100     *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)   *\n  * http://faculty.washington.edu/goodreau                            *\n  * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k         *\n***********************************************************************",
+      "body_snippet": "On 2/2/2011 8:13 AM, Victorin Luisier wrote:\n> Hi all,\n>\n> I have a directed 800 nodes network and not sure how to set the burnin,\n> MCMCsamplesize, interval, and maxit arguments.\n>\n> As far as I know",
+      "thread_id": "thread-0ecd4474b509",
+      "thread_depth": 1,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-54afd448feb4",
+      "message_id": "<4D49AC92.4090600@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2011-02-02T11:12:18Z",
+      "subject": "[statnet_help] Goodness of fit",
+      "subject_clean": "[statnet_help] Goodness of fit",
+      "in_reply_to": "<4D498E2B.10004@u.washington.edu>",
+      "references": [
+        "<201101312000.p0VK0mMR029972@mxout11.cac.washington.edu>",
+        "<000001cbc2c1$2f34b090$8d9e11b0$@edu>",
+        "<4D496909.7090704@unige.ch>",
+        "<4D498E2B.10004@u.washington.edu>"
+      ],
+      "body_plain": "Dear Steve,\n\nOf course was it not a criticism since the statnet team really do a \ngreat job :-)\n\nLe 02/02/2011 06:02 PM, Steven Goodreau a ?crit :\n> Thanks Victorin, yes that is right. Our mistake for not having it\n> documented - we'll add that in.\n>\n> Steve\n>\n>\n> On 2/2/2011 6:24 AM, Victorin Luisier wrote:\n>> Hi,\n>>\n>> I think that that these grey lines represent the 95% confidence\n>> intervals of the log-odds contributions for different statistics of\n>> interest. These CI are estimated on the simulated samples.\n>>\n>> So, for example, if I take the graph you gave us and am interested in\n>> the \"degree 0\" statistic, I would say that:\n>>\n>> 1) your observed sample contribute to the log-odds for about -1\n>> 2) 95% of the simulated samples (during the gof()) contributes approx.\n>> between -2.1 and -1.1 to the log-odds.\n>>\n>> Technically speaking, your question should be documented in the\n>> \"plot.gofobject\" and \"gof.ergm\" documentation pages but is not. However,\n>> the code of the \"plot.gofobject\" function indicates that the grey lines\n>> are drawn using some parts of your gof object (<m.gof>):\n>>\n>> <m.gof>$bds.model\n>> <m.gof>$bds.ideg\n>> <m.gof>$bds.espart\n>> <m.gof>$bds.triadcensus\n>> <m.gof>$bds.dist\n>> <m.gof>$bds.odeg\n>> <m.gof>$bds.dspart\n>>\n>> Hope that helps!\n>> Victorin\n>>\n>> P.S: Really sorry for my faulty english, but I come from the french\n>> speaking area of Switzerland :-)\n>>\n>>\n>> Le 02/02/2011 11:08 AM, Dalton Lunga a ?crit :\n>>> Dear all,\n>>>\n>>> Can someone help me answer a quick question: What do the grey lines that\n>>> accompany plots for the goodness of fit measures when fitting ERGMs,\n>>> convey?\n>>> These are the lines which at some points clip the box plot and at some\n>>> points they floating on their own.\n>>>\n>>> Any idea how to remove them from the plots? I am attaching an example of\n>>> what I am talking about, these lines are not defined on the caption of\n>>> Figure from the paper I pulled it from.\n>>>\n>>> Thank you, I appreciate any help. I am not familiar with R-hence such a\n>>> silly question.\n>>>\n>>>\n>>> DL\n>>>\n>>> -----Original Message-----\n>>> From: statnet_help-bounces@mailman2.u.washington.edu\n>>> [mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of\n>>> statnet_help-request@mailman2.u.washington.edu\n>>> Sent: Monday, January 31, 2011 3:01 PM\n>>> To: statnet_help@u.washington.edu\n>>> Subject: statnet_help Digest, Vol 54, Issue 6\n>>>\n>>> Send statnet_help mailing list submissions to\n>>> statnet_help@u.washington.edu\n>>>\n>>> To subscribe or unsubscribe via the World Wide Web, visit\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>> or, via email, send a message with subject or body 'help' to\n>>> statnet_help-request@mailman2.u.washington.edu\n>>>\n>>> You can reach the person managing the list at\n>>> statnet_help-owner@mailman2.u.washington.edu\n>>>\n>>> When replying, please edit your Subject line so it is more specific than\n>>> \"Re: Contents of statnet_help digest...\"\n>>>\n>>>\n>>>\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n>\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Dear Steve,\n\nOf course was it not a criticism since the statnet team really do a \ngreat job :-)\n\nLe 02/02/2011 06:02 PM, Steven Goodreau a ?crit :\n> Thanks Victorin, yes that is right. Our mistake for",
+      "thread_id": "thread-03ab6dbba7e3",
+      "thread_depth": 3,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-584998534b75",
+      "message_id": "<000e01cbc31a$5c99f230$15cdd690$@edu>",
+      "from_name": "Dalton  Lunga",
+      "from_email_hash": "d6b42668416cc815c2b8bdafa4efd927adf57845b7b5d7178887cb20c80c42c0",
+      "date": "2011-02-02T12:47:09Z",
+      "subject": "[statnet_help] RE:Goodness of fit",
+      "subject_clean": "[statnet_help] RE:Goodness of fit",
+      "in_reply_to": "<4D496909.7090704@unige.ch>",
+      "references": [
+        "<201101312000.p0VK0mMR029972@mxout11.cac.washington.edu>",
+        "<000001cbc2c1$2f34b090$8d9e11b0$@edu>",
+        "<4D496909.7090704@unige.ch>"
+      ],
+      "body_plain": "Hi,\n\nThanks for your prompt response. From what you are saying: the grey lines\nand the box plots are representing the same thing or I am missing something\nin between?\n\nSo to suppress the grey lines I should use which function? Sorry I didn't\nget that clear?\n\nDalton\n\n-----Original Message-----\nFrom: Victorin Luisier [mailto:Victorin.Luisier@unige.ch] \nSent: Wednesday, February 02, 2011 9:24 AM\nTo: statnet_help@u.washington.edu\nSubject: Re: [statnet_help] Goodness of fit\n\nHi,\n\nI think that that these grey lines represent the 95% confidence \nintervals of the log-odds contributions for different statistics of \ninterest. These CI are estimated on the simulated samples.\n\nSo, for example, if I take the graph you gave us and am interested in \nthe \"degree 0\" statistic, I would say that:\n\n1) your observed sample contribute to the log-odds for about -1\n2) 95% of the simulated samples (during the gof()) contributes approx. \nbetween -2.1 and -1.1 to the log-odds.\n\nTechnically speaking, your question should be documented in the \n\"plot.gofobject\" and \"gof.ergm\" documentation pages but is not. However, \nthe code of the \"plot.gofobject\" function indicates that the grey lines \nare drawn using some parts of your gof object (<m.gof>):\n\n<m.gof>$bds.model\n<m.gof>$bds.ideg\n<m.gof>$bds.espart\n<m.gof>$bds.triadcensus\n<m.gof>$bds.dist\n<m.gof>$bds.odeg\n<m.gof>$bds.dspart\n\nHope that helps!\nVictorin\n\nP.S: Really sorry for my faulty english, but I come from the french \nspeaking area of Switzerland :-)\n\n\nLe 02/02/2011 11:08 AM, Dalton Lunga a ?crit :\n> Dear all,\n>\n> Can someone help me answer a quick question: What do the grey lines that\n> accompany plots for the goodness of fit measures when fitting ERGMs,\nconvey?\n> These are the lines which at some points clip the box plot and at some\n> points they floating on their own.\n>\n> Any idea how to remove them from the plots? I am attaching an example of\n> what I am talking about, these lines are not defined on the caption of\n> Figure from the paper I pulled it from.\n>\n> Thank you, I appreciate any help. I am not familiar with R-hence such a\n> silly question.\n>\n>\n> DL\n>\n> -----Original Message-----\n> From: statnet_help-bounces@mailman2.u.washington.edu\n> [mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of\n> statnet_help-request@mailman2.u.washington.edu\n> Sent: Monday, January 31, 2011 3:01 PM\n> To: statnet_help@u.washington.edu\n> Subject: statnet_help Digest, Vol 54, Issue 6\n>\n> Send statnet_help mailing list submissions to\n> \tstatnet_help@u.washington.edu\n>\n> To subscribe or unsubscribe via the World Wide Web, visit\n> \thttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> or, via email, send a message with subject or body 'help' to\n> \tstatnet_help-request@mailman2.u.washington.edu\n>\n> You can reach the person managing the list at\n> \tstatnet_help-owner@mailman2.u.washington.edu\n>\n> When replying, please edit your Subject line so it is more specific than\n> \"Re: Contents of statnet_help digest...\"\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Hi,\n\nThanks for your prompt response. From what you are saying: the grey lines\nand the box plots are representing the same thing or I am missing something\nin between?\n\nSo to suppress the grey lines I ",
+      "thread_id": "thread-03ab6dbba7e3",
+      "thread_depth": 2,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-3f0dcdde37c0",
+      "message_id": "<AANLkTinKL_4LS1FL2m63JVmSWYwOb+GD3ugdYOJHz_U1@mail.gmail.com>",
+      "from_name": "Brian Keegan",
+      "from_email_hash": "0a040d156157c7a0846c2e199462b4a90b1286ad17bfecf6c905da0c405bc047",
+      "date": "2011-02-02T16:02:29Z",
+      "subject": "[statnet_help] Linear dependence in bipartite networks",
+      "subject_clean": "[statnet_help] Linear dependence in bipartite networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I am attempting to specify a model for bipartite graph with binary\nattributes on both actors and events (Wikipedia editors and articles). Does\nthe following model run afoul of linear dependencies between the structural\nparameters (stars) and attribute parameters (factor,twostar)? Or does it\ncapture the effect of the attribute net of/controlling for the baseline\nstructural tendency?\n\nNet ~ b1star(1:2) + b2star(2) + b1factor('attribute1') +\nb2factor('attribute2') + b1twostar('attribute1','attribute2') +\nb2twostar('attribute1','attribute2')\n\nBest,\n\nBrian\n\n-- \nBrian C. Keegan\nPh.D. Student - Media, Technology, & Society\nSchool of Communication, Northwestern University\n\nScience of Networks in Communities, Laboratory for Collaborative Technology\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110202/c9c6b29b/attachment.html>",
+      "body_snippet": "I am attempting to specify a model for bipartite graph with binary\nattributes on both actors and events (Wikipedia editors and articles). Does\nthe following model run afoul of linear dependencies betw",
+      "thread_id": "thread-3f0dcdde37c0",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-0115e4959cc1",
+      "message_id": "<4D4A7E1B.3040106@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2011-02-03T02:06:19Z",
+      "subject": "[statnet_help] RE:Goodness of fit",
+      "subject_clean": "[statnet_help] RE:Goodness of fit",
+      "in_reply_to": "<000e01cbc31a$5c99f230$15cdd690$@edu>",
+      "references": [
+        "<201101312000.p0VK0mMR029972@mxout11.cac.washington.edu>",
+        "<000001cbc2c1$2f34b090$8d9e11b0$@edu>",
+        "<4D496909.7090704@unige.ch>",
+        "<000e01cbc31a$5c99f230$15cdd690$@edu>"
+      ],
+      "body_plain": "Hi Dalton,\n\nStandard box plots are not CI (see for ex.: \nhttp://en.wikipedia.org/wiki/Box_plot). Thus, I think it's not a good \nidea to suppress these grey lines (representing the CI). If you still \nwant to, you could do the following:\n\n1) Put the attached \"newfunction.R\" file in your working directory \n(where you have your gof object). This file is a lightly modified \nversion of the plot.gofobject function.\n\n2) Make sure that you have a functional working environment by plotting \nyour gof object.\n\n\n3) Write the following code in you R console:\nsource(\"newfunction.R\")\npdf(\"gof_plots_without_IC.pdf\") #redirect output in a pdf\nnewfunc(<m.gof>,IC=FALSE) # replace <m.gof> with the names of your gof \nobject\ndev.off() # close the pdf\n\n\nThe pdf \"gof_plots_without_IC.pdf\" will not contain any IC...\n\n\nHope that helps,\nVictorin\n\n\n\nLe 02/02/2011 09:47 PM, Dalton Lunga a ?crit :\n> Hi,\n>\n> Thanks for your prompt response. From what you are saying: the grey lines\n> and the box plots are representing the same thing or I am missing something\n> in between?\n>\n> So to suppress the grey lines I should use which function? Sorry I didn't\n> get that clear?\n>\n> Dalton\n>\n> -----Original Message-----\n> From: Victorin Luisier [mailto:Victorin.Luisier@unige.ch]\n> Sent: Wednesday, February 02, 2011 9:24 AM\n> To: statnet_help@u.washington.edu\n> Subject: Re: [statnet_help] Goodness of fit\n>\n> Hi,\n>\n> I think that that these grey lines represent the 95% confidence\n> intervals of the log-odds contributions for different statistics of\n> interest. These CI are estimated on the simulated samples.\n>\n> So, for example, if I take the graph you gave us and am interested in\n> the \"degree 0\" statistic, I would say that:\n>\n> 1) your observed sample contribute to the log-odds for about -1\n> 2) 95% of the simulated samples (during the gof()) contributes approx.\n> between -2.1 and -1.1 to the log-odds.\n>\n> Technically speaking, your question should be documented in the\n> \"plot.gofobject\" and \"gof.ergm\" documentation pages but is not. However,\n> the code of the \"plot.gofobject\" function indicates that the grey lines\n> are drawn using some parts of your gof object (<m.gof>):\n>\n> <m.gof>$bds.model\n> <m.gof>$bds.ideg\n> <m.gof>$bds.espart\n> <m.gof>$bds.triadcensus\n> <m.gof>$bds.dist\n> <m.gof>$bds.odeg\n> <m.gof>$bds.dspart\n>\n> Hope that helps!\n> Victorin\n>\n> P.S: Really sorry for my faulty english, but I come from the french\n> speaking area of Switzerland :-)\n>\n>\n> Le 02/02/2011 11:08 AM, Dalton Lunga a ?crit :\n>> Dear all,\n>>\n>> Can someone help me answer a quick question: What do the grey lines that\n>> accompany plots for the goodness of fit measures when fitting ERGMs,\n> convey?\n>> These are the lines which at some points clip the box plot and at some\n>> points they floating on their own.\n>>\n>> Any idea how to remove them from the plots? I am attaching an example of\n>> what I am talking about, these lines are not defined on the caption of\n>> Figure from the paper I pulled it from.\n>>\n>> Thank you, I appreciate any help. I am not familiar with R-hence such a\n>> silly question.\n>>\n>>\n>> DL\n>>\n>> -----Original Message-----\n>> From: statnet_help-bounces@mailman2.u.washington.edu\n>> [mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of\n>> statnet_help-request@mailman2.u.washington.edu\n>> Sent: Monday, January 31, 2011 3:01 PM\n>> To: statnet_help@u.washington.edu\n>> Subject: statnet_help Digest, Vol 54, Issue 6\n>>\n>> Send statnet_help mailing list submissions to\n>> \tstatnet_help@u.washington.edu\n>>\n>> To subscribe or unsubscribe via the World Wide Web, visit\n>> \thttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>> or, via email, send a message with subject or body 'help' to\n>> \tstatnet_help-request@mailman2.u.washington.edu\n>>\n>> You can reach the person managing the list at\n>> \tstatnet_help-owner@mailman2.u.washington.edu\n>>\n>> When replying, please edit your Subject line so it is more specific than\n>> \"Re: Contents of statnet_help digest...\"\n>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch\n-------------- next part --------------\nnewfunc<-function (x, ..., cex.axis = 0.7, plotlogodds = FALSE, main = \"Goodness-of-fit diagnostics\", \n    normalize.reachability = FALSE, verbose = FALSE, IC=TRUE) \n{\n    color <- \"gray75\"\n    all.gof.vars <- ergm.rhs.formula(x$GOF)\n    statsno <- length(all.gof.vars)\n    for (i in seq(along = all.gof.vars)) {\n        all.gof.vars[i] <- match.arg(all.gof.vars[i], c(\"distance\", \n            \"triadcensus\", \"espartners\", \"dspartners\", \"odegree\", \n            \"idegree\", \"degree\", \"model\"))\n    }\n    GOF <- as.formula(paste(\"~\", paste(all.gof.vars, collapse = \"+\")))\n    if (statsno == 0) {\n        stop(\"The gof object does not contain any statistics!\\n\")\n    }\n    n <- x$network.size\n    for (statname in all.gof.vars) {\n        if (\"model\" == statname) {\n            nstats <- length(x$obs.model)\n            if (min(x$pval.model[, \"MC p-value\"]) < 0) {\n                pval.max <- max((1:nstats)[x$pval.model[1:nstats, \n                  \"MC p-value\"] < 1]) + 3\n            }\n            else {\n                pval.max <- max((1:nstats)[x$obs.model[1:nstats] > \n                  0]) + 3\n            }\n            if (is.finite(pval.max) & pval.max < nstats) {\n                model <- c(1:pval.max)\n            }\n            else {\n                model <- c(1:nstats)\n            }\n            if (plotlogodds) {\n                odds <- x$psim.model\n                odds[!is.na(odds)] <- log(odds[!is.na(odds)]/(1 - \n                  odds[!is.na(odds)]))\n                odds.obs <- x$pobs.model\n                odds.obs[!is.na(odds.obs)] <- log(odds.obs[!is.na(odds.obs)]/(1 - \n                  odds.obs[!is.na(odds.obs)]))\n                odds.bds <- x$bds.model\n                odds.bds[!is.na(odds.bds)] <- log(odds.bds[!is.na(odds.bds)]/(1 - \n                  odds.bds[!is.na(odds.bds)]))\n                mininf <- min(min(odds[!is.infinite(odds)]), \n                  min(odds.obs[!is.infinite(odds.obs)]), min(odds.bds[!is.infinite(odds.bds)]))\n                maxinf <- max(max(odds[!is.infinite(odds)]), \n                  max(odds.obs[!is.infinite(odds.obs)]), max(odds.bds[!is.infinite(odds.bds)]))\n                odds[is.infinite(odds) & odds > 0] <- maxinf\n                odds[is.infinite(odds) & odds < 0] <- mininf\n                odds.obs[is.infinite(odds.obs) & odds.obs > 0] <- maxinf\n                odds.obs[is.infinite(odds.obs) & odds.obs < 0] <- mininf\n                odds.bds[is.infinite(odds.bds) & odds.bds > 0] <- maxinf\n                odds.bds[is.infinite(odds.bds) & odds.bds < 0] <- mininf\n                out <- odds\n                out.obs <- odds.obs\n                out.bds <- odds.bds\n                ylab <- \"log-odds for the statistic\"\n            }\n            else {\n                out <- x$psim.model\n                out.obs <- x$pobs.model\n                out.bds <- x$bds.model\n                ylab <- \"statistic\"\n            }\n            pnames <- names(out.obs)\n            ymin <- min(min(out, na.rm = TRUE), min(out.obs, \n                na.rm = TRUE))\n            ymax <- max(max(out, na.rm = TRUE), max(out.obs, \n                na.rm = TRUE))\n            boxplot(data.frame(out[, model]), xlab = \"model statistics\", \n                ylab = ylab, names = pnames, cex.axis = cex.axis, \n                outline = FALSE, ylim = c(ymin, ymax), ...)\n\t    if (IC) {\n\t\t  points(seq(along = model), out.bds[1, model], pch = 1, \n\t\t      cex = 0.75)\n\t\t  points(seq(along = model), out.bds[2, model], pch = 1, \n\t\t      cex = 0.75)\n\t\t  lines(seq(along = model), out.bds[1, model], pch = 18, \n\t\t      lty = 1, lwd = 1, col = color)\n\t\t  lines(seq(along = model), out.bds[2, model], pch = 18, \n\t\t      lty = 1, lwd = 1, col = color)\n\t\t}\n\t    points(seq(along = model), out.obs[model], pch = 16, \n\t\tcex = 0.75)\n\t    lines(seq(along = model), out.obs[model], lty = 1, \n\t\tlwd = 3)\n        }\n        if (\"degree\" == statname) {\n            if (min(x$pval.deg[, \"MC p-value\"]) < 0) {\n                pval.max <- max((1:(n - 1))[x$pval.deg[1:(n - \n                  1), \"MC p-value\"] < 1]) + 3\n            }\n            else {\n                pval.max <- max((1:(n - 1))[x$obs.deg[1:(n - \n                  1)] > 0]) + 3\n            }\n            if (is.finite(pval.max) & pval.max < n) {\n                deg <- c(1:pval.max)\n            }\n            else {\n                deg <- c(1:n)\n            }\n            if (plotlogodds) {\n                odds <- x$psim.deg\n                odds[!is.na(odds)] <- log(odds[!is.na(odds)]/(1 - \n                  odds[!is.na(odds)]))\n                odds.obs <- x$pobs.deg\n                odds.obs[!is.na(odds.obs)] <- log(odds.obs[!is.na(odds.obs)]/(1 - \n                  odds.obs[!is.na(odds.obs)]))\n                odds.bds <- x$bds.deg\n                odds.bds[!is.na(odds.bds)] <- log(odds.bds[!is.na(odds.bds)]/(1 - \n                  odds.bds[!is.na(odds.bds)]))\n                mininf <- min(min(odds[!is.infinite(odds)]), \n                  min(odds.obs[!is.infinite(odds.obs)]), min(odds.bds[!is.infinite(odds.bds)]))\n                maxinf <- max(max(odds[!is.infinite(odds)]), \n                  max(odds.obs[!is.infinite(odds.obs)]), max(odds.bds[!is.infinite(odds.bds)]))\n                odds[is.infinite(odds) & odds > 0] <- maxinf\n                odds[is.infinite(odds) & odds < 0] <- mininf\n                odds.obs[is.infinite(odds.obs) & odds.obs > 0] <- maxinf\n                odds.obs[is.infinite(odds.obs) & odds.obs < 0] <- mininf\n                odds.bds[is.infinite(odds.bds) & odds.bds > 0] <- maxinf\n                odds.bds[is.infinite(odds.bds) & odds.bds < 0] <- mininf\n                out <- odds\n                out.obs <- odds.obs\n                out.bds <- odds.bds\n                ylab <- \"log-odds for a node\"\n            }\n            else {\n                out <- x$psim.deg\n                out.obs <- x$pobs.deg\n                out.bds <- x$bds.deg\n                ylab <- \"proportion of nodes\"\n            }\n            pnames <- c(deg) - 1\n            ymin <- min(min(out, na.rm = TRUE), min(out.obs, \n                na.rm = TRUE))\n            ymax <- max(max(out, na.rm = TRUE), max(out.obs, \n                na.rm = TRUE))\n            boxplot(data.frame(out[, deg]), xlab = \"degree\", \n                ylab = ylab, names = pnames, cex.axis = cex.axis, \n                outline = FALSE, ylim = c(ymin, ymax), ...)\n\t    if (IC) {\n\t\tpoints(seq(along = deg), out.bds[1, deg], pch = 1, \n\t\t    cex = 0.75)\n\t\tpoints(seq(along = deg), out.bds[2, deg], pch = 1, \n\t\t    cex = 0.75)\n\t\tlines(seq(along = deg), out.bds[1, deg], pch = 18, \n\t\t    lty = 1, lwd = 1, col = color)\n\t\tlines(seq(along = deg), out.bds[2, deg], pch = 18, \n\t\t    lty = 1, lwd = 1, col = color)\n\t      }\n\t    points(seq(along = deg), out.obs[deg], pch = 16, \n\t\t    cex = 0.75)\n\t    lines(seq(along = deg), out.obs[deg], lty = 1, lwd = 3)\n        }\n        if (\"odegree\" == statname) {\n            if (min(x$pval.odeg[, \"MC p-value\"]) < 0) {\n                pval.max <- max((1:(n - 1))[x$pval.odeg[1:(n - \n                  1), \"MC p-value\"] < 1]) + 3\n            }\n            else {\n                pval.max <- max((1:(n - 1))[x$obs.odeg[1:(n - \n                  1)] > 0]) + 3\n            }\n            if (is.finite(pval.max) & pval.max < n) {\n                odeg <- c(1:pval.max)\n            }\n            else {\n                odeg <- c(1:n)\n            }\n            if (plotlogodds) {\n                odds <- x$psim.odeg\n                odds[!is.na(odds)] <- log(odds[!is.na(odds)]/(1 - \n                  odds[!is.na(odds)]))\n                odds.obs <- x$pobs.odeg\n                odds.obs[!is.na(odds.obs)] <- log(odds.obs[!is.na(odds.obs)]/(1 - \n                  odds.obs[!is.na(odds.obs)]))\n                odds.bds <- x$bds.odeg\n                odds.bds[!is.na(odds.bds)] <- log(odds.bds[!is.na(odds.bds)]/(1 - \n                  odds.bds[!is.na(odds.bds)]))\n                mininf <- min(min(odds[!is.infinite(odds)]), \n                  min(odds.obs[!is.infinite(odds.obs)]), min(odds.bds[!is.infinite(odds.bds)]))\n                maxinf <- max(max(odds[!is.infinite(odds)]), \n                  max(odds.obs[!is.infinite(odds.obs)]), max(odds.bds[!is.infinite(odds.bds)]))\n                odds[is.infinite(odds) & odds > 0] <- maxinf\n                odds[is.infinite(odds) & odds < 0] <- mininf\n                odds.obs[is.infinite(odds.obs) & odds.obs > 0] <- maxinf\n                odds.obs[is.infinite(odds.obs) & odds.obs < 0] <- mininf\n                odds.bds[is.infinite(odds.bds) & odds.bds > 0] <- maxinf\n                odds.bds[is.infinite(odds.bds) & odds.bds < 0] <- mininf\n                out <- odds\n                out.obs <- odds.obs\n                out.bds <- odds.bds\n                ylab <- \"log-odds for a node\"\n            }\n            else {\n                out <- x$psim.odeg\n                out.obs <- x$pobs.odeg\n                out.bds <- x$bds.odeg\n                ylab <- \"proportion of nodes\"\n            }\n            pnames <- c(odeg) - 1\n            ymin <- min(min(out, na.rm = TRUE), min(out.obs, \n                na.rm = TRUE))\n            ymax <- max(max(out, na.rm = TRUE), max(out.obs, \n                na.rm = TRUE))\n            boxplot(data.frame(out[, odeg]), xlab = \"out degree\", \n                ylab = ylab, names = pnames, cex.axis = cex.axis, \n                outline = FALSE, ylim = c(ymin, ymax), ...)\n\t    if (IC) {\n\t\t  points(seq(along = odeg), out.bds[1, odeg], pch = 1, \n\t\t      cex = 0.75)\n\t\t  points(seq(along = odeg), out.bds[2, odeg], pch = 1, \n\t\t      cex = 0.75)\n\t\t  lines(seq(along = odeg), out.bds[1, odeg], pch = 18, \n\t\t      lty = 1, lwd = 1, col = color)\n\t\t  lines(seq(along = odeg), out.bds[2, odeg], pch = 18, \n\t\t      lty = 1, lwd = 1, col = color)\n\t      }\n\t    points(seq(along = odeg), out.obs[odeg], pch = 16, \n\t\tcex = 0.75)\n\t    lines(seq(along = odeg), out.obs[odeg], lty = 1, \n\t\tlwd = 3)\n        }\n        if (\"idegree\" == statname) {\n            if (min(x$pval.ideg[, \"MC p-value\"]) < 0) {\n                pval.max <- max((1:(n - 1))[x$pval.ideg[1:(n - \n                  1), \"MC p-value\"] < 1]) + 3\n            }\n            else {\n                pval.max <- max((1:(n - 1))[x$obs.ideg[1:(n - \n                  1)] > 0]) + 3\n            }\n            if (is.finite(pval.max) & pval.max < n) {\n                ideg <- c(1:pval.max)\n            }\n            else {\n                ideg <- c(1:n)\n            }\n            if (plotlogodds) {\n                odds <- x$psim.ideg\n                odds[!is.na(odds)] <- log(odds[!is.na(odds)]/(1 - \n                  odds[!is.na(odds)]))\n                odds.obs <- x$pobs.ideg\n                odds.obs[!is.na(odds.obs)] <- log(odds.obs[!is.na(odds.obs)]/(1 - \n                  odds.obs[!is.na(odds.obs)]))\n                odds.bds <- x$bds.ideg\n                odds.bds[!is.na(odds.bds)] <- log(odds.bds[!is.na(odds.bds)]/(1 - \n                  odds.bds[!is.na(odds.bds)]))\n                mininf <- min(min(odds[!is.infinite(odds)]), \n                  min(odds.obs[!is.infinite(odds.obs)]), min(odds.bds[!is.infinite(odds.bds)]))\n                maxinf <- max(max(odds[!is.infinite(odds)]), \n                  max(odds.obs[!is.infinite(odds.obs)]), max(odds.bds[!is.infinite(odds.bds)]))\n                odds[is.infinite(odds) & odds > 0] <- maxinf\n                odds[is.infinite(odds) & odds < 0] <- mininf\n                odds.obs[is.infinite(odds.obs) & odds.obs > 0] <- maxinf\n                odds.obs[is.infinite(odds.obs) & odds.obs < 0] <- mininf\n                odds.bds[is.infinite(odds.bds) & odds.bds > 0] <- maxinf\n                odds.bds[is.infinite(odds.bds) & odds.bds < 0] <- mininf\n                out <- odds\n                out.obs <- odds.obs\n                out.bds <- odds.bds\n                ylab <- \"log-odds for a node\"\n            }\n            else {\n                out <- x$psim.ideg\n                out.obs <- x$pobs.ideg\n                out.bds <- x$bds.ideg\n                ylab <- \"proportion of nodes\"\n            }\n            pnames <- c(ideg) - 1\n            ymin <- min(min(out, na.rm = TRUE), min(out.obs, \n                na.rm = TRUE))\n            ymax <- max(max(out, na.rm = TRUE), max(out.obs, \n                na.rm = TRUE))\n            boxplot(data.frame(out[, ideg]), xlab = \"in degree\", \n                ylab = ylab, names = pnames, cex.axis = cex.axis, \n                outline = FALSE, ylim = c(ymin, ymax), ...)\n\t    if (IC) {\n\t\t  points(seq(along = ideg), out.bds[1, ideg], pch = 1, \n\t\t      cex = 0.75)\n\t\t  points(seq(along = ideg), out.bds[2, ideg], pch = 1, \n\t\t      cex = 0.75)\n\t\t  lines(seq(along = ideg), out.bds[1, ideg], pch = 18, \n\t\t      lty = 1, lwd = 1, col = color)\n\t\t  lines(seq(along = ideg), out.bds[2, ideg], pch = 18, \n\t\t      lty = 1, lwd = 1, col = color)\n\t\t    }\n\t    points(seq(along = ideg), out.obs[ideg], pch = 16, \n\t\tcex = 0.75)\n\t    lines(seq(along = ideg), out.obs[ideg], lty = 1, \n\t\tlwd = 3)\n        }\n        if (\"espartners\" == statname) {\n            pval.max <- max((1:(n - 1))[x$pval.espart[1:(n - \n                1), \"MC p-value\"] < 1]) + 3\n            if (is.finite(pval.max) & pval.max < n) {\n                espart <- c(1:pval.max)\n            }\n            else {\n                espart <- c(1:(n - 1))\n            }\n            if (plotlogodds) {\n                odds <- x$psim.espart\n                odds[!is.na(odds)] <- log(odds[!is.na(odds)]/(1 - \n                  odds[!is.na(odds)]))\n                odds.obs <- x$pobs.espart\n                odds.obs[!is.na(odds.obs)] <- log(odds.obs[!is.na(odds.obs)]/(1 - \n                  odds.obs[!is.na(odds.obs)]))\n                odds.bds <- x$bds.espart\n                odds.bds[!is.na(odds.bds)] <- log(odds.bds[!is.na(odds.bds)]/(1 - \n                  odds.bds[!is.na(odds.bds)]))\n                mininf <- min(min(odds[!is.infinite(odds)]), \n                  min(odds.obs[!is.infinite(odds.obs)]), min(odds.bds[!is.infinite(odds.bds)]))\n                maxinf <- max(max(odds[!is.infinite(odds)]), \n                  max(odds.obs[!is.infinite(odds.obs)]), max(odds.bds[!is.infinite(odds.bds)]))\n                odds[is.infinite(odds) & odds > 0] <- maxinf\n                odds[is.infinite(odds) & odds < 0] <- mininf\n                odds.obs[is.infinite(odds.obs) & odds.obs > 0] <- maxinf\n                odds.obs[is.infinite(odds.obs) & odds.obs < 0] <- mininf\n                odds.bds[is.infinite(odds.bds) & odds.bds > 0] <- maxinf\n                odds.bds[is.infinite(odds.bds) & odds.bds < 0] <- mininf\n                out <- odds\n                out.obs <- odds.obs\n                out.bds <- odds.bds\n                ylab <- \"log-odds for an edge\"\n            }\n            else {\n                out <- x$psim.espart\n                out.obs <- x$pobs.espart\n                out.bds <- x$bds.espart\n                ylab <- \"proportion of edges\"\n                mininf <- min(min(out), min(out.obs), min(out.bds))\n                maxinf <- max(max(out), max(out.obs), max(out.bds))\n            }\n            pnames <- c(espart) - 1\n            ymin <- min(min(out, na.rm = TRUE), min(out.obs, \n                na.rm = TRUE))\n            ymax <- max(max(out, na.rm = TRUE), max(out.obs, \n                na.rm = TRUE))\n            boxplot(data.frame(out[, espart]), xlab = \"edge-wise shared partners\", \n                ylab = ylab, names = pnames, cex.axis = cex.axis, \n                outline = FALSE, ylim = c(ymin, ymax), ...)\n\t    if (IC) {\n\t\tpoints(seq(along = espart), out.bds[1, espart], pch = 1, \n\t\t    cex = 0.75)\n\t\tpoints(seq(along = espart), out.bds[2, espart], pch = 1, \n\t\t    cex = 0.75)\n\t\tlines(seq(along = espart), out.bds[1, espart], pch = 18, \n\t\t    lty = 1, lwd = 1, col = color)\n\t\tlines(seq(along = espart), out.bds[2, espart], pch = 18, \n\t\t    lty = 1, lwd = 1, col = color)\n\t\t    }\n\t    points(seq(along = espart), out.obs[espart], pch = 16, \n\t\t    cex = 0.75)\n\t    lines(seq(along = espart), out.obs[espart], lty = 1, \n\t\t    lwd = 3)\n        }\n        if (\"dspartners\" == statname) {\n            pval.max <- max((1:(n - 1))[x$pval.dspart[1:(n - \n                1), \"MC p-value\"] < 1]) + 3\n            if (is.finite(pval.max) & pval.max < n) {\n                dspart <- c(1:pval.max)\n            }\n            else {\n                dspart <- c(1:n)\n            }\n            if (plotlogodds) {\n                odds <- x$psim.dspart\n                odds[!is.na(odds)] <- log(odds[!is.na(odds)]/(1 - \n                  odds[!is.na(odds)]))\n                odds.obs <- x$pobs.dspart\n                odds.obs[!is.na(odds.obs)] <- log(odds.obs[!is.na(odds.obs)]/(1 - \n                  odds.obs[!is.na(odds.obs)]))\n                odds.bds <- x$bds.dspart\n                odds.bds[!is.na(odds.bds)] <- log(odds.bds[!is.na(odds.bds)]/(1 - \n                  odds.bds[!is.na(odds.bds)]))\n                mininf <- min(min(odds[!is.infinite(odds)]), \n                  min(odds.obs[!is.infinite(odds.obs)]), min(odds.bds[!is.infinite(odds.bds)]))\n                maxinf <- max(max(odds[!is.infinite(odds)]), \n                  max(odds.obs[!is.infinite(odds.obs)]), max(odds.bds[!is.infinite(odds.bds)]))\n                odds[is.infinite(odds) & odds > 0] <- maxinf\n                odds[is.infinite(odds) & odds < 0] <- mininf\n                odds.obs[is.infinite(odds.obs) & odds.obs > 0] <- maxinf\n                odds.obs[is.infinite(odds.obs) & odds.obs < 0] <- mininf\n                odds.bds[is.infinite(odds.bds) & odds.bds > 0] <- maxinf\n                odds.bds[is.infinite(odds.bds) & odds.bds < 0] <- mininf\n                out <- odds\n                out.obs <- odds.obs\n                out.bds <- odds.bds\n                ylab <- \"log-odds for an edge\"\n            }\n            else {\n                out <- x$psim.dspart\n                out.obs <- x$pobs.dspart\n                out.bds <- x$bds.dspart\n                ylab <- \"proportion of dyads\"\n                mininf <- min(min(out), min(out.obs), min(out.bds))\n                maxinf <- max(max(out), max(out.obs), max(out.bds))\n            }\n            pnames <- c(dspart) - 1\n            ymin <- min(min(out, na.rm = TRUE), min(out.obs, \n                na.rm = TRUE))\n            ymax <- max(max(out, na.rm = TRUE), max(out.obs, \n                na.rm = TRUE))\n            boxplot(data.frame(out[, dspart]), xlab = \"dyad-wise shared partners\", \n                ylab = ylab, names = pnames, cex.axis = cex.axis, \n                outline = FALSE, ylim = c(ymin, ymax), ...)\n\t    if (IC) {\n\t\t  points(seq(along = dspart), out.bds[1, dspart], pch = 1, \n\t\t      cex = 0.75)\n\t\t  points(seq(along = dspart), out.bds[2, dspart], pch = 1, \n\t\t      cex = 0.75)\n\t\t  lines(seq(along = dspart), out.bds[1, dspart], pch = 18, \n\t\t      lty = 1, lwd = 1, col = color)\n\t\t  lines(seq(along = dspart), out.bds[2, dspart], pch = 18, \n\t\t      lty = 1, lwd = 1, col = color)\n\t\t}\n\t    points(seq(along = dspart), out.obs[dspart], pch = 16, \n\t\t  cex = 0.75)\n\t    lines(seq(along = dspart), out.obs[dspart], lty = 1, \n\t\t  lwd = 3)\n        }\n        if (\"triadcensus\" == statname) {\n            if (plotlogodds) {\n                odds <- x$psim.triadcensus\n                odds[!is.na(odds)] <- log(odds[!is.na(odds)]/(1 - \n                  odds[!is.na(odds)]))\n                odds.obs <- x$pobs.triadcensus\n                odds.obs[!is.na(odds.obs)] <- log(odds.obs[!is.na(odds.obs)]/(1 - \n                  odds.obs[!is.na(odds.obs)]))\n                odds.bds <- x$bds.triadcensus\n                odds.bds[!is.na(odds.bds)] <- log(odds.bds[!is.na(odds.bds)]/(1 - \n                  odds.bds[!is.na(odds.bds)]))\n                mininf <- min(min(odds[!is.infinite(odds)]), \n                  min(odds.obs[!is.infinite(odds.obs)]), min(odds.bds[!is.infinite(odds.bds)]))\n                maxinf <- max(max(odds[!is.infinite(odds)]), \n                  max(odds.obs[!is.infinite(odds.obs)]), max(odds.bds[!is.infinite(odds.bds)]))\n                odds[is.infinite(odds) & odds > 0] <- maxinf\n                odds[is.infinite(odds) & odds < 0] <- mininf\n                odds.obs[is.infinite(odds.obs) & odds.obs > 0] <- maxinf\n                odds.obs[is.infinite(odds.obs) & odds.obs < 0] <- mininf\n                odds.bds[is.infinite(odds.bds) & odds.bds > 0] <- maxinf\n                odds.bds[is.infinite(odds.bds) & odds.bds < 0] <- mininf\n                out <- odds\n                out.obs <- odds.obs\n                out.bds <- odds.bds\n                ylab <- \"log-odds for a triad\"\n            }\n            else {\n                out <- x$psim.triadcensus\n                out.obs <- x$pobs.triadcensus\n                out.bds <- x$bds.triadcensus\n                ylab <- \"proportion of triads\"\n                mininf <- min(min(out), min(out.obs), min(out.bds))\n                maxinf <- max(max(out), max(out.obs), max(out.bds))\n            }\n            triadcensus <- dimnames(x$sim.triadcensus)[[2]]\n            pnames <- dimnames(x$sim.triadcensus)[[2]]\n            ymin <- min(min(out, na.rm = TRUE), min(out.obs, \n                na.rm = TRUE))\n            ymax <- max(max(out, na.rm = TRUE), max(out.obs, \n                na.rm = TRUE))\n            boxplot(data.frame(out[, triadcensus]), xlab = \"triad census\", \n                ylab = ylab, names = pnames, cex.axis = cex.axis, \n                outline = FALSE, ylim = c(ymin, ymax), ...)\n\t    if (IC) {\n\t\t    points(seq(along = triadcensus), out.bds[1, triadcensus], \n\t\t\tpch = 1, cex = 0.75)\n\t\t    points(seq(along = triadcensus), out.bds[2, triadcensus], \n\t\t\tpch = 1, cex = 0.75)\n\t\t    lines(seq(along = triadcensus), out.bds[1, triadcensus], \n\t\t\tpch = 18, lty = 1, lwd = 1, col = color)\n\t\t    lines(seq(along = triadcensus), out.bds[2, triadcensus], \n\t\t\tpch = 18, lty = 1, lwd = 1, col = color)\n\t\t      }\n\t     points(seq(along = triadcensus), out.obs[triadcensus], \n\t      pch = 16, cex = 0.75)\n\t     lines(seq(along = triadcensus), out.obs[triadcensus], \n\t      lty = 1, lwd = 3)\n        }\n        if (\"distance\" == statname) {\n            pval.max <- max((1:(n - 1))[x$pval.dist[1:(n - 1), \n                \"MC p-value\"] < 1]) + 3\n            if (is.finite(pval.max) & pval.max < n) {\n                dist <- c(1:pval.max, n)\n            }\n            else {\n                dist <- c(1:n)\n            }\n            pnames <- paste(dist)\n            pnames[length(dist)] <- \"NR\"\n            if (plotlogodds) {\n                odds <- x$psim.dist\n                odds[!is.na(odds)] <- log(odds[!is.na(odds)]/(1 - \n                  odds[!is.na(odds)]))\n                odds.obs <- x$pobs.dist\n                odds.obs[!is.na(odds.obs)] <- log(odds.obs[!is.na(odds.obs)]/(1 - \n                  odds.obs[!is.na(odds.obs)]))\n                odds.bds <- x$bds.dist\n                odds.bds[!is.na(odds.bds)] <- log(odds.bds[!is.na(odds.bds)]/(1 - \n                  odds.bds[!is.na(odds.bds)]))\n                oodds <- is.infinite(odds) | is.na(odds)\n                oodds.obs <- is.infinite(odds.obs) | is.na(odds.obs)\n                oodds.bds <- is.infinite(odds.bds) | is.na(odds.bds)\n                mininf <- min(min(odds[!oodds]), min(odds.obs[!oodds.obs]), \n                  min(odds.bds[!oodds.bds]))\n                maxinf <- max(max(odds[!oodds]), max(odds.obs[!oodds.obs]), \n                  max(odds.bds[!oodds.bds]))\n                odds[is.infinite(odds) & odds > 0] <- maxinf\n                odds[is.infinite(odds) & odds < 0] <- mininf\n                odds.obs[is.infinite(odds.obs) & odds.obs > 0] <- maxinf\n                odds.obs[is.infinite(odds.obs) & odds.obs < 0] <- mininf\n                odds.bds[is.infinite(odds.bds) & odds.bds > 0] <- maxinf\n                odds.bds[is.infinite(odds.bds) & odds.bds < 0] <- mininf\n                odds.bds[1, ][is.na(odds.bds[1, ])] <- mininf\n                odds.bds[2, ][is.na(odds.bds[2, ])] <- maxinf\n                out <- odds\n                out.obs <- odds.obs\n                out.bds <- odds.bds\n                ylab <- \"log-odds for a dyad\"\n            }\n            else {\n                out <- x$psim.dist\n                out.obs <- x$pobs.dist\n                out.bds <- x$bds.dist\n                ylab <- \"proportion of dyads\"\n                mininf <- min(min(out), min(out.obs), min(out.bds))\n                maxinf <- max(max(out), max(out.obs), max(out.bds))\n            }\n            if (normalize.reachability) {\n                mdist <- max(dist, na.rm = TRUE)\n                totrange <- range(out.bds[1, ][out.bds[1, ] > \n                  out.bds[1, mdist]], out.bds[2, ][out.bds[2, \n                  ] < out.bds[2, mdist]])\n                out[, mdist] <- (out[, mdist] - out.bds[1, mdist]) * \n                  diff(totrange)/diff(out.bds[, mdist]) + totrange[1]\n                out.obs[mdist] <- (out.obs[mdist] - out.bds[1, \n                  mdist]) * diff(totrange)/diff(out.bds[, mdist]) + \n                  totrange[1]\n                out.bds[, mdist] <- totrange\n            }\n            ymin <- min(min(out, na.rm = TRUE), min(out.obs, \n                na.rm = TRUE))\n            ymax <- max(max(out, na.rm = TRUE), max(out.obs, \n                na.rm = TRUE))\n            if (!plotlogodds) {\n                ymin <- max(0, ymin)\n                ymax <- min(1, ymax)\n            }\n            boxplot(data.frame(out[, dist]), xlab = \"minimum geodesic distance\", \n                ylab = ylab, names = pnames, cex.axis = cex.axis, \n                outline = FALSE, ylim = c(ymin, ymax), ...)\n\t    if (IC) {\n\t\t    points(seq(along = dist), out.bds[1, dist], pch = 1, \n\t\t\tcex = 0.75)\n\t\t    points(seq(along = dist), out.bds[2, dist], pch = 1, \n\t\t\tcex = 0.75)\n\t\t    lines(seq(along = dist)[-length(dist)], out.bds[1, \n\t\t\tdist][-length(dist)], pch = 18, lty = 1, lwd = 1, \n\t\t\tcol = color)\n\t\t    lines(seq(along = dist)[-length(dist)], out.bds[2, \n\t\t\tdist][-length(dist)], pch = 18, lty = 1, lwd = 1, \n\t\t\tcol = color)\n\t\t}\n\t    points(seq(along = dist), out.obs[dist], pch = 16, \n\t\t    cex = 0.75)\n\t    lines(seq(along = dist)[-length(dist)], out.obs[dist][-length(dist)], \n\t\t    lty = 1, lwd = 3)\n        }\n    }\n    mtext(main, side = 3, outer = TRUE, cex = 1.5, padj = 2)\n    invisible()\n}",
+      "body_snippet": "Hi Dalton,\n\nStandard box plots are not CI (see for ex.: \nhttp://en.wikipedia.org/wiki/Box_plot). Thus, I think it's not a good \nidea to suppress these grey lines (representing the CI). If you still \nw",
+      "thread_id": "thread-03ab6dbba7e3",
+      "thread_depth": 3,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-ca78cec12327",
+      "message_id": "<003101cbc3b6$61b8b430$252a1c90$@edu>",
+      "from_name": "Dalton  Lunga",
+      "from_email_hash": "d6b42668416cc815c2b8bdafa4efd927adf57845b7b5d7178887cb20c80c42c0",
+      "date": "2011-02-03T07:23:59Z",
+      "subject": "[statnet_help] RE:Goodness of fit",
+      "subject_clean": "[statnet_help] RE:Goodness of fit",
+      "in_reply_to": "<4D4A7E1B.3040106@unige.ch>",
+      "references": [
+        "<201101312000.p0VK0mMR029972@mxout11.cac.washington.edu>",
+        "<000001cbc2c1$2f34b090$8d9e11b0$@edu>",
+        "<4D496909.7090704@unige.ch>",
+        "<000e01cbc31a$5c99f230$15cdd690$@edu>",
+        "<4D4A7E1B.3040106@unige.ch>"
+      ],
+      "body_plain": "Thank you very much Victorin and others for your help.\n\nDalton\n\n-----Original Message-----\nFrom: Victorin Luisier [mailto:Victorin.Luisier@unige.ch] \nSent: Thursday, February 03, 2011 5:06 AM\nTo: statnet_help@u.washington.edu\nSubject: Re: [statnet_help] RE:Goodness of fit\n\nHi Dalton,\n\nStandard box plots are not CI (see for ex.: \nhttp://en.wikipedia.org/wiki/Box_plot). Thus, I think it's not a good idea\nto suppress these grey lines (representing the CI). If you still want to,\nyou could do the following:\n\n1) Put the attached \"newfunction.R\" file in your working directory (where\nyou have your gof object). This file is a lightly modified version of the\nplot.gofobject function.\n\n2) Make sure that you have a functional working environment by plotting your\ngof object.\n\n\n3) Write the following code in you R console:\nsource(\"newfunction.R\")\npdf(\"gof_plots_without_IC.pdf\") #redirect output in a pdf\nnewfunc(<m.gof>,IC=FALSE) # replace <m.gof> with the names of your gof \nobject\ndev.off() # close the pdf\n\n\nThe pdf \"gof_plots_without_IC.pdf\" will not contain any IC...\n\n\nHope that helps,\nVictorin\n\n\n\nLe 02/02/2011 09:47 PM, Dalton Lunga a ?crit :\n> Hi,\n>\n> Thanks for your prompt response. From what you are saying: the grey lines\n> and the box plots are representing the same thing or I am missing\nsomething\n> in between?\n>\n> So to suppress the grey lines I should use which function? Sorry I didn't\n> get that clear?\n>\n> Dalton\n>\n> -----Original Message-----\n> From: Victorin Luisier [mailto:Victorin.Luisier@unige.ch]\n> Sent: Wednesday, February 02, 2011 9:24 AM\n> To: statnet_help@u.washington.edu\n> Subject: Re: [statnet_help] Goodness of fit\n>\n> Hi,\n>\n> I think that that these grey lines represent the 95% confidence\n> intervals of the log-odds contributions for different statistics of\n> interest. These CI are estimated on the simulated samples.\n>\n> So, for example, if I take the graph you gave us and am interested in\n> the \"degree 0\" statistic, I would say that:\n>\n> 1) your observed sample contribute to the log-odds for about -1\n> 2) 95% of the simulated samples (during the gof()) contributes approx.\n> between -2.1 and -1.1 to the log-odds.\n>\n> Technically speaking, your question should be documented in the\n> \"plot.gofobject\" and \"gof.ergm\" documentation pages but is not. However,\n> the code of the \"plot.gofobject\" function indicates that the grey lines\n> are drawn using some parts of your gof object (<m.gof>):\n>\n> <m.gof>$bds.model\n> <m.gof>$bds.ideg\n> <m.gof>$bds.espart\n> <m.gof>$bds.triadcensus\n> <m.gof>$bds.dist\n> <m.gof>$bds.odeg\n> <m.gof>$bds.dspart\n>\n> Hope that helps!\n> Victorin\n>\n> P.S: Really sorry for my faulty english, but I come from the french\n> speaking area of Switzerland :-)\n>\n>\n> Le 02/02/2011 11:08 AM, Dalton Lunga a ?crit :\n>> Dear all,\n>>\n>> Can someone help me answer a quick question: What do the grey lines that\n>> accompany plots for the goodness of fit measures when fitting ERGMs,\n> convey?\n>> These are the lines which at some points clip the box plot and at some\n>> points they floating on their own.\n>>\n>> Any idea how to remove them from the plots? I am attaching an example of\n>> what I am talking about, these lines are not defined on the caption of\n>> Figure from the paper I pulled it from.\n>>\n>> Thank you, I appreciate any help. I am not familiar with R-hence such a\n>> silly question.\n>>\n>>\n>> DL\n>>\n>> -----Original Message-----\n>> From: statnet_help-bounces@mailman2.u.washington.edu\n>> [mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of\n>> statnet_help-request@mailman2.u.washington.edu\n>> Sent: Monday, January 31, 2011 3:01 PM\n>> To: statnet_help@u.washington.edu\n>> Subject: statnet_help Digest, Vol 54, Issue 6\n>>\n>> Send statnet_help mailing list submissions to\n>> \tstatnet_help@u.washington.edu\n>>\n>> To subscribe or unsubscribe via the World Wide Web, visit\n>> \thttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>> or, via email, send a message with subject or body 'help' to\n>> \tstatnet_help-request@mailman2.u.washington.edu\n>>\n>> You can reach the person managing the list at\n>> \tstatnet_help-owner@mailman2.u.washington.edu\n>>\n>> When replying, please edit your Subject line so it is more specific than\n>> \"Re: Contents of statnet_help digest...\"\n>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Thank you very much Victorin and others for your help.\n\nDalton\n\n-----Original Message-----\nFrom: Victorin Luisier [mailto:Victorin.Luisier@unige.ch] \nSent: Thursday, February 03, 2011 5:06 AM\nTo: stat",
+      "thread_id": "thread-03ab6dbba7e3",
+      "thread_depth": 4,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-6540d1623722",
+      "message_id": "<4D4AC97C.4080101@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2011-02-03T07:27:56Z",
+      "subject": "[statnet_help] RE:Goodness of fit",
+      "subject_clean": "[statnet_help] RE:Goodness of fit",
+      "in_reply_to": "<003101cbc3b6$61b8b430$252a1c90$@edu>",
+      "references": [
+        "<201101312000.p0VK0mMR029972@mxout11.cac.washington.edu>",
+        "<000001cbc2c1$2f34b090$8d9e11b0$@edu>",
+        "<4D496909.7090704@unige.ch>",
+        "<000e01cbc31a$5c99f230$15cdd690$@edu>",
+        "<4D4A7E1B.3040106@unige.ch>",
+        "<003101cbc3b6$61b8b430$252a1c90$@edu>"
+      ],
+      "body_plain": "You're welcome :-)\n\nLe 02/03/2011 04:23 PM, Dalton Lunga a ?crit :\n> Thank you very much Victorin and others for your help.\n>\n> Dalton\n>\n> -----Original Message-----\n> From: Victorin Luisier [mailto:Victorin.Luisier@unige.ch]\n> Sent: Thursday, February 03, 2011 5:06 AM\n> To: statnet_help@u.washington.edu\n> Subject: Re: [statnet_help] RE:Goodness of fit\n>\n> Hi Dalton,\n>\n> Standard box plots are not CI (see for ex.:\n> http://en.wikipedia.org/wiki/Box_plot). Thus, I think it's not a good idea\n> to suppress these grey lines (representing the CI). If you still want to,\n> you could do the following:\n>\n> 1) Put the attached \"newfunction.R\" file in your working directory (where\n> you have your gof object). This file is a lightly modified version of the\n> plot.gofobject function.\n>\n> 2) Make sure that you have a functional working environment by plotting your\n> gof object.\n>\n>\n> 3) Write the following code in you R console:\n> source(\"newfunction.R\")\n> pdf(\"gof_plots_without_IC.pdf\") #redirect output in a pdf\n> newfunc(<m.gof>,IC=FALSE) # replace<m.gof>  with the names of your gof\n> object\n> dev.off() # close the pdf\n>\n>\n> The pdf \"gof_plots_without_IC.pdf\" will not contain any IC...\n>\n>\n> Hope that helps,\n> Victorin\n>\n>\n>\n> Le 02/02/2011 09:47 PM, Dalton Lunga a ?crit :\n>> Hi,\n>>\n>> Thanks for your prompt response. From what you are saying: the grey lines\n>> and the box plots are representing the same thing or I am missing\n> something\n>> in between?\n>>\n>> So to suppress the grey lines I should use which function? Sorry I didn't\n>> get that clear?\n>>\n>> Dalton\n>>\n>> -----Original Message-----\n>> From: Victorin Luisier [mailto:Victorin.Luisier@unige.ch]\n>> Sent: Wednesday, February 02, 2011 9:24 AM\n>> To: statnet_help@u.washington.edu\n>> Subject: Re: [statnet_help] Goodness of fit\n>>\n>> Hi,\n>>\n>> I think that that these grey lines represent the 95% confidence\n>> intervals of the log-odds contributions for different statistics of\n>> interest. These CI are estimated on the simulated samples.\n>>\n>> So, for example, if I take the graph you gave us and am interested in\n>> the \"degree 0\" statistic, I would say that:\n>>\n>> 1) your observed sample contribute to the log-odds for about -1\n>> 2) 95% of the simulated samples (during the gof()) contributes approx.\n>> between -2.1 and -1.1 to the log-odds.\n>>\n>> Technically speaking, your question should be documented in the\n>> \"plot.gofobject\" and \"gof.ergm\" documentation pages but is not. However,\n>> the code of the \"plot.gofobject\" function indicates that the grey lines\n>> are drawn using some parts of your gof object (<m.gof>):\n>>\n>> <m.gof>$bds.model\n>> <m.gof>$bds.ideg\n>> <m.gof>$bds.espart\n>> <m.gof>$bds.triadcensus\n>> <m.gof>$bds.dist\n>> <m.gof>$bds.odeg\n>> <m.gof>$bds.dspart\n>>\n>> Hope that helps!\n>> Victorin\n>>\n>> P.S: Really sorry for my faulty english, but I come from the french\n>> speaking area of Switzerland :-)\n>>\n>>\n>> Le 02/02/2011 11:08 AM, Dalton Lunga a ?crit :\n>>> Dear all,\n>>>\n>>> Can someone help me answer a quick question: What do the grey lines that\n>>> accompany plots for the goodness of fit measures when fitting ERGMs,\n>> convey?\n>>> These are the lines which at some points clip the box plot and at some\n>>> points they floating on their own.\n>>>\n>>> Any idea how to remove them from the plots? I am attaching an example of\n>>> what I am talking about, these lines are not defined on the caption of\n>>> Figure from the paper I pulled it from.\n>>>\n>>> Thank you, I appreciate any help. I am not familiar with R-hence such a\n>>> silly question.\n>>>\n>>>\n>>> DL\n>>>\n>>> -----Original Message-----\n>>> From: statnet_help-bounces@mailman2.u.washington.edu\n>>> [mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of\n>>> statnet_help-request@mailman2.u.washington.edu\n>>> Sent: Monday, January 31, 2011 3:01 PM\n>>> To: statnet_help@u.washington.edu\n>>> Subject: statnet_help Digest, Vol 54, Issue 6\n>>>\n>>> Send statnet_help mailing list submissions to\n>>> \tstatnet_help@u.washington.edu\n>>>\n>>> To subscribe or unsubscribe via the World Wide Web, visit\n>>> \thttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>> or, via email, send a message with subject or body 'help' to\n>>> \tstatnet_help-request@mailman2.u.washington.edu\n>>>\n>>> You can reach the person managing the list at\n>>> \tstatnet_help-owner@mailman2.u.washington.edu\n>>>\n>>> When replying, please edit your Subject line so it is more specific than\n>>> \"Re: Contents of statnet_help digest...\"\n>>>\n>>>\n>>>\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "You're welcome :-)\n\nLe 02/03/2011 04:23 PM, Dalton Lunga a ?crit :\n> Thank you very much Victorin and others for your help.\n>\n> Dalton\n>\n> -----Original Message-----\n> From: Victorin Luisier [mailto:V",
+      "thread_id": "thread-03ab6dbba7e3",
+      "thread_depth": 5,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-469a97e47c94",
+      "message_id": "<4D51C262.8070703@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2011-02-08T14:23:30Z",
+      "subject": "[statnet_help] How much steps?",
+      "subject_clean": "[statnet_help] How much steps?",
+      "in_reply_to": "<4D4990FB.9080201@u.washington.edu>",
+      "references": [
+        "<4D4982C1.70106@unige.ch>",
+        "<4D4990FB.9080201@u.washington.edu>"
+      ],
+      "body_plain": "Hi Steve,\n\nThanks a lot for you advices. I will try it tomorrow.\n\nMy life will become easier if a model doesn't need 3 weeks of estimation ;-)\n\n\nVic.\n\nLe 02/02/2011 06:14 PM, Steven Goodreau a ?crit :\n> On 2/2/2011 8:13 AM, Victorin Luisier wrote:\n>> Hi all,\n>>\n>> I have a directed 800 nodes network and not sure how to set the burnin,\n>> MCMCsamplesize, interval, and maxit arguments.\n>>\n>> As far as I know about MCMC is that I have to set the burnin and\n>> interval arguments very large. If not, I won't simulate independant\n>> random samples. So I set these 2 arguments to 1e+06!\n>>\n>> I didn't see any reasons to change the default value of the\n>> MCMCsamplesize argument (10000 by default). But I changed the maxit\n>> argument to 25 (and sometimes 30), because I saw that maxit=5 was not\n>> sufficient (the estimated improvment of the log-likelihood was still\n>> very high. At maxit=25, the LL improvment is at ~1.5).\n>>\n>> With these settings, my models typically take weeks to be estimated. And\n>> you,which settings do you use?\n>\n> When I am working with networks in the size range or larger, I usually\n> start out at around MCMCsamplesize = 50,000 or 100,000; interval = 1000;\n> maxit = 5 or so. I usually don't bother changing the burnin. Of course\n> every network has different estimation needs, but that's where I usually\n> start, and it often works well (as determined from the mcmc diagnostics,\n> and by simulating from the fitted model to see if the sufficient\n> statistics hold in the simulations). Sometimes I lower the steplength\n> (under control.ergm) and bump up the maxit in parallel, and that takes\n> more time.\n>\n> I just fit an example (for the upcoming Sunbelt tutorial) that has 1,461\n> nodes, 974 edges, and a model involving various dyad-independent terms\n> plus GWESP. I used MCMCsamplesize=50k, interval=1000, maxit=5, and the\n> default burnin. It took about 7 minutes on my PC laptop.\n>\n> A larger interval does get you more independent samples, but as you say,\n> it takes a very very long time to run. The reason why we made the TNT\n> proposal the default instead of a simple dyad toggle is that it rapidly\n> speeds up mixing, and can get you much closer to independent samples in\n> a small interval, especially for sparse networks. So given what you'd\n> said I'd drop my interval down a lot, and see what happens.\n>\n> Good luck!\n> Steve\n>\n>\n>\n>\n>\n>\n>\n>>\n>> Best regards,\n>> Victorin\n>>\n>\n>\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Hi Steve,\n\nThanks a lot for you advices. I will try it tomorrow.\n\nMy life will become easier if a model doesn't need 3 weeks of estimation ;-)\n\n\nVic.\n\nLe 02/02/2011 06:14 PM, Steven Goodreau a ?crit :",
+      "thread_id": "thread-0ecd4474b509",
+      "thread_depth": 2,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-41c74e925e57",
+      "message_id": "<4D530244.3080804@cornell.edu>",
+      "from_name": "Patrick Park",
+      "from_email_hash": "f2cd962043a8c3517014335c5e52d0d106ec8d5a50d7ccf597613c423159d615",
+      "date": "2011-02-09T13:08:20Z",
+      "subject": "[statnet_help] Statnet and Parallel/Distributed Computing",
+      "subject_clean": "[statnet_help] Statnet and Parallel/Distributed Computing",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI would like to know if there have been any endeavors to harness the \npower of parallel or distributed computing for ERGMs. Specifically, has \nanyone run the statnet on NVIDIA CUDA GPUs or on a Hadoop cluster? If \nthere is precedent for this, I would be interested to know the specs for \nthe machines used, how the statent package was modified, if it had to \nbe, and the increase in speed and performance, if any. Thank you.\n\nBest,\nPatrick",
+      "body_snippet": "Hello,\n\nI would like to know if there have been any endeavors to harness the \npower of parallel or distributed computing for ERGMs. Specifically, has \nanyone run the statnet on NVIDIA CUDA GPUs or on ",
+      "thread_id": "thread-41c74e925e57",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-9e0e9bef4759",
+      "message_id": "<4D53050C.6040207@ucla.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "fb40357ebb8d7f0a427d9ad2641aa56f67d6763bdb0f1109ba0f3c4b5584b09d",
+      "date": "2011-02-09T13:20:12Z",
+      "subject": "[statnet_help] Statnet and Parallel/Distributed Computing",
+      "subject_clean": "[statnet_help] Statnet and Parallel/Distributed Computing",
+      "in_reply_to": "<4D530244.3080804@cornell.edu>",
+      "references": [
+        "<4D530244.3080804@cornell.edu>"
+      ],
+      "body_plain": "Patrick,\n\nThe development version of \"statnet\" has been running in parallel for over five years. It uses the \"snow\" package (e.g. PVM or MPI) to parallelize the MCMC runs. It is stable and \nvery effective but requires that the user have access to PVM or MPI on their local cluster (or a multi-processor machine like a Mac with MPI builtin). Because of this we have not \nreleased it in the public version as yet. We run it on a number of 128 or 200 CPU linux machines bound together and gets essentially linear speedups.\n\nIf you have expertise in getting R to run on NVIDIA CUDA GPUs or a Hadoop cluster then it should be easy to extend what we have done to these platforms. It is mostly the R side of \nit it that needs work. The hoops on the \"statnet\" side has been developed.\n\nI hope this helps?\n\nCheers,\n\nMark\t\n\n----------------------------------------------------\nMark S. Handcock\nProfessor of Statistics\nDepartment of Statistics\nUniversity of California     Phone:  (310) 817-6778\nLos Angeles, CA 90095-1554.   FAX:   (206) 457-1953\nWeb:  www.stat.ucla.edu/~handcock\ninternet:  handcock@ucla.edu\n\nOn 2/9/11 1:08 PM, Patrick Park wrote:\n> Hello,\n>\n> I would like to know if there have been any endeavors to harness the power of parallel or distributed computing for ERGMs. Specifically, has anyone run the statnet on NVIDIA CUDA\n> GPUs or on a Hadoop cluster? If there is precedent for this, I would be interested to know the specs for the machines used, how the statent package was modified, if it had to be,\n> and the increase in speed and performance, if any. Thank you.\n>\n> Best,\n> Patrick\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Patrick,\n\nThe development version of \"statnet\" has been running in parallel for over five years. It uses the \"snow\" package (e.g. PVM or MPI) to parallelize the MCMC runs. It is stable and \nvery effec",
+      "thread_id": "thread-41c74e925e57",
+      "thread_depth": 1,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-777e14cfd4ea",
+      "message_id": "<DEBEEDDE00DE484C9FA1EF5B4DB933F9@mail2world.com>",
+      "from_name": "alfonso then",
+      "from_email_hash": "13780e876fdf4ed4b4e1c298701dd9d78fe44b9d614d3b84e28108d70a2ddeb7",
+      "date": "2011-02-09T15:10:05Z",
+      "subject": "[statnet_help] Error message using network",
+      "subject_clean": "[statnet_help] Error message using network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "When I use network:\n\nnewnet <- network(EDGES)\n\nI get this error message:\n\nERROR: 2]) == 0 && min(x[, 1\n\nMy data goes like this (first ten rows):\n\nNODE1      NODE2\n8095445000 8095445555\n8095445555 8093816255\n8095932905 8095445555\n8095446001 8095445555\n8093340707 8095445555\n8093816255 8095445555\n8095615355 8095445555\n8095692868 8095445555\n8097881717 8095445555\n8095652232 8095445555\n\n/..../\n\nI would like to know how to solve this error...\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110209/f609605f/attachment.html>",
+      "body_snippet": "When I use network:\n\nnewnet <- network(EDGES)\n\nI get this error message:\n\nERROR: 2]) == 0 && min(x[, 1\n\nMy data goes like this (first ten rows):\n\nNODE1      NODE2\n8095445000 8095445555\n8095445555 8093",
+      "thread_id": "thread-777e14cfd4ea",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-fc09df475f59",
+      "message_id": "<4D532A76.7020804@u.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2011-02-09T15:59:50Z",
+      "subject": "[statnet_help] Error message using network",
+      "subject_clean": "[statnet_help] Error message using network",
+      "in_reply_to": "<DEBEEDDE00DE484C9FA1EF5B4DB933F9@mail2world.com>",
+      "references": [
+        "<DEBEEDDE00DE484C9FA1EF5B4DB933F9@mail2world.com>"
+      ],
+      "body_plain": "Hi Alphonso,\n\nAre your data stored as a data frame object? A matrix object? Something \nelse? The easiest way to have someone diagnose the problem would be to \nexport the actual object and attach it (or a shortened version of it \nwith just the ten rows, if necessary). Or else to include code in the \nemail that generates the object of interest. Either should provide \nenough detail for diagnosis.\n\nYours,\nSteve\n\n\n\nOn 2/9/2011 6:10 PM, alfonso then wrote:\n> When I use network:\n>\n> newnet <- network(EDGES)\n>\n> I get this error message:\n>\n> ERROR: 2]) == 0 && min(x[, 1\n>\n> My data goes like this (first ten rows):\n>\n> NODE1 NODE2\n> 8095445000 8095445555\n> 8095445555 8093816255\n> 8095932905 8095445555\n> 8095446001 8095445555\n> 8093340707 8095445555\n> 8093816255 8095445555\n> 8095615355 8095445555\n> 8095692868 8095445555\n> 8097881717 8095445555\n> 8095652232 8095445555\n>\n> /..../\n>\n> I would like to know how to solve this error...\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n\n-- \n\n***********************************************************************\n  * Steven M. Goodreau / Assoc. Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100     *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)   *\n  * http://faculty.washington.edu/goodreau                            *\n  * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k         *\n***********************************************************************",
+      "body_snippet": "Hi Alphonso,\n\nAre your data stored as a data frame object? A matrix object? Something \nelse? The easiest way to have someone diagnose the problem would be to \nexport the actual object and attach it (o",
+      "thread_id": "thread-777e14cfd4ea",
+      "thread_depth": 1,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-e8a8542ecf79",
+      "message_id": "<23848.129.105.161.98.1297371883.squirrel@mail.it.northwestern.edu>",
+      "from_name": "Hugh J Devlin",
+      "from_email_hash": "eb00b10a817fde0a193dccc0dbd0776d612083e53c084a69b3dae82258d1ab15",
+      "date": "2011-02-10T13:04:43Z",
+      "subject": "[statnet_help] (no subject)",
+      "subject_clean": "[statnet_help] (no subject)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nNew statnet user here. Thanks for great software!\n\nWe're trying to understand an error we are seeing, seems to be related to preserving\nthe environment of a model formula which includes relational attribute effects.\n\nError in check.ErgmTerm(nw, arglist, varnames = c(\"x\", \"attrname\"), vartypes =\nc(\"matrixnetwork\",  :\n  object 'matrix2' not found\n\nBelow is a simple program which reproduces the problem.\n\nAny guidance would be appreciated.\n\nThanks!\nHugh\n-- \nHugh J. Devlin\nhdevlin@northwestern.edu\n\nlibrary(\"statnet\")\nuntrace(\"ergm.update.formula\")\noptions(error = recover)\nnetwork1 <- as.network(matrix(c(0,1,1,0),nrow=2,ncol=2),directed=FALSE)\nmatrix1 <- matrix(c(0,2,2,0),nrow=2,ncol=2)\nsimulate(\n#\tnetwork1 ~ edgecov(as.matrix(c(1,2,2,1),nrow=2,ncol=2,byrow=TRUE)), # OK\n\tnetwork1 ~ edgecov(matrix1), # OK\n\tMCMCsamplesize=1e+5, nsim=2, theta0=c(3), burnin=10, interval=10, verbose=TRUE)\ncat(\"done simulate\\n\")\n\nsim_function1 = function(){\nsimulate(\n\tnetwork1 ~ edgecov(matrix1), # OK\n#\t\tnetwork1 ~ edgecov(as.matrix((1,2,2,1),nrow=2,ncol=2,byrow=TRUE)), # OK\n\t\tMCMCsamplesize=1e+5, nsim=2, theta0=c(3), burnin=10, interval=10, verbose=TRUE)\n}\nsim_function1()\ncat(\"done sim_function1\\n\")\n\nsim_function2 = function(){\n\tmatrix2 <- matrix(c(0,2,2,0),nrow=2,ncol=2)\n\tformula2 <- as.formula(network1 ~ edgecov(matrix2))\n\tcat(\"formula2 environment:\", ls(environment(formula2)), \"\\n\")\n\ttrace(\"ergm.update.formula\",quote(recover()),at=3,print=F)\n\tsimulate(\n#\t\tnetwork1 ~ edgecov(matrix1), # OK\n\t\tformula2, # check.ErgmTerm: matrix2 not found\n#\t\tnetwork1 ~ edgecov(matrix2), # check.ErgmTerm: matrix2 not found\n#\t\tnetwork1 ~ edgecov(as.matrix(c(1,2,2,1),nrow=2,ncol=2,byrow=TRUE)), # OK\n\t\tMCMCsamplesize=1e+5, nsim=2, theta0=c(3), burnin=10, interval=10, verbose=TRUE)\n}\nsim_function2()\ncat(\"done sim_function2\\n\")",
+      "body_snippet": "Hello,\n\nNew statnet user here. Thanks for great software!\n\nWe're trying to understand an error we are seeing, seems to be related to preserving\nthe environment of a model formula which includes relati",
+      "thread_id": "thread-e8a8542ecf79",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-2d99f05e15b3",
+      "message_id": "<23883.129.105.161.98.1297372049.squirrel@mail.it.northwestern.edu>",
+      "from_name": "Hugh J Devlin",
+      "from_email_hash": "eb00b10a817fde0a193dccc0dbd0776d612083e53c084a69b3dae82258d1ab15",
+      "date": "2011-02-10T13:07:29Z",
+      "subject": "[statnet_help] Error in check.ErgmTerm: object not found",
+      "subject_clean": "[statnet_help] Error in check.ErgmTerm: object not found",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nNew statnet user here. Thanks for great software!\n\nWe're trying to understand an error we are seeing, seems to be related to preserving\nthe environment of a model formula which includes relational attribute effects.\n\nError in check.ErgmTerm(nw, arglist, varnames = c(\"x\", \"attrname\"), vartypes =\nc(\"matrixnetwork\",  :\n  object 'matrix2' not found\n\nBelow is a simple program which reproduces the problem.\n\nAny guidance would be appreciated.\n\nThanks!\nHugh\n-- \nHugh J. Devlin\nhdevlin@northwestern.edu\n\nlibrary(\"statnet\")\nuntrace(\"ergm.update.formula\")\noptions(error = recover)\nnetwork1 <- as.network(matrix(c(0,1,1,0),nrow=2,ncol=2),directed=FALSE) matrix1 <-\nmatrix(c(0,2,2,0),nrow=2,ncol=2)\nsimulate(\n#\tnetwork1 ~ edgecov(as.matrix(c(1,2,2,1),nrow=2,ncol=2,byrow=TRUE)), # OK\n\tnetwork1 ~ edgecov(matrix1), # OK\n\tMCMCsamplesize=1e+5, nsim=2, theta0=c(3), burnin=10, interval=10, verbose=TRUE)\ncat(\"done simulate\\n\")\n\nsim_function1 = function(){\nsimulate(\n\tnetwork1 ~ edgecov(matrix1), # OK\n#\t\tnetwork1 ~ edgecov(as.matrix((1,2,2,1),nrow=2,ncol=2,byrow=TRUE)), # OK\n\t\tMCMCsamplesize=1e+5, nsim=2, theta0=c(3), burnin=10, interval=10, verbose=TRUE)\n}\nsim_function1()\ncat(\"done sim_function1\\n\")\n\nsim_function2 = function(){\n\tmatrix2 <- matrix(c(0,2,2,0),nrow=2,ncol=2)\n\tformula2 <- as.formula(network1 ~ edgecov(matrix2))\n\tcat(\"formula2 environment:\", ls(environment(formula2)), \"\\n\")\n\ttrace(\"ergm.update.formula\",quote(recover()),at=3,print=F)\n\tsimulate(\n#\t\tnetwork1 ~ edgecov(matrix1), # OK\n\t\tformula2, # check.ErgmTerm: matrix2 not found\n#\t\tnetwork1 ~ edgecov(matrix2), # check.ErgmTerm: matrix2 not found #\t\tnetwork1 ~\nedgecov(as.matrix(c(1,2,2,1),nrow=2,ncol=2,byrow=TRUE)), # OK\n\t\tMCMCsamplesize=1e+5, nsim=2, theta0=c(3), burnin=10, interval=10, verbose=TRUE)\n}\nsim_function2()\ncat(\"done sim_function2\\n\")",
+      "body_snippet": "Hello,\n\nNew statnet user here. Thanks for great software!\n\nWe're trying to understand an error we are seeing, seems to be related to preserving\nthe environment of a model formula which includes relati",
+      "thread_id": "thread-2d99f05e15b3",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-9791b7b73330",
+      "message_id": "<23975.129.105.161.98.1297372441.squirrel@mail.it.northwestern.edu>",
+      "from_name": "Hugh J Devlin",
+      "from_email_hash": "eb00b10a817fde0a193dccc0dbd0776d612083e53c084a69b3dae82258d1ab15",
+      "date": "2011-02-10T13:14:01Z",
+      "subject": "[statnet_help] Error in check.ErgmTerm: object not found (sessionInfo)",
+      "subject_clean": "[statnet_help] Error in check.ErgmTerm: object not found (sessionInfo)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "thanks in advance!\n\n> sessionInfo()\nR version 2.11.1 (2010-05-31)\nx86_64-pc-mingw32\n\nlocale:\n[1] LC_COLLATE=English_United States.1252\n[2] LC_CTYPE=English_United States.1252\n[3] LC_MONETARY=English_United States.1252\n[4] LC_NUMERIC=C\n[5] LC_TIME=English_United States.1252\n\nattached base packages:\n[1] tools     stats     graphics  grDevices utils     datasets  methods\n[8] base\n\nother attached packages:\n [1] statnet_2.1-1        sna_2.1-0            degreenet_1.1\n [4] latentnet_2.4-0      coda_0.13-5          lattice_0.19-13\n [7] mvtnorm_0.9-92       abind_1.1-0          shapes_1.1-3\n[10] rgl_0.92.794         scatterplot3d_0.3-30 ergm_2.2-5\n[13] network_1.5",
+      "body_snippet": "thanks in advance!\n\n> sessionInfo()\nR version 2.11.1 (2010-05-31)\nx86_64-pc-mingw32\n\nlocale:\n[1] LC_COLLATE=English_United States.1252\n[2] LC_CTYPE=English_United States.1252\n[3] LC_MONETARY=English_U",
+      "thread_id": "thread-9791b7b73330",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-4cfb97895737",
+      "message_id": "<329031.70995.qm@web34408.mail.mud.yahoo.com>",
+      "from_name": "jeremy hackney",
+      "from_email_hash": "9106249490d12d007a96894078543fdeb9b39679e3e8265fdb7d02ea70d61fd9",
+      "date": "2011-02-11T04:52:49Z",
+      "subject": "[statnet_help] Using edgecov in gof, sim",
+      "subject_clean": "[statnet_help] Using edgecov in gof, sim",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\nI've written some functions that call \"gof\" and \"sim\" for models which use an \"edgecov\" coefficient of an NxN matrix for each of the realizable edges.\n\nMy compiled functions fail in \"gof\" or \"sim\" because the NxN matrix is not found, though it should be accessible. However, cutting and pasting the code of my function into the interactive window works.\n\nHere is a sample error message:\n\nError in check.ErgmTerm(nw, arglist, varnames = c(\"x\", \"attrname\"), vartypes = c(\"matrixnetwork\",  :\n  object 'expdists' not found\n\nHow is it intended that I use model results in \"sim\" and \"gof\" in a function when I also have an object in the model formula which is separate from the network object?\n\nHere is the function generating the above error message. This crashes before the gof section is complete:\n\ndomodel52<-function(snownet,dists){\n\nsink(file=\"EstimationResults52.txt\")\n\n#Choose edges where vertices have valid age\nexpdists<-exp(-0.05190448*dists[which(!is.na(get.vertex.attribute(snownet,\"age\"))),which(!is.na(get.vertex.attribute(snownet,\"age\")))])\n\n#Remove NA's from age attribute\nsnownetage<-snownet\ndelete.vertices(snownetage,which(is.na(get.vertex.attribute(snownet,\"age\"))))\nprint(\"ALL models estimated with age = NA vertices removed\")\n\nprint(\"model52 <- ergm(snownetage ~ edges + edgecov(expdists) + absdiff(age) + nodematch(sex) + nodematch(muni) + nodematch(civilstat) + nodematch(country) + nodematch(education) + nodematch(hhincome)): spatial Bernoulli model)\n\nmodel <-ergm(snownetage ~ edges + edgecov(expdists) + absdiff(\"age\") + nodematch(\"sex\") + nodematch(\"muni\") + nodematch(\"civilstat\") + nodematch(\"country\") + nodematch(\"education\") + nodematch(\"hhincome\"),control=control.ergm(maxNumDyadTypes=3e+09),verbose=TRUE)\nprint(summary(model))\n\n#No result if MCMC is not requested\nprint(\"model52diagnostics.pdf\")\npdf(\"model52diagnostics.pdf\")\nmcmc.diagnostics(model)\ndev.off()\n\nprint(\"starting model52gof.pdf\")\ngof52<-gof(model)\npdf(\"model52gof.pdf\")\nplot(gof52)\ndev.off()\n\nreturn(list(model,expdists))\n\nsink()\n\n}\n\n\nThank you\nJeremy Hackney\nPost Doc\nInstitute for Transportation Systems and Planning, ETH Z?rich",
+      "body_snippet": "Hello,\nI've written some functions that call \"gof\" and \"sim\" for models which use an \"edgecov\" coefficient of an NxN matrix for each of the realizable edges.\n\nMy compiled functions fail in \"gof\" or \"s",
+      "thread_id": "thread-4cfb97895737",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-b47b18b60300",
+      "message_id": "<alpine.WNT.2.00.1102110751110.3168@Martina-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2011-02-11T07:53:34Z",
+      "subject": "[statnet_help] Using edgecov in gof, sim",
+      "subject_clean": "[statnet_help] Using edgecov in gof, sim",
+      "in_reply_to": "<329031.70995.qm@web34408.mail.mud.yahoo.com>",
+      "references": [
+        "<329031.70995.qm@web34408.mail.mud.yahoo.com>"
+      ],
+      "body_plain": "Hi Jeremy,\n\nIt would help if you let us know what versions of ergm and R you are \nusing, and if it is possible to send an .RData file with the object you \nare trying to analyze, we can start by replicating the problem here.\n\nthanks,\nMartina\n\nOn Fri, 11 Feb 2011, jeremy hackney wrote:\n\n> Hello,\n> I've written some functions that call \"gof\" and \"sim\" for models which use an \"edgecov\" coefficient of an NxN matrix for each of the realizable edges.\n>\n> My compiled functions fail in \"gof\" or \"sim\" because the NxN matrix is not found, though it should be accessible. However, cutting and pasting the code of my function into the interactive window works.\n>\n> Here is a sample error message:\n>\n> Error in check.ErgmTerm(nw, arglist, varnames = c(\"x\", \"attrname\"), vartypes = c(\"matrixnetwork\",  :\n>  object 'expdists' not found\n>\n> How is it intended that I use model results in \"sim\" and \"gof\" in a function when I also have an object in the model formula which is separate from the network object?\n>\n> Here is the function generating the above error message. This crashes before the gof section is complete:\n>\n> domodel52<-function(snownet,dists){\n>\n> sink(file=\"EstimationResults52.txt\")\n>\n> #Choose edges where vertices have valid age\n> expdists<-exp(-0.05190448*dists[which(!is.na(get.vertex.attribute(snownet,\"age\"))),which(!is.na(get.vertex.attribute(snownet,\"age\")))])\n>\n> #Remove NA's from age attribute\n> snownetage<-snownet\n> delete.vertices(snownetage,which(is.na(get.vertex.attribute(snownet,\"age\"))))\n> print(\"ALL models estimated with age = NA vertices removed\")\n>\n> print(\"model52 <- ergm(snownetage ~ edges + edgecov(expdists) + absdiff(age) + nodematch(sex) + nodematch(muni) + nodematch(civilstat) + nodematch(country) + nodematch(education) + nodematch(hhincome)): spatial Bernoulli model)\n>\n> model <-ergm(snownetage ~ edges + edgecov(expdists) + absdiff(\"age\") + nodematch(\"sex\") + nodematch(\"muni\") + nodematch(\"civilstat\") + nodematch(\"country\") + nodematch(\"education\") + nodematch(\"hhincome\"),control=control.ergm(maxNumDyadTypes=3e+09),verbose=TRUE)\n> print(summary(model))\n>\n> #No result if MCMC is not requested\n> print(\"model52diagnostics.pdf\")\n> pdf(\"model52diagnostics.pdf\")\n> mcmc.diagnostics(model)\n> dev.off()\n>\n> print(\"starting model52gof.pdf\")\n> gof52<-gof(model)\n> pdf(\"model52gof.pdf\")\n> plot(gof52)\n> dev.off()\n>\n> return(list(model,expdists))\n>\n> sink()\n>\n> }\n>\n>\n> Thank you\n> Jeremy Hackney\n> Post Doc\n> Institute for Transportation Systems and Planning, ETH Z?rich\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Jeremy,\n\nIt would help if you let us know what versions of ergm and R you are \nusing, and if it is possible to send an .RData file with the object you \nare trying to analyze, we can start by replic",
+      "thread_id": "thread-4cfb97895737",
+      "thread_depth": 1,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-76a58af7d8fc",
+      "message_id": "<33336.129.105.161.98.1297454273.squirrel@mail.it.northwestern.edu>",
+      "from_name": "Hugh J Devlin",
+      "from_email_hash": "eb00b10a817fde0a193dccc0dbd0776d612083e53c084a69b3dae82258d1ab15",
+      "date": "2011-02-11T11:57:53Z",
+      "subject": "[statnet_help] Error in check.ErgmTerm: object not found",
+      "subject_clean": "[statnet_help] Error in check.ErgmTerm: object not found",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nthis problem also occurs under R 2.12 and the lastest statnet.\n\nthanks in advnace for your help!\n\nHugh\n\n> source(\"C:\\\\Users\\\\Hugh\\\\workspace\\\\SumSims\\\\SimulateProblem.R\")\nStarting MCMC iterations to generate 2 networksTNT sampler accepted  0.000% of 10\nproposed steps.\nFinished simulation 1 of 2.\nTNT sampler accepted  0.000% of 10 proposed steps.\nFinished simulation 2 of 2.\ndone simulate\nStarting MCMC iterations to generate 2 networksTNT sampler accepted  0.000% of 10\nproposed steps.\nFinished simulation 1 of 2.\nTNT sampler accepted  0.000% of 10 proposed steps.\nFinished simulation 2 of 2.\ndone sim_function1\nformula2 environment: formula2 matrix2\nTracing function \"ergm.update.formula\" in package \"ergm\"\n\nEnter a frame number, or 0 to exit\n\n1: source(\"C:\\\\Users\\\\Hugh\\\\workspace\\\\SumSims\\\\SimulateProblem.R\")\n2: eval.with.vis(ei, envir)\n3: eval.with.vis(expr, envir, enclos)\n4: sim_function2()\n5: SimulateProblem.R#26: simulate(formula2, MCMCsamplesize = 1e+05, nsim = 2,\n6: SimulateProblem.R#26: simulate.formula(formula2, MCMCsamplesize = 1e+05, ns\n7: ergm.update.formula(object, nw ~ .)\n\nSelection: 0\nError in check.ErgmTerm(nw, arglist, varnames = c(\"x\", \"attrname\"), vartypes =\nc(\"matrixnetwork\",  :\n  object 'matrix2' not found\n\nEnter a frame number, or 0 to exit\n\n 1: source(\"C:\\\\Users\\\\Hugh\\\\workspace\\\\SumSims\\\\SimulateProblem.R\")\n 2: eval.with.vis(ei, envir)\n 3: eval.with.vis(expr, envir, enclos)\n 4: sim_function2()\n 5: SimulateProblem.R#26: simulate(formula2, MCMCsamplesize = 1e+05, nsim = 2,\n 6: SimulateProblem.R#26: simulate.formula(formula2, MCMCsamplesize = 1e+05, ns\n 7: ergm.getmodel(form, nw, drop = FALSE)\n 8: eval(v[[i]], formula.env)\n 9: eval(expr, envir, enclos)\n10: InitErgmTerm.edgecov(list(mel = list(list(inl = 1, outl = 2, atl = list(na\n11: check.ErgmTerm(nw, arglist, varnames = c(\"x\", \"attrname\"), vartypes = c(\"ma\n\nSelection: 0\n> sessionInfo()\nR version 2.12.1 (2010-12-16)\nPlatform: x86_64-pc-mingw32/x64 (64-bit)\n\nlocale:\n[1] LC_COLLATE=English_United States.1252\n[2] LC_CTYPE=English_United States.1252\n[3] LC_MONETARY=English_United States.1252\n[4] LC_NUMERIC=C\n[5] LC_TIME=English_United States.1252\n\nattached base packages:\n[1] tools     stats     graphics  grDevices utils     datasets  methods\n[8] base\n\nother attached packages:\n [1] statnet_2.6          sna_2.2-0            degreenet_1.1\n [4] latentnet_2.4-1      coda_0.14-2          lattice_0.19-13\n [7] mvtnorm_0.9-96       abind_1.1-0          shapes_1.1-3\n[10] rgl_0.92.798         scatterplot3d_0.3-31 ergm_2.3\n[13] network_1.6\n\nloaded via a namespace (and not attached):\n[1] grid_2.12.1",
+      "body_snippet": "Hello,\n\nthis problem also occurs under R 2.12 and the lastest statnet.\n\nthanks in advnace for your help!\n\nHugh\n\n> source(\"C:\\\\Users\\\\Hugh\\\\workspace\\\\SumSims\\\\SimulateProblem.R\")\nStarting MCMC iterati",
+      "thread_id": "thread-76a58af7d8fc",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-4bc0ea7c25f3",
+      "message_id": "<F0A892CE1A601F46A933C445ECAE717B021897EDB3@EXVMBX016-4.exch016.msoutlookonline.net>",
+      "from_name": "Charles Ellis",
+      "from_email_hash": "5cf906d4c707154c82dcc54ff54bc9f49639eb0353cf4046199aab8bdeb7e46f",
+      "date": "2011-02-11T12:22:14Z",
+      "subject": "[statnet_help] Replicating Tutorial Results",
+      "subject_clean": "[statnet_help] Replicating Tutorial Results",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI apologize for what may be a simplistic question, but here goes.  I am working through some of the code in \"A statnet Tutorial\" (Goodreau et al., 2008) and I cannot seem to replicate some of the results.\n\nThe results I am trying to replicate are on p. 14 of the tutorial and are associated with the following code:\n\n> data(\"faux.magnolia.high\")\n> fmh <- faux.magnolia.high\n> model3 <- ergm(fmh ~ edges + triangle, verbose = TRUE, seed = 99)\n\nWhen I run this in R, I get the following results:\n\nEvaluating network in model\nInitializing model.\nInitializing Metropolis-Hastings proposal.\nFitting initial model.\nCompressed MPLE covariate matrix has 10 rows.\nFitting ERGM.\nIteration 1 of at most 3 with parameter: \n    edges  triangle \n-7.310041  4.503990 \nTNT sampler accepted 81.873% of 1000000 proposed steps.\nBack from unconstrained MCMC...\nCalling MCMLE Optimization...\nUsing Newton-Raphson Step with step length  0.5  ...\nUsing lognormal metric (see control.ergm function).\nOptimizing loglikelihood\ninitial  value -0.000000 \nfinal  value -2.226822 \nconverged\nthe log-likelihood improved by 2.227 \nIteration 2 of at most 3 with parameter: \n    edges  triangle \n-7.327683  4.690704 \nTNT sampler accepted 81.640% of 1000000 proposed steps.\nBack from unconstrained MCMC...\nCalling MCMLE Optimization...\nUsing Newton-Raphson Step with step length  0.5  ...\nUsing lognormal metric (see control.ergm function).\nOptimizing loglikelihood\ninitial  value -0.000000 \nfinal  value -10.271026 \nconverged\nthe log-likelihood improved by 10.27 \nIteration 3 of at most 3 with parameter: \n    edges  triangle \n-7.413134  5.257440 \nTNT sampler accepted 66.888% of 1000000 proposed steps.\nBack from unconstrained MCMC...\nCalling MCMLE Optimization...\nUsing Newton-Raphson Step with step length  0.5  ...\nUsing lognormal metric (see control.ergm function).\nOptimizing loglikelihood\ninitial  value -0.000000 \nfinal  value -1.919163 \nconverged\nStarting MCMC s.e. computation.\nthe log-likelihood improved by 1.919 \n\nThis model was fit using MCMC.  To examine model diagnostics and check for degeneracy, use the mcmc.diagnostics() function.\n\nHowever, in the tutorial it suggests (if I am reading it correctly) that the results should include the following lines somewhere in the full results:\n\n...\nSummary of simulation, relative to observed network:\n\nedges triangle\nMin. 78.00000 144.00000\n1st Qu. 235.00000 314.00000\nMedian 337.00000 568.00000\nMean 468.70000 784.10000\n3rd Qu. 640.00000 1132.00000\nMax. 1355.00000 2566.00000\nstd. err. 3.07605 6.02356\nstd. t units. 152.37070 130.17197\np.value dev. 0.00000 0.00000\nstd. dev. 307.60495 602.35625\n...\n\nHowever, I don't find these lines in the results when I run the code.\n\nThe dataset I am  using is \"faux.magnolia.high\", distributed with the statnet package.\n\nI am running the following version of R and statnet:\n\nR version 2.12.1 (2010-12-16)\nCopyright (C) 2010 The R Foundation for Statistical Computing\nISBN 3-900051-07-0\nPlatform: x86_64-pc-mingw32/x64 (64-bit)\n\nstatnet: Software tools for the Statistical Modeling of Network Data \nVersion 2.6 created on 2011-02-02 \ncopyright (c) 2003, Mark S. Handcock, University of Washington\n                    David R. Hunter, Penn State University\n                    Carter T. Butts, University of California-Irvine\n                    Steven M. Goodreau, University of Washington\n                    Pavel N. Krivitsky, Carnegie Mellon University\n                    Martina Morris, University of Washington\n\nIf anyone can help with what I am doing wrong or what obvious point I am missing, it would be much appreciated.  Also, I have checked the updated tutorial code on the statnet homepage and there does not appear to be any differences between what is listed there and  what I am running.\n\nCheers,\nCharles Ellis",
+      "body_snippet": "Hi,\n\nI apologize for what may be a simplistic question, but here goes.  I am working through some of the code in \"A statnet Tutorial\" (Goodreau et al., 2008) and I cannot seem to replicate some of the",
+      "thread_id": "thread-4bc0ea7c25f3",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-6692dd9b341f",
+      "message_id": "<AB203C40-99F3-4435-ABBD-663A15CCCFFB@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2011-02-11T13:25:55Z",
+      "subject": "[statnet_help] ergm.userterms is on CRAN",
+      "subject_clean": "[statnet_help] ergm.userterms is on CRAN",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone.  The package called ergm.userterms is now up on CRAN.   \nThis package is designed to help folks who are interested in extending  \nthe capabilities of statnet by creating their own terms that can be  \nused in an ERGM formula.  There is a paper that comes with the package  \nthat explains how this works and also gives a bit of a glimpse under  \nthe hood of the ergm package.\n\nThe paper is in the inst/doc directory of the source code, or you can  \ndownload it separately at http://www.stat.psu.edu/~dhunter/papers/ergmuserterms.pdf\n\nBest,\nDave\n\nPS.  If anyone still at Sunbelt is interested in chatting about this,  \ntry to track down Steve Goodreau, who's still there.",
+      "body_snippet": "Hi everyone.  The package called ergm.userterms is now up on CRAN.   \nThis package is designed to help folks who are interested in extending  \nthe capabilities of statnet by creating their own terms t",
+      "thread_id": "thread-6692dd9b341f",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-861b6ff01333",
+      "message_id": "<010C59DD-C990-420C-896D-15B7707A4F29@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2011-02-11T14:04:52Z",
+      "subject": "[statnet_help] Replicating Tutorial Results",
+      "subject_clean": "[statnet_help] Replicating Tutorial Results",
+      "in_reply_to": "<F0A892CE1A601F46A933C445ECAE717B021897EDB3@EXVMBX016-4.exch016.msoutlookonline.net>",
+      "references": [
+        "<F0A892CE1A601F46A933C445ECAE717B021897EDB3@EXVMBX016-4.exch016.msoutlookonline.net>"
+      ],
+      "body_plain": "Hi Charles.  You're not doing anything wrong; it's simply that ergm  \n(the package, which is one of the statnet packages) has changed.  It  \nnow produces slightly different output.\nIf you're nervous about this, it is possible to get exactly the same  \noutput by re-installing the version of ergm that was current at the  \ntime of the article, namely, ergm version 2.1 (see p. 9 of the  \narticle, where all the version numbers are listed).  All of the old  \nversions are available on CRAN, though they are only in source code  \n(not pre-compiled binary) form.\n\nBest wishes,\nDave\n\n\n\n\nOn Feb 11, 2011, at 3:22 PM, Charles Ellis wrote:\n\n> Hi,\n>\n> I apologize for what may be a simplistic question, but here goes.  I  \n> am working through some of the code in \"A statnet  \n> Tutorial\" (Goodreau et al., 2008) and I cannot seem to replicate  \n> some of the results.\n>\n> The results I am trying to replicate are on p. 14 of the tutorial  \n> and are associated with the following code:\n>\n>> data(\"faux.magnolia.high\")\n>> fmh <- faux.magnolia.high\n>> model3 <- ergm(fmh ~ edges + triangle, verbose = TRUE, seed = 99)\n>\n> When I run this in R, I get the following results:\n>\n> Evaluating network in model\n> Initializing model.\n> Initializing Metropolis-Hastings proposal.\n> Fitting initial model.\n> Compressed MPLE covariate matrix has 10 rows.\n> Fitting ERGM.\n> Iteration 1 of at most 3 with parameter:\n>    edges  triangle\n> -7.310041  4.503990\n> TNT sampler accepted 81.873% of 1000000 proposed steps.\n> Back from unconstrained MCMC...\n> Calling MCMLE Optimization...\n> Using Newton-Raphson Step with step length  0.5  ...\n> Using lognormal metric (see control.ergm function).\n> Optimizing loglikelihood\n> initial  value -0.000000\n> final  value -2.226822\n> converged\n> the log-likelihood improved by 2.227\n> Iteration 2 of at most 3 with parameter:\n>    edges  triangle\n> -7.327683  4.690704\n> TNT sampler accepted 81.640% of 1000000 proposed steps.\n> Back from unconstrained MCMC...\n> Calling MCMLE Optimization...\n> Using Newton-Raphson Step with step length  0.5  ...\n> Using lognormal metric (see control.ergm function).\n> Optimizing loglikelihood\n> initial  value -0.000000\n> final  value -10.271026\n> converged\n> the log-likelihood improved by 10.27\n> Iteration 3 of at most 3 with parameter:\n>    edges  triangle\n> -7.413134  5.257440\n> TNT sampler accepted 66.888% of 1000000 proposed steps.\n> Back from unconstrained MCMC...\n> Calling MCMLE Optimization...\n> Using Newton-Raphson Step with step length  0.5  ...\n> Using lognormal metric (see control.ergm function).\n> Optimizing loglikelihood\n> initial  value -0.000000\n> final  value -1.919163\n> converged\n> Starting MCMC s.e. computation.\n> the log-likelihood improved by 1.919\n>\n> This model was fit using MCMC.  To examine model diagnostics and  \n> check for degeneracy, use the mcmc.diagnostics() function.\n>\n> However, in the tutorial it suggests (if I am reading it correctly)  \n> that the results should include the following lines somewhere in the  \n> full results:\n>\n> ...\n> Summary of simulation, relative to observed network:\n>\n> edges triangle\n> Min. 78.00000 144.00000\n> 1st Qu. 235.00000 314.00000\n> Median 337.00000 568.00000\n> Mean 468.70000 784.10000\n> 3rd Qu. 640.00000 1132.00000\n> Max. 1355.00000 2566.00000\n> std. err. 3.07605 6.02356\n> std. t units. 152.37070 130.17197\n> p.value dev. 0.00000 0.00000\n> std. dev. 307.60495 602.35625\n> ...\n>\n> However, I don't find these lines in the results when I run the code.\n>\n> The dataset I am  using is \"faux.magnolia.high\", distributed with  \n> the statnet package.\n>\n> I am running the following version of R and statnet:\n>\n> R version 2.12.1 (2010-12-16)\n> Copyright (C) 2010 The R Foundation for Statistical Computing\n> ISBN 3-900051-07-0\n> Platform: x86_64-pc-mingw32/x64 (64-bit)\n>\n> statnet: Software tools for the Statistical Modeling of Network Data\n> Version 2.6 created on 2011-02-02\n> copyright (c) 2003, Mark S. Handcock, University of Washington\n>                    David R. Hunter, Penn State University\n>                    Carter T. Butts, University of California-Irvine\n>                    Steven M. Goodreau, University of Washington\n>                    Pavel N. Krivitsky, Carnegie Mellon University\n>                    Martina Morris, University of Washington\n>\n> If anyone can help with what I am doing wrong or what obvious point  \n> I am missing, it would be much appreciated.  Also, I have checked  \n> the updated tutorial code on the statnet homepage and there does not  \n> appear to be any differences between what is listed there and  what  \n> I am running.\n>\n> Cheers,\n> Charles Ellis\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Charles.  You're not doing anything wrong; it's simply that ergm  \n(the package, which is one of the statnet packages) has changed.  It  \nnow produces slightly different output.\nIf you're nervous a",
+      "thread_id": "thread-4bc0ea7c25f3",
+      "thread_depth": 1,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-53d038875a52",
+      "message_id": "<26A07183-0991-44F4-8BCC-69E2C8992305@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2011-02-12T15:00:07Z",
+      "subject": "[statnet_help] Error in check.ErgmTerm: object not found",
+      "subject_clean": "[statnet_help] Error in check.ErgmTerm: object not found",
+      "in_reply_to": "<33336.129.105.161.98.1297454273.squirrel@mail.it.northwestern.edu>",
+      "references": [
+        "<33336.129.105.161.98.1297454273.squirrel@mail.it.northwestern.edu>"
+      ],
+      "body_plain": "Hello Hugh.  For some reason, I'm unable to reproduce this error.   \nAfter defining your \"simulate1\" and \"simulate2\" functions (and taking  \nthe \"trace\" function out of the latter), here's what I get when  \nrunning them:\n\n > out=sim_function1()\nStarting MCMC iterations to generate 2 networksTNT sampler accepted   \n0.000% of 10 proposed steps.\nFinished simulation 1 of 2.\nTNT sampler accepted  0.000% of 10 proposed steps.\nFinished simulation 2 of 2.\n > out=sim_function2()\nStarting MCMC iterations to generate 2 networksTNT sampler accepted   \n0.000% of 10 proposed steps.\nFinished simulation 1 of 2.\nTNT sampler accepted  0.000% of 10 proposed steps.\nFinished simulation 2 of 2.\n\nI'm using ergm 2.3 for this, but nothing in the code leads me to  \nbelieve it would be different using a different version.  So I'm  \npuzzled about this.\n\nOne thing I did notice is that you're using the MCMCsamplesize  \nargument, which is not a valid argument for the simulate.formula  \nfunction.  But that use would not create the error you're seeing;  \nindeed, I left that argument in when producing the output above.\n\nYou don't happen to have another example that gives this error do  \nyou?  I'm presuming that you see the error only for the \"simulate2\"  \nfunction, right?  Do you get the same error when you run the  \n\"simulate(formula2)\" function directly from the command line rather  \nthan inside the \"simulate2\" function?\n\nDave\n\n\n\nOn Feb 11, 2011, at 2:57 PM, Hugh J Devlin wrote:\n\n> Hello,\n>\n> this problem also occurs under R 2.12 and the lastest statnet.\n>\n> thanks in advnace for your help!\n>\n> Hugh\n>\n>> source(\"C:\\\\Users\\\\Hugh\\\\workspace\\\\SumSims\\\\SimulateProblem.R\")\n> Starting MCMC iterations to generate 2 networksTNT sampler accepted   \n> 0.000% of 10\n> proposed steps.\n> Finished simulation 1 of 2.\n> TNT sampler accepted  0.000% of 10 proposed steps.\n> Finished simulation 2 of 2.\n> done simulate\n> Starting MCMC iterations to generate 2 networksTNT sampler accepted   \n> 0.000% of 10\n> proposed steps.\n> Finished simulation 1 of 2.\n> TNT sampler accepted  0.000% of 10 proposed steps.\n> Finished simulation 2 of 2.\n> done sim_function1\n> formula2 environment: formula2 matrix2\n> Tracing function \"ergm.update.formula\" in package \"ergm\"\n>\n> Enter a frame number, or 0 to exit\n>\n> 1: source(\"C:\\\\Users\\\\Hugh\\\\workspace\\\\SumSims\\\\SimulateProblem.R\")\n> 2: eval.with.vis(ei, envir)\n> 3: eval.with.vis(expr, envir, enclos)\n> 4: sim_function2()\n> 5: SimulateProblem.R#26: simulate(formula2, MCMCsamplesize = 1e+05,  \n> nsim = 2,\n> 6: SimulateProblem.R#26: simulate.formula(formula2, MCMCsamplesize =  \n> 1e+05, ns\n> 7: ergm.update.formula(object, nw ~ .)\n>\n> Selection: 0\n> Error in check.ErgmTerm(nw, arglist, varnames = c(\"x\", \"attrname\"),  \n> vartypes =\n> c(\"matrixnetwork\",  :\n>  object 'matrix2' not found\n>\n> Enter a frame number, or 0 to exit\n>\n> 1: source(\"C:\\\\Users\\\\Hugh\\\\workspace\\\\SumSims\\\\SimulateProblem.R\")\n> 2: eval.with.vis(ei, envir)\n> 3: eval.with.vis(expr, envir, enclos)\n> 4: sim_function2()\n> 5: SimulateProblem.R#26: simulate(formula2, MCMCsamplesize = 1e+05,  \n> nsim = 2,\n> 6: SimulateProblem.R#26: simulate.formula(formula2, MCMCsamplesize =  \n> 1e+05, ns\n> 7: ergm.getmodel(form, nw, drop = FALSE)\n> 8: eval(v[[i]], formula.env)\n> 9: eval(expr, envir, enclos)\n> 10: InitErgmTerm.edgecov(list(mel = list(list(inl = 1, outl = 2, atl  \n> = list(na\n> 11: check.ErgmTerm(nw, arglist, varnames = c(\"x\", \"attrname\"),  \n> vartypes = c(\"ma\n>\n> Selection: 0\n>> sessionInfo()\n> R version 2.12.1 (2010-12-16)\n> Platform: x86_64-pc-mingw32/x64 (64-bit)\n>\n> locale:\n> [1] LC_COLLATE=English_United States.1252\n> [2] LC_CTYPE=English_United States.1252\n> [3] LC_MONETARY=English_United States.1252\n> [4] LC_NUMERIC=C\n> [5] LC_TIME=English_United States.1252\n>\n> attached base packages:\n> [1] tools     stats     graphics  grDevices utils     datasets   \n> methods\n> [8] base\n>\n> other attached packages:\n> [1] statnet_2.6          sna_2.2-0            degreenet_1.1\n> [4] latentnet_2.4-1      coda_0.14-2          lattice_0.19-13\n> [7] mvtnorm_0.9-96       abind_1.1-0          shapes_1.1-3\n> [10] rgl_0.92.798         scatterplot3d_0.3-31 ergm_2.3\n> [13] network_1.6\n>\n> loaded via a namespace (and not attached):\n> [1] grid_2.12.1\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hello Hugh.  For some reason, I'm unable to reproduce this error.   \nAfter defining your \"simulate1\" and \"simulate2\" functions (and taking  \nthe \"trace\" function out of the latter), here's what I get ",
+      "thread_id": "thread-76a58af7d8fc",
+      "thread_depth": 1,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-324fdf660dfb",
+      "message_id": "<4D58FDA8.5020700@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2011-02-14T02:02:16Z",
+      "subject": "[statnet_help] ergm.userterms is on CRAN",
+      "subject_clean": "[statnet_help] ergm.userterms is on CRAN",
+      "in_reply_to": "<AB203C40-99F3-4435-ABBD-663A15CCCFFB@stat.psu.edu>",
+      "references": [
+        "<AB203C40-99F3-4435-ABBD-663A15CCCFFB@stat.psu.edu>"
+      ],
+      "body_plain": "Great News! The missing package I was waiting for :-)\nThanks a lot, all, for your work.\n\n@+\nVic.\n\nLe 02/11/2011 10:25 PM, David Hunter a ?crit :\n> Hi everyone. The package called ergm.userterms is now up on CRAN. This\n> package is designed to help folks who are interested in extending the\n> capabilities of statnet by creating their own terms that can be used in\n> an ERGM formula. There is a paper that comes with the package that\n> explains how this works and also gives a bit of a glimpse under the hood\n> of the ergm package.\n>\n> The paper is in the inst/doc directory of the source code, or you can\n> download it separately at\n> http://www.stat.psu.edu/~dhunter/papers/ergmuserterms.pdf\n>\n> Best,\n> Dave\n>\n> PS. If anyone still at Sunbelt is interested in chatting about this, try\n> to track down Steve Goodreau, who's still there.\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Great News! The missing package I was waiting for :-)\nThanks a lot, all, for your work.\n\n@+\nVic.\n\nLe 02/11/2011 10:25 PM, David Hunter a ?crit :\n> Hi everyone. The package called ergm.userterms is now",
+      "thread_id": "thread-6692dd9b341f",
+      "thread_depth": 1,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-a2cf82e5abf7",
+      "message_id": "<6923.129.105.161.91.1297704254.squirrel@mail.it.northwestern.edu>",
+      "from_name": "Hugh J Devlin",
+      "from_email_hash": "eb00b10a817fde0a193dccc0dbd0776d612083e53c084a69b3dae82258d1ab15",
+      "date": "2011-02-14T09:24:14Z",
+      "subject": "[statnet_help] Error in check.ErgmTerm: object not found",
+      "subject_clean": "[statnet_help] Error in check.ErgmTerm: object not found",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Prof. Hunter,\n\nThank you for your reply.\n\n> I'm presuming that you see the error only for the \"simulate2\"\n> function, right?  Do you get the same error when you run the\n> \"simulate(formula2)\" function directly from the command line rather than inside\nthe \"simulate2\" function?\n\nI tried to indicate the conditions under which the problem occurs in the comments to\nthe right of the arguments in the argument list to simulate.ergm. No, the error does\nnot occur when simulate is called directly from the top level as I tried to\nrepresent in the 1st call to simulate in the posted script. Further, my intention\nwith sim_function1 was to suggest that calling simulate from a function is a\nnecessary but insufficient precondition for the problem. With sim_function2 I was\ntrying to convey my observation that there may be a problem with preserving the\nmodel formula's environment, in the case that simulate.ergm is called from a\nfunction, AND the relational attribute matrix is defined lexically local to the\ncalling function.\n\nWe are using ergm 2.3 as well.\n\nThank you for noticing the extra parameter. The problem occurs with the extra\nparameter eliminated. Below is an updated script.\n\nThanks again,\nHugh\n\nlibrary(\"statnet\")\nuntrace(\"ergm.update.formula\")\noptions(error = recover)\nprint(sessionInfo())\nprint(getOption(\"pkgType\"))\nnetwork1 <- as.network(matrix(c(0,1,1,0),nrow=2,ncol=2),directed=FALSE) matrix1 <-\nmatrix(c(0,2,2,0),nrow=2,ncol=2)\nsimulate(\n#\tnetwork1 ~ edgecov(as.matrix(c(1,2,2,1),nrow=2,ncol=2,byrow=TRUE)), # OK\n\tnetwork1 ~ edgecov(matrix1), # OK\n\tnsim=2, theta0=c(3), burnin=10, interval=10, verbose=TRUE)\ncat(\"done simulate\\n\")\n\nsim_function1 = function(){\n\tsimulate(\n\t\tnetwork1 ~ edgecov(matrix1), # OK\n#\t\tnetwork1 ~ edgecov(as.matrix(c(1,2,2,1),nrow=2,ncol=2,byrow=TRUE)), # OK\n\t\tnsim=2, theta0=c(3), burnin=10, interval=10, verbose=TRUE)\n}\nsim_function1()\ncat(\"done sim_function1\\n\")\n\nsim_function2 = function(){\n\tmatrix2 <- matrix(c(0,2,2,0),nrow=2,ncol=2)\n\tformula2 <- as.formula(network1 ~ edgecov(matrix2))\n\tcat(\"formula2 environment:\", ls(environment(formula2)), \"\\n\")\n#\ttrace(\"ergm.update.formula\",quote(recover()),at=3,print=F)\n\tsimulate(\n#\t\tnetwork1 ~ edgecov(matrix1), # OK\n\t\tformula2, # check.ErgmTerm: matrix2 not found\n#\t\tnetwork1 ~ edgecov(matrix2), # check.ErgmTerm: matrix2 not found #\t\tnetwork1 ~\nedgecov(as.matrix(c(1,2,2,1),nrow=2,ncol=2,byrow=TRUE)), # OK\n\t\tnsim=2, theta0=c(3), burnin=10, interval=10, verbose=TRUE)\n}\nsim_function2()\ncat(\"done sim_function2\\n\")\n\nR version 2.12.1 (2010-12-16)\nPlatform: x86_64-pc-mingw32/x64 (64-bit)\n\nlocale:\n[1] LC_COLLATE=English_United States.1252\n[2] LC_CTYPE=English_United States.1252\n[3] LC_MONETARY=English_United States.1252\n[4] LC_NUMERIC=C\n[5] LC_TIME=English_United States.1252\n\nattached base packages:\n[1] tools     stats     graphics  grDevices utils     datasets  methods [8] base\n\nother attached packages:\n [1] statnet_2.6          sna_2.2-0            degreenet_1.1\n [4] latentnet_2.4-1      coda_0.14-2          lattice_0.19-13\n [7] mvtnorm_0.9-96       abind_1.1-0          shapes_1.1-3\n[10] rgl_0.92.798         scatterplot3d_0.3-31 ergm_2.3\n[13] network_1.6\n\nloaded via a namespace (and not attached):\n[1] grid_2.12.1\n\n[1] \"win.binary\"\n\n\n\n-- \nHugh J. Devlin\nhdevlin@northwestern.edu",
+      "body_snippet": "Prof. Hunter,\n\nThank you for your reply.\n\n> I'm presuming that you see the error only for the \"simulate2\"\n> function, right?  Do you get the same error when you run the\n> \"simulate(formula2)\" function",
+      "thread_id": "thread-a2cf82e5abf7",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-555b9f25a41c",
+      "message_id": "<8786.129.105.161.91.1297717488.squirrel@mail.it.northwestern.edu>",
+      "from_name": "Hugh J Devlin",
+      "from_email_hash": "eb00b10a817fde0a193dccc0dbd0776d612083e53c084a69b3dae82258d1ab15",
+      "date": "2011-02-14T13:04:48Z",
+      "subject": "[statnet_help] Error in check.ErgmTerm: object not found",
+      "subject_clean": "[statnet_help] Error in check.ErgmTerm: object not found",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello Prof. Hunter,\n\nThanks again for your reply.\n\nYou asked...\n\n>You don't happen to have another example that gives this error do\nyou?\n\nBelow is the simplest script that demonstrates the problem.\n\nThanks again,\nHugh\n\nlibrary(\"statnet\")\nnetwork1 <- as.network(matrix(c(0,1,1,0),nrow=2,ncol=2),directed=FALSE)\nsim_function2 = function(){\n\tmatrix2 <- matrix(c(0,2,2,0),nrow=2,ncol=2)\n\tsimulate(\n\t\tnetwork1 ~ edgecov(matrix2),\n\t\tnsim=2, theta0=c(3), burnin=10, interval=10, verbose=TRUE)\n}\nsim_function2()\n\nError in check.ErgmTerm(nw, arglist, varnames = c(\"x\", \"attrname\"), vartypes =\nc(\"matrixnetwork\",  :\n  object 'matrix2' not found",
+      "body_snippet": "Hello Prof. Hunter,\n\nThanks again for your reply.\n\nYou asked...\n\n>You don't happen to have another example that gives this error do\nyou?\n\nBelow is the simplest script that demonstrates the problem.\n\nT",
+      "thread_id": "thread-555b9f25a41c",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-107caa444fee",
+      "message_id": "<AANLkTinJPYWXWDBRFmr0_i2Ok_GDbGKROgaKCt74DJ3b@mail.gmail.com>",
+      "from_name": "Elena G",
+      "from_email_hash": "82405de478d2a4af660d23848680f3c2a591c80e9451bcbddb6fe3ad2968a022",
+      "date": "2011-02-14T14:04:27Z",
+      "subject": "[statnet_help] question about using the dyadcov term",
+      "subject_clean": "[statnet_help] question about using the dyadcov term",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI am trying to add a term to an ergm model that captures whether or not the\ndyad is both same race and same education level. I have a directed network.\nI am using the dyadcov term, but I don't think I am using it correctly and\nam not sure what to do.\n\nI have a dummy variable (part of the \"edges\" dataframe) indicating whether\nthe dyad is same race and same educ, and I add it as an edge attribute\ncalled \"sameraceeduc\" to my network.\n\nvalue<-edges$sameraceeduc\n\nset.edge.attribute(net, \"sameraceeduc\", value, e=1:length(net$mel))\n\n* *I see in the help file the following description for the dyadcov\nstatistic:\n\ndyadcov(x, attrname): If the network is directed, x is either\n\na (symmetric) matrix of covariates, one for each possible dyad (i, j ), or\nan undirected\n\nnetwork; if the latter, optional argument attrname provides the name of the\nquantitative\n\nedge attribute to use for covariate values (in this case, missing\nedges in x are\nassigned a\n\ncovariate value of zero).\n\nMy network \"net\" is a directed network so I think what I am doing must not\nbe correct but am not sure what I am supposed to do. When I list the edges\nand \"sameraceeduc\" It looks like it assigns the edges to the correct\ncategories. Then I run the ergm model with the following code and get some\nwarnings and the following output.\n\n>\nm2=ergm(net~edges+nodematch(\"educ3\")+nodematch(\"grd\")+nodematch(\"sex\")+nodematch(\"race\")+nodeofactor(\"educ3\",\nbase=1)+nodeofactor(\"grd\", base=1)+nodeofactor(\"sex\")+nodeofactor(\"race\",\nbase=1)+dyadcov(net, \"sameraceeduc\"))\nWarning messages:\n1: In InitErgm.dyadcov(list(mel = list(list(inl = 1359L, outl = 1L,  :\n  asymmetric covariate in dyadcov; using upper triangle only\n2: In InitErgm.dyadcov(list(mel = list(list(inl = 1359L, outl = 1L,  :\n  asymmetric covariate in dyadcov; using upper triangle only\n\n==========================\nSummary of model fit\n==========================\n\nFormula:   net ~ edges + nodematch(\"educ3\") + nodematch(\"grd\") +\nnodematch(\"sex\") +\n    nodematch(\"race\") + nodeofactor(\"educ3\", base = 1) + nodeofactor(\"grd\",\n    base = 1) + nodeofactor(\"sex\") + nodeofactor(\"race\", base = 1) +\n    dyadcov(net, \"sameraceeduc\")\n\nNewton-Raphson iterations:  14\n\nMaximum Likelihood Results:\n                                 Estimate Std. Error MCMC s.e.  p-value\nedges                            -7.81566    0.07790        NA  < 1e-04 ***\nnodematch.educ3                  -0.18937    0.03267        NA  < 1e-04 ***\nnodematch.grd                     1.59256    0.03261        NA  < 1e-04 ***\nnodematch.sex                     0.46477    0.03024        NA  < 1e-04 ***\nnodematch.race                    1.12796    0.03454        NA  < 1e-04 ***\nnodeofactor.educ3.2               0.02077    0.03784        NA 0.583112\nnodeofactor.educ3.3              -0.01958    0.03626        NA 0.589224\nnodeofactor.grd.11                0.09621    0.03579        NA 0.007190 **\nnodeofactor.grd.12                0.13269    0.03673        NA 0.000304 ***\nnodeofactor.sex.1                 0.12132    0.02946        NA  < 1e-04 ***\nnodeofactor.race.2               -0.40969    0.07387        NA  < 1e-04 ***\nnodeofactor.race.3               -0.24357    0.07413        NA 0.001018 **\nnodeofactor.race.4               -0.70781    0.07109        NA  < 1e-04 ***\ndyadcov.net.sameraceeduc.mutual  27.75804   85.28153        NA 0.744812\ndyadcov.net.sameraceeduc.utri     5.45556  142.60424        NA 0.969483\ndyadcov.net.sameraceeduc.ltri    22.68388   85.28149        NA 0.790248\n---\nSignif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n\nFor this model, the pseudolikelihood is the same as the likelihood.\n\n    Null  Deviance: 4564249  on 3292410  degrees of freedom\n Residual Deviance:   64828  on 3292394  degrees of freedom\n          Deviance: 4499422  on      16  degrees of freedom\n\nAIC: 64860    BIC: 65068\n\n\nAny help would be greatly appreciated! Thank you very much for maintaining\nthis great help list.\n\nElena\n\n-- \nElena Grewal\nDoctoral Candidate\nStanford University School of Education\n(203) 887-4858\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110214/16f74394/attachment.html>",
+      "body_snippet": "Hi all,\n\nI am trying to add a term to an ergm model that captures whether or not the\ndyad is both same race and same education level. I have a directed network.\nI am using the dyadcov term, but I don'",
+      "thread_id": "thread-107caa444fee",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-d79b7565fa69",
+      "message_id": "<AANLkTi=LSqzv-TecrQOFTAg3yt=z+MyzyquBE0ovn6ka@mail.gmail.com>",
+      "from_name": "Brian Keegan",
+      "from_email_hash": "0a040d156157c7a0846c2e199462b4a90b1286ad17bfecf6c905da0c405bc047",
+      "date": "2011-02-14T18:18:20Z",
+      "subject": "[statnet_help] statnet Tutorial for ICWSM or CSCW?",
+      "subject_clean": "[statnet_help] statnet Tutorial for ICWSM or CSCW?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I enjoyed meeting several of the statnet developers and users at Sunbelt\nlast week. I apologize if this is an inappropriate forum to broach the\ntopic, but I wanted to assess the extent to which the statnet and/or\nscholarly ERGM community had any interest in \"evangelizing\" to a\ncomputer+information+social science audience. In my experience attending\nconferences like CHI and CSCW, the scholars at the intersection of these\ncommunities desperately need exposure to more than descriptive SNA. If other\nmore experienced hands are interested in spreading the \"good word\" with me\nas an ambassador, I'd suggest there are two excellent upcoming opportunities\nto submit tutorials or workshops.\n\nFirst, the International Weblog and Social Media conference (aka ICWSM) is\nan archival conference sponsored by AAAI and it has an upcoming deadline for\ntutorials (due 2/18). The conference itself will be in Barcelona, Spain from\nJuly 17-21 with the pre-conference tutorial presumably occurring on the 16\nor 17th depending on how they're counting. http://www.icwsm.org/2011/cft.php\n\nSecond, the Computer Supported Cooperative Work conference (aka CSCW) is\nalso an archival conference sponsored by ACM and has a July 8 deadline for\nworkshops. The conference will be in Seattle, Washington from February\n11-15, 2012. http://www.cscw2012.org/participation/workshops.php\n\nI believe that a proposal that highlighted the analytic benefits of a\ngenerative approach to SNA coupled with examples which highlight the ability\nto interrogate social processes which undergird the structures observed in\nthe blogosphere, Wikipedia, Twitter, etc. would be really powerful and\nexpose you to an otherwise statistically and theoretically competent\nscholarly audience.\n\n-- \nBrian C. Keegan\nPh.D. Student - Media, Technology, & Society\nSchool of Communication, Northwestern University\n\nScience of Networks in Communities, Laboratory for Collaborative Technology\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110214/f89ca859/attachment.html>",
+      "body_snippet": "I enjoyed meeting several of the statnet developers and users at Sunbelt\nlast week. I apologize if this is an inappropriate forum to broach the\ntopic, but I wanted to assess the extent to which the st",
+      "thread_id": "thread-d79b7565fa69",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-326b2cb896f3",
+      "message_id": "<750593.78550.qm@web34407.mail.mud.yahoo.com>",
+      "from_name": "jeremy hackney",
+      "from_email_hash": "9106249490d12d007a96894078543fdeb9b39679e3e8265fdb7d02ea70d61fd9",
+      "date": "2011-02-15T00:15:30Z",
+      "subject": "[statnet_help] Error in check.ErgmTerm: object not found",
+      "subject_clean": "[statnet_help] Error in check.ErgmTerm: object not found",
+      "in_reply_to": "<8786.129.105.161.91.1297717488.squirrel@mail.it.northwestern.edu>",
+      "references": [],
+      "body_plain": "Thank you, Hugh, for the simple example. I have slightly modified it to illustrate the problem I have been having with \"gof\" (compare the five examples below).\n\n-Jeremy\n\n\n###\n# Example 1 works: \"matrix2\" defined in function, no gof\n###\n\nlibrary(\"statnet\")\nnetwork1 <- as.network(matrix(c(0,1,1,0),nrow=2,ncol=2),directed=FALSE)\nsim_function2 = function(mynet){\n    matrix2 <- matrix(c(0,2,2,0),nrow=2,ncol=2)\n    model<-ergm(mynet ~ edgecov(matrix2),nsim=2, theta0=c(3), burnin=10, interval=10, verbose=TRUE)\n    summary(model)\n    #goftest<-gof(model)\n}\nsim_function2(network1)\n\n\n###\n# Example 2 doesn't work: \"matrix2\" defined in function, gof fails\n###\n\nlibrary(\"statnet\")\nnetwork1 <- as.network(matrix(c(0,1,1,0),nrow=2,ncol=2),directed=FALSE)\nsim_function2 = function(mynet){\n    matrix2 <- matrix(c(0,2,2,0),nrow=2,ncol=2)\n    model<-ergm(mynet ~ edgecov(mymatrix2),nsim=2, theta0=c(3), burnin=10, interval=10, verbose=TRUE)\n    summary(model)\n    goftest<-gof(model)\n}\nsim_function2(network1)\n\n\n###\n# Example 3 works: \"matrix2\" passed to function, no gof\n###\nlibrary(\"statnet\")\nnetwork1 <- as.network(matrix(c(0,1,1,0),nrow=2,ncol=2),directed=FALSE)\nmatrix2 <- matrix(c(0,2,2,0),nrow=2,ncol=2)\n\nsim_function2 = function(mynet, mymatrix){\n    model<-ergm(mynet ~ edgecov(mymatrix),nsim=2, theta0=c(3), burnin=10, interval=10, verbose=TRUE)\n    summary(model)\n    #goftest<-gof(model)\n    #plot(goftest)\n}\nsim_function2(network1,matrix2)\n\n\n###\n# Example 4 doesn't work: \"matrix2\" passed to function, gof fails\n###\nlibrary(\"statnet\")\nnetwork1 <- as.network(matrix(c(0,1,1,0),nrow=2,ncol=2),directed=FALSE)\nmatrix2 <- matrix(c(0,2,2,0),nrow=2,ncol=2)\n\nsim_function2 = function(mynet, mymatrix){\n    model<-ergm(mynet ~ edgecov(mymatrix),nsim=2, theta0=c(3), burnin=10, interval=10, verbose=TRUE)\n    summary(model)\n# Crash here\n    goftest<-gof(model)\n    plot(goftest)\n}\nsim_function2(network1,matrix2)\n\n\n###\n# Example 5 works: \"matrix2\" passed to function and modified, no gof\n###\nlibrary(\"statnet\")\nnetwork1 <- as.network(matrix(c(0,1,1,0),nrow=2,ncol=2),directed=FALSE)\nmatrix2 <- matrix(c(0,2,2,0),nrow=2,ncol=2)\n\nsim_function2 = function(mynet, mymatrix){\n    mymatrix <- mymatrix * 2\n    model<-ergm(mynet ~ edgecov(mymatrix),nsim=2, theta0=c(3), burnin=10, interval=10, verbose=TRUE)\n    summary(model)\n    #goftest<-gof(model)\n    #plot(goftest)\n}\nsim_function2(network1,matrix2)\n\n\n\n\n\n\n\n--- On Mon, 2/14/11, Hugh J Devlin <hdevlin@northwestern.edu> wrote:\n\n> From: Hugh J Devlin <hdevlin@northwestern.edu>\n> Subject: Re: [statnet_help] Error in check.ErgmTerm: object not found\n> To: statnet_help@u.washington.edu\n> Date: Monday, February 14, 2011, 2:04 PM\n> Hello Prof. Hunter,\n> \n> Thanks again for your reply.\n> \n> You asked...\n> \n> >You don't happen to have another example that gives\n> this error do\n> you?\n> \n> Below is the simplest script that demonstrates the\n> problem.\n> \n> Thanks again,\n> Hugh\n> \n> library(\"statnet\")\n> network1 <-\n> as.network(matrix(c(0,1,1,0),nrow=2,ncol=2),directed=FALSE)\n> sim_function2 = function(){\n> ??? matrix2 <-\n> matrix(c(0,2,2,0),nrow=2,ncol=2)\n> ??? simulate(\n> ??? ??? network1 ~\n> edgecov(matrix2),\n> ??? ??? nsim=2, theta0=c(3),\n> burnin=10, interval=10, verbose=TRUE)\n> }\n> sim_function2()\n> \n> Error in check.ErgmTerm(nw, arglist, varnames = c(\"x\",\n> \"attrname\"), vartypes =\n> c(\"matrixnetwork\",? :\n> ? object 'matrix2' not found\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Thank you, Hugh, for the simple example. I have slightly modified it to illustrate the problem I have been having with \"gof\" (compare the five examples below).\n\n-Jeremy\n\n\n###\n# Example 1 works: \"matri",
+      "thread_id": "thread-555b9f25a41c",
+      "thread_depth": 1,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-f48d8cb55f39",
+      "message_id": "<436476.85064.qm@web34405.mail.mud.yahoo.com>",
+      "from_name": "jeremy hackney",
+      "from_email_hash": "9106249490d12d007a96894078543fdeb9b39679e3e8265fdb7d02ea70d61fd9",
+      "date": "2011-02-15T01:24:22Z",
+      "subject": "[statnet_help] Error in check.ErgmTerm: object not found",
+      "subject_clean": "[statnet_help] Error in check.ErgmTerm: object not found",
+      "in_reply_to": "<750593.78550.qm@web34407.mail.mud.yahoo.com>",
+      "references": [],
+      "body_plain": "Sorry, the second example had an error in the variable name, but still fails when this is corrected\n\n-Jeremy\n\n#Example 2\nlibrary(\"statnet\")\nnetwork1 <- as.network(matrix(c(0,1,1,0),nrow=2,ncol=2),directed=FALSE)\nsim_function2 = function(mynet){\n    mymatrix2 <- matrix(c(0,2,2,0),nrow=2,ncol=2)\n    model<-ergm(mynet ~ edgecov(mymatrix2),nsim=2, theta0=c(3), burnin=10, interval=10, verbose=TRUE)\n    summary(model)\n    goftest<-gof(model)\n}\nsim_function2(network1)",
+      "body_snippet": "Sorry, the second example had an error in the variable name, but still fails when this is corrected\n\n-Jeremy\n\n#Example 2\nlibrary(\"statnet\")\nnetwork1 <- as.network(matrix(c(0,1,1,0),nrow=2,ncol=2),dire",
+      "thread_id": "thread-555b9f25a41c",
+      "thread_depth": 2,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-cb25fca5839d",
+      "message_id": "<06AD3B50-CF94-45B1-97DA-3184D31C37F3@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2011-02-15T07:06:52Z",
+      "subject": "[statnet_help] question about using the dyadcov term",
+      "subject_clean": "[statnet_help] question about using the dyadcov term",
+      "in_reply_to": "<AANLkTinJPYWXWDBRFmr0_i2Ok_GDbGKROgaKCt74DJ3b@mail.gmail.com>",
+      "references": [
+        "<AANLkTinJPYWXWDBRFmr0_i2Ok_GDbGKROgaKCt74DJ3b@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Elena.  I'm not sure whether this helps, but if you want to capture  \n\"same race and same education level\" then you might consider instead  \ndefining a new nodal variable, called \"raceeduc\" or something, that  \nmerely pastes the race and educ3 variables together.  Then you could  \nuse nodematch on that new variable.  I believe this variable could  \neven be used in combination with nodematch(\"sex\") and  \nnodematch(\"educ3\") without collinearity issues (in that case, the  \nvariable would give an interaction effect for the two main effects).\n\nDave\n\n\n\n\nOn Feb 14, 2011, at 5:04 PM, Elena G wrote:\n\n> Hi all,\n>\n> I am trying to add a term to an ergm model that captures whether or  \n> not the dyad is both same race and same education level. I have a  \n> directed network. I am using the dyadcov term, but I don't think I  \n> am using it correctly and am not sure what to do.\n>\n> I have a dummy variable (part of the \"edges\" dataframe) indicating  \n> whether the dyad is same race and same educ, and I add it as an edge  \n> attribute called \"sameraceeduc\" to my network.\n>\n> value<-edges$sameraceeduc\n> set.edge.attribute(net, \"sameraceeduc\", value, e=1:length(net$mel))\n>\n>  I see in the help file the following description for the dyadcov  \n> statistic:\n>\n> dyadcov(x, attrname): If the network is directed, x is either\n> a (symmetric) matrix of covariates, one for each possible dyad (i,  \n> j ), or an undirected\n> network; if the latter, optional argument attrname provides the name  \n> of the quantitative\n> edge attribute to use for covariate values (in this case, missing  \n> edges in x are assigned a\n> covariate value of zero).\n>\n> My network \"net\" is a directed network so I think what I am doing  \n> must not be correct but am not sure what I am supposed to do. When I  \n> list the edges and \"sameraceeduc\" It looks like it assigns the edges  \n> to the correct categories. Then I run the ergm model with the  \n> following code and get some warnings and the following output.\n>\n> > m2=ergm(net~edges+nodematch(\"educ3\")+nodematch(\"grd\") \n> +nodematch(\"sex\")+nodematch(\"race\")+nodeofactor(\"educ3\",  \n> base=1)+nodeofactor(\"grd\", base=1)+nodeofactor(\"sex\") \n> +nodeofactor(\"race\", base=1)+dyadcov(net, \"sameraceeduc\"))\n> Warning messages:\n> 1: In InitErgm.dyadcov(list(mel = list(list(inl = 1359L, outl = 1L,  :\n>   asymmetric covariate in dyadcov; using upper triangle only\n> 2: In InitErgm.dyadcov(list(mel = list(list(inl = 1359L, outl = 1L,  :\n>   asymmetric covariate in dyadcov; using upper triangle only\n>\n> ==========================\n> Summary of model fit\n> ==========================\n>\n> Formula:   net ~ edges + nodematch(\"educ3\") + nodematch(\"grd\") +  \n> nodematch(\"sex\") +\n>     nodematch(\"race\") + nodeofactor(\"educ3\", base = 1) +  \n> nodeofactor(\"grd\",\n>     base = 1) + nodeofactor(\"sex\") + nodeofactor(\"race\", base = 1) +\n>     dyadcov(net, \"sameraceeduc\")\n>\n> Newton-Raphson iterations:  14\n>\n> Maximum Likelihood Results:\n>                                  Estimate Std. Error MCMC s.e.  p- \n> value\n> edges                            -7.81566    0.07790        NA  <  \n> 1e-04 ***\n> nodematch.educ3                  -0.18937    0.03267        NA  <  \n> 1e-04 ***\n> nodematch.grd                     1.59256    0.03261        NA  <  \n> 1e-04 ***\n> nodematch.sex                     0.46477    0.03024        NA  <  \n> 1e-04 ***\n> nodematch.race                    1.12796    0.03454        NA  <  \n> 1e-04 ***\n> nodeofactor.educ3.2               0.02077    0.03784        NA  \n> 0.583112\n> nodeofactor.educ3.3              -0.01958    0.03626        NA  \n> 0.589224\n> nodeofactor.grd.11                0.09621    0.03579        NA  \n> 0.007190 **\n> nodeofactor.grd.12                0.13269    0.03673        NA  \n> 0.000304 ***\n> nodeofactor.sex.1                 0.12132    0.02946        NA  <  \n> 1e-04 ***\n> nodeofactor.race.2               -0.40969    0.07387        NA  <  \n> 1e-04 ***\n> nodeofactor.race.3               -0.24357    0.07413        NA  \n> 0.001018 **\n> nodeofactor.race.4               -0.70781    0.07109        NA  <  \n> 1e-04 ***\n> dyadcov.net.sameraceeduc.mutual  27.75804   85.28153        NA  \n> 0.744812\n> dyadcov.net.sameraceeduc.utri     5.45556  142.60424        NA  \n> 0.969483\n> dyadcov.net.sameraceeduc.ltri    22.68388   85.28149        NA  \n> 0.790248\n> ---\n> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>\n> For this model, the pseudolikelihood is the same as the likelihood.\n>\n>     Null  Deviance: 4564249  on 3292410  degrees of freedom\n>  Residual Deviance:   64828  on 3292394  degrees of freedom\n>           Deviance: 4499422  on      16  degrees of freedom\n>\n> AIC: 64860    BIC: 65068\n>\n>\n> Any help would be greatly appreciated! Thank you very much for  \n> maintaining this great help list.\n>\n> Elena\n>\n> -- \n> Elena Grewal\n> Doctoral Candidate\n> Stanford University School of Education\n> (203) 887-4858\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110215/63ceeae6/attachment.html>",
+      "body_snippet": "Hi Elena.  I'm not sure whether this helps, but if you want to capture  \n\"same race and same education level\" then you might consider instead  \ndefining a new nodal variable, called \"raceeduc\" or some",
+      "thread_id": "thread-107caa444fee",
+      "thread_depth": 1,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-38ac7e8a1fdb",
+      "message_id": "<alpine.WNT.2.00.1102151018520.2524@Martina-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2011-02-15T10:22:33Z",
+      "subject": "[statnet_help] statnet Tutorial for ICWSM or CSCW?",
+      "subject_clean": "[statnet_help] statnet Tutorial for ICWSM or CSCW?",
+      "in_reply_to": "<AANLkTi=LSqzv-TecrQOFTAg3yt=z+MyzyquBE0ovn6ka@mail.gmail.com>",
+      "references": [
+        "<AANLkTi=LSqzv-TecrQOFTAg3yt=z+MyzyquBE0ovn6ka@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Brian,\n\nThanks for this -- Steve said he really enjoyed talking with you about \nyour projects at Sunbelt.\n\nI think we would definitely be interested in the Seattle conference \nworkshop.   The other in Barcelona is more pressing in terms of deadlines, \nso I'll confer with my colleagues and get back to you ASAP.\n\nbest,\nMartina\n\nOn Mon, 14 Feb 2011, Brian Keegan \nwrote:\n\n> I enjoyed meeting several of the statnet developers and users at Sunbelt last week. I apologize if this is an inappropriate\n> forum to broach the topic, but I wanted to assess the extent to which the statnet and/or scholarly ERGM community had any\n> interest in \"evangelizing\" to a computer+information+social science audience. In my experience attending conferences like CHI\n> and CSCW, the scholars at the intersection of these communities desperately need exposure to more than descriptive SNA. If\n> other more experienced hands are interested in spreading the \"good word\" with me as an ambassador, I'd suggest there are two\n> excellent upcoming opportunities to submit tutorials or workshops.\n> \n> First, the International Weblog and Social Media conference (aka ICWSM) is an archival conference sponsored by AAAI and it\n> has an upcoming deadline for tutorials (due 2/18). The conference itself will be in Barcelona, Spain from July 17-21 with the\n> pre-conference tutorial presumably occurring on the 16 or 17th depending on how they're counting.\n> http://www.icwsm.org/2011/cft.php\n> \n> Second, the Computer Supported Cooperative Work conference (aka CSCW) is also an archival conference sponsored by ACM and has\n> a July 8 deadline for workshops. The conference will be in Seattle, Washington from February 11-15, 2012.\n> http://www.cscw2012.org/participation/workshops.php\n> \n> I believe that a proposal that highlighted the analytic benefits of a generative approach to SNA coupled with examples which\n> highlight the ability to interrogate social processes which undergird the structures observed in the blogosphere, Wikipedia,\n> Twitter, etc. would be really powerful and expose you to an otherwise statistically and theoretically competent scholarly\n> audience.\n> \n> --\n> Brian C. Keegan\n> Ph.D. Student - Media, Technology, & Society\n> School of Communication, Northwestern University\n> \n> Science of Networks in Communities, Laboratory for Collaborative Technology\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Brian,\n\nThanks for this -- Steve said he really enjoyed talking with you about \nyour projects at Sunbelt.\n\nI think we would definitely be interested in the Seattle conference \nworkshop.   The other",
+      "thread_id": "thread-d79b7565fa69",
+      "thread_depth": 1,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-6f4ae6153d2d",
+      "message_id": "<AANLkTikGnFgS_kpjQmsbbvBr3ScR5MSUFNfhKrOxwwjs@mail.gmail.com>",
+      "from_name": "Elena G",
+      "from_email_hash": "82405de478d2a4af660d23848680f3c2a591c80e9451bcbddb6fe3ad2968a022",
+      "date": "2011-02-15T14:18:19Z",
+      "subject": "[statnet_help] question about using the dyadcov term",
+      "subject_clean": "[statnet_help] question about using the dyadcov term",
+      "in_reply_to": "<06AD3B50-CF94-45B1-97DA-3184D31C37F3@stat.psu.edu>",
+      "references": [
+        "<AANLkTinJPYWXWDBRFmr0_i2Ok_GDbGKROgaKCt74DJ3b@mail.gmail.com>",
+        "<06AD3B50-CF94-45B1-97DA-3184D31C37F3@stat.psu.edu>"
+      ],
+      "body_plain": "thanks, that makes sense. I had thought about doing that initially but\nthen for some reason I decided that the dyadcov term was the way to\ngo. But, just putting the two variables together and using nodematch\nis straightforward and something I can easily do.\n\nThanks very much for the help.\n\nElena\n\nOn 2/15/11, David Hunter <dhunter@stat.psu.edu> wrote:\n> Hi Elena.  I'm not sure whether this helps, but if you want to capture\n> \"same race and same education level\" then you might consider instead\n> defining a new nodal variable, called \"raceeduc\" or something, that\n> merely pastes the race and educ3 variables together.  Then you could\n> use nodematch on that new variable.  I believe this variable could\n> even be used in combination with nodematch(\"sex\") and\n> nodematch(\"educ3\") without collinearity issues (in that case, the\n> variable would give an interaction effect for the two main effects).\n>\n> Dave\n>\n>\n>\n>\n> On Feb 14, 2011, at 5:04 PM, Elena G wrote:\n>\n>> Hi all,\n>>\n>> I am trying to add a term to an ergm model that captures whether or\n>> not the dyad is both same race and same education level. I have a\n>> directed network. I am using the dyadcov term, but I don't think I\n>> am using it correctly and am not sure what to do.\n>>\n>> I have a dummy variable (part of the \"edges\" dataframe) indicating\n>> whether the dyad is same race and same educ, and I add it as an edge\n>> attribute called \"sameraceeduc\" to my network.\n>>\n>> value<-edges$sameraceeduc\n>> set.edge.attribute(net, \"sameraceeduc\", value, e=1:length(net$mel))\n>>\n>>  I see in the help file the following description for the dyadcov\n>> statistic:\n>>\n>> dyadcov(x, attrname): If the network is directed, x is either\n>> a (symmetric) matrix of covariates, one for each possible dyad (i,\n>> j ), or an undirected\n>> network; if the latter, optional argument attrname provides the name\n>> of the quantitative\n>> edge attribute to use for covariate values (in this case, missing\n>> edges in x are assigned a\n>> covariate value of zero).\n>>\n>> My network \"net\" is a directed network so I think what I am doing\n>> must not be correct but am not sure what I am supposed to do. When I\n>> list the edges and \"sameraceeduc\" It looks like it assigns the edges\n>> to the correct categories. Then I run the ergm model with the\n>> following code and get some warnings and the following output.\n>>\n>> > m2=ergm(net~edges+nodematch(\"educ3\")+nodematch(\"grd\")\n>> +nodematch(\"sex\")+nodematch(\"race\")+nodeofactor(\"educ3\",\n>> base=1)+nodeofactor(\"grd\", base=1)+nodeofactor(\"sex\")\n>> +nodeofactor(\"race\", base=1)+dyadcov(net, \"sameraceeduc\"))\n>> Warning messages:\n>> 1: In InitErgm.dyadcov(list(mel = list(list(inl = 1359L, outl = 1L,  :\n>>   asymmetric covariate in dyadcov; using upper triangle only\n>> 2: In InitErgm.dyadcov(list(mel = list(list(inl = 1359L, outl = 1L,  :\n>>   asymmetric covariate in dyadcov; using upper triangle only\n>>\n>> ==========================\n>> Summary of model fit\n>> ==========================\n>>\n>> Formula:   net ~ edges + nodematch(\"educ3\") + nodematch(\"grd\") +\n>> nodematch(\"sex\") +\n>>     nodematch(\"race\") + nodeofactor(\"educ3\", base = 1) +\n>> nodeofactor(\"grd\",\n>>     base = 1) + nodeofactor(\"sex\") + nodeofactor(\"race\", base = 1) +\n>>     dyadcov(net, \"sameraceeduc\")\n>>\n>> Newton-Raphson iterations:  14\n>>\n>> Maximum Likelihood Results:\n>>                                  Estimate Std. Error MCMC s.e.  p-\n>> value\n>> edges                            -7.81566    0.07790        NA  <\n>> 1e-04 ***\n>> nodematch.educ3                  -0.18937    0.03267        NA  <\n>> 1e-04 ***\n>> nodematch.grd                     1.59256    0.03261        NA  <\n>> 1e-04 ***\n>> nodematch.sex                     0.46477    0.03024        NA  <\n>> 1e-04 ***\n>> nodematch.race                    1.12796    0.03454        NA  <\n>> 1e-04 ***\n>> nodeofactor.educ3.2               0.02077    0.03784        NA\n>> 0.583112\n>> nodeofactor.educ3.3              -0.01958    0.03626        NA\n>> 0.589224\n>> nodeofactor.grd.11                0.09621    0.03579        NA\n>> 0.007190 **\n>> nodeofactor.grd.12                0.13269    0.03673        NA\n>> 0.000304 ***\n>> nodeofactor.sex.1                 0.12132    0.02946        NA  <\n>> 1e-04 ***\n>> nodeofactor.race.2               -0.40969    0.07387        NA  <\n>> 1e-04 ***\n>> nodeofactor.race.3               -0.24357    0.07413        NA\n>> 0.001018 **\n>> nodeofactor.race.4               -0.70781    0.07109        NA  <\n>> 1e-04 ***\n>> dyadcov.net.sameraceeduc.mutual  27.75804   85.28153        NA\n>> 0.744812\n>> dyadcov.net.sameraceeduc.utri     5.45556  142.60424        NA\n>> 0.969483\n>> dyadcov.net.sameraceeduc.ltri    22.68388   85.28149        NA\n>> 0.790248\n>> ---\n>> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>>\n>> For this model, the pseudolikelihood is the same as the likelihood.\n>>\n>>     Null  Deviance: 4564249  on 3292410  degrees of freedom\n>>  Residual Deviance:   64828  on 3292394  degrees of freedom\n>>           Deviance: 4499422  on      16  degrees of freedom\n>>\n>> AIC: 64860    BIC: 65068\n>>\n>>\n>> Any help would be greatly appreciated! Thank you very much for\n>> maintaining this great help list.\n>>\n>> Elena\n>>\n>> --\n>> Elena Grewal\n>> Doctoral Candidate\n>> Stanford University School of Education\n>> (203) 887-4858\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n\n-- \nElena Grewal\nDoctoral Candidate\nStanford University School of Education\n(203) 887-4858",
+      "body_snippet": "thanks, that makes sense. I had thought about doing that initially but\nthen for some reason I decided that the dyadcov term was the way to\ngo. But, just putting the two variables together and using no",
+      "thread_id": "thread-107caa444fee",
+      "thread_depth": 2,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-cc5f29c277e4",
+      "message_id": "<AANLkTikAdvNAYatOPOTVdRwgix++8ub6EbX-3o1n5oKw@mail.gmail.com>",
+      "from_name": "Roger Gomes",
+      "from_email_hash": "d5eccb77e48b37f33a1539224a05ee8410d6bb6289f657123d9b339cc6cf99e3",
+      "date": "2011-02-18T06:15:17Z",
+      "subject": "[statnet_help] Anova + ERGM",
+      "subject_clean": "[statnet_help] Anova + ERGM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi All,\n\nI would like to know where to find technical papers to calculate ANOVA\n+ ERGM. Which parameters and so on. Thanks.",
+      "body_snippet": "Hi All,\n\nI would like to know where to find technical papers to calculate ANOVA\n+ ERGM. Which parameters and so on. Thanks.",
+      "thread_id": "thread-cc5f29c277e4",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-368b4f5dc60a",
+      "message_id": "<alpine.WNT.2.00.1102181101240.5768@Martina-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2011-02-18T11:06:01Z",
+      "subject": "[statnet_help] Anova + ERGM",
+      "subject_clean": "[statnet_help] Anova + ERGM",
+      "in_reply_to": "<AANLkTikAdvNAYatOPOTVdRwgix++8ub6EbX-3o1n5oKw@mail.gmail.com>",
+      "references": [
+        "<AANLkTikAdvNAYatOPOTVdRwgix++8ub6EbX-3o1n5oKw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Roger,\n\nI'm not quite sure from your email what you are asking, but there is a \nlist of publications on the statnet website homepage that address various \ntheoretical and application aspects of ERGMs.  In addition, there is a \nspecial issue of JoSS that is devoted to statnet and has both theoretical \nand practical papers about ERGMs.\n\nhttp://statnet.org/\n\nand click the \"Online Users Guide\" for the JoSS papers.\n\nbest,\nMartina\n\nOn Fri, 18 Feb 2011, Roger Gomes wrote:\n\n> Hi All,\n>\n> I would like to know where to find technical papers to calculate ANOVA\n> + ERGM. Which parameters and so on. Thanks.\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Roger,\n\nI'm not quite sure from your email what you are asking, but there is a \nlist of publications on the statnet website homepage that address various \ntheoretical and application aspects of ERG",
+      "thread_id": "thread-cc5f29c277e4",
+      "thread_depth": 1,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-9d84407faeab",
+      "message_id": "<4D65485F.6040205@coll.mpg.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "be636dde28cefa502024155d2c668f78a853d393127e9415ccd248c0c80cf950",
+      "date": "2011-02-23T09:48:15Z",
+      "subject": "[statnet_help] Interpretation of valued edgecov coefficients",
+      "subject_clean": "[statnet_help] Interpretation of valued edgecov coefficients",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nLet's assume I have an edge term and a weighted edge covariate in my ERG \nmodel. The edge covariate indicates how many common groups or classes \nego and alter are both affiliated with (a co-occurrence matrix). \nFurthermore, the coefficient of the edge covariate is 0.38. exp(0.38) = \n1.46.\n\n1) When I try to interpret the findings, does that mean that the odds of \na pair of nodes of having a tie are increased by 46% if there is one \nadditional shared group?\n\n2) Or, alternatively, does it mean that the odds of having a tie are \nincreased by 46% when moving from 0 shared groups to the average number \nof groups any two connected nodes have in common?\n\nI am confused by the following sentence in the ERGM term description, \nwhich sounds like there is only one statistic capturing the average (or \ntotal) number of groups: \"This term adds one statistic to the model, \nequal to the sum (sic!) of the covariate values for each edge appearing \nin the network.\"\n\nThanks for clarification!\n\nPhilip",
+      "body_snippet": "Hi,\n\nLet's assume I have an edge term and a weighted edge covariate in my ERG \nmodel. The edge covariate indicates how many common groups or classes \nego and alter are both affiliated with (a co-occur",
+      "thread_id": "thread-9d84407faeab",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-e2db155545d4",
+      "message_id": "<EAF5944A-1D8C-4E53-8400-7322A51DBFF0@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2011-02-24T04:35:04Z",
+      "subject": "[statnet_help] Interpretation of valued edgecov coefficients",
+      "subject_clean": "[statnet_help] Interpretation of valued edgecov coefficients",
+      "in_reply_to": "<4D65485F.6040205@coll.mpg.de>",
+      "references": [
+        "<4D65485F.6040205@coll.mpg.de>"
+      ],
+      "body_plain": "Hi Philip.  In brief,\n\n(1) Yes.\n(2) No.\n\nThe statistic really is the sum of all covariate values for all edges  \nappearing in the network.  However, the important thing to keep in  \nmind for interpretation is how this statistic CHANGES with the  \naddition or removal of a single edge.  In this case, the statistic  \nchanges by the covariate value for just that pair of nodes.  When this  \nhappens, the log-odds of the entire network changes by 0.38 times this  \ncovariate value.  In your two questions, if the covariate increases by  \none, then the log-odds of a particular edge existing (holding  \neverything else in the network fixed) increase by an extra 0.38, which  \nmultiplies the odds by 1.46.\n\nBest wishes,\nDave\n\n\n\nOn Feb 23, 2011, at 12:48 PM, Philip Leifeld wrote:\n\n> Hi,\n>\n> Let's assume I have an edge term and a weighted edge covariate in my  \n> ERG model. The edge covariate indicates how many common groups or  \n> classes ego and alter are both affiliated with (a co-occurrence  \n> matrix). Furthermore, the coefficient of the edge covariate is 0.38.  \n> exp(0.38) = 1.46.\n>\n> 1) When I try to interpret the findings, does that mean that the  \n> odds of a pair of nodes of having a tie are increased by 46% if  \n> there is one additional shared group?\n>\n> 2) Or, alternatively, does it mean that the odds of having a tie are  \n> increased by 46% when moving from 0 shared groups to the average  \n> number of groups any two connected nodes have in common?\n>\n> I am confused by the following sentence in the ERGM term  \n> description, which sounds like there is only one statistic capturing  \n> the average (or total) number of groups: \"This term adds one  \n> statistic to the model, equal to the sum (sic!) of the covariate  \n> values for each edge appearing in the network.\"\n>\n> Thanks for clarification!\n>\n> Philip\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Philip.  In brief,\n\n(1) Yes.\n(2) No.\n\nThe statistic really is the sum of all covariate values for all edges  \nappearing in the network.  However, the important thing to keep in  \nmind for interpret",
+      "thread_id": "thread-9d84407faeab",
+      "thread_depth": 1,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-6a5f397dcaa4",
+      "message_id": "<wrkp1mly.wl%jonathanipser@gmail.com>",
+      "from_name": "Jonathan Ipser",
+      "from_email_hash": "34482c9b34d7cf98267150092151071516b13c8ba052d74dcfbc642acd26f085",
+      "date": "2011-02-24T07:24:57Z",
+      "subject": "[statnet_help] Re: statnet_help Digest, Vol 55, Issue 16",
+      "subject_clean": "[statnet_help] Re: statnet_help Digest, Vol 55, Issue 16",
+      "in_reply_to": "<201102232003.p1NK3e4R028738@mxout13.cac.washington.edu>",
+      "references": [
+        "<201102232003.p1NK3e4R028738@mxout13.cac.washington.edu>"
+      ],
+      "body_plain": "Hello,\n\nI have two questions that I was hoping someone could help me with (my apologies if they are somewhat naive, as I am only starting out with social network analysis).\n\nThe first relates to the modelling of bipartite networks. I initially constructed a bipartite network (eg. sexual partnerships between heterosexual individuals) as unipartite. What exactly are to consequences of doing this in statnet? I would imagine that while this may not make much of a difference in the descriptive analysis of the network (ie. measuring density, etc.), odds things would be expected to happen when comparing the actual data to a simulated network when calculating inferential statistics? Is this correct? \n\nThe second point relates to calculating mixing coefficients. I would like to calculate Newmans assortativity coefficient for age differences between partners in this heterosexual network (Newman 2003). Although ergm modelling allows one to obtain coefficients for the effect of assortativity, Newman's coefficient should be easier for a lay-audience to understand. Has this been implemented in statnet, or would I need to implement it myself?\n\nThanks,\nJonathan\n\n--------Reference:\nMixing patterns in networks.\nNewman ME.\nPhys Rev E Stat Nonlin Soft Matter Phys. 2003 Feb;67(2 Pt 2)",
+      "body_snippet": "Hello,\n\nI have two questions that I was hoping someone could help me with (my apologies if they are somewhat naive, as I am only starting out with social network analysis).\n\nThe first relates to the m",
+      "thread_id": "thread-6a5f397dcaa4",
+      "thread_depth": 0,
+      "month": "2011-02"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-03ab6dbba7e3",
+      "subject": "[statnet_help] Goodness of fit",
+      "message_count": 8,
+      "participants": [
+        "Dalton  Lunga",
+        "Steven Goodreau",
+        "Victorin Luisier"
+      ],
+      "started": "2011-02-02T02:08:48Z",
+      "last_reply": "2011-02-03T07:27:56Z",
+      "root_message_id": "msg-03ab6dbba7e3"
+    },
+    {
+      "id": "thread-0ecd4474b509",
+      "subject": "[statnet_help] How much steps?",
+      "message_count": 3,
+      "participants": [
+        "Steven Goodreau",
+        "Victorin Luisier"
+      ],
+      "started": "2011-02-02T08:13:53Z",
+      "last_reply": "2011-02-08T14:23:30Z",
+      "root_message_id": "msg-0ecd4474b509"
+    },
+    {
+      "id": "thread-3f0dcdde37c0",
+      "subject": "[statnet_help] Linear dependence in bipartite networks",
+      "message_count": 1,
+      "participants": [
+        "Brian Keegan"
+      ],
+      "started": "2011-02-02T16:02:29Z",
+      "last_reply": "2011-02-02T16:02:29Z",
+      "root_message_id": "msg-3f0dcdde37c0"
+    },
+    {
+      "id": "thread-41c74e925e57",
+      "subject": "[statnet_help] Statnet and Parallel/Distributed Computing",
+      "message_count": 2,
+      "participants": [
+        "Mark S. Handcock",
+        "Patrick Park"
+      ],
+      "started": "2011-02-09T13:08:20Z",
+      "last_reply": "2011-02-09T13:20:12Z",
+      "root_message_id": "msg-41c74e925e57"
+    },
+    {
+      "id": "thread-777e14cfd4ea",
+      "subject": "[statnet_help] Error message using network",
+      "message_count": 2,
+      "participants": [
+        "Steven Goodreau",
+        "alfonso then"
+      ],
+      "started": "2011-02-09T15:10:05Z",
+      "last_reply": "2011-02-09T15:59:50Z",
+      "root_message_id": "msg-777e14cfd4ea"
+    },
+    {
+      "id": "thread-e8a8542ecf79",
+      "subject": "[statnet_help] (no subject)",
+      "message_count": 1,
+      "participants": [
+        "Hugh J Devlin"
+      ],
+      "started": "2011-02-10T13:04:43Z",
+      "last_reply": "2011-02-10T13:04:43Z",
+      "root_message_id": "msg-e8a8542ecf79"
+    },
+    {
+      "id": "thread-2d99f05e15b3",
+      "subject": "[statnet_help] Error in check.ErgmTerm: object not found",
+      "message_count": 1,
+      "participants": [
+        "Hugh J Devlin"
+      ],
+      "started": "2011-02-10T13:07:29Z",
+      "last_reply": "2011-02-10T13:07:29Z",
+      "root_message_id": "msg-2d99f05e15b3"
+    },
+    {
+      "id": "thread-9791b7b73330",
+      "subject": "[statnet_help] Error in check.ErgmTerm: object not found (sessionInfo)",
+      "message_count": 1,
+      "participants": [
+        "Hugh J Devlin"
+      ],
+      "started": "2011-02-10T13:14:01Z",
+      "last_reply": "2011-02-10T13:14:01Z",
+      "root_message_id": "msg-9791b7b73330"
+    },
+    {
+      "id": "thread-4cfb97895737",
+      "subject": "[statnet_help] Using edgecov in gof, sim",
+      "message_count": 2,
+      "participants": [
+        "Martina Morris",
+        "jeremy hackney"
+      ],
+      "started": "2011-02-11T04:52:49Z",
+      "last_reply": "2011-02-11T07:53:34Z",
+      "root_message_id": "msg-4cfb97895737"
+    },
+    {
+      "id": "thread-76a58af7d8fc",
+      "subject": "[statnet_help] Error in check.ErgmTerm: object not found",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Hugh J Devlin"
+      ],
+      "started": "2011-02-11T11:57:53Z",
+      "last_reply": "2011-02-12T15:00:07Z",
+      "root_message_id": "msg-76a58af7d8fc"
+    },
+    {
+      "id": "thread-4bc0ea7c25f3",
+      "subject": "[statnet_help] Replicating Tutorial Results",
+      "message_count": 2,
+      "participants": [
+        "Charles Ellis",
+        "David Hunter"
+      ],
+      "started": "2011-02-11T12:22:14Z",
+      "last_reply": "2011-02-11T14:04:52Z",
+      "root_message_id": "msg-4bc0ea7c25f3"
+    },
+    {
+      "id": "thread-6692dd9b341f",
+      "subject": "[statnet_help] ergm.userterms is on CRAN",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Victorin Luisier"
+      ],
+      "started": "2011-02-11T13:25:55Z",
+      "last_reply": "2011-02-14T02:02:16Z",
+      "root_message_id": "msg-6692dd9b341f"
+    },
+    {
+      "id": "thread-a2cf82e5abf7",
+      "subject": "[statnet_help] Error in check.ErgmTerm: object not found",
+      "message_count": 1,
+      "participants": [
+        "Hugh J Devlin"
+      ],
+      "started": "2011-02-14T09:24:14Z",
+      "last_reply": "2011-02-14T09:24:14Z",
+      "root_message_id": "msg-a2cf82e5abf7"
+    },
+    {
+      "id": "thread-555b9f25a41c",
+      "subject": "[statnet_help] Error in check.ErgmTerm: object not found",
+      "message_count": 3,
+      "participants": [
+        "Hugh J Devlin",
+        "jeremy hackney"
+      ],
+      "started": "2011-02-14T13:04:48Z",
+      "last_reply": "2011-02-15T01:24:22Z",
+      "root_message_id": "msg-555b9f25a41c"
+    },
+    {
+      "id": "thread-107caa444fee",
+      "subject": "[statnet_help] question about using the dyadcov term",
+      "message_count": 3,
+      "participants": [
+        "David Hunter",
+        "Elena G"
+      ],
+      "started": "2011-02-14T14:04:27Z",
+      "last_reply": "2011-02-15T14:18:19Z",
+      "root_message_id": "msg-107caa444fee"
+    },
+    {
+      "id": "thread-d79b7565fa69",
+      "subject": "[statnet_help] statnet Tutorial for ICWSM or CSCW?",
+      "message_count": 2,
+      "participants": [
+        "Brian Keegan",
+        "Martina Morris"
+      ],
+      "started": "2011-02-14T18:18:20Z",
+      "last_reply": "2011-02-15T10:22:33Z",
+      "root_message_id": "msg-d79b7565fa69"
+    },
+    {
+      "id": "thread-cc5f29c277e4",
+      "subject": "[statnet_help] Anova + ERGM",
+      "message_count": 2,
+      "participants": [
+        "Martina Morris",
+        "Roger Gomes"
+      ],
+      "started": "2011-02-18T06:15:17Z",
+      "last_reply": "2011-02-18T11:06:01Z",
+      "root_message_id": "msg-cc5f29c277e4"
+    },
+    {
+      "id": "thread-9d84407faeab",
+      "subject": "[statnet_help] Interpretation of valued edgecov coefficients",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Philip Leifeld"
+      ],
+      "started": "2011-02-23T09:48:15Z",
+      "last_reply": "2011-02-24T04:35:04Z",
+      "root_message_id": "msg-9d84407faeab"
+    },
+    {
+      "id": "thread-6a5f397dcaa4",
+      "subject": "[statnet_help] Re: statnet_help Digest, Vol 55, Issue 16",
+      "message_count": 1,
+      "participants": [
+        "Jonathan Ipser"
+      ],
+      "started": "2011-02-24T07:24:57Z",
+      "last_reply": "2011-02-24T07:24:57Z",
+      "root_message_id": "msg-6a5f397dcaa4"
+    }
+  ]
+}

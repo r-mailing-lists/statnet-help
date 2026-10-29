@@ -1,0 +1,300 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2015-05",
+  "messages": [
+    {
+      "id": "msg-9644a722114d",
+      "message_id": "<CABOB2OAsYcZ2jUN=HPEQPjhuAkYwV0eh38yAOHH+DnhOK_NuLA@mail.gmail.com>",
+      "from_name": "Mahmood Shafeie Zargar",
+      "from_email_hash": "5416bde1a98cdaf104e5b433934627fae3a60e1dac4cc13fa8d41dcde5108414",
+      "date": "2015-05-06T13:21:22Z",
+      "subject": "[statnet_help] Network size limitations of ntelm and netlogit",
+      "subject_clean": "[statnet_help] Network size limitations of ntelm and netlogit",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI am trying to run netlogit on networks of about 60,000 nodes, and I would\nlike to know if the SNA regression functions are designed to support such\nlarge operations. I know, for instance, that with RSiena we are not\nsupposed to go further than a few hundred nodes for the algorithms to\nconverge in a reasonable time. But is this the case with SNA's regression\nmodels as well?\n\nMy initial experience is negative: When I run the commands on my networks,\nthe R process expands in memory until it fills both the live memory and the\nvirtual memory and then it crashes (even with a single repetition). I\nwonder if this is simply a matter of throwing more resource at R, and is\nthere a good way to calculate how much? Or are the current MRQAP algorithms\nsimply not adapted to larger networks?\n\nBest,\nMahmood S. Zargar\nPhD Candidate\nDesautels Faculty of Management\nMcGill University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150506/8da19765/attachment.html>",
+      "body_snippet": "Hello,\n\nI am trying to run netlogit on networks of about 60,000 nodes, and I would\nlike to know if the SNA regression functions are designed to support such\nlarge operations. I know, for instance, tha",
+      "thread_id": "thread-9644a722114d",
+      "thread_depth": 0,
+      "month": "2015-05"
+    },
+    {
+      "id": "msg-82bd4b3c888d",
+      "message_id": "<554AAA1B.9080803@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2015-05-06T16:56:11Z",
+      "subject": "[statnet_help] Network size limitations of ntelm and netlogit",
+      "subject_clean": "[statnet_help] Network size limitations of ntelm and netlogit",
+      "in_reply_to": "<CABOB2OAsYcZ2jUN=HPEQPjhuAkYwV0eh38yAOHH+DnhOK_NuLA@mail.gmail.com>",
+      "references": [
+        "<CABOB2OAsYcZ2jUN=HPEQPjhuAkYwV0eh38yAOHH+DnhOK_NuLA@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Mahmood -\n\nAt present, those functions make heavy use of adjacency representations \nfor the underlying data, and hence do not scale to graphs with more than \n~40,000 or so nodes (give or take) - getting around this limit would \nrequire a very different implementation. (Generating sufficiently high \nquality random permutation vectors might also become a problem as N \nbecomes large, since this is a known challenge for pseudorandom number \ngenerators.  However, I am not aware of anyone who has closely examined \nthe issue in this context, so the impact on real-world performance is \nhard to assess.)  A sparse-data MRQAP implementation for very large \ngraphs could certainly be written, but to make it practical one would \nneed to use an ergm-like term system to calculate covariate values on \nthe fly (since you don't want to store all N^2 values) and whatnot.  \nDoable, but I don't know if anyone has done it.\n\nHope that helps,\n\n-Carter\n\nOn 05/06/2015 01:21 PM, Mahmood Shafeie Zargar wrote:\n> Hello,\n>\n> I am trying to run netlogit on networks of about 60,000 nodes, and I \n> would like to know if the SNA regression functions are designed to \n> support such large operations. I know, for instance, that with RSiena \n> we are not supposed to go further than a few hundred nodes for the \n> algorithms to converge in a reasonable time. But is this the case with \n> SNA's regression models as well?\n>\n> My initial experience is negative: When I run the commands on my \n> networks, the R process expands in memory until it fills both the live \n> memory and the virtual memory and then it crashes (even with a single \n> repetition). I wonder if this is simply a matter of throwing more \n> resource at R, and is there a good way to calculate how much? Or are \n> the current MRQAP algorithms simply not adapted to larger networks?\n>\n> Best,\n> Mahmood S. Zargar\n> PhD Candidate\n> Desautels Faculty of Management\n> McGill University\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150506/f258a334/attachment.html>",
+      "body_snippet": "Hi, Mahmood -\n\nAt present, those functions make heavy use of adjacency representations \nfor the underlying data, and hence do not scale to graphs with more than \n~40,000 or so nodes (give or take) - g",
+      "thread_id": "thread-9644a722114d",
+      "thread_depth": 1,
+      "month": "2015-05"
+    },
+    {
+      "id": "msg-efa8489a71b7",
+      "message_id": "<CAJvYH+9nUHYiP0Ost4hAMpyZ0y75ZceQvrL+sDL9Odr4zha+Hw@mail.gmail.com>",
+      "from_name": "Jeffrey Alan Carnegie",
+      "from_email_hash": "a07c32411e61285803df9d7577e803c7a2e88e1ab7f4d0992f5fe140844296d7",
+      "date": "2015-05-08T11:46:38Z",
+      "subject": "[statnet_help] Plotting valued dynamic network?",
+      "subject_clean": "[statnet_help] Plotting valued dynamic network?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I need some help plotting a dynamic valued network. Here is a toy network:\n\n\n\nadd.edges.active(net, tail=1, head=2, onset=1, terminus=1.5)\n\nactivate.edge.attribute(net,'weight',1,onset=1, terminus=1.5, e=1)\n\nadd.edges.active(net, tail=1, head=2, onset=1.5, terminus=1.7)\n\nactivate.edge.attribute(net,'weight',2,onset=1.5, terminus=1.7, e=2)\n\nadd.edges.active(net, tail=1, head=2, onset=1.7, terminus=4)\n\nactivate.edge.attribute(net,'weight',4,onset=1.7, terminus=4, e=3)\n\nadd.edges.active(net, tail=1, head=2, onset=4, terminus=5)\n\nactivate.edge.attribute(net,'weight',3,onset=4, terminus=5, e=4)\n\nadd.edges.active(net, tail=1, head=3, onset=2.1, terminus=2.2)\n\nactivate.edge.attribute(net,'weight',1,onset=2.1,terminus=2.2, e=5)\n\nadd.edges.active(net, tail=3, head=4, onset=2, terminus=3)\n\nactivate.edge.attribute(net,'weight',1,onset=2,terminus=3, e=6)\n\nadd.edges.active(net, tail=3, head=4, onset=3, terminus=4)\n\nactivate.edge.attribute(net,'weight',2,onset=3,terminus=4, e=7)\n\nadd.edges.active(net, tail=5, head=4, onset=3, terminus=5)\n\nactivate.edge.attribute(net,'weight',4,onset=3,terminus=5, e=8)\n\n\n\n get.edge.attribute.active(net,'weight',onset=1, terminus=2)\n\n get.edge.attribute.active(net,'weight',onset=2, terminus=3)\n\n get.edge.attribute.active(net,'weight',onset=3, terminus=4)\n\n get.edge.attribute.active(net,'weight',onset=4, terminus=5)\n\n get.edge.attribute.active(net,'weight',onset=1, terminus=5)\n\n get.edge.activity(net,as.spellList=TRUE)\n\n\n\nSo far, everything is correct.  But I need to plot the network using the\nhighest value of ?weight? in each period.\n\n\n\npar(mfrow=c(2,2))\n\nplot(network.extract(net,onset=1,terminus=2, trim.spells=TRUE),main='at\ntime 1',arrowhead.cex=2, displaylabels=TRUE, boxed.labels=TRUE,\nlabel.pos=5, edge.label=na.omit(get.edge.value.active(net, \"weight\",\nonset=1,terminus=2)))\n\nplot(network.extract(net,onset=2,terminus=3, trim.spells=TRUE),main='at\ntime 2',arrowhead.cex=2, displaylabels=TRUE, boxed.labels=TRUE,\nlabel.pos=5, edge.label=na.omit(get.edge.value.active(net, \"weight\",\nonset=2,terminus=3)))\n\nplot(network.extract(net,onset=3,terminus=4, trim.spells=TRUE),main='at\ntime 3',arrowhead.cex=2, displaylabels=TRUE, boxed.labels=TRUE,\nlabel.pos=5, edge.label=na.omit(get.edge.value.active(net, \"weight\",\nonset=3,terminus=4)))\n\nplot(network.extract(net,onset=4,terminus=5, trim.spells=TRUE),main='at\ntime 4',arrowhead.cex=2, displaylabels=TRUE, boxed.labels=TRUE,\nlabel.pos=5, edge.label=na.omit(get.edge.value.active(net, \"weight\",\nonset=4,terminus=5)))\n\n\n\nThis prints all ?weight? values on 1->2 in period 1, creating overlapping\nlabels. So how do I show only the highest weight from each period?\n\n\n\nThanks\n\nJeff Carnegie\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150508/6f1440d6/attachment.html>",
+      "body_snippet": "I need some help plotting a dynamic valued network. Here is a toy network:\n\n\n\nadd.edges.active(net, tail=1, head=2, onset=1, terminus=1.5)\n\nactivate.edge.attribute(net,'weight',1,onset=1, terminus=1.5",
+      "thread_id": "thread-efa8489a71b7",
+      "thread_depth": 0,
+      "month": "2015-05"
+    },
+    {
+      "id": "msg-1794d2726d48",
+      "message_id": "<554D1BC1.5040605@skyeome.net>",
+      "from_name": "Skye Bender-deMoll",
+      "from_email_hash": "016c31bf83672a8e8fce6b664eb68ddff364b5df6912775ec31eeceebce90340",
+      "date": "2015-05-08T13:25:37Z",
+      "subject": "[statnet_help] Plotting valued dynamic network?",
+      "subject_clean": "[statnet_help] Plotting valued dynamic network?",
+      "in_reply_to": "<CAJvYH+9nUHYiP0Ost4hAMpyZ0y75ZceQvrL+sDL9Odr4zha+Hw@mail.gmail.com>",
+      "references": [
+        "<CAJvYH+9nUHYiP0Ost4hAMpyZ0y75ZceQvrL+sDL9Odr4zha+Hw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Jeff,\r\n\r\n >\r\n > This prints all “weight” values on 1->2 in period 1, creating\r\n > overlapping labels. So how do I show only the highest weight from each\r\n > period?\r\n\r\n\r\nFirst,  in your example, by repeatedly added edges between the same \r\ntail,head pair of vertices, you are actually creating a multiplex \r\nnetwork.  I'm not sure if this was your intention, but I don't see an \r\neasy way to collapse the labels for this case, since you would need to \r\nlook up the 'edge' objects by their endpoints.  If that is what you need \r\nto do, let me know I'll figure out a way..\r\n\r\nBut assuming that this was not intended to be a multiplex network, you \r\nshould use 'activate.edges' to add additional activity spells after the \r\nedge is created (either with add.edge or add.edges.active).\r\n\r\nre-writing your example\r\n\r\nnet<-network.initialize(5)\r\nadd.edges.active(net, tail=1, head=2, onset=1, terminus=1.5)\r\nactivate.edge.attribute(net,'weight',1,onset=1, terminus=1.5, e=1)\r\nactivate.edges(net, e=1, onset=1.5, terminus=1.7)\r\nactivate.edge.attribute(net,'weight',2,onset=1.5, terminus=1.7, e=1)\r\nactivate.edges(net, e=1, onset=1.7, terminus=4)\r\nactivate.edge.attribute(net,'weight',4,onset=1.7, terminus=4, e=1)\r\nactivate.edges(net, e=1, onset=4, terminus=5)\r\nactivate.edge.attribute(net,'weight',3,onset=4, terminus=5, e=1)\r\nadd.edges.active(net, tail=1, head=3, onset=2.1, terminus=2.2)\r\nactivate.edge.attribute(net,'weight',1,onset=2.1,terminus=2.2, e=2)\r\nadd.edges.active(net, tail=3, head=4, onset=2, terminus=3)\r\nactivate.edge.attribute(net,'weight',1,onset=2,terminus=3, e=3)\r\nactivate.edges(net, e=3, onset=3, terminus=4)\r\nactivate.edge.attribute(net,'weight',2,onset=3,terminus=4, e=3)\r\nadd.edges.active(net, tail=5, head=4, onset=3, terminus=5)\r\nactivate.edge.attribute(net,'weight',4,onset=3,terminus=5, e=3)\r\n\r\nor in a slightly condensed form, do all the edge activation at the same time\r\n\r\nnet<-network.initialize(5)\r\nadd.edges.active(net, tail=1, head=2, onset=c(1,1.5,1.7,4), \r\nterminus=c(1.5,1.7,4,5))\r\nactivate.edge.attribute(net,'weight',1,onset=1, terminus=1.5, e=1)\r\nactivate.edge.attribute(net,'weight',2,onset=1.5, terminus=1.7, e=1)\r\nactivate.edge.attribute(net,'weight',4,onset=1.7, terminus=4, e=1)\r\nactivate.edge.attribute(net,'weight',3,onset=4, terminus=5, e=1)\r\nadd.edges.active(net, tail=1, head=3, onset=2.1, terminus=2.2)\r\nactivate.edge.attribute(net,'weight',1,onset=2.1,terminus=2.2, e=2)\r\nadd.edges.active(net, tail=3, head=4, onset=c(2,3), terminus=c(3,4))\r\nactivate.edge.attribute(net,'weight',1,onset=2,terminus=3, e=3)\r\nactivate.edge.attribute(net,'weight',2,onset=3,terminus=4, e=3)\r\nadd.edges.active(net, tail=5, head=4, onset=3, terminus=5)\r\nactivate.edge.attribute(net,'weight',4,onset=3,terminus=5, e=4)\r\n\r\nwhen set up this way, your plot command will give you a warning \r\nindicating that it couldn't figure out which value to use\r\n\r\n > plot(network.extract(net,onset=1,terminus=2, \r\ntrim.spells=TRUE),main='at time 1',arrowhead.cex=2, displaylabels=TRUE, \r\nboxed.labels=TRUE, label.pos=5, \r\nedge.label=na.omit(get.edge.value.active(net, \"weight\", \r\nonset=1,terminus=2)))\r\n\r\nWarning message:\r\nIn get.edge.value.active(net, \"weight\", onset = 1, terminus = 2) :\r\n   Multiple attribute values matched query spell for attribute \r\nweight.active on some edges. Only earliest value used\r\n\r\n\r\nif you just wanted the earliest or latest value you could avoid the \r\nwarning by specifying a rule:\r\n\r\n > get.edge.value.active(net, \"weight\", onset=1,terminus=2,rule='latest')\r\n[1]  4 NA NA NA\r\n\r\n > get.edge.value.active(net, \"weight\"onset=1,terminus=2,rule='earliest')\r\n[1]  1 NA NA NA\r\n\r\nyou could also do this by using network.collapse instead of network.extract\r\n\r\n\r\nHowever, since you want the label with the maximum value, you will have \r\nto process the TEA attribute directly yourself\r\n\r\nget.edge.value.active(net, \"weight\",onset=1,terminus=2,return.tea = TRUE)\r\n\r\nThe first element of each TEA attribute is the list of values \r\nappropriate for the time range (second is spell matrix) so should work \r\nto set your edge.label equal to\r\n\r\nsapply( \r\nget.edge.value.active(net,\"weight\",onset=1,terminus=2,return.tea = TRUE),\r\n    function(e){\r\n       max(unlist(e[[1]]))\r\n})\r\n\r\n[1]  4 NA NA NA\r\n\r\n\r\nIf you were doing this as part of ndtv animation, you would probably \r\nwant to make use of 'functional' attribute forms so that the values \r\nwould be recalculate for each slice\r\n\r\nlibrary(ndtv)\r\n\r\nrender.animation(net,\r\n           main=function(onset,terminus){paste('at \r\ntime',onset,'-',terminus)},\r\n           arrowhead.cex=2,\r\n           displaylabels=TRUE,\r\n           boxed.labels=FALSE,\r\n           label.pos=5,\r\n           edge.label=function(net,onset,terminus){\r\n \r\nsapply(get.edge.value.active(net,\"weight\",onset=onset,terminus=terminus,return.tea \r\n= TRUE),\r\n                     function(e){\r\n                        max(unlist(e[[1]]))\r\n                     }\r\n             )\r\n           }\r\n)\r\nani.replay()\r\n\r\n\r\nlet me know if that works!\r\n\r\nbest,\r\n  -skye",
+      "body_snippet": "Hi Jeff,\r\n\r\n >\r\n > This prints all “weight” values on 1->2 in period 1, creating\r\n > overlapping labels. So how do I show only the highest weight from each\r\n > period?\r\n\r\n\r\nFirst,  in your example, by",
+      "thread_id": "thread-efa8489a71b7",
+      "thread_depth": 1,
+      "month": "2015-05"
+    },
+    {
+      "id": "msg-f26081bc1d60",
+      "message_id": "<CAJvYH+_M_JTVZHSztxu59KDZ+LGo-7Dn9fm_rhLM-RLMSH1=Bg@mail.gmail.com>",
+      "from_name": "Jeffrey Alan Carnegie",
+      "from_email_hash": "a07c32411e61285803df9d7577e803c7a2e88e1ab7f4d0992f5fe140844296d7",
+      "date": "2015-05-08T13:49:51Z",
+      "subject": "[statnet_help] Plotting valued dynamic network?",
+      "subject_clean": "[statnet_help] Plotting valued dynamic network?",
+      "in_reply_to": "<554D1BC1.5040605@skyeome.net>",
+      "references": [
+        "<CAJvYH+9nUHYiP0Ost4hAMpyZ0y75ZceQvrL+sDL9Odr4zha+Hw@mail.gmail.com>",
+        "<554D1BC1.5040605@skyeome.net>"
+      ],
+      "body_plain": "Thanks Skye, that is brilliant. I would never have figured that out on my\nown.\n\nI do intend to use ndtv and animate it, but I will want to color the edges\nby the weight (1 gold, 2 orange, 3 red, 4 violet, 5 black). Since I am\nentering the spells in continuous time, I don't know if the animation will\nshow all spells or if I need to specify the highest value in each time\nincrement.\n\nThat is, my time increments are in years, and the weight is the level of\nconflict. Suppose I have the following values for and edge A->B:\n1990.3 to 1990.5: 1\n1990.5 to 1990.8: 3\n1990.5 to 1990.8: 2\n\nI assume that for the animation to cover every transition would be too\nmuch, so that it would use snapshots every year (I will have about 240\nedges over 195 years). If that is the case, I would prefer to color each\nedge by the highest value in each period.\n\nJeff\n\nOn Fri, May 8, 2015 at 3:25 PM, Skye Bender-deMoll <skyebend@skyeome.net>\nwrote:\n\n> Hi Jeff,\n>\n> >\n> > This prints all ???weight??  values on 1->2 in period 1, creating\n> > overlapping labels. So how do I show only the highest weight from each\n> > period?\n>\n>\n> First,  in your example, by repeatedly added edges between the same\n> tail,head pair of vertices, you are actually creating a multiplex network.\n> I'm not sure if this was your intention, but I don't see an easy way to\n> collapse the labels for this case, since you would need to look up the\n> 'edge' objects by their endpoints.  If that is what you need to do, let me\n> know I'll figure out a way..\n>\n> But assuming that this was not intended to be a multiplex network, you\n> should use 'activate.edges' to add additional activity spells after the\n> edge is created (either with add.edge or add.edges.active).\n>\n> re-writing your example\n>\n> net<-network.initialize(5)\n> add.edges.active(net, tail=1, head=2, onset=1, terminus=1.5)\n> activate.edge.attribute(net,'weight',1,onset=1, terminus=1.5, e=1)\n> activate.edges(net, e=1, onset=1.5, terminus=1.7)\n> activate.edge.attribute(net,'weight',2,onset=1.5, terminus=1.7, e=1)\n> activate.edges(net, e=1, onset=1.7, terminus=4)\n> activate.edge.attribute(net,'weight',4,onset=1.7, terminus=4, e=1)\n> activate.edges(net, e=1, onset=4, terminus=5)\n> activate.edge.attribute(net,'weight',3,onset=4, terminus=5, e=1)\n> add.edges.active(net, tail=1, head=3, onset=2.1, terminus=2.2)\n> activate.edge.attribute(net,'weight',1,onset=2.1,terminus=2.2, e=2)\n> add.edges.active(net, tail=3, head=4, onset=2, terminus=3)\n> activate.edge.attribute(net,'weight',1,onset=2,terminus=3, e=3)\n> activate.edges(net, e=3, onset=3, terminus=4)\n> activate.edge.attribute(net,'weight',2,onset=3,terminus=4, e=3)\n> add.edges.active(net, tail=5, head=4, onset=3, terminus=5)\n> activate.edge.attribute(net,'weight',4,onset=3,terminus=5, e=3)\n>\n> or in a slightly condensed form, do all the edge activation at the same\n> time\n>\n> net<-network.initialize(5)\n> add.edges.active(net, tail=1, head=2, onset=c(1,1.5,1.7,4),\n> terminus=c(1.5,1.7,4,5))\n> activate.edge.attribute(net,'weight',1,onset=1, terminus=1.5, e=1)\n> activate.edge.attribute(net,'weight',2,onset=1.5, terminus=1.7, e=1)\n> activate.edge.attribute(net,'weight',4,onset=1.7, terminus=4, e=1)\n> activate.edge.attribute(net,'weight',3,onset=4, terminus=5, e=1)\n> add.edges.active(net, tail=1, head=3, onset=2.1, terminus=2.2)\n> activate.edge.attribute(net,'weight',1,onset=2.1,terminus=2.2, e=2)\n> add.edges.active(net, tail=3, head=4, onset=c(2,3), terminus=c(3,4))\n> activate.edge.attribute(net,'weight',1,onset=2,terminus=3, e=3)\n> activate.edge.attribute(net,'weight',2,onset=3,terminus=4, e=3)\n> add.edges.active(net, tail=5, head=4, onset=3, terminus=5)\n> activate.edge.attribute(net,'weight',4,onset=3,terminus=5, e=4)\n>\n> when set up this way, your plot command will give you a warning indicating\n> that it couldn't figure out which value to use\n>\n> > plot(network.extract(net,onset=1,terminus=2, trim.spells=TRUE),main='at\n> time 1',arrowhead.cex=2, displaylabels=TRUE, boxed.labels=TRUE,\n> label.pos=5, edge.label=na.omit(get.edge.value.active(net, \"weight\",\n> onset=1,terminus=2)))\n>\n> Warning message:\n> In get.edge.value.active(net, \"weight\", onset = 1, terminus = 2) :\n>   Multiple attribute values matched query spell for attribute\n> weight.active on some edges. Only earliest value used\n>\n>\n> if you just wanted the earliest or latest value you could avoid the\n> warning by specifying a rule:\n>\n> > get.edge.value.active(net, \"weight\", onset=1,terminus=2,rule='latest')\n> [1]  4 NA NA NA\n>\n> > get.edge.value.active(net, \"weight\"onset=1,terminus=2,rule='earliest')\n> [1]  1 NA NA NA\n>\n> you could also do this by using network.collapse instead of network.extract\n>\n>\n> However, since you want the label with the maximum value, you will have to\n> process the TEA attribute directly yourself\n>\n> get.edge.value.active(net, \"weight\",onset=1,terminus=2,return.tea = TRUE)\n>\n> The first element of each TEA attribute is the list of values appropriate\n> for the time range (second is spell matrix) so should work to set your\n> edge.label equal to\n>\n> sapply( get.edge.value.active(net,\"weight\",onset=1,terminus=2,return.tea =\n> TRUE),\n>    function(e){\n>       max(unlist(e[[1]]))\n> })\n>\n> [1]  4 NA NA NA\n>\n>\n> If you were doing this as part of ndtv animation, you would probably want\n> to make use of 'functional' attribute forms so that the values would be\n> recalculate for each slice\n>\n> library(ndtv)\n>\n> render.animation(net,\n>           main=function(onset,terminus){paste('at\n> time',onset,'-',terminus)},\n>           arrowhead.cex=2,\n>           displaylabels=TRUE,\n>           boxed.labels=FALSE,\n>           label.pos=5,\n>           edge.label=function(net,onset,terminus){\n>\n> sapply(get.edge.value.active(net,\"weight\",onset=onset,terminus=terminus,return.tea\n> = TRUE),\n>                     function(e){\n>                        max(unlist(e[[1]]))\n>                     }\n>             )\n>           }\n> )\n> ani.replay()\n>\n>\n> let me know if that works!\n>\n> best,\n>  -skye\n>\n>\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150508/8d60ec4d/attachment.html>",
+      "body_snippet": "Thanks Skye, that is brilliant. I would never have figured that out on my\nown.\n\nI do intend to use ndtv and animate it, but I will want to color the edges\nby the weight (1 gold, 2 orange, 3 red, 4 vio",
+      "thread_id": "thread-efa8489a71b7",
+      "thread_depth": 2,
+      "month": "2015-05"
+    },
+    {
+      "id": "msg-2917de56bdfe",
+      "message_id": "<1432215998.3445.128.camel@uow.edu.au>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2015-05-21T06:46:38Z",
+      "subject": "[statnet_help] ergm: non-integer \"receiver\" target.stats",
+      "subject_clean": "[statnet_help] ergm: non-integer \"receiver\" target.stats",
+      "in_reply_to": "<alpine.WNT.2.00.1504291720220.7616@morrism-laptop>",
+      "references": [
+        "<CADOGmN-dDOZme1mezr0EWufiNX5=89j3bEqfeoofN0LgSk2Vpg@mail.gmail.com>",
+        "<alpine.WNT.2.00.1504291039570.7616@morrism-laptop>",
+        "<CADOGmN-FsDgkq3s8_tG+32P6oi2qeFz+uYWYNFeeR0tm++JG0w@mail.gmail.com>",
+        "<alpine.WNT.2.00.1504291057400.7616@morrism-laptop>",
+        "<CADOGmN_y753O2V5-SgQkaBDo7-_fWNZ_q8tKkC+jEGMp5RRyVg@mail.gmail.com>",
+        "<alpine.WNT.2.00.1504291720220.7616@morrism-laptop>"
+      ],
+      "body_plain": "Hi, Carlo,\n\nI am not 100% certain whether this is what you want, but it's perfectly\nlegal to set target.stats to a fractional value, even if it's for\nsomething like edge count or in-tie count. This is because the model is\nnot about a specific graph but about a *distribution* of graphs, and\nspecifying that the expected number of in-ties of the node in question\nis to be 0.2 is perfectly sensible. Most graphs in that distribution\nwill give that node 0 in-ties; some will give 1; and a few will give 2\nor more, but on average, it will be 0.2.\n\n                        I hope this helps,\n                        Pavel\n\nP.S. Depending on your specific model, you might be able to make this\nmore explicit using the valued ERGM framework. There, you can, in fact,\nsay that the ties are binomial(n=100), and that the target.stat is 20.\nOne can also specify a continuous uniform reference measure between 0\nand 1, and use a beta-distribution-like model to the same effect.\nHowever, these approaches are not as well understood as binary ERGMs.\n\nOn Thu, 2015-04-30 at 10:33 +1000, martina morris wrote:\n> Hi Carlo,\n> \n> Unfortunately, receiver stats are not \"ensembles\" -- they are node \n> specific integer counts of ties.  If you combine other nodes into the \n> base, it can function as an ensemble for a target count.  So, if you put 5 \n> nodes into the base, and have a target of 1 tie, each node would get your \n> 0.2 ties in expectation.  Alternatively, you might be able to set the coef \n> for this receiver node using an offset to achieve the desired tie \n> probability, but the value may be difficult to find given the correlation \n> with other terms in the model.\n> \n> I'm replying to the list here in case someone else has a better idea.\n> \n> best,\n> mm\n> \n> On Wed, 29 Apr 2015, Carlo Campajola wrote:\n> \n> > \n> > It would imply that say on 100 sampled graphs from the resulting distribution, roughly 20\n> > would have receiver=1 for that node and the remaining would have 0. In principle target.stats\n> > should fix the ensemble averages, so even an integer-valued quantity might have non-integer\n> > mean value.\n> > \n> > Il 29/apr/2015 20:01, \"martina morris\" <morrism@u.washington.edu> ha scritto:\n> >       And what does a value of 0.2 mean?  You say this is not a weighted graph (and\n> >       receiver stats haven't been coded up for wtd graphs in any case).  So I'm not\n> >       clear what a target value of 0.2 would imply.\n> >\n> >       On Wed, 29 Apr 2015, Carlo Campajola wrote:\n> > \n> >\n> >             Dear Martina,\n> >             thanks for your reply. I want to enforce a value of 0.2 for just one\n> >             node (so the term is\n> >             receiver(base=-nodenumber) ). If I set 0.2 in the target.stats it gets\n> >             rounded down to 0, which is not what I\n> >             want. I guess it's because the ergm with target.stats actually\n> >             produces a random network through SAN over\n> >             which it runs the ergm fitting, and obviously that network has either\n> >             receiver=0 or 1 since the graph is not\n> >             weighted. Any way to solve the problem without having to do some\n> >             absurd (and hardly mathematically correct)\n> >             reasoning?\n> >\n> >             Thank you,\n> >             Carlo\n> >\n> >             Il 29/apr/2015 19:43, \"martina morris\" <morrism@u.washington.edu> ha\n> >             scritto:\n> >                   Hi Carlo,\n> >\n> >                   I'm not sure I understand what you're trying to do here.  The\n> >             \"receiver\" term adds n-base stats\n> >                   to the model (one for each node, minus the base node(s)).  So\n> >             when you say you want a non-integer\n> >                   value for the stat, do you mean you want to enforce a value of\n> >             0.2 for every node?\n> >\n> >                   best,\n> >                   Martina\n> >\n> >                   On Mon, 27 Apr 2015, Carlo Campajola wrote:\n> >\n> >                         Dear statnet users,\n> >\n> >                         I am interested in enforcing a non-integer value for the\n> >             \"receiver\" statistic using\n> >                         the target.stats option\n> >                         of ergm. In particular the value would be 0.2, which for\n> >             obvious reasons is not well\n> >                         approximated neither by\n> >                         0 or 1. Since getting that statistic right could be quite\n> >             vital for measuring what\n> >                         I'm interested in, I was\n> >                         wondering if there is any way of going around the problem\n> >             (the graphs are not\n> >                         weighted). An idea coming to my\n> >                         mind now is to use 2 different models, one with receiver=0\n> >             and one with receiver=1,\n> >                         and numerically compute a\n> >                         coefficient which is \"mid way\" and gives the correct\n> >             average, but if this is feasible\n> >                         with some statnet\n> >                         function it would be way better.\n> >\n> >                         Thank you in advance,\n> >\n> >                         Cordially,\n> >\n> >                         Carlo Campajola\n> >                         The Abdus Salam ICTP, Trieste, Italy\n> > \n> > \n> >\n> >                   ****************************************************************\n> >                    Professor of Sociology and Statistics\n> >                    Director, UWCFAR Sociobehavioral and Prevention Research Core\n> >                    Box 354322\n> >                    University of Washington\n> >                    Seattle, WA 98195-4322\n> >\n> >                    Office:        (206) 685-3402\n> >                    Dept Office:   (206) 543-5882, 543-7237\n> >                    Fax:           (206) 685-7419\n> >\n> >                   morrism@u.washington.edu\n> >                   http://faculty.washington.edu/morrism/\n> >                   _______________________________________________\n> >                   statnet_help mailing list\n> >                   statnet_help@u.washington.edu\n> >                   http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> > \n> > \n> > \n> >\n> >       ****************************************************************\n> >        Professor of Sociology and Statistics\n> >        Director, UWCFAR Sociobehavioral and Prevention Research Core\n> >        Box 354322\n> >        University of Washington\n> >        Seattle, WA 98195-4322\n> >\n> >        Office:        (206) 685-3402\n> >        Dept Office:   (206) 543-5882, 543-7237\n> >        Fax:           (206) 685-7419\n> >\n> >       morrism@u.washington.edu\n> >       http://faculty.washington.edu/morrism/\n> > \n> > \n> >\n> \n> ****************************************************************\n>   Professor of Sociology and Statistics\n>   Director, UWCFAR Sociobehavioral and Prevention Research Core\n>   Box 354322\n>   University of Washington\n>   Seattle, WA 98195-4322\n> \n>   Office:        (206) 685-3402\n>   Dept Office:   (206) 543-5882, 543-7237\n>   Fax:           (206) 685-7419\n> \n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n\n-- \nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics\nBuilding 39C Room 185\nUniversity of Wollongong NSW 2522\nP +61 2 4221 3713\nW niasra.uow.edu.au\nPlease consider the environment before printing this email.",
+      "body_snippet": "Hi, Carlo,\n\nI am not 100% certain whether this is what you want, but it's perfectly\nlegal to set target.stats to a fractional value, even if it's for\nsomething like edge count or in-tie count. This is",
+      "thread_id": "thread-2917de56bdfe",
+      "thread_depth": 0,
+      "month": "2015-05"
+    },
+    {
+      "id": "msg-61ffc73ab3b7",
+      "message_id": "<CAJvYH+8VjhKCShjZbMu3M-_a1sadPoVXWZoFfw6wfuR3sc+E-w@mail.gmail.com>",
+      "from_name": "Jeffrey Alan Carnegie",
+      "from_email_hash": "a07c32411e61285803df9d7577e803c7a2e88e1ab7f4d0992f5fe140844296d7",
+      "date": "2015-05-21T10:24:29Z",
+      "subject": "[statnet_help] STERGM and valued networks",
+      "subject_clean": "[statnet_help] STERGM and valued networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Does STERGM handle valued networks? I don't see a response term in the\nstergm command, so I assume no.\n\nMy actual outcome is binary and directed edges, but I am getting very\nunclear on activating edges in the dynamic network. Example:\n\nI have three nodes active for different times:\nA: 0-30\nB: 10-40\nC: 20-50\n\nBy definition edges are only possible for the following times:\nAB/BA: 10-30\nAC/CA: 20-30\nBC/CB: 20-30\n\nNow suppose I have broken intervals in which an edge exists for AB: 11-18\nand 23-25. But I have a time-varying dyadic predictor which exists for all\npossible periods 10-30.\n\nDo I :\n(1) activate the edge for 10-30 and list an edge attribute with value 1 or\n0 depending on the existence of the tie.\n(2) activate the edge for 11-18 and 23-25 only, and list the dyadic\npredictor as a network attribute somehow for each time period ?\n\nExamples would help.\nThanks\nJeff Carnegie\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150521/90436e64/attachment.html>",
+      "body_snippet": "Does STERGM handle valued networks? I don't see a response term in the\nstergm command, so I assume no.\n\nMy actual outcome is binary and directed edges, but I am getting very\nunclear on activating edge",
+      "thread_id": "thread-61ffc73ab3b7",
+      "thread_depth": 0,
+      "month": "2015-05"
+    },
+    {
+      "id": "msg-5c6eeb31b91b",
+      "message_id": "<CAJvYH+_hR6SwTfkeV02do+0hZnFLBN2OffmY6n8SeP_oDtLi-w@mail.gmail.com>",
+      "from_name": "Jeffrey Alan Carnegie",
+      "from_email_hash": "a07c32411e61285803df9d7577e803c7a2e88e1ab7f4d0992f5fe140844296d7",
+      "date": "2015-05-22T11:58:15Z",
+      "subject": "[statnet_help] STERGM errors",
+      "subject_clean": "[statnet_help] STERGM errors",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I am baffled by these errors. Can someone explain these to me?\n\nlibrary(networkDynamic)\nlibrary(statnet)\nlibrary(tergm)\nnet <- network.initialize(5)\nnet %v% \"ccode\" <- 1:5\nset.network.attribute(net,'vertex.pid','ccode')\nactivate.vertices(net,onset=1,terminus=9,v=1)\nactivate.vertices(net,onset=1,terminus=11,v=2)\nactivate.vertices(net,onset=1,terminus=11,v=3)\nactivate.vertices(net,onset=1,terminus=11,v=4)\nactivate.vertices(net,onset=3,terminus=11,v=5)\nget.vertex.activity(net,as.spellList=TRUE)\nx = array(runif(250), dim=c(5,5,10))\nfor (i in 1:10) {\n diag(x[,,i])=NA\n}\nx[1,,9:10] <- NA\nx[,1,9:10] <- NA\nx[5,,1:2] <- NA\nx[,5,1:2] <- NA\nadd.edges.active(net, tail=1, head=2, onset=3, terminus=6)\nadd.edges.active(net, tail=2, head=3, onset=2, terminus=5)\nactivate.edges(net, e=2 , onset=8, terminus=11)\nadd.edges.active(net, tail=4, head=1, onset=3, terminus=4)\nadd.edges.active(net, tail=3, head=2, onset=7, terminus=10)\nadd.edges.active(net, tail=5, head=2, onset=4, terminus=5)\nadd.edges.active(net, tail=2, head=5, onset=3, terminus=9)\nadd.edges.active(net, tail=2, head=4, onset=5, terminus=8)\nadd.edges.active(net, tail=1, head=4, onset=1, terminus=3)\nadd.edges.active(net, tail=3, head=5, onset=3, terminus=5)\nadd.edges.active(net, tail=1, head=5, onset=4, terminus=9)\nfor (i in 1:10) {\nactivate.network.attribute(net, \"dyadic\", x[i], onset=i, length=1)\n}\nnet.fit <- stergm(net, formation= ~edges + mutual + dyadcov(net, \"dyadic\")\n, dissolution= ~edges + mutual  + dyadcov(net, \"dyadic\"), estimate =\n\"CMLE\", times = c(1:11))\n\n> net.fit <- stergm(net, formation= ~edges + mutual + dyadcov(net,\n\"dyadic\") , dissolution= ~edges + mutual  + dyadcov(net, \"dyadic\"),\nestimate = \"CMLE\", times = c(1:11))\nError in summary.statistics.networkDynamic(ergm.update.formula(formation,\n:\n  summary.statistics.networkDynamic requires an 'at' parameter specifying\nthe time points at which to summarize the formula\n> traceback()\n12: stop(\"summary.statistics.networkDynamic requires an 'at' parameter\nspecifying the time points at which to summarize the formula\")\n11: summary.statistics.networkDynamic(ergm.update.formula(formation,\n        nw ~ ., from.new = \"nw\"))\n10: summary.formula(ergm.update.formula(formation, nw ~ ., from.new = \"nw\"))\n9: summary(ergm.update.formula(formation, nw ~ ., from.new = \"nw\"))\n8: FUN(X[[1L]], ...)\n7: lapply(X = X, FUN = FUN, ...)\n6: sapply(y0s, function(nw) summary(ergm.update.formula(formation,\n       nw ~ ., from.new = \"nw\")))\n5: rbind(sapply(y0s, function(nw) summary(ergm.update.formula(formation,\n       nw ~ ., from.new = \"nw\"))))\n4: apply(rbind(sapply(y0s, function(nw)\nsummary(ergm.update.formula(formation,\n       nw ~ ., from.new = \"nw\")))), 1, sum)\n3: eql(apply(rbind(sapply(y0s, function(nw)\nsummary(ergm.update.formula(formation,\n       nw ~ ., from.new = \"nw\")))), 1, sum),\nsummary(ergm.update.formula(formation,\n       y0 ~ ., from.new = \"y0\")))\n2: stergm.CMLE(nw, formation, dissolution, constraints, times,\noffset.coef.form,\n       offset.coef.diss, eval.loglik, estimate, control, verbose)\n1: stergm(net, formation = ~edges + mutual + dyadcov(net, \"dyadic\"),\n       dissolution = ~edges + mutual + dyadcov(net, \"dyadic\"),\n       estimate = \"CMLE\", times = c(1:11))\n\n> net.fit <- stergm(net, formation= ~edges + mutual + dyadcov(net,\n\"dyadic\") , dissolution= ~edges + mutual  + dyadcov(net, \"dyadic\"),\nestimate = \"CMLE\", times = c(2:3))\nError in networkOperatorSetup(x = e1, y = e2) :\n  Non-conformable networks (must have same numbers of vertices for\nelementwise operations).\n> traceback()\n5: stop(\"Non-conformable networks (must have same numbers of vertices for\nelementwise operations).\")\n4: networkOperatorSetup(x = e1, y = e2)\n3: `|.network`(y0, y1)\n2: stergm.CMLE(nw, formation, dissolution, constraints, times,\noffset.coef.form,\n       offset.coef.diss, eval.loglik, estimate, control, verbose)\n1: stergm(net, formation = ~edges + mutual + dyadcov(net, \"dyadic\"),\n       dissolution = ~edges + mutual + dyadcov(net, \"dyadic\"), estimate =\n\"CMLE\",\n       times = c(2:3))\n\nI am really baffled. The examples using samplike work fine. Does this have\nto do with using a networkDynamic object instead of a list?\n\nThanks\nJeff Carnegie\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150522/dbe83219/attachment.html>",
+      "body_snippet": "I am baffled by these errors. Can someone explain these to me?\n\nlibrary(networkDynamic)\nlibrary(statnet)\nlibrary(tergm)\nnet <- network.initialize(5)\nnet %v% \"ccode\" <- 1:5\nset.network.attribute(net,'v",
+      "thread_id": "thread-5c6eeb31b91b",
+      "thread_depth": 0,
+      "month": "2015-05"
+    },
+    {
+      "id": "msg-b5ced0911174",
+      "message_id": "<A061CE11-E5B6-4FA6-94C7-EA1846F959F8@gmail.com>",
+      "from_name": "jimi adams",
+      "from_email_hash": "d387d68c739c196c625768794dffa30321694dced194798b4c5c7e0b3a23c752",
+      "date": "2015-05-28T10:34:43Z",
+      "subject": "[statnet_help] visualization assistance",
+      "subject_clean": "[statnet_help] visualization assistance",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\nI have a data set I?ve been working with that was from a teaching example, and I?m trying to get a dynamic visualization of it configured. The basics are working, but I am trying to figure out if a few tweaks are possible, and I haven?t come up with anything yet, so any help on these would be much appreciated.\n\n1 - As far as I can tell, tie directionality is fixed across the entire visualization. Is that so? I have 5 tie types (encoded as weights) some of which are directed, some of which are not. I?d like to allow the directionality to vary according to the type being visualized.\n2 - I?m not figuring out how to change node color based on edge patterns (e.g., can someone pass something to / contract something from others dynamically, or should I code that outside of the visualization)?\n\nThanks!\njimi\n\njimi adams\nAssociate Professor\nDepartment of Health & Behavioral Sciences\nUniversity of Colorado Denver\ne: jimi.adams@ucdenver.edu\nw: jimiadams.com\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150528/3d04f599/attachment.html>",
+      "body_snippet": "Hi all,\nI have a data set I?ve been working with that was from a teaching example, and I?m trying to get a dynamic visualization of it configured. The basics are working, but I am trying to figure out",
+      "thread_id": "thread-b5ced0911174",
+      "thread_depth": 0,
+      "month": "2015-05"
+    },
+    {
+      "id": "msg-0b359a9c92fe",
+      "message_id": "<CAKAbm6OBwm6vmVZcS+pc1NmueVKg+LAu+h34uyY=DwxRGGvUEw@mail.gmail.com>",
+      "from_name": "Matt Robbins",
+      "from_email_hash": "018cdea43f93204130d9a33cdd30fb8cda78346c0b60a3a8b5fbbe116a85af46",
+      "date": "2015-05-29T13:56:52Z",
+      "subject": "[statnet_help] Errors returned on models run after updating ergm",
+      "subject_clean": "[statnet_help] Errors returned on models run after updating ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello Statnet!\n\nI am running into some issues with inconsistent model runs between\ndifferent versions of the ergm package.  I ran a series of models on  a\ncouple of diffferent networks that converged over the last few weeks.\nHowever, after updating to ergm version 3.2.4, running models with the same\nspecifications now yields error messages.  Here are the messages:\n\n1)  *Excessive correlation among the statistics. Using a\nno-crosscorrelation approximation.*\n\nThis error seems to be associated with models that include a large number\nof terms(including a bunch of nodemix terms).\n\n2)  *1: In .ergm.mvar.spec0(z) :  Excessive correlation among the\nstatistics. Using a no-crosscorrelation approximation.*\n\nThis error term seems to be associated with models run a large number of\nmissing links (coded as NAs).\n\nAgain, these models converged error-free while using an older version of\nthe ergm package, but return errors under the current version.  Can anyone\nshed light on this issue?  What are the implications for the model results\ngenerated using the previous versions of ergm?\n\nThanks,\nMateo\n\n\n-- \nMatt Robbins\nPh.D. Candidate\nCenter for Environmental Policy and Behavior\n<http://environmentalpolicy.ucdavis.edu/>\nDepartment of Environmental Science and Policy\nGraduate Group in Ecology\nUniversity of California, Davis\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150529/64ad12f2/attachment.html>",
+      "body_snippet": "Hello Statnet!\n\nI am running into some issues with inconsistent model runs between\ndifferent versions of the ergm package.  I ran a series of models on  a\ncouple of diffferent networks that converged ",
+      "thread_id": "thread-0b359a9c92fe",
+      "thread_depth": 0,
+      "month": "2015-05"
+    },
+    {
+      "id": "msg-a85133468e7d",
+      "message_id": "<5568D6FD.1050500@uni-konstanz.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "0e8856775b020043f064c122aa5e96f11a67360200ec15df7ed5c1cadf4a2652",
+      "date": "2015-05-29T14:15:41Z",
+      "subject": "[statnet_help] Errors returned on models run after updating ergm",
+      "subject_clean": "[statnet_help] Errors returned on models run after updating ergm",
+      "in_reply_to": "<CAKAbm6OBwm6vmVZcS+pc1NmueVKg+LAu+h34uyY=DwxRGGvUEw@mail.gmail.com>",
+      "references": [
+        "<CAKAbm6OBwm6vmVZcS+pc1NmueVKg+LAu+h34uyY=DwxRGGvUEw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Mateo,\n\nHave you made sure the ERGMs you estimated previously were \nnon-degenerate? Did you take a look at the MCMC diagnostics output?\n\nBest,\nPhilip\n\nAm 29.05.2015 um 22:56 schrieb Matt Robbins:\n> Hello Statnet!\n>\n> I am running into some issues with inconsistent model runs between\n> different versions of the ergm package.  I ran a series of models on  a\n> couple of diffferent networks that converged over the last few weeks.\n> However, after updating to ergm version 3.2.4, running models with the\n> same specifications now yields error messages.  Here are the messages:\n>\n> 1) /Excessive correlation among the statistics. Using a\n> no-crosscorrelation approximation./\n>\n> This error seems to be associated with models that include a large\n> number of terms(including a bunch of nodemix terms).\n>\n> 2) /1: In .ergm.mvar.spec0(z) :  Excessive correlation among the\n> statistics. Using a no-crosscorrelation approximation./\n>\n> This error term seems to be associated with models run a large number of\n> missing links (coded as NAs).\n>\n> Again, these models converged error-free while using an older version of\n> the ergm package, but return errors under the current version.  Can\n> anyone shed light on this issue?  What are the implications for the\n> model results generated using the previous versions of ergm?\n>\n> Thanks,\n> Mateo\n>\n>\n> --\n> Matt Robbins\n> Ph.D. Candidate\n> Center for Environmental Policy and Behavior\n> <http://environmentalpolicy.ucdavis.edu/>\n> Department of Environmental Science and Policy\n> Graduate Group in Ecology\n> University of California, Davis\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi Mateo,\n\nHave you made sure the ERGMs you estimated previously were \nnon-degenerate? Did you take a look at the MCMC diagnostics output?\n\nBest,\nPhilip\n\nAm 29.05.2015 um 22:56 schrieb Matt Robbins:\n>",
+      "thread_id": "thread-0b359a9c92fe",
+      "thread_depth": 1,
+      "month": "2015-05"
+    },
+    {
+      "id": "msg-85df122a25b8",
+      "message_id": "<CAKAbm6MzNBQYnwQ72eY7vrttvR7ngvSLuDYKwk_zz-NUz56Jkg@mail.gmail.com>",
+      "from_name": "Matt Robbins",
+      "from_email_hash": "018cdea43f93204130d9a33cdd30fb8cda78346c0b60a3a8b5fbbe116a85af46",
+      "date": "2015-05-29T14:25:00Z",
+      "subject": "[statnet_help] Errors returned on models run after updating ergm",
+      "subject_clean": "[statnet_help] Errors returned on models run after updating ergm",
+      "in_reply_to": "<5568D6FD.1050500@uni-konstanz.de>",
+      "references": [
+        "<CAKAbm6OBwm6vmVZcS+pc1NmueVKg+LAu+h34uyY=DwxRGGvUEw@mail.gmail.com>",
+        "<5568D6FD.1050500@uni-konstanz.de>"
+      ],
+      "body_plain": "Hi Philip,\n\nThanks for the quick response.  Yes, I looked at the MCMC diagnostics and\nwhile the gof plots looked good for edgewise shared partners and in some\ncases, in degree, things haven't lined up well on the out degree plot.\n\nIs there a way to determine if the errors are arising from data issues\n(missing data) vs. specification issues?\n\nThanks,\nM\n\nOn Fri, May 29, 2015 at 2:15 PM, Philip Leifeld <\nphilip.leifeld@uni-konstanz.de> wrote:\n\n> Hi Mateo,\n>\n> Have you made sure the ERGMs you estimated previously were non-degenerate?\n> Did you take a look at the MCMC diagnostics output?\n>\n> Best,\n> Philip\n>\n> Am 29.05.2015 um 22:56 schrieb Matt Robbins:\n>\n>> Hello Statnet!\n>>\n>> I am running into some issues with inconsistent model runs between\n>> different versions of the ergm package.  I ran a series of models on  a\n>> couple of diffferent networks that converged over the last few weeks.\n>> However, after updating to ergm version 3.2.4, running models with the\n>> same specifications now yields error messages.  Here are the messages:\n>>\n>> 1) /Excessive correlation among the statistics. Using a\n>> no-crosscorrelation approximation./\n>>\n>> This error seems to be associated with models that include a large\n>> number of terms(including a bunch of nodemix terms).\n>>\n>> 2) /1: In .ergm.mvar.spec0(z) :  Excessive correlation among the\n>> statistics. Using a no-crosscorrelation approximation./\n>>\n>> This error term seems to be associated with models run a large number of\n>> missing links (coded as NAs).\n>>\n>> Again, these models converged error-free while using an older version of\n>> the ergm package, but return errors under the current version.  Can\n>> anyone shed light on this issue?  What are the implications for the\n>> model results generated using the previous versions of ergm?\n>>\n>> Thanks,\n>> Mateo\n>>\n>>\n>> --\n>> Matt Robbins\n>> Ph.D. Candidate\n>> Center for Environmental Policy and Behavior\n>> <http://environmentalpolicy.ucdavis.edu/>\n>> Department of Environmental Science and Policy\n>> Graduate Group in Ecology\n>> University of California, Davis\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n\n\n-- \nMatt Robbins\nPh.D. Candidate\nCenter for Environmental Policy and Behavior\n<http://environmentalpolicy.ucdavis.edu/>\nDepartment of Environmental Science and Policy\nGraduate Group in Ecology\nUniversity of California, Davis\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150529/e5552f7f/attachment.html>",
+      "body_snippet": "Hi Philip,\n\nThanks for the quick response.  Yes, I looked at the MCMC diagnostics and\nwhile the gof plots looked good for edgewise shared partners and in some\ncases, in degree, things haven't lined up",
+      "thread_id": "thread-0b359a9c92fe",
+      "thread_depth": 2,
+      "month": "2015-05"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-9644a722114d",
+      "subject": "[statnet_help] Network size limitations of ntelm and netlogit",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Mahmood Shafeie Zargar"
+      ],
+      "started": "2015-05-06T13:21:22Z",
+      "last_reply": "2015-05-06T16:56:11Z",
+      "root_message_id": "msg-9644a722114d"
+    },
+    {
+      "id": "thread-efa8489a71b7",
+      "subject": "[statnet_help] Plotting valued dynamic network?",
+      "message_count": 3,
+      "participants": [
+        "Jeffrey Alan Carnegie",
+        "Skye Bender-deMoll"
+      ],
+      "started": "2015-05-08T11:46:38Z",
+      "last_reply": "2015-05-08T13:49:51Z",
+      "root_message_id": "msg-efa8489a71b7"
+    },
+    {
+      "id": "thread-2917de56bdfe",
+      "subject": "[statnet_help] ergm: non-integer \"receiver\" target.stats",
+      "message_count": 1,
+      "participants": [
+        "Pavel N. Krivitsky"
+      ],
+      "started": "2015-05-21T06:46:38Z",
+      "last_reply": "2015-05-21T06:46:38Z",
+      "root_message_id": "msg-2917de56bdfe"
+    },
+    {
+      "id": "thread-61ffc73ab3b7",
+      "subject": "[statnet_help] STERGM and valued networks",
+      "message_count": 1,
+      "participants": [
+        "Jeffrey Alan Carnegie"
+      ],
+      "started": "2015-05-21T10:24:29Z",
+      "last_reply": "2015-05-21T10:24:29Z",
+      "root_message_id": "msg-61ffc73ab3b7"
+    },
+    {
+      "id": "thread-5c6eeb31b91b",
+      "subject": "[statnet_help] STERGM errors",
+      "message_count": 1,
+      "participants": [
+        "Jeffrey Alan Carnegie"
+      ],
+      "started": "2015-05-22T11:58:15Z",
+      "last_reply": "2015-05-22T11:58:15Z",
+      "root_message_id": "msg-5c6eeb31b91b"
+    },
+    {
+      "id": "thread-b5ced0911174",
+      "subject": "[statnet_help] visualization assistance",
+      "message_count": 1,
+      "participants": [
+        "jimi adams"
+      ],
+      "started": "2015-05-28T10:34:43Z",
+      "last_reply": "2015-05-28T10:34:43Z",
+      "root_message_id": "msg-b5ced0911174"
+    },
+    {
+      "id": "thread-0b359a9c92fe",
+      "subject": "[statnet_help] Errors returned on models run after updating ergm",
+      "message_count": 3,
+      "participants": [
+        "Matt Robbins",
+        "Philip Leifeld"
+      ],
+      "started": "2015-05-29T13:56:52Z",
+      "last_reply": "2015-05-29T14:25:00Z",
+      "root_message_id": "msg-0b359a9c92fe"
+    }
+  ]
+}

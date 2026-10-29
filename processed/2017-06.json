@@ -1,0 +1,217 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2017-06",
+  "messages": [
+    {
+      "id": "msg-aa912734b5cc",
+      "message_id": "<1562347782.5223675.1496922328459@mail.yahoo.com>",
+      "from_name": "Jess Behrens",
+      "from_email_hash": "60ef52b71c8d530b83ab1b167b759b70b9ad3ee74ce5b8dc18e678127eec57fa",
+      "date": "2017-06-08T04:45:28Z",
+      "subject": "[statnet_help] Nodematch in Statnet",
+      "subject_clean": "[statnet_help] Nodematch in Statnet",
+      "in_reply_to": null,
+      "references": [
+        "<1562347782.5223675.1496922328459.ref@mail.yahoo.com>"
+      ],
+      "body_plain": "Hi,\n? ? I'm having repeated difficulties with the models in statnet, specifically with nodematch. ?\n? ? I have a weighted, undirected, unipartite network that I'm trying to analyze. ? I've tried two separate methods: In the first method, I read in the network from a .net file. It keeps the edge weight, but strips all of the node attributes. ?In general, everything works well with this method: triangles, mean degree, kstar(x) all work, even if they don't always converge. ?However, I can't bring through any vertex attributes. ?Pajek strips them away. ?One of those attributes, region, is vital to my analysis. ?I can re-add the attributes to a graph based on the matrix of my network, but 'nodematch' gets confused and says that the vertex attributes do not exist. ?I've checked the graph object to make sure that the vertex attributes were added correctly, and they are there. ?I can and have used them in plots.\n? ? Subsequently, if I build the network using the 'network' module from an edgelist, I can keep the vertex attributes, but I lose the ability to give the network a weight. ?When I run Summary on the network constructed this way, all of the node attributes ARE listed. ?However, when I indicate that directed = FALSE, it doesn't register for some reason, which makes the kstar(x) in statnet give an error (it will allow istar, even though I tell it directed = FALSE). ?And, when I run ERGM with nodematch or mutual, statnet tells me that the attribute 'region' doesn't exist, even though (as I said earlier) that field is specifically mentioned as a vertex attribute.\n? ? ?Are these known issues with workarounds?\nThanks for any help you can provide. :-)\nJess\n\n|  | Virus-free. www.avast.com  |\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170608/7a320893/attachment.html>",
+      "body_snippet": "Hi,\n? ? I'm having repeated difficulties with the models in statnet, specifically with nodematch. ?\n? ? I have a weighted, undirected, unipartite network that I'm trying to analyze. ? I've tried two s",
+      "thread_id": "thread-aa912734b5cc",
+      "thread_depth": 0,
+      "month": "2017-06"
+    },
+    {
+      "id": "msg-42fa8a568aa7",
+      "message_id": "<4A0F6F9A-1BD4-438A-9911-50EA2304C4CB@depaul.edu>",
+      "from_name": "Burke, Robin",
+      "from_email_hash": "58ad4f38b9a28ba0b95462ca49d8c0fc25a5925994bfe8121e19d86c3a388bba",
+      "date": "2017-06-08T12:35:11Z",
+      "subject": "[statnet_help] Nodematch in Statnet",
+      "subject_clean": "[statnet_help] Nodematch in Statnet",
+      "in_reply_to": "<1562347782.5223675.1496922328459@mail.yahoo.com>",
+      "references": [
+        "<1562347782.5223675.1496922328459.ref@mail.yahoo.com>",
+        "<1562347782.5223675.1496922328459@mail.yahoo.com>"
+      ],
+      "body_plain": "With Pajek format, you may have better luck with a workflow where you (1) load the data in igraph, and then (2) translate to network format via the intergraph package.\n\nRobin\n\n???????????????????????????????\nRobin Burke, Professor\nSchool of Computing, DePaul University\nrburke@cs.depaul.edu\n\n\nFrom: Jess Behrens <jess_behrens03@yahoo.com>\nReply-To: Jess Behrens <jess_behrens03@yahoo.com>\nDate: Thursday, June 8, 2017 at 6:45 AM\nTo: \"statnet_help@u.washington.edu\" <statnet_help@u.washington.edu>\nSubject: [statnet_help] Nodematch in Statnet\n\nHi,\n\n    I'm having repeated difficulties with the models in statnet, specifically with nodematch.\n\n    I have a weighted, undirected, unipartite network that I'm trying to analyze.   I've tried two separate methods: In the first method, I read in the network from a .net file. It keeps the edge weight, but strips all of the node attributes.  In general, everything works well with this method: triangles, mean degree, kstar(x) all work, even if they don't always converge.  However, I can't bring through any vertex attributes.  Pajek strips them away.  One of those attributes, region, is vital to my analysis.  I can re-add the attributes to a graph based on the matrix of my network, but 'nodematch' gets confused and says that the vertex attributes do not exist.  I've checked the graph object to make sure that the vertex attributes were added correctly, and they are there.  I can and have used them in plots.\n\n    Subsequently, if I build the network using the 'network' module from an edgelist, I can keep the vertex attributes, but I lose the ability to give the network a weight.  When I run Summary on the network constructed this way, all of the node attributes ARE listed.  However, when I indicate that directed = FALSE, it doesn't register for some reason, which makes the kstar(x) in statnet give an error (it will allow istar, even though I tell it directed = FALSE).  And, when I run ERGM with nodematch or mutual, statnet tells me that the attribute 'region' doesn't exist, even though (as I said earlier) that field is specifically mentioned as a vertex attribute.\n\n     Are these known issues with workarounds?\n\nThanks for any help you can provide. :-)\n\nJess\n\n[https://ipmcdn.avast.com/images/icons/icon-envelope-tick-round-orange-animated-no-repeat-v1.gif]<https://www.avast.com/sig-email?utm_medium=email&utm_source=link&utm_campaign=sig-email&utm_content=webmail&utm_term=icon>\n\nVirus-free. www.avast.com<https://www.avast.com/sig-email?utm_medium=email&utm_source=link&utm_campaign=sig-email&utm_content=webmail&utm_term=link>\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170608/5a2599ca/attachment.html>",
+      "body_snippet": "With Pajek format, you may have better luck with a workflow where you (1) load the data in igraph, and then (2) translate to network format via the intergraph package.\n\nRobin\n\n????????????????????????",
+      "thread_id": "thread-aa912734b5cc",
+      "thread_depth": 1,
+      "month": "2017-06"
+    },
+    {
+      "id": "msg-acccad93349d",
+      "message_id": "<593B135E.9040909@ulb.ac.be>",
+      "from_name": "Matteo Gagliolo",
+      "from_email_hash": "45c1a403489de1564a032e54cfe5c140e58e6aaec59066085ef76b71c3f97042",
+      "date": "2017-06-09T14:30:06Z",
+      "subject": "[statnet_help] Weird summary behavior after loading the \"network\" package",
+      "subject_clean": "[statnet_help] Weird summary behavior after loading the \"network\" package",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet list,\n\n\tI have been having a weird bug lately when calling summary\non data frames containing character columns, and it seems to be\nrelated to the network package.\n\nThe following code is sufficient to reproduce the bug, after calling\n\nR --no-restore\n\n---\ntest <- data.frame(a=c(\"some\", \"char\", \"vector\", \"with\", \"many\", \n\"many\", \"words\"), b=1:7, stringsAsFactors = FALSE)\nsummary(test)\nsummary(test$a)\nlibrary(\"network\")\nsummary(test)\nsummary(test$a)\n---\n\nThe output for the first summary(test) is:\n\n       a                   b\n  Length:7           Min.   :1.0\n  Class :character   1st Qu.:2.5\n  Mode  :character   Median :4.0\n                     Mean   :4.0\n                     3rd Qu.:5.5\n                     Max.   :7.0\n\nas expected, while the same command after loading network gives:\n\n     a                b\n  NULL:some     Min.   :1.0\n  NULL:char     1st Qu.:2.5\n  NULL:vector   Median :4.0\n  NULL:with     Mean   :4.0\n  NULL:many     3rd Qu.:5.5\n  NULL:many     Max.   :7.0\n  NULL:words\n\nNotice the repetition: *every* line is printed, prepended by \"NULL:\", \nand it becomes impossible to read when there are thousands of lines.\n\nIn both cases, summary(test$a) gives the expected output.\n\nThe prepended NULL comes from these three lines in summary.data.frame:\n\n         sms <- format(sms, digits = digits)\n         lbs <- format(names(sms))\n         sms <- paste0(lbs, \":\", sms, \"  \")\n\nIt's inside a for loop over columns, where sms is the output of summary \nfor the current column. For character columns, names(sms) is NULL, hence \nthe issue.\n\nI'm on R version 3.3.3 (2017-03-06), using network\nVersion 1.13.0 created on 2015-08-31. I'll be happy to upgrade if\nthis is a known bug.\n\nThanks a lot for your help!\n\nMatteo",
+      "body_snippet": "Dear statnet list,\n\n\tI have been having a weird bug lately when calling summary\non data frames containing character columns, and it seems to be\nrelated to the network package.\n\nThe following code is s",
+      "thread_id": "thread-acccad93349d",
+      "thread_depth": 0,
+      "month": "2017-06"
+    },
+    {
+      "id": "msg-97dfca8eda75",
+      "message_id": "<b930baa2-3cee-dd64-3757-b3266bac3aab@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2017-06-09T15:56:10Z",
+      "subject": "[statnet_help] Weird summary behavior after loading the \"network\" package",
+      "subject_clean": "[statnet_help] Weird summary behavior after loading the \"network\" package",
+      "in_reply_to": "<593B135E.9040909@ulb.ac.be>",
+      "references": [
+        "<593B135E.9040909@ulb.ac.be>"
+      ],
+      "body_plain": "Hi, Matteo.  The network package has a summary.character function, which \nis presumably being called by summary.data.frame. The different behavior \nwould be due to having this function loaded.\n\n-Carter\n\n\nOn 06/09/2017 02:30 PM, Matteo Gagliolo wrote:\n> Dear statnet list,\n>\n>     I have been having a weird bug lately when calling summary\n> on data frames containing character columns, and it seems to be\n> related to the network package.\n>\n> The following code is sufficient to reproduce the bug, after calling\n>\n> R --no-restore\n>\n> ---\n> test <- data.frame(a=c(\"some\", \"char\", \"vector\", \"with\", \"many\", \n> \"many\", \"words\"), b=1:7, stringsAsFactors = FALSE)\n> summary(test)\n> summary(test$a)\n> library(\"network\")\n> summary(test)\n> summary(test$a)\n> ---\n>\n> The output for the first summary(test) is:\n>\n>       a                   b\n>  Length:7           Min.   :1.0\n>  Class :character   1st Qu.:2.5\n>  Mode  :character   Median :4.0\n>                     Mean   :4.0\n>                     3rd Qu.:5.5\n>                     Max.   :7.0\n>\n> as expected, while the same command after loading network gives:\n>\n>     a                b\n>  NULL:some     Min.   :1.0\n>  NULL:char     1st Qu.:2.5\n>  NULL:vector   Median :4.0\n>  NULL:with     Mean   :4.0\n>  NULL:many     3rd Qu.:5.5\n>  NULL:many     Max.   :7.0\n>  NULL:words\n>\n> Notice the repetition: *every* line is printed, prepended by \"NULL:\", \n> and it becomes impossible to read when there are thousands of lines.\n>\n> In both cases, summary(test$a) gives the expected output.\n>\n> The prepended NULL comes from these three lines in summary.data.frame:\n>\n>         sms <- format(sms, digits = digits)\n>         lbs <- format(names(sms))\n>         sms <- paste0(lbs, \":\", sms, \"  \")\n>\n> It's inside a for loop over columns, where sms is the output of \n> summary for the current column. For character columns, names(sms) is \n> NULL, hence the issue.\n>\n> I'm on R version 3.3.3 (2017-03-06), using network\n> Version 1.13.0 created on 2015-08-31. I'll be happy to upgrade if\n> this is a known bug.\n>\n> Thanks a lot for your help!\n>\n> Matteo\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi, Matteo.  The network package has a summary.character function, which \nis presumably being called by summary.data.frame. The different behavior \nwould be due to having this function loaded.\n\n-Carte",
+      "thread_id": "thread-acccad93349d",
+      "thread_depth": 1,
+      "month": "2017-06"
+    },
+    {
+      "id": "msg-9c0bdc36b579",
+      "message_id": "<593BBBEA.1020903@ulb.ac.be>",
+      "from_name": "Matteo Gagliolo",
+      "from_email_hash": "45c1a403489de1564a032e54cfe5c140e58e6aaec59066085ef76b71c3f97042",
+      "date": "2017-06-10T02:29:14Z",
+      "subject": "[statnet_help] Weird summary behavior after loading the \"network\" package",
+      "subject_clean": "[statnet_help] Weird summary behavior after loading the \"network\" package",
+      "in_reply_to": "<b930baa2-3cee-dd64-3757-b3266bac3aab@uci.edu>",
+      "references": [
+        "<593B135E.9040909@ulb.ac.be>",
+        "<b930baa2-3cee-dd64-3757-b3266bac3aab@uci.edu>"
+      ],
+      "body_plain": "Hello Carter,\n\n    that is exaclty the issue: loading network changes the behavior of \nUseMethod(\"summary\") globally for character vectors.\n\nBefore loading network, summary.default is called, which produces a \nresult that has names, and can be integrated in the global result of \nsummary.data.frame. After loading network, summary.character is used \ninstead, producing a result with a NULL name, hence the issue.\n\nI think this qualifies as a bug, as loading the package changes the\nbehavior of a base function. Also, the change stays after detaching\nthe package, until R is restarted.\n\nIs there any way to fix this?\n\nThanks a lot,\n\nMatteo\n\nOn 2017-06-10 00:56, Carter T. Butts wrote:\n> Hi, Matteo.  The network package has a summary.character function, which\n> is presumably being called by summary.data.frame. The different behavior\n> would be due to having this function loaded.\n>\n> -Carter\n>\n>\n> On 06/09/2017 02:30 PM, Matteo Gagliolo wrote:\n>> Dear statnet list,\n>>\n>>     I have been having a weird bug lately when calling summary\n>> on data frames containing character columns, and it seems to be\n>> related to the network package.\n>>\n>> The following code is sufficient to reproduce the bug, after calling\n>>\n>> R --no-restore\n>>\n>> ---\n>> test <- data.frame(a=c(\"some\", \"char\", \"vector\", \"with\", \"many\",\n>> \"many\", \"words\"), b=1:7, stringsAsFactors = FALSE)\n>> summary(test)\n>> summary(test$a)\n>> library(\"network\")\n>> summary(test)\n>> summary(test$a)\n>> ---\n>>\n>> The output for the first summary(test) is:\n>>\n>>       a                   b\n>>  Length:7           Min.   :1.0\n>>  Class :character   1st Qu.:2.5\n>>  Mode  :character   Median :4.0\n>>                     Mean   :4.0\n>>                     3rd Qu.:5.5\n>>                     Max.   :7.0\n>>\n>> as expected, while the same command after loading network gives:\n>>\n>>     a                b\n>>  NULL:some     Min.   :1.0\n>>  NULL:char     1st Qu.:2.5\n>>  NULL:vector   Median :4.0\n>>  NULL:with     Mean   :4.0\n>>  NULL:many     3rd Qu.:5.5\n>>  NULL:many     Max.   :7.0\n>>  NULL:words\n>>\n>> Notice the repetition: *every* line is printed, prepended by \"NULL:\",\n>> and it becomes impossible to read when there are thousands of lines.\n>>\n>> In both cases, summary(test$a) gives the expected output.\n>>\n>> The prepended NULL comes from these three lines in summary.data.frame:\n>>\n>>         sms <- format(sms, digits = digits)\n>>         lbs <- format(names(sms))\n>>         sms <- paste0(lbs, \":\", sms, \"  \")\n>>\n>> It's inside a for loop over columns, where sms is the output of\n>> summary for the current column. For character columns, names(sms) is\n>> NULL, hence the issue.\n>>\n>> I'm on R version 3.3.3 (2017-03-06), using network\n>> Version 1.13.0 created on 2015-08-31. I'll be happy to upgrade if\n>> this is a known bug.\n>>\n>> Thanks a lot for your help!\n>>\n>> Matteo\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hello Carter,\n\n    that is exaclty the issue: loading network changes the behavior of \nUseMethod(\"summary\") globally for character vectors.\n\nBefore loading network, summary.default is called, which pr",
+      "thread_id": "thread-acccad93349d",
+      "thread_depth": 2,
+      "month": "2017-06"
+    },
+    {
+      "id": "msg-809a7e0aa376",
+      "message_id": "<593BD35B.804@ulb.ac.be>",
+      "from_name": "Matteo Gagliolo",
+      "from_email_hash": "45c1a403489de1564a032e54cfe5c140e58e6aaec59066085ef76b71c3f97042",
+      "date": "2017-06-10T04:09:15Z",
+      "subject": "[statnet_help] Weird summary behavior after loading the \"network\" package",
+      "subject_clean": "[statnet_help] Weird summary behavior after loading the \"network\" package",
+      "in_reply_to": "<593BBBEA.1020903@ulb.ac.be>",
+      "references": [
+        "<593B135E.9040909@ulb.ac.be>",
+        "<b930baa2-3cee-dd64-3757-b3266bac3aab@uci.edu>",
+        "<593BBBEA.1020903@ulb.ac.be>"
+      ],
+      "body_plain": "Hello again,\n\nI found a turnaround this, by defining a function \n\"format.summary.character\" that restores the expected behavior of the \ncode inside summary.data.frame. The function is inspired by format.factor:\n\nformat.summary.character <- function(x, ...) {\n     s <- summary.default(as.character(x), ...)\n     format(structure(as.character(s), names = names(s), dim = dim(s),\n                      dimnames = dimnames(s)), ...)\n}\n\nAfter defining this function, the output of summary for character vector \nis still controlled by summary.character, but the output for \nsummary.data.frame goes back to normal.\n\nsummary(test$a) # still calling summary.character\n\n##   char   many   some vector   with  words\n##      1      2      1      1      1      1\n\nsummary(test)   # back to normal\n\n##       a                   b\n##  Length:7           Min.   :1.0\n##  Class :character   1st Qu.:2.5\n##  Mode  :character   Median :4.0\n##                     Mean   :4.0\n##                     3rd Qu.:5.5\n##                     Max.   :7.0\n##\n\nHope it helps other users in the same situation.\n\nCheers,\n\nMatteo\n\nOn 2017-06-10 11:29, Matteo Gagliolo wrote:\n> Hello Carter,\n>\n>     that is exaclty the issue: loading network changes the behavior of\n> UseMethod(\"summary\") globally for character vectors.\n>\n> Before loading network, summary.default is called, which produces a\n> result that has names, and can be integrated in the global result of\n> summary.data.frame. After loading network, summary.character is used\n> instead, producing a result with a NULL name, hence the issue.\n>\n> I think this qualifies as a bug, as loading the package changes the\n> behavior of a base function. Also, the change stays after detaching\n> the package, until R is restarted.\n>\n> Is there any way to fix this?\n>\n> Thanks a lot,\n>\n> Matteo\n>\n> On 2017-06-10 00:56, Carter T. Butts wrote:\n>> Hi, Matteo.  The network package has a summary.character function, which\n>> is presumably being called by summary.data.frame. The different behavior\n>> would be due to having this function loaded.\n>>\n>> -Carter\n>>\n>>\n>> On 06/09/2017 02:30 PM, Matteo Gagliolo wrote:\n>>> Dear statnet list,\n>>>\n>>>     I have been having a weird bug lately when calling summary\n>>> on data frames containing character columns, and it seems to be\n>>> related to the network package.\n>>>\n>>> The following code is sufficient to reproduce the bug, after calling\n>>>\n>>> R --no-restore\n>>>\n>>> ---\n>>> test <- data.frame(a=c(\"some\", \"char\", \"vector\", \"with\", \"many\",\n>>> \"many\", \"words\"), b=1:7, stringsAsFactors = FALSE)\n>>> summary(test)\n>>> summary(test$a)\n>>> library(\"network\")\n>>> summary(test)\n>>> summary(test$a)\n>>> ---\n>>>\n>>> The output for the first summary(test) is:\n>>>\n>>>       a                   b\n>>>  Length:7           Min.   :1.0\n>>>  Class :character   1st Qu.:2.5\n>>>  Mode  :character   Median :4.0\n>>>                     Mean   :4.0\n>>>                     3rd Qu.:5.5\n>>>                     Max.   :7.0\n>>>\n>>> as expected, while the same command after loading network gives:\n>>>\n>>>     a                b\n>>>  NULL:some     Min.   :1.0\n>>>  NULL:char     1st Qu.:2.5\n>>>  NULL:vector   Median :4.0\n>>>  NULL:with     Mean   :4.0\n>>>  NULL:many     3rd Qu.:5.5\n>>>  NULL:many     Max.   :7.0\n>>>  NULL:words\n>>>\n>>> Notice the repetition: *every* line is printed, prepended by \"NULL:\",\n>>> and it becomes impossible to read when there are thousands of lines.\n>>>\n>>> In both cases, summary(test$a) gives the expected output.\n>>>\n>>> The prepended NULL comes from these three lines in summary.data.frame:\n>>>\n>>>         sms <- format(sms, digits = digits)\n>>>         lbs <- format(names(sms))\n>>>         sms <- paste0(lbs, \":\", sms, \"  \")\n>>>\n>>> It's inside a for loop over columns, where sms is the output of\n>>> summary for the current column. For character columns, names(sms) is\n>>> NULL, hence the issue.\n>>>\n>>> I'm on R version 3.3.3 (2017-03-06), using network\n>>> Version 1.13.0 created on 2015-08-31. I'll be happy to upgrade if\n>>> this is a known bug.\n>>>\n>>> Thanks a lot for your help!\n>>>\n>>> Matteo\n>>>\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hello again,\n\nI found a turnaround this, by defining a function \n\"format.summary.character\" that restores the expected behavior of the \ncode inside summary.data.frame. The function is inspired by form",
+      "thread_id": "thread-acccad93349d",
+      "thread_depth": 3,
+      "month": "2017-06"
+    },
+    {
+      "id": "msg-6d89cd7c7bc8",
+      "message_id": "<6df6e762-f770-5821-36ca-eaf44b2478cd@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2017-06-10T22:49:22Z",
+      "subject": "[statnet_help] Weird summary behavior after loading the \"network\" package",
+      "subject_clean": "[statnet_help] Weird summary behavior after loading the \"network\" package",
+      "in_reply_to": "<593BBBEA.1020903@ulb.ac.be>",
+      "references": [
+        "<593B135E.9040909@ulb.ac.be>",
+        "<b930baa2-3cee-dd64-3757-b3266bac3aab@uci.edu>",
+        "<593BBBEA.1020903@ulb.ac.be>"
+      ],
+      "body_plain": "It's not a bug: the package happens to provide a summary method for a \nclass that didn't already have one, and you just happen not to like how \nthat method behaves.  This was implemented in the first place because \nyet other parties did not like how the default summary method treated \ncharacter data (which was relevant to how the network package was being \nused), and wanted this behavior. Preferences can, and do, vary.\n\nThat said, I'm not personally wedded to this particular approach.  If \nenough folks dislike the current behavior, then we can take a look at \nmodifying it in the future.\n\nHope that helps,\n\n-Carter\n\n\nOn 06/10/2017 02:29 AM, Matteo Gagliolo wrote:\n> Hello Carter,\n>\n>    that is exaclty the issue: loading network changes the behavior of \n> UseMethod(\"summary\") globally for character vectors.\n>\n> Before loading network, summary.default is called, which produces a \n> result that has names, and can be integrated in the global result of \n> summary.data.frame. After loading network, summary.character is used \n> instead, producing a result with a NULL name, hence the issue.\n>\n> I think this qualifies as a bug, as loading the package changes the\n> behavior of a base function. Also, the change stays after detaching\n> the package, until R is restarted.\n>\n> Is there any way to fix this?\n>\n> Thanks a lot,\n>\n> Matteo\n>\n> On 2017-06-10 00:56, Carter T. Butts wrote:\n>> Hi, Matteo.  The network package has a summary.character function, which\n>> is presumably being called by summary.data.frame. The different behavior\n>> would be due to having this function loaded.\n>>\n>> -Carter\n>>\n>>\n>> On 06/09/2017 02:30 PM, Matteo Gagliolo wrote:\n>>> Dear statnet list,\n>>>\n>>>     I have been having a weird bug lately when calling summary\n>>> on data frames containing character columns, and it seems to be\n>>> related to the network package.\n>>>\n>>> The following code is sufficient to reproduce the bug, after calling\n>>>\n>>> R --no-restore\n>>>\n>>> ---\n>>> test <- data.frame(a=c(\"some\", \"char\", \"vector\", \"with\", \"many\",\n>>> \"many\", \"words\"), b=1:7, stringsAsFactors = FALSE)\n>>> summary(test)\n>>> summary(test$a)\n>>> library(\"network\")\n>>> summary(test)\n>>> summary(test$a)\n>>> ---\n>>>\n>>> The output for the first summary(test) is:\n>>>\n>>>       a                   b\n>>>  Length:7           Min.   :1.0\n>>>  Class :character   1st Qu.:2.5\n>>>  Mode  :character   Median :4.0\n>>>                     Mean   :4.0\n>>>                     3rd Qu.:5.5\n>>>                     Max.   :7.0\n>>>\n>>> as expected, while the same command after loading network gives:\n>>>\n>>>     a                b\n>>>  NULL:some     Min.   :1.0\n>>>  NULL:char     1st Qu.:2.5\n>>>  NULL:vector   Median :4.0\n>>>  NULL:with     Mean   :4.0\n>>>  NULL:many     3rd Qu.:5.5\n>>>  NULL:many     Max.   :7.0\n>>>  NULL:words\n>>>\n>>> Notice the repetition: *every* line is printed, prepended by \"NULL:\",\n>>> and it becomes impossible to read when there are thousands of lines.\n>>>\n>>> In both cases, summary(test$a) gives the expected output.\n>>>\n>>> The prepended NULL comes from these three lines in summary.data.frame:\n>>>\n>>>         sms <- format(sms, digits = digits)\n>>>         lbs <- format(names(sms))\n>>>         sms <- paste0(lbs, \":\", sms, \"  \")\n>>>\n>>> It's inside a for loop over columns, where sms is the output of\n>>> summary for the current column. For character columns, names(sms) is\n>>> NULL, hence the issue.\n>>>\n>>> I'm on R version 3.3.3 (2017-03-06), using network\n>>> Version 1.13.0 created on 2015-08-31. I'll be happy to upgrade if\n>>> this is a known bug.\n>>>\n>>> Thanks a lot for your help!\n>>>\n>>> Matteo\n>>>\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "It's not a bug: the package happens to provide a summary method for a \nclass that didn't already have one, and you just happen not to like how \nthat method behaves.  This was implemented in the first ",
+      "thread_id": "thread-acccad93349d",
+      "thread_depth": 3,
+      "month": "2017-06"
+    },
+    {
+      "id": "msg-8d5595d680e8",
+      "message_id": "<656378da-e54e-030d-546e-ffe84403229e@uoc.edu>",
+      "from_name": "Jörg Müller - UOC",
+      "from_email_hash": "9c4796a07e92d6a99bc3c5fb920944b9b14b78605985fa29974efc32031db98c",
+      "date": "2017-06-15T02:58:59Z",
+      "subject": "[statnet_help] relevent singular matrix error",
+      "subject_clean": "[statnet_help] relevent singular matrix error",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI'm having trouble fitting a model on my temporal data using the\nrelevent library. My call is:\n\nrem.dyad(el, n=7, ordinal=F, effects=c(\"CovInt\"),\ncovar=list(CovInt=hasT), hessian=T)\n\nproduces the following error:\n\nError in qr.solve(fit$hessian) : singular matrix 'a' in solve\n\nCould someone point me in the right direction of why this is the case?\nCould it be the case that this has to do with the type of data I use? I\nhave timestamped data of interactions which happen quite frequently in\nshort intervals, i.e. there might be 20 or more interactions in a minute\nbetween the same nodes. I can aggregate these interactions over a\ncertain time window, no problem, if that's really the cause of the\nerror? Also, each observation has a Unix timestamp.\n\nThank you in advance,\n\n-- \nJ?rg M?ller, PhD\nIN3 - Internet Interdisciplinary Institute\n/Senior Researcher/\n(+34) 93 450 5260\njmuller@uoc.edu <mailto:jmuller@uoc.edu>\nGenTIC <http://www.gender-ict.net> / GEDII <http://www.gedii.eu> /\nGenPORT <http://www.genderportal.eu>\n@JorgMullerRes <https://twitter.com/JorgMullerRes> / ResearchGate\n<https://www.researchgate.net/profile/Joerg_Mueller7>\n\nAv. Carl Friedrich Gauss, 5\n08860 Castelldefels (Barcelona)\nin3.uoc.edu <http://in3.uoc.edu>\nfacebook <https://www.facebook.com/UOCresearch> / twitter\n<https://twitter.com/IN3_UOC> / linkedin\n<https://www.linkedin.com/groups/4159831/profile#%22>\n\nUOC R&I <http://research.uoc.edu>\n\nAquest missatge e?s confidencial, la difusio? de les dades que inclou\ne?s regulada per la Llei orga?nica de proteccio? de dades i la Llei de\nserveis de la societat de la informacio?. Abans d?imprimir aquest\nmissatge electro?nic penseu en el medi ambient.\n/Este mensaje es confidencial, la difusi?n de los datos que incluye est?\nregulada por la Ley org?nica de protecci?n de datos y la Ley de\nservicios de la sociedad de la informaci?n. Antes de imprimir este\nmensaje electr?nico piensa en el medio ambiente./\nThis message is confidential. Dissemination of this message and its\ncontents is regulated by the Spanish laws on Information Society\nServices and Data Protection. Please consider the environment before\nprinting.\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170615/cdd80f1d/attachment.html>",
+      "body_snippet": "Hello,\n\nI'm having trouble fitting a model on my temporal data using the\nrelevent library. My call is:\n\nrem.dyad(el, n=7, ordinal=F, effects=c(\"CovInt\"),\ncovar=list(CovInt=hasT), hessian=T)\n\nproduces ",
+      "thread_id": "thread-8d5595d680e8",
+      "thread_depth": 0,
+      "month": "2017-06"
+    },
+    {
+      "id": "msg-cd28eec39d18",
+      "message_id": "<CALyrZvnLn7cUXzYc-Jx+a37HypSTepC5N9amhBZvAizkhmBwVg@mail.gmail.com>",
+      "from_name": "Damien Georges",
+      "from_email_hash": "113c5e39756387ed292afe8739b1d4a07e9baf542df06a72c5b3412e3bbb281b",
+      "date": "2017-06-21T01:15:00Z",
+      "subject": "[statnet_help] including degree of a node (resp. concurrence) in dissolution",
+      "subject_clean": "[statnet_help] including degree of a node (resp. concurrence) in dissolution",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear list members,\n\nI am currently trying to infer dynamic networks that could explain the\nspread of a given disease in general population.\n\nI have a quite good quality egocentric dataset of individuals sexual\nbehavior, which I managed to fit quite well with a static network.\n\nNow the challenge is to switch to dynamic ERGMs using stergm (and\npotentially EpiModel) feqtures.\n\nTo be a bit more realistic, I would like to make my dissolution coefficient\ndependant of the individual degree or just on the fact that an individual\nhas a concurrent relationship. The idea is to say that the probability of a\nlink to dissolve is more likely to happen for individuals having more than\none relationship at time.\n\nFor instance we could imagine that the average duration of a monogamous\nrelationship is 20 month and a concurent one 10 month. Then I tried to do\nsmth like:\n\ndynfit<-stergm(sim.edges[[1]],\n               formation = ~ edges ,\n               dissolution = ~ offset(edges) + offset(concurrent),\n               targets = \"formation\",\n               target.stats = 240,\n               offset.coef.diss = c(2.944, -0.747),\n               estimate=\"EGMME\",\n               control = control.stergm(init.method = 'zeros'),\n               eval.loglik = FALSE)\n\n... Running this command make my computer fill-up all the memory until R\ncrash.. I never managed to make it converge so far.\n\nFirst, am I allowed to do smth like that?\nIs it the proper way to do it?\n\nDoes anybody have a smarter/more efficient way to do the job?\n\nBonus question: Is an equivalent in EpiModel via netest function exists?\n\nI am more than happy to give you more info if required,\n\nBest,\nDamien\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170621/68f54ed3/attachment.html>",
+      "body_snippet": "Dear list members,\n\nI am currently trying to infer dynamic networks that could explain the\nspread of a given disease in general population.\n\nI have a quite good quality egocentric dataset of individua",
+      "thread_id": "thread-cd28eec39d18",
+      "thread_depth": 0,
+      "month": "2017-06"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-aa912734b5cc",
+      "subject": "[statnet_help] Nodematch in Statnet",
+      "message_count": 2,
+      "participants": [
+        "Burke, Robin",
+        "Jess Behrens"
+      ],
+      "started": "2017-06-08T04:45:28Z",
+      "last_reply": "2017-06-08T12:35:11Z",
+      "root_message_id": "msg-aa912734b5cc"
+    },
+    {
+      "id": "thread-acccad93349d",
+      "subject": "[statnet_help] Weird summary behavior after loading the \"network\" package",
+      "message_count": 5,
+      "participants": [
+        "Carter T. Butts",
+        "Matteo Gagliolo"
+      ],
+      "started": "2017-06-09T14:30:06Z",
+      "last_reply": "2017-06-10T22:49:22Z",
+      "root_message_id": "msg-acccad93349d"
+    },
+    {
+      "id": "thread-8d5595d680e8",
+      "subject": "[statnet_help] relevent singular matrix error",
+      "message_count": 1,
+      "participants": [
+        "Jörg Müller - UOC"
+      ],
+      "started": "2017-06-15T02:58:59Z",
+      "last_reply": "2017-06-15T02:58:59Z",
+      "root_message_id": "msg-8d5595d680e8"
+    },
+    {
+      "id": "thread-cd28eec39d18",
+      "subject": "[statnet_help] including degree of a node (resp. concurrence) in dissolution",
+      "message_count": 1,
+      "participants": [
+        "Damien Georges"
+      ],
+      "started": "2017-06-21T01:15:00Z",
+      "last_reply": "2017-06-21T01:15:00Z",
+      "root_message_id": "msg-cd28eec39d18"
+    }
+  ]
+}

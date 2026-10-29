@@ -1,0 +1,55 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2023-05",
+  "messages": [
+    {
+      "id": "msg-20e4f09508e0",
+      "message_id": "<CAFF1wnweRS1xFxZy89v2vqmS4+FY-z3h0pbUoR3iAmi2s982=Q@mail.gmail.com>",
+      "from_name": "Mathieu Janssen",
+      "from_email_hash": "f1ccaee4d8b8c3d8b3ea5c35f859c420b153ad7f8e7d768f05eff7ee0fea578c",
+      "date": "2023-05-08T02:27:19Z",
+      "subject": "[statnet_help]  ergm.ego with ego-ego ties",
+      "subject_clean": "[statnet_help]  ergm.ego with ego-ego ties",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnetters,\n\n\n\nMy name is Mathieu, and I am a data science master's student at Tilburg\nUniversity. For a research project I'm doing, I have constructed a network\nwith Spotify data that focuses on artists' collaborations.\n\nI have two harvests of data. 1) specific artists and their collaborators,\n2) info on all the artists and their collaborators. The data structure is\nego nets.\n\nI have a few questions about the *ergm.ego *package. Thanks in advance to\nanyone that will spend a few minutes to help me out.\n\n\n\nMy edge list looks like that:\n\n\n\nedgelist <- data.frame(c(\"ego1\", \"ego2\", \"ego3\",\"ego4\",\"ego5\",\"ego5\"),\nc(\"alter1\", \"alter2\", \"alter3\", \"alter2\", \"ego2\", \"alter1\"))\n\n\n\nIn plain English, I do not have alter-alter ties, but I do have ego-ego\nties.\n\n\n\nQuestion 1: is ergm.ego the right package for that? If not, can you\nrecommend a different one that would allow me to run ERGMs on this data\nstructure? Or would you please suggest how to constrain a regular ERGM?\n\n\n\nIf ergm.ego is the right one, is this the right way to import the data?\n\n\n\nlibrary(ergm.ego)\n\ntemp_n <- network::as.network.data.frame(edgelist, directed = FALSE)\n\ntemp_n <- network::set.vertex.attribute(temp_n, \"is_emerging\", value =\nc(TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE))\n\ntemp_n.ego <- as.egor(temp_n, ego_name = c(\"is_emerging\"))\n\n\n\nUsing the as.egor() function, the result is not what I expect. Exactly\nthose nodes with is_emerging == True should be egos, the rest alters. When\nthe as.egor() function is called, some of the alters are included as egos,\nwhich is not desired. Therefore, I adjust the underlying Tibbles myself.\n\n\n\n old_egos <- as.data.frame(temp_n.ego$ego)\n\n new_egos <- old_egos[old_egos$is_emerging == TRUE,]\n\n new_egos <- as_tibble(new_egos)\n\n\n\n old_alters <- as.data.frame(temp_n.ego$alter)\n\n new_alters <- old_alters[old_alters$.egoID %in% new_egos$.egoID,]\n\n new_alters <- as_tibble(new_alters)\n\n\n\n artists.ego <- egor(egos = new_egos, new_alters, ID.vars = list(ego =\n\".egoID\", alter = \".altID\"))\n\n\n\nQuestion 2: is this the correct way to import this data type? As you can\nsee, we have no data on the Alter-Alter ties, so they are left out of the\nfinal function call.\n\n\n\nMany thanks,\n\n\n\nMathieu Janssen\n\nJheronimus Academy of Data Science / Tilburg University\n\nA: JADS, Sint Janssingel 92, 5211 DA 's-Hertogenbosch, The Netherlands\n\nE: Mathieu-janssen@live.nl / m.h.a.p.janssen@tilburguniversity.edu\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20230508/47fe20d0/attachment.html>",
+      "body_snippet": "Dear statnetters,\n\n\n\nMy name is Mathieu, and I am a data science master's student at Tilburg\nUniversity. For a research project I'm doing, I have constructed a network\nwith Spotify data that focuses o",
+      "thread_id": "thread-20e4f09508e0",
+      "thread_depth": 0,
+      "month": "2023-05"
+    },
+    {
+      "id": "msg-eb30b5113546",
+      "message_id": "<CAByPayEwzavZiPoGDem_3M2T2ze3XQgh54CNoKgLdoVA03UenA@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2023-05-09T02:51:02Z",
+      "subject": "[statnet_help] ergm.ego with ego-ego ties",
+      "subject_clean": "[statnet_help] ergm.ego with ego-ego ties",
+      "in_reply_to": "<CAFF1wnweRS1xFxZy89v2vqmS4+FY-z3h0pbUoR3iAmi2s982=Q@mail.gmail.com>",
+      "references": [
+        "<CAFF1wnweRS1xFxZy89v2vqmS4+FY-z3h0pbUoR3iAmi2s982=Q@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Mathieu,\n\nThere are a couple of issues here:\n\n1. Whether ergm.ego is an appropriate inference approach depends on\nhow you selected the artists (the \"egos\") and what is your target of\ninference. In other words, how are you willing to define the\n\"population network\" in the framework of egocentric ERGMs\n2. From a purely technical perspective, for ergm.ego you need to\nconstruct an egor object using the 'egor' package. There is more than\none way of doing that, please have a look at the documentation.\n3. The implementation of ergm.ego essentially ignores the fact if two\nego-alter ties are in fact the same tie in the population (i.e the two\nego-networks overlap). If it happens only rarely and can be ignored\nvis a vis the sample size and population size, you should be good to\ngo. If, on the other hand, it is a feature of the way you selected the\negos (for example by a procedure resembling a snowball sample) then\nergm.ego will not be appropriate.\n\nhope this helps\nMichal\n\nOn Mon, May 8, 2023 at 11:28?AM Mathieu Janssen\n<m.h.a.p.janssen@tilburguniversity.edu> wrote:\n>\n> Dear statnetters,\n>\n>\n>\n> My name is Mathieu, and I am a data science master's student at Tilburg University. For a research project I'm doing, I have constructed a network with Spotify data that focuses on artists' collaborations.\n>\n> I have two harvests of data. 1) specific artists and their collaborators, 2) info on all the artists and their collaborators. The data structure is ego nets.\n>\n> I have a few questions about the ergm.ego package. Thanks in advance to anyone that will spend a few minutes to help me out.\n>\n>\n>\n> My edge list looks like that:\n>\n>\n>\n> edgelist <- data.frame(c(\"ego1\", \"ego2\", \"ego3\",\"ego4\",\"ego5\",\"ego5\"), c(\"alter1\", \"alter2\", \"alter3\", \"alter2\", \"ego2\", \"alter1\"))\n>\n>\n>\n> In plain English, I do not have alter-alter ties, but I do have ego-ego ties.\n>\n>\n>\n> Question 1: is ergm.ego the right package for that? If not, can you recommend a different one that would allow me to run ERGMs on this data structure? Or would you please suggest how to constrain a regular ERGM?\n>\n>\n>\n> If ergm.ego is the right one, is this the right way to import the data?\n>\n>\n>\n> library(ergm.ego)\n>\n> temp_n <- network::as.network.data.frame(edgelist, directed = FALSE)\n>\n> temp_n <- network::set.vertex.attribute(temp_n, \"is_emerging\", value = c(TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE))\n>\n> temp_n.ego <- as.egor(temp_n, ego_name = c(\"is_emerging\"))\n>\n>\n>\n> Using the as.egor() function, the result is not what I expect. Exactly those nodes with is_emerging == True should be egos, the rest alters. When the as.egor() function is called, some of the alters are included as egos, which is not desired. Therefore, I adjust the underlying Tibbles myself.\n>\n>\n>\n>  old_egos <- as.data.frame(temp_n.ego$ego)\n>\n>  new_egos <- old_egos[old_egos$is_emerging == TRUE,]\n>\n>  new_egos <- as_tibble(new_egos)\n>\n>\n>\n>  old_alters <- as.data.frame(temp_n.ego$alter)\n>\n>  new_alters <- old_alters[old_alters$.egoID %in% new_egos$.egoID,]\n>\n>  new_alters <- as_tibble(new_alters)\n>\n>\n>\n>  artists.ego <- egor(egos = new_egos, new_alters, ID.vars = list(ego = \".egoID\", alter = \".altID\"))\n>\n>\n>\n> Question 2: is this the correct way to import this data type? As you can see, we have no data on the Alter-Alter ties, so they are left out of the final function call.\n>\n>\n>\n> Many thanks,\n>\n>\n>\n> Mathieu Janssen\n>\n> Jheronimus Academy of Data Science / Tilburg University\n>\n> A: JADS, Sint Janssingel 92, 5211 DA 's-Hertogenbosch, The Netherlands\n>\n> E: Mathieu-janssen@live.nl / m.h.a.p.janssen@tilburguniversity.edu\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Mathieu,\n\nThere are a couple of issues here:\n\n1. Whether ergm.ego is an appropriate inference approach depends on\nhow you selected the artists (the \"egos\") and what is your target of\ninference. I",
+      "thread_id": "thread-20e4f09508e0",
+      "thread_depth": 1,
+      "month": "2023-05"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-20e4f09508e0",
+      "subject": "[statnet_help]  ergm.ego with ego-ego ties",
+      "message_count": 2,
+      "participants": [
+        "Mathieu Janssen",
+        "Michał Bojanowski"
+      ],
+      "started": "2023-05-08T02:27:19Z",
+      "last_reply": "2023-05-09T02:51:02Z",
+      "root_message_id": "msg-20e4f09508e0"
+    }
+  ]
+}

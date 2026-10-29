@@ -1,0 +1,299 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2009-07",
+  "messages": [
+    {
+      "id": "msg-9cb04eda5df9",
+      "message_id": "<4A4B6BAA.9040504@cornell.edu>",
+      "from_name": "Brian Rubineau",
+      "from_email_hash": "07982f3e85165fce9ba79b68bac170d226a27f1270c3b55761e6817dde7ac78b",
+      "date": "2009-07-01T06:59:06Z",
+      "subject": "[statnet_help] suppress edgelist output in print.summary.network?",
+      "subject_clean": "[statnet_help] suppress edgelist output in print.summary.network?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Gurus.\nOther than making my own version of the function, is there a way\nto suppress the new edgelist output feature when doing a summary\nof a network object? Thanks so much!",
+      "body_snippet": "Hi Gurus.\nOther than making my own version of the function, is there a way\nto suppress the new edgelist output feature when doing a summary\nof a network object? Thanks so much!",
+      "thread_id": "thread-9cb04eda5df9",
+      "thread_depth": 0,
+      "month": "2009-07"
+    },
+    {
+      "id": "msg-fd8d780554d3",
+      "message_id": "<9BB46949-A5FE-4AEC-A02B-1AC652413005@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-07-01T10:10:47Z",
+      "subject": "[statnet_help] suppress edgelist output in print.summary.network?",
+      "subject_clean": "[statnet_help] suppress edgelist output in print.summary.network?",
+      "in_reply_to": "<4A4B6BAA.9040504@cornell.edu>",
+      "references": [
+        "<4A4B6BAA.9040504@cornell.edu>"
+      ],
+      "body_plain": "Hi Brian.  I believe that a change to the summary.network function is  \nin the works for a future version of network, but in the meantime,  \nI've been using my own slightly modified version of summary.network  \n(contained in attached file, which you can use to replace the  \nprintsum.R file in the source code and then recompile the package).\n\nDave\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: printsum.R\nType: application/octet-stream\nSize: 10428 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090701/3266052f/attachment.obj>\n-------------- next part --------------\n\n\n\nOn Jul 1, 2009, at 9:59 AM, Brian Rubineau wrote:\n\n> Hi Gurus.\n> Other than making my own version of the function, is there a way\n> to suppress the new edgelist output feature when doing a summary\n> of a network object? Thanks so much!\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Brian.  I believe that a change to the summary.network function is  \nin the works for a future version of network, but in the meantime,  \nI've been using my own slightly modified version of summary",
+      "thread_id": "thread-9cb04eda5df9",
+      "thread_depth": 1,
+      "month": "2009-07"
+    },
+    {
+      "id": "msg-ce71a2bf0759",
+      "message_id": "<4A4CE320.8050702@cornell.edu>",
+      "from_name": "Brian Rubineau",
+      "from_email_hash": "07982f3e85165fce9ba79b68bac170d226a27f1270c3b55761e6817dde7ac78b",
+      "date": "2009-07-02T09:41:04Z",
+      "subject": "[statnet_help] Finding a predictive ergm",
+      "subject_clean": "[statnet_help] Finding a predictive ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Gurus,\n\nMy goal is to choose (and justify the choice) a model\n(including terms for individual differences, homophily, and closure)\ngiving the best prediction of ties to use in creating a predicted-tie \nnetwork.\nIn the ergms I'm estimating, I find no clear favorite, and need help\nto choose appropriately.\n\nSample ERGMs:\nModel1 <- ergm(net ~ edges + nodefactor(foo) + nodematch(foo))\nModel2 <- ergm(net ~ gwesp(fixed=F) + edges + nodefactor(foo) + \nnodematch(foo))\nModel3 <- ergm(net ~ gwesp(fixed=F) + edges + nodefactor(foo) + \nnodematch(foo), theta0=c(0,Model1$coef))\n \nModel1\nPro: no MCMC / precise SEs,  non-degenerate\nCon: no closure term, terrible GOF\n\nModel2\nPro: much better GOF, AIC & BIC < Model1\nCon: degenerate, suspect standard errors\n\nModel3\nPro: non-degenerate, much better GOF\nCon: AIC & BIC more than twice those of Model1\n\nSince my goal is prediction and not hypothesis testing,\nwouldn't Model2 be best even with the degeneracy?\nDoes degeneracy affect confidence in coefficient point estimates in \naddition to SEs?\nIf degenerate models should not be used predictively,\nModel2 is better in terms of GOF, but horrible in terms of AIC & BIC.\nI'd prefer to stick with models with good GOF,\nbut the huge increases in AIC & BIC give me pause.\n\nAlternatively, are there other things I should be doing in structuring \nmy ergms to reduce the likelihood of degeneracy?\n\nThanks very much for your help and advice!\nBest,\nBrian\n\n-- \nBrian Rubineau\nAssistant Professor, Organizational Behavior       146K Ives Hall\nSchool of Industrial and Labor Relations         ph. 607.255.3048\nCornell University                              fax. 810.963.2738\nIthaca, NY 14853                            brubineau@cornell.edu",
+      "body_snippet": "Dear Gurus,\n\nMy goal is to choose (and justify the choice) a model\n(including terms for individual differences, homophily, and closure)\ngiving the best prediction of ties to use in creating a predicte",
+      "thread_id": "thread-ce71a2bf0759",
+      "thread_depth": 0,
+      "month": "2009-07"
+    },
+    {
+      "id": "msg-619f03f8bdf1",
+      "message_id": "<df62f0730907030925k23521a85vb964b7ad0de7e373@mail.gmail.com>",
+      "from_name": "Brian Riordan",
+      "from_email_hash": "643663db24738120dd56a253ac323837ec378a5e9d70c9aff95eb5692ec8a2b0",
+      "date": "2009-07-03T09:25:53Z",
+      "subject": "[statnet_help] problem with cug.test",
+      "subject_clean": "[statnet_help] problem with cug.test",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "In using a function I've written to compute the Watts-Strogatz\nclustering coefficient, I get different observed values when using it\nin cug.test versus using it alone.\n\ng = rgraph(10)\nclusteringCoefficientWS(g) # see function below\n[1] 0.4638095\ncug = cug.test( g, FUN = clusteringCoefficientWS, mode = \"graph\",\ncmode = \"edges\" )\ncug\n\nUnivariate Conditional Uniform Graph Test\n\nConditioning Method: edges\nGraph Type: graph\nDiagonal Used: FALSE\nReplications: 1000\n\nObserved Value: 0.431746\nPr(X>=Obs): 0.748\nPr(X<=Obs): 0.252\n\n# Function:\nclusteringCoefficientWS = function( g ) {\n\ttotal = 0\n\tnodesUsed = 0\n\tfor( iteration in 1:length( g[1,] ) )  {\n\t\t# Retrieve the ego network\n\t\tegonetwork = ego.extract( g, iteration, neighborhood = \"combined\" )\n\t\t# If ego has neighbors, calculate the clustering coefficient for this node\n\t\tif ( dim( egonetwork[[1]] )[1] < 3 ) {\n\t\t\t# Clustering coefficient is undefined\n\t\t\tnext\n\t\t} else {\n\t\t\t# Get the neighbor network ( ego is the first row/col )\n\t\t\tneighbornetwork =\n\t\t\t\t\tegonetwork[[1]][ \t2:nrow( egonetwork[[1]] ),\n\t\t\t\t\t\t\t\t\t\t2:ncol( egonetwork[[1]] ) ]\n\t\t\t# Get the degree of ego\n\t\t\tdegree = nrow( neighbornetwork )\n\t\t\t# Get the number of edges\n\t\t\tnumEdges = sum( upperTriangle( neighbornetwork , diag = FALSE ) )\n\t\t\tC_i = numEdges / ( degree * ( degree - 1 ) / 2 )\n\t\t\ttotal = total + C_i\n\t\t\tnodesUsed = nodesUsed + 1\n\t\t}\n\t}\n\tclusCoef = total / nodesUsed\n\treturn( clusCoef )\n}\n\n\nBrian Riordan\nPostdoctoral Fellow\nDepartment of Psychological and Brain Sciences\nIndiana University",
+      "body_snippet": "In using a function I've written to compute the Watts-Strogatz\nclustering coefficient, I get different observed values when using it\nin cug.test versus using it alone.\n\ng = rgraph(10)\nclusteringCoeffi",
+      "thread_id": "thread-619f03f8bdf1",
+      "thread_depth": 0,
+      "month": "2009-07"
+    },
+    {
+      "id": "msg-85d765c9c106",
+      "message_id": "<4a4f2b271d4929.16269723@wp.pl>",
+      "from_name": "Agnieszka Stawinoga",
+      "from_email_hash": "f9869f106a6f3bfbec56a691ca0f74b1807d26bc906d3bae6517bc54e550716e",
+      "date": "2009-07-04T03:12:55Z",
+      "subject": "[statnet_help] [statnet help]problem with ergm",
+      "subject_clean": "[statnet_help] [statnet help]problem with ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Could You tell me something about computational complexity of ergm \nfunction or algorithms used for this function?\nDo You have some references where I can find the answer?\n\nThank You.\n\nAgnieszka Stawinoga\nPhD Student\nDipartment of Matematics and Statistics\nUniversity of Naples\n\n----------------------------------------------------\nKolejna odwa?na produkcja TARANTINO.\nZobacz kontrowersyjne B?karty\nhttp://klik.wp.pl/?adr=http%3A%2F%2Fcorto.www.wp.pl%2Fas%2Fbekartywojny.html&sid=782",
+      "body_snippet": "Could You tell me something about computational complexity of ergm \nfunction or algorithms used for this function?\nDo You have some references where I can find the answer?\n\nThank You.\n\nAgnieszka Stawi",
+      "thread_id": "thread-85d765c9c106",
+      "thread_depth": 0,
+      "month": "2009-07"
+    },
+    {
+      "id": "msg-7592b8ea8ca9",
+      "message_id": "<1ea8d8280907092039s53e35a56u6e1c0ed93d85abee@mail.gmail.com>",
+      "from_name": "Jenine Harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2009-07-09T20:39:57Z",
+      "subject": "[statnet_help] Error: package 'networksis' required by 'statnet' could not be found",
+      "subject_clean": "[statnet_help] Error: package 'networksis' required by 'statnet' could not be found",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI'm trying to reinstall R and statnet after some computer issues and am not\nhaving much luck. I have a PC with Windows XP and I have admin rights. R\nseems to install fine, but statnet has the error ---\n\nError: package 'networksis' required by 'statnet' could not be found\n\nWhen I try to *install.packages('networksis')* I get a different error ---\n\nWarning message:\nIn getDependencies(pkgs, dependencies, available, lib) :\n  package ?networksis? is not available\n\nI found a couple folks in the help archives with the same issue, but what\nfixed their problems doesn't seem to work for me. Any help appreciated.\n\nThanks,\nJenine\n\n-- \n************************************\nJenine K. Harris, Ph.D.\nAssistant Professor of Community Health\nBiostatistics Division\nSaint Louis University School of Public Health\nAssistant Director of Research\nCenter for Tobacco Policy Research\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210 (SLU phone)\n314.977.3234 (SLU fax)\n314.935.3744 (WU phone)\n314.935.3756 (WU fax)\nhttp://ctpr.wustl.edu/\n\nPlease note: I split my time between two offices, email is typically the\nbest way to reach me.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090709/ed1be074/attachment.html>",
+      "body_snippet": "Hi all,\n\nI'm trying to reinstall R and statnet after some computer issues and am not\nhaving much luck. I have a PC with Windows XP and I have admin rights. R\nseems to install fine, but statnet has the",
+      "thread_id": "thread-7592b8ea8ca9",
+      "thread_depth": 0,
+      "month": "2009-07"
+    },
+    {
+      "id": "msg-9436e312cac9",
+      "message_id": "<C67C2C11.37F40%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2009-07-09T23:21:53Z",
+      "subject": "[statnet_help] Error: package 'networksis' required by 'statnet' could not be found",
+      "subject_clean": "[statnet_help] Error: package 'networksis' required by 'statnet' could not be found",
+      "in_reply_to": "<1ea8d8280907092039s53e35a56u6e1c0ed93d85abee@mail.gmail.com>",
+      "references": [],
+      "body_plain": "Hi Jenine,\n\n\"networksis\" is not available for Windows (under R 2.9.1) due to a mismatch\nwith one of the packages it depends on. However, \"ergm\" does not depend on\n\"networksis\", so I would suggest installing \"ergm\" instead of \"statnet\" and\nyou will have all the functionality you likely need.\n\nIf you actually need \"networksis\" itself, I can email you a version of it.\n\nCheers,\n\nMark\n\nfor the \"statnet\" Team\n\n\nOn 7/9/09 8:39 PM, \"Jenine Harris\" <harrisjk@slu.edu> wrote:\n\n> Hi all,\n> \n> I'm trying to reinstall R and statnet after some computer issues and am not\n> having much luck. I have a PC with Windows XP and I have admin rights. R\n> seems to install fine, but statnet has the error ---\n> \n> Error: package 'networksis' required by 'statnet' could not be found\n> \n> When I try to *install.packages('networksis')* I get a different error ---\n> \n> Warning message:\n> In getDependencies(pkgs, dependencies, available, lib) :\n>   package ?networksis? is not available\n> \n> I found a couple folks in the help archives with the same issue, but what\n> fixed their problems doesn't seem to work for me. Any help appreciated.\n> \n> Thanks,\n> Jenine",
+      "body_snippet": "Hi Jenine,\n\n\"networksis\" is not available for Windows (under R 2.9.1) due to a mismatch\nwith one of the packages it depends on. However, \"ergm\" does not depend on\n\"networksis\", so I would suggest inst",
+      "thread_id": "thread-7592b8ea8ca9",
+      "thread_depth": 1,
+      "month": "2009-07"
+    },
+    {
+      "id": "msg-68a7085eef19",
+      "message_id": "<1ea8d8280907100742n3e49d647re64a1a8d9c66f01f@mail.gmail.com>",
+      "from_name": "Jenine Harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2009-07-10T07:42:22Z",
+      "subject": "[statnet_help] Error: package 'networksis' required by 'statnet'  could not be found",
+      "subject_clean": "[statnet_help] Error: package 'networksis' required by 'statnet'  could not be found",
+      "in_reply_to": "<C67C2C11.37F40%handcock@stat.washington.edu>",
+      "references": [
+        "<1ea8d8280907092039s53e35a56u6e1c0ed93d85abee@mail.gmail.com>",
+        "<C67C2C11.37F40%handcock@stat.washington.edu>"
+      ],
+      "body_plain": "Thanks! Perfect.\n\nOn Fri, Jul 10, 2009 at 1:21 AM, Mark S. Handcock <\nhandcock@stat.washington.edu> wrote:\n\n> Hi Jenine,\n>\n> \"networksis\" is not available for Windows (under R 2.9.1) due to a mismatch\n> with one of the packages it depends on. However, \"ergm\" does not depend on\n> \"networksis\", so I would suggest installing \"ergm\" instead of \"statnet\" and\n> you will have all the functionality you likely need.\n>\n> If you actually need \"networksis\" itself, I can email you a version of it.\n>\n> Cheers,\n>\n> Mark\n>\n> for the \"statnet\" Team\n>\n>\n> On 7/9/09 8:39 PM, \"Jenine Harris\" <harrisjk@slu.edu> wrote:\n>\n> > Hi all,\n> >\n> > I'm trying to reinstall R and statnet after some computer issues and am\n> not\n> > having much luck. I have a PC with Windows XP and I have admin rights. R\n> > seems to install fine, but statnet has the error ---\n> >\n> > Error: package 'networksis' required by 'statnet' could not be found\n> >\n> > When I try to *install.packages('networksis')* I get a different error\n> ---\n> >\n> > Warning message:\n> > In getDependencies(pkgs, dependencies, available, lib) :\n> >   package ?networksis? is not available\n> >\n> > I found a couple folks in the help archives with the same issue, but what\n> > fixed their problems doesn't seem to work for me. Any help appreciated.\n> >\n> > Thanks,\n> > Jenine\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \n************************************\nJenine K. Harris, Ph.D.\nAssistant Professor of Community Health\nBiostatistics Division\nSaint Louis University School of Public Health\nAssistant Director of Research\nCenter for Tobacco Policy Research\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210 (SLU phone)\n314.977.3234 (SLU fax)\n314.935.3744 (WU phone)\n314.935.3756 (WU fax)\nhttp://ctpr.wustl.edu/\n\nPlease note: I split my time between two offices, email is typically the\nbest way to reach me.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090710/778ba827/attachment.html>",
+      "body_snippet": "Thanks! Perfect.\n\nOn Fri, Jul 10, 2009 at 1:21 AM, Mark S. Handcock <\nhandcock@stat.washington.edu> wrote:\n\n> Hi Jenine,\n>\n> \"networksis\" is not available for Windows (under R 2.9.1) due to a mismatch",
+      "thread_id": "thread-7592b8ea8ca9",
+      "thread_depth": 2,
+      "month": "2009-07"
+    },
+    {
+      "id": "msg-f99889fab4c8",
+      "message_id": "<71A8D44E-1C40-46ED-84A6-94A8CC00A68D@georgetown.edu>",
+      "from_name": "Hans Noel",
+      "from_email_hash": "fcf27d8d6b76705e8bea4334f27b6065cd828d6f047f89df34673024d11326a1",
+      "date": "2009-07-13T12:33:15Z",
+      "subject": "[statnet_help] netperm",
+      "subject_clean": "[statnet_help] netperm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I am trying to install and use the optional package netperm.  \nUnfortunately, I don't see it at CRAN.\n\nhttp://cran.r-project.org/web/packages/#available-packages-N\n\nI'm also not finding links in places where I expect them. (This link,  \nfor instance, is broken: http://csde.washington.edu/statnet/netperm_0.2.tgz')\n\nSuggestions for the particular manner in which I have turned blind  \nthis time?\n\n\n\nHans Noel\nGeorgetown University (on leave)\nUniversity of Michigan (RWJF Scholar in Health Policy Research)\n\nhcn4@georgetown.edu",
+      "body_snippet": "I am trying to install and use the optional package netperm.  \nUnfortunately, I don't see it at CRAN.\n\nhttp://cran.r-project.org/web/packages/#available-packages-N\n\nI'm also not finding links in place",
+      "thread_id": "thread-f99889fab4c8",
+      "thread_depth": 0,
+      "month": "2009-07"
+    },
+    {
+      "id": "msg-cd8e81c01d26",
+      "message_id": "<28775f930907131316q3e45abceuf22f2993c549eae3@mail.gmail.com>",
+      "from_name": "Aaron Chang",
+      "from_email_hash": "6d9cdea79aef454a34a166f1654caf83daf2dc0c2bb852e420dd2923075a0d8f",
+      "date": "2009-07-13T13:16:45Z",
+      "subject": "[statnet_help] using statnet to compute node-based p-values",
+      "subject_clean": "[statnet_help] using statnet to compute node-based p-values",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "hi,\n\nthis is my first time trying out the package and it's great for generating\ngraph-level stats. but i would like to generate node-level stats, i.e.\ndegree. is this possible using the generated graphs in ergm or do i need a\ndifferent way of creating the null distribution (rewiring or node label\nshuffling in the original graph)? and once this is done, how do i compute\nnode-specific stats? i saw something like this for the networksis package\nbut is this avail in ergm?\n\nthanks,\naaron\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090713/68d5779f/attachment.html>",
+      "body_snippet": "hi,\n\nthis is my first time trying out the package and it's great for generating\ngraph-level stats. but i would like to generate node-level stats, i.e.\ndegree. is this possible using the generated grap",
+      "thread_id": "thread-cd8e81c01d26",
+      "thread_depth": 0,
+      "month": "2009-07"
+    },
+    {
+      "id": "msg-e53d4ce35287",
+      "message_id": "<4A6FE3C9.6060500@mit.edu>",
+      "from_name": "Randall Lewis",
+      "from_email_hash": "7fe2ba2fa3b184b706e694da398e2b35cc4d52487a1d97f67099ac24854bc44e",
+      "date": "2009-07-28T22:53:13Z",
+      "subject": "[statnet_help] Custom Network Stats?",
+      "subject_clean": "[statnet_help] Custom Network Stats?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi--\n\nSorry for the StatNet beginner questions... but thanks, in advance, for \nany assistance.\n\nI've coded up the MCMC/MLE ERGM in MatLab and have been using a few \nstats that I would like to try in the StatNet version. Is there an easy \nway to program in a custom statistic into the ERGM framework in R?\n\nThanks!\n\n--Randall",
+      "body_snippet": "Hi--\n\nSorry for the StatNet beginner questions... but thanks, in advance, for \nany assistance.\n\nI've coded up the MCMC/MLE ERGM in MatLab and have been using a few \nstats that I would like to try in t",
+      "thread_id": "thread-e53d4ce35287",
+      "thread_depth": 0,
+      "month": "2009-07"
+    },
+    {
+      "id": "msg-85b7346604da",
+      "message_id": "<C792668A-478B-4B6C-8626-B89652606409@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-07-29T05:21:33Z",
+      "subject": "[statnet_help] Custom Network Stats?",
+      "subject_clean": "[statnet_help] Custom Network Stats?",
+      "in_reply_to": "<4A6FE3C9.6060500@mit.edu>",
+      "references": [
+        "<4A6FE3C9.6060500@mit.edu>"
+      ],
+      "body_plain": "Hi Randall.  Try going to statnet.org, then click on resources, then  \ncheck out the stuff on the ergmuserterms package.  Between reading the  \ncomments in that code and mimicking the other functions you see, you  \nmight be able to figure out how to do this.  We're also working on a  \nmanuscript documenting this package more fully, but we're not done  \nwith that yet.\n\nDave\n\n\n\n\n\nOn Jul 29, 2009, at 1:53 AM, Randall Lewis wrote:\n\n> Hi--\n>\n> Sorry for the StatNet beginner questions... but thanks, in advance,  \n> for any assistance.\n>\n> I've coded up the MCMC/MLE ERGM in MatLab and have been using a few  \n> stats that I would like to try in the StatNet version. Is there an  \n> easy way to program in a custom statistic into the ERGM framework in  \n> R?\n>\n> Thanks!\n>\n> --Randall\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Randall.  Try going to statnet.org, then click on resources, then  \ncheck out the stuff on the ergmuserterms package.  Between reading the  \ncomments in that code and mimicking the other functions ",
+      "thread_id": "thread-e53d4ce35287",
+      "thread_depth": 1,
+      "month": "2009-07"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-9cb04eda5df9",
+      "subject": "[statnet_help] suppress edgelist output in print.summary.network?",
+      "message_count": 2,
+      "participants": [
+        "Brian Rubineau",
+        "David Hunter"
+      ],
+      "started": "2009-07-01T06:59:06Z",
+      "last_reply": "2009-07-01T10:10:47Z",
+      "root_message_id": "msg-9cb04eda5df9"
+    },
+    {
+      "id": "thread-ce71a2bf0759",
+      "subject": "[statnet_help] Finding a predictive ergm",
+      "message_count": 1,
+      "participants": [
+        "Brian Rubineau"
+      ],
+      "started": "2009-07-02T09:41:04Z",
+      "last_reply": "2009-07-02T09:41:04Z",
+      "root_message_id": "msg-ce71a2bf0759"
+    },
+    {
+      "id": "thread-619f03f8bdf1",
+      "subject": "[statnet_help] problem with cug.test",
+      "message_count": 1,
+      "participants": [
+        "Brian Riordan"
+      ],
+      "started": "2009-07-03T09:25:53Z",
+      "last_reply": "2009-07-03T09:25:53Z",
+      "root_message_id": "msg-619f03f8bdf1"
+    },
+    {
+      "id": "thread-85d765c9c106",
+      "subject": "[statnet_help] [statnet help]problem with ergm",
+      "message_count": 1,
+      "participants": [
+        "Agnieszka Stawinoga"
+      ],
+      "started": "2009-07-04T03:12:55Z",
+      "last_reply": "2009-07-04T03:12:55Z",
+      "root_message_id": "msg-85d765c9c106"
+    },
+    {
+      "id": "thread-7592b8ea8ca9",
+      "subject": "[statnet_help] Error: package 'networksis' required by 'statnet' could not be found",
+      "message_count": 3,
+      "participants": [
+        "Jenine Harris",
+        "Mark S. Handcock"
+      ],
+      "started": "2009-07-09T20:39:57Z",
+      "last_reply": "2009-07-10T07:42:22Z",
+      "root_message_id": "msg-7592b8ea8ca9"
+    },
+    {
+      "id": "thread-f99889fab4c8",
+      "subject": "[statnet_help] netperm",
+      "message_count": 1,
+      "participants": [
+        "Hans Noel"
+      ],
+      "started": "2009-07-13T12:33:15Z",
+      "last_reply": "2009-07-13T12:33:15Z",
+      "root_message_id": "msg-f99889fab4c8"
+    },
+    {
+      "id": "thread-cd8e81c01d26",
+      "subject": "[statnet_help] using statnet to compute node-based p-values",
+      "message_count": 1,
+      "participants": [
+        "Aaron Chang"
+      ],
+      "started": "2009-07-13T13:16:45Z",
+      "last_reply": "2009-07-13T13:16:45Z",
+      "root_message_id": "msg-cd8e81c01d26"
+    },
+    {
+      "id": "thread-e53d4ce35287",
+      "subject": "[statnet_help] Custom Network Stats?",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Randall Lewis"
+      ],
+      "started": "2009-07-28T22:53:13Z",
+      "last_reply": "2009-07-29T05:21:33Z",
+      "root_message_id": "msg-e53d4ce35287"
+    }
+  ]
+}

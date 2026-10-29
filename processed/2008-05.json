@@ -1,0 +1,308 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2008-05",
+  "messages": [
+    {
+      "id": "msg-8283708fc6cb",
+      "message_id": "<CFE3E2D9-54D7-40D7-816B-BCE87052ADF7@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-05-01T23:27:25Z",
+      "subject": "[statnet_help] problem",
+      "subject_clean": "[statnet_help] problem",
+      "in_reply_to": "<000901c8a44d$8b4cc380$a1e64a80$@DeWolf@UGent.be>",
+      "references": [
+        "<000901c8a44d$8b4cc380$a1e64a80$@DeWolf@UGent.be>"
+      ],
+      "body_plain": "Hi Muriel.  Sorry for the long delay.\n\nWhen I first looked at your code I noticed that you are not passing a  \n\"decay\" argument to the gwidegree and gwodegree terms and I thought  \nthis might be causing a problem (since this argument is supposed to be  \nrequired!), but now that I've had a chance to look more carefully and  \nrun part of your code, it seems that it is proceeding just fine with  \nthe default value of zero.\n\nThere is definitely a problem with these lines:\n#variabelen in matrix-bestanden plakken\nset.vertex.attribute(co.matw1,\"klasnr2\",attx)\nset.vertex.attribute(co.matw1,\"OndType\",attx)\nset.vertex.attribute(co.matw1,\"female\",attx)\nset.vertex.attribute(co.matw1,\"alloch2b\",attx)\n\nIn each one, you should be using the individual column from attx  \ninstead of attx itself, as in:\n#variabelen in matrix-bestanden plakken\nset.vertex.attribute(co.matw1,\"klasnr2\",klasnr2)\nset.vertex.attribute(co.matw1,\"OndType\",OndType)\nset.vertex.attribute(co.matw1,\"female\",female)\nset.vertex.attribute(co.matw1,\"alloch2b\",alloch2b)\n\nYour original code is resulting in some bizarre behavior I don't yet  \nunderstand and will need to look into further:  Somehow it created  \nvertex attributes of length 20164 (even though attx has only 852  \nelements total).  Given that your model does use nodematch with these  \nvertex attributes, these very-long attributes could be causing part of  \nthe trouble you're seeing.\n\nThat said, I would also be curious about two things regarding the  \ngwidegree and gwodegree terms:  (1) Have you updated your version of  \nergm recently from CRAN?  There used to be a bug with either gwodegree  \nor gwidegree, I can't remember which, but we fixed that.  (2) See what  \nhappens if you set the decay value by hand and use the fixed=TRUE  \noption.  (e.g., gwidegree(0.2, fixed=TRUE)).  If that seems to work  \nokay, then see if you can get fixed=FALSE to work, but doing this  \ncreates a much larger computational burden.\n\nHope this helps.\nDave\n\n\n\nOn Apr 22, 2008, at 9:50 AM, Muriel De Wolf wrote:\n\n> Hi!\n>\n> I have been trying for weeks now to run the model in attachment, but  \n> something keeps going wrong. I first tried it on a Windows-run  \n> computer, then on Linux. After 70 hours it was still running so I  \n> stopped the analysis. Can you have a look if I have done something  \n> wrong in my syntax?\n>\n> Thanks\n> Muriel\n>\n>\n> Muriel De Wolf\n>\n> wetenschappelijk medewerker\n> Universiteit Gent\n> Vakgroep Sociologie\n> Korte Meer 5\n> 9000 Gent\n> 09/264.84.72\n>\n> <x013.txt><syntax model1 tryout.docx><VLO0013_M.txt>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080502/02f18b3e/attachment.html>",
+      "body_snippet": "Hi Muriel.  Sorry for the long delay.\n\nWhen I first looked at your code I noticed that you are not passing a  \n\"decay\" argument to the gwidegree and gwodegree terms and I thought  \nthis might be causi",
+      "thread_id": "thread-8283708fc6cb",
+      "thread_depth": 0,
+      "month": "2008-05"
+    },
+    {
+      "id": "msg-1e57d6ca1ff6",
+      "message_id": "<7CF1AA2B-52C4-4565-BCF1-EC211FBFE75E@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-05-02T04:31:10Z",
+      "subject": "[statnet_help] problem",
+      "subject_clean": "[statnet_help] problem",
+      "in_reply_to": "<CFE3E2D9-54D7-40D7-816B-BCE87052ADF7@stat.psu.edu>",
+      "references": [
+        "<000901c8a44d$8b4cc380$a1e64a80$@DeWolf@UGent.be>",
+        "<CFE3E2D9-54D7-40D7-816B-BCE87052ADF7@stat.psu.edu>"
+      ],
+      "body_plain": "Hi Muriel.  I found one other bug that makes it impossible to use  \ngwidegree and gwodegree with fixed=FALSE.  The attached patch should  \nfix this; use it by 'source'-ing it into R after loading the ergm  \npackage.  Of course this patch will be part of the next CRAN release  \nof ergm.\n\nDave\n\n\n\n\n\nOn May 2, 2008, at 8:27 AM, David Hunter wrote:\n\n> Hi Muriel.  Sorry for the long delay.\n>\n> When I first looked at your code I noticed that you are not passing  \n> a \"decay\" argument to the gwidegree and gwodegree terms and I  \n> thought this might be causing a problem (since this argument is  \n> supposed to be required!), but now that I've had a chance to look  \n> more carefully and run part of your code, it seems that it is  \n> proceeding just fine with the default value of zero.\n>\n> There is definitely a problem with these lines:\n> #variabelen in matrix-bestanden plakken\n> set.vertex.attribute(co.matw1,\"klasnr2\",attx)\n> set.vertex.attribute(co.matw1,\"OndType\",attx)\n> set.vertex.attribute(co.matw1,\"female\",attx)\n> set.vertex.attribute(co.matw1,\"alloch2b\",attx)\n>\n> In each one, you should be using the individual column from attx  \n> instead of attx itself, as in:\n> #variabelen in matrix-bestanden plakken\n> set.vertex.attribute(co.matw1,\"klasnr2\",klasnr2)\n> set.vertex.attribute(co.matw1,\"OndType\",OndType)\n> set.vertex.attribute(co.matw1,\"female\",female)\n> set.vertex.attribute(co.matw1,\"alloch2b\",alloch2b)\n>\n> Your original code is resulting in some bizarre behavior I don't yet  \n> understand and will need to look into further:  Somehow it created  \n> vertex attributes of length 20164 (even though attx has only 852  \n> elements total).  Given that your model does use nodematch with  \n> these vertex attributes, these very-long attributes could be causing  \n> part of the trouble you're seeing.\n>\n> That said, I would also be curious about two things regarding the  \n> gwidegree and gwodegree terms:  (1) Have you updated your version of  \n> ergm recently from CRAN?  There used to be a bug with either  \n> gwodegree or gwidegree, I can't remember which, but we fixed that.   \n> (2) See what happens if you set the decay value by hand and use the  \n> fixed=TRUE option.  (e.g., gwidegree(0.2, fixed=TRUE)).  If that  \n> seems to work okay, then see if you can get fixed=FALSE to work, but  \n> doing this creates a much larger computational burden.\n>\n> Hope this helps.\n> Dave\n>\n>\n>\n> On Apr 22, 2008, at 9:50 AM, Muriel De Wolf wrote:\n>\n>> Hi!\n>>\n>> I have been trying for weeks now to run the model in attachment,  \n>> but something keeps going wrong. I first tried it on a Windows-run  \n>> computer, then on Linux. After 70 hours it was still running so I  \n>> stopped the analysis. Can you have a look if I have done something  \n>> wrong in my syntax?\n>>\n>> Thanks\n>> Muriel\n>>\n>>\n>> Muriel De Wolf\n>>\n>> wetenschappelijk medewerker\n>> Universiteit Gent\n>> Vakgroep Sociologie\n>> Korte Meer 5\n>> 9000 Gent\n>> 09/264.84.72\n>>\n>> <x013.txt><syntax model1 tryout.docx><VLO0013_M.txt>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080502/3d47916a/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: patch.R\nType: application/octet-stream\nSize: 5786 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080502/3d47916a/attachment.obj>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080502/3d47916a/attachment-0001.html>",
+      "body_snippet": "Hi Muriel.  I found one other bug that makes it impossible to use  \ngwidegree and gwodegree with fixed=FALSE.  The attached patch should  \nfix this; use it by 'source'-ing it into R after loading the ",
+      "thread_id": "thread-8283708fc6cb",
+      "thread_depth": 1,
+      "month": "2008-05"
+    },
+    {
+      "id": "msg-00c611c192ab",
+      "message_id": "<482B37D4.10305@fas.harvard.edu>",
+      "from_name": "Kevin Lewis",
+      "from_email_hash": "3e16f115495b0e59b9f7583fd0cfe6f012b826a6e99dfab804f7275bfb0c581c",
+      "date": "2008-05-14T12:04:52Z",
+      "subject": "[statnet_help] interpreting GWESP",
+      "subject_clean": "[statnet_help] interpreting GWESP",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "greetings,\n\ni am wondering if there is a straightforward formula that can be used to \ninterpret the GWESP coefficient, together with the weight parameter, in \nmore commonsense language? in other words, i am looking for a way to \ninterpret the coefficient in a manner that is comparable to the other \nterms in the model, by saying, for instance, that if a tie closes a \nSINGLE triangle, then the log-odds of that tie forming increases by X, \nif a tie closes only TWO triangles, then the log-odds of that tie \nforming increases by Y, etc etc (thus, i would be able to directly \ncompare the likelihood of such ties to, say, a tie that symmetrizes a \ndyad or a tie that is racially homophilous). is there an easy way to \ndetermine such log-odds, then, as a function of a) the coefficient, b) \nthe weight parameter, and c) the number of triangles that the tie will \nform? (as goodreau et al. do in 'birds of a feather,' i think- hunter \n2007 also includes something comparable.)\n\nthanks greatly!\n\n-kevin\n\n-- \nKevin Lewis\nPh.D. Candidate in Sociology\nHarvard University\n641 William James Hall\n33 Kirkland Street\nCambridge, MA 02138",
+      "body_snippet": "greetings,\n\ni am wondering if there is a straightforward formula that can be used to \ninterpret the GWESP coefficient, together with the weight parameter, in \nmore commonsense language? in other words",
+      "thread_id": "thread-00c611c192ab",
+      "thread_depth": 0,
+      "month": "2008-05"
+    },
+    {
+      "id": "msg-91a0c7df7c4a",
+      "message_id": "<482D7B24.9020503@dkfz.de>",
+      "from_name": "Svetlana Bulashevska",
+      "from_email_hash": "1c97460d222d68181ec3fde00c90c2512a4a145461b5801406474a0e5ee4c103",
+      "date": "2008-05-16T05:16:36Z",
+      "subject": "[statnet_help] a question on statnetuserterms (or ergmuserterms)",
+      "subject_clean": "[statnet_help] a question on statnetuserterms (or ergmuserterms)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Sirs,\nI wonder if there any tutorial on using the package statnetuserterms (or \nergmuserterms) where one can define its own statistic for the ergm.\nHas somebody experience with this?\nThank you very much,\nSvetlana Bulashevska.",
+      "body_snippet": "Dear Sirs,\nI wonder if there any tutorial on using the package statnetuserterms (or \nergmuserterms) where one can define its own statistic for the ergm.\nHas somebody experience with this?\nThank you ve",
+      "thread_id": "thread-91a0c7df7c4a",
+      "thread_depth": 0,
+      "month": "2008-05"
+    },
+    {
+      "id": "msg-b07f41b147a3",
+      "message_id": "<001501c8b78f$4775fbe0$d661f3a0$@edu>",
+      "from_name": "Jichao Qian",
+      "from_email_hash": "461a0bf32fe0724f8ade0ee9127c9675d98bed0508ddb5974dfa2c46cc1e3347",
+      "date": "2008-05-16T12:58:55Z",
+      "subject": "[statnet_help] Degeneracy problem",
+      "subject_clean": "[statnet_help] Degeneracy problem",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\n \n\nI have some networks that I'm trying to fit to ERGM. The problem I'm running\ninto is that statnet reports that the models are degenerate. I followed the\nadvice of statnet manual online but the problem persists. My networks are\nabout 200x200. I have tried to add parameters such as gwdegree, gwesp, and\ngwdsp. I also increased MCMCSample size and sample interval. Does anyone\nhave any advice on what else I can  do to help the model become\nnon-degenerate? Thank you.\n\n \n\nThe exact message I got from statnet is the following:\n\nWarning: The diagnostics indicate that the model is very unstable.\n\n   They suggest that the model is near degenerate,\n\n   and that the numerical summaries are suspect.\n\n \n\nBest regards,\n\nJichao Qian\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080516/24ff49b3/attachment.html>",
+      "body_snippet": "Hi all,\n\n \n\nI have some networks that I'm trying to fit to ERGM. The problem I'm running\ninto is that statnet reports that the models are degenerate. I followed the\nadvice of statnet manual online but",
+      "thread_id": "thread-b07f41b147a3",
+      "thread_depth": 0,
+      "month": "2008-05"
+    },
+    {
+      "id": "msg-3739602d34de",
+      "message_id": "<6FF8E81C-2E65-491B-9319-42711FBE1048@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-05-18T19:46:57Z",
+      "subject": "[statnet_help] a question on statnetuserterms (or ergmuserterms)",
+      "subject_clean": "[statnet_help] a question on statnetuserterms (or ergmuserterms)",
+      "in_reply_to": "<482D7B24.9020503@dkfz.de>",
+      "references": [
+        "<482D7B24.9020503@dkfz.de>"
+      ],
+      "body_plain": "Hello Svetlana.  Actually, the statnet team has just been discussing  \nthis.  There does not yet exist such a tutorial, but one is in the  \nworks.  For now, the best thing to do is to (1) read the comments in  \nthe files src/changestats.h and R/InitErgmTerm.R ;  and (2) try to  \ncopy the style of other functions in the src/changestats.c file and  \nthe R/InitErgmTerm.R file.\n\nWe'll undoubtedly send an announcement when something is ready, but if  \nyou don't hear anything after a long while feel free to ask again!\n\nDave\n\n\nOn May 16, 2008, at 2:16 PM, Svetlana Bulashevska wrote:\n\n> Dear Sirs,\n> I wonder if there any tutorial on using the package statnetuserterms  \n> (or ergmuserterms) where one can define its own statistic for the  \n> ergm.\n> Has somebody experience with this?\n> Thank you very much,\n> Svetlana Bulashevska.\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hello Svetlana.  Actually, the statnet team has just been discussing  \nthis.  There does not yet exist such a tutorial, but one is in the  \nworks.  For now, the best thing to do is to (1) read the com",
+      "thread_id": "thread-91a0c7df7c4a",
+      "thread_depth": 1,
+      "month": "2008-05"
+    },
+    {
+      "id": "msg-1020d72a5647",
+      "message_id": "<Pine.WNT.4.64.0805182213150.440@vinaya.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2008-05-18T22:41:57Z",
+      "subject": "[statnet_help] interpreting GWESP",
+      "subject_clean": "[statnet_help] interpreting GWESP",
+      "in_reply_to": "<482B37D4.10305@fas.harvard.edu>",
+      "references": [
+        "<482B37D4.10305@fas.harvard.edu>"
+      ],
+      "body_plain": "Hi Kevin,\n\nA wonderful question.  Interpretation of GWESP can be complex and subtle - \nevery time I work with it for a sustained period, I find new ways of \nthinking about it.  At some point, if I ever find the time (ha!) I'd love \nto write it all out (along with my thoughts on GWDSP and perhaps GWD) into \na paper.\n\nIn the meanwhile, it's important to note that the interpretation is not as \nstraightforward as you lay out. The number of triangles that the edge will \nclose matters, so one component of the change in log-odds involves this. \nBut one needs to think of things from the point of view of the other two \nties in each of those triangles that will be close.  The number of \ntriangles that each of them is in will also change, and that will affect \nthe log-odds of the first tie as well.  Ive never sat down and put it all \ninto a single formula for specifying the logodds as a function of these \ndifferent quantities, but it shoulnd't be complicated. Unfortunately, \nit'll never be quite as straightforward as many other commonly used \nstatistics.\n\nI hope that helps!\nSteve\n\n\n\n\n> greetings,\n>\n> i am wondering if there is a straightforward formula that can be used to \n> interpret the GWESP coefficient, together with the weight parameter, in more \n> commonsense language? in other words, i am looking for a way to interpret the \n> coefficient in a manner that is comparable to the other terms in the model, \n> by saying, for instance, that if a tie closes a SINGLE triangle, then the \n> log-odds of that tie forming increases by X, if a tie closes only TWO \n> triangles, then the log-odds of that tie forming increases by Y, etc etc \n> (thus, i would be able to directly compare the likelihood of such ties to, \n> say, a tie that symmetrizes a dyad or a tie that is racially homophilous). is \n> there an easy way to determine such log-odds, then, as a function of a) the \n> coefficient, b) the weight parameter, and c) the number of triangles that the \n> tie will form? (as goodreau et al. do in 'birds of a feather,' i think- \n> hunter 2007 also includes something comparable.)\n>\n> thanks greatly!\n>\n> -kevin\n>\n> -- \n> Kevin Lewis\n> Ph.D. Candidate in Sociology\n> Harvard University\n> 641 William James Hall\n> 33 Kirkland Street\n> Cambridge, MA 02138\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n                    *PLEASE NOTICE NEW OFFICE LOCATION*\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65855,-122.3091&z=18&t=k             *\n**************************************************************************",
+      "body_snippet": "Hi Kevin,\n\nA wonderful question.  Interpretation of GWESP can be complex and subtle - \nevery time I work with it for a sustained period, I find new ways of \nthinking about it.  At some point, if I eve",
+      "thread_id": "thread-00c611c192ab",
+      "thread_depth": 1,
+      "month": "2008-05"
+    },
+    {
+      "id": "msg-34081cbe118b",
+      "message_id": "<Pine.WNT.4.64.0805191608090.7504@martina>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2008-05-19T16:10:21Z",
+      "subject": "[statnet_help] Degeneracy problem",
+      "subject_clean": "[statnet_help] Degeneracy problem",
+      "in_reply_to": "<001501c8b78f$4775fbe0$d661f3a0$@edu>",
+      "references": [
+        "<001501c8b78f$4775fbe0$d661f3a0$@edu>"
+      ],
+      "body_plain": "Hi Jichao,\n\nCan you tell me the version of the ergm package you are using?  Easiest to \njust cut and paste the output from R when you first load ergm -- mine \nlooks like this:\n\n> library(ergm)\nLoading required package: network\nClasses for Relational Data\nVersion 1.3 created on January 31, 2008.\ncopyright (c) 2005, Carter T. Butts, University of California-Irvine\n                     Mark S. Handcock, University of Washington\n                     David R. Hunter, Penn State University\n                     Martina Morris, University of Washington\nFor citation information, type citation(\"network\").\nType help(package=\"network-package\") to get started.\n\nergm: Fit, Simulate and Diagnose Exponential-Family Models for\nNetworks\nVersion 2.1 created on April 25, 2008\ncopyright (c) 2003, Mark S. Handcock, University of Washington\n                     David R. Hunter, Penn State University\n                     Carter T. Butts, University of California-Irvine\n                     Steven M. Goodreau, University of Washington\n                     Martina Morris, University of Washington\nType help(package=\"ergm\") to get started.\n\nBased on \"statnet\" project software (http://statnetproject.org).\n  For license and citation information see \nhttp://statnetproject.org/attribution\n  or type citation(\"ergm\").\nWarning message:\npackage 'ergm' was built under R version 2.7.0\n\n\nOn Fri, 16 May 2008, Jichao Qian wrote:\n\n> Hi all,\n>\n>\n>\n> I have some networks that I'm trying to fit to ERGM. The problem I'm running\n> into is that statnet reports that the models are degenerate. I followed the\n> advice of statnet manual online but the problem persists. My networks are\n> about 200x200. I have tried to add parameters such as gwdegree, gwesp, and\n> gwdsp. I also increased MCMCSample size and sample interval. Does anyone\n> have any advice on what else I can  do to help the model become\n> non-degenerate? Thank you.\n>\n>\n>\n> The exact message I got from statnet is the following:\n>\n> Warning: The diagnostics indicate that the model is very unstable.\n>\n>   They suggest that the model is near degenerate,\n>\n>   and that the numerical summaries are suspect.\n>\n>\n>\n> Best regards,\n>\n> Jichao Qian\n>\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Jichao,\n\nCan you tell me the version of the ergm package you are using?  Easiest to \njust cut and paste the output from R when you first load ergm -- mine \nlooks like this:\n\n> library(ergm)\nLoading",
+      "thread_id": "thread-b07f41b147a3",
+      "thread_depth": 1,
+      "month": "2008-05"
+    },
+    {
+      "id": "msg-ef73dd401de7",
+      "message_id": "<9b69d2ac0805200802t5c7cdd78pa6adea53eed55075@mail.gmail.com>",
+      "from_name": "jenine harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2008-05-20T08:02:53Z",
+      "subject": "[statnet_help] exponentiating ERGM coefficients into odds ratios?",
+      "subject_clean": "[statnet_help] exponentiating ERGM coefficients into odds ratios?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI have an ERGM model with covariates: nodeicov, nodeocov, nodeifactor,\nnodeofactor, and nodemix. The model runs well and the results make sense. I\nam trying to put together a presentation of the results for an audience\ncomposed of primarily epidemiologists who would appreciate knowing the odds\nratios corresponding to the betas. I have tried exponentiating the betas but\nthe results do not seem quite right.... Has anyone had experience with this?\nIs there some reason I should not exponentiate to get an odds ratio in an\nERGM model? I will admit that I do not understand all of the\nbehind-the-scenes algorithms, but my general sense was that these models\nwere approximately equivalent to logistic regression models....\n\nThanks,\njenine\n\n-- \n************************************\nJenine K. Harris, Ph.D.\nSenior Research Assistant\nCenter for Tobacco Policy Research\nSaint Louis University School of Public Health\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210\n314.977.3234 Fax\nhttp://ctpr.slu.edu/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080520/baed7bd8/attachment.html>",
+      "body_snippet": "Hi all,\n\nI have an ERGM model with covariates: nodeicov, nodeocov, nodeifactor,\nnodeofactor, and nodemix. The model runs well and the results make sense. I\nam trying to put together a presentation of ",
+      "thread_id": "thread-ef73dd401de7",
+      "thread_depth": 0,
+      "month": "2008-05"
+    },
+    {
+      "id": "msg-483bef26b221",
+      "message_id": "<Pine.WNT.4.64.0805200944130.5504@csde-ts2.csde.washington.edu>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2008-05-20T09:48:13Z",
+      "subject": "[statnet_help] exponentiating ERGM coefficients into odds ratios?",
+      "subject_clean": "[statnet_help] exponentiating ERGM coefficients into odds ratios?",
+      "in_reply_to": "<9b69d2ac0805200802t5c7cdd78pa6adea53eed55075@mail.gmail.com>",
+      "references": [
+        "<9b69d2ac0805200802t5c7cdd78pa6adea53eed55075@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Jenine,\n\nYou can exponentiate the coefficients, but the meanings are sometimes a \nbit more nuanced (mostly for the dyadic dependence terms, which you do not \nhave in your model).\n\nCan you send us the ergm output so we can see what you're concerned about?\n\nbest,\nMartina\n\nOn Tue, 20 May 2008, jenine harris wrote:\n\n> Hi all,\n>\n> I have an ERGM model with covariates: nodeicov, nodeocov, nodeifactor,\n> nodeofactor, and nodemix. The model runs well and the results make sense. I\n> am trying to put together a presentation of the results for an audience\n> composed of primarily epidemiologists who would appreciate knowing the odds\n> ratios corresponding to the betas. I have tried exponentiating the betas but\n> the results do not seem quite right.... Has anyone had experience with this?\n> Is there some reason I should not exponentiate to get an odds ratio in an\n> ERGM model? I will admit that I do not understand all of the\n> behind-the-scenes algorithms, but my general sense was that these models\n> were approximately equivalent to logistic regression models....\n>\n> Thanks,\n> jenine\n>\n> -- \n> ************************************\n> Jenine K. Harris, Ph.D.\n> Senior Research Assistant\n> Center for Tobacco Policy Research\n> Saint Louis University School of Public Health\n> 3545 Lafayette Ave, Suite 300\n> St. Louis, MO 63104-1399\n> 314.977.8210\n> 314.977.3234 Fax\n> http://ctpr.slu.edu/\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Jenine,\n\nYou can exponentiate the coefficients, but the meanings are sometimes a \nbit more nuanced (mostly for the dyadic dependence terms, which you do not \nhave in your model).\n\nCan you send us t",
+      "thread_id": "thread-ef73dd401de7",
+      "thread_depth": 1,
+      "month": "2008-05"
+    },
+    {
+      "id": "msg-1f1c7a1dde56",
+      "message_id": "<9b69d2ac0805200958h17dbff05w39aa2bf9c6101304@mail.gmail.com>",
+      "from_name": "jenine harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2008-05-20T09:58:51Z",
+      "subject": "[statnet_help] exponentiating ERGM coefficients into odds ratios?",
+      "subject_clean": "[statnet_help] exponentiating ERGM coefficients into odds ratios?",
+      "in_reply_to": "<Pine.WNT.4.64.0805200944130.5504@csde-ts2.csde.washington.edu>",
+      "references": [
+        "<9b69d2ac0805200802t5c7cdd78pa6adea53eed55075@mail.gmail.com>",
+        "<Pine.WNT.4.64.0805200944130.5504@csde-ts2.csde.washington.edu>"
+      ],
+      "body_plain": "Here is the output:\n\nFormula:   citnet ~ edges + nodeocov(\"year_code\") + nodeicov(\"year_code\") +\n    nodeofactor(\"ifcat\", base = 1) + nodeifactor(\"ifcat\", base = 1) +\n    nodemix(\"hepi2\", base = 1)\n\nNewton-Raphson iterations:  77\nMCMC sample of size 1e+05\n\nMonte Carlo MLE Results:\n                     Estimate Std. Error MCMC s.e. p-value\nedges               -5.139193   0.099093     0.002  <1e-04 ***\nnodeocov.year_code   0.040302   0.002435  4.21e-05  <1e-04 ***\nnodeicov.year_code  -0.100580   0.001266  2.22e-05  <1e-04 ***\nnodeofactor.ifcat.2  0.221012   0.026168  4.49e-04  <1e-04 ***\nnodeofactor.ifcat.3  0.314850   0.040432     0.001  <1e-04 ***\nnodeifactor.ifcat.2  0.797822   0.032866     0.001  <1e-04 ***\nnodeifactor.ifcat.3  1.607663   0.034690     0.001  <1e-04 ***\nmix.hepi2.1.0       -1.028770   0.044259     0.001  <1e-04 ***\nmix.hepi2.0.1       -1.803679   0.089797     0.002  <1e-04 ***\nmix.hepi2.1.1        1.472849   0.040595     0.001  <1e-04 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n    Null  Deviance: 4881492  on 3521252  degrees of freedom\n Residual Deviance:   95587  on 3521242  degrees of freedom\n          Deviance: 4785905  on      10  degrees of freedom\n\nAIC: 95607    BIC: 95738\n\nThe odds ratios that seem a little off are:\n\nmix.hepi2.1.1 -- Odds Ratio=4.349, which seems too high\nnodeofactor.ifcat.3 -- Odds Ratio=1.363, which seems too low\nnodeocov.year_code -- Odds Ratio=1.041, this one I would have guessed to be\nprotective (<1)\nnodeicov.year_code -- Odds Ratio=0.905, this one I would have guessed to be\ngreater than 1\n\nIt could just be that things are a little different than I would have\npredicted them to be.\n\n\nThanks for your help.\nj\n\n\nOn Tue, May 20, 2008 at 11:48 AM, Martina Morris <morrism@u.washington.edu>\nwrote:\n\n> Hi Jenine,\n>\n> You can exponentiate the coefficients, but the meanings are sometimes a bit\n> more nuanced (mostly for the dyadic dependence terms, which you do not have\n> in your model).\n>\n> Can you send us the ergm output so we can see what you're concerned about?\n>\n> best,\n> Martina\n>\n>\n> On Tue, 20 May 2008, jenine harris wrote:\n>\n>  Hi all,\n>>\n>> I have an ERGM model with covariates: nodeicov, nodeocov, nodeifactor,\n>> nodeofactor, and nodemix. The model runs well and the results make sense.\n>> I\n>> am trying to put together a presentation of the results for an audience\n>> composed of primarily epidemiologists who would appreciate knowing the\n>> odds\n>> ratios corresponding to the betas. I have tried exponentiating the betas\n>> but\n>> the results do not seem quite right.... Has anyone had experience with\n>> this?\n>> Is there some reason I should not exponentiate to get an odds ratio in an\n>> ERGM model? I will admit that I do not understand all of the\n>> behind-the-scenes algorithms, but my general sense was that these models\n>> were approximately equivalent to logistic regression models....\n>>\n>> Thanks,\n>> jenine\n>>\n>> --\n>> ************************************\n>> Jenine K. Harris, Ph.D.\n>> Senior Research Assistant\n>> Center for Tobacco Policy Research\n>> Saint Louis University School of Public Health\n>> 3545 Lafayette Ave, Suite 300\n>> St. Louis, MO 63104-1399\n>> 314.977.8210\n>> 314.977.3234 Fax\n>> http://ctpr.slu.edu/\n>>\n>>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n>\n\n\n\n-- \n************************************\nJenine K. Harris, Ph.D.\nSenior Research Assistant\nCenter for Tobacco Policy Research\nSaint Louis University School of Public Health\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210\n314.977.3234 Fax\nhttp://ctpr.slu.edu/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080520/d9f4778d/attachment.html>",
+      "body_snippet": "Here is the output:\n\nFormula:   citnet ~ edges + nodeocov(\"year_code\") + nodeicov(\"year_code\") +\n    nodeofactor(\"ifcat\", base = 1) + nodeifactor(\"ifcat\", base = 1) +\n    nodemix(\"hepi2\", base = 1)\n\nN",
+      "thread_id": "thread-ef73dd401de7",
+      "thread_depth": 2,
+      "month": "2008-05"
+    },
+    {
+      "id": "msg-148d5e406dd7",
+      "message_id": "<Pine.WNT.4.64.0805210847030.2516@vinaya.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2008-05-21T08:48:11Z",
+      "subject": "[statnet_dev] RE: [statnet_help] Degeneracy problem",
+      "subject_clean": "[statnet_dev] RE: [statnet_help] Degeneracy problem",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello Jichao,\n\nYes, from my own experience, I find that as a whole models do seem to be more \nlikely to experience degeneracy when applied to larger networks than smaller \nones.  I personally would only suggest selecting out subsets of your data if \nyou have a valid scientific reason for doing so; otherwise I'd recommend \nthinking of degeneracy as a sign that your model is not appropriate to the \ndata, and keep hunting.\n\nThe degeneracy warning that sometimes appears at the end of an ergm is a bit of \na blunt instrument, and we're working to refine it.  A much better way to \ndiagnose degeneracy at this point is to examine the MCMC diagnostics. \nInstructions for doing so, and how to interpret the resulting plots, can be \nfound in Section 6 of the statnet tutorial that is now published in JSS:\n\nhttp://www.jstatsoft.org/v24/i09\n\nGood luck!\nSteve\n\nOn Tue, 20 May 2008, Jichao Qian wrote:\n\n> Date: Tue, 20 May 2008 01:40:53 -0400\n> From: Jichao Qian <jichao@MIT.EDU>\n> Reply-To: statnet development team <statnet_dev@u.washington.edu>\n> To: 'Martina Morris' <morrism@u.washington.edu>\n> Cc: statnet_dev@u.washington.edu\n> Subject: [statnet_dev] RE: [statnet_help] Degeneracy problem\n> \n> Thanks for your quick response. I just tried it. It's still reporting the\n> same degeneracy problem, though the reported statistics look reasonable.\n> When I narrow the network down to about 70x70 actors, the network is no\n> longer degenerate. Is degeneracy a problem with the size of the network?\n> \n> Jichao\n> \n> -----Original Message-----\n> From: Martina Morris [mailto:morrism@u.washington.edu]\n> Sent: Monday, May 19, 2008 8:54 PM\n> To: Jichao Qian\n> Cc: statnet_dev@u.washington.edu\n> Subject: RE: [statnet_help] Degeneracy problem\n> \n> Ok, the first thing you should do is update your ergm package to the\n> latest release (2.1).  We found that our degeneracy diagnostic was not\n> behaving properly, so have changed that.\n> \n> Let us know if this helps.\n> \n> best,\n> Martina\n> \n> On Mon, 19 May 2008, Jichao Qian wrote:\n> \n>> Hi Martina,\n>> \n>> Here's my output:\n>> \n>>> library(statnet)\n>> Loading required package: network\n>> Classes for Relational Data\n>> Version 1.3 created on January 31, 2008.\n>> copyright (c) 2005, Carter T. Butts, University of California-Irvine\n>>                    Mark S. Handcock, University of Washington\n>>                    David R. Hunter, Penn State University\n>>                    Martina Morris, University of Washington\n>> For citation information, type citation(\"network\").\n>> Type help(package=\"network-package\") to get started.\n>> Loading required package: ergm\n>> \n>> ergm: Fit, Simulate and Diagnose Exponential-Family Models for\n>> Networks\n>> Version 2.0-6 created on March 10, 2008\n>> copyright (c) 2003, Mark S. Handcock, University of Washington\n>>                    David R. Hunter, Penn State University\n>>                    Carter T. Butts, University of California-Irvine\n>>                    Steven M. Goodreau, University of Washington\n>>                    Martina Morris, University of Washington\n>> Type help(package=\"ergm\") to get started.\n>> \n>> Based on \"statnet\" project software (http://statnetproject.org).\n>> For license and citation information see\n>> http://statnetproject.org/attribution\n>> or type citation(\"ergm\").\n>> \n>> Looks like I have a slightly earlier version of ERGM than you do. Does the\n>> new version have components that helps with the degeneracy problem?\n>> \n>> Thanks for your help.\n>> \n>> Jichao\n>> \n>> -----Original Message-----\n>> From: Martina Morris [mailto:morrism@u.washington.edu]\n>> Sent: Monday, May 19, 2008 7:10 PM\n>> To: Jichao Qian\n>> Cc: statnet_help@u.washington.edu\n>> Subject: Re: [statnet_help] Degeneracy problem\n>> \n>> Hi Jichao,\n>> \n>> Can you tell me the version of the ergm package you are using?  Easiest to\n>> just cut and paste the output from R when you first load ergm -- mine\n>> looks like this:\n>> \n>>> library(ergm)\n>> Loading required package: network\n>> Classes for Relational Data\n>> Version 1.3 created on January 31, 2008.\n>> copyright (c) 2005, Carter T. Butts, University of California-Irvine\n>>                     Mark S. Handcock, University of Washington\n>>                     David R. Hunter, Penn State University\n>>                     Martina Morris, University of Washington\n>> For citation information, type citation(\"network\").\n>> Type help(package=\"network-package\") to get started.\n>> \n>> ergm: Fit, Simulate and Diagnose Exponential-Family Models for\n>> Networks\n>> Version 2.1 created on April 25, 2008\n>> copyright (c) 2003, Mark S. Handcock, University of Washington\n>>                     David R. Hunter, Penn State University\n>>                     Carter T. Butts, University of California-Irvine\n>>                     Steven M. Goodreau, University of Washington\n>>                     Martina Morris, University of Washington\n>> Type help(package=\"ergm\") to get started.\n>> \n>> Based on \"statnet\" project software (http://statnetproject.org).\n>>  For license and citation information see\n>> http://statnetproject.org/attribution\n>>  or type citation(\"ergm\").\n>> Warning message:\n>> package 'ergm' was built under R version 2.7.0\n>> \n>> \n>> On Fri, 16 May 2008, Jichao Qian wrote:\n>> \n>>> Hi all,\n>>> \n>>> \n>>> \n>>> I have some networks that I'm trying to fit to ERGM. The problem I'm\n>> running\n>>> into is that statnet reports that the models are degenerate. I followed\n>> the\n>>> advice of statnet manual online but the problem persists. My networks are\n>>> about 200x200. I have tried to add parameters such as gwdegree, gwesp,\n> and\n>>> gwdsp. I also increased MCMCSample size and sample interval. Does anyone\n>>> have any advice on what else I can  do to help the model become\n>>> non-degenerate? Thank you.\n>>> \n>>> \n>>> \n>>> The exact message I got from statnet is the following:\n>>> \n>>> Warning: The diagnostics indicate that the model is very unstable.\n>>>\n>>>   They suggest that the model is near degenerate,\n>>>\n>>>   and that the numerical summaries are suspect.\n>>> \n>>> \n>>> \n>>> Best regards,\n>>> \n>>> Jichao Qian\n>>> \n>>> \n>> \n>> ****************************************************************\n>>  Professor of Sociology and Statistics\n>>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>  Box 354322\n>>  University of Washington\n>>  Seattle, WA 98195-4322\n>>\n>>  Office:\t(206) 685-3402\n>>  Dept Office: \t(206) 543-5882, 543-7237\n>>  Fax: \t\t(206) 685-7419\n>> \n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>> \n>> \n> \n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:\t(206) 685-3402\n>  Dept Office: \t(206) 543-5882, 543-7237\n>  Fax: \t\t(206) 685-7419\n> \n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n> \n> _______________________________________________\n> statnet_dev mailing list\n> statnet_dev@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_dev\n>\n\n                    *PLEASE NOTICE NEW OFFICE LOCATION*\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65855,-122.3091&z=18&t=k             *\n**************************************************************************",
+      "body_snippet": "Hello Jichao,\n\nYes, from my own experience, I find that as a whole models do seem to be more \nlikely to experience degeneracy when applied to larger networks than smaller \nones.  I personally would on",
+      "thread_id": "thread-148d5e406dd7",
+      "thread_depth": 0,
+      "month": "2008-05"
+    },
+    {
+      "id": "msg-e75eaa0ce4c2",
+      "message_id": "<Pine.WNT.4.64.0805210901210.2516@vinaya.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2008-05-21T09:15:32Z",
+      "subject": "[statnet_help] exponentiating ERGM coefficients into odds ratios?",
+      "subject_clean": "[statnet_help] exponentiating ERGM coefficients into odds ratios?",
+      "in_reply_to": "<9b69d2ac0805200958h17dbff05w39aa2bf9c6101304@mail.gmail.com>",
+      "references": [
+        "<9b69d2ac0805200802t5c7cdd78pa6adea53eed55075@mail.gmail.com>",
+        "<Pine.WNT.4.64.0805200944130.5504@csde-ts2.csde.washington.edu>",
+        "<9b69d2ac0805200958h17dbff05w39aa2bf9c6101304@mail.gmail.com>"
+      ],
+      "body_plain": "Hello Jenine,\n\nYes, you're right with the interpretations you listed below: those with \ncoefficients above 0 (ie implying odds ratios above 1) do imply an \nincrease in probability, and vice versa.  So you have interpreted the \neffects correctly.  Just remember that when you have this many terms in a \nmodel, the effects are conditional on one another, and can confound \nexpectation!\n\n\n>                     Estimate Std. Error MCMC s.e. p-value\n> edges               -5.139193   0.099093     0.002  <1e-04 ***\n> nodeocov.year_code   0.040302   0.002435  4.21e-05  <1e-04 ***\n> nodeicov.year_code  -0.100580   0.001266  2.22e-05  <1e-04 ***\n> nodeofactor.ifcat.2  0.221012   0.026168  4.49e-04  <1e-04 ***\n> nodeofactor.ifcat.3  0.314850   0.040432     0.001  <1e-04 ***\n> nodeifactor.ifcat.2  0.797822   0.032866     0.001  <1e-04 ***\n> nodeifactor.ifcat.3  1.607663   0.034690     0.001  <1e-04 ***\n> mix.hepi2.1.0       -1.028770   0.044259     0.001  <1e-04 ***\n> mix.hepi2.0.1       -1.803679   0.089797     0.002  <1e-04 ***\n> mix.hepi2.1.1        1.472849   0.040595     0.001  <1e-04 ***\n> ---\n> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n>\n>    Null  Deviance: 4881492  on 3521252  degrees of freedom\n> Residual Deviance:   95587  on 3521242  degrees of freedom\n>          Deviance: 4785905  on      10  degrees of freedom\n>\n> AIC: 95607    BIC: 95738\n>\n> The odds ratios that seem a little off are:\n>\n> mix.hepi2.1.1 -- Odds Ratio=4.349, which seems too high\n> nodeofactor.ifcat.3 -- Odds Ratio=1.363, which seems too low\n> nodeocov.year_code -- Odds Ratio=1.041, this one I would have guessed to be\n> protective (<1)\n> nodeicov.year_code -- Odds Ratio=0.905, this one I would have guessed to be\n> greater than 1\n>\n> It could just be that things are a little different than I would have\n> predicted them to be.\n>\n>\n> Thanks for your help.\n> j\n>\n>\n> On Tue, May 20, 2008 at 11:48 AM, Martina Morris <morrism@u.washington.edu>\n> wrote:\n>\n>> Hi Jenine,\n>>\n>> You can exponentiate the coefficients, but the meanings are sometimes a bit\n>> more nuanced (mostly for the dyadic dependence terms, which you do not have\n>> in your model).\n>>\n>> Can you send us the ergm output so we can see what you're concerned about?\n>>\n>> best,\n>> Martina\n>>\n>>\n>> On Tue, 20 May 2008, jenine harris wrote:\n>>\n>>  Hi all,\n>>>\n>>> I have an ERGM model with covariates: nodeicov, nodeocov, nodeifactor,\n>>> nodeofactor, and nodemix. The model runs well and the results make sense.\n>>> I\n>>> am trying to put together a presentation of the results for an audience\n>>> composed of primarily epidemiologists who would appreciate knowing the\n>>> odds\n>>> ratios corresponding to the betas. I have tried exponentiating the betas\n>>> but\n>>> the results do not seem quite right.... Has anyone had experience with\n>>> this?\n>>> Is there some reason I should not exponentiate to get an odds ratio in an\n>>> ERGM model? I will admit that I do not understand all of the\n>>> behind-the-scenes algorithms, but my general sense was that these models\n>>> were approximately equivalent to logistic regression models....\n>>>\n>>> Thanks,\n>>> jenine\n>>>\n>>> --\n>>> ************************************\n>>> Jenine K. Harris, Ph.D.\n>>> Senior Research Assistant\n>>> Center for Tobacco Policy Research\n>>> Saint Louis University School of Public Health\n>>> 3545 Lafayette Ave, Suite 300\n>>> St. Louis, MO 63104-1399\n>>> 314.977.8210\n>>> 314.977.3234 Fax\n>>> http://ctpr.slu.edu/\n>>>\n>>>\n>> ****************************************************************\n>>  Professor of Sociology and Statistics\n>>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>  Box 354322\n>>  University of Washington\n>>  Seattle, WA 98195-4322\n>>\n>>  Office:        (206) 685-3402\n>>  Dept Office:   (206) 543-5882, 543-7237\n>>  Fax:           (206) 685-7419\n>>\n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>>\n>\n>\n>\n> -- \n> ************************************\n> Jenine K. Harris, Ph.D.\n> Senior Research Assistant\n> Center for Tobacco Policy Research\n> Saint Louis University School of Public Health\n> 3545 Lafayette Ave, Suite 300\n> St. Louis, MO 63104-1399\n> 314.977.8210\n> 314.977.3234 Fax\n> http://ctpr.slu.edu/\n>\n\n                    *PLEASE NOTICE NEW OFFICE LOCATION*\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65855,-122.3091&z=18&t=k             *\n**************************************************************************",
+      "body_snippet": "Hello Jenine,\n\nYes, you're right with the interpretations you listed below: those with \ncoefficients above 0 (ie implying odds ratios above 1) do imply an \nincrease in probability, and vice versa.  So",
+      "thread_id": "thread-ef73dd401de7",
+      "thread_depth": 3,
+      "month": "2008-05"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-8283708fc6cb",
+      "subject": "[statnet_help] problem",
+      "message_count": 2,
+      "participants": [
+        "David Hunter"
+      ],
+      "started": "2008-05-01T23:27:25Z",
+      "last_reply": "2008-05-02T04:31:10Z",
+      "root_message_id": "msg-8283708fc6cb"
+    },
+    {
+      "id": "thread-00c611c192ab",
+      "subject": "[statnet_help] interpreting GWESP",
+      "message_count": 2,
+      "participants": [
+        "Kevin Lewis",
+        "Steven Goodreau"
+      ],
+      "started": "2008-05-14T12:04:52Z",
+      "last_reply": "2008-05-18T22:41:57Z",
+      "root_message_id": "msg-00c611c192ab"
+    },
+    {
+      "id": "thread-91a0c7df7c4a",
+      "subject": "[statnet_help] a question on statnetuserterms (or ergmuserterms)",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Svetlana Bulashevska"
+      ],
+      "started": "2008-05-16T05:16:36Z",
+      "last_reply": "2008-05-18T19:46:57Z",
+      "root_message_id": "msg-91a0c7df7c4a"
+    },
+    {
+      "id": "thread-b07f41b147a3",
+      "subject": "[statnet_help] Degeneracy problem",
+      "message_count": 2,
+      "participants": [
+        "Jichao Qian",
+        "Martina Morris"
+      ],
+      "started": "2008-05-16T12:58:55Z",
+      "last_reply": "2008-05-19T16:10:21Z",
+      "root_message_id": "msg-b07f41b147a3"
+    },
+    {
+      "id": "thread-ef73dd401de7",
+      "subject": "[statnet_help] exponentiating ERGM coefficients into odds ratios?",
+      "message_count": 4,
+      "participants": [
+        "Martina Morris",
+        "Steven Goodreau",
+        "jenine harris"
+      ],
+      "started": "2008-05-20T08:02:53Z",
+      "last_reply": "2008-05-21T09:15:32Z",
+      "root_message_id": "msg-ef73dd401de7"
+    },
+    {
+      "id": "thread-148d5e406dd7",
+      "subject": "[statnet_dev] RE: [statnet_help] Degeneracy problem",
+      "message_count": 1,
+      "participants": [
+        "Steven Goodreau"
+      ],
+      "started": "2008-05-21T08:48:11Z",
+      "last_reply": "2008-05-21T08:48:11Z",
+      "root_message_id": "msg-148d5e406dd7"
+    }
+  ]
+}

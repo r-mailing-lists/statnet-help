@@ -1,0 +1,127 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2020-11",
+  "messages": [
+    {
+      "id": "msg-e5b4a8fa1e38",
+      "message_id": "<VI1PR04MB718213DD98D17DD255B49FC1BC100@VI1PR04MB7182.eurprd04.prod.outlook.com>",
+      "from_name": "Fisher, David",
+      "from_email_hash": "91f83fa98c2fc52e8c8e56236f023a02b5ed9e023324c994b6a73bd5c5d3fa5b",
+      "date": "2020-11-02T02:22:59Z",
+      "subject": "[statnet_help] Modelling number of events and event size in bipartite network",
+      "subject_clean": "[statnet_help] Modelling number of events and event size in bipartite network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi folks,\n\nI posed this query in July, but thought I would ask again with code to perhaps demonstrate my problem a bit better.\n\nI've recently started playing around with modelling actor by event bipartite networks using \"ergm\". My first mode are actors with a single attribute, which is a 2-level factor (lets call it \"class\", with reds and blues), while my 2nd mode are events which have no attributes. I am interested in modelling 2 processes in a two-mode network that can lead to a higher degree in the projected one-mode network. Actors can get a higher one-mode degree by: 1) attending more events & 2) attending events attended by more others. I am interested in specifically modelling these two processes in the two-mode network so I don't want to project to the one-mode then model a difference in degree.\n\nI am reasonably happy I get at 1) with 'b1factor(\"class\")'\n\nBut right now I cannot work out how to model 2). I am certain that there is a term for it and I am just not understanding the documentation. I don't think it is \"b2factor(\"class\")\" as events do not vary by class. I don't think it is any of the nodematch functions (e.g. \"b1nodematch(\"class\")\") as I am not interested (for now) in whether reds attend events with other reds. I think I want to compare the number of two paths between the two groups, but I can't see a function to do that. Alternatively, perhaps you could frame it as a b2 k-star question, and does the number of different k-stars where the events are the central node depend on the class of those nodes that they are attached too. I've tried \"b2starmix(2,\"class\", diff=T)\" and this gives 2 different estimates for the different classes, which may allow one to say whether the 2 classes are similar in terms of the size of the event, but I am not sure. I have also wondered about adding the event degree as an attribute, and then seeing if reds or blues differ in their preference to connect with events differing in that attribute.\n\nCode recreating where I am at using the Davis Southern Women dataset here (I assume you can access the Davis dataset via statnet instead of tnet, but I haven't been able to track down how; \"data(davis)\" doesn't work for me:\n\nlibrary(tnet)\nlibrary(statnet)\n\n# Load Davis' (1940) Southern Women Dataset\ndata(tnet)\n\nsw_ebi = as.matrix( table(Davis.Southern.women.2mode) ) #18 women (rows), 14 social events (columns)\n\nsw_bip = network(sw_ebi, bipartite = T)\n\n#randomly assign 'class' as \"red\" or \"blue\". Code events as \"black\"\nsw_bip %v% \"class\" = c(sample(c(\"red\",\"blue\"), nrow(sw_ebi), replace=T), rep(\"black\", ncol(sw_ebi)))\n\nplot(sw_bip, vertex.col = \"class\")\n\n#Fit Bipartite ERGM, model differences in number of connections between classes\nergm_bip = ergm(sw_bip ~ edges +\n                   b1factor(\"class\") ,\n                 reference=~Bernoulli)\n\nsummary(ergm_bip) #so this is good, but I also want to model whether blues or reds attend larger events.\n\n\nAny help would be greatly appreciated.\n\nBest regards,\n\nDavid\n\nDavid N. Fisher\nhe/him\nResearch Fellow\nThe School of Biological Sciences\nUniversity of Aberdeen\nWeb<https://evoetholab.com/> | GS<https://scholar.google.com/citations?user=1TuwKzQAAAAJ&hl=en> | Tw<https://twitter.com/DFofFreedom> | RG<https://www.researchgate.net/profile/David_Fisher30> | Or<https://orcid.org/0000-0002-4444-4450>\n\n\n\nThe University of Aberdeen is a charity registered in Scotland, No SC013683.\nTha Oilthigh Obar Dheathain na charthannas cl?raichte ann an Alba, ?ir. SC013683.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20201102/55a2ed8b/attachment.html>",
+      "body_snippet": "Hi folks,\n\nI posed this query in July, but thought I would ask again with code to perhaps demonstrate my problem a bit better.\n\nI've recently started playing around with modelling actor by event bipar",
+      "thread_id": "thread-e5b4a8fa1e38",
+      "thread_depth": 0,
+      "month": "2020-11"
+    },
+    {
+      "id": "msg-6bdd25e498c8",
+      "message_id": "<CAEHui+P7oQDu9+TW-wcR_K3kaLt=hQyM26NcRCSiMMFWMkoakQ@mail.gmail.com>",
+      "from_name": "b",
+      "from_email_hash": "bea5286abf34bc34d0eaa145728b4377c03af54182959b7953ae1e90b2c12255",
+      "date": "2020-11-06T15:35:29Z",
+      "subject": "[statnet_help] Why no delete_edges() function in tergmLite?",
+      "subject_clean": "[statnet_help] Why no delete_edges() function in tergmLite?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I'm relatively new to the tergmLite package and adapting code which\nutilizes it to allow me to simulate on my personal computer, in combination\nwith the EpiModel library. Though I'd like to continue using the tergmLite,\nour model requires some nodes to remain in existence while not forming\nedges in the network (\"off-shift\"), in order to be reintroduced at a later\ntime step. We are trying to implement an \"off-shift\" module by changing the\nnodal attribute \"active\" from 1 to 0, and then deleting the edges in the\nedge list (el) involving these \"inactive\" nodes. The idea is to then\nreintroduce nodes into the network with the rest of their retained nodal\nattributes (updated accordingly) at a later time step. However, I notice\nthat tergmLite conspicuously lacks any functions to delete edges, while\nthere is a delete.edges() function in the network package, operating on\nnetwork objects rather than edge lists.\nI suspect there's a good conceptual reason why tergmLite lacks functions to\ndelete edges from the edge list, while the network package has them. But I\ndon't see the reason clearly. Can someone explain?\nIs designing a function to delete edges from el for our off-shift module a\nfool's errand, in that we are simply short-circuiting tergmLite's speed\nadvantage? I don't want to reinvent tergm+networkDynamic here, and though I\nrealize their deactivate functions with a terminus argument offer some of\nthe functionality I want, I don't believe I need their full capability nor\ndo I have the computational resources to run them.\n\nLooking for advice from those with more experience, both on whether/why\nthis path is inadvisable and if there are simpler alternatives I'm\noverlooking.\n\n-Benji Zusman\nUniversity of Florida\n\nOn Mon, Nov 2, 2020 at 3:05 PM <statnet_help-\nrequest@mailman13.u.washington.edu> wrote:\n\n> Send statnet_help mailing list submissions to\n>         statnet_help@u.washington.edu\n>\n> To subscribe or unsubscribe via the World Wide Web, visit\n>         http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> or, via email, send a message with subject or body 'help' to\n>         statnet_help-request@mailman13.u.washington.edu\n>\n> You can reach the person managing the list at\n>         statnet_help-owner@mailman13.u.washington.edu\n>\n> When replying, please edit your Subject line so it is more specific\n> than \"Re: Contents of statnet_help digest...\"\n> Today's Topics:\n>\n>    1. Modelling number of events and event size in      bipartite\n>       network (Fisher, David)\n>\n>\n>\n> ---------- Forwarded message ----------\n> From: \"Fisher, David\" <david.fisher@abdn.ac.uk>\n> To: \"statnet_help@u.washington.edu\" <statnet_help@u.washington.edu>\n> Cc:\n> Bcc:\n> Date: Mon, 2 Nov 2020 10:22:59 +0000\n> Subject: [statnet_help] Modelling number of events and event size in\n> bipartite network\n>\n> Hi folks,\n>\n> I posed this query in July, but thought I would ask again with code to\n> perhaps demonstrate my problem a bit better.\n>\n>\n> I've recently started playing around with modelling actor by event\n> bipartite networks using \"ergm\". My first mode are actors with a single\n> attribute, which is a 2-level factor (lets call it \"class\", with reds and\n> blues), while my 2nd mode are events which have no attributes. I am\n> interested in modelling 2 processes in a two-mode network that can lead to\n> a higher degree in the projected one-mode network. Actors can get a higher\n> one-mode degree by: 1) attending more events & 2) attending events attended\n> by more others. I am interested in specifically modelling these two\n> processes in the two-mode network so I don?t want to project to the\n> one-mode then model a difference in degree.\n>\n> I am reasonably happy I get at 1) with ?b1factor(\"class\")?\n>\n> But right now I cannot work out how to model 2). I am certain that there\n> is a term for it and I am just not understanding the documentation. I don't\n> think it is \"b2factor(\"class\")\" as events do not vary by class. I don't\n> think it is any of the nodematch functions (e.g. \"b1nodematch(\"class\")\") as\n> I am not interested (for now) in whether reds attend events with other\n> reds. I think I want to compare the number of two paths between the two\n> groups, but I can't see a function to do that. Alternatively, perhaps you\n> could frame it as a b2 k-star question, and does the number of different\n> k-stars where the events are the central node depend on the class of those\n> nodes that they are attached too. I?ve tried ?b2starmix(2,\"class\", diff=T)?\n> and this gives 2 different estimates for the different classes, which may\n> allow one to say whether the 2 classes are similar in terms of the size of\n> the event, but I am not sure. I have also wondered about adding the event\n> degree as an attribute, and then seeing if reds or blues differ in their\n> preference to connect with events differing in that attribute.\n>\n>\n>\n> Code recreating where I am at using the Davis Southern Women dataset here\n> (I assume you can access the Davis dataset via statnet instead of tnet, but\n> I haven?t been able to track down how; ?data(davis)? doesn?t work for me:\n>\n>\n>\n> library(tnet)\n>\n> library(statnet)\n>\n>\n>\n> # Load Davis' (1940) Southern Women Dataset\n>\n> data(tnet)\n>\n>\n>\n> sw_ebi = as.matrix( table(Davis.Southern.women.2mode) ) #18 women (rows),\n> 14 social events (columns)\n>\n>\n>\n> sw_bip = network(sw_ebi, bipartite = T)\n>\n>\n>\n> #randomly assign ?class? as ?red? or ?blue?. Code events as ?black?\n>\n> sw_bip %v% \"class\" = c(sample(c(\"red\",\"blue\"), nrow(sw_ebi), replace=T),\n> rep(\"black\", ncol(sw_ebi)))\n>\n>\n>\n> plot(sw_bip, vertex.col = \"class\")\n>\n>\n>\n> #Fit Bipartite ERGM, model differences in number of connections between\n> classes\n>\n> ergm_bip = ergm(sw_bip ~ edges +\n>\n>                    b1factor(\"class\") ,\n>\n>                  reference=~Bernoulli)\n>\n>\n>\n> summary(ergm_bip) #so this is good, but I also want to model whether blues\n> or reds attend larger events.\n>\n>\n>\n>\n> Any help would be greatly appreciated.\n>\n> Best regards,\n>\n> David\n>\n>\n>\n> David N. Fisher\n>\n> he/him\n>\n> Research Fellow\n>\n> The School of Biological Sciences\n>\n> University of Aberdeen\n>\n> Web <https://evoetholab.com/> | GS\n> <https://scholar.google.com/citations?user=1TuwKzQAAAAJ&hl=en> | Tw\n> <https://twitter.com/DFofFreedom> | RG\n> <https://www.researchgate.net/profile/David_Fisher30> | Or\n> <https://orcid.org/0000-0002-4444-4450>\n>\n>\n>\n>\n> The University of Aberdeen is a charity registered in Scotland, No\n> SC013683.\n> Tha Oilthigh Obar Dheathain na charthannas cl?raichte ann an Alba, ?ir.\n> SC013683.\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@mailman13.u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20201106/d04cf614/attachment.html>",
+      "body_snippet": "I'm relatively new to the tergmLite package and adapting code which\nutilizes it to allow me to simulate on my personal computer, in combination\nwith the EpiModel library. Though I'd like to continue u",
+      "thread_id": "thread-6bdd25e498c8",
+      "thread_depth": 0,
+      "month": "2020-11"
+    },
+    {
+      "id": "msg-442eb01ec22d",
+      "message_id": "<4CF612E6-FFEE-4E43-9F9D-27B20918D179@gmail.com>",
+      "from_name": "jimi adams",
+      "from_email_hash": "d387d68c739c196c625768794dffa30321694dced194798b4c5c7e0b3a23c752",
+      "date": "2020-11-16T14:39:04Z",
+      "subject": "[statnet_help] augmenting ndtv video",
+      "subject_clean": "[statnet_help] augmenting ndtv video",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "[having some difficulties with the list, sorry if this is a duplicate] \n\nHi all,\nIs it possible to add overlaying graphical elements on top of the rendered video in an ndtv visualization? As an example, let?s say I wanted to add some circles that highlight clusters in the network. I?m happy to manually position them, but just wasn?t sure how I?d go about doing that. \n\nthanks!\njimi\n\njimi adams\n(on leave 2020-21)\nAssociate Professor, Health & Behavioral Sciences\nUniversity of Colorado Denver\n\no. https://ucdenver.zoom.us/my/jimiadams\np. 303.315.7177 (messages only)\ne. jimi.adams@ucdenver.edu\nw. jimiadams.com",
+      "body_snippet": "[having some difficulties with the list, sorry if this is a duplicate] \n\nHi all,\nIs it possible to add overlaying graphical elements on top of the rendered video in an ndtv visualization? As an exampl",
+      "thread_id": "thread-442eb01ec22d",
+      "thread_depth": 0,
+      "month": "2020-11"
+    },
+    {
+      "id": "msg-8bc0688bdc0c",
+      "message_id": "<alpine.WNT.2.21.999.2011171021190.11860@LAPTOP-PHUBQHL5>",
+      "from_name": "martina morris",
+      "from_email_hash": "723fa6c3cfc81bc0b636cb6ab264b9e07126ad90bc6bb940e8243a073bbb4b8b",
+      "date": "2020-11-17T10:22:52Z",
+      "subject": "[statnet_help] augmenting ndtv video",
+      "subject_clean": "[statnet_help] augmenting ndtv video",
+      "in_reply_to": "<4CF612E6-FFEE-4E43-9F9D-27B20918D179@gmail.com>",
+      "references": [
+        "<4CF612E6-FFEE-4E43-9F9D-27B20918D179@gmail.com>"
+      ],
+      "body_plain": "Hi jimi --\n\nI've pinged Skye, as he's the ndtv master.  But I'm guessing this may be a \ngeneral question about editing video files, rather than something statnet \nspecific.\n\nbest,\nmm\n\nOn Mon, 16 Nov 2020, jimi adams wrote:\n\n> [having some difficulties with the list, sorry if this is a duplicate]\n>\n> Hi all,\n> Is it possible to add overlaying graphical elements on top of the rendered video in an ndtv visualization? As an example, let?s say I wanted to add some circles that highlight clusters in the network. I?m happy to manually position them, but just wasn?t sure how I?d go about doing that.\n>\n> thanks!\n> jimi\n>\n> jimi adams\n> (on leave 2020-21)\n> Associate Professor, Health & Behavioral Sciences\n> University of Colorado Denver\n>\n> o. https://ucdenver.zoom.us/my/jimiadams\n> p. 303.315.7177 (messages only)\n> e. jimi.adams@ucdenver.edu\n> w. jimiadams.com\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n****************************************************************\n  Professor Emerita of Sociology and Statistics\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi jimi --\n\nI've pinged Skye, as he's the ndtv master.  But I'm guessing this may be a \ngeneral question about editing video files, rather than something statnet \nspecific.\n\nbest,\nmm\n\nOn Mon, 16 Nov 2",
+      "thread_id": "thread-442eb01ec22d",
+      "thread_depth": 1,
+      "month": "2020-11"
+    },
+    {
+      "id": "msg-5109e69b8ca6",
+      "message_id": "<VI1PR04MB71827D69207E37E1D118C002BCE10@VI1PR04MB7182.eurprd04.prod.outlook.com>",
+      "from_name": "Fisher, David",
+      "from_email_hash": "91f83fa98c2fc52e8c8e56236f023a02b5ed9e023324c994b6a73bd5c5d3fa5b",
+      "date": "2020-11-18T06:09:03Z",
+      "subject": "[statnet_help] Modelling number of events and event size in\tbipartite network",
+      "subject_clean": "[statnet_help] Modelling number of events and event size in\tbipartite network",
+      "in_reply_to": "<VI1PR04MB718213DD98D17DD255B49FC1BC100@VI1PR04MB7182.eurprd04.prod.outlook.com>",
+      "references": [
+        "<VI1PR04MB718213DD98D17DD255B49FC1BC100@VI1PR04MB7182.eurprd04.prod.outlook.com>"
+      ],
+      "body_plain": "Hi all,\n\nI was wondering if anyone had any insights into this?\n\nCheers,\n\nDavid\n\nFrom: Fisher, David <david.fisher@abdn.ac.uk>\nSent: 02 November 2020 10:23\nTo: statnet_help@u.washington.edu\nSubject: [statnet_help] Modelling number of events and event size in bipartite network\n\nHi folks,\n\nI posed this query in July, but thought I would ask again with code to perhaps demonstrate my problem a bit better.\n\nI've recently started playing around with modelling actor by event bipartite networks using \"ergm\". My first mode are actors with a single attribute, which is a 2-level factor (lets call it \"class\", with reds and blues), while my 2nd mode are events which have no attributes. I am interested in modelling 2 processes in a two-mode network that can lead to a higher degree in the projected one-mode network. Actors can get a higher one-mode degree by: 1) attending more events & 2) attending events attended by more others. I am interested in specifically modelling these two processes in the two-mode network so I don't want to project to the one-mode then model a difference in degree.\n\nI am reasonably happy I get at 1) with 'b1factor(\"class\")'\n\nBut right now I cannot work out how to model 2). I am certain that there is a term for it and I am just not understanding the documentation. I don't think it is \"b2factor(\"class\")\" as events do not vary by class. I don't think it is any of the nodematch functions (e.g. \"b1nodematch(\"class\")\") as I am not interested (for now) in whether reds attend events with other reds. I think I want to compare the number of two paths between the two groups, but I can't see a function to do that. Alternatively, perhaps you could frame it as a b2 k-star question, and does the number of different k-stars where the events are the central node depend on the class of those nodes that they are attached too. I've tried \"b2starmix(2,\"class\", diff=T)\" and this gives 2 different estimates for the different classes, which may allow one to say whether the 2 classes are similar in terms of the size of the event, but I am not sure. I have also wondered about adding the event degree as an attribute, and then seeing if reds or blues differ in their preference to connect with events differing in that attribute.\n\nCode recreating where I am at using the Davis Southern Women dataset here (I assume you can access the Davis dataset via statnet instead of tnet, but I haven't been able to track down how; \"data(davis)\" doesn't work for me:\n\nlibrary(tnet)\nlibrary(statnet)\n\n# Load Davis' (1940) Southern Women Dataset\ndata(tnet)\n\nsw_ebi = as.matrix( table(Davis.Southern.women.2mode) ) #18 women (rows), 14 social events (columns)\n\nsw_bip = network(sw_ebi, bipartite = T)\n\n#randomly assign 'class' as \"red\" or \"blue\". Code events as \"black\"\nsw_bip %v% \"class\" = c(sample(c(\"red\",\"blue\"), nrow(sw_ebi), replace=T), rep(\"black\", ncol(sw_ebi)))\n\nplot(sw_bip, vertex.col = \"class\")\n\n#Fit Bipartite ERGM, model differences in number of connections between classes\nergm_bip = ergm(sw_bip ~ edges +\n                   b1factor(\"class\") ,\n                 reference=~Bernoulli)\n\nsummary(ergm_bip) #so this is good, but I also want to model whether blues or reds attend larger events.\n\n\nAny help would be greatly appreciated.\n\nBest regards,\n\nDavid\n\nDavid N. Fisher\nhe/him\nResearch Fellow\nThe School of Biological Sciences\nUniversity of Aberdeen\nWeb<https://evoetholab.com/> | GS<https://scholar.google.com/citations?user=1TuwKzQAAAAJ&hl=en> | Tw<https://twitter.com/DFofFreedom> | RG<https://www.researchgate.net/profile/David_Fisher30> | Or<https://orcid.org/0000-0002-4444-4450>\n\n\n\nThe University of Aberdeen is a charity registered in Scotland, No SC013683.\nTha Oilthigh Obar Dheathain na charthannas cl?raichte ann an Alba, ?ir. SC013683.\n\n\nThe University of Aberdeen is a charity registered in Scotland, No SC013683.\nTha Oilthigh Obar Dheathain na charthannas cl?raichte ann an Alba, ?ir. SC013683.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20201118/c26d675b/attachment.html>",
+      "body_snippet": "Hi all,\n\nI was wondering if anyone had any insights into this?\n\nCheers,\n\nDavid\n\nFrom: Fisher, David <david.fisher@abdn.ac.uk>\nSent: 02 November 2020 10:23\nTo: statnet_help@u.washington.edu\nSubject: [s",
+      "thread_id": "thread-e5b4a8fa1e38",
+      "thread_depth": 1,
+      "month": "2020-11"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-e5b4a8fa1e38",
+      "subject": "[statnet_help] Modelling number of events and event size in bipartite network",
+      "message_count": 2,
+      "participants": [
+        "Fisher, David"
+      ],
+      "started": "2020-11-02T02:22:59Z",
+      "last_reply": "2020-11-18T06:09:03Z",
+      "root_message_id": "msg-e5b4a8fa1e38"
+    },
+    {
+      "id": "thread-6bdd25e498c8",
+      "subject": "[statnet_help] Why no delete_edges() function in tergmLite?",
+      "message_count": 1,
+      "participants": [
+        "b"
+      ],
+      "started": "2020-11-06T15:35:29Z",
+      "last_reply": "2020-11-06T15:35:29Z",
+      "root_message_id": "msg-6bdd25e498c8"
+    },
+    {
+      "id": "thread-442eb01ec22d",
+      "subject": "[statnet_help] augmenting ndtv video",
+      "message_count": 2,
+      "participants": [
+        "jimi adams",
+        "martina morris"
+      ],
+      "started": "2020-11-16T14:39:04Z",
+      "last_reply": "2020-11-17T10:22:52Z",
+      "root_message_id": "msg-442eb01ec22d"
+    }
+  ]
+}

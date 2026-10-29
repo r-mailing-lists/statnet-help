@@ -1,0 +1,736 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2008-02",
+  "messages": [
+    {
+      "id": "msg-ab137532d15b",
+      "message_id": "<Pine.WNT.4.44.0802020010330.3560-100000@reeve>",
+      "from_name": "Ruth M. Ripley",
+      "from_email_hash": "8319bdce80df0621b2de9af3ab1b785a76c9ec52ed45f8e65bc33de8c8354ecc",
+      "date": "2008-02-01T16:26:14Z",
+      "subject": "[statnet_help] Extracting missing data from a network object",
+      "subject_clean": "[statnet_help] Extracting missing data from a network object",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI an new to statnet, and have been creating networks by e.g.\nnet3<- network(tmp3) where tmp3 is an adjacency matrix containing\noff-diagonal NA's.  When I extract the adjacency matrix from the network\nusing net3[,] the NA's have disappeared. From the help file I would expect\none of [net3p,,na.omit=FALSE] or net3[,,na.omit=TRUE] to include them, but\nneither appear to. Am I missing something obvious?\n\nThanks,\n\nRuth Ripley\nDept. of Statistics, University of Oxford\nruth@stats.ox.ac.uk",
+      "body_snippet": "Hi,\n\nI an new to statnet, and have been creating networks by e.g.\nnet3<- network(tmp3) where tmp3 is an adjacency matrix containing\noff-diagonal NA's.  When I extract the adjacency matrix from the net",
+      "thread_id": "thread-ab137532d15b",
+      "thread_depth": 0,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-f0b37b55defe",
+      "message_id": "<FB11D0F2-BAEE-4334-B2D0-2491B97A198C@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-02-02T09:08:29Z",
+      "subject": "[statnet_help] Extracting missing data from a network object",
+      "subject_clean": "[statnet_help] Extracting missing data from a network object",
+      "in_reply_to": "<Pine.WNT.4.44.0802020010330.3560-100000@reeve>",
+      "references": [
+        "<Pine.WNT.4.44.0802020010330.3560-100000@reeve>"
+      ],
+      "body_plain": "Hi Ruth.  Good question -- this appears to be a bug (thanks for the  \ncatch!).  The na.omit arguments of '[.network' and 'is.adjacent' (at  \nleast) need fixing.\n\nThe good news is that the missing data structure is not lost:  The  \neasiest way to see it is to type\nnet3p$gal$design,\nwhich is itself a network object giving the positions of the original  \nNAs.\n\nThus, a simple hack to work around this (until it can be fixed for  \nreal!) is:\n\n\"[.network\"<-function(x,...,na.omit=TRUE) {\n   oldf <- get(\"[.network\", pos=match(\"package:network\",search()))\n   out <- oldf(x,...)\n   if (!na.omit) {\n     out[oldf(x$gal$design,...)==1] <- NA\n   }\n   out\n}\n\n\nand this seems to work at least on simple examples, e.g.:\n > m <- matrix(0,3,3)\n > m[1,2] <- NA\n > network(m)[1:2,2:3,na.omit=FALSE]\n    2 3\n1 NA 0\n2  0 0\n\n\nHope this helps.\n\nDave\n\n\n\nLe 2 f?vr. 08 ? 01:26, Ruth M. Ripley a ?crit :\n\n> Hi,\n>\n> I an new to statnet, and have been creating networks by e.g.\n> net3<- network(tmp3) where tmp3 is an adjacency matrix containing\n> off-diagonal NA's.  When I extract the adjacency matrix from the  \n> network\n> using net3[,] the NA's have disappeared. From the help file I would  \n> expect\n> one of [net3p,,na.omit=FALSE] or net3[,,na.omit=TRUE] to include  \n> them, but\n> neither appear to. Am I missing something obvious?\n>\n> Thanks,\n>\n> Ruth Ripley\n> Dept. of Statistics, University of Oxford\n> ruth@stats.ox.ac.uk\n>\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Ruth.  Good question -- this appears to be a bug (thanks for the  \ncatch!).  The na.omit arguments of '[.network' and 'is.adjacent' (at  \nleast) need fixing.\n\nThe good news is that the missing data",
+      "thread_id": "thread-ab137532d15b",
+      "thread_depth": 1,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-e3cdeb30a7fa",
+      "message_id": "<47A4C369.5050803@gmail.com>",
+      "from_name": "Elizeu Santos-Neto",
+      "from_email_hash": "b580f8e90431f7e52b49188565bd217157fbc0f4e7b4badb3468868148808208",
+      "date": "2008-02-02T11:24:25Z",
+      "subject": "[statnet_help] ergm execution aborted",
+      "subject_clean": "[statnet_help] ergm execution aborted",
+      "in_reply_to": "<E6675195-A680-4094-B821-D35C91E7BF85@stat.psu.edu>",
+      "references": [
+        "<Pine.LNX.4.43.0801311435490.20062@hymn32.u.washington.edu>",
+        "<47A25591.5090605@gmail.com>",
+        "<E6675195-A680-4094-B821-D35C91E7BF85@stat.psu.edu>"
+      ],
+      "body_plain": "Hi David,\n\n\tYes, absolutely. I can provide you with the data files I'm using. Let \nme know when you need it.\n\t\n\tA new info is that I'm executing the same simple code that I described \nbefore, but passing the following arguments:\n\n\t$ R --min-vsize=2000M --no-save < myscript.R\n\n\tMy machine has 4GB of memory. Now, the execution did not throw any \nerror message yet. Instead, the execution is taking very long, it is \nalmost 48 hours of computation so far (I'm sure that the system is not \nnot trashing). I could even test with larger heap sizes. Do you think it \nwould help?\n\n\tIn any case, it seems that the network size will be the major problem \nin fitting models to it.\n\n\tDoes it make sense to think of a any node sampling technique to reduce \nthe network size so it would be more tractable? Also, can one assume \nthat the model fitted to the sample would be representative to the \noriginal network?\n\n\tthanks in advance,\n\tElizeu\n\nDavid Hunter wrote:\n> Hi Elizeu.  First of all, I'm surprised you got *anything* different by \n> getting rid of the formula step, which should have had no effect that I \n> know of (weird!).  But additionally, there is no reason I know of that \n> your commands would cause any problems -- so perhaps it is related to \n> the size of the network somehow.  We have certainly used networks with \n> this number of nodes, but they tend to be quite a bit sparser than \n> yours, so we haven't had a lot of chance to test this with large, \n> nonsparse networks.\n> \n> The model you're fitting is going to be fit using MPLE since it is the \n> same as an MLE in this case.  So perhaps the problem lies there.  I \n> would like to figure out what's going on here in any case... I will try \n> to replcate the problem on a simulated network but am wondering whether \n> you would be willing to share this \"net.dat\" file if need be?\n> \n> Dave\n> \n> \n> Le 1 f?vr. 08 ? 00:11, Elizeu Santos-Neto a ?crit :\n> \n>>\n>>     Hi Jacob,\n>>\n>>     Thanks for the advice.\n>>\n>>     I changed as you suggested, but now I got: \"segfault from C stack \n>> overflow\"\n>>\n>>     My educated guess, based on the previous message is that the \n>> statnet code might be trying to release some data structure twice.\n>>\n>>     However, I'm not familiar enough with the code to point it where \n>> exactly this might be happening.\n>>\n>>     Does it have to do with the size of the network? This is a network \n>> with approximately 4900 nodes and 232,854 edges.\n>>\n>> Thanks,\n>> Elizeu\n>>\n>> Jacob T N Young wrote:\n>>> Elizu,\n>>> Did you try adding the model directly into the ergm model:\n>>> x <- read.table(\"net.dat\");\n>>> g <- network(x[,1:2]);\n>>> model1 <- ergm(g ~ edges, MCMCsamplesize=10000);\n>>> Jacob T.N. Young\n>>> Graduate Student\n>>> Department of Sociology\n>>> University of Washington\n>>> Box 353340\n>>> Seattle, WA 98115\n>>> On Thu, 31 Jan 2008, Elizeu Santos-Neto wrote:\n>>>> Hello all,\n>>>>\n>>>> I am executing the following:\n>>>>\n>>>> x <- read.table(\"net.dat\");\n>>>> g <- network(x[,1:2]);\n>>>> formula1 <- g ~ edges;\n>>>> model1 <- ergm(formula1, MCMCsamplesize=10000);\n>>>>\n>>>> After a couple of minutes running, I got the following error message:\n>>>>\n>>>> *** glibc detected *** /usr/lib/R/bin/exec/R: double free or\n>>>> corruption (!prev): 0x1cd8d1a0 ***\n>>>> ======= Backtrace: =========\n>>>> /lib/libc.so.6[0xb25a96]\n>>>> /lib/libc.so.6(cfree+0x90)[0xb28fb0]\n>>>> /usr/lib/R/library/ergm/libs/ergm.so(NetworkDestroy+0x3a)[0x1bb1da]\n>>>> /usr/lib/R/library/ergm/libs/ergm.so(MPLE_wrapper+0x4f6)[0x1c6db6]\n>>>> .....supressed......\n>>>> ======= Memory map: ========\n>>>> 00110000-00111000 r-xp 00110000 00:00 0          [vdso]\n>>>> ....supressed...\n>>>> Aborted\n>>>>\n>>>> Any ideas why does it happen? and how should I solve it?\n>>>>\n>>>> Thanks in advance,\n>>>> Elizeu\n>>>> _______________________________________________\n>>>> statnet_help mailing list\n>>>> statnet_help@u.washington.edu\n>>>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>>>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi David,\n\n\tYes, absolutely. I can provide you with the data files I'm using. Let \nme know when you need it.\n\t\n\tA new info is that I'm executing the same simple code that I described \nbefore, but pass",
+      "thread_id": "thread-e3cdeb30a7fa",
+      "thread_depth": 0,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-0738a5a31085",
+      "message_id": "<020320080334.10961.47A536570000909400002AD122007636920E0297089C0E9907D2050C0E06@comcast.net>",
+      "from_name": "jack.iwashyna@comcast.net",
+      "from_email_hash": "1e6c1ec9835f8bc411e1e6b5dc6a680165fbbb6f02ffdb1449cefce51fe5e2c0",
+      "date": "2008-02-02T19:34:47Z",
+      "subject": "[statnet_help] Creating valued edges from edgelist",
+      "subject_clean": "[statnet_help] Creating valued edges from edgelist",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "In brief, I have 4 nets stored as an edgelist with a group of attribute variables.  I can't get the edge attributes into my network object.\n\nI realize you all have answered questions similar to this before, such as at:\n    [statnet_help] importing edgelist with multiple attributes  on  Sun Mar 11 20:45:50 PDT 2007\n\nBut I can't get it to work for my particular data configuration.  Please, help!\n\n\nDATA STRUCTURE\n\nI have four networks over a large set of nodes (~3300).  They are stored in a data.frame as:\n\n  SENDING RECEIVE cvs   rsurg  ccu   micu\n1  260094  260040       0        0       0        1\n2  310063  310002       0        0       0        1\n3  370047  370028       8        0       1        0\n4  390192  390119       0        4       0        1\n5  410008  410007       0        0       1        0\n6  510012  510007       2        0       1        0\n7   80007  210019       0        0       1        0\n ...\n\nwhere SENDING and RECEIVE are the arbitrary ID's of the nodes.  (They are numeric, but are not sequential; using as.character for the network call has worked well.)\n\nCVS, SURG, CCU and MICU are, respectively, the value of the directed edges between the two nodes.\n\nTwo nodes may be connected reciprocally, but need not be.  All node pairs in the data have at least 1 directed edge in 1 of the nets, but may have a directed edge in all 4 nets.  This is a sparse network, so most node pairs do not occur at all.  A given edge pair appears on only one line in the data.\n\nI would like to create a set of 4 graphs over the same node set.  I cannot figure out how to use set.edge.value to create 4 attributes for each edge, one for each network.\n\nFAILED CODE:\n# This creates the network appropriately, but attaches the edge values to the wrong edges;\nattach(jan29.core.recast)\ncore_net<-network( array(\n   c(as.character(SENDING), as.character(RECEIVE)),\n   dim=c(length(SENDING),2)),\n   directed=TRUE, hyper=FALSE, loops=FALSE, multiple=FALSE)\nset.edge.value(core_net,\"cvs\",jan29.core.recast$cvs);\n\nI am guessing that the process of creating the network reorders the edgelist in some way to create the internal network edgelist, so that my data.frame edgelist and the internal network object edgelist are no longer synchronized.   But I don't know how to fix it.  I would appreciate any help.\n\nbest,\n  Jack\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\nTheodore J. Iwashyna, M.D., Ph.D.\n\nDivision of Pulmonary and Critical Care\nDepartment of Medicine\nHospital of the University of Pennsylvania\n\nemail: iwashyna@alumni.Princeton.edu\nalternate: theodore.iwashyna@uphs.upenn.edu",
+      "body_snippet": "In brief, I have 4 nets stored as an edgelist with a group of attribute variables.  I can't get the edge attributes into my network object.\n\nI realize you all have answered questions similar to this b",
+      "thread_id": "thread-0738a5a31085",
+      "thread_depth": 0,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-be8dd320bec3",
+      "message_id": "<C3CA8069.22923%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2008-02-02T20:17:45Z",
+      "subject": "[statnet_help] Creating valued edges from edgelist",
+      "subject_clean": "[statnet_help] Creating valued edges from edgelist",
+      "in_reply_to": "<020320080334.10961.47A536570000909400002AD122007636920E0297089C0E9907D2050C0E06@comcast.net>",
+      "references": [],
+      "body_plain": "Hi Jack,\n\nThis is a good question. Here is how to do it (via reading the comments). I\nput your example file called \"test.dat\" and read it into R:\n\n> # read in the data as a data.frame (remember to not convert\n> # it to a factor!\n> test <- read.table(\"test.dat\",header=T, as.is=T)\n> test\n  num SENDING RECEIVE cvs rsurg ccu micu\n1   1  260094  260040   0     0   0    1\n2   2  310063  310002   0     0   0    1\n3   3  370047  370028   8     0   1    0\n4   4  390192  390119   0     4   0    1\n5   5  410008  410007   0     0   1    0\n6   6  510012  510007   2     0   1    0\n7   7   80007  210019   0     0   1    0\n> # The vertex labels are not in order, so we can\n> # convert them to character (as that network knows to\n> # use them as labels)\n> edges <- as.matrix(test[,2:3])\n> mode(edges) <- \"character\"\n> # Now create the network\n> net <- network(edges)\n> # Check out the names to see what \"network\" has done\n> network.vertex.names(net)\n [1] \"210019\" \"260040\" \"260094\" \"310002\" \"310063\" \"370028\" \"370047\" \"390119\"\n [9] \"390192\" \"410007\" \"410008\" \"510007\" \"510012\" \"80007\"\n> # Set the edge attribute to \"cvs\" (for example)\n> set.edge.attribute(net,\"cvs\",test[,\"cvs\"])\n> # Print out the sociomatrix\n> as.sociomatrix(net,\"cvs\")\n       210019 260040 260094 310002 310063 370028 370047 390119 390192 410007\n210019      0      0      0      0      0      0      0      0      0      0\n260040      0      0      0      0      0      0      0      0      0      0\n260094      0      0      0      0      0      0      0      0      0      0\n310002      0      0      0      0      0      0      0      0      0      0\n310063      0      0      0      0      0      0      0      0      0      0\n370028      0      0      0      0      0      0      0      0      0      0\n370047      0      0      0      0      0      8      0      0      0      0\n390119      0      0      0      0      0      0      0      0      0      0\n390192      0      0      0      0      0      0      0      0      0      0\n410007      0      0      0      0      0      0      0      0      0      0\n410008      0      0      0      0      0      0      0      0      0      0\n510007      0      0      0      0      0      0      0      0      0      0\n510012      0      0      0      0      0      0      0      0      0      0\n80007       0      0      0      0      0      0      0      0      0      0\n       410008 510007 510012 80007\n210019      0      0      0     0\n260040      0      0      0     0\n260094      0      0      0     0\n310002      0      0      0     0\n310063      0      0      0     0\n370028      0      0      0     0\n370047      0      0      0     0\n390119      0      0      0     0\n390192      0      0      0     0\n410007      0      0      0     0\n410008      0      0      0     0\n510007      0      0      0     0\n510012      0      2      0     0\n80007       0      0      0     0\n> # Print out the network as an edge list\n> as.matrix.network(net,mat=\"edgelist\",a=\"cvs\")\n     [,1] [,2] [,3]\n[1,]    3    2    0\n[2,]    5    4    0\n[3,]    7    6    8\n[4,]    9    8    0\n[5,]   11   10    0\n[6,]   13   12    2\n[7,]   14    1    0\n\nIs that what you are after?\n\nCheers,\n\nMark\n\nOn 2/2/08 7:34 PM, \"jack.iwashyna@comcast.net\" <jack.iwashyna@comcast.net>\nwrote:\n\n> In brief, I have 4 nets stored as an edgelist with a group of attribute\n> variables.  I can't get the edge attributes into my network object.\n> \n> I realize you all have answered questions similar to this before, such as at:\n>     [statnet_help] importing edgelist with multiple attributes  on  Sun Mar 11\n> 20:45:50 PDT 2007\n> \n> But I can't get it to work for my particular data configuration.  Please,\n> help!\n> \n> \n> DATA STRUCTURE\n> \n> I have four networks over a large set of nodes (~3300).  They are stored in a\n> data.frame as:\n> \n>   SENDING RECEIVE cvs   rsurg  ccu   micu\n> 1  260094  260040       0        0       0        1\n> 2  310063  310002       0        0       0        1\n> 3  370047  370028       8        0       1        0\n> 4  390192  390119       0        4       0        1\n> 5  410008  410007       0        0       1        0\n> 6  510012  510007       2        0       1        0\n> 7   80007  210019       0        0       1        0\n>  ...\n> \n> where SENDING and RECEIVE are the arbitrary ID's of the nodes.  (They are\n> numeric, but are not sequential; using as.character for the network call has\n> worked well.)\n> \n> CVS, SURG, CCU and MICU are, respectively, the value of the directed edges\n> between the two nodes.\n> \n> Two nodes may be connected reciprocally, but need not be.  All node pairs in\n> the data have at least 1 directed edge in 1 of the nets, but may have a\n> directed edge in all 4 nets.  This is a sparse network, so most node pairs do\n> not occur at all.  A given edge pair appears on only one line in the data.\n> \n> I would like to create a set of 4 graphs over the same node set.  I cannot\n> figure out how to use set.edge.value to create 4 attributes for each edge, one\n> for each network.\n> \n> FAILED CODE:\n> # This creates the network appropriately, but attaches the edge values to the\n> wrong edges;\n> attach(jan29.core.recast)\n> core_net<-network( array(\n>    c(as.character(SENDING), as.character(RECEIVE)),\n>    dim=c(length(SENDING),2)),\n>    directed=TRUE, hyper=FALSE, loops=FALSE, multiple=FALSE)\n> set.edge.value(core_net,\"cvs\",jan29.core.recast$cvs);\n> \n> I am guessing that the process of creating the network reorders the edgelist\n> in some way to create the internal network edgelist, so that my data.frame\n> edgelist and the internal network object edgelist are no longer synchronized.\n> But I don't know how to fix it.  I would appreciate any help.\n> \n> best,\n>   Jack\n> \n> -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n> Theodore J. Iwashyna, M.D., Ph.D.\n> \n> Division of Pulmonary and Critical Care\n> Department of Medicine\n> Hospital of the University of Pennsylvania\n> \n> email: iwashyna@alumni.Princeton.edu\n> alternate: theodore.iwashyna@uphs.upenn.edu\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Jack,\n\nThis is a good question. Here is how to do it (via reading the comments). I\nput your example file called \"test.dat\" and read it into R:\n\n> # read in the data as a data.frame (remember to not",
+      "thread_id": "thread-0738a5a31085",
+      "thread_depth": 1,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-dd778ef10f01",
+      "message_id": "<C3B63945.147A0%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2008-02-07T09:24:04Z",
+      "subject": "[statnet_help] problems running statnet",
+      "subject_clean": "[statnet_help] problems running statnet",
+      "in_reply_to": "<A6ABEC2F-30BF-479E-A76B-6C3C7BF46AB1@stat.psu.edu>",
+      "references": [],
+      "body_plain": "On 1/18/08 7:06 AM, \"David Hunter\" <dhunter@stat.psu.edu> wrote:\n\n> Hi Peter and Chris.\n> \n> Have you tried installing ergm from source?  (ergm is the new\n> statnet, basically.  It's brand-new on CRAN.)  Try going to CRAN,\n> downloading the source for ergm, gunzipping and untarring it, then\n> installing using R CMD INSTALL ergm.  Once back in R, type library\n> (ergm) and see if you get the same error.  If any part of that was\n> unclear, let me know -- I'm happy to expand on any part of it.\n> \n> Alternatively, you can try install.packages(\"statnet\") now.  The new\n> statnet (also newly on CRAN) is basically just a shell that requires\n> several other packages, including ergm and network.  So this is\n> probably the easiest road to take.  More on this soon in another email!\n> \n> I used to have a similar problem on my mac as well, and I made some\n> sort of hack to get around it -- I think I set up a symbolic link\n> called 'i386' in the /Library/.../libs directory that pointed to\n> 'ppc', but I don't recall the details and I can't find my old hack at\n> the moment.  But in any case, if you're still stuck after the ergm\n> stuff, I'm sure we can come up with some workaround! :)\n> \n> Dave\n> \n> \n> Le 15 janv. 08 ? 19:06, Chris Gonzalez Clarke a ?crit :\n> \n>> I wish I could tell you that this worked for me but I was not able\n>> to get this issue resolved for my Mac. If you have any success, I'd\n>> appreciate hearing about it.\n>> \n>> Chris\n>> \n>> \n>> \n>> .At 10:12 AM -0600 1/15/08, Peter McMahan wrote:\n>>> I'm having an identical problem on mac OS 10.5.1:\n>>>>  library(statnet)\n>>> Loading required package: network\n>>> Classes for Relational Data\n>>> Version 1.2 created on July 31, 2007.\n>>> copyright (c) 2005, Carter T. Butts, University of California-Irvine\n>>>                     Mark S. Handcock, University of Washington\n>>>                     David R. Hunter, Penn State University\n>>>                     Martina Morris, University of Washington\n>>> Type help(package=\"network\") to get started.\n>>> Error in dyn.load(file, ...) :\n>>>   unable to load shared library '/Library/Frameworks/R.framework/\n>>> Resources/library/statnet/libs/i386/statnet.so':\n>>> dlopen(/Library/Frameworks/R.framework/Resources/library/statnet/\n>>> libs/i386/statnet.so, 6): Symbol not found: _ChangeStats\n>>>   Referenced from: /Library/Frameworks/R.framework/Resources/\n>>> library/statnet/libs/i386/statnet.so\n>>>   Expected in: dynamic lookup\n>>> \n>>> Error in library(statnet) : .First.lib failed for 'statnet'\n>>> \n>>> \n>>> My system info:\n>>>>    sessionInfo()\n>>> R version 2.6.1 (2007-11-26)\n>>> i386-apple-darwin8.10.1\n>>> \n>>> locale:\n>>> en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n>>> \n>>> attached base packages:\n>>> [1] stats     graphics  grDevices utils     datasets  methods   base\n>>> \n>>> other attached packages:\n>>> [1] network_1.2       updatestatnet_1.0\n>>> \n>>> loaded via a namespace (and not attached):\n>>> [1] rcompgen_0.1-17 tcltk_2.6.1     tools_2.6.1\n>>>>    getOption(\"pkgType\")\n>>> [1] \"mac.binary\"\n>>> \n>>> \n>>> Any thoughts? Should I try to compile the package myself?, Chris,\n>>> did you ever get this resolved?\n>>> \n>>> Thanks,\n>>> Peter\n>>> \n>>> \n>>> On Nov 28, 2007, at 2:02 PM, Chris Gonzalez Clarke wrote:\n>>> \n>>>> I am attempting to run Statnet on a Mac (powerPC) with OS\n>>>> 10.4.11. I've following the instructions to install the package\n>>>> in R and run the update, both of which appear successful.\n>>>> However, when I go to use the program ('library(statnet)), i get\n>>>> the following error:\n>>>> \n>>>>> library(statnet)\n>>>> Loading required package: network\n>>>> Classes for Relational Data\n>>>> Version 1.2 created on July 31, 2007.\n>>>> copyright (c) 2005, Carter T. Butts, University of California-Irvine\n>>>>                    Mark S. Handcock, University of Washington\n>>>>                    David R. Hunter, Penn State University\n>>>>                    Martina Morris, University of Washington\n>>>> Type help(package=\"network\") to get started.\n>>>> Error in dyn.load(file, ...) :\n>>>>  unable to load shared library '/Library/Frameworks/R.framework/\n>>>> Versions/2.6/Resources/library/statnet/libs/ppc/statnet.so':\n>>>> dlopen(/Library/Frameworks/R.framework/Versions/2.6/Resources/\n>>>> library/statnet/libs/ppc/statnet.so, 6): Library not loaded: /\n>>>> Library/Frameworks/R.framework/Versions/2.5/Resources/lib/libR.dylib\n>>>>  Referenced from: /Library/Frameworks/R.framework/Versions/2.6/\n>>>> Resources/library/statnet/libs/ppc/statnet.so\n>>>>  Reason: image not found\n>>>> Error in library(statnet) : .First.lib failed for 'statnet'\n>>>> \n>>>> \n>>>> \n>>>> Here is my session info:\n>>>> \n>>>>> sessionInfo()\n>>>> R version 2.6.1 (2007-11-26)\n>>>> powerpc-apple-darwin8.10.1\n>>>> \n>>>> locale:\n>>>> en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n>>>> \n>>>> attached base packages:\n>>>> [1] stats     graphics  grDevices utils     datasets  methods   base\n>>>> \n>>>> other attached packages:\n>>>> [1] network_1.2       updatestatnet_1.0\n>>>> \n>>>> loaded via a namespace (and not attached):\n>>>> [1] tools_2.6.1\n>>>> \n>>>>> getOption(\"pkgType\")\n>>>> [1] \"mac.binary\"\n>>>> \n>>>> \n>>>> \n>>>> \n>>>> Any suggestions?\n>>>> Thanks\n>>>> Chris\n>>>> _______________________________________________\n>>>> statnet_help mailing list\n>>>> statnet_help@u.washington.edu\n>>>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>> \n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "On 1/18/08 7:06 AM, \"David Hunter\" <dhunter@stat.psu.edu> wrote:\n\n> Hi Peter and Chris.\n> \n> Have you tried installing ergm from source?  (ergm is the new\n> statnet, basically.  It's brand-new on CRAN",
+      "thread_id": "thread-dd778ef10f01",
+      "thread_depth": 0,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-78983a3ea6ed",
+      "message_id": "<000401c869ef$2f942f80$8ebc8e80$@edu>",
+      "from_name": "Jichao Qian",
+      "from_email_hash": "461a0bf32fe0724f8ade0ee9127c9675d98bed0508ddb5974dfa2c46cc1e3347",
+      "date": "2008-02-07T17:08:58Z",
+      "subject": "[statnet_help] ERGM gwdsp and gwodegree",
+      "subject_clean": "[statnet_help] ERGM gwdsp and gwodegree",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\n \n\nI have a 79x79 directed network of email traffic that I'm trying to fit to\nan ERGM model. I've run into some problems with the gwdsp (geometrically\nweighted dyadwise shared partner) and gwodegree (geometrically weighted\nout-degree) parameters.\n\n \n\nIf I include gwdsp in the model, it just does not run and gives the\nfollowing output:\n\n> email25.e_gwd0<-ergm(email25.net~edges+gwdsp(0,fixed=TRUE),verbose=TRUE)\n\nEvaluating network in model\n\nInitializing model.\n\nInitializing Metropolis-Hastings proposal.\n\nFitting initial model.\n\nFitting ERGM.\n\nIteration 1 of at most 3 with parameter: \n\n        edges gwdsp.fixed.0 \n\n    -2.620430      0.000000 \n\nError in ergm.mcmcslave(Clist, MHproposal, eta0, MCMCparams, maxedges,  : \n\n  NA/NaN/Inf in foreign function call (arg 15)\n\n \n\nIf I include gwodegree in the model, it runs but some strange things happen.\nFirst, the model becomes degenerate, even though the model is ok with\ngwidegree. If I include gwodegree with gwidegree or with gwesp, TNT sampler\nstops accepting all proposals, and thus the model is degenerate. Also, When\nfixed=TRUE at 0, gwidegree parameter is named gwidegree.fixed.0, however,\ngwodegree is only named gwodegree, suggesting that it may not actually be\nfixed. \n\n \n\nAny ideas/fixes would be greatly appreciated. Thanks!\n\n \n\nJichao Qian\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080207/fd09757e/attachment.html>",
+      "body_snippet": "Hi all,\n\n \n\nI have a 79x79 directed network of email traffic that I'm trying to fit to\nan ERGM model. I've run into some problems with the gwdsp (geometrically\nweighted dyadwise shared partner) and gw",
+      "thread_id": "thread-78983a3ea6ed",
+      "thread_depth": 0,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-cea7be2bd57c",
+      "message_id": "<47ACA81B.8050004@fas.harvard.edu>",
+      "from_name": "Kevin Lewis",
+      "from_email_hash": "3e16f115495b0e59b9f7583fd0cfe6f012b826a6e99dfab804f7275bfb0c581c",
+      "date": "2008-02-08T11:06:03Z",
+      "subject": "[statnet_help] ofactor ifactor backwards?",
+      "subject_clean": "[statnet_help] ofactor ifactor backwards?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "hello,\n\ni've been working with the \"nodeifactor\" and \"nodeofactor\" terms as well \nas the \"mixingmatrix\" function in the new version of statnet, and i \nbelieve they might be backwards! (unless i am backwards in my \ninterpretation, which is always a possibility.) in other words, i \nbelieve that the row totals in the mixing matrix should equal the total \noutdegree for each group, which should correspond to the outfactor \nsummary, and the column totals should correspond to the total group \nindegree (and in turn the infactor summary)- but statnet is giving me \nnumbers that are opposite to what i get when tabulating these statistics \nelsewhere. in other words, the mixingmatrix seems to be \"flipped\", and \nthe ifactor and ofactor terms seem to be reversed (though i think they \nwere ok in the pre-january version).\n\nplease let me know if this is the case. if so, glad to have caught this; \nif not, sorry for my confusion. thanks!\n\n-kevin",
+      "body_snippet": "hello,\n\ni've been working with the \"nodeifactor\" and \"nodeofactor\" terms as well \nas the \"mixingmatrix\" function in the new version of statnet, and i \nbelieve they might be backwards! (unless i am bac",
+      "thread_id": "thread-cea7be2bd57c",
+      "thread_depth": 0,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-1dfc2b7576ff",
+      "message_id": "<020820082033.5246.47ACBCAF000D0B6B0000147E22007481840E0297089C0E9907D2050C0E06@comcast.net>",
+      "from_name": "jack.iwashyna@comcast.net",
+      "from_email_hash": "1e6c1ec9835f8bc411e1e6b5dc6a680165fbbb6f02ffdb1449cefce51fe5e2c0",
+      "date": "2008-02-08T12:33:51Z",
+      "subject": "[statnet_help] Parallelized QAP?",
+      "subject_clean": "[statnet_help] Parallelized QAP?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I'm watching QAP run through 1,000 replications on my machine slowly.  Clearly, only 1 CPU is doing work at a time, which seems like a waste.\n\nIs there any straightforward way to parallelize QAP (or permutation-based statnet commands more generally)?  I'm doing this on an dual-core Intel Mac, so have limited potential benefit for now, but can imagine bringing more processors online if it would help.\n\nIt looks like there are some R-commands to do this -- it just exceeds my comfort zone:\n   http://www.r-project.org/useR-2006/Slides/Harrington+Salibian-Barrera.pdf\n\nThank, as always, for any help.\n\n  best,\n   Jack\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\nTheodore J. Iwashyna, M.D., Ph.D.\n\nDivision of Pulmonary and Critical Care\nDepartment of Medicine\nHospital of the University of Pennsylvania\n\nemail: iwashyna@alumni.Princeton.edu\nalternate: theodore.iwashyna@uphs.upenn.edu",
+      "body_snippet": "I'm watching QAP run through 1,000 replications on my machine slowly.  Clearly, only 1 CPU is doing work at a time, which seems like a waste.\n\nIs there any straightforward way to parallelize QAP (or p",
+      "thread_id": "thread-1dfc2b7576ff",
+      "thread_depth": 0,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-d02d04b67324",
+      "message_id": "<9b69d2ac0802081323k4a28424fs274d2a2aa69ce008@mail.gmail.com>",
+      "from_name": "jenine harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2008-02-08T13:23:27Z",
+      "subject": "[statnet_help] assigning vertex attributes from .paj file?",
+      "subject_clean": "[statnet_help] assigning vertex attributes from .paj file?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nExcuse me if this is a repeat question --- I looked through the archives and\ndidn't see it.\n\nI have a .paj file with a 54 node network that has two partitions (node\nattributes), I have so far successfully brought the file into R-statnet, and\nseparated the network into it's own file (without partitions). I cannot,\nhowever, figure out how to assign the partition values as vertex attributes\nin order to do analyses. Any help would be greatly appreciated.\n\nI am new to both R and statnet...just fyi.\n\nthanks,\nJenine Harris\n\n-- \n************************************\nJenine Harris, Senior Research Assistant\nCenter for Tobacco Policy Research\nSaint Louis University School of Public Health\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210\n314.977.3234 Fax\nhttp://ctpr.slu.edu/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080208/565cd499/attachment.html>",
+      "body_snippet": "Hi all,\n\nExcuse me if this is a repeat question --- I looked through the archives and\ndidn't see it.\n\nI have a .paj file with a 54 node network that has two partitions (node\nattributes), I have so far",
+      "thread_id": "thread-d02d04b67324",
+      "thread_depth": 0,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-98ace86ac004",
+      "message_id": "<47ACC966.3060402@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2008-02-08T13:28:06Z",
+      "subject": "[statnet_help] Parallelized QAP?",
+      "subject_clean": "[statnet_help] Parallelized QAP?",
+      "in_reply_to": "<020820082033.5246.47ACBCAF000D0B6B0000147E22007481840E0297089C0E9907D2050C0E06@comcast.net>",
+      "references": [
+        "<020820082033.5246.47ACBCAF000D0B6B0000147E22007481840E0297089C0E9907D2050C0E06@comcast.net>"
+      ],
+      "body_plain": "Hi, Jack -\n\njack.iwashyna@comcast.net wrote:\n> I'm watching QAP run through 1,000 replications on my machine slowly.\n> Clearly, only 1 CPU is doing work at a time, which seems like a\n> waste.\n> \n> Is there any straightforward way to parallelize QAP (or\n> permutation-based statnet commands more generally)?  I'm doing this\n> on an dual-core Intel Mac, so have limited potential benefit for now,\n> but can imagine bringing more processors online if it would help.\n> \n> It looks like there are some R-commands to do this -- it just exceeds\n> my comfort zone: \n> http://www.r-project.org/useR-2006/Slides/Harrington+Salibian-Barrera.pdf\n> \n>\n\nThis could be done using the snow package without a lot of difficulty. \nI haven't looked into it heretofore because (1) no one had requested it, \n(2) most of the machines I work on are old-fashioned, single processor \nbeasts (and hence I don't have a very extensive repertoire of testing \nmachines), and (3) the gains from parallel processing are usually pretty \nmodest compared to the benefits of improving the underlying algorithms \n(where possible).  If there's demand for it, I'll look into what it \nwould take to start integrating this into future versions of sna...in \nprinciple, it is simple enough, but one must be careful about \nintroducing unforeseen maintenance issues (especially if R's support for \nparallel processing is in an unstable state).  I would feel more \ncomfortable about putting this in at the package level if the R core \nteam had committed to a parallelization paradigm.  (Which they might \nhave, though I am unaware of it.)\n\nThanks for the suggestion,\n\n-Carter",
+      "body_snippet": "Hi, Jack -\n\njack.iwashyna@comcast.net wrote:\n> I'm watching QAP run through 1,000 replications on my machine slowly.\n> Clearly, only 1 CPU is doing work at a time, which seems like a\n> waste.\n> \n> Is ",
+      "thread_id": "thread-1dfc2b7576ff",
+      "thread_depth": 1,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-17a5128dcd5c",
+      "message_id": "<C3D20B15.151AC%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2008-02-08T13:35:17Z",
+      "subject": "[statnet_help] assigning vertex attributes from .paj file?",
+      "subject_clean": "[statnet_help] assigning vertex attributes from .paj file?",
+      "in_reply_to": "<9b69d2ac0802081323k4a28424fs274d2a2aa69ce008@mail.gmail.com>",
+      "references": [],
+      "body_plain": "Hi Jenine,\n\nHere is an example:\n\n> library(network)\nClasses for Relational Data\nVersion 1.2 created on July 31, 2007.\ncopyright (c) 2005, Carter T. Butts, University of California-Irvine\n                    Mark S. Handcock, University of Washington\n                    David R. Hunter, Penn State University\n                    Martina Morris, University of Washington\nType help(package=\"network\") to get started.\n> san <- read.paj(\"SanJuanSur.paj\")\n> names(san$networks)\n[1] \"SanJuanSur_deathmessage.net\" \"SanJuanSur_deathmessage.net\"\n> dm <- san$networks$SanJuanSur_deathmessage.net\n> dm\nNetwork attributes:\n   vertices = 75 \n   directed = TRUE \n   hyper = FALSE \n   loops = FALSE \n   multiple = FALSE\n   bipartite = FALSE\n   title = SanJuanSur_deathmessage.net\n   total edges= 199\n\n Nodal attribute names:\n    vertex.names \n\n edgelist matrix:\n       [,1] [,2]\n  [1,]    1    2\n  [2,]    1    3\n ...\n[198,]   17   18\n[199,]   17   41\n> san$partitions\n$SanJuanSur_deathmessage.clu\n [1] 8 8 1 4 2 1 4 8 8 9 8 8 4 2 3 9 2 4 4 1 1 1 1 1 2 1 1 6 6 3 4 8 8 4 4 7\n7 7\n[39] 4 4 4 5 5 5 5 7 8 4 9 4 9 9 9 8 8 8 7 2 6 9 1 3 7 8 3 3 3 3 2 7 8 8 6 6\n6\n\n$SanJuanSur_grouping.clu\n [1] 9 9 9 9 9 9 1 2 1 8 1 8 1 1 8 4 1 1 1 3 3 2 2 2 2 7 2 1 1 8 4 4 3 4 3 3\n3 3\n[39] 4 4 4 4 4 4 4 7 9 4 7 6 7 7 7 7 5 5 5 5 6 4 6 6 6 6 8 8 8 8 8 8 8 8 8 8\n8\n\n> dm %v% \"deathmessage\" <- san$partitions$SanJuanSur_deathmessage.clu\n> summary(dm)\nNetwork attributes:\n   vertices = 75 \n   directed = TRUE \n   hyper = FALSE \n   loops = FALSE \n   multiple = FALSE\n   bipartite = FALSE\n   title = SanJuanSur_deathmessage.net\n   total edges= 199\n   density = 0.03585586\n\n Edge attributes: \n        SanJuanSur.net1\n\n Nodal attributes: \n\nvertex.names:\n   Length     Class      Mode\n       75 character character\n\ndeathmessage:\n\n 1  2  3  4  5  6  7  8  9\n10  6  7 13  4  6  7 15  7\n> \n\nI hope this helps!\n\nMark\n\n\nOn 2/8/08 1:23 PM, \"jenine harris\" <harrisjk@slu.edu> wrote:\n\n> Hi all,\n> \n> Excuse me if this is a repeat question --- I looked through the archives and\n> didn't see it.\n> \n> I have a .paj file with a 54 node network that has two partitions (node\n> attributes), I have so far successfully brought the file into R-statnet, and\n> separated the network into it's own file (without partitions). I cannot,\n> however, figure out how to assign the partition values as vertex attributes in\n> order to do analyses. Any help would be greatly appreciated.\n> \n> I am new to both R and statnet...just fyi.\n> \n> thanks,\n> Jenine Harris\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080208/a5d2276e/attachment.html>",
+      "body_snippet": "Hi Jenine,\n\nHere is an example:\n\n> library(network)\nClasses for Relational Data\nVersion 1.2 created on July 31, 2007.\ncopyright (c) 2005, Carter T. Butts, University of California-Irvine\n             ",
+      "thread_id": "thread-d02d04b67324",
+      "thread_depth": 1,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-4e5bc91648b4",
+      "message_id": "<47ACD4FB.2070401@ucsd.edu>",
+      "from_name": "Simon Frost",
+      "from_email_hash": "035b0ea7e424ab86c49e75c8ef123f13dce97b7aaadbb47397e5c83707ce33a8",
+      "date": "2008-02-08T14:17:31Z",
+      "subject": "[statnet_help] Parallelized QAP?",
+      "subject_clean": "[statnet_help] Parallelized QAP?",
+      "in_reply_to": "<020820082033.5246.47ACBCAF000D0B6B0000147E22007481840E0297089C0E9907D2050C0E06@comcast.net>",
+      "references": [
+        "<020820082033.5246.47ACBCAF000D0B6B0000147E22007481840E0297089C0E9907D2050C0E06@comcast.net>"
+      ],
+      "body_plain": "Dear Jack,\n\nSuch embarrassingly parallel replications are easy in principle to do. \nI've tried (and failed) to get any of the R parallelization packages \nworking; RPVM just hangs, and our MPI implementation is MPICH rather \nthan LAM-MPI (I've never got the latter to work properly). I'd go along \nwith Carter's comments, that parallelization is not handled very \nwell/stably in R as yet. The ugly hack is to call an R script from the \ncommand line, using some kind of MPI-enabled shell. I've used (for \nexample) MPI-enabled Ruby or Python interpreters (the latter using pypar \nand RPy).\n\nBest\nSimon\n\njack.iwashyna@comcast.net wrote:\n> I'm watching QAP run through 1,000 replications on my machine slowly.  Clearly, only 1 CPU is doing work at a time, which seems like a waste.\n>\n> Is there any straightforward way to parallelize QAP (or permutation-based statnet commands more generally)?  I'm doing this on an dual-core Intel Mac, so have limited potential benefit for now, but can imagine bringing more processors online if it would help.\n>\n> It looks like there are some R-commands to do this -- it just exceeds my comfort zone:\n>    http://www.r-project.org/useR-2006/Slides/Harrington+Salibian-Barrera.pdf\n>\n> Thank, as always, for any help.\n>\n>   best,\n>    Jack\n>\n> -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n> Theodore J. Iwashyna, M.D., Ph.D.\n>\n> Division of Pulmonary and Critical Care\n> Department of Medicine\n> Hospital of the University of Pennsylvania\n>\n> email: iwashyna@alumni.Princeton.edu\n> alternate: theodore.iwashyna@uphs.upenn.edu\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>",
+      "body_snippet": "Dear Jack,\n\nSuch embarrassingly parallel replications are easy in principle to do. \nI've tried (and failed) to get any of the R parallelization packages \nworking; RPVM just hangs, and our MPI implemen",
+      "thread_id": "thread-1dfc2b7576ff",
+      "thread_depth": 1,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-38707db9045f",
+      "message_id": "<9b69d2ac0802081707g7361f483lde9619341cc90cfb@mail.gmail.com>",
+      "from_name": "jenine harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2008-02-08T17:07:24Z",
+      "subject": "[statnet_help] assigning vertex attributes from .paj file?",
+      "subject_clean": "[statnet_help] assigning vertex attributes from .paj file?",
+      "in_reply_to": "<C3D20B15.151AC%handcock@stat.washington.edu>",
+      "references": [
+        "<9b69d2ac0802081323k4a28424fs274d2a2aa69ce008@mail.gmail.com>",
+        "<C3D20B15.151AC%handcock@stat.washington.edu>"
+      ],
+      "body_plain": "Worked like a charm! Thank you.\n\nJenine\n\nOn Feb 8, 2008 3:35 PM, Mark S. Handcock <handcock@stat.washington.edu>\nwrote:\n\n>  Hi Jenine,\n>\n> Here is an example:\n>\n> > library(network)\n> Classes for Relational Data\n> Version 1.2 created on July 31, 2007.\n> copyright (c) 2005, Carter T. Butts, University of California-Irvine\n>                     Mark S. Handcock, University of Washington\n>                     David R. Hunter, Penn State University\n>                     Martina Morris, University of Washington\n> Type help(package=\"network\") to get started.\n> > san <- read.paj(\"SanJuanSur.paj\")\n> > names(san$networks)\n> [1] \"SanJuanSur_deathmessage.net\" \"SanJuanSur_deathmessage.net\"\n> > dm <- san$networks$SanJuanSur_deathmessage.net\n> > dm\n> Network attributes:\n>    vertices = 75\n>    directed = TRUE\n>    hyper = FALSE\n>    loops = FALSE\n>    multiple = FALSE\n>    bipartite = FALSE\n>    title = SanJuanSur_deathmessage.net\n>    total edges= 199\n>\n>  Nodal attribute names:\n>     vertex.names\n>\n>  edgelist matrix:\n>        [,1] [,2]\n>   [1,]    1    2\n>   [2,]    1    3\n>  ...\n> [198,]   17   18\n> [199,]   17   41\n> > san$partitions\n> $SanJuanSur_deathmessage.clu\n>  [1] 8 8 1 4 2 1 4 8 8 9 8 8 4 2 3 9 2 4 4 1 1 1 1 1 2 1 1 6 6 3 4 8 8 4 4\n> 7 7 7\n> [39] 4 4 4 5 5 5 5 7 8 4 9 4 9 9 9 8 8 8 7 2 6 9 1 3 7 8 3 3 3 3 2 7 8 8 6\n> 6 6\n>\n> $SanJuanSur_grouping.clu\n>  [1] 9 9 9 9 9 9 1 2 1 8 1 8 1 1 8 4 1 1 1 3 3 2 2 2 2 7 2 1 1 8 4 4 3 4 3\n> 3 3 3\n> [39] 4 4 4 4 4 4 4 7 9 4 7 6 7 7 7 7 5 5 5 5 6 4 6 6 6 6 8 8 8 8 8 8 8 8 8\n> 8 8\n>\n> > dm %v% \"deathmessage\" <- san$partitions$SanJuanSur_deathmessage.clu\n> > summary(dm)\n> Network attributes:\n>    vertices = 75\n>    directed = TRUE\n>    hyper = FALSE\n>    loops = FALSE\n>    multiple = FALSE\n>    bipartite = FALSE\n>    title = SanJuanSur_deathmessage.net\n>    total edges= 199\n>    density = 0.03585586\n>\n>  Edge attributes:\n>         SanJuanSur.net1\n>\n>  Nodal attributes:\n>\n> vertex.names:\n>    Length     Class      Mode\n>        75 character character\n>\n> deathmessage:\n>\n>  1  2  3  4  5  6  7  8  9\n> 10  6  7 13  4  6  7 15  7\n> >\n>\n> I hope this helps!\n>\n> Mark\n>\n>\n> On 2/8/08 1:23 PM, \"jenine harris\" <harrisjk@slu.edu> wrote:\n>\n> Hi all,\n>\n> Excuse me if this is a repeat question --- I looked through the archives\n> and didn't see it.\n>\n> I have a .paj file with a 54 node network that has two partitions (node\n> attributes), I have so far successfully brought the file into R-statnet, and\n> separated the network into it's own file (without partitions). I cannot,\n> however, figure out how to assign the partition values as vertex attributes\n> in order to do analyses. Any help would be greatly appreciated.\n>\n> I am new to both R and statnet...just fyi.\n>\n> thanks,\n> Jenine Harris\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n\n-- \n************************************\nJenine Harris, Senior Research Assistant\nCenter for Tobacco Policy Research\nSaint Louis University School of Public Health\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210\n314.977.3234 Fax\nhttp://ctpr.slu.edu/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080208/42cb0464/attachment.html>",
+      "body_snippet": "Worked like a charm! Thank you.\n\nJenine\n\nOn Feb 8, 2008 3:35 PM, Mark S. Handcock <handcock@stat.washington.edu>\nwrote:\n\n>  Hi Jenine,\n>\n> Here is an example:\n>\n> > library(network)\n> Classes for Rela",
+      "thread_id": "thread-d02d04b67324",
+      "thread_depth": 2,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-3e9b61788f5d",
+      "message_id": "<1B56A515-DCBE-4198-93ED-688E7102CE75@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-02-11T02:32:51Z",
+      "subject": "[statnet_help] ofactor ifactor backwards?",
+      "subject_clean": "[statnet_help] ofactor ifactor backwards?",
+      "in_reply_to": "<47ACA81B.8050004@fas.harvard.edu>",
+      "references": [
+        "<47ACA81B.8050004@fas.harvard.edu>"
+      ],
+      "body_plain": "Hi Kevin.\n\nCould you clarify?  These functions seem to be doing what I'd expect,  \nbut I may have different-than-standard expectations.  :)\n\nHere's an example using the \"samplike\" network:\n\n > data(sampson)\n > mixingmatrix(samplike, \"group\")\n           To\n From       Turks loyal outcasts Total\n   Turks       30     5        1    36\n   loyal        9    23        2    34\n   outcasts     7     1       10    18\n   Total       46    29       13    88\n\nSo let's focus on the (outcasts, loyal) and (loyal, outcasts) pairs  \nsince there are only a few of them.  Here they are:\n\n > g = samplike %v% \"group\"\n > e = as.matrix.network.edgelist(samplike)\n > f = function(row,g) any(g[row]==\"outcasts\") && any(g[row]==\"loyal\")\n > e[apply(e,1,f,g),]\n      [,1] [,2]\n[1,]   15    2\n[2,]    1   15\n[3,]    2   15\n\nIn other words, (15,2) is counted as the one example of a (from =  \noutcasts, to = loyal) tie, whereas (1,15) and (2,15) are the two  \n(loyal, outcasts) ties.\n\nNow for the output of the nodeifactor and nodeofactor:\n > summary(samplike~nodeifactor(\"group\")+nodeofactor(\"group\"))\n    nodeifactor.group.loyal nodeifactor.group.outcasts     \nnodeofactor.group.loyal\n                         29                          \n13                         34\nnodeofactor.group.outcasts\n                         18\n\nAgain, this is what I'd expect, because for example the mixingmatrix  \noutput tells me that there are 29 (=5+23+1) ties to loyal nodes.  I  \ncan also verify this directly:\n > sum(g[e[,2]]==\"loyal\")\n[1] 29\n\nSo I'm wondering:  First, do you get the same output that I did in  \nthis example?  Second, would you have EXPECTED to see this output for  \nthis example, or do you, say, interpret terms like \"From\" and \"to\"  \nand \"in\" and \"out\" differently?\n\nHope this helps.  I'll be curious to hear what you find.\n\nDave\n\n\n\n\nLe 8 f?vr. 08 ? 20:06, Kevin Lewis a ?crit :\n\n> hello,\n>\n> i've been working with the \"nodeifactor\" and \"nodeofactor\" terms as  \n> well as the \"mixingmatrix\" function in the new version of statnet,  \n> and i believe they might be backwards! (unless i am backwards in my  \n> interpretation, which is always a possibility.) in other words, i  \n> believe that the row totals in the mixing matrix should equal the  \n> total outdegree for each group, which should correspond to the  \n> outfactor summary, and the column totals should correspond to the  \n> total group indegree (and in turn the infactor summary)- but  \n> statnet is giving me numbers that are opposite to what i get when  \n> tabulating these statistics elsewhere. in other words, the  \n> mixingmatrix seems to be \"flipped\", and the ifactor and ofactor  \n> terms seem to be reversed (though i think they were ok in the pre- \n> january version).\n>\n> please let me know if this is the case. if so, glad to have caught  \n> this; if not, sorry for my confusion. thanks!\n>\n> -kevin\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Kevin.\n\nCould you clarify?  These functions seem to be doing what I'd expect,  \nbut I may have different-than-standard expectations.  :)\n\nHere's an example using the \"samplike\" network:\n\n > data(sa",
+      "thread_id": "thread-cea7be2bd57c",
+      "thread_depth": 1,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-aca85e2757fd",
+      "message_id": "<47B0A701.9010004@fas.harvard.edu>",
+      "from_name": "Kevin Lewis",
+      "from_email_hash": "3e16f115495b0e59b9f7583fd0cfe6f012b826a6e99dfab804f7275bfb0c581c",
+      "date": "2008-02-11T11:50:25Z",
+      "subject": "[statnet_help] ofactor ifactor backwards?",
+      "subject_clean": "[statnet_help] ofactor ifactor backwards?",
+      "in_reply_to": "<1B56A515-DCBE-4198-93ED-688E7102CE75@stat.psu.edu>",
+      "references": [
+        "<47ACA81B.8050004@fas.harvard.edu>",
+        "<1B56A515-DCBE-4198-93ED-688E7102CE75@stat.psu.edu>"
+      ],
+      "body_plain": "hi dave,\n\nthanks for your thorough look into this- as you say, everything looks \ngood in the output below! thus, i was completely puzzled when i reviewed \nmy stats and still found a discrepancy. i am a little embarrassed to \nsay, then, that it took me this long to wonder if maybe \nifactor/ofactor/mixingmatrix were working fine, but that somehow my DATA \ngot flipped around. i've been using the \"read.paj\" function to get all \nof my network data into statnet- but now that i actually go in and look \nat the data, my network file in statnet is backwards to the original \nnetwork file in pajek (i.e. senders are listed as receivers, and vice \nversa). i believe, then, that the problem is in the read.paj function. i \napologize for my error! but you may want to have a look; and if need be, \ni can send you my particular files/outputs as well.\n\nthanks :)\n\n-kevin\n\nOn 2/11/2008 5:32 AM, David Hunter wrote:\n> Hi Kevin.\n>\n> Could you clarify?  These functions seem to be doing what I'd expect, \n> but I may have different-than-standard expectations.  :)\n>\n> Here's an example using the \"samplike\" network:\n>\n> > data(sampson)\n> > mixingmatrix(samplike, \"group\")\n>           To\n> From       Turks loyal outcasts Total\n>   Turks       30     5        1    36\n>   loyal        9    23        2    34\n>   outcasts     7     1       10    18\n>   Total       46    29       13    88\n>\n> So let's focus on the (outcasts, loyal) and (loyal, outcasts) pairs \n> since there are only a few of them.  Here they are:\n>\n> > g = samplike %v% \"group\"\n> > e = as.matrix.network.edgelist(samplike)\n> > f = function(row,g) any(g[row]==\"outcasts\") && any(g[row]==\"loyal\")\n> > e[apply(e,1,f,g),]\n>      [,1] [,2]\n> [1,]   15    2\n> [2,]    1   15\n> [3,]    2   15\n>\n> In other words, (15,2) is counted as the one example of a (from = \n> outcasts, to = loyal) tie, whereas (1,15) and (2,15) are the two \n> (loyal, outcasts) ties.\n>\n> Now for the output of the nodeifactor and nodeofactor:\n> > summary(samplike~nodeifactor(\"group\")+nodeofactor(\"group\"))\n>    nodeifactor.group.loyal nodeifactor.group.outcasts    \n> nodeofactor.group.loyal\n>                         29                         \n> 13                         34\n> nodeofactor.group.outcasts\n>                         18\n>\n> Again, this is what I'd expect, because for example the mixingmatrix \n> output tells me that there are 29 (=5+23+1) ties to loyal nodes.  I \n> can also verify this directly:\n> > sum(g[e[,2]]==\"loyal\")\n> [1] 29\n>\n> So I'm wondering:  First, do you get the same output that I did in \n> this example?  Second, would you have EXPECTED to see this output for \n> this example, or do you, say, interpret terms like \"From\" and \"to\" and \n> \"in\" and \"out\" differently?\n>\n> Hope this helps.  I'll be curious to hear what you find.\n>\n> Dave\n>\n>\n>\n>\n> Le 8 f?vr. 08 ? 20:06, Kevin Lewis a ?crit :\n>\n>> hello,\n>>\n>> i've been working with the \"nodeifactor\" and \"nodeofactor\" terms as \n>> well as the \"mixingmatrix\" function in the new version of statnet, \n>> and i believe they might be backwards! (unless i am backwards in my \n>> interpretation, which is always a possibility.) in other words, i \n>> believe that the row totals in the mixing matrix should equal the \n>> total outdegree for each group, which should correspond to the \n>> outfactor summary, and the column totals should correspond to the \n>> total group indegree (and in turn the infactor summary)- but statnet \n>> is giving me numbers that are opposite to what i get when tabulating \n>> these statistics elsewhere. in other words, the mixingmatrix seems to \n>> be \"flipped\", and the ifactor and ofactor terms seem to be reversed \n>> (though i think they were ok in the pre-january version).\n>>\n>> please let me know if this is the case. if so, glad to have caught \n>> this; if not, sorry for my confusion. thanks!\n>>\n>> -kevin\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "hi dave,\n\nthanks for your thorough look into this- as you say, everything looks \ngood in the output below! thus, i was completely puzzled when i reviewed \nmy stats and still found a discrepancy. i am ",
+      "thread_id": "thread-cea7be2bd57c",
+      "thread_depth": 2,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-00f490846a51",
+      "message_id": "<6375B111-46C1-4DBF-86A6-7A70CC151B54@comcast.net>",
+      "from_name": "Theodore Iwashyna",
+      "from_email_hash": "1e6c1ec9835f8bc411e1e6b5dc6a680165fbbb6f02ffdb1449cefce51fe5e2c0",
+      "date": "2008-02-12T12:02:50Z",
+      "subject": "[statnet_help] Creating valued edges from edgelist",
+      "subject_clean": "[statnet_help] Creating valued edges from edgelist",
+      "in_reply_to": "<200802030418.m134I08Z028956@smtp.washington.edu>",
+      "references": [
+        "<200802030418.m134I08Z028956@smtp.washington.edu>"
+      ],
+      "body_plain": "Thanks, Mark.  This worked perfectly.\n\nThe only minor issue was that my data was in a data.frame, not a  \ntable, so I had to refer to the columns as test[,1:2] rather than  \ntest[,2:3].\n\nbest,\n  Jack\n\nOn Feb 2, 2008, at 11:17 PM, Mark S. Handcock wrote:\n\n> Hi Jack,\n>\n> This is a good question. Here is how to do it (via reading the  \n> comments). I\n> put your example file called \"test.dat\" and read it into R:\n>\n>> # read in the data as a data.frame (remember to not convert\n>> # it to a factor!\n>> test <- read.table(\"test.dat\",header=T, as.is=T)\n>> test\n>  num SENDING RECEIVE cvs rsurg ccu micu\n> 1   1  260094  260040   0     0   0    1\n> 2   2  310063  310002   0     0   0    1\n> 3   3  370047  370028   8     0   1    0\n> 4   4  390192  390119   0     4   0    1\n> 5   5  410008  410007   0     0   1    0\n> 6   6  510012  510007   2     0   1    0\n> 7   7   80007  210019   0     0   1    0\n>> # The vertex labels are not in order, so we can\n>> # convert them to character (as that network knows to\n>> # use them as labels)\n>> edges <- as.matrix(test[,2:3])\n>> mode(edges) <- \"character\"\n>> # Now create the network\n>> net <- network(edges)\n>> # Check out the names to see what \"network\" has done\n>> network.vertex.names(net)\n> [1] \"210019\" \"260040\" \"260094\" \"310002\" \"310063\" \"370028\" \"370047\"  \n> \"390119\"\n> [9] \"390192\" \"410007\" \"410008\" \"510007\" \"510012\" \"80007\"\n>> # Set the edge attribute to \"cvs\" (for example)\n>> set.edge.attribute(net,\"cvs\",test[,\"cvs\"])\n>> # Print out the sociomatrix\n>> as.sociomatrix(net,\"cvs\")\n>       210019 260040 260094 310002 310063 370028 370047 390119 390192  \n> 410007\n> 210019      0      0      0      0      0      0      0      0       \n> 0      0\n> 260040      0      0      0      0      0      0      0      0       \n> 0      0\n> 260094      0      0      0      0      0      0      0      0       \n> 0      0\n> 310002      0      0      0      0      0      0      0      0       \n> 0      0\n> 310063      0      0      0      0      0      0      0      0       \n> 0      0\n> 370028      0      0      0      0      0      0      0      0       \n> 0      0\n> 370047      0      0      0      0      0      8      0      0       \n> 0      0\n> 390119      0      0      0      0      0      0      0      0       \n> 0      0\n> 390192      0      0      0      0      0      0      0      0       \n> 0      0\n> 410007      0      0      0      0      0      0      0      0       \n> 0      0\n> 410008      0      0      0      0      0      0      0      0       \n> 0      0\n> 510007      0      0      0      0      0      0      0      0       \n> 0      0\n> 510012      0      0      0      0      0      0      0      0       \n> 0      0\n> 80007       0      0      0      0      0      0      0      0       \n> 0      0\n>       410008 510007 510012 80007\n> 210019      0      0      0     0\n> 260040      0      0      0     0\n> 260094      0      0      0     0\n> 310002      0      0      0     0\n> 310063      0      0      0     0\n> 370028      0      0      0     0\n> 370047      0      0      0     0\n> 390119      0      0      0     0\n> 390192      0      0      0     0\n> 410007      0      0      0     0\n> 410008      0      0      0     0\n> 510007      0      0      0     0\n> 510012      0      2      0     0\n> 80007       0      0      0     0\n>> # Print out the network as an edge list\n>> as.matrix.network(net,mat=\"edgelist\",a=\"cvs\")\n>     [,1] [,2] [,3]\n> [1,]    3    2    0\n> [2,]    5    4    0\n> [3,]    7    6    8\n> [4,]    9    8    0\n> [5,]   11   10    0\n> [6,]   13   12    2\n> [7,]   14    1    0\n>\n> Is that what you are after?\n>\n> Cheers,\n>\n> Mark\n>\n> On 2/2/08 7:34 PM, \"jack.iwashyna@comcast.net\" <jack.iwashyna@comcast.net \n> >\n> wrote:\n>\n>> In brief, I have 4 nets stored as an edgelist with a group of  \n>> attribute\n>> variables.  I can't get the edge attributes into my network object.\n>>\n>> I realize you all have answered questions similar to this before,  \n>> such as at:\n>>    [statnet_help] importing edgelist with multiple attributes  on   \n>> Sun Mar 11\n>> 20:45:50 PDT 2007\n>>\n>> But I can't get it to work for my particular data configuration.   \n>> Please,\n>> help!\n>>\n>>\n>> DATA STRUCTURE\n>>\n>> I have four networks over a large set of nodes (~3300).  They are  \n>> stored in a\n>> data.frame as:\n>>\n>>  SENDING RECEIVE cvs   rsurg  ccu   micu\n>> 1  260094  260040       0        0       0        1\n>> 2  310063  310002       0        0       0        1\n>> 3  370047  370028       8        0       1        0\n>> 4  390192  390119       0        4       0        1\n>> 5  410008  410007       0        0       1        0\n>> 6  510012  510007       2        0       1        0\n>> 7   80007  210019       0        0       1        0\n>> ...\n>>\n>> where SENDING and RECEIVE are the arbitrary ID's of the nodes.   \n>> (They are\n>> numeric, but are not sequential; using as.character for the network  \n>> call has\n>> worked well.)\n>>\n>> CVS, SURG, CCU and MICU are, respectively, the value of the  \n>> directed edges\n>> between the two nodes.\n>>\n>> Two nodes may be connected reciprocally, but need not be.  All node  \n>> pairs in\n>> the data have at least 1 directed edge in 1 of the nets, but may  \n>> have a\n>> directed edge in all 4 nets.  This is a sparse network, so most  \n>> node pairs do\n>> not occur at all.  A given edge pair appears on only one line in  \n>> the data.\n>>\n>> I would like to create a set of 4 graphs over the same node set.  I  \n>> cannot\n>> figure out how to use set.edge.value to create 4 attributes for  \n>> each edge, one\n>> for each network.\n>>\n>> FAILED CODE:\n>> # This creates the network appropriately, but attaches the edge  \n>> values to the\n>> wrong edges;\n>> attach(jan29.core.recast)\n>> core_net<-network( array(\n>>   c(as.character(SENDING), as.character(RECEIVE)),\n>>   dim=c(length(SENDING),2)),\n>>   directed=TRUE, hyper=FALSE, loops=FALSE, multiple=FALSE)\n>> set.edge.value(core_net,\"cvs\",jan29.core.recast$cvs);\n>>\n>> I am guessing that the process of creating the network reorders the  \n>> edgelist\n>> in some way to create the internal network edgelist, so that my  \n>> data.frame\n>> edgelist and the internal network object edgelist are no longer  \n>> synchronized.\n>> But I don't know how to fix it.  I would appreciate any help.\n>>\n>> best,\n>>  Jack\n>>\n>> -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n>> Theodore J. Iwashyna, M.D., Ph.D.\n>>\n>> Division of Pulmonary and Critical Care\n>> Department of Medicine\n>> Hospital of the University of Pennsylvania\n>>\n>> email: iwashyna@alumni.Princeton.edu\n>> alternate: theodore.iwashyna@uphs.upenn.edu\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\nTheodore J. Iwashyna, M.D., Ph.D.\n\nDivision of Pulmonary and Critical Care\nDepartment of Medicine\nHospital of the University of Pennsylvania\n\nemail: iwashyna@alumni.Princeton.edu\nalternate: theodore.iwashyna@uphs.upenn.edu",
+      "body_snippet": "Thanks, Mark.  This worked perfectly.\n\nThe only minor issue was that my data was in a data.frame, not a  \ntable, so I had to refer to the columns as test[,1:2] rather than  \ntest[,2:3].\n\nbest,\n  Jack\n",
+      "thread_id": "thread-00f490846a51",
+      "thread_depth": 0,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-a39dce269e5d",
+      "message_id": "<1202203B-1110-4072-AD41-130CC69A0900@comcast.net>",
+      "from_name": "Theodore Iwashyna",
+      "from_email_hash": "1e6c1ec9835f8bc411e1e6b5dc6a680165fbbb6f02ffdb1449cefce51fe5e2c0",
+      "date": "2008-02-12T12:25:25Z",
+      "subject": "[statnet_help] Parallelized QAP?",
+      "subject_clean": "[statnet_help] Parallelized QAP?",
+      "in_reply_to": "<47ACC966.3060402@uci.edu>",
+      "references": [
+        "<020820082033.5246.47ACBCAF000D0B6B0000147E22007481840E0297089C0E9907D2050C0E06@comcast.net>",
+        "<47ACC966.3060402@uci.edu>"
+      ],
+      "body_plain": "Carter and Simon,\n\nThanks for your notes.  Simon's experience is certainly a dispiriting  \ntale in terms of trying to do this on my own, although I may be stupid  \nenough to try.  (I'll let the list know if I succeed at all.)\n\nI guess my thoughts are:\n  - Permutation methods in social network are widespread\n  - \"limitations on computational feasibility\" were invoked rampantly  \nat the last INSNA\n  - you can't buy an Apple desktop machine with less than 8 cores  \nright now; does Intel even make single-core chips any longer?\n\nGiven all this, I would strongly support any development work that can  \nbe done.  I suspect there may be induce-able demand -- until people  \nappreciate the performance advantages of effective parallelization,  \nthey don't ask for it.  At the same time, not having well-parallelized  \nsoftware, there is no reason to make the modest marginal investment in  \nmulti-core machines.\n\nI would certainly volunteer to be a beta-site; I'm just not good  \nenough at writing code to really meaningfully contribute.  Please let  \nme know what else I can do to help.\n\nbest,\n   Jack\n\n\nFor other intrepid souls, I'll add a few other references I found:\n- UWashington (home of statnet?) apparently developed SNOW: http://www.bepress.com/cgi/viewcontent.cgi?article=1016&context=uwbiostat\n- some gene selection work has been done and parallelized in R: http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2034606\n  - R is being used as a framework for transparent parallelization: http://ieeexplore.ieee.org/iel5/4203121/4227918/04228216.pdf?isnumber=4227918&prod=CNF&arnumber=4228216&arSt=1&ared=6&arAuthor=Ma%2C+X.%3B+Li%2C+J.%3B+Samatova%2C+N.F \n.\n\n\nOn Feb 8, 2008, at 4:28 PM, Carter T. Butts wrote:\n\n> Hi, Jack -\n>\n> jack.iwashyna@comcast.net wrote:\n>> I'm watching QAP run through 1,000 replications on my machine slowly.\n>> Clearly, only 1 CPU is doing work at a time, which seems like a\n>> waste.\n>> Is there any straightforward way to parallelize QAP (or\n>> permutation-based statnet commands more generally)?  I'm doing this\n>> on an dual-core Intel Mac, so have limited potential benefit for now,\n>> but can imagine bringing more processors online if it would help.\n>> It looks like there are some R-commands to do this -- it just exceeds\n>> my comfort zone: http://www.r-project.org/useR-2006/Slides/Harrington+Salibian-Barrera.pdf\n>>\n>\n> This could be done using the snow package without a lot of  \n> difficulty. I haven't looked into it heretofore because (1) no one  \n> had requested it, (2) most of the machines I work on are old- \n> fashioned, single processor beasts (and hence I don't have a very  \n> extensive repertoire of testing machines), and (3) the gains from  \n> parallel processing are usually pretty modest compared to the  \n> benefits of improving the underlying algorithms (where possible).   \n> If there's demand for it, I'll look into what it would take to start  \n> integrating this into future versions of sna...in principle, it is  \n> simple enough, but one must be careful about introducing unforeseen  \n> maintenance issues (especially if R's support for parallel  \n> processing is in an unstable state).  I would feel more comfortable  \n> about putting this in at the package level if the R core team had  \n> committed to a parallelization paradigm.  (Which they might have,  \n> though I am unaware of it.)\n>\n> Thanks for the suggestion,\n>\n> -Carter\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\nTheodore J. Iwashyna, M.D., Ph.D.\n\nDivision of Pulmonary and Critical Care\nDepartment of Medicine\nHospital of the University of Pennsylvania\n\nemail: iwashyna@alumni.Princeton.edu\nalternate: theodore.iwashyna@uphs.upenn.edu",
+      "body_snippet": "Carter and Simon,\n\nThanks for your notes.  Simon's experience is certainly a dispiriting  \ntale in terms of trying to do this on my own, although I may be stupid  \nenough to try.  (I'll let the list k",
+      "thread_id": "thread-1dfc2b7576ff",
+      "thread_depth": 2,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-7fecec683339",
+      "message_id": "<43A1753D-DC12-4869-AF53-24E127E702E2@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-02-13T00:31:21Z",
+      "subject": "[statnet_help] ERGM gwdsp and gwodegree",
+      "subject_clean": "[statnet_help] ERGM gwdsp and gwodegree",
+      "in_reply_to": "<000401c869ef$2f942f80$8ebc8e80$@edu>",
+      "references": [
+        "<000401c869ef$2f942f80$8ebc8e80$@edu>"
+      ],
+      "body_plain": "Hi Jichao.  There was a bug in the directed version of gwdsp, but I  \nthink that's fixed now so it should show up in the next CRAN version  \nof ergm (in a few days?).  Also, thanks for noticing that gwodegree  \nwas only named gwodegree instead of gwodegree.fixed.0 -- that was  \njust an oversight but shouldn't have affected the performance.\n\nDave\n\n\nLe 8 f?vr. 08 ? 02:08, Jichao Qian a ?crit :\n\n> Hi all,\n>\n>\n>\n> I have a 79x79 directed network of email traffic that I?m trying to  \n> fit to an ERGM model. I?ve run into some problems with the gwdsp  \n> (geometrically weighted dyadwise shared partner) and gwodegree  \n> (geometrically weighted out-degree) parameters.\n>\n>\n>\n> If I include gwdsp in the model, it just does not run and gives the  \n> following output:\n>\n> > email25.e_gwd0<-ergm(email25.net~edges+gwdsp \n> (0,fixed=TRUE),verbose=TRUE)\n>\n> Evaluating network in model\n>\n> Initializing model.\n>\n> Initializing Metropolis-Hastings proposal.\n>\n> Fitting initial model.\n>\n> Fitting ERGM.\n>\n> Iteration 1 of at most 3 with parameter:\n>\n>         edges gwdsp.fixed.0\n>\n>     -2.620430      0.000000\n>\n> Error in ergm.mcmcslave(Clist, MHproposal, eta0, MCMCparams,  \n> maxedges,  :\n>\n>   NA/NaN/Inf in foreign function call (arg 15)\n>\n>\n>\n> If I include gwodegree in the model, it runs but some strange  \n> things happen. First, the model becomes degenerate, even though the  \n> model is ok with gwidegree. If I include gwodegree with gwidegree  \n> or with gwesp, TNT sampler stops accepting all proposals, and thus  \n> the model is degenerate. Also, When fixed=TRUE at 0, gwidegree  \n> parameter is named gwidegree.fixed.0, however, gwodegree is only  \n> named gwodegree, suggesting that it may not actually be fixed.\n>\n>\n>\n> Any ideas/fixes would be greatly appreciated. Thanks!\n>\n>\n>\n> Jichao Qian\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080213/f402c43a/attachment.html>",
+      "body_snippet": "Hi Jichao.  There was a bug in the directed version of gwdsp, but I  \nthink that's fixed now so it should show up in the next CRAN version  \nof ergm (in a few days?).  Also, thanks for noticing that g",
+      "thread_id": "thread-78983a3ea6ed",
+      "thread_depth": 1,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-fc92eb56cc3c",
+      "message_id": "<9b69d2ac0802140757k5780f4d1pd74654c39d0c5469@mail.gmail.com>",
+      "from_name": "jenine harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2008-02-14T07:57:54Z",
+      "subject": "[statnet_help] interpreting nodematch for directed networks?",
+      "subject_clean": "[statnet_help] interpreting nodematch for directed networks?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI am using a number of the articles from JOSS volume 24 to learn how to run\nand interpret simple ERGM models. I was wondering if anyone has an example\nof how to interpret results from a nodematch parameter in a directed\nnetwork? Is it still the log-odds of a single arc (from i to j OR j to i)\nbetween two nodes with the same categorical attribute value? or is the log\nodds of a mutual tie (i to j AND j to i)?\n\njenine\n\n-- \n************************************\nJenine Harris, Senior Research Assistant\nCenter for Tobacco Policy Research\nSaint Louis University School of Public Health\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210\n314.977.3234 Fax\nhttp://ctpr.slu.edu/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080214/a3727334/attachment.html>",
+      "body_snippet": "Hi all,\n\nI am using a number of the articles from JOSS volume 24 to learn how to run\nand interpret simple ERGM models. I was wondering if anyone has an example\nof how to interpret results from a nodem",
+      "thread_id": "thread-fc92eb56cc3c",
+      "thread_depth": 0,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-cc079c4caa83",
+      "message_id": "<Pine.WNT.4.64.0802140933180.1436@martina>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2008-02-14T09:33:43Z",
+      "subject": "[statnet_help] interpreting nodematch for directed networks?",
+      "subject_clean": "[statnet_help] interpreting nodematch for directed networks?",
+      "in_reply_to": "<9b69d2ac0802140757k5780f4d1pd74654c39d0c5469@mail.gmail.com>",
+      "references": [
+        "<9b69d2ac0802140757k5780f4d1pd74654c39d0c5469@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Jenine,\n\nThat depends on the data -- are your data directed, or undirected?\n\nMartina\n\nOn Thu, 14 Feb 2008, jenine harris wrote:\n\n> Hi all,\n>\n> I am using a number of the articles from JOSS volume 24 to learn how to run\n> and interpret simple ERGM models. I was wondering if anyone has an example\n> of how to interpret results from a nodematch parameter in a directed\n> network? Is it still the log-odds of a single arc (from i to j OR j to i)\n> between two nodes with the same categorical attribute value? or is the log\n> odds of a mutual tie (i to j AND j to i)?\n>\n> jenine\n>\n> -- \n> ************************************\n> Jenine Harris, Senior Research Assistant\n> Center for Tobacco Policy Research\n> Saint Louis University School of Public Health\n> 3545 Lafayette Ave, Suite 300\n> St. Louis, MO 63104-1399\n> 314.977.8210\n> 314.977.3234 Fax\n> http://ctpr.slu.edu/\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Jenine,\n\nThat depends on the data -- are your data directed, or undirected?\n\nMartina\n\nOn Thu, 14 Feb 2008, jenine harris wrote:\n\n> Hi all,\n>\n> I am using a number of the articles from JOSS volume 2",
+      "thread_id": "thread-fc92eb56cc3c",
+      "thread_depth": 1,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-f4598460de53",
+      "message_id": "<47B83EBB.8000300@fas.harvard.edu>",
+      "from_name": "Kevin Lewis",
+      "from_email_hash": "3e16f115495b0e59b9f7583fd0cfe6f012b826a6e99dfab804f7275bfb0c581c",
+      "date": "2008-02-17T06:03:39Z",
+      "subject": "[statnet_help] directed network simulations",
+      "subject_clean": "[statnet_help] directed network simulations",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "hello,\n\ni would like to simulate a large number of directed networks where the \nonly restriction is that the OUT DEGREE of every node should be \nidentical to my original network. it seems that one can currently do \nthis for undirected networks using the \"constraints~degrees\" option- is \nthere a way to do this for directed networks, as well? (though only \nholding out degree constant, not in degree.)\n\nalso, a couple other issues the team might want to know about:\n\n1. when i run models with ONLY an edge term and a \"nodeofactor\" or \n\"nodeifactor\" term, my output includes the message: \"Warning: The \nstandard errors are based on naive pseudolikelihood and are suspect.\" is \nthis correct? (given that it is a dyad-independent model, the SE's \nshould be ok, no?)\n\n2. i am also encountering some difficulty with the other geometrically \nweighted terms- see output, attached (when i tried to run the same model \non my own machine with the default settings instead, R just shut down on \nme). perhaps this is something that has already been fixed but is not \nyet available (or something i am doing wrong)- but wanted to report it \njust in case, as the error message i am getting is different from the \nother one that Jichao reported.\n\nthanks!\n\n-kevin\n-------------- next part --------------\nAn embedded and charset-unspecified text was scrubbed...\nName: history.txt\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080217/3e80ef81/attachment.txt>",
+      "body_snippet": "hello,\n\ni would like to simulate a large number of directed networks where the \nonly restriction is that the OUT DEGREE of every node should be \nidentical to my original network. it seems that one can",
+      "thread_id": "thread-f4598460de53",
+      "thread_depth": 0,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-13d06d818c68",
+      "message_id": "<C3DF1683.243B3%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2008-02-18T11:03:31Z",
+      "subject": "[statnet_help] directed network simulations",
+      "subject_clean": "[statnet_help] directed network simulations",
+      "in_reply_to": "<47B83EBB.8000300@fas.harvard.edu>",
+      "references": [],
+      "body_plain": "Hi Kevin,\n\nOn 2/17/08 6:03 AM, \"Kevin Lewis\" <kmlewis@fas.harvard.edu> wrote:\n\n> hello,\n> \n> i would like to simulate a large number of directed networks where the\n> only restriction is that the OUT DEGREE of every node should be\n> identical to my original network. it seems that one can currently do\n> this for undirected networks using the \"constraints~degrees\" option- is\n> there a way to do this for directed networks, as well? (though only\n> holding out degree constant, not in degree.)\n\nThis is natural to do, but has not yet been released to CRAN. It will come\nin time. Alternatively if you are interested you can modify the code to try\nto do it yourself.\n\n> \n> also, a couple other issues the team might want to know about:\n> \n> 1. when i run models with ONLY an edge term and a \"nodeofactor\" or\n> \"nodeifactor\" term, my output includes the message: \"Warning: The\n> standard errors are based on naive pseudolikelihood and are suspect.\" is\n> this correct? (given that it is a dyad-independent model, the SE's\n> should be ok, no?)\n\nThis is correct. The but has been fixed in the recent version put on CRAN\n2.0-5. To get it try:\n\ninstall.packages(\"ergm\",repos=\"http://cran.r-project.org\")\n\n> \n> 2. i am also encountering some difficulty with the other geometrically\n> weighted terms- see output, attached (when i tried to run the same model\n> on my own machine with the default settings instead, R just shut down on\n> me). perhaps this is something that has already been fixed but is not\n> yet available (or something i am doing wrong)- but wanted to report it\n> just in case, as the error message i am getting is different from the\n> other one that Jichao reported.\n\nTry this with the new version. Dave Hunter has made a number of updates that\nshould help.\n\n> \n> thanks!\n> \n> -kevin\n\nYou are welcome!\n\nMark\n\nFor the statnet Development Team\n\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Kevin,\n\nOn 2/17/08 6:03 AM, \"Kevin Lewis\" <kmlewis@fas.harvard.edu> wrote:\n\n> hello,\n> \n> i would like to simulate a large number of directed networks where the\n> only restriction is that the OUT D",
+      "thread_id": "thread-f4598460de53",
+      "thread_depth": 1,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-2a98fa1a5f4f",
+      "message_id": "<077C6644-40EA-4E66-B5A8-4B5CF197D83D@biomail.ucsd.edu>",
+      "from_name": "Art Poon",
+      "from_email_hash": "f24b65dfd7492932fef4587ed4f65bd2d157ca0dcb81041364d2041e415469d7",
+      "date": "2008-02-18T13:42:32Z",
+      "subject": "[statnet_help] Re: statnetuserterms",
+      "subject_clean": "[statnet_help] Re: statnetuserterms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI've been developing some custom ergm terms for statnet within the  \nstatnetuserterms source, but I've just installed the newest version  \nof statnet and my code is now crashing.  This is a pain to debug  \nbecause there are no error messages, R simply vanishes.  Is there an  \narchived version of statnet that I can use to re-install?\n\nI've also noticed that documentation for statnetuserterms has  \nvanished from the web.  Is there a revision in the works?\n\nMany thanks,\n- Art.",
+      "body_snippet": "Hello,\n\nI've been developing some custom ergm terms for statnet within the  \nstatnetuserterms source, but I've just installed the newest version  \nof statnet and my code is now crashing.  This is a pa",
+      "thread_id": "thread-2a98fa1a5f4f",
+      "thread_depth": 0,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-7f634090fa90",
+      "message_id": "<9b69d2ac0802181441n6fabaehfc30730a24d5c267@mail.gmail.com>",
+      "from_name": "jenine harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2008-02-18T14:41:58Z",
+      "subject": "[statnet_help] interpretation of main effects & interaction terms in ergm (at the risk of wearing out my welcome)",
+      "subject_clean": "[statnet_help] interpretation of main effects & interaction terms in ergm (at the risk of wearing out my welcome)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi again everyone,\n\nI have developed a network model that seems to fit my data well, but I'm\nstruggling a little with the interpretation.\n\nThe model has the following terms ~\n\n- edges\n- 2 nodefactors (let's say grade and age group)\n- 1 nodematch (let's say gender)\n\nSo, basically,\n\ny ~ edges + nodefactor(grade) + nodefactor(age group) + nodematch(gender)\n\nHow would I interpret this? Does the inclusion of the nodematch term make\nthis entire model show the probability of a tie between network constituents\nof the same gender?\n\nThanks (again) --- I think I owe a couple of you a margarita already!\njenine\n\n-- \n************************************\nJenine K. Harris, Ph.D.\nSenior Research Assistant\nCenter for Tobacco Policy Research\nSaint Louis University School of Public Health\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210\n314.977.3234 Fax\nhttp://ctpr.slu.edu/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080218/3bf9a79e/attachment.html>",
+      "body_snippet": "Hi again everyone,\n\nI have developed a network model that seems to fit my data well, but I'm\nstruggling a little with the interpretation.\n\nThe model has the following terms ~\n\n- edges\n- 2 nodefactors ",
+      "thread_id": "thread-7f634090fa90",
+      "thread_depth": 0,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-163944ccea45",
+      "message_id": "<002101c87291$62e8d6b0$28ba8410$@edu>",
+      "from_name": "Jichao Qian",
+      "from_email_hash": "461a0bf32fe0724f8ade0ee9127c9675d98bed0508ddb5974dfa2c46cc1e3347",
+      "date": "2008-02-18T16:50:07Z",
+      "subject": "[statnet_help] simulate with degreedist",
+      "subject_clean": "[statnet_help] simulate with degreedist",
+      "in_reply_to": "<C3DF1683.243B3%handcock@stat.washington.edu>",
+      "references": [
+        "<47B83EBB.8000300@fas.harvard.edu>",
+        "<C3DF1683.243B3%handcock@stat.washington.edu>"
+      ],
+      "body_plain": "Hi,\n\nI believe there's a problem with simulate.formula when using\nconstraints=~degreedist. Simulate is faulting when trying to print warning\nmessages:\n\n> g.use<-network(16)\n> g.sim<-simulate(g.use~edges, constraints=~degreedist)\nError in print.default(\"Warning:  Using the 'degreedist' constraint with a\ndirected network\",  : \n  invalid 'digits' argument\nIn addition: Warning message:\nIn print.default(\"Warning:  Using the 'degreedist' constraint with a\ndirected network\",  :\n  NAs introduced by coercion\n\nIs this a bug with simulate.formula? Thanks.\n\nJichao",
+      "body_snippet": "Hi,\n\nI believe there's a problem with simulate.formula when using\nconstraints=~degreedist. Simulate is faulting when trying to print warning\nmessages:\n\n> g.use<-network(16)\n> g.sim<-simulate(g.use~edg",
+      "thread_id": "thread-f4598460de53",
+      "thread_depth": 2,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-db27cf0f5697",
+      "message_id": "<C3DF9AAA.24417%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2008-02-18T20:27:22Z",
+      "subject": "[statnet_help] simulate with degreedist",
+      "subject_clean": "[statnet_help] simulate with degreedist",
+      "in_reply_to": "<002101c87291$62e8d6b0$28ba8410$@edu>",
+      "references": [],
+      "body_plain": "Dear Jichao,\n\nThanks.\n\nThe \"degreedist\" constraint is currently meant for undirected networks and\nhas not been developed for directed networks very well. In most cases the\n\"constraints=~degrees\" option is better. Alternatively, we recommend that\nyou use 'outdegree' or 'indegree' instead.\n\nThe bug is a print error as it prints out the warning when it is used with a\ndirected network. It will be fixed and propagated to CRAN in a few days.\n\nBest,\n\nMark\n\nOn 2/18/08 4:50 PM, \"Jichao Qian\" <jichao@MIT.EDU> wrote:\n\n> Hi,\n> \n> I believe there's a problem with simulate.formula when using\n> constraints=~degreedist. Simulate is faulting when trying to print warning\n> messages:\n> \n>> g.use<-network(16)\n>> g.sim<-simulate(g.use~edges, constraints=~degreedist)\n> Error in print.default(\"Warning:  Using the 'degreedist' constraint with a\n> directed network\",  :\n>   invalid 'digits' argument\n> In addition: Warning message:\n> In print.default(\"Warning:  Using the 'degreedist' constraint with a\n> directed network\",  :\n>   NAs introduced by coercion\n> \n> Is this a bug with simulate.formula? Thanks.\n> \n> Jichao\n> \n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Jichao,\n\nThanks.\n\nThe \"degreedist\" constraint is currently meant for undirected networks and\nhas not been developed for directed networks very well. In most cases the\n\"constraints=~degrees\" optio",
+      "thread_id": "thread-f4598460de53",
+      "thread_depth": 3,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-8b04f38048a6",
+      "message_id": "<Pine.WNT.4.64.0802182029310.5604@martina>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2008-02-18T20:29:51Z",
+      "subject": "[statnet_help] simulate with degreedist",
+      "subject_clean": "[statnet_help] simulate with degreedist",
+      "in_reply_to": "<C3DF9AAA.24417%handcock@stat.washington.edu>",
+      "references": [
+        "<C3DF9AAA.24417%handcock@stat.washington.edu>"
+      ],
+      "body_plain": "> The bug is a print error as it prints out the warning when it is used with a\n> directed network. It will be fixed and propagated to CRAN in a few days.\n\nAnd thanks for helping us find and fix these :-)\n\n\n> Best,\n>\n> Mark\n>\n> On 2/18/08 4:50 PM, \"Jichao Qian\" <jichao@MIT.EDU> wrote:\n>\n>> Hi,\n>>\n>> I believe there's a problem with simulate.formula when using\n>> constraints=~degreedist. Simulate is faulting when trying to print warning\n>> messages:\n>>\n>>> g.use<-network(16)\n>>> g.sim<-simulate(g.use~edges, constraints=~degreedist)\n>> Error in print.default(\"Warning:  Using the 'degreedist' constraint with a\n>> directed network\",  :\n>>   invalid 'digits' argument\n>> In addition: Warning message:\n>> In print.default(\"Warning:  Using the 'degreedist' constraint with a\n>> directed network\",  :\n>>   NAs introduced by coercion\n>>\n>> Is this a bug with simulate.formula? Thanks.\n>>\n>> Jichao\n>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "> The bug is a print error as it prints out the warning when it is used with a\n> directed network. It will be fixed and propagated to CRAN in a few days.\n\nAnd thanks for helping us find and fix these ",
+      "thread_id": "thread-f4598460de53",
+      "thread_depth": 4,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-dc495c3d750d",
+      "message_id": "<Pine.WNT.4.64.0802200946080.1368@vinaya.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2008-02-20T10:08:42Z",
+      "subject": "[statnet_help] interpretation of main effects & interaction terms in ergm (at the risk of wearing out my welcome)",
+      "subject_clean": "[statnet_help] interpretation of main effects & interaction terms in ergm (at the risk of wearing out my welcome)",
+      "in_reply_to": "<9b69d2ac0802181441n6fabaehfc30730a24d5c267@mail.gmail.com>",
+      "references": [
+        "<9b69d2ac0802181441n6fabaehfc30730a24d5c267@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Jenine,\n\nBecause your model contains only \"dyadic-independence\" terms, \ninterpretation is relatively straightforward. I will outline it below, but \nyou should definitely turn to the Social Networks special issue (Vol 29, \nissue 2) or the JoSS special issue (currently available as the \"Online \nUsers Guide\" at statnetproject.org) for more background.\n\nThe ERGM model is a logit model, so that coefficients are interpretable as \nadditions to the logodds.  The ERGM model can be interpreted either in \nterms of the probability of a given edge or arc existing, or in terms of \nthe probability of an entire network being observed; let's use the former, \nsince it's generally more intuitive.\n\nIn this framework, to get the logodds of a given edge/arc (given the rest \nof the network), you multiply each \"change statistic\" by its corresponding \ncoefficient, and then add these terms together.  A \"change statistic\" is \nthe amount by which any of the statistics in your model changes when you \nadd the new edge/arc.\n\nSo, for instance, your model is:\n\n> y ~ edges + nodefactor(grade) + nodefactor(age group) + nodematch(gender)\n\nIf I make up coefficient values of\n\nedges =\t-5.1\nnodefactor.grade08 = 0.3\nnodefactor.grade09 = 0.2\nnodefactor.agegroup01 = 0.4\nnodefactor.agegroup02 = 0.8\nnodematch.gender = 2.1\n\nThen, the logodds of an edge or arc (in either direction) between a \nmale/grade8/agegroup1 and a female/grade8/agegroup2 would be:\n\n-5.1(1) + 0.3(2) + 0.4(1) 0.8(1) = -3.3\n\nsince by forming this edge/arc, the total number of edges/arcs increases \nby 1, the total degree for all grade 8 actors increases by 2, the total \ndegree for age group 1 actors increases by 1, and the total degree for all \nage group 2 actors increases by 1.\n\nIf the same two actors had been of the same sex instead of different \nsexes, then the logodds would increase by 2.1 (since the number of \nsame-sex edges would increase by 1), bringing the logodds to -1.2.\n\nThe probabilities corresponding to logodds of -3.3 and -1.2 are .036 and \n.23, respectively.\n\nIf you have a dyadic dependence model (i.e. with terms like triangle or \ndegree), then interpretation gets slightly more complex, because you need \nto know about the other edges/arcs in the network to know how likely a \ngiven edge/arc is.\n\nI hope this helps.\n\nCheers,\nSteve",
+      "body_snippet": "Hi Jenine,\n\nBecause your model contains only \"dyadic-independence\" terms, \ninterpretation is relatively straightforward. I will outline it below, but \nyou should definitely turn to the Social Networks",
+      "thread_id": "thread-7f634090fa90",
+      "thread_depth": 1,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-14fd0476f138",
+      "message_id": "<9b69d2ac0802201122i4d92c9d2r6e681686ec5b7663@mail.gmail.com>",
+      "from_name": "jenine harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2008-02-20T11:22:17Z",
+      "subject": "[statnet_help] interpretation of main effects & interaction terms in ergm (at the risk of wearing out my welcome)",
+      "subject_clean": "[statnet_help] interpretation of main effects & interaction terms in ergm (at the risk of wearing out my welcome)",
+      "in_reply_to": "<Pine.WNT.4.64.0802200946080.1368@vinaya.csde.washington.edu>",
+      "references": [
+        "<9b69d2ac0802181441n6fabaehfc30730a24d5c267@mail.gmail.com>",
+        "<Pine.WNT.4.64.0802200946080.1368@vinaya.csde.washington.edu>"
+      ],
+      "body_plain": "Thank you! This detailed answer and others I've received from the listserv\nover the past couple of weeks have been invaluable...\n\nI am putting the finishing touches on a poster that uses ERGM to model\ncontact and influence in a network of tobacco control professionals. The\nposter will be presented at the Society for Research on Nicotine and Tobacco\n(SRNT) annual meeting next week in Portland, Oregon. I am happy to send\nanyone who is interested a pdf copy once it's done....or, if you happen to\nbe at SRNT, please feel free to stop by our poster session on Sat, March 1\n--- the schedule with location and times is here:\nhttp://www.srnt.org/meeting/2008/program.html\n\njenine\n\nOn Wed, Feb 20, 2008 at 12:08 PM, Steven Goodreau <goodreau@u.washington.edu>\nwrote:\n\n>\n> Hi Jenine,\n>\n> Because your model contains only \"dyadic-independence\" terms,\n> interpretation is relatively straightforward. I will outline it below, but\n> you should definitely turn to the Social Networks special issue (Vol 29,\n> issue 2) or the JoSS special issue (currently available as the \"Online\n> Users Guide\" at statnetproject.org) for more background.\n>\n> The ERGM model is a logit model, so that coefficients are interpretable as\n> additions to the logodds.  The ERGM model can be interpreted either in\n> terms of the probability of a given edge or arc existing, or in terms of\n> the probability of an entire network being observed; let's use the former,\n> since it's generally more intuitive.\n>\n> In this framework, to get the logodds of a given edge/arc (given the rest\n> of the network), you multiply each \"change statistic\" by its corresponding\n> coefficient, and then add these terms together.  A \"change statistic\" is\n> the amount by which any of the statistics in your model changes when you\n> add the new edge/arc.\n>\n> So, for instance, your model is:\n>\n> > y ~ edges + nodefactor(grade) + nodefactor(age group) +\n> nodematch(gender)\n>\n> If I make up coefficient values of\n>\n> edges = -5.1\n> nodefactor.grade08 = 0.3\n> nodefactor.grade09 = 0.2\n> nodefactor.agegroup01 = 0.4\n> nodefactor.agegroup02 = 0.8\n> nodematch.gender = 2.1\n>\n> Then, the logodds of an edge or arc (in either direction) between a\n> male/grade8/agegroup1 and a female/grade8/agegroup2 would be:\n>\n> -5.1(1) + 0.3(2) + 0.4(1) 0.8(1) = -3.3\n>\n> since by forming this edge/arc, the total number of edges/arcs increases\n> by 1, the total degree for all grade 8 actors increases by 2, the total\n> degree for age group 1 actors increases by 1, and the total degree for all\n> age group 2 actors increases by 1.\n>\n> If the same two actors had been of the same sex instead of different\n> sexes, then the logodds would increase by 2.1 (since the number of\n> same-sex edges would increase by 1), bringing the logodds to -1.2.\n>\n> The probabilities corresponding to logodds of -3.3 and -1.2 are .036 and\n> .23, respectively.\n>\n> If you have a dyadic dependence model (i.e. with terms like triangle or\n> degree), then interpretation gets slightly more complex, because you need\n> to know about the other edges/arcs in the network to know how likely a\n> given edge/arc is.\n>\n> I hope this helps.\n>\n> Cheers,\n> Steve\n>\n>\n>\n>\n\n\n-- \n************************************\nJenine K. Harris, Ph.D.\nSenior Research Assistant\nCenter for Tobacco Policy Research\nSaint Louis University School of Public Health\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210\n314.977.3234 Fax\nhttp://ctpr.slu.edu/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080220/8ff610e1/attachment.html>",
+      "body_snippet": "Thank you! This detailed answer and others I've received from the listserv\nover the past couple of weeks have been invaluable...\n\nI am putting the finishing touches on a poster that uses ERGM to model",
+      "thread_id": "thread-7f634090fa90",
+      "thread_depth": 2,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-06cdd904a4ef",
+      "message_id": "<47BD8A83.6010104@wanadoo.fr>",
+      "from_name": "Fabien ELOIRE",
+      "from_email_hash": "1f148d6a5e1ab592e22cb55823d0004dbadeacd57363c5f389e6b31de7a7572f",
+      "date": "2008-02-21T06:28:19Z",
+      "subject": "[statnet_help] \"mutual\" parameter with attributes suggestion",
+      "subject_clean": "[statnet_help] \"mutual\" parameter with attributes suggestion",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\nI am a French PhD student in sociology and I took part at the Sunbelt \nWorkshop in January. For my network analysis I am using Statnet.\n\nI would be very interested in the possibility of using the \"mutual\" \nparameter with some attributes in my models, which, to my knowledge, is \nnot possible at the moment.\n\nIt would give us the possibility to measure the reciprocity between the \nsame kind of actors.\n\nI asked this question to Mark Handcock after the Sunbelt workshop, and \nhe seemed to agree with me for this idea.\n\nThank you very much for taking into account my suggestion,\n\nSincerely yours,\nFabien Eloire\n\n-- \nFabien ELOIRE\nDoctorant en sociologie\nUniversit? de Lille 1, Laboratoire Clers?\nt?l: 03 20 43 47 39\neloire.fabien@wanadoo.fr",
+      "body_snippet": "Hello,\nI am a French PhD student in sociology and I took part at the Sunbelt \nWorkshop in January. For my network analysis I am using Statnet.\n\nI would be very interested in the possibility of using t",
+      "thread_id": "thread-06cdd904a4ef",
+      "thread_depth": 0,
+      "month": "2008-02"
+    },
+    {
+      "id": "msg-50be7368eb18",
+      "message_id": "<47C6BD10.3070900@fas.harvard.edu>",
+      "from_name": "Kevin Lewis",
+      "from_email_hash": "3e16f115495b0e59b9f7583fd0cfe6f012b826a6e99dfab804f7275bfb0c581c",
+      "date": "2008-02-28T05:54:24Z",
+      "subject": "[statnet_help] a couple more error messages",
+      "subject_clean": "[statnet_help] a couple more error messages",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "greetings,\n\nin a recent run, i received a couple more error messages i am wondering \nif anyone can help with interpreting. attached are my output file as \nwell as my error file. i am analyzing a directed network of 736 nodes. \nas you can see, the model has many different terms- i wonder if this may \nbe part of the problem, but then the original (i.e. pre-january) version \nof statnet seemed to be able to handle it.\n\nfirst, i am confused why i immediately get the warning that the count of \n\"nodeifactor.bookpart101\" is extreme (see output file). bookpart101 is, \ni believe, the 73rd ordered category in this partition, and so should be \nclumped together as part of the reference group per my input.\n\nsecond, after seeming to successfully begin the 1st iteration, the model \ncuts off and gives me an error message (see error file) re: an \n\"unexpected end of input\"- i am unsure what this means.\n\n(note that this model has a bunch of nodematch terms, ifactor terms, \nmutual, gwidegree, and gwesp, which may seem a little strange- i am not \nso much interested in modeling popularity as expansiveness, but because \nthe gwidegree seemed to be working better than the odegree, i 'flipped' \nmy network (incidentally, using the read.paj function!) and tried to go \nabout this backwards with in-terms instead of out-terms.)\n\ni am happy to provide the appropriate data if this would be helpful for \ninterpreting these problems. thanks greatly!!! and sorry to swamp the \nexperts with another small detail, but hopefully this is still something \nthat is helpful to know about- if not, please let me know.\n\n-kevin\n-------------- next part --------------\nAn embedded and charset-unspecified text was scrubbed...\nName: test1error.txt\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080228/f39a4886/attachment.txt>\n-------------- next part --------------\nAn embedded and charset-unspecified text was scrubbed...\nName: test1out.txt\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080228/f39a4886/attachment-0001.txt>",
+      "body_snippet": "greetings,\n\nin a recent run, i received a couple more error messages i am wondering \nif anyone can help with interpreting. attached are my output file as \nwell as my error file. i am analyzing a direc",
+      "thread_id": "thread-50be7368eb18",
+      "thread_depth": 0,
+      "month": "2008-02"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-ab137532d15b",
+      "subject": "[statnet_help] Extracting missing data from a network object",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Ruth M. Ripley"
+      ],
+      "started": "2008-02-01T16:26:14Z",
+      "last_reply": "2008-02-02T09:08:29Z",
+      "root_message_id": "msg-ab137532d15b"
+    },
+    {
+      "id": "thread-e3cdeb30a7fa",
+      "subject": "[statnet_help] ergm execution aborted",
+      "message_count": 1,
+      "participants": [
+        "Elizeu Santos-Neto"
+      ],
+      "started": "2008-02-02T11:24:25Z",
+      "last_reply": "2008-02-02T11:24:25Z",
+      "root_message_id": "msg-e3cdeb30a7fa"
+    },
+    {
+      "id": "thread-0738a5a31085",
+      "subject": "[statnet_help] Creating valued edges from edgelist",
+      "message_count": 2,
+      "participants": [
+        "Mark S. Handcock",
+        "jack.iwashyna@comcast.net"
+      ],
+      "started": "2008-02-02T19:34:47Z",
+      "last_reply": "2008-02-02T20:17:45Z",
+      "root_message_id": "msg-0738a5a31085"
+    },
+    {
+      "id": "thread-dd778ef10f01",
+      "subject": "[statnet_help] problems running statnet",
+      "message_count": 1,
+      "participants": [
+        "Mark S. Handcock"
+      ],
+      "started": "2008-02-07T09:24:04Z",
+      "last_reply": "2008-02-07T09:24:04Z",
+      "root_message_id": "msg-dd778ef10f01"
+    },
+    {
+      "id": "thread-78983a3ea6ed",
+      "subject": "[statnet_help] ERGM gwdsp and gwodegree",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Jichao Qian"
+      ],
+      "started": "2008-02-07T17:08:58Z",
+      "last_reply": "2008-02-13T00:31:21Z",
+      "root_message_id": "msg-78983a3ea6ed"
+    },
+    {
+      "id": "thread-cea7be2bd57c",
+      "subject": "[statnet_help] ofactor ifactor backwards?",
+      "message_count": 3,
+      "participants": [
+        "David Hunter",
+        "Kevin Lewis"
+      ],
+      "started": "2008-02-08T11:06:03Z",
+      "last_reply": "2008-02-11T11:50:25Z",
+      "root_message_id": "msg-cea7be2bd57c"
+    },
+    {
+      "id": "thread-1dfc2b7576ff",
+      "subject": "[statnet_help] Parallelized QAP?",
+      "message_count": 4,
+      "participants": [
+        "Carter T. Butts",
+        "Simon Frost",
+        "Theodore Iwashyna",
+        "jack.iwashyna@comcast.net"
+      ],
+      "started": "2008-02-08T12:33:51Z",
+      "last_reply": "2008-02-12T12:25:25Z",
+      "root_message_id": "msg-1dfc2b7576ff"
+    },
+    {
+      "id": "thread-d02d04b67324",
+      "subject": "[statnet_help] assigning vertex attributes from .paj file?",
+      "message_count": 3,
+      "participants": [
+        "Mark S. Handcock",
+        "jenine harris"
+      ],
+      "started": "2008-02-08T13:23:27Z",
+      "last_reply": "2008-02-08T17:07:24Z",
+      "root_message_id": "msg-d02d04b67324"
+    },
+    {
+      "id": "thread-00f490846a51",
+      "subject": "[statnet_help] Creating valued edges from edgelist",
+      "message_count": 1,
+      "participants": [
+        "Theodore Iwashyna"
+      ],
+      "started": "2008-02-12T12:02:50Z",
+      "last_reply": "2008-02-12T12:02:50Z",
+      "root_message_id": "msg-00f490846a51"
+    },
+    {
+      "id": "thread-fc92eb56cc3c",
+      "subject": "[statnet_help] interpreting nodematch for directed networks?",
+      "message_count": 2,
+      "participants": [
+        "Martina Morris",
+        "jenine harris"
+      ],
+      "started": "2008-02-14T07:57:54Z",
+      "last_reply": "2008-02-14T09:33:43Z",
+      "root_message_id": "msg-fc92eb56cc3c"
+    },
+    {
+      "id": "thread-f4598460de53",
+      "subject": "[statnet_help] directed network simulations",
+      "message_count": 5,
+      "participants": [
+        "Jichao Qian",
+        "Kevin Lewis",
+        "Mark S. Handcock",
+        "Martina Morris"
+      ],
+      "started": "2008-02-17T06:03:39Z",
+      "last_reply": "2008-02-18T20:29:51Z",
+      "root_message_id": "msg-f4598460de53"
+    },
+    {
+      "id": "thread-2a98fa1a5f4f",
+      "subject": "[statnet_help] Re: statnetuserterms",
+      "message_count": 1,
+      "participants": [
+        "Art Poon"
+      ],
+      "started": "2008-02-18T13:42:32Z",
+      "last_reply": "2008-02-18T13:42:32Z",
+      "root_message_id": "msg-2a98fa1a5f4f"
+    },
+    {
+      "id": "thread-7f634090fa90",
+      "subject": "[statnet_help] interpretation of main effects & interaction terms in ergm (at the risk of wearing out my welcome)",
+      "message_count": 3,
+      "participants": [
+        "Steven Goodreau",
+        "jenine harris"
+      ],
+      "started": "2008-02-18T14:41:58Z",
+      "last_reply": "2008-02-20T11:22:17Z",
+      "root_message_id": "msg-7f634090fa90"
+    },
+    {
+      "id": "thread-06cdd904a4ef",
+      "subject": "[statnet_help] \"mutual\" parameter with attributes suggestion",
+      "message_count": 1,
+      "participants": [
+        "Fabien ELOIRE"
+      ],
+      "started": "2008-02-21T06:28:19Z",
+      "last_reply": "2008-02-21T06:28:19Z",
+      "root_message_id": "msg-06cdd904a4ef"
+    },
+    {
+      "id": "thread-50be7368eb18",
+      "subject": "[statnet_help] a couple more error messages",
+      "message_count": 1,
+      "participants": [
+        "Kevin Lewis"
+      ],
+      "started": "2008-02-28T05:54:24Z",
+      "last_reply": "2008-02-28T05:54:24Z",
+      "root_message_id": "msg-50be7368eb18"
+    }
+  ]
+}

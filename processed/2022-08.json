@@ -1,0 +1,55 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2022-08",
+  "messages": [
+    {
+      "id": "msg-e97636cd61a3",
+      "message_id": "<CADHiL-OvdotkWwkNi9+kKxu6djb_u+d-0cjZou63Quq3afARGw@mail.gmail.com>",
+      "from_name": "Sarah Piombo",
+      "from_email_hash": "6c5ca5d1caf4dbd748b1232055da34deb0640493f6baa02e19b1ca27e5d84074",
+      "date": "2022-08-01T14:26:00Z",
+      "subject": "[statnet_help] ERGM constraints and subgroups",
+      "subject_clean": "[statnet_help] ERGM constraints and subgroups",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI have a question about the best way to specify ERGM constraints for my\ndata.\nI have a network of ~1500 nodes and 8500 edges.\nThe individuals live in 8 different villages, ~7000 edges are within\nvillages while 1500 edges are between villages.\nI initially used a block diagonal model to only allow edges within the same\nvillage and this worked great, but without that constraint I have\ndifficulty getting the model to converge with dyad dependent terms.\nIdeally I would like the between village ties to be possible but less\nprobable than the within village ties.\n1. What is the best way to do this? Is it possible with the blocks operator\nor another approach?\n2. Any other suggestions or considerations (should I consider using\nergm.multi?)\nAny help or advice would be much appreciated. Thank you!\n\n-- \n*Sarah Piombo, PhD(c), MPH*\nDoctoral Candidate\n\nDepartment of Population and Public Health Sciences\n\nKeck School of Medicine | University of Southern California\n\nhttps://sarahpiombo.com\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20220801/57c16d77/attachment.html>",
+      "body_snippet": "Hi,\n\nI have a question about the best way to specify ERGM constraints for my\ndata.\nI have a network of ~1500 nodes and 8500 edges.\nThe individuals live in 8 different villages, ~7000 edges are within\n",
+      "thread_id": "thread-e97636cd61a3",
+      "thread_depth": 0,
+      "month": "2022-08"
+    },
+    {
+      "id": "msg-3450e0338452",
+      "message_id": "<35298f2f-3053-158f-6da3-7afd3e0a3e2e@uw.edu>",
+      "from_name": "Steven M. Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2022-08-01T14:28:17Z",
+      "subject": "[statnet_help] ERGM constraints and subgroups",
+      "subject_clean": "[statnet_help] ERGM constraints and subgroups",
+      "in_reply_to": "<CADHiL-OvdotkWwkNi9+kKxu6djb_u+d-0cjZou63Quq3afARGw@mail.gmail.com>",
+      "references": [
+        "<CADHiL-OvdotkWwkNi9+kKxu6djb_u+d-0cjZou63Quq3afARGw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Sarah, based on your description it sounds like all you need is a \nterm in your model: nodematch(\"village\")\n\nBest,\n\nSteve\n\n\n\nOn 8/1/2022 2:26 PM, Sarah Piombo wrote:\n> Hi,\n>\n> I have a question about the best way to specify ERGM constraints for \n> my data.\n> I have a network of ~1500 nodes and 8500 edges.\n> The individuals live in 8 different villages, ~7000 edges are within \n> villages while 1500 edges are between villages.\n> I initially used a block diagonal?model to only allow edges within the \n> same village and this worked great, but without that constraint I have \n> difficulty getting the model to converge with dyad dependent terms.\n> Ideally I would like the between village ties to be possible but less \n> probable than the within village ties.\n> 1. What is the best way to do this? Is it possible with the blocks \n> operator or another approach?\n> 2. Any other suggestions or considerations (should I consider using \n> ergm.multi?)\n> Any help or advice would be much appreciated. Thank you!\n>\n> -- \n> *Sarah Piombo, PhD(c), MPH*\n> Doctoral Candidate\n>\n> Department of Population and Public Health Sciences\n>\n> Keck School of Medicine | University of Southern California\n>\n> https://sarahpiombo.com\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \n*****************************************************************\nSteven M. Goodreau / Professor / Dept. of Anthropology\n(STEE-vun GOOD-roe) / he-him (universal they also good)\nPhysical address: Denny Hall M236\nMailing address: Campus Box 353100 / 4216 Memorial Way NE\nUniv. of Washington / Seattle WA 98195\nst?x??ug?i?, dzidz?lali?, x???l?\n1-206-685-3870 (phone) /1-206-543-3285 (fax)\nhttps://faculty.washington.edu/goodreau\n*****************************************************************\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20220801/48fd9e26/attachment.html>",
+      "body_snippet": "Hi Sarah, based on your description it sounds like all you need is a \nterm in your model: nodematch(\"village\")\n\nBest,\n\nSteve\n\n\n\nOn 8/1/2022 2:26 PM, Sarah Piombo wrote:\n> Hi,\n>\n> I have a question abo",
+      "thread_id": "thread-e97636cd61a3",
+      "thread_depth": 1,
+      "month": "2022-08"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-e97636cd61a3",
+      "subject": "[statnet_help] ERGM constraints and subgroups",
+      "message_count": 2,
+      "participants": [
+        "Sarah Piombo",
+        "Steven M. Goodreau"
+      ],
+      "started": "2022-08-01T14:26:00Z",
+      "last_reply": "2022-08-01T14:28:17Z",
+      "root_message_id": "msg-e97636cd61a3"
+    }
+  ]
+}

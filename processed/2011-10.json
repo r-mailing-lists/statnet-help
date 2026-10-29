@@ -1,0 +1,750 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2011-10",
+  "messages": [
+    {
+      "id": "msg-b5e12be1d4ed",
+      "message_id": "<000001cc82e8$977df660$c679e320$@itesm.mx>",
+      "from_name": "Jorge M Rocha",
+      "from_email_hash": "b18b1d21c30f674c62d2b8e9b379deaad3095478a59320e48db72c3ba2218e45",
+      "date": "2011-10-04T15:54:37Z",
+      "subject": "[statnet_help] creating an attribute similarity/difference matrix ",
+      "subject_clean": "[statnet_help] creating an attribute similarity/difference matrix",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI have a simple procedure question.  I've been doing network regressions\nboth with 'netlm' and 'netlogit' as implemented in 'sna.'  In both cases\nsome of the independent variables I've been using are symmetric matrices\nconstructed on the basis of either nodal attribute similarities or absolute\ndifferences between node pairs.  In UCINET the creation of these matrices is\nquite simple (with the 'from attribute to matrix' routine under the 'data'\nmanipulations menu).  I was wondering if there is a way of creating matrices\nlike these within statnet/sna (either from the attributes embedded in a\nnetwork object, or a vector object that contains the attribute values) so\nthat I don't have to import them from UCINET every time (which is what I've\nbeen doing!).  If available, a syntax example would be much appreciated!\n\n \n\nIn advance, thanks!\n\n \n\nJorge M Rocha\n\nEGADE Business School\n\n \n\n \n\n \n\nDescription: firma smaller\n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20111004/c21aca9d/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: image001.jpg\nType: image/jpeg\nSize: 70903 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20111004/c21aca9d/attachment.jpg>",
+      "body_snippet": "Dear all,\n\nI have a simple procedure question.  I've been doing network regressions\nboth with 'netlm' and 'netlogit' as implemented in 'sna.'  In both cases\nsome of the independent variables I've been",
+      "thread_id": "thread-b5e12be1d4ed",
+      "thread_depth": 0,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-62ebe47300f4",
+      "message_id": "<CACbaubYN_EeEig1a+B-7-OFAzyncxsgQM5UaXmVrFbwMo15_nA@mail.gmail.com>",
+      "from_name": "Sadegh Aliakbary",
+      "from_email_hash": "b1e1306df2543228bd78f6fc428e50aa606aa5e6b5c2bf8f50ef90ddf6f2fcfb",
+      "date": "2011-10-05T05:24:06Z",
+      "subject": "[statnet_help] Network Diameter",
+      "subject_clean": "[statnet_help] Network Diameter",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All\n\nHow can I calculate the diameter of a graph using statnet?\n\nRegards\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20111005/6f87c35a/attachment.html>",
+      "body_snippet": "Dear All\n\nHow can I calculate the diameter of a graph using statnet?\n\nRegards\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/piperma",
+      "thread_id": "thread-62ebe47300f4",
+      "thread_depth": 0,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-c3d60c54d263",
+      "message_id": "<004F4D5E-1918-4467-B153-CCA48CE683C5@gmail.com>",
+      "from_name": "Solomon Messing",
+      "from_email_hash": "2b8a06c7f74e9f13ecec2935fb610d18e48ce33c6267bad438d65d14e3fc9aa8",
+      "date": "2011-10-05T09:51:38Z",
+      "subject": "[statnet_help] Re: statnet_help Digest, Vol 63, Issue 1",
+      "subject_clean": "[statnet_help] Re: statnet_help Digest, Vol 63, Issue 1",
+      "in_reply_to": "<201110042254.p94Msp6O016906@mxout12.cac.washington.edu>",
+      "references": [
+        "<201110042254.p94Msp6O016906@mxout12.cac.washington.edu>"
+      ],
+      "body_plain": "Hi Jorge, \n\nIf I understand correctly, this code should help:\n\nx <- seq(1,4)\ny <- seq(2,5)\n\nouter(x,y,FUN=\"-\")\nouter(x,y,FUN=\"==\")\n\nabsdiff <- function(x,y){ abs(x-y) }\nouter(x,y,FUN=\"absdiff\")\n\nBest of luck!\n-Solomon\nSolomon Messing\nwww.stanford.edu/~messing\n\nOn Oct 4, 2011, at 3:54 PM, statnet_help-request@mailman2.u.washington.edu wrote:\n\n> Send statnet_help mailing list submissions to\n> \tstatnet_help@u.washington.edu\n> \n> To subscribe or unsubscribe via the World Wide Web, visit\n> \thttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> or, via email, send a message with subject or body 'help' to\n> \tstatnet_help-request@mailman2.u.washington.edu\n> \n> You can reach the person managing the list at\n> \tstatnet_help-owner@mailman2.u.washington.edu\n> \n> When replying, please edit your Subject line so it is more specific\n> than \"Re: Contents of statnet_help digest...\"\n> Today's Topics:\n> \n>   1. creating an attribute similarity/difference matrix \n>      (Jorge M Rocha)\n> \n> From: \"Jorge M Rocha\" <jorge.m.rocha@itesm.mx>\n> Subject: [statnet_help] creating an attribute similarity/difference matrix \n> Date: October 4, 2011 3:54:37 PM PDT\n> To: <statnet_help@u.washington.edu>\n> \n> \n> Dear all,\n> I have a simple procedure question.  I?ve been doing network regressions both with ?netlm? and ?netlogit? as implemented in ?sna.?  In both cases some of the independent variables I?ve been using are symmetric matrices constructed on the basis of either nodal attribute similarities or absolute differences between node pairs.  In UCINET the creation of these matrices is quite simple (with the ?from attribute to matrix? routine under the ?data? manipulations menu).  I was wondering if there is a way of creating matrices like these within statnet/sna (either from the attributes embedded in a network object, or a vector object that contains the attribute values) so that I don?t have to import them from UCINET every time (which is what I?ve been doing!).  If available, a syntax example would be much appreciated!\n>  \n> In advance, thanks!\n>  \n> Jorge M Rocha\n> EGADE Business School\n>  \n>  \n>  \n> <image001.jpg>\n>  \n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@mailman2.u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20111005/1bbebd03/attachment.html>",
+      "body_snippet": "Hi Jorge, \n\nIf I understand correctly, this code should help:\n\nx <- seq(1,4)\ny <- seq(2,5)\n\nouter(x,y,FUN=\"-\")\nouter(x,y,FUN=\"==\")\n\nabsdiff <- function(x,y){ abs(x-y) }\nouter(x,y,FUN=\"absdiff\")\n\nBest ",
+      "thread_id": "thread-c3d60c54d263",
+      "thread_depth": 0,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-f6fa386abac1",
+      "message_id": "<CAB_OPR1pXAdOA6087-7b_bV8-iOuOdUw=xO=mQ82_NLnwAzPjQ@mail.gmail.com>",
+      "from_name": "Josh Marineau",
+      "from_email_hash": "07018429b5f34e1f2ac77a309ade13a45b7ac5b832dfda8cfa5e1d0ac321528b",
+      "date": "2011-10-05T14:22:32Z",
+      "subject": "[statnet_help] CSS Networks",
+      "subject_clean": "[statnet_help] CSS Networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI have CSS-style data (i.e., Krackhardt, 1987)  (where each network\nrepresents a respondents view of ties among all other actors in the\nnetwork). How can I transform these networks, which are currently square\nmatrices in excel, into a format usable for Carter Butt's bnam (Bayesian\nNetwork Accuracy Model) code (from the sna package) ? (Which has to be in n\nx n x n format).\n\nAny help would be much appreciated.\n\nThanks!\n\n-- \nJoshua Marineau\nPh.D. Candidate in Management\nGatton College of Business & Economics\nUniversity of Kentucky\nhttp://www.linkscenter.org\n(859) 312-2875\njoshmarineau@gmail.com\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20111005/98fb6716/attachment.html>",
+      "body_snippet": "Hello,\n\nI have CSS-style data (i.e., Krackhardt, 1987)  (where each network\nrepresents a respondents view of ties among all other actors in the\nnetwork). How can I transform these networks, which are ",
+      "thread_id": "thread-f6fa386abac1",
+      "thread_depth": 0,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-99e9d96091bf",
+      "message_id": "<20111009201227.87894e4kgnuxu0sg@web.mail.umich.edu>",
+      "from_name": "Michael T. Heaney",
+      "from_email_hash": "4d6403dbcaae8825781ae6c49066171f12df256ce970fec71e8e0e6fc8ca3792",
+      "date": "2011-10-09T17:12:27Z",
+      "subject": "[statnet_help] ERGM with Endogenous Terms",
+      "subject_clean": "[statnet_help] ERGM with Endogenous Terms",
+      "in_reply_to": "<1311273270.78082.YahooMailClassic@web28402.mail.ukl.yahoo.com>",
+      "references": [
+        "<1311273270.78082.YahooMailClassic@web28402.mail.ukl.yahoo.com>"
+      ],
+      "body_plain": "Dear Statnet Community,\n\nIf I estimate an ERGM model that does NOT include endogenous network  \nterms (e.g., isolates, mutual, triangle) and ONLY includes exogenous  \ncovariates (e.g., nodecov, dyadcov), then the reported ERGM results  \ninclude the ordinary coefficient/standard error BUT do NOT include a  \nMCMC standard errors.\n\nMy question: Are the reported standard errors corrected for the dyadic  \ndependence that is inherent in the network data?  If YES, then what  \nstatistical model is used to correct them?  (An article citation here  \nwould be most welcome.)  If NO, then is there any way to ask the ERGM  \nroutine to run the MCMC simulation WITHOUT including endogenous  \nparameters?\n\nThanks in advanced for any help.\n\nBest,\n\nMichael\n\n-- \nMichael T. Heaney, Ph.D.\nAssistant Professor of Organizational Studies & Political Science\nUniversity of Michigan\n722 Dennison Building\n500 Church Street\nAnn Arbor, MI 48109-1042\n\nCell phone: 202-236-3369\nE-mail: mheaney@umich.edu\nhttp://www.umich.edu/~mheaney/",
+      "body_snippet": "Dear Statnet Community,\n\nIf I estimate an ERGM model that does NOT include endogenous network  \nterms (e.g., isolates, mutual, triangle) and ONLY includes exogenous  \ncovariates (e.g., nodecov, dyadco",
+      "thread_id": "thread-99e9d96091bf",
+      "thread_depth": 0,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-34f12e79810b",
+      "message_id": "<alpine.WNT.2.00.1110091907130.6036@Martina-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2011-10-09T19:10:34Z",
+      "subject": "[statnet_help] ERGM with Endogenous Terms",
+      "subject_clean": "[statnet_help] ERGM with Endogenous Terms",
+      "in_reply_to": "<20111009201227.87894e4kgnuxu0sg@web.mail.umich.edu>",
+      "references": [
+        "<1311273270.78082.YahooMailClassic@web28402.mail.ukl.yahoo.com>",
+        "<20111009201227.87894e4kgnuxu0sg@web.mail.umich.edu>"
+      ],
+      "body_plain": "Hi Michael,\n\nThe answer is no.  If your model does not include dyadic dependent terms, \nthen it is not necessary to use MCMC for the estimation, so there is no \nMCMC related SE.\n\nIf you believe there is dyadic dependence in the network, then you will \nneed to represent this in the model -- by using a term (or terms) that \ncaptures the dependence.  What do you mean by \"inherent dependence\"?\n\nbest,\nMartina\n\nOn Sun, 9 Oct 2011, Michael T. Heaney wrote:\n\n> Dear Statnet Community,\n>\n> If I estimate an ERGM model that does NOT include endogenous network terms \n> (e.g., isolates, mutual, triangle) and ONLY includes exogenous covariates \n> (e.g., nodecov, dyadcov), then the reported ERGM results include the ordinary \n> coefficient/standard error BUT do NOT include a MCMC standard errors.\n>\n> My question: Are the reported standard errors corrected for the dyadic \n> dependence that is inherent in the network data?  If YES, then what \n> statistical model is used to correct them?  (An article citation here would \n> be most welcome.)  If NO, then is there any way to ask the ERGM routine to \n> run the MCMC simulation WITHOUT including endogenous parameters?\n>\n> Thanks in advanced for any help.\n>\n> Best,\n>\n> Michael\n>\n> -- \n> Michael T. Heaney, Ph.D.\n> Assistant Professor of Organizational Studies & Political Science\n> University of Michigan\n> 722 Dennison Building\n> 500 Church Street\n> Ann Arbor, MI 48109-1042\n>\n> Cell phone: 202-236-3369\n> E-mail: mheaney@umich.edu\n> http://www.umich.edu/~mheaney/\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Michael,\n\nThe answer is no.  If your model does not include dyadic dependent terms, \nthen it is not necessary to use MCMC for the estimation, so there is no \nMCMC related SE.\n\nIf you believe there ",
+      "thread_id": "thread-99e9d96091bf",
+      "thread_depth": 1,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-ef06fd37cf85",
+      "message_id": "<20111009222803.628953inq23l63gg@web.mail.umich.edu>",
+      "from_name": "Michael T. Heaney",
+      "from_email_hash": "4d6403dbcaae8825781ae6c49066171f12df256ce970fec71e8e0e6fc8ca3792",
+      "date": "2011-10-09T19:28:03Z",
+      "subject": "[statnet_help] ERGM with Endogenous Terms",
+      "subject_clean": "[statnet_help] ERGM with Endogenous Terms",
+      "in_reply_to": "<alpine.WNT.2.00.1110091907130.6036@Martina-PC>",
+      "references": [
+        "<1311273270.78082.YahooMailClassic@web28402.mail.ukl.yahoo.com>",
+        "<20111009201227.87894e4kgnuxu0sg@web.mail.umich.edu>",
+        "<alpine.WNT.2.00.1110091907130.6036@Martina-PC>"
+      ],
+      "body_plain": "Dear Martina,\n\nThanks so much for your quick response.\n\nThe problem that I am having is that if I use the endogenous network  \nterms, then I am getting errors that say 'Error: cannot allocate  \nvector of size 41.5 mb'.\n\nMy network has 738 nodes.\n\nBy 'inherent dependence' I mean that since each node appears in the  \ndata 737 times, I want the standard errors to be computed in a way  \nthat accounts for the common variance among these 737 observations.\n\nAny additional advice would be much appreciated.\n\nThanks.\n\nMichael\n\n\nQuoting Martina Morris <morrism@u.washington.edu>:\n\n> Hi Michael,\n>\n> The answer is no.  If your model does not include dyadic dependent  \n> terms, then it is not necessary to use MCMC for the estimation, so  \n> there is no MCMC related SE.\n>\n> If you believe there is dyadic dependence in the network, then you  \n> will need to represent this in the model -- by using a term (or  \n> terms) that captures the dependence.  What do you mean by \"inherent  \n> dependence\"?\n>\n> best,\n> Martina\n>\n> On Sun, 9 Oct 2011, Michael T. Heaney wrote:\n>\n>> Dear Statnet Community,\n>>\n>> If I estimate an ERGM model that does NOT include endogenous  \n>> network terms (e.g., isolates, mutual, triangle) and ONLY includes  \n>> exogenous covariates (e.g., nodecov, dyadcov), then the reported  \n>> ERGM results include the ordinary coefficient/standard error BUT do  \n>> NOT include a MCMC standard errors.\n>>\n>> My question: Are the reported standard errors corrected for the  \n>> dyadic dependence that is inherent in the network data?  If YES,  \n>> then what statistical model is used to correct them?  (An article  \n>> citation here would be most welcome.)  If NO, then is there any way  \n>> to ask the ERGM routine to run the MCMC simulation WITHOUT  \n>> including endogenous parameters?\n>>\n>> Thanks in advanced for any help.\n>>\n>> Best,\n>>\n>> Michael\n>>\n>> -- \n>> Michael T. Heaney, Ph.D.\n>> Assistant Professor of Organizational Studies & Political Science\n>> University of Michigan\n>> 722 Dennison Building\n>> 500 Church Street\n>> Ann Arbor, MI 48109-1042\n>>\n>> Cell phone: 202-236-3369\n>> E-mail: mheaney@umich.edu\n>> http://www.umich.edu/~mheaney/\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:\t(206) 685-3402\n>  Dept Office: \t(206) 543-5882, 543-7237\n>  Fax: \t\t(206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n>\n>\n>\n\n\n\n-- \nMichael T. Heaney, Ph.D.\nAssistant Professor of Organizational Studies & Political Science\nUniversity of Michigan\n722 Dennison Building\n500 Church Street\nAnn Arbor, MI 48109-1042\n\nCell phone: 202-236-3369\nE-mail: mheaney@umich.edu\nhttp://www.umich.edu/~mheaney/",
+      "body_snippet": "Dear Martina,\n\nThanks so much for your quick response.\n\nThe problem that I am having is that if I use the endogenous network  \nterms, then I am getting errors that say 'Error: cannot allocate  \nvector",
+      "thread_id": "thread-99e9d96091bf",
+      "thread_depth": 2,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-a93db58890dd",
+      "message_id": "<CAO1x9EZ3V=AdVt9RYn8TGCi_uuEdLxs-bXO_vnGcpDjrJYs3Ew@mail.gmail.com>",
+      "from_name": "Adrian Albert",
+      "from_email_hash": "de045ebde7690cd51a94e3b1efe0a96ccec44a5e42463f5dc48234bd4a9ec7cc",
+      "date": "2011-10-09T22:51:38Z",
+      "subject": "[statnet_help] convert network from directed to undirected",
+      "subject_clean": "[statnet_help] convert network from directed to undirected",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI'm having trouble with converting a network I read from the disc from a\ndirected graph to an undirected graph. I read an edge list\n(\"colab_edgelist\") that contains directed edges (so both (i,j) and the (j,i)\npairs); I would like to store it as an undirected network. I have tried the\nfollowing:\n\ncolab_net = network(colab_edgelist,matrix.type=\"edgelist\",directed=FALSE)\n\nHowever this does not work; I still get double the number of edges an\nundirected graph would have. Is there a quick command that can help me with\nthat in statnet?\n\nThanks,\nAdrian\n\n\n-- \n---------------------------------------------------------------------\nAdrian Albert\nPhD Candidate, Electrical Engineering\nStanford University\nTel.: 001 510 213 1220\nemail: adalbert@stanford.edu\n\nweb:   www.stanford.edu/~adalbert\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20111010/ab11ff3c/attachment.html>",
+      "body_snippet": "Hello,\n\nI'm having trouble with converting a network I read from the disc from a\ndirected graph to an undirected graph. I read an edge list\n(\"colab_edgelist\") that contains directed edges (so both (i,",
+      "thread_id": "thread-a93db58890dd",
+      "thread_depth": 0,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-340bc34edfb0",
+      "message_id": "<2db8308d1df89f4d28069928e96113d6.squirrel@webmail.stat.unipd.it>",
+      "from_name": "Soriani Nicola",
+      "from_email_hash": "bad2caca9903706f9e3ae9b9200f838b32f69bcb1198b839eb309a817ad8dd27",
+      "date": "2011-10-10T07:13:50Z",
+      "subject": "[statnet_help] stepping algorithm trace values",
+      "subject_clean": "[statnet_help] stepping algorithm trace values",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi All,\n\nI have a question.\n\nUsing style=\"Stepping\" to estimate a ERGM, can I take trace of the value of\nthe coefficients in the algorithm steps?\n\nBecause in some cases, the stepping algorithm fails, it enters in a loop and\nit never exits. So I am curious to see these values to understand where and\nmaybe in what points the stepping fails to converge.\n\n\nThanks.\n\nNicola\n\n-- \nSoriani Nicola\nScuola di Dottorato in Scienze Statistiche XXIII Ciclo\nDipartimento di Scienze Statistiche, Universit? di Padova\nStanza 122 - Tel. 049 827 4174\nPh.D. Student\nDepartment of Statistical Sciences\nUniversity of Padova, Italy",
+      "body_snippet": "Hi All,\n\nI have a question.\n\nUsing style=\"Stepping\" to estimate a ERGM, can I take trace of the value of\nthe coefficients in the algorithm steps?\n\nBecause in some cases, the stepping algorithm fails, ",
+      "thread_id": "thread-340bc34edfb0",
+      "thread_depth": 0,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-a9e7bb095899",
+      "message_id": "<alpine.WNT.2.00.1110101005570.6556@Martina-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2011-10-10T10:09:41Z",
+      "subject": "[statnet_help] ERGM with Endogenous Terms",
+      "subject_clean": "[statnet_help] ERGM with Endogenous Terms",
+      "in_reply_to": "<20111009222803.628953inq23l63gg@web.mail.umich.edu>",
+      "references": [
+        "<1311273270.78082.YahooMailClassic@web28402.mail.ukl.yahoo.com>",
+        "<20111009201227.87894e4kgnuxu0sg@web.mail.umich.edu>",
+        "<alpine.WNT.2.00.1110091907130.6036@Martina-PC>",
+        "<20111009222803.628953inq23l63gg@web.mail.umich.edu>"
+      ],
+      "body_plain": "Michael,\n\nOne of the other developers will need to answer the vector allocation \nerror question.\n\nIn the meantime, you can use another R package to fit a mixed model to \ncapture the within-node dependence.\n\nbest,\nMartina\n\nOn Sun, 9 Oct 2011, Michael T. Heaney wrote:\n\n> Dear Martina,\n>\n> Thanks so much for your quick response.\n>\n> The problem that I am having is that if I use the endogenous network terms, \n> then I am getting errors that say 'Error: cannot allocate vector of size 41.5 \n> mb'.\n>\n> My network has 738 nodes.\n>\n> By 'inherent dependence' I mean that since each node appears in the data 737 \n> times, I want the standard errors to be computed in a way that accounts for \n> the common variance among these 737 observations.\n>\n> Any additional advice would be much appreciated.\n>\n> Thanks.\n>\n> Michael\n>\n>\n> Quoting Martina Morris <morrism@u.washington.edu>:\n>\n>> Hi Michael,\n>> \n>> The answer is no.  If your model does not include dyadic dependent terms, \n>> then it is not necessary to use MCMC for the estimation, so there is no \n>> MCMC related SE.\n>> \n>> If you believe there is dyadic dependence in the network, then you will \n>> need to represent this in the model -- by using a term (or terms) that \n>> captures the dependence.  What do you mean by \"inherent dependence\"?\n>> \n>> best,\n>> Martina\n>> \n>> On Sun, 9 Oct 2011, Michael T. Heaney wrote:\n>> \n>>> Dear Statnet Community,\n>>> \n>>> If I estimate an ERGM model that does NOT include endogenous network terms \n>>> (e.g., isolates, mutual, triangle) and ONLY includes exogenous covariates \n>>> (e.g., nodecov, dyadcov), then the reported ERGM results include the \n>>> ordinary coefficient/standard error BUT do NOT include a MCMC standard \n>>> errors.\n>>> \n>>> My question: Are the reported standard errors corrected for the dyadic \n>>> dependence that is inherent in the network data?  If YES, then what \n>>> statistical model is used to correct them?  (An article citation here \n>>> would be most welcome.)  If NO, then is there any way to ask the ERGM \n>>> routine to run the MCMC simulation WITHOUT including endogenous \n>>> parameters?\n>>> \n>>> Thanks in advanced for any help.\n>>> \n>>> Best,\n>>> \n>>> Michael\n>>> \n>>> -- \n>>> Michael T. Heaney, Ph.D.\n>>> Assistant Professor of Organizational Studies & Political Science\n>>> University of Michigan\n>>> 722 Dennison Building\n>>> 500 Church Street\n>>> Ann Arbor, MI 48109-1042\n>>> \n>>> Cell phone: 202-236-3369\n>>> E-mail: mheaney@umich.edu\n>>> http://www.umich.edu/~mheaney/\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>> \n>> ****************************************************************\n>> Professor of Sociology and Statistics\n>> Director, UWCFAR Sociobehavioral and Prevention Research Core\n>> Box 354322\n>> University of Washington\n>> Seattle, WA 98195-4322\n>> \n>> Office:\t(206) 685-3402\n>> Dept Office: \t(206) 543-5882, 543-7237\n>> Fax: \t\t(206) 685-7419\n>> \n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>> \n>> \n>> \n>\n>\n>\n> -- \n> Michael T. Heaney, Ph.D.\n> Assistant Professor of Organizational Studies & Political Science\n> University of Michigan\n> 722 Dennison Building\n> 500 Church Street\n> Ann Arbor, MI 48109-1042\n>\n> Cell phone: 202-236-3369\n> E-mail: mheaney@umich.edu\n> http://www.umich.edu/~mheaney/\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Michael,\n\nOne of the other developers will need to answer the vector allocation \nerror question.\n\nIn the meantime, you can use another R package to fit a mixed model to \ncapture the within-node depend",
+      "thread_id": "thread-99e9d96091bf",
+      "thread_depth": 3,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-263e86c86bb1",
+      "message_id": "<CAO1x9EYwZoMs0gXNV0WGpC+8_hFHGFsaRSZm_XhGY0d5Jk_hGA@mail.gmail.com>",
+      "from_name": "Adrian Albert",
+      "from_email_hash": "de045ebde7690cd51a94e3b1efe0a96ccec44a5e42463f5dc48234bd4a9ec7cc",
+      "date": "2011-10-10T21:07:36Z",
+      "subject": "[statnet_help] shortest path between two nodes",
+      "subject_clean": "[statnet_help] shortest path between two nodes",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI have a (fairly large) network object and I'm trying to calculate the\nshortest path between two given nodes, and between nodes in a subset of the\ngraph and the entire graph. As far as I see statnet does not have a function\nthat computes this measure just for one node or a subset of nodes; geodist\nwill calculate *all * the distances in the network. Since my network is\nlarge, I would like to calculate just for a few of nodes. What function\nshould I use?\n\nThanks,\nAdrian\n\n-- \n---------------------------------------------------------------------\nAdrian Albert\nPhD Candidate, Electrical Engineering\nStanford University\nTel.: 001 510 213 1220\nemail: adalbert@stanford.edu\n\nweb:   www.stanford.edu/~adalbert\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20111011/0aa6d403/attachment.html>",
+      "body_snippet": "Hello,\n\nI have a (fairly large) network object and I'm trying to calculate the\nshortest path between two given nodes, and between nodes in a subset of the\ngraph and the entire graph. As far as I see s",
+      "thread_id": "thread-263e86c86bb1",
+      "thread_depth": 0,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-454c73e11183",
+      "message_id": "<CA+hV2uXamVk8ugqfXVBHXiJEDSaL21RHXxdDaeU2v5pv6ADB-A@mail.gmail.com>",
+      "from_name": "Yun Huang",
+      "from_email_hash": "adf4da61062e4fa75371efaffb9053bf686d51778199fff94d9a21334bfff133",
+      "date": "2011-10-10T21:22:19Z",
+      "subject": "[statnet_help] shortest path between two nodes",
+      "subject_clean": "[statnet_help] shortest path between two nodes",
+      "in_reply_to": "<CAO1x9EYwZoMs0gXNV0WGpC+8_hFHGFsaRSZm_XhGY0d5Jk_hGA@mail.gmail.com>",
+      "references": [
+        "<CAO1x9EYwZoMs0gXNV0WGpC+8_hFHGFsaRSZm_XhGY0d5Jk_hGA@mail.gmail.com>"
+      ],
+      "body_plain": "Statnet is not designed to calculate network statistics.\nshortest.paths() in the igraph package should do the work\n(http://igraph.sourceforge.net/doc/R/shortest.paths.html)\nYun\n\nOn Mon, Oct 10, 2011 at 11:07 PM, Adrian Albert <adalbert@stanford.edu> wrote:\n> Hello,\n> I have a (fairly large) network object and I'm trying to calculate the\n> shortest path between two given nodes, and between nodes in a subset of the\n> graph and the entire graph. As far as I see statnet does not have a function\n> that computes this measure just for one node or a subset of nodes; geodist\n> will calculate all ?the distances in the network. Since my network is large,\n> I would like to calculate just for a few of nodes. What function should I\n> use?\n> Thanks,\n> Adrian\n>\n> --\n> ---------------------------------------------------------------------\n> Adrian Albert\n> PhD Candidate, Electrical Engineering\n> Stanford University\n> Tel.: 001 510 213 1220\n> email: adalbert@stanford.edu\n>\n> web:?? www.stanford.edu/~adalbert\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n\n\n-- \nYun Huang\nScience of Networks in Communities (SONIC)\nIndustrial Engineering and Management Sciences\nNorthwestern University\nGoogle Voice: 847-220-7310\nOffice: FSB 1.459",
+      "body_snippet": "Statnet is not designed to calculate network statistics.\nshortest.paths() in the igraph package should do the work\n(http://igraph.sourceforge.net/doc/R/shortest.paths.html)\nYun\n\nOn Mon, Oct 10, 2011 a",
+      "thread_id": "thread-263e86c86bb1",
+      "thread_depth": 1,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-4d37b63ce3bc",
+      "message_id": "<4E93CA6F.4080506@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2011-10-10T21:47:43Z",
+      "subject": "[statnet_help] shortest path between two nodes",
+      "subject_clean": "[statnet_help] shortest path between two nodes",
+      "in_reply_to": "<CA+hV2uXamVk8ugqfXVBHXiJEDSaL21RHXxdDaeU2v5pv6ADB-A@mail.gmail.com>",
+      "references": [
+        "<CAO1x9EYwZoMs0gXNV0WGpC+8_hFHGFsaRSZm_XhGY0d5Jk_hGA@mail.gmail.com>",
+        "<CA+hV2uXamVk8ugqfXVBHXiJEDSaL21RHXxdDaeU2v5pv6ADB-A@mail.gmail.com>"
+      ],
+      "body_plain": "> Statnet is not designed to calculate network statistics.\n\nI just want to clarify this point.  The statnet suite contains multiple \npackages.  And one of them -- Carter Butts' sna package, does indeed \nhave calculating network statistics as its core goal.\n\nCheers,\nSteve\n\n\n> shortest.paths() in the igraph package should do the work\n> (http://igraph.sourceforge.net/doc/R/shortest.paths.html)\n> Yun\n>\n> On Mon, Oct 10, 2011 at 11:07 PM, Adrian Albert<adalbert@stanford.edu>  wrote:\n>> Hello,\n>> I have a (fairly large) network object and I'm trying to calculate the\n>> shortest path between two given nodes, and between nodes in a subset of the\n>> graph and the entire graph. As far as I see statnet does not have a function\n>> that computes this measure just for one node or a subset of nodes; geodist\n>> will calculate all  the distances in the network. Since my network is large,\n>> I would like to calculate just for a few of nodes. What function should I\n>> use?\n>> Thanks,\n>> Adrian\n>>\n>> --\n>> ---------------------------------------------------------------------\n>> Adrian Albert\n>> PhD Candidate, Electrical Engineering\n>> Stanford University\n>> Tel.: 001 510 213 1220\n>> email: adalbert@stanford.edu\n>>\n>> web:   www.stanford.edu/~adalbert\n>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>\n>\n\n\n-- \n***********************************************************************\n  * Steven M. Goodreau / Assoc. Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100     *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)   *\n  * http://faculty.washington.edu/goodreau                            *\n  * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k         *\n***********************************************************************",
+      "body_snippet": "> Statnet is not designed to calculate network statistics.\n\nI just want to clarify this point.  The statnet suite contains multiple \npackages.  And one of them -- Carter Butts' sna package, does indee",
+      "thread_id": "thread-263e86c86bb1",
+      "thread_depth": 2,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-5185bf9fffec",
+      "message_id": "<CAO1x9EZZ3dtFs1Q3rGQ2S2V+UNyUX=mTH8myZjnB_9Lq2UH3SQ@mail.gmail.com>",
+      "from_name": "Adrian Albert",
+      "from_email_hash": "de045ebde7690cd51a94e3b1efe0a96ccec44a5e42463f5dc48234bd4a9ec7cc",
+      "date": "2011-10-10T22:05:16Z",
+      "subject": "[statnet_help] shortest path between two nodes",
+      "subject_clean": "[statnet_help] shortest path between two nodes",
+      "in_reply_to": "<4E93CA6F.4080506@uw.edu>",
+      "references": [
+        "<CAO1x9EYwZoMs0gXNV0WGpC+8_hFHGFsaRSZm_XhGY0d5Jk_hGA@mail.gmail.com>",
+        "<CA+hV2uXamVk8ugqfXVBHXiJEDSaL21RHXxdDaeU2v5pv6ADB-A@mail.gmail.com>",
+        "<4E93CA6F.4080506@uw.edu>"
+      ],
+      "body_plain": "Hello Steven and Yun,\n\nthanks for the replies. I have tried using the geodist function from sna;\nhowever that function will compute shortest paths for all nodes, not just a\nspecified subset. Or am I using it incorrectly?\n\nI don't think there's a way to use objects created with network/statnet with\nigraph functions, is it? I have a lot of statnet code, and would rather not\nstart porting everything into igraph.\n\nThanks,\nAdrian\n\nOn Tue, Oct 11, 2011 at 12:47 AM, Steven Goodreau <goodreau@uw.edu> wrote:\n\n>\n>  Statnet is not designed to calculate network statistics.\n>>\n>\n> I just want to clarify this point.  The statnet suite contains multiple\n> packages.  And one of them -- Carter Butts' sna package, does indeed have\n> calculating network statistics as its core goal.\n>\n> Cheers,\n> Steve\n>\n>\n>\n>  shortest.paths() in the igraph package should do the work\n>> (http://igraph.sourceforge.**net/doc/R/shortest.paths.html<http://igraph.sourceforge.net/doc/R/shortest.paths.html>\n>> )\n>> Yun\n>>\n>> On Mon, Oct 10, 2011 at 11:07 PM, Adrian Albert<adalbert@stanford.edu>\n>>  wrote:\n>>\n>>> Hello,\n>>> I have a (fairly large) network object and I'm trying to calculate the\n>>> shortest path between two given nodes, and between nodes in a subset of\n>>> the\n>>> graph and the entire graph. As far as I see statnet does not have a\n>>> function\n>>> that computes this measure just for one node or a subset of nodes;\n>>> geodist\n>>> will calculate all  the distances in the network. Since my network is\n>>> large,\n>>> I would like to calculate just for a few of nodes. What function should I\n>>> use?\n>>> Thanks,\n>>> Adrian\n>>>\n>>> --\n>>> ------------------------------**------------------------------**\n>>> ---------\n>>> Adrian Albert\n>>> PhD Candidate, Electrical Engineering\n>>> Stanford University\n>>> Tel.: 001 510 213 1220\n>>> email: adalbert@stanford.edu\n>>>\n>>> web:   www.stanford.edu/~adalbert\n>>>\n>>>\n>>>\n>>> ______________________________**_________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.**edu/mailman/listinfo/statnet_**help<http://mailman2.u.washington.edu/mailman/listinfo/statnet_help>\n>>>\n>>>\n>>>\n>>\n>>\n>\n> --\n> ****************************************************************\n> ***********\n>  * Steven M. Goodreau / Assoc. Professor / Dept. of Anthropology     *\n>  * University of Washington / Denny Hall 452 / Campus Box 353100     *\n>  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)   *\n>  * http://faculty.washington.edu/**goodreau<http://faculty.washington.edu/goodreau>                           *\n>  * http://maps.google.com/?q=%**2047.65853,-122.30896&z=18&t=k<http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k>        *\n> ****************************************************************\n> ***********\n>\n>\n> ______________________________**_________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.**edu/mailman/listinfo/statnet_**help<http://mailman2.u.washington.edu/mailman/listinfo/statnet_help>\n>\n\n\n\n-- \n---------------------------------------------------------------------\nAdrian Albert\nPhD Candidate, Electrical Engineering\nStanford University\nTel.: 001 510 213 1220\nemail: adalbert@stanford.edu\n\nweb:   www.stanford.edu/~adalbert\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20111011/0f89554f/attachment.html>",
+      "body_snippet": "Hello Steven and Yun,\n\nthanks for the replies. I have tried using the geodist function from sna;\nhowever that function will compute shortest paths for all nodes, not just a\nspecified subset. Or am I u",
+      "thread_id": "thread-263e86c86bb1",
+      "thread_depth": 3,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-d8bd733ba622",
+      "message_id": "<4E93D57E.9030707@ucla.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "fb40357ebb8d7f0a427d9ad2641aa56f67d6763bdb0f1109ba0f3c4b5584b09d",
+      "date": "2011-10-10T22:34:54Z",
+      "subject": "[statnet_help] shortest path between two nodes",
+      "subject_clean": "[statnet_help] shortest path between two nodes",
+      "in_reply_to": "<CA+hV2uXamVk8ugqfXVBHXiJEDSaL21RHXxdDaeU2v5pv6ADB-A@mail.gmail.com>",
+      "references": [
+        "<CAO1x9EYwZoMs0gXNV0WGpC+8_hFHGFsaRSZm_XhGY0d5Jk_hGA@mail.gmail.com>",
+        "<CA+hV2uXamVk8ugqfXVBHXiJEDSaL21RHXxdDaeU2v5pv6ADB-A@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Adrian,\n\nHere is what I do with \"ergm\". Carter's \"sna\" package can do a lot more:\n\nlibrary(ergm)\n# First get the full geodistance matrices\ndata(sampson)\na <- ergm.geodesicmatrix(samplike)\na\ndata(florentine)\na <- ergm.geodesicmatrix(flomarriage)\na\n# Not pick some off by edgelists\ngd <- function(s,d,nw){ergm.pairgeodesic(as.matrix(nw,mat=\"edgelist\"),\ns=s,d=d,directed=is.directed(nw),n=network.size(nw))}\ngd(1,3,flomarriage)\ngd(1,2,flomarriage)\ngd(1,4,flomarriage\n\nCheers,\n\nMark\n\np.s. The \"summary\" function in \"statnet\" was designed to get network \nstatistics, e.g., summary(flomarriage ~ isolates)\n\nOn 10/10/11 9:22 PM, Yun Huang wrote:\n> Statnet is not designed to calculate network statistics.\n> shortest.paths() in the igraph package should do the work\n> (http://igraph.sourceforge.net/doc/R/shortest.paths.html)\n> Yun\n>\n> On Mon, Oct 10, 2011 at 11:07 PM, Adrian Albert<adalbert@stanford.edu>  wrote:\n>> Hello,\n>> I have a (fairly large) network object and I'm trying to calculate the\n>> shortest path between two given nodes, and between nodes in a subset of the\n>> graph and the entire graph. As far as I see statnet does not have a function\n>> that computes this measure just for one node or a subset of nodes; geodist\n>> will calculate all  the distances in the network. Since my network is large,\n>> I would like to calculate just for a few of nodes. What function should I\n>> use?\n>> Thanks,\n>> Adrian\n>>\n>> --\n>> ---------------------------------------------------------------------\n>> Adrian Albert\n>> PhD Candidate, Electrical Engineering\n>> Stanford University\n>> Tel.: 001 510 213 1220\n>> email: adalbert@stanford.edu\n>>\n>> web:   www.stanford.edu/~adalbert\n>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>\n>\n>",
+      "body_snippet": "Hi Adrian,\n\nHere is what I do with \"ergm\". Carter's \"sna\" package can do a lot more:\n\nlibrary(ergm)\n# First get the full geodistance matrices\ndata(sampson)\na <- ergm.geodesicmatrix(samplike)\na\ndata(fl",
+      "thread_id": "thread-263e86c86bb1",
+      "thread_depth": 2,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-be39701fd59a",
+      "message_id": "<CAO1x9EZbsjzFBYnhqppG5RehZ=0u20BiJn6mo-c0Rt=3RgFN+Q@mail.gmail.com>",
+      "from_name": "Adrian Albert",
+      "from_email_hash": "de045ebde7690cd51a94e3b1efe0a96ccec44a5e42463f5dc48234bd4a9ec7cc",
+      "date": "2011-10-10T22:57:04Z",
+      "subject": "[statnet_help] Error: protect(): protection stack overflow",
+      "subject_clean": "[statnet_help] Error: protect(): protection stack overflow",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI'm using the delete.vertices() function in statnet trying to remove 100\nnodes from a graph of ~5000 nodes and ~15000 edges. I get the following\nerror:\n\nError: protect(): protection stack overflow\n\nI've tried removing just one node, several nodes, etc. Also I set the\nmaximum number of nested expressions in R to maximum ( -max-ppsize=5000000\n). It still returns this error.\n\nAny ideas?\n\nThanks,\nAdrian\n\n-- \n---------------------------------------------------------------------\nAdrian Albert\nPhD Candidate, Electrical Engineering\nStanford University\nTel.: 001 510 213 1220\nemail: adalbert@stanford.edu\n\nweb:   www.stanford.edu/~adalbert\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20111011/67319d2b/attachment.html>",
+      "body_snippet": "Hello,\n\nI'm using the delete.vertices() function in statnet trying to remove 100\nnodes from a graph of ~5000 nodes and ~15000 edges. I get the following\nerror:\n\nError: protect(): protection stack over",
+      "thread_id": "thread-be39701fd59a",
+      "thread_depth": 0,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-191283980687",
+      "message_id": "<4E93F607.2090801@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2011-10-11T00:53:43Z",
+      "subject": "[statnet_help] shortest path between two nodes",
+      "subject_clean": "[statnet_help] shortest path between two nodes",
+      "in_reply_to": "<CAO1x9EZZ3dtFs1Q3rGQ2S2V+UNyUX=mTH8myZjnB_9Lq2UH3SQ@mail.gmail.com>",
+      "references": [
+        "<CAO1x9EYwZoMs0gXNV0WGpC+8_hFHGFsaRSZm_XhGY0d5Jk_hGA@mail.gmail.com>",
+        "<CA+hV2uXamVk8ugqfXVBHXiJEDSaL21RHXxdDaeU2v5pv6ADB-A@mail.gmail.com>",
+        "<4E93CA6F.4080506@uw.edu>",
+        "<CAO1x9EZZ3dtFs1Q3rGQ2S2V+UNyUX=mTH8myZjnB_9Lq2UH3SQ@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Adrian. Currently, geodist computes all-pairs shortest paths. \nAlthough I have code in the backend to do single-pair shortest paths, \nit's not currently a user-level function; since the complexity isn't \n_that_ different, there's not been any demand for it.  If you and others \nare interested, though, I'll put that in the hopper for the next release....\n\n-Carter\n\nOn 10/10/2011 10:05 PM, Adrian Albert wrote:\n> Hello Steven and Yun,\n>\n> thanks for the replies. I have tried using the geodist function from\n> sna; however that function will compute shortest paths for all nodes,\n> not just a specified subset. Or am I using it incorrectly?\n>\n> I don't think there's a way to use objects created with network/statnet\n> with igraph functions, is it? I have a lot of statnet code, and would\n> rather not start porting everything into igraph.\n>\n> Thanks,\n> Adrian\n>\n> On Tue, Oct 11, 2011 at 12:47 AM, Steven Goodreau <goodreau@uw.edu\n> <mailto:goodreau@uw.edu>> wrote:\n>\n>\n>         Statnet is not designed to calculate network statistics.\n>\n>\n>     I just want to clarify this point.  The statnet suite contains\n>     multiple packages.  And one of them -- Carter Butts' sna package,\n>     does indeed have calculating network statistics as its core goal.\n>\n>     Cheers,\n>     Steve\n>\n>\n>\n>         shortest.paths() in the igraph package should do the work\n>         (http://igraph.sourceforge.__net/doc/R/shortest.paths.html\n>         <http://igraph.sourceforge.net/doc/R/shortest.paths.html>)\n>         Yun\n>\n>         On Mon, Oct 10, 2011 at 11:07 PM, Adrian\n>         Albert<adalbert@stanford.edu <mailto:adalbert@stanford.edu>>  wrote:\n>\n>             Hello,\n>             I have a (fairly large) network object and I'm trying to\n>             calculate the\n>             shortest path between two given nodes, and between nodes in\n>             a subset of the\n>             graph and the entire graph. As far as I see statnet does not\n>             have a function\n>             that computes this measure just for one node or a subset of\n>             nodes; geodist\n>             will calculate all  the distances in the network. Since my\n>             network is large,\n>             I would like to calculate just for a few of nodes. What\n>             function should I\n>             use?\n>             Thanks,\n>             Adrian\n>\n>             --\n>             ------------------------------__------------------------------__---------\n>             Adrian Albert\n>             PhD Candidate, Electrical Engineering\n>             Stanford University\n>             Tel.: 001 510 213 1220 <tel:510%20213%201220>\n>             email: adalbert@stanford.edu <mailto:adalbert@stanford.edu>\n>\n>             web: www.stanford.edu/~adalbert\n>             <http://www.stanford.edu/~adalbert>\n>\n>\n>\n>             _________________________________________________\n>             statnet_help mailing list\n>             statnet_help@u.washington.edu\n>             <mailto:statnet_help@u.washington.edu>\n>             http://mailman2.u.washington.__edu/mailman/listinfo/statnet___help\n>             <http://mailman2.u.washington.edu/mailman/listinfo/statnet_help>\n>\n>\n>\n>\n>\n>\n>     --\n>     ******************************__******************************__***********\n>       * Steven M. Goodreau / Assoc. Professor / Dept. of Anthropology     *\n>       * University of Washington / Denny Hall 452 / Campus Box 353100     *\n>       * Seattle WA 98195 / 1-206-685-3870 <tel:1-206-685-3870> (phone)/\n>     1-206-543-3285 <tel:1-206-543-3285> (fax)   *\n>       * http://faculty.washington.edu/__goodreau\n>     <http://faculty.washington.edu/goodreau>                            *\n>       * http://maps.google.com/?q=%__2047.65853,-122.30896&z=18&t=k\n>     <http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k>         *\n>     ******************************__******************************__***********\n>\n>\n>     _________________________________________________\n>     statnet_help mailing list\n>     statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>     http://mailman2.u.washington.__edu/mailman/listinfo/statnet___help\n>     <http://mailman2.u.washington.edu/mailman/listinfo/statnet_help>\n>\n>\n>\n>\n> --\n> ---------------------------------------------------------------------\n> Adrian Albert\n> PhD Candidate, Electrical Engineering\n> Stanford University\n> Tel.: 001 510 213 1220\n> email: adalbert@stanford.edu <mailto:adalbert@stanford.edu>\n>\n> web: www.stanford.edu/~adalbert <http://www.stanford.edu/~adalbert>\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi, Adrian. Currently, geodist computes all-pairs shortest paths. \nAlthough I have code in the backend to do single-pair shortest paths, \nit's not currently a user-level function; since the complexity",
+      "thread_id": "thread-263e86c86bb1",
+      "thread_depth": 4,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-27133bfd9ddd",
+      "message_id": "<4E93F737.8050504@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2011-10-11T00:58:47Z",
+      "subject": "[statnet_help] Error: protect(): protection stack overflow",
+      "subject_clean": "[statnet_help] Error: protect(): protection stack overflow",
+      "in_reply_to": "<CAO1x9EZbsjzFBYnhqppG5RehZ=0u20BiJn6mo-c0Rt=3RgFN+Q@mail.gmail.com>",
+      "references": [
+        "<CAO1x9EZbsjzFBYnhqppG5RehZ=0u20BiJn6mo-c0Rt=3RgFN+Q@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Albert.  Yes, R's protection stack can be frustratingly small, and \nthis can cause problems with delete.vertices in large graphs.  It's on \nthe list to fix for the next network package release.  In the interim, \nanother approach is to create a new graph and write the edge information \ninto it instead of deleting vertices.\n\nHope that helps,\n\n-Carter\n\nOn 10/10/2011 10:57 PM, Adrian Albert wrote:\n> Hello,\n>\n> I'm using the delete.vertices() function in statnet trying to remove 100\n> nodes from a graph of ~5000 nodes and ~15000 edges. I get the following\n> error:\n>\n> Error: protect(): protection stack overflow\n>\n> I've tried removing just one node, several nodes, etc. Also I set the\n> maximum number of nested expressions in R to maximum (\n> -max-ppsize=5000000 ). It still returns this error.\n>\n> Any ideas?\n>\n> Thanks,\n> Adrian\n>\n> --\n> ---------------------------------------------------------------------\n> Adrian Albert\n> PhD Candidate, Electrical Engineering\n> Stanford University\n> Tel.: 001 510 213 1220\n> email: adalbert@stanford.edu <mailto:adalbert@stanford.edu>\n>\n> web: www.stanford.edu/~adalbert <http://www.stanford.edu/~adalbert>\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi, Albert.  Yes, R's protection stack can be frustratingly small, and \nthis can cause problems with delete.vertices in large graphs.  It's on \nthe list to fix for the next network package release.  I",
+      "thread_id": "thread-be39701fd59a",
+      "thread_depth": 1,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-620278a34c97",
+      "message_id": "<4E93FDEB.5040508@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2011-10-11T01:27:23Z",
+      "subject": "[statnet_help] convert network from directed to undirected",
+      "subject_clean": "[statnet_help] convert network from directed to undirected",
+      "in_reply_to": "<CAO1x9EZ3V=AdVt9RYn8TGCi_uuEdLxs-bXO_vnGcpDjrJYs3Ew@mail.gmail.com>",
+      "references": [
+        "<CAO1x9EZ3V=AdVt9RYn8TGCi_uuEdLxs-bXO_vnGcpDjrJYs3Ew@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Adrian.  Since your edgelist has both incoming and outgoing \nedgelist, network() assumes you are trying to add multiplex edges in the \nundirected case.  Just filter out the redundant ones, e.g., with \nsomething like colab_edgelist[colab_edgelist[,1]<colab_edgelist[,2],] or \nsome such.\n\nHope that helps,\n\n-Carter\n\nOn 10/09/2011 10:51 PM, Adrian Albert wrote:\n> Hello,\n>\n> I'm having trouble with converting a network I read from the disc from a\n> directed graph to an undirected graph. I read an edge list\n> (\"colab_edgelist\") that contains directed edges (so both (i,j) and the\n> (j,i) pairs); I would like to store it as an undirected network. I have\n> tried the following:\n>\n> colab_net = network(colab_edgelist,matrix.type=\"edgelist\",directed=FALSE)\n>\n> However this does not work; I still get double the number of edges an\n> undirected graph would have. Is there a quick command that can help me\n> with that in statnet?\n>\n> Thanks,\n> Adrian\n>\n>\n> --\n> ---------------------------------------------------------------------\n> Adrian Albert\n> PhD Candidate, Electrical Engineering\n> Stanford University\n> Tel.: 001 510 213 1220\n> email: adalbert@stanford.edu <mailto:adalbert@stanford.edu>\n>\n> web: www.stanford.edu/~adalbert <http://www.stanford.edu/~adalbert>\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi, Adrian.  Since your edgelist has both incoming and outgoing \nedgelist, network() assumes you are trying to add multiplex edges in the \nundirected case.  Just filter out the redundant ones, e.g., w",
+      "thread_id": "thread-a93db58890dd",
+      "thread_depth": 1,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-7e10a2394178",
+      "message_id": "<4E9400F0.2090606@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2011-10-11T01:40:16Z",
+      "subject": "[statnet_help] ERGM with Endogenous Terms",
+      "subject_clean": "[statnet_help] ERGM with Endogenous Terms",
+      "in_reply_to": "<20111009201227.87894e4kgnuxu0sg@web.mail.umich.edu>",
+      "references": [
+        "<1311273270.78082.YahooMailClassic@web28402.mail.ukl.yahoo.com>",
+        "<20111009201227.87894e4kgnuxu0sg@web.mail.umich.edu>"
+      ],
+      "body_plain": "Hi, Michael -\n\nOn 10/09/2011 05:12 PM, Michael T. Heaney wrote:\n> Dear Statnet Community,\n>\n> If I estimate an ERGM model that does NOT include endogenous network\n> terms (e.g., isolates, mutual, triangle) and ONLY includes exogenous\n> covariates (e.g., nodecov, dyadcov), then the reported ERGM results\n> include the ordinary coefficient/standard error BUT do NOT include a\n> MCMC standard errors.\n>\n\nYes - there is no need for MCMC in this case.  (This is actually a \nnetwork logit model -- see also netlogit in sna.)\n\n> My question: Are the reported standard errors corrected for the dyadic\n> dependence that is inherent in the network data?\n\nIs there in fact \"inherent\" dyadic dependence in your data?  If so, why \nare you fitting an independence model?  (To put it another way, if you \nbelieve that there is dependence, then you should model it.  The \nreported standard error estimates reflect your modeling assumptions.)\n\n> If YES, then what\n> statistical model is used to correct them? (An article citation here\n> would be most welcome.) If NO, then is there any way to ask the ERGM\n> routine to run the MCMC simulation WITHOUT including endogenous parameters?\n\nThe MCMC here is a red herring -- it's just used to perform the \nnumerical calculations required to obtain the estimates.  I think you \nwant to determine whether you really believe you have an autocorrelation \nproblem, and if so model accordingly.\n\nAnother option, if you are just interested in hypothesis testing for the \ncovariate effects, would be to use either netlogit (w/QAP) in sna or the \nnetperm package.  The QAP test for netlogit is not known to have great \nproperties, so caveats apply; the netlm case is better behaved.  The \nnetperm model can also be used in a similar manner, but is more exotic. \n  In any event, all three provide avenues for estimating relations among \nmatrices (and testing hypotheses about the same) while controlling for \nwithin-matrix autocorrelation.\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "Hi, Michael -\n\nOn 10/09/2011 05:12 PM, Michael T. Heaney wrote:\n> Dear Statnet Community,\n>\n> If I estimate an ERGM model that does NOT include endogenous network\n> terms (e.g., isolates, mutual, tria",
+      "thread_id": "thread-99e9d96091bf",
+      "thread_depth": 1,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-8b0895a44bc6",
+      "message_id": "<4E94028E.2030505@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2011-10-11T01:47:10Z",
+      "subject": "[statnet_help] ERGM with Endogenous Terms",
+      "subject_clean": "[statnet_help] ERGM with Endogenous Terms",
+      "in_reply_to": "<20111009222803.628953inq23l63gg@web.mail.umich.edu>",
+      "references": [
+        "<1311273270.78082.YahooMailClassic@web28402.mail.ukl.yahoo.com>",
+        "<20111009201227.87894e4kgnuxu0sg@web.mail.umich.edu>",
+        "<alpine.WNT.2.00.1110091907130.6036@Martina-PC>",
+        "<20111009222803.628953inq23l63gg@web.mail.umich.edu>"
+      ],
+      "body_plain": "Hi, Michael -\n\nOn 10/09/2011 07:28 PM, Michael T. Heaney wrote:\n> Dear Martina,\n>\n> Thanks so much for your quick response.\n>\n> The problem that I am having is that if I use the endogenous network\n> terms, then I am getting errors that say 'Error: cannot allocate vector\n> of size 41.5 mb'.\n>\n> My network has 738 nodes.\n\nWhat are you putting into the model?  We've fit much larger networks \n(but, of course, a lot depends on the terms you use).\n\n>\n> By 'inherent dependence' I mean that since each node appears in the data\n> 737 times, I want the standard errors to be computed in a way that\n> accounts for the common variance among these 737 observations.\n>\n\nThe notion of \"common variance\" is not very helpful here.  How, \nprecisely, do you think that the nodes are leading to dependence among \nthe dyads?  (There are many ways of thinking about this.)  It sounds \nlike you may have in mind sender/receiver effects (i.e., fixed effects \nfor rows and/or columns, or \"sociality\" for both).  This is only one \nform such dependence can take, however -- the Markov graphs represent \nanother.\n\nIf you were trying to use sender/receiver/sociality terms with a model \nof that size, I imagine you might have run into problems (you are adding \na vast number of parameters in that case).  If you really think you have \nsubstantial heterogeneity that can't be captured by degree distribution \nterms (e.g., through gwdegree), then you might want to go the \npermutation test/model route....\n\n-Carter",
+      "body_snippet": "Hi, Michael -\n\nOn 10/09/2011 07:28 PM, Michael T. Heaney wrote:\n> Dear Martina,\n>\n> Thanks so much for your quick response.\n>\n> The problem that I am having is that if I use the endogenous network\n> t",
+      "thread_id": "thread-99e9d96091bf",
+      "thread_depth": 3,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-91109ec92966",
+      "message_id": "<CAO1x9EbzjqPUTh0asUy=4z94YNwY14Uu1f-O1D_4dVzqQ-+4rw@mail.gmail.com>",
+      "from_name": "Adrian Albert",
+      "from_email_hash": "de045ebde7690cd51a94e3b1efe0a96ccec44a5e42463f5dc48234bd4a9ec7cc",
+      "date": "2011-10-11T11:54:31Z",
+      "subject": "[statnet_help] components of large network",
+      "subject_clean": "[statnet_help] components of large network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI'm using statnet/sna to handle a fairly large network (~200k nodes, ~2.5m\nedges). I'm trying to calculate the sizes of the strongly connected\ncomponents using component.dist in sna. However it seems that function uses\na full adjacency matrix object (which is quite large for 200k nodes). Is\nthere a more efficient function that does not expand the graph to N^2?\n\nThanks,\nAdrian\n\n-- \n---------------------------------------------------------------------\nAdrian Albert\nPhD Candidate, Electrical Engineering\nStanford University\nTel.: 001 510 213 1220\nemail: adalbert@stanford.edu\n\nweb:   www.stanford.edu/~adalbert\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20111011/ed150758/attachment.html>",
+      "body_snippet": "Hello,\n\nI'm using statnet/sna to handle a fairly large network (~200k nodes, ~2.5m\nedges). I'm trying to calculate the sizes of the strongly connected\ncomponents using component.dist in sna. However i",
+      "thread_id": "thread-91109ec92966",
+      "thread_depth": 0,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-2229888b0d28",
+      "message_id": "<CACOOgoH6zxbD=Dc=LvaSGY6s6A1WffhJ4Mwqw5Ar-cLV9_OMJg@mail.gmail.com>",
+      "from_name": "tomas gueneau",
+      "from_email_hash": "988713533df62be792d3966f1a6a820e4a2c33f7166ab964be27a5e6eff56af5",
+      "date": "2011-10-11T14:15:06Z",
+      "subject": "[statnet_help] normalized centralities for weighted networks",
+      "subject_clean": "[statnet_help] normalized centralities for weighted networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi there,\nI've been wondering how to calculate normalize degree centralities for a\nweighted network.\nDoes anyone know if such operationalization have been developed. According\nto Freeman (1979), for binary (unweighted) networks we can calculate it by\ndividing the centrality by n-1.\nI would appreciate any insight on this.\n\nRelated question: is there a way to get the binary (unweighted) adjacency\nmatrix from a weighted one? Is there a command to pass onto \"as.network\"\nthat tells R to read any number different from 0 as a 1?\n\nCheers.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20111011/18fd0091/attachment.html>",
+      "body_snippet": "Hi there,\nI've been wondering how to calculate normalize degree centralities for a\nweighted network.\nDoes anyone know if such operationalization have been developed. According\nto Freeman (1979), for b",
+      "thread_id": "thread-2229888b0d28",
+      "thread_depth": 0,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-1c69fbf4a60c",
+      "message_id": "<AB40CD13-7C69-4B3E-92DA-94BA62B89BF3@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2011-10-11T15:13:36Z",
+      "subject": "[statnet_help] normalized centralities for weighted networks",
+      "subject_clean": "[statnet_help] normalized centralities for weighted networks",
+      "in_reply_to": "<CACOOgoH6zxbD=Dc=LvaSGY6s6A1WffhJ4Mwqw5Ar-cLV9_OMJg@mail.gmail.com>",
+      "references": [
+        "<CACOOgoH6zxbD=Dc=LvaSGY6s6A1WffhJ4Mwqw5Ar-cLV9_OMJg@mail.gmail.com>"
+      ],
+      "body_plain": "I don't know about the weighted network question, but if M is a matrix  \ncontaining both zeros and positive elements, then 1*(M>0) gives  \nanother matrix where all of the positives have been converted to  \nones.  Thus, as.network(1*(M>0)) should do the trick.\n\nBest,\nDave\n\n\n\nOn Oct 11, 2011, at 5:15 PM, tomas gueneau wrote:\n\n> Hi there,\n> I've been wondering how to calculate normalize degree centralities  \n> for a weighted network.\n> Does anyone know if such operationalization have been developed.  \n> According to Freeman (1979), for binary (unweighted) networks we can  \n> calculate it by dividing the centrality by n-1.\n> I would appreciate any insight on this.\n>\n> Related question: is there a way to get the binary (unweighted)  \n> adjacency matrix from a weighted one? Is there a command to pass  \n> onto \"as.network\" that tells R to read any number different from 0  \n> as a 1?\n>\n> Cheers.\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "I don't know about the weighted network question, but if M is a matrix  \ncontaining both zeros and positive elements, then 1*(M>0) gives  \nanother matrix where all of the positives have been converted",
+      "thread_id": "thread-2229888b0d28",
+      "thread_depth": 1,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-acbfff914394",
+      "message_id": "<CAByPayFEOJeB4xeOS1v6c9Jh92vHqNErH5n=jFFHSy_BiFgr6w@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2011-10-11T15:24:02Z",
+      "subject": "[statnet_help] normalized centralities for weighted networks",
+      "subject_clean": "[statnet_help] normalized centralities for weighted networks",
+      "in_reply_to": "<CACOOgoH6zxbD=Dc=LvaSGY6s6A1WffhJ4Mwqw5Ar-cLV9_OMJg@mail.gmail.com>",
+      "references": [
+        "<CACOOgoH6zxbD=Dc=LvaSGY6s6A1WffhJ4Mwqw5Ar-cLV9_OMJg@mail.gmail.com>"
+      ],
+      "body_plain": "Hi,\n\nTore Opsahl wrote some good notes on classical SNA concepts in the\ncontext of weighted networks. Here is a link to some excerpts on\ncentrality: http://toreopsahl.com/tnet/weighted-networks/node-centrality/\n\nHTH,\n\n~michal\n\nOn Tue, Oct 11, 2011 at 11:15 PM, tomas gueneau <fioghual@gmail.com> wrote:\n> Hi there,\n> I've been wondering how to calculate normalize degree centralities for a\n> weighted network.\n> Does anyone know if such operationalization have been developed. According\n> to Freeman (1979), for binary (unweighted) networks we can calculate it by\n> dividing the centrality by n-1.\n> I would appreciate any insight on this.\n> Related question: is there a way to get the binary (unweighted) adjacency\n> matrix from a weighted one? Is there a command to pass onto \"as.network\"\n> that tells R to read any number different from 0 as a 1?\n> Cheers.\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>",
+      "body_snippet": "Hi,\n\nTore Opsahl wrote some good notes on classical SNA concepts in the\ncontext of weighted networks. Here is a link to some excerpts on\ncentrality: http://toreopsahl.com/tnet/weighted-networks/node-c",
+      "thread_id": "thread-2229888b0d28",
+      "thread_depth": 1,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-73f44e9b5ff7",
+      "message_id": "<798FF3A49CD1EE43BEAE3523FC9EF5B2B9F71BE836@EXCH07-03.apollogrp.edu>",
+      "from_name": "Philip Heinrich",
+      "from_email_hash": "eef65b2d9592fd15623682df130f7f9274763e62d74facbee5922b6659e32584",
+      "date": "2011-10-12T09:47:09Z",
+      "subject": "[statnet_help] Spell Checker",
+      "subject_clean": "[statnet_help] Spell Checker",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I am trying to text mine open-ended responses to a survey and keep hitting a brick wall trying to spell check the file.  The Aspell package for R does not seem to be included in the latest version of \"tm\" as shown below:\n\n> install.packages(\"Aspell\",repos=\"http://www.omegahat.org/R\")\nInstalling package(s) into 'C:/Users/pfheinri/Documents/R/win-library/2.13'\n(a\nWarning message:\nIn getDependencies(pkgs, dependencies, available, lib) :\n               package 'Aspell' is not available (for R version 2.13.1)\n\n> library(Aspell)\nError in library(Aspell) : there is no package called 'Aspell'\n\nI was advised to spell check the files before bringing them into R with Aspell.  Aspell does not seem to work with Windows 7.  I understand that Aspell for Windows has not been maintained for a number of years.  I've read through the aspell and aspell-utils documentation in the utils package but this didn't seem to help.\n\nI've tried moving the tab-delimited txt files into Word and using the Microsoft spell check but this is extremely laborious.  Does anyone have any suggestions?\n\n\nPhilip Heinrich, MA, MBA\nResearch Manager - Academic Research Group\nUniversity of Phoenix\n602-557-1783 - Voice\n602-557-1854 - Fax\n\n\n\n________________________________\nThis message is private and confidential. If you have received it in error, please notify the sender and remove it from your system.\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20111012/afcb1607/attachment.html>",
+      "body_snippet": "I am trying to text mine open-ended responses to a survey and keep hitting a brick wall trying to spell check the file.  The Aspell package for R does not seem to be included in the latest version of ",
+      "thread_id": "thread-73f44e9b5ff7",
+      "thread_depth": 0,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-f92e85cf2fc7",
+      "message_id": "<2909F024742CCC4796466CD20F00CB5B01D5445271@FASXCH01.fasmail.priv>",
+      "from_name": "Lewis, Kevin",
+      "from_email_hash": "3e16f115495b0e59b9f7583fd0cfe6f012b826a6e99dfab804f7275bfb0c581c",
+      "date": "2011-10-15T10:01:44Z",
+      "subject": "[statnet_help] follow-up question on \"structural zeroes\"",
+      "subject_clean": "[statnet_help] follow-up question on \"structural zeroes\"",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "greetings,\n\na while ago i had a question about modeling directed two-mode data, and have something of a follow-up about this question. thanks to the guidance steve provided, it seemed that while statnet is not able to model bipartite directed networks, i could basically treat my network as unipartite but include terms in my models for \"homophily\" within each mode... ergm would then recognize that no within-mode ties existed, fix these parameters at negative infinity, and respect this restriction during parameter estimation.\n\ni have another situation where certain actors are not allowed to contact each other- but these \"impossible\" ties are not structured in such a way that i can model them with nodematch terms. in other words, they are something like \"structural zeroes\" in the language of RSiena- and i would like to estimate a model that respects this restriction where some ties are not possible. my first thought was to follow the same approach as above, but instead of using nodematch terms to identify the \"impossible\" ties, i would do the same thing with an edgecov term. when i run this model, however, ergm does not seem to recognize that these ties are impossible in the same way it does for the nodematch situation... and so instead of getting a parameter that is fixed at negative infinity, i simply get a parameter estimate that is strongly negative (say, -16) and becomes even more strongly negative with each MCMC iteration.\n\nmy question, then, is whether this approach is problematic for any reason? or is this actually a reasonable way to impose \"structural zeroes\" in the model? it seems the ideal case would be to be able to fix this parameter at negative infinity... but if there is not currently a way to do this, i want to make sure the approach i've taken in practice (i.e. letting the edgecov parameter work its way to an unstable, but strongly negative value) is not creating other issues of which i'm unaware. any help would be greatly appreciated! thanks,\n\n-kevin\n\nKevin Lewis\nPh.D. Candidate in Sociology\nHarvard University\n33 Kirkland Street\nCambridge, MA 02138\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20111015/b90e3eee/attachment.html>",
+      "body_snippet": "greetings,\n\na while ago i had a question about modeling directed two-mode data, and have something of a follow-up about this question. thanks to the guidance steve provided, it seemed that while statn",
+      "thread_id": "thread-f92e85cf2fc7",
+      "thread_depth": 0,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-cff45bd24791",
+      "message_id": "<1318755191.6667.147.camel@Navi.krivitsky.homeip.net>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "460258cbd680ea347ee0196adc8a17e139024de6f74b950cba8add8e35654b6f",
+      "date": "2011-10-16T01:53:11Z",
+      "subject": "[statnet_help] Latent Cluster Model with package latentnet",
+      "subject_clean": "[statnet_help] Latent Cluster Model with package latentnet",
+      "in_reply_to": "<web-165175290@uni-freiburg.de>",
+      "references": [
+        "<web-165175290@uni-freiburg.de>"
+      ],
+      "body_plain": "Hi, Alla,\n\nIn case this is still of use, constructing a network with a latent\nstructure and a particular degree sequence requires more than just\nlatentnet, since latentnet only deals with unconstrained networks.\n\nOne way to do this is to use the fact that conditional on the latent\nspace positions, a latent space model is essentially an ERGM with a\nparticularly structured dyadic covariate, so you can use the ergm\npackage to simulate it.\n\nLet y0 be the network object whose degree sequence you want to \"copy\",\nlet Zi be the i'th latent position. Then,\n\n1) Construct a covariate matrix with elements Xij=-|Zi-Zj|.\n2) Run something along the lines of \nlibrary(ergm)\ny <- simulate(y0~edgecov(Xij),theta0=c(1),constraints=~degrees)\n\nThen y should be a realization of a network with the correct degree\nsequence and a latent position structure. You might need to use a long\nburn-in.\n\n                          I hope this helps,\n                          Pavel\n\nOn Sun, 2011-08-14 at 23:04 +0200, Alla Bulashevska wrote:\n> Hi all,\n> i am trying to simulate two example networks discussed in\n> the paper of Krivitsky et.al. published in Social Networks\n> Journal 2009\n>  -Representing degree distributions, clustering, and\n> homophily in social networks with latent cluster random\n> effects models.\n> The first network has 150 actors and the degree sequence\n> generated from the Yule distribution and i simulate it with\n> the following command:\n> S1<- ryule(n=150)\n> The second network should be a draw from the Latent Cluster\n> Model with 3 groups and 2 dimensions and given parameters\n> such as cluster means and intra-cluster deviation, but\n> should have the same degree distribution as the first.\n> I try to simulate it with the following piece of code:\n> modS1<- ergmm(S1 ~ euclidean(d=2, G=3))\n> S2<- with(modS1,simulate(model, par= list(Z.mean=\n> rbind(c(0,0),c(-1.5,1.5),c(1.5,1.5)), Z.var= rep(0.2,\n> times= 3)), prior= prior))\n> \n> The problem is i do not know how to prescribe the\n> constraint about degree distribution. The function\n> simulate() in the package latentnet do not have the\n> parameter constraints like in the package ergm so that one\n> can use constraints=~degreedist.\n> \n> Thanks for the help, \n> Alla.\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi, Alla,\n\nIn case this is still of use, constructing a network with a latent\nstructure and a particular degree sequence requires more than just\nlatentnet, since latentnet only deals with unconstraine",
+      "thread_id": "thread-cff45bd24791",
+      "thread_depth": 0,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-b9e1af7f6040",
+      "message_id": "<1318791036.6667.151.camel@Navi.krivitsky.homeip.net>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "460258cbd680ea347ee0196adc8a17e139024de6f74b950cba8add8e35654b6f",
+      "date": "2011-10-16T11:50:35Z",
+      "subject": "[statnet_help] follow-up question on \"structural zeroes\"",
+      "subject_clean": "[statnet_help] follow-up question on \"structural zeroes\"",
+      "in_reply_to": "<2909F024742CCC4796466CD20F00CB5B01D5445271@FASXCH01.fasmail.priv>",
+      "references": [
+        "<2909F024742CCC4796466CD20F00CB5B01D5445271@FASXCH01.fasmail.priv>"
+      ],
+      "body_plain": "Kevin,\n\nThe edgecov term doesn't do the extreme value detection that nodemix\ndoes. We may implement it in the a future release. In the meantime,\nenclosing the term in the offset() function, e.g, offset(edgecov(X)),\nshould fix it at whatever value you specify in theta0.\n\n                   Pavel\n\nOn Sat, 2011-10-15 at 13:01 -0400, Lewis, Kevin wrote:\n> greetings,\n> \n>  \n> \n> a while ago i had a question about modeling directed two-mode data,\n> and have something of a follow-up about this question. thanks to the\n> guidance steve provided, it seemed that while statnet is not able to\n> model bipartite directed networks, i could basically treat my network\n> as unipartite but include terms in my models for ?homophily? within\n> each mode? ergm would then recognize that no within-mode ties existed,\n> fix these parameters at negative infinity, and respect this\n> restriction during parameter estimation.\n> \n>  \n> \n> i have another situation where certain actors are not allowed to\n> contact each other- but these ?impossible? ties are not structured in\n> such a way that i can model them with nodematch terms. in other words,\n> they are something like ?structural zeroes? in the language of RSiena-\n> and i would like to estimate a model that respects this restriction\n> where some ties are not possible. my first thought was to follow the\n> same approach as above, but instead of using nodematch terms to\n> identify the ?impossible? ties, i would do the same thing with an\n> edgecov term. when i run this model, however, ergm does not seem to\n> recognize that these ties are impossible in the same way it does for\n> the nodematch situation? and so instead of getting a parameter that is\n> fixed at negative infinity, i simply get a parameter estimate that is\n> strongly negative (say, -16) and becomes even more strongly negative\n> with each MCMC iteration.\n> \n>  \n> \n> my question, then, is whether this approach is problematic for any\n> reason? or is this actually a reasonable way to impose ?structural\n> zeroes? in the model? it seems the ideal case would be to be able to\n> fix this parameter at negative infinity? but if there is not currently\n> a way to do this, i want to make sure the approach i?ve taken in\n> practice (i.e. letting the edgecov parameter work its way to an\n> unstable, but strongly negative value) is not creating other issues of\n> which i?m unaware. any help would be greatly appreciated! thanks,\n> \n>  \n> \n> -kevin\n> \n>  \n> \n> Kevin Lewis\n> \n> Ph.D. Candidate in Sociology\n> \n> Harvard University\n> \n> 33 Kirkland Street\n> \n> Cambridge, MA 02138\n> \n>  \n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Kevin,\n\nThe edgecov term doesn't do the extreme value detection that nodemix\ndoes. We may implement it in the a future release. In the meantime,\nenclosing the term in the offset() function, e.g, offse",
+      "thread_id": "thread-f92e85cf2fc7",
+      "thread_depth": 1,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-1fcdea56c847",
+      "message_id": "<CACOOgoEPPrQa5GRE==Y=eEyODiKd8gVdEWX8dRzE9DtXxAgFUQ@mail.gmail.com>",
+      "from_name": "tomas gueneau",
+      "from_email_hash": "988713533df62be792d3966f1a6a820e4a2c33f7166ab964be27a5e6eff56af5",
+      "date": "2011-10-17T09:13:45Z",
+      "subject": "[statnet_help] normalized centralities for weighted networks",
+      "subject_clean": "[statnet_help] normalized centralities for weighted networks",
+      "in_reply_to": "<CAByPayFEOJeB4xeOS1v6c9Jh92vHqNErH5n=jFFHSy_BiFgr6w@mail.gmail.com>",
+      "references": [
+        "<CACOOgoH6zxbD=Dc=LvaSGY6s6A1WffhJ4Mwqw5Ar-cLV9_OMJg@mail.gmail.com>",
+        "<CAByPayFEOJeB4xeOS1v6c9Jh92vHqNErH5n=jFFHSy_BiFgr6w@mail.gmail.com>"
+      ],
+      "body_plain": "it's certainly very interesting, thank you very much for the information.\ni'll see what it brings to my dataset..\n\n2011/10/12 Micha? Bojanowski <michal2992@gmail.com>\n\n> Hi,\n>\n> Tore Opsahl wrote some good notes on classical SNA concepts in the\n> context of weighted networks. Here is a link to some excerpts on\n> centrality: http://toreopsahl.com/tnet/weighted-networks/node-centrality/\n>\n> HTH,\n>\n> ~michal\n>\n> On Tue, Oct 11, 2011 at 11:15 PM, tomas gueneau <fioghual@gmail.com>\n> wrote:\n> > Hi there,\n> > I've been wondering how to calculate normalize degree centralities for a\n> > weighted network.\n> > Does anyone know if such operationalization have been developed.\n> According\n> > to Freeman (1979), for binary (unweighted) networks we can calculate it\n> by\n> > dividing the centrality by n-1.\n> > I would appreciate any insight on this.\n> > Related question: is there a way to get the binary (unweighted) adjacency\n> > matrix from a weighted one? Is there a command to pass onto \"as.network\"\n> > that tells R to read any number different from 0 as a 1?\n> > Cheers.\n> > _______________________________________________\n> > statnet_help mailing list\n> > statnet_help@u.washington.edu\n> > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> >\n> >\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20111017/14c1972e/attachment.html>",
+      "body_snippet": "it's certainly very interesting, thank you very much for the information.\ni'll see what it brings to my dataset..\n\n2011/10/12 Micha? Bojanowski <michal2992@gmail.com>\n\n> Hi,\n>\n> Tore Opsahl wrote some",
+      "thread_id": "thread-2229888b0d28",
+      "thread_depth": 2,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-9f3cf30530fb",
+      "message_id": "<CACOOgoGWkdj1YmUdRFPDOpK-GzGzOSQzus9ri-O8xMPJY1wBww@mail.gmail.com>",
+      "from_name": "tomas gueneau",
+      "from_email_hash": "988713533df62be792d3966f1a6a820e4a2c33f7166ab964be27a5e6eff56af5",
+      "date": "2011-10-17T09:15:03Z",
+      "subject": "[statnet_help] normalized centralities for weighted networks",
+      "subject_clean": "[statnet_help] normalized centralities for weighted networks",
+      "in_reply_to": "<AB40CD13-7C69-4B3E-92DA-94BA62B89BF3@stat.psu.edu>",
+      "references": [
+        "<CACOOgoH6zxbD=Dc=LvaSGY6s6A1WffhJ4Mwqw5Ar-cLV9_OMJg@mail.gmail.com>",
+        "<AB40CD13-7C69-4B3E-92DA-94BA62B89BF3@stat.psu.edu>"
+      ],
+      "body_plain": "thanks for the creative solution. this is precisely what I was looking for\n(though I never imagined it this simple).\n\nOn Wed, Oct 12, 2011 at 12:13 AM, David Hunter <dhunter@stat.psu.edu> wrote:\n\n> I don't know about the weighted network question, but if M is a matrix\n> containing both zeros and positive elements, then 1*(M>0) gives another\n> matrix where all of the positives have been converted to ones.  Thus,\n> as.network(1*(M>0)) should do the trick.\n>\n> Best,\n> Dave\n>\n>\n>\n>\n> On Oct 11, 2011, at 5:15 PM, tomas gueneau wrote:\n>\n>  Hi there,\n>> I've been wondering how to calculate normalize degree centralities for a\n>> weighted network.\n>> Does anyone know if such operationalization have been developed. According\n>> to Freeman (1979), for binary (unweighted) networks we can calculate it by\n>> dividing the centrality by n-1.\n>> I would appreciate any insight on this.\n>>\n>> Related question: is there a way to get the binary (unweighted) adjacency\n>> matrix from a weighted one? Is there a command to pass onto \"as.network\"\n>> that tells R to read any number different from 0 as a 1?\n>>\n>> Cheers.\n>> ______________________________**_________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.**edu/mailman/listinfo/statnet_**help<http://mailman2.u.washington.edu/mailman/listinfo/statnet_help>\n>>\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20111017/2a6ced58/attachment.html>",
+      "body_snippet": "thanks for the creative solution. this is precisely what I was looking for\n(though I never imagined it this simple).\n\nOn Wed, Oct 12, 2011 at 12:13 AM, David Hunter <dhunter@stat.psu.edu> wrote:\n\n> I ",
+      "thread_id": "thread-2229888b0d28",
+      "thread_depth": 2,
+      "month": "2011-10"
+    },
+    {
+      "id": "msg-b38d0abd9ae9",
+      "message_id": "<4E9DA102.7010502@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2011-10-18T08:53:38Z",
+      "subject": "[statnet_help] normalized centralities for weighted networks",
+      "subject_clean": "[statnet_help] normalized centralities for weighted networks",
+      "in_reply_to": "<CACOOgoGWkdj1YmUdRFPDOpK-GzGzOSQzus9ri-O8xMPJY1wBww@mail.gmail.com>",
+      "references": [
+        "<CACOOgoH6zxbD=Dc=LvaSGY6s6A1WffhJ4Mwqw5Ar-cLV9_OMJg@mail.gmail.com>",
+        "<AB40CD13-7C69-4B3E-92DA-94BA62B89BF3@stat.psu.edu>",
+        "<CACOOgoGWkdj1YmUdRFPDOpK-GzGzOSQzus9ri-O8xMPJY1wBww@mail.gmail.com>"
+      ],
+      "body_plain": "Hi all,\n\nThis illustrates a general point that's worth highlighting for all \nusers.  Often the way to accomplish a task in statnet is to write a \n(relatively short) piece of R code that is external to statnet itself. \nThis is by design.  The great strength of the R platform is the wide \nrange of existing functions (both in base and in the packages) that \nallow many ways to accomplish all sorts of tasks.  We wrote statnet in R \nspecifically so that users could draw on all of that.  So when you don't \nsee the functionality that you might be expecting in statnet, that \ndoesn't mean it's necessarily unavailable, especially if it seems like a \ncommon task that many would want to do. In those cases, it probably \nreflects the fact that the task requires only a small piece of R code, \nso there was really no need to write a new function.  Unlike stand-alone \nnetwork packages, then, there can be extra legwork to do in terms of \nlearning more R.  But the upside is that once you do it, you have great \nflexibility.  Not just for network modeling, but for the entire world of \nstatistical computing.\n\nThat said, this forum remains the perfect place to ask these questions, \nand hear from other users about how they accomplished a task -- whether \nwith a statnet function or R code more generally. Or to share your own \ninsights about how to accomplish a network-related task with a \nparticularly clever bit of R code that you think others might benefit from.\n\nCheers,\nSteve\n\n\nOn 10/17/2011 9:15 AM, tomas gueneau wrote:\n> thanks for the creative solution. this is precisely what I was looking \n> for (though I never imagined it this simple).\n>\n> On Wed, Oct 12, 2011 at 12:13 AM, David Hunter <dhunter@stat.psu.edu \n> <mailto:dhunter@stat.psu.edu>> wrote:\n>\n>     I don't know about the weighted network question, but if M is a\n>     matrix containing both zeros and positive elements, then 1*(M>0)\n>     gives another matrix where all of the positives have been\n>     converted to ones.  Thus, as.network(1*(M>0)) should do the trick.\n>\n>     Best,\n>     Dave\n>\n>\n>\n>\n>     On Oct 11, 2011, at 5:15 PM, tomas gueneau wrote:\n>\n>         Hi there,\n>         I've been wondering how to calculate normalize degree\n>         centralities for a weighted network.\n>         Does anyone know if such operationalization have been\n>         developed. According to Freeman (1979), for binary\n>         (unweighted) networks we can calculate it by dividing the\n>         centrality by n-1.\n>         I would appreciate any insight on this.\n>\n>         Related question: is there a way to get the binary\n>         (unweighted) adjacency matrix from a weighted one? Is there a\n>         command to pass onto \"as.network\" that tells R to read any\n>         number different from 0 as a 1?\n>\n>         Cheers.\n>         _______________________________________________\n>         statnet_help mailing list\n>         statnet_help@u.washington.edu\n>         <mailto:statnet_help@u.washington.edu>\n>         http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n\n-- \n***********************************************************************\n  * Steven M. Goodreau / Assoc. Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100     *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)   *\n  * http://faculty.washington.edu/goodreau                            *\n  * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k         *\n***********************************************************************",
+      "body_snippet": "Hi all,\n\nThis illustrates a general point that's worth highlighting for all \nusers.  Often the way to accomplish a task in statnet is to write a \n(relatively short) piece of R code that is external to",
+      "thread_id": "thread-2229888b0d28",
+      "thread_depth": 3,
+      "month": "2011-10"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-b5e12be1d4ed",
+      "subject": "[statnet_help] creating an attribute similarity/difference matrix",
+      "message_count": 1,
+      "participants": [
+        "Jorge M Rocha"
+      ],
+      "started": "2011-10-04T15:54:37Z",
+      "last_reply": "2011-10-04T15:54:37Z",
+      "root_message_id": "msg-b5e12be1d4ed"
+    },
+    {
+      "id": "thread-62ebe47300f4",
+      "subject": "[statnet_help] Network Diameter",
+      "message_count": 1,
+      "participants": [
+        "Sadegh Aliakbary"
+      ],
+      "started": "2011-10-05T05:24:06Z",
+      "last_reply": "2011-10-05T05:24:06Z",
+      "root_message_id": "msg-62ebe47300f4"
+    },
+    {
+      "id": "thread-c3d60c54d263",
+      "subject": "[statnet_help] Re: statnet_help Digest, Vol 63, Issue 1",
+      "message_count": 1,
+      "participants": [
+        "Solomon Messing"
+      ],
+      "started": "2011-10-05T09:51:38Z",
+      "last_reply": "2011-10-05T09:51:38Z",
+      "root_message_id": "msg-c3d60c54d263"
+    },
+    {
+      "id": "thread-f6fa386abac1",
+      "subject": "[statnet_help] CSS Networks",
+      "message_count": 1,
+      "participants": [
+        "Josh Marineau"
+      ],
+      "started": "2011-10-05T14:22:32Z",
+      "last_reply": "2011-10-05T14:22:32Z",
+      "root_message_id": "msg-f6fa386abac1"
+    },
+    {
+      "id": "thread-99e9d96091bf",
+      "subject": "[statnet_help] ERGM with Endogenous Terms",
+      "message_count": 6,
+      "participants": [
+        "Carter T. Butts",
+        "Martina Morris",
+        "Michael T. Heaney"
+      ],
+      "started": "2011-10-09T17:12:27Z",
+      "last_reply": "2011-10-11T01:47:10Z",
+      "root_message_id": "msg-99e9d96091bf"
+    },
+    {
+      "id": "thread-a93db58890dd",
+      "subject": "[statnet_help] convert network from directed to undirected",
+      "message_count": 2,
+      "participants": [
+        "Adrian Albert",
+        "Carter T. Butts"
+      ],
+      "started": "2011-10-09T22:51:38Z",
+      "last_reply": "2011-10-11T01:27:23Z",
+      "root_message_id": "msg-a93db58890dd"
+    },
+    {
+      "id": "thread-340bc34edfb0",
+      "subject": "[statnet_help] stepping algorithm trace values",
+      "message_count": 1,
+      "participants": [
+        "Soriani Nicola"
+      ],
+      "started": "2011-10-10T07:13:50Z",
+      "last_reply": "2011-10-10T07:13:50Z",
+      "root_message_id": "msg-340bc34edfb0"
+    },
+    {
+      "id": "thread-263e86c86bb1",
+      "subject": "[statnet_help] shortest path between two nodes",
+      "message_count": 6,
+      "participants": [
+        "Adrian Albert",
+        "Carter T. Butts",
+        "Mark S. Handcock",
+        "Steven Goodreau",
+        "Yun Huang"
+      ],
+      "started": "2011-10-10T21:07:36Z",
+      "last_reply": "2011-10-11T00:53:43Z",
+      "root_message_id": "msg-263e86c86bb1"
+    },
+    {
+      "id": "thread-be39701fd59a",
+      "subject": "[statnet_help] Error: protect(): protection stack overflow",
+      "message_count": 2,
+      "participants": [
+        "Adrian Albert",
+        "Carter T. Butts"
+      ],
+      "started": "2011-10-10T22:57:04Z",
+      "last_reply": "2011-10-11T00:58:47Z",
+      "root_message_id": "msg-be39701fd59a"
+    },
+    {
+      "id": "thread-91109ec92966",
+      "subject": "[statnet_help] components of large network",
+      "message_count": 1,
+      "participants": [
+        "Adrian Albert"
+      ],
+      "started": "2011-10-11T11:54:31Z",
+      "last_reply": "2011-10-11T11:54:31Z",
+      "root_message_id": "msg-91109ec92966"
+    },
+    {
+      "id": "thread-2229888b0d28",
+      "subject": "[statnet_help] normalized centralities for weighted networks",
+      "message_count": 6,
+      "participants": [
+        "David Hunter",
+        "Michał Bojanowski",
+        "Steven Goodreau",
+        "tomas gueneau"
+      ],
+      "started": "2011-10-11T14:15:06Z",
+      "last_reply": "2011-10-18T08:53:38Z",
+      "root_message_id": "msg-2229888b0d28"
+    },
+    {
+      "id": "thread-73f44e9b5ff7",
+      "subject": "[statnet_help] Spell Checker",
+      "message_count": 1,
+      "participants": [
+        "Philip Heinrich"
+      ],
+      "started": "2011-10-12T09:47:09Z",
+      "last_reply": "2011-10-12T09:47:09Z",
+      "root_message_id": "msg-73f44e9b5ff7"
+    },
+    {
+      "id": "thread-f92e85cf2fc7",
+      "subject": "[statnet_help] follow-up question on \"structural zeroes\"",
+      "message_count": 2,
+      "participants": [
+        "Lewis, Kevin",
+        "Pavel N. Krivitsky"
+      ],
+      "started": "2011-10-15T10:01:44Z",
+      "last_reply": "2011-10-16T11:50:35Z",
+      "root_message_id": "msg-f92e85cf2fc7"
+    },
+    {
+      "id": "thread-cff45bd24791",
+      "subject": "[statnet_help] Latent Cluster Model with package latentnet",
+      "message_count": 1,
+      "participants": [
+        "Pavel N. Krivitsky"
+      ],
+      "started": "2011-10-16T01:53:11Z",
+      "last_reply": "2011-10-16T01:53:11Z",
+      "root_message_id": "msg-cff45bd24791"
+    }
+  ]
+}

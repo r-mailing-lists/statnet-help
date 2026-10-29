@@ -1,0 +1,320 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2017-03",
+  "messages": [
+    {
+      "id": "msg-f7373bfc0eb8",
+      "message_id": "<20170302031959.950EF2E0A01@webmail.sinamail.sina.com.cn>",
+      "from_name": "徐刚敏",
+      "from_email_hash": "ad4cd568829385b134df8f362c01a9a0367752d7c5cff24773dbebb3d109361e",
+      "date": "2017-03-01T19:19:59Z",
+      "subject": "[statnet_help] Meta-analysis for ERGM",
+      "subject_clean": "[statnet_help] Meta-analysis for ERGM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All,I have a question about the ERGM. \nI'm trying to fit an ERGM on a large social network dataset, containing 20 different classes (about 1200 actors). I've fit the model in classes separately. After that I want to join these results into a single one . I wonder if there are any tools or codes for meta-analysis about ERGM ?\nI hope you understand my question. \nMany thanks, \n\nXu Gangmin Shanghai normal University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170302/5aa50e89/attachment.html>",
+      "body_snippet": "Dear All,I have a question about the ERGM. \nI'm trying to fit an ERGM on a large social network dataset, containing 20 different classes (about 1200 actors). I've fit the model in classes separately. ",
+      "thread_id": "thread-f7373bfc0eb8",
+      "thread_depth": 0,
+      "month": "2017-03"
+    },
+    {
+      "id": "msg-8ac16a7b0966",
+      "message_id": "<3ed99822-8275-d364-4063-6618e4ac0699@glasgow.ac.uk>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "78251314f8dff0f7be792cbeec3dde77251dfab4ebd0b3b95d65e3015212cd25",
+      "date": "2017-03-01T23:49:05Z",
+      "subject": "[statnet_help] Meta-analysis for ERGM",
+      "subject_clean": "[statnet_help] Meta-analysis for ERGM",
+      "in_reply_to": "<20170302031959.950EF2E0A01@webmail.sinamail.sina.com.cn>",
+      "references": [
+        "<20170302031959.950EF2E0A01@webmail.sinamail.sina.com.cn>"
+      ],
+      "body_plain": "If you would like to pool your results from 20 different (i.e., \ncompletely independent) networks with approximately the same \ndata-generating process in one single model, you could use a TERGM \nwithout any temporal dependency terms. For example, the btergm function \nin the btergm package could be used to do this. Some documentation can \nbe found here: http://www.philipleifeld.com/cms/upload/btergm.pdf\n\nBest,\n\nPhilip\n\n--\nDr Philip Leifeld\nSenior Lecturer in Research Methods\nDirector of Postgraduate Research Training\nSchool of Social and Political Sciences\nUniversity of Glasgow\nhttp://www.philipleifeld.com\n\nOn 02/03/17 03:19, ??? wrote:\n> Dear All,\n> I have a question about the ERGM.\n>\n> I'm trying to fit an ERGM on a large social network dataset, containing\n> 20 different classes (about 1200 actors). I've fit the model in classes\n> separately. After that I want to join these results into a single one .\n> I wonder if there are any tools or codes for meta-analysis about ERGM ?\n>\n> I hope you understand my question.\n>\n> Many thanks,\n>\n>\n> Xu Gangmin\n> Shanghai normal University\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "If you would like to pool your results from 20 different (i.e., \ncompletely independent) networks with approximately the same \ndata-generating process in one single model, you could use a TERGM \nwitho",
+      "thread_id": "thread-f7373bfc0eb8",
+      "thread_depth": 1,
+      "month": "2017-03"
+    },
+    {
+      "id": "msg-30e1e5c6a44b",
+      "message_id": "<65d8c528-2ef5-ce5f-f315-f528d5a6925a@rug.nl>",
+      "from_name": "Christian Steglich",
+      "from_email_hash": "451ac801cb13030df85867128669a31a9211bde96d61e052695b1357564ad56d",
+      "date": "2017-03-02T05:32:55Z",
+      "subject": "[statnet_help] Meta-analysis for ERGM",
+      "subject_clean": "[statnet_help] Meta-analysis for ERGM",
+      "in_reply_to": "<3ed99822-8275-d364-4063-6618e4ac0699@glasgow.ac.uk>",
+      "references": [
+        "<20170302031959.950EF2E0A01@webmail.sinamail.sina.com.cn>",
+        "<3ed99822-8275-d364-4063-6618e4ac0699@glasgow.ac.uk>"
+      ],
+      "body_plain": "Hej Xu Gangmin,\n\nPhilip's suggestion is a good one. Alternatively, it is easy to extract \nergm-results from your classwise estimation and aggregate results with a \nmeta-analysis software. Here what Weihua An (2015) recommends:\n> These estimation methods have been detailed in prior literature \n> (e.g.,White, 2011; Gasparrini et al., 2012) and implemented in \n> statisti-cal packages such as ?metafor? (Viechtbauer, 2010) and \n> ?mvmeta?(Gasparrini et al., 2012) in R and ?mvmeta? in Stata (White, \n> 2011).\nAn, Weihua (2015): Multilevel meta network analysis with application to \nstudying network dynamics of network interventions. Social Networks 43 \n(2015) 48?56.\nGasparrini, A., Armstrong, B., Kenward, M.G., 2012. Multivariate \nmeta-analysis for non-linear and other multi-parameter associations. \nStat. Med. 31 (29),3821?3839.\nViechtbauer, W., 2010. Conducting meta-analyses in R with the metafor \npackage. J.Stat. Softw. 36 (3), 1?48.\nWhite, I.R., 2011. Multivariate random-effects meta-regression: updates \nto mvmeta.Stata J. 11 (2), 255?270.\n\nAnd let me add, as Philip suggested as much, and as there is a certain \nbody of applications suggesting as much: ERGM estimates are only under \nstrong assumptions (process has reached equilibrium, all confounding \nprocesses were observed and are included in the model specification) \nuseful for conclusions about data-generating processes. It is a bit \nunfortunate that such process interpretation suggestions in the \nliterature often do not properly spell out the assumptions required for \nmaking them.\n\nAll the best, Christian\n\n\n\nOn 02-Mar-17 8:49, Philip Leifeld wrote:\n> If you would like to pool your results from 20 different (i.e., \n> completely independent) networks with approximately the same \n> data-generating process in one single model, you could use a TERGM \n> without any temporal dependency terms. For example, the btergm \n> function in the btergm package could be used to do this. Some \n> documentation can be found here: \n> http://www.philipleifeld.com/cms/upload/btergm.pdf\n>\n> Best,\n>\n> Philip\n>\n> -- \n> Dr Philip Leifeld\n> Senior Lecturer in Research Methods\n> Director of Postgraduate Research Training\n> School of Social and Political Sciences\n> University of Glasgow\n> http://www.philipleifeld.com\n>\n> On 02/03/17 03:19, ??? wrote:\n>> Dear All,\n>> I have a question about the ERGM.\n>>\n>> I'm trying to fit an ERGM on a large social network dataset, containing\n>> 20 different classes (about 1200 actors). I've fit the model in classes\n>> separately. After that I want to join these results into a single one .\n>> I wonder if there are any tools or codes for meta-analysis about ERGM ?\n>>\n>> I hope you understand my question.\n>>\n>> Many thanks,\n>>\n>>\n>> Xu Gangmin\n>> Shanghai normal University\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n-- \n\n------------------------------------------------------------------------\n*Institute for Analytical Sociology*\nS-601 74 NORRK?PING\nPhone: +46 (0)11-363 361\nVisiting address: Kopparhammaren 2, Norra Grytsgatan 10, Campus Norrk?ping\nPlease visit us at www.liu.se/ias <http://liu.se/ias?l=en>\n------------------------------------------------------------------------\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170302/6961aa04/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: logo-sv.png\nType: image/png\nSize: 16690 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170302/6961aa04/attachment.png>",
+      "body_snippet": "Hej Xu Gangmin,\n\nPhilip's suggestion is a good one. Alternatively, it is easy to extract \nergm-results from your classwise estimation and aggregate results with a \nmeta-analysis software. Here what We",
+      "thread_id": "thread-f7373bfc0eb8",
+      "thread_depth": 2,
+      "month": "2017-03"
+    },
+    {
+      "id": "msg-bfd8ea86ffda",
+      "message_id": "<CAKAbm6PcDz8_s2VtFQJWo_6_BbAhS45iVLBdb8r_ngE5irJrEg@mail.gmail.com>",
+      "from_name": "Matt Robbins",
+      "from_email_hash": "018cdea43f93204130d9a33cdd30fb8cda78346c0b60a3a8b5fbbe116a85af46",
+      "date": "2017-03-06T17:15:24Z",
+      "subject": "[statnet_help] Update on the bd() constraint fix?",
+      "subject_clean": "[statnet_help] Update on the bd() constraint fix?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi statnet team,\n\nI'm curious if there been any progress with fixing the bd constraints in\nergm 3.6.1?  I've had the same problem with R freezing as Zach (messages\nbelow).\n\nThank,\nMateo\n\n\n>\n> On Fri, Feb 3, 2017 at 1:36 PM, martina morris <morrism@u.washington.edu>\n> wrote:\n>\n>> Scratch that request -- Pavel has already identified the problem and\n>> implemented a fix.  The correction will be posted to CRAN soon, and we'll\n>> let you know when that happens.\n>>\n>> thx,\n>> Martina\n>>\n>>\n>> On Fri, 3 Feb 2017, martina morris wrote:\n>>\n>> That means one of the recent changes in the code caused this.  Thx for\n>>> letting us know.\n>>>\n>>> If it's possible to send the data set and the code, so we can replicate\n>>> and find the problem, that would be really helpful.\n>>>\n>>> thx,\n>>> Martina\n>>>\n>>> On Fri, 3 Feb 2017, Zachary Charles Heinemann wrote:\n>>>\n>>> Hello,\n>>>> Thanks for your response! Nothing in the code changed -- I somewhat\n>>>> figured out the issue. I\n>>>> updated my ergm package from 3.6 to 3.6.1; when I uninstalled 3.6.1 and\n>>>> installed 3.6 it worked\n>>>> fine, I'm still not sure as to why however.\n>>>>\n>>>> On Friday, February 3, 2017, martina morris <morrism@u.washington.edu>\n>>>> wrote:\n>>>>       Did anything change between the time it ran well, and the first\n>>>> time it froze?  Did\n>>>>       you update anything inbetween?\n>>>>\n>>>>       On Thu, 2 Feb 2017, Zachary Charles Heinemann wrote:\n>>>>\n>>>>             Hello,\n>>>>             I am currently working on a network of about 70 students\n>>>> who have\n>>>>             selected each other for\n>>>>             friendships. I specified the ergm such as this:\n>>>>\n>>>>             m9A1<-ergm(netA1 ~\n>>>>                          edges +\n>>>>                          mutual +\n>>>>                          absdiff('class') +\n>>>>                          gwesp(0.25, fixed = TRUE) +\n>>>>                          gwdsp(0.25, fixed = TRUE) +\n>>>>                          absdiff('Extraversion.weightedAvg.Self') +\n>>>>                          absdiff('Agreeableness.weightedAvg.Self') +\n>>>>                          absdiff('Conscientiousness.weightedAvg.Self')\n>>>> +\n>>>>                          absdiff('Stability.weightedAvg.Self') +\n>>>>                          absdiff('Openness.weightedAvg.Self') +\n>>>>                          nodematch('Gender') +\n>>>>                          nodematch('Race') +\n>>>>                          absdiff('Age') +\n>>>>                          absdiff('politicalviews') +\n>>>>                          nodematch('LT') +\n>>>>                          absdiff('RelativeAttractiveness') +\n>>>>                          absdiff('enjoydrinking'),\n>>>>                        constraints = ~bd(maxout = 5)\n>>>>             )\n>>>>\n>>>>\n>>>>             When I originally ran this model, it worked completely\n>>>> fine. However, a\n>>>>             few days later,\n>>>>             whenever I try to run this code, my R freezes and I have to\n>>>> restart my\n>>>>             computer. When I remove\n>>>>             the \"constraints\" argument, it works just fine. I have\n>>>> tried updating\n>>>>             my OS, updating R,\n>>>>             updating RStudio, updating statnet and yet the problem\n>>>> still persists.\n>>>>             Is there any reason why\n>>>>             this may be happening?\n>>>>\n>>>>\n>>>>\n>>>>       ****************************************************************\n>>>>        Professor of Sociology and Statistics\n>>>>        Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>>>        Box 354322\n>>>>        University of Washington\n>>>>        Seattle, WA 98195-4322\n>>>>\n>>>>        Office:        (206) 685-3402\n>>>>        Dept Office:   (206) 543-5882, 543-7237\n>>>>        Fax:           (206) 685-7419\n>>>>\n>>>>       morrism@u.washington.edu\n>>>>       http://faculty.washington.edu/morrism/\n>>>>\n>>>>\n>>>>\n>>>>\n>>> ****************************************************************\n>>> Professor of Sociology and Statistics\n>>> Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>> Box 354322\n>>> University of Washington\n>>> Seattle, WA 98195-4322\n>>>\n>>> Office:        (206) 685-3402\n>>> Dept Office:   (206) 543-5882, 543-7237\n>>> Fax:           (206) 685-7419\n>>>\n>>> morrism@u.washington.edu\n>>> http://faculty.washington.edu/morrism/\n>>>\n>>\n>> ****************************************************************\n>>  Professor of Sociology and Statistics\n>>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>  Box 354322\n>>  University of Washington\n>>  Seattle, WA 98195-4322\n>>\n>>  Office:        (206) 685-3402\n>>  Dept Office:   (206) 543-5882, 543-7237\n>>  Fax:           (206) 685-7419\n>>\n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>\n>\n> ---------- Forwarded message ----------\n> From: Golshid <g.sharifnia@gmail.com>\n> To: statnet_help@u.washington.edu\n> Cc:\n> Bcc:\n> Date: Sat, 4 Feb 2017 16:45:19 +0330\n> Subject: [statnet_help] Anova in ergm\n>\n> Hi\n> I want to know how can I use anova in ergm? The only information that I\n> have found is\n>\n>\n> But I don't know how can I use the result? And what is the hypothesis in\n> this anova test?\n> And also I want to know when we should use anova(fit0) or anova(fit0,fit1)\n>\n>\n>\n>\n> Sent from my iPad\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@mailman13.u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n\n-- \nMatt Robbins\nPh.D. Candidate\nCenter for Environmental Policy and Behavior\n<http://environmentalpolicy.ucdavis.edu/>\nDepartment of Environmental Science and Policy\nGraduate Group in Ecology\nUniversity of California, Davis\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170306/478837b8/attachment.html>",
+      "body_snippet": "Hi statnet team,\n\nI'm curious if there been any progress with fixing the bd constraints in\nergm 3.6.1?  I've had the same problem with R freezing as Zach (messages\nbelow).\n\nThank,\nMateo\n\n\n>\n> On Fri, ",
+      "thread_id": "thread-bfd8ea86ffda",
+      "thread_depth": 0,
+      "month": "2017-03"
+    },
+    {
+      "id": "msg-f31903bb1001",
+      "message_id": "<1489030304.29048.32.camel@uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2017-03-08T19:31:45Z",
+      "subject": "[statnet_help] Update on the bd() constraint fix?",
+      "subject_clean": "[statnet_help] Update on the bd() constraint fix?",
+      "in_reply_to": "<CAKAbm6PcDz8_s2VtFQJWo_6_BbAhS45iVLBdb8r_ngE5irJrEg@mail.gmail.com>",
+      "references": [
+        "<CAKAbm6PcDz8_s2VtFQJWo_6_BbAhS45iVLBdb8r_ngE5irJrEg@mail.gmail.com>"
+      ],
+      "body_plain": "Hello, All,\n\nFix should be out later this week or early next week.\n\nPavel\n\nOn Mon, 2017-03-06 at 17:15 -0800, Matt Robbins wrote:\nHi statnet team,\n\nI'm curious if there been any progress with fixing the bd constraints in ergm 3.6.1?  I've had the same problem with R freezing as Zach (messages below).\n\nThank,\nMateo\n\n\nOn Fri, Feb 3, 2017 at 1:36 PM, martina morris <morrism@u.washington.edu<mailto:morrism@u.washington.edu>> wrote:\nScratch that request -- Pavel has already identified the problem and implemented a fix.  The correction will be posted to CRAN soon, and we'll let you know when that happens.\n\nthx,\nMartina\n\n\nOn Fri, 3 Feb 2017, martina morris wrote:\n\nThat means one of the recent changes in the code caused this.  Thx for letting us know.\n\nIf it's possible to send the data set and the code, so we can replicate and find the problem, that would be really helpful.\n\nthx,\nMartina\n\nOn Fri, 3 Feb 2017, Zachary Charles Heinemann wrote:\n\nHello,\nThanks for your response! Nothing in the code changed -- I somewhat figured out the issue. I\nupdated my ergm package from 3.6 to 3.6.1; when I uninstalled 3.6.1 and installed 3.6 it worked\nfine, I'm still not sure as to why however.\n\nOn Friday, February 3, 2017, martina morris <morrism@u.washington.edu<mailto:morrism@u.washington.edu>> wrote:\n      Did anything change between the time it ran well, and the first time it froze?  Did\n      you update anything inbetween?\n\n      On Thu, 2 Feb 2017, Zachary Charles Heinemann wrote:\n\n            Hello,\n            I am currently working on a network of about 70 students who have\n            selected each other for\n            friendships. I specified the ergm such as this:\n\n            m9A1<-ergm(netA1 ~\n                         edges +\n                         mutual +\n                         absdiff('class') +\n                         gwesp(0.25, fixed = TRUE) +\n                         gwdsp(0.25, fixed = TRUE) +\n                         absdiff('Extraversion.weightedAvg.Self') +\n                         absdiff('Agreeableness.weightedAvg.Self') +\n                         absdiff('Conscientiousness.weightedAvg.Self') +\n                         absdiff('Stability.weightedAvg.Self') +\n                         absdiff('Openness.weightedAvg.Self') +\n                         nodematch('Gender') +\n                         nodematch('Race') +\n                         absdiff('Age') +\n                         absdiff('politicalviews') +\n                         nodematch('LT') +\n                         absdiff('RelativeAttractiveness') +\n                         absdiff('enjoydrinking'),\n                       constraints = ~bd(maxout = 5)\n            )\n\n\n            When I originally ran this model, it worked completely fine. However, a\n            few days later,\n            whenever I try to run this code, my R freezes and I have to restart my\n            computer. When I remove\n            the \"constraints\" argument, it works just fine. I have tried updating\n            my OS, updating R,\n            updating RStudio, updating statnet and yet the problem still persists.\n            Is there any reason why\n            this may be happening?\n\n\n\n      ****************************************************************\n       Professor of Sociology and Statistics\n       Director, UWCFAR Sociobehavioral and Prevention Research Core\n       Box 354322\n       University of Washington\n       Seattle, WA 98195-4322\n\n       Office:        (206) 685-3402<tel:%28206%29%20685-3402>\n       Dept Office:   (206) 543-5882<tel:%28206%29%20543-5882>, 543-7237\n       Fax:           (206) 685-7419<tel:%28206%29%20685-7419>\n\n      morrism@u.washington.edu<mailto:morrism@u.washington.edu>\n      http://faculty.washington.edu/morrism/\n\n\n\n\n\n****************************************************************\nProfessor of Sociology and Statistics\nDirector, UWCFAR Sociobehavioral and Prevention Research Core\nBox 354322\nUniversity of Washington\nSeattle, WA 98195-4322\n\nOffice:        (206) 685-3402<tel:%28206%29%20685-3402>\nDept Office:   (206) 543-5882<tel:%28206%29%20543-5882>, 543-7237\nFax:           (206) 685-7419<tel:%28206%29%20685-7419>\n\nmorrism@u.washington.edu<mailto:morrism@u.washington.edu>\nhttp://faculty.washington.edu/morrism/\n\n\n****************************************************************\n Professor of Sociology and Statistics\n Director, UWCFAR Sociobehavioral and Prevention Research Core\n Box 354322\n University of Washington\n Seattle, WA 98195-4322\n\n Office:        (206) 685-3402<tel:%28206%29%20685-3402>\n Dept Office:   (206) 543-5882<tel:%28206%29%20543-5882>, 543-7237\n Fax:           (206) 685-7419<tel:%28206%29%20685-7419>\n\nmorrism@u.washington.edu<mailto:morrism@u.washington.edu>\nhttp://faculty.washington.edu/morrism/\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n\n\n---------- Forwarded message ----------\nFrom: Golshid <g.sharifnia@gmail.com<mailto:g.sharifnia@gmail.com>>\nTo: statnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nCc:\nBcc:\nDate: Sat, 4 Feb 2017 16:45:19 +0330\nSubject: [statnet_help] Anova in ergm\n\nHi\nI want to know how can I use anova in ergm? The only information that I have found is\n\n\nBut I don't know how can I use the result? And what is the hypothesis in this anova test?\nAnd also I want to know when we should use anova(fit0) or anova(fit0,fit1)\n\n\n\n\nSent from my iPad\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@mailman13.u.washington.edu<mailto:statnet_help@mailman13.u.washington.edu>\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n\n\n--\nMatt Robbins\nPh.D. Candidate\nCenter for Environmental Policy and Behavior<http://environmentalpolicy.ucdavis.edu/>\nDepartment of Environmental Science and Policy\nGraduate Group in Ecology\nUniversity of California, Davis\n\n--\n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA)<http://niasra.uow.edu.au/index.html> | Web (Personal)<http://www.krivitsky.net/research> | ResearchGate<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID: 0000-0002-9101-3362<orcid.org/0000-0002-9101-3362>\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170309/f82c43a3/attachment.html>",
+      "body_snippet": "Hello, All,\n\nFix should be out later this week or early next week.\n\nPavel\n\nOn Mon, 2017-03-06 at 17:15 -0800, Matt Robbins wrote:\nHi statnet team,\n\nI'm curious if there been any progress with fixing t",
+      "thread_id": "thread-bfd8ea86ffda",
+      "thread_depth": 1,
+      "month": "2017-03"
+    },
+    {
+      "id": "msg-74df0a605086",
+      "message_id": "<CALC3UQ2EuBTt7KvOsBRRwvseMRVezYgX9S3R-PymQ88KGUJ+tA@mail.gmail.com>",
+      "from_name": "Carpenter, Christopher",
+      "from_email_hash": "488adeb1a22b5a87b2bb7e2d4b510086b20485bd55e8538aa6796cc7b1da0804",
+      "date": "2017-03-21T15:58:41Z",
+      "subject": "[statnet_help] Predicting changes in node network centrality over time",
+      "subject_clean": "[statnet_help] Predicting changes in node network centrality over time",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello\n\nI have a complete adjacency matrix for 9 time points. I also have node\nattribute data collected only at the first time point. Is there a way to\nuse statnet (or any other program) to estimate the effect of node attribute\ndata on node network centrality over time?\n\nMy first impulse is to calculate the network centrality statistics for each\nnode at each time point. Then use the network centrality values as outcome\nvariables in a regular time series analysis with node attributes as the\npredictor variable. But network centrality scores seem to violate data\nindependence assumptions. Is there a way to estimate node effects on\ncentrality over time?\n\nThanks for any help\n\nChris Carpenter\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170321/5ddf3d67/attachment.html>",
+      "body_snippet": "Hello\n\nI have a complete adjacency matrix for 9 time points. I also have node\nattribute data collected only at the first time point. Is there a way to\nuse statnet (or any other program) to estimate th",
+      "thread_id": "thread-74df0a605086",
+      "thread_depth": 0,
+      "month": "2017-03"
+    },
+    {
+      "id": "msg-f94d02be013e",
+      "message_id": "<694844785.171328.1490144318026@mail.yahoo.com>",
+      "from_name": "saeede eftekhari",
+      "from_email_hash": "afef3b27cd72df9d183234bc56a4a3b6a06de53a024d5eb97d485284cee28e07",
+      "date": "2017-03-21T17:58:38Z",
+      "subject": "[statnet_help] Predicting changes in node network centrality over\ttime",
+      "subject_clean": "[statnet_help] Predicting changes in node network centrality over\ttime",
+      "in_reply_to": "<CALC3UQ2EuBTt7KvOsBRRwvseMRVezYgX9S3R-PymQ88KGUJ+tA@mail.gmail.com>",
+      "references": [
+        "<CALC3UQ2EuBTt7KvOsBRRwvseMRVezYgX9S3R-PymQ88KGUJ+tA@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Chris CarpenterFirst let me ask you a question. Is your network \"stochastic actor oriented\"? Simply I mean, do the actors of the network decide to change their network, and is the network changing over time? If yes, I think I have an answer for your question. Here is my thought:If I were you, I would use RSiena tool to model the evolution of the network over time. In this case, your dependent variable would be \"creating or maintaining a tie\" , which would reflect centrality. You can estimate the effect of actors' attributes as well as structural features on your dependent variable.?I hope it helps and let me know if you have more question. Please apologize me if you already thought about this solution.?Best Regards?Saeede Eftekhari \n\n    On Tuesday, 21 March 2017, 18:59, \"Carpenter, Christopher\" <cj-carpenter2@wiu.edu> wrote:\n \n\n Hello\nI have a complete adjacency matrix for 9 time points. I also have node attribute data collected only at the first time point. Is there a way to use statnet (or any other program) to estimate the effect of node attribute data on node network centrality over time?\nMy first impulse is to calculate the network centrality statistics for each node at each time point. Then use the network centrality values as outcome variables in a regular time series analysis with node attributes as the predictor variable. But network centrality scores seem to violate data independence assumptions. Is there a way to estimate node effects on centrality over time?\nThanks for any help\nChris Carpenter_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n   \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170322/91d677b3/attachment.html>",
+      "body_snippet": "Dear Chris CarpenterFirst let me ask you a question. Is your network \"stochastic actor oriented\"? Simply I mean, do the actors of the network decide to change their network, and is the network changin",
+      "thread_id": "thread-74df0a605086",
+      "thread_depth": 1,
+      "month": "2017-03"
+    },
+    {
+      "id": "msg-366bf701fdf4",
+      "message_id": "<CALC3UQ1iXr9VCfQ-0gVa9rSvHN9DmBj0MzdDTL6TATKa0aMZSQ@mail.gmail.com>",
+      "from_name": "Carpenter, Christopher",
+      "from_email_hash": "488adeb1a22b5a87b2bb7e2d4b510086b20485bd55e8538aa6796cc7b1da0804",
+      "date": "2017-03-21T18:08:41Z",
+      "subject": "[statnet_help] Predicting changes in node network centrality over time",
+      "subject_clean": "[statnet_help] Predicting changes in node network centrality over time",
+      "in_reply_to": "<694844785.171328.1490144318026@mail.yahoo.com>",
+      "references": [
+        "<CALC3UQ2EuBTt7KvOsBRRwvseMRVezYgX9S3R-PymQ88KGUJ+tA@mail.gmail.com>",
+        "<694844785.171328.1490144318026@mail.yahoo.com>"
+      ],
+      "body_plain": "Hello\n\nI appreciate your quick response. Yes, it is stochaistic actor oriented.\nThe nodes are people and the ties are friendship ties. But unfortunately\nno, RSiena's modeling of tie formation will not answer my question. It\nwould get me basic degree centrality but it would not get me betweenness or\ncloseness centrality. I'm sorry I did not make that clear in my question.\nIf you have any thoughts on how to model those, more complex, types of\ncentrality I would greatly appreciate it.\n\nSincerely,\nChris\n\nOn Tue, Mar 21, 2017 at 7:58 PM, saeede eftekhari <\nsaeede_eftekhari@yahoo.com> wrote:\n\n> Dear Chris Carpenter\n> First let me ask you a question. Is your network \"stochastic actor\n> oriented\"? Simply I mean, do the actors of the network decide to change\n> their network, and is the network changing over time? If yes, I think I\n> have an answer for your question. Here is my thought:\n> If I were you, I would use RSiena tool to model the evolution of the\n> network over time. In this case, your dependent variable would be \"creating\n> or maintaining a tie\" , which would reflect centrality. You can estimate\n> the effect of actors' attributes as well as structural features on your\n> dependent variable.\n> I hope it helps and let me know if you have more question. Please\n> apologize me if you already thought about this solution.\n> Best Regards\n> Saeede Eftekhari\n>\n>\n> On Tuesday, 21 March 2017, 18:59, \"Carpenter, Christopher\" <\n> cj-carpenter2@wiu.edu> wrote:\n>\n>\n> Hello\n>\n> I have a complete adjacency matrix for 9 time points. I also have node\n> attribute data collected only at the first time point. Is there a way to\n> use statnet (or any other program) to estimate the effect of node attribute\n> data on node network centrality over time?\n>\n> My first impulse is to calculate the network centrality statistics for\n> each node at each time point. Then use the network centrality values as\n> outcome variables in a regular time series analysis with node attributes as\n> the predictor variable. But network centrality scores seem to violate data\n> independence assumptions. Is there a way to estimate node effects on\n> centrality over time?\n>\n> Thanks for any help\n>\n> Chris Carpenter\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170321/d8ef29e8/attachment.html>",
+      "body_snippet": "Hello\n\nI appreciate your quick response. Yes, it is stochaistic actor oriented.\nThe nodes are people and the ties are friendship ties. But unfortunately\nno, RSiena's modeling of tie formation will not",
+      "thread_id": "thread-74df0a605086",
+      "thread_depth": 2,
+      "month": "2017-03"
+    },
+    {
+      "id": "msg-bc600a59e25a",
+      "message_id": "<0A107519-BB20-4314-8847-554871CDD5A1@yahoo.com>",
+      "from_name": "Saeede",
+      "from_email_hash": "afef3b27cd72df9d183234bc56a4a3b6a06de53a024d5eb97d485284cee28e07",
+      "date": "2017-03-21T18:27:39Z",
+      "subject": "[statnet_help] Predicting changes in node network centrality over time",
+      "subject_clean": "[statnet_help] Predicting changes in node network centrality over time",
+      "in_reply_to": "<CALC3UQ1iXr9VCfQ-0gVa9rSvHN9DmBj0MzdDTL6TATKa0aMZSQ@mail.gmail.com>",
+      "references": [
+        "<CALC3UQ2EuBTt7KvOsBRRwvseMRVezYgX9S3R-PymQ88KGUJ+tA@mail.gmail.com>",
+        "<694844785.171328.1490144318026@mail.yahoo.com>",
+        "<CALC3UQ1iXr9VCfQ-0gVa9rSvHN9DmBj0MzdDTL6TATKa0aMZSQ@mail.gmail.com>"
+      ],
+      "body_plain": "No problem. You are right. Rsiena is used mainly for formation. But Rsiena is the only method that i know for modeling longitudinal data! \n\nDoes time really matter for you? I am asking this as you do not have changing covariate ( you said you have feature only in first time point).\nSo, actually, i am not sure if you really need using panel data to model the evolution in order to find the impact of features. Is my point clear?\n\nI would suggest simplu define you dependent variables and use QAP regressions. Then, use the other points of data for robustness check. It may look simple, but i think at least you can see if there is any impact.\nI hope it helps. Let me know if you have any thoughts. \n\nSent from my iPhone\n\n> On Mar 21, 2017, at 9:08 PM, Carpenter, Christopher <cj-carpenter2@wiu.edu> wrote:\n> \n> Hello\n> \n> I appreciate your quick response. Yes, it is stochaistic actor oriented. The nodes are people and the ties are friendship ties. But unfortunately no, RSiena's modeling of tie formation will not answer my question. It would get me basic degree centrality but it would not get me betweenness or closeness centrality. I'm sorry I did not make that clear in my question. If you have any thoughts on how to model those, more complex, types of centrality I would greatly appreciate it.\n> \n> Sincerely,\n> Chris\n> \n>> On Tue, Mar 21, 2017 at 7:58 PM, saeede eftekhari <saeede_eftekhari@yahoo.com> wrote:\n>> Dear Chris Carpenter\n>> First let me ask you a question. Is your network \"stochastic actor oriented\"? Simply I mean, do the actors of the network decide to change their network, and is the network changing over time? If yes, I think I have an answer for your question. Here is my thought:\n>> If I were you, I would use RSiena tool to model the evolution of the network over time. In this case, your dependent variable would be \"creating or maintaining a tie\" , which would reflect centrality. You can estimate the effect of actors' attributes as well as structural features on your dependent variable. \n>> I hope it helps and let me know if you have more question. Please apologize me if you already thought about this solution. \n>> Best Regards \n>> Saeede Eftekhari\n>> \n>> \n>> On Tuesday, 21 March 2017, 18:59, \"Carpenter, Christopher\" <cj-carpenter2@wiu.edu> wrote:\n>> \n>> \n>> Hello\n>> \n>> I have a complete adjacency matrix for 9 time points. I also have node attribute data collected only at the first time point. Is there a way to use statnet (or any other program) to estimate the effect of node attribute data on node network centrality over time?\n>> \n>> My first impulse is to calculate the network centrality statistics for each node at each time point. Then use the network centrality values as outcome variables in a regular time series analysis with node attributes as the predictor variable. But network centrality scores seem to violate data independence assumptions. Is there a way to estimate node effects on centrality over time?\n>> \n>> Thanks for any help\n>> \n>> Chris Carpenter\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170321/becf2886/attachment.html>",
+      "body_snippet": "No problem. You are right. Rsiena is used mainly for formation. But Rsiena is the only method that i know for modeling longitudinal data! \n\nDoes time really matter for you? I am asking this as you do ",
+      "thread_id": "thread-74df0a605086",
+      "thread_depth": 3,
+      "month": "2017-03"
+    },
+    {
+      "id": "msg-dba4238b75cb",
+      "message_id": "<6021b316-8953-06e9-dad4-4ca7d55e6902@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2017-03-21T18:47:46Z",
+      "subject": "[statnet_help] Predicting changes in node network centrality over time",
+      "subject_clean": "[statnet_help] Predicting changes in node network centrality over time",
+      "in_reply_to": "<CALC3UQ2EuBTt7KvOsBRRwvseMRVezYgX9S3R-PymQ88KGUJ+tA@mail.gmail.com>",
+      "references": [
+        "<CALC3UQ2EuBTt7KvOsBRRwvseMRVezYgX9S3R-PymQ88KGUJ+tA@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Chris.  If your nodal attributes are constant, then what do you mean \nby their having an effect on centrality over time?  This can be made \nmeaningful, but only in the context of a more specific class of \nassumptions.  (For instance, if you posited a growth model for \ncentrality whose parameter was putatively related to the covariate, you \ncould test that.)\n\nWithout such additional clarifications, your problem is ill-posed: you \nare asking for the relationship between a vector of real numbers and a \nvector of time series.  (In this case, the fact that your time series \ncome from a network is a red herring.)  There are many kinds of \nrelationships that one could seek, but you will need to be more specific \nabout what you want to know in order for us to be of much help...\n\n-Carter\n\n\nOn 03/21/2017 03:58 PM, Carpenter, Christopher wrote:\n> Hello\n>\n> I have a complete adjacency matrix for 9 time points. I also have node \n> attribute data collected only at the first time point. Is there a way \n> to use statnet (or any other program) to estimate the effect of node \n> attribute data on node network centrality over time?\n>\n> My first impulse is to calculate the network centrality statistics for \n> each node at each time point. Then use the network centrality values \n> as outcome variables in a regular time series analysis with node \n> attributes as the predictor variable. But network centrality scores \n> seem to violate data independence assumptions. Is there a way to \n> estimate node effects on centrality over time?\n>\n> Thanks for any help\n>\n> Chris Carpenter\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170321/a1bd9f29/attachment.html>",
+      "body_snippet": "Hi, Chris.  If your nodal attributes are constant, then what do you mean \nby their having an effect on centrality over time?  This can be made \nmeaningful, but only in the context of a more specific c",
+      "thread_id": "thread-74df0a605086",
+      "thread_depth": 1,
+      "month": "2017-03"
+    },
+    {
+      "id": "msg-815a39a5c7de",
+      "message_id": "<a3184c1e-ffae-5595-2177-30aa59f0da3b@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2017-03-21T18:56:55Z",
+      "subject": "[statnet_help] Predicting changes in node network centrality over time",
+      "subject_clean": "[statnet_help] Predicting changes in node network centrality over time",
+      "in_reply_to": "<0A107519-BB20-4314-8847-554871CDD5A1@yahoo.com>",
+      "references": [
+        "<CALC3UQ2EuBTt7KvOsBRRwvseMRVezYgX9S3R-PymQ88KGUJ+tA@mail.gmail.com>",
+        "<694844785.171328.1490144318026@mail.yahoo.com>",
+        "<CALC3UQ1iXr9VCfQ-0gVa9rSvHN9DmBj0MzdDTL6TATKa0aMZSQ@mail.gmail.com>",
+        "<0A107519-BB20-4314-8847-554871CDD5A1@yahoo.com>"
+      ],
+      "body_plain": "Hi, Saeede -\n\n\nOn 03/21/2017 06:27 PM, Saeede wrote:\n> No problem. You are right. Rsiena is used mainly for formation. But \n> Rsiena is the only method that i know for modeling longitudinal data!\n>\n>\n\nTERGMs (with e.g. STERGMs as an important special case), dynamic latent \nvariable models (e.g., dynamic latent space models, DRIFT, etc.), REMs, \netc. would all be examples of non-SAB families for longitudinal \nrelational data.  If one is interested in exploratory analysis (rather \nthan modeling per se), one could add time series analysis of network \ndescriptives, multidimensional scaling of Hamming or structural \ndistances, etc.  There are quite a lot of alternatives, whose \napplicability depends on what you are willing to assume, and what you \nwant to achieve.\n\nHope that helps,\n\n-Carter\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170321/12034534/attachment.html>",
+      "body_snippet": "Hi, Saeede -\n\n\nOn 03/21/2017 06:27 PM, Saeede wrote:\n> No problem. You are right. Rsiena is used mainly for formation. But \n> Rsiena is the only method that i know for modeling longitudinal data!\n>\n>\n",
+      "thread_id": "thread-74df0a605086",
+      "thread_depth": 4,
+      "month": "2017-03"
+    },
+    {
+      "id": "msg-0776d265e0ac",
+      "message_id": "<CAH0O3uBwswvCUh_QjxLRngJSgy5aaEDNZiq9z3-==hVXom3Y3A@mail.gmail.com>",
+      "from_name": "Devin Gaffney",
+      "from_email_hash": "2bed067e953dd04ccfea381f7b2107e02797fa7c7d34554bcd1aab9647c7306a",
+      "date": "2017-03-28T10:02:48Z",
+      "subject": "[statnet_help] STERGM on valued networks?",
+      "subject_clean": "[statnet_help] STERGM on valued networks?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello all,\n\nDoes anyone have advice on how to use a STERGM on a valued network? I'm\nfollowing along with the Sunbelt 2015 PDF by Krivitsky and Butts (\nhttps://statnet.org/trac/raw-attachment/wiki/Sunbelt2015/Valued.pdf) on how\nto run an ERGM on a valued network, and I can replicate with my own\nnetworks, but when I attempt to create a STERGM I keep hitting an error\ndialogue:\n\n\"Error in locate.InitFunction(term, paste0(termroot, \"Term\"), \"ERGM term\")\n:\n  ERGM term ?sum? initialization function ?InitErgmTerm.sum? not found.\"\n\nI'm far from a final set of coefficients, but in my attempts to see if I\ncan run a STERGM on the valued network snapshots, the \"model\" below works\nas one would expect, while \"temporal_model\" always hits that error. I'm\nvery new to ERGMs so it's entirely plausible this is user error due to\nignorance or failure to find the right Google query that addresses this\nquestion, but I've been unable to find a definitive answer to this question.\n\nModels I'm running:\n\nsamp <- list()\nsamp[[1]] <- get_graph_weighted(\"timestep_1.gml\")\nsamp[[2]] <- get_graph_weighted(\"timestep_2.gml\")\nsamp[[3]] <- get_graph_weighted(\"timestep_3.gml\")\nsamp[[4]] <- get_graph_weighted(\"timestep_4.gml\")\nsamp[[5]] <- get_graph_weighted(\"timestep_5.gml\")\nmodel <-\nergm(samp[[1]]~sum+mutual+edges+absdiff(\"political\")+absdiff(\"defaultstatus\")+nodeicov(\"trafficcount\")+nodeocov(\"trafficcount\"),\nresponse = \"observed\",reference = ~Poisson)\ntemporal_model <- stergm(samp,\n  response = \"observed\",\n  reference = ~Poisson,\n  formation=\n~sum+mutual+edges+absdiff(\"political\")+absdiff(\"defaultstatus\")+nodeicov(\"trafficcount\")+nodeocov(\"trafficcount\"),\n  dissolution =\n~sum+mutual+edges+absdiff(\"political\")+absdiff(\"defaultstatus\")+nodeicov(\"trafficcount\")+nodeocov(\"trafficcount\"),\n  estimate = \"CMLE\",\n  times=1:5\n)\n\nEach GML is read in igraph, converted via intergraph, then igraph is\ndetached and we proceed as normal with statnet.\n\n\nBest,\nDevin Gaffney\nNortheastern University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170328/e1d00323/attachment.html>",
+      "body_snippet": "Hello all,\n\nDoes anyone have advice on how to use a STERGM on a valued network? I'm\nfollowing along with the Sunbelt 2015 PDF by Krivitsky and Butts (\nhttps://statnet.org/trac/raw-attachment/wiki/Sunb",
+      "thread_id": "thread-0776d265e0ac",
+      "thread_depth": 0,
+      "month": "2017-03"
+    },
+    {
+      "id": "msg-6e8f3124ee88",
+      "message_id": "<a88d71f9-a15b-2679-f953-23eff9000436@manchester.ac.uk>",
+      "from_name": "Wouter Spekkink",
+      "from_email_hash": "a5484cf6ccc64d635969a14ea4c22370ebefa6e071393afac31c815292bdd8b6",
+      "date": "2017-03-31T03:57:23Z",
+      "subject": "[statnet_help] Question about directed shared partner terms",
+      "subject_clean": "[statnet_help] Question about directed shared partner terms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet team,\n\nI apologize in advance for the long intro. I thought it was important to \ngive some background to what I am trying to do.\n\n*Intro:*\n\nI have been 'playing around' a lot with the statnet ergm package \nrecently. What I am currently interested in is to explore the \npossibility of applying erg modeling to event graphs. That is, directed \ngraphs where the nodes are events, and where the edges (in my case) \nindicate which events (tails) occurred in response to which other events \n(heads). I have been using the idea of representing social processes as \nevent graphs for a while now, but I have never been able to really go \nbeyond using this as a visual aid in a largely qualitative, interpretive \nanalysis. I hope that ergms of event graphs can help me get more out of \nthis approach. Just as a note on the side, I am also aware of, and \nexploring other approaches to studying social dynamics, including \nrelational event models and stochastic actor-oriented models (especially \nthose adapted for events [e.g., Stadtfeld's work]), but I am very keen \nto explore the idea of 'social processes as event graphs' as well, \nbecause I think it could lead to complementary insights. I am also aware \nthat the interpretation of the modeling terms, and of the models \nthemselves changes by applying ergms to event graphs. One thing that I \nam doing is thinking about the meaning of statistics like ostars, \ntwopaths, transitive triads, shared partners, nodemix, nodematch and so \non in the context of event graphs.\n\nAn important difference between the event graphs that I am trying to \nmodel, and the social network graphs that ergms are usually applied to, \nis that the nodes in event graphs are ordered in time. That is, edges \ncan only point from nodes (events) that occur later in time, to nodes \n(events) that occur earlier in time. This also means that edges can, for \nexample, never be reciprocal, and that only a limited number of \ntriangles can exist (transitive triangles can occur, but cycles cannot). \nSo basically, I am working with Directed Acyclic Graphs (DAGs), although \nthe acyclic nature of the graphs is a consequence of the chronological \norder of the nodes, rather than being at defining feature of event \ngraphs. Simply put, all edges in event graphs obey the rule that an edge \ni->j cannot exist if i happened before j. The random graphs that are \nconsidered by the ergm package (under normal circumstances) of course do \nnot obey this rule. To impose this rule on my models, I use the \nergm-constraints function. I wrote a simple script for R that steps \nthrough all the dyads in a network, and if the dyad breaks the rule, it \nputs a 1 in a new adjacency matrix for the corresponding dyad. I then \nturn this adjacency matrix into a network object, and then tell the \nergm-constraints function to keep all the edges in this network fixed as \nabsent. This seems to work, at least to some extent, because all \nsimulations of models that I created with this constraint obey the \nappropriate rule (edges never point forward in time).\n\n*My puzzle:*\n\nHowever, *and here comes my question/puzzle*, I was wondering if this \nrule also appropriately translates into the way that statistics are \ncalculated. It seems to do so for the edges term. If I translate the \ncoefficient for the edges term to a probability, it gives me a measure \nof density that respects the fact that certain edges can never occur. \nHowever, I was unsure whether the rule is also respected when I look at \nstatistics like dyad-wise shared partners. If I understand it right, the \ngw versions of shared partner statistics also consider the number of \ndyads for which the number of shared partners is 0. When counting the \nnumber of dyads for which this is true, does the algorithm respect the \nfact that certain dyads should be excluded from the count? In other \nwords, is it enough to include the constraints that I discuss in the \nintro above, or should I also consider developing adapted versions of \nsome of the statistics? (I am not that experienced in statistical \nmodeling, but I am fairly experienced in programming in C++, which is \nvery similar to C).\n\n*Another, related point:\n*While looking into the characteristics of the various terms for shared \npartner distributions, I also encountered something I did not fully \nunderstand. I saw that there are directed version for the shared partner \ndistributions (e.g., desp, ddsp, dgwesp, and so on), which are very \ninteresting to me because of their potential meaning in the context of \nevent graphs. I also understood (correct me if I am wrong) that, for \ndirected networks, the esp.OTP term should essentially be the same as \nthe original esp term (OTP is the default choice). However, the \nsummaries for these statistics seem to be different.\n\nConsider the following example. I created a simple network of 4 nodes \nand 4 directed edges (see attached file): A->B, A->C, B->D, C->D. If I \nload this network into R, I get the following results if I study their \ndyadwise shared partner distributions:\n\n > summary(net~dsp(0:3))\ndsp0 \tdsp1\n\tdsp2\n\tdsp3\n11\n\t0\n\t1\n\t0\n\n\n > summary(net~ddsp(0:3, type = 'OTP'))\ndsp0 \tdsp1\n\tdsp2\n\tdsp3\n-1\n\t0\n\t1\n\t0\n\n\nI have the impression that something goes wrong here. Is it a mistake on \nmy side?\n\nUnfortunately, I am not that experienced in statistical modeling, \nalthough I am very keen to learn more about it, and I am currently \ninvesting a lot of time and energy in that. However, there are still \nplenty of things that are hard for me to get my head around. I really \nappreciate any help.\n\nApologies again for the long email. And many thanks for your time and \npatience if you have gotten this far. :)\n\nWith kind regards,\n\nWouter\n\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170331/422b09e8/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: SimpleNetwork.pdf\nType: application/pdf\nSize: 8030 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170331/422b09e8/attachment.pdf>",
+      "body_snippet": "Dear statnet team,\n\nI apologize in advance for the long intro. I thought it was important to \ngive some background to what I am trying to do.\n\n*Intro:*\n\nI have been 'playing around' a lot with the sta",
+      "thread_id": "thread-6e8f3124ee88",
+      "thread_depth": 0,
+      "month": "2017-03"
+    },
+    {
+      "id": "msg-d8a27bdfb4b1",
+      "message_id": "<1490997701.12325.1.camel@uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2017-03-31T15:01:42Z",
+      "subject": "[statnet_help] STERGM on valued networks?",
+      "subject_clean": "[statnet_help] STERGM on valued networks?",
+      "in_reply_to": "<CAH0O3uBwswvCUh_QjxLRngJSgy5aaEDNZiq9z3-==hVXom3Y3A@mail.gmail.com>",
+      "references": [
+        "<CAH0O3uBwswvCUh_QjxLRngJSgy5aaEDNZiq9z3-==hVXom3Y3A@mail.gmail.com>"
+      ],
+      "body_plain": "Hello, Devin,\n\nGood question! STERGMs were developed for binary networks and use some\nproperties fundamental to them. Extending the framework to valued\nnetworks is subject for ongoing research.\n\nAt this point, you can use the previous time step's network as, say a\ndyadic covariate to estimate parameters for one transition. You'll need\nto do it manually, unfortunately.\n\n\t\t\t\t\t\tBest,\n\t\t\t\t\t\tPavel\n\nOn Tue, 2017-03-28 at 13:02 -0400, Devin Gaffney wrote:\n> Hello all,\n> \n> Does anyone have advice on how to use a STERGM on a valued network?\n> I'm following along with the Sunbelt 2015 PDF by Krivitsky and Butts\n> (https://statnet.org/trac/raw-attachment/wiki/Sunbelt2015/Valued.pdf)\n> on how to run an ERGM on a valued network, and I can replicate with\n> my own networks, but when I attempt to create a STERGM I keep hitting\n> an error dialogue:\n> \n> \"Error in locate.InitFunction(term, paste0(termroot, \"Term\"), \"ERGM\n> term\") :?\n> ? ERGM term ?sum? initialization function ?InitErgmTerm.sum? not\n> found.\"\n> \n> I'm far from a final set of coefficients, but in my attempts to see\n> if I can run a STERGM on the valued network snapshots, the \"model\"\n> below works as one would expect, while \"temporal_model\" always hits\n> that error. I'm very new to ERGMs so it's entirely plausible this is\n> user error due to ignorance or failure to find the right Google query\n> that addresses this question, but I've been unable to find a\n> definitive answer to this question.\n> \n> Models I'm running:\n> \n> samp <- list()\n> samp[[1]] <- get_graph_weighted(\"timestep_1.gml\")\n> samp[[2]] <- get_graph_weighted(\"timestep_2.gml\")\n> samp[[3]] <- get_graph_weighted(\"timestep_3.gml\")\n> samp[[4]] <- get_graph_weighted(\"timestep_4.gml\")\n> samp[[5]] <- get_graph_weighted(\"timestep_5.gml\")\n> model <-\n> ergm(samp[[1]]~sum+mutual+edges+absdiff(\"political\")+absdiff(\"default\n> status\")+nodeicov(\"trafficcount\")+nodeocov(\"trafficcount\"), response\n> = \"observed\",reference = ~Poisson)?\n> temporal_model <- stergm(samp,\n> ? response = \"observed\",\n> ? reference = ~Poisson,\n> ? formation=\n> ~sum+mutual+edges+absdiff(\"political\")+absdiff(\"defaultstatus\")+nodei\n> cov(\"trafficcount\")+nodeocov(\"trafficcount\"),\n> ? dissolution =\n> ~sum+mutual+edges+absdiff(\"political\")+absdiff(\"defaultstatus\")+nodei\n> cov(\"trafficcount\")+nodeocov(\"trafficcount\"),\n> ? estimate = \"CMLE\",\n> ? times=1:5\n> )\n> \n> Each GML is read in igraph, converted via intergraph, then igraph is\n> detached and we proceed as normal with statnet.\n> \n> \n> \n> Best,\n> Devin Gaffney\n> Northeastern University\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> \n-- \nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA): http://niasra.uow.edu.au/index.html\nWeb (Personal): http://www.krivitsky.net/research\nORCID: 0000-0002-9101-3362\n\nNOTICE: This email is intended for the addressee named and may contain\nconfidential information. If you are not the intended recipient, please\ndelete it and notify the sender. Please consider the environment before\nprinting this email.",
+      "body_snippet": "Hello, Devin,\n\nGood question! STERGMs were developed for binary networks and use some\nproperties fundamental to them. Extending the framework to valued\nnetworks is subject for ongoing research.\n\nAt th",
+      "thread_id": "thread-0776d265e0ac",
+      "thread_depth": 1,
+      "month": "2017-03"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-f7373bfc0eb8",
+      "subject": "[statnet_help] Meta-analysis for ERGM",
+      "message_count": 3,
+      "participants": [
+        "Christian Steglich",
+        "Philip Leifeld",
+        "徐刚敏"
+      ],
+      "started": "2017-03-01T19:19:59Z",
+      "last_reply": "2017-03-02T05:32:55Z",
+      "root_message_id": "msg-f7373bfc0eb8"
+    },
+    {
+      "id": "thread-bfd8ea86ffda",
+      "subject": "[statnet_help] Update on the bd() constraint fix?",
+      "message_count": 2,
+      "participants": [
+        "Matt Robbins",
+        "Pavel Krivitsky"
+      ],
+      "started": "2017-03-06T17:15:24Z",
+      "last_reply": "2017-03-08T19:31:45Z",
+      "root_message_id": "msg-bfd8ea86ffda"
+    },
+    {
+      "id": "thread-74df0a605086",
+      "subject": "[statnet_help] Predicting changes in node network centrality over time",
+      "message_count": 6,
+      "participants": [
+        "Carpenter, Christopher",
+        "Carter T. Butts",
+        "Saeede",
+        "saeede eftekhari"
+      ],
+      "started": "2017-03-21T15:58:41Z",
+      "last_reply": "2017-03-21T18:56:55Z",
+      "root_message_id": "msg-74df0a605086"
+    },
+    {
+      "id": "thread-0776d265e0ac",
+      "subject": "[statnet_help] STERGM on valued networks?",
+      "message_count": 2,
+      "participants": [
+        "Devin Gaffney",
+        "Pavel Krivitsky"
+      ],
+      "started": "2017-03-28T10:02:48Z",
+      "last_reply": "2017-03-31T15:01:42Z",
+      "root_message_id": "msg-0776d265e0ac"
+    },
+    {
+      "id": "thread-6e8f3124ee88",
+      "subject": "[statnet_help] Question about directed shared partner terms",
+      "message_count": 1,
+      "participants": [
+        "Wouter Spekkink"
+      ],
+      "started": "2017-03-31T03:57:23Z",
+      "last_reply": "2017-03-31T03:57:23Z",
+      "root_message_id": "msg-6e8f3124ee88"
+    }
+  ]
+}

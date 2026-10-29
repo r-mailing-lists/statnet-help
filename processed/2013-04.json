@@ -1,0 +1,600 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2013-04",
+  "messages": [
+    {
+      "id": "msg-932e739d82d8",
+      "message_id": "<515B74EE.1020206@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2013-04-02T17:16:46Z",
+      "subject": "[statnet_help] Error using ergm command with target.stats and constraints",
+      "subject_clean": "[statnet_help] Error using ergm command with target.stats and constraints",
+      "in_reply_to": "<CACiWmAzVsyTSs=_nNqMEQjgGUy33vaXjHToVDkrJ0E5poWrobQ@mail.gmail.com>",
+      "references": [
+        "<CACiWmAzVsyTSs=_nNqMEQjgGUy33vaXjHToVDkrJ0E5poWrobQ@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Ravi-\n\nThe issue seems to be with \"base=-2\".  The base argument lists the \npositions of the statistics to be excluded; if your intention was to \nleave out the 2nd of the possible statistics associated with this term, \nthen it should be \"base=2\".  That is, the negative sign, in the sense of \nexclusion, is already implicit.  Once you take out the negative sign \nfrom your code, though, there is still an issue of an incorrect number \nof statistics being passed, which makes me think that perhaps you are \nintending something else.  If so, feel free to email the group or to me \none on one and I can try to ascertain.\n\nCheers,\nSteve\n\n\n\nOn 3/26/2013 8:03 AM, Ravi Goyal wrote:\n> Dear Statnet Team and Mailing List,\n>\n> I am having some problems when using the 'ergm' command with both the \n> target.stats and constraints options.  Any help is greatly \n> appreciated.  My code is the following:\n>\n> #########CODE################\n> library('sna')\n> library('ergm')\n>\n> ER_g = rgnm(1, 100, 100, mode = \"graph\", diag = FALSE, \n> return.as.edgelist = FALSE)\n>\n> g.net <http://g.net> <-network.initialize(100, directed = F) \n> #Initialize the network\n> g.net <http://g.net> = network.adjacency(ER_g,g.net <http://g.net>) \n> #Import the edge data\n>\n> g.net <http://g.net> %v% 'set' <- c(rep(1,50),rep(2,50))\n>\n> #MODEL\n> g.ergm = ergm(g.net <http://g.net>~nodemix('set', base = -2),\n>         target.stats=c(20),\n>         constraints =~degrees,\n>         verbose = TRUE\n>         )\n> #######CODE###################\n>\n> I get the following output and error:\n>\n> ######OUTPUT MODEL 1#########\n>\n> > #MODEL\n> > g.ergm = ergm(g.net <http://g.net>~nodemix('set', base = -2),\n> + target.stats=c(20),\n> + constraints =~degrees,\n> + verbose = TRUE\n> + )\n>\n> Evaluating network in model\n> Constructing an approximate response network.\n> Error: No model specified for network  +No model specified for \n> network  conddegmpleNo model specified for network  nodemix(\"set\", \n> base = -2)\n>\n> ######OUTPUT MODEL 1#########\n>\n> Below are details from  sessionInfo() and  getOption(\"pkgType\")\n>\n> >   sessionInfo()\n> R version 2.15.3 (2013-03-01)\n> Platform: x86_64-w64-mingw32/x64 (64-bit)\n>\n> locale:\n> [1] LC_COLLATE=English_United States.1252  LC_CTYPE=English_United \n> States.1252\n> [3] LC_MONETARY=English_United States.1252 LC_NUMERIC=C\n>\n> [5] LC_TIME=English_United States.1252\n>\n> attached base packages:\n> [1] stats     graphics  grDevices utils     datasets  methods base\n>\n> other attached packages:\n>  [1] sna_2.3-1        degreenet_1.2    ergm_3.0-3 coda_0.16-1      \n> nlme_3.1-108\n>  [6] trust_0.1-2      Matrix_1.0-11    lattice_0.20-13 \n> robustbase_0.9-7 network_1.7-1.1\n>\n> loaded via a namespace (and not attached):\n> [1] grid_2.15.3  tools_2.15.3\n>\n> >   getOption(\"pkgType\")\n> [1] \"win.binary\"\n>\n>\n> Thank you!\n>\n> Sincerely,\n>    Ravi\n>\n> Ravi Goyal\n> Research Associate\n> Dept. of Biostatistics\n> Harvard University\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n\n*** NOTE NEW OFFICE LOCATION AS OF MARCH 2012: DENNY 423 ***\n\nSteven M. Goodreau / Assoc. Professor / Dept. of Anthropology\nUniversity of Washington / Denny Hall 423 / Campus Box 353100\nSeattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130402/dbc8f8cb/attachment.html>",
+      "body_snippet": "Hi Ravi-\n\nThe issue seems to be with \"base=-2\".  The base argument lists the \npositions of the statistics to be excluded; if your intention was to \nleave out the 2nd of the possible statistics associa",
+      "thread_id": "thread-932e739d82d8",
+      "thread_depth": 0,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-d958667469c4",
+      "message_id": "<CAA1J5vQ4B520Ozsy+VBgHNcNh8=ObgWJXpLzLu2Au6yGAvUyew@mail.gmail.com>",
+      "from_name": "Sam Stewart",
+      "from_email_hash": "51b57d9e397a077e24243651cef0d1d3aa1bf70a60060faa096fc9f957fe6cc3",
+      "date": "2013-04-04T12:12:43Z",
+      "subject": "[statnet_help] Network Layout For Valued Networks",
+      "subject_clean": "[statnet_help] Network Layout For Valued Networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Is there a mistake in the code for the layout of valued networks?  If there\nisn't then I'm making a mistake somewhere.  I have valued networks and the\nlayout algorithms passed through plot.network do not seem to be handling\nedge values.  I've attached a simple example below.\n\nset.seed(11)\nX = matrix(floor(runif(25,0,5)),nrow=5,byrow=T)\nXnet = network(X,matrix.type='adjacency')\nset.edge.value(Xnet,'value',X)\n#these two lines demonstrate that the edgevalues seem to be set correctly\nas.matrix(Xnet)\nas.matrix(Xnet,attrname='value')\nset.seed(11)\npar(mfrow=c(2,2),mar=c(1,1,1,1))\nplot.network(Xnet,main='Simple Layout')\nset.seed(11)\nplot.network(Xnet,attrname='value',main='Setting attrname (has no effect)')\nset.seed(11)\nx=gplot.layout.fruchtermanreingold(X,layout.par=NULL)\nplot.network(Xnet,coord=x,main='Using gplot.layout with valued network')\nset.seed(11)\nx=gplot.layout.fruchtermanreingold(X>0,layout.par=NULL)\nplot.network(Xnet,coord=x,main='Using gplot.layout with binary network')\n\n\nI believe that the problem is that the network.layout.* functions don't\naccept edge-values as arguments.  Both functions have the following in\ntheir second line\n\nd <- as.matrix.network(nw, matrix.type = \"edgelist\")[, 1:2, drop = FALSE]\n\nWhich returns a binary matrix even if an edge-attribute was passed.\n\nI've figured out a way around it, but I'm wondering if I'm making a mistake\nsomewhere, and if there is a way to get valued layout without going through\ngplot.layout.*\n\nThanks,\nSam\n-- \nSam Stewart, MMath, A.Stat\nIDPhD Candidate (Health Informatics)\nFaculty of Computer Science, Dalhousie University\n6050 University Ave.\nHalifax, NS, Canada, B3H 1W5\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130404/022bc181/attachment.html>",
+      "body_snippet": "Is there a mistake in the code for the layout of valued networks?  If there\nisn't then I'm making a mistake somewhere.  I have valued networks and the\nlayout algorithms passed through plot.network do ",
+      "thread_id": "thread-d958667469c4",
+      "thread_depth": 0,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-266e9392dea4",
+      "message_id": "<CAByPayG_VmB=QXTNgUy2MytN2bvALLGo6YJXd9Xrmte+dkm5mw@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2013-04-04T17:51:20Z",
+      "subject": "[statnet_help] Network Layout For Valued Networks",
+      "subject_clean": "[statnet_help] Network Layout For Valued Networks",
+      "in_reply_to": "<CAA1J5vQ4B520Ozsy+VBgHNcNh8=ObgWJXpLzLu2Au6yGAvUyew@mail.gmail.com>",
+      "references": [
+        "<CAA1J5vQ4B520Ozsy+VBgHNcNh8=ObgWJXpLzLu2Au6yGAvUyew@mail.gmail.com>"
+      ],
+      "body_plain": "On Thu, Apr 4, 2013 at 9:12 PM, Sam Stewart <samstewart11@gmail.com> wrote:\n> I believe that the problem is that the network.layout.* functions don't\n> accept edge-values as arguments.\n\nHi,\n\nDo you want edge values to affect network layout (vertex placement) or\nthe width of the edges?\n\nOthers will correct me if I'm wrong, but I don't think that the\nnetwork layout functions as currently implemented in network or sna\npackages allow for using edge values as \"weights\".\n\nIf you need to use a \"weighted layout\" you might use one of the\nlayouts implemented in 'igraph' package, for example (assuming that\nigraph is installed):\n\nlibrary(network)\nset.seed(11)\nX = matrix(floor(runif(25,0,5)),nrow=5,byrow=T)\nXnet = network(X,matrix.type='adjacency')\nset.edge.value(Xnet,'value',X)\n\n# Install intergraph package form R-Forge\n# install.packages(\"intergraph\", repos=\"http://R-Forge.R-project.org\")\nlibrary(intergraph)\ng <- asIgraph(Xnet)\n\n# in weighted layout:\n# larger weight = stronger attraction force between vertexes\nlay <- igraph::layout.fruchterman.reingold(g, weights=igraph::E(g)$value)\n# use statnet function to plot the network using the layout computed with igraph\nplot.network(Xnet, coord=lay)",
+      "body_snippet": "On Thu, Apr 4, 2013 at 9:12 PM, Sam Stewart <samstewart11@gmail.com> wrote:\n> I believe that the problem is that the network.layout.* functions don't\n> accept edge-values as arguments.\n\nHi,\n\nDo you wa",
+      "thread_id": "thread-d958667469c4",
+      "thread_depth": 1,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-72e3c6a3a4c2",
+      "message_id": "<515E23E6.6030005@skyeome.net>",
+      "from_name": "Skye Bender-deMoll",
+      "from_email_hash": "016c31bf83672a8e8fce6b664eb68ddff364b5df6912775ec31eeceebce90340",
+      "date": "2013-04-04T18:07:50Z",
+      "subject": "[statnet_help] Network Layout For Valued Networks",
+      "subject_clean": "[statnet_help] Network Layout For Valued Networks",
+      "in_reply_to": "<CAByPayG_VmB=QXTNgUy2MytN2bvALLGo6YJXd9Xrmte+dkm5mw@mail.gmail.com>",
+      "references": [
+        "<CAA1J5vQ4B520Ozsy+VBgHNcNh8=ObgWJXpLzLu2Au6yGAvUyew@mail.gmail.com>",
+        "<CAByPayG_VmB=QXTNgUy2MytN2bvALLGo6YJXd9Xrmte+dkm5mw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi,\n\nI'm pretty sure I've done something like that before in network, but it \nisn't as simple as it should be.   I think it involved passing in a \nmatrix of edge distances via the 'elen' parameter to the kamadakawai \nlayout, but first need to run geodist on it to calculate the indirect \ndistances.  Something like:\n\nplot.network(Xnet,mode='kamadakawai',layout.par=list(elen=geodist(as.matrix(Xnet,attrname='value'))))\n\nbut I can't actually test it right now because my world has been broken \nby trying to upgrade to 3.0.0\n\nbest,\n  -skye\n\nOn 04/04/2013 05:51 PM, Micha? Bojanowski wrote:\n> On Thu, Apr 4, 2013 at 9:12 PM, Sam Stewart <samstewart11@gmail.com> wrote:\n>> I believe that the problem is that the network.layout.* functions don't\n>> accept edge-values as arguments.\n>\n> Hi,\n>\n> Do you want edge values to affect network layout (vertex placement) or\n> the width of the edges?\n>\n> Others will correct me if I'm wrong, but I don't think that the\n> network layout functions as currently implemented in network or sna\n> packages allow for using edge values as \"weights\".\n>\n> If you need to use a \"weighted layout\" you might use one of the\n> layouts implemented in 'igraph' package, for example (assuming that\n> igraph is installed):\n>\n> library(network)\n> set.seed(11)\n> X = matrix(floor(runif(25,0,5)),nrow=5,byrow=T)\n> Xnet = network(X,matrix.type='adjacency')\n> set.edge.value(Xnet,'value',X)\n>\n> # Install intergraph package form R-Forge\n> # install.packages(\"intergraph\", repos=\"http://R-Forge.R-project.org\")\n> library(intergraph)\n> g <- asIgraph(Xnet)\n>\n> # in weighted layout:\n> # larger weight = stronger attraction force between vertexes\n> lay <- igraph::layout.fruchterman.reingold(g, weights=igraph::E(g)$value)\n> # use statnet function to plot the network using the layout computed with igraph\n> plot.network(Xnet, coord=lay)\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi,\n\nI'm pretty sure I've done something like that before in network, but it \nisn't as simple as it should be.   I think it involved passing in a \nmatrix of edge distances via the 'elen' parameter to ",
+      "thread_id": "thread-d958667469c4",
+      "thread_depth": 2,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-e0a6607b57c1",
+      "message_id": "<CAByPayH5LWN_iAqR-1dAfZoWOWT1tSVUR=1FcgjedpcaBsYUPw@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2013-04-04T18:30:01Z",
+      "subject": "[statnet_help] Network Layout For Valued Networks",
+      "subject_clean": "[statnet_help] Network Layout For Valued Networks",
+      "in_reply_to": "<515E23E6.6030005@skyeome.net>",
+      "references": [
+        "<CAA1J5vQ4B520Ozsy+VBgHNcNh8=ObgWJXpLzLu2Au6yGAvUyew@mail.gmail.com>",
+        "<CAByPayG_VmB=QXTNgUy2MytN2bvALLGo6YJXd9Xrmte+dkm5mw@mail.gmail.com>",
+        "<515E23E6.6030005@skyeome.net>"
+      ],
+      "body_plain": "Nice, I missed that. In igraph you can use weights only with the\nFruchterman-Reingold algorithm (the weight is basically a multiplier\nfor the attraction force between the linked pair of vertexes). To\nachieve that with Kamada-Kawai you could go without a call to\n'geodist' and take edge values alone into account, not necesarily\ngeodesics. Not sure which variant would produce nicer layouts though.\n\n> I'm pretty sure I've done something like that before in network, but it\n> isn't as simple as it should be.   I think it involved passing in a matrix\n> of edge distances via the 'elen' parameter to the kamadakawai layout, but\n> first need to run geodist on it to calculate the indirect distances.\n> Something like:\n>\n> plot.network(Xnet,mode='kamadakawai',layout.par=list(elen=geodist(as.matrix(Xnet,attrname='value'))))\n>\n> but I can't actually test it right now because my world has been broken by\n> trying to upgrade to 3.0.0\n>\n> best,\n>  -skye\n>\n>\n> On 04/04/2013 05:51 PM, Micha? Bojanowski wrote:\n>>\n>> On Thu, Apr 4, 2013 at 9:12 PM, Sam Stewart <samstewart11@gmail.com>\n>> wrote:\n>>>\n>>> I believe that the problem is that the network.layout.* functions don't\n>>> accept edge-values as arguments.\n>>\n>>\n>> Hi,\n>>\n>> Do you want edge values to affect network layout (vertex placement) or\n>> the width of the edges?\n>>\n>> Others will correct me if I'm wrong, but I don't think that the\n>> network layout functions as currently implemented in network or sna\n>> packages allow for using edge values as \"weights\".\n>>\n>> If you need to use a \"weighted layout\" you might use one of the\n>> layouts implemented in 'igraph' package, for example (assuming that\n>> igraph is installed):\n>>\n>> library(network)\n>> set.seed(11)\n>> X = matrix(floor(runif(25,0,5)),nrow=5,byrow=T)\n>> Xnet = network(X,matrix.type='adjacency')\n>> set.edge.value(Xnet,'value',X)\n>>\n>> # Install intergraph package form R-Forge\n>> # install.packages(\"intergraph\", repos=\"http://R-Forge.R-project.org\")\n>> library(intergraph)\n>> g <- asIgraph(Xnet)\n>>\n>> # in weighted layout:\n>> # larger weight = stronger attraction force between vertexes\n>> lay <- igraph::layout.fruchterman.reingold(g, weights=igraph::E(g)$value)\n>> # use statnet function to plot the network using the layout computed with\n>> igraph\n>> plot.network(Xnet, coord=lay)\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Nice, I missed that. In igraph you can use weights only with the\nFruchterman-Reingold algorithm (the weight is basically a multiplier\nfor the attraction force between the linked pair of vertexes). To\n",
+      "thread_id": "thread-d958667469c4",
+      "thread_depth": 3,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-b5765d51e23d",
+      "message_id": "<515E364C.9080601@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2013-04-04T19:26:20Z",
+      "subject": "[statnet_help] Network Layout For Valued Networks",
+      "subject_clean": "[statnet_help] Network Layout For Valued Networks",
+      "in_reply_to": "<CAA1J5vQ4B520Ozsy+VBgHNcNh8=ObgWJXpLzLu2Au6yGAvUyew@mail.gmail.com>",
+      "references": [
+        "<CAA1J5vQ4B520Ozsy+VBgHNcNh8=ObgWJXpLzLu2Au6yGAvUyew@mail.gmail.com>"
+      ],
+      "body_plain": "That's not a mistake - there is no general way to alter a layout based \non edge values, and thus this is not done by default.  Particular layout \nroutines, however, may accept such information, and you can of course \nadd your own quite easily; see ?network.layout and ?gplot.layout (in \nsna) for details.  For layouts that support edge value information (e.g. \nKamada-Kawai) you can pass it via the layout.par argument.  The exact \nsyntax will depend on the layout function, and should be found in the \nabove man pages.\n\nHope that helps,\n\n-Carter\n\nOn 04/04/2013 12:12 PM, Sam Stewart wrote:\n> Is there a mistake in the code for the layout of valued networks?  If \n> there isn't then I'm making a mistake somewhere.  I have valued \n> networks and the layout algorithms passed through plot.network do not \n> seem to be handling edge values.  I've attached a simple example below.\n>\n> set.seed(11)\n> X = matrix(floor(runif(25,0,5)),nrow=5,byrow=T)\n> Xnet = network(X,matrix.type='adjacency')\n> set.edge.value(Xnet,'value',X)\n> #these two lines demonstrate that the edgevalues seem to be set correctly\n> as.matrix(Xnet)\n> as.matrix(Xnet,attrname='value')\n> set.seed(11)\n> par(mfrow=c(2,2),mar=c(1,1,1,1))\n> plot.network(Xnet,main='Simple Layout')\n> set.seed(11)\n> plot.network(Xnet,attrname='value',main='Setting attrname (has no \n> effect)')\n> set.seed(11)\n> x=gplot.layout.fruchtermanreingold(X,layout.par=NULL)\n> plot.network(Xnet,coord=x,main='Using gplot.layout with valued network')\n> set.seed(11)\n> x=gplot.layout.fruchtermanreingold(X>0,layout.par=NULL)\n> plot.network(Xnet,coord=x,main='Using gplot.layout with binary network')\n>\n>\n> I believe that the problem is that the network.layout.* functions \n> don't accept edge-values as arguments.  Both functions have the \n> following in their second line\n>\n> d <- as.matrix.network(nw, matrix.type = \"edgelist\")[, 1:2, drop = FALSE]\n>\n> Which returns a binary matrix even if an edge-attribute was passed.\n>\n> I've figured out a way around it, but I'm wondering if I'm making a \n> mistake somewhere, and if there is a way to get valued layout without \n> going through gplot.layout.*\n>\n> Thanks,\n> Sam\n> -- \n> Sam Stewart, MMath, A.Stat\n> IDPhD Candidate (Health Informatics)\n> Faculty of Computer Science, Dalhousie University\n> 6050 University Ave.\n> Halifax, NS, Canada, B3H 1W5\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130404/2cd71c38/attachment.html>",
+      "body_snippet": "That's not a mistake - there is no general way to alter a layout based \non edge values, and thus this is not done by default.  Particular layout \nroutines, however, may accept such information, and yo",
+      "thread_id": "thread-d958667469c4",
+      "thread_depth": 1,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-ee29a609d4fb",
+      "message_id": "<CAJdgHs8XQ1=ROBW0DDmjyuEFtoVitUnrh4cJKds_JbOdWEunuw@mail.gmail.com>",
+      "from_name": "Saeed Nasehi Moghadam",
+      "from_email_hash": "bd649562b27e56fdf90f5219df591b4859bb28486c4beabc53908bcc516096e8",
+      "date": "2013-04-05T02:22:22Z",
+      "subject": "[statnet_help] Help:Question about Best way to reveal Structural Equivalence Classes in R Packages:Statnet",
+      "subject_clean": "[statnet_help] Help:Question about Best way to reveal Structural Equivalence Classes in R Packages:Statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All\nHi\nCan someone help me with this query about the Best way to reveal Positions\nin Positional Analysis in R?\nin fact my question is about best clustering method to perform Positional\nAnalysis based on Structural Equivalence. Indeed i want to know which\nfunction in R packages performs best blockmodeling based on Structural\nEquivalence. If Hierarchical Clustering is approved which distance method\nis best? and if Hierarchical Clustering is questionable method which\nclustering method is best to reveal SE Classes in network in R package such\nas sna,...?\nThanks a lot for any attention!!\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130405/d2cdd265/attachment.html>",
+      "body_snippet": "Dear All\nHi\nCan someone help me with this query about the Best way to reveal Positions\nin Positional Analysis in R?\nin fact my question is about best clustering method to perform Positional\nAnalysis b",
+      "thread_id": "thread-ee29a609d4fb",
+      "thread_depth": 0,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-3cffb7a4bd00",
+      "message_id": "<5163C6FD.3030207@utalca.cl>",
+      "from_name": "Narciso Cerpa",
+      "from_email_hash": "7d3e10db43efad4b2f1b50a84d24c82413cac639cf3d9c90e25ec50aec361d1c",
+      "date": "2013-04-09T00:45:01Z",
+      "subject": "[statnet_help] Problem with ergm",
+      "subject_clean": "[statnet_help] Problem with ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI hope that somebody may be able to help me\n\nI am running ergm and I get an error. It does not matter how many \niterations I do (I tried with 200, but this example is only with 20), \nthe error is the same (please see at the bottom).\n\nconcepttype is a node attribute that can take three values (i.e., 1, 2, 3)\nmpssupported is a directed network\n\n > model2 <- ergm(mpssupported ~ edges + gwidegree(0.25, fixed=T) + \ngwodegree(0.25,fixed=T)+ nodefactor(\"concepttype\")+ \nnodemix(\"concepttype\"),control=control.ergm(MCMC.samplesize=10000))\n\nIteration 1 of at most 20:\nthe log-likelihood improved by 16.85\nIteration 2 of at most 20:\nthe log-likelihood improved by 14.49\nIteration 3 of at most 20:\nthe log-likelihood improved by 19.67\nIteration 4 of at most 20:\nthe log-likelihood improved by 16.6\nIteration 5 of at most 20:\nthe log-likelihood improved by 18.89\nIteration 6 of at most 20:\nthe log-likelihood improved by 19.76\nIteration 7 of at most 20:\nthe log-likelihood improved by 19.88\nIteration 8 of at most 20:\nthe log-likelihood improved by 10.92\nIteration 9 of at most 20:\nthe log-likelihood improved by 4.979\nIteration 10 of at most 20:\nthe log-likelihood improved by 19.14\nIteration 11 of at most 20:\nthe log-likelihood improved by 19.99\nIteration 12 of at most 20:\nthe log-likelihood improved by 18.81\nIteration 13 of at most 20:\nthe log-likelihood improved by 11.67\nIteration 14 of at most 20:\nthe log-likelihood improved by 19.97\nIteration 15 of at most 20:\nthe log-likelihood improved by 18.5\nIteration 16 of at most 20:\nthe log-likelihood improved by 13.87\nIteration 17 of at most 20:\nthe log-likelihood improved by 7.43\nIteration 18 of at most 20:\nthe log-likelihood improved by 16.36\nIteration 19 of at most 20:\nthe log-likelihood improved by 11.96\nIteration 20 of at most 20:\nthe log-likelihood improved by 19.98\n\nThis model was fit using MCMC.  To examine model diagnostics and check \nfor degeneracy, use the mcmc.diagnostics() function.\nError in simulate.formula(form, coef = theta, nsim = 1, constraints = \nconstraints,  :Illegal value of coef passed to simulate.formula",
+      "body_snippet": "Hi,\n\nI hope that somebody may be able to help me\n\nI am running ergm and I get an error. It does not matter how many \niterations I do (I tried with 200, but this example is only with 20), \nthe error is",
+      "thread_id": "thread-3cffb7a4bd00",
+      "thread_depth": 0,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-5340cf292f17",
+      "message_id": "<BBD84CAEFB2F3C44B76E656865AD2E4508309C15@EX2K10MBX.cti.depaul.edu>",
+      "from_name": "Burke, Robin",
+      "from_email_hash": "58ad4f38b9a28ba0b95462ca49d8c0fc25a5925994bfe8121e19d86c3a388bba",
+      "date": "2013-04-10T12:30:01Z",
+      "subject": "[statnet_help] set.edge.attribute vs %e%",
+      "subject_clean": "[statnet_help] set.edge.attribute vs %e%",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "In the following R code, the values of an edge attribute are different when I set it via the %e% operator or via the set.edge.attribute function. Set.edge.attribute gets the right answer. The %e% operator seems to be shifting or otherwise permuting the vector.\n\nIs there something I'm not understanding about these two operators? It seems to me from my reading of the documentation that they should be interchangeable. I wondered if maybe it had something to do with the self-edges, but setting loops=TRUE in the network coercion step has no effect.\n\nR.2.15.1\nnetwork 1.7-1.1\n\n> df <- data.frame(ego=c(1,1,1,2,2,2,3,3,3), alter=c(1,2,3,1,2,3,1,2,3),\n                  edge=c(0,1,1,0,0,1,1,0,0))\n> net <- as.network(df[,1:2])\n> net2 <- net\n> net2%e%\"att\" <- df$edge\n> set.edge.attribute(net2,\"att2\", df$edge)\n> net2%e%\"att\"\n[1] 0 0 1 1 0 0 1 1 0\n> net2%e%\"att2\"\n[1] 0 1 1 0 0 1 1 0 0\n\nThanks,\n\n__________________________________________________________\nRobin Burke, Professor\nCollege of Computing and Digital Media, DePaul University\nrburke@cdm.depaul.edu\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130410/4c368441/attachment.html>",
+      "body_snippet": "In the following R code, the values of an edge attribute are different when I set it via the %e% operator or via the set.edge.attribute function. Set.edge.attribute gets the right answer. The %e% oper",
+      "thread_id": "thread-5340cf292f17",
+      "thread_depth": 0,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-a8493228ddf5",
+      "message_id": "<CA+hV2uUr++ECg-2JQwXvThRvMFTomroEqMQ8y1V4A16Q=SOcdw@mail.gmail.com>",
+      "from_name": "Yun Huang",
+      "from_email_hash": "adf4da61062e4fa75371efaffb9053bf686d51778199fff94d9a21334bfff133",
+      "date": "2013-04-10T14:43:07Z",
+      "subject": "[statnet_help] set.edge.attribute vs %e%",
+      "subject_clean": "[statnet_help] set.edge.attribute vs %e%",
+      "in_reply_to": "<BBD84CAEFB2F3C44B76E656865AD2E4508309C15@EX2K10MBX.cti.depaul.edu>",
+      "references": [
+        "<BBD84CAEFB2F3C44B76E656865AD2E4508309C15@EX2K10MBX.cti.depaul.edu>"
+      ],
+      "body_plain": "> net2%e%\"att\" <- df$edge\nThis is wrong and the results are not predicable. You need to use an\nadjacency matrix. See the following examples.\n\n> net3 <- network(matrix(1,3,3))\n> set.edge.attribute(net3,\"att\", c(1:6))\n> net3%e%\"att\"\n[1] 1 2 3 4 5 6\n> net3%e%\"att2\" <- c(c(0,1,2),c(3,0,4),c(5,6,0))\n> net3%e%\"att2\"\n[1] 1 2 3 4 5 6\n> net3%e%\"att3\" <- c(1:6)\n> net3%e%\"att3\"\n[1] 2 3 4 6 1 2\n\nBest,\nYun\n\nOn Wed, Apr 10, 2013 at 2:30 PM, Burke, Robin <rburke@cs.depaul.edu> wrote:\n> In the following R code, the values of an edge attribute are different when\n> I set it via the %e% operator or via the set.edge.attribute function.\n> Set.edge.attribute gets the right answer. The %e% operator seems to be\n> shifting or otherwise permuting the vector.\n>\n>\n>\n> Is there something I?m not understanding about these two operators? It seems\n> to me from my reading of the documentation that they should be\n> interchangeable. I wondered if maybe it had something to do with the\n> self-edges, but setting loops=TRUE in the network coercion step has no\n> effect.\n>\n>\n>\n> R.2.15.1\n>\n> network 1.7-1.1\n>\n>\n>\n>> df <- data.frame(ego=c(1,1,1,2,2,2,3,3,3), alter=c(1,2,3,1,2,3,1,2,3),\n>\n>                   edge=c(0,1,1,0,0,1,1,0,0))\n>\n>> net <- as.network(df[,1:2])\n>\n>> net2 <- net\n>\n>> net2%e%\"att\" <- df$edge\n>\n>> set.edge.attribute(net2,\"att2\", df$edge)\n>\n>> net2%e%\"att\"\n>\n> [1] 0 0 1 1 0 0 1 1 0\n>\n>> net2%e%\"att2\"\n>\n> [1] 0 1 1 0 0 1 1 0 0\n>\n>\n>\n> Thanks,\n>\n>\n>\n> __________________________________________________________\n>\n> Robin Burke, Professor\n>\n> College of Computing and Digital Media, DePaul University\n>\n> rburke@cdm.depaul.edu\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n--\nYun Huang\nScience of Networks in Communities (SONIC)\nIndustrial Engineering and Management Sciences\nNorthwestern University\nGoogle Voice: 847-220-7310\nOffice: FSB 1.459",
+      "body_snippet": "> net2%e%\"att\" <- df$edge\nThis is wrong and the results are not predicable. You need to use an\nadjacency matrix. See the following examples.\n\n> net3 <- network(matrix(1,3,3))\n> set.edge.attribute(net3",
+      "thread_id": "thread-5340cf292f17",
+      "thread_depth": 1,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-8e2ccc8ff1ac",
+      "message_id": "<5165E7FF.1030000@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2013-04-10T15:30:23Z",
+      "subject": "[statnet_help] Error using ergm command with target.stats and constraints",
+      "subject_clean": "[statnet_help] Error using ergm command with target.stats and constraints",
+      "in_reply_to": "<515B74EE.1020206@uw.edu>",
+      "references": [
+        "<CACiWmAzVsyTSs=_nNqMEQjgGUy33vaXjHToVDkrJ0E5poWrobQ@mail.gmail.com>",
+        "<515B74EE.1020206@uw.edu>"
+      ],
+      "body_plain": "Hi all,\n\nI've since learned that my advice to Ravi here was wrong, and wanted \neveryone to know in case others had the same issue. base=-2 is actually \nperfectly legal syntax, and is documented in the ergm help; I just never \nknew that feature was implemented.\n\nThe actual culprit looks like it may be a small bug, which we're working \non now.\n\nSt\n\nOn 4/2/2013 5:16 PM, Steven Goodreau wrote:\n> Hi Ravi-\n>\n> The issue seems to be with \"base=-2\".  The base argument lists the \n> positions of the statistics to be excluded; if your intention was to \n> leave out the 2nd of the possible statistics associated with this \n> term, then it should be \"base=2\".  That is, the negative sign, in the \n> sense of exclusion, is already implicit.  Once you take out the \n> negative sign from your code, though, there is still an issue of an \n> incorrect number of statistics being passed, which makes me think that \n> perhaps you are intending something else.  If so, feel free to email \n> the group or to me one on one and I can try to ascertain.\n>\n> Cheers,\n> Steve\n>\n>\n>\n> On 3/26/2013 8:03 AM, Ravi Goyal wrote:\n>> Dear Statnet Team and Mailing List,\n>>\n>> I am having some problems when using the 'ergm' command with both the \n>> target.stats and constraints options.  Any help is greatly \n>> appreciated.  My code is the following:\n>>\n>> #########CODE################\n>> library('sna')\n>> library('ergm')\n>>\n>> ER_g = rgnm(1, 100, 100, mode = \"graph\", diag = FALSE, \n>> return.as.edgelist = FALSE)\n>>\n>> g.net <http://g.net> <-network.initialize(100, directed = F) \n>> #Initialize the network\n>> g.net <http://g.net> = network.adjacency(ER_g,g.net <http://g.net>) \n>> #Import the edge data\n>>\n>> g.net <http://g.net> %v% 'set' <- c(rep(1,50),rep(2,50))\n>>\n>> #MODEL\n>> g.ergm = ergm(g.net <http://g.net>~nodemix('set', base = -2),\n>>         target.stats=c(20),\n>>         constraints =~degrees,\n>>         verbose = TRUE\n>>         )\n>> #######CODE###################\n>>\n>> I get the following output and error:\n>>\n>> ######OUTPUT MODEL 1#########\n>>\n>> > #MODEL\n>> > g.ergm = ergm(g.net <http://g.net>~nodemix('set', base = -2),\n>> + target.stats=c(20),\n>> + constraints =~degrees,\n>> + verbose = TRUE\n>> + )\n>>\n>> Evaluating network in model\n>> Constructing an approximate response network.\n>> Error: No model specified for network  +No model specified for \n>> network  conddegmpleNo model specified for network nodemix(\"set\", \n>> base = -2)\n>>\n>> ######OUTPUT MODEL 1#########\n>>\n>> Below are details from  sessionInfo() and  getOption(\"pkgType\")\n>>\n>> >   sessionInfo()\n>> R version 2.15.3 (2013-03-01)\n>> Platform: x86_64-w64-mingw32/x64 (64-bit)\n>>\n>> locale:\n>> [1] LC_COLLATE=English_United States.1252 LC_CTYPE=English_United \n>> States.1252\n>> [3] LC_MONETARY=English_United States.1252 LC_NUMERIC=C\n>>\n>> [5] LC_TIME=English_United States.1252\n>>\n>> attached base packages:\n>> [1] stats     graphics  grDevices utils     datasets methods   base\n>>\n>> other attached packages:\n>>  [1] sna_2.3-1        degreenet_1.2    ergm_3.0-3 coda_0.16-1      \n>> nlme_3.1-108\n>>  [6] trust_0.1-2      Matrix_1.0-11    lattice_0.20-13 \n>> robustbase_0.9-7 network_1.7-1.1\n>>\n>> loaded via a namespace (and not attached):\n>> [1] grid_2.15.3  tools_2.15.3\n>>\n>> >   getOption(\"pkgType\")\n>> [1] \"win.binary\"\n>>\n>>\n>> Thank you!\n>>\n>> Sincerely,\n>>    Ravi\n>>\n>> Ravi Goyal\n>> Research Associate\n>> Dept. of Biostatistics\n>> Harvard University\n>>\n>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n> *** NOTE NEW OFFICE LOCATION AS OF MARCH 2012: DENNY 423 ***\n>\n> Steven M. Goodreau / Assoc. Professor / Dept. of Anthropology\n> University of Washington / Denny Hall 423 / Campus Box 353100\n> Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)\n> http://faculty.washington.edu/goodreau\n\n\n*** NOTE NEW OFFICE LOCATION AS OF MARCH 2012: DENNY 423 ***\n\nSteven M. Goodreau / Assoc. Professor / Dept. of Anthropology\nUniversity of Washington / Denny Hall 423 / Campus Box 353100\nSeattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130410/5bbeb020/attachment.html>",
+      "body_snippet": "Hi all,\n\nI've since learned that my advice to Ravi here was wrong, and wanted \neveryone to know in case others had the same issue. base=-2 is actually \nperfectly legal syntax, and is documented in the",
+      "thread_id": "thread-932e739d82d8",
+      "thread_depth": 1,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-74ce64a2503d",
+      "message_id": "<001501ce363f$fcd6acd0$f6840670$@unm.edu>",
+      "from_name": "Greg Lambert",
+      "from_email_hash": "7d63681b3ad941eeeb3c6f01bd48c3ce95f3d1ebcf78d302ff3bf4f7301be181",
+      "date": "2013-04-10T16:06:09Z",
+      "subject": "[statnet_help] cross-validation ERGM",
+      "subject_clean": "[statnet_help] cross-validation ERGM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello ERGM fans,\n\n \n\nI am interested in conducting cross-validation for ERG models. I realize the\nstatnet package has goodness of fit capabilities but was looking to do\nvalidation in terms of estimating the performance of an ERG as a predictive\nmodel. Not sure how one could break an ERGM into a test/training set. If\nanyone has any good ideas or resources it would be greatly appreciated.  \n\n \n\nThanks\n\nGreg\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130410/5fd9c9e5/attachment.html>",
+      "body_snippet": "Hello ERGM fans,\n\n \n\nI am interested in conducting cross-validation for ERG models. I realize the\nstatnet package has goodness of fit capabilities but was looking to do\nvalidation in terms of estimati",
+      "thread_id": "thread-74ce64a2503d",
+      "thread_depth": 0,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-172845c34ef0",
+      "message_id": "<alpine.WNT.1.10.1304101634530.41676@TS3.csde.washington.edu>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-04-10T16:48:40Z",
+      "subject": "[statnet_help] cross-validation ERGM",
+      "subject_clean": "[statnet_help] cross-validation ERGM",
+      "in_reply_to": "<001501ce363f$fcd6acd0$f6840670$@unm.edu>",
+      "references": [
+        "<001501ce363f$fcd6acd0$f6840670$@unm.edu>"
+      ],
+      "body_plain": "Hi Greg,\n\nThis is a very interesting question.  It's not really possible to break \na single complete network into a \"test\" and \"training\" set, without \nmodifying the very structural features that ERGM is designed to model.\n\nIf you happen to have two (or more) observations of the network of \ninterest you could train on one and test on the other.\n\nbest,\nMartina\n\n\nOn Wed, 10 Apr 2013, Greg Lambert wrote:\n\n> \n> Hello ERGM fans,\n>\n> \n> \n> I am interested in conducting cross-validation for ERG models. I realize the statnet package\n> has goodness of fit capabilities but was looking to do validation in terms of estimating the\n> performance of an ERG as a predictive model. Not sure how one could break an ERGM into a\n> test/training set. If anyone has any good ideas or resources it would be greatly appreciated.\n> \n>\n> \n> \n> Thanks\n> \n> Greg\n> \n> \n>\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Greg,\n\nThis is a very interesting question.  It's not really possible to break \na single complete network into a \"test\" and \"training\" set, without \nmodifying the very structural features that ERGM",
+      "thread_id": "thread-74ce64a2503d",
+      "thread_depth": 1,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-671e63810252",
+      "message_id": "<003501ce3652$635f2100$2a1d6300$@unm.edu>",
+      "from_name": "Greg Lambert",
+      "from_email_hash": "7d63681b3ad941eeeb3c6f01bd48c3ce95f3d1ebcf78d302ff3bf4f7301be181",
+      "date": "2013-04-10T18:17:48Z",
+      "subject": "[statnet_help] cross-validation ERGM",
+      "subject_clean": "[statnet_help] cross-validation ERGM",
+      "in_reply_to": "<alpine.WNT.1.10.1304101634530.41676@TS3.csde.washington.edu>",
+      "references": [
+        "<001501ce363f$fcd6acd0$f6840670$@unm.edu>",
+        "<alpine.WNT.1.10.1304101634530.41676@TS3.csde.washington.edu>"
+      ],
+      "body_plain": "Hi Martina,\n\nThat makes complete sense. At the moment I am using a longitudinal study\n(Add-health). I will see if I can explore cross-validation using separate\nobservations of the same network.\n\nThanks\nGreg\n\n\n-----Original Message-----\nFrom: martina morris [mailto:morrism@u.washington.edu] \nSent: Wednesday, April 10, 2013 5:49 PM\nTo: Greg Lambert\nCc: statnet_help@u.washington.edu\nSubject: Re: [statnet_help] cross-validation ERGM\n\nHi Greg,\n\nThis is a very interesting question.  It's not really possible to break a\nsingle complete network into a \"test\" and \"training\" set, without modifying\nthe very structural features that ERGM is designed to model.\n\nIf you happen to have two (or more) observations of the network of interest\nyou could train on one and test on the other.\n\nbest,\nMartina\n\n\nOn Wed, 10 Apr 2013, Greg Lambert wrote:\n\n> \n> Hello ERGM fans,\n>\n> \n> \n> I am interested in conducting cross-validation for ERG models. I \n> realize the statnet package has goodness of fit capabilities but was \n> looking to do validation in terms of estimating the performance of an \n> ERG as a predictive model. Not sure how one could break an ERGM into a\ntest/training set. If anyone has any good ideas or resources it would be\ngreatly appreciated.\n> \n>\n> \n> \n> Thanks\n> \n> Greg\n> \n> \n>",
+      "body_snippet": "Hi Martina,\n\nThat makes complete sense. At the moment I am using a longitudinal study\n(Add-health). I will see if I can explore cross-validation using separate\nobservations of the same network.\n\nThank",
+      "thread_id": "thread-74ce64a2503d",
+      "thread_depth": 2,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-10154090303d",
+      "message_id": "<alpine.WNT.1.10.1304101830260.3092@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-04-10T18:33:33Z",
+      "subject": "[statnet_help] cross-validation ERGM",
+      "subject_clean": "[statnet_help] cross-validation ERGM",
+      "in_reply_to": "<003501ce3652$635f2100$2a1d6300$@unm.edu>",
+      "references": [
+        "<001501ce363f$fcd6acd0$f6840670$@unm.edu>",
+        "<alpine.WNT.1.10.1304101634530.41676@TS3.csde.washington.edu>",
+        "<003501ce3652$635f2100$2a1d6300$@unm.edu>"
+      ],
+      "body_plain": "Which Add Health data are you working with?  If the friendship data \nfrom waves 1 and 2 you do have a couple of options:\n\n1. Wave 1:  choose some schools of equal size, and equal values on some \nother relevant characteristics (you've seen our Birds of a Feather paper, \nyes?)\n\n2. Waves 1 & 2:  use the saturation schools, as they have 2 waves of\nfriendship network observation on each school.\n\nbest,\nmm\n\nOn Wed, 10 Apr 2013, Greg Lambert wrote:\n\n> Hi Martina,\n>\n> That makes complete sense. At the moment I am using a longitudinal study\n> (Add-health). I will see if I can explore cross-validation using separate\n> observations of the same network.\n>\n> Thanks\n> Greg\n>\n>\n> -----Original Message-----\n> From: martina morris [mailto:morrism@u.washington.edu]\n> Sent: Wednesday, April 10, 2013 5:49 PM\n> To: Greg Lambert\n> Cc: statnet_help@u.washington.edu\n> Subject: Re: [statnet_help] cross-validation ERGM\n>\n> Hi Greg,\n>\n> This is a very interesting question.  It's not really possible to break a\n> single complete network into a \"test\" and \"training\" set, without modifying\n> the very structural features that ERGM is designed to model.\n>\n> If you happen to have two (or more) observations of the network of interest\n> you could train on one and test on the other.\n>\n> best,\n> Martina\n>\n>\n> On Wed, 10 Apr 2013, Greg Lambert wrote:\n>\n>>\n>> Hello ERGM fans,\n>>\n>>\n>>\n>> I am interested in conducting cross-validation for ERG models. I\n>> realize the statnet package has goodness of fit capabilities but was\n>> looking to do validation in terms of estimating the performance of an\n>> ERG as a predictive model. Not sure how one could break an ERGM into a\n> test/training set. If anyone has any good ideas or resources it would be\n> greatly appreciated.\n>>\n>>\n>>\n>>\n>> Thanks\n>>\n>> Greg\n>>\n>>\n>>\n>\n>",
+      "body_snippet": "Which Add Health data are you working with?  If the friendship data \nfrom waves 1 and 2 you do have a couple of options:\n\n1. Wave 1:  choose some schools of equal size, and equal values on some \nother",
+      "thread_id": "thread-74ce64a2503d",
+      "thread_depth": 3,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-3b6eaf2f47a2",
+      "message_id": "<003b01ce3657$6c3c7840$44b568c0$@unm.edu>",
+      "from_name": "Greg Lambert",
+      "from_email_hash": "7d63681b3ad941eeeb3c6f01bd48c3ce95f3d1ebcf78d302ff3bf4f7301be181",
+      "date": "2013-04-10T18:53:51Z",
+      "subject": "[statnet_help] cross-validation ERGM",
+      "subject_clean": "[statnet_help] cross-validation ERGM",
+      "in_reply_to": "<alpine.WNT.1.10.1304101830260.3092@morrism-PC>",
+      "references": [
+        "<001501ce363f$fcd6acd0$f6840670$@unm.edu>",
+        "<alpine.WNT.1.10.1304101634530.41676@TS3.csde.washington.edu>",
+        "<003501ce3652$635f2100$2a1d6300$@unm.edu>",
+        "<alpine.WNT.1.10.1304101830260.3092@morrism-PC>"
+      ],
+      "body_plain": "I have read the Birds of a Feather paper, it has been very useful. I am\nusing the restricted Add health data. I am thinking that the second option\nwill probably work best for predictive purposes. Do you think I should\nremove actors that don't supply friendship nominations in Wave 2 from my\nWave 1 network for the cross-validation? \n\n\nThanks so much for all your help\nGreg\n\n-----Original Message-----\nFrom: martina morris [mailto:morrism@u.washington.edu] \nSent: Wednesday, April 10, 2013 7:34 PM\nTo: Greg Lambert\nCc: statnet_help@u.washington.edu\nSubject: RE: [statnet_help] cross-validation ERGM\n\nWhich Add Health data are you working with?  If the friendship data from\nwaves 1 and 2 you do have a couple of options:\n\n1. Wave 1:  choose some schools of equal size, and equal values on some\nother relevant characteristics (you've seen our Birds of a Feather paper,\nyes?)\n\n2. Waves 1 & 2:  use the saturation schools, as they have 2 waves of\nfriendship network observation on each school.\n\nbest,\nmm\n\nOn Wed, 10 Apr 2013, Greg Lambert wrote:\n\n> Hi Martina,\n>\n> That makes complete sense. At the moment I am using a longitudinal \n> study (Add-health). I will see if I can explore cross-validation using \n> separate observations of the same network.\n>\n> Thanks\n> Greg\n>\n>\n> -----Original Message-----\n> From: martina morris [mailto:morrism@u.washington.edu]\n> Sent: Wednesday, April 10, 2013 5:49 PM\n> To: Greg Lambert\n> Cc: statnet_help@u.washington.edu\n> Subject: Re: [statnet_help] cross-validation ERGM\n>\n> Hi Greg,\n>\n> This is a very interesting question.  It's not really possible to \n> break a single complete network into a \"test\" and \"training\" set, \n> without modifying the very structural features that ERGM is designed to\nmodel.\n>\n> If you happen to have two (or more) observations of the network of \n> interest you could train on one and test on the other.\n>\n> best,\n> Martina\n>\n>\n> On Wed, 10 Apr 2013, Greg Lambert wrote:\n>\n>>\n>> Hello ERGM fans,\n>>\n>>\n>>\n>> I am interested in conducting cross-validation for ERG models. I \n>> realize the statnet package has goodness of fit capabilities but was \n>> looking to do validation in terms of estimating the performance of an \n>> ERG as a predictive model. Not sure how one could break an ERGM into \n>> a\n> test/training set. If anyone has any good ideas or resources it would \n> be greatly appreciated.\n>>\n>>\n>>\n>>\n>> Thanks\n>>\n>> Greg\n>>\n>>\n>>\n>\n>",
+      "body_snippet": "I have read the Birds of a Feather paper, it has been very useful. I am\nusing the restricted Add health data. I am thinking that the second option\nwill probably work best for predictive purposes. Do y",
+      "thread_id": "thread-74ce64a2503d",
+      "thread_depth": 4,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-28d0685d342c",
+      "message_id": "<alpine.WNT.1.10.1304102011580.3092@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-04-10T20:41:56Z",
+      "subject": "[statnet_help] cross-validation ERGM",
+      "subject_clean": "[statnet_help] cross-validation ERGM",
+      "in_reply_to": "<003b01ce3657$6c3c7840$44b568c0$@unm.edu>",
+      "references": [
+        "<001501ce363f$fcd6acd0$f6840670$@unm.edu>",
+        "<alpine.WNT.1.10.1304101634530.41676@TS3.csde.washington.edu>",
+        "<003501ce3652$635f2100$2a1d6300$@unm.edu>",
+        "<alpine.WNT.1.10.1304101830260.3092@morrism-PC>",
+        "<003b01ce3657$6c3c7840$44b568c0$@unm.edu>"
+      ],
+      "body_plain": "You're breaking new ground here, so may need to try different options. \nOne thing to remember about the AH data is that *lots* of ties are \nalready missing, because of absentee student (affects outdegree) and \nnominations to non-unique nodes (out of school, in sister school, and \nnot on roster).\n\nWe don't know much about the sensitivity of ERGM estimates to these \ntypes of missing data.  Missing links for a given number of nodes is one \nthing.  But missing nodes (i.e., non-unique node identifiers) is another.\n\nIt's worth keeping in mind that without knowing the true values, \nyou'll be unable to distinguish differences in network properties, from \nthe differences you're trying to identify with cross-validation.\n\nWhat is the actual question you're trying to answer?\n\nOn Wed, 10 Apr 2013, Greg Lambert wrote:\n\n> I have read the Birds of a Feather paper, it has been very useful. I am\n> using the restricted Add health data. I am thinking that the second option\n> will probably work best for predictive purposes. Do you think I should\n> remove actors that don't supply friendship nominations in Wave 2 from my\n> Wave 1 network for the cross-validation?\n>\n>\n> Thanks so much for all your help\n> Greg\n>\n> -----Original Message-----\n> From: martina morris [mailto:morrism@u.washington.edu]\n> Sent: Wednesday, April 10, 2013 7:34 PM\n> To: Greg Lambert\n> Cc: statnet_help@u.washington.edu\n> Subject: RE: [statnet_help] cross-validation ERGM\n>\n> Which Add Health data are you working with?  If the friendship data from\n> waves 1 and 2 you do have a couple of options:\n>\n> 1. Wave 1:  choose some schools of equal size, and equal values on some\n> other relevant characteristics (you've seen our Birds of a Feather paper,\n> yes?)\n>\n> 2. Waves 1 & 2:  use the saturation schools, as they have 2 waves of\n> friendship network observation on each school.\n>\n> best,\n> mm\n>\n> On Wed, 10 Apr 2013, Greg Lambert wrote:\n>\n>> Hi Martina,\n>>\n>> That makes complete sense. At the moment I am using a longitudinal\n>> study (Add-health). I will see if I can explore cross-validation using\n>> separate observations of the same network.\n>>\n>> Thanks\n>> Greg\n>>\n>>\n>> -----Original Message-----\n>> From: martina morris [mailto:morrism@u.washington.edu]\n>> Sent: Wednesday, April 10, 2013 5:49 PM\n>> To: Greg Lambert\n>> Cc: statnet_help@u.washington.edu\n>> Subject: Re: [statnet_help] cross-validation ERGM\n>>\n>> Hi Greg,\n>>\n>> This is a very interesting question.  It's not really possible to\n>> break a single complete network into a \"test\" and \"training\" set,\n>> without modifying the very structural features that ERGM is designed to\n> model.\n>>\n>> If you happen to have two (or more) observations of the network of\n>> interest you could train on one and test on the other.\n>>\n>> best,\n>> Martina\n>>\n>>\n>> On Wed, 10 Apr 2013, Greg Lambert wrote:\n>>\n>>>\n>>> Hello ERGM fans,\n>>>\n>>>\n>>>\n>>> I am interested in conducting cross-validation for ERG models. I\n>>> realize the statnet package has goodness of fit capabilities but was\n>>> looking to do validation in terms of estimating the performance of an\n>>> ERG as a predictive model. Not sure how one could break an ERGM into\n>>> a\n>> test/training set. If anyone has any good ideas or resources it would\n>> be greatly appreciated.\n>>>\n>>>\n>>>\n>>>\n>>> Thanks\n>>>\n>>> Greg\n>>>\n>>>\n>>>\n>>\n>>\n>\n>\n>",
+      "body_snippet": "You're breaking new ground here, so may need to try different options. \nOne thing to remember about the AH data is that *lots* of ties are \nalready missing, because of absentee student (affects outdeg",
+      "thread_id": "thread-74ce64a2503d",
+      "thread_depth": 5,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-6f305484300b",
+      "message_id": "<CABW9NAyEUtJ5mkBjm6mEv5GJrekZ2d=TEgu9iDfzVJPYC9pLBg@mail.gmail.com>",
+      "from_name": "sylvain willart",
+      "from_email_hash": "48834b5c6a9bc4984037eee41884e5cd0059ae662d76c99e5bfd5c49bb6ec311",
+      "date": "2013-04-13T10:00:31Z",
+      "subject": "[statnet_help] Reshaping Data for bi-partite Network Analysis",
+      "subject_clean": "[statnet_help] Reshaping Data for bi-partite Network Analysis",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello\n\nI am a beginner in network analysis with R,\nI went through the classical metrics for 'one-node' networks and found all\nof it very appealing, but now I would like to analyze 'bi-partite' networks\n\nI have a dataset of people spending time in places. But most people don't\nhang out in all the places.\n\nit looks like:\n\n> Input<-data.frame(people=c(\"Marc\",\"Marc\",\"Joe\",\"Joe\",\"Joe\",\"Mary\"),\n+              place=c(\"school\",\"home\",\"home\",\"sport\",\"beach\",\"school\"),\n+              time=c(2,4,3,1,5,4))\n> Input\n  people  place time\n1   Marc school    2\n2   Marc   home    4\n3    Joe   home    3\n4    Joe  sport    1\n5    Joe  beach    5\n6   Mary school    4\n\nIn order to import it within R, I saw I could use graph.incidence(), but\nthe data needs to be formatted that way:\n\n>\nOutput<-data.frame(school=c(2,0,4),home=c(4,3,0),sport=c(0,1,0),beach=c(0,5,0),\n+                    row.names=c(\"Marc\",\"Joe\",\"Mary\"))\n> Output\n     school home sport beach\nMarc      2    4     0     0\nJoe       0    3     1     5\nMary      4    0     0     0\n\nThe Dataset is fairly large (couple hundreds of people and places), and I\nwould very much appreciate if someone could point me to a routine or\nfunction that could transform my Input dataset to the required Output,\n\nThank you very much in advance\n\nRegards\n\nSylvain\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130413/3c907a82/attachment.html>",
+      "body_snippet": "Hello\n\nI am a beginner in network analysis with R,\nI went through the classical metrics for 'one-node' networks and found all\nof it very appealing, but now I would like to analyze 'bi-partite' network",
+      "thread_id": "thread-6f305484300b",
+      "thread_depth": 0,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-f8ec71b7be24",
+      "message_id": "<BBD84CAEFB2F3C44B76E656865AD2E450831D57F@EX2K10MBX.cti.depaul.edu>",
+      "from_name": "Burke, Robin",
+      "from_email_hash": "58ad4f38b9a28ba0b95462ca49d8c0fc25a5925994bfe8121e19d86c3a388bba",
+      "date": "2013-04-13T13:07:14Z",
+      "subject": "[statnet_help] Circle layout",
+      "subject_clean": "[statnet_help] Circle layout",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "In other graph visualization software that I've used, it is possible to order the vertices in a Circle layout to emphasize some aspect of the network, such as cluster id or degree. In these systems, I can specify a vertex order that is used to place the vertices in sequence. The circle layout in plot.network and gplot takes no arguments, so obviously that isn't the way to do it.\n\nIs there a standard technique for creating a custom ordering for the vertices in a gplot circle layout? Other ideas for getting the effect I want?\n\nThanks,\n\n__________________________________________________________\nRobin Burke, Professor\nCollege of Computing and Digital Media, DePaul University\nrburke@cdm.depaul.edu\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130413/08b29da7/attachment.html>",
+      "body_snippet": "In other graph visualization software that I've used, it is possible to order the vertices in a Circle layout to emphasize some aspect of the network, such as cluster id or degree. In these systems, I",
+      "thread_id": "thread-f8ec71b7be24",
+      "thread_depth": 0,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-af98c771f2d1",
+      "message_id": "<CAPrs4Og+ZASmFaXdZ-3bAt-GrSdEZKbagjDdJhzsi=0S-OpbGQ@mail.gmail.com>",
+      "from_name": "Elena Grewal",
+      "from_email_hash": "82405de478d2a4af660d23848680f3c2a591c80e9451bcbddb6fe3ad2968a022",
+      "date": "2013-04-16T12:14:45Z",
+      "subject": "[statnet_help] Problem with ergm",
+      "subject_clean": "[statnet_help] Problem with ergm",
+      "in_reply_to": "<5163C6FD.3030207@utalca.cl>",
+      "references": [
+        "<5163C6FD.3030207@utalca.cl>"
+      ],
+      "body_plain": "I have gotten the same error on occasion and am also not sure about how to\nfix the problem.\n\n\n\n\nOn Tue, Apr 9, 2013 at 3:45 AM, Narciso Cerpa <ncerpa@utalca.cl> wrote:\n\n> Hi,\n>\n> I hope that somebody may be able to help me\n>\n> I am running ergm and I get an error. It does not matter how many\n> iterations I do (I tried with 200, but this example is only with 20), the\n> error is the same (please see at the bottom).\n>\n> concepttype is a node attribute that can take three values (i.e., 1, 2, 3)\n> mpssupported is a directed network\n>\n> > model2 <- ergm(mpssupported ~ edges + gwidegree(0.25, fixed=T) +\n> gwodegree(0.25,fixed=T)+ nodefactor(\"concepttype\")+ nodemix(\"concepttype\"),\n> **control=control.ergm(MCMC.**samplesize=10000))\n>\n> Iteration 1 of at most 20:\n> the log-likelihood improved by 16.85\n> Iteration 2 of at most 20:\n> the log-likelihood improved by 14.49\n> Iteration 3 of at most 20:\n> the log-likelihood improved by 19.67\n> Iteration 4 of at most 20:\n> the log-likelihood improved by 16.6\n> Iteration 5 of at most 20:\n> the log-likelihood improved by 18.89\n> Iteration 6 of at most 20:\n> the log-likelihood improved by 19.76\n> Iteration 7 of at most 20:\n> the log-likelihood improved by 19.88\n> Iteration 8 of at most 20:\n> the log-likelihood improved by 10.92\n> Iteration 9 of at most 20:\n> the log-likelihood improved by 4.979\n> Iteration 10 of at most 20:\n> the log-likelihood improved by 19.14\n> Iteration 11 of at most 20:\n> the log-likelihood improved by 19.99\n> Iteration 12 of at most 20:\n> the log-likelihood improved by 18.81\n> Iteration 13 of at most 20:\n> the log-likelihood improved by 11.67\n> Iteration 14 of at most 20:\n> the log-likelihood improved by 19.97\n> Iteration 15 of at most 20:\n> the log-likelihood improved by 18.5\n> Iteration 16 of at most 20:\n> the log-likelihood improved by 13.87\n> Iteration 17 of at most 20:\n> the log-likelihood improved by 7.43\n> Iteration 18 of at most 20:\n> the log-likelihood improved by 16.36\n> Iteration 19 of at most 20:\n> the log-likelihood improved by 11.96\n> Iteration 20 of at most 20:\n> the log-likelihood improved by 19.98\n>\n> This model was fit using MCMC.  To examine model diagnostics and check for\n> degeneracy, use the mcmc.diagnostics() function.\n> Error in simulate.formula(form, coef = theta, nsim = 1, constraints =\n> constraints,  :Illegal value of coef passed to simulate.formula\n> ______________________________**_________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.**edu/mailman/listinfo/statnet_**help<http://mailman2.u.washington.edu/mailman/listinfo/statnet_help>\n>\n\n\n\n-- \nElena Grewal\nData Scientist, Airbnb\nDoctoral Candidate, Stanford University School of Education\nwww.stanford.edu/~etgrewal\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130416/4b1490b8/attachment.html>",
+      "body_snippet": "I have gotten the same error on occasion and am also not sure about how to\nfix the problem.\n\n\n\n\nOn Tue, Apr 9, 2013 at 3:45 AM, Narciso Cerpa <ncerpa@utalca.cl> wrote:\n\n> Hi,\n>\n> I hope that somebody ",
+      "thread_id": "thread-3cffb7a4bd00",
+      "thread_depth": 1,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-b4fb376d29b9",
+      "message_id": "<CAD5742667680B489D6A39571B8E7FA7260C4738@ICTSC-W-S207.soliscom.uu.nl>",
+      "from_name": "Smith, S. (Sanne)",
+      "from_email_hash": "684dffe9c680b86c503f0b2dede5b862c2e510b7909bc2cfd47270b9f9653c84",
+      "date": "2013-04-19T01:53:00Z",
+      "subject": "[statnet_help] comparing coefficients across models of different samples",
+      "subject_clean": "[statnet_help] comparing coefficients across models of different samples",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI would like to ask if I can compare the magnitude of coefficients across fitted ergm models on different samples (e.g., is there more or less ethnic homophily in class room A compared to class room B?).\n\nI know from Mood (2010), that comparing coefficients across models, groups and samples is problematic as the magnitude of a coefficient depends on the explained variance within logistic regression models (the smaller the residual variance in a model, the larger the coefficients get). I've learned that ergms are like  logistic regression models, so does this problem also apply to ergms? For example, if I'd compare coefficients in network A and B,  is the difference in coefficient size then due to a stronger tendency to befriend same-ethnic alters in one of the networks,  or because the model does  a better job in predicting friendship in one of the networks? Or am I safe comparing coefficients across networks just as they are?\n\nIf this problem does apply to ergms, could somebody give me a hint towards a possible solution?  For example, do I need to somehow standardize the coefficients so that I cancel out these 'rescaling effects' or use average marginal effects instead of log odds?\n\nMany thanks in advance!\n\nRegards,\n\nSanne Smith\nSanne Smith MSc | Phd candidate | Department of Sociology | Utrecht university |\nCentrumgebouw Noord | Padualaan 14, 3584 CH Utrecht | kamer C.216 | +31 30 253  4075 |\ns.smith<mailto:s.smith@uu.nl>@uu.nl<mailto:s.smith@uu.nl> | www.uu.nl<http://www.uu.nl>|\n\n\nMood, C., 2010. Logistic regression: Why we cannot do what we think we can do, and what we can do about it. European Sociological Review, 26(1), 67-82.\n\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130419/9c2fab4a/attachment.html>",
+      "body_snippet": "Dear all,\n\nI would like to ask if I can compare the magnitude of coefficients across fitted ergm models on different samples (e.g., is there more or less ethnic homophily in class room A compared to c",
+      "thread_id": "thread-b4fb376d29b9",
+      "thread_depth": 0,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-e4d18efb0580",
+      "message_id": "<D5922210-8900-466A-808C-0BB60046A7FE@nd.edu>",
+      "from_name": "Szabolcs Horvat",
+      "from_email_hash": "2da04a22d70193ed52d5e3cd6078d87bdd9f644e506f5395e1c9e3091c66ec38",
+      "date": "2013-04-20T15:05:52Z",
+      "subject": "[statnet_help] commands from ergm tutorial take too long to complete",
+      "subject_clean": "[statnet_help] commands from ergm tutorial take too long to complete",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI was following the ergm tutorial found here:\n\nhttps://statnet.csde.washington.edu/trac/attachment/wiki/Resources/ERGMtutorial.pdf\n\nThe following commands found in the tutorial take a very long time to complete (I stopped R after about half an hour of waiting):\n\ndata('faux.magnolia.high')\nmagnolia <- faux.magnolia.high\nfit <- ergm(magnolia~edges+triangle, control=control.ergm(seed=1))\n\nIs this expected, or has something changed within ergm since the tutorial was written which causes this to take so long?  It would not be surprising since this example is for illustrating a pathological case.  \n\n(I am quite new to both R and ergm, so I am not always confident that what I am doing is correct.)\n\nBest regards,\nSzabolcs Horv?t",
+      "body_snippet": "Hello,\n\nI was following the ergm tutorial found here:\n\nhttps://statnet.csde.washington.edu/trac/attachment/wiki/Resources/ERGMtutorial.pdf\n\nThe following commands found in the tutorial take a very lon",
+      "thread_id": "thread-e4d18efb0580",
+      "thread_depth": 0,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-1cd493e8f313",
+      "message_id": "<3E5CE345-CCD7-47E5-A94A-94C50E45E40B@nd.edu>",
+      "from_name": "Szabolcs Horvat",
+      "from_email_hash": "2da04a22d70193ed52d5e3cd6078d87bdd9f644e506f5395e1c9e3091c66ec38",
+      "date": "2013-04-22T09:00:39Z",
+      "subject": "[statnet_help] Meaning of \"incidence matrix\" in statnet/network",
+      "subject_clean": "[statnet_help] Meaning of \"incidence matrix\" in statnet/network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nWhat is the precise definition of \"incidence matrix\" in the context of statnet/network library?\n\nThe most common definition I was familiar with is a matrix indicating the relationship between edges and vertices: element (i,j) will be 1 if edge j is connected to vertex i.  The following line in the docs (of network.incidence) suggests that statnet uses the same definition:\n\n\"Incidence matrices should contain one row per vertex, with one column per edge.\"\n\nHow ever that is not what as.matrix.network.incidence actually gives me. This is what I get with statnet:\n\n> n <- network.initialize(6, directed=F)\n> add.edge(n, c(1,2), c(2,3))\n> as.matrix.network.adjacency(n)\n  1 2 3 4 5 6\n1 0 1 0 0 0 0\n2 1 0 1 0 0 0\n3 0 1 0 0 0 0\n4 0 0 0 0 0 0\n5 0 0 0 0 0 0\n6 0 0 0 0 0 0\n\nThe adjacency matrix is what I expect, so the graph that was created is indeed what I wanted to create.\n\n> as.matrix.network.edgelist(n)\n     [,1] [,2]\n[1,]    1    2\n[2,]    2    3\nattr(,\"n\")\n[1] 6\nattr(,\"vnames\")\n[1] 1 2 3 4 5 6\n\nThe edge list looks good too.\n\n> as.matrix.network.incidence(n)\n     [,1]\n[1,]    1\n[2,]    1\n[3,]    1\n[4,]    0\n[5,]    0\n[6,]    0\n\nThis is unexpected for me.  Why does the incidence matrix have a single column only?  I would have expected the following:\n\n     [,1] [,2]\n[1,]    1   0\n[2,]    1   1\n[3,]    0   1\n[4,]    0   0\n[5,]    0   0\n[6,]    0   0\n\nWhat am I misunderstanding?  I'm sure I must be misunderstanding something (I'm new to both R and statnet).\n\nThank you for any clarifications in advance,\nSzabolcs Horv?t",
+      "body_snippet": "Hello,\n\nWhat is the precise definition of \"incidence matrix\" in the context of statnet/network library?\n\nThe most common definition I was familiar with is a matrix indicating the relationship between ",
+      "thread_id": "thread-1cd493e8f313",
+      "thread_depth": 0,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-2b8697095930",
+      "message_id": "<257ADEC5-46EC-45CB-94D1-F6EE61AFE726@nd.edu>",
+      "from_name": "Szabolcs Horvat",
+      "from_email_hash": "2da04a22d70193ed52d5e3cd6078d87bdd9f644e506f5395e1c9e3091c66ec38",
+      "date": "2013-04-22T10:06:58Z",
+      "subject": "[statnet_help] Re: Meaning of \"incidence matrix\" in statnet/network",
+      "subject_clean": "[statnet_help] Re: Meaning of \"incidence matrix\" in statnet/network",
+      "in_reply_to": "<3E5CE345-CCD7-47E5-A94A-94C50E45E40B@nd.edu>",
+      "references": [
+        "<3E5CE345-CCD7-47E5-A94A-94C50E45E40B@nd.edu>"
+      ],
+      "body_plain": "I apologize for sending this question too quickly.  The problem was that I used the add.edge function incorrectly.\n\nThe correct way to add multiple edges is\n\nadd.edges(n, c(1,2), c(2,3))\n\nNote that it's add.edges(), not add.edge().\n\nThe edge.check=T argument of add.edge and add.edges will help catch mistakes of this kind.\n\nOn Apr 22, 2013, at 12:00 , Szabolcs Horv?t <szhorvat@nd.edu> wrote:\n\n> Hello,\n> \n> What is the precise definition of \"incidence matrix\" in the context of statnet/network library?\n> \n> The most common definition I was familiar with is a matrix indicating the relationship between edges and vertices: element (i,j) will be 1 if edge j is connected to vertex i.  The following line in the docs (of network.incidence) suggests that statnet uses the same definition:\n> \n> \"Incidence matrices should contain one row per vertex, with one column per edge.\"\n> \n> How ever that is not what as.matrix.network.incidence actually gives me. This is what I get with statnet:\n> \n>> n <- network.initialize(6, directed=F)\n>> add.edge(n, c(1,2), c(2,3))\n>> as.matrix.network.adjacency(n)\n>  1 2 3 4 5 6\n> 1 0 1 0 0 0 0\n> 2 1 0 1 0 0 0\n> 3 0 1 0 0 0 0\n> 4 0 0 0 0 0 0\n> 5 0 0 0 0 0 0\n> 6 0 0 0 0 0 0\n> \n> The adjacency matrix is what I expect, so the graph that was created is indeed what I wanted to create.\n> \n>> as.matrix.network.edgelist(n)\n>     [,1] [,2]\n> [1,]    1    2\n> [2,]    2    3\n> attr(,\"n\")\n> [1] 6\n> attr(,\"vnames\")\n> [1] 1 2 3 4 5 6\n> \n> The edge list looks good too.\n> \n>> as.matrix.network.incidence(n)\n>     [,1]\n> [1,]    1\n> [2,]    1\n> [3,]    1\n> [4,]    0\n> [5,]    0\n> [6,]    0\n> \n> This is unexpected for me.  Why does the incidence matrix have a single column only?  I would have expected the following:\n> \n>     [,1] [,2]\n> [1,]    1   0\n> [2,]    1   1\n> [3,]    0   1\n> [4,]    0   0\n> [5,]    0   0\n> [6,]    0   0\n> \n> What am I misunderstanding?  I'm sure I must be misunderstanding something (I'm new to both R and statnet).\n> \n> Thank you for any clarifications in advance,\n> Szabolcs Horv?t\n> \n>",
+      "body_snippet": "I apologize for sending this question too quickly.  The problem was that I used the add.edge function incorrectly.\n\nThe correct way to add multiple edges is\n\nadd.edges(n, c(1,2), c(2,3))\n\nNote that it",
+      "thread_id": "thread-1cd493e8f313",
+      "thread_depth": 1,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-f77fa0598f8e",
+      "message_id": "<5176BB73.2090300@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2013-04-23T09:48:51Z",
+      "subject": "[statnet_help] commands from ergm tutorial take too long to complete",
+      "subject_clean": "[statnet_help] commands from ergm tutorial take too long to complete",
+      "in_reply_to": "<D5922210-8900-466A-808C-0BB60046A7FE@nd.edu>",
+      "references": [
+        "<D5922210-8900-466A-808C-0BB60046A7FE@nd.edu>"
+      ],
+      "body_plain": "Hello,\n\nCan you send me the version numbers for R and ergm that you're using, so \nI can take a look?  Nothing has been changed explicitly, but you're \nright that since this is a pathological case, whose behavior was tightly \ncontrolled at the time by using a seed, that it might not be \nwell-behaved in subsequent releases.\n\nCheers,\nSteve\n\n\nOn 4/20/2013 3:05 PM, Szabolcs Horvat wrote:\n> Hello,\n>\n> I was following the ergm tutorial found here:\n>\n> https://statnet.csde.washington.edu/trac/attachment/wiki/Resources/ERGMtutorial.pdf\n>\n> The following commands found in the tutorial take a very long time to complete (I stopped R after about half an hour of waiting):\n>\n> data('faux.magnolia.high')\n> magnolia <- faux.magnolia.high\n> fit <- ergm(magnolia~edges+triangle, control=control.ergm(seed=1))\n>\n> Is this expected, or has something changed within ergm since the tutorial was written which causes this to take so long?  It would not be surprising since this example is for illustrating a pathological case.\n>\n> (I am quite new to both R and ergm, so I am not always confident that what I am doing is correct.)\n>\n> Best regards,\n> Szabolcs Horv?t\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n\n*** NOTE NEW OFFICE LOCATION AS OF MARCH 2012: DENNY 423 ***\n\nSteven M. Goodreau / Assoc. Professor / Dept. of Anthropology\nUniversity of Washington / Denny Hall 423 / Campus Box 353100\nSeattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau",
+      "body_snippet": "Hello,\n\nCan you send me the version numbers for R and ergm that you're using, so \nI can take a look?  Nothing has been changed explicitly, but you're \nright that since this is a pathological case, who",
+      "thread_id": "thread-e4d18efb0580",
+      "thread_depth": 1,
+      "month": "2013-04"
+    },
+    {
+      "id": "msg-164be2cefcd2",
+      "message_id": "<6D94F6F2-833F-49AB-B2DB-2760F6030818@nd.edu>",
+      "from_name": "Szabolcs Horvat",
+      "from_email_hash": "2da04a22d70193ed52d5e3cd6078d87bdd9f644e506f5395e1c9e3091c66ec38",
+      "date": "2013-04-23T10:52:47Z",
+      "subject": "[statnet_help] commands from ergm tutorial take too long to complete",
+      "subject_clean": "[statnet_help] commands from ergm tutorial take too long to complete",
+      "in_reply_to": "<5176BB73.2090300@uw.edu>",
+      "references": [
+        "<D5922210-8900-466A-808C-0BB60046A7FE@nd.edu>",
+        "<5176BB73.2090300@uw.edu>"
+      ],
+      "body_plain": "On Apr 23, 2013, at 12:48 , Steven Goodreau <goodreau@uw.edu> wrote:\n\n> Hello,\n> \n> Can you send me the version numbers for R and ergm that you're using, so \n> I can take a look?  Nothing has been changed explicitly, but you're \n> right that since this is a pathological case, whose behavior was tightly \n> controlled at the time by using a seed, that it might not be \n> well-behaved in subsequent releases.\n> \n> Cheers,\n> Steve\n> \n\nHello Steve,\n\nThank you for looking at it.\n\nI've attached a full (unaltered) transcript of the R session.  I believe it contains all the version information, but if something's missing, please ask.  The hang happens after the last command.\n\nI hope the \"The following object is masked\" are not causing any problems.\n\nGreetings,\nSzabolcs\n\n\n----\n\nTranscript follows:\n\n\nR version 3.0.0 (2013-04-03) -- \"Masked Marvel\"\nCopyright (C) 2013 The R Foundation for Statistical Computing\nPlatform: x86_64-apple-darwin10.8.0 (64-bit)\n\nR is free software and comes with ABSOLUTELY NO WARRANTY.\nYou are welcome to redistribute it under certain conditions.\nType 'license()' or 'licence()' for distribution details.\n\n Natural language support but running in an English locale\n\nR is a collaborative project with many contributors.\nType 'contributors()' for more information and\n'citation()' on how to cite R or R packages in publications.\n\nType 'demo()' for some demos, 'help()' for on-line help, or\n'help.start()' for an HTML browser interface to help.\nType 'q()' to quit R.\n\n[R.app GUI 1.60 (6476) x86_64-apple-darwin10.8.0]\n\n[History restored from /Users/szhorvat/.Rapp.history]\n\n>library(statnet)\nLoading required package: network\nnetwork: Classes for Relational Data\nVersion 1.7.2 created on March 15, 2013.\ncopyright (c) 2005, Carter T. Butts, University of California-Irvine\n                   Mark S. Handcock, University of Washington\n                   David R. Hunter, Penn State University\n                   Martina Morris, University of Washington\nFor citation information, type citation(\"network\").\nType help(\"network-package\") to get started.\n\nLoading required package: ergm\nLoading required package: robustbase\nLoading required package: Matrix\nLoading required package: lattice\nLoading required package: trust\nLoading required package: nlme\nLoading required package: coda\n\nergm: version 3.0-3, created on 2012-05-27\nCopyright (c) 2003, Mark S. Handcock, University of California-Los Angeles\n                   David R. Hunter, Penn State University\n                   Carter T. Butts, University of California-Irvine\n                   Steven M. Goodreau, University of Washington\n                   Pavel N. Krivitsky, Penn State University\n                   Martina Morris, University of Washington\nBased on \"statnet\" project software (statnet.org).\nFor license and citation information see statnet.org/attribution\nor type citation(\"ergm\").\n\nLoading required package: sna\nsna: Tools for Social Network Analysis\nVersion 2.3-1 created on 2013-02-28.\ncopyright (c) 2005, Carter T. Butts, University of California-Irvine\nFor citation information, type citation(\"sna\").\nType help(package=\"sna\") to get started.\n\n\nAttaching package: ?sna?\n\nThe following object is masked from ?package:nlme?:\n\n   gapply\n\nThe following object is masked from ?package:network?:\n\n   %c%\n\nLoading required package: networkDynamic\nLoading required package: statnet.common\n\nAttaching package: ?statnet.common?\n\nThe following object is masked from ?package:ergm?:\n\n   compress.data.frame, paste.and, sort.data.frame\n\n\nnetworkDynamic: version 0.4, created on 2013-03-19\nCopyright (c) 2013, Carter T. Butts, University of California -- Irvine\n                   Ayn Leslie-Cook, University of Washington\n                   Pavel N. Krivitsky, Penn State University\n                   Skye Bender-deMoll, University of Washington\n                   with contributions from\n                   Zack Almquist, University of California -- Irvine\n                   David R. Hunter, Penn State University\n                   Li Wang\n                   Kirk Li, University of Washington\n                   Steven M. Goodreau, University of Washington\n                   Martina Morris, University of Washington\nBased on \"statnet\" project software (statnet.org).\nFor license and citation information see statnet.org/attribution\nor type citation(\"networkDynamic\").\n\nstatnet: Version 3.0-1, created on 2012-07-16\nstatnet is a suite of R packages for the statistical modeling of network data\nSee http://statnet.org for statnet project information\n> data('faux.magnolia.high')\n> magnolia <- faux.magnolia.high\n> fit <- ergm(magnolia~edges+triangle, control=control.ergm(seed=1))\n\n\n(After a few minutes of waiting it's at Iteration 4, but I can't copy that output as the program is frozen.)",
+      "body_snippet": "On Apr 23, 2013, at 12:48 , Steven Goodreau <goodreau@uw.edu> wrote:\n\n> Hello,\n> \n> Can you send me the version numbers for R and ergm that you're using, so \n> I can take a look?  Nothing has been cha",
+      "thread_id": "thread-e4d18efb0580",
+      "thread_depth": 2,
+      "month": "2013-04"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-932e739d82d8",
+      "subject": "[statnet_help] Error using ergm command with target.stats and constraints",
+      "message_count": 2,
+      "participants": [
+        "Steven Goodreau"
+      ],
+      "started": "2013-04-02T17:16:46Z",
+      "last_reply": "2013-04-10T15:30:23Z",
+      "root_message_id": "msg-932e739d82d8"
+    },
+    {
+      "id": "thread-d958667469c4",
+      "subject": "[statnet_help] Network Layout For Valued Networks",
+      "message_count": 5,
+      "participants": [
+        "Carter T. Butts",
+        "Michał Bojanowski",
+        "Sam Stewart",
+        "Skye Bender-deMoll"
+      ],
+      "started": "2013-04-04T12:12:43Z",
+      "last_reply": "2013-04-04T19:26:20Z",
+      "root_message_id": "msg-d958667469c4"
+    },
+    {
+      "id": "thread-ee29a609d4fb",
+      "subject": "[statnet_help] Help:Question about Best way to reveal Structural Equivalence Classes in R Packages:Statnet",
+      "message_count": 1,
+      "participants": [
+        "Saeed Nasehi Moghadam"
+      ],
+      "started": "2013-04-05T02:22:22Z",
+      "last_reply": "2013-04-05T02:22:22Z",
+      "root_message_id": "msg-ee29a609d4fb"
+    },
+    {
+      "id": "thread-3cffb7a4bd00",
+      "subject": "[statnet_help] Problem with ergm",
+      "message_count": 2,
+      "participants": [
+        "Elena Grewal",
+        "Narciso Cerpa"
+      ],
+      "started": "2013-04-09T00:45:01Z",
+      "last_reply": "2013-04-16T12:14:45Z",
+      "root_message_id": "msg-3cffb7a4bd00"
+    },
+    {
+      "id": "thread-5340cf292f17",
+      "subject": "[statnet_help] set.edge.attribute vs %e%",
+      "message_count": 2,
+      "participants": [
+        "Burke, Robin",
+        "Yun Huang"
+      ],
+      "started": "2013-04-10T12:30:01Z",
+      "last_reply": "2013-04-10T14:43:07Z",
+      "root_message_id": "msg-5340cf292f17"
+    },
+    {
+      "id": "thread-74ce64a2503d",
+      "subject": "[statnet_help] cross-validation ERGM",
+      "message_count": 6,
+      "participants": [
+        "Greg Lambert",
+        "martina morris"
+      ],
+      "started": "2013-04-10T16:06:09Z",
+      "last_reply": "2013-04-10T20:41:56Z",
+      "root_message_id": "msg-74ce64a2503d"
+    },
+    {
+      "id": "thread-6f305484300b",
+      "subject": "[statnet_help] Reshaping Data for bi-partite Network Analysis",
+      "message_count": 1,
+      "participants": [
+        "sylvain willart"
+      ],
+      "started": "2013-04-13T10:00:31Z",
+      "last_reply": "2013-04-13T10:00:31Z",
+      "root_message_id": "msg-6f305484300b"
+    },
+    {
+      "id": "thread-f8ec71b7be24",
+      "subject": "[statnet_help] Circle layout",
+      "message_count": 1,
+      "participants": [
+        "Burke, Robin"
+      ],
+      "started": "2013-04-13T13:07:14Z",
+      "last_reply": "2013-04-13T13:07:14Z",
+      "root_message_id": "msg-f8ec71b7be24"
+    },
+    {
+      "id": "thread-b4fb376d29b9",
+      "subject": "[statnet_help] comparing coefficients across models of different samples",
+      "message_count": 1,
+      "participants": [
+        "Smith, S. (Sanne)"
+      ],
+      "started": "2013-04-19T01:53:00Z",
+      "last_reply": "2013-04-19T01:53:00Z",
+      "root_message_id": "msg-b4fb376d29b9"
+    },
+    {
+      "id": "thread-e4d18efb0580",
+      "subject": "[statnet_help] commands from ergm tutorial take too long to complete",
+      "message_count": 3,
+      "participants": [
+        "Steven Goodreau",
+        "Szabolcs Horvat"
+      ],
+      "started": "2013-04-20T15:05:52Z",
+      "last_reply": "2013-04-23T10:52:47Z",
+      "root_message_id": "msg-e4d18efb0580"
+    },
+    {
+      "id": "thread-1cd493e8f313",
+      "subject": "[statnet_help] Meaning of \"incidence matrix\" in statnet/network",
+      "message_count": 2,
+      "participants": [
+        "Szabolcs Horvat"
+      ],
+      "started": "2013-04-22T09:00:39Z",
+      "last_reply": "2013-04-22T10:06:58Z",
+      "root_message_id": "msg-1cd493e8f313"
+    }
+  ]
+}

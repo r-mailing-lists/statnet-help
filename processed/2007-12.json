@@ -1,0 +1,157 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2007-12",
+  "messages": [
+    {
+      "id": "msg-dea9bca125a1",
+      "message_id": "<62F60357-C597-4132-8C9B-13B6A5B4CC96@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2007-12-03T21:33:22Z",
+      "subject": "[statnet_help] Using rergm",
+      "subject_clean": "[statnet_help] Using rergm",
+      "in_reply_to": "<5033d01e0711271201v7f3df683o9749b9a97f1e2a5d@mail.gmail.com>",
+      "references": [
+        "<5033d01e0711271201v7f3df683o9749b9a97f1e2a5d@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Avra.  Have you tried using the 'simulate' command in place of  \n'rergm'?  The former is part of statnet and basically has replaced  \nthe latter.  There is an 'nsim'  argument to simulate that controls  \nthe number of networks simulated.  Thus, you might try the following  \ncode (without having to load latentnet):\n\ngraph = ergm(bank~edges+m2star+mutual+triangles+absdiff(\"hay\")+istar \n(2)+ostar(2))\nsimnets = simulate(graph, nsim=10)\n\nHope this helps!\n\nDave\n\n\n\n\nLe 27 nov. 07 ? 21:01, Avranil Sarkar a ?crit :\n\n> Hi,\n> I am trying to simulate networks from an ergm object.\n> For using the rergm command I downloaded latentnet.\n> But this is what I get:\n>\n> > graph=ergm(bank~edges+m2star+mutual+triangles+absdiff(\"hay\")+istar \n> (2)+ostar(2))\n> >rergm(graph,n=10)\n> Error in nnodes - 1 : non-numeric argument to binary operator\n>\n> Here graph is my ergm object. When I looked at the help manual, it  \n> says the object should be of the class ergmm and not ergm.\n> What should I do now?\n>\n>\n> -- \n> avra\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Avra.  Have you tried using the 'simulate' command in place of  \n'rergm'?  The former is part of statnet and basically has replaced  \nthe latter.  There is an 'nsim'  argument to simulate that cont",
+      "thread_id": "thread-dea9bca125a1",
+      "thread_depth": 0,
+      "month": "2007-12"
+    },
+    {
+      "id": "msg-c8155614625a",
+      "message_id": "<C37A28EA.20970%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2007-12-03T21:43:06Z",
+      "subject": "[statnet_help] Using rergm",
+      "subject_clean": "[statnet_help] Using rergm",
+      "in_reply_to": "<5033d01e0711271201v7f3df683o9749b9a97f1e2a5d@mail.gmail.com>",
+      "references": [],
+      "body_plain": "Hi Avranil,\n \nIn addition to Dave?s helpful suggestion, I note that\nyou should be using \"ergm\" rather than \"latentnet\" (the latter should not be\nloaded).\n\nCheers,\n\nMark\n\n\nOn 11/27/07 12:01 PM, \"Avranil Sarkar\" <avranil@gmail.com> wrote:\n\n> Hi,\n> I am trying to simulate networks from an ergm object.\n> For using the rergm command I downloaded latentnet.\n> But this is what I get:\n> \n>> graph=ergm(bank~edges+m2star+mutual+triangles+absdiff(\"hay\")+istar(2)+ostar(2\n>> )) \n>> rergm(graph,n=10)\n> Error in nnodes - 1 : non-numeric argument to binary operator\n> \n> Here graph is my ergm object. When I looked at the help manual, it says the\n> object should be of the class ergmm and not ergm.\n> What should I do now?\n>",
+      "body_snippet": "Hi Avranil,\n \nIn addition to Dave?s helpful suggestion, I note that\nyou should be using \"ergm\" rather than \"latentnet\" (the latter should not be\nloaded).\n\nCheers,\n\nMark\n\n\nOn 11/27/07 12:01 PM, \"Avrani",
+      "thread_id": "thread-c8155614625a",
+      "thread_depth": 0,
+      "month": "2007-12"
+    },
+    {
+      "id": "msg-b820f9f333de",
+      "message_id": "<9D398563-CE71-482E-A46C-613EC5B2A29E@gmail.com>",
+      "from_name": "Simone Gabbriellini",
+      "from_email_hash": "28a5511d14889ed7a9cead1a4c5c2eaa14a88c2b4b5d3fded2bed235eea4d272",
+      "date": "2007-12-11T04:03:48Z",
+      "subject": "[statnet_help] a problem with read.paj() from network package",
+      "subject_clean": "[statnet_help] a problem with read.paj() from network package",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear List,\n\nI have tried to read a network in pajek format (.net) using the  \nread.paj() function of the network package...\n\nthe net file should be well formatted, because Pajek and Ucinet read  \nit correctly.. but when I try with R, the problem is that it doesn't  \ncount the right number of nodes: there are 59 nodes in the network  \n(Pajek and Ucinet do see this), but read.paj() says there are only 57.\n\nthis is the simple sintax I have used:\n\nmynet<-read.paj(\"net/mynetwork.net\")\n\nand here you can find my net file:\n\nhttp://www.digitaldust.it/dottorato/mmorpg/marzo2004.net\n\nis it a bug?\n\ndo I miss something?\n\nthank you,\nSimone",
+      "body_snippet": "Dear List,\n\nI have tried to read a network in pajek format (.net) using the  \nread.paj() function of the network package...\n\nthe net file should be well formatted, because Pajek and Ucinet read  \nit c",
+      "thread_id": "thread-b820f9f333de",
+      "thread_depth": 0,
+      "month": "2007-12"
+    },
+    {
+      "id": "msg-aca44b946887",
+      "message_id": "<220E3C4B-2C32-4318-A863-37F0C43C4A1B@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2007-12-11T07:05:59Z",
+      "subject": "[statnet_help] a problem with read.paj() from network package",
+      "subject_clean": "[statnet_help] a problem with read.paj() from network package",
+      "in_reply_to": "<9D398563-CE71-482E-A46C-613EC5B2A29E@gmail.com>",
+      "references": [
+        "<9D398563-CE71-482E-A46C-613EC5B2A29E@gmail.com>"
+      ],
+      "body_plain": "Hi Simone.\n\nThis looks like a bug in read.paj.  By my reading, the code appears  \nto be written so that if the largest numbered vertex has no arcs (in  \nyour example neither 58 nor 59 has any arcs), this problem occurs.   \nYou'll notice that none of the vertex names was loaded in either,  \nwhich is a symptom of the same problem.\n\nHere is a totally inelegant solution, but it should work for you:   \nFirst, add the line \"1 59 1\" just after the \"*Arcs\" line in your  \nmynetwork.net file to create an extra arc involving vertex #59.  Then  \ntype\n\nmynet <- read.paj(\"net/mynetwork.net\") ; mynet[1,59] <- 0\n\nThis will correctly read in all 59 nodes, then erase the extra arc  \nyou created with \"1 59 1\".    Save your mynet object as an R object,  \nthen don't forget to delete the extra line in your mynetwork.net file  \nwhen you're finished.\n\nDave\n\n\nLe 11 d?c. 07 ? 13:03, Simone Gabbriellini a ?crit :\n\n> Dear List,\n>\n> I have tried to read a network in pajek format (.net) using the  \n> read.paj() function of the network package...\n>\n> the net file should be well formatted, because Pajek and Ucinet  \n> read it correctly.. but when I try with R, the problem is that it  \n> doesn't count the right number of nodes: there are 59 nodes in the  \n> network (Pajek and Ucinet do see this), but read.paj() says there  \n> are only 57.\n>\n> this is the simple sintax I have used:\n>\n> mynet<-read.paj(\"net/mynetwork.net\")\n>\n> and here you can find my net file:\n>\n> http://www.digitaldust.it/dottorato/mmorpg/marzo2004.net\n>\n> is it a bug?\n>\n> do I miss something?\n>\n> thank you,\n> Simone\n>\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Simone.\n\nThis looks like a bug in read.paj.  By my reading, the code appears  \nto be written so that if the largest numbered vertex has no arcs (in  \nyour example neither 58 nor 59 has any arcs), t",
+      "thread_id": "thread-b820f9f333de",
+      "thread_depth": 1,
+      "month": "2007-12"
+    },
+    {
+      "id": "msg-8da8e093ab71",
+      "message_id": "<81891871-B4F6-43BD-88AE-1525D64F003C@gmail.com>",
+      "from_name": "Simone Gabbriellini",
+      "from_email_hash": "28a5511d14889ed7a9cead1a4c5c2eaa14a88c2b4b5d3fded2bed235eea4d272",
+      "date": "2007-12-11T08:05:51Z",
+      "subject": "[statnet_help] a problem with read.paj() from network package",
+      "subject_clean": "[statnet_help] a problem with read.paj() from network package",
+      "in_reply_to": "<220E3C4B-2C32-4318-A863-37F0C43C4A1B@stat.psu.edu>",
+      "references": [
+        "<9D398563-CE71-482E-A46C-613EC5B2A29E@gmail.com>",
+        "<220E3C4B-2C32-4318-A863-37F0C43C4A1B@stat.psu.edu>"
+      ],
+      "body_plain": "Hi Dave,\n\nthanks for the nice workaround!\n\nbest regards,\nSimone\n\nIl giorno 11/dic/07, alle ore 16:05, David Hunter ha scritto:\n\n> Hi Simone.\n>\n> This looks like a bug in read.paj.  By my reading, the code appears  \n> to be written so that if the largest numbered vertex has no arcs (in  \n> your example neither 58 nor 59 has any arcs), this problem occurs.   \n> You'll notice that none of the vertex names was loaded in either,  \n> which is a symptom of the same problem.\n>\n> Here is a totally inelegant solution, but it should work for you:   \n> First, add the line \"1 59 1\" just after the \"*Arcs\" line in your  \n> mynetwork.net file to create an extra arc involving vertex #59.   \n> Then type\n>\n> mynet <- read.paj(\"net/mynetwork.net\") ; mynet[1,59] <- 0\n>\n> This will correctly read in all 59 nodes, then erase the extra arc  \n> you created with \"1 59 1\".    Save your mynet object as an R object,  \n> then don't forget to delete the extra line in your mynetwork.net  \n> file when you're finished.\n>\n> Dave\n>\n>\n> Le 11 d?c. 07 ? 13:03, Simone Gabbriellini a ?crit :\n>\n>> Dear List,\n>>\n>> I have tried to read a network in pajek format (.net) using the  \n>> read.paj() function of the network package...\n>>\n>> the net file should be well formatted, because Pajek and Ucinet  \n>> read it correctly.. but when I try with R, the problem is that it  \n>> doesn't count the right number of nodes: there are 59 nodes in the  \n>> network (Pajek and Ucinet do see this), but read.paj() says there  \n>> are only 57.\n>>\n>> this is the simple sintax I have used:\n>>\n>> mynet<-read.paj(\"net/mynetwork.net\")\n>>\n>> and here you can find my net file:\n>>\n>> http://www.digitaldust.it/dottorato/mmorpg/marzo2004.net\n>>\n>> is it a bug?\n>>\n>> do I miss something?\n>>\n>> thank you,\n>> Simone\n>>\n>>\n>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi Dave,\n\nthanks for the nice workaround!\n\nbest regards,\nSimone\n\nIl giorno 11/dic/07, alle ore 16:05, David Hunter ha scritto:\n\n> Hi Simone.\n>\n> This looks like a bug in read.paj.  By my reading, the ",
+      "thread_id": "thread-b820f9f333de",
+      "thread_depth": 2,
+      "month": "2007-12"
+    },
+    {
+      "id": "msg-a78c5510aa80",
+      "message_id": "<8FD53410-D4E7-41C7-9CD6-C03D2F017C2B@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2007-12-31T04:33:19Z",
+      "subject": "[statnet_help] New ergm package available for testing",
+      "subject_clean": "[statnet_help] New ergm package available for testing",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone.  The statnet team is excited about finally (almost)  \nrolling out a new version of the core R package to fit, simulate and  \nanalyze exponential-family models for networks.\n\nThe new package, called ergm, includes all of the old statnet  \nfunctionality plus more stable code, better documentation, additional  \nmodel terms, better control of MCMC constraints, and more.\n\nThe statnet package is not going away -- but it will essentially just  \nload \"ergm\" along with other packages.  Thus, statnet will become the  \nname for a whole suite of packages, whereas ergm will assume  \nstatnet's old role as the specific package that does the ERGM  \n(exponential-family random graph model) work.\n\nWe have just begun the sometimes-complicated process of submitting  \nergm to CRAN (the CRAN entry will include the source code), and  \nprobably it will be posted within a couple weeks.  We hope to delay  \nthe CRAN release for just a few days in order to garner some feedback  \nfrom you -- see below.  For now, you can access and test the new ergm  \nby typing, in R,\n   install.packages(\"ergm\",contrib=\"http://csde.washington.edu/statnet\")\nAfter installation, type library(ergm) to load the software.\n\nThe current version is version 1.99, and when the CRAN release goes  \nup it will be version 2.0.  We have been testing this new version,  \nbut naturally there will be some problems that have escaped our  \nnotice in a package this complex.  For those of you who currently use  \nand appreciate statnet, we'd be grateful if you showed us how much  \nyou enjoy it by beta-testing the new version of ergm and sending us  \nany bugs you find in the next week or so.  :)\n\nThanks in advance!\n\nDave Hunter",
+      "body_snippet": "Hi everyone.  The statnet team is excited about finally (almost)  \nrolling out a new version of the core R package to fit, simulate and  \nanalyze exponential-family models for networks.\n\nThe new packa",
+      "thread_id": "thread-a78c5510aa80",
+      "thread_depth": 0,
+      "month": "2007-12"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-dea9bca125a1",
+      "subject": "[statnet_help] Using rergm",
+      "message_count": 1,
+      "participants": [
+        "David Hunter"
+      ],
+      "started": "2007-12-03T21:33:22Z",
+      "last_reply": "2007-12-03T21:33:22Z",
+      "root_message_id": "msg-dea9bca125a1"
+    },
+    {
+      "id": "thread-c8155614625a",
+      "subject": "[statnet_help] Using rergm",
+      "message_count": 1,
+      "participants": [
+        "Mark S. Handcock"
+      ],
+      "started": "2007-12-03T21:43:06Z",
+      "last_reply": "2007-12-03T21:43:06Z",
+      "root_message_id": "msg-c8155614625a"
+    },
+    {
+      "id": "thread-b820f9f333de",
+      "subject": "[statnet_help] a problem with read.paj() from network package",
+      "message_count": 3,
+      "participants": [
+        "David Hunter",
+        "Simone Gabbriellini"
+      ],
+      "started": "2007-12-11T04:03:48Z",
+      "last_reply": "2007-12-11T08:05:51Z",
+      "root_message_id": "msg-b820f9f333de"
+    },
+    {
+      "id": "thread-a78c5510aa80",
+      "subject": "[statnet_help] New ergm package available for testing",
+      "message_count": 1,
+      "participants": [
+        "David Hunter"
+      ],
+      "started": "2007-12-31T04:33:19Z",
+      "last_reply": "2007-12-31T04:33:19Z",
+      "root_message_id": "msg-a78c5510aa80"
+    }
+  ]
+}

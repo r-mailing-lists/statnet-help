@@ -1,0 +1,964 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2014-02",
+  "messages": [
+    {
+      "id": "msg-b14af36881e1",
+      "message_id": "<CAGcS3aNJ7mME=CbGDqD_UVUc7EpgoZL=skXDxryuZMggxbXp4Q@mail.gmail.com>",
+      "from_name": "Karen Ertrachter",
+      "from_email_hash": "1c6e2a5b5363c01fa9c7e24c7311acb0a71f30e4a1ec0a31321dfdd5c75930af",
+      "date": "2014-02-01T11:01:55Z",
+      "subject": "[statnet_help] Issues with Adjacency Matrix Attributes (ADD Health)",
+      "subject_clean": "[statnet_help] Issues with Adjacency Matrix Attributes (ADD Health)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Zane (and the statnet user group),\nI've been corresponding with Martina Morris and I've been able to fix my\ndata, so the ergm works even with my missing attribute data (on average\n20%).\n\nThere was something about the formatting of my missing data (imported from\nSTATA) that seemed to impact the statnet refusing to define my attribute\ndata. Hopefully my solution will help others who have had issues with\nmissing attribute data.  I did not need to impute!\n\nHere's the code that I used\n#make sure your variables are factored if they are factor variables\n#I am using a dataset called JeffFactor where my categorical variables are\ndefined as factor variables in R\n#Cutting down the number of variables used in the data\nmyvars <- c(\"biof\", hispanic\",\"race\", \"grade\")\nJeffDem <- JeffFactor[myvars]\nattach(JeffDem)\n#ensure missing has appropriate prefix\nJeffDem$biof <- Recode(JeffDem$biof, 'NA=NA', as.factor.result=FALSE)\nJeffDem$race <- Recode(JeffDem$race, 'NA=NA', as.factor.result=FALSE)\n#mark as missing in R\nJeffDem$biof[NA] <-NA\nJeffDem$race <- Recode(JeffDem$race, 'NA=NA', as.factor.result=FALSE)\n#define your adjacency matrix\nrelations <-net\nrelations %v% \"race\" <- JeffDem$race\nrelations %v% \"gender\" <-JeffDem$biof\n#fit ergm\njmodel.01 <- ergm(relations~edges+nodematch('race', diff=T))\n\n-Karen Ertrachter\n\n\n-- \nKaren Ertrachter\nDepartment of Sociology and Demography\nThe Pennsylvania State University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140201/32a2c7db/attachment.html>",
+      "body_snippet": "Hi Zane (and the statnet user group),\nI've been corresponding with Martina Morris and I've been able to fix my\ndata, so the ergm works even with my missing attribute data (on average\n20%).\n\nThere was ",
+      "thread_id": "thread-b14af36881e1",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-0899c56f8f64",
+      "message_id": "<CAGcS3aMjwiqV4VDMXJn45fbPd+YuOBa0ZF4-VR2cPSDtRN4e9g@mail.gmail.com>",
+      "from_name": "Karen Ertrachter",
+      "from_email_hash": "1c6e2a5b5363c01fa9c7e24c7311acb0a71f30e4a1ec0a31321dfdd5c75930af",
+      "date": "2014-02-04T06:41:46Z",
+      "subject": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "subject_clean": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone,\nI'm using ADD Health data in order to look at friendship networks.  I'm\ncurrently working on Jefferson and Sunshine in the data, but my model fit\nhas been awful.  When I increase the the iterations, it often doesn't\nconverge or takes forever to give another inaccurate result.  I already\nhave gone through papers on ergm model fit and on using ADD Health, but I\nhaven't had much luck with getting results that even seem remotely decent.\n\nIf anyone has worked with this data, I'd really appreciate tips or code on\nfitting a large dataset with ergms.\n\nThank you,\nKaren Ertrachter\n\n\n-- \nKaren Ertrachter\nDepartment of Sociology and Demography\nThe Pennsylvania State University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140204/0a037409/attachment.html>",
+      "body_snippet": "Hi everyone,\nI'm using ADD Health data in order to look at friendship networks.  I'm\ncurrently working on Jefferson and Sunshine in the data, but my model fit\nhas been awful.  When I increase the the ",
+      "thread_id": "thread-0899c56f8f64",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-746d298c2b92",
+      "message_id": "<C863E7693594F148ABBECBDDCE36AA761B5842E5@XMAIL-MBX-BC1.AD.UCSD.EDU>",
+      "from_name": "Lewis, Kevin",
+      "from_email_hash": "2885157a0538b695de73963d3e7a2540ad757b4f239727aaf4414d9353dd804b",
+      "date": "2014-02-04T07:07:28Z",
+      "subject": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "subject_clean": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "in_reply_to": "<CAGcS3aMjwiqV4VDMXJn45fbPd+YuOBa0ZF4-VR2cPSDtRN4e9g@mail.gmail.com>",
+      "references": [
+        "<CAGcS3aMjwiqV4VDMXJn45fbPd+YuOBa0ZF4-VR2cPSDtRN4e9g@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Karen,\n\nCould you provide some additional information? Specifically, 1) the size of the networks, and 2) the specific code/model you're running (so that folks know what terms you are including, as well as whether/how you are changing the default estimation settings)?\n\nThanks,\nKevin\n\nFrom: statnet_help-bounces@mailman2.u.washington.edu [mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of Karen Ertrachter\nSent: Tuesday, February 04, 2014 6:42 AM\nTo: statnet_help@u.washington.edu\nSubject: [statnet_help] ADD Health Data - Fit ERGMS\n\nHi everyone,\nI'm using ADD Health data in order to look at friendship networks.  I'm currently working on Jefferson and Sunshine in the data, but my model fit has been awful.  When I increase the the iterations, it often doesn't converge or takes forever to give another inaccurate result.  I already have gone through papers on ergm model fit and on using ADD Health, but I haven't had much luck with getting results that even seem remotely decent.\n\nIf anyone has worked with this data, I'd really appreciate tips or code on fitting a large dataset with ergms.\n\nThank you,\nKaren Ertrachter\n\n\n--\nKaren Ertrachter\nDepartment of Sociology and Demography\nThe Pennsylvania State University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140204/1c846ac3/attachment.html>",
+      "body_snippet": "Hi Karen,\n\nCould you provide some additional information? Specifically, 1) the size of the networks, and 2) the specific code/model you're running (so that folks know what terms you are including, as ",
+      "thread_id": "thread-0899c56f8f64",
+      "thread_depth": 1,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-f2ae3782113a",
+      "message_id": "<CAByPayFyz9GJJXsiucoz36ir6H+NRCYAn1M-kPNwWEvmW4c-tQ@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2014-02-04T08:02:02Z",
+      "subject": "[statnet_help] fitting ergms to data from link-tracing designs",
+      "subject_clean": "[statnet_help] fitting ergms to data from link-tracing designs",
+      "in_reply_to": "<52E95D51.5080007@uci.edu>",
+      "references": [
+        "<CAByPayEs4c4V3-ZZs0iAFKASTRtV0TKMZfwaFVN9dgCVDx19bg@mail.gmail.com>",
+        "<52E95D51.5080007@uci.edu>"
+      ],
+      "body_plain": "Carter,\n\nMany thanks for your extensive reply! The second approach you write\nabout sounds very interesting. Thanks for the pointers to the sampling\npapers too. Did you mean these two:\nGjoka et al \"Practical Recommendations on Crawling Online Social Networks\"\nGjoka et al \"Multigraph sampling of online social networks\"\n\nThere is a recent paper by Pattison et al (2013) \"Conditional\nestimation of exponential random graph models from snowball sampling\ndesigns\" Journal of Mathematical Psychology 57:284?296. I presume that\nthis is a totally different estimation algorithm compared to the\ncurrently implemented in statnet? Unfortunately the PNet module for\nthat seems to be not available yet.\n\nThanks again\n\n~michal\n\nOn Wed, Jan 29, 2014 at 8:58 PM, Carter T. Butts <buttsc@uci.edu> wrote:\n> Hi, Michal. The current version of ergm() will, when given a network with\n> missing edges, find the observed-data MLE under the assumption that the\n> observed data is ignorably sampled from the graph being modeled. H+G discuss\n> the conditions under which that is a reasonable assumption...but where it\n> is, ergm() should work out of the box.\n>\n> An alternative approach (closer to what is in the tutorial you mention) is\n> to obtain an approximate MLE by (1) using design-based estimation to obtain\n> (approximate) sufficient statistics, and (2) fitting to those target stats\n> (using the functionality currently in ERGM). Note that to do this in a valid\n> manner, the graph used for simulation in ERGM must be of the same size as\n> the graph from which your data was sampled -- this means that the method\n> does not scale so well if one has a really large system (e.g., an OSN). One\n> advantage of this approach is that it makes it easier to relax the\n> assumption that the seed nodes for the link-trace were drawn from a\n> probability sample (by using Markov chain-based sampling methods - see,\n> e.g., Gjoka et al., IEEE JSAC, 2011). (Of course, that only helps you if you\n> are in a position to choose your data collection design!) If your\n> design-based estimators are consistent, then the associated approximate MLE\n> should be consistent as well, but your measures of standard error will in\n> general be underestimated (because they neglect the sampling variability in\n> your estimates of the sufficient statistics). My impression is that Pavel is\n> currently working on this (or, if not, a closely related problem!).\n>\n> Mark or others may want to chime in on this, but that should at least give\n> you the basic rundown....\n>\n> -Carter\n>\n>\n> On 01/28/2014 03:19 AM, Micha? Bojanowski wrote:\n>>\n>> Dear statnetters,\n>>\n>> Are the methods for fitting ERGMs to data collected with link-tracing\n>> designs described e.g. in Handock&Gile 2010 already implemented in\n>> statnet? I surfed the statnet wiki searching for that infomation, but\n>> without success.\n>>\n>> If they are implemented, I would be grateful for pointers to some\n>> tutorials or examples.\n>>\n>> If they are not implemented, I would be even more grateful for\n>> suggestions whether and how I could fit/approximate ERGMs from such\n>> data using existing tools. Perhaps the approach of fitting ERGMs to\n>> egocentrically-sampled data described in one of the statnet tutorials\n>> (e.g. here\n>> http://statnet.csde.washington.edu/NME2013/day2/ergm%20tutorial.html)\n>> can be somehow generalized?\n>>\n>>\n>> Thank you in advance\n>>\n>> Best wishes,\n>> Michal\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Carter,\n\nMany thanks for your extensive reply! The second approach you write\nabout sounds very interesting. Thanks for the pointers to the sampling\npapers too. Did you mean these two:\nGjoka et al \"Pra",
+      "thread_id": "thread-f2ae3782113a",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-7881573e21b5",
+      "message_id": "<CAGcS3aOHBAk6n_+qg2cMx82Jhw4GdW_ShN3jFmQ11SZhZwWKjA@mail.gmail.com>",
+      "from_name": "Karen Ertrachter",
+      "from_email_hash": "1c6e2a5b5363c01fa9c7e24c7311acb0a71f30e4a1ec0a31321dfdd5c75930af",
+      "date": "2014-02-04T08:21:12Z",
+      "subject": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "subject_clean": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "in_reply_to": "<C863E7693594F148ABBECBDDCE36AA761B5842E5@XMAIL-MBX-BC1.AD.UCSD.EDU>",
+      "references": [
+        "<CAGcS3aMjwiqV4VDMXJn45fbPd+YuOBa0ZF4-VR2cPSDtRN4e9g@mail.gmail.com>",
+        "<C863E7693594F148ABBECBDDCE36AA761B5842E5@XMAIL-MBX-BC1.AD.UCSD.EDU>"
+      ],
+      "body_plain": "Hi Kevin,\nJefferson is 881 students and Sunshine has 1210 students.\n\nMy code for estimating my models is:\n#for jefferson\njmodel.06 <-ergm(relations~nodematch('grade', diff=F)+nodematch('race',\ndiff=F)+mutual+nodematch('gender', diff=F)+nodematch('educomb', diff=T))\njmodel.08 <-ergm(relations~nodematch('grade', diff=F)+nodematch('race',\ndiff=F)+mutual+nodematch('gender', diff=F)+nodematch('educomb', diff=T),\ncontrol = control.ergm(seed = 1, MCMC.samplesize = 50000, MCMC.interval =\n1000), verbose = T)\n\nI really appreciate the help. I've tried a few other methods, including\ntrying to use the TNT sampler in order to speed up estimates. My attempts\nto use change the MCMC.prop.weights to TNT haven't worked, although I'm\nthinking that might be a possible solution due to the low density of the\nfriendship network.\n\nThanks,\nKaren\n\n\nOn Tue, Feb 4, 2014 at 10:07 AM, Lewis, Kevin <lewis@ucsd.edu> wrote:\n\n>  Hi Karen,\n>\n>\n>\n> Could you provide some additional information? Specifically, 1) the size\n> of the networks, and 2) the specific code/model you're running (so that\n> folks know what terms you are including, as well as whether/how you are\n> changing the default estimation settings)?\n>\n>\n>\n> Thanks,\n>\n> Kevin\n>\n>\n>\n> *From:* statnet_help-bounces@mailman2.u.washington.edu [mailto:\n> statnet_help-bounces@mailman2.u.washington.edu] *On Behalf Of *Karen\n> Ertrachter\n> *Sent:* Tuesday, February 04, 2014 6:42 AM\n> *To:* statnet_help@u.washington.edu\n> *Subject:* [statnet_help] ADD Health Data - Fit ERGMS\n>\n>\n>\n> Hi everyone,\n>\n> I'm using ADD Health data in order to look at friendship networks.  I'm\n> currently working on Jefferson and Sunshine in the data, but my model fit\n> has been awful.  When I increase the the iterations, it often doesn't\n> converge or takes forever to give another inaccurate result.  I already\n> have gone through papers on ergm model fit and on using ADD Health, but I\n> haven't had much luck with getting results that even seem remotely decent.\n>\n>\n>\n> If anyone has worked with this data, I'd really appreciate tips or code on\n> fitting a large dataset with ergms.\n>\n>\n>\n> Thank you,\n>\n> Karen Ertrachter\n>\n>\n>\n>\n> --\n>\n> Karen Ertrachter\n> Department of Sociology and Demography\n> The Pennsylvania State University\n>\n\n\n\n-- \nKaren Ertrachter\nDepartment of Sociology and Demography\nThe Pennsylvania State University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140204/acb0917b/attachment.html>",
+      "body_snippet": "Hi Kevin,\nJefferson is 881 students and Sunshine has 1210 students.\n\nMy code for estimating my models is:\n#for jefferson\njmodel.06 <-ergm(relations~nodematch('grade', diff=F)+nodematch('race',\ndiff=F)",
+      "thread_id": "thread-0899c56f8f64",
+      "thread_depth": 2,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-e97f84c7439f",
+      "message_id": "<alpine.WNT.1.10.1402040927580.2888@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2014-02-04T09:32:55Z",
+      "subject": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "subject_clean": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "in_reply_to": "<CAGcS3aMjwiqV4VDMXJn45fbPd+YuOBa0ZF4-VR2cPSDtRN4e9g@mail.gmail.com>",
+      "references": [
+        "<CAGcS3aMjwiqV4VDMXJn45fbPd+YuOBa0ZF4-VR2cPSDtRN4e9g@mail.gmail.com>"
+      ],
+      "body_plain": "Karen,\n\nThe models from Birds of a Feather provided decent fits to all the \nsaturation schools.  So,  1. what terms are you using, and 2. what do you \nmean by \"awful fit\"?\n\nbest,\nmm\n\n\nOn Tue, 4 Feb 2014, Karen Ertrachter wrote:\n\n> Hi everyone,\n> I'm using ADD Health data in order to look at friendship networks. ?I'm currently working on Jefferson and Sunshine in\n> the data, but my model fit has been awful. ?When I increase the the iterations, it often doesn't converge or takes\n> forever to give another inaccurate result. ?I already have gone through papers on ergm model fit and on using ADD\n> Health, but I haven't had much luck with getting results that even seem remotely decent.\n> \n> If anyone has worked with this data, I'd really appreciate tips or code on fitting a large dataset with ergms.\n> \n> Thank you,\n> Karen Ertrachter\n> \n> \n> --\n> Karen Ertrachter\n> Department of Sociology and Demography\n> The Pennsylvania State University\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Karen,\n\nThe models from Birds of a Feather provided decent fits to all the \nsaturation schools.  So,  1. what terms are you using, and 2. what do you \nmean by \"awful fit\"?\n\nbest,\nmm\n\n\nOn Tue, 4 Feb 20",
+      "thread_id": "thread-0899c56f8f64",
+      "thread_depth": 1,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-cb442600092d",
+      "message_id": "<alpine.WNT.1.10.1402040946570.2888@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2014-02-04T10:00:29Z",
+      "subject": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "subject_clean": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "in_reply_to": "<CAGcS3aOHBAk6n_+qg2cMx82Jhw4GdW_ShN3jFmQ11SZhZwWKjA@mail.gmail.com>",
+      "references": [
+        "<CAGcS3aMjwiqV4VDMXJn45fbPd+YuOBa0ZF4-VR2cPSDtRN4e9g@mail.gmail.com>",
+        "<C863E7693594F148ABBECBDDCE36AA761B5842E5@XMAIL-MBX-BC1.AD.UCSD.EDU>",
+        "<CAGcS3aOHBAk6n_+qg2cMx82Jhw4GdW_ShN3jFmQ11SZhZwWKjA@mail.gmail.com>"
+      ],
+      "body_plain": "Ok, this is now even more of a puzzle.\n\nTo be sure we're working on the same version, do you have the latest \nrelease of the statnet packages (updated about a week ago)?  If not, can \nyou update to these and run again?\n\nthanks,\nMartina\n\n  On Tue, 4 Feb 2014, Karen Ertrachter wrote:\n\n> Hi Kevin,\n> Jefferson is 881 students and Sunshine has 1210 students. \n> \n> My code for estimating my models is: \n> #for jefferson\n> jmodel.06 <-ergm(relations~nodematch('grade', diff=F)+nodematch('race', diff=F)+mutual+nodematch('gender',\n> diff=F)+nodematch('educomb', diff=T))\n> jmodel.08 <-ergm(relations~nodematch('grade', diff=F)+nodematch('race', diff=F)+mutual+nodematch('gender',\n> diff=F)+nodematch('educomb', diff=T), control = control.ergm(seed = 1, MCMC.samplesize = 50000, MCMC.interval = 1000),\n> verbose = T)\n> \n> I really appreciate the help. I've tried a few other methods, including trying to use the TNT sampler in order to\n> speed up estimates. My attempts to use change the MCMC.prop.weights to TNT haven't worked, although I'm thinking that\n> might be a possible solution due to the low density of the friendship network.\n> \n> Thanks,\n> Karen\n> \n> \n> On Tue, Feb 4, 2014 at 10:07 AM, Lewis, Kevin <lewis@ucsd.edu> wrote:\n>\n>       Hi Karen,\n>\n> \n>\n>       Could you provide some additional information? Specifically, 1) the size of the networks, and 2) the\n>       specific code/model you?re running (so that folks know what terms you are including, as well as\n>       whether/how you are changing the default estimation settings)?\n>\n> \n>\n>       Thanks,\n>\n>       Kevin\n>\n> \n>\n>       From: statnet_help-bounces@mailman2.u.washington.edu\n>       [mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of Karen Ertrachter\n>       Sent: Tuesday, February 04, 2014 6:42 AM\n>       To: statnet_help@u.washington.edu\n>       Subject: [statnet_help] ADD Health Data - Fit ERGMS\n>\n> \n>\n>       Hi everyone,\n> \n> I'm using ADD Health data in order to look at friendship networks. ?I'm currently working on Jefferson and\n> Sunshine in the data, but my model fit has been awful. ?When I increase the the iterations, it often doesn't\n> converge or takes forever to give another inaccurate result. ?I already have gone through papers on ergm model\n> fit and on using ADD Health, but I haven't had much luck with getting results that even seem remotely decent.\n>\n> \n> \n> If anyone has worked with this data, I'd really appreciate tips or code on fitting a large dataset with ergms.\n>\n> \n> \n> Thank you,\n> \n> Karen Ertrachter\n> \n>\n> \n> \n> --\n> \n> Karen Ertrachter\n> Department of Sociology and Demography\n> The Pennsylvania State University\n> \n> \n> \n> \n> --\n> Karen Ertrachter\n> Department of Sociology and Demography\n> The Pennsylvania State University\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Ok, this is now even more of a puzzle.\n\nTo be sure we're working on the same version, do you have the latest \nrelease of the statnet packages (updated about a week ago)?  If not, can \nyou update to th",
+      "thread_id": "thread-0899c56f8f64",
+      "thread_depth": 3,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-5e66ccdce037",
+      "message_id": "<CAGcS3aOv7rZOXXXJBrY8jSXTVnHNmv_1ymKrMjjmCxVf-7EWiw@mail.gmail.com>",
+      "from_name": "Karen Ertrachter",
+      "from_email_hash": "1c6e2a5b5363c01fa9c7e24c7311acb0a71f30e4a1ec0a31321dfdd5c75930af",
+      "date": "2014-02-04T10:14:43Z",
+      "subject": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "subject_clean": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "in_reply_to": "<alpine.WNT.1.10.1402040927580.2888@morrism-PC>",
+      "references": [
+        "<CAGcS3aMjwiqV4VDMXJn45fbPd+YuOBa0ZF4-VR2cPSDtRN4e9g@mail.gmail.com>",
+        "<alpine.WNT.1.10.1402040927580.2888@morrism-PC>"
+      ],
+      "body_plain": "Hi Martina,\nMy network is directed, so I'm not able to use the sociality parameter\nmentioned in your paper to help fit the networks. I just updated to the\nnewest version of statnet.\n\nI just revised my code, but I'm running this:\njmodel.08 <-ergm(relations~nodematch('grade', diff=F)+nodematch('race',\ndiff=F)+gwesp(0.25, fixed=T)+nodematch('gender',\ndiff=F)+nodematch('educomb', diff=T), control = control.ergm(seed = 1,\nMCMC.samplesize = 50000, MCMC.interval = 1000))\n\nAll of of the estimated model sample statistics are significantly different\n(p<0.00) than the observed data, the autocorrelation statistics between\nlags are very close to one, and the Geweke statistics are very close to\nzero.\n\nI just tweaked the terms to increase the intervals to 5000 and the burnin\nfor 5000, but that's running right now.\n\nThank you,\nKaren\n\n\n\nOn Tue, Feb 4, 2014 at 12:32 PM, martina morris <morrism@u.washington.edu>wrote:\n\n> Karen,\n>\n> The models from Birds of a Feather provided decent fits to all the\n> saturation schools.  So,  1. what terms are you using, and 2. what do you\n> mean by \"awful fit\"?\n>\n> best,\n> mm\n>\n>\n>\n> On Tue, 4 Feb 2014, Karen Ertrachter wrote:\n>\n>  Hi everyone,\n>> I'm using ADD Health data in order to look at friendship networks.  I'm\n>> currently working on Jefferson and Sunshine in\n>> the data, but my model fit has been awful.  When I increase the the\n>> iterations, it often doesn't converge or takes\n>> forever to give another inaccurate result.  I already have gone through\n>> papers on ergm model fit and on using ADD\n>> Health, but I haven't had much luck with getting results that even seem\n>> remotely decent.\n>>\n>> If anyone has worked with this data, I'd really appreciate tips or code\n>> on fitting a large dataset with ergms.\n>>\n>> Thank you,\n>> Karen Ertrachter\n>>\n>>\n>> --\n>> Karen Ertrachter\n>> Department of Sociology and Demography\n>> The Pennsylvania State University\n>>\n>>\n>>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n\n-- \nKaren Ertrachter\nDepartment of Sociology and Demography\nThe Pennsylvania State University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140204/41086bc8/attachment.html>",
+      "body_snippet": "Hi Martina,\nMy network is directed, so I'm not able to use the sociality parameter\nmentioned in your paper to help fit the networks. I just updated to the\nnewest version of statnet.\n\nI just revised my",
+      "thread_id": "thread-0899c56f8f64",
+      "thread_depth": 2,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-c26930ab678b",
+      "message_id": "<alpine.WNT.1.10.1402041030520.2888@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2014-02-04T10:34:05Z",
+      "subject": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "subject_clean": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "in_reply_to": "<CAGcS3aOv7rZOXXXJBrY8jSXTVnHNmv_1ymKrMjjmCxVf-7EWiw@mail.gmail.com>",
+      "references": [
+        "<CAGcS3aMjwiqV4VDMXJn45fbPd+YuOBa0ZF4-VR2cPSDtRN4e9g@mail.gmail.com>",
+        "<alpine.WNT.1.10.1402040927580.2888@morrism-PC>",
+        "<CAGcS3aOv7rZOXXXJBrY8jSXTVnHNmv_1ymKrMjjmCxVf-7EWiw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Karen,\n\nMy surprise here is because your original model included only one term \nthat involved link dependence -- the mutual term.  And that's not dyad \ndependence, b/c it's within dyad.\n\nWhat happens if you run your original model excluding the mutual term, so \njust the nodematch terms?\n\nAnd have you looked at the summary model stats (using summary(data ~ \nmodel stats)?  Just to see if there's something wonky going on in your \ndata.\n\nbest,\nmm\n\n\nOn Tue, 4 Feb 2014, Karen Ertrachter wrote:\n\n> Hi Martina,\n> My network is directed, so I'm not able to use the sociality parameter mentioned in your paper to help fit the\n> networks. I just updated to the newest version of statnet.\n> \n> I just revised my code, but I'm running this:\n> jmodel.08 <-ergm(relations~nodematch('grade', diff=F)+nodematch('race', diff=F)+gwesp(0.25,\n> fixed=T)+nodematch('gender', diff=F)+nodematch('educomb', diff=T), control = control.ergm(seed = 1, MCMC.samplesize =\n> 50000, MCMC.interval = 1000))\n> \n> All of of the estimated model sample statistics are significantly different (p<0.00) than the observed data, the\n> autocorrelation statistics between lags are very close to one, and the Geweke statistics are very close to zero.\n> \n> I just tweaked the terms to increase the intervals to 5000 and the burnin for 5000, but that's running right now. \n> \n> Thank you,\n> Karen\n> \n> \n> \n> On Tue, Feb 4, 2014 at 12:32 PM, martina morris <morrism@u.washington.edu> wrote:\n>       Karen,\n>\n>       The models from Birds of a Feather provided decent fits to all the saturation schools. ?So, ?1. what terms\n>       are you using, and 2. what do you mean by \"awful fit\"?\n>\n>       best,\n>       mm\n> \n>\n>       On Tue, 4 Feb 2014, Karen Ertrachter wrote:\n>\n>             Hi everyone,\n>             I'm using ADD Health data in order to look at friendship networks. ?I'm currently working on\n>             Jefferson and Sunshine in\n>             the data, but my model fit has been awful. ?When I increase the the iterations, it often\n>             doesn't converge or takes\n>             forever to give another inaccurate result. ?I already have gone through papers on ergm model\n>             fit and on using ADD\n>             Health, but I haven't had much luck with getting results that even seem remotely decent.\n>\n>             If anyone has worked with this data, I'd really appreciate tips or code on fitting a large\n>             dataset with ergms.\n>\n>             Thank you,\n>             Karen Ertrachter\n> \n>\n>             --\n>             Karen Ertrachter\n>             Department of Sociology and Demography\n>             The Pennsylvania State University\n> \n> \n> \n> ****************************************************************\n> ?Professor of Sociology and Statistics\n> ?Director, UWCFAR Sociobehavioral and Prevention Research Core\n> ?Box 354322\n> ?University of Washington\n> ?Seattle, WA 98195-4322\n>\n> ?Office: ? ? ? ?(206) 685-3402\n> ?Dept Office: ? (206) 543-5882, 543-7237\n> ?Fax: ? ? ? ? ? (206) 685-7419\n> \n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> \n> \n> \n> \n> --\n> Karen Ertrachter\n> Department of Sociology and Demography\n> The Pennsylvania State University\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Karen,\n\nMy surprise here is because your original model included only one term \nthat involved link dependence -- the mutual term.  And that's not dyad \ndependence, b/c it's within dyad.\n\nWhat happe",
+      "thread_id": "thread-0899c56f8f64",
+      "thread_depth": 3,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-6a13209dfd92",
+      "message_id": "<A92AC5B8-700B-4260-BE33-45FDCDD5259C@gmail.com>",
+      "from_name": "jimi adams",
+      "from_email_hash": "d387d68c739c196c625768794dffa30321694dced194798b4c5c7e0b3a23c752",
+      "date": "2014-02-04T11:09:12Z",
+      "subject": "[statnet_help] colors in ndtv",
+      "subject_clean": "[statnet_help] colors in ndtv",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi folks,\nI don't know if questions about this would be better posted elsewhere, but this seemed the logical list to me. I am having a minor issue getting colors to plot in the manner i'd expect within ndtv. I am specifying node color as a TEA based on vertex attributes on the network objects. Instead of using those values as the color vector, it appears to be using a \"unique sort\" on values and assigning colors to those sequentially. Is there a way to get it to do the former instead?\n \nIn other words (trivial example, code below), suppose the values in slice 1 of the color variable are 1, 2, 3, while in slice 2 they are 1, 2, 4. What I would expect is that slice 1 would have 3 colors, slice 2 would also have 3, but only 2 of them would be the same (i.e., those with label 4 in slice 2 should NOT be the same as those with label 3 in slice 1). However, what i'm getting is that each slice is using the same 3-color palette. Plotting the three initial network objects w/plot.network gives the result I was anticipating. Am i missing something obvious?\n\nthanks!\njimi\n\nTrivial example code:\nt1 <- network.initialize(3)\nadd.edge(t1,1,2) \nadd.edge(t1,2,3)\nt1 <- set.vertex.attribute(t1, \"col\", c(1:3))\nt2 <- t1\nt2 <- set.vertex.attribute(t2, \"col\", c(1,2,4))\nt3 <- t2\nex <- networkDynamic(network.list=list(t1, t2, t3), vertex.pid=\"vertex.names\", create.TEAs=T)\ncompute.animation(ex, slice.par=list(start=1,end=3,interval=1, aggregate.dur=1,rule='all'))\nrender.animation(ex, vertex.col=\"col\")\n\n\njimi adams\nAssistant Professor\nDepartment of Sociology\nAmerican University\ne: jadams@american.edu\nw: jimiadams.com",
+      "body_snippet": "Hi folks,\nI don't know if questions about this would be better posted elsewhere, but this seemed the logical list to me. I am having a minor issue getting colors to plot in the manner i'd expect withi",
+      "thread_id": "thread-6a13209dfd92",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-df1be7d18454",
+      "message_id": "<CAFDq6s-FAdsGsSsZsJPuDrgJJzoXBg4aMqbDun9buznDJdQEfA@mail.gmail.com>",
+      "from_name": "C.J. Dey",
+      "from_email_hash": "860113709c55e6032f4950144bafd07cdbf93d59e83e582b42adb85b9ae87bc9",
+      "date": "2014-02-04T13:02:58Z",
+      "subject": "[statnet_help] Extract subgraph with specific node attribute and edge attribute",
+      "subject_clean": "[statnet_help] Extract subgraph with specific node attribute and edge attribute",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI am trying to extract a subgraph from a network object that includes only\nnodes with a specific value of an attribute. I would also like this\nsubgraph to contain a specific edge attribute that I am interested in. In\nparticular, I would like to print the adjacency matrix from this subgraph\n(or save it as a new network object)\n\nHere is an example:\n\nm<-matrix(rmultinom(1,100,rep(1/100, 100)),10,10)\n\ng<-network(m, matrix.type=\"adjacency\", directed=FALSE)\n\nset.edge.value(g, \"fights\", m)\n\nset.vertex.attribute(g, \"Group\", c(rep(\"G1\",2), rep(\"G2\",3),rep(\"G1\",3),\nrep(\"G2\",2)))\n\n\nas.sociomatrix(g, \"fights\")\n\n\n###I would like to select out the 'fights' info for a subgraph where all\nnodes have the attribute 'G2'\n\n###I seem to be able to select out the correct subgraph, but I cannot\nfigure out how to include an edge attribute\n\n\ng[g%v%\"Group\"==\"G2\", g%v%\"Group\"==\"G2\"] ###Can select out the subgraph, but\nnot sure how to include the 'fight' edge attribute\n\nas.sociomatrix(g[g%v%\"Group\"==\"G2\", g%v%\"Group\"==\"G2\"], attrname=\"fights\")\n##I thought this would work, but it does not\n\n\n#I spent a long while in the network.extraction help file but could not\nsort this out. The names.eval() command only seems to work to specify a new\nattribute, rather than to extract an existing one. I am probably missing\nsomething obvious.\n\n\nMany thanks,\n\nCody Dey\nPhD Candidate\nMcMaster University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140204/fe4da43a/attachment.html>",
+      "body_snippet": "Hi all,\n\nI am trying to extract a subgraph from a network object that includes only\nnodes with a specific value of an attribute. I would also like this\nsubgraph to contain a specific edge attribute th",
+      "thread_id": "thread-df1be7d18454",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-c3df91fab472",
+      "message_id": "<52F15A35.5010006@skyeome.net>",
+      "from_name": "Skye Bender-deMoll",
+      "from_email_hash": "016c31bf83672a8e8fce6b664eb68ddff364b5df6912775ec31eeceebce90340",
+      "date": "2014-02-04T13:23:01Z",
+      "subject": "[statnet_help] colors in ndtv",
+      "subject_clean": "[statnet_help] colors in ndtv",
+      "in_reply_to": "<A92AC5B8-700B-4260-BE33-45FDCDD5259C@gmail.com>",
+      "references": [
+        "<A92AC5B8-700B-4260-BE33-45FDCDD5259C@gmail.com>"
+      ],
+      "body_plain": "Hi Jimi, great to see you are trying out the ndtv package!\n\nOn 02/04/2014 11:09 AM, jimi adams wrote:\n> Hi folks,\n> I don't know if questions about this would be better posted elsewhere, but this seemed the logical list to me.\n\nThis is definitely the right place to ask ndtv questions :-)\n\nI am having a minor issue getting colors to plot in the manner i'd \nexpect within ndtv. I am specifying node color as a TEA based on vertex \nattributes on the network objects. Instead of using those values as the \ncolor vector, it appears to be using a \"unique sort\" on values and \nassigning colors to those sequentially. Is there a way to get it to do \nthe former instead?\n>\n> In other words (trivial example, code below), suppose the values in slice 1 of the color variable are 1, 2, 3, while in slice 2 they are 1, 2, 4. What I would expect is that slice 1 would have 3 colors, slice 2 would also have 3, but only 2 of them would be the same (i.e., those with label 4 in slice 2 should NOT be the same as those with label 3 in slice 1). However, what i'm getting is that each slice is using the same 3-color palette. Plotting the three initial network objects w/plot.network gives the result I was anticipating. Am i missing something obvious?\n\nI think the issue is that you are plotting the wrong time range for the \nexample network. I'll expand on your example below.\n\n>\n> thanks!\n> jimi\n>\n> Trivial example code:\n> t1 <- network.initialize(3)\n> add.edge(t1,1,2)\n> add.edge(t1,2,3)\n> t1 <- set.vertex.attribute(t1, \"col\", c(1:3))\n> t2 <- t1\n> t2 <- set.vertex.attribute(t2, \"col\", c(1,2,4))\n> t3 <- t2\n> ex <- networkDynamic(network.list=list(t1, t2, t3), vertex.pid=\"vertex.names\", create.TEAs=T)\n> compute.animation(ex, slice.par=list(start=1,end=3,interval=1, aggregate.dur=1,rule='all'))\n> render.animation(ex, vertex.col=\"col\")\n\nNote that when you called networkDynamic(), it reported that it was \nmaking some default assumptions:\n\n\"Neither start or onsets specified, assuming start=0\nOnsets and termini not specified, assuming each network in network.list \nshould have a discrete spell of length 1\"\n\nThis may be confusing, but what it means is that the first network on \nthe list will be start at 0 and extend until 1, the 2nd will start at 1 \nand extend until 2, etc.\n\nFor this example you computed a movie for the range 1 to 3, so you were \nonly viewing the values from the t2 network onward\n\nIf I directly query the values of the attributes at each time I see\n\n > get.vertex.attribute.active(ex,'col',at=0)\n[1] 1 2 3\n > get.vertex.attribute.active(ex,'col',at=1)\n[1] 1 2 4\n > get.vertex.attribute.active(ex,'col',at=2)\n[1] 1 2 4\n\nI re-ran the movie, shifting slice.par one unit earlier:\n\ncompute.animation(ex,slice.par=list(start=0,end=2,interval=1,aggregate.dur=1,rule='all'))\nrender.animation(ex, vertex.col=\"col\")\n\nI see the color of vertex '3' change from green to blue, which seems \nlike what you were expecting, right?\n\nAlternatively, if you want the \"ex\" network to actually start at time 1 \ninstead of 0, you can explicitly tell the networkDynamic() converter \nfunction when the first start time should be using the \"start\" parameter:\n\nex <- networkDynamic(network.list=list(t1, t2, \nt3),vertex.pid=\"vertex.names\", create.TEAs=T,start=1)\n\nor even give it the onset and terminus of each panel if they have \ndifferent durations or you want to use different time units...\n\nex <- networkDynamic(network.list=list(t1, t2, t3), \nvertex.pid=\"vertex.names\", create.TEAs=T,onsets=1:3,termini=2:4)\n\n\nPlease let me know if this resolves the issue.\n\nbest,\n  -skye\n\np.s:  A Shameless Plug:  We will be running a pre-Sunbelt Networks \nconference workshop on plotting dynamic networks with the ndtv package \non Tueseday Feb 18. I think there are still a few slots left...",
+      "body_snippet": "Hi Jimi, great to see you are trying out the ndtv package!\n\nOn 02/04/2014 11:09 AM, jimi adams wrote:\n> Hi folks,\n> I don't know if questions about this would be better posted elsewhere, but this seem",
+      "thread_id": "thread-6a13209dfd92",
+      "thread_depth": 1,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-bd8319691663",
+      "message_id": "<C863E7693594F148ABBECBDDCE36AA761B584798@XMAIL-MBX-BC1.AD.UCSD.EDU>",
+      "from_name": "Lewis, Kevin",
+      "from_email_hash": "2885157a0538b695de73963d3e7a2540ad757b4f239727aaf4414d9353dd804b",
+      "date": "2014-02-04T14:11:51Z",
+      "subject": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "subject_clean": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "in_reply_to": "<alpine.WNT.1.10.1402041030520.2888@morrism-PC>",
+      "references": [
+        "<CAGcS3aMjwiqV4VDMXJn45fbPd+YuOBa0ZF4-VR2cPSDtRN4e9g@mail.gmail.com>",
+        "<alpine.WNT.1.10.1402040927580.2888@morrism-PC>",
+        "<CAGcS3aOv7rZOXXXJBrY8jSXTVnHNmv_1ymKrMjjmCxVf-7EWiw@mail.gmail.com>",
+        "<alpine.WNT.1.10.1402041030520.2888@morrism-PC>"
+      ],
+      "body_plain": "Hi Martina/Karen,\n\nPlease forgive the basic suggestion- but shouldn't there be an \"edges\" term in there?\n\n-Kevin\n\n-----Original Message-----\nFrom: statnet_help-bounces@mailman2.u.washington.edu [mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of martina morris\nSent: Tuesday, February 04, 2014 10:34 AM\nTo: Karen Ertrachter\nCc: statnet_help@u.washington.edu\nSubject: Re: [statnet_help] ADD Health Data - Fit ERGMS\n\nHi Karen,\n\nMy surprise here is because your original model included only one term that involved link dependence -- the mutual term.  And that's not dyad dependence, b/c it's within dyad.\n\nWhat happens if you run your original model excluding the mutual term, so just the nodematch terms?\n\nAnd have you looked at the summary model stats (using summary(data ~ model stats)?  Just to see if there's something wonky going on in your data.\n\nbest,\nmm\n\n\nOn Tue, 4 Feb 2014, Karen Ertrachter wrote:\n\n> Hi Martina,\n> My network is directed, so I'm not able to use the sociality parameter \n> mentioned in your paper to help fit the networks. I just updated to the newest version of statnet.\n> \n> I just revised my code, but I'm running this:\n> jmodel.08 <-ergm(relations~nodematch('grade', \n> diff=F)+nodematch('race', diff=F)+gwesp(0.25, \n> fixed=T)+nodematch('gender', diff=F)+nodematch('educomb', diff=T), \n> control = control.ergm(seed = 1, MCMC.samplesize = 50000, \n> MCMC.interval = 1000))\n> \n> All of of the estimated model sample statistics are significantly \n> different (p<0.00) than the observed data, the autocorrelation statistics between lags are very close to one, and the Geweke statistics are very close to zero.\n> \n> I just tweaked the terms to increase the intervals to 5000 and the burnin for 5000, but that's running right now. \n> \n> Thank you,\n> Karen\n> \n> \n> \n> On Tue, Feb 4, 2014 at 12:32 PM, martina morris <morrism@u.washington.edu> wrote:\n>       Karen,\n>\n>       The models from Birds of a Feather provided decent fits to all the saturation schools. ?So, ?1. what terms\n>       are you using, and 2. what do you mean by \"awful fit\"?\n>\n>       best,\n>       mm\n> \n>\n>       On Tue, 4 Feb 2014, Karen Ertrachter wrote:\n>\n>             Hi everyone,\n>             I'm using ADD Health data in order to look at friendship networks. ?I'm currently working on\n>             Jefferson and Sunshine in\n>             the data, but my model fit has been awful. ?When I increase the the iterations, it often\n>             doesn't converge or takes\n>             forever to give another inaccurate result. ?I already have gone through papers on ergm model\n>             fit and on using ADD\n>             Health, but I haven't had much luck with getting results that even seem remotely decent.\n>\n>             If anyone has worked with this data, I'd really appreciate tips or code on fitting a large\n>             dataset with ergms.\n>\n>             Thank you,\n>             Karen Ertrachter\n> \n>\n>             --\n>             Karen Ertrachter\n>             Department of Sociology and Demography\n>             The Pennsylvania State University\n> \n> \n> \n> ****************************************************************\n> ?Professor of Sociology and Statistics\n> ?Director, UWCFAR Sociobehavioral and Prevention Research Core\n> ?Box 354322\n> ?University of Washington\n> ?Seattle, WA 98195-4322\n>\n> ?Office: ? ? ? ?(206) 685-3402\n> ?Dept Office: ? (206) 543-5882, 543-7237\n> ?Fax: ? ? ? ? ? (206) 685-7419\n> \n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> \n> \n> \n> \n> --\n> Karen Ertrachter\n> Department of Sociology and Demography The Pennsylvania State \n> University\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Martina/Karen,\n\nPlease forgive the basic suggestion- but shouldn't there be an \"edges\" term in there?\n\n-Kevin\n\n-----Original Message-----\nFrom: statnet_help-bounces@mailman2.u.washington.edu [mailt",
+      "thread_id": "thread-0899c56f8f64",
+      "thread_depth": 4,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-0ca410ccc4b1",
+      "message_id": "<52F17C2C.3060606@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2014-02-04T15:47:56Z",
+      "subject": "[statnet_help] Extract subgraph with specific node attribute and edge attribute",
+      "subject_clean": "[statnet_help] Extract subgraph with specific node attribute and edge attribute",
+      "in_reply_to": "<CAFDq6s-FAdsGsSsZsJPuDrgJJzoXBg4aMqbDun9buznDJdQEfA@mail.gmail.com>",
+      "references": [
+        "<CAFDq6s-FAdsGsSsZsJPuDrgJJzoXBg4aMqbDun9buznDJdQEfA@mail.gmail.com>"
+      ],
+      "body_plain": "I believe that get.inducedSubgraph (aka %s%) is probably the easiest way \nto proceed.\n\nHope that helps,\n\n-Carter\n\nOn 02/04/2014 01:02 PM, C.J. Dey wrote:\n>\n> Hi all,\n>\n> I am trying to extract a subgraph from a network object that includes \n> only nodes with a specific value of an attribute. I would also like \n> this subgraph to contain a specific edge attribute that I am \n> interested in. In particular, I would like to print the adjacency \n> matrix from this subgraph (or save it as a new network object)\n>\n> Here is an example:\n>\n> m<-matrix(rmultinom(1,100,rep(1/100, 100)),10,10)\n>\n> g<-network(m, matrix.type=\"adjacency\", directed=FALSE)\n>\n> set.edge.value(g, \"fights\", m)\n>\n> set.vertex.attribute(g, \"Group\", c(rep(\"G1\",2), \n> rep(\"G2\",3),rep(\"G1\",3), rep(\"G2\",2)))\n>\n>\n> as.sociomatrix(g, \"fights\")\n>\n>\n> ###I would like to select out the 'fights' info for a subgraph where \n> all nodes have the attribute 'G2'\n>\n> ###I seem to be able to select out the correct subgraph, but I cannot \n> figure out how to include an edge attribute\n>\n>\n> g[g%v%\"Group\"==\"G2\", g%v%\"Group\"==\"G2\"] ###Can select out the \n> subgraph, but not sure how to include the 'fight' edge attribute\n>\n> as.sociomatrix(g[g%v%\"Group\"==\"G2\", g%v%\"Group\"==\"G2\"], \n> attrname=\"fights\") ##I thought this would work, but it does not\n>\n>\n> #I spent a long while in the network.extraction help file but could \n> not sort this out. The names.eval() command only seems to work to \n> specify a new attribute, rather than to extract an existing one. I am \n> probably missing something obvious.\n>\n>\n> Many thanks,\n>\n> Cody Dey\n>\n> PhD Candidate\n> McMaster University\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140204/8b546ac9/attachment.html>",
+      "body_snippet": "I believe that get.inducedSubgraph (aka %s%) is probably the easiest way \nto proceed.\n\nHope that helps,\n\n-Carter\n\nOn 02/04/2014 01:02 PM, C.J. Dey wrote:\n>\n> Hi all,\n>\n> I am trying to extract a subgr",
+      "thread_id": "thread-df1be7d18454",
+      "thread_depth": 1,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-75b9b7a4e78f",
+      "message_id": "<alpine.WNT.1.10.1402051057350.2888@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2014-02-05T11:07:16Z",
+      "subject": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "subject_clean": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "in_reply_to": "<C863E7693594F148ABBECBDDCE36AA761B584798@XMAIL-MBX-BC1.AD.UCSD.EDU>",
+      "references": [
+        "<CAGcS3aMjwiqV4VDMXJn45fbPd+YuOBa0ZF4-VR2cPSDtRN4e9g@mail.gmail.com>",
+        "<alpine.WNT.1.10.1402040927580.2888@morrism-PC>",
+        "<CAGcS3aOv7rZOXXXJBrY8jSXTVnHNmv_1ymKrMjjmCxVf-7EWiw@mail.gmail.com>",
+        "<alpine.WNT.1.10.1402041030520.2888@morrism-PC>",
+        "<C863E7693594F148ABBECBDDCE36AA761B584798@XMAIL-MBX-BC1.AD.UCSD.EDU>"
+      ],
+      "body_plain": "Kevin -- the edges term is like the intercept in a LM, useful depending on \nhow you want to interpret the remaining parameters, but not necessary.\n\nOn Tue, 4 Feb 2014, Lewis, Kevin wrote:\n\n> Hi Martina/Karen,\n>\n> Please forgive the basic suggestion- but shouldn't there be an \"edges\" term in there?\n>\n> -Kevin\n>\n> -----Original Message-----\n> From: statnet_help-bounces@mailman2.u.washington.edu [mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of martina morris\n> Sent: Tuesday, February 04, 2014 10:34 AM\n> To: Karen Ertrachter\n> Cc: statnet_help@u.washington.edu\n> Subject: Re: [statnet_help] ADD Health Data - Fit ERGMS\n>\n> Hi Karen,\n>\n> My surprise here is because your original model included only one term that involved link dependence -- the mutual term.  And that's not dyad dependence, b/c it's within dyad.\n>\n> What happens if you run your original model excluding the mutual term, so just the nodematch terms?\n>\n> And have you looked at the summary model stats (using summary(data ~ model stats)?  Just to see if there's something wonky going on in your data.\n>\n> best,\n> mm\n>\n>\n> On Tue, 4 Feb 2014, Karen Ertrachter wrote:\n>\n>> Hi Martina,\n>> My network is directed, so I'm not able to use the sociality parameter\n>> mentioned in your paper to help fit the networks. I just updated to the newest version of statnet.\n>>\n>> I just revised my code, but I'm running this:\n>> jmodel.08 <-ergm(relations~nodematch('grade',\n>> diff=F)+nodematch('race', diff=F)+gwesp(0.25,\n>> fixed=T)+nodematch('gender', diff=F)+nodematch('educomb', diff=T),\n>> control = control.ergm(seed = 1, MCMC.samplesize = 50000,\n>> MCMC.interval = 1000))\n>>\n>> All of of the estimated model sample statistics are significantly\n>> different (p<0.00) than the observed data, the autocorrelation statistics between lags are very close to one, and the Geweke statistics are very close to zero.\n>>\n>> I just tweaked the terms to increase the intervals to 5000 and the burnin for 5000, but that's running right now.\n>>\n>> Thank you,\n>> Karen\n>>\n>>\n>>\n>> On Tue, Feb 4, 2014 at 12:32 PM, martina morris <morrism@u.washington.edu> wrote:\n>>       Karen,\n>>\n>>       The models from Birds of a Feather provided decent fits to all the saturation schools. ?So, ?1. what terms\n>>       are you using, and 2. what do you mean by \"awful fit\"?\n>>\n>>       best,\n>>       mm\n>>\n>>\n>>       On Tue, 4 Feb 2014, Karen Ertrachter wrote:\n>>\n>>             Hi everyone,\n>>             I'm using ADD Health data in order to look at friendship networks. ?I'm currently working on\n>>             Jefferson and Sunshine in\n>>             the data, but my model fit has been awful. ?When I increase the the iterations, it often\n>>             doesn't converge or takes\n>>             forever to give another inaccurate result. ?I already have gone through papers on ergm model\n>>             fit and on using ADD\n>>             Health, but I haven't had much luck with getting results that even seem remotely decent.\n>>\n>>             If anyone has worked with this data, I'd really appreciate tips or code on fitting a large\n>>             dataset with ergms.\n>>\n>>             Thank you,\n>>             Karen Ertrachter\n>>\n>>\n>>             --\n>>             Karen Ertrachter\n>>             Department of Sociology and Demography\n>>             The Pennsylvania State University\n>>\n>>\n>>\n>> ****************************************************************\n>> ?Professor of Sociology and Statistics\n>> ?Director, UWCFAR Sociobehavioral and Prevention Research Core\n>> ?Box 354322\n>> ?University of Washington\n>> ?Seattle, WA 98195-4322\n>>\n>> ?Office: ? ? ? ?(206) 685-3402\n>> ?Dept Office: ? (206) 543-5882, 543-7237\n>> ?Fax: ? ? ? ? ? (206) 685-7419\n>>\n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>>\n>>\n>> --\n>> Karen Ertrachter\n>> Department of Sociology and Demography The Pennsylvania State\n>> University\n>>\n>>\n>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Kevin -- the edges term is like the intercept in a LM, useful depending on \nhow you want to interpret the remaining parameters, but not necessary.\n\nOn Tue, 4 Feb 2014, Lewis, Kevin wrote:\n\n> Hi Martin",
+      "thread_id": "thread-0899c56f8f64",
+      "thread_depth": 5,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-2d01cc4cf4db",
+      "message_id": "<C863E7693594F148ABBECBDDCE36AA761B58522C@XMAIL-MBX-BC1.AD.UCSD.EDU>",
+      "from_name": "Lewis, Kevin",
+      "from_email_hash": "2885157a0538b695de73963d3e7a2540ad757b4f239727aaf4414d9353dd804b",
+      "date": "2014-02-05T11:41:19Z",
+      "subject": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "subject_clean": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "in_reply_to": "<alpine.WNT.1.10.1402051057350.2888@morrism-PC>",
+      "references": [
+        "<CAGcS3aMjwiqV4VDMXJn45fbPd+YuOBa0ZF4-VR2cPSDtRN4e9g@mail.gmail.com>",
+        "<alpine.WNT.1.10.1402040927580.2888@morrism-PC>",
+        "<CAGcS3aOv7rZOXXXJBrY8jSXTVnHNmv_1ymKrMjjmCxVf-7EWiw@mail.gmail.com>",
+        "<alpine.WNT.1.10.1402041030520.2888@morrism-PC>",
+        "<C863E7693594F148ABBECBDDCE36AA761B584798@XMAIL-MBX-BC1.AD.UCSD.EDU>",
+        "<alpine.WNT.1.10.1402051057350.2888@morrism-PC>"
+      ],
+      "body_plain": "Martina, thanks for the clarification and sorry for the misunderstanding!\n\nKaren, the only other suggestion I might have is hiking up the MCMC sample size and/or interval still further. In what limited experience I have with models for large networks, this has sometimes made a dramatic difference- taking me from a model that wanders around and gets nowhere for weeks, to one that \"quickly\" converges (i.e. with relatively few iterations... though recognizing that each iteration may take an agonizingly long time). You might also try the \"stepping\" method described in Hummel et al. 2012, something I have been playing around with a bit lately.\n\n(This of course assumes that there is not some other technical problem going on that would be over my head.)\n\n-Kevin\n\nP.S. Feel free to correspond with me privately if you want more specifics!\n\n-----Original Message-----\nFrom: martina morris [mailto:morrism@u.washington.edu] \nSent: Wednesday, February 05, 2014 11:07 AM\nTo: Lewis, Kevin\nCc: Karen Ertrachter; statnet_help@u.washington.edu\nSubject: RE: [statnet_help] ADD Health Data - Fit ERGMS\n\nKevin -- the edges term is like the intercept in a LM, useful depending on how you want to interpret the remaining parameters, but not necessary.\n\nOn Tue, 4 Feb 2014, Lewis, Kevin wrote:\n\n> Hi Martina/Karen,\n>\n> Please forgive the basic suggestion- but shouldn't there be an \"edges\" term in there?\n>\n> -Kevin\n>\n> -----Original Message-----\n> From: statnet_help-bounces@mailman2.u.washington.edu \n> [mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of \n> martina morris\n> Sent: Tuesday, February 04, 2014 10:34 AM\n> To: Karen Ertrachter\n> Cc: statnet_help@u.washington.edu\n> Subject: Re: [statnet_help] ADD Health Data - Fit ERGMS\n>\n> Hi Karen,\n>\n> My surprise here is because your original model included only one term that involved link dependence -- the mutual term.  And that's not dyad dependence, b/c it's within dyad.\n>\n> What happens if you run your original model excluding the mutual term, so just the nodematch terms?\n>\n> And have you looked at the summary model stats (using summary(data ~ model stats)?  Just to see if there's something wonky going on in your data.\n>\n> best,\n> mm\n>\n>\n> On Tue, 4 Feb 2014, Karen Ertrachter wrote:\n>\n>> Hi Martina,\n>> My network is directed, so I'm not able to use the sociality \n>> parameter mentioned in your paper to help fit the networks. I just updated to the newest version of statnet.\n>>\n>> I just revised my code, but I'm running this:\n>> jmodel.08 <-ergm(relations~nodematch('grade',\n>> diff=F)+nodematch('race', diff=F)+gwesp(0.25, \n>> fixed=T)+nodematch('gender', diff=F)+nodematch('educomb', diff=T), \n>> control = control.ergm(seed = 1, MCMC.samplesize = 50000, \n>> MCMC.interval = 1000))\n>>\n>> All of of the estimated model sample statistics are significantly \n>> different (p<0.00) than the observed data, the autocorrelation statistics between lags are very close to one, and the Geweke statistics are very close to zero.\n>>\n>> I just tweaked the terms to increase the intervals to 5000 and the burnin for 5000, but that's running right now.\n>>\n>> Thank you,\n>> Karen\n>>\n>>\n>>\n>> On Tue, Feb 4, 2014 at 12:32 PM, martina morris <morrism@u.washington.edu> wrote:\n>>       Karen,\n>>\n>>       The models from Birds of a Feather provided decent fits to all the saturation schools. ?So, ?1. what terms\n>>       are you using, and 2. what do you mean by \"awful fit\"?\n>>\n>>       best,\n>>       mm\n>>\n>>\n>>       On Tue, 4 Feb 2014, Karen Ertrachter wrote:\n>>\n>>             Hi everyone,\n>>             I'm using ADD Health data in order to look at friendship networks. ?I'm currently working on\n>>             Jefferson and Sunshine in\n>>             the data, but my model fit has been awful. ?When I increase the the iterations, it often\n>>             doesn't converge or takes\n>>             forever to give another inaccurate result. ?I already have gone through papers on ergm model\n>>             fit and on using ADD\n>>             Health, but I haven't had much luck with getting results that even seem remotely decent.\n>>\n>>             If anyone has worked with this data, I'd really appreciate tips or code on fitting a large\n>>             dataset with ergms.\n>>\n>>             Thank you,\n>>             Karen Ertrachter\n>>\n>>\n>>             --\n>>             Karen Ertrachter\n>>             Department of Sociology and Demography\n>>             The Pennsylvania State University\n>>\n>>\n>>\n>> ****************************************************************\n>> ?Professor of Sociology and Statistics\n>> ?Director, UWCFAR Sociobehavioral and Prevention Research Core\n>> ?Box 354322\n>> ?University of Washington\n>> ?Seattle, WA 98195-4322\n>>\n>> ?Office: ? ? ? ?(206) 685-3402\n>> ?Dept Office: ? (206) 543-5882, 543-7237\n>> ?Fax: ? ? ? ? ? (206) 685-7419\n>>\n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>>\n>>\n>> --\n>> Karen Ertrachter\n>> Department of Sociology and Demography The Pennsylvania State \n>> University\n>>\n>>\n>\n> ****************************************************************\n>  Professor of Sociology and Statistics  Director, UWCFAR \n> Sociobehavioral and Prevention Research Core  Box 354322  University \n> of Washington  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Martina, thanks for the clarification and sorry for the misunderstanding!\n\nKaren, the only other suggestion I might have is hiking up the MCMC sample size and/or interval still further. In what limite",
+      "thread_id": "thread-0899c56f8f64",
+      "thread_depth": 6,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-ab29358085cd",
+      "message_id": "<C863E7693594F148ABBECBDDCE36AA761B5854A4@XMAIL-MBX-BC1.AD.UCSD.EDU>",
+      "from_name": "Lewis, Kevin",
+      "from_email_hash": "2885157a0538b695de73963d3e7a2540ad757b4f239727aaf4414d9353dd804b",
+      "date": "2014-02-05T13:32:39Z",
+      "subject": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "subject_clean": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "in_reply_to": "<CAGcS3aPoP_pyMW5xnCV1CTgKOFfUCbG2SEZQ=UA31ApQNUULpQ@mail.gmail.com>",
+      "references": [
+        "<CAGcS3aMjwiqV4VDMXJn45fbPd+YuOBa0ZF4-VR2cPSDtRN4e9g@mail.gmail.com>",
+        "<alpine.WNT.1.10.1402040927580.2888@morrism-PC>",
+        "<CAGcS3aOv7rZOXXXJBrY8jSXTVnHNmv_1ymKrMjjmCxVf-7EWiw@mail.gmail.com>",
+        "<alpine.WNT.1.10.1402041030520.2888@morrism-PC>",
+        "<C863E7693594F148ABBECBDDCE36AA761B584798@XMAIL-MBX-BC1.AD.UCSD.EDU>",
+        "<alpine.WNT.1.10.1402051057350.2888@morrism-PC>",
+        "<C863E7693594F148ABBECBDDCE36AA761B58522C@XMAIL-MBX-BC1.AD.UCSD.EDU>",
+        "<CAGcS3aPoP_pyMW5xnCV1CTgKOFfUCbG2SEZQ=UA31ApQNUULpQ@mail.gmail.com>"
+      ],
+      "body_plain": "Karen, glad the comments were helpful.\n\nNote also that there are a few settings you can fiddle with specific to stepping, in case that helps- specifically, \"Step.MCMC.samplesize,\" \"Step.maxit,\" and \"Step.gridsize.\" Also, I believe that the TNT setting is the default for models (like yours) without any constraints, so this can probably be omitted if you like (others can correct me if I'm wrong).\n\nFor what it's worth, I would be curious also to hear if others have experience and/or practical advice for using the stepping technique. Based on the Hummel et al. article, it seems we should see dramatic improvements in the ability to fit SOME models to SOME networks (though hard to predict in advance which). I am also not sure if folks have experience/recommendations regarding the three specific settings I mention, above. All of my experience is limited to running these models on unusually large networks (i.e. a few thousand nodes), so it is always hard for me to tell if my experiences are generalizable... Ruth, David, and Mark are the experts here and as usual I am trying to do my best to drive the car while having only a general (though hopefully generally accurate) understanding of what goes on under the hood.\n\nBest wishes,\nKevin\n\nFrom: Karen Ertrachter [mailto:kae197@psu.edu]\nSent: Wednesday, February 05, 2014 1:20 PM\nTo: Lewis, Kevin\nCc: martina morris\nSubject: Re: [statnet_help] ADD Health Data - Fit ERGMS\n\nThank you Martina and Kevin!\n\nSorry, I left the analyses to run overnight and I was stuck in meetings all day.  I just checked on my model and R-studio shut down at some point.\n\nBased on your advice, I increased the sample size/interval even more.  I got the stepping technique to work and it seems to be working a lot faster.  Still don't have a result yet, but I appreciate the tip about stepping.  I read about it, but I hadn't tried it in the model since I was thinking that fixing the MCMC parameters were more important.\n\nmy new model:\njmodel.08 <-ergm(relations~edges+nodematch('grade', diff=F)+nodematch('race', diff=F)+gwesp(0.25, fixed=T)+nodematch('gender', diff=F)+nodematch('educomb', diff=T), control = control.ergm(main.method=c(\"Stepping\"), MCMC.prop.weights=\"TNT\", MCMC.samplesize = 50000, MCMC.burnin=5000, MCMC.interval = 5000))\n\nMartina: The part about edges is really helpful to keep in mind.  I added it to my model.\n\nThank you both,\nKaren\n\nOn Wed, Feb 5, 2014 at 2:41 PM, Lewis, Kevin <lewis@ucsd.edu<mailto:lewis@ucsd.edu>> wrote:\nMartina, thanks for the clarification and sorry for the misunderstanding!\n\nKaren, the only other suggestion I might have is hiking up the MCMC sample size and/or interval still further. In what limited experience I have with models for large networks, this has sometimes made a dramatic difference- taking me from a model that wanders around and gets nowhere for weeks, to one that \"quickly\" converges (i.e. with relatively few iterations... though recognizing that each iteration may take an agonizingly long time). You might also try the \"stepping\" method described in Hummel et al. 2012, something I have been playing around with a bit lately.\n\n(This of course assumes that there is not some other technical problem going on that would be over my head.)\n\n-Kevin\n\nP.S. Feel free to correspond with me privately if you want more specifics!\n\n-----Original Message-----\nFrom: martina morris [mailto:morrism@u.washington.edu<mailto:morrism@u.washington.edu>]\nSent: Wednesday, February 05, 2014 11:07 AM\nTo: Lewis, Kevin\nCc: Karen Ertrachter; statnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nSubject: RE: [statnet_help] ADD Health Data - Fit ERGMS\n\nKevin -- the edges term is like the intercept in a LM, useful depending on how you want to interpret the remaining parameters, but not necessary.\n\nOn Tue, 4 Feb 2014, Lewis, Kevin wrote:\n\n> Hi Martina/Karen,\n>\n> Please forgive the basic suggestion- but shouldn't there be an \"edges\" term in there?\n>\n> -Kevin\n>\n> -----Original Message-----\n> From: statnet_help-bounces@mailman2.u.washington.edu<mailto:statnet_help-bounces@mailman2.u.washington.edu>\n> [mailto:statnet_help-bounces@mailman2.u.washington.edu<mailto:statnet_help-bounces@mailman2.u.washington.edu>] On Behalf Of\n> martina morris\n> Sent: Tuesday, February 04, 2014 10:34 AM\n> To: Karen Ertrachter\n> Cc: statnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\n> Subject: Re: [statnet_help] ADD Health Data - Fit ERGMS\n>\n> Hi Karen,\n>\n> My surprise here is because your original model included only one term that involved link dependence -- the mutual term.  And that's not dyad dependence, b/c it's within dyad.\n>\n> What happens if you run your original model excluding the mutual term, so just the nodematch terms?\n>\n> And have you looked at the summary model stats (using summary(data ~ model stats)?  Just to see if there's something wonky going on in your data.\n>\n> best,\n> mm\n>\n>\n> On Tue, 4 Feb 2014, Karen Ertrachter wrote:\n>\n>> Hi Martina,\n>> My network is directed, so I'm not able to use the sociality\n>> parameter mentioned in your paper to help fit the networks. I just updated to the newest version of statnet.\n>>\n>> I just revised my code, but I'm running this:\n>> jmodel.08 <-ergm(relations~nodematch('grade',\n>> diff=F)+nodematch('race', diff=F)+gwesp(0.25,\n>> fixed=T)+nodematch('gender', diff=F)+nodematch('educomb', diff=T),\n>> control = control.ergm(seed = 1, MCMC.samplesize = 50000,\n>> MCMC.interval = 1000))\n>>\n>> All of of the estimated model sample statistics are significantly\n>> different (p<0.00) than the observed data, the autocorrelation statistics between lags are very close to one, and the Geweke statistics are very close to zero.\n>>\n>> I just tweaked the terms to increase the intervals to 5000 and the burnin for 5000, but that's running right now.\n>>\n>> Thank you,\n>> Karen\n>>\n>>\n>>\n>> On Tue, Feb 4, 2014 at 12:32 PM, martina morris <morrism@u.washington.edu<mailto:morrism@u.washington.edu>> wrote:\n>>       Karen,\n>>\n>>       The models from Birds of a Feather provided decent fits to all the saturation schools.  So,  1. what terms\n>>       are you using, and 2. what do you mean by \"awful fit\"?\n>>\n>>       best,\n>>       mm\n>>\n>>\n>>       On Tue, 4 Feb 2014, Karen Ertrachter wrote:\n>>\n>>             Hi everyone,\n>>             I'm using ADD Health data in order to look at friendship networks.  I'm currently working on\n>>             Jefferson and Sunshine in\n>>             the data, but my model fit has been awful.  When I increase the the iterations, it often\n>>             doesn't converge or takes\n>>             forever to give another inaccurate result.  I already have gone through papers on ergm model\n>>             fit and on using ADD\n>>             Health, but I haven't had much luck with getting results that even seem remotely decent.\n>>\n>>             If anyone has worked with this data, I'd really appreciate tips or code on fitting a large\n>>             dataset with ergms.\n>>\n>>             Thank you,\n>>             Karen Ertrachter\n>>\n>>\n>>             --\n>>             Karen Ertrachter\n>>             Department of Sociology and Demography\n>>             The Pennsylvania State University\n>>\n>>\n>>\n>> ****************************************************************\n>>  Professor of Sociology and Statistics\n>>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>  Box 354322\n>>  University of Washington\n>>  Seattle, WA 98195-4322\n>>\n>>  Office:        (206) 685-3402<tel:%28206%29%20685-3402>\n>>  Dept Office:   (206) 543-5882<tel:%28206%29%20543-5882>, 543-7237\n>>  Fax:           (206) 685-7419<tel:%28206%29%20685-7419>\n>>\n>> morrism@u.washington.edu<mailto:morrism@u.washington.edu>\n>> http://faculty.washington.edu/morrism/\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>>\n>>\n>> --\n>> Karen Ertrachter\n>> Department of Sociology and Demography The Pennsylvania State\n>> University\n>>\n>>\n>\n> ****************************************************************\n>  Professor of Sociology and Statistics  Director, UWCFAR\n> Sociobehavioral and Prevention Research Core  Box 354322  University\n> of Washington  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402<tel:%28206%29%20685-3402>\n>  Dept Office:   (206) 543-5882<tel:%28206%29%20543-5882>, 543-7237\n>  Fax:           (206) 685-7419<tel:%28206%29%20685-7419>\n>\n> morrism@u.washington.edu<mailto:morrism@u.washington.edu>\n> http://faculty.washington.edu/morrism/\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402<tel:%28206%29%20685-3402>\n  Dept Office:   (206) 543-5882<tel:%28206%29%20543-5882>, 543-7237\n  Fax:           (206) 685-7419<tel:%28206%29%20685-7419>\n\nmorrism@u.washington.edu<mailto:morrism@u.washington.edu>\nhttp://faculty.washington.edu/morrism/\n\n\n\n--\nKaren Ertrachter\nDepartment of Sociology and Demography\nThe Pennsylvania State University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140205/982f4aa7/attachment.html>",
+      "body_snippet": "Karen, glad the comments were helpful.\n\nNote also that there are a few settings you can fiddle with specific to stepping, in case that helps- specifically, \"Step.MCMC.samplesize,\" \"Step.maxit,\" and \"S",
+      "thread_id": "thread-ab29358085cd",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-daabd60e884c",
+      "message_id": "<alpine.WNT.1.10.1402051449080.2888@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2014-02-05T15:00:27Z",
+      "subject": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "subject_clean": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "in_reply_to": "<CAGcS3aPoP_pyMW5xnCV1CTgKOFfUCbG2SEZQ=UA31ApQNUULpQ@mail.gmail.com>",
+      "references": [
+        "<CAGcS3aMjwiqV4VDMXJn45fbPd+YuOBa0ZF4-VR2cPSDtRN4e9g@mail.gmail.com>",
+        "<alpine.WNT.1.10.1402040927580.2888@morrism-PC>",
+        "<CAGcS3aOv7rZOXXXJBrY8jSXTVnHNmv_1ymKrMjjmCxVf-7EWiw@mail.gmail.com>",
+        "<alpine.WNT.1.10.1402041030520.2888@morrism-PC>",
+        "<C863E7693594F148ABBECBDDCE36AA761B584798@XMAIL-MBX-BC1.AD.UCSD.EDU>",
+        "<alpine.WNT.1.10.1402051057350.2888@morrism-PC>",
+        "<C863E7693594F148ABBECBDDCE36AA761B58522C@XMAIL-MBX-BC1.AD.UCSD.EDU>",
+        "<CAGcS3aPoP_pyMW5xnCV1CTgKOFfUCbG2SEZQ=UA31ApQNUULpQ@mail.gmail.com>"
+      ],
+      "body_plain": "Karen,\n\nOne last point -- it's not a good idea to use nodematch terms without also \nusing the associated nodefactor.  nodematch is a bit like an interaction \neffect in a glm, the interaction of attr(node 1) x attr(node 2).  As in \nmost modeling, if you include an interaction of two variables, you \nprobably want to include the main effects for them also.\n\nSo, bottom line for this model, I would suggest:\n\n1. use a nodefactor term for every attribute you're also nodematching on\n\n2. if you want to exclude the intercept, make sure you use \nnodefactor('attrname', base=0) (thanks to Steve for reminding me of this)\n\n3. see if this works before getting fancy with ergm controls of various \nkinds\n\nbest,\nMartina\n\nOn Wed, 5 Feb 2014, Karen Ertrachter wrote:\n\n> Thank you Martina and Kevin!\n> \n> Sorry, I left the analyses to run overnight and I was stuck in meetings all day. ?I just checked on my model and\n> R-studio shut down at some point. \n> \n> Based on your advice, I increased the sample size/interval even more. ?I got the stepping technique to work and it\n> seems to be working a lot faster. ?Still don't have a result yet, but I appreciate the tip about stepping. ?I read\n> about it, but I hadn't tried it in the model since I was thinking that fixing the MCMC parameters were more important.\n> \n> my new model: \n> jmodel.08 <-ergm(relations~edges+nodematch('grade', diff=F)+nodematch('race', diff=F)+gwesp(0.25,\n> fixed=T)+nodematch('gender', diff=F)+nodematch('educomb', diff=T), control = control.ergm(main.method=c(\"Stepping\"),\n> MCMC.prop.weights=\"TNT\", MCMC.samplesize = 50000, MCMC.burnin=5000, MCMC.interval = 5000))\n> \n> Martina: The part about edges is really helpful to keep in mind. ?I added it to my model.\n> \n> Thank you both,\n> Karen\n> \n> \n> On Wed, Feb 5, 2014 at 2:41 PM, Lewis, Kevin <lewis@ucsd.edu> wrote:\n>       Martina, thanks for the clarification and sorry for the misunderstanding!\n>\n>       Karen, the only other suggestion I might have is hiking up the MCMC sample size and/or interval still\n>       further. In what limited experience I have with models for large networks, this has sometimes made a\n>       dramatic difference- taking me from a model that wanders around and gets nowhere for weeks, to one that\n>       \"quickly\" converges (i.e. with relatively few iterations... though recognizing that each iteration may\n>       take an agonizingly long time). You might also try the \"stepping\" method described in Hummel et al. 2012,\n>       something I have been playing around with a bit lately.\n>\n>       (This of course assumes that there is not some other technical problem going on that would be over my\n>       head.)\n>\n>       -Kevin\n>\n>       P.S. Feel free to correspond with me privately if you want more specifics!\n>\n>       -----Original Message-----\n>       From: martina morris [mailto:morrism@u.washington.edu]\n>       Sent: Wednesday, February 05, 2014 11:07 AM\n>       To: Lewis, Kevin\n>       Cc: Karen Ertrachter; statnet_help@u.washington.edu\n>       Subject: RE: [statnet_help] ADD Health Data - Fit ERGMS\n>\n>       Kevin -- the edges term is like the intercept in a LM, useful depending on how you want to interpret the\n>       remaining parameters, but not necessary.\n>\n>       On Tue, 4 Feb 2014, Lewis, Kevin wrote:\n>\n>       > Hi Martina/Karen,\n>       >\n>       > Please forgive the basic suggestion- but shouldn't there be an \"edges\" term in there?\n>       >\n>       > -Kevin\n>       >\n>       > -----Original Message-----\n>       > From: statnet_help-bounces@mailman2.u.washington.edu\n>       > [mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of\n>       > martina morris\n>       > Sent: Tuesday, February 04, 2014 10:34 AM\n>       > To: Karen Ertrachter\n>       > Cc: statnet_help@u.washington.edu\n>       > Subject: Re: [statnet_help] ADD Health Data - Fit ERGMS\n>       >\n>       > Hi Karen,\n>       >\n>       > My surprise here is because your original model included only one term that involved link dependence --\n>       the mutual term. ?And that's not dyad dependence, b/c it's within dyad.\n>       >\n>       > What happens if you run your original model excluding the mutual term, so just the nodematch terms?\n>       >\n>       > And have you looked at the summary model stats (using summary(data ~ model stats)? ?Just to see if\n>       there's something wonky going on in your data.\n>       >\n>       > best,\n>       > mm\n>       >\n>       >\n>       > On Tue, 4 Feb 2014, Karen Ertrachter wrote:\n>       >\n>       >> Hi Martina,\n>       >> My network is directed, so I'm not able to use the sociality\n>       >> parameter mentioned in your paper to help fit the networks. I just updated to the newest version of\n>       statnet.\n>       >>\n>       >> I just revised my code, but I'm running this:\n>       >> jmodel.08 <-ergm(relations~nodematch('grade',\n>       >> diff=F)+nodematch('race', diff=F)+gwesp(0.25,\n>       >> fixed=T)+nodematch('gender', diff=F)+nodematch('educomb', diff=T),\n>       >> control = control.ergm(seed = 1, MCMC.samplesize = 50000,\n>       >> MCMC.interval = 1000))\n>       >>\n>       >> All of of the estimated model sample statistics are significantly\n>       >> different (p<0.00) than the observed data, the autocorrelation statistics between lags are very close\n>       to one, and the Geweke statistics are very close to zero.\n>       >>\n>       >> I just tweaked the terms to increase the intervals to 5000 and the burnin for 5000, but that's running\n>       right now.\n>       >>\n>       >> Thank you,\n>       >> Karen\n>       >>\n>       >>\n>       >>\n>       >> On Tue, Feb 4, 2014 at 12:32 PM, martina morris <morrism@u.washington.edu> wrote:\n>       >> ? ? ? Karen,\n>       >>\n>       >> ? ? ? The models from Birds of a Feather provided decent fits to all the saturation schools. ?So, ?1.\n>       what terms\n>       >> ? ? ? are you using, and 2. what do you mean by \"awful fit\"?\n>       >>\n>       >> ? ? ? best,\n>       >> ? ? ? mm\n>       >>\n>       >>\n>       >> ? ? ? On Tue, 4 Feb 2014, Karen Ertrachter wrote:\n>       >>\n>       >> ? ? ? ? ? ? Hi everyone,\n>       >> ? ? ? ? ? ? I'm using ADD Health data in order to look at friendship networks. ?I'm currently working\n>       on\n>       >> ? ? ? ? ? ? Jefferson and Sunshine in\n>       >> ? ? ? ? ? ? the data, but my model fit has been awful. ?When I increase the the iterations, it often\n>       >> ? ? ? ? ? ? doesn't converge or takes\n>       >> ? ? ? ? ? ? forever to give another inaccurate result. ?I already have gone through papers on ergm\n>       model\n>       >> ? ? ? ? ? ? fit and on using ADD\n>       >> ? ? ? ? ? ? Health, but I haven't had much luck with getting results that even seem remotely decent.\n>       >>\n>       >> ? ? ? ? ? ? If anyone has worked with this data, I'd really appreciate tips or code on fitting a large\n>       >> ? ? ? ? ? ? dataset with ergms.\n>       >>\n>       >> ? ? ? ? ? ? Thank you,\n>       >> ? ? ? ? ? ? Karen Ertrachter\n>       >>\n>       >>\n>       >> ? ? ? ? ? ? --\n>       >> ? ? ? ? ? ? Karen Ertrachter\n>       >> ? ? ? ? ? ? Department of Sociology and Demography\n>       >> ? ? ? ? ? ? The Pennsylvania State University\n>       >>\n>       >>\n>       >>\n>       >> ****************************************************************\n>       >> ?Professor of Sociology and Statistics\n>       >> ?Director, UWCFAR Sociobehavioral and Prevention Research Core\n>       >> ?Box 354322\n>       >> ?University of Washington\n>       >> ?Seattle, WA 98195-4322\n>       >>\n>       >> ?Office: ? ? ? ?(206) 685-3402\n>       >> ?Dept Office: ? (206) 543-5882, 543-7237\n>       >> ?Fax: ? ? ? ? ? (206) 685-7419\n>       >>\n>       >> morrism@u.washington.edu\n>       >> http://faculty.washington.edu/morrism/\n>       >> _______________________________________________\n>       >> statnet_help mailing list\n>       >> statnet_help@u.washington.edu\n>       >> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>       >>\n>       >>\n>       >>\n>       >>\n>       >> --\n>       >> Karen Ertrachter\n>       >> Department of Sociology and Demography The Pennsylvania State\n>       >> University\n>       >>\n>       >>\n>       >\n>       > ****************************************************************\n>       > ?Professor of Sociology and Statistics ?Director, UWCFAR\n>       > Sociobehavioral and Prevention Research Core ?Box 354322 ?University\n>       > of Washington ?Seattle, WA 98195-4322\n>       >\n>       > ?Office: ? ? ? ?(206) 685-3402\n>       > ?Dept Office: ? (206) 543-5882, 543-7237\n>       > ?Fax: ? ? ? ? ? (206) 685-7419\n>       >\n>       > morrism@u.washington.edu\n>       > http://faculty.washington.edu/morrism/\n>       >\n>\n>       ****************************************************************\n>       ? Professor of Sociology and Statistics\n>       ? Director, UWCFAR Sociobehavioral and Prevention Research Core\n>       ? Box 354322\n>       ? University of Washington\n>       ? Seattle, WA 98195-4322\n>\n>       ? Office: ? ? ? ?(206) 685-3402\n>       ? Dept Office: ? (206) 543-5882, 543-7237\n>       ? Fax: ? ? ? ? ? (206) 685-7419\n>\n>       morrism@u.washington.edu\n>       http://faculty.washington.edu/morrism/\n> \n> \n> \n> \n> --\n> Karen Ertrachter\n> Department of Sociology and Demography\n> The Pennsylvania State University\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Karen,\n\nOne last point -- it's not a good idea to use nodematch terms without also \nusing the associated nodefactor.  nodematch is a bit like an interaction \neffect in a glm, the interaction of attr(n",
+      "thread_id": "thread-daabd60e884c",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-68e56d49dfaf",
+      "message_id": "<CAP5OD_Ccp8rv6Cs33pGjGm=7heu7XC-xiQ_UcvWaxYphBH2FJg@mail.gmail.com>",
+      "from_name": "Sunny Lee",
+      "from_email_hash": "102884647e90da075c4ecf50c0140fb033a47fbc583a67aaf9a23316ab05ab4b",
+      "date": "2014-02-06T13:15:38Z",
+      "subject": "[statnet_help] ERGM help",
+      "subject_clean": "[statnet_help] ERGM help",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear members,\n\nCan I ask a very basic question here?\nIf I want to test age and gender homophily in my network, should I just\ninclude nodematch and nodefactor for that? Or do I need other parameters\nlike \"edges and degrees, etc.\" ?\nI seem to get only age homophily significant (with nodematch for five\ncategories, or with nodecov for continuous variable, not always though),\nand \"mutual(gender)\" significant. How can I interpret significant parameter\nof mutual(gender)? Is it that the same gender \"reciprocate\" their ties\nsignificantly more than between different gender?\n\nA more troublesome one is that I get different parameter values and\nsignificance values every time I run, and does this mean I have to simulate\nmy network and compare the results?\n\nCan anyone recommend a good material for learning how to interpret ergm\nresults?\n\nSorry for asking dumb questions, but I'm just stepping my foot into ergm.\n\nThanks!!\n\n-- \nSun Kyong (Sunny) Lee, Ph.D.\n\nAssistant Professor\nDepartment of Communication\nThe University of Oklahoma\nemail: sunnylee78@gmail.com <sunklee@eden.rutgers.edu>; sunklee@ou.edu\n610 Elem Ave., Norman, OK\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140206/d4425112/attachment.html>",
+      "body_snippet": "Dear members,\n\nCan I ask a very basic question here?\nIf I want to test age and gender homophily in my network, should I just\ninclude nodematch and nodefactor for that? Or do I need other parameters\nli",
+      "thread_id": "thread-68e56d49dfaf",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-52bf20c27843",
+      "message_id": "<06ca01cf2382$03611b50$0a2351f0$@usc.edu>",
+      "from_name": "Tom Valente",
+      "from_email_hash": "0893e9aa724045adf3eb0c49e0049c610f32e65b6b9f51c53170d2f2ddad6b3d",
+      "date": "2014-02-06T13:25:52Z",
+      "subject": "[statnet_help] ERGM help",
+      "subject_clean": "[statnet_help] ERGM help",
+      "in_reply_to": "<CAP5OD_Ccp8rv6Cs33pGjGm=7heu7XC-xiQ_UcvWaxYphBH2FJg@mail.gmail.com>",
+      "references": [
+        "<CAP5OD_Ccp8rv6Cs33pGjGm=7heu7XC-xiQ_UcvWaxYphBH2FJg@mail.gmail.com>"
+      ],
+      "body_plain": "Sunny\n\n1. Robins, G., Pattison, P. Kalish, Y. & Lusher, D. (2007). An introduction\nto exponential random graph (p*) models for social networks. Social\nNetworks, 29, 173-191\n\n2. Exponential Random Graph Models for Social Networks: Theory, Methods, and\nApplications (Structural Analysis in the Social Sciences) Paperback by\n<http://www.amazon.com/s/ref=ntt_athr_dp_sr_1?ie=UTF8&field-author=Dean+Lush\ner&search-alias=books&text=Dean+Lusher&sort=relevancerank> Dean Lusher\n(Editor) ,\n<http://www.amazon.com/s/ref=ntt_athr_dp_sr_2?ie=UTF8&field-author=Johan+Kos\nkinen&search-alias=books&text=Johan+Koskinen&sort=relevancerank> Johan\nKoskinen (Editor) ,\n<http://www.amazon.com/s/ref=ntt_athr_dp_sr_3?ie=UTF8&field-author=Garry+Rob\nins&search-alias=books&text=Garry+Robins&sort=relevancerank> Garry Robins\n(Editor) \n\n3. An Introduction to Exponential Random Graph Modeling, J. K. Harris, 2013,\nSage.\n\n-Tom\n\n \n\n \n\nFrom: statnet_help-bounces@mailman2.u.washington.edu\n[mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of Sunny\nLee\nSent: Thursday, February 06, 2014 1:16 PM\nTo: statnet_help@u.washington.edu\nSubject: [statnet_help] ERGM help\n\n \n\nDear members, \n\nCan I ask a very basic question here?\n\nIf I want to test age and gender homophily in my network, should I just\ninclude nodematch and nodefactor for that? Or do I need other parameters\nlike \"edges and degrees, etc.\" ?\n\nI seem to get only age homophily significant (with nodematch for five\ncategories, or with nodecov for continuous variable, not always though), and\n\"mutual(gender)\" significant. How can I interpret significant parameter of\nmutual(gender)? Is it that the same gender \"reciprocate\" their ties\nsignificantly more than between different gender?\n\nA more troublesome one is that I get different parameter values and\nsignificance values every time I run, and does this mean I have to simulate\nmy network and compare the results?\n\nCan anyone recommend a good material for learning how to interpret ergm\nresults?\n\n \n\nSorry for asking dumb questions, but I'm just stepping my foot into ergm. \n\nThanks!!\n\n\n\n-- \n\nSun Kyong (Sunny) Lee, Ph.D. \n\nAssistant Professor\nDepartment of Communication \nThe University of Oklahoma\nemail: sunnylee78@gmail.com <mailto:sunklee@eden.rutgers.edu> ;\nsunklee@ou.edu\n\n610 Elem Ave., Norman, OK \n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140206/bbf26165/attachment.html>",
+      "body_snippet": "Sunny\n\n1. Robins, G., Pattison, P. Kalish, Y. & Lusher, D. (2007). An introduction\nto exponential random graph (p*) models for social networks. Social\nNetworks, 29, 173-191\n\n2. Exponential Random Grap",
+      "thread_id": "thread-68e56d49dfaf",
+      "thread_depth": 1,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-2667589fb938",
+      "message_id": "<CAP5OD_CRyksafEtD-dkGZVG6n_mP_=69EpEpKV=sacTf4e9xbA@mail.gmail.com>",
+      "from_name": "Sunny Lee",
+      "from_email_hash": "102884647e90da075c4ecf50c0140fb033a47fbc583a67aaf9a23316ab05ab4b",
+      "date": "2014-02-06T16:36:45Z",
+      "subject": "[statnet_help] ERGM help",
+      "subject_clean": "[statnet_help] ERGM help",
+      "in_reply_to": "<06ca01cf2382$03611b50$0a2351f0$@usc.edu>",
+      "references": [
+        "<CAP5OD_Ccp8rv6Cs33pGjGm=7heu7XC-xiQ_UcvWaxYphBH2FJg@mail.gmail.com>",
+        "<06ca01cf2382$03611b50$0a2351f0$@usc.edu>"
+      ],
+      "body_plain": "Hi Karen and Tom,\n\nThanks so much for your suggestions, and I'll definitely look into those\nmaterials!\n\nBest,\n\nSunny\n\n\nOn Thu, Feb 6, 2014 at 3:25 PM, Tom Valente <tvalente@usc.edu> wrote:\n\n> Sunny\n>\n> 1. Robins, G., Pattison, P. Kalish, Y. & Lusher, D. (2007). An\n> introduction to exponential random graph (p*) models for social networks\n> *.* *Social Networks*, *29*, 173-191\n>\n> 2. Exponential Random Graph Models for Social Networks: Theory, Methods,\n> and Applications (Structural Analysis in the Social Sciences) Paperback by\n> Dean Lusher<http://www.amazon.com/s/ref=ntt_athr_dp_sr_1?ie=UTF8&field-author=Dean+Lusher&search-alias=books&text=Dean+Lusher&sort=relevancerank>\n> (Editor) , Johan Koskinen<http://www.amazon.com/s/ref=ntt_athr_dp_sr_2?ie=UTF8&field-author=Johan+Koskinen&search-alias=books&text=Johan+Koskinen&sort=relevancerank>\n> (Editor) , Garry Robins<http://www.amazon.com/s/ref=ntt_athr_dp_sr_3?ie=UTF8&field-author=Garry+Robins&search-alias=books&text=Garry+Robins&sort=relevancerank>\n> (Editor)\n>\n> 3. An Introduction to Exponential Random Graph Modeling, J. K. Harris,\n> 2013, Sage.\n>\n> -Tom\n>\n>\n>\n>\n>\n> *From:* statnet_help-bounces@mailman2.u.washington.edu [mailto:\n> statnet_help-bounces@mailman2.u.washington.edu] *On Behalf Of *Sunny Lee\n> *Sent:* Thursday, February 06, 2014 1:16 PM\n> *To:* statnet_help@u.washington.edu\n> *Subject:* [statnet_help] ERGM help\n>\n>\n>\n> Dear members,\n>\n> Can I ask a very basic question here?\n>\n> If I want to test age and gender homophily in my network, should I just\n> include nodematch and nodefactor for that? Or do I need other parameters\n> like \"edges and degrees, etc.\" ?\n>\n> I seem to get only age homophily significant (with nodematch for five\n> categories, or with nodecov for continuous variable, not always though),\n> and \"mutual(gender)\" significant. How can I interpret significant parameter\n> of mutual(gender)? Is it that the same gender \"reciprocate\" their ties\n> significantly more than between different gender?\n>\n> A more troublesome one is that I get different parameter values and\n> significance values every time I run, and does this mean I have to simulate\n> my network and compare the results?\n>\n> Can anyone recommend a good material for learning how to interpret ergm\n> results?\n>\n>\n>\n> Sorry for asking dumb questions, but I'm just stepping my foot into ergm.\n>\n> Thanks!!\n>\n>\n> --\n>\n> Sun Kyong (Sunny) Lee, Ph.D.\n>\n> Assistant Professor\n> Department of Communication\n> The University of Oklahoma\n> email: sunnylee78@gmail.com <sunklee@eden.rutgers.edu>; sunklee@ou.edu\n>\n> 610 Elem Ave., Norman, OK\n>\n>\n>\n\n\n\n-- \nSun Kyong (Sunny) Lee, Ph.D.\n\nAssistant Professor\nDepartment of Communication\nThe University of Oklahoma\nemail: sunnylee78@gmail.com <sunklee@eden.rutgers.edu>; sunklee@ou.edu\n610 Elem Ave., Norman, OK\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140206/e9c87f03/attachment.html>",
+      "body_snippet": "Hi Karen and Tom,\n\nThanks so much for your suggestions, and I'll definitely look into those\nmaterials!\n\nBest,\n\nSunny\n\n\nOn Thu, Feb 6, 2014 at 3:25 PM, Tom Valente <tvalente@usc.edu> wrote:\n\n> Sunny\n>\n",
+      "thread_id": "thread-68e56d49dfaf",
+      "thread_depth": 2,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-13503e8d5dc0",
+      "message_id": "<CALtVKBEqGs+tDE7Fk_h=aMPm7Y3TSsH55h0syecSSpLGhOySnA@mail.gmail.com>",
+      "from_name": "Tianchen Wu",
+      "from_email_hash": "34a434aefa614347a0cfb56bb21a0bd3a39f432685dc7ca648b2a9e37fd177c0",
+      "date": "2014-02-11T14:33:53Z",
+      "subject": "[statnet_help] A problem about mcmc.diagnostics",
+      "subject_clean": "[statnet_help] A problem about mcmc.diagnostics",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone,\nI am a student of computer science and want to use ERGM for my thesis. By\nthe time of using mcmc.diagnostics to check the convergence and GOF of the\nmodel, I encountered the following problem.\n\n#trial procedure of network fitting\ngest<- ergm(g~edges)\n#after that\nmcmc.diagnostics(gest)\n\nThe information I get is:\n###########################################################\nSample statistics summary:\n\nIterations = 10000:1009900\nThinning interval = 100\nNumber of chains = 1\nSample size per chain = 10000\n\n1. Empirical mean and standard deviation for each variable,\n   plus standard error of the mean:\n\n         Mean SD Naive SE Time-series SE\nedges     114  0        0              0\ntriangle  892  0        0              0\n\n2. Quantiles for each variable:\n\n         2.5% 25% 50% 75% 97.5%\nedges     114 114 114 114   114\ntriangle  892 892 892 892   892\n\n\nAre sample statistics significantly different from observed?\n           edges triangle Overall (Chi^2)\ndiff.        114      892              NA\ntest stat.   NaN      NaN             Inf\nP-val.       NaN      NaN               0\n\nSample statistics cross-correlations:\n         edges triangle\nedges        1       NA\ntriangle    NA        1\n\nSample statistics auto-correlation:\nChain 1\n        edges triangle\nLag 0     NaN      NaN\nLag 100   NaN      NaN\nLag 200   NaN      NaN\nLag 300   NaN      NaN\nLag 400   NaN      NaN\nLag 500   NaN      NaN\n\nSample statistics burn-in diagnostic (Geweke):\nChain 1\n\nFraction in 1st window = 0.1\nFraction in 2nd window = 0.5\n\n   edges triangle\n     NaN      NaN\n\nP-values (lower = worse):\n   edges triangle\n     NaN      NaN\n\n###########################################################\nI am not sure why I have these NaNs, and how can I read the information\nabout convergence from that?\n\nI have read the pdf documentation of ergm, but fail to find the answer.\nI appreciate very much if someone can point out the direction , thank you\nvery much for your time\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140211/6ea72cec/attachment.html>",
+      "body_snippet": "Hi everyone,\nI am a student of computer science and want to use ERGM for my thesis. By\nthe time of using mcmc.diagnostics to check the convergence and GOF of the\nmodel, I encountered the following pro",
+      "thread_id": "thread-13503e8d5dc0",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-f278a870c536",
+      "message_id": "<alpine.WNT.1.10.1402111618580.2888@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2014-02-11T16:23:29Z",
+      "subject": "[statnet_help] A problem about mcmc.diagnostics",
+      "subject_clean": "[statnet_help] A problem about mcmc.diagnostics",
+      "in_reply_to": "<CALtVKBEqGs+tDE7Fk_h=aMPm7Y3TSsH55h0syecSSpLGhOySnA@mail.gmail.com>",
+      "references": [
+        "<CALtVKBEqGs+tDE7Fk_h=aMPm7Y3TSsH55h0syecSSpLGhOySnA@mail.gmail.com>"
+      ],
+      "body_plain": "Tianchen,\n\nThe model you show (ergm(g~edges)) would not be fit with mcmc, because \nthis model can be fit using standard logistic regression estimation \nalgorithms.\n\nBut I don't understand then why you have any mcmc diagnostics, and why a \ntriangle term is showing up in those diagnostics.\n\nPerhaps you fit a different model?\n\nbest,\nMartina\n\nOn Tue, 11 Feb 2014, Tianchen Wu wrote:\n\n> Hi everyone,I am a student of computer science and want to use ERGM for my thesis. By the time of\n> using?mcmc.diagnostics to check the convergence and GOF of the model, I encountered the following problem.\n> \n> #trial procedure of network fitting\n> gest<- ergm(g~edges)\n> #after that\n> mcmc.diagnostics(gest)\n> \n> The information I get is:\n> ###########################################################\n> Sample statistics summary:\n> \n> Iterations = 10000:1009900\n> Thinning interval = 100 \n> Number of chains = 1 \n> Sample size per chain = 10000 \n> \n> 1. Empirical mean and standard deviation for each variable,\n> ? ?plus standard error of the mean:\n>\n> ? ? ? ? ?Mean SD Naive SE Time-series SE\n> edges ? ? 114 ?0 ? ? ? ?0 ? ? ? ? ? ? ?0\n> triangle ?892 ?0 ? ? ? ?0 ? ? ? ? ? ? ?0\n> \n> 2. Quantiles for each variable:\n>\n> ? ? ? ? ?2.5% 25% 50% 75% 97.5%\n> edges ? ? 114 114 114 114 ? 114\n> triangle ?892 892 892 892 ? 892\n> \n> \n> Are sample statistics significantly different from observed?\n> ? ? ? ? ? ?edges triangle Overall (Chi^2)\n> diff. ? ? ? ?114 ? ? ?892 ? ? ? ? ? ? ?NA\n> test stat. ? NaN ? ? ?NaN ? ? ? ? ? ? Inf\n> P-val. ? ? ? NaN ? ? ?NaN ? ? ? ? ? ? ? 0\n> \n> Sample statistics cross-correlations:\n> ? ? ? ? ?edges triangle\n> edges ? ? ? ?1 ? ? ? NA\n> triangle ? ?NA ? ? ? ?1\n> \n> Sample statistics auto-correlation:\n> Chain 1\n> ? ? ? ? edges triangle\n> Lag 0 ? ? NaN ? ? ?NaN\n> Lag 100 ? NaN ? ? ?NaN\n> Lag 200 ? NaN ? ? ?NaN\n> Lag 300 ? NaN ? ? ?NaN\n> Lag 400 ? NaN ? ? ?NaN\n> Lag 500 ? NaN ? ? ?NaN\n> \n> Sample statistics burn-in diagnostic (Geweke):\n> Chain 1 \n> \n> Fraction in 1st window = 0.1\n> Fraction in 2nd window = 0.5 \n>\n> ? ?edges triangle\n> ? ? ?NaN ? ? ?NaN \n> \n> P-values (lower = worse):\n> ? ?edges triangle\n> ? ? ?NaN ? ? ?NaN \n> \n> ###########################################################\n> I am not sure why I have these NaNs, and how can I read the information about convergence from that?\n> \n> I have read the pdf documentation of ergm, but fail to find the answer.\n> I appreciate very much if someone can point out the direction , thank you very much for your time\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Tianchen,\n\nThe model you show (ergm(g~edges)) would not be fit with mcmc, because \nthis model can be fit using standard logistic regression estimation \nalgorithms.\n\nBut I don't understand then why you",
+      "thread_id": "thread-13503e8d5dc0",
+      "thread_depth": 1,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-41324b0ef865",
+      "message_id": "<CAP5OD_D6f9mQbQ-tSuW0PhPCCiu8hjfoRX0W9NiEvLC=SJ0Taw@mail.gmail.com>",
+      "from_name": "Sunny Lee",
+      "from_email_hash": "102884647e90da075c4ecf50c0140fb033a47fbc583a67aaf9a23316ab05ab4b",
+      "date": "2014-02-11T19:34:52Z",
+      "subject": "[statnet_help] Changing edgelist with missing data into a network object",
+      "subject_clean": "[statnet_help] Changing edgelist with missing data into a network object",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI imported an edgelist with some missing alters and tried to change the\nlist into a network object. I keep getting error messages: \"Error in if\n(max(abs(x)) == 1 && max(abs(x - as.integer(x))) == 0) out <- \"bipartite\"\nelse if (max(abs(x -  :\n  missing value where TRUE/FALSE needed\"\n\nCan anyone tell me how to fix this?\n\nThanks!!\n\nSunny\n\n\n-- \nSun Kyong (Sunny) Lee, Ph.D.\n\nAssistant Professor\nDepartment of Communication\nThe University of Oklahoma\nemail: sunnylee78@gmail.com <sunklee@eden.rutgers.edu>; sunklee@ou.edu\n610 Elem Ave., Norman, OK\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140211/bb375e51/attachment.html>",
+      "body_snippet": "Hi all,\n\nI imported an edgelist with some missing alters and tried to change the\nlist into a network object. I keep getting error messages: \"Error in if\n(max(abs(x)) == 1 && max(abs(x - as.integer(x))",
+      "thread_id": "thread-41324b0ef865",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-5c2d39e4c4d5",
+      "message_id": "<CAD2QkcAP=dn54yE-+EwoCf5inSpjuOGD=q0+XgzMJ8Qo6paXfA@mail.gmail.com>",
+      "from_name": "Tavis Linsin",
+      "from_email_hash": "d929e9a680d6020260b91240bf21f38398cec3a112ee8a268f01fabbfae76746",
+      "date": "2014-02-15T12:42:30Z",
+      "subject": "[statnet_help] Creating a network object with edge and vertex attributes",
+      "subject_clean": "[statnet_help] Creating a network object with edge and vertex attributes",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello all,\n\nI am attempting to create a network object in statnet for a directed\nnetwork (545 vertices and 816 ties) and attach multiple edge and multiple\nvertex attributes (I've read all documentation and help files but still\nnothing seems to work).\n\nI have an edgelist with attributes of the form:\n egoID alterID friend hours inclass rank  1003 1038 1 6 1 1  1003 1116 1 6 1\n2  1003 1449 1 23 2 3  1003 1234 1 21 2 4  1003 1446 2 16 1 5  1005 1237 1\n11 2 1  1005 1540 1 4 2 2  1005 1119 1 5 1 3  1005 1083 1 1 2 4  1005 1106 1\n0 2 5 The data are sorted by egoID. (N=816--the total number of ties in the\nnetwork)\n\nI have a vertex attribute dataset of the form:\n egoID ability student ego\nbcm\n 1001 7 1 0 1  1002\n6 1 0 1  1003\n10 1 1 2  1004\n8 1 0 1  1005\n6 1 1 2  1006\n7 1 0 1  1007\n10 1 0 1  1008\n6 1 1 1  1009 5 1 1 1 The data are sorted by egoID. (N=545--total number of\nnodes in the network) The IDs in the attribute dataset correspond exactly\nto those in the edgelist.\n\nWhen I create a network object, the ties are read in correctly, the edge\nand vertex attributes are loaded but are not correctly assigned. I believe\nmy R code follows the recommended format but there must be a mistake\nsomewhere, a formatting issue, or some needed instruction in R or statnet\nI've overlooked.  Below I've copied the R code I'm using.\n\n* Many Thanks! *(A solution was offered to a similar problem on this\nlistserv--\nhttp://mailman2.u.washington.edu/pipermail/statnet_help/2007/000058.html--butthe\ncode offered in this solution seems to also result in edge attributes\nand vertex attributes being incorrectly assigned.)\n\n(The data load fine into UCINET with and edgelist/attribute file, and a\nseparate vertex attribute file--I just can't seem to get it to work with\nstatnet).\n\nlibrary(statnet)\n#read data\nx<- read.csv(\"edge_list_attributes.csv\",header=T)\nx\n\nx[,1]=as.character(x[,1])\nx[,2]=as.character(x[,2])\n\n#create network from edgelist\n\ng <- network(x[,1:2])\n\n##extract edge attributes\nfriend<-x[,3]\nhours<-x[,4]\ninclass<-x[,5]\nrank<-x[,6]\n\n##create edge attributes\ng%e%\"friend\"<-friend\ng%e%\"hours\"<- hours\ng%e%\"inclass\"<- inclass\ng%e%\"rank\"<-rank\n\n##view sociomatrix--relations between ego and alter look good so far\nas.sociomatrix(g)\n\n##Edge attributes are incorrectly assigned\nas.sociomatrix(g, \"hours\")\n\n#read data\ny <- read.csv(\"vertex_attributes.csv\",header=T)\ny\n\ny[,1]=as.character(y[,1])\n\n#Extract vertex attributes\nability<-y[,2]\nstudent<-y[,3]\nego<-y[,4]\nbcm<-y[,5]\n\n#vertex attributes (I don't believe these are correctly assigned either)\n\ng%v%\"ability\"<- ability\ng%v%\"student\"<- student\ng%v%\"ego\"<- ego\ng%v%\"bcm\" <- bcm\n\n\n-- \nTavis Linsin\nPhD Candidate\nFellow, Institute of Education Sciences\nUniversity of Washington\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140215/2194bf37/attachment.html>",
+      "body_snippet": "Hello all,\n\nI am attempting to create a network object in statnet for a directed\nnetwork (545 vertices and 816 ties) and attach multiple edge and multiple\nvertex attributes (I've read all documentatio",
+      "thread_id": "thread-5c2d39e4c4d5",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-875b76fa877e",
+      "message_id": "<CALtVKBFr5dj9S5=J8x_w_KoGZ0U+1L1QFkCreAVS4fJfSrjXCQ@mail.gmail.com>",
+      "from_name": "Tianchen Wu",
+      "from_email_hash": "34a434aefa614347a0cfb56bb21a0bd3a39f432685dc7ca648b2a9e37fd177c0",
+      "date": "2014-02-16T08:04:09Z",
+      "subject": "[statnet_help] all coefficients are non-significant",
+      "subject_clean": "[statnet_help] all coefficients are non-significant",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear list,\n\nI am trying to fit a EEG network with only 19 nodes. Following model has\nbeen specified and fitted,\n\ngest<-ergm(g~edges+cycle(3:4)+altkstar(2,fixed=TRUE)+gwesp(alpha=0.639,fixed=TRUE)+kstar(2),control=control.ergm(MCMC.burnin=20000,MCMC.interval=2000))\n\nIt converges quickly after Iteration 8 and sample statistics do not seem to\nbe significantly different from observed. But when I check the coefficients\nby using Approximate Wald Test, there is no one coefficient significant.\n\nI am now reading through the mail list and all kinds of tutorials, but due\nto the emergence of the task. so I am now looking for a more direct\ninterpretation or instruction. Hope the question would not be so naive.\n\nPS: Magically, if I do not include cycle 4, namely\n\nergm(g~edges+cycle(3)+altkstar(2,fixed=TRUE)+gwesp(alpha=0.639,fixed=TRUE)+kstar(2),control=control.ergm(MCMC.burnin=20000,MCMC.interval=2000))\n\nThe simulation just does not converge. So I am wondering, whether the\nspecifying of ERGM terms basically a matter of experience?\n\nThank you very much\nbest regards\ntianchen wu\n\n\nattach the mcmc.diagnostics() infomation:\n\n> mcmc.diagnostics(gest)\nSample statistics summary:\n\nIterations = 20000:20018000\nThinning interval = 2000\nNumber of chains = 1\nSample size per chain = 10000\n\n1. Empirical mean and standard deviation for each variable,\n   plus standard error of the mean:\n\n                      Mean      SD Naive SE Time-series SE\nedges             -0.01090   8.066  0.08066         0.1089\ncycle3             0.07280  29.825  0.29825         0.3170\ncycle4             1.84500 278.169  2.78169         2.8538\naltkstar.2        -0.00188  28.557  0.28557         0.3722\ngwesp.fixed.0.639 -0.01845  15.871  0.15871         0.2148\nkstar2             0.34610 117.165  1.17165         1.3927\n\n2. Quantiles for each variable:\n\n                     2.5%     25%     50%    75%  97.5%\nedges              -17.00   -5.00  0.0000   6.00  14.00\ncycle3             -58.00  -20.00  0.0000  20.00  60.00\ncycle4            -521.00 -189.00 -6.0000 182.00 579.00\naltkstar.2         -59.27  -18.79  1.8550  19.94  51.69\ngwesp.fixed.0.639  -32.81  -10.64  0.6299  11.36  28.89\nkstar2            -237.02  -79.25  4.0000  81.00 221.00\n\n\nAre sample statistics significantly different from observed?\n                edges    cycle3    cycle4   altkstar.2 gwesp.fixed.0.639\n kstar2 Overall (Chi^2)\ndiff.      -0.0109000 0.0728000 1.8450000 -0.001880331       -0.01845072\n0.3461000              NA\ntest stat. -0.1000755 0.2296344 0.6465009 -0.005051400       -0.08588376\n0.2485118       4.6845023\nP-val.      0.9202844 0.8183759 0.5179550  0.995969583        0.93155882\n0.8037385       0.5848665\n\nSample statistics cross-correlations:\n                      edges    cycle3    cycle4 altkstar.2\ngwesp.fixed.0.639    kstar2\nedges             1.0000000 0.8051132 0.7128027  0.9952827\n0.9953275 0.9640973\ncycle3            0.8051132 1.0000000 0.9727700  0.8479434\n0.8130968 0.9067244\ncycle4            0.7128027 0.9727700 1.0000000  0.7649677\n0.7151091 0.8616637\naltkstar.2        0.9952827 0.8479434 0.7649677  1.0000000\n0.9955248 0.9800479\ngwesp.fixed.0.639 0.9953275 0.8130968 0.7151091  0.9955248\n1.0000000 0.9605343\nkstar2            0.9640973 0.9067244 0.8616637  0.9800479\n0.9605343 1.0000000\n\nSample statistics auto-correlation:\nChain 1\n               edges       cycle3       cycle4 altkstar.2 gwesp.fixed.0.639\n     kstar2\nLag 0     1.00000000  1.000000000  1.000000000 1.00000000        1.00000000\n1.000000000\nLag 2000  0.24659164  0.060922028  0.025544463 0.21564845        0.24630499\n0.144221845\nLag 4000  0.10629648  0.011900721 -0.008786447 0.09020184        0.10871553\n0.047713456\nLag 6000  0.04582319  0.007719465 -0.007404494 0.03823466        0.05047690\n0.013931541\nLag 8000  0.02661436  0.015443039  0.008582254 0.02244361        0.03085919\n0.007680151\nLag 10000 0.02249433 -0.002593559 -0.004413935 0.01729269        0.02241013\n0.006566358\n\nSample statistics burn-in diagnostic (Geweke):\nChain 1\n\nFraction in 1st window = 0.1\nFraction in 2nd window = 0.5\n\n            edges            cycle3            cycle4        altkstar.2\ngwesp.fixed.0.639            kstar2\n         -0.87826          -0.60607           0.02631          -0.81375\n     -0.91334          -0.38657\n\nP-values (lower = worse):\n            edges            cycle3            cycle4        altkstar.2\ngwesp.fixed.0.639            kstar2\n        0.3798035         0.5444691         0.9790121         0.4157885\n    0.3610646         0.6990733\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140216/6716a20c/attachment.html>",
+      "body_snippet": "Dear list,\n\nI am trying to fit a EEG network with only 19 nodes. Following model has\nbeen specified and fitted,\n\ngest<-ergm(g~edges+cycle(3:4)+altkstar(2,fixed=TRUE)+gwesp(alpha=0.639,fixed=TRUE)+ksta",
+      "thread_id": "thread-875b76fa877e",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-244ddfacdff8",
+      "message_id": "<CAAjkNOKhjM19dnTktwqo-Vxn=Qz2WvDwsCZqpv3BcewuPKnacg@mail.gmail.com>",
+      "from_name": "Ji Youn (Rose) Kim",
+      "from_email_hash": "7eed9d57e89f326434d4cbc5144fb863e1f8bea27d443857a735f3a329588dc4",
+      "date": "2014-02-18T09:17:49Z",
+      "subject": "[statnet_help] different types of triadic-based parameters (activity closure, popularity closure)",
+      "subject_clean": "[statnet_help] different types of triadic-based parameters (activity closure, popularity closure)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all researchers,\n\nI have some questions about ERGM terms.\n\n1. I wonder if statnet package has different terms for testing different\ntypes of triadic-based parameters mentioned in Robins, Pattison, & Wang\n(2009; attached), such as activity closure, popularity closure and cyclic\nclosure. Looks like that these authors use pnet software, and I am not sure\nwhich ERGM terms in statnet package correspond to such different types of\ntransitive parameters.\n\nI looked at Morris, Handcock, and Hunter (2008) paper about ERGM\nspecification,and there are terms like ctriple or ttriple, but I somehow\ncouldn't find \"new specifications\" (for non-degenerate models)\ncorresponding to those types like activity closure or popularity closure\nexcept gwesp (transitive closure) and gwdsp terms.\n\n2. According to the suggestions made in the same paper above, I am trying\nto control a multiple 2-path while I model transitivity using 'gwesp' term,\nand in statnet package, I see that there are three terms that look relevant\n: 'm2star' or 'twopath' and 'gwdsp' in statnet. Which term is a correct one?\n\nThank you very much!\n\nSincerely,\nRose\n\n-- \nJi Youn (Rose) Kim\nDoctoral Candidate\nDepartment of Management & Organization\nMichael G. Foster School of Business\nUniversity of Washington\nrosejyk@uw.edu\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140218/7c75a03a/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: Robins_Pattison_Wang_2009.pdf\nType: application/pdf\nSize: 1028980 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140218/7c75a03a/attachment.pdf>",
+      "body_snippet": "Dear all researchers,\n\nI have some questions about ERGM terms.\n\n1. I wonder if statnet package has different terms for testing different\ntypes of triadic-based parameters mentioned in Robins, Pattison",
+      "thread_id": "thread-244ddfacdff8",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-7decc202d410",
+      "message_id": "<alpine.WNT.1.10.1402181719550.5812@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2014-02-18T17:30:54Z",
+      "subject": "[statnet_help] different types of triadic-based parameters (activity closure, popularity closure)",
+      "subject_clean": "[statnet_help] different types of triadic-based parameters (activity closure, popularity closure)",
+      "in_reply_to": "<CAAjkNOKhjM19dnTktwqo-Vxn=Qz2WvDwsCZqpv3BcewuPKnacg@mail.gmail.com>",
+      "references": [
+        "<CAAjkNOKhjM19dnTktwqo-Vxn=Qz2WvDwsCZqpv3BcewuPKnacg@mail.gmail.com>"
+      ],
+      "body_plain": "Rose,\n\nWhen you say \"control a multiple 2-path model\", it's not clear exactly \nwhat you mean.\n\nAt this point the ergm term \"gwesp\", when used on a directed network, \ncounts one possible configuration:  only partners on a directed two-path \nconnecting the nodes in the dyad.\n\nYou might try looking at the terms \"balance\", \"intransitive\", \n\"transitive\", \"transitiveties\", \"triadcensus\", and \"triangle\"\nto see if any of these do what you want.\n\nNote that ergm is an open source package, and it is possible to code your \nown terms (see the  ergm.userterms package and paper for details).\n\nbest,\nMartina\n\nOn Tue, 18 Feb 2014, Ji Youn (Rose) Kim wrote:\n\n> Dear all researchers,\n> \n> I have some questions about ERGM terms.\n> \n> 1. I wonder if statnet package has different terms for testing different\n> types of triadic-based parameters mentioned in Robins, Pattison, & Wang\n> (2009; attached), such as activity closure, popularity closure and cyclic\n> closure. Looks like that these authors use pnet software, and I am not sure\n> which ERGM terms in statnet package correspond to such different types of\n> transitive parameters. \n> \n> I looked at Morris, Handcock, and Hunter (2008) paper about ERGM\n> specification,and there are terms like ctriple or ttriple, but I somehow\n> couldn't find \"new specifications\" (for non-degenerate models) corresponding\n> to those types like activity closure or popularity closure except gwesp\n> (transitive closure) and gwdsp terms. \n> \n> 2. According to the suggestions made in the same paper above, I am trying to\n> control a multiple 2-path while I model transitivity using 'gwesp' term, and\n> in statnet package, I see that there are three terms that look relevant :\n> 'm2star' or 'twopath' and 'gwdsp' in statnet. Which term is a correct one?\n> \n> Thank you very much!\n> \n> Sincerely,Rose\n> \n> --\n> Ji Youn (Rose) Kim\n> Doctoral Candidate\n> Department of Management & Organization\n> Michael G. Foster School of Business\n> University of Washington\n> rosejyk@uw.edu\n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Rose,\n\nWhen you say \"control a multiple 2-path model\", it's not clear exactly \nwhat you mean.\n\nAt this point the ergm term \"gwesp\", when used on a directed network, \ncounts one possible configuration:",
+      "thread_id": "thread-244ddfacdff8",
+      "thread_depth": 1,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-4501297a5e6f",
+      "message_id": "<CAFDq6s8A=CdAnySNrCaFgM5pUo5OeCb9ay-9NESkX6Kko2YbsQ@mail.gmail.com>",
+      "from_name": "C.J. Dey",
+      "from_email_hash": "860113709c55e6032f4950144bafd07cdbf93d59e83e582b42adb85b9ae87bc9",
+      "date": "2014-02-20T17:51:44Z",
+      "subject": "[statnet_help] Problem offsetting multiple terms in ergm",
+      "subject_clean": "[statnet_help] Problem offsetting multiple terms in ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI have previously been able to successfully fix ergm terms at -Inf to\nforbid ties between certain groups of nodes. However, I am running into a\nproblem when I try to offset two different terms (I would like also like to\noffset a mutual term to forbid reciprocal ties). The problem seems to be\nwhen specifying the offset.coef parameter, as I cannot seem to feed it the\nright length vector. In the example below I get both the error \"expected 2\ngot 3\" and \"expected 3 got 2\", when I feed it vectors of length 3 and 2\nrespectively.\n\nHere is an example:\n\n##Create directed binary network of dominants (1) and subordinates (0), and\nrestrict ties to within each group\nm<-matrix(rmultinom(1,500,rep(1/100, 100)),10,10)\nm[1:5,6:10]<-0\nm[6:10,1:5]<-0\nwinlos<-m/(m+t(m))\nwinlos[winlos>0.5]=1\nwinlos[winlos<0.5]=0\nwinlos[is.na(winlos)]=0\nwinlos[winlos==0.5]=0\nwinlos\ng<-network(winlos, matrix.type= \"adjacency\", directed=TRUE)\n\nset.vertex.attribute(g, \"Group\", c(rep(\"G1\",5), rep(\"G2\",5)))\n\n####This seems to work\nM<-ergm(g~edges\n        +offset(nodemix(\"Group\", base=c(1,4))), offset.coef=c(rep(-Inf, 2)))\n\n###This also seems to work\nM<-ergm(g~edges\n        +offset(mutual),\n        offset.coef=-Inf)\n\n###Doesn't work (expected 2 got 3)\nM<-ergm(g~edges\n        +offset(mutual)\n        +offset(nodemix(\"Group\", base=c(1,4))), offset.coef=c(rep(-Inf, 3)))\n\n##Doesn't work (expected 3 got 2)\nM<-ergm(g~edges\n        +offset(mutual)\n        +offset(nodemix(\"Group\", base=c(1,4))), offset.coef=c(rep(-Inf, 2)))\n\nThanks for your help in advance\n\n\n______________________________________________________________________________\nCody Dey\nPhD Candidate\nMcMaster University\nDepartment of Biology\ndeycj@mcmaster.ca\n+1 905 525 9140 x24032\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140220/f22802c6/attachment.html>",
+      "body_snippet": "Hi all,\n\nI have previously been able to successfully fix ergm terms at -Inf to\nforbid ties between certain groups of nodes. However, I am running into a\nproblem when I try to offset two different term",
+      "thread_id": "thread-4501297a5e6f",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-c3851afd16a9",
+      "message_id": "<CALtVKBH3hB6xh5HRVZzHMM1dK6EVfh0o4e8Vi8R7QO+RSYsaJA@mail.gmail.com>",
+      "from_name": "Tianchen Wu",
+      "from_email_hash": "34a434aefa614347a0cfb56bb21a0bd3a39f432685dc7ca648b2a9e37fd177c0",
+      "date": "2014-02-21T04:25:57Z",
+      "subject": "[statnet_help] Number of observations is similarly ill-defined?",
+      "subject_clean": "[statnet_help] Number of observations is similarly ill-defined?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear List,\n\nI got this warning back after fitting the model:\nThe constraint on the sample space is not dyad-independent. Null model\nlikelihood is only implemented for dyad-independent constraints at this\ntime. Number of observations is similarly ill-defined.\n\nWhat does \"Number of observations is similarly ill-defined\" refer to?\n\nThank you very much\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140221/e0f99290/attachment.html>",
+      "body_snippet": "Dear List,\n\nI got this warning back after fitting the model:\nThe constraint on the sample space is not dyad-independent. Null model\nlikelihood is only implemented for dyad-independent constraints at t",
+      "thread_id": "thread-c3851afd16a9",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-606344b47beb",
+      "message_id": "<9F0C01D3-36AF-418B-808B-FCF5E45EE71E@gmail.com>",
+      "from_name": "jimi adams",
+      "from_email_hash": "d387d68c739c196c625768794dffa30321694dced194798b4c5c7e0b3a23c752",
+      "date": "2014-02-24T12:18:58Z",
+      "subject": "[statnet_help] ndtv - entering nodes",
+      "subject_clean": "[statnet_help] ndtv - entering nodes",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi folks,\nSorry I missed the workshops last week (teaching obligations!). I've been unable to figure out how to manipulate where nodes entering a visualization are placed. At the moment, they are all getting dropped into the middle of the visualization, creating a lot more apparent \"movement\" than is meaningful. In digging through the options, I wasn't able to figure out whether/how that was alterable. Am I missing an option somewhere? \n\nUltimately, I think for this case, ideally i'd rather them come in more or less where they \"land\" and let motion really only come from those that remain across the slices.\n\nThanks in advance!\njimi\n\nPS. Thanks so much, Skye, for clarifying my last question on slice/window definitions that was affecting colors not coming out as I anticipated. Now that I see where I was misunderstanding the dynamic network structure, things have become a lot clearer!\n\njimi adams\nAssistant Professor\nDepartment of Sociology\nAmerican University\ne: jadams@american.edu\nw: jimiadams.com",
+      "body_snippet": "Hi folks,\nSorry I missed the workshops last week (teaching obligations!). I've been unable to figure out how to manipulate where nodes entering a visualization are placed. At the moment, they are all ",
+      "thread_id": "thread-606344b47beb",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-fd20e7f31d89",
+      "message_id": "<alpine.WNT.1.10.1402241443390.2856@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2014-02-24T14:54:09Z",
+      "subject": "[statnet_help] comparing coefficients across models of different samples",
+      "subject_clean": "[statnet_help] comparing coefficients across models of different samples",
+      "in_reply_to": "<CAD5742667680B489D6A39571B8E7FA7260C4738@ICTSC-W-S207.soliscom.uu.nl>",
+      "references": [
+        "<CAD5742667680B489D6A39571B8E7FA7260C4738@ICTSC-W-S207.soliscom.uu.nl>"
+      ],
+      "body_plain": "Sanne,\n\nYou should adjust for network size using the offset described in Pavel \nKrivitsky's paper\nhttp://www.sciencedirect.com/science/article/pii/S1572312711000086\n\nThis addresses a different issue, which concerns the question of whether \ndensity or mean degree is preserved as network size changes.  The \nadjustment describe in that paper makes it possible to compare the \ncoefficients of dyadic-independent terms across networks (as long as the \nmodels are the same).  If you have dyadic-dependent terms in the model \n(like gwesp or degree terms) this simple offset does not solve the problem \nfor those coefficients.  But Pavel presented some new work at the Sunbelt \nlast week on this topic.\n\nhope this helps,\nMartina\n\n\nOn Fri, 19 Apr 2013, Smith, S. (Sanne) wrote:\n\n> \n> Dear all,\n>\n> \n> \n> I would like to ask if I can compare the magnitude of coefficients across fitted ergm models on\n> different samples (e.g., is there more or less ethnic homophily in class room A compared to class room\n> B?).\n>\n> \n> \n> I know from Mood (2010), that comparing coefficients across models, groups and samples is problematic\n> as the magnitude of a coefficient depends on the explained variance within logistic regression models\n> (the smaller the residual variance in a model, the larger the coefficients get). I?ve learned that\n> ergms are like ?logistic regression models, so does this problem also apply to ergms? For example, if\n> I?d compare coefficients in network A and B, ?is the difference in coefficient size then due to a\n> stronger tendency to befriend same-ethnic alters in one of the networks,? or because the model does? a\n> better job in predicting friendship in one of the networks? Or am I safe comparing coefficients across\n> networks just as they are?\n>\n> \n> \n> If this problem does apply to ergms, could somebody give me a hint towards a possible solution? ?For\n> example, do I need to somehow standardize the coefficients so that I cancel out these ?rescaling\n> effects? or use average marginal effects instead of log odds?\n>\n> \n> \n> Many thanks in advance!\n>\n> \n> \n> Regards,\n>\n> \n> \n> Sanne Smith\n> \n> Sanne Smith?MSc?|?Phd candidate?|?Department of Sociology |?Utrecht university?|\n> \n> Centrumgebouw Noord?|?Padualaan 14, 3584 CH Utrecht?|?kamer?C.216?|?+31 30 253??4075?|\n> \n> s.smith@uu.nl?|?www.uu.nl| \n>\n> \n>\n> \n> \n> Mood, C., 2010. Logistic regression: Why we cannot do what we think we can do, and what we can do\n> about it. European Sociological Review, 26(1), 67-82.\n>\n> \n>\n> \n>\n> \n>\n> \n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Sanne,\n\nYou should adjust for network size using the offset described in Pavel \nKrivitsky's paper\nhttp://www.sciencedirect.com/science/article/pii/S1572312711000086\n\nThis addresses a different issue, ",
+      "thread_id": "thread-fd20e7f31d89",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-552bec106f7a",
+      "message_id": "<CAD5742667680B489D6A39571B8E7FA73B4A741C@ICTSC-W-S204.soliscom.uu.nl>",
+      "from_name": "Smith, S. (Sanne)",
+      "from_email_hash": "684dffe9c680b86c503f0b2dede5b862c2e510b7909bc2cfd47270b9f9653c84",
+      "date": "2014-02-26T00:47:32Z",
+      "subject": "[statnet_help] comparing coefficients across models of different samples",
+      "subject_clean": "[statnet_help] comparing coefficients across models of different samples",
+      "in_reply_to": "<alpine.WNT.1.10.1402241443390.2856@morrism-PC>",
+      "references": [
+        "<CAD5742667680B489D6A39571B8E7FA7260C4738@ICTSC-W-S207.soliscom.uu.nl>",
+        "<alpine.WNT.1.10.1402241443390.2856@morrism-PC>"
+      ],
+      "body_plain": "Dear Martina,\n\nThank you for your reply. It is good to know that coefficients do not depend on sample size when using the suggested offset term, and thus, can be compared between multiple networks of different sizes when using the same model. \n\nI'm still wondering if coefficients do not only depend on sample size of the network, but also on the explained variance by a model in a specific network. This may then also be important when one wants to compare coefficients across different models as one typically wants to do when one has mediation questions (i.e., does adding effect 2 to a model reduce the effect of effect 1, or is any change in effect 1 due to rescaling effects?).  We are thinking now of comparing with simulations to get an idea, but any other tips are also welcome.\n\nBest,\n\nSanne\n\n\n\n-----Original Message-----\nFrom: martina morris [mailto:morrism@u.washington.edu] \nSent: Monday, February 24, 2014 11:54 PM\nTo: Smith, S. (Sanne)\nCc: 'statnet_help@u.washington.edu'\nSubject: Re: [statnet_help] comparing coefficients across models of different samples\n\nSanne,\n\nYou should adjust for network size using the offset described in Pavel Krivitsky's paper\nhttp://www.sciencedirect.com/science/article/pii/S1572312711000086\n\nThis addresses a different issue, which concerns the question of whether density or mean degree is preserved as network size changes.  The adjustment describe in that paper makes it possible to compare the coefficients of dyadic-independent terms across networks (as long as the models are the same).  If you have dyadic-dependent terms in the model (like gwesp or degree terms) this simple offset does not solve the problem for those coefficients.  But Pavel presented some new work at the Sunbelt last week on this topic.\n\nhope this helps,\nMartina\n\n\nOn Fri, 19 Apr 2013, Smith, S. (Sanne) wrote:\n\n> \n> Dear all,\n>\n> \n> \n> I would like to ask if I can compare the magnitude of coefficients \n> across fitted ergm models on different samples (e.g., is there more or \n> less ethnic homophily in class room A compared to class room B?).\n>\n> \n> \n> I know from Mood (2010), that comparing coefficients across models, \n> groups and samples is problematic as the magnitude of a coefficient \n> depends on the explained variance within logistic regression models \n> (the smaller the residual variance in a model, the larger the \n> coefficients get). I?ve learned that ergms are like ?logistic \n> regression models, so does this problem also apply to ergms? For \n> example, if I?d compare coefficients in network A and B, ?is the \n> difference in coefficient size then due to a stronger tendency to befriend same-ethnic alters in one of the networks,? or because the model does? a better job in predicting friendship in one of the networks? Or am I safe comparing coefficients across networks just as they are?\n>\n> \n> \n> If this problem does apply to ergms, could somebody give me a hint \n> towards a possible solution? ?For example, do I need to somehow \n> standardize the coefficients so that I cancel out these ?rescaling effects? or use average marginal effects instead of log odds?\n>\n> \n> \n> Many thanks in advance!\n>\n> \n> \n> Regards,\n>\n> \n> \n> Sanne Smith\n> \n> Sanne Smith?MSc?|?Phd candidate?|?Department of Sociology |?Utrecht \n> university?|\n> \n> Centrumgebouw Noord?|?Padualaan 14, 3584 CH Utrecht?|?kamer?C.216?|?\n> +31 30 253??4075?|\n> \n> s.smith@uu.nl?|?www.uu.nl|\n>\n> \n>\n> \n> \n> Mood, C., 2010. Logistic regression: Why we cannot do what we think we \n> can do, and what we can do about it. European Sociological Review, 26(1), 67-82.\n>\n> \n>\n> \n>\n> \n>\n> \n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Dear Martina,\n\nThank you for your reply. It is good to know that coefficients do not depend on sample size when using the suggested offset term, and thus, can be compared between multiple networks of ",
+      "thread_id": "thread-fd20e7f31d89",
+      "thread_depth": 1,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-fe90c977437b",
+      "message_id": "<CAAjkNOKqnz1pN3hiYR3L=ADeNzs+UFWU4kqVyfm9oNbmkJXLRg@mail.gmail.com>",
+      "from_name": "Ji Youn (Rose) Kim",
+      "from_email_hash": "7eed9d57e89f326434d4cbc5144fb863e1f8bea27d443857a735f3a329588dc4",
+      "date": "2014-02-26T11:40:38Z",
+      "subject": "[statnet_help] error and warning with ERGMs",
+      "subject_clean": "[statnet_help] error and warning with ERGMs",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear researchers,\n\nI keep getting errors or have difficulty getting reliable results.\n\nI got a warning that \"*The standard errors are suspect due to possible poor\nconvergence*.\" with a huge value of AIC (for example, 109310).\n\nOr, I got errors like the following\n\n*Error in lm.fit(x, y, offset = offset, singular.ok = singular.ok, ...) :\n0 (non-NA) cases.*\n\nAny guidelines where to look for to correct the problem? also, any\nbenchmark for the decay parameter for gw* term? (esp. gwdsp, gwi/odegree)\n\nBelow is a model that I am trying to fit (with varied 'decay' parameters\nfor gw* terms).\n###########\n> m1<-ergm(Y ~ edges +mutual\n              + gwesp (0.15, fixed=F) + gwdsp(1,fixed=F)\n              + gwidegree(0.15,fixed=F)+ gwodegree(0.15,fixed=F)\n              +nodeicov('age')+nodeocov('age')\n              +nodeicov('pat')+nodeocov('pat')\n              +nodeicov('product')+nodeocov('product')\n              +nodematch(\"state\")+nodefactor(\"state\")\n              +nodematch('segment')+nodefactor('segment')\n              +edgecov(tech_sim)\n              +edgecov(mobility), MCMCsamplesize=10000)\n\nThank you very much! Your help would be deeply appreciated!\n\nSincerely,\nRose\n\n-- \nJi Youn (Rose) Kim\nDoctoral Candidate\nDepartment of Management & Organization\nMichael G. Foster School of Business\nUniversity of Washington\nrosejyk@uw.edu\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140226/6c9064d6/attachment.html>",
+      "body_snippet": "Dear researchers,\n\nI keep getting errors or have difficulty getting reliable results.\n\nI got a warning that \"*The standard errors are suspect due to possible poor\nconvergence*.\" with a huge value of A",
+      "thread_id": "thread-fe90c977437b",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-ba80eb87efaa",
+      "message_id": "<alpine.WNT.1.10.1402261144460.4616@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2014-02-26T11:53:38Z",
+      "subject": "[statnet_help] error and warning with ERGMs",
+      "subject_clean": "[statnet_help] error and warning with ERGMs",
+      "in_reply_to": "<CAAjkNOKqnz1pN3hiYR3L=ADeNzs+UFWU4kqVyfm9oNbmkJXLRg@mail.gmail.com>",
+      "references": [
+        "<CAAjkNOKqnz1pN3hiYR3L=ADeNzs+UFWU4kqVyfm9oNbmkJXLRg@mail.gmail.com>"
+      ],
+      "body_plain": "Ji Youn,\n\nFirst, how large is your network (#nodes #edges)?  You have quite a few \nterms in this model, so your net should be large enough to accomodate \nthem.\n\nSecond, you might try starting with a simple model, and then work up \nadding terms, to see when the problem emerges.  I'd suggest starting with \nthe dyad independent terms (adding one at a time), and once all of these \nhave been added, then add the dyad dependent terms one at a time (first \nthe degree terms, then the esps).\n\nIf you set the decay term to 0, it counts only the first occurence of the \nstatistic (rather than declining marginal returns on each additional \noccurrence).  So it may be worth starting with this.\n\nYou should also try using the summary command on the model terms to see \nwhat the distributions look like in the data.\n\nhth,\nMartina\n\nOn Wed, 26 Feb 2014, Ji Youn (Rose) Kim wrote:\n\n> \n> Dear researchers,\n> \n> I keep getting errors or have difficulty getting reliable results.\n> \n> I got a warning that \"The standard errors are suspect due to possible poor convergence.\" with a huge\n> value of AIC (for example, 109310).\n> \n> Or, I got errors like the following\n> Error in lm.fit(x, y, offset = offset, singular.ok = singular.ok, ...) :\n> ? 0 (non-NA) cases.\n> \n> Any guidelines where to look for to correct the problem? also, any benchmark for the decay parameter\n> for gw* term? (esp. gwdsp, gwi/odegree)\n> \n> Below is a model that I am trying to fit (with varied 'decay' parameters for gw* terms).\n> ###########\n> > m1<-ergm(Y ~ edges +mutual\n> ????????????? + gwesp (0.15, fixed=F) + gwdsp(1,fixed=F)\n> ????????????? + gwidegree(0.15,fixed=F)+ gwodegree(0.15,fixed=F)\n> ????????????? +nodeicov('age')+nodeocov('age')\n> ????????????? +nodeicov('pat')+nodeocov('pat')\n> ????????????? +nodeicov('product')+nodeocov('product')\n> ????????????? +nodematch(\"state\")+nodefactor(\"state\")\n> ????????????? +nodematch('segment')+nodefactor('segment')\n> ????????????? +edgecov(tech_sim)\n> ????????????? +edgecov(mobility), MCMCsamplesize=10000)\n> \n> Thank you very much! Your help would be deeply appreciated!\n> \n> Sincerely,\n> Rose\n> \n> --\n> Ji Youn (Rose) Kim\n> Doctoral Candidate\n> Department of Management & Organization\n> Michael G. Foster School of Business\n> University of Washington\n> rosejyk@uw.edu\n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Ji Youn,\n\nFirst, how large is your network (#nodes #edges)?  You have quite a few \nterms in this model, so your net should be large enough to accomodate \nthem.\n\nSecond, you might try starting with a s",
+      "thread_id": "thread-fe90c977437b",
+      "thread_depth": 1,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-def8cfd0f38b",
+      "message_id": "<CAGcS3aObf7PZAn7WL0i38yCo9faT=6y6USZ=ifgMmQayrZjgCg@mail.gmail.com>",
+      "from_name": "Karen Ertrachter",
+      "from_email_hash": "1c6e2a5b5363c01fa9c7e24c7311acb0a71f30e4a1ec0a31321dfdd5c75930af",
+      "date": "2014-02-26T15:17:24Z",
+      "subject": "[statnet_help] Directed to Undirected Networks",
+      "subject_clean": "[statnet_help] Directed to Undirected Networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone,\nHow do you turn a directed dataset into an undirected dataset when:\na) you only focus on reciprocated ties\nb) treat each directed tie as a tie (regardless of reciprocation)?\n\nMost of the things I've found online focus on using igraph to do this, so\nI'd appreciate the help.\n\nMy data is directed and in statnet already, but I'm not sure what is the\nbest way to do this.\n\nThank you,\nKaren Ertrachter\n\n\n-- \nKaren Ertrachter\nDepartment of Sociology and Demography\nThe Pennsylvania State University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140226/e6073f55/attachment.html>",
+      "body_snippet": "Hi everyone,\nHow do you turn a directed dataset into an undirected dataset when:\na) you only focus on reciprocated ties\nb) treat each directed tie as a tie (regardless of reciprocation)?\n\nMost of the ",
+      "thread_id": "thread-def8cfd0f38b",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-1ca59ae22f2f",
+      "message_id": "<alpine.WNT.1.10.1402261520360.4616@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2014-02-26T15:20:48Z",
+      "subject": "[statnet_help] Directed to Undirected Networks",
+      "subject_clean": "[statnet_help] Directed to Undirected Networks",
+      "in_reply_to": "<CAGcS3aObf7PZAn7WL0i38yCo9faT=6y6USZ=ifgMmQayrZjgCg@mail.gmail.com>",
+      "references": [
+        "<CAGcS3aObf7PZAn7WL0i38yCo9faT=6y6USZ=ifgMmQayrZjgCg@mail.gmail.com>"
+      ],
+      "body_plain": "Karen,\n\nSee the \"symmetrize\" command in sna.\n\nbest,\nmm\n\nOn Wed, 26 Feb 2014, Karen Ertrachter wrote:\n\n> Hi everyone,\n> How do you turn a directed dataset into an undirected dataset when:\n> a) you only focus on reciprocated ties\n> b) treat each directed tie as a tie (regardless of reciprocation)?\n> \n> Most of the things I've found online focus on using igraph to do this, so I'd appreciate the help.\n> \n> My data is directed and in statnet already, but I'm not sure what is the best way to do this.\n> \n> Thank you,\n> Karen Ertrachter\n> \n> \n> --\n> Karen Ertrachter\n> Department of Sociology and Demography\n> The Pennsylvania State University\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Karen,\n\nSee the \"symmetrize\" command in sna.\n\nbest,\nmm\n\nOn Wed, 26 Feb 2014, Karen Ertrachter wrote:\n\n> Hi everyone,\n> How do you turn a directed dataset into an undirected dataset when:\n> a) you only",
+      "thread_id": "thread-def8cfd0f38b",
+      "thread_depth": 1,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-4e73e38a63d1",
+      "message_id": "<CAKH33md3KfJyAcxhpgWkD+GrGLArk2z4mtm-r9znUVpwABHong@mail.gmail.com>",
+      "from_name": "Jacques Philip",
+      "from_email_hash": "cc56a92f6fbd6b622d24514ce02e4352a88459141032036563552fd6745b0408",
+      "date": "2014-02-28T15:06:53Z",
+      "subject": "[statnet_help] Working with multiplex networks",
+      "subject_clean": "[statnet_help] Working with multiplex networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Everyone,\n\nIs there a tutorial or examples for working with multiplex network objects?\ne.g., filtering by edge type or plotting different edges with different\ncolors.\n\nI could find very little in the documentation.\n\nThanks,\n-- \nJacques Philip\nExperimental Design, Biostatistics and Data Services Core\nCenter for Alaska Native Health Research\nUniversity of Alaska Fairbanks\n(907) 474-6127\nLinkedIn profile:\nhttp://www.linkedin.com/pub/jacques-philip/37/102/a04\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140228/2c8c5124/attachment.html>",
+      "body_snippet": "Hi Everyone,\n\nIs there a tutorial or examples for working with multiplex network objects?\ne.g., filtering by edge type or plotting different edges with different\ncolors.\n\nI could find very little in t",
+      "thread_id": "thread-4e73e38a63d1",
+      "thread_depth": 0,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-0f4457ff7e13",
+      "message_id": "<531121CB.4020108@skyeome.net>",
+      "from_name": "Skye Bender-deMoll",
+      "from_email_hash": "016c31bf83672a8e8fce6b664eb68ddff364b5df6912775ec31eeceebce90340",
+      "date": "2014-02-28T15:54:51Z",
+      "subject": "[statnet_help] Working with multiplex networks",
+      "subject_clean": "[statnet_help] Working with multiplex networks",
+      "in_reply_to": "<CAKH33md3KfJyAcxhpgWkD+GrGLArk2z4mtm-r9znUVpwABHong@mail.gmail.com>",
+      "references": [
+        "<CAKH33md3KfJyAcxhpgWkD+GrGLArk2z4mtm-r9znUVpwABHong@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Jacques,\n  Although the network data structure facilitates multiplex ties, there \nis very little network or statnet functionality that is directly aware \nof them.   I'm including some example operations below, including \ntracking tie types with an attached attribute.  We should probably have \nsome more specific multiplex functions in the network package \n(suggestions welcome).\n\nbest,\n  -skye\n\n\n## some toy example operations on a multiplex network ##\n\nmulti<-network.initialize(5,multiple=TRUE)\n\nis.multiplex(multi)\n\n# add parallel edges between v1 and v2\n# also add an attribute names 'type' to each tie\nmulti<-add.edges(multi,tail=c(1,1,1,1),head=c(2,2,3,4),names.eval='type',vals.eval=c(\"A\",\"B\",\"A\",\"B\"))\n\n# get ids of edges linking v1 and v2\nget.edgeIDs(multi,v=1,alter=2)\n\n\n# plot the types in different colors with some transparency to show overlap\nplot(multi,edge.col=ifelse(multi%e%'type'=='A','#00FF0055','#0000FF55'),edge.lwd=10)\n\n# get the ids of all edges with type B\nwhich(get.edge.attribute(multi,'type')=='B')\n\n# create a new network with only type B edges\n\nmultiB<-multi\nmultiB<-delete.edges(multiB,eid=which(get.edge.attribute(multi,'type')!='B'))\nmultiB%e%'type'\n\n\nOn 02/28/2014 03:06 PM, Jacques Philip wrote:\n> Hi Everyone,\n>\n> Is there a tutorial or examples for working with multiplex network objects?\n> e.g., filtering by edge type or plotting different edges with different\n> colors.\n>\n> I could find very little in the documentation.\n>\n> Thanks,\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi Jacques,\n  Although the network data structure facilitates multiplex ties, there \nis very little network or statnet functionality that is directly aware \nof them.   I'm including some example opera",
+      "thread_id": "thread-4e73e38a63d1",
+      "thread_depth": 1,
+      "month": "2014-02"
+    },
+    {
+      "id": "msg-5060a62bb058",
+      "message_id": "<CAKH33mduLfzhs-XTY=BJ+e60fmbf=Q17zJVUchc89LNwG29vBQ@mail.gmail.com>",
+      "from_name": "Jacques Philip",
+      "from_email_hash": "cc56a92f6fbd6b622d24514ce02e4352a88459141032036563552fd6745b0408",
+      "date": "2014-02-28T18:20:24Z",
+      "subject": "[statnet_help] Working with multiplex networks",
+      "subject_clean": "[statnet_help] Working with multiplex networks",
+      "in_reply_to": "<531121CB.4020108@skyeome.net>",
+      "references": [
+        "<CAKH33md3KfJyAcxhpgWkD+GrGLArk2z4mtm-r9znUVpwABHong@mail.gmail.com>",
+        "<531121CB.4020108@skyeome.net>"
+      ],
+      "body_plain": "Thanks Skye, this is very useful.\n\nI see I can also use curved edges to differentiate directed ties:\n\nJacques\n\nmulti<-network.initialize(5,multiple=TRUE)\n\nmulti<-add.edges(multi,tail=c(1,2,1,1,2,1),head=c(2,1,3,4,5,3),names.eval='type',vals.eval=c(\"A\",\"B\",\"A\",\"B\",\n\"B\", \"B\"))\n\ngplot(multi,edge.col=ifelse(multi%e%'type'=='A','#00FF0055','#0000FF55'),edge.lwd=3,\ndisplaylabels=T,  usecurve=T, edge.curve=ifelse(get.edge.value(multi,\n'type')=='A', 0.3, -0.1), arrowhead.cex=2)\n\n\nOn Fri, Feb 28, 2014 at 2:54 PM, Skye Bender-deMoll <skyebend@skyeome.net>wrote:\n\n> Hi Jacques,\n>  Although the network data structure facilitates multiplex ties, there is\n> very little network or statnet functionality that is directly aware of\n> them.   I'm including some example operations below, including tracking tie\n> types with an attached attribute.  We should probably have some more\n> specific multiplex functions in the network package (suggestions welcome).\n>\n> best,\n>  -skye\n>\n>\n> ## some toy example operations on a multiplex network ##\n>\n> multi<-network.initialize(5,multiple=TRUE)\n>\n> is.multiplex(multi)\n>\n> # add parallel edges between v1 and v2\n> # also add an attribute names 'type' to each tie\n> multi<-add.edges(multi,tail=c(1,1,1,1),head=c(2,2,3,4),\n> names.eval='type',vals.eval=c(\"A\",\"B\",\"A\",\"B\"))\n>\n> # get ids of edges linking v1 and v2\n> get.edgeIDs(multi,v=1,alter=2)\n>\n>\n> # plot the types in different colors with some transparency to show overlap\n> plot(multi,edge.col=ifelse(multi%e%'type'=='A','#\n> 00FF0055','#0000FF55'),edge.lwd=10)\n>\n> # get the ids of all edges with type B\n> which(get.edge.attribute(multi,'type')=='B')\n>\n> # create a new network with only type B edges\n>\n> multiB<-multi\n> multiB<-delete.edges(multiB,eid=which(get.edge.attribute(\n> multi,'type')!='B'))\n> multiB%e%'type'\n>\n>\n>\n> On 02/28/2014 03:06 PM, Jacques Philip wrote:\n>\n>> Hi Everyone,\n>>\n>> Is there a tutorial or examples for working with multiplex network\n>> objects?\n>> e.g., filtering by edge type or plotting different edges with different\n>> colors.\n>>\n>> I could find very little in the documentation.\n>>\n>> Thanks,\n>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n\n\n-- \nJacques Philip\nExperimental Design, Biostatistics and Data Services Core\nCenter for Alaska Native Health Research\nUniversity of Alaska Fairbanks\n(907) 474-6127\nLinkedIn profile:\nhttp://www.linkedin.com/pub/jacques-philip/37/102/a04\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140228/38aee86a/attachment.html>",
+      "body_snippet": "Thanks Skye, this is very useful.\n\nI see I can also use curved edges to differentiate directed ties:\n\nJacques\n\nmulti<-network.initialize(5,multiple=TRUE)\n\nmulti<-add.edges(multi,tail=c(1,2,1,1,2,1),he",
+      "thread_id": "thread-4e73e38a63d1",
+      "thread_depth": 2,
+      "month": "2014-02"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-b14af36881e1",
+      "subject": "[statnet_help] Issues with Adjacency Matrix Attributes (ADD Health)",
+      "message_count": 1,
+      "participants": [
+        "Karen Ertrachter"
+      ],
+      "started": "2014-02-01T11:01:55Z",
+      "last_reply": "2014-02-01T11:01:55Z",
+      "root_message_id": "msg-b14af36881e1"
+    },
+    {
+      "id": "thread-0899c56f8f64",
+      "subject": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "message_count": 10,
+      "participants": [
+        "Karen Ertrachter",
+        "Lewis, Kevin",
+        "martina morris"
+      ],
+      "started": "2014-02-04T06:41:46Z",
+      "last_reply": "2014-02-05T11:41:19Z",
+      "root_message_id": "msg-0899c56f8f64"
+    },
+    {
+      "id": "thread-f2ae3782113a",
+      "subject": "[statnet_help] fitting ergms to data from link-tracing designs",
+      "message_count": 1,
+      "participants": [
+        "Michał Bojanowski"
+      ],
+      "started": "2014-02-04T08:02:02Z",
+      "last_reply": "2014-02-04T08:02:02Z",
+      "root_message_id": "msg-f2ae3782113a"
+    },
+    {
+      "id": "thread-6a13209dfd92",
+      "subject": "[statnet_help] colors in ndtv",
+      "message_count": 2,
+      "participants": [
+        "Skye Bender-deMoll",
+        "jimi adams"
+      ],
+      "started": "2014-02-04T11:09:12Z",
+      "last_reply": "2014-02-04T13:23:01Z",
+      "root_message_id": "msg-6a13209dfd92"
+    },
+    {
+      "id": "thread-df1be7d18454",
+      "subject": "[statnet_help] Extract subgraph with specific node attribute and edge attribute",
+      "message_count": 2,
+      "participants": [
+        "C.J. Dey",
+        "Carter T. Butts"
+      ],
+      "started": "2014-02-04T13:02:58Z",
+      "last_reply": "2014-02-04T15:47:56Z",
+      "root_message_id": "msg-df1be7d18454"
+    },
+    {
+      "id": "thread-ab29358085cd",
+      "subject": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "message_count": 1,
+      "participants": [
+        "Lewis, Kevin"
+      ],
+      "started": "2014-02-05T13:32:39Z",
+      "last_reply": "2014-02-05T13:32:39Z",
+      "root_message_id": "msg-ab29358085cd"
+    },
+    {
+      "id": "thread-daabd60e884c",
+      "subject": "[statnet_help] ADD Health Data - Fit ERGMS",
+      "message_count": 1,
+      "participants": [
+        "martina morris"
+      ],
+      "started": "2014-02-05T15:00:27Z",
+      "last_reply": "2014-02-05T15:00:27Z",
+      "root_message_id": "msg-daabd60e884c"
+    },
+    {
+      "id": "thread-68e56d49dfaf",
+      "subject": "[statnet_help] ERGM help",
+      "message_count": 3,
+      "participants": [
+        "Sunny Lee",
+        "Tom Valente"
+      ],
+      "started": "2014-02-06T13:15:38Z",
+      "last_reply": "2014-02-06T16:36:45Z",
+      "root_message_id": "msg-68e56d49dfaf"
+    },
+    {
+      "id": "thread-13503e8d5dc0",
+      "subject": "[statnet_help] A problem about mcmc.diagnostics",
+      "message_count": 2,
+      "participants": [
+        "Tianchen Wu",
+        "martina morris"
+      ],
+      "started": "2014-02-11T14:33:53Z",
+      "last_reply": "2014-02-11T16:23:29Z",
+      "root_message_id": "msg-13503e8d5dc0"
+    },
+    {
+      "id": "thread-41324b0ef865",
+      "subject": "[statnet_help] Changing edgelist with missing data into a network object",
+      "message_count": 1,
+      "participants": [
+        "Sunny Lee"
+      ],
+      "started": "2014-02-11T19:34:52Z",
+      "last_reply": "2014-02-11T19:34:52Z",
+      "root_message_id": "msg-41324b0ef865"
+    },
+    {
+      "id": "thread-5c2d39e4c4d5",
+      "subject": "[statnet_help] Creating a network object with edge and vertex attributes",
+      "message_count": 1,
+      "participants": [
+        "Tavis Linsin"
+      ],
+      "started": "2014-02-15T12:42:30Z",
+      "last_reply": "2014-02-15T12:42:30Z",
+      "root_message_id": "msg-5c2d39e4c4d5"
+    },
+    {
+      "id": "thread-875b76fa877e",
+      "subject": "[statnet_help] all coefficients are non-significant",
+      "message_count": 1,
+      "participants": [
+        "Tianchen Wu"
+      ],
+      "started": "2014-02-16T08:04:09Z",
+      "last_reply": "2014-02-16T08:04:09Z",
+      "root_message_id": "msg-875b76fa877e"
+    },
+    {
+      "id": "thread-244ddfacdff8",
+      "subject": "[statnet_help] different types of triadic-based parameters (activity closure, popularity closure)",
+      "message_count": 2,
+      "participants": [
+        "Ji Youn (Rose) Kim",
+        "martina morris"
+      ],
+      "started": "2014-02-18T09:17:49Z",
+      "last_reply": "2014-02-18T17:30:54Z",
+      "root_message_id": "msg-244ddfacdff8"
+    },
+    {
+      "id": "thread-4501297a5e6f",
+      "subject": "[statnet_help] Problem offsetting multiple terms in ergm",
+      "message_count": 1,
+      "participants": [
+        "C.J. Dey"
+      ],
+      "started": "2014-02-20T17:51:44Z",
+      "last_reply": "2014-02-20T17:51:44Z",
+      "root_message_id": "msg-4501297a5e6f"
+    },
+    {
+      "id": "thread-c3851afd16a9",
+      "subject": "[statnet_help] Number of observations is similarly ill-defined?",
+      "message_count": 1,
+      "participants": [
+        "Tianchen Wu"
+      ],
+      "started": "2014-02-21T04:25:57Z",
+      "last_reply": "2014-02-21T04:25:57Z",
+      "root_message_id": "msg-c3851afd16a9"
+    },
+    {
+      "id": "thread-606344b47beb",
+      "subject": "[statnet_help] ndtv - entering nodes",
+      "message_count": 1,
+      "participants": [
+        "jimi adams"
+      ],
+      "started": "2014-02-24T12:18:58Z",
+      "last_reply": "2014-02-24T12:18:58Z",
+      "root_message_id": "msg-606344b47beb"
+    },
+    {
+      "id": "thread-fd20e7f31d89",
+      "subject": "[statnet_help] comparing coefficients across models of different samples",
+      "message_count": 2,
+      "participants": [
+        "Smith, S. (Sanne)",
+        "martina morris"
+      ],
+      "started": "2014-02-24T14:54:09Z",
+      "last_reply": "2014-02-26T00:47:32Z",
+      "root_message_id": "msg-fd20e7f31d89"
+    },
+    {
+      "id": "thread-fe90c977437b",
+      "subject": "[statnet_help] error and warning with ERGMs",
+      "message_count": 2,
+      "participants": [
+        "Ji Youn (Rose) Kim",
+        "martina morris"
+      ],
+      "started": "2014-02-26T11:40:38Z",
+      "last_reply": "2014-02-26T11:53:38Z",
+      "root_message_id": "msg-fe90c977437b"
+    },
+    {
+      "id": "thread-def8cfd0f38b",
+      "subject": "[statnet_help] Directed to Undirected Networks",
+      "message_count": 2,
+      "participants": [
+        "Karen Ertrachter",
+        "martina morris"
+      ],
+      "started": "2014-02-26T15:17:24Z",
+      "last_reply": "2014-02-26T15:20:48Z",
+      "root_message_id": "msg-def8cfd0f38b"
+    },
+    {
+      "id": "thread-4e73e38a63d1",
+      "subject": "[statnet_help] Working with multiplex networks",
+      "message_count": 3,
+      "participants": [
+        "Jacques Philip",
+        "Skye Bender-deMoll"
+      ],
+      "started": "2014-02-28T15:06:53Z",
+      "last_reply": "2014-02-28T18:20:24Z",
+      "root_message_id": "msg-4e73e38a63d1"
+    }
+  ]
+}

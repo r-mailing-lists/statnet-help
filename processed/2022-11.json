@@ -1,0 +1,186 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2022-11",
+  "messages": [
+    {
+      "id": "msg-b8423554d995",
+      "message_id": "<B919946C-C561-41B6-BE27-0C4412CE42DC@icloud.com>",
+      "from_name": "Steffen Triebel",
+      "from_email_hash": "7e40c06854140be429959e404d693bb173ef589f988bce581b3d16535ac03f1a",
+      "date": "2022-11-14T04:08:21Z",
+      "subject": "[statnet_help] A question about AIC/BIC in ERGMs",
+      "subject_clean": "[statnet_help] A question about AIC/BIC in ERGMs",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Greetings statnet-users,\n\nI have read Hunter et al. 2008 (specifically p. 256ff.) about how AIC may not be the best criterion to evaluate ERGMs and that this is even more true for BIC. However, while I am also reporting and discussing the statistics/visual representations estimated through the gof-function, it is common in my field to report AIC/BIC values in ERGMs and discuss them.\n\n \n\nI am modeling a large two-mode network and am a bit puzzled about the AIC/BIC values, as they are very large. My assumption is that the size of these values is due to the large network (about 9000 ?actors? and 500 ?groups?). My main question is what to make of the differences in AIC values. In Kim et al. (2016), the AIC value of 1196 compared to 1264 is interpreted as ?substantially smaller?. The AIC values in my models are 123352 versus 125383. I am unsure if the absolute or relative difference matters: If the absolute difference matters, then a difference of 2031 would also mean the AIC is ?substantially smaller?. If the relative difference matters, than the AIC in my models will have reduced around 1/60th versus roughly 1/20th in the work I referred in this paragraph.\n\n \n\nThanks for any advice on this,\n\nSteffen\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221114/8002cda8/attachment.html>",
+      "body_snippet": "Greetings statnet-users,\n\nI have read Hunter et al. 2008 (specifically p. 256ff.) about how AIC may not be the best criterion to evaluate ERGMs and that this is even more true for BIC. However, while ",
+      "thread_id": "thread-b8423554d995",
+      "thread_depth": 0,
+      "month": "2022-11"
+    },
+    {
+      "id": "msg-d520326fde10",
+      "message_id": "<fe932a92-c33d-0126-b707-8e55433c80dc@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2022-11-14T17:32:21Z",
+      "subject": "[statnet_help] A question about AIC/BIC in ERGMs",
+      "subject_clean": "[statnet_help] A question about AIC/BIC in ERGMs",
+      "in_reply_to": "<B919946C-C561-41B6-BE27-0C4412CE42DC@icloud.com>",
+      "references": [
+        "<B919946C-C561-41B6-BE27-0C4412CE42DC@icloud.com>"
+      ],
+      "body_plain": "Hi, Steffen -\n\nOn 11/14/22 4:08 AM, Steffen Triebel wrote:\n>\n> Greetings statnet-users,\n>\n> I have read Hunter et al. 2008 (specifically p. 256ff.) about how AIC \n> may not be the best criterion to evaluate ERGMs and that this is even \n> more true for BIC. However, while I am also reporting and discussing \n> the statistics/visual representations estimated through the \n> gof-function, it is common in my field to report AIC/BIC values in \n> ERGMs and discuss them.\n>\nI think that the 2008 papers sounded an appropriately cautious note, \ngiven what we knew at that time.? (I would count myself heavily on the \n\"cautious\" end in that case - we had very little theory on the matter, \nand not much experience.)? At this point, however, we know a lot more.? \nI'll give a particular shout out to Michael Schweinberger, who has done \na lot of important theoretical work in showing that the asymptotic and \nfinite-N concentration behavior we'd hope to see in ERGMs does (so far) \nseem to be present in reasonable cases.? There's a lot more to be done \nthere, but we now know that the dependence problem is less of a barrier \nto using conventional approximations than might have been feared. On the \npractical side, we also by now have a lot of simulation results (done by \nvarious people in various papers) that again show that the frequentist \nproperties of the ERGM MLE seem to be pretty good for reasonable models \nof the type that people use.? This is also encouraging.? With respect to \nthe AIC and BIC, our own simulation studies have so far indicated that \nusing the BIC based on nominal degrees of freedom is annoyingly and \nunreasonably good for typical ERGMs (or at least, the ones we have \nlooked at).? (I say \"annoyingly and unreasonably\" because BIC selection \noften beats alternatives even for outcomes for which it is not \ntechnically designed, including alternatives lovingly crafted to be \nsuperior for particular model selection goals.? My experience to date \nhas been that it is very hard to beat the BIC for the sorts of \nrelatively low-dimensional models that we typically use in the field.)? \nI'm unfortunately unaware of a good published comparison among model \nselection schemes (what I am describing above is unpublished), but that \nhas been our experience so far.\n\n> I am modeling a large two-mode network and am a bit puzzled about the \n> AIC/BIC values, as they are very large. My assumption is that the size \n> of these values is due to the large network (about 9000 ?actors? and \n> 500 ?groups?).\n>\nThe AIC and BIC are both penalized deviance metrics.? Their underlying \nrationales are different, but the actual metrics differ only in the \npenalty applied to the deviance.? For the AIC, this is 2 per model \ndegree of freedom, and for the BIC it is the number of model degrees of \nfreedom multiplied by the log of the data degrees of freedom.? We do not \nknow the effective degrees of freedom in typical ERGM settings, but can \nuse the nominal degrees of freedom (i.e., the number of edge variables) \nas a proxy; one can show that this approximation is unlikely to matter \nmuch in practice, and indeed it seems not to in my experience with \ntypical models. Since the \"core\" of the metric in both cases is the \ndeviance, you will see the values become larger when the network is \nlarge. Exactly how much larger will depend on a lot of things, but at \nconstant density you would usually expect to see the deviance scale \nroughly with the square of the number of vertices.? (Of course, the \ndensity won't be constant in real life - it will usually fall as 1/N - \nbut that at least gives you a sense of why it grows.)\n\n> My main question is what to make of the differences in AIC values. In \n> Kim et al. (2016), the AIC value of 1196 compared to 1264 is \n> interpreted as ?substantially smaller?. The AIC values in my models \n> are 123352 versus 125383. I am unsure if the absolute or relative \n> difference matters: If the absolute difference matters, then a \n> difference of 2031 would also mean the AIC is ?substantially smaller?. \n> If the relative difference matters, than the AIC in my models will \n> have reduced around 1/60^th versus roughly 1/20^th in the work I \n> referred in this paragraph.\n>\nGenerally, it is difficult to talk about \"big\" or \"small\" differences \nabsent some additional context.? But some heuristics are helpful.? Under \nthe AIC, a deviance improvement of 2 units is needed to justify adding \nanother degree of freedom to your model, so you can heuristically think \nof the (deviance change)/2 as a very rough unit of improvement - under \nappropriate assumptions, that's how many \"noise predictors worth of \nimprovement\" you are seeing.? If I add a single parameter and it \nimproves the deviance by 10, then that's about (under AIC asymptotics) \nfive \"minimal parameters' worth\" of improvement.? For the BIC, you could \nuse the log of the data degrees of freedom in a similar way.? It should \nbe stressed that these are /heuristics/, and should not be taken too \nseriously, but can be helpful.? One can also consider the fractional \nimprovements in the deviance (as one does in the case of the R^2), and \nsome folks do...but these can be tricky to interpret in practice for \nbinary models.? Metrics have been proposed for such things, but I am not \nsure that they are all that useful.? In the end, the deviance is \nimportant as an objective function, and penalized deviance metrics are \nvery useful model /selection/ tools, but usually you'll be better off \nactually /assessing/ models by looking at how well they do at \nreproducing behaviors that are substantively important.? For ERGMs, the \ngof() function is a starting point for that (though, in any given \napplication, one may want to use other tests).\n\nHope that helps,\n\n-Carter\n\n> Thanks for any advice on this,\n>\n> Steffen\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://urldefense.com/v3/__http://mailman13.u.washington.edu/mailman/listinfo/statnet_help__;!!CzAuKJ42GuquVTTmVmPViYEvSg!OApk5DNxXp5qh_yjXWz1Vig3IveoxpTNy_P5SoENL-pUzh1j3G7u9cRKe7t5VTEjcYTSJ1MIGrR70_BFNVhg9wU$  \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221114/69543a62/attachment.html>",
+      "body_snippet": "Hi, Steffen -\n\nOn 11/14/22 4:08 AM, Steffen Triebel wrote:\n>\n> Greetings statnet-users,\n>\n> I have read Hunter et al. 2008 (specifically p. 256ff.) about how AIC \n> may not be the best criterion to ev",
+      "thread_id": "thread-b8423554d995",
+      "thread_depth": 1,
+      "month": "2022-11"
+    },
+    {
+      "id": "msg-d8a8d3633f4d",
+      "message_id": "<CAN2L_u-6iDPK_ay-DcxSygXMnd6aw5mbVgr1xGa6YbB8bRbOww@mail.gmail.com>",
+      "from_name": "Vsevolod Suschevskiy",
+      "from_email_hash": "6803dafc128ab32e20febc6bc1d6d28ab643a4fe717395f0504b4bb6f2d50c53",
+      "date": "2022-11-18T12:57:55Z",
+      "subject": "[statnet_help] ERGMs for multilevel/multilayer networks",
+      "subject_clean": "[statnet_help] ERGMs for multilevel/multilayer networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet-users,\n\nI am trying to study a set of networks of 3-4 agents of two types: humans\nand robots. Humans could have direct ties (enjoy working with j, j is\nuseful) to other humans, or robots, while robots could not initiate ties.\nHumans and robots have different attributes.  Is there an obvious way to\napproach such a network?\n\nI am aware of Wang, P., Robins, G., Pattison, P., & Lazega, E. (2013).\nExponential random graph models for multilevel networks. Social Networks,\n35(1), 96-115. implementation in MPnet, but my network has ties only at the\nmicro (human to human) and the meso (human to robot) levels, and the macro\nlevel ties are impossible.\n\nCurrently, I am looking at ergm.multi, but I have not come up with a legal\nway to limit human-to-human ties at the first level and human-to-robot ties\nat the second level with constraints. My initial idea was to assign human\nattributes to robots randomly, but this seems to introduce too much noise\nto the data.\n\nKind regards,\nVsevolod Suschevskiy\n1 year PhD student at Northwestern University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221118/7846b82a/attachment.html>",
+      "body_snippet": "Dear statnet-users,\n\nI am trying to study a set of networks of 3-4 agents of two types: humans\nand robots. Humans could have direct ties (enjoy working with j, j is\nuseful) to other humans, or robots,",
+      "thread_id": "thread-d8a8d3633f4d",
+      "thread_depth": 0,
+      "month": "2022-11"
+    },
+    {
+      "id": "msg-c1ec68c7e436",
+      "message_id": "<CAByPayGhtK3Qrgp5=nd=HeqQ=LhVZ07yg5j3C3rCJ2hM6e4vKg@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2022-11-23T04:58:11Z",
+      "subject": "[statnet_help] ERGMs for multilevel/multilayer networks",
+      "subject_clean": "[statnet_help] ERGMs for multilevel/multilayer networks",
+      "in_reply_to": "<CAN2L_u-6iDPK_ay-DcxSygXMnd6aw5mbVgr1xGa6YbB8bRbOww@mail.gmail.com>",
+      "references": [
+        "<CAN2L_u-6iDPK_ay-DcxSygXMnd6aw5mbVgr1xGa6YbB8bRbOww@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Vsevolod,\n\nWere you able to resolve your question? With constraints you should be\nable to fix an arbitrary set of dyads. Am I reading correctly that you\nhave networks of 3 to 4 nodes?\n\nBest wishes,\nMicha?\n\nOn Fri, Nov 18, 2022 at 9:58 PM Vsevolod Suschevskiy\n<vvseva@u.northwestern.edu> wrote:\n>\n> Dear statnet-users,\n>\n> I am trying to study a set of networks of 3-4 agents of two types: humans and robots. Humans could have direct ties (enjoy working with j, j is useful) to other humans, or robots, while robots could not initiate ties. Humans and robots have different attributes.  Is there an obvious way to approach such a network?\n>\n> I am aware of Wang, P., Robins, G., Pattison, P., & Lazega, E. (2013). Exponential random graph models for multilevel networks. Social Networks, 35(1), 96-115. implementation in MPnet, but my network has ties only at the micro (human to human) and the meso (human to robot) levels, and the macro level ties are impossible.\n>\n> Currently, I am looking at ergm.multi, but I have not come up with a legal way to limit human-to-human ties at the first level and human-to-robot ties at the second level with constraints. My initial idea was to assign human attributes to robots randomly, but this seems to introduce too much noise to the data.\n>\n> Kind regards,\n> Vsevolod Suschevskiy\n> 1 year PhD student at Northwestern University\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Vsevolod,\n\nWere you able to resolve your question? With constraints you should be\nable to fix an arbitrary set of dyads. Am I reading correctly that you\nhave networks of 3 to 4 nodes?\n\nBest wishe",
+      "thread_id": "thread-d8a8d3633f4d",
+      "thread_depth": 1,
+      "month": "2022-11"
+    },
+    {
+      "id": "msg-4eaa6f6a9db4",
+      "message_id": "<CAByPayFUwFDjY2_BhERsAb_m-_7QHHxAmXDwbj7=HZW=+5rGrg@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2022-11-24T03:43:05Z",
+      "subject": "[statnet_help] ERGMs for multilevel/multilayer networks",
+      "subject_clean": "[statnet_help] ERGMs for multilevel/multilayer networks",
+      "in_reply_to": "<CAN2L_u_7AhZ86UZsj9DHUgKWZSaBMfYYkCpNJoMNGJVGn+E05g@mail.gmail.com>",
+      "references": [
+        "<CAN2L_u-6iDPK_ay-DcxSygXMnd6aw5mbVgr1xGa6YbB8bRbOww@mail.gmail.com>",
+        "<CAByPayGhtK3Qrgp5=nd=HeqQ=LhVZ07yg5j3C3rCJ2hM6e4vKg@mail.gmail.com>",
+        "<CAN2L_u_7AhZ86UZsj9DHUgKWZSaBMfYYkCpNJoMNGJVGn+E05g@mail.gmail.com>"
+      ],
+      "body_plain": "Hi!\n\n> I resolved my problem partially. I was recommended to ditch the multilayer approach and to use fixallbut to achieve the combination of blockdiagonal constraints and removing robot-to-human ties.\n\nGreat!\n\n> At this point, I know how to remove the evaluation of robots' factor attributes with levels in nodematch and nodemix terms, but I am still trying to figure out how to remove the estimation of robots' numeric attributes with terms such as absdiff.\n\nFor terms such as 'absdiff' you should be able to create a matrix of\nabs(x_i - x_j) values and then put 0 everywhere but the dyads of\ninterest (e.g. only between humans) and use that matrix as input for\nthe 'dyadcov' term.\n\n~Michal",
+      "body_snippet": "Hi!\n\n> I resolved my problem partially. I was recommended to ditch the multilayer approach and to use fixallbut to achieve the combination of blockdiagonal constraints and removing robot-to-human ties",
+      "thread_id": "thread-4eaa6f6a9db4",
+      "thread_depth": 0,
+      "month": "2022-11"
+    },
+    {
+      "id": "msg-c7801ec1720d",
+      "message_id": "<278E63B0-6F19-4D9B-808D-FFBDD1137FF2@icloud.com>",
+      "from_name": "Steffen Triebel",
+      "from_email_hash": "7e40c06854140be429959e404d693bb173ef589f988bce581b3d16535ac03f1a",
+      "date": "2022-11-28T13:22:57Z",
+      "subject": "[statnet_help] Decay & Cutoff in gwesp parameters (& convergence issues)",
+      "subject_clean": "[statnet_help] Decay & Cutoff in gwesp parameters (& convergence issues)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Statnet-list,\n\nI am pretty happy with a two-mode ERGM I estimated for a recent project. It converges well, the fit appears to be good, and the results make a lot of sense. However, it came up in discussions with colleagues that it would be great to cater more to the strengths of ERGMs by including more controls for network closure/structure.\n\n \n\nMy perspective on this is a bit more lenient on this and I think that the strength of ERGMs already lies in including dyad-dependent effects. In any case, the amount of structural network effects in my model is on the low end and I would like to at least try to include more (perhaps to improve fit or just guard myself against surprises). Currently, I only control for b1degree(1) because most actors only have affiliations to one group and b1star(2) as a generalized way of controlling for groups that are connected. There are various b1star(2, attr)-effects, but other than that only dyad-independent effects.\n\n \n\nI am wondering about 3 things currently:\n\n \nIs it a reasonable argument for excluding effects such as gwb1dsp from the analysis that there are no specific theoretical arguments for their inclusion and that their inclusion leads to trouble with model convergence? In the same vein: Would the inclusion of several b1star-effects be considered sufficient as controls for dyad-dependencies? As I understand it, the geometrically weighted structural effects improve fit, but my fit is quite good already.\n \nI am unsure about what to do with the decay- and cutoff-parameters. Is decay similar to the alpha-parameter in SAOMs gwesp-effect where a=0 is similar to transitive ties and the higher the parameter, the closer it is to transitive triplets? As for cutoff, I have no idea what that does. I toyed around with various parameters for gwb1dsp, gwb2dsp, gwb1degree and gwb2degree and was only able to get a model to converge that includes gwb1degree with a decay of 0.25. The result is non-significant (by a long shot). I am not sure if I?m just incredibly bad at picking these parameters or if this is a good indication that I should just keep these effects excluded. I tend to think it?s the latter.\n \nShort last question: If my model does not convergence and I re-estimate with init=coef(prior_model) and reiterate this 3 times with no notable improvements, am I correct to assume there is not much hope and I should abandon this specification?\n \n\n \n\nCheers & Thanks,\nSteffen\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221128/50d60c10/attachment.html>",
+      "body_snippet": "Hi Statnet-list,\n\nI am pretty happy with a two-mode ERGM I estimated for a recent project. It converges well, the fit appears to be good, and the results make a lot of sense. However, it came up in di",
+      "thread_id": "thread-c7801ec1720d",
+      "thread_depth": 0,
+      "month": "2022-11"
+    },
+    {
+      "id": "msg-4131687cede7",
+      "message_id": "<CAHBJhMBVVWA4L+ARa0jLF1iwku2gxp4Vt8y5eKMoiaLuyRVtjQ@mail.gmail.com>",
+      "from_name": "Kyle Quarles",
+      "from_email_hash": "057d119efd9cab1d4dd637bb53eabbf7b83b17fc7841d63573d0642e65e37b13",
+      "date": "2022-11-30T05:47:28Z",
+      "subject": "[statnet_help] question about custom frame slicing for ndtv",
+      "subject_clean": "[statnet_help] question about custom frame slicing for ndtv",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello list,\n\nI'm a composer with an interest in using dynamic networks to understand and\nmodel musical syntax. I have a little tool I'm building for this purpose\nhere: https://github.com/KyleQuarles/MIDI_Dynamic_Network\n\nThis question concerns the ndtv package, specifically frame slicing. In the\ndocumentation, slice.par is always an attribute list, with a consistent\ninterval and aggregate.dur for every slice; in other words, it appears the\nslice.par list can only generate slices of a single size for each\nanimation. However, I'm interested in slicing at musical phrase boundaries,\nwhich are not very consistent or regular. So my wish is for the ability to\nsend just an arbitrary list of frames to the compute.animation function,\ninstead of an attribute list which sets them at regular intervals. Is such\na thing possible somehow? I checked the tutorial/documentation and couldn't\nfind anything about this, but perhaps I'm not looking for the right thing.\n\nApologies if this is a duplicate question; the archive of questions here:\nhttps://mailman13.u.washington.edu/mailman/private/statnet_help\nis searchable, but none of the 'browse by' or download features work for me.\n\nThank you,\nKyle\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20221130/ea0f1fbf/attachment.html>",
+      "body_snippet": "Hello list,\n\nI'm a composer with an interest in using dynamic networks to understand and\nmodel musical syntax. I have a little tool I'm building for this purpose\nhere: https://github.com/KyleQuarles/M",
+      "thread_id": "thread-4131687cede7",
+      "thread_depth": 0,
+      "month": "2022-11"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-b8423554d995",
+      "subject": "[statnet_help] A question about AIC/BIC in ERGMs",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Steffen Triebel"
+      ],
+      "started": "2022-11-14T04:08:21Z",
+      "last_reply": "2022-11-14T17:32:21Z",
+      "root_message_id": "msg-b8423554d995"
+    },
+    {
+      "id": "thread-d8a8d3633f4d",
+      "subject": "[statnet_help] ERGMs for multilevel/multilayer networks",
+      "message_count": 2,
+      "participants": [
+        "Michał Bojanowski",
+        "Vsevolod Suschevskiy"
+      ],
+      "started": "2022-11-18T12:57:55Z",
+      "last_reply": "2022-11-23T04:58:11Z",
+      "root_message_id": "msg-d8a8d3633f4d"
+    },
+    {
+      "id": "thread-4eaa6f6a9db4",
+      "subject": "[statnet_help] ERGMs for multilevel/multilayer networks",
+      "message_count": 1,
+      "participants": [
+        "Michał Bojanowski"
+      ],
+      "started": "2022-11-24T03:43:05Z",
+      "last_reply": "2022-11-24T03:43:05Z",
+      "root_message_id": "msg-4eaa6f6a9db4"
+    },
+    {
+      "id": "thread-c7801ec1720d",
+      "subject": "[statnet_help] Decay & Cutoff in gwesp parameters (& convergence issues)",
+      "message_count": 1,
+      "participants": [
+        "Steffen Triebel"
+      ],
+      "started": "2022-11-28T13:22:57Z",
+      "last_reply": "2022-11-28T13:22:57Z",
+      "root_message_id": "msg-c7801ec1720d"
+    },
+    {
+      "id": "thread-4131687cede7",
+      "subject": "[statnet_help] question about custom frame slicing for ndtv",
+      "message_count": 1,
+      "participants": [
+        "Kyle Quarles"
+      ],
+      "started": "2022-11-30T05:47:28Z",
+      "last_reply": "2022-11-30T05:47:28Z",
+      "root_message_id": "msg-4131687cede7"
+    }
+  ]
+}

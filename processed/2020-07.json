@@ -1,0 +1,518 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2020-07",
+  "messages": [
+    {
+      "id": "msg-5cf7d2d1c0b8",
+      "message_id": "<DB8PR04MB66012F69129E61FF7E7E8CFCBC6A0@DB8PR04MB6601.eurprd04.prod.outlook.com>",
+      "from_name": "Fisher, David",
+      "from_email_hash": "91f83fa98c2fc52e8c8e56236f023a02b5ed9e023324c994b6a73bd5c5d3fa5b",
+      "date": "2020-07-03T09:31:03Z",
+      "subject": "[statnet_help] Estimating difference in event size between 2 levels of an actor attribute in bipartite networks",
+      "subject_clean": "[statnet_help] Estimating difference in event size between 2 levels of an actor attribute in bipartite networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi folks,\n\nI hope you are all well. My name is David, I'm a Research fellow at the University of Aberdeen in the UK.\n\nI've recently started playing around with modelling actor by event bipartite networks using \"ergm\". My first mode are actors with a single attribute, which is a 2-level factor (lets call it \"colour\", with reds and blues), while my 2nd mode are events which have no attributes. I am interested in two things:\n\n\n  1.  Do actors of one category (e.g. reds) appear in more events than actors of the other category?\nI am reasonably happy I get at this with \"b1factor(\"colour\")\"\n\n\n  1.  Do actors of one category appear in larger/more well attended events than actors of the other category?\nI cannot work out how to model this, but I am certain that there is a term for it and I am just not understanding the documentation. I don't think it is \"b2factor(\"colour\")\" as events do not vary by colour. I don't think it is any of the nodematch functions (e.g. \"b1nodematch(\"sex\")\") as I am not interested (for now) in whether reds attend events with other reds. I think I want to compare the number of two paths between the two groups, but I can't see a function to do that. Alternatively, perhaps you could frame it as a b2 k-star question, and does the number of different k-stars where the events are the central node depend on the category of those nodes they are attached too...\n\nAny help would be greatly appreciated.\n\nBest regards,\n\nDavid\n\nDavid N. Fisher\nResearch Fellow\nThe School of Biological Sciences\nUniversity of Aberdeen\nWeb<https://evoetholab.com/> | GS<https://scholar.google.com/citations?user=1TuwKzQAAAAJ&hl=en> | Tw<https://twitter.com/DFofFreedom> | RG<https://www.researchgate.net/profile/David_Fisher30> | Or<https://orcid.org/0000-0002-4444-4450>\n\n\n\nThe University of Aberdeen is a charity registered in Scotland, No SC013683.\nTha Oilthigh Obar Dheathain na charthannas cl?raichte ann an Alba, ?ir. SC013683.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200703/f09a5139/attachment.html>",
+      "body_snippet": "Hi folks,\n\nI hope you are all well. My name is David, I'm a Research fellow at the University of Aberdeen in the UK.\n\nI've recently started playing around with modelling actor by event bipartite netwo",
+      "thread_id": "thread-5cf7d2d1c0b8",
+      "thread_depth": 0,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-efbf04f75f9a",
+      "message_id": "<cc7f658b05d7a2fb12521e0c2caf6c5a13ef3cb0.camel@unsw.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "41572807418827d3378242dec6425ef03cf45319ec22768b112bc8c068097b67",
+      "date": "2020-07-04T02:45:05Z",
+      "subject": "[statnet_help] TERGM for weighted networks",
+      "subject_clean": "[statnet_help] TERGM for weighted networks",
+      "in_reply_to": "<CAAE9zu7gK4FFix=UKbd40WaHbEfGodpmQBFRUNook6-i8MNGzg@mail.gmail.com>",
+      "references": [
+        "<CAAE9zu7gK4FFix=UKbd40WaHbEfGodpmQBFRUNook6-i8MNGzg@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Vivek,\n\nERGM-based modelling of dynamic weighted network is an open problem,\nwhich I am hoping to tackle in the next year or so. In the meantime,\ncan you tell me what the weights are in this case? Counts? Categories?\nRanks? Values between 0 and 1?\n\n\t\t\tBest,\n\t\t\tPavel\n\nOn Mon, 2020-06-29 at 10:34 -0700, Vivek Kulkarni wrote:\n> Hi,\n> I have several snapshots of a weighted network through time and I\n> wanted to analyze the formation and decay of edges in this\n> temporal network. I notice that TERGM can help me do that, but I was\n> wondering if TERGm also supports weighted graphs/networks? I know the\n> package \"valued\" supports weighted edges, but then it does not seem\n> to support temporal networks.  Thanks a ton!\n> \n> Best,\n> Vivek.\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Vivek,\n\nERGM-based modelling of dynamic weighted network is an open problem,\nwhich I am hoping to tackle in the next year or so. In the meantime,\ncan you tell me what the weights are in this case",
+      "thread_id": "thread-efbf04f75f9a",
+      "thread_depth": 0,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-6a26956baeeb",
+      "message_id": "<CAAE9zu6Oo7zb4R+z3g2pL4xu44SsuK+FjzvnCR4TQk3-CmjAZw@mail.gmail.com>",
+      "from_name": "Vivek Kulkarni",
+      "from_email_hash": "cbab121098547d86deea7e1150192e6ec3f824c1dde2eb486c7bf6a4833547bc",
+      "date": "2020-07-04T08:17:20Z",
+      "subject": "[statnet_help] TERGM for weighted networks",
+      "subject_clean": "[statnet_help] TERGM for weighted networks",
+      "in_reply_to": "<cc7f658b05d7a2fb12521e0c2caf6c5a13ef3cb0.camel@unsw.edu.au>",
+      "references": [
+        "<CAAE9zu7gK4FFix=UKbd40WaHbEfGodpmQBFRUNook6-i8MNGzg@mail.gmail.com>",
+        "<cc7f658b05d7a2fb12521e0c2caf6c5a13ef3cb0.camel@unsw.edu.au>"
+      ],
+      "body_plain": "Hi Pavel,\nThanks for letting me know! In my setting, the weights are just counts that\nrepresent the number of observed co-occurrences between words in a\nco-occurrence network.\n\nBest,\nVivek.\n\n\n\nOn Sat, Jul 4, 2020 at 2:45 AM Pavel Krivitsky <p.krivitsky@unsw.edu.au>\nwrote:\n\n> Dear Vivek,\n>\n> ERGM-based modelling of dynamic weighted network is an open problem,\n> which I am hoping to tackle in the next year or so. In the meantime,\n> can you tell me what the weights are in this case? Counts? Categories?\n> Ranks? Values between 0 and 1?\n>\n>                         Best,\n>                         Pavel\n>\n> On Mon, 2020-06-29 at 10:34 -0700, Vivek Kulkarni wrote:\n> > Hi,\n> > I have several snapshots of a weighted network through time and I\n> > wanted to analyze the formation and decay of edges in this\n> > temporal network. I notice that TERGM can help me do that, but I was\n> > wondering if TERGm also supports weighted graphs/networks? I know the\n> > package \"valued\" supports weighted edges, but then it does not seem\n> > to support temporal networks.  Thanks a ton!\n> >\n> > Best,\n> > Vivek.\n> > _______________________________________________\n> > statnet_help mailing list\n> > statnet_help@u.washington.edu\n> > http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200704/02b9de88/attachment.html>",
+      "body_snippet": "Hi Pavel,\nThanks for letting me know! In my setting, the weights are just counts that\nrepresent the number of observed co-occurrences between words in a\nco-occurrence network.\n\nBest,\nVivek.\n\n\n\nOn Sat,",
+      "thread_id": "thread-efbf04f75f9a",
+      "thread_depth": 1,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-72d93d0273d7",
+      "message_id": "<DB8PR04MB660106680DC385E84829E381BC690@DB8PR04MB6601.eurprd04.prod.outlook.com>",
+      "from_name": "Fisher, David",
+      "from_email_hash": "91f83fa98c2fc52e8c8e56236f023a02b5ed9e023324c994b6a73bd5c5d3fa5b",
+      "date": "2020-07-06T00:59:06Z",
+      "subject": "[statnet_help] TERGM for weighted networks",
+      "subject_clean": "[statnet_help] TERGM for weighted networks",
+      "in_reply_to": "<CAAE9zu6Oo7zb4R+z3g2pL4xu44SsuK+FjzvnCR4TQk3-CmjAZw@mail.gmail.com>",
+      "references": [
+        "<CAAE9zu7gK4FFix=UKbd40WaHbEfGodpmQBFRUNook6-i8MNGzg@mail.gmail.com>",
+        "<cc7f658b05d7a2fb12521e0c2caf6c5a13ef3cb0.camel@unsw.edu.au>",
+        "<CAAE9zu6Oo7zb4R+z3g2pL4xu44SsuK+FjzvnCR4TQk3-CmjAZw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Vivek (and list),\n\nStochastic actor oriented models can handle 2 different strengths of ties (last time I checked) with a dynamic framework. Although not ERGMs, it still might be of interest.\n\nCheck out the RSiena scripts on this page, http://www.stats.ox.ac.uk/~snijders/siena/  I think script #11 fits a dynamic network model that is ?ordered? (i.e. ties with different weights). You?ll probably need to look at the manual and the more simple scripts first though to make sense of it.\n\nCheers,\n\nDavid\n\nFrom: Vivek Kulkarni <viveksck@gmail.com>\nSent: 04 July 2020 16:17\nTo: Pavel Krivitsky <p.krivitsky@unsw.edu.au>\nCc: statnet_help@u.washington.edu\nSubject: Re: [statnet_help] TERGM for weighted networks\n\nHi Pavel,\nThanks for letting me know! In my setting, the weights are just counts that represent the number of observed co-occurrences between words in a co-occurrence network.\n\nBest,\nVivek.\n\n\n\nOn Sat, Jul 4, 2020 at 2:45 AM Pavel Krivitsky <p.krivitsky@unsw.edu.au<mailto:p.krivitsky@unsw.edu.au>> wrote:\nDear Vivek,\n\nERGM-based modelling of dynamic weighted network is an open problem,\nwhich I am hoping to tackle in the next year or so. In the meantime,\ncan you tell me what the weights are in this case? Counts? Categories?\nRanks? Values between 0 and 1?\n\n                        Best,\n                        Pavel\n\nOn Mon, 2020-06-29 at 10:34 -0700, Vivek Kulkarni wrote:\n> Hi,\n> I have several snapshots of a weighted network through time and I\n> wanted to analyze the formation and decay of edges in this\n> temporal network. I notice that TERGM can help me do that, but I was\n> wondering if TERGm also supports weighted graphs/networks? I know the\n> package \"valued\" supports weighted edges, but then it does not seem\n> to support temporal networks.  Thanks a ton!\n>\n> Best,\n> Vivek.\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\nThe University of Aberdeen is a charity registered in Scotland, No SC013683.\nTha Oilthigh Obar Dheathain na charthannas cl?raichte ann an Alba, ?ir. SC013683.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200706/7c252c0d/attachment.html>",
+      "body_snippet": "Hi Vivek (and list),\n\nStochastic actor oriented models can handle 2 different strengths of ties (last time I checked) with a dynamic framework. Although not ERGMs, it still might be of interest.\n\nChec",
+      "thread_id": "thread-efbf04f75f9a",
+      "thread_depth": 2,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-b4a0d1397d0b",
+      "message_id": "<8BBB17DE-C891-4FFF-B5BB-8B7D0ABA1710@gmail.com>",
+      "from_name": "Adam Haber",
+      "from_email_hash": "fbbab9750bfd6019ce59a8f052108dfc0b75b66a783f4799cbc7a04ad4ae2d76",
+      "date": "2020-07-08T13:15:03Z",
+      "subject": "[statnet_help] Distance-dependent ERGM model",
+      "subject_clean": "[statnet_help] Distance-dependent ERGM model",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\n(Apologies in advance if this is a trivial question - I?m quite new to modelling with ERGMs, and I couldn?t find an answer elsewhere...)\n\nThe nodes in the network I?m studying are embedded in 3D, and I have reasons to believe that the spatial organisation plays a major role in the structure of the network, along with a specific node-level attribute. How can one model such a spatial dependency using ergm? AFAIU, it?s not absdiff, since it?a a function of 3 numeric node-level attributes (it?s x-y-z coordinates). Is it also possible to have a different distance-dependence for different levels of some node-level attribute? \n\nAny help would be much appreciated!\n\nBest regards,\nAdam Haber\nDepartment of Neurobiology\nWeizmann Institute of Science",
+      "body_snippet": "Hello,\n\n(Apologies in advance if this is a trivial question - I?m quite new to modelling with ERGMs, and I couldn?t find an answer elsewhere...)\n\nThe nodes in the network I?m studying are embedded in ",
+      "thread_id": "thread-b4a0d1397d0b",
+      "thread_depth": 0,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-be100352374f",
+      "message_id": "<42c1087a-0424-2f87-5ad7-bb345425c144@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2020-07-08T18:31:00Z",
+      "subject": "[statnet_help] Distance-dependent ERGM model",
+      "subject_clean": "[statnet_help] Distance-dependent ERGM model",
+      "in_reply_to": "<8BBB17DE-C891-4FFF-B5BB-8B7D0ABA1710@gmail.com>",
+      "references": [
+        "<8BBB17DE-C891-4FFF-B5BB-8B7D0ABA1710@gmail.com>"
+      ],
+      "body_plain": "Hi, Adam -\n\nDistance-based models are indeed a thing.? Although there many are other \nthings you can do, the easiest starting point is usually to calculate \nthe distances among all vertices in whatever metric is most apposite (in \nyour case, Euclidean space), and use the distance matrix or some \nfunction thereof as an edgecov.? Using the raw distances as an edge \ncovariate implicitly models a logistic effect of distances on tie \nprobability; it can make sense when ties are necessarily local.? In \nsocial settings, it usually makes more sense to work with the log \ndistances, which approximates a power-law decline in marginal tie \nprobability as a function of distance.? If you can effectively draw a \nsphere around a node and say to yourself (and others), \"well, the chance \nof there being any ties to nodes outside this sphere is essentially \nzero\" (i.e., probability small and falling exponentially), then the draw \nmodel is a reasonable approximation.? If not (i.e., there's always some \nnon-vanishing chance of a long range tie, even if the probability is \nvery low), then you want the log version.? (Yes, this is heuristic, and \nthere are other things that one can do.? But I would start with this.)\n\nHope that helps,\n\n-Carter\n\nOn 7/8/20 1:15 PM, Adam Haber wrote:\n> Hello,\n>\n> (Apologies in advance if this is a trivial question - I?m quite new to modelling with ERGMs, and I couldn?t find an answer elsewhere...)\n>\n> The nodes in the network I?m studying are embedded in 3D, and I have reasons to believe that the spatial organisation plays a major role in the structure of the network, along with a specific node-level attribute. How can one model such a spatial dependency using ergm? AFAIU, it?s not absdiff, since it?a a function of 3 numeric node-level attributes (it?s x-y-z coordinates). Is it also possible to have a different distance-dependence for different levels of some node-level attribute?\n>\n> Any help would be much appreciated!\n>\n> Best regards,\n> Adam Haber\n> Department of Neurobiology\n> Weizmann Institute of Science\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi, Adam -\n\nDistance-based models are indeed a thing.? Although there many are other \nthings you can do, the easiest starting point is usually to calculate \nthe distances among all vertices in whateve",
+      "thread_id": "thread-b4a0d1397d0b",
+      "thread_depth": 1,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-1e1c87a5deb9",
+      "message_id": "<DB8PR04MB66017B9DE09F8BDEE1F7B2CBBC600@DB8PR04MB6601.eurprd04.prod.outlook.com>",
+      "from_name": "Fisher, David",
+      "from_email_hash": "91f83fa98c2fc52e8c8e56236f023a02b5ed9e023324c994b6a73bd5c5d3fa5b",
+      "date": "2020-07-13T05:16:57Z",
+      "subject": "[statnet_help] Estimating difference in event size between 2 levels of an actor attribute in bipartite networks",
+      "subject_clean": "[statnet_help] Estimating difference in event size between 2 levels of an actor attribute in bipartite networks",
+      "in_reply_to": "<DB8PR04MB66012F69129E61FF7E7E8CFCBC6A0@DB8PR04MB6601.eurprd04.prod.outlook.com>",
+      "references": [
+        "<DB8PR04MB66012F69129E61FF7E7E8CFCBC6A0@DB8PR04MB6601.eurprd04.prod.outlook.com>"
+      ],
+      "body_plain": "Any ideas? If my question is unclear then perhaps I can re-phrase it?\n\nCheers,\n\nDavid\n\nFrom: Fisher, David <david.fisher@abdn.ac.uk>\nSent: 03 July 2020 17:31\nTo: statnet_help@u.washington.edu\nSubject: [statnet_help] Estimating difference in event size between 2 levels of an actor attribute in bipartite networks\n\nHi folks,\n\nI hope you are all well. My name is David, I'm a Research fellow at the University of Aberdeen in the UK.\n\nI've recently started playing around with modelling actor by event bipartite networks using \"ergm\". My first mode are actors with a single attribute, which is a 2-level factor (lets call it \"colour\", with reds and blues), while my 2nd mode are events which have no attributes. I am interested in two things:\n\n\n  1.  Do actors of one category (e.g. reds) appear in more events than actors of the other category?\nI am reasonably happy I get at this with \"b1factor(\"colour\")\"\n\n\n  1.  Do actors of one category appear in larger/more well attended events than actors of the other category?\nI cannot work out how to model this, but I am certain that there is a term for it and I am just not understanding the documentation. I don't think it is \"b2factor(\"colour\")\" as events do not vary by colour. I don't think it is any of the nodematch functions (e.g. \"b1nodematch(\"sex\")\") as I am not interested (for now) in whether reds attend events with other reds. I think I want to compare the number of two paths between the two groups, but I can't see a function to do that. Alternatively, perhaps you could frame it as a b2 k-star question, and does the number of different k-stars where the events are the central node depend on the category of those nodes they are attached too...\n\nAny help would be greatly appreciated.\n\nBest regards,\n\nDavid\n\nDavid N. Fisher\nResearch Fellow\nThe School of Biological Sciences\nUniversity of Aberdeen\nWeb<https://evoetholab.com/> | GS<https://scholar.google.com/citations?user=1TuwKzQAAAAJ&hl=en> | Tw<https://twitter.com/DFofFreedom> | RG<https://www.researchgate.net/profile/David_Fisher30> | Or<https://orcid.org/0000-0002-4444-4450>\n\n\n\nThe University of Aberdeen is a charity registered in Scotland, No SC013683.\nTha Oilthigh Obar Dheathain na charthannas cl?raichte ann an Alba, ?ir. SC013683.\n\n\nThe University of Aberdeen is a charity registered in Scotland, No SC013683.\nTha Oilthigh Obar Dheathain na charthannas cl?raichte ann an Alba, ?ir. SC013683.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200713/dd8b9451/attachment.html>",
+      "body_snippet": "Any ideas? If my question is unclear then perhaps I can re-phrase it?\n\nCheers,\n\nDavid\n\nFrom: Fisher, David <david.fisher@abdn.ac.uk>\nSent: 03 July 2020 17:31\nTo: statnet_help@u.washington.edu\nSubject:",
+      "thread_id": "thread-5cf7d2d1c0b8",
+      "thread_depth": 1,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-c8385c0d0112",
+      "message_id": "<CH2PR02MB6806FEB492FD304F0F8C8B91BA600@CH2PR02MB6806.namprd02.prod.outlook.com>",
+      "from_name": "Luke, Douglas",
+      "from_email_hash": "2c750e3a4d59825f17953155561b1de673997d36935484832f591d71b01070bd",
+      "date": "2020-07-13T12:13:50Z",
+      "subject": "[statnet_help] Estimating difference in event size between 2 levels of an actor attribute in bipartite networks",
+      "subject_clean": "[statnet_help] Estimating difference in event size between 2 levels of an actor attribute in bipartite networks",
+      "in_reply_to": "<DB8PR04MB66017B9DE09F8BDEE1F7B2CBBC600@DB8PR04MB6601.eurprd04.prod.outlook.com>",
+      "references": [
+        "<DB8PR04MB66012F69129E61FF7E7E8CFCBC6A0@DB8PR04MB6601.eurprd04.prod.outlook.com>",
+        "<DB8PR04MB66017B9DE09F8BDEE1F7B2CBBC600@DB8PR04MB6601.eurprd04.prod.outlook.com>"
+      ],
+      "body_plain": "David,\n\nIf I'm following this correctly, then you will want the event mode to have an attribute as well. So, if you want to know if reds/blues are attending larger events in greater numbers, then the event mode will have to have some type of 'size' attribute. That should open up some analytic possibilities for you.\n\n--Doug--\n\n\nDouglas Luke\n\nDirector, Center for Public Health Systems Science\n\nProfessor of Public Health, Brown School\n\nWashington University in St. Louis\n\nCampus Box 1196, One Brookings Drive\n\nSt. Louis, MO 63130\n\nemail: dluke@wustl.edu\n\nWebsite: <http://ctpr.wustl.edu/> http://cphss.wustl.edu<http://ctpr.wustl.edu/>\n\n________________________________\nFrom: Fisher, David <david.fisher@abdn.ac.uk>\nSent: Monday, July 13, 2020 7:16 AM\nTo: statnet_help@u.washington.edu <statnet_help@u.washington.edu>\nSubject: Re: [statnet_help] Estimating difference in event size between 2 levels of an actor attribute in bipartite networks\n\n\nAny ideas? If my question is unclear then perhaps I can re-phrase it?\n\n\n\nCheers,\n\n\n\nDavid\n\n\n\nFrom: Fisher, David <david.fisher@abdn.ac.uk>\nSent: 03 July 2020 17:31\nTo: statnet_help@u.washington.edu\nSubject: [statnet_help] Estimating difference in event size between 2 levels of an actor attribute in bipartite networks\n\n\n\nHi folks,\n\n\n\nI hope you are all well. My name is David, I?m a Research fellow at the University of Aberdeen in the UK.\n\n\n\nI?ve recently started playing around with modelling actor by event bipartite networks using ?ergm?. My first mode are actors with a single attribute, which is a 2-level factor (lets call it ?colour?, with reds and blues), while my 2nd mode are events which have no attributes. I am interested in two things:\n\n\n\n  1.  Do actors of one category (e.g. reds) appear in more events than actors of the other category?\n\nI am reasonably happy I get at this with ?b1factor(\"colour\")?\n\n\n\n  1.  Do actors of one category appear in larger/more well attended events than actors of the other category?\n\nI cannot work out how to model this, but I am certain that there is a term for it and I am just not understanding the documentation. I don?t think it is ?b2factor(?colour?)? as events do not vary by colour. I don?t think it is any of the nodematch functions (e.g. ?b1nodematch(\"sex\")?) as I am not interested (for now) in whether reds attend events with other reds. I think I want to compare the number of two paths between the two groups, but I can?t see a function to do that. Alternatively, perhaps you could frame it as a b2 k-star question, and does the number of different k-stars where the events are the central node depend on the category of those nodes they are attached too?\n\n\n\nAny help would be greatly appreciated.\n\n\n\nBest regards,\n\n\n\nDavid\n\n\n\nDavid N. Fisher\n\nResearch Fellow\n\nThe School of Biological Sciences\n\nUniversity of Aberdeen\n\nWeb<https://evoetholab.com/> | GS<https://scholar.google.com/citations?user=1TuwKzQAAAAJ&hl=en> | Tw<https://twitter.com/DFofFreedom> | RG<https://www.researchgate.net/profile/David_Fisher30> | Or<https://orcid.org/0000-0002-4444-4450>\n\n\n\n\nThe University of Aberdeen is a charity registered in Scotland, No SC013683.\nTha Oilthigh Obar Dheathain na charthannas cl?raichte ann an Alba, ?ir. SC013683.\n\n\nThe University of Aberdeen is a charity registered in Scotland, No SC013683.\nTha Oilthigh Obar Dheathain na charthannas cl?raichte ann an Alba, ?ir. SC013683.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200713/15286451/attachment.html>",
+      "body_snippet": "David,\n\nIf I'm following this correctly, then you will want the event mode to have an attribute as well. So, if you want to know if reds/blues are attending larger events in greater numbers, then the ",
+      "thread_id": "thread-5cf7d2d1c0b8",
+      "thread_depth": 2,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-d7e88e3f7331",
+      "message_id": "<5FD9E534-AB07-4291-B6ED-CBBBD0EA9288@gmail.com>",
+      "from_name": "Adam Haber",
+      "from_email_hash": "fbbab9750bfd6019ce59a8f052108dfc0b75b66a783f4799cbc7a04ad4ae2d76",
+      "date": "2020-07-13T12:48:09Z",
+      "subject": "[statnet_help] Hyperparameters for latent position models",
+      "subject_clean": "[statnet_help] Hyperparameters for latent position models",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI?m using ergmm to fit latent position models. So far I?ve chosen d (embedding dimension) and G (number of clusters) based on domain-knowledge consideration, and inspection of the GOF plots/stats of different (d,G) pairs. Is there a more ?principled? approach to choosing these hyperparameters? Is there anything similar to cross-validation for choosing hyper parameters in this class of models?  \n\nAny help would be much appreciated!\n\nBest regards,\nAdam Haber\nDepartment of Neurobiology\nWeizmann Institute of Science",
+      "body_snippet": "Hello,\n\nI?m using ergmm to fit latent position models. So far I?ve chosen d (embedding dimension) and G (number of clusters) based on domain-knowledge consideration, and inspection of the GOF plots/st",
+      "thread_id": "thread-d7e88e3f7331",
+      "thread_depth": 0,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-4b70b654526f",
+      "message_id": "<FFE0BC1E-F5BE-436C-88C7-75C303C580B5@gmail.com>",
+      "from_name": "Adam Haber",
+      "from_email_hash": "fbbab9750bfd6019ce59a8f052108dfc0b75b66a783f4799cbc7a04ad4ae2d76",
+      "date": "2020-07-19T03:07:23Z",
+      "subject": "[statnet_help] Interactions in a distance-dependent model",
+      "subject_clean": "[statnet_help] Interactions in a distance-dependent model",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nFollowing a recent question I?ve posted here (and got very helpful responses - thank you!), I?m trying to add more ?domain knowledge? into the model. Specifically, the nodes in the network we're studying are embedded in 3D, and we?ve seen that (as expected) adding distance-dependence to the model (via an edgecov(x) term such that x is the distance matrix) indeed improves the GOF. \n\nI want to take this one step further: I know that if there?s a (directed) edge i->j, and j and k are ?close? (spatially), it should increase the probability that there?s an edge i->k. Another option would be to ?discretize? the distances and group nodes into groups of ?spatial loci\", and add a term that if there?s an edge i->j and j and k are in the same spatial cluster (a binary indicator function), than this should increase the probability of the edge i->k.\n\nIs there a way to incorporate this sort of reasoning into an ergm model using any of the available terms? I went over the examples I could find and did not encounter anything similar...\n\nThanks again,\nRespectfully,\nAdam Haber",
+      "body_snippet": "Hello,\n\nFollowing a recent question I?ve posted here (and got very helpful responses - thank you!), I?m trying to add more ?domain knowledge? into the model. Specifically, the nodes in the network we'",
+      "thread_id": "thread-4b70b654526f",
+      "thread_depth": 0,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-4d175e9ec2df",
+      "message_id": "<c3a9ba6c-f010-6e00-889d-628ff907129c@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2020-07-19T04:15:20Z",
+      "subject": "[statnet_help] Interactions in a distance-dependent model",
+      "subject_clean": "[statnet_help] Interactions in a distance-dependent model",
+      "in_reply_to": "<FFE0BC1E-F5BE-436C-88C7-75C303C580B5@gmail.com>",
+      "references": [
+        "<FFE0BC1E-F5BE-436C-88C7-75C303C580B5@gmail.com>"
+      ],
+      "body_plain": "Hi, Adam -\n\nIf you have a mutuality term in the model, it already accounts for that \neffect.? Do you intend to say that you expect proximate vertices to \nreciprocate at higher rates - /above and beyond the propinquity effect/ \n- than distant vertices?? (Again, if you have a propinquity effect, it \nwill already be the case that, ceteris paribus, reciprocation will be \nmore likely for proximate vertices.)\n\nIf you want this type of effect, it can be realized with the dyadcov \nterm, or by creating an interaction term between mutual and edgecov.? I \ndon't think the user-level functionality for the latter option is yet \nexposed, though it's pretty easy to code it using ergm.userterms; \nhowever, dyadcov will probably suit your purposes.\n\nHope that helps,\n\n-Carter\n\nOn 7/19/20 3:07 AM, Adam Haber wrote:\n> Hello,\n>\n> Following a recent question I?ve posted here (and got very helpful responses - thank you!), I?m trying to add more ?domain knowledge? into the model. Specifically, the nodes in the network we're studying are embedded in 3D, and we?ve seen that (as expected) adding distance-dependence to the model (via an edgecov(x) term such that x is the distance matrix) indeed improves the GOF.\n>\n> I want to take this one step further: I know that if there?s a (directed) edge i->j, and j and k are ?close? (spatially), it should increase the probability that there?s an edge i->k. Another option would be to ?discretize? the distances and group nodes into groups of ?spatial loci\", and add a term that if there?s an edge i->j and j and k are in the same spatial cluster (a binary indicator function), than this should increase the probability of the edge i->k.\n>\n> Is there a way to incorporate this sort of reasoning into an ergm model using any of the available terms? I went over the examples I could find and did not encounter anything similar...\n>\n> Thanks again,\n> Respectfully,\n> Adam Haber\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200719/c873836a/attachment.html>",
+      "body_snippet": "Hi, Adam -\n\nIf you have a mutuality term in the model, it already accounts for that \neffect.? Do you intend to say that you expect proximate vertices to \nreciprocate at higher rates - /above and beyon",
+      "thread_id": "thread-4b70b654526f",
+      "thread_depth": 1,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-fe2ef8a5f73f",
+      "message_id": "<05FE7BDC-FF03-4857-AADC-E33D5D68BE0E@gmail.com>",
+      "from_name": "Adam Haber",
+      "from_email_hash": "fbbab9750bfd6019ce59a8f052108dfc0b75b66a783f4799cbc7a04ad4ae2d76",
+      "date": "2020-07-19T12:43:48Z",
+      "subject": "[statnet_help] statnet_help Digest, Vol 167, Issue 7",
+      "subject_clean": "[statnet_help] statnet_help Digest, Vol 167, Issue 7",
+      "in_reply_to": "<mailman.217.1595185265.31956.statnet_help@mailman13.u.washington.edu>",
+      "references": [
+        "<mailman.217.1595185265.31956.statnet_help@mailman13.u.washington.edu>"
+      ],
+      "body_plain": "Hi Carter,\n\nThanks (again!) for the detailed response. I?m probably missing something, but I?m not sure I understand why mutuality would be the relevant term here. Let?s say that my nodes are embedded in 2D, and node i is at the origin. I also have two other nodes - node j at (1,0) and node k at (1.001, 0) - such that j and k are very close, relative to i. I?m trying to build a model in which the edges (i->j) and (i->k) are dependent - if one of them exists, the other is more likely to exists as well. Mathematically, I think a good way to denote what I?m trying to achieve is P(i->k | i->j, j and k are very close) > P(i->k), where P(i->k) is the marginal probability that an edge from i to k exists (already taking into account their distance and potentially the effects of other terms).\n\nIf I understand correctly, mutuality would affect P(j->i | i->j), or P(i->k | k-> i), but not P(i->k | i->j). But again, maybe I?m missing something - I?m quite new to ERGMs.\n\nRegarding interaction - I thought one possible way to do this is to ?discretise? the close/far into categories (clusters of nodes), and then add an interaction term between this new ?cluster factor? and relevant triad-related terms, as these seem to capture this dependence I?m after. Like you said, I?m not sure ERGM exposes such functionality.\n\nThanks again!\nBest, \nAdam   \n\n> On 19 Jul 2020, at 22:01, statnet_help-request@mailman13.u.washington.edu wrote:\n> \n> Send statnet_help mailing list submissions to\n> \tstatnet_help@u.washington.edu\n> \n> To subscribe or unsubscribe via the World Wide Web, visit\n> \thttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> or, via email, send a message with subject or body 'help' to\n> \tstatnet_help-request@mailman13.u.washington.edu\n> \n> You can reach the person managing the list at\n> \tstatnet_help-owner@mailman13.u.washington.edu\n> \n> When replying, please edit your Subject line so it is more specific\n> than \"Re: Contents of statnet_help digest...\"\n> Today's Topics:\n> \n>   1. Interactions in a distance-dependent model (Adam Haber)\n>   2. Re: Interactions in a distance-dependent model (Carter T. Butts)\n> \n> From: Adam Haber <adamhaber@gmail.com>\n> Subject: [statnet_help] Interactions in a distance-dependent model\n> Date: 19 July 2020 at 13:07:23 GMT+3\n> To: statnet_help@u.washington.edu\n> \n> \n> Hello,\n> \n> Following a recent question I?ve posted here (and got very helpful responses - thank you!), I?m trying to add more ?domain knowledge? into the model. Specifically, the nodes in the network we're studying are embedded in 3D, and we?ve seen that (as expected) adding distance-dependence to the model (via an edgecov(x) term such that x is the distance matrix) indeed improves the GOF. \n> \n> I want to take this one step further: I know that if there?s a (directed) edge i->j, and j and k are ?close? (spatially), it should increase the probability that there?s an edge i->k. Another option would be to ?discretize? the distances and group nodes into groups of ?spatial loci\", and add a term that if there?s an edge i->j and j and k are in the same spatial cluster (a binary indicator function), than this should increase the probability of the edge i->k.\n> \n> Is there a way to incorporate this sort of reasoning into an ergm model using any of the available terms? I went over the examples I could find and did not encounter anything similar...\n> \n> Thanks again,\n> Respectfully,\n> Adam Haber\n> \n> \n> \n> \n> \n> From: \"Carter T. Butts\" <buttsc@uci.edu>\n> Subject: Re: [statnet_help] Interactions in a distance-dependent model\n> Date: 19 July 2020 at 14:15:20 GMT+3\n> To: statnet_help@u.washington.edu\n> \n> \n> Hi, Adam -\n> \n> If you have a mutuality term in the model, it already accounts for that effect.  Do you intend to say that you expect proximate vertices to reciprocate at higher rates - above and beyond the propinquity effect - than distant vertices?  (Again, if you have a propinquity effect, it will already be the case that, ceteris paribus, reciprocation will be more likely for proximate vertices.)  \n> \n> If you want this type of effect, it can be realized with the dyadcov term, or by creating an interaction term between mutual and edgecov.  I don't think the user-level functionality for the latter option is yet exposed, though it's pretty easy to code it using ergm.userterms; however, dyadcov will probably suit your purposes.\n> \n> Hope that helps,\n> \n> -Carter\n> \n> On 7/19/20 3:07 AM, Adam Haber wrote:\n>> Hello,\n>> \n>> Following a recent question I?ve posted here (and got very helpful responses - thank you!), I?m trying to add more ?domain knowledge? into the model. Specifically, the nodes in the network we're studying are embedded in 3D, and we?ve seen that (as expected) adding distance-dependence to the model (via an edgecov(x) term such that x is the distance matrix) indeed improves the GOF. \n>> \n>> I want to take this one step further: I know that if there?s a (directed) edge i->j, and j and k are ?close? (spatially), it should increase the probability that there?s an edge i->k. Another option would be to ?discretize? the distances and group nodes into groups of ?spatial loci\", and add a term that if there?s an edge i->j and j and k are in the same spatial cluster (a binary indicator function), than this should increase the probability of the edge i->k.\n>> \n>> Is there a way to incorporate this sort of reasoning into an ergm model using any of the available terms? I went over the examples I could find and did not encounter anything similar...\n>> \n>> Thanks again,\n>> Respectfully,\n>> Adam Haber\n>> \n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help <http://mailman13.u.washington.edu/mailman/listinfo/statnet_help>\n>> \n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@mailman13.u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200719/9dd3af30/attachment.html>",
+      "body_snippet": "Hi Carter,\n\nThanks (again!) for the detailed response. I?m probably missing something, but I?m not sure I understand why mutuality would be the relevant term here. Let?s say that my nodes are embedded",
+      "thread_id": "thread-fe2ef8a5f73f",
+      "thread_depth": 0,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-6fba688327d9",
+      "message_id": "<CAJ5u4k5mEpvrPPbUAwmXFOGHQzp+vmGRyfaVnixfqaBb9MY9FQ@mail.gmail.com>",
+      "from_name": "Jiaying Deng",
+      "from_email_hash": "507febb005006bcc8feb9be179e3a92c22a9b7d2f2d4339af526588e499caa8a",
+      "date": "2020-07-19T15:30:25Z",
+      "subject": "[statnet_help] iterations in STERGM",
+      "subject_clean": "[statnet_help] iterations in STERGM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI'm trying to implement a STERGM model on my research. I'm wondering\nwhether STERGM allows to increase the number of iterations during\nestimation (default is 20). I know in the ERGM model, we can change the\nvalue of \"MCMLE.maxit\" in the control.ergm, but it does not work in\n STERGM. Do you have any suggestions? If we can not change the number of\niterations, what shall we do if the model does not converge after 20\niterations.\n\nThank you,\nJiaying\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200719/a395f3a5/attachment.html>",
+      "body_snippet": "Hello,\n\nI'm trying to implement a STERGM model on my research. I'm wondering\nwhether STERGM allows to increase the number of iterations during\nestimation (default is 20). I know in the ERGM model, we ",
+      "thread_id": "thread-6fba688327d9",
+      "thread_depth": 0,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-f323bfe36fc5",
+      "message_id": "<d5260db6-cab5-7ecc-af32-5c1d57118e7e@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2020-07-19T16:10:04Z",
+      "subject": "[statnet_help] statnet_help Digest, Vol 167, Issue 7",
+      "subject_clean": "[statnet_help] statnet_help Digest, Vol 167, Issue 7",
+      "in_reply_to": "<05FE7BDC-FF03-4857-AADC-E33D5D68BE0E@gmail.com>",
+      "references": [
+        "<mailman.217.1595185265.31956.statnet_help@mailman13.u.washington.edu>",
+        "<05FE7BDC-FF03-4857-AADC-E33D5D68BE0E@gmail.com>"
+      ],
+      "body_plain": "Hi, Adam -\n\nAh, my fault, I misread your email - I thought you were referring to Pr( \ni=>j | j=>i), not Pr(i=>j | i=>k).? That is a two-star effect.? \n(Specifically, a 2-outstar effect.)? More generally, the directed \nk-stars correspond to that type of dependence; those terms can be \naccessed within ergm using ostar() and istar().\n\nHowever, it should be noted that those terms are usually (not always!) \nill-behaved unless some extra structure is employed to keep dependence \nin check.? It is hence more common to work with their degree statistic \nrepresentation (the star statistics and degree statistics are \nequivalent), and to use curved terms such as gwdegree() in order to \nensure vanishing marginal effects of tie addition.? There are many \npapers on this - the classic Snijders et al. (2006) paper is a good \nplace to start.\n\nI will note in passing that there are exceptions to the \"no free star \nterms\" heuristic.? In particular, in some systems (especially physical \nsystems) one has negative dependence among edges sharing a vertex: each \ncurrent tie limits the ability to form new ties, e.g. because it \nreflects reduced surface area available for binding, steric hindrance, \netc.? In that case, negative star effects can be reasonable, and do not \nnecessarily lead to degenerate behavior.? We also see this in some \nsocial systems, e.g. in the context of inhomogeneous 2-star suppression \nassociated with ostracism.? Your system may or may not have these \nproperties.\n\nIn general, I think you will find it useful to go read some of the \nliterature on ERGMs if you wish to build effective models, particularly \ngiven your goal of producing models that are physically credible.? You \ncan get a certain distance by imitating other papers and using \ntrial-and-error, but at some point you will need to do the math and \nfigure out what terms produce the types of dependence structure (and \nheterogeneity) that are sensible for your application.? (You may also \nneed to consider your choice of reference measure, e.g. if you need to \nextrapolate to new cases or if your system has support constraints that \nmust be respected.) Reading the fine print is especially important when \napplying the approach to systems where it has not been extensively used, \nbecause some of the heuristics that you will see in the literature are \nchosen for things like friendship networks, and do not always generalize \nto new settings.? One can do very cool things with ERGMs, but in terms \nof subtlety they are like e.g. compartment models or agent based models, \nand not like OLS.? A certain amount of attention to detail is necessary \nfor optimal performance.\n\nHope that helps,\n\n-Carter\n\nOn 7/19/20 12:43 PM, Adam Haber wrote:\n> Hi Carter,\n>\n> Thanks (again!) for the detailed response. I?m probably missing \n> something, but I?m not sure I understand why mutuality would be the \n> relevant term here. Let?s say that my nodes are embedded in 2D, and \n> node i is at the origin. I also have two other nodes - node j at (1,0) \n> and node k at (1.001, 0) - such that j and k are very close, relative \n> to i. I?m trying to build a model in which the edges (i->j) and (i->k) \n> are /dependent/ - if one of them exists, the other is more likely to \n> exists as well. Mathematically, I think a good way to denote what I?m \n> trying to achieve is P(i->k | i->j, j and k are very close) > P(i->k), \n> where P(i->k) is the marginal probability that an edge from i to k \n> exists (already taking into account their distance and potentially the \n> effects of other terms).\n>\n> If I understand correctly, mutuality would affect P(j->i | i->j), or \n> P(i->k | k-> i), but not P(i->k | i->j). But again, maybe I?m missing \n> something - I?m quite new to ERGMs.\n>\n> Regarding interaction - I thought one possible way to do this is to \n> ?discretise? the close/far into categories (clusters of nodes), and \n> then add an interaction term between this new ?cluster factor? and \n> relevant triad-related terms, as these seem to capture this dependence \n> I?m after. Like you said, I?m not sure ERGM exposes such functionality.\n>\n> Thanks again!\n> Best,\n> Adam\n>\n>> On 19 Jul 2020, at 22:01, \n>> statnet_help-request@mailman13.u.washington.edu \n>> <mailto:statnet_help-request@mailman13.u.washington.edu> wrote:\n>>\n>> Send statnet_help mailing list submissions to\n>> statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>>\n>> To subscribe or unsubscribe via the World Wide Web, visit\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>> or, via email, send a message with subject or body 'help' to\n>> statnet_help-request@mailman13.u.washington.edu\n>>\n>> You can reach the person managing the list at\n>> statnet_help-owner@mailman13.u.washington.edu\n>>\n>> When replying, please edit your Subject line so it is more specific\n>> than \"Re: Contents of statnet_help digest...\"\n>> Today's Topics:\n>>\n>> ??1. Interactions in a distance-dependent model (Adam Haber)\n>> ??2. Re: Interactions in a distance-dependent model (Carter T. Butts)\n>>\n>> *From: *Adam Haber <adamhaber@gmail.com>\n>> *Subject: **[statnet_help] Interactions in a distance-dependent model*\n>> *Date: *19 July 2020 at 13:07:23 GMT+3\n>> *To: *statnet_help@u.washington.edu\n>>\n>>\n>> Hello,\n>>\n>> Following a recent question I?ve posted here (and got very helpful \n>> responses - thank you!), I?m trying to add more ?domain knowledge? \n>> into the model. Specifically, the nodes in the network we're studying \n>> are embedded in 3D, and we?ve seen that (as expected) adding \n>> distance-dependence to the model (via an edgecov(x) term such that x \n>> is the distance matrix) indeed improves the GOF.\n>>\n>> I want to take this one step further: I know that if there?s a \n>> (directed) edge i->j, and j and k are ?close? (spatially), it should \n>> increase the probability that there?s an edge i->k. Another option \n>> would be to ?discretize? the distances and group nodes into groups of \n>> ?spatial loci\", and add a term that if there?s an edge i->j and j and \n>> k are in the same spatial cluster (a binary indicator function), than \n>> this should increase the probability of the edge i->k.\n>>\n>> Is there a way to incorporate this sort of reasoning into an ergm \n>> model using any of the available terms? I went over the examples I \n>> could find and did not encounter anything similar...\n>>\n>> Thanks again,\n>> Respectfully,\n>> Adam Haber\n>>\n>>\n>>\n>>\n>>\n>> *From: *\"Carter T. Butts\" <buttsc@uci.edu>\n>> *Subject: **Re: [statnet_help] Interactions in a distance-dependent \n>> model*\n>> *Date: *19 July 2020 at 14:15:20 GMT+3\n>> *To: *statnet_help@u.washington.edu\n>>\n>>\n>> Hi, Adam -\n>>\n>> If you have a mutuality term in the model, it already accounts for \n>> that effect.? Do you intend to say that you expect proximate vertices \n>> to reciprocate at higher rates - /above and beyond the propinquity \n>> effect/ - than distant vertices? (Again, if you have a propinquity \n>> effect, it will already be the case that, ceteris paribus, \n>> reciprocation will be more likely for proximate vertices.)\n>>\n>> If you want this type of effect, it can be realized with the dyadcov \n>> term, or by creating an interaction term between mutual and edgecov.? \n>> I don't think the user-level functionality for the latter option is \n>> yet exposed, though it's pretty easy to code it using ergm.userterms; \n>> however, dyadcov will probably suit your purposes.\n>>\n>> Hope that helps,\n>>\n>> -Carter\n>>\n>> On 7/19/20 3:07 AM, Adam Haber wrote:\n>>> Hello,\n>>>\n>>> Following a recent question I?ve posted here (and got very helpful responses - thank you!), I?m trying to add more ?domain knowledge? into the model. Specifically, the nodes in the network we're studying are embedded in 3D, and we?ve seen that (as expected) adding distance-dependence to the model (via an edgecov(x) term such that x is the distance matrix) indeed improves the GOF.\n>>>\n>>> I want to take this one step further: I know that if there?s a (directed) edge i->j, and j and k are ?close? (spatially), it should increase the probability that there?s an edge i->k. Another option would be to ?discretize? the distances and group nodes into groups of ?spatial loci\", and add a term that if there?s an edge i->j and j and k are in the same spatial cluster (a binary indicator function), than this should increase the probability of the edge i->k.\n>>>\n>>> Is there a way to incorporate this sort of reasoning into an ergm model using any of the available terms? I went over the examples I could find and did not encounter anything similar...\n>>>\n>>> Thanks again,\n>>> Respectfully,\n>>> Adam Haber\n>>>\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@mailman13.u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>   \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200719/360f0e88/attachment.html>",
+      "body_snippet": "Hi, Adam -\n\nAh, my fault, I misread your email - I thought you were referring to Pr( \ni=>j | j=>i), not Pr(i=>j | i=>k).? That is a two-star effect.? \n(Specifically, a 2-outstar effect.)? More general",
+      "thread_id": "thread-fe2ef8a5f73f",
+      "thread_depth": 1,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-61ec77201b4c",
+      "message_id": "<9AB587A1-5885-48DA-B722-2710BB54012E@gmail.com>",
+      "from_name": "Adam Haber",
+      "from_email_hash": "fbbab9750bfd6019ce59a8f052108dfc0b75b66a783f4799cbc7a04ad4ae2d76",
+      "date": "2020-07-20T12:28:09Z",
+      "subject": "[statnet_help] statnet_help Digest, Vol 167, Issue 9",
+      "subject_clean": "[statnet_help] statnet_help Digest, Vol 167, Issue 9",
+      "in_reply_to": "<mailman.268.1595200233.26228.statnet_help@mailman13.u.washington.edu>",
+      "references": [
+        "<mailman.268.1595200233.26228.statnet_help@mailman13.u.washington.edu>"
+      ],
+      "body_plain": "Hi Carter,\n\nThanks again. Indeed 2-ostars seemed like the most relevant term. However, it was not clear to me if it?s possible to add an interaction term of the kind I wanted (in which the existence of the 2-ostar j<?i-->k depends on the distance between k and j but not on i) or an interaction with a nodal attribute of the kind I wanted (j and k are of the same ?color? but i can be anything). My current understanding is that this might be possible, but would require writing a ?new? ergm-term. I?ll try? :-)\n\nRegarding the degeneracy of these models - I?ve read about this several times already, but would love to learn more, thanks for the reference. If you (or anyone else, of course) know any review that focuses on spatial ERGMs, that would be very helpful and much appreciated.\n\nBest,\nAdam \n\n> On 20 Jul 2020, at 2:10, statnet_help-request@mailman13.u.washington.edu wrote:\n> \n> Send statnet_help mailing list submissions to\n> \tstatnet_help@u.washington.edu\n> \n> To subscribe or unsubscribe via the World Wide Web, visit\n> \thttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> or, via email, send a message with subject or body 'help' to\n> \tstatnet_help-request@mailman13.u.washington.edu\n> \n> You can reach the person managing the list at\n> \tstatnet_help-owner@mailman13.u.washington.edu\n> \n> When replying, please edit your Subject line so it is more specific\n> than \"Re: Contents of statnet_help digest...\"\n> Today's Topics:\n> \n>   1. Re: statnet_help Digest, Vol 167, Issue 7 (Carter T. Butts)\n> \n> From: \"Carter T. Butts\" <buttsc@uci.edu>\n> Subject: Re: [statnet_help] statnet_help Digest, Vol 167, Issue 7\n> Date: 20 July 2020 at 2:10:04 GMT+3\n> To: statnet_help@u.washington.edu\n> \n> \n> Hi, Adam -\n> \n> Ah, my fault, I misread your email - I thought you were referring to Pr( i=>j | j=>i), not Pr(i=>j | i=>k).  That is a two-star effect.  (Specifically, a 2-outstar effect.)  More generally, the directed k-stars correspond to that type of dependence; those terms can be accessed within ergm using ostar() and istar().\n> \n> However, it should be noted that those terms are usually (not always!) ill-behaved unless some extra structure is employed to keep dependence in check.  It is hence more common to work with their degree statistic representation (the star statistics and degree statistics are equivalent), and to use curved terms such as gwdegree() in order to ensure vanishing marginal effects of tie addition.  There are many papers on this - the classic Snijders et al. (2006) paper is a good place to start.\n> \n> I will note in passing that there are exceptions to the \"no free star terms\" heuristic.  In particular, in some systems (especially physical systems) one has negative dependence among edges sharing a vertex: each current tie limits the ability to form new ties, e.g. because it reflects reduced surface area available for binding, steric hindrance, etc.  In that case, negative star effects can be reasonable, and do not necessarily lead to degenerate behavior.  We also see this in some social systems, e.g. in the context of inhomogeneous 2-star suppression associated with ostracism.  Your system may or may not have these properties.  \n> \n> In general, I think you will find it useful to go read some of the literature on ERGMs if you wish to build effective models, particularly given your goal of producing models that are physically credible.  You can get a certain distance by imitating other papers and using trial-and-error, but at some point you will need to do the math and figure out what terms produce the types of dependence structure (and heterogeneity) that are sensible for your application.  (You may also need to consider your choice of reference measure, e.g. if you need to extrapolate to new cases or if your system has support constraints that must be respected.)  Reading the fine print is especially important when applying the approach to systems where it has not been extensively used, because some of the heuristics that you will see in the literature are chosen for things like friendship networks, and do not always generalize to new settings.  One can do very cool things with ERGMs, but in terms of subtlety they are like e.g. compartment models or agent based models, and not like OLS.  A certain amount of attention to detail is necessary for optimal performance.\n> \n> Hope that helps,\n> \n> -Carter\n> \n> On 7/19/20 12:43 PM, Adam Haber wrote:\n>> Hi Carter,\n>> \n>> Thanks (again!) for the detailed response. I?m probably missing something, but I?m not sure I understand why mutuality would be the relevant term here. Let?s say that my nodes are embedded in 2D, and node i is at the origin. I also have two other nodes - node j at (1,0) and node k at (1.001, 0) - such that j and k are very close, relative to i. I?m trying to build a model in which the edges (i->j) and (i->k) are dependent - if one of them exists, the other is more likely to exists as well. Mathematically, I think a good way to denote what I?m trying to achieve is P(i->k | i->j, j and k are very close) > P(i->k), where P(i->k) is the marginal probability that an edge from i to k exists (already taking into account their distance and potentially the effects of other terms).\n>> \n>> If I understand correctly, mutuality would affect P(j->i | i->j), or P(i->k | k-> i), but not P(i->k | i->j). But again, maybe I?m missing something - I?m quite new to ERGMs.\n>> \n>> Regarding interaction - I thought one possible way to do this is to ?discretise? the close/far into categories (clusters of nodes), and then add an interaction term between this new ?cluster factor? and relevant triad-related terms, as these seem to capture this dependence I?m after. Like you said, I?m not sure ERGM exposes such functionality.\n>> \n>> Thanks again!\n>> Best, \n>> Adam   \n>> \n>>> On 19 Jul 2020, at 22:01, statnet_help-request@mailman13.u.washington.edu <mailto:statnet_help-request@mailman13.u.washington.edu> wrote:\n>>> \n>>> Send statnet_help mailing list submissions to\n>>> \tstatnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>>> \n>>> To subscribe or unsubscribe via the World Wide Web, visit\n>>> \thttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help <http://mailman13.u.washington.edu/mailman/listinfo/statnet_help>\n>>> or, via email, send a message with subject or body 'help' to\n>>> \tstatnet_help-request@mailman13.u.washington.edu <mailto:statnet_help-request@mailman13.u.washington.edu>\n>>> \n>>> You can reach the person managing the list at\n>>> \tstatnet_help-owner@mailman13.u.washington.edu <mailto:statnet_help-owner@mailman13.u.washington.edu>\n>>> \n>>> When replying, please edit your Subject line so it is more specific\n>>> than \"Re: Contents of statnet_help digest...\"\n>>> Today's Topics:\n>>> \n>>>   1. Interactions in a distance-dependent model (Adam Haber)\n>>>   2. Re: Interactions in a distance-dependent model (Carter T. Butts)\n>>> \n>>> From: Adam Haber <adamhaber@gmail.com> <mailto:adamhaber@gmail.com>\n>>> Subject: [statnet_help] Interactions in a distance-dependent model\n>>> Date: 19 July 2020 at 13:07:23 GMT+3\n>>> To: statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>>> \n>>> \n>>> Hello,\n>>> \n>>> Following a recent question I?ve posted here (and got very helpful responses - thank you!), I?m trying to add more ?domain knowledge? into the model. Specifically, the nodes in the network we're studying are embedded in 3D, and we?ve seen that (as expected) adding distance-dependence to the model (via an edgecov(x) term such that x is the distance matrix) indeed improves the GOF. \n>>> \n>>> I want to take this one step further: I know that if there?s a (directed) edge i->j, and j and k are ?close? (spatially), it should increase the probability that there?s an edge i->k. Another option would be to ?discretize? the distances and group nodes into groups of ?spatial loci\", and add a term that if there?s an edge i->j and j and k are in the same spatial cluster (a binary indicator function), than this should increase the probability of the edge i->k.\n>>> \n>>> Is there a way to incorporate this sort of reasoning into an ergm model using any of the available terms? I went over the examples I could find and did not encounter anything similar...\n>>> \n>>> Thanks again,\n>>> Respectfully,\n>>> Adam Haber\n>>> \n>>> \n>>> \n>>> \n>>> \n>>> From: \"Carter T. Butts\" <buttsc@uci.edu> <mailto:buttsc@uci.edu>\n>>> Subject: Re: [statnet_help] Interactions in a distance-dependent model\n>>> Date: 19 July 2020 at 14:15:20 GMT+3\n>>> To: statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>>> \n>>> \n>>> Hi, Adam -\n>>> \n>>> If you have a mutuality term in the model, it already accounts for that effect.  Do you intend to say that you expect proximate vertices to reciprocate at higher rates - above and beyond the propinquity effect - than distant vertices?  (Again, if you have a propinquity effect, it will already be the case that, ceteris paribus, reciprocation will be more likely for proximate vertices.)  \n>>> \n>>> If you want this type of effect, it can be realized with the dyadcov term, or by creating an interaction term between mutual and edgecov.  I don't think the user-level functionality for the latter option is yet exposed, though it's pretty easy to code it using ergm.userterms; however, dyadcov will probably suit your purposes.\n>>> \n>>> Hope that helps,\n>>> \n>>> -Carter\n>>> \n>>> On 7/19/20 3:07 AM, Adam Haber wrote:\n>>>> Hello,\n>>>> \n>>>> Following a recent question I?ve posted here (and got very helpful responses - thank you!), I?m trying to add more ?domain knowledge? into the model. Specifically, the nodes in the network we're studying are embedded in 3D, and we?ve seen that (as expected) adding distance-dependence to the model (via an edgecov(x) term such that x is the distance matrix) indeed improves the GOF. \n>>>> \n>>>> I want to take this one step further: I know that if there?s a (directed) edge i->j, and j and k are ?close? (spatially), it should increase the probability that there?s an edge i->k. Another option would be to ?discretize? the distances and group nodes into groups of ?spatial loci\", and add a term that if there?s an edge i->j and j and k are in the same spatial cluster (a binary indicator function), than this should increase the probability of the edge i->k.\n>>>> \n>>>> Is there a way to incorporate this sort of reasoning into an ergm model using any of the available terms? I went over the examples I could find and did not encounter anything similar...\n>>>> \n>>>> Thanks again,\n>>>> Respectfully,\n>>>> Adam Haber\n>>>> \n>>>> _______________________________________________\n>>>> statnet_help mailing list\n>>>> statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>>>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help <http://mailman13.u.washington.edu/mailman/listinfo/statnet_help>\n>>>> \n>>> \n>>> \n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@mailman13.u.washington.edu <mailto:statnet_help@mailman13.u.washington.edu>\n>>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help <http://mailman13.u.washington.edu/mailman/listinfo/statnet_help>\n>> \n>> \n>> \n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help <http://mailman13.u.washington.edu/mailman/listinfo/statnet_help>\n>>  \n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@mailman13.u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200720/5795fa76/attachment.html>",
+      "body_snippet": "Hi Carter,\n\nThanks again. Indeed 2-ostars seemed like the most relevant term. However, it was not clear to me if it?s possible to add an interaction term of the kind I wanted (in which the existence o",
+      "thread_id": "thread-61ec77201b4c",
+      "thread_depth": 0,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-9b402ee6276c",
+      "message_id": "<DB8PR04MB6601D4C4E23DE89B92946628BC790@DB8PR04MB6601.eurprd04.prod.outlook.com>",
+      "from_name": "Fisher, David",
+      "from_email_hash": "91f83fa98c2fc52e8c8e56236f023a02b5ed9e023324c994b6a73bd5c5d3fa5b",
+      "date": "2020-07-22T01:04:44Z",
+      "subject": "[statnet_help] Estimating difference in event size between 2 levels of an actor attribute in bipartite networks",
+      "subject_clean": "[statnet_help] Estimating difference in event size between 2 levels of an actor attribute in bipartite networks",
+      "in_reply_to": "<CH2PR02MB6806FEB492FD304F0F8C8B91BA600@CH2PR02MB6806.namprd02.prod.outlook.com>",
+      "references": [
+        "<DB8PR04MB66012F69129E61FF7E7E8CFCBC6A0@DB8PR04MB6601.eurprd04.prod.outlook.com>",
+        "<DB8PR04MB66017B9DE09F8BDEE1F7B2CBBC600@DB8PR04MB6601.eurprd04.prod.outlook.com>",
+        "<CH2PR02MB6806FEB492FD304F0F8C8B91BA600@CH2PR02MB6806.namprd02.prod.outlook.com>"
+      ],
+      "body_plain": "Hi Luke,\n\nThanks for replying. The \"size\" attribute is based on the number of nodes of the other mode it is attached to. So, I want the degree of each event node, and then whether blues or reds are connected to events with higher or lower degrees. Do I need to calculate the degree first, enter it as an attribute, then fit a model term estimating whether the nodal attribute colour is associated with the new attribute of degree of the event node?\n\nCheers,\n\nDavid\n\n\nFrom: Luke, Douglas <dluke@wustl.edu>\nSent: 13 July 2020 20:14\nTo: Fisher, David <david.fisher@abdn.ac.uk>; statnet_help@u.washington.edu\nSubject: Re: [statnet_help] Estimating difference in event size between 2 levels of an actor attribute in bipartite networks\n\nCAUTION: External email. Ensure this message is from a trusted source before clicking links/attachments.\n\nDavid,\n\nIf I'm following this correctly, then you will want the event mode to have an attribute as well. So, if you want to know if reds/blues are attending larger events in greater numbers, then the event mode will have to have some type of 'size' attribute. That should open up some analytic possibilities for you.\n\n--Doug--\n\n\nDouglas Luke\n\nDirector, Center for Public Health Systems Science\n\nProfessor of Public Health, Brown School\n\nWashington University in St. Louis\n\nCampus Box 1196, One Brookings Drive\n\nSt. Louis, MO 63130\n\nemail: dluke@wustl.edu<mailto:dluke@wustl.edu>\n\nWebsite: <http://ctpr.wustl.edu/> http://cphss.wustl.edu\n\n________________________________\nFrom: Fisher, David <david.fisher@abdn.ac.uk<mailto:david.fisher@abdn.ac.uk>>\nSent: Monday, July 13, 2020 7:16 AM\nTo: statnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu> <statnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>>\nSubject: Re: [statnet_help] Estimating difference in event size between 2 levels of an actor attribute in bipartite networks\n\n\nAny ideas? If my question is unclear then perhaps I can re-phrase it?\n\n\n\nCheers,\n\n\n\nDavid\n\n\n\nFrom: Fisher, David <david.fisher@abdn.ac.uk<mailto:david.fisher@abdn.ac.uk>>\nSent: 03 July 2020 17:31\nTo: statnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nSubject: [statnet_help] Estimating difference in event size between 2 levels of an actor attribute in bipartite networks\n\n\n\nHi folks,\n\n\n\nI hope you are all well. My name is David, I'm a Research fellow at the University of Aberdeen in the UK.\n\n\n\nI've recently started playing around with modelling actor by event bipartite networks using \"ergm\". My first mode are actors with a single attribute, which is a 2-level factor (lets call it \"colour\", with reds and blues), while my 2nd mode are events which have no attributes. I am interested in two things:\n\n\n\n  1.  Do actors of one category (e.g. reds) appear in more events than actors of the other category?\n\nI am reasonably happy I get at this with \"b1factor(\"colour\")\"\n\n\n\n  1.  Do actors of one category appear in larger/more well attended events than actors of the other category?\n\nI cannot work out how to model this, but I am certain that there is a term for it and I am just not understanding the documentation. I don't think it is \"b2factor(\"colour\")\" as events do not vary by colour. I don't think it is any of the nodematch functions (e.g. \"b1nodematch(\"sex\")\") as I am not interested (for now) in whether reds attend events with other reds. I think I want to compare the number of two paths between the two groups, but I can't see a function to do that. Alternatively, perhaps you could frame it as a b2 k-star question, and does the number of different k-stars where the events are the central node depend on the category of those nodes they are attached too...\n\n\n\nAny help would be greatly appreciated.\n\n\n\nBest regards,\n\n\n\nDavid\n\n\n\nDavid N. Fisher\n\nResearch Fellow\n\nThe School of Biological Sciences\n\nUniversity of Aberdeen\n\nWeb<https://evoetholab.com/> | GS<https://scholar.google.com/citations?user=1TuwKzQAAAAJ&hl=en> | Tw<https://twitter.com/DFofFreedom> | RG<https://www.researchgate.net/profile/David_Fisher30> | Or<https://orcid.org/0000-0002-4444-4450>\n\n\n\n\nThe University of Aberdeen is a charity registered in Scotland, No SC013683.\nTha Oilthigh Obar Dheathain na charthannas cl?raichte ann an Alba, ?ir. SC013683.\n\n\nThe University of Aberdeen is a charity registered in Scotland, No SC013683.\nTha Oilthigh Obar Dheathain na charthannas cl?raichte ann an Alba, ?ir. SC013683.\n\n\nThe University of Aberdeen is a charity registered in Scotland, No SC013683.\nTha Oilthigh Obar Dheathain na charthannas cl?raichte ann an Alba, ?ir. SC013683.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200722/5854a181/attachment.html>",
+      "body_snippet": "Hi Luke,\n\nThanks for replying. The \"size\" attribute is based on the number of nodes of the other mode it is attached to. So, I want the degree of each event node, and then whether blues or reds are co",
+      "thread_id": "thread-5cf7d2d1c0b8",
+      "thread_depth": 3,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-4cebf7da4307",
+      "message_id": "<1595504695507.75666@utu.fi>",
+      "from_name": "Shupin Li",
+      "from_email_hash": "38700f5808ab105ec199cbb8075d83f0e4e2f5a90ba6f54b05dba2c790f968a0",
+      "date": "2020-07-23T04:44:53Z",
+      "subject": "[statnet_help] Previous empirical multilevel network modeling using R packages",
+      "subject_clean": "[statnet_help] Previous empirical multilevel network modeling using R packages",
+      "in_reply_to": "<DB8PR04MB6601D4C4E23DE89B92946628BC790@DB8PR04MB6601.eurprd04.prod.outlook.com>",
+      "references": [
+        "<DB8PR04MB66012F69129E61FF7E7E8CFCBC6A0@DB8PR04MB6601.eurprd04.prod.outlook.com>",
+        "<DB8PR04MB66017B9DE09F8BDEE1F7B2CBBC600@DB8PR04MB6601.eurprd04.prod.outlook.com>",
+        "<CH2PR02MB6806FEB492FD304F0F8C8B91BA600@CH2PR02MB6806.namprd02.prod.outlook.com>",
+        "<DB8PR04MB6601D4C4E23DE89B92946628BC790@DB8PR04MB6601.eurprd04.prod.outlook.com>"
+      ],
+      "body_plain": "Dear all,\n\n\nWould you know some previous empirical study on multilevel static network modeling using R packages? Most of studies I found for multilevel modeling on static network used PNet series platforms in Windows...\n\n\nThanks!\n\n\nBest,\n\nShupin\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200723/b23f102b/attachment.html>",
+      "body_snippet": "Dear all,\n\n\nWould you know some previous empirical study on multilevel static network modeling using R packages? Most of studies I found for multilevel modeling on static network used PNet series plat",
+      "thread_id": "thread-5cf7d2d1c0b8",
+      "thread_depth": 4,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-7c4182149ad7",
+      "message_id": "<CAKKFUZLX-HT18iMkV1beqoea5WdeA_yo80T8WJD5cvcdW=PbAg@mail.gmail.com>",
+      "from_name": "Tom Kraft",
+      "from_email_hash": "c6768563d9995ac9096e433db052c923ba42d8c1c9299c1fe64410b19f183143",
+      "date": "2020-07-24T12:20:03Z",
+      "subject": "[statnet_help] scaling issue in stergm/EpiModel",
+      "subject_clean": "[statnet_help] scaling issue in stergm/EpiModel",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI am observing unexpected behavior when scaling up the size of networks\nusing stergm and functions from the EpiModel package. The problem occurs\nusing the netest() function. Specifically, I am setting target parameters\nthat encourage complete homophily across a categorical nodal attribute. But\nwhen I increase the size of the input network keeping the cluster size of\nthe nodal attribute the same, the resulting model no longer converges and\ndiagnostics indicate a failure to reproduce the homophily term.\n\nThe problem is easily reproduced with the following code:\n\n# works fine\n> nw2 <- network.initialize(n = 90, directed=F)\n> nw2 %v% \"com2\" <- c(rep(as.character(c(1:9)), each=10 ))\n> fit1 <- netest(nw2, formation = ~edges + nodematch(\"com2\") , target.stats\n= c(200,  200), coef.diss = dissolution_coefs(dissolution = ~offset(edges),\nduration = c(25)))\n> dx1 <- netdx(fit1, nsims = 2, nsteps = 200, nwstats.formula = ~edges +\nnodematch(\"com2\"), ncores = 2)\n> dx1\n\n# fails\n> nw2 <- network.initialize(n = 9000, directed=F)\n> nw2 %v% \"com2\" <- c(rep(as.character(c(1:900)), each=10 ))\n> fit2 <- netest(nw2, formation = ~edges + nodematch(\"com2\") , target.stats\n= c(20000,  20000), coef.diss = dissolution_coefs(dissolution =\n~offset(edges), duration = c(25)))\n> dx2 <- netdx(fit2, nsims = 2, nsteps = 200, nwstats.formula = ~edges +\nnodematch(\"com2\"), ncores = 2)\n> dx2\n-----------\n\nOriginally I thought this issue might have to do with exceeding the\npossible number of links per cluster. In both cases, however, this\nshouldn't be an issue: in the examples above with complete homophily the\nnumber of possible links should be\n(n_per_group*(n_per_group-1)/2)*(#_groups) = 4050 and 40500, respectively.\nThe mean target degree is also the same in both (200*2/90 = 20000*2/9000).\n\nI suspect I am missing something obvious here that causes a structural\nproblem. Any help is greatly appreciated,\n\nTom\n\nThomas Kraft\nPostdoctoral Scholar\nDepartment of Anthropology\nUniversity of California, Santa Barbara\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200724/0445da87/attachment.html>",
+      "body_snippet": "Hi all,\n\nI am observing unexpected behavior when scaling up the size of networks\nusing stergm and functions from the EpiModel package. The problem occurs\nusing the netest() function. Specifically, I a",
+      "thread_id": "thread-7c4182149ad7",
+      "thread_depth": 0,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-10458f83d2bb",
+      "message_id": "<7BFA3C72-BFD0-4F18-91DA-E24BEB5284ED@mail.uni-mannheim.de>",
+      "from_name": "David Kretschmer",
+      "from_email_hash": "c077fbded4b53f5daf4cece71eb5efb49158d21dad3cb3528820b0205302de7b",
+      "date": "2020-07-27T00:39:15Z",
+      "subject": "[statnet_help] Changes in how standard errors are reported across ERGM versions",
+      "subject_clean": "[statnet_help] Changes in how standard errors are reported across ERGM versions",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all, \n\nfor a replication project, I have worked with an old version of the ERGM package (ergm-3.1.0)  and the more recent versions (ergm-3.10.1, in particular) and I have a question on differences between these versions.\n\nI have noticed that, for some of the networks I analyse, the ergm() command returns different results for the old and the new version. In particular, this holds true for networks in which some of the network parameters cannot be estimated from the data, as is obvious from the MCMC chain values having the same value across all iterations and the MCMC% in the ERGM output being NA (both in the old and the new version of ergm()). \n\nHowever, the results between versions differ in the fact that, for those parameters that cannot be estimated, the newer ergm versions report the standard error as NA while the old ergm version reports a standard error that is basically indistinguishable from 0 (value of the order of 10^-15- 10^-30).  In both versions, regular numeric values for the coefficients themselves are reported.\n\nIt seems clear to me that the ERGM estimates from these networks, or at least the estimates for these parameters, do not have a meaningful interpretation. Still, I am interested to learn 1) why, in the older versions of the ERGM package, these standard errors close to zero were reported and 2) when this behaviour changed.\n\nAny help would be greatly appreciated.\n\nBest,\nDavid\n\n\n-- \nDavid Kretschmer\nUniversity of Mannheim\nMannheim Centre for European Social Research (MZES)\nA5, 6\n68159 Mannheim, Germany\nTel.: +49-621-181-2024\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200727/b0fc4d0e/attachment.html>",
+      "body_snippet": "Dear all, \n\nfor a replication project, I have worked with an old version of the ERGM package (ergm-3.1.0)  and the more recent versions (ergm-3.10.1, in particular) and I have a question on difference",
+      "thread_id": "thread-10458f83d2bb",
+      "thread_depth": 0,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-240495d6c8fd",
+      "message_id": "<SY4P282MB1387856719BC676B7ACC9933BE4E0@SY4P282MB1387.AUSP282.PROD.OUTLOOK.COM>",
+      "from_name": "Mahin Raissi",
+      "from_email_hash": "b987f3c55863e0ef38bca36a01e7a9d1e30a9849c5d7ff37650827030e921536",
+      "date": "2020-07-30T22:26:38Z",
+      "subject": "[statnet_help] Two-mode clustering and Re: General Interpretation of GWNSP",
+      "subject_clean": "[statnet_help] Two-mode clustering and Re: General Interpretation of GWNSP",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi\nI have read through the information provided in the previous posts on this thread and have been able to install the package (\"ergm.terms.contrib\") and run the test code (summary(bnet ~ gwb1nsp(0,TRUE)).\nMy question: is it possible to run a ergm model with \"gwb1dsp\" term? Something like: m1 <- ergm(net ~edges + gwb1dsp(0,TRUE))?\n\nThank you.\n\nMahin Raissi\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200731/5f14e07f/attachment.html>",
+      "body_snippet": "Hi\nI have read through the information provided in the previous posts on this thread and have been able to install the package (\"ergm.terms.contrib\") and run the test code (summary(bnet ~ gwb1nsp(0,TR",
+      "thread_id": "thread-240495d6c8fd",
+      "thread_depth": 0,
+      "month": "2020-07"
+    },
+    {
+      "id": "msg-a4f6e8afb36b",
+      "message_id": "<SY4P282MB1387F6646B326CB204658C3BBE4E0@SY4P282MB1387.AUSP282.PROD.OUTLOOK.COM>",
+      "from_name": "Mahin Raissi",
+      "from_email_hash": "b987f3c55863e0ef38bca36a01e7a9d1e30a9849c5d7ff37650827030e921536",
+      "date": "2020-07-30T22:33:50Z",
+      "subject": "[statnet_help]  Two-mode clustering and Re: General",
+      "subject_clean": "[statnet_help]  Two-mode clustering and Re: General",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi\nI have read through the information provided on the previous posts on this topic and have been able to install the package (\"ergm.terms.contrib\") and run the test code.\nMy question: is it possible to run a ergm model with \"gwb1dsp\" term? Something like: m1 <- ergm(net ~edges + gwb1dsp(0,TRUE))?\nThank you.\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20200731/a74d0e4d/attachment.html>",
+      "body_snippet": "Hi\nI have read through the information provided on the previous posts on this topic and have been able to install the package (\"ergm.terms.contrib\") and run the test code.\nMy question: is it possible ",
+      "thread_id": "thread-a4f6e8afb36b",
+      "thread_depth": 0,
+      "month": "2020-07"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-5cf7d2d1c0b8",
+      "subject": "[statnet_help] Estimating difference in event size between 2 levels of an actor attribute in bipartite networks",
+      "message_count": 5,
+      "participants": [
+        "Fisher, David",
+        "Luke, Douglas",
+        "Shupin Li"
+      ],
+      "started": "2020-07-03T09:31:03Z",
+      "last_reply": "2020-07-23T04:44:53Z",
+      "root_message_id": "msg-5cf7d2d1c0b8"
+    },
+    {
+      "id": "thread-efbf04f75f9a",
+      "subject": "[statnet_help] TERGM for weighted networks",
+      "message_count": 3,
+      "participants": [
+        "Fisher, David",
+        "Pavel Krivitsky",
+        "Vivek Kulkarni"
+      ],
+      "started": "2020-07-04T02:45:05Z",
+      "last_reply": "2020-07-06T00:59:06Z",
+      "root_message_id": "msg-efbf04f75f9a"
+    },
+    {
+      "id": "thread-b4a0d1397d0b",
+      "subject": "[statnet_help] Distance-dependent ERGM model",
+      "message_count": 2,
+      "participants": [
+        "Adam Haber",
+        "Carter T. Butts"
+      ],
+      "started": "2020-07-08T13:15:03Z",
+      "last_reply": "2020-07-08T18:31:00Z",
+      "root_message_id": "msg-b4a0d1397d0b"
+    },
+    {
+      "id": "thread-d7e88e3f7331",
+      "subject": "[statnet_help] Hyperparameters for latent position models",
+      "message_count": 1,
+      "participants": [
+        "Adam Haber"
+      ],
+      "started": "2020-07-13T12:48:09Z",
+      "last_reply": "2020-07-13T12:48:09Z",
+      "root_message_id": "msg-d7e88e3f7331"
+    },
+    {
+      "id": "thread-4b70b654526f",
+      "subject": "[statnet_help] Interactions in a distance-dependent model",
+      "message_count": 2,
+      "participants": [
+        "Adam Haber",
+        "Carter T. Butts"
+      ],
+      "started": "2020-07-19T03:07:23Z",
+      "last_reply": "2020-07-19T04:15:20Z",
+      "root_message_id": "msg-4b70b654526f"
+    },
+    {
+      "id": "thread-fe2ef8a5f73f",
+      "subject": "[statnet_help] statnet_help Digest, Vol 167, Issue 7",
+      "message_count": 2,
+      "participants": [
+        "Adam Haber",
+        "Carter T. Butts"
+      ],
+      "started": "2020-07-19T12:43:48Z",
+      "last_reply": "2020-07-19T16:10:04Z",
+      "root_message_id": "msg-fe2ef8a5f73f"
+    },
+    {
+      "id": "thread-6fba688327d9",
+      "subject": "[statnet_help] iterations in STERGM",
+      "message_count": 1,
+      "participants": [
+        "Jiaying Deng"
+      ],
+      "started": "2020-07-19T15:30:25Z",
+      "last_reply": "2020-07-19T15:30:25Z",
+      "root_message_id": "msg-6fba688327d9"
+    },
+    {
+      "id": "thread-61ec77201b4c",
+      "subject": "[statnet_help] statnet_help Digest, Vol 167, Issue 9",
+      "message_count": 1,
+      "participants": [
+        "Adam Haber"
+      ],
+      "started": "2020-07-20T12:28:09Z",
+      "last_reply": "2020-07-20T12:28:09Z",
+      "root_message_id": "msg-61ec77201b4c"
+    },
+    {
+      "id": "thread-7c4182149ad7",
+      "subject": "[statnet_help] scaling issue in stergm/EpiModel",
+      "message_count": 1,
+      "participants": [
+        "Tom Kraft"
+      ],
+      "started": "2020-07-24T12:20:03Z",
+      "last_reply": "2020-07-24T12:20:03Z",
+      "root_message_id": "msg-7c4182149ad7"
+    },
+    {
+      "id": "thread-10458f83d2bb",
+      "subject": "[statnet_help] Changes in how standard errors are reported across ERGM versions",
+      "message_count": 1,
+      "participants": [
+        "David Kretschmer"
+      ],
+      "started": "2020-07-27T00:39:15Z",
+      "last_reply": "2020-07-27T00:39:15Z",
+      "root_message_id": "msg-10458f83d2bb"
+    },
+    {
+      "id": "thread-240495d6c8fd",
+      "subject": "[statnet_help] Two-mode clustering and Re: General Interpretation of GWNSP",
+      "message_count": 1,
+      "participants": [
+        "Mahin Raissi"
+      ],
+      "started": "2020-07-30T22:26:38Z",
+      "last_reply": "2020-07-30T22:26:38Z",
+      "root_message_id": "msg-240495d6c8fd"
+    },
+    {
+      "id": "thread-a4f6e8afb36b",
+      "subject": "[statnet_help]  Two-mode clustering and Re: General",
+      "message_count": 1,
+      "participants": [
+        "Mahin Raissi"
+      ],
+      "started": "2020-07-30T22:33:50Z",
+      "last_reply": "2020-07-30T22:33:50Z",
+      "root_message_id": "msg-a4f6e8afb36b"
+    }
+  ]
+}

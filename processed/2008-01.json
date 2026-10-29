@@ -1,0 +1,478 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2008-01",
+  "messages": [
+    {
+      "id": "msg-051563c8f4f7",
+      "message_id": "<20080114235800.n5eqb6rtk4wgcc8o@webmail.stanford.edu>",
+      "from_name": "dtrapido@stanford.edu",
+      "from_email_hash": "8135246405beaaa7de215084c8229ffb667be586d38790f6488f01f7f00b702a",
+      "date": "2008-01-14T23:58:00Z",
+      "subject": "[statnet_help] longitudinal modeling in Statnet",
+      "subject_clean": "[statnet_help] longitudinal modeling in Statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI am one of the frustrated users of SIENA who love its longitudinal  \ncapabilities but cannot take advantage of them because the network is  \ntoo large. I know that the Statnet project intends to develop a  \nsimilar longitudinal routine capable of handling large networks. When  \ncan its release be reasonably expected? Please advise.\n\nBest wishes,\n\nDenis Trapido\n\nDenis Trapido\nPh.D. Candidate\nStanford University\nDepartment of Sociology\nStanford, CA 94305-2047\nPhone: (650) 799-8599\nFAX: (650) 725-6471",
+      "body_snippet": "Hi,\n\nI am one of the frustrated users of SIENA who love its longitudinal  \ncapabilities but cannot take advantage of them because the network is  \ntoo large. I know that the Statnet project intends to",
+      "thread_id": "thread-051563c8f4f7",
+      "thread_depth": 0,
+      "month": "2008-01"
+    },
+    {
+      "id": "msg-a9bc9ec47cba",
+      "message_id": "<0925BD81-A8BD-4942-9DF9-CA15A63DB724@uchicago.edu>",
+      "from_name": "Peter McMahan",
+      "from_email_hash": "392628d671187c5ac0a240ab03e4967c75af50a8f7d9047da77c6e38a2e96e6d",
+      "date": "2008-01-15T08:12:23Z",
+      "subject": "[statnet_help] problems running statnet",
+      "subject_clean": "[statnet_help] problems running statnet",
+      "in_reply_to": "<p06230900c37378438142@[171.66.36.231]>",
+      "references": [
+        "<p06230900c37378438142@[171.66.36.231]>"
+      ],
+      "body_plain": "I'm having an identical problem on mac OS 10.5.1:\n > library(statnet)\nLoading required package: network\nClasses for Relational Data\nVersion 1.2 created on July 31, 2007.\ncopyright (c) 2005, Carter T. Butts, University of California-Irvine\n                     Mark S. Handcock, University of Washington\n                     David R. Hunter, Penn State University\n                     Martina Morris, University of Washington\nType help(package=\"network\") to get started.\nError in dyn.load(file, ...) :\n   unable to load shared library '/Library/Frameworks/R.framework/ \nResources/library/statnet/libs/i386/statnet.so':\n   dlopen(/Library/Frameworks/R.framework/Resources/library/statnet/ \nlibs/i386/statnet.so, 6): Symbol not found: _ChangeStats\n   Referenced from: /Library/Frameworks/R.framework/Resources/library/ \nstatnet/libs/i386/statnet.so\n   Expected in: dynamic lookup\n\nError in library(statnet) : .First.lib failed for 'statnet'\n\n\nMy system info:\n >   sessionInfo()\nR version 2.6.1 (2007-11-26)\ni386-apple-darwin8.10.1\n\nlocale:\nen_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base\n\nother attached packages:\n[1] network_1.2       updatestatnet_1.0\n\nloaded via a namespace (and not attached):\n[1] rcompgen_0.1-17 tcltk_2.6.1     tools_2.6.1\n >   getOption(\"pkgType\")\n[1] \"mac.binary\"\n\n\nAny thoughts? Should I try to compile the package myself?, Chris, did  \nyou ever get this resolved?\n\nThanks,\nPeter\n\n\nOn Nov 28, 2007, at 2:02 PM, Chris Gonzalez Clarke wrote:\n\n> I am attempting to run Statnet on a Mac (powerPC) with OS 10.4.11.  \n> I've following the instructions to install the package in R and run  \n> the update, both of which appear successful. However, when I go to  \n> use the program ('library(statnet)), i get the following error:\n>\n>> library(statnet)\n> Loading required package: network\n> Classes for Relational Data\n> Version 1.2 created on July 31, 2007.\n> copyright (c) 2005, Carter T. Butts, University of California-Irvine\n>                    Mark S. Handcock, University of Washington\n>                    David R. Hunter, Penn State University\n>                    Martina Morris, University of Washington\n> Type help(package=\"network\") to get started.\n> Error in dyn.load(file, ...) :\n>  unable to load shared library '/Library/Frameworks/R.framework/ \n> Versions/2.6/Resources/library/statnet/libs/ppc/statnet.so':\n> dlopen(/Library/Frameworks/R.framework/Versions/2.6/Resources/ \n> library/statnet/libs/ppc/statnet.so, 6): Library not loaded: / \n> Library/Frameworks/R.framework/Versions/2.5/Resources/lib/libR.dylib\n>  Referenced from: /Library/Frameworks/R.framework/Versions/2.6/ \n> Resources/library/statnet/libs/ppc/statnet.so\n>  Reason: image not found\n> Error in library(statnet) : .First.lib failed for 'statnet'\n>\n>\n>\n> Here is my session info:\n>\n>> sessionInfo()\n> R version 2.6.1 (2007-11-26)\n> powerpc-apple-darwin8.10.1\n>\n> locale:\n> en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n>\n> attached base packages:\n> [1] stats     graphics  grDevices utils     datasets  methods   base\n>\n> other attached packages:\n> [1] network_1.2       updatestatnet_1.0\n>\n> loaded via a namespace (and not attached):\n> [1] tools_2.6.1\n>\n>> getOption(\"pkgType\")\n> [1] \"mac.binary\"\n>\n>\n>\n>\n> Any suggestions?\n> Thanks\n> Chris\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "I'm having an identical problem on mac OS 10.5.1:\n > library(statnet)\nLoading required package: network\nClasses for Relational Data\nVersion 1.2 created on July 31, 2007.\ncopyright (c) 2005, Carter T. ",
+      "thread_id": "thread-a9bc9ec47cba",
+      "thread_depth": 0,
+      "month": "2008-01"
+    },
+    {
+      "id": "msg-2d1acea91275",
+      "message_id": "<p06230904c3b2a6576f77@[171.64.185.119]>",
+      "from_name": "Chris Gonzalez Clarke",
+      "from_email_hash": "6982cfaafff4ac6b8ccb426866766cf56dcd48e07af9e761531d5b195a1aedff",
+      "date": "2008-01-15T10:06:38Z",
+      "subject": "[statnet_help] problems running statnet",
+      "subject_clean": "[statnet_help] problems running statnet",
+      "in_reply_to": "<0925BD81-A8BD-4942-9DF9-CA15A63DB724@uchicago.edu>",
+      "references": [
+        "<p06230900c37378438142@[171.66.36.231]>",
+        "<0925BD81-A8BD-4942-9DF9-CA15A63DB724@uchicago.edu>"
+      ],
+      "body_plain": "I wish I could tell you that this worked for me but I was not able to \nget this issue resolved for my Mac. If you have any success, I'd \nappreciate hearing about it.\n\nChris\n\n\n\n.At 10:12 AM -0600 1/15/08, Peter McMahan wrote:\n>I'm having an identical problem on mac OS 10.5.1:\n>>  library(statnet)\n>Loading required package: network\n>Classes for Relational Data\n>Version 1.2 created on July 31, 2007.\n>copyright (c) 2005, Carter T. Butts, University of California-Irvine\n>                     Mark S. Handcock, University of Washington\n>                     David R. Hunter, Penn State University\n>                     Martina Morris, University of Washington\n>Type help(package=\"network\") to get started.\n>Error in dyn.load(file, ...) :\n>   unable to load shared library \n>'/Library/Frameworks/R.framework/Resources/library/statnet/libs/i386/statnet.so':\n> \n>dlopen(/Library/Frameworks/R.framework/Resources/library/statnet/libs/i386/statnet.so, \n>6): Symbol not found: _ChangeStats\n>   Referenced from: \n>/Library/Frameworks/R.framework/Resources/library/statnet/libs/i386/statnet.so\n>   Expected in: dynamic lookup\n>\n>Error in library(statnet) : .First.lib failed for 'statnet'\n>\n>\n>My system info:\n>>    sessionInfo()\n>R version 2.6.1 (2007-11-26)\n>i386-apple-darwin8.10.1\n>\n>locale:\n>en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n>\n>attached base packages:\n>[1] stats     graphics  grDevices utils     datasets  methods   base\n>\n>other attached packages:\n>[1] network_1.2       updatestatnet_1.0\n>\n>loaded via a namespace (and not attached):\n>[1] rcompgen_0.1-17 tcltk_2.6.1     tools_2.6.1\n>>    getOption(\"pkgType\")\n>[1] \"mac.binary\"\n>\n>\n>Any thoughts? Should I try to compile the package myself?, Chris, \n>did you ever get this resolved?\n>\n>Thanks,\n>Peter\n>\n>\n>On Nov 28, 2007, at 2:02 PM, Chris Gonzalez Clarke wrote:\n>\n>>I am attempting to run Statnet on a Mac (powerPC) with OS 10.4.11. \n>>I've following the instructions to install the package in R and run \n>>the update, both of which appear successful. However, when I go to \n>>use the program ('library(statnet)), i get the following error:\n>>\n>>>library(statnet)\n>>Loading required package: network\n>>Classes for Relational Data\n>>Version 1.2 created on July 31, 2007.\n>>copyright (c) 2005, Carter T. Butts, University of California-Irvine\n>>                    Mark S. Handcock, University of Washington\n>>                    David R. Hunter, Penn State University\n>>                    Martina Morris, University of Washington\n>>Type help(package=\"network\") to get started.\n>>Error in dyn.load(file, ...) :\n>>  unable to load shared library \n>>'/Library/Frameworks/R.framework/Versions/2.6/Resources/library/statnet/libs/ppc/statnet.so':\n>>dlopen(/Library/Frameworks/R.framework/Versions/2.6/Resources/library/statnet/libs/ppc/statnet.so, \n>>6): Library not loaded: \n>>/Library/Frameworks/R.framework/Versions/2.5/Resources/lib/libR.dylib\n>>  Referenced from: \n>>/Library/Frameworks/R.framework/Versions/2.6/Resources/library/statnet/libs/ppc/statnet.so\n>>  Reason: image not found\n>>Error in library(statnet) : .First.lib failed for 'statnet'\n>>\n>>\n>>\n>>Here is my session info:\n>>\n>>>sessionInfo()\n>>R version 2.6.1 (2007-11-26)\n>>powerpc-apple-darwin8.10.1\n>>\n>>locale:\n>>en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n>>\n>>attached base packages:\n>>[1] stats     graphics  grDevices utils     datasets  methods   base\n>>\n>>other attached packages:\n>>[1] network_1.2       updatestatnet_1.0\n>>\n>>loaded via a namespace (and not attached):\n>>[1] tools_2.6.1\n>>\n>>>getOption(\"pkgType\")\n>>[1] \"mac.binary\"\n>>\n>>\n>>\n>>\n>>Any suggestions?\n>>Thanks\n>>Chris\n>>_______________________________________________\n>>statnet_help mailing list\n>>statnet_help@u.washington.edu\n>>https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "I wish I could tell you that this worked for me but I was not able to \nget this issue resolved for my Mac. If you have any success, I'd \nappreciate hearing about it.\n\nChris\n\n\n\n.At 10:12 AM -0600 1/15/",
+      "thread_id": "thread-a9bc9ec47cba",
+      "thread_depth": 1,
+      "month": "2008-01"
+    },
+    {
+      "id": "msg-b2d168495853",
+      "message_id": "<5033d01e0801171233p4abb3daan860415ec53d6263d@mail.gmail.com>",
+      "from_name": "Avranil",
+      "from_email_hash": "c7be8ce46e9f5088a8530f83a189c1cff96015609486484e5ed4b6f0849d1e8d",
+      "date": "2008-01-17T12:33:45Z",
+      "subject": "[statnet_help] Statistics for a graph",
+      "subject_clean": "[statnet_help] Statistics for a graph",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\nfor a given graph is there any way in Statnet to count the the number of\ntriangles, instars, outstars, mixed2stars, reciprocal edges etc?\nThanks.\n\n-- \navra\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080117/6a8ccc91/attachment.html>",
+      "body_snippet": "Hi,\nfor a given graph is there any way in Statnet to count the the number of\ntriangles, instars, outstars, mixed2stars, reciprocal edges etc?\nThanks.\n\n-- \navra\n-------------- next part --------------\n",
+      "thread_id": "thread-b2d168495853",
+      "thread_depth": 0,
+      "month": "2008-01"
+    },
+    {
+      "id": "msg-fa2d6b212d55",
+      "message_id": "<Pine.WNT.4.64.0801171743500.21312@csde-ts2.csde.washington.edu>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2008-01-17T17:44:40Z",
+      "subject": "[statnet_help] test message from mm",
+      "subject_clean": "[statnet_help] test message from mm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "just making sure this goes to the list.\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "just making sure this goes to the list.\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Rese",
+      "thread_id": "thread-fa2d6b212d55",
+      "thread_depth": 0,
+      "month": "2008-01"
+    },
+    {
+      "id": "msg-5c0eb3f7ee68",
+      "message_id": "<A6ABEC2F-30BF-479E-A76B-6C3C7BF46AB1@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-01-18T07:06:50Z",
+      "subject": "[statnet_help] problems running statnet",
+      "subject_clean": "[statnet_help] problems running statnet",
+      "in_reply_to": "<p06230904c3b2a6576f77@[171.64.185.119]>",
+      "references": [
+        "<p06230900c37378438142@[171.66.36.231]>",
+        "<0925BD81-A8BD-4942-9DF9-CA15A63DB724@uchicago.edu>",
+        "<p06230904c3b2a6576f77@[171.64.185.119]>"
+      ],
+      "body_plain": "Hi Peter and Chris.\n\nHave you tried installing ergm from source?  (ergm is the new  \nstatnet, basically.  It's brand-new on CRAN.)  Try going to CRAN,  \ndownloading the source for ergm, gunzipping and untarring it, then  \ninstalling using R CMD INSTALL ergm.  Once back in R, type library \n(ergm) and see if you get the same error.  If any part of that was  \nunclear, let me know -- I'm happy to expand on any part of it.\n\nAlternatively, you can try install.packages(\"statnet\") now.  The new  \nstatnet (also newly on CRAN) is basically just a shell that requires  \nseveral other packages, including ergm and network.  So this is  \nprobably the easiest road to take.  More on this soon in another email!\n\nI used to have a similar problem on my mac as well, and I made some  \nsort of hack to get around it -- I think I set up a symbolic link  \ncalled 'i386' in the /Library/.../libs directory that pointed to  \n'ppc', but I don't recall the details and I can't find my old hack at  \nthe moment.  But in any case, if you're still stuck after the ergm  \nstuff, I'm sure we can come up with some workaround! :)\n\nDave\n\n\nLe 15 janv. 08 ? 19:06, Chris Gonzalez Clarke a ?crit :\n\n> I wish I could tell you that this worked for me but I was not able  \n> to get this issue resolved for my Mac. If you have any success, I'd  \n> appreciate hearing about it.\n>\n> Chris\n>\n>\n>\n> .At 10:12 AM -0600 1/15/08, Peter McMahan wrote:\n>> I'm having an identical problem on mac OS 10.5.1:\n>>>  library(statnet)\n>> Loading required package: network\n>> Classes for Relational Data\n>> Version 1.2 created on July 31, 2007.\n>> copyright (c) 2005, Carter T. Butts, University of California-Irvine\n>>                     Mark S. Handcock, University of Washington\n>>                     David R. Hunter, Penn State University\n>>                     Martina Morris, University of Washington\n>> Type help(package=\"network\") to get started.\n>> Error in dyn.load(file, ...) :\n>>   unable to load shared library '/Library/Frameworks/R.framework/ \n>> Resources/library/statnet/libs/i386/statnet.so':\n>> dlopen(/Library/Frameworks/R.framework/Resources/library/statnet/ \n>> libs/i386/statnet.so, 6): Symbol not found: _ChangeStats\n>>   Referenced from: /Library/Frameworks/R.framework/Resources/ \n>> library/statnet/libs/i386/statnet.so\n>>   Expected in: dynamic lookup\n>>\n>> Error in library(statnet) : .First.lib failed for 'statnet'\n>>\n>>\n>> My system info:\n>>>    sessionInfo()\n>> R version 2.6.1 (2007-11-26)\n>> i386-apple-darwin8.10.1\n>>\n>> locale:\n>> en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n>>\n>> attached base packages:\n>> [1] stats     graphics  grDevices utils     datasets  methods   base\n>>\n>> other attached packages:\n>> [1] network_1.2       updatestatnet_1.0\n>>\n>> loaded via a namespace (and not attached):\n>> [1] rcompgen_0.1-17 tcltk_2.6.1     tools_2.6.1\n>>>    getOption(\"pkgType\")\n>> [1] \"mac.binary\"\n>>\n>>\n>> Any thoughts? Should I try to compile the package myself?, Chris,  \n>> did you ever get this resolved?\n>>\n>> Thanks,\n>> Peter\n>>\n>>\n>> On Nov 28, 2007, at 2:02 PM, Chris Gonzalez Clarke wrote:\n>>\n>>> I am attempting to run Statnet on a Mac (powerPC) with OS  \n>>> 10.4.11. I've following the instructions to install the package  \n>>> in R and run the update, both of which appear successful.  \n>>> However, when I go to use the program ('library(statnet)), i get  \n>>> the following error:\n>>>\n>>>> library(statnet)\n>>> Loading required package: network\n>>> Classes for Relational Data\n>>> Version 1.2 created on July 31, 2007.\n>>> copyright (c) 2005, Carter T. Butts, University of California-Irvine\n>>>                    Mark S. Handcock, University of Washington\n>>>                    David R. Hunter, Penn State University\n>>>                    Martina Morris, University of Washington\n>>> Type help(package=\"network\") to get started.\n>>> Error in dyn.load(file, ...) :\n>>>  unable to load shared library '/Library/Frameworks/R.framework/ \n>>> Versions/2.6/Resources/library/statnet/libs/ppc/statnet.so':\n>>> dlopen(/Library/Frameworks/R.framework/Versions/2.6/Resources/ \n>>> library/statnet/libs/ppc/statnet.so, 6): Library not loaded: / \n>>> Library/Frameworks/R.framework/Versions/2.5/Resources/lib/libR.dylib\n>>>  Referenced from: /Library/Frameworks/R.framework/Versions/2.6/ \n>>> Resources/library/statnet/libs/ppc/statnet.so\n>>>  Reason: image not found\n>>> Error in library(statnet) : .First.lib failed for 'statnet'\n>>>\n>>>\n>>>\n>>> Here is my session info:\n>>>\n>>>> sessionInfo()\n>>> R version 2.6.1 (2007-11-26)\n>>> powerpc-apple-darwin8.10.1\n>>>\n>>> locale:\n>>> en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n>>>\n>>> attached base packages:\n>>> [1] stats     graphics  grDevices utils     datasets  methods   base\n>>>\n>>> other attached packages:\n>>> [1] network_1.2       updatestatnet_1.0\n>>>\n>>> loaded via a namespace (and not attached):\n>>> [1] tools_2.6.1\n>>>\n>>>> getOption(\"pkgType\")\n>>> [1] \"mac.binary\"\n>>>\n>>>\n>>>\n>>>\n>>> Any suggestions?\n>>> Thanks\n>>> Chris\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Peter and Chris.\n\nHave you tried installing ergm from source?  (ergm is the new  \nstatnet, basically.  It's brand-new on CRAN.)  Try going to CRAN,  \ndownloading the source for ergm, gunzipping and",
+      "thread_id": "thread-a9bc9ec47cba",
+      "thread_depth": 2,
+      "month": "2008-01"
+    },
+    {
+      "id": "msg-b53ba35050f2",
+      "message_id": "<6E23F1DA-AB87-40CD-8FF0-C4E63DB526B4@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-01-18T07:08:58Z",
+      "subject": "[statnet_help] Statistics for a graph",
+      "subject_clean": "[statnet_help] Statistics for a graph",
+      "in_reply_to": "<5033d01e0801171233p4abb3daan860415ec53d6263d@mail.gmail.com>",
+      "references": [
+        "<5033d01e0801171233p4abb3daan860415ec53d6263d@mail.gmail.com>"
+      ],
+      "body_plain": "Le 17 janv. 08 ? 21:33, Avranil a ?crit :\n\n> Hi,\n> for a given graph is there any way in Statnet to count the the  \n> number of triangles, instars, outstars, mixed2stars, reciprocal  \n> edges etc?\n> Thanks.\n>\n\nHi Avra.  Yes, you can do all of the above at the same time.  If your  \nnetwork is called \"mynet\", then you'd type\n\nsummary( mynet ~ triangle + istar(0:3) + ostar(0:3) + m2star + mutual)\n\nand of course you can throw in any other terms you like.\n\nDave\n\n\n\n\n> -- \n> avra\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080118/6b7d98bb/attachment.html>",
+      "body_snippet": "Le 17 janv. 08 ? 21:33, Avranil a ?crit :\n\n> Hi,\n> for a given graph is there any way in Statnet to count the the  \n> number of triangles, instars, outstars, mixed2stars, reciprocal  \n> edges etc?\n> T",
+      "thread_id": "thread-b2d168495853",
+      "thread_depth": 1,
+      "month": "2008-01"
+    },
+    {
+      "id": "msg-c61c072b5479",
+      "message_id": "<E7C2A762-08D5-4346-B145-1856BFACA306@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-01-18T07:11:18Z",
+      "subject": "[statnet_help] longitudinal modeling in Statnet",
+      "subject_clean": "[statnet_help] longitudinal modeling in Statnet",
+      "in_reply_to": "<20080114235800.n5eqb6rtk4wgcc8o@webmail.stanford.edu>",
+      "references": [
+        "<20080114235800.n5eqb6rtk4wgcc8o@webmail.stanford.edu>"
+      ],
+      "body_plain": "Hi Denis.  The statnet longitudinal capabilities are still very much  \nin the research phase and in any event they are (I believe) radically  \ndifferent from those in SIENA.  (Someone correct me if I'm wrong here.)\n\nDave\n\n\n\n\nLe 15 janv. 08 ? 08:58, dtrapido@stanford.edu a ?crit :\n\n> Hi,\n>\n> I am one of the frustrated users of SIENA who love its longitudinal  \n> capabilities but cannot take advantage of them because the network  \n> is too large. I know that the Statnet project intends to develop a  \n> similar longitudinal routine capable of handling large networks.  \n> When can its release be reasonably expected? Please advise.\n>\n> Best wishes,\n>\n> Denis Trapido\n>\n> Denis Trapido\n> Ph.D. Candidate\n> Stanford University\n> Department of Sociology\n> Stanford, CA 94305-2047\n> Phone: (650) 799-8599\n> FAX: (650) 725-6471\n>\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Denis.  The statnet longitudinal capabilities are still very much  \nin the research phase and in any event they are (I believe) radically  \ndifferent from those in SIENA.  (Someone correct me if I'",
+      "thread_id": "thread-051563c8f4f7",
+      "thread_depth": 1,
+      "month": "2008-01"
+    },
+    {
+      "id": "msg-85a4a5c27a48",
+      "message_id": "<2869.24.131.194.178.1200966385.squirrel@www.stat.cmu.edu>",
+      "from_name": "avranils@stat.cmu.edu",
+      "from_email_hash": "614dc5347fae6d583a6c3f9685097a3322aae752d33860f65a9351cb449c8507",
+      "date": "2008-01-21T17:46:25Z",
+      "subject": "[statnet_help] simulating graphs from a model with parameters given",
+      "subject_clean": "[statnet_help] simulating graphs from a model with parameters given",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\nis it possible to simulate graphs from a model with given parameter values\nand not just from a fitted ergm object?\n\nThanks,\nAvranil",
+      "body_snippet": "Hi,\nis it possible to simulate graphs from a model with given parameter values\nand not just from a fitted ergm object?\n\nThanks,\nAvranil",
+      "thread_id": "thread-85a4a5c27a48",
+      "thread_depth": 0,
+      "month": "2008-01"
+    },
+    {
+      "id": "msg-3895c5be1544",
+      "message_id": "<C3BA8D0A.148FB%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2008-01-21T17:55:22Z",
+      "subject": "[statnet_help] simulating graphs from a model with parameters given",
+      "subject_clean": "[statnet_help] simulating graphs from a model with parameters given",
+      "in_reply_to": "<2869.24.131.194.178.1200966385.squirrel@www.stat.cmu.edu>",
+      "references": [],
+      "body_plain": "Avranil,\n\nIt is. Take a look the example in the help e.g., ?simulate.formula\n\ne.g.,\n\n     g.use <- network(16,density=0.1,directed=FALSE)\n     #\n     # Starting from this network let's draw 5 realizations\n     # of a edges and 2-star network\n     #\n     g.sim <- simulate(g.use~edges+kstar(2),nsim=5,theta0=c(-1.8,0.03),\n                       burnin=100000,interval=1000)\n     g.sim\n\nBest,\n\nMark\n\n\nOn 1/21/08 5:46 PM, \"avranils@stat.cmu.edu\" <avranils@stat.cmu.edu> wrote:\n\n> Hi,\n> is it possible to simulate graphs from a model with given parameter values\n> and not just from a fitted ergm object?\n> \n> Thanks,\n> Avranil\n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Avranil,\n\nIt is. Take a look the example in the help e.g., ?simulate.formula\n\ne.g.,\n\n     g.use <- network(16,density=0.1,directed=FALSE)\n     #\n     # Starting from this network let's draw 5 realizat",
+      "thread_id": "thread-85a4a5c27a48",
+      "thread_depth": 1,
+      "month": "2008-01"
+    },
+    {
+      "id": "msg-67f344de3b69",
+      "message_id": "<97046D32-CE61-4CC9-8E21-073CCEC8A23D@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-01-22T23:52:50Z",
+      "subject": "[statnet_help] CRAN packages, users guide drafts",
+      "subject_clean": "[statnet_help] CRAN packages, users guide drafts",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all.  First, I'm sorry the statnet team has been slow to answer  \nemails lately.  We've been frantically tying up loose ends to release  \nseveral packages on CRAN and also finish a set of eight manuscripts  \nthat will be published very soon as a special volume of the online  \nJournal of Statistical Software.\n\nTo keep things short for now...\n\nMost of the old \"statnet\" functionality is now in a CRAN package  \ncalled \"ergm\".  However, \"statnet\" still exists, as a CRAN package  \nthat basically just loads several other packages (including ergm).\n\nSo the easiest thing to try is to go to R and type install.packages \n(\"statnet\").  This should install all of the required packages.*   \nThen type library(statnet) to load them.  If instead you like to  \ninstall from the source code, you can find that on CRAN.\n\nAlso, a set of draft manuscripts for the aforementioned JSS volume  \ncan be found at http://statnetproject.org/users_guide.shtml\nOf course, we'll send out another email when the final versions are  \navailable at the JSS website.\n\nUndoubtedly there will be more info to follow in the near future.   \nWe'd love to hear any bug reports of course...\n\nDave Hunter\n\n* recently several of us have had troubles getting the  \ninstall.packages() function to work.  The only thing we all had in  \ncommon was that we were using a version of R older than the latest,  \nwhich is 2.6.1, and after we upgraded the problem went away.   \nHowever, upgrading can sometimes bring its own set of issues (it  \ncertainly did for me on my mac!), on which perhaps more in a later  \npost if others have similar problems!\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080123/81153650/attachment.html>",
+      "body_snippet": "Hi all.  First, I'm sorry the statnet team has been slow to answer  \nemails lately.  We've been frantically tying up loose ends to release  \nseveral packages on CRAN and also finish a set of eight man",
+      "thread_id": "thread-67f344de3b69",
+      "thread_depth": 0,
+      "month": "2008-01"
+    },
+    {
+      "id": "msg-dc09c26b6733",
+      "message_id": "<79e18c820801241330m4c78083ob21c38a655ce3c83@mail.gmail.com>",
+      "from_name": "Elizeu Santos-Neto",
+      "from_email_hash": "b580f8e90431f7e52b49188565bd217157fbc0f4e7b4badb3468868148808208",
+      "date": "2008-01-24T13:30:11Z",
+      "subject": "[statnet_help] Error in plot.network(g) : could not find function \"plot.network.ergm\"",
+      "subject_clean": "[statnet_help] Error in plot.network(g) : could not find function \"plot.network.ergm\"",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello all,\n\nFollowing the manuals I installed the statnet package and it worked perfectly.\n\nI tried a couple of commands to get familiar with the functions.\nHowever, I hit the following problem after executing the following\nsequence of commands:\n\nlibrary(\"statnet\");\n> x <- read.table('net.dat');\n> g <- network(x[,1:2]);\n> g\nNetwork attributes:\n   vertices = 20\n   directed = TRUE\n   hyper = FALSE\n   loops = FALSE\n   multiple = FALSE\n   bipartite = FALSE\n   total edges= 19\n\nNo nodal attributes\n\n edgelist matrix:\n      [,1] [,2]\n....\n\n> plot(g, displayisolates=F)\nError in plot.network(g, displayisolates = F) :\n        could not find function \"plot.network.ergm\"\n\nDid I miss any part in the installation? Or even in the initialization part?\n\nThanks in advance,\nElizeu",
+      "body_snippet": "Hello all,\n\nFollowing the manuals I installed the statnet package and it worked perfectly.\n\nI tried a couple of commands to get familiar with the functions.\nHowever, I hit the following problem after ",
+      "thread_id": "thread-dc09c26b6733",
+      "thread_depth": 0,
+      "month": "2008-01"
+    },
+    {
+      "id": "msg-6a6e93830523",
+      "message_id": "<C3C35AAC.14B32%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2008-01-28T10:10:52Z",
+      "subject": "[statnet_help] Error in plot.network(g) : could not find function \"plot.network.ergm\"",
+      "subject_clean": "[statnet_help] Error in plot.network(g) : could not find function \"plot.network.ergm\"",
+      "in_reply_to": "<79e18c820801241330m4c78083ob21c38a655ce3c83@mail.gmail.com>",
+      "references": [],
+      "body_plain": "Dear Elizeu,\n\nThis is a simple bug induced by the upgrade to statnet 2.0.\nThe simplest solution is to update to the version with the bug fixed via:\n\ninstall.packages(\"ergm\")\n\nThis should make the code work fine.\n\nBest,\n\nMark\n\np.s. The problem is that the \"plot.network.ergm\" function no longer exists.\nA direct fix is to type: \"plot.network.ergm <- plot.network.default\"\n\nOn 1/24/08 1:30 PM, \"Elizeu Santos-Neto\" <elsantosneto@gmail.com> wrote:\n\n> Hello all,\n> \n> Following the manuals I installed the statnet package and it worked perfectly.\n> \n> I tried a couple of commands to get familiar with the functions.\n> However, I hit the following problem after executing the following\n> sequence of commands:\n> \n> library(\"statnet\");\n>> x <- read.table('net.dat');\n>> g <- network(x[,1:2]);\n>> g\n> Network attributes:\n>    vertices = 20\n>    directed = TRUE\n>    hyper = FALSE\n>    loops = FALSE\n>    multiple = FALSE\n>    bipartite = FALSE\n>    total edges= 19\n> \n> No nodal attributes\n> \n>  edgelist matrix:\n>       [,1] [,2]\n> ....\n> \n>> plot(g, displayisolates=F)\n> Error in plot.network(g, displayisolates = F) :\n>         could not find function \"plot.network.ergm\"\n> \n> Did I miss any part in the installation? Or even in the initialization part?\n> \n> Thanks in advance,\n> Elizeu\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Elizeu,\n\nThis is a simple bug induced by the upgrade to statnet 2.0.\nThe simplest solution is to update to the version with the bug fixed via:\n\ninstall.packages(\"ergm\")\n\nThis should make the code",
+      "thread_id": "thread-dc09c26b6733",
+      "thread_depth": 1,
+      "month": "2008-01"
+    },
+    {
+      "id": "msg-185f58aa498d",
+      "message_id": "<BAY123-W3469BA14FC47D26C1165BCA0340@phx.gbl>",
+      "from_name": "Hank Green",
+      "from_email_hash": "3ffe890a9f67d24463a3b8702e9fe4ee201a14c8fa4b5472fa5ce4e81912e82a",
+      "date": "2008-01-28T10:40:45Z",
+      "subject": "[statnet_help] network object data management questions",
+      "subject_clean": "[statnet_help] network object data management questions",
+      "in_reply_to": "<12656469.1201537746014.JavaMail.SVC_SecMsg@WPSCZGSF>",
+      "references": [
+        "<12656469.1201537746014.JavaMail.SVC_SecMsg@WPSCZGSF>"
+      ],
+      "body_plain": "hi statnet helpers: i have two questions for the group. one, i think, is probably fairly basic. the other may be a little more complicated. both deal with data management for a complex network data set. first some introduction on the project:i have a data set to analyze that contains about 500 12x12 sociomatrices. i am trying to develop a scrip that can (for now) calculate basic SNA indices on these networks. after we get descriptives finished, we intend to do some ERGM related work. the data are keyed by an ID number that refers to the particular network. each network is in an edgelist. each line contains the network ID, the vertex ids for each edge, some vertex attributes, and some edge attributes. the easy one first (and this absolutely displays my ignorance of R operations)how, given that these data are read in as a flat matrix, do i point to the edgelist portions of the data so that the network package can populate the network correctly? basically, how do i say: these data refer to this particular network, these columns represent the ids for the edges, these columns represent vertex attributes for a particular edge, etc. i need R to look at the first column to limit the edge lists, and then look at the second and third columns for the vertices of each edge. the harder one is:i know carter's network object can handle all of these data for a single network. (nodes, edges, node and edge attributes). but can the network objects be grouped together so that i can have a data structure that contains all 500 or so network objects and i can run the analyses on on them at the same time? thanks for any help on this,hank\n_________________________________________________________________\nNeed to know the score, the latest news, or you need your Hotmail?-get your \"fix\".\nhttp://www.msnmobilefix.com/Default.aspx\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080128/db3ea426/attachment.html>",
+      "body_snippet": "hi statnet helpers: i have two questions for the group. one, i think, is probably fairly basic. the other may be a little more complicated. both deal with data management for a complex network data se",
+      "thread_id": "thread-185f58aa498d",
+      "thread_depth": 0,
+      "month": "2008-01"
+    },
+    {
+      "id": "msg-c6ad67070f8c",
+      "message_id": "<FDCF9A43-968E-49AD-BB45-514D0DD4603D@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-01-28T21:49:15Z",
+      "subject": "[statnet_help] network object data management questions",
+      "subject_clean": "[statnet_help] network object data management questions",
+      "in_reply_to": "<BAY123-W3469BA14FC47D26C1165BCA0340@phx.gbl>",
+      "references": [
+        "<12656469.1201537746014.JavaMail.SVC_SecMsg@WPSCZGSF>",
+        "<BAY123-W3469BA14FC47D26C1165BCA0340@phx.gbl>"
+      ],
+      "body_plain": "Hello Hank.  Actually, I think the basic and the complicated may be  \nthe other way around! :)\nSee below.\n\n\nLe 28 janv. 08 ? 19:40, Hank Green a ?crit :\n\n> hi statnet helpers:\n>\n> i have two questions for the group. one, i think, is probably  \n> fairly basic. the other may be a little more complicated. both deal  \n> with data management for a complex network data set.\n>\n> first some introduction on the project:\n> i have a data set to analyze that contains about 500 12x12  \n> sociomatrices. i am trying to develop a scrip that can (for now)  \n> calculate basic SNA indices on these networks. after we get  \n> descriptives finished, we intend to do some ERGM related work. the  \n> data are keyed by an ID number that refers to the particular  \n> network. each network is in an edgelist. each line contains the  \n> network ID, the vertex ids for each edge, some vertex attributes,  \n> and some edge attributes.\n>\n> the easy one first (and this absolutely displays my ignorance of R  \n> operations)\n> how, given that these data are read in as a flat matrix, do i point  \n> to the edgelist portions of the data so that the network package  \n> can populate the network correctly? basically, how do i say: these  \n> data refer to this particular network, these columns represent the  \n> ids for the edges, these columns represent vertex attributes for a  \n> particular edge, etc. i need R to look at the first column to limit  \n> the edge lists, and then look at the second and third columns for  \n> the vertices of each edge.\n\nI think you're right about this being easy to do in principle, but I  \nfind it hard to answer without a bit more specific info about what  \nyou mean by \"to limit the edge list\" -- do have a quick example of  \nthe kind of file you'd like to read in?\n\n\n>\n> the harder one is:\n> i know carter's network object can handle all of these data for a  \n> single network. (nodes, edges, node and edge attributes). but can  \n> the network objects be grouped together so that i can have a data  \n> structure that contains all 500 or so network objects and i can run  \n> the analyses on on them at the same time?\n>\n\nYes.  R has a structure called a list that can be used to group  \ntogether arbitrary collections of objects.  Here is a simple example  \nthat creates a list of network objects, each of which is a randomly  \ngenerated 5-node network.  Note the use of the '%n%' operator to  \nattach a network attribute called \"name\" to each:\n\n > mynetworks <- list() # Create an empty list object to expand later\n > for(i in 1:20) {\n+   mynetworks[[i]] <- network(5)  #double square brackets used to  \nindex list items\n+   mynetworks[[i]] %n% \"name\" <- paste(\"This is network\",LETTERS[i])\n+ }\n\n\nNow, suppose you'd like to see the names of each network.  First,  \nlet's create a simple function to look at the name of a network:\n\n > simplefunction <- function(nw) nw %n% \"name\"\n\nTo test it, apply the function to the 3rd network in the list  \n\"mynetworks\":\n\n > simplefunction(mynetworks[[3]])\n[1] \"This is network C\"\n\nNow for the real stuff:  I would like to apply my 'simplefunction' to  \neach element of the list of networks I just created.  Easy, using the  \nsapply function:\n\n > sapply(mynetworks, simplefunction)\n  [1] \"This is network A\" \"This is network B\" \"This is network C\"  \n\"This is network D\"\n  [5] \"This is network E\" \"This is network F\" \"This is network G\"  \n\"This is network H\"\n  [9] \"This is network I\" \"This is network J\" \"This is network K\"  \n\"This is network L\"\n[13] \"This is network M\" \"This is network N\" \"This is network O\"  \n\"This is network P\"\n[17] \"This is network Q\" \"This is network R\" \"This is network S\"  \n\"This is network T\"\n\nOr perhaps I'd rather get, say, the Krackhardt connectedness score  \nfor each of my 20 networks (using the sna function \"connectedness\"):\n\n > sapply(mynetworks, connectedness)\n  [1] 0.6 1.0 0.3 1.0 1.0 1.0 0.6 1.0 0.6 1.0 0.6 1.0 1.0 0.6 1.0 1.0  \n0.3 1.0 0.3 1.0\n\nThat last output was a bit hard to read, so how about a tabular  \nsummary of all the values along with their frequencies:\n > table(sapply(mynetworks, connectedness))\n\n0.3 0.6   1\n   3   5  12\n\nHow about the eigenvalue centrality of each network?  Note the form  \nof the output below:  Since \"evcent\" produces a 5-vector for each  \nnetwork, \"sapply\" compiles all the results into a 5x20 matrix:\n\n > sapply(mynetworks, evcent)\n           [,1]      [,2] [,3]      [,4]      [,5] [,6] [,7] [,8] [, \n9] [,10] [,11]\n[1,] 0.3779645 0.5154865    0 0.6459396 0.5708914    0    0    1     \n0     0     0\n[2,] 0.7559289 0.3891292    0 0.3007309 0.3337289    0    1    0     \n0     0     1\n[3,] 0.3779645 0.5874899    0 0.5059280 0.3337289    0    0    0     \n1     0     0\n[4,] 0.3779645 0.2937450    1 0.4407426 0.6428631    0    0    0     \n0     1     0\n[5,] 0.0000000 0.3891292    0 0.2051971 0.1950896    1    0    0     \n0     0     0\n      [,12]     [,13]     [,14]     [,15] [,16]     [,17] [,18] [,19]  \n[,20]\n[1,]     0 0.3779645 0.0000000 0.0000000   0.5 0.5773503   0.5      \n0     1\n[2,]     0 0.0000000 0.5773503 0.7071068   0.5 0.5773503   0.0      \n0     0\n[3,]     0 0.7559289 0.5773503 0.0000000   0.5 0.5773503   0.5      \n0     0\n[4,]     0 0.3779645 0.5773503 0.0000000   0.5 0.0000000   0.5      \n1     0\n[5,]     1 0.3779645 0.0000000 0.7071068   0.0 0.0000000   0.5      \n0     0\n\nTo use an argument to the \"evcent\" network (say, to look at just the  \n3rd node), just include the arguments in sapply:\n\n > sapply(mynetworks, evcent, nodes=3)\n  [1] 0.3779645 0.5874899 0.0000000 0.5059280 0.3337289 0.0000000  \n0.0000000 0.0000000\n  [9] 1.0000000 0.0000000 0.0000000 0.0000000 0.7559289 0.5773503  \n0.0000000 0.5000000\n[17] 0.5773503 0.5000000 0.0000000 0.0000000\n\nI hope this helps.\n\nNB:  Much of this capability (like the sapply function and the list  \nstructure) is part of R itself, not network or sna.  This is why we  \nlove R!\n\nDave\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080129/9a94c6a0/attachment.html>",
+      "body_snippet": "Hello Hank.  Actually, I think the basic and the complicated may be  \nthe other way around! :)\nSee below.\n\n\nLe 28 janv. 08 ? 19:40, Hank Green a ?crit :\n\n> hi statnet helpers:\n>\n> i have two questions",
+      "thread_id": "thread-185f58aa498d",
+      "thread_depth": 1,
+      "month": "2008-01"
+    },
+    {
+      "id": "msg-b06deba71cdc",
+      "message_id": "<47A08813.7000201@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2008-01-30T06:22:11Z",
+      "subject": "[statnet_help] network object data management questions",
+      "subject_clean": "[statnet_help] network object data management questions",
+      "in_reply_to": "<BAY123-W3469BA14FC47D26C1165BCA0340@phx.gbl>",
+      "references": [
+        "<12656469.1201537746014.JavaMail.SVC_SecMsg@WPSCZGSF>",
+        "<BAY123-W3469BA14FC47D26C1165BCA0340@phx.gbl>"
+      ],
+      "body_plain": "Hi, Hank -\n\nHank Green wrote:\n> hi statnet helpers:\n>  \n> i have two questions for the group. one, i think, is probably fairly \n> basic. the other may be a little more complicated. both deal with data \n> management for a complex network data set.\n>  \n> first some introduction on the project:\n> i have a data set to analyze that contains about 500 12x12 \n> sociomatrices. i am trying to develop a scrip that can (for now) \n> calculate basic SNA indices on these networks. after we get descriptives \n> finished, we intend to do some ERGM related work. the data are keyed by \n> an ID number that refers to the particular network. each network is in \n> an edgelist. each line contains the network ID, the vertex ids for each \n> edge, some vertex attributes, and some edge attributes.\n\nJust to clarify, I am assuming that your last two sentences override \nyour first sentence: i.e., your data is not in sociomatrix (adjacency \nmatrix) form.\n\n>  \n> the easy one first (and this absolutely displays my ignorance of R \n> operations)\n> how, given that these data are read in as a flat matrix, do i point to \n> the edgelist portions of the data so that the network package can \n> populate the network correctly? basically, how do i say: these data \n> refer to this particular network, these columns represent the ids for \n> the edges, these columns represent vertex attributes for a particular \n> edge, etc. i need R to look at the first column to limit the edge \n> lists, and then look at the second and third columns for the vertices of \n> each edge.\n\nThis is a general R question, but you can probably do something like this:\n\n#I assume that mydat is your data object, w/three columns, and all\n#networks are of order n.  Also, I presume that your vertex IDs are\n#integers from 1 to n; if not, this won't work as-is.  (I also assume\n#that the data is directed.)\nn<-12                            #Set the network size\nnetids<-sort(unique(mydat[,1]))  #Get the network IDs\nmynets<-lapply(netids,function(id){\n   network.edgelist(mydat[mydat[,1]==id,2:3],network.initialize(n))\n})\n\nI wrote this off the top of my head, so it may or may not work.  But a \nlittle uncertainty makes life more exciting.\n\n>  \n> the harder one is:\n> i know carter's network object can handle all of these data for a single \n> network. (nodes, edges, node and edge attributes). but can the network \n> objects be grouped together so that i can have a data structure that \n> contains all 500 or so network objects and i can run the analyses on on \n> them at the same time?\n\nYes -- just put them in a list (per the above).  Nearly all sna routines \naccept networks/adjacency matrices/adjacency arrays/etc. in list form, \nand will generally treat the results in the obvious fashion.  For \ninstance, gden(mynets) after executing the above should give you the \nvector of density scores for the 500 networks.\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "Hi, Hank -\n\nHank Green wrote:\n> hi statnet helpers:\n>  \n> i have two questions for the group. one, i think, is probably fairly \n> basic. the other may be a little more complicated. both deal with data",
+      "thread_id": "thread-185f58aa498d",
+      "thread_depth": 1,
+      "month": "2008-01"
+    },
+    {
+      "id": "msg-85b795f91e7c",
+      "message_id": "<47A08E09.2030301@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2008-01-30T06:47:37Z",
+      "subject": "[statnet_help] network object data management questions",
+      "subject_clean": "[statnet_help] network object data management questions",
+      "in_reply_to": "<FDCF9A43-968E-49AD-BB45-514D0DD4603D@stat.psu.edu>",
+      "references": [
+        "<12656469.1201537746014.JavaMail.SVC_SecMsg@WPSCZGSF>",
+        "<BAY123-W3469BA14FC47D26C1165BCA0340@phx.gbl>",
+        "<FDCF9A43-968E-49AD-BB45-514D0DD4603D@stat.psu.edu>"
+      ],
+      "body_plain": "One extra comment on Dave's reply:\n\nDavid Hunter wrote:\n> Or perhaps I'd rather get, say, the Krackhardt connectedness score for \n> each of my 20 networks (using the sna function \"connectedness\"):\n> \n>  > sapply(mynetworks, connectedness)\n>  [1] 0.6 1.0 0.3 1.0 1.0 1.0 0.6 1.0 0.6 1.0 0.6 1.0 1.0 0.6 1.0 1.0 0.3 \n> 1.0 0.3 1.0\n\nActually, you don't have to do this: \"connectedness\" (like most sna \nfunctions) is smart enough to recognize that it was called with a list, \nand to act accordingly.  Thus, you can get the same results with the \ncommand \"connectedness(mynetworks).\"  Either will work fine; the latter \nis just shorter.  (Note that there are some functions which require the \nsapply method -- centralization is a prominent one.  See the package \nhelp for details on how a given function processes its inputs.)\n\nHope that helps,\n\n-Carter\n\nPS. If your graphs are of the same order, you can also use adjacency \narrays.  See ?sna for more.",
+      "body_snippet": "One extra comment on Dave's reply:\n\nDavid Hunter wrote:\n> Or perhaps I'd rather get, say, the Krackhardt connectedness score for \n> each of my 20 networks (using the sna function \"connectedness\"):\n> \n",
+      "thread_id": "thread-185f58aa498d",
+      "thread_depth": 2,
+      "month": "2008-01"
+    },
+    {
+      "id": "msg-edfc642b99db",
+      "message_id": "<79e18c820801311404o38de7de5p8278b974538ab85@mail.gmail.com>",
+      "from_name": "Elizeu Santos-Neto",
+      "from_email_hash": "b580f8e90431f7e52b49188565bd217157fbc0f4e7b4badb3468868148808208",
+      "date": "2008-01-31T14:04:55Z",
+      "subject": "[statnet_help] ergm execution aborted",
+      "subject_clean": "[statnet_help] ergm execution aborted",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello all,\n\nI am executing the following:\n\nx <- read.table(\"net.dat\");\ng <- network(x[,1:2]);\nformula1 <- g ~ edges;\nmodel1 <- ergm(formula1, MCMCsamplesize=10000);\n\nAfter a couple of minutes running, I got the following error message:\n\n*** glibc detected *** /usr/lib/R/bin/exec/R: double free or\ncorruption (!prev): 0x1cd8d1a0 ***\n======= Backtrace: =========\n/lib/libc.so.6[0xb25a96]\n/lib/libc.so.6(cfree+0x90)[0xb28fb0]\n/usr/lib/R/library/ergm/libs/ergm.so(NetworkDestroy+0x3a)[0x1bb1da]\n/usr/lib/R/library/ergm/libs/ergm.so(MPLE_wrapper+0x4f6)[0x1c6db6]\n.....supressed......\n======= Memory map: ========\n00110000-00111000 r-xp 00110000 00:00 0          [vdso]\n....supressed...\nAborted\n\nAny ideas why does it happen? and how should I solve it?\n\nThanks in advance,\nElizeu",
+      "body_snippet": "Hello all,\n\nI am executing the following:\n\nx <- read.table(\"net.dat\");\ng <- network(x[,1:2]);\nformula1 <- g ~ edges;\nmodel1 <- ergm(formula1, MCMCsamplesize=10000);\n\nAfter a couple of minutes running,",
+      "thread_id": "thread-edfc642b99db",
+      "thread_depth": 0,
+      "month": "2008-01"
+    },
+    {
+      "id": "msg-08a48fb34d29",
+      "message_id": "<47A25591.5090605@gmail.com>",
+      "from_name": "Elizeu Santos-Neto",
+      "from_email_hash": "b580f8e90431f7e52b49188565bd217157fbc0f4e7b4badb3468868148808208",
+      "date": "2008-01-31T15:11:13Z",
+      "subject": "[statnet_help] ergm execution aborted",
+      "subject_clean": "[statnet_help] ergm execution aborted",
+      "in_reply_to": "<Pine.LNX.4.43.0801311435490.20062@hymn32.u.washington.edu>",
+      "references": [
+        "<Pine.LNX.4.43.0801311435490.20062@hymn32.u.washington.edu>"
+      ],
+      "body_plain": "Hi Jacob,\n\n\tThanks for the advice.\n\n\tI changed as you suggested, but now I got: \"segfault from C stack overflow\"\n\n\tMy educated guess, based on the previous message is that the statnet \ncode might be trying to release some data structure twice.\n\n\tHowever, I'm not familiar enough with the code to point it where \nexactly this might be happening.\n\n\tDoes it have to do with the size of the network? This is a network with \napproximately 4900 nodes and 232,854 edges.\n\nThanks,\nElizeu\n\nJacob T N Young wrote:\n> Elizu,\n> \n> Did you try adding the model directly into the ergm model:\n> \n> x <- read.table(\"net.dat\");\n> g <- network(x[,1:2]);\n> model1 <- ergm(g ~ edges, MCMCsamplesize=10000);\n> \n> \n> Jacob T.N. Young\n> Graduate Student\n> Department of Sociology\n> University of Washington\n> Box 353340\n> Seattle, WA 98115\n> \n> On Thu, 31 Jan 2008, Elizeu Santos-Neto wrote:\n> \n>> Hello all,\n>>\n>> I am executing the following:\n>>\n>> x <- read.table(\"net.dat\");\n>> g <- network(x[,1:2]);\n>> formula1 <- g ~ edges;\n>> model1 <- ergm(formula1, MCMCsamplesize=10000);\n>>\n>> After a couple of minutes running, I got the following error message:\n>>\n>> *** glibc detected *** /usr/lib/R/bin/exec/R: double free or\n>> corruption (!prev): 0x1cd8d1a0 ***\n>> ======= Backtrace: =========\n>> /lib/libc.so.6[0xb25a96]\n>> /lib/libc.so.6(cfree+0x90)[0xb28fb0]\n>> /usr/lib/R/library/ergm/libs/ergm.so(NetworkDestroy+0x3a)[0x1bb1da]\n>> /usr/lib/R/library/ergm/libs/ergm.so(MPLE_wrapper+0x4f6)[0x1c6db6]\n>> .....supressed......\n>> ======= Memory map: ========\n>> 00110000-00111000 r-xp 00110000 00:00 0          [vdso]\n>> ....supressed...\n>> Aborted\n>>\n>> Any ideas why does it happen? and how should I solve it?\n>>\n>> Thanks in advance,\n>> Elizeu\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>>\n> \n>",
+      "body_snippet": "Hi Jacob,\n\n\tThanks for the advice.\n\n\tI changed as you suggested, but now I got: \"segfault from C stack overflow\"\n\n\tMy educated guess, based on the previous message is that the statnet \ncode might be t",
+      "thread_id": "thread-08a48fb34d29",
+      "thread_depth": 0,
+      "month": "2008-01"
+    },
+    {
+      "id": "msg-3fa04d30db81",
+      "message_id": "<E6675195-A680-4094-B821-D35C91E7BF85@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-01-31T22:06:57Z",
+      "subject": "[statnet_help] ergm execution aborted",
+      "subject_clean": "[statnet_help] ergm execution aborted",
+      "in_reply_to": "<47A25591.5090605@gmail.com>",
+      "references": [
+        "<Pine.LNX.4.43.0801311435490.20062@hymn32.u.washington.edu>",
+        "<47A25591.5090605@gmail.com>"
+      ],
+      "body_plain": "Hi Elizeu.  First of all, I'm surprised you got *anything* different  \nby getting rid of the formula step, which should have had no effect  \nthat I know of (weird!).  But additionally, there is no reason I know  \nof that your commands would cause any problems -- so perhaps it is  \nrelated to the size of the network somehow.  We have certainly used  \nnetworks with this number of nodes, but they tend to be quite a bit  \nsparser than yours, so we haven't had a lot of chance to test this  \nwith large, nonsparse networks.\n\nThe model you're fitting is going to be fit using MPLE since it is  \nthe same as an MLE in this case.  So perhaps the problem lies there.   \nI would like to figure out what's going on here in any case... I will  \ntry to replcate the problem on a simulated network but am wondering  \nwhether you would be willing to share this \"net.dat\" file if need be?\n\nDave\n\n\nLe 1 f?vr. 08 ? 00:11, Elizeu Santos-Neto a ?crit :\n\n>\n> \tHi Jacob,\n>\n> \tThanks for the advice.\n>\n> \tI changed as you suggested, but now I got: \"segfault from C stack  \n> overflow\"\n>\n> \tMy educated guess, based on the previous message is that the  \n> statnet code might be trying to release some data structure twice.\n>\n> \tHowever, I'm not familiar enough with the code to point it where  \n> exactly this might be happening.\n>\n> \tDoes it have to do with the size of the network? This is a network  \n> with approximately 4900 nodes and 232,854 edges.\n>\n> Thanks,\n> Elizeu\n>\n> Jacob T N Young wrote:\n>> Elizu,\n>> Did you try adding the model directly into the ergm model:\n>> x <- read.table(\"net.dat\");\n>> g <- network(x[,1:2]);\n>> model1 <- ergm(g ~ edges, MCMCsamplesize=10000);\n>> Jacob T.N. Young\n>> Graduate Student\n>> Department of Sociology\n>> University of Washington\n>> Box 353340\n>> Seattle, WA 98115\n>> On Thu, 31 Jan 2008, Elizeu Santos-Neto wrote:\n>>> Hello all,\n>>>\n>>> I am executing the following:\n>>>\n>>> x <- read.table(\"net.dat\");\n>>> g <- network(x[,1:2]);\n>>> formula1 <- g ~ edges;\n>>> model1 <- ergm(formula1, MCMCsamplesize=10000);\n>>>\n>>> After a couple of minutes running, I got the following error  \n>>> message:\n>>>\n>>> *** glibc detected *** /usr/lib/R/bin/exec/R: double free or\n>>> corruption (!prev): 0x1cd8d1a0 ***\n>>> ======= Backtrace: =========\n>>> /lib/libc.so.6[0xb25a96]\n>>> /lib/libc.so.6(cfree+0x90)[0xb28fb0]\n>>> /usr/lib/R/library/ergm/libs/ergm.so(NetworkDestroy+0x3a)[0x1bb1da]\n>>> /usr/lib/R/library/ergm/libs/ergm.so(MPLE_wrapper+0x4f6)[0x1c6db6]\n>>> .....supressed......\n>>> ======= Memory map: ========\n>>> 00110000-00111000 r-xp 00110000 00:00 0          [vdso]\n>>> ....supressed...\n>>> Aborted\n>>>\n>>> Any ideas why does it happen? and how should I solve it?\n>>>\n>>> Thanks in advance,\n>>> Elizeu\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Elizeu.  First of all, I'm surprised you got *anything* different  \nby getting rid of the formula step, which should have had no effect  \nthat I know of (weird!).  But additionally, there is no rea",
+      "thread_id": "thread-08a48fb34d29",
+      "thread_depth": 1,
+      "month": "2008-01"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-051563c8f4f7",
+      "subject": "[statnet_help] longitudinal modeling in Statnet",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "dtrapido@stanford.edu"
+      ],
+      "started": "2008-01-14T23:58:00Z",
+      "last_reply": "2008-01-18T07:11:18Z",
+      "root_message_id": "msg-051563c8f4f7"
+    },
+    {
+      "id": "thread-a9bc9ec47cba",
+      "subject": "[statnet_help] problems running statnet",
+      "message_count": 3,
+      "participants": [
+        "Chris Gonzalez Clarke",
+        "David Hunter",
+        "Peter McMahan"
+      ],
+      "started": "2008-01-15T08:12:23Z",
+      "last_reply": "2008-01-18T07:06:50Z",
+      "root_message_id": "msg-a9bc9ec47cba"
+    },
+    {
+      "id": "thread-b2d168495853",
+      "subject": "[statnet_help] Statistics for a graph",
+      "message_count": 2,
+      "participants": [
+        "Avranil",
+        "David Hunter"
+      ],
+      "started": "2008-01-17T12:33:45Z",
+      "last_reply": "2008-01-18T07:08:58Z",
+      "root_message_id": "msg-b2d168495853"
+    },
+    {
+      "id": "thread-fa2d6b212d55",
+      "subject": "[statnet_help] test message from mm",
+      "message_count": 1,
+      "participants": [
+        "Martina Morris"
+      ],
+      "started": "2008-01-17T17:44:40Z",
+      "last_reply": "2008-01-17T17:44:40Z",
+      "root_message_id": "msg-fa2d6b212d55"
+    },
+    {
+      "id": "thread-85a4a5c27a48",
+      "subject": "[statnet_help] simulating graphs from a model with parameters given",
+      "message_count": 2,
+      "participants": [
+        "Mark S. Handcock",
+        "avranils@stat.cmu.edu"
+      ],
+      "started": "2008-01-21T17:46:25Z",
+      "last_reply": "2008-01-21T17:55:22Z",
+      "root_message_id": "msg-85a4a5c27a48"
+    },
+    {
+      "id": "thread-67f344de3b69",
+      "subject": "[statnet_help] CRAN packages, users guide drafts",
+      "message_count": 1,
+      "participants": [
+        "David Hunter"
+      ],
+      "started": "2008-01-22T23:52:50Z",
+      "last_reply": "2008-01-22T23:52:50Z",
+      "root_message_id": "msg-67f344de3b69"
+    },
+    {
+      "id": "thread-dc09c26b6733",
+      "subject": "[statnet_help] Error in plot.network(g) : could not find function \"plot.network.ergm\"",
+      "message_count": 2,
+      "participants": [
+        "Elizeu Santos-Neto",
+        "Mark S. Handcock"
+      ],
+      "started": "2008-01-24T13:30:11Z",
+      "last_reply": "2008-01-28T10:10:52Z",
+      "root_message_id": "msg-dc09c26b6733"
+    },
+    {
+      "id": "thread-185f58aa498d",
+      "subject": "[statnet_help] network object data management questions",
+      "message_count": 4,
+      "participants": [
+        "Carter T. Butts",
+        "David Hunter",
+        "Hank Green"
+      ],
+      "started": "2008-01-28T10:40:45Z",
+      "last_reply": "2008-01-30T06:47:37Z",
+      "root_message_id": "msg-185f58aa498d"
+    },
+    {
+      "id": "thread-edfc642b99db",
+      "subject": "[statnet_help] ergm execution aborted",
+      "message_count": 1,
+      "participants": [
+        "Elizeu Santos-Neto"
+      ],
+      "started": "2008-01-31T14:04:55Z",
+      "last_reply": "2008-01-31T14:04:55Z",
+      "root_message_id": "msg-edfc642b99db"
+    },
+    {
+      "id": "thread-08a48fb34d29",
+      "subject": "[statnet_help] ergm execution aborted",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Elizeu Santos-Neto"
+      ],
+      "started": "2008-01-31T15:11:13Z",
+      "last_reply": "2008-01-31T22:06:57Z",
+      "root_message_id": "msg-08a48fb34d29"
+    }
+  ]
+}

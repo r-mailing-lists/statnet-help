@@ -1,0 +1,166 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2008-08",
+  "messages": [
+    {
+      "id": "msg-2abe99425755",
+      "message_id": "<AE1C5491-AD1D-4FE0-BE5E-1969C80530B1@att.net>",
+      "from_name": "Theodore Iwashyna",
+      "from_email_hash": "92385eb96a2803d0ce1087f19806a9e51433020e2a17258564cdb7eb49c3d3d3",
+      "date": "2008-08-01T10:31:48Z",
+      "subject": "[statnet_help] Weighted Mixing Matrices?",
+      "subject_clean": "[statnet_help] Weighted Mixing Matrices?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "The mixing matrix is a really nice way to summarize data.  I have a  \ndirected network where my vertices are hospitals, my edges are the  \nvalued, directed number of transfers between the vertices, and vertex  \nattributes are hospital  characteristics.  I would like to be able to  \nproduce the mixing matrix where the numbers in the table are total  \nnumber of patients transfered between classes.  This would be the sum  \nof the value of the edges directed between two classes.\n\nI feel like if I was better at R I could recode the mixingmatrix  \nfunction myself, but I am not there yet.\n\nCan you offer any advice on how to do this?\n\nThanks in advance!\n   Jack\n\n\n** Please Note NEW CONTACT INFO **\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\nTheodore J. Iwashyna, M.D., Ph.D.\n\nAssistant Professor of Internal Medicine\nPulmonary & Critical Care Medicine\nUniversity of Michigan\n\n3A23 300 NIB, SPC 5419\n300 North Ingalls\nAnn Arbor, MI  48109-5419\n(734) 232-0787.office\n(734) 764-2655.fax\n\nemail: tiwashyn@umich.edu",
+      "body_snippet": "The mixing matrix is a really nice way to summarize data.  I have a  \ndirected network where my vertices are hospitals, my edges are the  \nvalued, directed number of transfers between the vertices, an",
+      "thread_id": "thread-2abe99425755",
+      "thread_depth": 0,
+      "month": "2008-08"
+    },
+    {
+      "id": "msg-83885a9eaada",
+      "message_id": "<E222CCEB-B8C7-4E6E-A2F8-C6AFA10B6C7E@biomail.ucsd.edu>",
+      "from_name": "Art Poon",
+      "from_email_hash": "40f7335a9b3d9b4c0cc5171ad9a223bf818191434abb02bdaea078b80769bb20",
+      "date": "2008-08-27T00:32:23Z",
+      "subject": "[statnet_help] Re: custom curved exp terms",
+      "subject_clean": "[statnet_help] Re: custom curved exp terms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet developers and users,\n\nI've been developing custom ergm terms in Statnet, and I would like to  \nimplement some geometrically-weighted curved exponential terms.  This  \nis a simple-enough task in the source code, but I'm stuck on  \ninterpreting the 'altkstar' example of an R source wrapper function:\n\nInitErgmTerm.R: 152:    map <- function(x,n,...) {\nInitErgmTerm.R: 153:      i <- 1:n\nInitErgmTerm.R: 154:      x[1]*(x[2]*((1-1/x[2])^i + i) - 1)\nInitErgmTerm.R: 155:    }\n\nI gather that (i) indexes the various k-stars to be weighted  \n(canonical parameters), but why is (x) --- which I assume corresponds  \nto the geometric weighting factor lambda --- a tuple?  I've also been  \nunable to find an equivalent mapping function in the literature, but  \nI'll have another crack at it.\n\nThanks!\n\nBest,\n- Art.\n\n          _____,???? Dr. Art FY Poon\n     ____/     `????? Division of Comparative Pathology and Medicine\n___/    `??????? Department of Pathology\n    `????????? University of California, San Diego",
+      "body_snippet": "Dear Statnet developers and users,\n\nI've been developing custom ergm terms in Statnet, and I would like to  \nimplement some geometrically-weighted curved exponential terms.  This  \nis a simple-enough ",
+      "thread_id": "thread-83885a9eaada",
+      "thread_depth": 0,
+      "month": "2008-08"
+    },
+    {
+      "id": "msg-35cbd27148ee",
+      "message_id": "<E1E0F94B-452C-4160-90D2-C9F3925F355C@biomail.ucsd.edu>",
+      "from_name": "Art Poon",
+      "from_email_hash": "40f7335a9b3d9b4c0cc5171ad9a223bf818191434abb02bdaea078b80769bb20",
+      "date": "2008-08-28T12:38:10Z",
+      "subject": "[statnet_help] Re: bug in revisetheta0",
+      "subject_clean": "[statnet_help] Re: bug in revisetheta0",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet developers and users,\n\nI've come across a possible bug in ergm() when fitting the \"altkstar\"  \nterm with an arbitrary lambda value and 'fixed' = FALSE, which causes  \nthe process to abort before entering the MCMC run:\n\n > Error in newoverlap[j] = m$terms[[i]]$params[[j]] :\n >  nothing to replace with\n\n\nIt turns out that the theta0 names do not match the model term names.   \nThis can be fixed by replacing the following line:\n\nInitErgmTerm.R: 169:\tcoef.names = paste(\"altkstar\", lambda, sep=\".\"),  \n#coef.names: required\n\nwith\nInitErgmTerm.R: 169:\tcoef.names = \"altkstar\",  #coef.names: required\n\n\nMaking this substitution restores normal functionality to fitting the  \naltkstar term without a constraint on the lambda parameter.\n\nBest,\n- Art.\n\n          _____,???? Dr. Art FY Poon\n     ____/     `????? Division of Comparative Pathology and Medicine\n___/    `??????? Department of Pathology\n    `????????? University of California, San Diego",
+      "body_snippet": "Dear Statnet developers and users,\n\nI've come across a possible bug in ergm() when fitting the \"altkstar\"  \nterm with an arbitrary lambda value and 'fixed' = FALSE, which causes  \nthe process to abort",
+      "thread_id": "thread-35cbd27148ee",
+      "thread_depth": 0,
+      "month": "2008-08"
+    },
+    {
+      "id": "msg-028f73b0729c",
+      "message_id": "<48B7DF30.5010601@pse.unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "8106c36f54c86692ed64e8cacfad5f07430d42e08b9b928b1d8b0616cd15c0c5",
+      "date": "2008-08-29T04:36:16Z",
+      "subject": "[statnet_help] Re: bug in revisetheta0",
+      "subject_clean": "[statnet_help] Re: bug in revisetheta0",
+      "in_reply_to": "<E1E0F94B-452C-4160-90D2-C9F3925F355C@biomail.ucsd.edu>",
+      "references": [
+        "<E1E0F94B-452C-4160-90D2-C9F3925F355C@biomail.ucsd.edu>"
+      ],
+      "body_plain": "Hello,\n\nI have also the same problem with the gwidegree and gwodegree \nstatistics, but as I'm a beginner in R and Statnet, I can't fix it for \nmyself... Do you know how I can fix this problem?\n\nHave a good Day,\nVictorin Luisier\n\nArt Poon a ?crit :\n> Dear Statnet developers and users,\n> \n> I've come across a possible bug in ergm() when fitting the \"altkstar\" \n> term with an arbitrary lambda value and 'fixed' = FALSE, which causes \n> the process to abort before entering the MCMC run:\n> \n>  > Error in newoverlap[j] = m$terms[[i]]$params[[j]] :\n>  >  nothing to replace with\n> \n> \n> It turns out that the theta0 names do not match the model term names.  \n> This can be fixed by replacing the following line:\n> \n> InitErgmTerm.R: 169:    coef.names = paste(\"altkstar\", lambda, sep=\".\"), \n> #coef.names: required\n> \n> with\n> InitErgmTerm.R: 169:    coef.names = \"altkstar\",  #coef.names: required\n> \n> \n> Making this substitution restores normal functionality to fitting the \n> altkstar term without a constraint on the lambda parameter.\n> \n> Best,\n> - Art.\n> \n>          _____,???? Dr. Art FY Poon\n>     ____/     `????? Division of Comparative Pathology and Medicine\n> ___/    `??????? Department of Pathology\n>    `????????? University of California, San Diego\n> \n> \n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@pse.unige.ch",
+      "body_snippet": "Hello,\n\nI have also the same problem with the gwidegree and gwodegree \nstatistics, but as I'm a beginner in R and Statnet, I can't fix it for \nmyself... Do you know how I can fix this problem?\n\nHave a",
+      "thread_id": "thread-35cbd27148ee",
+      "thread_depth": 1,
+      "month": "2008-08"
+    },
+    {
+      "id": "msg-c95c254dc84c",
+      "message_id": "<48B9259B.4070707@pse.unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "8106c36f54c86692ed64e8cacfad5f07430d42e08b9b928b1d8b0616cd15c0c5",
+      "date": "2008-08-30T03:48:59Z",
+      "subject": "[statnet_help] +gwdegree(decay)",
+      "subject_clean": "[statnet_help] +gwdegree(decay)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet users and programmers,\n\nI've read the article of Morris, M.; Handcock, M. & Hunter, D. \n(Specification of Exponential-Family Random Graph Models: Terms and \nComputational Aspects, 2008) to learn how to model ergm under Statnet.\n\nMy problem is I don't understand the term \"decay\" used with the gwdegree \nstatistic; does it correspond to the scale parameter lambda or something \nelse?\n\nHave a nice week-end and thanks a lot for your help,\nVictorin Luisier\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@pse.unige.ch",
+      "body_snippet": "Dear Statnet users and programmers,\n\nI've read the article of Morris, M.; Handcock, M. & Hunter, D. \n(Specification of Exponential-Family Random Graph Models: Terms and \nComputational Aspects, 2008) t",
+      "thread_id": "thread-c95c254dc84c",
+      "thread_depth": 0,
+      "month": "2008-08"
+    },
+    {
+      "id": "msg-1f70bb3b478f",
+      "message_id": "<48B9A1EF.70707@pse.unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "8106c36f54c86692ed64e8cacfad5f07430d42e08b9b928b1d8b0616cd15c0c5",
+      "date": "2008-08-30T12:39:27Z",
+      "subject": "[statnet_help] +gwdegree(decay)",
+      "subject_clean": "[statnet_help] +gwdegree(decay)",
+      "in_reply_to": "<8EAFEB20-07D9-4FD4-8704-1477D1019BDC@stat.psu.edu>",
+      "references": [
+        "<48B9259B.4070707@pse.unige.ch>",
+        "<8EAFEB20-07D9-4FD4-8704-1477D1019BDC@stat.psu.edu>"
+      ],
+      "body_plain": "Dear David,\n\nThanks a lot for your quick response. In fact, I read your interesting \npaper last week  (Hunter (2007)...). But it is still not clear to me if \nthe decay parameter is  rho, theta_s, lambda (Snijders), or anything else.\n\nI tried to read the sources (ex: ergm.curved.R), but it is very \ndifficult for me to find a response in it (my R skills are quite basic).\n\nHave a nice week-end and thanks a lot for your help,\nVictorin Luisier\n\n\n\nDavid Hunter a ?crit :\n> Bonjour Victorin.  I'd recommend checking out this paper:\n> \n> Hunter DR (2007), Curved exponential family models for social networks, \n> Social Networks, 29: 216-230.\n> \n> That paper has some stuff on the decay parameter.  Let me know if you \n> can't get the paper and I can send you an electronic version.  I know \n> that Steve Goodreau has also written some nice stuff about the decay \n> parameter, so perhaps he could also suggest a good reference.\n> \n> ? bient?t,\n> Dave\n> \n> \n> \n> On Aug 30, 2008, at 6:48 AM, Victorin Luisier wrote:\n> \n>> Dear Statnet users and programmers,\n>>\n>> I've read the article of Morris, M.; Handcock, M. & Hunter, D. \n>> (Specification of Exponential-Family Random Graph Models: Terms and \n>> Computational Aspects, 2008) to learn how to model ergm under Statnet.\n>>\n>> My problem is I don't understand the term \"decay\" used with the \n>> gwdegree statistic; does it correspond to the scale parameter lambda \n>> or something else?\n>>\n>> Have a nice week-end and thanks a lot for your help,\n>> Victorin Luisier\n>> -- \n>> Victorin LUISIER, Assistant doctorant\n>> M?thodologie et Analyse de donn?es\n>> FAPSE - UNIGE\n>> Bureau n?4139 - Unimail\n>> Bd du Pont d'Arve 40\n>> 1211 Gen?ve 4\n>> T?l: (+41-22) 379 91 34\n>> E-mail: victorin.luisier@pse.unige.ch\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> \n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@pse.unige.ch",
+      "body_snippet": "Dear David,\n\nThanks a lot for your quick response. In fact, I read your interesting \npaper last week  (Hunter (2007)...). But it is still not clear to me if \nthe decay parameter is  rho, theta_s, lamb",
+      "thread_id": "thread-1f70bb3b478f",
+      "thread_depth": 0,
+      "month": "2008-08"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-2abe99425755",
+      "subject": "[statnet_help] Weighted Mixing Matrices?",
+      "message_count": 1,
+      "participants": [
+        "Theodore Iwashyna"
+      ],
+      "started": "2008-08-01T10:31:48Z",
+      "last_reply": "2008-08-01T10:31:48Z",
+      "root_message_id": "msg-2abe99425755"
+    },
+    {
+      "id": "thread-83885a9eaada",
+      "subject": "[statnet_help] Re: custom curved exp terms",
+      "message_count": 1,
+      "participants": [
+        "Art Poon"
+      ],
+      "started": "2008-08-27T00:32:23Z",
+      "last_reply": "2008-08-27T00:32:23Z",
+      "root_message_id": "msg-83885a9eaada"
+    },
+    {
+      "id": "thread-35cbd27148ee",
+      "subject": "[statnet_help] Re: bug in revisetheta0",
+      "message_count": 2,
+      "participants": [
+        "Art Poon",
+        "Victorin Luisier"
+      ],
+      "started": "2008-08-28T12:38:10Z",
+      "last_reply": "2008-08-29T04:36:16Z",
+      "root_message_id": "msg-35cbd27148ee"
+    },
+    {
+      "id": "thread-c95c254dc84c",
+      "subject": "[statnet_help] +gwdegree(decay)",
+      "message_count": 1,
+      "participants": [
+        "Victorin Luisier"
+      ],
+      "started": "2008-08-30T03:48:59Z",
+      "last_reply": "2008-08-30T03:48:59Z",
+      "root_message_id": "msg-c95c254dc84c"
+    },
+    {
+      "id": "thread-1f70bb3b478f",
+      "subject": "[statnet_help] +gwdegree(decay)",
+      "message_count": 1,
+      "participants": [
+        "Victorin Luisier"
+      ],
+      "started": "2008-08-30T12:39:27Z",
+      "last_reply": "2008-08-30T12:39:27Z",
+      "root_message_id": "msg-1f70bb3b478f"
+    }
+  ]
+}

@@ -1,0 +1,540 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2012-08",
+  "messages": [
+    {
+      "id": "msg-66b8f07fe1b7",
+      "message_id": "<CAHN00ucOX8ooEVxGR3=h=oGKW=PZ8_m4Otb0uJnktwPe12i69Q@mail.gmail.com>",
+      "from_name": "Moses Boudourides",
+      "from_email_hash": "c5624448747271419acb164061064e1a7b0a1e969681d0b921805e16e6affe4a",
+      "date": "2012-08-01T01:55:35Z",
+      "subject": "[statnet_help] 3-paths with vertex attributes",
+      "subject_clean": "[statnet_help] 3-paths with vertex attributes",
+      "in_reply_to": "<CAHN00ueu_CUdJxusaHnfGZSNjt_eqdr3XiqODJ+p5hH2yi5_UQ@mail.gmail.com>",
+      "references": [
+        "<CAHN00ueu_CUdJxusaHnfGZSNjt_eqdr3XiqODJ+p5hH2yi5_UQ@mail.gmail.com>"
+      ],
+      "body_plain": "Hello,\n\nI would appreciate receiving your technical assistance on the\nfollowing computation I would like to do:\n\nGiven a (large) graph (undirected and simple) with attributed vertices\n(say, 3 attributes: blue, red, green), I would like to count\nheterogeneous (open) 3-paths for which the color of end vertices is\nthe same (e.g., blue-red-blue, red-blue-red, blue-green-blue,\ngreen-blue-green, red-green-red, green-red-green) as well as 3-cycles\nformed by 2 or 3 different colors.\n\nIs it possible to modify the sna or statnet functions for the Davis\nand Leinhardt triad census to do this? But how?\n\nI would appreciate if you could send me the code for this computation\nas far as it is doable.\n\nBest,\n\n--Moses",
+      "body_snippet": "Hello,\n\nI would appreciate receiving your technical assistance on the\nfollowing computation I would like to do:\n\nGiven a (large) graph (undirected and simple) with attributed vertices\n(say, 3 attribut",
+      "thread_id": "thread-66b8f07fe1b7",
+      "thread_depth": 0,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-ac13b971c94a",
+      "message_id": "<5020D52F.9060008@eawag.ch>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "5ca3a759bddb9505661daafb6664f38c57cb4d334ac3b6411b49b7d1a9d8d151",
+      "date": "2012-08-07T01:43:27Z",
+      "subject": "[statnet_help] Parallel argument to use multiple cores",
+      "subject_clean": "[statnet_help] Parallel argument to use multiple cores",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI am trying to speed up my computations with the parallel option, but it \nseems to be slower than using only one CPU core. I don't know a lot \nabout the snow package or the parallel argument. Perhaps you can give me \na hint how I can achieve faster estimation runs. Here is a \nself-contained example of what I have tried on a multicore CPU running \nLinux:\n\n#snow and rlecuyer are installed\nlibrary(network)\nlibrary(ergm)\nset.seed(1234)\n\ntest <- function(x, p=0) {\n   mat <- matrix(rbinom(400,1,0.09), nrow=20)\n   nw <- network(mat)\n   ergm(nw ~ edges + twopath, control=control.ergm(seed=1234,\n     parallel=p))\n}\n\nsingle <- system.time(lapply(1:20, test, p=0))\nmultiple <- system.time(lapply(1:20, test, p=2))\n\nprint(single)\n\n#   user  system elapsed\n# 94.873   0.012  95.073\n\nprint(multiple)\n\n#   user  system elapsed\n# 48.560   2.040 521.141\n\nSo apparently using two cores is much slower than using only one core. I \nchecked my system monitor and indeed two cores are fully used during the \nsecond run above. What do I have to do in order to get it running \nproperly? I didn't find any documentation of this, but perhaps I didn't \nlook in the right places?\n\nMany thanks\n\nPhilip\n\n-- \nDr. Philip Leifeld\n\nEawag: Das Wasserforschungsinstitut des ETH-Bereichs\nSwiss Federal Institute of Aquatic Science and Technology\n\nUniversit?t Bern, Institut f?r Politikwissenschaft\nUniversity of Bern, Institute of Political Science\n\nEawag, ?berlandstr. 133, 8600 D?bendorf, Switzerland\nPhone: +41 58 765 5673 | E-mail: philip.leifeld@eawag.ch\nOffice: FC-E18 | Homepage: http://www.philipleifeld.de",
+      "body_snippet": "Hi,\n\nI am trying to speed up my computations with the parallel option, but it \nseems to be slower than using only one CPU core. I don't know a lot \nabout the snow package or the parallel argument. Per",
+      "thread_id": "thread-ac13b971c94a",
+      "thread_depth": 0,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-2a36ca4cf51e",
+      "message_id": "<000001cd755d$c534e9c0$4f9ebd40$@UGent.be>",
+      "from_name": "Lindsay Jacobs",
+      "from_email_hash": "7ce88e3eb902acbc3f08a181b81b779e570ef74af961b212b952d0dd91aa08dd",
+      "date": "2012-08-08T05:03:06Z",
+      "subject": "[statnet_help] a measure for 'coreness' in R?",
+      "subject_clean": "[statnet_help] a measure for 'coreness' in R?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\n \n\nI am looking for a way to compute a continuous measure for 'coreness', as it\nexists in UCINET, but in R. In short, I want to search for a core/periphery\nstructure using a continuous model that calculates a \"coreness\" or how much\nthis node looks like a core node. I would like to try doing this in R,\nbecause I have 46 networks (a network per year) on 3 relations, and it would\ntake too long in UCINET. I can't seem to find a way to do this in R yet.\nDoes anyone know if it is possible? What package should I use?\n\n \n\nThank you! \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20120808/1897c901/attachment.html>",
+      "body_snippet": "Hello,\n\n \n\nI am looking for a way to compute a continuous measure for 'coreness', as it\nexists in UCINET, but in R. In short, I want to search for a core/periphery\nstructure using a continuous model t",
+      "thread_id": "thread-2a36ca4cf51e",
+      "thread_depth": 0,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-1c48857f1723",
+      "message_id": "<5022A9AF.1060605@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2012-08-08T11:02:23Z",
+      "subject": "[statnet_help] a measure for 'coreness' in R?",
+      "subject_clean": "[statnet_help] a measure for 'coreness' in R?",
+      "in_reply_to": "<000001cd755d$c534e9c0$4f9ebd40$@UGent.be>",
+      "references": [
+        "<000001cd755d$c534e9c0$4f9ebd40$@UGent.be>"
+      ],
+      "body_plain": "Hi, Lindsay.  The eigenvector centrality score can be quite reasonably \nand correctly interpreted as a global coreness measure.  You can \ncalculate it using evcent.\n\nHope that helps,\n\n-Carter\n\nOn 08/08/2012 05:03 AM, Lindsay Jacobs wrote:\n> Hello,\n>\n> I am looking for a way to compute a continuous measure for ?coreness?,\n> as it exists in UCINET, but in R. In short, I want to search for a\n> core/periphery structure using a continuous model that calculates a\n> ?coreness? or how much this node looks like a core node. I would like to\n> try doing this in R, because I have 46 networks (a network per year) on\n> 3 relations, and it would take too long in UCINET. I can?t seem to find\n> a way to do this in R yet. Does anyone know if it is possible? What\n> package should I use?\n>\n> Thank you!\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi, Lindsay.  The eigenvector centrality score can be quite reasonably \nand correctly interpreted as a global coreness measure.  You can \ncalculate it using evcent.\n\nHope that helps,\n\n-Carter\n\nOn 08/0",
+      "thread_id": "thread-2a36ca4cf51e",
+      "thread_depth": 1,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-274146a989d5",
+      "message_id": "<502772D8.8060709@uni-wuppertal.de>",
+      "from_name": "Richard Heidler",
+      "from_email_hash": "dedcbc6ece80fe6eeac892710e46ef1d4ac8f207e454e1ddb697c30449c133f7",
+      "date": "2012-08-12T02:09:44Z",
+      "subject": "[statnet_help] Problem concerning weighted arrowheads",
+      "subject_clean": "[statnet_help] Problem concerning weighted arrowheads",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear list members,\nI'm actually trying to plot a network with weighted directed ties and \narrowhead weighted accordingly. This seems to work, if I do not use \nloops/selfties in the network. I just use the same vector with the\ntie strength network which I use for \"edge.lwd\" for the \"arrowhead.cex\" \n  If i instert a weighted loop in the graph the arrowheads do not \ncorrespond any longer to the width of the lines in the plot. I will give \nto minimal examples, one with a loop, and one without.\n\nlibrary(network)\nlibrary(sna)\n\n*Testnet for weighted arrowheads without loops\n\n*generating binary network\ntestnet <- as.network(matrix(c(0,0,0,0,1,0,0,0,1,1,0,0,1,0,1,0),4,4), \nloops=TRUE)\n\n*attaching tie weigth\ntestnet [,, names.eval = \"density\"] <- \nas.sociomatrix(matrix(c(0,0,0,0,1,0,0,0,10,1,0,0,100,0,50,0),4,4))\n\n*Coordinates for vertices in plot\nposition_matrix <- matrix(c(-1, 1, -1, 1, -1, -1, 1, 1), 4,2)\n\n*Plotting\ngplot(testnet,  gmode=\"digraph\", jitter=FALSE, coord=position_matrix,\n   displaylabels=TRUE, arrowhead.cex=testnet%e%'density'/5,\n  edge.lwd=testnet%e%'density', diag=TRUE,   usearrows = TRUE)\n\n\n\n*Testnet for weighted arrowheads with loop\n\ntestnetloop <- \nas.network(matrix(c(0,0,0,0,1,1,0,0,1,1,0,0,1,0,1,0),4,4), loops=TRUE)\ntestnetloop [,, names.eval = \"density\"] <- \nas.sociomatrix(matrix(c(0,0,0,0,1,100,0,0,10,1,0,0,100,0,50,0),4,4))\n\ngplot(testnetloop,  gmode=\"digraph\", jitter=FALSE, coord=position_matrix,\n  displaylabels=TRUE, arrowhead.cex=testnetloop%e%'density'/5,\n  edge.lwd=testnetloop%e%'density', diag=TRUE,   usearrows = TRUE, \nloop.cex=4)\n\nAs far as I see loops are not used in the arrowhead.cex vector?\nI was not able to find the system how arrowhea.cex differs from the \nedge.lwd. Is it not possible to change the size of the arrowhead of \nloops? I would be very happy about an answer.\n\n\nkind regards\nRichard\n\n\n-- \nDr. Richard Heidler\nBergische Universit?t Wuppertal\nFachbereich G\nRaum O 13.19\nSoziologie der Organisation\nGau?stra?e 20\n\nTel +49 202 439 2294\nHandy +49 176 700 357 41",
+      "body_snippet": "Dear list members,\nI'm actually trying to plot a network with weighted directed ties and \narrowhead weighted accordingly. This seems to work, if I do not use \nloops/selfties in the network. I just use",
+      "thread_id": "thread-274146a989d5",
+      "thread_depth": 0,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-86b873e110e4",
+      "message_id": "<CAHN00ue922R=g3+KWXqg9SJRmhBZsgM5_bs5O7v2GgFwfqiFtA@mail.gmail.com>",
+      "from_name": "Moses Boudourides",
+      "from_email_hash": "c5624448747271419acb164061064e1a7b0a1e969681d0b921805e16e6affe4a",
+      "date": "2012-08-13T05:26:19Z",
+      "subject": "[statnet_help] Relative betweenness",
+      "subject_clean": "[statnet_help] Relative betweenness",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nMy question concerns the sna package. In a network, I have two\ndisjoint sets of vertices, A and B. I would like to compute the\nmeasure of betweenness of A on the basis of not all the geodesics of\nthe network (passing from A) but only the geodesics with end vertices\nin B. I understand that the sna betweenness function has a parameter\n\"nodes\" as a vector indicating which vertices are to be included in\nthe calculation. But I'm not sure whether and how I could get the\nbetweenness of A with regards to geodesics stemming from B. Any ideas?\n\nBest,\n\n--Moses",
+      "body_snippet": "Hello,\n\nMy question concerns the sna package. In a network, I have two\ndisjoint sets of vertices, A and B. I would like to compute the\nmeasure of betweenness of A on the basis of not all the geodesics",
+      "thread_id": "thread-86b873e110e4",
+      "thread_depth": 0,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-0c32cb93c566",
+      "message_id": "<1344881961.81130.YahooMailNeo@web114008.mail.gq1.yahoo.com>",
+      "from_name": "Markus Schafer",
+      "from_email_hash": "7c73f5c18c1e262043852e198f23c52c2cff64ce752850e6635d29d9c5d1b984",
+      "date": "2012-08-13T11:19:21Z",
+      "subject": "[statnet_help] including nodeicov, nodeocov, and edgecov in same model",
+      "subject_clean": "[statnet_help] including nodeicov, nodeocov, and edgecov in same model",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI have a question that seems pretty simple, but I haven't been able to find out a clear answer about it yet.\n\n\nI have directed network data with a valued trait (X), and my theory stipulates the following:\n\n1.? actors high in X will send fewer ties to others (actor-level hypothesis -- nodeocov)\n\n2.? actors high in X trait will receive more ties from others (actor-level hypothesis -- nodeicov)\n\n?\n\n3. actors will tend to send ties to those who are higher in X than themselves (dyadic-level hypothesis).\n\n\nIs it legitimate to specify an ERGM equation that simultaneously includes nodeicov, nodeocov, and a term that accounts for dyadic differences in X?? It seems that a dyadic difference term is completely determined by the information contained in the nodeocov and the nodeicov terms, but I am wanting to understand both nodal and dyadic factors.? \n\n\nAlso, I'm using \"edgecov\" to denote raw difference in X between nodes (using a matrix of difference scores), rather than the absolute difference term (absdiff), because point #3 above indicates raw difference as the important issue. Is it appropriate to include this edgecov term alongside the other two terms (nodeocov and nodeicov), or is there too much redundant information in the model?\n\n\n\nthanks,\nmarkus schafer\ndept of sociology\n\nUniversity of Toronto\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20120813/1702e388/attachment.html>",
+      "body_snippet": "Hello,\n\nI have a question that seems pretty simple, but I haven't been able to find out a clear answer about it yet.\n\n\nI have directed network data with a valued trait (X), and my theory stipulates th",
+      "thread_id": "thread-0c32cb93c566",
+      "thread_depth": 0,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-34896e40e0aa",
+      "message_id": "<alpine.WNT.1.10.1208140918140.8000@morrism-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2012-08-14T09:42:07Z",
+      "subject": "[statnet_help] including nodeicov, nodeocov, and edgecov in same model",
+      "subject_clean": "[statnet_help] including nodeicov, nodeocov, and edgecov in same model",
+      "in_reply_to": "<1344881961.81130.YahooMailNeo@web114008.mail.gq1.yahoo.com>",
+      "references": [
+        "<1344881961.81130.YahooMailNeo@web114008.mail.gq1.yahoo.com>"
+      ],
+      "body_plain": "Hi Markus,\n\nWhat you propose as a model is possible, depending on the parameterization \nyou use.  The design is a bit like a mixing matrix with dyads cross \ntabulated by attribute X.  Your model has row and column effects, and an \n\"upper triangle\" effect.\n\nWhat you need to be clear about is whether the magnitude of (X_i - X_j) \nmatters.  If not, you can construct a binary indicator for the edgecov, \nand the terms will not be collinear.  If the magnitude matters, but only \nwhen the difference is < 0, the edgecov will =0 for cases when the diff is \n>0, so will still not be collinear.  You may still run into some \ndifficulties estimating this, depending on the size of your \nsample and distribution of your data.\n\nWhat you can't do is put the difference in, along with the values of X_i \nand X_j, but it sounds like your theory would not lead to that \noperationalization anyway.\n\nhth,\nMartina\n\n\nOn Mon, 13 Aug 2012, Markus Schafer wrote:\n\n> \n> Hello,\n> \n> I have a question that seems pretty simple, but I haven't been able to find out a clear answer about\n> it yet.\n> \n> \n> I have directed network data with a valued trait (X), and my theory stipulates the following:\n> \n> 1.? actors high in X will send fewer ties to others (actor-level hypothesis -- nodeocov)\n> 2.? actors high in X trait will receive more ties from others (actor-level hypothesis -- nodeicov)\n> \n> 3. actors will tend to send ties to those who are higher in X than themselves (dyadic-level\n> hypothesis).\n> \n> Is it legitimate to specify an ERGM equation that simultaneously includes nodeicov, nodeocov, and a\n> term that accounts for dyadic differences in X?? It seems that a dyadic difference term is\n> completely determined by the information contained in the nodeocov and the nodeicov terms, but I am\n> wanting to understand both nodal and dyadic factors. \n> \n> Also, I'm using \"edgecov\" to denote raw difference in X between nodes (using a matrix of difference\n> scores), rather than the absolute difference term (absdiff), because point #3 above indicates raw\n> difference as the important issue. Is it appropriate to include this edgecov term alongside the\n> other two terms (nodeocov and nodeicov), or is there too much redundant information in the model?\n> \n> \n> \n> thanks,\n> markus schafer\n> dept of sociology\n> University of Toronto\n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Markus,\n\nWhat you propose as a model is possible, depending on the parameterization \nyou use.  The design is a bit like a mixing matrix with dyads cross \ntabulated by attribute X.  Your model has r",
+      "thread_id": "thread-0c32cb93c566",
+      "thread_depth": 1,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-8fff846842c8",
+      "message_id": "<CADWGO2wzfr_bV8b7GYTu-AMgNuUuJZjk=OXbmeuV_fVKB-qxnA@mail.gmail.com>",
+      "from_name": "Niklas Fischer",
+      "from_email_hash": "ee9558fa32aac93c1e4d37ca506ffe744ea9791de922996185e574782450ac61",
+      "date": "2012-08-15T06:46:21Z",
+      "subject": "[statnet_help] importing egocentric network into R",
+      "subject_clean": "[statnet_help] importing egocentric network into R",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet users,\nI'd like to ask you about importing egocentric network data in R.\n\nI have a survey data consisting of ego, alters(top five friends) and alter\nto alter relations.\n\nSince I am new users of network/statnet/R, I am not sure if the way\ndescribed below is a good way to import egocentric data from survey data.\n\nI plan to construct egdelist consist of ego-alter ties and alter-alter ties.\nI would like to combine edge lists with rbind function and than use this\nobject with network function.\nand finally add edge and verttex attributes to new network object.\n\nDo you have alternative practical way to import this type of egocentric\ndata?\n\nBests,\nNiklas\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20120815/42e70c11/attachment.html>",
+      "body_snippet": "Dear Statnet users,\nI'd like to ask you about importing egocentric network data in R.\n\nI have a survey data consisting of ego, alters(top five friends) and alter\nto alter relations.\n\nSince I am new us",
+      "thread_id": "thread-8fff846842c8",
+      "thread_depth": 0,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-7071fd567318",
+      "message_id": "<CADWGO2zxPcv7MhYrHc359rb-3PRF0S+3N_+AsxcEPRfzyo-mdw@mail.gmail.com>",
+      "from_name": "Niklas Fischer",
+      "from_email_hash": "ee9558fa32aac93c1e4d37ca506ffe744ea9791de922996185e574782450ac61",
+      "date": "2012-08-15T12:49:51Z",
+      "subject": "[statnet_help] importing egocentric network data in R",
+      "subject_clean": "[statnet_help] importing egocentric network data in R",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet users,\nI'd like to ask you about importing egocentric network data in R.\n\nI have a survey data consisting of ego, alters(top five friends) and alter\nto alter relations.\n\nSince I am new users of network/statnet/R, I am not sure if the way\ndescribed below is a good way to import egocentric data from survey data.\n\nI plan to construct egdelist consist of ego-alter ties and alter-alter ties.\nI would like to combine edge lists with rbind function and than use this\nobject with network function.\nand finally add edge and verttex attributes to new network object.\n\nDo you have alternative practical way to import this type of egocentric\ndata?\n\nBests,\nNiklas\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20120815/cfef41e6/attachment.html>",
+      "body_snippet": "Dear Statnet users,\nI'd like to ask you about importing egocentric network data in R.\n\nI have a survey data consisting of ego, alters(top five friends) and alter\nto alter relations.\n\nSince I am new us",
+      "thread_id": "thread-7071fd567318",
+      "thread_depth": 0,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-4a817a57729f",
+      "message_id": "<alpine.WNT.1.10.1208151312160.4960@morrism-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2012-08-15T13:13:55Z",
+      "subject": "[statnet_help] importing egocentric network data in R",
+      "subject_clean": "[statnet_help] importing egocentric network data in R",
+      "in_reply_to": "<CADWGO2zxPcv7MhYrHc359rb-3PRF0S+3N_+AsxcEPRfzyo-mdw@mail.gmail.com>",
+      "references": [
+        "<CADWGO2zxPcv7MhYrHc359rb-3PRF0S+3N_+AsxcEPRfzyo-mdw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Niklas,\n\nAs of right now, the method you're using is as good as any.  We may \ndevelop some egocentric data utilities for the next release, but for now \nwe're just relying on basic R functions like rbind.\n\nhth,\nmm\n\nOn Wed, 15 Aug 2012, Niklas Fischer wrote:\n\n> Dear Statnet users,\n> I'd like to ask you about importing egocentric network data in R.\n> \n> I have a survey data consisting of ego, alters(top five friends) and alter to alter relations.\n> \n> Since I am new users of network/statnet/R, I am not sure if the way described below is a good way to\n> import egocentric data from survey data.\n> \n> I plan to construct egdelist consist of ego-alter ties and alter-alter ties.\n> I would like to combine edge lists with rbind function and than use this object with network\n> function.\n> and finally add edge and verttex attributes to new network object.\n> \n> Do you have alternative practical way to import this type of egocentric data?\n> \n> Bests,\n> Niklas\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Niklas,\n\nAs of right now, the method you're using is as good as any.  We may \ndevelop some egocentric data utilities for the next release, but for now \nwe're just relying on basic R functions like ",
+      "thread_id": "thread-7071fd567318",
+      "thread_depth": 1,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-5a64852058a4",
+      "message_id": "<OF4C5F1284.5A391843-ONC1257A5B.00729212-C1257A5B.00729212@be.ibm.com>",
+      "from_name": "Tom Kochuyt",
+      "from_email_hash": "46f39e60ea17044367574233c6036a3c2ecdd09badcc49c19d1b5d76f9ccf618",
+      "date": "2012-08-15T13:51:24Z",
+      "subject": "[statnet_help] AUTO: Tom Kochuyt is out of the office (returning 20-08-2012)",
+      "subject_clean": "[statnet_help] AUTO: Tom Kochuyt is out of the office (returning 20-08-2012)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I am out of the office until 20-08-2012.\n\nDear,\n\nI'm out of the office from August 15th until August 20th.\nFor all urgent matters related to leads and opportunities Jilco Schuurmans\ncan be contacted.\n\nI will respond to all other mails as soon as I am back in the office.\n\n\nKind regards,\n\nTom Kochuyt\n\n\nNote: This is an automated response to your message  \"statnet_help Digest,\nVol 73, Issue 7\" sent on 15/8/2012 21:02:10.\n\nThis is the only notification you will receive while this person is away.",
+      "body_snippet": "I am out of the office until 20-08-2012.\n\nDear,\n\nI'm out of the office from August 15th until August 20th.\nFor all urgent matters related to leads and opportunities Jilco Schuurmans\ncan be contacted.\n",
+      "thread_id": "thread-5a64852058a4",
+      "thread_depth": 0,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-8d57e751c14f",
+      "message_id": "<502CFCE4.4040209@gmail.com>",
+      "from_name": "Wet Bell Diver",
+      "from_email_hash": "09fdc5d1c23fede3e047b9965a4a47e37cc52f884f5f9cd82fa9a9e7e10de1a4",
+      "date": "2012-08-16T07:00:04Z",
+      "subject": "[statnet_help] valued ties in ergm",
+      "subject_clean": "[statnet_help] valued ties in ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nAt Sunbelt 2012 it was said that ERGM for valued ties was due to appear \nlater in 2012. Is it clear yet when that will be?\nI hope: soon.... ;-) I have a network with valued ties that is in dire \nneed of being analyzed...\n\nthanks,\nPeter",
+      "body_snippet": "Hi,\n\nAt Sunbelt 2012 it was said that ERGM for valued ties was due to appear \nlater in 2012. Is it clear yet when that will be?\nI hope: soon.... ;-) I have a network with valued ties that is in dire \n",
+      "thread_id": "thread-8d57e751c14f",
+      "thread_depth": 0,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-349eaae4020d",
+      "message_id": "<798FF3A49CD1EE43BEAE3523FC9EF5B2D079BC4858@EXCH07-03.apollogrp.edu>",
+      "from_name": "Philip Heinrich",
+      "from_email_hash": "eef65b2d9592fd15623682df130f7f9274763e62d74facbee5922b6659e32584",
+      "date": "2012-08-16T10:49:22Z",
+      "subject": "[statnet_help] Text Mining Problem",
+      "subject_clean": "[statnet_help] Text Mining Problem",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I'm trying to convert a plain text document to a document term matrix with the following code and get the error message below:\n\nRelVer.DTM<-DocumentTermMatrix(RelVer.PTD)\n\nError in simple_triplet_matrix(i = i, j = j, v = as.numeric(v), nrow = length(allTerms),  :\n  'dimnames' component invalid length or type'\n\nI'm guessing it has something to do with the type which is list.\n\n> typeof(RelVer.PTD)\n[1] \"list\"\n\nThe weird thing is that this code has worked in the past.  It even worked with the same corpus yesterday morning.\n\nWhat am I missing here?\n\n________________________________\nThis message is private and confidential. If you have received it in error, please notify the sender and remove it from your system.\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20120816/82f7801c/attachment.html>",
+      "body_snippet": "I'm trying to convert a plain text document to a document term matrix with the following code and get the error message below:\n\nRelVer.DTM<-DocumentTermMatrix(RelVer.PTD)\n\nError in simple_triplet_matr",
+      "thread_id": "thread-349eaae4020d",
+      "thread_depth": 0,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-3471fbdca91b",
+      "message_id": "<502E2B22.3040300@gmail.com>",
+      "from_name": "Natxo Sorolla",
+      "from_email_hash": "8d75ce18d8a341589926952888caa74270acd97b958b946170de86e1dc9246b1",
+      "date": "2012-08-17T04:29:38Z",
+      "subject": "[statnet_help] Edge attributes / Multiple Networks / Signed Networks",
+      "subject_clean": "[statnet_help] Edge attributes / Multiple Networks / Signed Networks",
+      "in_reply_to": "<201208161902.q7GJ2R2e027871@mxout11.cac.washington.edu>",
+      "references": [
+        "<201208161902.q7GJ2R2e027871@mxout11.cac.washington.edu>"
+      ],
+      "body_plain": "Hello!\n\nOur data is about sociolinguistic relations of several teenage students \n(12 years old) in sociocentric networks of multiple schools. The \nsociolinguistic relations have two types of information: relations \nbetween adolescents and language used in this relation. Not all dyads \nhave relations, and if relations exist, can be in language A or language \nB. Our information can be more complex, because language use is in \nlanguage A, language B, language A and B, o other languages. But we can \ndichotomize the data.\n\nWe have problems with the analysis of our data, because edges have \nattributes, and and I couldn't find any reference about how to handle \nwhit it, neither with R nor any other software.\n\nThen, I have three questions:\n\nHow can we analyse edge attributes with ERGM? Is it possible? A possible \nway is work with multiple networks, like \"relations in language A\" and \n\"relations in language B\". As I see in (few) previous posts in this \ndirection in this mail list, high statistical knowledge is needed to \nproceed. Out of R, it is possible compare networks with ERG Models with \nXPnet. But our data is (theorically) negative correspondence, and can't \ninterpret results of multiple networks analysis like it. Do you know \nbibliography that can help us?\n\nHow can we analyse valued networks (qualitative links) with \"sna\"? We \nare interested in multiple analysis at the descriptive level:: language \nreciprocity, centrality in different languages, triad analysis with \nmultiple languages relations, and so on...  We are working it combining \nUCINET results of full network, and network in language A and network in \nlanguage B, and comparing it with Excel. Is it possible analyse wit \n\"sna\" how reciprocity dyads have language reciprocity too? For exemple, \n\"90% of reciprocity relations are in the same language\". Or 20% of \ntransitive triads use A language in X -> Y and Y -> Z relations, and B \nlanguage in X -> Z relation. We are also interested in some analysis \nwith \"sna\" like UCINET> Tools> Testing Hypotheses> Mixed Dyadic / Nodal> \nCategorical attributes> Relational Contingency Table analysis.\n\nMaybe a solution is working with signed networks. Origins of this \nanalysis is other, about positive relations (friends) and negative \nrelations (enemies). And balanced networks theory don't adjust to \nlanguage networks. But is not far that language use in networks can be \nunderstanded  like relations in A language (+), in B language (-) or in \nboth languages (0). How can we work with signed networks in \"statnet\"?\n\nLast but not least, my presentation in Statnet mailing list: I am Natxo \nSorolla, and I am working in sociology of language at the University of \nBarcelona.\n\nNatxo Sorolla\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20120817/4223ea07/attachment.html>",
+      "body_snippet": "Hello!\n\nOur data is about sociolinguistic relations of several teenage students \n(12 years old) in sociocentric networks of multiple schools. The \nsociolinguistic relations have two types of informati",
+      "thread_id": "thread-3471fbdca91b",
+      "thread_depth": 0,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-91c90a73145c",
+      "message_id": "<502E332B.7090308@gmail.com>",
+      "from_name": "Wet Bell Diver",
+      "from_email_hash": "09fdc5d1c23fede3e047b9965a4a47e37cc52f884f5f9cd82fa9a9e7e10de1a4",
+      "date": "2012-08-17T05:03:55Z",
+      "subject": "[statnet_help] ergm for valued ties",
+      "subject_clean": "[statnet_help] ergm for valued ties",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear list,\n\nAt Sunbelt it was predicted that this year a version of ergm would be \nreleased that would allow for the analysis of networks with \nvalued/weighted ties. Since I have some valued networks that are in dire \nneed of being analyzed, I am wondering if there is any news as to when \nthe release will be?\n\nthanks,\nPeter",
+      "body_snippet": "Dear list,\n\nAt Sunbelt it was predicted that this year a version of ergm would be \nreleased that would allow for the analysis of networks with \nvalued/weighted ties. Since I have some valued networks ",
+      "thread_id": "thread-91c90a73145c",
+      "thread_depth": 0,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-3e3020a93614",
+      "message_id": "<502E33B3.7000102@gmail.com>",
+      "from_name": "Wet Bell Diver",
+      "from_email_hash": "09fdc5d1c23fede3e047b9965a4a47e37cc52f884f5f9cd82fa9a9e7e10de1a4",
+      "date": "2012-08-17T05:06:11Z",
+      "subject": "[statnet_help] oops!",
+      "subject_clean": "[statnet_help] oops!",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "My apologies to the list, I had neglected to refresh my email and \nthought my original message on ergm for valued ties had been lost of \ncyberspace. Now I see it did get through. Apologies for sending a \nsimilar question twice.\n\n--Peter",
+      "body_snippet": "My apologies to the list, I had neglected to refresh my email and \nthought my original message on ergm for valued ties had been lost of \ncyberspace. Now I see it did get through. Apologies for sending",
+      "thread_id": "thread-3e3020a93614",
+      "thread_depth": 0,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-399d5cb3957e",
+      "message_id": "<502E3FA2.6080104@xs4all.nl>",
+      "from_name": "Marc van Opijnen",
+      "from_email_hash": "9c58a94822172e78be2d1e3b4cf56b9e69bdc83ba2ef530a30b0b9eff71ebbaf",
+      "date": "2012-08-17T05:57:06Z",
+      "subject": "[statnet_help] problem loading Pajek-files",
+      "subject_clean": "[statnet_help] problem loading Pajek-files",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI'm encountering an issue with loading Pajek-files of substantial size.\n\nWhen I try to load a small Pajek .net-file (24 vertices, 20 arcs with \none (weight)attribute) in R/Statnet there is no problem - either using \nread.paj on the R-prompt, or using the 'Export to R'-function in \nPajek(XXL).\n\nBut when I try the same for a file with 853,862 vertices and some \n300,000 arcs (+attribute) it fails. The file itself is ok, it can be \nloaded in Pajek and is constructed the same way as the small network file.\n\nThe error message reads:\n\n  \tThe following networks/matrices read:\n\tError in seq.default(0, 0, length = -1064125276) :\n\t  length must be non-negative number\n\nWhich doesn't make any sense to me.\n\nAnybody any advice? (Shrinking the network is not really an option).\nThanks in advance,\n\nMarc van Opijnen\nadviser legal informatics, Council for the Judiciary (the Netherlands)",
+      "body_snippet": "Hello,\n\nI'm encountering an issue with loading Pajek-files of substantial size.\n\nWhen I try to load a small Pajek .net-file (24 vertices, 20 arcs with \none (weight)attribute) in R/Statnet there is no ",
+      "thread_id": "thread-399d5cb3957e",
+      "thread_depth": 0,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-6a5287a1528f",
+      "message_id": "<1345243343.4305.613.camel@krivitsky.heinz.win.cmu.edu>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "460258cbd680ea347ee0196adc8a17e139024de6f74b950cba8add8e35654b6f",
+      "date": "2012-08-17T15:42:23Z",
+      "subject": "[statnet_help] ergm for valued ties",
+      "subject_clean": "[statnet_help] ergm for valued ties",
+      "in_reply_to": "<502E332B.7090308@gmail.com>",
+      "references": [
+        "<502E332B.7090308@gmail.com>"
+      ],
+      "body_plain": "Dear Peter,\n\nWe are putting together a release that will be able to model ties whose\nvalues are unbounded counts with terms described in the following paper:\n\nPavel N. Krivitsky. Exponential-Family Random Graph Models for Valued\nNetworks. Electronic Journal of Statistics, 2012, 6, 1100-1128.\ndoi:10.1214/12-EJS696\n\nIf all goes well, the package should be out in the next few weeks. What\nsort of values do your data have?\n\n                 Best,\n                 Pavel\n\nOn Fri, 2012-08-17 at 14:03 +0200, Wet Bell Diver wrote:\n> Dear list,\n> \n> At Sunbelt it was predicted that this year a version of ergm would be \n> released that would allow for the analysis of networks with \n> valued/weighted ties. Since I have some valued networks that are in dire \n> need of being analyzed, I am wondering if there is any news as to when \n> the release will be?\n> \n> thanks,\n> Peter\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Peter,\n\nWe are putting together a release that will be able to model ties whose\nvalues are unbounded counts with terms described in the following paper:\n\nPavel N. Krivitsky. Exponential-Family Ra",
+      "thread_id": "thread-91c90a73145c",
+      "thread_depth": 1,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-91b821fe8cfb",
+      "message_id": "<5034F6F7.7010702@eawag.ch>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "5ca3a759bddb9505661daafb6664f38c57cb4d334ac3b6411b49b7d1a9d8d151",
+      "date": "2012-08-22T08:12:55Z",
+      "subject": "[statnet_help] NAs in dyadcov and edgecov terms",
+      "subject_clean": "[statnet_help] NAs in dyadcov and edgecov terms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI know what to do about NAs in nodal attribute covariates, and I am \naware that NAs in the network I am modeling are dropped from the ergm \nestimation. But what can I do about NAs in another network when I want \nto use it in a dyadcov or edgecov term? Are my only viable options \neither to omit the model term or to delete all actors both in the \nnetwork to be modeled and the edgecov network and proceed with the \nremaining observations (risking some bias if more than just a few \nobservations are missing)?\n\nThanks,\n\nPhilip\n\n-- \nDr. Philip Leifeld\n\nEawag: Das Wasserforschungsinstitut des ETH-Bereichs\nSwiss Federal Institute of Aquatic Science and Technology\n\nUniversit?t Bern, Institut f?r Politikwissenschaft\nUniversity of Bern, Institute of Political Science\n\nEawag, ?berlandstr. 133, 8600 D?bendorf, Switzerland\nPhone: +41 58 765 5673 | E-mail: philip.leifeld@eawag.ch\nOffice: FC-E18 | Homepage: http://www.philipleifeld.de",
+      "body_snippet": "Hi,\n\nI know what to do about NAs in nodal attribute covariates, and I am \naware that NAs in the network I am modeling are dropped from the ergm \nestimation. But what can I do about NAs in another netw",
+      "thread_id": "thread-91b821fe8cfb",
+      "thread_depth": 0,
+      "month": "2012-08"
+    },
+    {
+      "id": "msg-fb4125d5b844",
+      "message_id": "<alpine.WNT.1.10.1208231652520.7152@morrism-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2012-08-23T16:53:43Z",
+      "subject": "[statnet_help] Text Mining Problem",
+      "subject_clean": "[statnet_help] Text Mining Problem",
+      "in_reply_to": "<798FF3A49CD1EE43BEAE3523FC9EF5B2D079BC4858@EXCH07-03.apollogrp.edu>",
+      "references": [
+        "<798FF3A49CD1EE43BEAE3523FC9EF5B2D079BC4858@EXCH07-03.apollogrp.edu>"
+      ],
+      "body_plain": "Philip,\n\nWe didn't write the tm package -- you'll need to contact the package \nauthors for tm to get help with this problem.\n\ngood luck,\nMartina\n\nOn Thu, 16 Aug 2012, Philip Heinrich wrote:\n\n> \n> I?m trying to convert a plain text document to a document term matrix with the following code and\n> get the error message below:\n>\n> \n> \n> RelVer.DTM<-DocumentTermMatrix(RelVer.PTD)\n>\n> \n> \n> Error in simple_triplet_matrix(i = i, j = j, v = as.numeric(v), nrow = length(allTerms),? :\n>\n> ??'dimnames' component invalid length or type'\n>\n> \n> \n> I?m guessing it has something to do with the type which is list.\n>\n> \n> \n> > typeof(RelVer.PTD)\n> \n> [1] \"list\"\n>\n> \n> \n> The weird thing is that this code has worked in the past.? It even worked with the same corpus\n> yesterday morning.\n>\n> \n> \n> What am I missing here?\n> \n> \n> ___________________________________________________________________________________________________________\n> This message is private and confidential. If you have received it in error, please notify the sender\n> and remove it from your system.\n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Philip,\n\nWe didn't write the tm package -- you'll need to contact the package \nauthors for tm to get help with this problem.\n\ngood luck,\nMartina\n\nOn Thu, 16 Aug 2012, Philip Heinrich wrote:\n\n> \n> I?m ",
+      "thread_id": "thread-349eaae4020d",
+      "thread_depth": 1,
+      "month": "2012-08"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-66b8f07fe1b7",
+      "subject": "[statnet_help] 3-paths with vertex attributes",
+      "message_count": 1,
+      "participants": [
+        "Moses Boudourides"
+      ],
+      "started": "2012-08-01T01:55:35Z",
+      "last_reply": "2012-08-01T01:55:35Z",
+      "root_message_id": "msg-66b8f07fe1b7"
+    },
+    {
+      "id": "thread-ac13b971c94a",
+      "subject": "[statnet_help] Parallel argument to use multiple cores",
+      "message_count": 1,
+      "participants": [
+        "Philip Leifeld"
+      ],
+      "started": "2012-08-07T01:43:27Z",
+      "last_reply": "2012-08-07T01:43:27Z",
+      "root_message_id": "msg-ac13b971c94a"
+    },
+    {
+      "id": "thread-2a36ca4cf51e",
+      "subject": "[statnet_help] a measure for 'coreness' in R?",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Lindsay Jacobs"
+      ],
+      "started": "2012-08-08T05:03:06Z",
+      "last_reply": "2012-08-08T11:02:23Z",
+      "root_message_id": "msg-2a36ca4cf51e"
+    },
+    {
+      "id": "thread-274146a989d5",
+      "subject": "[statnet_help] Problem concerning weighted arrowheads",
+      "message_count": 1,
+      "participants": [
+        "Richard Heidler"
+      ],
+      "started": "2012-08-12T02:09:44Z",
+      "last_reply": "2012-08-12T02:09:44Z",
+      "root_message_id": "msg-274146a989d5"
+    },
+    {
+      "id": "thread-86b873e110e4",
+      "subject": "[statnet_help] Relative betweenness",
+      "message_count": 1,
+      "participants": [
+        "Moses Boudourides"
+      ],
+      "started": "2012-08-13T05:26:19Z",
+      "last_reply": "2012-08-13T05:26:19Z",
+      "root_message_id": "msg-86b873e110e4"
+    },
+    {
+      "id": "thread-0c32cb93c566",
+      "subject": "[statnet_help] including nodeicov, nodeocov, and edgecov in same model",
+      "message_count": 2,
+      "participants": [
+        "Markus Schafer",
+        "Martina Morris"
+      ],
+      "started": "2012-08-13T11:19:21Z",
+      "last_reply": "2012-08-14T09:42:07Z",
+      "root_message_id": "msg-0c32cb93c566"
+    },
+    {
+      "id": "thread-8fff846842c8",
+      "subject": "[statnet_help] importing egocentric network into R",
+      "message_count": 1,
+      "participants": [
+        "Niklas Fischer"
+      ],
+      "started": "2012-08-15T06:46:21Z",
+      "last_reply": "2012-08-15T06:46:21Z",
+      "root_message_id": "msg-8fff846842c8"
+    },
+    {
+      "id": "thread-7071fd567318",
+      "subject": "[statnet_help] importing egocentric network data in R",
+      "message_count": 2,
+      "participants": [
+        "Martina Morris",
+        "Niklas Fischer"
+      ],
+      "started": "2012-08-15T12:49:51Z",
+      "last_reply": "2012-08-15T13:13:55Z",
+      "root_message_id": "msg-7071fd567318"
+    },
+    {
+      "id": "thread-5a64852058a4",
+      "subject": "[statnet_help] AUTO: Tom Kochuyt is out of the office (returning 20-08-2012)",
+      "message_count": 1,
+      "participants": [
+        "Tom Kochuyt"
+      ],
+      "started": "2012-08-15T13:51:24Z",
+      "last_reply": "2012-08-15T13:51:24Z",
+      "root_message_id": "msg-5a64852058a4"
+    },
+    {
+      "id": "thread-8d57e751c14f",
+      "subject": "[statnet_help] valued ties in ergm",
+      "message_count": 1,
+      "participants": [
+        "Wet Bell Diver"
+      ],
+      "started": "2012-08-16T07:00:04Z",
+      "last_reply": "2012-08-16T07:00:04Z",
+      "root_message_id": "msg-8d57e751c14f"
+    },
+    {
+      "id": "thread-349eaae4020d",
+      "subject": "[statnet_help] Text Mining Problem",
+      "message_count": 2,
+      "participants": [
+        "Martina Morris",
+        "Philip Heinrich"
+      ],
+      "started": "2012-08-16T10:49:22Z",
+      "last_reply": "2012-08-23T16:53:43Z",
+      "root_message_id": "msg-349eaae4020d"
+    },
+    {
+      "id": "thread-3471fbdca91b",
+      "subject": "[statnet_help] Edge attributes / Multiple Networks / Signed Networks",
+      "message_count": 1,
+      "participants": [
+        "Natxo Sorolla"
+      ],
+      "started": "2012-08-17T04:29:38Z",
+      "last_reply": "2012-08-17T04:29:38Z",
+      "root_message_id": "msg-3471fbdca91b"
+    },
+    {
+      "id": "thread-91c90a73145c",
+      "subject": "[statnet_help] ergm for valued ties",
+      "message_count": 2,
+      "participants": [
+        "Pavel N. Krivitsky",
+        "Wet Bell Diver"
+      ],
+      "started": "2012-08-17T05:03:55Z",
+      "last_reply": "2012-08-17T15:42:23Z",
+      "root_message_id": "msg-91c90a73145c"
+    },
+    {
+      "id": "thread-3e3020a93614",
+      "subject": "[statnet_help] oops!",
+      "message_count": 1,
+      "participants": [
+        "Wet Bell Diver"
+      ],
+      "started": "2012-08-17T05:06:11Z",
+      "last_reply": "2012-08-17T05:06:11Z",
+      "root_message_id": "msg-3e3020a93614"
+    },
+    {
+      "id": "thread-399d5cb3957e",
+      "subject": "[statnet_help] problem loading Pajek-files",
+      "message_count": 1,
+      "participants": [
+        "Marc van Opijnen"
+      ],
+      "started": "2012-08-17T05:57:06Z",
+      "last_reply": "2012-08-17T05:57:06Z",
+      "root_message_id": "msg-399d5cb3957e"
+    },
+    {
+      "id": "thread-91b821fe8cfb",
+      "subject": "[statnet_help] NAs in dyadcov and edgecov terms",
+      "message_count": 1,
+      "participants": [
+        "Philip Leifeld"
+      ],
+      "started": "2012-08-22T08:12:55Z",
+      "last_reply": "2012-08-22T08:12:55Z",
+      "root_message_id": "msg-91b821fe8cfb"
+    }
+  ]
+}

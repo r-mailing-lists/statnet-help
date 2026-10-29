@@ -1,0 +1,55 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2007-06",
+  "messages": [
+    {
+      "id": "msg-f81f64ca07e1",
+      "message_id": "<26df7c6f0706200200u1f4d6b0bia21edcb6eedd6036@mail.gmail.com>",
+      "from_name": "Caroline Buckee",
+      "from_email_hash": "0da61fda4adc12616100406d8e0f6c50c20b45b0d695c615f01b5d3f01a7d06b",
+      "date": "2007-06-20T02:00:22Z",
+      "subject": "[statnet_help] network question",
+      "subject_clean": "[statnet_help] network question",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet help,\n\nI have been having a problem with network visualization while using statnet\nand I can't find any threads on R postings that are relevant so I thought I\nwould ask you, even though it might be a network package problem.\n\nWhenever I try to plot networks with different edge colours, given as a\nmatrix, the edges are suddenly pastel shades and a different style. Even if\nI try plot(network, edge.col=matrix, edge.lty=0) the edges will be pastel\ncolors. I have looked in the documentation and can't find why this is and\nthe edge.lty and edge.lwd commands don't seem to work. Have you come across\nthis problem and do you know how I could fix it?\n\nI'm running R Version 2.4.0 GUI 1.17 (3868), network package Version 1.1-1,\nsna version 1.3, and statnet Version 1.0-11, on a Mac PowerBook G4.\n\nThank you. I'd really appreciate some advice...\n\nCaroline Buckee\n\nPopulation Biology of Infectious Diseases\nDepartment of Zoology\nUniversity of Oxford\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20070620/8ab59497/attachment.html>",
+      "body_snippet": "Dear Statnet help,\n\nI have been having a problem with network visualization while using statnet\nand I can't find any threads on R postings that are relevant so I thought I\nwould ask you, even though i",
+      "thread_id": "thread-f81f64ca07e1",
+      "thread_depth": 0,
+      "month": "2007-06"
+    },
+    {
+      "id": "msg-66c04c6f8877",
+      "message_id": "<46790C65.7070905@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2007-06-20T04:15:49Z",
+      "subject": "[statnet_help] network question",
+      "subject_clean": "[statnet_help] network question",
+      "in_reply_to": "<26df7c6f0706200200u1f4d6b0bia21edcb6eedd6036@mail.gmail.com>",
+      "references": [
+        "<26df7c6f0706200200u1f4d6b0bia21edcb6eedd6036@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Caroline -\n\nCaroline Buckee wrote:\n> Dear Statnet help,\n> \n> I have been having a problem with network visualization while using \n> statnet and I can't find any threads on R postings that are relevant so \n> I thought I would ask you, even though it might be a network package \n> problem.\n> \n> Whenever I try to plot networks with different edge colours, given as a \n> matrix, the edges are suddenly pastel shades and a different style. Even \n> if I try plot(network, edge.col=matrix, edge.lty=0) the edges will be \n> pastel colors. I have looked in the documentation and can't find why \n> this is and the edge.lty and edge.lwd commands don't seem to work. Have \n> you come across this problem and do you know how I could fix it?\n> \n> I'm running R Version 2.4.0 GUI 1.17 (3868), network package Version \n> 1.1-1, sna version 1.3, and statnet Version 1.0-11, on a Mac PowerBook G4.\n> \n> Thank you. I'd really appreciate some advice...\n> \n\nI haven't seen this problem before; it doesn't seem to be affecting my \ninstallation.  Can you post a snippet of the offending code?\n\nThanks,\n\n-Carter\n\nPS. The lty argument to plot.network/gplot controls the line type for \nthe border of the edge, not the edge itself.  (Edges are actually drawn \nas very thin polygons, for fascinating but suitably arcane reasons which \nneed not concern us here.)  In some cases, however, the polygons may be \nso thin that only the outer line is visible -- thus can one obtain the \neffect of dotted edges without actually drawing them as such.  In any \nevent, lty=0 does not mean \"draw no edges,\" at least not since sna \nversion 0.5 or thereabouts (when the new gplot was introduced).  Those \nwho are interested should take a look at gplot.arrow/network.arrow and \npolygon to see how the code is written.",
+      "body_snippet": "Hi, Caroline -\n\nCaroline Buckee wrote:\n> Dear Statnet help,\n> \n> I have been having a problem with network visualization while using \n> statnet and I can't find any threads on R postings that are rele",
+      "thread_id": "thread-f81f64ca07e1",
+      "thread_depth": 1,
+      "month": "2007-06"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-f81f64ca07e1",
+      "subject": "[statnet_help] network question",
+      "message_count": 2,
+      "participants": [
+        "Caroline Buckee",
+        "Carter T. Butts"
+      ],
+      "started": "2007-06-20T02:00:22Z",
+      "last_reply": "2007-06-20T04:15:49Z",
+      "root_message_id": "msg-f81f64ca07e1"
+    }
+  ]
+}

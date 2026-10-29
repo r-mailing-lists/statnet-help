@@ -1,0 +1,775 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2009-03",
+  "messages": [
+    {
+      "id": "msg-27a77c89bbff",
+      "message_id": "<001d01c9a0b6$9a926ff0$cfb74fd0$@vlegels@ugent.be>",
+      "from_name": "Jef Vlegels",
+      "from_email_hash": "2c9ae18a029cd39586b4e15b856c86d0cc1fdfd9dda1c4b1b282a6e2cfb21479",
+      "date": "2009-03-09T05:57:29Z",
+      "subject": "[statnet_help] count identical dyads",
+      "subject_clean": "[statnet_help] count identical dyads",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet users,\n\n \n\nI'm looking for a way to calculate the number of possible dyads in a network\nbetween two actors with an identical attribute value (for example same sex).\nI found the 'network.dyadcount' function, which gives me all possible dyads\nof the entire network. But it seems not possible to calculate the dyad count\nbetween actors with the same value on an attribute (and between actors with\na different value; heterophily). I want to use these results for my\ndescriptive analysis, before I model my network.\n\nIs it possible to do this in the statnet package?\n\n \n\nThanks in advance,\n\n \n\nJef\n\n \n\n \n\n \n\nJef Vlegels\nUniversiteit Gent\nVakgroep Sociologie\nKorte Meer 3 \nB-9000 Gent\nPhone: +32 (0)9 264.91.75\nFax: +32 (0)9 264.69.75\njef.vlegels@ugent.be\n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090309/c2ba0b02/attachment.html>",
+      "body_snippet": "Dear Statnet users,\n\n \n\nI'm looking for a way to calculate the number of possible dyads in a network\nbetween two actors with an identical attribute value (for example same sex).\nI found the 'network.d",
+      "thread_id": "thread-27a77c89bbff",
+      "thread_depth": 0,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-6d3964a2dffa",
+      "message_id": "<2AED95DF-302B-49E7-A87F-0CB67043B543@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-03-09T06:40:05Z",
+      "subject": "[statnet_help] count identical dyads",
+      "subject_clean": "[statnet_help] count identical dyads",
+      "in_reply_to": "<001d01c9a0b6$9a926ff0$cfb74fd0$@vlegels@ugent.be>",
+      "references": [
+        "<001d01c9a0b6$9a926ff0$cfb74fd0$@vlegels@ugent.be>"
+      ],
+      "body_plain": "Hi Jef.  One way is to use a \"brute-force\" approach on a tabular  \nsummary of the attribute.  If the network is undirected, then simply  \ncalculating k-choose-2 for each count k of network attribute counts  \nshould do the trick.  For instance, using the faux.mesa.high dataset  \nof the ergm package, we have:\n\n > library(ergm)\n  ...\n > data(faux.mesa.high)\n > choose(table(faux.mesa.high %v% \"Race\"),2)\n\nBlack  Hisp NatAm Other White\n    15  5886  2278     6   153\n\nThese numbers could be doubled for a directed network of course.  Hope  \nthis helps.\nDave\n\n\n\n\nOn Mar 9, 2009, at 8:57 AM, Jef Vlegels wrote:\n\n> Dear Statnet users,\n>\n> I?m looking for a way to calculate the number of possible dyads in a  \n> network between two actors with an identical attribute value (for  \n> example same sex). I found the ?network.dyadcount? function, which  \n> gives me all possible dyads of the entire network. But it seems not  \n> possible to calculate the dyad count between actors with the same  \n> value on an attribute (and between actors with a different value;  \n> heterophily). I want to use these results for my descriptive  \n> analysis, before I model my network.\n> Is it possible to do this in the statnet package?\n>\n> Thanks in advance,\n>\n> Jef\n>\n>\n>\n> Jef Vlegels\n> Universiteit Gent\n> Vakgroep Sociologie\n> Korte Meer 3\n> B-9000 Gent\n> Phone: +32 (0)9 264.91.75\n> Fax: +32 (0)9 264.69.75\n> jef.vlegels@ugent.be\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090309/8202fcd3/attachment.html>",
+      "body_snippet": "Hi Jef.  One way is to use a \"brute-force\" approach on a tabular  \nsummary of the attribute.  If the network is undirected, then simply  \ncalculating k-choose-2 for each count k of network attribute c",
+      "thread_id": "thread-27a77c89bbff",
+      "thread_depth": 1,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-f3184834a855",
+      "message_id": "<00D0B970-0D7D-4C4A-8A61-DF30DB6A3EB0@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-03-09T06:56:22Z",
+      "subject": "[statnet_help] count identical dyads",
+      "subject_clean": "[statnet_help] count identical dyads",
+      "in_reply_to": "<2AED95DF-302B-49E7-A87F-0CB67043B543@stat.psu.edu>",
+      "references": [
+        "<001d01c9a0b6$9a926ff0$cfb74fd0$@vlegels@ugent.be>",
+        "<2AED95DF-302B-49E7-A87F-0CB67043B543@stat.psu.edu>"
+      ],
+      "body_plain": "Hi Jef.  Sorry, a quick addendum; I hadn't noticed that you also  \nwanted heterophily counts.  This should do the trick, and of course  \nthe function f could be modified for the directed case by not dividing  \nby 2:\n\n > f <- function(v) (outer(v,v)-diag(v))/2\n > f(table(faux.mesa.high %v% \"Race\"))\n\n         Black Hisp NatAm Other White\n   Black    15  327   204    12    54\n   Hisp    327 5886  3706   218   981\n   NatAm   204 3706  2278   136   612\n   Other    12  218   136     6    36\n   White    54  981   612    36   153\n\nDave\n\n\n\n\nOn Mar 9, 2009, at 9:40 AM, David Hunter wrote:\n\n> Hi Jef.  One way is to use a \"brute-force\" approach on a tabular  \n> summary of the attribute.  If the network is undirected, then simply  \n> calculating k-choose-2 for each count k of network attribute counts  \n> should do the trick.  For instance, using the faux.mesa.high dataset  \n> of the ergm package, we have:\n>\n> > library(ergm)\n>  ...\n> > data(faux.mesa.high)\n> > choose(table(faux.mesa.high %v% \"Race\"),2)\n>\n> Black  Hisp NatAm Other White\n>    15  5886  2278     6   153\n>\n> These numbers could be doubled for a directed network of course.   \n> Hope this helps.\n> Dave\n>\n>\n>\n>\n> On Mar 9, 2009, at 8:57 AM, Jef Vlegels wrote:\n>\n>> Dear Statnet users,\n>>\n>> I?m looking for a way to calculate the number of possible dyads in  \n>> a network between two actors with an identical attribute value (for  \n>> example same sex). I found the ?network.dyadcount? function, which  \n>> gives me all possible dyads of the entire network. But it seems not  \n>> possible to calculate the dyad count between actors with the same  \n>> value on an attribute (and between actors with a different value;  \n>> heterophily). I want to use these results for my descriptive  \n>> analysis, before I model my network.\n>> Is it possible to do this in the statnet package?\n>>\n>> Thanks in advance,\n>>\n>> Jef\n>>\n>>\n>>\n>> Jef Vlegels\n>> Universiteit Gent\n>> Vakgroep Sociologie\n>> Korte Meer 3\n>> B-9000 Gent\n>> Phone: +32 (0)9 264.91.75\n>> Fax: +32 (0)9 264.69.75\n>> jef.vlegels@ugent.be\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090309/57d3fc9e/attachment.html>",
+      "body_snippet": "Hi Jef.  Sorry, a quick addendum; I hadn't noticed that you also  \nwanted heterophily counts.  This should do the trick, and of course  \nthe function f could be modified for the directed case by not d",
+      "thread_id": "thread-27a77c89bbff",
+      "thread_depth": 2,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-a2ed911035f2",
+      "message_id": "<Pine.LNX.4.43.0903091019380.14701@hymn13.u.washington.edu>",
+      "from_name": "David A. Nolin",
+      "from_email_hash": "9bdba4bb84525b0697b0c9619af7e9af2b1f5002747878ee0c904c5a04fc85a6",
+      "date": "2009-03-09T10:19:38Z",
+      "subject": "[statnet_help] Using mutuality in an interaction term",
+      "subject_clean": "[statnet_help] Using mutuality in an interaction term",
+      "in_reply_to": "<00D0B970-0D7D-4C4A-8A61-DF30DB6A3EB0@stat.psu.edu>",
+      "references": [],
+      "body_plain": "I am attempting to include an interaction term between mutuality and an edge covariate \"D\" in an ergm model. I have done this by first creating a symmetric matrix indicating presence or absence of mutuality, then cell-wise multiplying this matrix by the edge covariate matrix D to create the interaction term matrix. I include the resulting matrix as an additional edge covariate in the ergm model.\n\nI get the following error:\n\n> ergm.D.M.DM <- ergm(Net ~ edges + edgecov(CovMat.D) + mutual + edgecov(CovMat.DxM))\nIteration 1 of at most 3: the log-likelihood improved by 0.3097 \nIteration 2 of at most 3: the log-likelihood improved by 0.1229 \nIteration 3 of at most 3: the log-likelihood improved by 0.04193 \nError in svd(H) : infinite or missing values in 'x'\n\n\n1. Any ideas why this isn't working, and how to get it to work?\n\n2. As a more general question, is it even possible to include interaction terms between an edge covariate and some structural term like mutuality in an ergm model?\n\n3. Am I even doing this right? Isn't it a problem that the mutuality matrix used to calculate the interaction term isn't the same as mutuality calculated over the MCMC-sampled networks? I.e. mutuality in each of the MCMC-generated networks varies, but mutuality in the interaction term is static, calculated from the observed network only. Instead, is there a way to estimate the interaction term based on mutuality in the MCMC-sampled networks?\n\nThanks for your help. Data and code attached if you wish to replicate the error.\n\n--Dave\n\nNolin.RData attached.\n\nCODE:\n\nlibrary(statnet)\nls()\nCovMat.M<-as.sociomatrix(Net)*t(as.sociomatrix(Net))\nCovMat.DxM<-CovMat.D * CovMat.M\nergm.D.M.DxM<-ergm(Net~edges + edgecov(CovMat.D) + mutual + edgecov(CovMat.DxM))\n\n\n\n\n\n\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: Nolin.RData\nType: application/octet-stream\nSize: 137140 bytes\nDesc: \nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090309/3e0cb894/attachment.obj>",
+      "body_snippet": "I am attempting to include an interaction term between mutuality and an edge covariate \"D\" in an ergm model. I have done this by first creating a symmetric matrix indicating presence or absence of mut",
+      "thread_id": "thread-27a77c89bbff",
+      "thread_depth": 3,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-c309c4d2e487",
+      "message_id": "<Pine.LNX.4.43.0903091022480.14701@hymn13.u.washington.edu>",
+      "from_name": "David A. Nolin",
+      "from_email_hash": "9bdba4bb84525b0697b0c9619af7e9af2b1f5002747878ee0c904c5a04fc85a6",
+      "date": "2009-03-09T10:22:48Z",
+      "subject": "[statnet_help] Using mutuality in an interaction term",
+      "subject_clean": "[statnet_help] Using mutuality in an interaction term",
+      "in_reply_to": "<Pine.LNX.4.43.0903091019380.14701@hymn13.u.washington.edu>",
+      "references": [],
+      "body_plain": "Sorry about that output formatting; it should look like this:\n\n> ergm.D.M.DM<-ergm(Net~edges + edgecov(CovMat.D) + mutual + edgecov(CovMat.DxM))\nIteration 1 of at most 3: the log-likelihood improved by 0.3097\nIteration 2 of at most 3: the log-likelihood improved by 0.1229\nIteration 3 of at most 3: the log-likelihood improved by 0.04193\nError in svd(H) : infinite or missing values in 'x'\n\n\n\nOn Mon, 9 Mar 2009, David A. Nolin wrote:\n\n> I am attempting to include an interaction term between mutuality and an edge \n> covariate \"D\" in an ergm model. I have done this by first creating a symmetric \n> matrix indicating presence or absence of mutuality, then cell-wise multiplying \n> this matrix by the edge covariate matrix D to create the interaction term \n> matrix. I include the resulting matrix as an additional edge covariate in the \n> ergm model.\n>\n> I get the following error:\n>\n>> ergm.D.M.DM <- ergm(Net ~ edges + edgecov(CovMat.D) + mutual + \n>> edgecov(CovMat.DxM))\n> Iteration 1 of at most 3: the log-likelihood improved by 0.3097 Iteration 2 of \n> at most 3: the log-likelihood improved by 0.1229 Iteration 3 of at most 3: the \n> log-likelihood improved by 0.04193 Error in svd(H) : infinite or missing values \n> in 'x'\n>\n>\n> 1. Any ideas why this isn't working, and how to get it to work?\n>\n> 2. As a more general question, is it even possible to include interaction terms \n> between an edge covariate and some structural term like mutuality in an ergm \n> model?\n>\n> 3. Am I even doing this right? Isn't it a problem that the mutuality matrix \n> used to calculate the interaction term isn't the same as mutuality calculated \n> over the MCMC-sampled networks? I.e. mutuality in each of the MCMC-generated \n> networks varies, but mutuality in the interaction term is static, calculated \n> from the observed network only. Instead, is there a way to estimate the \n> interaction term based on mutuality in the MCMC-sampled networks?\n>\n> Thanks for your help. Data and code attached if you wish to replicate the \n> error.\n>\n> --Dave\n>\n> Nolin.RData attached.\n>\n> CODE:\n>\n> library(statnet)\n> ls()\n> CovMat.M<-as.sociomatrix(Net)*t(as.sociomatrix(Net))\n> CovMat.DxM<-CovMat.D * CovMat.M\n> ergm.D.M.DxM<-ergm(Net~edges + edgecov(CovMat.D) + mutual + \n> edgecov(CovMat.DxM))\n>\n>\n>\n>\n>\n>\n>",
+      "body_snippet": "Sorry about that output formatting; it should look like this:\n\n> ergm.D.M.DM<-ergm(Net~edges + edgecov(CovMat.D) + mutual + edgecov(CovMat.DxM))\nIteration 1 of at most 3: the log-likelihood improved b",
+      "thread_id": "thread-27a77c89bbff",
+      "thread_depth": 4,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-07dbeef21645",
+      "message_id": "<657033.29487.bm@omp421.mail.mud.yahoo.com>",
+      "from_name": "David Purdy",
+      "from_email_hash": "948e582856e32e3a5226e16fb00b037e4f4a3d66ad09ea933dbe9e9f1ad4f925",
+      "date": "2009-03-09T12:17:05Z",
+      "subject": "[statnet_help] Seed values for ergm",
+      "subject_clean": "[statnet_help] Seed values for ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Greetings,\n\nI am assisting a social networking researcher who is using statnet.  \nI'm a little puzzled about seeds in ergm.\n\nThe call is of this form (variables renamed to protect the innocent):\nm1 <-ergm(IM ~ edges + mutual + nodeocov(\"mathscore\") + \nnodeicov(\"mathscore\") + absdiff(\"mathscore\") + nodeicov(\"readscore\") + \nnodefactor(\"grade\"), MCMCsamplesize = 1e+5, interval = 1000, Seed=1000)\n\nSimply put, when the models are degenerate, I'm told that these \nresearcher's group simply runs ergm again with this command.  My \nunderstanding of the use of the seed is that with the same seed, they \nshould get the same results.  But, they're getting different results each time.\n\nOn the one hand, if the seed produced the same results every time, I \nwould encourage them to change the seed or other parameters.  As it \nstands, they get different models with each run of this call, which \nsatisfies their interests, but I'm left wondering how they can assure \nreproducible models without a fixed seed.  Have I misunderstood \nsomething?  For instance, should they reset R's own random number \nseed, as well?\n\nThanks!\n\nDavid",
+      "body_snippet": "Greetings,\n\nI am assisting a social networking researcher who is using statnet.  \nI'm a little puzzled about seeds in ergm.\n\nThe call is of this form (variables renamed to protect the innocent):\nm1 <-",
+      "thread_id": "thread-07dbeef21645",
+      "thread_depth": 0,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-94eb2e7c161a",
+      "message_id": "<E6A11046-EC8C-4A99-8B1E-BB5A4F16B4E7@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-03-09T20:42:10Z",
+      "subject": "[statnet_help] Seed values for ergm",
+      "subject_clean": "[statnet_help] Seed values for ergm",
+      "in_reply_to": "<657033.29487.bm@omp421.mail.mud.yahoo.com>",
+      "references": [
+        "<657033.29487.bm@omp421.mail.mud.yahoo.com>"
+      ],
+      "body_plain": "Hi David.\n\nYou're correct that setting the seed should produce exactly the same  \nresults each time, so I'm intrigued by your email.  If you have  \nactually copy-and-pasted the ergm function call exactly as it has been  \nused (except for the variable names), then the problem is that R is  \ncase-sensitive and \"Seed\" should be \"seed\".  If that's not the  \nproblem, could you let me know what version of ergm the researcher is  \nusing?  Thanks!\n\nDave\n\n\n\nOn Mar 9, 2009, at 3:17 PM, David Purdy wrote:\n\n> Greetings,\n>\n> I am assisting a social networking researcher who is using statnet.\n> I'm a little puzzled about seeds in ergm.\n>\n> The call is of this form (variables renamed to protect the innocent):\n> m1 <-ergm(IM ~ edges + mutual + nodeocov(\"mathscore\") +\n> nodeicov(\"mathscore\") + absdiff(\"mathscore\") + nodeicov(\"readscore\") +\n> nodefactor(\"grade\"), MCMCsamplesize = 1e+5, interval = 1000,  \n> Seed=1000)\n>\n> Simply put, when the models are degenerate, I'm told that these\n> researcher's group simply runs ergm again with this command.  My\n> understanding of the use of the seed is that with the same seed, they\n> should get the same results.  But, they're getting different results  \n> each time.\n>\n> On the one hand, if the seed produced the same results every time, I\n> would encourage them to change the seed or other parameters.  As it\n> stands, they get different models with each run of this call, which\n> satisfies their interests, but I'm left wondering how they can assure\n> reproducible models without a fixed seed.  Have I misunderstood\n> something?  For instance, should they reset R's own random number\n> seed, as well?\n>\n> Thanks!\n>\n> David\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi David.\n\nYou're correct that setting the seed should produce exactly the same  \nresults each time, so I'm intrigued by your email.  If you have  \nactually copy-and-pasted the ergm function call exac",
+      "thread_id": "thread-07dbeef21645",
+      "thread_depth": 1,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-94fb5f8c3135",
+      "message_id": "<2CB52491-117F-4153-A379-AB5EADAFAD07@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-03-10T05:19:06Z",
+      "subject": "[statnet_help] count identical dyads",
+      "subject_clean": "[statnet_help] count identical dyads",
+      "in_reply_to": "<002301c9a160$ec397290$c4ac57b0$@vlegels@ugent.be>",
+      "references": [
+        "<001d01c9a0b6$9a926ff0$cfb74fd0$@vlegels@ugent.be>",
+        "<2AED95DF-302B-49E7-A87F-0CB67043B543@stat.psu.edu>",
+        "<002301c9a160$ec397290$c4ac57b0$@vlegels@ugent.be>"
+      ],
+      "body_plain": "Hi Jef.  Sending this to the list in case it's helpful to others too.\n\nOops -- take a look at the \"note\" when you type help(diag).  This  \noccurs for a few functions in R ('sample' is another) and I've been  \ncaught by this before.  The remedy is given in that same note:  Change  \nthe 'f' function as follows:\n\nf <- function(v) (outer(v,v)-diag(v, nrow=length(v)))/2\n\nand then the previous answer will work even for attributes with a  \nsingle value.\n\nDave\n\nOn Mar 10, 2009, at 5:16 AM, Jef Vlegels wrote:\n\n> Dave,\n>\n> Your last solution gives me the results I wanted, thanks for that.\n> However, there is a situation in which the formula doesn?t work:  \n> when it is used on a network which has no variance on the attribute,  \n> for example when there are only females. In that case I could use  \n> the ?network.dyadcount? term. But that?s a time consuming option;  \n> I?m working with about 160 networks and 5 different attributes. I?ll  \n> first have to select all the networks who have no variance on one of  \n> the attributes so I know I have to use the network.dyadcount term  \n> for them. That?ll be time consuming and because the output will not  \n> be homogeneous, it?ll be more difficult to summarize and work with  \n> the output from the different networks.\n> Is there a way to adjust the function to this problem?\n>\n> Thank you.\n>\n> Jef\n>\n>\n>\n> Jef Vlegels\n> Universiteit Gent\n> Vakgroep Sociologie\n> Korte Meer 3\n> B-9000 Gent\n> Phone: +32 (0)9 264.91.75\n> Fax: +32 (0)9 264.69.75\n> jef.vlegels@ugent.be\n>\n> Hi Jef. Sorry, a quick addendum; I hadn't noticed that you also\n> wanted heterophily counts. This should do the trick, and of course\n> the function f could be modified for the directed case by not dividing\n> by 2:\n>\n> > f <- function(v) (outer(v,v)-diag(v))/2\n> > f(table(faux.mesa.high %v% \"Race\"))\n>\n> Black Hisp NatAm Other White\n> Black 15 327 204 12 54\n> Hisp 327 5886 3706 218 981\n> NatAm 204 3706 2278 136 612\n> Other 12 218 136 6 36\n> White 54 981 612 36 153\n>\n> Dave\n>\n>\n>\n>\n>\n>\n> Van: David Hunter [mailto:dhunter@stat.psu.edu]\n> Verzonden: maandag 9 maart 2009 14:40\n> Aan: statnet help mailing list\n> Onderwerp: Re: [statnet_help] count identical dyads\n>\n> Hi Jef.  One way is to use a \"brute-force\" approach on a tabular  \n> summary of the attribute.  If the network is undirected, then simply  \n> calculating k-choose-2 for each count k of network attribute counts  \n> should do the trick.  For instance, using the faux.mesa.high dataset  \n> of the ergm package, we have:\n>\n> > library(ergm)\n>  ...\n> > data(faux.mesa.high)\n> > choose(table(faux.mesa.high %v% \"Race\"),2)\n>\n> Black  Hisp NatAm Other White\n>    15  5886  2278     6   153\n>\n> These numbers could be doubled for a directed network of course.   \n> Hope this helps.\n> Dave\n>\n>\n>\n>\n>\n> On Mar 9, 2009, at 8:57 AM, Jef Vlegels wrote:\n>\n>\n> Dear Statnet users,\n>\n> I?m looking for a way to calculate the number of possible dyads in a  \n> network between two actors with an identical attribute value (for  \n> example same sex). I found the ?network.dyadcount? function, which  \n> gives me all possible dyads of the entire network. But it seems not  \n> possible to calculate the dyad count between actors with the same  \n> value on an attribute (and between actors with a different value;  \n> heterophily). I want to use these results for my descriptive  \n> analysis, before I model my network.\n> Is it possible to do this in the statnet package?\n>\n> Thanks in advance,\n>\n> Jef\n>\n>\n>\n> Jef Vlegels\n> Universiteit Gent\n> Vakgroep Sociologie\n> Korte Meer 3\n> B-9000 Gent\n> Phone: +32 (0)9 264.91.75\n> Fax: +32 (0)9 264.69.75\n> jef.vlegels@ugent.be\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090310/c1019a40/attachment.html>",
+      "body_snippet": "Hi Jef.  Sending this to the list in case it's helpful to others too.\n\nOops -- take a look at the \"note\" when you type help(diag).  This  \noccurs for a few functions in R ('sample' is another) and I'v",
+      "thread_id": "thread-94fb5f8c3135",
+      "thread_depth": 0,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-89371cfd0d59",
+      "message_id": "<3A7BBAFC-F599-4113-BE75-75E5CBF8978A@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-03-10T06:48:28Z",
+      "subject": "[statnet_help] Using mutuality in an interaction term",
+      "subject_clean": "[statnet_help] Using mutuality in an interaction term",
+      "in_reply_to": "<Pine.LNX.4.43.0903091022480.14701@hymn13.u.washington.edu>",
+      "references": [
+        "<Pine.LNX.4.43.0903091022480.14701@hymn13.u.washington.edu>"
+      ],
+      "body_plain": "Hi David.   First, I have to say I'm not sure what is creating the  \nerror you're getting since I think that the model is okay from a  \nmathematical perspective.  This could potentially be a bug, though I'd  \nhave to look into that more.\n\nHowever, I'm afraid that your code does not produce the interaction  \nyou are looking for.  In fact, I don't know of a way to do what you  \nwant currently in ergm.  The reason your code does not do this is that  \nthe CovMat.DxM matrix is *fixed* according to mutuality status of the  \noriginal network and thus the corresponding coefficient is actually  \nmeasuring something like the additional edgecov effect for those dyads  \nthat were mutual in the original network, not those that are mutual in  \nthe current network.\n\nDave\n\n\nOn Mar 9, 2009, at 1:22 PM, David A. Nolin wrote:\n\n> Sorry about that output formatting; it should look like this:\n>\n>> ergm.D.M.DM<-ergm(Net~edges + edgecov(CovMat.D) + mutual +  \n>> edgecov(CovMat.DxM))\n> Iteration 1 of at most 3: the log-likelihood improved by 0.3097\n> Iteration 2 of at most 3: the log-likelihood improved by 0.1229\n> Iteration 3 of at most 3: the log-likelihood improved by 0.04193\n> Error in svd(H) : infinite or missing values in 'x'\n>\n>\n>\n> On Mon, 9 Mar 2009, David A. Nolin wrote:\n>\n>> I am attempting to include an interaction term between mutuality  \n>> and an edge covariate \"D\" in an ergm model. I have done this by  \n>> first creating a symmetric matrix indicating presence or absence of  \n>> mutuality, then cell-wise multiplying this matrix by the edge  \n>> covariate matrix D to create the interaction term matrix. I include  \n>> the resulting matrix as an additional edge covariate in the ergm  \n>> model.\n>>\n>> I get the following error:\n>>\n>>> ergm.D.M.DM <- ergm(Net ~ edges + edgecov(CovMat.D) + mutual +  \n>>> edgecov(CovMat.DxM))\n>> Iteration 1 of at most 3: the log-likelihood improved by 0.3097  \n>> Iteration 2 of at most 3: the log-likelihood improved by 0.1229  \n>> Iteration 3 of at most 3: the log-likelihood improved by 0.04193  \n>> Error in svd(H) : infinite or missing values in 'x'\n>>\n>>\n>> 1. Any ideas why this isn't working, and how to get it to work?\n>>\n>> 2. As a more general question, is it even possible to include  \n>> interaction terms between an edge covariate and some structural  \n>> term like mutuality in an ergm model?\n>>\n>> 3. Am I even doing this right? Isn't it a problem that the  \n>> mutuality matrix used to calculate the interaction term isn't the  \n>> same as mutuality calculated over the MCMC-sampled networks? I.e.  \n>> mutuality in each of the MCMC-generated networks varies, but  \n>> mutuality in the interaction term is static, calculated from the  \n>> observed network only. Instead, is there a way to estimate the  \n>> interaction term based on mutuality in the MCMC-sampled networks?\n>>\n>> Thanks for your help. Data and code attached if you wish to  \n>> replicate the error.\n>>\n>> --Dave\n>>\n>> Nolin.RData attached.\n>>\n>> CODE:\n>>\n>> library(statnet)\n>> ls()\n>> CovMat.M<-as.sociomatrix(Net)*t(as.sociomatrix(Net))\n>> CovMat.DxM<-CovMat.D * CovMat.M\n>> ergm.D.M.DxM<-ergm(Net~edges + edgecov(CovMat.D) + mutual +  \n>> edgecov(CovMat.DxM))\n>>\n>>\n>>\n>>\n>>\n>>\n>>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi David.   First, I have to say I'm not sure what is creating the  \nerror you're getting since I think that the model is okay from a  \nmathematical perspective.  This could potentially be a bug, thou",
+      "thread_id": "thread-27a77c89bbff",
+      "thread_depth": 5,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-07fa84dd1a3d",
+      "message_id": "<Pine.LNX.4.43.0903100747540.1266@hymn32.u.washington.edu>",
+      "from_name": "David A. Nolin",
+      "from_email_hash": "9bdba4bb84525b0697b0c9619af7e9af2b1f5002747878ee0c904c5a04fc85a6",
+      "date": "2009-03-10T07:47:54Z",
+      "subject": "[statnet_help] Using mutuality in an interaction term",
+      "subject_clean": "[statnet_help] Using mutuality in an interaction term",
+      "in_reply_to": "<3A7BBAFC-F599-4113-BE75-75E5CBF8978A@stat.psu.edu>",
+      "references": [],
+      "body_plain": "On Tue, 10 Mar 2009, David Hunter wrote:\n\n> I'm afraid that your code does not produce the interaction you are \n> looking for.  In fact, I don't know of a way to do what you want currently in \n> ergm.\n\nThat's what I was afraid of. Ideally, I'd like to do something like:\ntest<-ergm(Net~edges + edgecov(CovMat.D) + mutual + (edgecov(CovMat.D)*mutual))\n\nThis runs, but ergm() just ignores the interaction term and runs the model without it.\n\nAny other suggestions?",
+      "body_snippet": "On Tue, 10 Mar 2009, David Hunter wrote:\n\n> I'm afraid that your code does not produce the interaction you are \n> looking for.  In fact, I don't know of a way to do what you want currently in \n> ergm.",
+      "thread_id": "thread-27a77c89bbff",
+      "thread_depth": 6,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-fe929db9362c",
+      "message_id": "<2e177a690903160937p6df52865l4e74554999544613@mail.gmail.com>",
+      "from_name": "Alexander",
+      "from_email_hash": "c6f2f7b97ab613788d37e64d4c065ebfdc489ace13fc4852981a94b445004591",
+      "date": "2009-03-16T09:37:39Z",
+      "subject": "[statnet_help] gplot.layout with valued edges",
+      "subject_clean": "[statnet_help] gplot.layout with valued edges",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nFirst of all, thanks for creating sna and network.\n\nI have a question about representing two different networks with these\nproperties:\n\n100/450 nodes\n5000-10000 ties\neach tie has a value, 'weight', which represents the number of tie\nactions between the nodes.\nties are directed.\nnodes belong to two different groups.\n\nI want to plot these networks using a layout that puts nodes closer to\neach other the higher the tie value  ('weight') between them is. I'll\njust use vertex.col for identifying the groups. I thought of using\nedge.lwd for the tie value, but there are so many ties that the lines\nbecome indistinguishable.\n\n>From reading ?gplot.layout I gather that I should use the 'mds' or\n'princoord', or maybe 'eigen' layouts because they can be based on a\nmatrix other than the dichomous adjacency matrix - I guess I want\nlayout.par$vm=as.sociomatrix(g,'weight'),\nbut how do I go from here? - how do I figure out what distance\nfunction to use for example?\n\nBest regards,\n\nAlexander Jerneck\n\nDepartment of Sociology, University of Pennsylvania.",
+      "body_snippet": "Hi,\n\nFirst of all, thanks for creating sna and network.\n\nI have a question about representing two different networks with these\nproperties:\n\n100/450 nodes\n5000-10000 ties\neach tie has a value, 'weight",
+      "thread_id": "thread-fe929db9362c",
+      "thread_depth": 0,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-c41f9aeed29a",
+      "message_id": "<2e177a690903161252h7e5b26b4nc00b5d4c136e3dfb@mail.gmail.com>",
+      "from_name": "Alexander",
+      "from_email_hash": "c6f2f7b97ab613788d37e64d4c065ebfdc489ace13fc4852981a94b445004591",
+      "date": "2009-03-16T12:52:59Z",
+      "subject": "[statnet_help] Re: gplot.layout with valued edges",
+      "subject_clean": "[statnet_help] Re: gplot.layout with valued edges",
+      "in_reply_to": "<2e177a690903160937p6df52865l4e74554999544613@mail.gmail.com>",
+      "references": [
+        "<2e177a690903160937p6df52865l4e74554999544613@mail.gmail.com>"
+      ],
+      "body_plain": "Some follow-up information:\n\nThe igraph package implements a version of the fruchterman-reingold\nlayout which takes a weights argument that \"multiplies the attraction\nalong the edges\". I tried this on a small graph and it seems to do\nwhat I want. My question now is if there is corresponding argument in\nthe sna implementation? The igraph layout \"is ported from sna\"\naccording to the man page [1].\n\nBest regards,\n\nAlexander Jerneck\n\n[1] http://igraph.sourceforge.net/doc/R/layout.html\n\nOn 3/16/09, Alexander <alejck@gmail.com> wrote:\n> Hi,\n>\n> First of all, thanks for creating sna and network.\n>\n> I have a question about representing two different networks with these\n> properties:\n>\n> 100/450 nodes\n> 5000-10000 ties\n> each tie has a value, 'weight', which represents the number of tie\n> actions between the nodes.\n> ties are directed.\n> nodes belong to two different groups.\n>\n> I want to plot these networks using a layout that puts nodes closer to\n> each other the higher the tie value  ('weight') between them is. I'll\n> just use vertex.col for identifying the groups. I thought of using\n> edge.lwd for the tie value, but there are so many ties that the lines\n> become indistinguishable.\n>\n> From reading ?gplot.layout I gather that I should use the 'mds' or\n> 'princoord', or maybe 'eigen' layouts because they can be based on a\n> matrix other than the dichomous adjacency matrix - I guess I want\n> layout.par$vm=as.sociomatrix(g,'weight'),\n> but how do I go from here? - how do I figure out what distance\n> function to use for example?\n>\n> Best regards,\n>\n> Alexander Jerneck\n>\n> Department of Sociology, University of Pennsylvania.\n>",
+      "body_snippet": "Some follow-up information:\n\nThe igraph package implements a version of the fruchterman-reingold\nlayout which takes a weights argument that \"multiplies the attraction\nalong the edges\". I tried this on",
+      "thread_id": "thread-fe929db9362c",
+      "thread_depth": 1,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-c571f497cd67",
+      "message_id": "<d70c15d40903161355o7fd984fbmd630d013bf626012@mail.gmail.com>",
+      "from_name": "Gábor Csárdi",
+      "from_email_hash": "ef3fbd846d44752887aef63d2684b8733c31936c1b61ce693ec52e1334cdae73",
+      "date": "2009-03-16T13:55:51Z",
+      "subject": "[statnet_help] Re: gplot.layout with valued edges",
+      "subject_clean": "[statnet_help] Re: gplot.layout with valued edges",
+      "in_reply_to": "<2e177a690903161252h7e5b26b4nc00b5d4c136e3dfb@mail.gmail.com>",
+      "references": [
+        "<2e177a690903160937p6df52865l4e74554999544613@mail.gmail.com>",
+        "<2e177a690903161252h7e5b26b4nc00b5d4c136e3dfb@mail.gmail.com>"
+      ],
+      "body_plain": "Alexander,\n\nthe 'weight' argument was added to igraph after porting the function\nfrom SNA. It was not present in the original SNA implementation. But\nyou can easily convert networks between igraph and sna, so you can use\nthe best of both packages. See the graph.adjacency() and the\nget.adjacency() functions in igraph.\n\nBest,\nGabor\n\nOn Mon, Mar 16, 2009 at 8:52 PM, Alexander <alejck@gmail.com> wrote:\n> Some follow-up information:\n>\n> The igraph package implements a version of the fruchterman-reingold\n> layout which takes a weights argument that \"multiplies the attraction\n> along the edges\". I tried this on a small graph and it seems to do\n> what I want. My question now is if there is corresponding argument in\n> the sna implementation? The igraph layout \"is ported from sna\"\n> according to the man page [1].\n>\n> Best regards,\n>\n> Alexander Jerneck\n>\n> [1] http://igraph.sourceforge.net/doc/R/layout.html\n>\n> On 3/16/09, Alexander <alejck@gmail.com> wrote:\n>> Hi,\n>>\n>> First of all, thanks for creating sna and network.\n>>\n>> I have a question about representing two different networks with these\n>> properties:\n>>\n>> 100/450 nodes\n>> 5000-10000 ties\n>> each tie has a value, 'weight', which represents the number of tie\n>> actions between the nodes.\n>> ties are directed.\n>> nodes belong to two different groups.\n>>\n>> I want to plot these networks using a layout that puts nodes closer to\n>> each other the higher the tie value ?('weight') between them is. I'll\n>> just use vertex.col for identifying the groups. I thought of using\n>> edge.lwd for the tie value, but there are so many ties that the lines\n>> become indistinguishable.\n>>\n>> From reading ?gplot.layout I gather that I should use the 'mds' or\n>> 'princoord', or maybe 'eigen' layouts because they can be based on a\n>> matrix other than the dichomous adjacency matrix - I guess I want\n>> layout.par$vm=as.sociomatrix(g,'weight'),\n>> but how do I go from here? - how do I figure out what distance\n>> function to use for example?\n>>\n>> Best regards,\n>>\n>> Alexander Jerneck\n>>\n>> Department of Sociology, University of Pennsylvania.\n>>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \nGabor Csardi <Gabor.Csardi@unil.ch>     UNIL DGM",
+      "body_snippet": "Alexander,\n\nthe 'weight' argument was added to igraph after porting the function\nfrom SNA. It was not present in the original SNA implementation. But\nyou can easily convert networks between igraph and",
+      "thread_id": "thread-fe929db9362c",
+      "thread_depth": 2,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-98c26be71bfa",
+      "message_id": "<38B22CFE2B26C144BE65A022C10E7004B67A5CC5EB@PITT-EXCH-07.univ.pitt.edu>",
+      "from_name": "Victor, Jennifer Nicoll",
+      "from_email_hash": "ff5e0a55ef0a100c3bb19faf407905174b26664120f09691690bd3801f859695",
+      "date": "2009-03-18T08:50:29Z",
+      "subject": "[statnet_help] converting data object to a statnet readable matrix",
+      "subject_clean": "[statnet_help] converting data object to a statnet readable matrix",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello Statnet users:\n\nI am new to Statnet and a novice R-user, but quite interested in this software.  I have successfully installed it; however, I am having trouble getting my data into the program.  I have an edgelist in .csv format that I can load into R using the \"read.csv\" command.  This allows me to get my data into R as an object.  But now I need help getting this object into Statnet so that it knows that I have a social network dataset.  Can you provide some help?\n\nThanks,\nJennifer Victor\n___________________________________________\nJennifer Nicoll Victor\nAssistant Professor\nDepartment of Political Science\nUniversity of Pittsburgh\n4600 Wesley W. Posvar Hall\n(412) 624-7204\nE-mail:  jnvictor@pitt.edu\nHomepage:  http://www.pitt.edu/~jnvictor",
+      "body_snippet": "Hello Statnet users:\n\nI am new to Statnet and a novice R-user, but quite interested in this software.  I have successfully installed it; however, I am having trouble getting my data into the program. ",
+      "thread_id": "thread-98c26be71bfa",
+      "thread_depth": 0,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-78794853b49e",
+      "message_id": "<55465EDD-9A82-4823-B22C-43BC17B3884C@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-03-18T09:20:30Z",
+      "subject": "[statnet_help] converting data object to a statnet readable matrix",
+      "subject_clean": "[statnet_help] converting data object to a statnet readable matrix",
+      "in_reply_to": "<38B22CFE2B26C144BE65A022C10E7004B67A5CC5EB@PITT-EXCH-07.univ.pitt.edu>",
+      "references": [
+        "<38B22CFE2B26C144BE65A022C10E7004B67A5CC5EB@PITT-EXCH-07.univ.pitt.edu>"
+      ],
+      "body_plain": "Hi Jennifer.  Try using the network() function on the csv object you  \nhave just read in, as in:\n\nx <- read.csv(\"whatever.csv\")\nxnw <- network(x)\n\nIf there are fancier things you need to be able to do (e.g., declare  \nthat your network is undirected instead of the default directed),  \ncheck out the documentation at help(network).\n\nDave\n\n\n\nOn Mar 18, 2009, at 10:50 AM, Victor, Jennifer Nicoll wrote:\n\n> Hello Statnet users:\n>\n> I am new to Statnet and a novice R-user, but quite interested in  \n> this software.  I have successfully installed it; however, I am  \n> having trouble getting my data into the program.  I have an edgelist  \n> in .csv format that I can load into R using the \"read.csv\" command.   \n> This allows me to get my data into R as an object.  But now I need  \n> help getting this object into Statnet so that it knows that I have a  \n> social network dataset.  Can you provide some help?\n>\n> Thanks,\n> Jennifer Victor\n> ___________________________________________\n> Jennifer Nicoll Victor\n> Assistant Professor\n> Department of Political Science\n> University of Pittsburgh\n> 4600 Wesley W. Posvar Hall\n> (412) 624-7204\n> E-mail:  jnvictor@pitt.edu\n> Homepage:  http://www.pitt.edu/~jnvictor\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Jennifer.  Try using the network() function on the csv object you  \nhave just read in, as in:\n\nx <- read.csv(\"whatever.csv\")\nxnw <- network(x)\n\nIf there are fancier things you need to be able to do",
+      "thread_id": "thread-98c26be71bfa",
+      "thread_depth": 1,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-4468e6a6505f",
+      "message_id": "<7e21e05e0903180931i35612716ra1932e77a7bcb30c@mail.gmail.com>",
+      "from_name": "Mario Menezes",
+      "from_email_hash": "ee07b9501714838a26ac8b4f8c339e8dc1217dabe8815778fc03b871e69e57ea",
+      "date": "2009-03-18T09:31:02Z",
+      "subject": "[statnet_help] converting data object to a statnet readable  matrix",
+      "subject_clean": "[statnet_help] converting data object to a statnet readable  matrix",
+      "in_reply_to": "<38B22CFE2B26C144BE65A022C10E7004B67A5CC5EB@PITT-EXCH-07.univ.pitt.edu>",
+      "references": [
+        "<38B22CFE2B26C144BE65A022C10E7004B67A5CC5EB@PITT-EXCH-07.univ.pitt.edu>"
+      ],
+      "body_plain": "Hi,\n\n  I've the following situation;\n- 2 files: one for links and other for nodes (with respective attributes).\n\n  The files have these contents:\n\n  NODredeR.csv\n\nID,\"SEXO(1=Masc,2=Fem)\",\"IDADE(1=0-25a,2=26-35a,3=36-45a,4=46a-+\",\"LOTACAO(1=Lot_1,\n2=Lot_2, 3=Lot_3\",\"TMPDIVISAO(1=ate 1a,2=1-3a,3=3-6a,4=mais\n6a\",\"TMPEMPRESA(1=ate 1a,2=1-3a,3=3-6a,4=mais 6a\"\n1,1,1,1,1,1\nand the rest of the data\n\n\n LINredeR.csv\n\n  ID1,ID2,\"Ideia(0=Nao,1=Sim)\",\"Comp1(0=Nao,1=Sim)\",\"Comp2(0=Nao,1=Sim)\"\n1,2,1,0,0\nand the rest of the data\n\n\nI did the following; I believe you'll understand what I've done; if not, ask\nagain.\n\n\nlibrary(statnet)\nideias = network.initialize(24)\ncomp1 = network.initialize(24)\ncomp2 = network.initialize(24)\nnodes = read.csv('NODredeR.csv',header=T)\nlinks = read.csv('LINredeR.csv',header=T)\nset.vertex.attribute(ideias,\"SEXO\",nodes[,c(2)])\nset.vertex.attribute(ideias,\"IDADE\",nodes[,c(3)])\nset.vertex.attribute(ideias,\"LOTA\",nodes[,c(4)])\nset.vertex.attribute(ideias,\"TDIV\",nodes[,c(5)])\nset.vertex.attribute(ideias,\"TEMP\",nodes[,c(6)])\nset.vertex.attribute(comp1,\"SEXO\",nodes[,c(2)])\nset.vertex.attribute(comp1,\"IDADE\",nodes[,c(3)])\nset.vertex.attribute(comp1,\"LOTA\",nodes[,c(4)])\nset.vertex.attribute(comp1,\"TDIV\",nodes[,c(5)])\nset.vertex.attribute(comp1,\"TEMP\",nodes[,c(6)])\nset.vertex.attribute(comp2,\"SEXO\",nodes[,c(2)])\nset.vertex.attribute(comp2,\"IDADE\",nodes[,c(3)])\nset.vertex.attribute(comp2,\"LOTA\",nodes[,c(4)])\nset.vertex.attribute(comp2,\"TDIV\",nodes[,c(5)])\nset.vertex.attribute(comp2,\"TEMP\",nodes[,c(6)])\nnetwork.edgelist(links[links[3]==1,c(1,2)],ideias,names.eval=\"IDEIA\")\nset.edge.attribute(ideias,\"IDEIA\",1:138)\nnetwork.edgelist(links[links[4]==1,c(1,2)],comp1,names.eval=\"COMP1\")\nset.edge.attribute(comp1,\"COMP1\",1:124)\nnetwork.edgelist(links[links[5]==1,c(1,2)],comp2,names.eval=\"COMP2\")\nset.edge.attribute(comp1,\"COMP2\",1:45)\n\n\nHope this help.\n\nBest regards,\n\n\nOn Wed, Mar 18, 2009 at 12:50 PM, Victor, Jennifer Nicoll <jnvictor@pitt.edu\n> wrote:\n\n> Hello Statnet users:\n>\n> I am new to Statnet and a novice R-user, but quite interested in this\n> software.  I have successfully installed it; however, I am having trouble\n> getting my data into the program.  I have an edgelist in .csv format that I\n> can load into R using the \"read.csv\" command.  This allows me to get my data\n> into R as an object.  But now I need help getting this object into Statnet\n> so that it knows that I have a social network dataset.  Can you provide some\n> help?\n>\n> Thanks,\n> Jennifer Victor\n> ___________________________________________\n> Jennifer Nicoll Victor\n> Assistant Professor\n> Department of Political Science\n> University of Pittsburgh\n> 4600 Wesley W. Posvar Hall\n> (412) 624-7204\n> E-mail:  jnvictor@pitt.edu\n> Homepage:  http://www.pitt.edu/~jnvictor <http://www.pitt.edu/%7Ejnvictor>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \nMario O.de Menezes, DSc.\n\"Many are the plans in a man's heart, but is the Lord's purpose that\nprevails\" Pv 19.21\nhttp://www.momenezes.com     -    LinuxUser: #24626\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090318/09e1558a/attachment.html>",
+      "body_snippet": "Hi,\n\n  I've the following situation;\n- 2 files: one for links and other for nodes (with respective attributes).\n\n  The files have these contents:\n\n  NODredeR.csv\n\nID,\"SEXO(1=Masc,2=Fem)\",\"IDADE(1=0-25",
+      "thread_id": "thread-98c26be71bfa",
+      "thread_depth": 1,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-eeeba014be57",
+      "message_id": "<38B22CFE2B26C144BE65A022C10E7004B67A5CC5EC@PITT-EXCH-07.univ.pitt.edu>",
+      "from_name": "Victor, Jennifer Nicoll",
+      "from_email_hash": "ff5e0a55ef0a100c3bb19faf407905174b26664120f09691690bd3801f859695",
+      "date": "2009-03-18T10:06:29Z",
+      "subject": "[statnet_help] converting data object to a statnet readable matrix",
+      "subject_clean": "[statnet_help] converting data object to a statnet readable matrix",
+      "in_reply_to": "<55465EDD-9A82-4823-B22C-43BC17B3884C@stat.psu.edu>",
+      "references": [
+        "<38B22CFE2B26C144BE65A022C10E7004B67A5CC5EB@PITT-EXCH-07.univ.pitt.edu>",
+        "<55465EDD-9A82-4823-B22C-43BC17B3884C@stat.psu.edu>"
+      ],
+      "body_plain": "Thanks for the suggestion Dave.  When I tried this option I got the following error:\n\nError in set.vertex.attribute(g, \"na\", rep(FALSE, n), 1:n) : \n  Not a graph object\n\nSuggestions?\n\n___________________________________________\nJennifer Nicoll Victor\nAssistant Professor\nDepartment of Political Science\nUniversity of Pittsburgh\n4600 Wesley W. Posvar Hall\n(412) 624-7204\nE-mail:  jnvictor@pitt.edu\nHomepage:  http://www.pitt.edu/~jnvictor\n\n\n-----Original Message-----\nFrom: statnet_help-bounces@mailman2.u.washington.edu [mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of David Hunter\nSent: Wednesday, March 18, 2009 12:21 PM\nTo: statnet help mailing list\nSubject: Re: [statnet_help] converting data object to a statnet readable matrix\n\nHi Jennifer.  Try using the network() function on the csv object you  \nhave just read in, as in:\n\nx <- read.csv(\"whatever.csv\")\nxnw <- network(x)\n\nIf there are fancier things you need to be able to do (e.g., declare  \nthat your network is undirected instead of the default directed),  \ncheck out the documentation at help(network).\n\nDave\n\n\n\nOn Mar 18, 2009, at 10:50 AM, Victor, Jennifer Nicoll wrote:\n\n> Hello Statnet users:\n>\n> I am new to Statnet and a novice R-user, but quite interested in  \n> this software.  I have successfully installed it; however, I am  \n> having trouble getting my data into the program.  I have an edgelist  \n> in .csv format that I can load into R using the \"read.csv\" command.   \n> This allows me to get my data into R as an object.  But now I need  \n> help getting this object into Statnet so that it knows that I have a  \n> social network dataset.  Can you provide some help?\n>\n> Thanks,\n> Jennifer Victor\n> ___________________________________________\n> Jennifer Nicoll Victor\n> Assistant Professor\n> Department of Political Science\n> University of Pittsburgh\n> 4600 Wesley W. Posvar Hall\n> (412) 624-7204\n> E-mail:  jnvictor@pitt.edu\n> Homepage:  http://www.pitt.edu/~jnvictor\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Thanks for the suggestion Dave.  When I tried this option I got the following error:\n\nError in set.vertex.attribute(g, \"na\", rep(FALSE, n), 1:n) : \n  Not a graph object\n\nSuggestions?\n\n________________",
+      "thread_id": "thread-98c26be71bfa",
+      "thread_depth": 2,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-4f60ac05ddcb",
+      "message_id": "<41B6A69F-1A39-40DF-98A0-21ACE7E18398@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-03-18T10:58:16Z",
+      "subject": "[statnet_help] converting data object to a statnet readable matrix",
+      "subject_clean": "[statnet_help] converting data object to a statnet readable matrix",
+      "in_reply_to": "<38B22CFE2B26C144BE65A022C10E7004B67A5CC5EC@PITT-EXCH-07.univ.pitt.edu>",
+      "references": [
+        "<38B22CFE2B26C144BE65A022C10E7004B67A5CC5EB@PITT-EXCH-07.univ.pitt.edu>",
+        "<55465EDD-9A82-4823-B22C-43BC17B3884C@stat.psu.edu>",
+        "<38B22CFE2B26C144BE65A022C10E7004B67A5CC5EC@PITT-EXCH-07.univ.pitt.edu>"
+      ],
+      "body_plain": "Hi Jennifer.  It appears you may have more than merely an edgelist in  \nyour .csv file.  You'd need to provide more info on this file to help  \nsort this out.\nDoes Mario's email help answer your question?\n\nDave\n\n\n\nOn Mar 18, 2009, at 12:06 PM, Victor, Jennifer Nicoll wrote:\n\n> Thanks for the suggestion Dave.  When I tried this option I got the  \n> following error:\n>\n> Error in set.vertex.attribute(g, \"na\", rep(FALSE, n), 1:n) :\n>  Not a graph object\n>\n> Suggestions?\n>\n> ___________________________________________\n> Jennifer Nicoll Victor\n> Assistant Professor\n> Department of Political Science\n> University of Pittsburgh\n> 4600 Wesley W. Posvar Hall\n> (412) 624-7204\n> E-mail:  jnvictor@pitt.edu\n> Homepage:  http://www.pitt.edu/~jnvictor\n>\n>\n> -----Original Message-----\n> From: statnet_help-bounces@mailman2.u.washington.edu [mailto:statnet_help-bounces@mailman2.u.washington.edu \n> ] On Behalf Of David Hunter\n> Sent: Wednesday, March 18, 2009 12:21 PM\n> To: statnet help mailing list\n> Subject: Re: [statnet_help] converting data object to a statnet  \n> readable matrix\n>\n> Hi Jennifer.  Try using the network() function on the csv object you\n> have just read in, as in:\n>\n> x <- read.csv(\"whatever.csv\")\n> xnw <- network(x)\n>\n> If there are fancier things you need to be able to do (e.g., declare\n> that your network is undirected instead of the default directed),\n> check out the documentation at help(network).\n>\n> Dave\n>\n>\n>\n> On Mar 18, 2009, at 10:50 AM, Victor, Jennifer Nicoll wrote:\n>\n>> Hello Statnet users:\n>>\n>> I am new to Statnet and a novice R-user, but quite interested in\n>> this software.  I have successfully installed it; however, I am\n>> having trouble getting my data into the program.  I have an edgelist\n>> in .csv format that I can load into R using the \"read.csv\" command.\n>> This allows me to get my data into R as an object.  But now I need\n>> help getting this object into Statnet so that it knows that I have a\n>> social network dataset.  Can you provide some help?\n>>\n>> Thanks,\n>> Jennifer Victor\n>> ___________________________________________\n>> Jennifer Nicoll Victor\n>> Assistant Professor\n>> Department of Political Science\n>> University of Pittsburgh\n>> 4600 Wesley W. Posvar Hall\n>> (412) 624-7204\n>> E-mail:  jnvictor@pitt.edu\n>> Homepage:  http://www.pitt.edu/~jnvictor\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Jennifer.  It appears you may have more than merely an edgelist in  \nyour .csv file.  You'd need to provide more info on this file to help  \nsort this out.\nDoes Mario's email help answer your quest",
+      "thread_id": "thread-98c26be71bfa",
+      "thread_depth": 3,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-fcb428e5816d",
+      "message_id": "<49C47011.1010309@ucsd.edu>",
+      "from_name": "Simon Frost",
+      "from_email_hash": "035b0ea7e424ab86c49e75c8ef123f13dce97b7aaadbb47397e5c83707ce33a8",
+      "date": "2009-03-20T21:41:53Z",
+      "subject": "[statnet_help] ERGM constraints for DAGs?",
+      "subject_clean": "[statnet_help] ERGM constraints for DAGs?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet List,\n\nHas anyone set up constraints for an ergm to sample from directed \nacyclic graphs only? If so, what formula can be used in the constraints \nsection? We're looking at the structure of Bayesian graphical model fits \n(which are constrained to be DAGs).\n\nBest\nSimon",
+      "body_snippet": "Dear Statnet List,\n\nHas anyone set up constraints for an ergm to sample from directed \nacyclic graphs only? If so, what formula can be used in the constraints \nsection? We're looking at the structure ",
+      "thread_id": "thread-fcb428e5816d",
+      "thread_depth": 0,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-d638ccc40e67",
+      "message_id": "<Pine.WNT.4.64.0903230824020.3188@vinaya.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2009-03-23T08:24:59Z",
+      "subject": "[statnet_help] ERGM constraints for DAGs?",
+      "subject_clean": "[statnet_help] ERGM constraints for DAGs?",
+      "in_reply_to": "<49C47011.1010309@ucsd.edu>",
+      "references": [
+        "<49C47011.1010309@ucsd.edu>"
+      ],
+      "body_plain": "Hi Simon,\n\nI'm pretty sure the answer is no, but others should feel free to chime \nin if I'm wrong and anyone has done it.\n\nCheers,\nSteve\n\nOn Fri, 20 Mar 2009, Simon Frost \nwrote:\n\n> Date: Fri, 20 Mar 2009 21:41:53 -0700\n> From: Simon Frost <sdfrost@ucsd.edu>\n> To: statnet_help@u.washington.edu\n> Subject: [statnet_help] ERGM constraints for DAGs?\n> \n> Dear Statnet List,\n>\n> Has anyone set up constraints for an ergm to sample from directed acyclic \n> graphs only? If so, what formula can be used in the constraints section? \n> We're looking at the structure of Bayesian graphical model fits (which are \n> constrained to be DAGs).\n>\n> Best\n> Simon\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k            *\n**************************************************************************",
+      "body_snippet": "Hi Simon,\n\nI'm pretty sure the answer is no, but others should feel free to chime \nin if I'm wrong and anyone has done it.\n\nCheers,\nSteve\n\nOn Fri, 20 Mar 2009, Simon Frost \nwrote:\n\n> Date: Fri, 20 Mar",
+      "thread_id": "thread-fcb428e5816d",
+      "thread_depth": 1,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-2a4445acc5e8",
+      "message_id": "<C5ED1B16.1FFEE%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2009-03-23T10:55:18Z",
+      "subject": "[statnet_help] ERGM constraints for DAGs?",
+      "subject_clean": "[statnet_help] ERGM constraints for DAGs?",
+      "in_reply_to": "<Pine.WNT.4.64.0903230824020.3188@vinaya.csde.washington.edu>",
+      "references": [],
+      "body_plain": "Hi Simon,\n\nThe current \"constraints\" is very flexible and powerful but does not have\nDAGs explicitly coded in. However it would be possible to achieve using the\n\"offset\" function on the \"cycles\" term. By setting the coefficients of these\nto a large negative number, the graph space will be constrained to DAGs.\n\nI hope this helps.\n\nMark\n\nOn 3/23/09 8:24 AM, \"Steven Goodreau\" <goodreau@u.washington.edu> wrote:\n\n> \n> Hi Simon,\n> \n> I'm pretty sure the answer is no, but others should feel free to chime\n> in if I'm wrong and anyone has done it.\n> \n> Cheers,\n> Steve\n> \n> On Fri, 20 Mar 2009, Simon Frost\n> wrote:\n> \n>> Date: Fri, 20 Mar 2009 21:41:53 -0700\n>> From: Simon Frost <sdfrost@ucsd.edu>\n>> To: statnet_help@u.washington.edu\n>> Subject: [statnet_help] ERGM constraints for DAGs?\n>> \n>> Dear Statnet List,\n>> \n>> Has anyone set up constraints for an ergm to sample from directed acyclic\n>> graphs only? If so, what formula can be used in the constraints section?\n>> We're looking at the structure of Bayesian graphical model fits (which are\n>> constrained to be DAGs).\n>> \n>> Best\n>> Simon\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>> \n> \n> **************************************************************************\n>   * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n>   * University of Washington / Denny Hall 452 / Campus Box 353100        *\n>   * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n>   * http://faculty.washington.edu/goodreau                               *\n>   * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k            *\n> **************************************************************************\n> \n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi Simon,\n\nThe current \"constraints\" is very flexible and powerful but does not have\nDAGs explicitly coded in. However it would be possible to achieve using the\n\"offset\" function on the \"cycles\" term.",
+      "thread_id": "thread-fcb428e5816d",
+      "thread_depth": 2,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-e468528da40e",
+      "message_id": "<1238092734.6194.41.camel@jeroyadri-laptop>",
+      "from_name": "Jeronimo Carballo",
+      "from_email_hash": "12dc7a17ea941c07bdc8bfb79e2562b84b52b58a3b7ef28e959e7fce7955f62a",
+      "date": "2009-03-26T11:38:54Z",
+      "subject": "[statnet_help] Multiple edges plot",
+      "subject_clean": "[statnet_help] Multiple edges plot",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello list,\n\nI am a newbie in statnet and I need to plot a network with multiple\n(more than 2) edges between vertices. It is possible with statnet?\n\nI tried, for example, the following code and I got a error.\n\n> library(statnet)\n> edge\n   [,1] [,2] [,3] [,4]\nx1    1    1    0    0\nx2   -1   -1    1    0\nx3    0    0   -1    1\nx4    0    0    0   -1\n> net<-network.initialize(4)\n> net<-network(edge, matrix.type = \"incidence\", multiple = TRUE)\n> plot(net)\nError in as.matrix.network.adjacency(x = x, attrname = attrname, ...) :\n  Multigraphs not currently supported in as.matrix.network.adjacency.\nExiting.\n\nThanks very much,\n\nJeronimo Carballo",
+      "body_snippet": "Hello list,\n\nI am a newbie in statnet and I need to plot a network with multiple\n(more than 2) edges between vertices. It is possible with statnet?\n\nI tried, for example, the following code and I got ",
+      "thread_id": "thread-e468528da40e",
+      "thread_depth": 0,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-0c2efcb397ea",
+      "message_id": "<DAB8F2FB-8676-45AC-ADFF-2A593CE1F28E@reed.edu>",
+      "from_name": "Alexander H. Montgomery",
+      "from_email_hash": "d1c48c3c695c97a51e653a3cc66bc8e8fd7c5c03b9e0a43fd4b72da306733d40",
+      "date": "2009-03-26T13:28:12Z",
+      "subject": "[statnet_help] Flow betweenness implementation",
+      "subject_clean": "[statnet_help] Flow betweenness implementation",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I've been looking into measures of betweenness implemented in R, and  \nhave only found so far Freeman's (1977/79) basic measure in the sna  \nportion of the statnet package. Has flow betweenness (Freeman et al  \n1991) been implemented yet?\n\nThanks\n-AHM\n\n--\nAlexander H. Montgomery\nAssistant Professor, Reed College\nVisiting Assistant Professor, Stanford University (2008-9)\nCISAC, Encina Hall E209\n616 Serra St\nStanford, CA 94305-6165\nwork (650) 725-2702\nfax (650) 723-0089\nahm@reed.edu\nhttp://www.reed.edu/~ahm",
+      "body_snippet": "I've been looking into measures of betweenness implemented in R, and  \nhave only found so far Freeman's (1977/79) basic measure in the sna  \nportion of the statnet package. Has flow betweenness (Freem",
+      "thread_id": "thread-0c2efcb397ea",
+      "thread_depth": 0,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-33ba9486d94c",
+      "message_id": "<82a0ca4f0903271113p4eb82a82u130aa2fa8c73b5c2@mail.gmail.com>",
+      "from_name": "Aleš Žiberna",
+      "from_email_hash": "5e680d377132a5f4662c83255d0d6d392f3dd8a38545f7e92257bf49b437f21f",
+      "date": "2009-03-27T11:13:15Z",
+      "subject": "[statnet_help] Completly different results than with SIENA and PNet",
+      "subject_clean": "[statnet_help] Completly different results than with SIENA and PNet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello!\n\nI have started experimenting with statnet as I would really like to be able\nto estimate ergm's from R, but I am really surprised by the results I get.\nFirstly, They are completely different from those I get in either SIENA or\nPNet (which are similar).\n\nIn all software I tried to fit a model with fixed number of edges (or fixed\ndensity) and using the following terms:\nreciprocity, in-2-stars, out-2-stars, transitive_triangles.\n\nIn the attachments are the outputs of SIENA and Pnet and the printout from R\nfor statnet. As you can see, the results are profoundly different. There is\nalso an issue of convergence for statnet which does not seam to be a problem\nfor the other two programs. Btw, the results also do not match for networks\nwhere there is no convergence problems.\n\nThen I have two more questions:\n1. What is the meaning of the MCMC s. e. in the statnet output (next to the\nparameter estimates and standard errors). I assume that s.e. stands for\nstandard error, but what are then the \"standard errors\" (just before them).\n2. If I run the \"mcmc.diagnostics\", the output does not match (especially\nthe yes/no\" answers) the printout of the object where I save the result of\nthis same function. See the kansas_statnet.txt to see for your self.\n\nI would be really thankful for any help!\n\nBest regards,\nAle? ?iberna\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090327/92adc426/attachment.html>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090327/92adc426/attachment-0001.html>",
+      "body_snippet": "Hello!\n\nI have started experimenting with statnet as I would really like to be able\nto estimate ergm's from R, but I am really surprised by the results I get.\nFirstly, They are completely different fr",
+      "thread_id": "thread-33ba9486d94c",
+      "thread_depth": 0,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-2a6d713ee9b7",
+      "message_id": "<675028EC-0B43-4824-9451-24D70D3328EC@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-03-27T11:26:46Z",
+      "subject": "[statnet_help] Completly different results than with SIENA and PNet",
+      "subject_clean": "[statnet_help] Completly different results than with SIENA and PNet",
+      "in_reply_to": "<82a0ca4f0903271113p4eb82a82u130aa2fa8c73b5c2@mail.gmail.com>",
+      "references": [
+        "<82a0ca4f0903271113p4eb82a82u130aa2fa8c73b5c2@mail.gmail.com>"
+      ],
+      "body_plain": "Hello Ale?.\n\nI am curious about this, though a model containing 2-stars and  \ntransitive triangles could be horribly behaved, so I suspect that the  \nreason for the discrepancy might be that none of the packages is  \nreally able to get reasonable estimates.  Also, the attachment to your  \nemail seems to be just your email itself, without any output or data.\n\nDave\n\n\n\nOn Mar 27, 2009, at 2:13 PM, Ale? ?iberna wrote:\n\n> Hello!\n>\n> I have started experimenting with statnet as I would really like to  \n> be able to estimate ergm's from R, but I am really surprised by the  \n> results I get. Firstly, They are completely different from those I  \n> get in either SIENA or PNet (which are similar).\n>\n> In all software I tried to fit a model with fixed number of edges  \n> (or fixed density) and using the following terms:\n> reciprocity, in-2-stars, out-2-stars, transitive_triangles.\n>\n> In the attachments are the outputs of SIENA and Pnet and the  \n> printout from R for statnet. As you can see, the results are  \n> profoundly different. There is also an issue of convergence for  \n> statnet which does not seam to be a problem for the other two  \n> programs. Btw, the results also do not match for networks where  \n> there is no convergence problems.\n>\n> Then I have two more questions:\n> 1. What is the meaning of the MCMC s. e. in the statnet output (next  \n> to the parameter estimates and standard errors). I assume that s.e.  \n> stands for standard error, but what are then the \"standard  \n> errors\" (just before them).\n> 2. If I run the \"mcmc.diagnostics\", the output does not match  \n> (especially the yes/no\" answers) the printout of the object where I  \n> save the result of this same function. See the kansas_statnet.txt to  \n> see for your self.\n>\n> I would be really thankful for any help!\n>\n> Best regards,\n> Ale? ?iberna <mime- \n> attachment.html>_______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hello Ale?.\n\nI am curious about this, though a model containing 2-stars and  \ntransitive triangles could be horribly behaved, so I suspect that the  \nreason for the discrepancy might be that none of t",
+      "thread_id": "thread-33ba9486d94c",
+      "thread_depth": 1,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-b6cb15cd034c",
+      "message_id": "<ee960cbe0903291147h67d96ee1i2b814a047517d52c@mail.gmail.com>",
+      "from_name": "Mikołaj Hnatiuk",
+      "from_email_hash": "90f84e8245fb583a30afe4faa565a541441fdb7325d97e5e7b2ee5b1bf04a7c4",
+      "date": "2009-03-29T11:47:59Z",
+      "subject": "[statnet_help] SoNIA installer",
+      "subject_clean": "[statnet_help] SoNIA installer",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\nmy system is ubuntu 8.04  (HH). Im trying to install SoNIA using\nupdateSonia() cmd, but its java installer window is not responding in any\nway. updateSonia() just opens SoNIA windows, but nothing happens. Is it a\nbug? Is there any other way i can install this package? I need to use it\nreally rapidly. I'd be grateful for any help.\nSincerly,\nMikolaj Hnatiuk, University of Warsaw\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090329/3a7904de/attachment.html>",
+      "body_snippet": "Hi,\nmy system is ubuntu 8.04  (HH). Im trying to install SoNIA using\nupdateSonia() cmd, but its java installer window is not responding in any\nway. updateSonia() just opens SoNIA windows, but nothing ",
+      "thread_id": "thread-b6cb15cd034c",
+      "thread_depth": 0,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-af784b834ea6",
+      "message_id": "<49D06D5E.7020907@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2009-03-29T23:57:34Z",
+      "subject": "[statnet_help] Flow betweenness implementation",
+      "subject_clean": "[statnet_help] Flow betweenness implementation",
+      "in_reply_to": "<DAB8F2FB-8676-45AC-ADFF-2A593CE1F28E@reed.edu>",
+      "references": [
+        "<DAB8F2FB-8676-45AC-ADFF-2A593CE1F28E@reed.edu>"
+      ],
+      "body_plain": "Alexander H. Montgomery wrote:\n> I've been looking into measures of betweenness implemented in R, and \n> have only found so far Freeman's (1977/79) basic measure in the sna \n> portion of the statnet package. Has flow betweenness (Freeman et al \n> 1991) been implemented yet?\n>\n\nNot yet in statnet.  I'm in the last phases of the sna overhaul, and the \nnew version will include most of the betweenness variants described in \nBrandes (2008).  However, flow betweenness is not currently in the list. \n  It would make a welcome addition, if someone wants to contribute it. \nOtherwise, I'll put it on the wishlist for subsequent releases....\n\n-Carter",
+      "body_snippet": "Alexander H. Montgomery wrote:\n> I've been looking into measures of betweenness implemented in R, and \n> have only found so far Freeman's (1977/79) basic measure in the sna \n> portion of the statnet p",
+      "thread_id": "thread-0c2efcb397ea",
+      "thread_depth": 1,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-2a2b572d8e85",
+      "message_id": "<49D073C1.7080201@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2009-03-30T00:24:49Z",
+      "subject": "[statnet_help] Multiple edges plot",
+      "subject_clean": "[statnet_help] Multiple edges plot",
+      "in_reply_to": "<1238092734.6194.41.camel@jeroyadri-laptop>",
+      "references": [
+        "<1238092734.6194.41.camel@jeroyadri-laptop>"
+      ],
+      "body_plain": "Jeronimo Carballo wrote:\n> Hello list,\n> \n> I am a newbie in statnet and I need to plot a network with multiple\n> (more than 2) edges between vertices. It is possible with statnet?\n> \n>\n\nNot with the native plot method.  One workaround is to encode multiplex \ninformation as an edge property (in a non-multiplex network), and plot \nthat.  Alternately, you may want to create a custom display method.  (If \nyou come up with an approach which yields good results, I'd be \ninterested in seeing it -- in the long run, it would be nice to have \nintelligent default behavior for the standard plot method.)\n\n-Carter",
+      "body_snippet": "Jeronimo Carballo wrote:\n> Hello list,\n> \n> I am a newbie in statnet and I need to plot a network with multiple\n> (more than 2) edges between vertices. It is possible with statnet?\n> \n>\n\nNot with the ",
+      "thread_id": "thread-e468528da40e",
+      "thread_depth": 1,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-5c3ac76c2da1",
+      "message_id": "<82a0ca4f0903300054x7963cee7xcb5fa6e9ae5967b0@mail.gmail.com>",
+      "from_name": "Aleš Žiberna",
+      "from_email_hash": "5e680d377132a5f4662c83255d0d6d392f3dd8a38545f7e92257bf49b437f21f",
+      "date": "2009-03-30T00:54:57Z",
+      "subject": "[statnet_help] Completly different results than with SIENA and  PNet",
+      "subject_clean": "[statnet_help] Completly different results than with SIENA and  PNet",
+      "in_reply_to": "<675028EC-0B43-4824-9451-24D70D3328EC@stat.psu.edu>",
+      "references": [
+        "<82a0ca4f0903271113p4eb82a82u130aa2fa8c73b5c2@mail.gmail.com>",
+        "<675028EC-0B43-4824-9451-24D70D3328EC@stat.psu.edu>"
+      ],
+      "body_plain": "I apologize for the problems with the attachments. I think it is a gmail\nissue. I uploded all files that I thought I attached + the original data and\nR code to\nwww2.arnes.si/~aziber4/statnet/\n\nI have now added dat and results for two networks.\n\nThanks for replies.\n\nBest,\nAles\n\n\n\nOn Fri, Mar 27, 2009 at 20:26, David Hunter <dhunter@stat.psu.edu> wrote:\n\n> Hello Ale?.\n>\n> I am curious about this, though a model containing 2-stars and transitive\n> triangles could be horribly behaved, so I suspect that the reason for the\n> discrepancy might be that none of the packages is really able to get\n> reasonable estimates.  Also, the attachment to your email seems to be just\n> your email itself, without any output or data.\n>\n> Dave\n>\n>\n>\n>\n> On Mar 27, 2009, at 2:13 PM, Ale? ?iberna wrote:\n>\n>  Hello!\n>>\n>> I have started experimenting with statnet as I would really like to be\n>> able to estimate ergm's from R, but I am really surprised by the results I\n>> get. Firstly, They are completely different from those I get in either SIENA\n>> or PNet (which are similar).\n>>\n>> In all software I tried to fit a model with fixed number of edges (or\n>> fixed density) and using the following terms:\n>> reciprocity, in-2-stars, out-2-stars, transitive_triangles.\n>>\n>> In the attachments are the outputs of SIENA and Pnet and the printout from\n>> R for statnet. As you can see, the results are profoundly different. There\n>> is also an issue of convergence for statnet which does not seam to be a\n>> problem for the other two programs. Btw, the results also do not match for\n>> networks where there is no convergence problems.\n>>\n>> Then I have two more questions:\n>> 1. What is the meaning of the MCMC s. e. in the statnet output (next to\n>> the parameter estimates and standard errors). I assume that s.e. stands for\n>> standard error, but what are then the \"standard errors\" (just before them).\n>> 2. If I run the \"mcmc.diagnostics\", the output does not match (especially\n>> the yes/no\" answers) the printout of the object where I save the result of\n>> this same function. See the kansas_statnet.txt to see for your self.\n>>\n>> I would be really thankful for any help!\n>>\n>> Best regards,\n>> Ale? ?iberna\n>> <mime-attachment.html>_______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090330/8af5eb6d/attachment.html>",
+      "body_snippet": "I apologize for the problems with the attachments. I think it is a gmail\nissue. I uploded all files that I thought I attached + the original data and\nR code to\nwww2.arnes.si/~aziber4/statnet/\n\nI have ",
+      "thread_id": "thread-33ba9486d94c",
+      "thread_depth": 2,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-b1fde3ce8bf0",
+      "message_id": "<Pine.WNT.4.64.0903300100500.4188@mmorris>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2009-03-30T01:03:43Z",
+      "subject": "[statnet_help] Completly different results than with SIENA and PNet",
+      "subject_clean": "[statnet_help] Completly different results than with SIENA and PNet",
+      "in_reply_to": "<82a0ca4f0903300054x7963cee7xcb5fa6e9ae5967b0@mail.gmail.com>",
+      "references": [
+        "<82a0ca4f0903271113p4eb82a82u130aa2fa8c73b5c2@mail.gmail.com>",
+        "<675028EC-0B43-4824-9451-24D70D3328EC@stat.psu.edu>",
+        "<82a0ca4f0903300054x7963cee7xcb5fa6e9ae5967b0@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Ales,\n\nIf you haven't done so already, you may want to go through the statnet \ntutorial (http://csde.washington.edu/statnet/users_guide.shtml).  That \nshould help to answer your questions about the MCMCse and may also help \nyou do some diagnostics on your model to check for degeneracy.\n\nbest,\nMartina\n\nOn Mon, 30 Mar 2009, Ale iberna wrote:\n\n> I apologize for the problems with the attachments. I think it is a gmail\n> issue. I uploded all files that I thought I attached + the original data and\n> R code to\n> www2.arnes.si/~aziber4/statnet/\n>\n> I have now added dat and results for two networks.\n>\n> Thanks for replies.\n>\n> Best,\n> Ales\n>\n>\n>\n> On Fri, Mar 27, 2009 at 20:26, David Hunter <dhunter@stat.psu.edu> wrote:\n>\n>> Hello Ale??.\n>>\n>> I am curious about this, though a model containing 2-stars and transitive\n>> triangles could be horribly behaved, so I suspect that the reason for the\n>> discrepancy might be that none of the packages is really able to get\n>> reasonable estimates.  Also, the attachment to your email seems to be just\n>> your email itself, without any output or data.\n>>\n>> Dave\n>>\n>>\n>>\n>>\n>> On Mar 27, 2009, at 2:13 PM, Ale?? ??iberna wrote:\n>>\n>>  Hello!\n>>>\n>>> I have started experimenting with statnet as I would really like to be\n>>> able to estimate ergm's from R, but I am really surprised by the results I\n>>> get. Firstly, They are completely different from those I get in either SIENA\n>>> or PNet (which are similar).\n>>>\n>>> In all software I tried to fit a model with fixed number of edges (or\n>>> fixed density) and using the following terms:\n>>> reciprocity, in-2-stars, out-2-stars, transitive_triangles.\n>>>\n>>> In the attachments are the outputs of SIENA and Pnet and the printout from\n>>> R for statnet. As you can see, the results are profoundly different. There\n>>> is also an issue of convergence for statnet which does not seam to be a\n>>> problem for the other two programs. Btw, the results also do not match for\n>>> networks where there is no convergence problems.\n>>>\n>>> Then I have two more questions:\n>>> 1. What is the meaning of the MCMC s. e. in the statnet output (next to\n>>> the parameter estimates and standard errors). I assume that s.e. stands for\n>>> standard error, but what are then the \"standard errors\" (just before them).\n>>> 2. If I run the \"mcmc.diagnostics\", the output does not match (especially\n>>> the yes/no\" answers) the printout of the object where I save the result of\n>>> this same function. See the kansas_statnet.txt to see for your self.\n>>>\n>>> I would be really thankful for any help!\n>>>\n>>> Best regards,\n>>> Ale?? ??iberna\n>>> <mime-attachment.html>_______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Ales,\n\nIf you haven't done so already, you may want to go through the statnet \ntutorial (http://csde.washington.edu/statnet/users_guide.shtml).  That \nshould help to answer your questions about the",
+      "thread_id": "thread-33ba9486d94c",
+      "thread_depth": 3,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-287547af7a39",
+      "message_id": "<82a0ca4f0903300236o28aef6f9g897ab05a4ab01efc@mail.gmail.com>",
+      "from_name": "Aleš Žiberna",
+      "from_email_hash": "5e680d377132a5f4662c83255d0d6d392f3dd8a38545f7e92257bf49b437f21f",
+      "date": "2009-03-30T02:36:37Z",
+      "subject": "[statnet_help] Completly different results than with SIENA and  PNet",
+      "subject_clean": "[statnet_help] Completly different results than with SIENA and  PNet",
+      "in_reply_to": "<Pine.WNT.4.64.0903300100500.4188@mmorris>",
+      "references": [
+        "<82a0ca4f0903271113p4eb82a82u130aa2fa8c73b5c2@mail.gmail.com>",
+        "<675028EC-0B43-4824-9451-24D70D3328EC@stat.psu.edu>",
+        "<82a0ca4f0903300054x7963cee7xcb5fa6e9ae5967b0@mail.gmail.com>",
+        "<Pine.WNT.4.64.0903300100500.4188@mmorris>"
+      ],
+      "body_plain": "Hello!\n\nI did go through statnet tutorial (\nhttp://csde.washington.edu/statnet/users_guide.shtml) but somehow did not\nfind the answer to those questions. I do however know that a lot could be\ndone about degeneracy, but in spite of degeneracy I am very much surprised\nto get so different results with statnet than with PNet and SIENA.\n\nBest,\nAle?\n\nOn Mon, Mar 30, 2009 at 10:03, Martina Morris <morrism@u.washington.edu>wrote:\n\n> Hi Ales,\n>\n> If you haven't done so already, you may want to go through the statnet\n> tutorial (http://csde.washington.edu/statnet/users_guide.shtml).  That\n> should help to answer your questions about the MCMCse and may also help you\n> do some diagnostics on your model to check for degeneracy.\n>\n> best,\n> Martina\n>\n> On Mon, 30 Mar 2009, Ale iberna wrote:\n>\n>  I apologize for the problems with the attachments. I think it is a gmail\n>> issue. I uploded all files that I thought I attached + the original data\n>> and\n>> R code to\n>> www2.arnes.si/~aziber4/statnet/<http://www2.arnes.si/%7Eaziber4/statnet/>\n>>\n>> I have now added dat and results for two networks.\n>>\n>> Thanks for replies.\n>>\n>> Best,\n>> Ales\n>>\n>>\n>>\n>> On Fri, Mar 27, 2009 at 20:26, David Hunter <dhunter@stat.psu.edu> wrote:\n>>\n>>  Hello Ale??.\n>>>\n>>> I am curious about this, though a model containing 2-stars and transitive\n>>> triangles could be horribly behaved, so I suspect that the reason for the\n>>> discrepancy might be that none of the packages is really able to get\n>>> reasonable estimates.  Also, the attachment to your email seems to be\n>>> just\n>>> your email itself, without any output or data.\n>>>\n>>> Dave\n>>>\n>>>\n>>>\n>>>\n>>> On Mar 27, 2009, at 2:13 PM, Ale?? ??iberna wrote:\n>>>\n>>>  Hello!\n>>>\n>>>>\n>>>> I have started experimenting with statnet as I would really like to be\n>>>> able to estimate ergm's from R, but I am really surprised by the results\n>>>> I\n>>>> get. Firstly, They are completely different from those I get in either\n>>>> SIENA\n>>>> or PNet (which are similar).\n>>>>\n>>>> In all software I tried to fit a model with fixed number of edges (or\n>>>> fixed density) and using the following terms:\n>>>> reciprocity, in-2-stars, out-2-stars, transitive_triangles.\n>>>>\n>>>> In the attachments are the outputs of SIENA and Pnet and the printout\n>>>> from\n>>>> R for statnet. As you can see, the results are profoundly different.\n>>>> There\n>>>> is also an issue of convergence for statnet which does not seam to be a\n>>>> problem for the other two programs. Btw, the results also do not match\n>>>> for\n>>>> networks where there is no convergence problems.\n>>>>\n>>>> Then I have two more questions:\n>>>> 1. What is the meaning of the MCMC s. e. in the statnet output (next to\n>>>> the parameter estimates and standard errors). I assume that s.e. stands\n>>>> for\n>>>> standard error, but what are then the \"standard errors\" (just before\n>>>> them).\n>>>> 2. If I run the \"mcmc.diagnostics\", the output does not match\n>>>> (especially\n>>>> the yes/no\" answers) the printout of the object where I save the result\n>>>> of\n>>>> this same function. See the kansas_statnet.txt to see for your self.\n>>>>\n>>>> I would be really thankful for any help!\n>>>>\n>>>> Best regards,\n>>>> Ale?? ??iberna\n>>>> <mime-attachment.html>_______________________________________________\n>>>> statnet_help mailing list\n>>>> statnet_help@u.washington.edu\n>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>>\n>>>>\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>>>\n>>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090330/4f5e80ea/attachment.html>",
+      "body_snippet": "Hello!\n\nI did go through statnet tutorial (\nhttp://csde.washington.edu/statnet/users_guide.shtml) but somehow did not\nfind the answer to those questions. I do however know that a lot could be\ndone abo",
+      "thread_id": "thread-33ba9486d94c",
+      "thread_depth": 4,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-344c1687c7fd",
+      "message_id": "<Pine.WNT.4.64.0903300912010.3748@mmorris>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2009-03-30T09:12:48Z",
+      "subject": "[statnet_help] Completly different results than with SIENA and PNet",
+      "subject_clean": "[statnet_help] Completly different results than with SIENA and PNet",
+      "in_reply_to": "<82a0ca4f0903300236o28aef6f9g897ab05a4ab01efc@mail.gmail.com>",
+      "references": [
+        "<82a0ca4f0903271113p4eb82a82u130aa2fa8c73b5c2@mail.gmail.com>",
+        "<675028EC-0B43-4824-9451-24D70D3328EC@stat.psu.edu>",
+        "<82a0ca4f0903300054x7963cee7xcb5fa6e9ae5967b0@mail.gmail.com>",
+        "<Pine.WNT.4.64.0903300100500.4188@mmorris>",
+        "<82a0ca4f0903300236o28aef6f9g897ab05a4ab01efc@mail.gmail.com>"
+      ],
+      "body_plain": "Good -- and just to make sure, are you using the most current versions \nof R (2.8.1) and ergm (2.2)?\n\nOn Mon, 30 Mar 2009, Ale iberna wrote:\n\n> Hello!\n>\n> I did go through statnet tutorial (\n> http://csde.washington.edu/statnet/users_guide.shtml) but somehow did not\n> find the answer to those questions. I do however know that a lot could be\n> done about degeneracy, but in spite of degeneracy I am very much surprised\n> to get so different results with statnet than with PNet and SIENA.\n>\n> Best,\n> Ale??\n>\n> On Mon, Mar 30, 2009 at 10:03, Martina Morris <morrism@u.washington.edu>wrote:\n>\n>> Hi Ales,\n>>\n>> If you haven't done so already, you may want to go through the statnet\n>> tutorial (http://csde.washington.edu/statnet/users_guide.shtml).  That\n>> should help to answer your questions about the MCMCse and may also help you\n>> do some diagnostics on your model to check for degeneracy.\n>>\n>> best,\n>> Martina\n>>\n>> On Mon, 30 Mar 2009, Ale iberna wrote:\n>>\n>>  I apologize for the problems with the attachments. I think it is a gmail\n>>> issue. I uploded all files that I thought I attached + the original data\n>>> and\n>>> R code to\n>>> www2.arnes.si/~aziber4/statnet/<http://www2.arnes.si/%7Eaziber4/statnet/>\n>>>\n>>> I have now added dat and results for two networks.\n>>>\n>>> Thanks for replies.\n>>>\n>>> Best,\n>>> Ales\n>>>\n>>>\n>>>\n>>> On Fri, Mar 27, 2009 at 20:26, David Hunter <dhunter@stat.psu.edu> wrote:\n>>>\n>>>  Hello Ale??.\n>>>>\n>>>> I am curious about this, though a model containing 2-stars and transitive\n>>>> triangles could be horribly behaved, so I suspect that the reason for the\n>>>> discrepancy might be that none of the packages is really able to get\n>>>> reasonable estimates.  Also, the attachment to your email seems to be\n>>>> just\n>>>> your email itself, without any output or data.\n>>>>\n>>>> Dave\n>>>>\n>>>>\n>>>>\n>>>>\n>>>> On Mar 27, 2009, at 2:13 PM, Ale?? ??iberna wrote:\n>>>>\n>>>>  Hello!\n>>>>\n>>>>>\n>>>>> I have started experimenting with statnet as I would really like to be\n>>>>> able to estimate ergm's from R, but I am really surprised by the results\n>>>>> I\n>>>>> get. Firstly, They are completely different from those I get in either\n>>>>> SIENA\n>>>>> or PNet (which are similar).\n>>>>>\n>>>>> In all software I tried to fit a model with fixed number of edges (or\n>>>>> fixed density) and using the following terms:\n>>>>> reciprocity, in-2-stars, out-2-stars, transitive_triangles.\n>>>>>\n>>>>> In the attachments are the outputs of SIENA and Pnet and the printout\n>>>>> from\n>>>>> R for statnet. As you can see, the results are profoundly different.\n>>>>> There\n>>>>> is also an issue of convergence for statnet which does not seam to be a\n>>>>> problem for the other two programs. Btw, the results also do not match\n>>>>> for\n>>>>> networks where there is no convergence problems.\n>>>>>\n>>>>> Then I have two more questions:\n>>>>> 1. What is the meaning of the MCMC s. e. in the statnet output (next to\n>>>>> the parameter estimates and standard errors). I assume that s.e. stands\n>>>>> for\n>>>>> standard error, but what are then the \"standard errors\" (just before\n>>>>> them).\n>>>>> 2. If I run the \"mcmc.diagnostics\", the output does not match\n>>>>> (especially\n>>>>> the yes/no\" answers) the printout of the object where I save the result\n>>>>> of\n>>>>> this same function. See the kansas_statnet.txt to see for your self.\n>>>>>\n>>>>> I would be really thankful for any help!\n>>>>>\n>>>>> Best regards,\n>>>>> Ale?? ??iberna\n>>>>> <mime-attachment.html>_______________________________________________\n>>>>> statnet_help mailing list\n>>>>> statnet_help@u.washington.edu\n>>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>>>\n>>>>>\n>>>> _______________________________________________\n>>>> statnet_help mailing list\n>>>> statnet_help@u.washington.edu\n>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>>\n>>>>\n>>>\n>> ****************************************************************\n>>  Professor of Sociology and Statistics\n>>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>  Box 354322\n>>  University of Washington\n>>  Seattle, WA 98195-4322\n>>\n>>  Office:        (206) 685-3402\n>>  Dept Office:   (206) 543-5882, 543-7237\n>>  Fax:           (206) 685-7419\n>>\n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Good -- and just to make sure, are you using the most current versions \nof R (2.8.1) and ergm (2.2)?\n\nOn Mon, 30 Mar 2009, Ale iberna wrote:\n\n> Hello!\n>\n> I did go through statnet tutorial (\n> http://",
+      "thread_id": "thread-33ba9486d94c",
+      "thread_depth": 5,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-d26ffcfd8eef",
+      "message_id": "<82a0ca4f0903302217l524b796pb0f753ba45b2b917@mail.gmail.com>",
+      "from_name": "Aleš Žiberna",
+      "from_email_hash": "5e680d377132a5f4662c83255d0d6d392f3dd8a38545f7e92257bf49b437f21f",
+      "date": "2009-03-30T22:17:35Z",
+      "subject": "[statnet_help] Completly different results than with SIENA and  PNet",
+      "subject_clean": "[statnet_help] Completly different results than with SIENA and  PNet",
+      "in_reply_to": "<Pine.WNT.4.64.0903300912010.3748@mmorris>",
+      "references": [
+        "<82a0ca4f0903271113p4eb82a82u130aa2fa8c73b5c2@mail.gmail.com>",
+        "<675028EC-0B43-4824-9451-24D70D3328EC@stat.psu.edu>",
+        "<82a0ca4f0903300054x7963cee7xcb5fa6e9ae5967b0@mail.gmail.com>",
+        "<Pine.WNT.4.64.0903300100500.4188@mmorris>",
+        "<82a0ca4f0903300236o28aef6f9g897ab05a4ab01efc@mail.gmail.com>",
+        "<Pine.WNT.4.64.0903300912010.3748@mmorris>"
+      ],
+      "body_plain": "Yes, R 2.8.1 and ergm Version 2.2-0 created on 2009-03-01\n\nBest,\nAle?\n\nOn Mon, Mar 30, 2009 at 18:12, Martina Morris <morrism@u.washington.edu>wrote:\n\n> Good -- and just to make sure, are you using the most current versions of R\n> (2.8.1) and ergm (2.2)?\n>\n> On Mon, 30 Mar 2009, Ale iberna wrote:\n>\n>  Hello!\n>>\n>> I did go through statnet tutorial (\n>> http://csde.washington.edu/statnet/users_guide.shtml) but somehow did not\n>> find the answer to those questions. I do however know that a lot could be\n>> done about degeneracy, but in spite of degeneracy I am very much surprised\n>> to get so different results with statnet than with PNet and SIENA.\n>>\n>> Best,\n>> Ale??\n>>\n>> On Mon, Mar 30, 2009 at 10:03, Martina Morris <morrism@u.washington.edu\n>> >wrote:\n>>\n>>  Hi Ales,\n>>>\n>>> If you haven't done so already, you may want to go through the statnet\n>>> tutorial (http://csde.washington.edu/statnet/users_guide.shtml).  That\n>>> should help to answer your questions about the MCMCse and may also help\n>>> you\n>>> do some diagnostics on your model to check for degeneracy.\n>>>\n>>> best,\n>>> Martina\n>>>\n>>> On Mon, 30 Mar 2009, Ale iberna wrote:\n>>>\n>>>  I apologize for the problems with the attachments. I think it is a gmail\n>>>\n>>>> issue. I uploded all files that I thought I attached + the original data\n>>>> and\n>>>> R code to\n>>>> www2.arnes.si/~aziber4/statnet/<http://www2.arnes.si/%7Eaziber4/statnet/>\n>>>> <http://www2.arnes.si/%7Eaziber4/statnet/>\n>>>>\n>>>>\n>>>> I have now added dat and results for two networks.\n>>>>\n>>>> Thanks for replies.\n>>>>\n>>>> Best,\n>>>> Ales\n>>>>\n>>>>\n>>>>\n>>>> On Fri, Mar 27, 2009 at 20:26, David Hunter <dhunter@stat.psu.edu>\n>>>> wrote:\n>>>>\n>>>>  Hello Ale??.\n>>>>\n>>>>>\n>>>>> I am curious about this, though a model containing 2-stars and\n>>>>> transitive\n>>>>> triangles could be horribly behaved, so I suspect that the reason for\n>>>>> the\n>>>>> discrepancy might be that none of the packages is really able to get\n>>>>> reasonable estimates.  Also, the attachment to your email seems to be\n>>>>> just\n>>>>> your email itself, without any output or data.\n>>>>>\n>>>>> Dave\n>>>>>\n>>>>>\n>>>>>\n>>>>>\n>>>>> On Mar 27, 2009, at 2:13 PM, Ale?? ??iberna wrote:\n>>>>>\n>>>>>  Hello!\n>>>>>\n>>>>>\n>>>>>> I have started experimenting with statnet as I would really like to be\n>>>>>> able to estimate ergm's from R, but I am really surprised by the\n>>>>>> results\n>>>>>> I\n>>>>>> get. Firstly, They are completely different from those I get in either\n>>>>>> SIENA\n>>>>>> or PNet (which are similar).\n>>>>>>\n>>>>>> In all software I tried to fit a model with fixed number of edges (or\n>>>>>> fixed density) and using the following terms:\n>>>>>> reciprocity, in-2-stars, out-2-stars, transitive_triangles.\n>>>>>>\n>>>>>> In the attachments are the outputs of SIENA and Pnet and the printout\n>>>>>> from\n>>>>>> R for statnet. As you can see, the results are profoundly different.\n>>>>>> There\n>>>>>> is also an issue of convergence for statnet which does not seam to be\n>>>>>> a\n>>>>>> problem for the other two programs. Btw, the results also do not match\n>>>>>> for\n>>>>>> networks where there is no convergence problems.\n>>>>>>\n>>>>>> Then I have two more questions:\n>>>>>> 1. What is the meaning of the MCMC s. e. in the statnet output (next\n>>>>>> to\n>>>>>> the parameter estimates and standard errors). I assume that s.e.\n>>>>>> stands\n>>>>>> for\n>>>>>> standard error, but what are then the \"standard errors\" (just before\n>>>>>> them).\n>>>>>> 2. If I run the \"mcmc.diagnostics\", the output does not match\n>>>>>> (especially\n>>>>>> the yes/no\" answers) the printout of the object where I save the\n>>>>>> result\n>>>>>> of\n>>>>>> this same function. See the kansas_statnet.txt to see for your self.\n>>>>>>\n>>>>>> I would be really thankful for any help!\n>>>>>>\n>>>>>> Best regards,\n>>>>>> Ale?? ??iberna\n>>>>>> <mime-attachment.html>_______________________________________________\n>>>>>> statnet_help mailing list\n>>>>>> statnet_help@u.washington.edu\n>>>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>>>>\n>>>>>>\n>>>>>>  _______________________________________________\n>>>>> statnet_help mailing list\n>>>>> statnet_help@u.washington.edu\n>>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>>>\n>>>>>\n>>>>>\n>>>>  ****************************************************************\n>>>  Professor of Sociology and Statistics\n>>>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>>  Box 354322\n>>>  University of Washington\n>>>  Seattle, WA 98195-4322\n>>>\n>>>  Office:        (206) 685-3402\n>>>  Dept Office:   (206) 543-5882, 543-7237\n>>>  Fax:           (206) 685-7419\n>>>\n>>> morrism@u.washington.edu\n>>> http://faculty.washington.edu/morrism/\n>>>\n>>\n>>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090331/e75245ba/attachment.html>",
+      "body_snippet": "Yes, R 2.8.1 and ergm Version 2.2-0 created on 2009-03-01\n\nBest,\nAle?\n\nOn Mon, Mar 30, 2009 at 18:12, Martina Morris <morrism@u.washington.edu>wrote:\n\n> Good -- and just to make sure, are you using th",
+      "thread_id": "thread-33ba9486d94c",
+      "thread_depth": 6,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-4073dfc7fe23",
+      "message_id": "<C5F7027A.32F73%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2009-03-30T23:12:51Z",
+      "subject": "[statnet_help] Completly different results than with SIENA and  PNet",
+      "subject_clean": "[statnet_help] Completly different results than with SIENA and  PNet",
+      "in_reply_to": "<82a0ca4f0903302217l524b796pb0f753ba45b2b917@mail.gmail.com>",
+      "references": [],
+      "body_plain": "Hi Ale?,\n\nI looked at the files and I can see the problem:\n\n1) You did not create a network from the data table. e.g.\n     cheyenne<-network(cheyenne, directed=TRUE)\n   The package works with networks stored as network objects.\n2) The term for transitive triples is \"ttriple\" and not \"transitive\".\n\nOnce these changes are made all works out well.\nHere is the core result:\n\nMonte Carlo MLE Results:\n        Estimate Std. Error MCMC s.e.  p-value\nmutual   0.97964    0.45899     0.022 0.034418 *\nistar2   0.39096    0.13470     0.004 0.004254 **\nostar2   0.43154    0.12422     0.001 0.000668 ***\nttriple -0.07544    0.09745     0.001 0.440039\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nIn answer to your question:\n\"What is the meaning of the MCMC s. e. in the statnet output (next to the\nparameter estimates and standard errors). I assume that s.e. stands for\nstandard error, but what are then the \"standard errors\" (just before them).\"\n\nThe \"Std. Error\" is the usual standard error of the coefficient. The \"MCMC\ns.e.\" is the amount of the standard error that results from the use of the\napproximate MLE rather than the true MLE. The MLE is approximate because it\nis estimated using simulation. I believe \"statnet\" is the only package that\nestimates this. It helps the user because if the uncertainty in the\nestimation method is a non-negligible contributor to the overall uncertainty\nthe algorithm should be refined (e.g., by increasing the MCMCsamplesize or\ninterval arguments). In this case the contribution is small.\n\nThe second question is not relevant is a network is created first.\n\nI have added a few more diagnostic plots in the attached code and figures.\nThey are fun to see, especially the triad census diagnostics.\n\nEnjoy!\n\nMark\n\nfor the \"statnet\" team\n\n\nOn 3/30/09 10:17 PM, \"Ale? ?iberna\" <aleszib@gmail.com> wrote:\n\n> Yes, R 2.8.1 and ergm Version 2.2-0 created on 2009-03-01\n> \n> Best,\n> Ale?\n> \n> On Mon, Mar 30, 2009 at 18:12, Martina Morris <morrism@u.washington.edu>wrote:\n> \n>> Good -- and just to make sure, are you using the most current versions of R\n>> (2.8.1) and ergm (2.2)?\n>> \n>> On Mon, 30 Mar 2009, Ale iberna wrote:\n>> \n>>  Hello!\n>>> \n>>> I did go through statnet tutorial (\n>>> http://csde.washington.edu/statnet/users_guide.shtml) but somehow did not\n>>> find the answer to those questions. I do however know that a lot could be\n>>> done about degeneracy, but in spite of degeneracy I am very much surprised\n>>> to get so different results with statnet than with PNet and SIENA.\n>>> \n>>> Best,\n>>> Ale??\n>>> \n>>> On Mon, Mar 30, 2009 at 10:03, Martina Morris <morrism@u.washington.edu\n>>>> wrote:\n>>> \n>>>  Hi Ales,\n>>>> \n>>>> If you haven't done so already, you may want to go through the statnet\n>>>> tutorial (http://csde.washington.edu/statnet/users_guide.shtml).  That\n>>>> should help to answer your questions about the MCMCse and may also help\n>>>> you\n>>>> do some diagnostics on your model to check for degeneracy.\n>>>> \n>>>> best,\n>>>> Martina\n>>>> \n>>>> On Mon, 30 Mar 2009, Ale iberna wrote:\n>>>> \n>>>>  I apologize for the problems with the attachments. I think it is a gmail\n>>>> \n>>>>> issue. I uploded all files that I thought I attached + the original data\n>>>>> and\n>>>>> R code to\n>>>>> www2.arnes.si/~aziber4/statnet/<http://www2.arnes.si/%7Eaziber4/statnet/>\n>>>>> <http://www2.arnes.si/%7Eaziber4/statnet/>\n>>>>> \n>>>>> \n>>>>> I have now added dat and results for two networks.\n>>>>> \n>>>>> Thanks for replies.\n>>>>> \n>>>>> Best,\n>>>>> Ales\n>>>>> \n>>>>> \n>>>>> \n>>>>> On Fri, Mar 27, 2009 at 20:26, David Hunter <dhunter@stat.psu.edu>\n>>>>> wrote:\n>>>>> \n>>>>>  Hello Ale??.\n>>>>> \n>>>>>> \n>>>>>> I am curious about this, though a model containing 2-stars and\n>>>>>> transitive\n>>>>>> triangles could be horribly behaved, so I suspect that the reason for\n>>>>>> the\n>>>>>> discrepancy might be that none of the packages is really able to get\n>>>>>> reasonable estimates.  Also, the attachment to your email seems to be\n>>>>>> just\n>>>>>> your email itself, without any output or data.\n>>>>>> \n>>>>>> Dave\n>>>>>> \n>>>>>> \n>>>>>> \n>>>>>> \n>>>>>> On Mar 27, 2009, at 2:13 PM, Ale?? ??iberna wrote:\n>>>>>> \n>>>>>>  Hello!\n>>>>>> \n>>>>>> \n>>>>>>> I have started experimenting with statnet as I would really like to be\n>>>>>>> able to estimate ergm's from R, but I am really surprised by the\n>>>>>>> results\n>>>>>>> I\n>>>>>>> get. Firstly, They are completely different from those I get in either\n>>>>>>> SIENA\n>>>>>>> or PNet (which are similar).\n>>>>>>> \n>>>>>>> In all software I tried to fit a model with fixed number of edges (or\n>>>>>>> fixed density) and using the following terms:\n>>>>>>> reciprocity, in-2-stars, out-2-stars, transitive_triangles.\n>>>>>>> \n>>>>>>> In the attachments are the outputs of SIENA and Pnet and the printout\n>>>>>>> from\n>>>>>>> R for statnet. As you can see, the results are profoundly different.\n>>>>>>> There\n>>>>>>> is also an issue of convergence for statnet which does not seam to be\n>>>>>>> a\n>>>>>>> problem for the other two programs. Btw, the results also do not match\n>>>>>>> for\n>>>>>>> networks where there is no convergence problems.\n>>>>>>> \n>>>>>>> Then I have two more questions:\n>>>>>>> 1. What is the meaning of the MCMC s. e. in the statnet output (next\n>>>>>>> to\n>>>>>>> the parameter estimates and standard errors). I assume that s.e.\n>>>>>>> stands\n>>>>>>> for\n>>>>>>> standard error, but what are then the \"standard errors\" (just before\n>>>>>>> them).\n>>>>>>> 2. If I run the \"mcmc.diagnostics\", the output does not match\n>>>>>>> (especially\n>>>>>>> the yes/no\" answers) the printout of the object where I save the\n>>>>>>> result\n>>>>>>> of\n>>>>>>> this same function. See the kansas_statnet.txt to see for your self.\n>>>>>>> \n>>>>>>> I would be really thankful for any help!\n>>>>>>> \n>>>>>>> Best regards,\n>>>>>>> Ale?? ??iberna\n>>>>>>> <mime-attachment.html>_______________________________________________\n>>>>>>> statnet_help mailing list\n>>>>>>> statnet_help@u.washington.edu\n>>>>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>>>>> \n>>>>>>> \n>>>>>>>  _______________________________________________\n>>>>>> statnet_help mailing list\n>>>>>> statnet_help@u.washington.edu\n>>>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>>>> \n>>>>>> \n>>>>>> \n>>>>>  ****************************************************************\n>>>>  Professor of Sociology and Statistics\n>>>>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>>>  Box 354322\n>>>>  University of Washington\n>>>>  Seattle, WA 98195-4322\n>>>> \n>>>>  Office:        (206) 685-3402\n>>>>  Dept Office:   (206) 543-5882, 543-7237\n>>>>  Fax:           (206) 685-7419\n>>>> \n>>>> morrism@u.washington.edu\n>>>> http://faculty.washington.edu/morrism/\n>>>> \n>>> \n>>> \n>> ****************************************************************\n>>  Professor of Sociology and Statistics\n>>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>  Box 354322\n>>  University of Washington\n>>  Seattle, WA 98195-4322\n>> \n>>  Office:        (206) 685-3402\n>>  Dept Office:   (206) 543-5882, 543-7237\n>>  Fax:           (206) 685-7419\n>> \n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: cheyenne_data.txt\nType: application/octet-stream\nSize: 337 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090330/8d07f7f8/attachment.obj>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: cheyenne.R\nType: application/octet-stream\nSize: 860 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090330/8d07f7f8/attachment-0001.obj>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: cheyenne.pdf\nType: application/octet-stream\nSize: 185211 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090330/8d07f7f8/attachment-0002.obj>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: cheyenne.Rout\nType: application/octet-stream\nSize: 8047 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090330/8d07f7f8/attachment-0003.obj>",
+      "body_snippet": "Hi Ale?,\n\nI looked at the files and I can see the problem:\n\n1) You did not create a network from the data table. e.g.\n     cheyenne<-network(cheyenne, directed=TRUE)\n   The package works with networks",
+      "thread_id": "thread-33ba9486d94c",
+      "thread_depth": 7,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-7b5e69f6aeb9",
+      "message_id": "<82a0ca4f0903302334s1d46c694k42955eec602d59fa@mail.gmail.com>",
+      "from_name": "Aleš Žiberna",
+      "from_email_hash": "5e680d377132a5f4662c83255d0d6d392f3dd8a38545f7e92257bf49b437f21f",
+      "date": "2009-03-30T23:34:19Z",
+      "subject": "[statnet_help] Completly different results than with SIENA and  PNet",
+      "subject_clean": "[statnet_help] Completly different results than with SIENA and  PNet",
+      "in_reply_to": "<C5F7027A.32F73%handcock@stat.washington.edu>",
+      "references": [
+        "<82a0ca4f0903302217l524b796pb0f753ba45b2b917@mail.gmail.com>",
+        "<C5F7027A.32F73%handcock@stat.washington.edu>"
+      ],
+      "body_plain": "Thank you very much! I can't thank you enough.\n\nBest,\nAle?\n\n\n\nOn Tue, Mar 31, 2009 at 08:12, Mark S. Handcock <\nhandcock@stat.washington.edu> wrote:\n\n> Hi Ale?,\n>\n> I looked at the files and I can see the problem:\n>\n> 1) You did not create a network from the data table. e.g.\n>     cheyenne<-network(cheyenne, directed=TRUE)\n>   The package works with networks stored as network objects.\n> 2) The term for transitive triples is \"ttriple\" and not \"transitive\".\n>\n> Once these changes are made all works out well.\n> Here is the core result:\n>\n> Monte Carlo MLE Results:\n>        Estimate Std. Error MCMC s.e.  p-value\n> mutual   0.97964    0.45899     0.022 0.034418 *\n> istar2   0.39096    0.13470     0.004 0.004254 **\n> ostar2   0.43154    0.12422     0.001 0.000668 ***\n> ttriple -0.07544    0.09745     0.001 0.440039\n> ---\n> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n>\n> In answer to your question:\n> \"What is the meaning of the MCMC s. e. in the statnet output (next to the\n> parameter estimates and standard errors). I assume that s.e. stands for\n> standard error, but what are then the \"standard errors\" (just before\n> them).\"\n>\n> The \"Std. Error\" is the usual standard error of the coefficient. The \"MCMC\n> s.e.\" is the amount of the standard error that results from the use of the\n> approximate MLE rather than the true MLE. The MLE is approximate because it\n> is estimated using simulation. I believe \"statnet\" is the only package that\n> estimates this. It helps the user because if the uncertainty in the\n> estimation method is a non-negligible contributor to the overall\n> uncertainty\n> the algorithm should be refined (e.g., by increasing the MCMCsamplesize or\n> interval arguments). In this case the contribution is small.\n>\n> The second question is not relevant is a network is created first.\n>\n> I have added a few more diagnostic plots in the attached code and figures.\n> They are fun to see, especially the triad census diagnostics.\n>\n> Enjoy!\n>\n> Mark\n>\n> for the \"statnet\" team\n>\n>\n> On 3/30/09 10:17 PM, \"Ale? ?iberna\" <aleszib@gmail.com> wrote:\n>\n> > Yes, R 2.8.1 and ergm Version 2.2-0 created on 2009-03-01\n> >\n> > Best,\n> > Ale?\n> >\n> > On Mon, Mar 30, 2009 at 18:12, Martina Morris <morrism@u.washington.edu\n> >wrote:\n> >\n> >> Good -- and just to make sure, are you using the most current versions\n> of R\n> >> (2.8.1) and ergm (2.2)?\n> >>\n> >> On Mon, 30 Mar 2009, Ale iberna wrote:\n> >>\n> >>  Hello!\n> >>>\n> >>> I did go through statnet tutorial (\n> >>> http://csde.washington.edu/statnet/users_guide.shtml) but somehow did\n> not\n> >>> find the answer to those questions. I do however know that a lot could\n> be\n> >>> done about degeneracy, but in spite of degeneracy I am very much\n> surprised\n> >>> to get so different results with statnet than with PNet and SIENA.\n> >>>\n> >>> Best,\n> >>> Ale??\n> >>>\n> >>> On Mon, Mar 30, 2009 at 10:03, Martina Morris <\n> morrism@u.washington.edu\n> >>>> wrote:\n> >>>\n> >>>  Hi Ales,\n> >>>>\n> >>>> If you haven't done so already, you may want to go through the statnet\n> >>>> tutorial (http://csde.washington.edu/statnet/users_guide.shtml).\n>  That\n> >>>> should help to answer your questions about the MCMCse and may also\n> help\n> >>>> you\n> >>>> do some diagnostics on your model to check for degeneracy.\n> >>>>\n> >>>> best,\n> >>>> Martina\n> >>>>\n> >>>> On Mon, 30 Mar 2009, Ale iberna wrote:\n> >>>>\n> >>>>  I apologize for the problems with the attachments. I think it is a\n> gmail\n> >>>>\n> >>>>> issue. I uploded all files that I thought I attached + the original\n> data\n> >>>>> and\n> >>>>> R code to\n> >>>>> www2.arnes.si/~aziber4/statnet/<http://www2.arnes.si/%7Eaziber4/statnet/>\n> <http://www2.arnes.si/%7Eaziber4/statnet/>\n> >>>>> <http://www2.arnes.si/%7Eaziber4/statnet/>\n> >>>>>\n> >>>>>\n> >>>>> I have now added dat and results for two networks.\n> >>>>>\n> >>>>> Thanks for replies.\n> >>>>>\n> >>>>> Best,\n> >>>>> Ales\n> >>>>>\n> >>>>>\n> >>>>>\n> >>>>> On Fri, Mar 27, 2009 at 20:26, David Hunter <dhunter@stat.psu.edu>\n> >>>>> wrote:\n> >>>>>\n> >>>>>  Hello Ale??.\n> >>>>>\n> >>>>>>\n> >>>>>> I am curious about this, though a model containing 2-stars and\n> >>>>>> transitive\n> >>>>>> triangles could be horribly behaved, so I suspect that the reason\n> for\n> >>>>>> the\n> >>>>>> discrepancy might be that none of the packages is really able to get\n> >>>>>> reasonable estimates.  Also, the attachment to your email seems to\n> be\n> >>>>>> just\n> >>>>>> your email itself, without any output or data.\n> >>>>>>\n> >>>>>> Dave\n> >>>>>>\n> >>>>>>\n> >>>>>>\n> >>>>>>\n> >>>>>> On Mar 27, 2009, at 2:13 PM, Ale?? ??iberna wrote:\n> >>>>>>\n> >>>>>>  Hello!\n> >>>>>>\n> >>>>>>\n> >>>>>>> I have started experimenting with statnet as I would really like to\n> be\n> >>>>>>> able to estimate ergm's from R, but I am really surprised by the\n> >>>>>>> results\n> >>>>>>> I\n> >>>>>>> get. Firstly, They are completely different from those I get in\n> either\n> >>>>>>> SIENA\n> >>>>>>> or PNet (which are similar).\n> >>>>>>>\n> >>>>>>> In all software I tried to fit a model with fixed number of edges\n> (or\n> >>>>>>> fixed density) and using the following terms:\n> >>>>>>> reciprocity, in-2-stars, out-2-stars, transitive_triangles.\n> >>>>>>>\n> >>>>>>> In the attachments are the outputs of SIENA and Pnet and the\n> printout\n> >>>>>>> from\n> >>>>>>> R for statnet. As you can see, the results are profoundly\n> different.\n> >>>>>>> There\n> >>>>>>> is also an issue of convergence for statnet which does not seam to\n> be\n> >>>>>>> a\n> >>>>>>> problem for the other two programs. Btw, the results also do not\n> match\n> >>>>>>> for\n> >>>>>>> networks where there is no convergence problems.\n> >>>>>>>\n> >>>>>>> Then I have two more questions:\n> >>>>>>> 1. What is the meaning of the MCMC s. e. in the statnet output\n> (next\n> >>>>>>> to\n> >>>>>>> the parameter estimates and standard errors). I assume that s.e.\n> >>>>>>> stands\n> >>>>>>> for\n> >>>>>>> standard error, but what are then the \"standard errors\" (just\n> before\n> >>>>>>> them).\n> >>>>>>> 2. If I run the \"mcmc.diagnostics\", the output does not match\n> >>>>>>> (especially\n> >>>>>>> the yes/no\" answers) the printout of the object where I save the\n> >>>>>>> result\n> >>>>>>> of\n> >>>>>>> this same function. See the kansas_statnet.txt to see for your\n> self.\n> >>>>>>>\n> >>>>>>> I would be really thankful for any help!\n> >>>>>>>\n> >>>>>>> Best regards,\n> >>>>>>> Ale?? ??iberna\n> >>>>>>>\n> <mime-attachment.html>_______________________________________________\n> >>>>>>> statnet_help mailing list\n> >>>>>>> statnet_help@u.washington.edu\n> >>>>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> >>>>>>>\n> >>>>>>>\n> >>>>>>>  _______________________________________________\n> >>>>>> statnet_help mailing list\n> >>>>>> statnet_help@u.washington.edu\n> >>>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> >>>>>>\n> >>>>>>\n> >>>>>>\n> >>>>>  ****************************************************************\n> >>>>  Professor of Sociology and Statistics\n> >>>>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n> >>>>  Box 354322\n> >>>>  University of Washington\n> >>>>  Seattle, WA 98195-4322\n> >>>>\n> >>>>  Office:        (206) 685-3402\n> >>>>  Dept Office:   (206) 543-5882, 543-7237\n> >>>>  Fax:           (206) 685-7419\n> >>>>\n> >>>> morrism@u.washington.edu\n> >>>> http://faculty.washington.edu/morrism/\n> >>>>\n> >>>\n> >>>\n> >> ****************************************************************\n> >>  Professor of Sociology and Statistics\n> >>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n> >>  Box 354322\n> >>  University of Washington\n> >>  Seattle, WA 98195-4322\n> >>\n> >>  Office:        (206) 685-3402\n> >>  Dept Office:   (206) 543-5882, 543-7237\n> >>  Fax:           (206) 685-7419\n> >>\n> >> morrism@u.washington.edu\n> >> http://faculty.washington.edu/morrism/\n> >>\n> > _______________________________________________\n> > statnet_help mailing list\n> > statnet_help@u.washington.edu\n> > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090331/6bda61b6/attachment.html>",
+      "body_snippet": "Thank you very much! I can't thank you enough.\n\nBest,\nAle?\n\n\n\nOn Tue, Mar 31, 2009 at 08:12, Mark S. Handcock <\nhandcock@stat.washington.edu> wrote:\n\n> Hi Ale?,\n>\n> I looked at the files and I can see",
+      "thread_id": "thread-33ba9486d94c",
+      "thread_depth": 8,
+      "month": "2009-03"
+    },
+    {
+      "id": "msg-8e3b3e062ce2",
+      "message_id": "<49D20F2C.9000807@ucsd.edu>",
+      "from_name": "Simon Frost",
+      "from_email_hash": "035b0ea7e424ab86c49e75c8ef123f13dce97b7aaadbb47397e5c83707ce33a8",
+      "date": "2009-03-31T05:40:12Z",
+      "subject": "[statnet_help] ERGM constraints for DAGs?",
+      "subject_clean": "[statnet_help] ERGM constraints for DAGs?",
+      "in_reply_to": "<C5ED1B16.1FFEE%handcock@stat.washington.edu>",
+      "references": [
+        "<C5ED1B16.1FFEE%handcock@stat.washington.edu>"
+      ],
+      "body_plain": "Dear Mark,\n\nMark S. Handcock wrote:\n> Hi Simon,\n>\n> The current \"constraints\" is very flexible and powerful but does not have\n> DAGs explicitly coded in. However it would be possible to achieve using the\n> \"offset\" function on the \"cycles\" term. By setting the coefficients of these\n> to a large negative number, the graph space will be constrained to DAGs.\n>\n> I hope this helps.\n>   \nThe problem is, I have quite a few nodes in my graph, and so using this \nkind of approach means I'd have to set a large number of cycle terms to \na small number; won't this result in a rather dramatic increase in \ncomputational burden? It seems to be more efficient to determine whether \na graph is acyclic by performing some kind of traversal of nodes; I \ndon't have a good idea in my head yet of an algorithm to do this \nefficiently using ergmuserterms, which takes a 'toggling' approach.\n\nBest\nSimon\n> Mark\n>\n> On 3/23/09 8:24 AM, \"Steven Goodreau\" <goodreau@u.washington.edu> wrote:\n>\n>   \n>> Hi Simon,\n>>\n>> I'm pretty sure the answer is no, but others should feel free to chime\n>> in if I'm wrong and anyone has done it.\n>>\n>> Cheers,\n>> Steve\n>>\n>> On Fri, 20 Mar 2009, Simon Frost\n>> wrote:\n>>\n>>     \n>>> Date: Fri, 20 Mar 2009 21:41:53 -0700\n>>> From: Simon Frost <sdfrost@ucsd.edu>\n>>> To: statnet_help@u.washington.edu\n>>> Subject: [statnet_help] ERGM constraints for DAGs?\n>>>\n>>> Dear Statnet List,\n>>>\n>>> Has anyone set up constraints for an ergm to sample from directed acyclic\n>>> graphs only? If so, what formula can be used in the constraints section?\n>>> We're looking at the structure of Bayesian graphical model fits (which are\n>>> constrained to be DAGs).\n>>>\n>>> Best\n>>> Simon\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>>>       \n>> **************************************************************************\n>>   * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n>>   * University of Washington / Denny Hall 452 / Campus Box 353100        *\n>>   * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n>>   * http://faculty.washington.edu/goodreau                               *\n>>   * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k            *\n>> **************************************************************************\n>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>     \n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>   \n\n\n-- \nSimon D.W. Frost, D.Phil.\nSenior Lecturer\nDepartment of Veterinary Medicine\nUniversity of Cambridge\nMadingley Road\nCambridge CB3 0ES\nU.K.\n\nTel: +44 (0)1223 764201\nFax: +44 (0)1223 765760\nEmail: sdf22@cam.ac.uk\nURL: http://www.vet.cam.ac.uk/research/investigators/frost.html",
+      "body_snippet": "Dear Mark,\n\nMark S. Handcock wrote:\n> Hi Simon,\n>\n> The current \"constraints\" is very flexible and powerful but does not have\n> DAGs explicitly coded in. However it would be possible to achieve using ",
+      "thread_id": "thread-fcb428e5816d",
+      "thread_depth": 3,
+      "month": "2009-03"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-27a77c89bbff",
+      "subject": "[statnet_help] count identical dyads",
+      "message_count": 7,
+      "participants": [
+        "David A. Nolin",
+        "David Hunter",
+        "Jef Vlegels"
+      ],
+      "started": "2009-03-09T05:57:29Z",
+      "last_reply": "2009-03-10T07:47:54Z",
+      "root_message_id": "msg-27a77c89bbff"
+    },
+    {
+      "id": "thread-07dbeef21645",
+      "subject": "[statnet_help] Seed values for ergm",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "David Purdy"
+      ],
+      "started": "2009-03-09T12:17:05Z",
+      "last_reply": "2009-03-09T20:42:10Z",
+      "root_message_id": "msg-07dbeef21645"
+    },
+    {
+      "id": "thread-94fb5f8c3135",
+      "subject": "[statnet_help] count identical dyads",
+      "message_count": 1,
+      "participants": [
+        "David Hunter"
+      ],
+      "started": "2009-03-10T05:19:06Z",
+      "last_reply": "2009-03-10T05:19:06Z",
+      "root_message_id": "msg-94fb5f8c3135"
+    },
+    {
+      "id": "thread-fe929db9362c",
+      "subject": "[statnet_help] gplot.layout with valued edges",
+      "message_count": 3,
+      "participants": [
+        "Alexander",
+        "Gábor Csárdi"
+      ],
+      "started": "2009-03-16T09:37:39Z",
+      "last_reply": "2009-03-16T13:55:51Z",
+      "root_message_id": "msg-fe929db9362c"
+    },
+    {
+      "id": "thread-98c26be71bfa",
+      "subject": "[statnet_help] converting data object to a statnet readable matrix",
+      "message_count": 5,
+      "participants": [
+        "David Hunter",
+        "Mario Menezes",
+        "Victor, Jennifer Nicoll"
+      ],
+      "started": "2009-03-18T08:50:29Z",
+      "last_reply": "2009-03-18T10:58:16Z",
+      "root_message_id": "msg-98c26be71bfa"
+    },
+    {
+      "id": "thread-fcb428e5816d",
+      "subject": "[statnet_help] ERGM constraints for DAGs?",
+      "message_count": 4,
+      "participants": [
+        "Mark S. Handcock",
+        "Simon Frost",
+        "Steven Goodreau"
+      ],
+      "started": "2009-03-20T21:41:53Z",
+      "last_reply": "2009-03-31T05:40:12Z",
+      "root_message_id": "msg-fcb428e5816d"
+    },
+    {
+      "id": "thread-e468528da40e",
+      "subject": "[statnet_help] Multiple edges plot",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Jeronimo Carballo"
+      ],
+      "started": "2009-03-26T11:38:54Z",
+      "last_reply": "2009-03-30T00:24:49Z",
+      "root_message_id": "msg-e468528da40e"
+    },
+    {
+      "id": "thread-0c2efcb397ea",
+      "subject": "[statnet_help] Flow betweenness implementation",
+      "message_count": 2,
+      "participants": [
+        "Alexander H. Montgomery",
+        "Carter T. Butts"
+      ],
+      "started": "2009-03-26T13:28:12Z",
+      "last_reply": "2009-03-29T23:57:34Z",
+      "root_message_id": "msg-0c2efcb397ea"
+    },
+    {
+      "id": "thread-33ba9486d94c",
+      "subject": "[statnet_help] Completly different results than with SIENA and PNet",
+      "message_count": 9,
+      "participants": [
+        "Aleš Žiberna",
+        "David Hunter",
+        "Mark S. Handcock",
+        "Martina Morris"
+      ],
+      "started": "2009-03-27T11:13:15Z",
+      "last_reply": "2009-03-30T23:34:19Z",
+      "root_message_id": "msg-33ba9486d94c"
+    },
+    {
+      "id": "thread-b6cb15cd034c",
+      "subject": "[statnet_help] SoNIA installer",
+      "message_count": 1,
+      "participants": [
+        "Mikołaj Hnatiuk"
+      ],
+      "started": "2009-03-29T11:47:59Z",
+      "last_reply": "2009-03-29T11:47:59Z",
+      "root_message_id": "msg-b6cb15cd034c"
+    }
+  ]
+}

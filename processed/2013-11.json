@@ -1,0 +1,136 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2013-11",
+  "messages": [
+    {
+      "id": "msg-0d75953cd299",
+      "message_id": "<8B4CE952-F45A-4AED-ACCC-DFD439F4F888@nottingham.ac.uk>",
+      "from_name": "Thomas",
+      "from_email_hash": "2dd01e35b6d35de40ed458e9313415a49c11cbc71a5c595a91d44d4fa36474c5",
+      "date": "2013-11-01T03:03:23Z",
+      "subject": "[statnet_help] Error when running ergm",
+      "subject_clean": "[statnet_help] Error when running ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I am running an ergm on a large dataset from which I have sampled  \nabout 200 nodes (using the random walk approach suggested by Leskovec  \n& Faloutsos 2006, Samplying from large graphs.)\n\nI've tried the following:\n\nAnet <- ergm(net ~ edges + edgecov(GD))\n\nAnet <- ergm(net ~ edges + triangle)\n\nAnet <- ergm(net ~ edges + triangle + transitive)\n\n\nThese three run fine, but the following both produce the same error:\n\n\nAnet <- ergm(net ~ edges + triangle + edgecov(GD))\n\nAnet <- ergm(net ~ edges + transitive + edgecov(GD))\n\nError in if (order) coefs[order, seq_len(order)] else numeric() :\n   argument is not interpretable as logical\nIn addition: Warning message:\nIn if (order) coefs[order, seq_len(order)] else numeric() :\n   the condition has length > 1 and only the first element will be used\n\n\nDoes anyone know what might be causing this please?\n\nThank you,\n\nThomas\n\n > sessionInfo()\nR version 2.15.3 (2013-03-01)\nPlatform: i386-apple-darwin9.8.0/i386 (32-bit)\n\nlocale:\n[1] en_GB.UTF-8/en_GB.UTF-8/en_GB.UTF-8/C/en_GB.UTF-8/en_GB.UTF-8\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base\n\nother attached packages:\n[1] ergm_3.0-3       coda_0.16-1      nlme_3.1-108      \ntrust_0.1-4      Matrix_1.0-11\n[6] lattice_0.20-13  robustbase_0.9-7 network_1.7-1.1\n\nloaded via a namespace (and not attached):\n[1] grid_2.15.3\n >\n >   getOption(\"pkgType\")\n[1] \"mac.binary.leopard\"\nThis message and any attachment are intended solely for the addressee and may contain confidential information. If you have received this message in error, please send it back to me, and immediately delete it.   Please do not use, copy or disclose the information contained in this message or in any attachment.  Any views or opinions expressed by the author of this email do not necessarily reflect the views of the University of Nottingham.\n\nThis message has been checked for viruses but the contents of an attachment\nmay still contain software viruses which could damage your computer system, you are advised to perform your own checks. Email communications with the University of Nottingham may be monitored as permitted by UK legislation.",
+      "body_snippet": "I am running an ergm on a large dataset from which I have sampled  \nabout 200 nodes (using the random walk approach suggested by Leskovec  \n& Faloutsos 2006, Samplying from large graphs.)\n\nI've tried ",
+      "thread_id": "thread-0d75953cd299",
+      "thread_depth": 0,
+      "month": "2013-11"
+    },
+    {
+      "id": "msg-47cde1910399",
+      "message_id": "<alpine.WNT.1.10.1311010939510.6328@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-11-01T09:53:58Z",
+      "subject": "[statnet_help] Error when running ergm",
+      "subject_clean": "[statnet_help] Error when running ergm",
+      "in_reply_to": "<8B4CE952-F45A-4AED-ACCC-DFD439F4F888@nottingham.ac.uk>",
+      "references": [
+        "<8B4CE952-F45A-4AED-ACCC-DFD439F4F888@nottingham.ac.uk>"
+      ],
+      "body_plain": "Hi Thomas,\n\nOnce you have sampled the network, you need to let ergm know what has been \nobserved, and what is known to be missing by design.  Othewise, ergm is \nexpecting a completely observed network, and any unobserved ties are \nassumed to be \"0\".  Among other things, this will influence how you \nspecify the GD edgecov matrix, since edgecov expects a square matrix.\n\nThe ergm and tergm tutorials have writeups of how to use egocentrically \nsampled data properly.  For adaptively sampled data, your best bet is this \npost from Mark Handcock to the statnet help list:\n\nhttp://mailman2.u.washington.edu/pipermail/statnet_help/2009/000524.html\n\nHTH,\nMartina\n\nOn Fri, 1 Nov 2013, Thomas wrote:\n\n> I am running an ergm on a large dataset from which I have sampled about 200 \n> nodes (using the random walk approach suggested by Leskovec & Faloutsos 2006, \n> Samplying from large graphs.)\n>\n> I've tried the following:\n>\n> Anet <- ergm(net ~ edges + edgecov(GD))\n>\n> Anet <- ergm(net ~ edges + triangle)\n>\n> Anet <- ergm(net ~ edges + triangle + transitive)\n>\n>\n> These three run fine, but the following both produce the same error:\n>\n>\n> Anet <- ergm(net ~ edges + triangle + edgecov(GD))\n>\n> Anet <- ergm(net ~ edges + transitive + edgecov(GD))\n>\n> Error in if (order) coefs[order, seq_len(order)] else numeric() :\n> argument is not interpretable as logical\n> In addition: Warning message:\n> In if (order) coefs[order, seq_len(order)] else numeric() :\n> the condition has length > 1 and only the first element will be used\n>\n>\n> Does anyone know what might be causing this please?\n>\n> Thank you,\n>\n> Thomas\n>\n>> sessionInfo()\n> R version 2.15.3 (2013-03-01)\n> Platform: i386-apple-darwin9.8.0/i386 (32-bit)\n>\n> locale:\n> [1] en_GB.UTF-8/en_GB.UTF-8/en_GB.UTF-8/C/en_GB.UTF-8/en_GB.UTF-8\n>\n> attached base packages:\n> [1] stats     graphics  grDevices utils     datasets  methods   base\n>\n> other attached packages:\n> [1] ergm_3.0-3       coda_0.16-1      nlme_3.1-108     trust_0.1-4 \n> Matrix_1.0-11\n> [6] lattice_0.20-13  robustbase_0.9-7 network_1.7-1.1\n>\n> loaded via a namespace (and not attached):\n> [1] grid_2.15.3\n>>\n>>   getOption(\"pkgType\")\n> [1] \"mac.binary.leopard\"\n> This message and any attachment are intended solely for the addressee and may \n> contain confidential information. If you have received this message in error, \n> please send it back to me, and immediately delete it.   Please do not use, \n> copy or disclose the information contained in this message or in any \n> attachment.  Any views or opinions expressed by the author of this email do \n> not necessarily reflect the views of the University of Nottingham.\n>\n> This message has been checked for viruses but the contents of an attachment\n> may still contain software viruses which could damage your computer system, \n> you are advised to perform your own checks. Email communications with the \n> University of Nottingham may be monitored as permitted by UK legislation.\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Thomas,\n\nOnce you have sampled the network, you need to let ergm know what has been \nobserved, and what is known to be missing by design.  Othewise, ergm is \nexpecting a completely observed network",
+      "thread_id": "thread-0d75953cd299",
+      "thread_depth": 1,
+      "month": "2013-11"
+    },
+    {
+      "id": "msg-1cc3d85a6c54",
+      "message_id": "<CA+1MqJiMZ-dMth3bTMFAUo37KnncJfzwCtFnjmGuHFntBg-nww@mail.gmail.com>",
+      "from_name": "Alan Benson",
+      "from_email_hash": "87acd28b9951cdd762632b39cef4c3f29cf19a794b026f3b346e61fbf88182b8",
+      "date": "2013-11-05T02:10:13Z",
+      "subject": "[statnet_help] Node Colours Bipartite Graph Plot",
+      "subject_clean": "[statnet_help] Node Colours Bipartite Graph Plot",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nIs it possible to change the colors of the nodes so that nodes of type A\nand B have different colors. I can only see the vertex.col option when\nplotting the network that just seems to switch color every second node.\n\nThanks,\n\nAlan\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20131105/8f1856bf/attachment.html>",
+      "body_snippet": "Hi,\n\nIs it possible to change the colors of the nodes so that nodes of type A\nand B have different colors. I can only see the vertex.col option when\nplotting the network that just seems to switch colo",
+      "thread_id": "thread-1cc3d85a6c54",
+      "thread_depth": 0,
+      "month": "2013-11"
+    },
+    {
+      "id": "msg-c55ded3e15b1",
+      "message_id": "<CAKQ607HXDxEWsK6cBH36=XdfR7o=PBHddPFuj38S6QOoH2K1SQ@mail.gmail.com>",
+      "from_name": "Weihua An",
+      "from_email_hash": "ac6f966a6044fec05580e2e938d17cac4ae6fd6a9176b5c4be4778a864d69078",
+      "date": "2013-11-05T18:03:52Z",
+      "subject": "[statnet_help] modeling asymmetric ties in statnet",
+      "subject_clean": "[statnet_help] modeling asymmetric ties in statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI would like to hear your advice on a problem I am encountering.\n\nMy research question is whether the ties boys (coded as 1) send to girls\n(coded as 0) are more likely to be un-reciprocated than those girls send to\nboys. I am taking three approaches.\n\n1. Keep the full network and use nodemix. I think nodemix will count both\nthe number of un-reciprocated ties from boys to girls and mutual ties\nbetween girls and boys to calculate (1, 0) ties. Similarly, it will count\nboth the number of un-reciprocated ties from girls to boys and mutual ties\nbetween them to calculate (0, 1) ties. If we use the former as the\nreference group, the number of mutual ties cancel out so that we can\ninterpret the coefficient for the latter as a relative tendency. Does this\nmake sense?\n\n2. Keep only un-reciprocated ties in the network since we are interested in\nonly un-reciprocated ties. Still use nodemix. But I think statnet is not\nbuilt to model this type of network yet because there are no built-in\nconstrains controlling the uniform asymmetry yet.\n\n3. I am not familiar with the term asymmetric. Suppose I estimate a model\nlike\n\nmodel <- ergm ( SNet~ edges + asymmetric(\"boy\", diff = TRUE) )\n\n                   Estimate Std. Error MCMC %       p-value\nedges            -4.2698526 0.02007895      0  0.000000e+00\nasymmetric.boy.0 -1.3784407 0.04340871      0 4.499525e-221\nasymmetric.boy.1 -0.9322624 0.05927340      0  9.998334e-56\n\nHow do I interpret asymmetric.boy.0 and asymmetric.boy.1?\n\nOne last question, is it possible to let nodemix vary by the types of ties\n(symmetric vs. asymmetric)? It seems that some new terms need to be made to\naddress that.\n\nAny help will be greatly appreciated. Many thanks!\n\nbest,\n\nWeihua\n\n-- \nWeihua (Edward) An\n\nAssistant Professor of Sociology and Statistics\nIndiana University Bloomington\n752 Ballantine Hall\n1020 East Kirkwood Avenue\nBloomington, IN 47405-7103\nhttp://mypage.iu.edu/~weihuaan/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20131105/50ff139d/attachment.html>",
+      "body_snippet": "Dear all,\n\nI would like to hear your advice on a problem I am encountering.\n\nMy research question is whether the ties boys (coded as 1) send to girls\n(coded as 0) are more likely to be un-reciprocated",
+      "thread_id": "thread-c55ded3e15b1",
+      "thread_depth": 0,
+      "month": "2013-11"
+    },
+    {
+      "id": "msg-2ba85c7302bc",
+      "message_id": "<393E48D345CCD8478AF5725794A135F401B4C83C21DE@UTHCMS4.uthouston.edu>",
+      "from_name": "Gu, Pengyi",
+      "from_email_hash": "95a8ef2f465f5966285797600009e97a40c06e46ce016f42256e63b91a9bd2e3",
+      "date": "2013-11-21T22:11:04Z",
+      "subject": "[statnet_help] dependent relational attributes",
+      "subject_clean": "[statnet_help] dependent relational attributes",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello all,\n\nI am trying assign edge attributes. The data has two kind of edge attributes, one is dependent variable, the other is independent attributes. Is it possible to differentiate the two types so that for dependent variables they are undirected, but for independent attributes directed.\n\nBest,\nPengyi Gu\n\nUniversity of Texas Health Science Center at Houston\nSchool of Public Health\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20131122/2010d7cd/attachment.html>",
+      "body_snippet": "Hello all,\n\nI am trying assign edge attributes. The data has two kind of edge attributes, one is dependent variable, the other is independent attributes. Is it possible to differentiate the two types ",
+      "thread_id": "thread-2ba85c7302bc",
+      "thread_depth": 0,
+      "month": "2013-11"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-0d75953cd299",
+      "subject": "[statnet_help] Error when running ergm",
+      "message_count": 2,
+      "participants": [
+        "Thomas",
+        "martina morris"
+      ],
+      "started": "2013-11-01T03:03:23Z",
+      "last_reply": "2013-11-01T09:53:58Z",
+      "root_message_id": "msg-0d75953cd299"
+    },
+    {
+      "id": "thread-1cc3d85a6c54",
+      "subject": "[statnet_help] Node Colours Bipartite Graph Plot",
+      "message_count": 1,
+      "participants": [
+        "Alan Benson"
+      ],
+      "started": "2013-11-05T02:10:13Z",
+      "last_reply": "2013-11-05T02:10:13Z",
+      "root_message_id": "msg-1cc3d85a6c54"
+    },
+    {
+      "id": "thread-c55ded3e15b1",
+      "subject": "[statnet_help] modeling asymmetric ties in statnet",
+      "message_count": 1,
+      "participants": [
+        "Weihua An"
+      ],
+      "started": "2013-11-05T18:03:52Z",
+      "last_reply": "2013-11-05T18:03:52Z",
+      "root_message_id": "msg-c55ded3e15b1"
+    },
+    {
+      "id": "thread-2ba85c7302bc",
+      "subject": "[statnet_help] dependent relational attributes",
+      "message_count": 1,
+      "participants": [
+        "Gu, Pengyi"
+      ],
+      "started": "2013-11-21T22:11:04Z",
+      "last_reply": "2013-11-21T22:11:04Z",
+      "root_message_id": "msg-2ba85c7302bc"
+    }
+  ]
+}

@@ -1,0 +1,381 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2015-07",
+  "messages": [
+    {
+      "id": "msg-180721048667",
+      "message_id": "<CAGX5OHwACAFsFxan0yu=iLLWADYJmok-d=2TZ7wuB_GeyC8YMg@mail.gmail.com>",
+      "from_name": "Francesco Bailo",
+      "from_email_hash": "774182e8500f9065ca68b55912c7f4ab68b7d5b2618ff4fb53ae4d5d803899a1",
+      "date": "2015-07-01T05:00:09Z",
+      "subject": "[statnet_help] Geographic distance in ergm",
+      "subject_clean": "[statnet_help] Geographic distance in ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI have a social network \"net\". Each edge has an attribute \"distance\"\nindicating the geographic distance (in meters) separating the two actors:\n\n  network::list.edge.attributes(net)\n  [1] \"distance\"\n\nThe summary of the vector \"distance\" is\n\n  Min.  1st Qu.   Median     Mean  3rd Qu.  Max.\n  0    21820   155100   338200   483300 17010000\n\nHow should I specify the model to measure the significance of 'distance' in\nthe formation of edges?\n\nIs this correct?\n\n  ergm(net ~ edges + edgecov(net, attr='distance'))\n\n(It seems to me this formula provides counterintuitive results, with the\ncoefficient for distance being positive)\n\nThanks\n\nFrancesco\n\ne: francesco.bailo@sydney.edu.au <francesco.bailo@uni.sydney.edu.au>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150701/6e63aed9/attachment.html>",
+      "body_snippet": "Hi,\n\nI have a social network \"net\". Each edge has an attribute \"distance\"\nindicating the geographic distance (in meters) separating the two actors:\n\n  network::list.edge.attributes(net)\n  [1] \"distanc",
+      "thread_id": "thread-180721048667",
+      "thread_depth": 0,
+      "month": "2015-07"
+    },
+    {
+      "id": "msg-2af35aafa3a3",
+      "message_id": "<5593FA19.2020103@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2015-07-01T07:32:57Z",
+      "subject": "[statnet_help] Geographic distance in ergm",
+      "subject_clean": "[statnet_help] Geographic distance in ergm",
+      "in_reply_to": "<CAGX5OHwACAFsFxan0yu=iLLWADYJmok-d=2TZ7wuB_GeyC8YMg@mail.gmail.com>",
+      "references": [
+        "<CAGX5OHwACAFsFxan0yu=iLLWADYJmok-d=2TZ7wuB_GeyC8YMg@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Francesco.  This is because you are only considering the distance \nbetween nodes that have ties - non-adjacent dyads are being treated as \nco-located (i.e., distance 0).  That will indeed produce a positive \n\"effect\" of distance under propinquity.  Instead, what you want to do is \nproduce an n x n distance matrix and pass that to edgecov; in typical \nuse cases I would suggest using the log distance, as this approximates a \npower law SIF (see e.g. Butts and Acton (2011) for a description of SIFs \nand the difference they make for network structure).\n\nHope that helps!\n\n-Carter\n\nOn 07/01/2015 05:00 AM, Francesco Bailo wrote:\n> Hi,\n>\n> I have a social network \"net\". Each edge has an attribute \"distance\" \n> indicating the geographic distance (in meters) separating the two actors:\n>\n>   network::list.edge.attributes(net)\n>   [1] \"distance\"\n>\n> The summary of the vector \"distance\" is\n>\n>   Min.  1st Qu.   Median     Mean  3rd Qu.  Max.\n>   0    21820   155100   338200   483300 17010000\n>\n> How should I specify the model to measure the significance of \n> 'distance' in the formation of edges?\n>\n> Is this correct?\n>\n>   ergm(net ~ edges + edgecov(net, attr='distance'))\n>\n> (It seems to me this formula provides counterintuitive results, with \n> the coefficient for distance being positive)\n>\n> Thanks\n>\n> Francesco\n>\n> e: francesco.bailo@sydney.edu.au \n> <mailto:francesco.bailo@uni.sydney.edu.au>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150701/f37985c4/attachment.html>",
+      "body_snippet": "Hi, Francesco.  This is because you are only considering the distance \nbetween nodes that have ties - non-adjacent dyads are being treated as \nco-located (i.e., distance 0).  That will indeed produce ",
+      "thread_id": "thread-180721048667",
+      "thread_depth": 1,
+      "month": "2015-07"
+    },
+    {
+      "id": "msg-545fe57a0029",
+      "message_id": "<55955D0E.2030902@gmail.com>",
+      "from_name": "Andreas Handel",
+      "from_email_hash": "dbf0eb5caf50baea246ad2198a245272f7b791bf9a8ef1255147f36ca5623813",
+      "date": "2015-07-02T08:47:26Z",
+      "subject": "[statnet_help] how to combine several networks",
+      "subject_clean": "[statnet_help] how to combine several networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Got another question:\n\nI'm currently creating several independent, egocentric-type networks. I \nknow that some individuals show up in more than one of these \n\"independent\" networks and I would like to now link the networks \ntogether. I already have code that does the merging of individuals (i.e. \nif person X and Y turn out to be the same, I combine them and their \nconnections into 1 person).\n\nWhat I can't figure out is how to take 2 networks and combine them into \none large one. I. e. something like Nlarge = N1 + N2, where Nlarge \nconsists of 2 (initially disconnected) networks with N1+N2 edges and \nN1+N2 vertices. It seems like it should be simple, but I just can't find \na command in the various statnet packages that seems to do the job.\n\nN1 and N2 have exactly the same structure, all edges and vertices have \nthe same attributes, etc. I think I could do it by turning one network \ninto an edgelist and adding to the other, but then I would loose all my \nmany edge and vertex attributes.\n\nThanks!\nAndreas\n\n\nP.S.: Thanks for the answers to my last post.\n\n-- \nAndreas Handel\nAssistant Professor\nDepartment of Epidemiology and Biostatistics\nCollege of Public Health, University of Georgia\nAthens, Georgia 30602, USA\nhttp://handelgroup.uga.edu/",
+      "body_snippet": "Got another question:\n\nI'm currently creating several independent, egocentric-type networks. I \nknow that some individuals show up in more than one of these \n\"independent\" networks and I would like to",
+      "thread_id": "thread-545fe57a0029",
+      "thread_depth": 0,
+      "month": "2015-07"
+    },
+    {
+      "id": "msg-09f98bd6038b",
+      "message_id": "<559561C8.907@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2015-07-02T09:07:36Z",
+      "subject": "[statnet_help] how to combine several networks",
+      "subject_clean": "[statnet_help] how to combine several networks",
+      "in_reply_to": "<55955D0E.2030902@gmail.com>",
+      "references": [
+        "<55955D0E.2030902@gmail.com>"
+      ],
+      "body_plain": "Hi, Andreas -\n\nIf the alters are labeled, and if individuals can appear more than once \nacross the ego nets, then these are not independent networks.  There is \nno single command to combine these into one aggregate network, but one \nreasonable strategy would be as follows:\n\n1. Use network.initialize to create an empty graph of the appropriate \nsize, with such vertex attributes as are appropriate. (These can also be \nadded later.)\n\n2. Use a for loop to walk through your list of individual networks, \nextracting and adding the edges from each one to their appropriate \nplaces in the master network using e.g. add.edges or the assignment \noperator.  (If you have edge attributes, these may be added at this time \nvia the additional arguments to add.edges.)\n\nNote that, depending on your design, some edge variables may have been \nunobserved; these should be set to NA, assuming that you intend to model \nthe resulting graph using e.g. ergm().  (You will also want to take care \nthat any subsequent analysis accounts for your measurement design, to \nthe extent possible.)\n\nHope that helps,\n\n-Carter\n\nOn 07/02/2015 08:47 AM, Andreas Handel wrote:\n> Got another question:\n>\n> I'm currently creating several independent, egocentric-type networks. \n> I know that some individuals show up in more than one of these \n> \"independent\" networks and I would like to now link the networks \n> together. I already have code that does the merging of individuals \n> (i.e. if person X and Y turn out to be the same, I combine them and \n> their connections into 1 person).\n>\n> What I can't figure out is how to take 2 networks and combine them \n> into one large one. I. e. something like Nlarge = N1 + N2, where \n> Nlarge consists of 2 (initially disconnected) networks with N1+N2 \n> edges and N1+N2 vertices. It seems like it should be simple, but I \n> just can't find a command in the various statnet packages that seems \n> to do the job.\n>\n> N1 and N2 have exactly the same structure, all edges and vertices have \n> the same attributes, etc. I think I could do it by turning one network \n> into an edgelist and adding to the other, but then I would loose all \n> my many edge and vertex attributes.\n>\n> Thanks!\n> Andreas\n>\n>\n> P.S.: Thanks for the answers to my last post.\n>",
+      "body_snippet": "Hi, Andreas -\n\nIf the alters are labeled, and if individuals can appear more than once \nacross the ego nets, then these are not independent networks.  There is \nno single command to combine these into",
+      "thread_id": "thread-545fe57a0029",
+      "thread_depth": 1,
+      "month": "2015-07"
+    },
+    {
+      "id": "msg-e1bdb25b9010",
+      "message_id": "<E913ABB937F1DE4BA868F430F7197E10012E99@EXMBXPR07CCD.UCHAD.uchospitals.edu>",
+      "from_name": "Khanna, Aditya [MED]",
+      "from_email_hash": "bcbc2ecefb65f657cdc48dbcb34944add56ec462b1b27bb58447f547a9f880c3",
+      "date": "2015-07-02T09:08:31Z",
+      "subject": "[statnet_help] how to combine several networks",
+      "subject_clean": "[statnet_help] how to combine several networks",
+      "in_reply_to": "<55955D0E.2030902@gmail.com>",
+      "references": [
+        "<55955D0E.2030902@gmail.com>"
+      ],
+      "body_plain": "Hello Andreas,\n\nI am a fellow statnet user, not a developer, but I have an idea that might be worth trying.\n\nI'd start by combining the node lists 'nodes.N1' and 'nodes.N2':\nnodes.N <- c(nodes.N1, nodes.N2)\n\nN <- network.initialize(nodes.N)\n\nThen combine the edgeliststs by 'edges.N1 <-network.edgelist(N1)', and 'edges.N2 <- network.edgelist(N2)'.\nedges.N <- rbind(edges.N1, edges.N2)\n\nAdd these edges to the large network N\nadd.edges(N, edges.N)\n\nI think the above code should merge the two small network datasets into one large one. I'd be curious to hear if the above works.\n\nAditya Khanna\nUniversity of Chicago\n\n\n-----Original Message-----\nFrom: statnet_help [mailto:statnet_help-bounces@mailman13.u.washington.edu] On Behalf Of Andreas Handel\nSent: Thursday, July 02, 2015 10:47 AM\nTo: statnet_help@u.washington.edu\nSubject: [statnet_help] how to combine several networks\n\nGot another question:\n\nI'm currently creating several independent, egocentric-type networks. I know that some individuals show up in more than one of these \"independent\" networks and I would like to now link the networks together. I already have code that does the merging of individuals (i.e.\nif person X and Y turn out to be the same, I combine them and their connections into 1 person).\n\nWhat I can't figure out is how to take 2 networks and combine them into one large one. I. e. something like Nlarge = N1 + N2, where Nlarge consists of 2 (initially disconnected) networks with N1+N2 edges and\nN1+N2 vertices. It seems like it should be simple, but I just can't find\na command in the various statnet packages that seems to do the job.\n\nN1 and N2 have exactly the same structure, all edges and vertices have the same attributes, etc. I think I could do it by turning one network into an edgelist and adding to the other, but then I would loose all my many edge and vertex attributes.\n\nThanks!\nAndreas\n\n\nP.S.: Thanks for the answers to my last post.\n\n--\nAndreas Handel\nAssistant Professor\nDepartment of Epidemiology and Biostatistics College of Public Health, University of Georgia Athens, Georgia 30602, USA http://handelgroup.uga.edu/\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n________________________________\nThis email is intended only for the use of the individual or entity to which it is addressed and may contain information that is privileged and confidential. If the reader of this email message is not the intended recipient, you are hereby notified that any dissemination, distribution, or copying of this communication is prohibited. If you have received this email in error, please notify the sender and destroy/delete all copies of the transmittal.\n\nThank you.\n\n********************************************************************************\nThis e-mail is intended only for the use of the individual or entity to which\nit is addressed and may contain information that is privileged and confidential.\nIf the reader of this e-mail message is not the intended recipient, you are \nhereby notified that any dissemination, distribution or copying of this\ncommunication is prohibited. If you have received this e-mail in error, please \nnotify the sender and destroy all copies of the transmittal. \n\nThank you\nUniversity of Chicago Medicine and Biological Sciences \n********************************************************************************",
+      "body_snippet": "Hello Andreas,\n\nI am a fellow statnet user, not a developer, but I have an idea that might be worth trying.\n\nI'd start by combining the node lists 'nodes.N1' and 'nodes.N2':\nnodes.N <- c(nodes.N1, nod",
+      "thread_id": "thread-545fe57a0029",
+      "thread_depth": 1,
+      "month": "2015-07"
+    },
+    {
+      "id": "msg-0aae8544165f",
+      "message_id": "<E913ABB937F1DE4BA868F430F7197E1001441F@EXMBXPR07CCD.UCHAD.uchospitals.edu>",
+      "from_name": "Khanna, Aditya [MED]",
+      "from_email_hash": "bcbc2ecefb65f657cdc48dbcb34944add56ec462b1b27bb58447f547a9f880c3",
+      "date": "2015-07-06T07:53:42Z",
+      "subject": "[statnet_help] Memory-related question",
+      "subject_clean": "[statnet_help] Memory-related question",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All,\n\nI have a question about initializing a network from the list of nodes, vs initializing from the list of edges. If I use the former  approach (and then use 'add.edges'), I get memory errors (I am working on a cluster with 4 nodes at UChicago and 20 K MB of RAM per node.) Starting with the edgelist, I get no such errors. This is a large Facebook network with 182998 nodes and 327741 edges.\n\nBoth versions of my code, one that initializes the network from the nodelist, and the second that initializes from an edgelist are available at: https://gist.github.com/khanna7/8cc8fea08e8b81066c67\n\nIs it possible that initializing from nodes somehow requires more memory? I often prefer this approach because I find that sometimes initializing from the edgelist leads to isolates being excluded from the network.\n\nThanks,\nAditya\n\n********************************************************************************\nThis e-mail is intended only for the use of the individual or entity to which\nit is addressed and may contain information that is privileged and confidential.\nIf the reader of this e-mail message is not the intended recipient, you are \nhereby notified that any dissemination, distribution or copying of this\ncommunication is prohibited. If you have received this e-mail in error, please \nnotify the sender and destroy all copies of the transmittal. \n\nThank you\nUniversity of Chicago Medicine and Biological Sciences \n********************************************************************************\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150706/3aa1bda9/attachment.html>",
+      "body_snippet": "Dear All,\n\nI have a question about initializing a network from the list of nodes, vs initializing from the list of edges. If I use the former  approach (and then use 'add.edges'), I get memory errors ",
+      "thread_id": "thread-0aae8544165f",
+      "thread_depth": 0,
+      "month": "2015-07"
+    },
+    {
+      "id": "msg-7af5cea420e4",
+      "message_id": "<559AD114.6010207@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2015-07-06T12:03:48Z",
+      "subject": "[statnet_help] Memory-related question",
+      "subject_clean": "[statnet_help] Memory-related question",
+      "in_reply_to": "<E913ABB937F1DE4BA868F430F7197E1001441F@EXMBXPR07CCD.UCHAD.uchospitals.edu>",
+      "references": [
+        "<E913ABB937F1DE4BA868F430F7197E1001441F@EXMBXPR07CCD.UCHAD.uchospitals.edu>"
+      ],
+      "body_plain": "Hi, Aditya -\n\nYour second method of network creation can indeed omit isolates \n(specifically, it uses the maximum observed vertex ID as the number of \nvertices unless an \"n\" attribute is present), so the first method might \nresult in a larger object.  Also, you did not in the second case \nindicate that the graph should be undirected (so the two objects will \nnot be equivalent).  However, neither approach should produce memory \nerrors if the data is well-formed. My guess is that there is something \nglitchy in the edgelist; add.edges will try to catch things that would \nproduce issues, but some things can get past the default checks.  Can \nyou verify that the values of fb.edge.list are integers denoting vertex \nIDs, that these IDs are all within the range \n1,...,length(full.node.list)? Since this is a simple graph, you will \nwant to also verify that each unordered pair appears only once and that \nthere are no loops.  You can also check the resulting object by coercing \nit back to an edgelist and verifying that it matches your data.  (The \nsummary command should likewise show the correct number of vertices and \nedges.)\n\nThe other possibility is that your network objects are fine, and that \nyour errors have to do with what you are doing downstream. But I would \nverify the objects first.\n\nHope that helps,\n\n-Carter\n\nOn 07/06/2015 07:53 AM, Khanna, Aditya [MED] wrote:\n>\n> Dear All,\n>\n> I have a question about initializing a network from the list of nodes, \n> vs initializing from the list of edges. If I use the former  approach \n> (and then use ?add.edges?), I get memory errors (I am working on a \n> cluster with 4 nodes at UChicago and 20 K MB of RAM per node.) \n> Starting with the edgelist, I get no such errors. This is a large \n> Facebook network with 182998 nodes and 327741 edges.\n>\n> Both versions of my code, one that initializes the network from the \n> nodelist, and the second that initializes from an edgelist are \n> available at: https://gist.github.com/khanna7/8cc8fea08e8b81066c67\n>\n> Is it possible that initializing from nodes somehow requires more \n> memory? I often prefer this approach because I find that sometimes \n> initializing from the edgelist leads to isolates being excluded from \n> the network.\n>\n> Thanks,\n> Aditya\n>\n> ********************************************************************************\n> This e-mail is intended only for the use of the individual or entity \n> to which\n> it is addressed and may contain information that is privileged and \n> confidential.\n> If the reader of this e-mail message is not the intended recipient, \n> you are\n> hereby notified that any dissemination, distribution or copying of this\n> communication is prohibited. If you have received this e-mail in \n> error, please\n> notify the sender and destroy all copies of the transmittal.\n>\n> Thank you\n> University of Chicago Medicine and Biological Sciences\n> ********************************************************************************\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150706/749dd715/attachment.html>",
+      "body_snippet": "Hi, Aditya -\n\nYour second method of network creation can indeed omit isolates \n(specifically, it uses the maximum observed vertex ID as the number of \nvertices unless an \"n\" attribute is present), so ",
+      "thread_id": "thread-0aae8544165f",
+      "thread_depth": 1,
+      "month": "2015-07"
+    },
+    {
+      "id": "msg-8be8e60873ac",
+      "message_id": "<CABrS_XEZ1z0mt3mCj-NT4Of60bGeHP1b64XotbKLTXjPqrc-qg@mail.gmail.com>",
+      "from_name": "Tina W Wey",
+      "from_email_hash": "b56a6739f44b7af037e94653e8fa06e757a777d8442a82313482652d55adc4f1",
+      "date": "2015-07-13T21:34:11Z",
+      "subject": "[statnet_help] Questions on 'cug.test' with FUN=centralization",
+      "subject_clean": "[statnet_help] Questions on 'cug.test' with FUN=centralization",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello all,\n\nThank you in advance for your help with a first-time poster's questions!\n\nI recently ran some 'cug.test's with 'FUN=centralization', and I had\nquestions about the output p-values not adding up to 1 and the\n'ignore.eval' argument possibly being reversed (in the sense of what it\ndoes when given 'TRUE' vs 'FALSE').\n\nPasted below are two runs on a dataset and the results from each, and the\nnetwork (n2014) is attached. Please let me know if the attachment doesn't\nwork.\n\nFirst, you can see clearly that  Pr(X>=Obs) +  Pr(X<=Obs) is much larger\nthan 1 (0.30985 + 0.8965 = 1.20635). This seems like a bigger difference\nthan should happen due to rounding or very small numbers. The numbers were\neven larger for some other datasets I tested.\n\nSecond, I did several analyses with both 'ignore.eval=FALSE' and\n'ignore.eval=TRUE', and after much checking and head-scratching, I have to\nask if these are logicals are actually reversed? If I understand correctly,\n'ignore.eval=TRUE', the default, should run the analysis on a binary\nversion of the network. Yet setting 'ignore.eval=FALSE' (supposed to turn\non edge weights) gives the same output as running the analysis on the\nactual binary version of the network.\n\nAny insight you all have would be much appreciated. Thank you!\n\nCheers,\nTina\n\n\nc2014.out <- cug.test (dat = n2014   # input graph(s)\n                       , FUN = centralization\n                       , mode = c(\"digraph\")\n                       , cmode = c(\"edges\")\n                       , reps = 20000\n                       , ignore.eval = FALSE  ## IS THIS REVERSEd?\n                                          , FUN.args = list(degree,\ncmode=\"outdegree\")\n)\nc2014.out\n# Conditioning Method: edges\n# Graph Type: digraph\n# Diagonal Used: FALSE\n# Replications: 20000\n#\n# Observed Value: 0.1574074\n# Pr(X>=Obs): 0.30985\n# Pr(X<=Obs): 0.8965\n\nc2014.out2 <- cug.test (dat = n2014   # input graph(s)\n                        , FUN = centralization\n                        , mode = c(\"digraph\")\n                        , cmode = c(\"edges\")\n                        , reps = 20000   # number of Monte Carlo reps to use\n                        , ignore.eval = TRUE    ## IS THIS REVERSEd?\n                        , FUN.args = list(degree, cmode=\"outdegree\")\n)\nc2014.out2\n# Conditioning Method: edges\n# Graph Type: digraph\n# Diagonal Used: FALSE\n# Replications: 20000\n#\n# Observed Value: 0.3564815\n# Pr(X>=Obs): 5e-05\n# Pr(X<=Obs): 1\n\n\n\n-- \n\nTina W. Wey\nPostdoctoral researcher\nNew Mexico State University\nhttp://sites.google.com/site/tinawey\n@tina_wey\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150713/4c583791/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: n2014matrix.csv\nType: text/csv\nSize: 3344 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150713/4c583791/attachment.csv>",
+      "body_snippet": "Hello all,\n\nThank you in advance for your help with a first-time poster's questions!\n\nI recently ran some 'cug.test's with 'FUN=centralization', and I had\nquestions about the output p-values not addin",
+      "thread_id": "thread-8be8e60873ac",
+      "thread_depth": 0,
+      "month": "2015-07"
+    },
+    {
+      "id": "msg-94179ea681eb",
+      "message_id": "<55A49ACF.2040109@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2015-07-13T22:14:55Z",
+      "subject": "[statnet_help] Questions on 'cug.test' with FUN=centralization",
+      "subject_clean": "[statnet_help] Questions on 'cug.test' with FUN=centralization",
+      "in_reply_to": "<CABrS_XEZ1z0mt3mCj-NT4Of60bGeHP1b64XotbKLTXjPqrc-qg@mail.gmail.com>",
+      "references": [
+        "<CABrS_XEZ1z0mt3mCj-NT4Of60bGeHP1b64XotbKLTXjPqrc-qg@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Tina -\n\nThe sum of Pr(X>=Obs) and Pr(X<=Obs) can certainly be greater than 1; \nindeed, Pr(X==Obs)=Pr(X>=Obs)+Pr(X<=Obs)-1. Depending on your network, \nthe properties of the measure you are using, etc., you may find the \nprobability of observing your exact GLI value under your chosen null \nmodel to be quite large.  (It can be important to take this into account \nwhen comparing results across graphs; see Butts (2011, \"Bayesian \nMeta-Analysis of Social Network Data via Conditional Uniform Graph \nQuantiles\" for one approach to dealing with the issue.)  If you want to \nexamine the discreteness of the distribution, examining the replicate \nstatistics (stored in the $rep.stat element of the list returned by \ncug.test) can prove useful.\n\nAs far as ignore.eval, note that you need to pass this to the degree and \ncentralization routines as well.  Adding it to FUN.args is necessary to \navoid getting the default behavior from centralization() (and the \ncentrality function it calls).  Note that whatever function you call in \nFUN may or may not respect edge values, so this is something you will \nwant to check.  At any rate, I just ran a test and the argument seems to \nbe working fine - just remember that ignore.eval has to be manually \npassed to the downstream function with FUN.args.\n\nHope that helps,\n\n-Carter\n\nOn 07/13/2015 09:34 PM, Tina W Wey wrote:\n> Hello all,\n>\n> Thank you in advance for your help with a first-time poster's questions!\n>\n> I recently ran some 'cug.test's with 'FUN=centralization', and I had \n> questions about the output p-values not adding up to 1 and the \n> 'ignore.eval' argument possibly being reversed (in the sense of what \n> it does when given 'TRUE' vs 'FALSE').\n>\n> Pasted below are two runs on a dataset and the results from each, and \n> the network (n2014) is attached. Please let me know if the attachment \n> doesn't work.\n>\n> First, you can see clearly that  Pr(X>=Obs) +  Pr(X<=Obs) is much \n> larger than 1 (0.30985 + 0.8965 = 1.20635). This seems like a bigger \n> difference than should happen due to rounding or very small numbers. \n> The numbers were even larger for some other datasets I tested.\n>\n> Second, I did several analyses with both 'ignore.eval=FALSE' and \n> 'ignore.eval=TRUE', and after much checking and head-scratching, I \n> have to ask if these are logicals are actually reversed? If I \n> understand correctly, 'ignore.eval=TRUE', the default, should run the \n> analysis on a binary version of the network. Yet setting \n> 'ignore.eval=FALSE' (supposed to turn on edge weights) gives the same \n> output as running the analysis on the actual binary version of the \n> network.\n>\n> Any insight you all have would be much appreciated. Thank you!\n>\n> Cheers,\n> Tina\n>\n>\n> c2014.out <- cug.test (dat = n2014   # input graph(s)\n>                        , FUN = centralization\n>                        , mode = c(\"digraph\")\n>                        , cmode = c(\"edges\")\n>                        , reps = 20000\n>                        , ignore.eval = FALSE  ## IS THIS REVERSEd?\n>            , FUN.args = list(degree, cmode=\"outdegree\")\n> )\n> c2014.out\n> # Conditioning Method: edges\n> # Graph Type: digraph\n> # Diagonal Used: FALSE\n> # Replications: 20000\n> #\n> # Observed Value: 0.1574074\n> # Pr(X>=Obs): 0.30985\n> # Pr(X<=Obs): 0.8965\n>\n> c2014.out2 <- cug.test (dat = n2014   # input graph(s)\n>                         , FUN = centralization\n>                         , mode = c(\"digraph\")\n>                         , cmode = c(\"edges\")\n>                         , reps = 20000   # number of Monte Carlo reps \n> to use\n>                         , ignore.eval = TRUE  ## IS THIS REVERSEd?\n>                         , FUN.args = list(degree, cmode=\"outdegree\")\n> )\n> c2014.out2\n> # Conditioning Method: edges\n> # Graph Type: digraph\n> # Diagonal Used: FALSE\n> # Replications: 20000\n> #\n> # Observed Value: 0.3564815\n> # Pr(X>=Obs): 5e-05\n> # Pr(X<=Obs): 1\n>\n>\n>\n> -- \n>\n> Tina W. Wey\n> Postdoctoral researcher\n> New Mexico State University\n> http://sites.google.com/site/tinawey\n> @tina_wey\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150713/fa71704a/attachment.html>",
+      "body_snippet": "Hi, Tina -\n\nThe sum of Pr(X>=Obs) and Pr(X<=Obs) can certainly be greater than 1; \nindeed, Pr(X==Obs)=Pr(X>=Obs)+Pr(X<=Obs)-1. Depending on your network, \nthe properties of the measure you are using, ",
+      "thread_id": "thread-8be8e60873ac",
+      "thread_depth": 1,
+      "month": "2015-07"
+    },
+    {
+      "id": "msg-32d78a486b66",
+      "message_id": "<CABN4g=14WLBY6tinJW1371N2+4ytyBgBZfU--9CkL5PNK+O0XQ@mail.gmail.com>",
+      "from_name": "Atropos Xanthus",
+      "from_email_hash": "890d8024b13ff0c84c813e5d6fa6a71786a24fd8d884ff48f3e0bd8f36d02b79",
+      "date": "2015-07-21T12:15:32Z",
+      "subject": "[statnet_help] ERGMs for patterns in internet link records",
+      "subject_clean": "[statnet_help] ERGMs for patterns in internet link records",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I?m curious if anyone has used ERGMs for a clickstream-type internet\nanalysis of users or otherwise has any thoughts on such an approach.  I'm\nsearching for patterns in a set of internet links, where each link details\ntransitions from one page to another and each page has a set of\ncharacteristics.  My data are a directed edgelist form.  Here?s a greatly\nsimplified example (a person finds a camp site and then decides to go with\na hotel instead and checks the hotel ratings):\n\n\n\nFrom, To, FromType, ToType\n\nHome, Campsites, StartPage, LocationOutdoors\n\nCampsites, TentSites, LocationOutdoors, LocationTent\n\nTentSites, Home, LocationTent, StartPage\n\nHome, Hotels, StartPage, LocationLodging\n\nHotels, Ratings, LocationLodging, Ratings\n\n?\n\n\n\nThe full dataset has hundreds to thousands of rows per user, and there are\nseveral different users with users classified by experience level.\n\n\n\nI?d like to be able to say that users having certain characteristics tend\nto follow certain types of link-click paths as they use the web site.  It\nwould also be nice to have an estimate on the next most likely links.  In\nother words, both to characterize (and compare) general user patterns and\nto try predicting the next moves.\n\n\nI'm not looking for someone to do the work for me, but rather seeking\nadvice and (if it exists) examples of using ERGMs for such a thing.  I've\nseen the Keegan paper on Wikipedia coauthorship.  That's not what I need,\nbut kind of gets at the same thing.\n\n\n\nI?ll be away from internet access soon, so I might not get to followup\nquestions for a week or so.\n\n\n\nRegards, Zachary\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150721/d910dd80/attachment.html>",
+      "body_snippet": "I?m curious if anyone has used ERGMs for a clickstream-type internet\nanalysis of users or otherwise has any thoughts on such an approach.  I'm\nsearching for patterns in a set of internet links, where ",
+      "thread_id": "thread-32d78a486b66",
+      "thread_depth": 0,
+      "month": "2015-07"
+    },
+    {
+      "id": "msg-6ee1009abf81",
+      "message_id": "<55B25373.40001@ethz.ch>",
+      "from_name": "Simon Schweighofer",
+      "from_email_hash": "d3b99bf16e100da40cbcd6e2d91ef5bcdaffc9be64e1f0d5eb64d74700b67516",
+      "date": "2015-07-24T08:02:11Z",
+      "subject": "[statnet_help] ERGM Interaction of Categorical & Quantitative Variable",
+      "subject_clean": "[statnet_help] ERGM Interaction of Categorical & Quantitative Variable",
+      "in_reply_to": "<55B25122.2090305@ethz.ch>",
+      "references": [
+        "<55B25122.2090305@ethz.ch>"
+      ],
+      "body_plain": "Dear statnet developers,\n\nI have a problem regarding a statistical interaction effect which I\nwould like to model using an ERGM. My network contains the interactions\nof politicians on an online discussion website. I have both the\npoliticians' party affiliation, and their position in an \"ideological\nspace\", i.e. a 2D-space spanned by left-right and liberal-conservative\npolitical attitude. From the latter, I can compute a n x n matrix of\nideological distance between politicians. I suspected that there is a\nhomophily effect both for party affiliation and political distance, and\nmodelled this thusly:\n\nNetwork ~ edges + nodematch(\"party\") + edgecov(IdeologicalDistanceMatrix)\n\nHowever, I also suspect that the effect of ideological distance is\ndifferent for dyads where both politicians belong to the same party than\nfor politicians of different parties (I think that ideological distance\nmatters more with regard to party outsiders than fellow members). I\nthought that I could model this with an interaction term between\nnodematch(\"party\") and  edgecov(IdeologicalDistanceMatrix). However,\nthis doesn't seem to be possible with statnet ergm. Is there a workaround?\n\nThank you very much in advance!\n\nSimon Schweighofer\n\nPhD Student in Systems Design at ETH Zurich",
+      "body_snippet": "Dear statnet developers,\n\nI have a problem regarding a statistical interaction effect which I\nwould like to model using an ERGM. My network contains the interactions\nof politicians on an online discus",
+      "thread_id": "thread-6ee1009abf81",
+      "thread_depth": 0,
+      "month": "2015-07"
+    },
+    {
+      "id": "msg-95d7d740f835",
+      "message_id": "<55B258BE.3020305@uni-konstanz.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "0e8856775b020043f064c122aa5e96f11a67360200ec15df7ed5c1cadf4a2652",
+      "date": "2015-07-24T08:24:46Z",
+      "subject": "[statnet_help] ERGM Interaction of Categorical & Quantitative Variable",
+      "subject_clean": "[statnet_help] ERGM Interaction of Categorical & Quantitative Variable",
+      "in_reply_to": "<55B25373.40001@ethz.ch>",
+      "references": [
+        "<55B25122.2090305@ethz.ch>",
+        "<55B25373.40001@ethz.ch>"
+      ],
+      "body_plain": "Hi Simon,\n\nCreate a matrix containing the party nodematch term (manually, e.g., by \nhaving 1 entries where the row and column nodes have the same party and \n0 otherwise), multiply it with the ideological distance matrix, and \ninclude that interaction matrix in an edgecov term.\n\nPhilip\n\nAm 24.07.2015 um 17:02 schrieb Simon Schweighofer:\n>\n> Dear statnet developers,\n>\n> I have a problem regarding a statistical interaction effect which I\n> would like to model using an ERGM. My network contains the interactions\n> of politicians on an online discussion website. I have both the\n> politicians' party affiliation, and their position in an \"ideological\n> space\", i.e. a 2D-space spanned by left-right and liberal-conservative\n> political attitude. From the latter, I can compute a n x n matrix of\n> ideological distance between politicians. I suspected that there is a\n> homophily effect both for party affiliation and political distance, and\n> modelled this thusly:\n>\n> Network ~ edges + nodematch(\"party\") + edgecov(IdeologicalDistanceMatrix)\n>\n> However, I also suspect that the effect of ideological distance is\n> different for dyads where both politicians belong to the same party than\n> for politicians of different parties (I think that ideological distance\n> matters more with regard to party outsiders than fellow members). I\n> thought that I could model this with an interaction term between\n> nodematch(\"party\") and  edgecov(IdeologicalDistanceMatrix). However,\n> this doesn't seem to be possible with statnet ergm. Is there a workaround?\n>\n> Thank you very much in advance!\n>\n> Simon Schweighofer\n>\n> PhD Student in Systems Design at ETH Zurich\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Simon,\n\nCreate a matrix containing the party nodematch term (manually, e.g., by \nhaving 1 entries where the row and column nodes have the same party and \n0 otherwise), multiply it with the ideologi",
+      "thread_id": "thread-6ee1009abf81",
+      "thread_depth": 1,
+      "month": "2015-07"
+    },
+    {
+      "id": "msg-3022b70c021f",
+      "message_id": "<CAN=W0uodxr0pXXJ0Bu9gLQyHzqDBkBkeB0hBcq44bm6aVpWdpA@mail.gmail.com>",
+      "from_name": "Jake Fisher",
+      "from_email_hash": "d2a7f9670f98a15e722e12833a57754e23ef7f98ffb4a541e2f19656a53fcf7a",
+      "date": "2015-07-25T12:57:55Z",
+      "subject": "[statnet_help] Read.paj fails when reading a fail with no arcs or edges",
+      "subject_clean": "[statnet_help] Read.paj fails when reading a fail with no arcs or edges",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI'm trying to use read.paj to read a small Pajek file with 2 vertices and\nno arcs or edges.  Instead of returning a network with 2 vertices and no\nedges, however, read.paj just returns NULL.  Here's code to reproduce this\n(also on StackOverflow here:\nhttp://stackoverflow.com/questions/31620259/why-does-read-paj-fail-on-a-network-with-no-arcs-or-edges\n):\n\nPajek file:\n\n*Vertices          2\n        1    1231062\n        2    1231095*Arcs*Edges\n\nR code:\n\nrequire(statnet)\nread.paj(\"SC1C1W2Sch122.net\", debug = TRUE)# [1] \"nextline called...\nnew loop started\"# [1] \"nextline called... new loop started\"# [1] \"arc\nor edge lines present\"# [1] \"arc or edge lines present\"# [1] \"nextline\ncalled... new loop started\"# [1] \"nnetworks= 0\"# [1] \"network.names=\n\"# [1] \"vertex null? FALSE\"# [1] \"network.title= SC1C1W2Sch122\"# [1]\n\"vector null? TRUE\"# [1] \"colnames.vector= \"# [1] \"projects null?\nTRUE\"# [1] \"nprojects= 0\"# [1] \"names.projects= \"# NULL\nsessionInfo()  # Should be the most recent versions of everything\n# R version 3.2.0 (2015-04-16)\n# Platform: x86_64-w64-mingw32/x64 (64-bit)\n# Running under: Windows 7 x64 (build 7601) Service Pack 1\n#\n# locale:\n# [1] LC_COLLATE=English_United States.1252\n# [2] LC_CTYPE=English_United States.1252\n# [3] LC_MONETARY=English_United States.1252\n# [4] LC_NUMERIC=C\n# [5] LC_TIME=English_United States.1252\n#\n# attached base packages:\n# [1] stats     graphics  grDevices utils     datasets  methods\n# [7] base\n#\n# other attached packages:\n# [1] statnet_2015.6.2     ergm.count_3.1.1\n# [3] tergm_3.3.0          sna_2.3-2\n# [5] ergm_3.4.0           statnet.common_3.2.2\n# [7] networkDynamic_0.7.1 network_1.12.0\n#\n# loaded via a namespace (and not attached):\n#  [1] lattice_0.20-31   grid_3.2.0        nlme_3.1-120\n#  [4] coda_0.17-1       robustbase_0.92-3 Matrix_1.2-0\n#  [7] trust_0.1-6       tools_3.2.0       DEoptimR_1.0-2\n# [10] parallel_3.2.0    lpSolve_5.6.11\n\nDoes anyone know why this might be, or how to fix it?\n\nThanks in advance,\n\nJake Fisher\nPh.D. Candidate\nDepartment of Sociology\nDuke University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150725/e5510d7d/attachment.html>",
+      "body_snippet": "Hi all,\n\nI'm trying to use read.paj to read a small Pajek file with 2 vertices and\nno arcs or edges.  Instead of returning a network with 2 vertices and no\nedges, however, read.paj just returns NULL. ",
+      "thread_id": "thread-3022b70c021f",
+      "thread_depth": 0,
+      "month": "2015-07"
+    },
+    {
+      "id": "msg-6a2526bff433",
+      "message_id": "<55B5F593.6040609@ethz.ch>",
+      "from_name": "Simon Schweighofer",
+      "from_email_hash": "d3b99bf16e100da40cbcd6e2d91ef5bcdaffc9be64e1f0d5eb64d74700b67516",
+      "date": "2015-07-27T02:10:43Z",
+      "subject": "[statnet_help] ERGM Interaction of Categorical & Quantitative Variable",
+      "subject_clean": "[statnet_help] ERGM Interaction of Categorical & Quantitative Variable",
+      "in_reply_to": "<55B258BE.3020305@uni-konstanz.de>",
+      "references": [
+        "<55B25122.2090305@ethz.ch>",
+        "<55B25373.40001@ethz.ch>",
+        "<55B258BE.3020305@uni-konstanz.de>"
+      ],
+      "body_plain": "Thanks, that worked just fine! (and it confirmed my hypothesis :-))\n\nSimon\n\nOn 24.07.2015 17:24, Philip Leifeld wrote:\n> Hi Simon,\n>\n> Create a matrix containing the party nodematch term (manually, e.g., \n> by having 1 entries where the row and column nodes have the same party \n> and 0 otherwise), multiply it with the ideological distance matrix, \n> and include that interaction matrix in an edgecov term.\n>\n> Philip\n>\n> Am 24.07.2015 um 17:02 schrieb Simon Schweighofer:\n>>\n>> Dear statnet developers,\n>>\n>> I have a problem regarding a statistical interaction effect which I\n>> would like to model using an ERGM. My network contains the interactions\n>> of politicians on an online discussion website. I have both the\n>> politicians' party affiliation, and their position in an \"ideological\n>> space\", i.e. a 2D-space spanned by left-right and liberal-conservative\n>> political attitude. From the latter, I can compute a n x n matrix of\n>> ideological distance between politicians. I suspected that there is a\n>> homophily effect both for party affiliation and political distance, and\n>> modelled this thusly:\n>>\n>> Network ~ edges + nodematch(\"party\") + \n>> edgecov(IdeologicalDistanceMatrix)\n>>\n>> However, I also suspect that the effect of ideological distance is\n>> different for dyads where both politicians belong to the same party than\n>> for politicians of different parties (I think that ideological distance\n>> matters more with regard to party outsiders than fellow members). I\n>> thought that I could model this with an interaction term between\n>> nodematch(\"party\") and  edgecov(IdeologicalDistanceMatrix). However,\n>> this doesn't seem to be possible with statnet ergm. Is there a \n>> workaround?\n>>\n>> Thank you very much in advance!\n>>\n>> Simon Schweighofer\n>>\n>> PhD Student in Systems Design at ETH Zurich\n>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Thanks, that worked just fine! (and it confirmed my hypothesis :-))\n\nSimon\n\nOn 24.07.2015 17:24, Philip Leifeld wrote:\n> Hi Simon,\n>\n> Create a matrix containing the party nodematch term (manually, e.",
+      "thread_id": "thread-6ee1009abf81",
+      "thread_depth": 2,
+      "month": "2015-07"
+    },
+    {
+      "id": "msg-ef1099b0b2ef",
+      "message_id": "<55B70892.9060901@skyeome.net>",
+      "from_name": "Skye Bender-deMoll",
+      "from_email_hash": "016c31bf83672a8e8fce6b664eb68ddff364b5df6912775ec31eeceebce90340",
+      "date": "2015-07-27T21:44:02Z",
+      "subject": "[statnet_help] Read.paj fails when reading a fail with no arcs or edges",
+      "subject_clean": "[statnet_help] Read.paj fails when reading a fail with no arcs or edges",
+      "in_reply_to": "<CAN=W0uodxr0pXXJ0Bu9gLQyHzqDBkBkeB0hBcq44bm6aVpWdpA@mail.gmail.com>",
+      "references": [
+        "<CAN=W0uodxr0pXXJ0Bu9gLQyHzqDBkBkeB0hBcq44bm6aVpWdpA@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Jake,\n  This is a bug.  I'll dig into the parser a bit to try to sort it out.\n\nbest,\n  -skye\n\nOn 07/25/2015 12:57 PM, Jake Fisher wrote:\n> Hi all,\n>\n> I'm trying to use read.paj to read a small Pajek file with 2 vertices\n> and no arcs or edges.?  Instead of returning a network with 2 vertices\n> and no edges, however, read.paj just returns NULL.?  Here's code to\n> reproduce this (also on StackOverflow here:\n> http://stackoverflow.com/questions/31620259/why-does-read-paj-fail-on-a-network-with-no-arcs-or-edges):\n>\n> Pajek file:\n>\n> |*Vertices2\n>          1     1231062\n>          2     1231095\n> *Arcs\n> *Edges|\n>\n> R code:\n>\n> |require(statnet)\n> read.paj(\"SC1C1W2Sch122.net\",  debug=  TRUE)\n> # [1] \"nextline called... new loop started\"\n> # [1] \"nextline called... new loop started\"\n> # [1] \"arc or edge lines present\"\n> # [1] \"arc or edge lines present\"\n> # [1] \"nextline called... new loop started\"\n> # [1] \"nnetworks= 0\"\n> # [1] \"network.names= \"\n> # [1] \"vertex null? FALSE\"\n> # [1] \"network.title= SC1C1W2Sch122\"\n> # [1] \"vector null? TRUE\"\n> # [1] \"colnames.vector= \"\n> # [1] \"projects null? TRUE\"\n> # [1] \"nprojects= 0\"\n> # [1] \"names.projects= \"\n> # NULL\n> sessionInfo()  # Should be the most recent versions of everything\n> # R version 3.2.0 (2015-04-16)\n> # Platform: x86_64-w64-mingw32/x64 (64-bit)\n> # Running under: Windows 7 x64 (build 7601) Service Pack 1\n> #\n> # locale:\n> # [1] LC_COLLATE=English_United States.1252\n> # [2] LC_CTYPE=English_United States.1252\n> # [3] LC_MONETARY=English_United States.1252\n> # [4] LC_NUMERIC=C\n> # [5] LC_TIME=English_United States.1252\n> #\n> # attached base packages:\n> # [1] stats     graphics  grDevices utils     datasets  methods\n> # [7] base\n> #\n> # other attached packages:\n> # [1] statnet_2015.6.2     ergm.count_3.1.1\n> # [3] tergm_3.3.0          sna_2.3-2\n> # [5] ergm_3.4.0           statnet.common_3.2.2\n> # [7] networkDynamic_0.7.1 network_1.12.0\n> #\n> # loaded via a namespace (and not attached):\n> #  [1] lattice_0.20-31   grid_3.2.0        nlme_3.1-120\n> #  [4] coda_0.17-1       robustbase_0.92-3 Matrix_1.2-0\n> #  [7] trust_0.1-6       tools_3.2.0       DEoptimR_1.0-2\n> # [10] parallel_3.2.0    lpSolve_5.6.11\n>\n> |\n>\n> Does anyone know why this might be, or how to fix it?\n>\n> Thanks in advance,\n>\n> Jake Fisher\n> Ph.D. Candidate\n> Department of Sociology\n> Duke University\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi Jake,\n  This is a bug.  I'll dig into the parser a bit to try to sort it out.\n\nbest,\n  -skye\n\nOn 07/25/2015 12:57 PM, Jake Fisher wrote:\n> Hi all,\n>\n> I'm trying to use read.paj to read a small Paj",
+      "thread_id": "thread-3022b70c021f",
+      "thread_depth": 1,
+      "month": "2015-07"
+    },
+    {
+      "id": "msg-335408523caf",
+      "message_id": "<op.x2ldu3igryrw2o@migedi729969.unicatt.it>",
+      "from_name": "Giulia Berlusconi",
+      "from_email_hash": "fd36de8af70bd43b44fffaa2df32655e66063233a54c8ff7e673053eac225882",
+      "date": "2015-07-30T08:12:29Z",
+      "subject": "[statnet_help] latentnet: error with tofit=\"mle\"",
+      "subject_clean": "[statnet_help] latentnet: error with tofit=\"mle\"",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI am having troubles in fitting models with latetnent using MLE.\n\nMy network has 61 nodes (countries) and 187 edges (heroin trade between countries). The edge weights refer to the kilos of heroin traded between two countries, and they range from 6.99 to 244,020.28 (mean=4,400.69, sd=21,644.70).\n\nBefore modelling the weighted network, I am using latentnet to fit a binary logit model for whether heroin trade is 0 or >0.\n\nMy covariates include both nodal attribute effects (e.g. the number of consumers in the importing country) and relational attribute effects (e.g. the distance between countries' capitals expressed in kilometers).\n\nI run the model including geographic distance and excluding random or latent effects, and set tofit=\"mle\":\n\nmymodel <- ergmm (heroin ~ absdiff (\"tradePrice\") + nodeicov (\"consumers\") + nodeicov (\"seizureRate\") + nodeicov (\"police\") + edgecov (distw, attrname = \"kilometers\"), tofit = \"mle\", verbose = TRUE)\nsummary(mymodel)\n\nand I get this message:\n\nWarning messages:\n1: In sqrt(1/diag(V)) : NaNs produced\n2: In cov2cor(beta.cov) :\n  diag(.) had 0 or NA entries; non-finite result is doubtful\n3: In sqrt(diag(mle[[\"cov\"]])) : NaNs produced\n4: In sqrt(diag(mle[[\"cov\"]])) : NaNs produced\n\nCan anyone help me understand what is the problem and how should I fix it?\n\nThank you in advance!\n\nGiulia\n\n--\nGiulia Berlusconi, Ph.D.\nResearch Fellow at Universit? Cattolica del Sacro Cuore\nResearcher at Transcrime\n\nTranscrime - Joint Research Centre on Transnational Crime\nUniversit? Cattolica del Sacro Cuore | Universit? degli Studi di Trento\nLargo Gemelli 1, 20123 Milano (Italy)\nT: +39 02 7234 3715/3716 | Fax: +39 02 7234 3721\nSkype: giulia8610\nwww.transcrime.it | www.arielproject.eu\nhttp://docenti.unicatt.it/ita/giulia_berlusconi/\n\nIf you are not the intended recipient please contact the sender and delete this email, whose distribution is strictly prohibited.\nChiunque riceva per errore questa comunicazione ? pregato di contattare il mittente e distruggere il messaggio, la cui illecita diffusione verr? perseguita a norma di legge.\n\n\n________________________________\nRicerca, Formazione, Assistenza, Cooperazione e Sviluppo: 5 ragioni per metterci la firma.\nSottoscrivi il tuo 5 per mille a favore dell?Universit? Cattolica e ci aiuterai a sostenere borse di studio, ricerca scientifica, progetti medico-assistenziali e sociali dell?Ateneo e del Policlinico ?A. Gemelli?.\nInfo: www.unicatt.it/5permille<http://www.unicatt.it/5permille/>\n________________________________\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150730/c981832c/attachment.html>",
+      "body_snippet": "Dear all,\n\nI am having troubles in fitting models with latetnent using MLE.\n\nMy network has 61 nodes (countries) and 187 edges (heroin trade between countries). The edge weights refer to the kilos of ",
+      "thread_id": "thread-335408523caf",
+      "thread_depth": 0,
+      "month": "2015-07"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-180721048667",
+      "subject": "[statnet_help] Geographic distance in ergm",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Francesco Bailo"
+      ],
+      "started": "2015-07-01T05:00:09Z",
+      "last_reply": "2015-07-01T07:32:57Z",
+      "root_message_id": "msg-180721048667"
+    },
+    {
+      "id": "thread-545fe57a0029",
+      "subject": "[statnet_help] how to combine several networks",
+      "message_count": 3,
+      "participants": [
+        "Andreas Handel",
+        "Carter T. Butts",
+        "Khanna, Aditya [MED]"
+      ],
+      "started": "2015-07-02T08:47:26Z",
+      "last_reply": "2015-07-02T09:08:31Z",
+      "root_message_id": "msg-545fe57a0029"
+    },
+    {
+      "id": "thread-0aae8544165f",
+      "subject": "[statnet_help] Memory-related question",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Khanna, Aditya [MED]"
+      ],
+      "started": "2015-07-06T07:53:42Z",
+      "last_reply": "2015-07-06T12:03:48Z",
+      "root_message_id": "msg-0aae8544165f"
+    },
+    {
+      "id": "thread-8be8e60873ac",
+      "subject": "[statnet_help] Questions on 'cug.test' with FUN=centralization",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Tina W Wey"
+      ],
+      "started": "2015-07-13T21:34:11Z",
+      "last_reply": "2015-07-13T22:14:55Z",
+      "root_message_id": "msg-8be8e60873ac"
+    },
+    {
+      "id": "thread-32d78a486b66",
+      "subject": "[statnet_help] ERGMs for patterns in internet link records",
+      "message_count": 1,
+      "participants": [
+        "Atropos Xanthus"
+      ],
+      "started": "2015-07-21T12:15:32Z",
+      "last_reply": "2015-07-21T12:15:32Z",
+      "root_message_id": "msg-32d78a486b66"
+    },
+    {
+      "id": "thread-6ee1009abf81",
+      "subject": "[statnet_help] ERGM Interaction of Categorical & Quantitative Variable",
+      "message_count": 3,
+      "participants": [
+        "Philip Leifeld",
+        "Simon Schweighofer"
+      ],
+      "started": "2015-07-24T08:02:11Z",
+      "last_reply": "2015-07-27T02:10:43Z",
+      "root_message_id": "msg-6ee1009abf81"
+    },
+    {
+      "id": "thread-3022b70c021f",
+      "subject": "[statnet_help] Read.paj fails when reading a fail with no arcs or edges",
+      "message_count": 2,
+      "participants": [
+        "Jake Fisher",
+        "Skye Bender-deMoll"
+      ],
+      "started": "2015-07-25T12:57:55Z",
+      "last_reply": "2015-07-27T21:44:02Z",
+      "root_message_id": "msg-3022b70c021f"
+    },
+    {
+      "id": "thread-335408523caf",
+      "subject": "[statnet_help] latentnet: error with tofit=\"mle\"",
+      "message_count": 1,
+      "participants": [
+        "Giulia Berlusconi"
+      ],
+      "started": "2015-07-30T08:12:29Z",
+      "last_reply": "2015-07-30T08:12:29Z",
+      "root_message_id": "msg-335408523caf"
+    }
+  ]
+}

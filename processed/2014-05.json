@@ -1,0 +1,260 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2014-05",
+  "messages": [
+    {
+      "id": "msg-87025df2e033",
+      "message_id": "<CAFz3otuQi-7V_VMYp1ZdyUnvrk6tgQdqoZjq7ny8b-mttuvYag@mail.gmail.com>",
+      "from_name": "Inna Yanov",
+      "from_email_hash": "a3de4eda3eb8b43cb932fb7eeb9a70e136f9b1a32f09e674699cd93b580a6e38",
+      "date": "2014-05-07T07:14:35Z",
+      "subject": "[statnet_help] STERGM and selection vs influence",
+      "subject_clean": "[statnet_help] STERGM and selection vs influence",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi list,\nI've been using ergm for a while, but this is my first look at stergm. It\noccurs to me that since stergm deals with longitudinal data, there might\nbe a way to use it to differentiate between selection and influence\nprocesses (attributes driving link formation/dissolution vs. links driving\nattribute change). I haven't seen any works using it that way - the closest\nI found was an example of checking for homophily vs. transitivity as the\ncause of clustering.\n\nI'd be grateful if you can tell me if disentangling selection vs influence\nwith longitudinal data in stergm is possible, and perhaps point me to\nthe specific effects might one include to accomplish that.\n\nBest!\nInna\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140507/4b454ad5/attachment.html>",
+      "body_snippet": "Hi list,\nI've been using ergm for a while, but this is my first look at stergm. It\noccurs to me that since stergm deals with longitudinal data, there might\nbe a way to use it to differentiate between ",
+      "thread_id": "thread-87025df2e033",
+      "thread_depth": 0,
+      "month": "2014-05"
+    },
+    {
+      "id": "msg-1a30b910b3cf",
+      "message_id": "<alpine.WNT.1.10.1405070905460.7608@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2014-05-07T09:09:40Z",
+      "subject": "[statnet_help] STERGM and selection vs influence",
+      "subject_clean": "[statnet_help] STERGM and selection vs influence",
+      "in_reply_to": "<CAFz3otuQi-7V_VMYp1ZdyUnvrk6tgQdqoZjq7ny8b-mttuvYag@mail.gmail.com>",
+      "references": [
+        "<CAFz3otuQi-7V_VMYp1ZdyUnvrk6tgQdqoZjq7ny8b-mttuvYag@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Inna,\n\nGreat question.  The answer is, not yet.  We have a stat grad student \nworking on exactly this topic for his dissertation.  In addition, Ian \nFellows (recent PhD from UCLA) has developed a selection/influence model \nbased on ERGM for use on cross-sectional data.  He monitors this list so \nperhaps he can chime in here.\n\nbest,\nMartina\n\nOn Wed, 7 May 2014, Inna Yanov wrote:\n\n> \n> Hi list,\n> \n> I've been using ergm for a while, but this is my first look at stergm.?It occurs to me that since\n> stergm deals with longitudinal data,?there might be?a way to use it to differentiate between\n> selection and influence processes (attributes driving link formation/dissolution?vs. links driving\n> attribute change). I haven't seen any works using it that way - the closest I found was an example\n> of checking for homophily vs. transitivity as the cause of clustering.\n> \n> I'd be grateful if you can tell me if disentangling selection vs influence with longitudinal data\n> in stergm is possible, and perhaps point me to the?specific effects might one include to accomplish\n> that.\n> \n> Best!\n> Inna\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Inna,\n\nGreat question.  The answer is, not yet.  We have a stat grad student \nworking on exactly this topic for his dissertation.  In addition, Ian \nFellows (recent PhD from UCLA) has developed a s",
+      "thread_id": "thread-87025df2e033",
+      "thread_depth": 1,
+      "month": "2014-05"
+    },
+    {
+      "id": "msg-d643e54481c2",
+      "message_id": "<CED15673-71FA-4E09-84DD-CE7AC87772BF@stat.ucla.edu>",
+      "from_name": "Ian Fellows",
+      "from_email_hash": "aa2c780fbe5343d29316529dbad2b61e2a8735d64e323f572a06de636ac36465",
+      "date": "2014-05-07T09:26:16Z",
+      "subject": "[statnet_help] STERGM and selection vs influence",
+      "subject_clean": "[statnet_help] STERGM and selection vs influence",
+      "in_reply_to": "<alpine.WNT.1.10.1405070905460.7608@morrism-PC>",
+      "references": [
+        "<CAFz3otuQi-7V_VMYp1ZdyUnvrk6tgQdqoZjq7ny8b-mttuvYag@mail.gmail.com>",
+        "<alpine.WNT.1.10.1405070905460.7608@morrism-PC>"
+      ],
+      "body_plain": "Martina and Inna,\n\nHappy to chime in. The causal relationship between ties and nodal attributes (i.e. selection/influence) is impossible to disentangle with only cross-sectional data. The best my model can do is describe the relationship, but not the direction of the effect. I?d be very interested to hear about the student?s dissertation work when it is ready to be shared.\n\nBest,\nIan\n\nOn May 7, 2014, at 9:09 AM, martina morris <morrism@u.washington.edu> wrote:\n\n> Hi Inna,\n> \n> Great question.  The answer is, not yet.  We have a stat grad student working on exactly this topic for his dissertation.  In addition, Ian Fellows (recent PhD from UCLA) has developed a selection/influence model based on ERGM for use on cross-sectional data.  He monitors this list so perhaps he can chime in here.\n> \n> best,\n> Martina\n> \n> On Wed, 7 May 2014, Inna Yanov wrote:\n> \n>> Hi list,\n>> I've been using ergm for a while, but this is my first look at stergm. It occurs to me that since\n>> stergm deals with longitudinal data, there might be a way to use it to differentiate between\n>> selection and influence processes (attributes driving link formation/dissolution vs. links driving\n>> attribute change). I haven't seen any works using it that way - the closest I found was an example\n>> of checking for homophily vs. transitivity as the cause of clustering.\n>> I'd be grateful if you can tell me if disentangling selection vs influence with longitudinal data\n>> in stergm is possible, and perhaps point me to the specific effects might one include to accomplish\n>> that.\n>> Best!\n>> Inna\n>> \n> \n> ****************************************************************\n> Professor of Sociology and Statistics\n> Director, UWCFAR Sociobehavioral and Prevention Research Core\n> Box 354322\n> University of Washington\n> Seattle, WA 98195-4322\n> \n> Office:        (206) 685-3402\n> Dept Office:   (206) 543-5882, 543-7237\n> Fax:           (206) 685-7419\n> \n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/_______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Martina and Inna,\n\nHappy to chime in. The causal relationship between ties and nodal attributes (i.e. selection/influence) is impossible to disentangle with only cross-sectional data. The best my mode",
+      "thread_id": "thread-87025df2e033",
+      "thread_depth": 2,
+      "month": "2014-05"
+    },
+    {
+      "id": "msg-7636139e5551",
+      "message_id": "<183234488.7804662.1399483858915.JavaMail.root@mail.gatech.edu>",
+      "from_name": "Sanjay K. Arora",
+      "from_email_hash": "63a2894616d36d352e0daa52eee36b59c61c26cfa369e3ce43cc4d00dfb05a95",
+      "date": "2014-05-07T10:30:58Z",
+      "subject": "[statnet_help] set.edge.value induces stack overflow error",
+      "subject_clean": "[statnet_help] set.edge.value induces stack overflow error",
+      "in_reply_to": "<1893214726.7782913.1399481493761.JavaMail.root@mail.gatech.edu>",
+      "references": [],
+      "body_plain": "Hello, I'm running a simple exercise to assign edge values to a network with 6,584 vertices. In the code below, I create a dummy matrix of '1' values and assign it to my network object as a set of edge values. The command returns \"Error: protect(): protection stack overflow\". \n\n\n\n> el=read.csv(file.choose(),header=TRUE) # read a .csv file \n> ne=network(el,matrix.type=\"edgelist\",directed=TRUE) \n> ne \nNetwork attributes: \nvertices = 6584 \ndirected = TRUE \nhyper = FALSE \nloops = FALSE \nmultiple = FALSE \nbipartite = FALSE \ntotal edges= 297040 \nmissing edges= 0 \nnon-missing edges= 297040 \n\n\nVertex attribute names: \nvertex.names \n\n\nEdge attribute names not shown \n\n> tmp_e2 <- matrix (1,nrow=6584,ncol=6584) \n> set.edge.value(ne, \"dummy\", tmp_e2) \nError: protect(): protection stack overflow \n\n> list.edge.attributes (ne) \n[1] \"na\" \n\n\nI've tried this on the faux.magnolia.high dataset (1461 vertices), and it works fine there: \n\n\n> data(faux.magnolia.high) \n> fmh <- faux.magnolia.high \n\n\n> fmh \nNetwork attributes: \nvertices = 1461 \ndirected = FALSE \nhyper = FALSE \nloops = FALSE \nmultiple = FALSE \nbipartite = FALSE \ntotal edges= 974 \nmissing edges= 0 \nnon-missing edges= 974 \n\n\nVertex attribute names: \nGrade Race Sex vertex.names \n\n\nEdge attribute names not shown \n> tmp_e1 <- matrix (1,nrow=1461,ncol=1461) \n> set.edge.value(fmh, \"dummy\", tmp_e1) \n\n> list.edge.attributes (fmh) \n[1] \"dummy\" \"na\" \n\n\nI've tried two things to help resolve this issue: first by invoking R via the command line with \"--max-ppsize 500000\" to increase the size of the pointer protection stack, and second, to change my network from directed to undirected. Unfortunately, the error persists in both cases. Here is the sessionInfo output: \n\n\n\nR version 3.0.3 (2014-03-06) \nPlatform: x86_64-w64-mingw32/x64 (64-bit) \n\n\nlocale: \n[1] LC_COLLATE=English_United States.1252 LC_CTYPE=English_United States.1252 \n[3] LC_MONETARY=English_United States.1252 LC_NUMERIC=C \n[5] LC_TIME=English_United States.1252 \n\n\nattached base packages: \n[1] stats graphics grDevices utils datasets methods base \n\n\nother attached packages: \n[1] rlecuyer_0.3-3 snow_0.3-13 statnet_2014.2.0 latentnet_2.5.1 \n[5] ergm.count_3.1.1 tergm_3.1.4 networkDynamic_0.6.3 sna_2.3-2 \n[9] ergm_3.1.2 statnet.common_3.1.1 network_1.9.0 \n\n\nloaded via a namespace (and not attached): \n[1] abind_1.4-0 coda_0.16-1 DEoptimR_1.0-1 grid_3.0.3 \n[5] lattice_0.20-27 Matrix_1.1-2 mvtnorm_0.9-99992 nlme_3.1-113 \n[9] robustbase_0.91-1 tools_3.0.3 trust_0.1-6 \n\n\nThanks in advance for your help, \n\nSanjay K. Arora \nPhD Candidate, School of Public Policy \nGeorgia Institute of Technology \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140507/10a2dec5/attachment.html>",
+      "body_snippet": "Hello, I'm running a simple exercise to assign edge values to a network with 6,584 vertices. In the code below, I create a dummy matrix of '1' values and assign it to my network object as a set of edg",
+      "thread_id": "thread-7636139e5551",
+      "thread_depth": 0,
+      "month": "2014-05"
+    },
+    {
+      "id": "msg-71a0e52d4124",
+      "message_id": "<DFEA0497-4A52-4A84-B812-F044B28FEB79@exchange.asu.edu>",
+      "from_name": "Jacob Young",
+      "from_email_hash": "12c71d887256658db8b65b764d2e601cbc5532ce4160d333ce75996b6a7593e1",
+      "date": "2014-05-07T16:02:28Z",
+      "subject": "[statnet_help] question regarding b2starmix term in ergm",
+      "subject_clean": "[statnet_help] question regarding b2starmix term in ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI am trying to examine homophily in a bipartite graph using ergm and had an interpretation question about the b2starmix term. Rather than posting my data, I created an example:\n\n#create test network.\nmat <- matrix(c(1,1,0,0,0,1,1,0,0,0,0,1,1,1,0,0,0,1,1,0,0,0,0,1,1,0,0,0,1,1),nrow=6,byrow=T)\nnet <- network(mat,bipartite=6)\n\n#create b1 and b2 attributes.\nb1att <- c(1,1,1,2,2,2)\nb2att <- c(3,3,3,4,4)\n\nset.vertex.attribute(net,\"att\",c(b1att,b2att))\n\nsummary(ergm(net ~ edges + b2starmix(2,\"att\",diff=T),seed=2345))\n#the log odds of a tie forming, which will create a twostar such that n_2 = 3 and both n_1s =1, is: -0.7990 + 1.0668.\n#the log odds of a tie forming, which will create a twostar such that n_2 = 4 and both n_1s =2, is: -0.7990 + 1.4600.\n#the b2starmix.2.att.3.2 and b2starmix.2.att.4.1 are -Inf because there are no observations of this network configuration in the graph.\n\nIs this the correct interpretation? Also, are there other terms I should include in the model to make it more robust? Finally, is there an example of using ergm to examine bipartite graphs that I can be directed toward? I did not see anything on the statnet page (sorry if I missed it).\n\nThanks in advance,\n\n--\nJacob T.N. Young, PhD\nAssistant Professor\nSchool of Criminology and Criminal Justice\nArizona State University\nJacob.Young.1@asu.edu<mailto:Jacob.Young.1@asu.edu> (email)\nJacobTNYoung.com<http://www.jacobtnyoung.com/> (web)\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140507/9be67f56/attachment.html>",
+      "body_snippet": "Hello,\n\nI am trying to examine homophily in a bipartite graph using ergm and had an interpretation question about the b2starmix term. Rather than posting my data, I created an example:\n\n#create test n",
+      "thread_id": "thread-71a0e52d4124",
+      "thread_depth": 0,
+      "month": "2014-05"
+    },
+    {
+      "id": "msg-f205732ab50e",
+      "message_id": "<536BB634.303@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2014-05-08T09:52:04Z",
+      "subject": "[statnet_help] question regarding b2starmix term in ergm",
+      "subject_clean": "[statnet_help] question regarding b2starmix term in ergm",
+      "in_reply_to": "<DFEA0497-4A52-4A84-B812-F044B28FEB79@exchange.asu.edu>",
+      "references": [
+        "<DFEA0497-4A52-4A84-B812-F044B28FEB79@exchange.asu.edu>"
+      ],
+      "body_plain": "Hi Jacob,\n\nYour interpretation is right.  The only tweak I would make is that for \ncross-sectional ergms, it's more appropriate to talk about the log odds \nof ties existing, rather than forming.  We used to the latter term \nourselves sometimes, but now with stergms out, we try to be more precise \nand talk about ties forming and dissolving in dynamic models, and ties \nexisting in static models.\n\nThanks for sending such clear code - it makes helping out easy!\n\nYours,\nSteve\n\n\nOn 5/7/2014 4:02 PM, Jacob Young wrote:\n> Hello,\n>\n> I am trying to examine homophily in a bipartite graph using ergm and had\n> an interpretation question about the b2starmix term. Rather than posting\n> my data, I created an example:\n>\n> #create test network.\n> mat <-\n> matrix(c(1,1,0,0,0,1,1,0,0,0,0,1,1,1,0,0,0,1,1,0,0,0,0,1,1,0,0,0,1,1),nrow=6,byrow=T)\n> net <- network(mat,bipartite=6)\n>\n> #create b1 and b2 attributes.\n> b1att <- c(1,1,1,2,2,2)\n> b2att <- c(3,3,3,4,4)\n>\n> set.vertex.attribute(net,\"att\",c(b1att,b2att))\n>\n> summary(ergm(net ~ edges + b2starmix(2,\"att\",diff=T),seed=2345))\n> #the log odds of a tie forming, which will create a twostar such that\n> n_2 = 3 and both n_1s =1, is: -0.7990 + 1.0668.\n> #the log odds of a tie forming, which will create a twostar such that\n> n_2 = 4 and both n_1s =2, is: -0.7990 + 1.4600.\n> #the b2starmix.2.att.3.2 and b2starmix.2.att.4.1 are -Inf because there\n> are no observations of this network configuration in the graph.\n>\n> Is this the correct interpretation? Also, are there other terms I should\n> include in the model to make it more robust? Finally, is there an\n> example of using ergm to examine bipartite graphs that I can be directed\n> toward? I did not see anything on the statnet page (sorry if I missed it).\n>\n> Thanks in advance,\n>\n> --\n> Jacob T.N. Young, PhD\n> Assistant Professor\n> School of Criminology and Criminal Justice\n> Arizona State University\n> Jacob.Young.1@asu.edu <mailto:Jacob.Young.1@asu.edu> (email)\n> JacobTNYoung.com <http://www.jacobtnyoung.com/> (web)\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi Jacob,\n\nYour interpretation is right.  The only tweak I would make is that for \ncross-sectional ergms, it's more appropriate to talk about the log odds \nof ties existing, rather than forming.  We u",
+      "thread_id": "thread-71a0e52d4124",
+      "thread_depth": 1,
+      "month": "2014-05"
+    },
+    {
+      "id": "msg-1209f7487304",
+      "message_id": "<CAD+yNFgn+7zmF8=5s7uttMAnWXfRJAy=0Smq7iHANgw1K5PLyA@mail.gmail.com>",
+      "from_name": "Jeffrey Horner",
+      "from_email_hash": "7511839a7ff3ccd4495a33d9411dfe3760207a304859290cd9d586f8a1efa278",
+      "date": "2014-05-08T15:11:23Z",
+      "subject": "[statnet_help] set.edge.value induces stack overflow error",
+      "subject_clean": "[statnet_help] set.edge.value induces stack overflow error",
+      "in_reply_to": "<CAD+yNFjv38HoNQCy1hHYadonT5tUEKENwygshdcedvRz5_YStg@mail.gmail.com>",
+      "references": [
+        "<1893214726.7782913.1399481493761.JavaMail.root@mail.gatech.edu>",
+        "<183234488.7804662.1399483858915.JavaMail.root@mail.gatech.edu>",
+        "<CAD+yNFjv38HoNQCy1hHYadonT5tUEKENwygshdcedvRz5_YStg@mail.gmail.com>"
+      ],
+      "body_plain": "HI Sanjay,\n\nI've identified the issue. It is indeed a bug for which I have a fix. I'll\nkeep you posted on when we can get a network package pre-release to you so\nyou can test.\n\nThanks for letting us know about the issue!\n\nBest,\n\nJeff\n\n\nOn Thu, May 8, 2014 at 10:37 AM, Jeffrey Horner <jeffrey.horner@gmail.com>wrote:\n\n> Hi Sanjay,\n>\n> Just a quick note, but you have found a bug! I'm going to follow up with\n> some team members to see exactly what is going on.\n>\n> We'll report back once we've identified and fixed the issue.\n>\n> Jeff\n>\n> On Wed, May 7, 2014 at 12:30 PM, Sanjay K. Arora <sanjayk.arora@gatech.edu\n> > wrote:\n>\n>> Hello, I'm running a simple exercise to assign edge values to a network\n>> with 6,584 vertices.  In the code below, I create a dummy matrix of '1'\n>> values and assign it to my network object as a set of edge values.  The\n>> command returns \"Error: protect(): protection stack overflow\".\n>>\n>> > el=read.csv(file.choose(),header=TRUE) # read a .csv file\n>>\n> > ne=network(el,matrix.type=\"edgelist\",directed=TRUE)\n>> > ne\n>>  Network attributes:\n>>   vertices = 6584\n>>   directed = TRUE\n>>   hyper = FALSE\n>>   loops = FALSE\n>>   multiple = FALSE\n>>   bipartite = FALSE\n>>   total edges= 297040\n>>     missing edges= 0\n>>     non-missing edges= 297040\n>>\n>>  Vertex attribute names:\n>>     vertex.names\n>>\n>>  Edge attribute names not shown\n>> > tmp_e2 <- matrix (1,nrow=6584,ncol=6584)\n>> > set.edge.value(ne, \"dummy\", tmp_e2)\n>> *Error: protect(): protection stack overflow*\n>> > list.edge.attributes (ne)\n>> [1] \"na\"\n>>\n>> I've tried this on the faux.magnolia.high dataset (1461 vertices), and it\n>> works fine there:\n>>\n>> > data(faux.magnolia.high)\n>> > fmh <- faux.magnolia.high\n>> > fmh\n>>  Network attributes:\n>>   vertices = 1461\n>>   directed = FALSE\n>>   hyper = FALSE\n>>   loops = FALSE\n>>   multiple = FALSE\n>>   bipartite = FALSE\n>>   total edges= 974\n>>     missing edges= 0\n>>     non-missing edges= 974\n>>\n>>  Vertex attribute names:\n>>     Grade Race Sex vertex.names\n>>\n>>  Edge attribute names not shown\n>> > tmp_e1 <- matrix (1,nrow=1461,ncol=1461)\n>> > set.edge.value(fmh, \"dummy\", tmp_e1)\n>> > list.edge.attributes (fmh)\n>> [1] \"dummy\" \"na\"\n>>\n>> I've tried two things to help resolve this issue: first by invoking R via\n>> the command line with \"--max-ppsize 500000\" to increase the size of the\n>> pointer protection stack, and second, to change my network from directed to\n>> undirected.  Unfortunately, the error persists in both cases. Here is the\n>> sessionInfo output:\n>>\n>> R version 3.0.3 (2014-03-06)\n>> Platform: x86_64-w64-mingw32/x64 (64-bit)\n>>\n>> locale:\n>> [1] LC_COLLATE=English_United States.1252  LC_CTYPE=English_United\n>> States.1252\n>> [3] LC_MONETARY=English_United States.1252 LC_NUMERIC=C\n>>\n>> [5] LC_TIME=English_United States.1252\n>>\n>> attached base packages:\n>> [1] stats     graphics  grDevices utils     datasets  methods   base\n>>\n>> other attached packages:\n>>  [1] rlecuyer_0.3-3       snow_0.3-13          statnet_2014.2.0\n>> latentnet_2.5.1\n>>  [5] ergm.count_3.1.1     tergm_3.1.4          networkDynamic_0.6.3\n>> sna_2.3-2\n>>  [9] ergm_3.1.2           statnet.common_3.1.1 network_1.9.0\n>>\n>> loaded via a namespace (and not attached):\n>>  [1] abind_1.4-0       coda_0.16-1       DEoptimR_1.0-1    grid_3.0.3\n>>\n>>  [5] lattice_0.20-27   Matrix_1.1-2      mvtnorm_0.9-99992 nlme_3.1-113\n>>\n>>  [9] robustbase_0.91-1 tools_3.0.3       trust_0.1-6\n>>\n>> Thanks in advance for your help,\n>>\n>> Sanjay K. Arora\n>> PhD Candidate, School of Public Policy\n>> Georgia Institute of Technology\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140508/8ade9f5b/attachment.html>",
+      "body_snippet": "HI Sanjay,\n\nI've identified the issue. It is indeed a bug for which I have a fix. I'll\nkeep you posted on when we can get a network package pre-release to you so\nyou can test.\n\nThanks for letting us k",
+      "thread_id": "thread-1209f7487304",
+      "thread_depth": 0,
+      "month": "2014-05"
+    },
+    {
+      "id": "msg-5d84f0b574ef",
+      "message_id": "<1399593164.61965.YahooMailNeo@web164805.mail.gq1.yahoo.com>",
+      "from_name": "Ken Vance-Borland",
+      "from_email_hash": "45a0f206409ae9ac0e4a0159176cee861426b2fefdf90e0e946770c1bd6485b9",
+      "date": "2014-05-08T16:52:44Z",
+      "subject": "[statnet_help] lnam empirical examples?",
+      "subject_clean": "[statnet_help] lnam empirical examples?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "We are using lnam from the sna package to explore network effects among natural resource management actors. We've studied the Leenders paper cited in the lnam help page and looked for other papers that report lnam results in empirical studies, but have not found many. \n\n\nAny papers you can suggest that report lnam results from analysis of empirical data would be greatly appreciated.\n\nThanks in advance,?????? -ken\n\n?\nKen Vance-Borland\nThe Conservation Planning Institute\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140508/af214e5c/attachment.html>",
+      "body_snippet": "We are using lnam from the sna package to explore network effects among natural resource management actors. We've studied the Leenders paper cited in the lnam help page and looked for other papers tha",
+      "thread_id": "thread-5d84f0b574ef",
+      "thread_depth": 0,
+      "month": "2014-05"
+    },
+    {
+      "id": "msg-cde7a3761adb",
+      "message_id": "<CAMXvyzYbS87-BKr-7LDSjO4bxVBYABEHW04gtn63iJTKoENnew@mail.gmail.com>",
+      "from_name": "Michael Tsikerdekis",
+      "from_email_hash": "461c86d13adbe0e440bbaada8a7528cd111bd7d7449b4ee24fa54420d5e86d09",
+      "date": "2014-05-09T19:51:55Z",
+      "subject": "[statnet_help] Can idegree by parameter be a numeric vector?",
+      "subject_clean": "[statnet_help] Can idegree by parameter be a numeric vector?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I am using idegree and outdegree and I want to measure what happens as\ndegree increases to the homophily of nodes. The attribute that I use to\nmeasure homophily is numeric. Can I use it with the by parameter found in\nidegree and odegree?\nThanks,\nMichael\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140509/5617ce54/attachment.html>",
+      "body_snippet": "I am using idegree and outdegree and I want to measure what happens as\ndegree increases to the homophily of nodes. The attribute that I use to\nmeasure homophily is numeric. Can I use it with the by pa",
+      "thread_id": "thread-cde7a3761adb",
+      "thread_depth": 0,
+      "month": "2014-05"
+    },
+    {
+      "id": "msg-14d8e8dc9c37",
+      "message_id": "<1399747188794.22851@uga.edu>",
+      "from_name": "Adam R. Rivers",
+      "from_email_hash": "a65f20675589b1d62ba38c9f4c8abdf2b698eae3f52bf8ecd8179e1ebbf83463",
+      "date": "2014-05-10T11:39:48Z",
+      "subject": "[statnet_help] Importing BioPAX format files into Statnet",
+      "subject_clean": "[statnet_help] Importing BioPAX format files into Statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I am trying to import a BioPAX format<http://biopax.org/> biological metabolism network (generated by BioCyc<http://biocyc.org/>'s Pathway Tools program<http://bioinformatics.ai.sri.com/ptools/>) into Statnet. A small 50Kb example of a BioPAX file is here<http://gis.tinyecology.com/biopax3RpomDmsp.owl> and the full 25 Mb BioPAX file is provided here<http://GIS.tinyecology.com/biopax-level3.owl>.\n\n\nI have tied the following unsuccessful approaches:\n\n\n1. Opening in Cytoscape then saving in the supported export file formats (SIF, Cytoscape.js json, nested network file .nnf, XGMML, PIS-MI level 1, and PIS-MI level 2.5). No formats are directly compatible with Statnet.\n\n\n2. Saving the file BioPAX file as SIF in Cytoscape then converting it to Pajek format using pyNetConv<http://pynetconv.sourceforge.net/>. The resulting Pajek file can be opened in statnet but most of the nodes and edges are lost. The loss occurs when pyNetConv opens the SIF file.\n\n\n3. Using the program Paxtools<http://www.biopax.org/paxtools.php> I can export BioPAX into SIF, SIFNX, PSI-MI, Systems Biology Graph Notation - Process Description(SBGN-PD) and Gene Set Enrichment Analysis format (GSEA) . No formats are directly compatible with Statnet.\n\n\nI suspect the answer may lie in modifying the SIF format file (which contains the columns: 1. source, 2. relationship, 3. type, and 4. target) and importing it as an edge list. However, I wanted to see if anyone had a better suggestion for this type of conversion.\n\n\nThanks,\n\n\nAdam Rivers\n\nPostdoctoral Research Associate\n\nDepartment of Marine Sciences\n\nUniversity of Georgia\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20140510/5db3c224/attachment.html>",
+      "body_snippet": "I am trying to import a BioPAX format<http://biopax.org/> biological metabolism network (generated by BioCyc<http://biocyc.org/>'s Pathway Tools program<http://bioinformatics.ai.sri.com/ptools/>) into",
+      "thread_id": "thread-14d8e8dc9c37",
+      "thread_depth": 0,
+      "month": "2014-05"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-87025df2e033",
+      "subject": "[statnet_help] STERGM and selection vs influence",
+      "message_count": 3,
+      "participants": [
+        "Ian Fellows",
+        "Inna Yanov",
+        "martina morris"
+      ],
+      "started": "2014-05-07T07:14:35Z",
+      "last_reply": "2014-05-07T09:26:16Z",
+      "root_message_id": "msg-87025df2e033"
+    },
+    {
+      "id": "thread-7636139e5551",
+      "subject": "[statnet_help] set.edge.value induces stack overflow error",
+      "message_count": 1,
+      "participants": [
+        "Sanjay K. Arora"
+      ],
+      "started": "2014-05-07T10:30:58Z",
+      "last_reply": "2014-05-07T10:30:58Z",
+      "root_message_id": "msg-7636139e5551"
+    },
+    {
+      "id": "thread-71a0e52d4124",
+      "subject": "[statnet_help] question regarding b2starmix term in ergm",
+      "message_count": 2,
+      "participants": [
+        "Jacob Young",
+        "Steven Goodreau"
+      ],
+      "started": "2014-05-07T16:02:28Z",
+      "last_reply": "2014-05-08T09:52:04Z",
+      "root_message_id": "msg-71a0e52d4124"
+    },
+    {
+      "id": "thread-1209f7487304",
+      "subject": "[statnet_help] set.edge.value induces stack overflow error",
+      "message_count": 1,
+      "participants": [
+        "Jeffrey Horner"
+      ],
+      "started": "2014-05-08T15:11:23Z",
+      "last_reply": "2014-05-08T15:11:23Z",
+      "root_message_id": "msg-1209f7487304"
+    },
+    {
+      "id": "thread-5d84f0b574ef",
+      "subject": "[statnet_help] lnam empirical examples?",
+      "message_count": 1,
+      "participants": [
+        "Ken Vance-Borland"
+      ],
+      "started": "2014-05-08T16:52:44Z",
+      "last_reply": "2014-05-08T16:52:44Z",
+      "root_message_id": "msg-5d84f0b574ef"
+    },
+    {
+      "id": "thread-cde7a3761adb",
+      "subject": "[statnet_help] Can idegree by parameter be a numeric vector?",
+      "message_count": 1,
+      "participants": [
+        "Michael Tsikerdekis"
+      ],
+      "started": "2014-05-09T19:51:55Z",
+      "last_reply": "2014-05-09T19:51:55Z",
+      "root_message_id": "msg-cde7a3761adb"
+    },
+    {
+      "id": "thread-14d8e8dc9c37",
+      "subject": "[statnet_help] Importing BioPAX format files into Statnet",
+      "message_count": 1,
+      "participants": [
+        "Adam R. Rivers"
+      ],
+      "started": "2014-05-10T11:39:48Z",
+      "last_reply": "2014-05-10T11:39:48Z",
+      "root_message_id": "msg-14d8e8dc9c37"
+    }
+  ]
+}

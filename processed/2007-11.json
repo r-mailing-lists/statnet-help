@@ -1,0 +1,365 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2007-11",
+  "messages": [
+    {
+      "id": "msg-535031780691",
+      "message_id": "<3498.128.84.27.104.1194286177.squirrel@webmail.cornell.edu>",
+      "from_name": "Brian Rubineau",
+      "from_email_hash": "e698bdae84b54acea8d25eb5674bdbcf4f5f37cd17f99e0226b1a9e42d1a152d",
+      "date": "2007-11-05T10:09:37Z",
+      "subject": "[statnet_help] comparing parameter estimates across models",
+      "subject_clean": "[statnet_help] comparing parameter estimates across models",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Greetings.\nI have data with one set of nodes and two sets of edges\n(friendship and academic ties among the same set of subjs).\n\nI am using two instances of the same ergm (except for the DV)\nto predict the two edge-sets.\n\nI'd like to statistically compare the parameter estimates\nacross the two models (e.g., is racial homophily significantly\nstronger for friendship vs. academic ties?).\n\nThe Chow test adapted to logistic regression requires pooling\ndata, and I've been thinking about trying this using the union\nof the two edgesets and edge-covariate dummies to indicate the\nsource edgeset, or pooling and adding an interaction term, but\nthis is somewhat beyond my depth.\n\nAny suggestions?\n\nThanks\nBrian\n\n-- \nBrian Rubineau\nAssistant Professor, Organizational Behavior          146K Ives Hall\nSchool of Industrial and Labor Relations            ph. 607.255.3048\nCornell University                                 fax. 810.963.2738\nIthaca, NY 14850                               brubineau@cornell.edu",
+      "body_snippet": "Greetings.\nI have data with one set of nodes and two sets of edges\n(friendship and academic ties among the same set of subjs).\n\nI am using two instances of the same ergm (except for the DV)\nto predict",
+      "thread_id": "thread-535031780691",
+      "thread_depth": 0,
+      "month": "2007-11"
+    },
+    {
+      "id": "msg-13eabc3b97d4",
+      "message_id": "<002a01c8218d$4a984e60$f463258a@busman.qmul.internal>",
+      "from_name": "Tore Opsahl",
+      "from_email_hash": "ea7091cc7f9065eee5e93255fa785aecd7187def74e5e1f39a46bedd2990732c",
+      "date": "2007-11-07T14:26:50Z",
+      "subject": "[statnet_help] Problem with Statnet (new specifications on a fairly large dataset)",
+      "subject_clean": "[statnet_help] Problem with Statnet (new specifications on a fairly large dataset)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet mailing list,\n\n \n\nI am having some issues with estimating an ERGM function on a fairly large\ndataset (N=1899, undirected edges=13868). \n\n \n\nThe ergm function seems to stop working after the third iteration of the\nsimulation when using the new specifications:\n\n>model.02.1 <- ergm(g~edges + gwdegree)\n\nIteration 1: Sampling 10000 with parameter: \n\n         edges       gwdegree gwdegree.decay \n\n     -42.41982       18.76477        0.00000 \n\nLog-likelihood ratio is 1.875454 \n\nIteration 2: Sampling 10000 with parameter: \n\n         edges       gwdegree gwdegree.decay \n\n  -42.39399851    18.25988600    -0.01163396 \n\nLog-likelihood ratio is 4.878643 \n\nIteration 3: Sampling 10000 with parameter: \n\n         edges       gwdegree gwdegree.decay \n\n  -42.36855142    18.09441792    -0.03705035 \n\nLog-likelihood ratio is 4.459848\n\nKilled      \n\n \n\nThe operating system kills R after about 30 hours after the last\nLog-likelihood ratio is calculated.\n\n \n\nThese are some of the commands I have used:\n\n#./R --max-ppsize=500000           << starting R on Unix with maximum\npointer protection stack size\n\n> library(statnet);                << loading network 1.2 and statnet 1.0-14\n\n> g <- read.table(\"OClinks.txt\");  << loading dataset\n\n> g <- network(g);\n\n> set.network.attribute(g, \"directed\", FALSE);\n\n> summary(g)\n\nNetwork attributes:\n\n  vertices = 1899 \n\n   directed = FALSE \n\n   hyper = FALSE \n\n   loops = FALSE \n\n   multiple = FALSE \n\n   bipartite = FALSE \n\n   total edges= 13838 \n\n   density = 0.007678602 \n\n \n\nNo nodal attributes\n\n \n\n> model.01 <- ergm(g~edges);\n\n> summary(model.01)\n\n==========================\n\nSummary of model fit\n\n==========================\n\n \n\nFormula:   g ~ edges\n\n \n\nNewton-Raphson iterations:  7 \n\nMCMC sample of size NA \n\n \n\nMonte Carlo MLE Results:\n\n      estimate s.e.     p-value MCMC s.e.\n\nedges -4.862   0.008533 <1e-04  NA       \n\n \n\n     Null Deviance: 2498312  on 1802151  degrees of freedom\n\n Residual Deviance:  162333  on 1802150  degrees of freedom\n\n          Deviance: 2335979  on       1  degrees of freedom\n\n \n\nAIC: 162335    BIC: 162347\n\n \n\n> model.02.5 <- ergm(g~edges + kstar(2:3));\n\nIteration 1: Sampling 10000 with parameter: \n\n        edges        kstar2        kstar3 \n\n-7.0879555722  0.0503816174 -0.0003009461 \n\nLog-likelihood ratio is 0.4942869 \n\nIteration 2: Sampling 10000 with parameter: \n\n        edges        kstar2        kstar3 \n\n-7.0351536486  0.0494034566 -0.0002913566 \n\nLog-likelihood ratio is 0.9195236 \n\nIteration 3: Sampling 10000 with parameter: \n\n        edges        kstar2        kstar3 \n\n-7.0400850089  0.0497602250 -0.0002954603 \n\nLog-likelihood ratio is 2.890959\n\n \n\n> summary(model.02.5)\n\n==========================\n\nSummary of model fit\n\n==========================\n\n \n\nFormula:   g ~ edges + kstar(2:3)\n\n \n\nNewton-Raphson iterations:  60 \n\nMCMC sample of size 10000 \n\n \n\nMonte Carlo MLE Results:\n\n       estimate   s.e.       p-value MCMC s.e. \n\nedges  -6.9715754 1.764e-01  <1e-04  3.081e-02 \n\nkstar2  0.0499451 2.418e-03  <1e-04  3.369e-04 \n\nkstar3 -0.0003007 2.267e-05  <1e-04  3.125e-06 \n\n \n\n     Null Deviance: 2498312  on 1802151  degrees of freedom\n\n Residual Deviance:  124135  on 1802148  degrees of freedom\n\n          Deviance: 2374177  on       3  degrees of freedom\n\n \n\nAIC: 124141    BIC: 124178 \n\n \n\n> model.02.1 <- ergm(g~edges + gwdegree);\n\nIteration 1: Sampling 10000 with parameter: \n\n         edges       gwdegree gwdegree.decay \n\n     -42.41982       18.76477        0.00000 \n\nLog-likelihood ratio is 1.875454 \n\nIteration 2: Sampling 10000 with parameter: \n\n         edges       gwdegree gwdegree.decay \n\n  -42.39399851    18.25988600    -0.01163396 \n\nLog-likelihood ratio is 4.878643 \n\nIteration 3: Sampling 10000 with parameter: \n\n         edges       gwdegree gwdegree.decay \n\n  -42.36855142    18.09441792    -0.03705035 \n\nLog-likelihood ratio is 4.459848\n\nKilled                     << This messages comes after about 30hours.\n\n \n\n> model.02.6 <- ergm(g~edges + altkstar(0.9511732, fixed=FALSE))\n\nIteration 1: Sampling 10000 with parameter: \n\n          edges        altkstar altkstar.lambda \n\n     87.7280174     -48.4844327       0.9511732 \n\nLog-likelihood ratio is 2.486209 \n\nIteration 2: Sampling 10000 with parameter: \n\n          edges        altkstar altkstar.lambda \n\n    125.8807444     -67.5670561       0.9648519 \n\nLog-likelihood ratio is 6.656771 \n\nIteration 3: Sampling 10000 with parameter: \n\n          edges        altkstar altkstar.lambda \n\n     165.915403      -87.765157        0.970547 \n\nLog-likelihood ratio is 4.087085\n\nKilled                     << This messages comes after about 30hours.\n\n \n\nThese commands has been run on a FreeBSD 6.2 (64bit, 16G ram, 4 processors)\nwith R 2.6.0 and the latest version of statnet obtained using\nlibrary(updatestatnet). I have also tried to run it on a Windows XP\ncomputer, but without luck as R runs out of memory. \n\n \n\nI have verified that I can use the higher order parameters:\n\n> data(florentine)\n\n> g <- flomarriage\n\n> model.2 <- ergm(g~edges+gwdegree(0.8909098))\n\nIteration 1: Sampling 10000 with parameter: \n\n         edges       gwdegree gwdegree.decay \n\n    -1.2524804     -0.1302050      0.8909098 \n\nLog-likelihood ratio is 0.1766264 \n\nIteration 2: Sampling 10000 with parameter: \n\n         edges       gwdegree gwdegree.decay \n\n    -1.2583334     -0.3485821      0.8514074 \n\nLog-likelihood ratio is 0.1382030 \n\nIteration 3: Sampling 10000 with parameter: \n\n         edges       gwdegree gwdegree.decay \n\n    -1.4701489     -0.1908451      0.7795331 \n\nLog-likelihood ratio is 0.008010495 \n\n \n\n> summary(model.2)\n\n==========================\n\nSummary of model fit\n\n==========================\n\n \n\nFormula:   g ~ edges + gwdegree(0.8909098)\n\n \n\nNewton-Raphson iterations:  27 \n\nMCMC sample of size 10000 \n\n \n\nMonte Carlo MLE Results:\n\n               estimate s.e.     p-value MCMC s.e.\n\nedges          -1.56464  1.304   0.233   0.01426  \n\ngwdegree       -0.09288  1.133   0.935   0.01071  \n\ngwdegree.decay  0.48184 24.871   0.985   0.25545  \n\n \n\n     Null Deviance: 166.355  on 120  degrees of freedom\n\n Residual Deviance: 108.088  on 117  degrees of freedom\n\n          Deviance:  58.268  on   3  degrees of freedom\n\n \n\nAIC: 114.09    BIC: 122.45\n\n \n\n> model.1 <- ergm(g~edges+altkstar(0.5493))\n\nIteration 1: Sampling 10000 with parameter: \n\n          edges        altkstar altkstar.lambda \n\n      0.2181334      -1.6244907       0.5493000 \n\nLog-likelihood ratio is 0.2823133 \n\nIteration 2: Sampling 10000 with parameter: \n\n          edges        altkstar altkstar.lambda \n\n     -0.5640756      -0.9819977       0.5443172 \n\nLog-likelihood ratio is 0.1385034 \n\nIteration 3: Sampling 10000 with parameter: \n\n          edges        altkstar altkstar.lambda \n\n     -0.8964290      -0.6616823       0.5508795 \n\nLog-likelihood ratio is 0.0008889806 \n\n \n\n> summary(model.1)\n\n==========================\n\nSummary of model fit\n\n==========================\n\n \n\nFormula:   g ~ edges + altkstar(0.5493)\n\n \n\nNewton-Raphson iterations:  43 \n\nMCMC sample of size 10000 \n\n \n\nMonte Carlo MLE Results:\n\n                estimate  s.e.      p-value MCMC s.e.\n\nedges           -0.9090   1.1847    0.445   0.0110574\n\naltkstar        -0.6614   0.9347    0.481   0.0092857\n\naltkstar.lambda  0.5493   0.1054    <1e-04  0.0009966\n\n \n\n     Null Deviance: 166.355  on 120  degrees of freedom\n\n Residual Deviance:  97.869  on 117  degrees of freedom\n\n          Deviance:  68.487  on   3  degrees of freedom\n\n \n\nAIC: 103.87    BIC: 112.23\n\n \n\nI am unsure why the problem freezes in the file stage. Is there a way to\nwork around this?\n\n \n\nThank you in advance,\n\n \n\nTore Opsahl\n\n___________________________________\nSchool of Business and Management\nQueen Mary, University of London\nOffice  : +44-20-7882 2693\nEmail  :  <mailto:t.opsahl@qmul.ac.uk> t.opsahl@qmul.ac.uk\nWeb    :  <http://www.busman.qmul.ac.uk> www.busman.qmul.ac.uk\n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20071107/6745cbeb/attachment.html>",
+      "body_snippet": "Dear Statnet mailing list,\n\n \n\nI am having some issues with estimating an ERGM function on a fairly large\ndataset (N=1899, undirected edges=13868). \n\n \n\nThe ergm function seems to stop working after t",
+      "thread_id": "thread-13eabc3b97d4",
+      "thread_depth": 0,
+      "month": "2007-11"
+    },
+    {
+      "id": "msg-60c528d6849b",
+      "message_id": "<C3577F09.11FC8%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2007-11-07T14:41:13Z",
+      "subject": "[statnet_help] Problem with Statnet (new specifications on a fairly large dataset)",
+      "subject_clean": "[statnet_help] Problem with Statnet (new specifications on a fairly large dataset)",
+      "in_reply_to": "<002a01c8218d$4a984e60$f463258a@busman.qmul.internal>",
+      "references": [],
+      "body_plain": "Hi Tore,\n\nThanks for the detailed description.\n\nThe starting decay parameter may be too low. You have started it at an\nextreme (i.e., it is expecting a decay value).\n\nTry:\n\nmodel.02.1 <- ergm(g~edges + gwdegree(0.5))\n\nIf that does not work, email me offline...\n\nBest,\n\nMark\n\n-------------------------------------------------\nMark S. Handcock\nProfessor and Chair of Statistics\nDepartment of Statistics, B313 Padelford Hall\nUniversity of Washington, Box 354322     Phone:  (206) 543-6774\nSeattle, WA  98195-4322.           FAX:   (206) 365-6324\nWeb:  www.stat.washington.edu/~handcock\ninternet:  handcock@stat.washington.edu\n\n\n\nOn 11/7/07 2:26 PM, \"Tore Opsahl\" <t.opsahl@qmul.ac.uk> wrote:\n\n> Dear Statnet mailing list,\n>  \n> I am having some issues with estimating an ERGM function on a fairly large\n> dataset (N=1899, undirected edges=13868).\n>  \n> The ergm function seems to stop working after the third iteration of the\n> simulation when using the new specifications:\n>> >model.02.1 <- ergm(g~edges + gwdegree)\n> Iteration 1: Sampling 10000 with parameter:\n>         edges       gwdegree gwdegree.decay\n>     -42.41982      18.76477        0.00000\n> Log-likelihood ratio is 1.875454\n> Iteration 2: Sampling 10000 with parameter:\n>         edges       gwdegree gwdegree.decay\n>   -42.39399851   18.25988600    -0.01163396\n> Log-likelihood ratio is 4.878643\n> Iteration 3: Sampling 10000 with parameter:\n>         edges       gwdegree gwdegree.decay\n>   -42.36855142   18.09441792    -0.03705035\n> Log-likelihood ratio is 4.459848\n> Killed      \n>  \n> The operating system kills R after about 30 hours after the last\n> Log-likelihood ratio is calculated.\n>  \n> These are some of the commands I have used:\n> #./R --max-ppsize=500000           << starting R on Unix with maximum pointer\n> protection stack size\n>> > library(statnet);                << loading network 1.2 and statnet 1.0-14\n>> > g <- read.table(\"OClinks.txt\");  << loading dataset\n>> > g <- network(g);\n>> > set.network.attribute(g, \"directed\", FALSE);\n>> > summary(g)\n> Network attributes:\n>   vertices = 1899\n>    directed = FALSE\n>    hyper = FALSE \n>    loops = FALSE \n>    multiple = FALSE\n>    bipartite = FALSE\n>    total edges= 13838\n>    density = 0.007678602\n>  \n> No nodal attributes\n>  \n>> > model.01 <- ergm(g~edges);\n>> > summary(model.01)\n> ==========================\n> Summary of model fit\n> ==========================\n>  \n> Formula:   g ~ edges\n>  \n> Newton-Raphson iterations:  7\n> MCMC sample of size NA\n>  \n> Monte Carlo MLE Results:\n>       estimate s.e.     p-value MCMC s.e.\n> edges -4.862   0.008533 <1e-04 NA\n>  \n>      Null Deviance: 2498312  on 1802151  degrees of freedom\n>  Residual Deviance:  162333  on 1802150  degrees of freedom\n>          Deviance: 2335979  on       1  degrees of freedom\n>  \n> AIC: 162335    BIC: 162347\n>  \n>> > model.02.5 <- ergm(g~edges + kstar(2:3));\n> Iteration 1: Sampling 10000 with parameter:\n>        edges       kstar2        kstar3\n> -7.0879555722  0.0503816174 -0.0003009461\n> Log-likelihood ratio is 0.4942869\n> Iteration 2: Sampling 10000 with parameter:\n>         edges       kstar2        kstar3\n> -7.0351536486  0.0494034566 -0.0002913566\n> Log-likelihood ratio is 0.9195236\n> Iteration 3: Sampling 10000 with parameter:\n>        edges       kstar2        kstar3\n> -7.0400850089  0.0497602250 -0.0002954603\n> Log-likelihood ratio is 2.890959\n>  \n>> > summary(model.02.5)\n> ==========================\n> Summary of model fit\n> ==========================\n>  \n> Formula:   g ~ edges + kstar(2:3)\n>  \n> Newton-Raphson iterations:  60\n> MCMC sample of size 10000\n>  \n> Monte Carlo MLE Results:\n>       estimate   s.e.       p-value MCMC s.e.\n> edges  -6.9715754 1.764e-01 <1e-04  3.081e-02\n> kstar2  0.0499451 2.418e-03 <1e-04  3.369e-04\n> kstar3 -0.0003007 2.267e-05  <1e-04 3.125e-06\n>  \n>      Null Deviance: 2498312  on 1802151  degrees of freedom\n>  Residual Deviance:  124135  on 1802148  degrees of freedom\n>          Deviance: 2374177  on       3  degrees of freedom\n>  \n> AIC: 124141    BIC: 124178\n>  \n>> > model.02.1 <- ergm(g~edges + gwdegree);\n> Iteration 1: Sampling 10000 with parameter:\n>         edges       gwdegree gwdegree.decay\n>     -42.41982      18.76477        0.00000\n> Log-likelihood ratio is 1.875454\n> Iteration 2: Sampling 10000 with parameter:\n>         edges       gwdegree gwdegree.decay\n>   -42.39399851   18.25988600    -0.01163396\n> Log-likelihood ratio is 4.878643\n> Iteration 3: Sampling 10000 with parameter:\n>         edges       gwdegree gwdegree.decay\n>   -42.36855142   18.09441792    -0.03705035\n> Log-likelihood ratio is 4.459848\n> Killed                    << This messages comes after about 30hours.\n>  \n>> > model.02.6 <- ergm(g~edges + altkstar(0.9511732, fixed=FALSE))\n> Iteration 1: Sampling 10000 with parameter:\n>          edges        altkstar altkstar.lambda\n>     87.7280174    -48.4844327       0.9511732\n> Log-likelihood ratio is 2.486209\n> Iteration 2: Sampling 10000 with parameter:\n>          edges        altkstar altkstar.lambda\n>     125.8807444    -67.5670561       0.9648519\n> Log-likelihood ratio is 6.656771\n> Iteration 3: Sampling 10000 with parameter:\n>          edges        altkstar altkstar.lambda\n>     165.915403     -87.765157        0.970547\n> Log-likelihood ratio is 4.087085\n> Killed                    << This messages comes after about 30hours.\n>  \n> These commands has been run on a FreeBSD 6.2 (64bit, 16G ram, 4 processors)\n> with R 2.6.0 and the latest version of statnet obtained using\n> library(updatestatnet). I have also tried to run it on a Windows XP computer,\n> but without luck as R runs out of memory.\n>  \n> I have verified that I can use the higher order parameters:\n>> > data(florentine)\n>> > g <- flomarriage\n>> > model.2 <- ergm(g~edges+gwdegree(0.8909098))\n> Iteration 1: Sampling 10000 with parameter:\n>         edges       gwdegree gwdegree.decay\n>     -1.2524804    -0.1302050      0.8909098\n> Log-likelihood ratio is 0.1766264\n> Iteration 2: Sampling 10000 with parameter:\n>         edges       gwdegree gwdegree.decay\n>     -1.2583334    -0.3485821      0.8514074\n> Log-likelihood ratio is 0.1382030\n> Iteration 3: Sampling 10000 with parameter:\n>         edges       gwdegree gwdegree.decay\n>     -1.4701489     -0.1908451     0.7795331\n> Log-likelihood ratio is 0.008010495\n>  \n>> > summary(model.2)\n> ==========================\n> Summary of model fit\n> ==========================\n>  \n> Formula:   g ~ edges + gwdegree(0.8909098)\n>  \n> Newton-Raphson iterations:  27\n> MCMC sample of size 10000\n>  \n> Monte Carlo MLE Results:\n>               estimate s.e.     p-value MCMC s.e.\n> edges         -1.56464  1.304   0.233   0.01426\n> gwdegree      -0.09288  1.133   0.935   0.01071\n> gwdegree.decay  0.48184 24.871  0.985   0.25545\n>  \n>      Null Deviance: 166.355  on 120  degrees of freedom\n>  Residual Deviance: 108.088  on 117 degrees of freedom\n>          Deviance:  58.268  on   3  degrees of freedom\n>  \n> AIC: 114.09    BIC: 122.45\n>  \n>> > model.1 <- ergm(g~edges+altkstar(0.5493))\n> Iteration 1: Sampling 10000 with parameter:\n>          edges        altkstar altkstar.lambda\n>      0.2181334     -1.6244907       0.5493000\n> Log-likelihood ratio is 0.2823133\n> Iteration 2: Sampling 10000 with parameter:\n>          edges        altkstar altkstar.lambda\n>     -0.5640756     -0.9819977       0.5443172\n> Log-likelihood ratio is 0.1385034\n> Iteration 3: Sampling 10000 with parameter:\n>          edges        altkstar altkstar.lambda\n>     -0.8964290      -0.6616823      0.5508795\n> Log-likelihood ratio is 0.0008889806\n>  \n>> > summary(model.1)\n> ==========================\n> Summary of model fit\n> ==========================\n>  \n> Formula:   g ~ edges + altkstar(0.5493)\n>  \n> Newton-Raphson iterations:  43\n> MCMC sample of size 10000\n>  \n> Monte Carlo MLE Results:\n>                estimate  s.e.      p-value MCMC s.e.\n> edges          -0.9090   1.1847    0.445   0.0110574\n> altkstar       -0.6614   0.9347    0.481   0.0092857\n> altkstar.lambda 0.5493   0.1054    <1e-04  0.0009966\n>  \n>      Null Deviance: 166.355  on 120  degrees of freedom\n>  Residual Deviance:  97.869  on 117 degrees of freedom\n>          Deviance:  68.487  on   3  degrees of freedom\n>  \n> AIC: 103.87    BIC: 112.23\n>  \n> I am unsure why the problem freezes in the file stage. Is there a way to work\n> around this?\n>  \n> Thank you in advance,\n>  \n> \n> Tore Opsahl\n> \n> ___________________________________\n> School of Business and Management\n> Queen Mary, University of London\n> Office  : +44-20-7882 2693\n> Email  : t.opsahl@qmul.ac.uk <mailto:t.opsahl@qmul.ac.uk>\n> Web    : www.busman.qmul.ac.uk <http://www.busman.qmul.ac.uk>\n>  \n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20071107/84d8eae7/attachment.html>",
+      "body_snippet": "Hi Tore,\n\nThanks for the detailed description.\n\nThe starting decay parameter may be too low. You have started it at an\nextreme (i.e., it is expecting a decay value).\n\nTry:\n\nmodel.02.1 <- ergm(g~edges ",
+      "thread_id": "thread-13eabc3b97d4",
+      "thread_depth": 1,
+      "month": "2007-11"
+    },
+    {
+      "id": "msg-186356eaab14",
+      "message_id": "<Pine.WNT.4.64.0711090810320.3100@vinaya.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2007-11-09T08:32:04Z",
+      "subject": "[statnet_help] How to asses convergence a possible bug",
+      "subject_clean": "[statnet_help] How to asses convergence a possible bug",
+      "in_reply_to": "<4721B9CF.80008@gmail.com>",
+      "references": [
+        "<4721B9CF.80008@gmail.com>"
+      ],
+      "body_plain": "> Can anyone give me quick pointers on how to asses it the convergence of the \n> ergm model is good. I have used the function mcmc.diagnostics, but am not\n\nHello Ales,\n\nA great question.  It turns out that we (the statnet development team) are \nin the process of putting together a special journal issue on statnet, and \nthere will be some more guidance in there on assessing model convergence \n(as well as many other topics - stay tuned!)\n\nMy own personal set of heuristics for considering model convergence is as \nfollows:\n\n(1) Using the verbose=T argument in ergm, check to see whether the density \nof the returned network is roughly the same as the density of the initial \nnetwork for each iteration of the fitting algorithm.  If the network is \nheading towards an empty or full network, this will be a sure sign of \nproblems.  Of course if you are using an MCMC proposal that fixes density, \nthis is not an option.\n\n(2) Check the MCMC diagnostic plots.  The plots on the left should have no \nsustained trend away from their original value.  There will certainly \nbe short-term trends (such is the nature of MCMC) but in the long-term it \nshould vary around the oringial value.  The plots on the right should be \ncentered around the original value, and will generally be unimodal if all \nis well.\n\n(3) Check the log-likelihood ratio that is printed out with each iteration \nof the fitting algorithm.  A small value (often less than 1) is good.  If \nit starts creeping up towards 20 (which is where the software caps \nestimating it) then there is likely to be a problem.\n\n(4) Within the verbose output, look for the summary of the simluation.  In \nthe later iterations, the values for \"mean\" should be close to zero, and \nthe std. t units should also be low, or at least declining with successive \niterations.  This tells you how far away your simulated statistics are \nfrom your observed statistics.\n\nGenerally I find that the results from these different measures have a \nhigh degree of concordance - if one shows a problem, they all do.  So one \ndoesn't necessarily have to check all, but collectively they can give you \na very good sense whether your model convergence is good or not.\n\n> Are there any other options. Are there any suggestions what can be done \n> besides selecting better starting values, increasing MCMC sample size and \n> selecting terms that are not correlated?\n\nI am a big fan of using TNT for the proposal type instead of \nconstantedges.  That plus a large MCMC sample size, should help in most \ncases where the model is a good one.  The new version of statnet to be \nreleased soon will have additional aids to convergence as well.\n\n> Somethimes, when I run \"mcmc.diagnostics\", I get \"NaN\" for some terms in the \n> correlations and the convergence statistics is missing for these terms. These \n> are the same terms that have NA for MCMC s.e. in summary output.  What does \n> this mean.\n\nCould you send an example?\n\n> Aslo, when I sepcify theta0 (starting values that are therefore not estimated \n> using maximum pseudo-likelihood ), I get the following error when I run the \n> summary on ergm object:\n> \"Error in -object$mplefit$hessian : invalid argument to unary operator\"\n> Probably because the ergm object does not have the element \"mplefit\".\n\nThanks for letting us know - we'll look into it and fix any bugs.\n\nCheers,\nSteve\n\n>\n>\n> Best regarads,\n> Ales Ziberna\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "> Can anyone give me quick pointers on how to asses it the convergence of the \n> ergm model is good. I have used the function mcmc.diagnostics, but am not\n\nHello Ales,\n\nA great question.  It turns out",
+      "thread_id": "thread-186356eaab14",
+      "thread_depth": 0,
+      "month": "2007-11"
+    },
+    {
+      "id": "msg-de253587ea2b",
+      "message_id": "<Pine.WNT.4.61.0711091117130.3708@chandra.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2007-11-09T11:20:01Z",
+      "subject": "[statnet_help] User input for improving statnet",
+      "subject_clean": "[statnet_help] User input for improving statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello all,\n\nAs you may have gleaned from a number of previous emails, the statnet \ndevelopment team is planning two major releases in the coming months. The first \nis a special issue of the Journal of Statistical Software devoted to statnet. \nThe second is a major new release of statnet, with various new features, bug \nfixes, and improved user interface.  These two events will be timed to coincide \nas closely as possible.\n\nWe're writing to request any knowledge you may have of existing bugs in \nstatnet.  Even if there's something that you're not sure is a bug, but which \nyou think may be, let us know.  Information on any documentation errors you've \nencountered would be great too (although we've fixed quite a few of these \nalready).\n\nIn addition, if you have other ideas about user interface, let us know \nthose too.  We can't guarantee we can implement all of these, but we will \ncertainly make an effort to address those that are easy to change and/or \nseem to be common concerns.\n\nWe've been working hard to incorporate new functionality based on our own \nresearch needs and some user feedback.  At this point, we're not likely to be \nable to incorporate much additional user-suggested functionality, but if \nthere's something that you feel would strongly enhance statnet and would be \nrelatively easy, do let us know. At the very least, we can add it to our list \nof potential future work.\n\n*PLEASE NOTE* : When responding to any of these requests, please write only to \nme instead of the whole statnet listserv.\n\nCheers all,\nSteve\nOn behalf of the Statnet development team\n\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 140 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65855,-122.3091&z=18&t=k             *\n**************************************************************************",
+      "body_snippet": "Hello all,\n\nAs you may have gleaned from a number of previous emails, the statnet \ndevelopment team is planning two major releases in the coming months. The first \nis a special issue of the Journal of",
+      "thread_id": "thread-de253587ea2b",
+      "thread_depth": 0,
+      "month": "2007-11"
+    },
+    {
+      "id": "msg-cae7e4d8f486",
+      "message_id": "<a1bf48f10711140745i672d01a1o54fbe391d4ac7eb0@mail.gmail.com>",
+      "from_name": "Paul Dlug",
+      "from_email_hash": "863b14715b3f486dc4ae8dec6b9498e5be3e512284dc8cc23be3369078dd3ad7",
+      "date": "2007-11-14T07:45:33Z",
+      "subject": "[statnet_help] Source code?",
+      "subject_clean": "[statnet_help] Source code?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Please excuse me if this has been asked before, where can I download\nthe source for statnet? I can't seem to find it anywhere on the\nwebsite. I'm running R 2.6.0 on Mac OS X and the binary package keeps\nlooking for symbols in the 2.5 library directory.\n\n\n--Paul",
+      "body_snippet": "Please excuse me if this has been asked before, where can I download\nthe source for statnet? I can't seem to find it anywhere on the\nwebsite. I'm running R 2.6.0 on Mac OS X and the binary package kee",
+      "thread_id": "thread-cae7e4d8f486",
+      "thread_depth": 0,
+      "month": "2007-11"
+    },
+    {
+      "id": "msg-d5c73dfcf5e8",
+      "message_id": "<94E133D09AA24D43BF6341B675C01A338DCDC8@uu01msg-exb01.soliscom.uu.nl>",
+      "from_name": "Bojanowski, M.J.  (Michal)",
+      "from_email_hash": "27858c02eeddab5f13c84d02582fd09242a7632ae83e730aa500cec040f23e67",
+      "date": "2007-11-14T12:23:44Z",
+      "subject": "ODP: [statnet_help] Source code?",
+      "subject_clean": "ODP: [statnet_help] Source code?",
+      "in_reply_to": null,
+      "references": [
+        "<a1bf48f10711140745i672d01a1o54fbe391d4ac7eb0@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Paul,\n\nTry running:\n\ndownload.packages(\"statnet\", getwd(), contriburl=\"http://csde.washington.edu/statnet\", type=\"source\")\n\nHTH,\n\nMichal\n\n<<CAUTION>> My e-mail changed to m.j.bojanowski at uu dot nl\n____________________________________\nMichal Bojanowski\nICS / Department of Sociology\nUtrecht University\nHeidelberglaan 2; 3584 CS Utrecht\nThe Netherlands\nm.j.bojanowski at uu dot nl\nhttp://www.fss.uu.nl/soc/bojanowski/\n\n\n\n \nPlease excuse me if this has been asked before, where can I download\nthe source for statnet? I can't seem to find it anywhere on the\nwebsite. I'm running R 2.6.0 on Mac OS X and the binary package keeps\nlooking for symbols in the 2.5 library directory.\n\n\n--Paul\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20071114/d5e96a9a/attachment.html>",
+      "body_snippet": "Hi Paul,\n\nTry running:\n\ndownload.packages(\"statnet\", getwd(), contriburl=\"http://csde.washington.edu/statnet\", type=\"source\")\n\nHTH,\n\nMichal\n\n<<CAUTION>> My e-mail changed to m.j.bojanowski at uu dot n",
+      "thread_id": "thread-cae7e4d8f486",
+      "thread_depth": 1,
+      "month": "2007-11"
+    },
+    {
+      "id": "msg-536fbdd02e97",
+      "message_id": "<5033d01e0711171725t33ce3fc6i44723a09b8abbbad@mail.gmail.com>",
+      "from_name": "Avranil Sarkar",
+      "from_email_hash": "c7be8ce46e9f5088a8530f83a189c1cff96015609486484e5ed4b6f0849d1e8d",
+      "date": "2007-11-17T17:25:04Z",
+      "subject": "[statnet_help] statnetuserterms",
+      "subject_clean": "[statnet_help] statnetuserterms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\nI want to use the command \"m2star\" and I also want to add some new user\nterms. From the statnet website, its not very clear to me how to install the\nstatnetuserterms package and use it?\nCan you please help?\nThanks\n\n-- \navra\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20071117/b0a98317/attachment.html>",
+      "body_snippet": "Hi,\nI want to use the command \"m2star\" and I also want to add some new user\nterms. From the statnet website, its not very clear to me how to install the\nstatnetuserterms package and use it?\nCan you pl",
+      "thread_id": "thread-536fbdd02e97",
+      "thread_depth": 0,
+      "month": "2007-11"
+    },
+    {
+      "id": "msg-30f69e2a9de4",
+      "message_id": "<C364EEF2.2022D%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2007-11-17T19:18:10Z",
+      "subject": "[statnet_help] statnetuserterms",
+      "subject_clean": "[statnet_help] statnetuserterms",
+      "in_reply_to": "<5033d01e0711171725t33ce3fc6i44723a09b8abbbad@mail.gmail.com>",
+      "references": [],
+      "body_plain": "Hi Avrani,\n\nThe webpage is http://csde.washington.edu/statnet/statnetuserterms.shtml\n\nIt provides information there on how to install the package.\n\n?statnetuserterms? is a regular R package, and so information on the web\nabout packages (e.g., www.r-project.org) will be helpful.\n\nBest,\n\nMark\n\n-------------------------------------------------\nMark S. Handcock\nProfessor and Chair of Statistics\nDepartment of Statistics, B-313 Padelford Hall\nUniversity of Washington, Box 354322     Phone:  (206) 543-6774\nSeattle, WA  98195-4322.                 FAX:    (360) 365-6324\nWeb:  www.stat.washington.edu/~handcock\ninternet:  handcock@stat.washington.edu\n\nOn 11/17/07 5:25 PM, \"Avranil Sarkar\" <avranil@gmail.com> wrote:\n\n> Hi,\n> I want to use the command \"m2star\" and I also want to add some new user terms.\n> From the statnet website, its not very clear to me how to install the\n> statnetuserterms package and use it?\n> Can you please help?\n> Thanks\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20071117/66014e6b/attachment.html>",
+      "body_snippet": "Hi Avrani,\n\nThe webpage is http://csde.washington.edu/statnet/statnetuserterms.shtml\n\nIt provides information there on how to install the package.\n\n?statnetuserterms? is a regular R package, and so in",
+      "thread_id": "thread-536fbdd02e97",
+      "thread_depth": 1,
+      "month": "2007-11"
+    },
+    {
+      "id": "msg-f22ac7a79906",
+      "message_id": "<17AE7D74-E680-4012-A14F-2480AF531087@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2007-11-19T22:26:34Z",
+      "subject": "[statnet_help] comparing parameter estimates across models",
+      "subject_clean": "[statnet_help] comparing parameter estimates across models",
+      "in_reply_to": "<3498.128.84.27.104.1194286177.squirrel@webmail.cornell.edu>",
+      "references": [
+        "<3498.128.84.27.104.1194286177.squirrel@webmail.cornell.edu>"
+      ],
+      "body_plain": "Hi Brian.  This is an interesting question.  For the moment, I don't  \nknow that there is a good answer -- but as Steve Goodreau put it,  \nthis might be a good place for someone interested in ERGMs to make a  \nmark!\n\nDave\n\n\nDavid Hunter\nAssociate professor\nDepartment of Statistics\nPenn State University\nPhone:  (814) 863-0979\nFax:  (814) 863-7114\nwww.stat.psu.edu/~dhunter\n\n\n\nLe 5 nov. 07 ? 19:09, Brian Rubineau a ?crit :\n\n> Greetings.\n> I have data with one set of nodes and two sets of edges\n> (friendship and academic ties among the same set of subjs).\n>\n> I am using two instances of the same ergm (except for the DV)\n> to predict the two edge-sets.\n>\n> I'd like to statistically compare the parameter estimates\n> across the two models (e.g., is racial homophily significantly\n> stronger for friendship vs. academic ties?).\n>\n> The Chow test adapted to logistic regression requires pooling\n> data, and I've been thinking about trying this using the union\n> of the two edgesets and edge-covariate dummies to indicate the\n> source edgeset, or pooling and adding an interaction term, but\n> this is somewhat beyond my depth.\n>\n> Any suggestions?\n>\n> Thanks\n> Brian\n>\n> -- \n> Brian Rubineau\n> Assistant Professor, Organizational Behavior          146K Ives Hall\n> School of Industrial and Labor Relations            ph. 607.255.3048\n> Cornell University                                 fax. 810.963.2738\n> Ithaca, NY 14850                               brubineau@cornell.edu\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Brian.  This is an interesting question.  For the moment, I don't  \nknow that there is a good answer -- but as Steve Goodreau put it,  \nthis might be a good place for someone interested in ERGMs to",
+      "thread_id": "thread-535031780691",
+      "thread_depth": 1,
+      "month": "2007-11"
+    },
+    {
+      "id": "msg-a908bfe29610",
+      "message_id": "<474AB8BF.7000901@nuffield.ox.ac.uk>",
+      "from_name": "Nicholas Harrigan",
+      "from_email_hash": "eacd50f718cf6a86d4c1d228e3569052a3b6b5805d04aa695224c3fb7e1f8190",
+      "date": "2007-11-26T04:14:55Z",
+      "subject": "[statnet_help] Source code for Statnet",
+      "subject_clean": "[statnet_help] Source code for Statnet",
+      "in_reply_to": "<17AE7D74-E680-4012-A14F-2480AF531087@stat.psu.edu>",
+      "references": [
+        "<3498.128.84.27.104.1194286177.squirrel@webmail.cornell.edu>",
+        "<17AE7D74-E680-4012-A14F-2480AF531087@stat.psu.edu>"
+      ],
+      "body_plain": "Hi,\n\nMy apologies if this is a stupid question, but is the source code for \nStatnet available anywhere?  I can't seem to find it on the R or the \nStatnet websites.\n\nI'm mainly interested in how Statnet calculates change statistics, but \nam also interested in how Statnet handles edgelist data. \n\nAlso, do you calculate your change statistics from matrix or edgelist \ndata?  Do you know efficient algorithms that can calculate the most \ncommon change statistics from edgelist data?\n\nThanks\nNick\n\n\n-- \nNicholas Harrigan\nPost-doctoral research officer\nNuffield College, Oxford, OX1 1NF\nPh: +44 (0) 18652 78548\nM: +44 (0) 7962 627960\nnicholas.harrigan@nuffield.ox.ac.uk",
+      "body_snippet": "Hi,\n\nMy apologies if this is a stupid question, but is the source code for \nStatnet available anywhere?  I can't seem to find it on the R or the \nStatnet websites.\n\nI'm mainly interested in how Statne",
+      "thread_id": "thread-535031780691",
+      "thread_depth": 2,
+      "month": "2007-11"
+    },
+    {
+      "id": "msg-ae1776aedffd",
+      "message_id": "<474AB8EE.90906@anu.edu.au>",
+      "from_name": "Nicholas Harrigan",
+      "from_email_hash": "cc2c6e9440d71b421f1da831a0326121a222179975461b21ecd3c963cca132a5",
+      "date": "2007-11-26T04:15:42Z",
+      "subject": "[statnet_help] Source code for Statnet",
+      "subject_clean": "[statnet_help] Source code for Statnet",
+      "in_reply_to": "<17AE7D74-E680-4012-A14F-2480AF531087@stat.psu.edu>",
+      "references": [
+        "<3498.128.84.27.104.1194286177.squirrel@webmail.cornell.edu>",
+        "<17AE7D74-E680-4012-A14F-2480AF531087@stat.psu.edu>"
+      ],
+      "body_plain": "Hi,\n\nMy apologies if this is a stupid question, but is the source code for\nStatnet available anywhere?  I can't seem to find it on the R or the\nStatnet websites.\n\nI'm mainly interested in how Statnet calculates change statistics, but\nam also interested in how Statnet handles edgelist data.\n\nAlso, do you calculate your change statistics from matrix or edgelist\ndata?  Do you know efficient algorithms that can calculate the most\ncommon change statistics from edgelist data?\n\nThanks\nNick\n\n\n\n\n-- \nNicholas Harrigan<br>\nPost-doctoral research officer<br>\nNuffield College, Oxford, OX1 1NF<br>\nPh: +44 (0) 18652 78548<br>\nM: +44 (0) 7962 627960<br>\nnicholas.harrigan@nuffield.ox.ac.uk<br>",
+      "body_snippet": "Hi,\n\nMy apologies if this is a stupid question, but is the source code for\nStatnet available anywhere?  I can't seem to find it on the R or the\nStatnet websites.\n\nI'm mainly interested in how Statnet ",
+      "thread_id": "thread-535031780691",
+      "thread_depth": 2,
+      "month": "2007-11"
+    },
+    {
+      "id": "msg-d2b59e760879",
+      "message_id": "<5033d01e0711271201v7f3df683o9749b9a97f1e2a5d@mail.gmail.com>",
+      "from_name": "Avranil Sarkar",
+      "from_email_hash": "c7be8ce46e9f5088a8530f83a189c1cff96015609486484e5ed4b6f0849d1e8d",
+      "date": "2007-11-27T12:01:23Z",
+      "subject": "[statnet_help] Using rergm",
+      "subject_clean": "[statnet_help] Using rergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\nI am trying to simulate networks from an ergm object.\nFor using the rergm command I downloaded latentnet.\nBut this is what I get:\n\n>\ngraph=ergm(bank~edges+m2star+mutual+triangles+absdiff(\"hay\")+istar(2)+ostar(2))\n>rergm(graph,n=10)\nError in nnodes - 1 : non-numeric argument to binary operator\n\nHere graph is my ergm object. When I looked at the help manual, it says the\nobject should be of the class ergmm and not ergm.\nWhat should I do now?\n\n\n-- \navra\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20071127/c171e78b/attachment.html>",
+      "body_snippet": "Hi,\nI am trying to simulate networks from an ergm object.\nFor using the rergm command I downloaded latentnet.\nBut this is what I get:\n\n>\ngraph=ergm(bank~edges+m2star+mutual+triangles+absdiff(\"hay\")+is",
+      "thread_id": "thread-d2b59e760879",
+      "thread_depth": 0,
+      "month": "2007-11"
+    },
+    {
+      "id": "msg-b9beef04d93f",
+      "message_id": "<p06230900c37378438142@[171.66.36.231]>",
+      "from_name": "Chris Gonzalez Clarke",
+      "from_email_hash": "6982cfaafff4ac6b8ccb426866766cf56dcd48e07af9e761531d5b195a1aedff",
+      "date": "2007-11-28T12:02:53Z",
+      "subject": "[statnet_help] problems running statnet",
+      "subject_clean": "[statnet_help] problems running statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I am attempting to run Statnet on a Mac (powerPC) with OS 10.4.11. \nI've following the instructions to install the package in R and run \nthe update, both of which appear successful. However, when I go to \nuse the program ('library(statnet)), i get the following error:\n\n>  library(statnet)\nLoading required package: network\nClasses for Relational Data\nVersion 1.2 created on July 31, 2007.\ncopyright (c) 2005, Carter T. Butts, University of California-Irvine\n                     Mark S. Handcock, University of Washington\n                     David R. Hunter, Penn State University\n                     Martina Morris, University of Washington\nType help(package=\"network\") to get started.\nError in dyn.load(file, ...) :\n   unable to load shared library \n'/Library/Frameworks/R.framework/Versions/2.6/Resources/library/statnet/libs/ppc/statnet.so':\n \ndlopen(/Library/Frameworks/R.framework/Versions/2.6/Resources/library/statnet/libs/ppc/statnet.so, \n6): Library not loaded: \n/Library/Frameworks/R.framework/Versions/2.5/Resources/lib/libR.dylib\n   Referenced from: \n/Library/Frameworks/R.framework/Versions/2.6/Resources/library/statnet/libs/ppc/statnet.so\n   Reason: image not found\nError in library(statnet) : .First.lib failed for 'statnet'\n\n\n\nHere is my session info:\n\n>  sessionInfo()\nR version 2.6.1 (2007-11-26)\npowerpc-apple-darwin8.10.1\n\nlocale:\nen_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base\n\nother attached packages:\n[1] network_1.2       updatestatnet_1.0\n\nloaded via a namespace (and not attached):\n[1] tools_2.6.1\n\n>  getOption(\"pkgType\")\n[1] \"mac.binary\"\n\n\n\n\nAny suggestions?\nThanks\nChris",
+      "body_snippet": "I am attempting to run Statnet on a Mac (powerPC) with OS 10.4.11. \nI've following the instructions to install the package in R and run \nthe update, both of which appear successful. However, when I go",
+      "thread_id": "thread-b9beef04d93f",
+      "thread_depth": 0,
+      "month": "2007-11"
+    },
+    {
+      "id": "msg-6715308a9d3b",
+      "message_id": "<E4E1855D-ED94-4C70-A80C-9FA1C60FE508@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2007-11-28T13:38:38Z",
+      "subject": "[statnet_help] statnet source code",
+      "subject_clean": "[statnet_help] statnet source code",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi.  Recently I've seen a few requests for the source code for  \nstatnet and since I haven't seen a response, I thought I'd let  \neveryone know how to get it.  In a word, wait. :)  Currently we on  \nthe development team are knee-deep in a major reorganization of the  \ncode in preparation for releasing on CRAN (the Comprehensive R  \nArchive Network -- see www.r-project.org) a package called \"ergm\"  \nwhich, together with the \"network\" package and others that are  \nalready on CRAN, will comprise all of the current functionality of  \nstatnet.  In case you're wondering, \"statnet\" will still exist, but  \nit will technically be just a wrapper for the \"network\" and \"ergm\"  \npackages.\n\nSo, at the moment we don't have any code to share because we're still  \nbusy reorganizing it.  But once we're through this process, which  \nshould culminate sometime in late December, we'll have a much more --  \nwe hope -- readable version of the code for those who are  \ninterested.  Also, truth be told, even if we had something to  \nrelease, we'd need to wait until we get all of the license details in  \nplace (a slightly modified GPL v.3 with attribution), which appears  \nto be almost done.  The bottom line on that is, please cite us if you  \nuse this code and be explicit if you reuse it in other code -- but  \nyou already knew that!\n\nWe'll DEFINITELY let you know when the package is released on CRAN.   \nThanks for your patience.\n\nDave\n\nPS.  There will also be a series of papers coming out in the Journal  \nof Statistical Software (jstatsoft.org) that we hope will serve as a  \nfairly comprehensive manual for all the statnet-related software.   \nMany of you will already know much of this material, but we hope that  \nthese articles will be handy references.  Publication will coincide  \nwith the CRAN release.\n\n\n\n\nDavid Hunter\nAssociate professor\nDepartment of Statistics\nPenn State University\nPhone:  (814) 863-0979\nFax:  (814) 863-7114\nwww.stat.psu.edu/~dhunter",
+      "body_snippet": "Hi.  Recently I've seen a few requests for the source code for  \nstatnet and since I haven't seen a response, I thought I'd let  \neveryone know how to get it.  In a word, wait. :)  Currently we on  \nt",
+      "thread_id": "thread-6715308a9d3b",
+      "thread_depth": 0,
+      "month": "2007-11"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-535031780691",
+      "subject": "[statnet_help] comparing parameter estimates across models",
+      "message_count": 4,
+      "participants": [
+        "Brian Rubineau",
+        "David Hunter",
+        "Nicholas Harrigan"
+      ],
+      "started": "2007-11-05T10:09:37Z",
+      "last_reply": "2007-11-26T04:15:42Z",
+      "root_message_id": "msg-535031780691"
+    },
+    {
+      "id": "thread-13eabc3b97d4",
+      "subject": "[statnet_help] Problem with Statnet (new specifications on a fairly large dataset)",
+      "message_count": 2,
+      "participants": [
+        "Mark S. Handcock",
+        "Tore Opsahl"
+      ],
+      "started": "2007-11-07T14:26:50Z",
+      "last_reply": "2007-11-07T14:41:13Z",
+      "root_message_id": "msg-13eabc3b97d4"
+    },
+    {
+      "id": "thread-186356eaab14",
+      "subject": "[statnet_help] How to asses convergence a possible bug",
+      "message_count": 1,
+      "participants": [
+        "Steven Goodreau"
+      ],
+      "started": "2007-11-09T08:32:04Z",
+      "last_reply": "2007-11-09T08:32:04Z",
+      "root_message_id": "msg-186356eaab14"
+    },
+    {
+      "id": "thread-de253587ea2b",
+      "subject": "[statnet_help] User input for improving statnet",
+      "message_count": 1,
+      "participants": [
+        "Steven Goodreau"
+      ],
+      "started": "2007-11-09T11:20:01Z",
+      "last_reply": "2007-11-09T11:20:01Z",
+      "root_message_id": "msg-de253587ea2b"
+    },
+    {
+      "id": "thread-cae7e4d8f486",
+      "subject": "[statnet_help] Source code?",
+      "message_count": 2,
+      "participants": [
+        "Bojanowski, M.J.  (Michal)",
+        "Paul Dlug"
+      ],
+      "started": "2007-11-14T07:45:33Z",
+      "last_reply": "2007-11-14T12:23:44Z",
+      "root_message_id": "msg-cae7e4d8f486"
+    },
+    {
+      "id": "thread-536fbdd02e97",
+      "subject": "[statnet_help] statnetuserterms",
+      "message_count": 2,
+      "participants": [
+        "Avranil Sarkar",
+        "Mark S. Handcock"
+      ],
+      "started": "2007-11-17T17:25:04Z",
+      "last_reply": "2007-11-17T19:18:10Z",
+      "root_message_id": "msg-536fbdd02e97"
+    },
+    {
+      "id": "thread-d2b59e760879",
+      "subject": "[statnet_help] Using rergm",
+      "message_count": 1,
+      "participants": [
+        "Avranil Sarkar"
+      ],
+      "started": "2007-11-27T12:01:23Z",
+      "last_reply": "2007-11-27T12:01:23Z",
+      "root_message_id": "msg-d2b59e760879"
+    },
+    {
+      "id": "thread-b9beef04d93f",
+      "subject": "[statnet_help] problems running statnet",
+      "message_count": 1,
+      "participants": [
+        "Chris Gonzalez Clarke"
+      ],
+      "started": "2007-11-28T12:02:53Z",
+      "last_reply": "2007-11-28T12:02:53Z",
+      "root_message_id": "msg-b9beef04d93f"
+    },
+    {
+      "id": "thread-6715308a9d3b",
+      "subject": "[statnet_help] statnet source code",
+      "message_count": 1,
+      "participants": [
+        "David Hunter"
+      ],
+      "started": "2007-11-28T13:38:38Z",
+      "last_reply": "2007-11-28T13:38:38Z",
+      "root_message_id": "msg-6715308a9d3b"
+    }
+  ]
+}

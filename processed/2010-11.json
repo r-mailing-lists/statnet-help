@@ -1,0 +1,402 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2010-11",
+  "messages": [
+    {
+      "id": "msg-adc09740e5d6",
+      "message_id": "<579C3DD8-E532-46EA-B0A3-53AC8C40FBC2@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-11-01T09:27:02Z",
+      "subject": "[statnet_help] New version of ergm:  bug fixes",
+      "subject_clean": "[statnet_help] New version of ergm:  bug fixes",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all.  Thanks to several of you for pointing out problems with ergm  \nversion 2.2-5.  As it turns out, several of these were due to really  \nserious bugs.  So we're uploading a new version, 2.2-6, that I hope  \naddresses these problems.\n\nJust in case you don't want to wait, the source code is attached to  \nthis email.\n\nI'm personally very sorry for any inconvenience that the bugs in 2.2-5  \nmay have caused.  As always, please do keep letting us know about any  \nproblems that occur.\n\nBest wishes,\nDave\n\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: ergm_2.2-6.tar.gz\nType: application/x-gzip\nSize: 285218 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101101/e850dbed/attachment.gz>\n-------------- next part --------------",
+      "body_snippet": "Hi all.  Thanks to several of you for pointing out problems with ergm  \nversion 2.2-5.  As it turns out, several of these were due to really  \nserious bugs.  So we're uploading a new version, 2.2-6, t",
+      "thread_id": "thread-adc09740e5d6",
+      "thread_depth": 0,
+      "month": "2010-11"
+    },
+    {
+      "id": "msg-f19132304a19",
+      "message_id": "<AANLkTin=qpdv-hj_5RsNyAvc_PxB5qCq_KsaAOwZXAbu@mail.gmail.com>",
+      "from_name": "Sam Stewart",
+      "from_email_hash": "51b57d9e397a077e24243651cef0d1d3aa1bf70a60060faa096fc9f957fe6cc3",
+      "date": "2010-11-02T10:27:10Z",
+      "subject": "[statnet_help] Difference Between Edgelist and Sociomatrix",
+      "subject_clean": "[statnet_help] Difference Between Edgelist and Sociomatrix",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I'm having a problem that I can't seem to understand.\n\nI'm creating a two-mode network, in which the actors are mailing list\nmembers and the events are threads.  I create the network from an\nedgelist, where the source node is the member participating in a\nthread, and the target not is the thread.  The problem I'm having is\nthat it seems like the network is losing edges when I convert it back\nto a sociomatrix.\n\n> net = network(dat[,c('names','thread')])\n> net2 = as.sociomatrix(net)\n> network.size(net)\n[1] 115\n> dim(net2)\n[1] 115 115\n> network.edgecount(net)\n[1] 373\n> sum(net2)\n[1] 244\n> table(net2)\nnet2\n    0     1\n12981   244\n\nSo it seems to me like my sociomatrix has 129 fewer edges.\n\nThanks,\nSam\n\n-- \nSam Stewart, MMath, A.Stat\nIDPhD Candidate (Health Informatics)\nFaculty of Computer Science, Dalhousie University\n6050 University Ave.\nHalifax, NS, Canada, B3H 1W5",
+      "body_snippet": "I'm having a problem that I can't seem to understand.\n\nI'm creating a two-mode network, in which the actors are mailing list\nmembers and the events are threads.  I create the network from an\nedgelist,",
+      "thread_id": "thread-f19132304a19",
+      "thread_depth": 0,
+      "month": "2010-11"
+    },
+    {
+      "id": "msg-a998ade38059",
+      "message_id": "<0735CEC8-064B-4BE1-BACA-60B03737A5ED@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-11-02T10:58:27Z",
+      "subject": "[statnet_help] Difference Between Edgelist and Sociomatrix",
+      "subject_clean": "[statnet_help] Difference Between Edgelist and Sociomatrix",
+      "in_reply_to": "<AANLkTin=qpdv-hj_5RsNyAvc_PxB5qCq_KsaAOwZXAbu@mail.gmail.com>",
+      "references": [
+        "<AANLkTin=qpdv-hj_5RsNyAvc_PxB5qCq_KsaAOwZXAbu@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Sam.  It's hard to diagnose without having an example that will  \nreplicate the same problem, but here's one possibility illustrated by  \na small test case:\n\n > e = matrix(1:2,5,2,byrow=T)\n > e\n      [,1] [,2]\n[1,]    1    2\n[2,]    1    2\n[3,]    1    2\n[4,]    1    2\n[5,]    1    2\n\nSo this edgelist has 5 \"edges\" even though they're not all unique.  If  \nwe now create a network from this edgelist, the network will have 5  \nedges even though the derived sociomatrix will have only one:\n\n > network.edgecount(network(e))\n[1] 5\n > sum(as.sociomatrix(network(e)))\n[1] 1\n\nThis is not a bug, by the way; there are certainly cases in which it's  \nconceivable that edges could be multiple, and the network package code  \ntries to be as flexible as possible.\n\nOne way to test whether this is what's causing your behavior is to  \nfind the number of unique rows in your edgelist as in:\n > NROW(unique(e))\n[1] 1\n\nSo if you type\nNROW(unique(dat[,c('names','thread')])\nand get 244, that's almost certainly the explanation.\n\nHope this helps,\nDave\n\n\n\n\n\nOn Nov 2, 2010, at 1:27 PM, Sam Stewart wrote:\n\n> I'm having a problem that I can't seem to understand.\n>\n> I'm creating a two-mode network, in which the actors are mailing list\n> members and the events are threads.  I create the network from an\n> edgelist, where the source node is the member participating in a\n> thread, and the target not is the thread.  The problem I'm having is\n> that it seems like the network is losing edges when I convert it back\n> to a sociomatrix.\n>\n>> net = network(dat[,c('names','thread')])\n>> net2 = as.sociomatrix(net)\n>> network.size(net)\n> [1] 115\n>> dim(net2)\n> [1] 115 115\n>> network.edgecount(net)\n> [1] 373\n>> sum(net2)\n> [1] 244\n>> table(net2)\n> net2\n>    0     1\n> 12981   244\n>\n> So it seems to me like my sociomatrix has 129 fewer edges.\n>\n> Thanks,\n> Sam\n>\n> -- \n> Sam Stewart, MMath, A.Stat\n> IDPhD Candidate (Health Informatics)\n> Faculty of Computer Science, Dalhousie University\n> 6050 University Ave.\n> Halifax, NS, Canada, B3H 1W5\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Sam.  It's hard to diagnose without having an example that will  \nreplicate the same problem, but here's one possibility illustrated by  \na small test case:\n\n > e = matrix(1:2,5,2,byrow=T)\n > e\n   ",
+      "thread_id": "thread-f19132304a19",
+      "thread_depth": 1,
+      "month": "2010-11"
+    },
+    {
+      "id": "msg-4a3d40a8db1b",
+      "message_id": "<AANLkTi=QYaZYGTJENeDfsKmWQCLa2DjaxguosyywDbV_@mail.gmail.com>",
+      "from_name": "Sam Stewart",
+      "from_email_hash": "51b57d9e397a077e24243651cef0d1d3aa1bf70a60060faa096fc9f957fe6cc3",
+      "date": "2010-11-02T11:41:07Z",
+      "subject": "[statnet_help] Difference Between Edgelist and Sociomatrix",
+      "subject_clean": "[statnet_help] Difference Between Edgelist and Sociomatrix",
+      "in_reply_to": "<0735CEC8-064B-4BE1-BACA-60B03737A5ED@stat.psu.edu>",
+      "references": [
+        "<AANLkTin=qpdv-hj_5RsNyAvc_PxB5qCq_KsaAOwZXAbu@mail.gmail.com>",
+        "<0735CEC8-064B-4BE1-BACA-60B03737A5ED@stat.psu.edu>"
+      ],
+      "body_plain": "Yes, that's exactly it.  My dataset records posts, so if someone posts\nto the same thread twice then I have an edge for them twice.\n\nThanks for the quick reply,\nSam\n\nOn Tue, Nov 2, 2010 at 2:58 PM, David Hunter <dhunter@stat.psu.edu> wrote:\n> Hi Sam. ?It's hard to diagnose without having an example that will replicate\n> the same problem, but here's one possibility illustrated by a small test\n> case:\n>\n>> e = matrix(1:2,5,2,byrow=T)\n>> e\n> ? ? [,1] [,2]\n> [1,] ? ?1 ? ?2\n> [2,] ? ?1 ? ?2\n> [3,] ? ?1 ? ?2\n> [4,] ? ?1 ? ?2\n> [5,] ? ?1 ? ?2\n>\n> So this edgelist has 5 \"edges\" even though they're not all unique. ?If we\n> now create a network from this edgelist, the network will have 5 edges even\n> though the derived sociomatrix will have only one:\n>\n>> network.edgecount(network(e))\n> [1] 5\n>> sum(as.sociomatrix(network(e)))\n> [1] 1\n>\n> This is not a bug, by the way; there are certainly cases in which it's\n> conceivable that edges could be multiple, and the network package code tries\n> to be as flexible as possible.\n>\n> One way to test whether this is what's causing your behavior is to find the\n> number of unique rows in your edgelist as in:\n>> NROW(unique(e))\n> [1] 1\n>\n> So if you type\n> NROW(unique(dat[,c('names','thread')])\n> and get 244, that's almost certainly the explanation.\n>\n> Hope this helps,\n> Dave\n>\n>\n>\n>\n>\n> On Nov 2, 2010, at 1:27 PM, Sam Stewart wrote:\n>\n>> I'm having a problem that I can't seem to understand.\n>>\n>> I'm creating a two-mode network, in which the actors are mailing list\n>> members and the events are threads. ?I create the network from an\n>> edgelist, where the source node is the member participating in a\n>> thread, and the target not is the thread. ?The problem I'm having is\n>> that it seems like the network is losing edges when I convert it back\n>> to a sociomatrix.\n>>\n>>> net = network(dat[,c('names','thread')])\n>>> net2 = as.sociomatrix(net)\n>>> network.size(net)\n>>\n>> [1] 115\n>>>\n>>> dim(net2)\n>>\n>> [1] 115 115\n>>>\n>>> network.edgecount(net)\n>>\n>> [1] 373\n>>>\n>>> sum(net2)\n>>\n>> [1] 244\n>>>\n>>> table(net2)\n>>\n>> net2\n>> ? 0 ? ? 1\n>> 12981 ? 244\n>>\n>> So it seems to me like my sociomatrix has 129 fewer edges.\n>>\n>> Thanks,\n>> Sam\n>>\n>> --\n>> Sam Stewart, MMath, A.Stat\n>> IDPhD Candidate (Health Informatics)\n>> Faculty of Computer Science, Dalhousie University\n>> 6050 University Ave.\n>> Halifax, NS, Canada, B3H 1W5\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \nSam Stewart, MMath, A.Stat\nIDPhD Candidate (Health Informatics)\nFaculty of Computer Science, Dalhousie University\n6050 University Ave.\nHalifax, NS, Canada, B3H 1W5",
+      "body_snippet": "Yes, that's exactly it.  My dataset records posts, so if someone posts\nto the same thread twice then I have an edge for them twice.\n\nThanks for the quick reply,\nSam\n\nOn Tue, Nov 2, 2010 at 2:58 PM, Da",
+      "thread_id": "thread-f19132304a19",
+      "thread_depth": 2,
+      "month": "2010-11"
+    },
+    {
+      "id": "msg-ee487d67abc0",
+      "message_id": "<AANLkTiniaPNn2GouWyPbZ+VoqDANQ2oAknMAhPRnzE3q@mail.gmail.com>",
+      "from_name": "Wincent",
+      "from_email_hash": "6846f5c272f8850077470247e7e6a025c83f8d7387bcf22387269b3b25a06522",
+      "date": "2010-11-04T05:38:18Z",
+      "subject": "[statnet_help] New version of ergm: bug fixes",
+      "subject_clean": "[statnet_help] New version of ergm: bug fixes",
+      "in_reply_to": "<579C3DD8-E532-46EA-B0A3-53AC8C40FBC2@stat.psu.edu>",
+      "references": [
+        "<579C3DD8-E532-46EA-B0A3-53AC8C40FBC2@stat.psu.edu>"
+      ],
+      "body_plain": "Great news. Thank you.\n\nOn 2 November 2010 00:27, David Hunter <dhunter@stat.psu.edu> wrote:\n> Hi all. ?Thanks to several of you for pointing out problems with ergm\n> version 2.2-5. ?As it turns out, several of these were due to really serious\n> bugs. ?So we're uploading a new version, 2.2-6, that I hope addresses these\n> problems.\n>\n> Just in case you don't want to wait, the source code is attached to this\n> email.\n>\n> I'm personally very sorry for any inconvenience that the bugs in 2.2-5 may\n> have caused. ?As always, please do keep letting us know about any problems\n> that occur.\n>\n> Best wishes,\n> Dave\n>\n>\n>\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n\n\n-- \nWincent Ronggui HUANG (Ph.D.)\nCity University of Hong Kong\nhttp://asrr.r-forge.r-project.org/rghuang.html",
+      "body_snippet": "Great news. Thank you.\n\nOn 2 November 2010 00:27, David Hunter <dhunter@stat.psu.edu> wrote:\n> Hi all. ?Thanks to several of you for pointing out problems with ergm\n> version 2.2-5. ?As it turns out, ",
+      "thread_id": "thread-adc09740e5d6",
+      "thread_depth": 1,
+      "month": "2010-11"
+    },
+    {
+      "id": "msg-55a19abb9585",
+      "message_id": "<4CD6F540.5060309@coll.mpg.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "be636dde28cefa502024155d2c668f78a853d393127e9415ccd248c0c80cf950",
+      "date": "2010-11-07T10:51:44Z",
+      "subject": "[statnet_help] edge.col does not work as expected when plotting network objects",
+      "subject_clean": "[statnet_help] edge.col does not work as expected when plotting network objects",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI have just installed R and statnet on my new Linux system, but I have \nproblems when I try to run some lines of code which worked without any \nproblem just last week before updating the installation.\n\nSpecifically, I am not able to plot networks with custom edge colors if \nthe color is given as a string. Here is an example:\n\n > plot(network, edge.col=\"gray\")\n\nreturns the warning message: \"In is.na(NULL) : is.na() applied to \nnon-(list or vector) of type 'NULL'\". Moreover, edges seem to be \ninvisible in the diagram. The vertex color argument does not seem to be \naffected, so vertex.col=\"gray\" works as expected.\n\nIf I use \"edge.col=8\" instead, there is no problem. Actually I would \nlike to use custom shades of gray (in my case, \"gray44\") though, so I \nwould prefer not to convert the color strings to integers.\n\nAny ideas what could have caused this problem or how I can solve it?\n\nThanks and have a nice Sunday,\n\nPhilip\n\n-- \nPhilip Leifeld\nMax Planck Institute for Research on Collective Goods\nMaxNetAging Doctoral Fellow\nMax Planck International Research Network on Aging\nhttp://www.philipleifeld.de",
+      "body_snippet": "Hi,\n\nI have just installed R and statnet on my new Linux system, but I have \nproblems when I try to run some lines of code which worked without any \nproblem just last week before updating the installa",
+      "thread_id": "thread-55a19abb9585",
+      "thread_depth": 0,
+      "month": "2010-11"
+    },
+    {
+      "id": "msg-0af508594ebb",
+      "message_id": "<4CD7D8DF.5030701@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2010-11-08T03:02:55Z",
+      "subject": "[statnet_help] New version of ergm:  bug fixes",
+      "subject_clean": "[statnet_help] New version of ergm:  bug fixes",
+      "in_reply_to": "<579C3DD8-E532-46EA-B0A3-53AC8C40FBC2@stat.psu.edu>",
+      "references": [
+        "<579C3DD8-E532-46EA-B0A3-53AC8C40FBC2@stat.psu.edu>"
+      ],
+      "body_plain": "Hi Dave,\n\nThank you to the Statnet team for this new version of ergm!\n\nI have just tried it to check if the \"maxout bug\" with directed networks \nwas resolved, but it was not (see my previous mails with the subject : \n\"Problem with \"constraints=~bd(maxout=5)\").\n\nAs you asked us to inform you of potential problems, I can inform you \nthis problem still occurs.\n\nBest regards,\nVic.\n\n\nLe 11/01/2010 05:27 PM, David Hunter a ?crit :\n> Hi all. Thanks to several of you for pointing out problems with ergm\n> version 2.2-5. As it turns out, several of these were due to really\n> serious bugs. So we're uploading a new version, 2.2-6, that I hope\n> addresses these problems.\n>\n> Just in case you don't want to wait, the source code is attached to this\n> email.\n>\n> I'm personally very sorry for any inconvenience that the bugs in 2.2-5\n> may have caused. As always, please do keep letting us know about any\n> problems that occur.\n>\n> Best wishes,\n> Dave\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Hi Dave,\n\nThank you to the Statnet team for this new version of ergm!\n\nI have just tried it to check if the \"maxout bug\" with directed networks \nwas resolved, but it was not (see my previous mails wit",
+      "thread_id": "thread-adc09740e5d6",
+      "thread_depth": 1,
+      "month": "2010-11"
+    },
+    {
+      "id": "msg-357979ba5e45",
+      "message_id": "<AANLkTinBarJTCasjb7fjS3OB3CBab6ZhN=FS1G0gFNcu@mail.gmail.com>",
+      "from_name": "Wincent",
+      "from_email_hash": "6846f5c272f8850077470247e7e6a025c83f8d7387bcf22387269b3b25a06522",
+      "date": "2010-11-08T06:12:53Z",
+      "subject": "[statnet_help] New version of ergm: bug fixes",
+      "subject_clean": "[statnet_help] New version of ergm: bug fixes",
+      "in_reply_to": "<4CD7D8DF.5030701@unige.ch>",
+      "references": [
+        "<579C3DD8-E532-46EA-B0A3-53AC8C40FBC2@stat.psu.edu>",
+        "<4CD7D8DF.5030701@unige.ch>"
+      ],
+      "body_plain": "Hi, in that case. Is it safe to use ergm to fit a model if I don't\ntouch the argument of constraints?\n\nRegards\nWincent\n\nOn 8 November 2010 19:02, Victorin Luisier <Victorin.Luisier@unige.ch> wrote:\n> Hi Dave,\n>\n> Thank you to the Statnet team for this new version of ergm!\n>\n> I have just tried it to check if the \"maxout bug\" with directed networks was\n> resolved, but it was not (see my previous mails with the subject : \"Problem\n> with \"constraints=~bd(maxout=5)\").\n>\n> As you asked us to inform you of potential problems, I can inform you this\n> problem still occurs.\n>\n> Best regards,\n> Vic.\n>\n>\n> Le 11/01/2010 05:27 PM, David Hunter a ?crit :\n>>\n>> Hi all. Thanks to several of you for pointing out problems with ergm\n>> version 2.2-5. As it turns out, several of these were due to really\n>> serious bugs. So we're uploading a new version, 2.2-6, that I hope\n>> addresses these problems.\n>>\n>> Just in case you don't want to wait, the source code is attached to this\n>> email.\n>>\n>> I'm personally very sorry for any inconvenience that the bugs in 2.2-5\n>> may have caused. As always, please do keep letting us know about any\n>> problems that occur.\n>>\n>> Best wishes,\n>> Dave\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> --\n> Victorin LUISIER, Assistant doctorant\n> M?thodologie et Analyse de donn?es\n> FAPSE - UNIGE\n> Bureau n?4139 - Unimail\n> Bd du Pont d'Arve 40\n> 1211 Gen?ve 4\n> T?l: (+41-22) 379 91 34\n> E-mail: victorin.luisier@unige.ch\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \nWincent Ronggui HUANG (Ph.D.)\nCity University of Hong Kong\nhttp://asrr.r-forge.r-project.org/rghuang.html",
+      "body_snippet": "Hi, in that case. Is it safe to use ergm to fit a model if I don't\ntouch the argument of constraints?\n\nRegards\nWincent\n\nOn 8 November 2010 19:02, Victorin Luisier <Victorin.Luisier@unige.ch> wrote:\n> ",
+      "thread_id": "thread-adc09740e5d6",
+      "thread_depth": 2,
+      "month": "2010-11"
+    },
+    {
+      "id": "msg-e8e8e1367079",
+      "message_id": "<4CD81D12.90401@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2010-11-08T07:53:54Z",
+      "subject": "[statnet_help] New version of ergm: bug fixes",
+      "subject_clean": "[statnet_help] New version of ergm: bug fixes",
+      "in_reply_to": "<AANLkTinBarJTCasjb7fjS3OB3CBab6ZhN=FS1G0gFNcu@mail.gmail.com>",
+      "references": [
+        "<579C3DD8-E532-46EA-B0A3-53AC8C40FBC2@stat.psu.edu>",
+        "<4CD7D8DF.5030701@unige.ch>",
+        "<AANLkTinBarJTCasjb7fjS3OB3CBab6ZhN=FS1G0gFNcu@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Wincent,\n\nAs far as I know, this bug only occurs when you use the maxout \nconstraint on directed networks. If you are not in this situation \n(directed network + maxout constraint), it is probably safe to use ergm.\n\nBest Regards,\nVic.\n\nLe 11/08/2010 03:12 PM, Wincent a ?crit :\n> Hi, in that case. Is it safe to use ergm to fit a model if I don't\n> touch the argument of constraints?\n>\n> Regards\n> Wincent\n>\n> On 8 November 2010 19:02, Victorin Luisier<Victorin.Luisier@unige.ch>  wrote:\n>> Hi Dave,\n>>\n>> Thank you to the Statnet team for this new version of ergm!\n>>\n>> I have just tried it to check if the \"maxout bug\" with directed networks was\n>> resolved, but it was not (see my previous mails with the subject : \"Problem\n>> with \"constraints=~bd(maxout=5)\").\n>>\n>> As you asked us to inform you of potential problems, I can inform you this\n>> problem still occurs.\n>>\n>> Best regards,\n>> Vic.\n>>\n>>\n>> Le 11/01/2010 05:27 PM, David Hunter a ?crit :\n>>>\n>>> Hi all. Thanks to several of you for pointing out problems with ergm\n>>> version 2.2-5. As it turns out, several of these were due to really\n>>> serious bugs. So we're uploading a new version, 2.2-6, that I hope\n>>> addresses these problems.\n>>>\n>>> Just in case you don't want to wait, the source code is attached to this\n>>> email.\n>>>\n>>> I'm personally very sorry for any inconvenience that the bugs in 2.2-5\n>>> may have caused. As always, please do keep letting us know about any\n>>> problems that occur.\n>>>\n>>> Best wishes,\n>>> Dave\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>> --\n>> Victorin LUISIER, Assistant doctorant\n>> M?thodologie et Analyse de donn?es\n>> FAPSE - UNIGE\n>> Bureau n?4139 - Unimail\n>> Bd du Pont d'Arve 40\n>> 1211 Gen?ve 4\n>> T?l: (+41-22) 379 91 34\n>> E-mail: victorin.luisier@unige.ch\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n>\n>\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Hi Wincent,\n\nAs far as I know, this bug only occurs when you use the maxout \nconstraint on directed networks. If you are not in this situation \n(directed network + maxout constraint), it is probably s",
+      "thread_id": "thread-adc09740e5d6",
+      "thread_depth": 3,
+      "month": "2010-11"
+    },
+    {
+      "id": "msg-0470d8a75441",
+      "message_id": "<4CD8EA69.7040601@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-11-08T22:30:01Z",
+      "subject": "[statnet_help] edge.col does not work as expected when plotting network objects",
+      "subject_clean": "[statnet_help] edge.col does not work as expected when plotting network objects",
+      "in_reply_to": "<4CD6F540.5060309@coll.mpg.de>",
+      "references": [
+        "<4CD6F540.5060309@coll.mpg.de>"
+      ],
+      "body_plain": "Hi, Philip.  The plot.network code had a major rewrite in the last \nrevision, and this seems to be a bug.  I'll put a fix in for the next \nrelease.  In the interim, one immediate workaround is to use gplot -- \nthe syntax is very similar, so you should be able to get comparable \nresults with very little code modification.\n\nHope that helps,\n\n-Carter\n\nOn 11/07/2010 10:51 AM, Philip Leifeld wrote:\n> Hi,\n>\n> I have just installed R and statnet on my new Linux system, but I have\n> problems when I try to run some lines of code which worked without any\n> problem just last week before updating the installation.\n>\n> Specifically, I am not able to plot networks with custom edge colors if\n> the color is given as a string. Here is an example:\n>\n>  > plot(network, edge.col=\"gray\")\n>\n> returns the warning message: \"In is.na(NULL) : is.na() applied to\n> non-(list or vector) of type 'NULL'\". Moreover, edges seem to be\n> invisible in the diagram. The vertex color argument does not seem to be\n> affected, so vertex.col=\"gray\" works as expected.\n>\n> If I use \"edge.col=8\" instead, there is no problem. Actually I would\n> like to use custom shades of gray (in my case, \"gray44\") though, so I\n> would prefer not to convert the color strings to integers.\n>\n> Any ideas what could have caused this problem or how I can solve it?\n>\n> Thanks and have a nice Sunday,\n>\n> Philip\n>",
+      "body_snippet": "Hi, Philip.  The plot.network code had a major rewrite in the last \nrevision, and this seems to be a bug.  I'll put a fix in for the next \nrelease.  In the interim, one immediate workaround is to use ",
+      "thread_id": "thread-55a19abb9585",
+      "thread_depth": 1,
+      "month": "2010-11"
+    },
+    {
+      "id": "msg-29fbb5972bfa",
+      "message_id": "<AANLkTin7sgx7F2Sg7RykBpjDw4gpDVdsPywPE1QNcAnG@mail.gmail.com>",
+      "from_name": "Nelson Fernandez",
+      "from_email_hash": "64e060c9c12dc40a16fd9cf52f5cd2f3a9d09167b0f5ebfa800cf9cf6c560f3d",
+      "date": "2010-11-09T13:20:32Z",
+      "subject": "[statnet_help] Data from igrah to statnet",
+      "subject_clean": "[statnet_help] Data from igrah to statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear List,\n\nWe are new in statnet and we would be very grateful if somebody could help\nus with how to load data in statnet.\nWe have a adjacency matriz make in igraph, but statnet can`t read it.\n\nThanks in advance and Regards,\n\n\nNelson Fern?ndez\nUniversidad de Pamplona\nColombia.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101109/7255ebef/attachment.html>",
+      "body_snippet": "Dear List,\n\nWe are new in statnet and we would be very grateful if somebody could help\nus with how to load data in statnet.\nWe have a adjacency matriz make in igraph, but statnet can`t read it.\n\nThank",
+      "thread_id": "thread-29fbb5972bfa",
+      "thread_depth": 0,
+      "month": "2010-11"
+    },
+    {
+      "id": "msg-7c188ff7a3e9",
+      "message_id": "<AANLkTikJ-2z6nEmHLg50qLbzvxUcwf6VddNwzDkB0Ytw@mail.gmail.com>",
+      "from_name": "Wincent",
+      "from_email_hash": "6846f5c272f8850077470247e7e6a025c83f8d7387bcf22387269b3b25a06522",
+      "date": "2010-11-09T23:23:28Z",
+      "subject": "[statnet_help] Data from igrah to statnet",
+      "subject_clean": "[statnet_help] Data from igrah to statnet",
+      "in_reply_to": "<AANLkTin7sgx7F2Sg7RykBpjDw4gpDVdsPywPE1QNcAnG@mail.gmail.com>",
+      "references": [
+        "<AANLkTin7sgx7F2Sg7RykBpjDw4gpDVdsPywPE1QNcAnG@mail.gmail.com>"
+      ],
+      "body_plain": "If you have an adjacency matrix, it is easy to construct a network\nobject. See the network function in network package.\n\nThe other way is to install the intergraph package by\n>install.packages(\"intergraph\", repos=\"http://bojan.3e.pl/R\")\n\nsee http://brokeringclosure.wordpress.com/2010/08/25/from-igraph-to-network-and-back-again/\nThe newest version of network has namespace, so many steps in the\nabove link can be skipped.\n\nRegards,\n\nOn 10 November 2010 05:20, Nelson Fernandez <nelferpa@gmail.com> wrote:\n> Dear List,\n>\n> We are new in statnet and we would be very grateful if somebody could help\n> us with how to load data in statnet.\n> We have a adjacency matriz make in igraph, but statnet can`t read it.\n>\n> Thanks in advance and Regards,\n>\n>\n> Nelson Fern?ndez\n> Universidad de Pamplona\n> Colombia.\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n\n\n-- \nWincent Ronggui HUANG (Ph.D.)\nCity University of Hong Kong\nhttp://asrr.r-forge.r-project.org/rghuang.html",
+      "body_snippet": "If you have an adjacency matrix, it is easy to construct a network\nobject. See the network function in network package.\n\nThe other way is to install the intergraph package by\n>install.packages(\"interg",
+      "thread_id": "thread-29fbb5972bfa",
+      "thread_depth": 1,
+      "month": "2010-11"
+    },
+    {
+      "id": "msg-bd50956b04d5",
+      "message_id": "<AANLkTimu+b1gb+02+o2VUVj2nm=hKf8dDaFWcDwwtX_A@mail.gmail.com>",
+      "from_name": "Brian Keegan",
+      "from_email_hash": "0a040d156157c7a0846c2e199462b4a90b1286ad17bfecf6c905da0c405bc047",
+      "date": "2010-11-20T16:28:42Z",
+      "subject": "[statnet_help] Attribute lookup/match and import to network object",
+      "subject_clean": "[statnet_help] Attribute lookup/match and import to network object",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I need some help mapping vertex attributes from a matrix/list to a network\nobject. I have a directed edgelist with unique and non-sequential vertex IDs\n(14 digit identifiers) and a matrix with the same unique and non-sequential\nvertex IDs and attributes. I convert the edgelist into a network object with\nsequential IDs with the following code.\n\nel=read.csv(file.choose(),header=F)\ncode=sort(unique(c(el[,1],el[,2])))\nel[,1]=match(el[,1],code)\nel[,2]=match(el[,2],code)\nn=network(el,matrix.type=\"edgelist\",directed=FALSE)\nnetwork.vertex.names(n)=code\n\nHowever, I am still grappling with two things:\n1. How to lookup/convert/match the vertex attribute matrix unique IDs into\nthe appropriate sequential IDs in the edgelist.\n2. How to attach the sequentialized vertex attribute IDs to the network\nobject.\n\nAssuming attribute_table has 3 columns, [,1] being the non-sequential IDs,\n[,2] the sequentialized IDs, and [,3] is the attribute of interest, I\nsuspect the latter step is something to the effect of sorting on [,2] and\nthen calling\n\nset.vertex.attribute(n,\"attribute_name\",attribute_table[,3],v=1:network.size(x))\n\nThank you for your help ahead of time!\n\nBrian\n\n-- \nBrian C. Keegan\nPh.D. Student - Media, Technology, & Society\nSchool of Communication, Northwestern University\n\nScience of Networks in Communities, Laboratory for Collaborative Technology\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101120/6e89cc56/attachment.html>",
+      "body_snippet": "I need some help mapping vertex attributes from a matrix/list to a network\nobject. I have a directed edgelist with unique and non-sequential vertex IDs\n(14 digit identifiers) and a matrix with the sam",
+      "thread_id": "thread-bd50956b04d5",
+      "thread_depth": 0,
+      "month": "2010-11"
+    },
+    {
+      "id": "msg-8fe51b946405",
+      "message_id": "<4CECF384.6040200@coll.mpg.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "be636dde28cefa502024155d2c668f78a853d393127e9415ccd248c0c80cf950",
+      "date": "2010-11-24T03:14:12Z",
+      "subject": "[statnet_help] ERGMs and co-occurrence networks",
+      "subject_clean": "[statnet_help] ERGMs and co-occurrence networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nIs there anything special I should take care of when fitting an ERGM to \na co-occurrence network of political actors (via their common ideas)?\n\nThere is no model for weighted networks, so I will have to dichotomize \nedge weights at an arbitrary threshold value, right?\n\nThere are also many cliques due to the very nature of a co-occurrence \nnetwork. I suppose I could (1) either model this by including GWDSP and \nGWESP terms (because there are essentially subgroups where every dyad \nhas multiple shared partners), or I could (2) argue that the choices of \nideas in the original two-mode network are actually independent (except \nfor covariates), so including network terms for the co-occurrence \nnetwork would be a misspecification - in the latter case, I should \nrather model the co-occurrence network in terms of nodemixing (e.g. same \nactor type, same source of funding etc.). But which makes more sense? \nIntuitively, I would follow the second option.\n\nThanks for your thoughts about this,\n\nPhilip\n\nPS: Btw, I collected the data using my Java software Discourse Network \nAnalyzer. I have also written an R package called rDNA which can import \nthese networks directly into R. More details on my homepage.\n\n-- \nPhilip Leifeld\nMax Planck Institute for Research on Collective Goods\nhttp://www.philipleifeld.de",
+      "body_snippet": "Hi,\n\nIs there anything special I should take care of when fitting an ERGM to \na co-occurrence network of political actors (via their common ideas)?\n\nThere is no model for weighted networks, so I will ",
+      "thread_id": "thread-8fe51b946405",
+      "thread_depth": 0,
+      "month": "2010-11"
+    },
+    {
+      "id": "msg-4bcefd05f4e1",
+      "message_id": "<AANLkTimbaL=eenF1mBiOw_spjFDAbRTWgi-pwkN7-6um@mail.gmail.com>",
+      "from_name": "Wincent",
+      "from_email_hash": "6846f5c272f8850077470247e7e6a025c83f8d7387bcf22387269b3b25a06522",
+      "date": "2010-11-30T01:31:59Z",
+      "subject": "[statnet_help] New version of ergm: bug fixes",
+      "subject_clean": "[statnet_help] New version of ergm: bug fixes",
+      "in_reply_to": "<4CD7D8DF.5030701@unige.ch>",
+      "references": [
+        "<579C3DD8-E532-46EA-B0A3-53AC8C40FBC2@stat.psu.edu>",
+        "<4CD7D8DF.5030701@unige.ch>"
+      ],
+      "body_plain": "Hi Vic, the ergm package has been updated again. Is the problem solved\nin the latest version?\n\nThanks\n\nOn 8 November 2010 19:02, Victorin Luisier <Victorin.Luisier@unige.ch> wrote:\n> Hi Dave,\n>\n> Thank you to the Statnet team for this new version of ergm!\n>\n> I have just tried it to check if the \"maxout bug\" with directed networks was\n> resolved, but it was not (see my previous mails with the subject : \"Problem\n> with \"constraints=~bd(maxout=5)\").\n>\n> As you asked us to inform you of potential problems, I can inform you this\n> problem still occurs.\n>\n> Best regards,\n> Vic.\n>\n>\n> Le 11/01/2010 05:27 PM, David Hunter a ?crit :\n>>\n>> Hi all. Thanks to several of you for pointing out problems with ergm\n>> version 2.2-5. As it turns out, several of these were due to really\n>> serious bugs. So we're uploading a new version, 2.2-6, that I hope\n>> addresses these problems.\n>>\n>> Just in case you don't want to wait, the source code is attached to this\n>> email.\n>>\n>> I'm personally very sorry for any inconvenience that the bugs in 2.2-5\n>> may have caused. As always, please do keep letting us know about any\n>> problems that occur.\n>>\n>> Best wishes,\n>> Dave\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> --\n> Victorin LUISIER, Assistant doctorant\n> M?thodologie et Analyse de donn?es\n> FAPSE - UNIGE\n> Bureau n?4139 - Unimail\n> Bd du Pont d'Arve 40\n> 1211 Gen?ve 4\n> T?l: (+41-22) 379 91 34\n> E-mail: victorin.luisier@unige.ch\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \nWincent Ronggui HUANG (Ph.D.)\nCity University of Hong Kong\nhttp://asrr.r-forge.r-project.org/rghuang.html",
+      "body_snippet": "Hi Vic, the ergm package has been updated again. Is the problem solved\nin the latest version?\n\nThanks\n\nOn 8 November 2010 19:02, Victorin Luisier <Victorin.Luisier@unige.ch> wrote:\n> Hi Dave,\n>\n> Than",
+      "thread_id": "thread-adc09740e5d6",
+      "thread_depth": 2,
+      "month": "2010-11"
+    },
+    {
+      "id": "msg-82080204becb",
+      "message_id": "<4CF50E0F.5080202@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2010-11-30T06:45:35Z",
+      "subject": "[statnet_help] New version of ergm: bug fixes",
+      "subject_clean": "[statnet_help] New version of ergm: bug fixes",
+      "in_reply_to": "<AANLkTimbaL=eenF1mBiOw_spjFDAbRTWgi-pwkN7-6um@mail.gmail.com>",
+      "references": [
+        "<579C3DD8-E532-46EA-B0A3-53AC8C40FBC2@stat.psu.edu>",
+        "<4CD7D8DF.5030701@unige.ch>",
+        "<AANLkTimbaL=eenF1mBiOw_spjFDAbRTWgi-pwkN7-6um@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Wincent,\n\nYes, this new version solved the problem!\n\nDave sent me the new version and I did some tests with it. As I wrote my \ncomments to David , I totally forgot to copy them on this list. Sorry \nfor that.\n\nBest wishes,\nVic.\n\n\nLe 11/30/2010 10:31 AM, Wincent a ?crit :\n> Hi Vic, the ergm package has been updated again. Is the problem solved\n> in the latest version?\n>\n> Thanks\n>\n> On 8 November 2010 19:02, Victorin Luisier<Victorin.Luisier@unige.ch>  wrote:\n>> Hi Dave,\n>>\n>> Thank you to the Statnet team for this new version of ergm!\n>>\n>> I have just tried it to check if the \"maxout bug\" with directed networks was\n>> resolved, but it was not (see my previous mails with the subject : \"Problem\n>> with \"constraints=~bd(maxout=5)\").\n>>\n>> As you asked us to inform you of potential problems, I can inform you this\n>> problem still occurs.\n>>\n>> Best regards,\n>> Vic.\n>>\n>>\n>> Le 11/01/2010 05:27 PM, David Hunter a ?crit :\n>>>\n>>> Hi all. Thanks to several of you for pointing out problems with ergm\n>>> version 2.2-5. As it turns out, several of these were due to really\n>>> serious bugs. So we're uploading a new version, 2.2-6, that I hope\n>>> addresses these problems.\n>>>\n>>> Just in case you don't want to wait, the source code is attached to this\n>>> email.\n>>>\n>>> I'm personally very sorry for any inconvenience that the bugs in 2.2-5\n>>> may have caused. As always, please do keep letting us know about any\n>>> problems that occur.\n>>>\n>>> Best wishes,\n>>> Dave\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>> --\n>> Victorin LUISIER, Assistant doctorant\n>> M?thodologie et Analyse de donn?es\n>> FAPSE - UNIGE\n>> Bureau n?4139 - Unimail\n>> Bd du Pont d'Arve 40\n>> 1211 Gen?ve 4\n>> T?l: (+41-22) 379 91 34\n>> E-mail: victorin.luisier@unige.ch\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n>\n>\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Hi Wincent,\n\nYes, this new version solved the problem!\n\nDave sent me the new version and I did some tests with it. As I wrote my \ncomments to David , I totally forgot to copy them on this list. Sorry ",
+      "thread_id": "thread-adc09740e5d6",
+      "thread_depth": 3,
+      "month": "2010-11"
+    },
+    {
+      "id": "msg-7bf0d7b2ee74",
+      "message_id": "<122791A4-F911-45EE-AC8C-9B9E27B5205C@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-11-30T12:00:33Z",
+      "subject": "[statnet_help] New version of ergm: bug fixes",
+      "subject_clean": "[statnet_help] New version of ergm: bug fixes",
+      "in_reply_to": "<4CF50E0F.5080202@unige.ch>",
+      "references": [
+        "<579C3DD8-E532-46EA-B0A3-53AC8C40FBC2@stat.psu.edu>",
+        "<4CD7D8DF.5030701@unige.ch>",
+        "<AANLkTimbaL=eenF1mBiOw_spjFDAbRTWgi-pwkN7-6um@mail.gmail.com>",
+        "<4CF50E0F.5080202@unige.ch>"
+      ],
+      "body_plain": "Thanks Vic.  I also forgot to copy this list.\n\nergm version 2.2-7 is now on CRAN, and it is not much different from  \n2.2-6 except that it fixes a couple of bugs.  In particular, one  \npotentially important bug, which has been in the code since version  \n2.2-3, can reverse the direction of ties in simulated directed  \nnetworks.  Thus, I'd strongly recommend updating to 2.2-7 for anyone  \nwho depends on directed network simulations (including MCMC-based  \nmaximum likelihood estimation).\n\n\nHere, in a nutshell, is the old bug in action:\n# using version 2.2-6 now to try to simulate a network with many  \noutdegree-3 nodes but few indegree-3 nodes\n# by putting a huge positive parameter on odegree(3) and a huge  \nnegative parameter on idegree(3):\nlibrary(ergm)\ndata(sampson)\nmynet <- simulate(samplike ~ odegree(3) + idegree(3), theta0=c(+100,  \n-100))\nsummary(mynet~odegree(3) + idegree(3))\nodegree3 idegree3\n        0       11\n\n# Now for the same example using version 2.2-7:\nlibrary(ergm)\ndata(sampson)\nmynet <- simulate(samplike ~ odegree(3) + idegree(3), theta0=c(+100,  \n-100))\nsummary(mynet~odegree(3) + idegree(3))\nodegree3 idegree3\n       15        0\n\n\n\nDave\n\n\n\n\nOn Nov 30, 2010, at 9:45 AM, Victorin Luisier wrote:\n\n> Hi Wincent,\n>\n> Yes, this new version solved the problem!\n>\n> Dave sent me the new version and I did some tests with it. As I  \n> wrote my comments to David , I totally forgot to copy them on this  \n> list. Sorry for that.\n>\n> Best wishes,\n> Vic.\n>\n>\n> Le 11/30/2010 10:31 AM, Wincent a ?crit :\n>> Hi Vic, the ergm package has been updated again. Is the problem  \n>> solved\n>> in the latest version?\n>>\n>> Thanks\n>>\n>> On 8 November 2010 19:02, Victorin  \n>> Luisier<Victorin.Luisier@unige.ch>  wrote:\n>>> Hi Dave,\n>>>\n>>> Thank you to the Statnet team for this new version of ergm!\n>>>\n>>> I have just tried it to check if the \"maxout bug\" with directed  \n>>> networks was\n>>> resolved, but it was not (see my previous mails with the subject :  \n>>> \"Problem\n>>> with \"constraints=~bd(maxout=5)\").\n>>>\n>>> As you asked us to inform you of potential problems, I can inform  \n>>> you this\n>>> problem still occurs.\n>>>\n>>> Best regards,\n>>> Vic.\n>>>\n>>>\n>>> Le 11/01/2010 05:27 PM, David Hunter a ?crit :\n>>>>\n>>>> Hi all. Thanks to several of you for pointing out problems with  \n>>>> ergm\n>>>> version 2.2-5. As it turns out, several of these were due to really\n>>>> serious bugs. So we're uploading a new version, 2.2-6, that I hope\n>>>> addresses these problems.\n>>>>\n>>>> Just in case you don't want to wait, the source code is attached  \n>>>> to this\n>>>> email.\n>>>>\n>>>> I'm personally very sorry for any inconvenience that the bugs in  \n>>>> 2.2-5\n>>>> may have caused. As always, please do keep letting us know about  \n>>>> any\n>>>> problems that occur.\n>>>>\n>>>> Best wishes,\n>>>> Dave\n>>>> _______________________________________________\n>>>> statnet_help mailing list\n>>>> statnet_help@u.washington.edu\n>>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>>> --\n>>> Victorin LUISIER, Assistant doctorant\n>>> M?thodologie et Analyse de donn?es\n>>> FAPSE - UNIGE\n>>> Bureau n?4139 - Unimail\n>>> Bd du Pont d'Arve 40\n>>> 1211 Gen?ve 4\n>>> T?l: (+41-22) 379 91 34\n>>> E-mail: victorin.luisier@unige.ch\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>>\n>>\n>>\n>\n> -- \n> Victorin LUISIER, Assistant doctorant\n> M?thodologie et Analyse de donn?es\n> FAPSE - UNIGE\n> Bureau n?4139 - Unimail\n> Bd du Pont d'Arve 40\n> 1211 Gen?ve 4\n> T?l: (+41-22) 379 91 34\n> E-mail: victorin.luisier@unige.ch\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Thanks Vic.  I also forgot to copy this list.\n\nergm version 2.2-7 is now on CRAN, and it is not much different from  \n2.2-6 except that it fixes a couple of bugs.  In particular, one  \npotentially imp",
+      "thread_id": "thread-adc09740e5d6",
+      "thread_depth": 4,
+      "month": "2010-11"
+    },
+    {
+      "id": "msg-65f37dfab1df",
+      "message_id": "<AANLkTi=tMwxMZ2Xpx_mMuuHOk08GWWKVyggxMn9r6a1S@mail.gmail.com>",
+      "from_name": "Brian Keegan",
+      "from_email_hash": "0a040d156157c7a0846c2e199462b4a90b1286ad17bfecf6c905da0c405bc047",
+      "date": "2010-11-30T22:59:21Z",
+      "subject": "[statnet_help] Re: Attribute lookup/match and import to network object",
+      "subject_clean": "[statnet_help] Re: Attribute lookup/match and import to network object",
+      "in_reply_to": "<AANLkTimu+b1gb+02+o2VUVj2nm=hKf8dDaFWcDwwtX_A@mail.gmail.com>",
+      "references": [
+        "<AANLkTimu+b1gb+02+o2VUVj2nm=hKf8dDaFWcDwwtX_A@mail.gmail.com>"
+      ],
+      "body_plain": "I worked it out and thought I'd share with the rest of the group if only to\nhelp other newbies. If I botched something terribly or missed the boat\nentirely on an easier way to do this, now would be a great time to tell me!\n:-)\n*\n### Reading in directed edgelist to network object. The \"network\" and \"ergm\"\nlibraries don't like networks with non-sequential node names, so if you have\nunique IDs, we have to turn them into sequential/ordinal IDs ###\n**# Create edgelist matrix named \"el\" from CSV*\nel<-read.csv(file.choose(),header=F)\n*# \"c\" creates a single list of column 1 stacked on top of column 2,\n\"unique\" removes duplicates from this single column, \"sort\" orders this\ncolumn of unique IDs, and \"code\" is an object where this list of original\nIDs can be mapped to sequential/ordinal values*\ncode<-sort(unique(c(el[,1],el[,2])))\n*# Match each of the IDs in the first column of the edgelist to their new\nsequential/ordinal number in the \"code\" mapping list*\nel[,1]<-match(el[,1],code)\n*# Match each of the IDs in the second column of the edgelist to their new\nsequential/ordinal number in the \"code\" mapping list*\nel[,2]<-match(el[,2],code)\n*# Import this directed edgelist into a network object.*\nn<-network(el,matrix.type=\"edgelist\",directed=T)\n*# Rename the vertices back to their original names*\nnetwork.vertex.names(n)<-code\n*# Re-organize the \"code\" mapping list to be used for importing attribute\ndata*\ncode_frame <- data.frame(code)\n*# Give this new object a column name*\ncolnames(code_frame) <- c('real_id')\n\n*### Reading in nodelist of attributes to network object ###\n# Create nodelist matrix named \"nl\" from CSV assuming you don't have\ncolumn/header names*\nnl<-read.csv(file.choose(),header=F)\n*# Create column/header names*\ncolnames(nl)<- c('real_id','attribute1')\n*# Check to make sure column names are the same*\nhead(nl)\nhead(code_frame)\n*# Join/merge the \"code_frame\" mapping object with the \"nl\" nodelist by\nshared \"real_id\"s*\nattributes<-merge(code_frame,nl,by.x='real_id',by.y='real_id')\n*# check to make sure attribute vector and code_frame vector are the same\nsize*\ntail(attributes)\ntail(code_frame)\n*# import each attribute from a column in \"attribute\" matrix into the\nnetwork object \"n\" starting with the second column which is the first non-id\nattribute*\nset.vertex.attribute(n, \"attribute1\", attributes[,2], v=1:network.size(n))\n*# check to make sure imported attributes are present in network object*\nlist.vertex.attribute(n)\n*# check to make sure attributes properly imported to network object*\nget.vertex.attribute(n, 'attribute1')\n\n\nOn Sat, Nov 20, 2010 at 6:28 PM, Brian Keegan <bkeegan@northwestern.edu>wrote:\n\n> I need some help mapping vertex attributes from a matrix/list to a network\n> object. I have a directed edgelist with unique and non-sequential vertex IDs\n> (14 digit identifiers) and a matrix with the same unique and non-sequential\n> vertex IDs and attributes. I convert the edgelist into a network object with\n> sequential IDs with the following code.\n>\n> el=read.csv(file.choose(),header=F)\n> code=sort(unique(c(el[,1],el[,2])))\n> el[,1]=match(el[,1],code)\n> el[,2]=match(el[,2],code)\n> n=network(el,matrix.type=\"edgelist\",directed=FALSE)\n> network.vertex.names(n)=code\n>\n> However, I am still grappling with two things:\n> 1. How to lookup/convert/match the vertex attribute matrix unique IDs into\n> the appropriate sequential IDs in the edgelist.\n> 2. How to attach the sequentialized vertex attribute IDs to the network\n> object.\n>\n> Assuming attribute_table has 3 columns, [,1] being the non-sequential IDs,\n> [,2] the sequentialized IDs, and [,3] is the attribute of interest, I\n> suspect the latter step is something to the effect of sorting on [,2] and\n> then calling\n>\n>\n> set.vertex.attribute(n,\"attribute_name\",attribute_table[,3],v=1:network.size(x))\n>\n> Thank you for your help ahead of time!\n>\n> Brian\n>\n> --\n> Brian C. Keegan\n> Ph.D. Student - Media, Technology, & Society\n> School of Communication, Northwestern University\n>\n> Science of Networks in Communities, Laboratory for Collaborative Technology\n>\n\n\n\n-- \nBrian C. Keegan\nPh.D. Student - Media, Technology, & Society\nSchool of Communication, Northwestern University\n\nScience of Networks in Communities, Laboratory for Collaborative Technology\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101201/9db89a45/attachment.html>",
+      "body_snippet": "I worked it out and thought I'd share with the rest of the group if only to\nhelp other newbies. If I botched something terribly or missed the boat\nentirely on an easier way to do this, now would be a ",
+      "thread_id": "thread-bd50956b04d5",
+      "thread_depth": 1,
+      "month": "2010-11"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-adc09740e5d6",
+      "subject": "[statnet_help] New version of ergm:  bug fixes",
+      "message_count": 8,
+      "participants": [
+        "David Hunter",
+        "Victorin Luisier",
+        "Wincent"
+      ],
+      "started": "2010-11-01T09:27:02Z",
+      "last_reply": "2010-11-30T12:00:33Z",
+      "root_message_id": "msg-adc09740e5d6"
+    },
+    {
+      "id": "thread-f19132304a19",
+      "subject": "[statnet_help] Difference Between Edgelist and Sociomatrix",
+      "message_count": 3,
+      "participants": [
+        "David Hunter",
+        "Sam Stewart"
+      ],
+      "started": "2010-11-02T10:27:10Z",
+      "last_reply": "2010-11-02T11:41:07Z",
+      "root_message_id": "msg-f19132304a19"
+    },
+    {
+      "id": "thread-55a19abb9585",
+      "subject": "[statnet_help] edge.col does not work as expected when plotting network objects",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Philip Leifeld"
+      ],
+      "started": "2010-11-07T10:51:44Z",
+      "last_reply": "2010-11-08T22:30:01Z",
+      "root_message_id": "msg-55a19abb9585"
+    },
+    {
+      "id": "thread-29fbb5972bfa",
+      "subject": "[statnet_help] Data from igrah to statnet",
+      "message_count": 2,
+      "participants": [
+        "Nelson Fernandez",
+        "Wincent"
+      ],
+      "started": "2010-11-09T13:20:32Z",
+      "last_reply": "2010-11-09T23:23:28Z",
+      "root_message_id": "msg-29fbb5972bfa"
+    },
+    {
+      "id": "thread-bd50956b04d5",
+      "subject": "[statnet_help] Attribute lookup/match and import to network object",
+      "message_count": 2,
+      "participants": [
+        "Brian Keegan"
+      ],
+      "started": "2010-11-20T16:28:42Z",
+      "last_reply": "2010-11-30T22:59:21Z",
+      "root_message_id": "msg-bd50956b04d5"
+    },
+    {
+      "id": "thread-8fe51b946405",
+      "subject": "[statnet_help] ERGMs and co-occurrence networks",
+      "message_count": 1,
+      "participants": [
+        "Philip Leifeld"
+      ],
+      "started": "2010-11-24T03:14:12Z",
+      "last_reply": "2010-11-24T03:14:12Z",
+      "root_message_id": "msg-8fe51b946405"
+    }
+  ]
+}

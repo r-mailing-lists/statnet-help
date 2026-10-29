@@ -1,0 +1,102 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2011-11",
+  "messages": [
+    {
+      "id": "msg-7ce8e5175cc9",
+      "message_id": "<CAO1x9EamLz7wSWrNQGAotVFWfZg86=SA8b0ETVObeqCCpHv30A@mail.gmail.com>",
+      "from_name": "Adrian Albert",
+      "from_email_hash": "de045ebde7690cd51a94e3b1efe0a96ccec44a5e42463f5dc48234bd4a9ec7cc",
+      "date": "2011-11-12T22:40:41Z",
+      "subject": "[statnet_help] visualizing networks?",
+      "subject_clean": "[statnet_help] visualizing networks?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi statnet enthusiasts,\n\nI wanted to create several visualizations of example networks that I am\ncreating with the statnet (plus igraph/intergraph). The network package has\na nice interface to the plot command to visualize a force-directed layout.\nHowever I was wondering if there were R visualization packages that offer\nmore flexible visualization capabilities such as arc diagrams or matrix\ndiagrams. Any suggestions welcome!\n\nThanks,\nAdrian\n\n-- \n---------------------------------------------------------------------\nAdrian Albert\nPhD Candidate, Electrical Engineering\nStanford University\nTel.: 001 510 213 1220\nemail: adalbert@stanford.edu\n\nweb:   www.stanford.edu/~adalbert\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20111113/27d33e7d/attachment.html>",
+      "body_snippet": "Hi statnet enthusiasts,\n\nI wanted to create several visualizations of example networks that I am\ncreating with the statnet (plus igraph/intergraph). The network package has\na nice interface to the plo",
+      "thread_id": "thread-7ce8e5175cc9",
+      "thread_depth": 0,
+      "month": "2011-11"
+    },
+    {
+      "id": "msg-7a24e113c869",
+      "message_id": "<58A39A22-B719-400A-9508-7C763C3EC4DD@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2011-11-13T03:34:45Z",
+      "subject": "[statnet_help] visualizing networks?",
+      "subject_clean": "[statnet_help] visualizing networks?",
+      "in_reply_to": "<CAO1x9EamLz7wSWrNQGAotVFWfZg86=SA8b0ETVObeqCCpHv30A@mail.gmail.com>",
+      "references": [
+        "<CAO1x9EamLz7wSWrNQGAotVFWfZg86=SA8b0ETVObeqCCpHv30A@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Adrian,\n\nI'm not sure what a matrix diagram is, but if I understand you then  \nit's relatively easy to write R code from scratch to do something like  \nthat.  Here's a little snippet I wrote for a talk that plots an  \nadjacency matrix as a white square with black entries where the arcs  \nlie:\n\nmatplotter <- function(x) {\n   if (is.network(x)) x <- x[,]\n   n <- dim(x)[1]\n   plot(0:n, n:0, type=\"n\", xaxt=\"n\", yaxt=\"n\", xlab=\"\",\n        ylab=\"\", bty=\"n\", ylim=c(n,0))\n   therows <- row(x)[x>0]\n   thecols <- col(x)[x>0]\n   rect(thecols-1, therows-1, thecols, therows, col=1)\n   rect(0,0,n,n)\n}\n\nIt should be easy to customize this in many ways (adding color,  \nlabels, etc.).  To see it used, try\n\nlibrary(ergm)\ndata(flo)\nmatplotter(flo)\n\nDave\n\n\n\nOn Nov 13, 2011, at 1:40 AM, Adrian Albert wrote:\n\n> Hi statnet enthusiasts,\n>\n> I wanted to create several visualizations of example networks that I  \n> am creating with the statnet (plus igraph/intergraph). The network  \n> package has a nice interface to the plot command to visualize a  \n> force-directed layout. However I was wondering if there were R  \n> visualization packages that offer more flexible visualization  \n> capabilities such as arc diagrams or matrix diagrams. Any  \n> suggestions welcome!\n>\n> Thanks,\n> Adrian\n>\n> -- \n> ---------------------------------------------------------------------\n> Adrian Albert\n> PhD Candidate, Electrical Engineering\n> Stanford University\n> Tel.: 001 510 213 1220\n> email: adalbert@stanford.edu\n>\n> web:   www.stanford.edu/~adalbert\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20111113/502e1eb6/attachment.html>",
+      "body_snippet": "Dear Adrian,\n\nI'm not sure what a matrix diagram is, but if I understand you then  \nit's relatively easy to write R code from scratch to do something like  \nthat.  Here's a little snippet I wrote for ",
+      "thread_id": "thread-7ce8e5175cc9",
+      "thread_depth": 1,
+      "month": "2011-11"
+    },
+    {
+      "id": "msg-0c25642a752c",
+      "message_id": "<4EBFB294.9000505@coll.mpg.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "be636dde28cefa502024155d2c668f78a853d393127e9415ccd248c0c80cf950",
+      "date": "2011-11-13T04:05:40Z",
+      "subject": "[statnet_help] visualizing networks?",
+      "subject_clean": "[statnet_help] visualizing networks?",
+      "in_reply_to": "<58A39A22-B719-400A-9508-7C763C3EC4DD@stat.psu.edu>",
+      "references": [
+        "<CAO1x9EamLz7wSWrNQGAotVFWfZg86=SA8b0ETVObeqCCpHv30A@mail.gmail.com>",
+        "<58A39A22-B719-400A-9508-7C763C3EC4DD@stat.psu.edu>"
+      ],
+      "body_plain": "Hi Adrian,\n\nif this is what you want, you may also want to try the following commands:\n\n#image plot:\nimage(flo)\n\n#level plot:\nlibrary(lattice)\nlevelplot(flo)\n\n#heat map:\nheatmap(flo)\n\nThey can visualize valued networks as well.\n\nBest,\nPhilip\n\n\nAm 13.11.2011 12:34, schrieb David Hunter:\n> Dear Adrian,\n>\n> I'm not sure what a matrix diagram is, but if I understand you then it's\n> relatively easy to write R code from scratch to do something like that.\n> Here's a little snippet I wrote for a talk that plots an adjacency\n> matrix as a white square with black entries where the arcs lie:\n>\n> matplotter <- function(x) {\n> if (is.network(x)) x <- x[,]\n> n <- dim(x)[1]\n> plot(0:n, n:0, type=\"n\", xaxt=\"n\", yaxt=\"n\", xlab=\"\",\n> ylab=\"\", bty=\"n\", ylim=c(n,0))\n> therows <- row(x)[x>0]\n> thecols <- col(x)[x>0]\n> rect(thecols-1, therows-1, thecols, therows, col=1)\n> rect(0,0,n,n)\n> }\n>\n> It should be easy to customize this in many ways (adding color, labels,\n> etc.). To see it used, try\n>\n> library(ergm)\n> data(flo)\n> matplotter(flo)\n>\n> Dave\n>\n>\n>\n> On Nov 13, 2011, at 1:40 AM, Adrian Albert wrote:\n>\n>> Hi statnet enthusiasts,\n>>\n>> I wanted to create several visualizations of example networks that I\n>> am creating with the statnet (plus igraph/intergraph). The network\n>> package has a nice interface to the plot command to visualize a\n>> force-directed layout. However I was wondering if there were R\n>> visualization packages that offer more flexible visualization\n>> capabilities such as arc diagrams or matrix diagrams. Any suggestions\n>> welcome!\n>>\n>> Thanks,\n>> Adrian\n>>\n>> --\n>> ---------------------------------------------------------------------\n>> Adrian Albert\n>> PhD Candidate, Electrical Engineering\n>> Stanford University\n>> Tel.: 001 510 213 1220\n>> email: adalbert@stanford.edu\n>>\n>> web: www.stanford.edu/~adalbert\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nPhilip Leifeld\n\nPostdoctoral Researcher      | +49 (0) 7531 88 3717 (phone)\nDepartment of Politics and   |\nPublic Administration        | philip.leifeld@uni-konstanz.de\nUniversity of Konstanz       | http://www.philipleifeld.de\n------------------------------------------------------------\nMax Planck Institute for     | +49 (0) 1577 6830349 (mobile)\nResearch on Collective Goods |\nKurt-Schumacher-Str. 10      | Leifeld@coll.mpg.de\n53113 Bonn, Germany          | (valid until 2011-11-30)",
+      "body_snippet": "Hi Adrian,\n\nif this is what you want, you may also want to try the following commands:\n\n#image plot:\nimage(flo)\n\n#level plot:\nlibrary(lattice)\nlevelplot(flo)\n\n#heat map:\nheatmap(flo)\n\nThey can visuali",
+      "thread_id": "thread-7ce8e5175cc9",
+      "thread_depth": 2,
+      "month": "2011-11"
+    },
+    {
+      "id": "msg-2ca590609a45",
+      "message_id": "<CAKdD_Xt4bJh_da+VM8-G-9+r7j1kv=SU085zPVzaU3wfUVPuVQ@mail.gmail.com>",
+      "from_name": "Ben Domingue",
+      "from_email_hash": "8044ec7b0a2e39518222887aecfd1b7d94fd6091c3fdd1931d4cf8c64fddc0de",
+      "date": "2011-11-18T07:48:47Z",
+      "subject": "[statnet_help] Problem specifying theta0 in simulate.ergm",
+      "subject_clean": "[statnet_help] Problem specifying theta0 in simulate.ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello all,\nI am trying to simulate networks based on a ERG model with certain\ncoefficients fixed at null. In reading the simulate.ergm\ndocumentation, this seems like it should be a fairly straightforward\nmatter using the theta0 arg. However, in working with the function I\ncan't quite get it to work. Here's a brief example to illustrate:\n\n\nlibrary(ergm)\nlibrary(network)\ndata(faux.magnolia.high)\nergm(faux.magnolia.high ~ edges + nodematch(\"Grade\",diff=T) +\nnodematch(\"Race\",diff=T) + nodematch(\"Sex\",diff=F) + absdiff(\"Grade\")\n+ gwesp(0.25,fixed=T))->mod\nmod$coef->z\nz[2:7]<- -50 #change all the nodematch grade coefs\nsimulate.ergm(mod,theta0=z)->new\nergm(new~edges + nodematch(\"Grade\",diff=T) + nodematch(\"Race\",diff=T)\n+ nodematch(\"Sex\",diff=F) + absdiff(\"Grade\") +\ngwesp(0.25,fixed=T))->mod.new\nplot(mod$coef,mod.new$coef); abline(0,1)\n\nHere's the start of the estimates from my machine:\n\n> cbind(mod$coef,mod.new$coef)\n                       [,1]   [,2]\nedges                -8.275 -7.970\nnodematch.Grade.7     1.579  0.836\nnodematch.Grade.8     1.795  0.964\n\nThe two nodematch terms are certainly lower, but nowhere near where\nthey should be given the rather dramatic change I made to the vector\nof coefficients. Any thoughts?\n\nThanks!\nBen Domingue\nSchool of Education\nCU Boulder",
+      "body_snippet": "Hello all,\nI am trying to simulate networks based on a ERG model with certain\ncoefficients fixed at null. In reading the simulate.ergm\ndocumentation, this seems like it should be a fairly straightforw",
+      "thread_id": "thread-2ca590609a45",
+      "thread_depth": 0,
+      "month": "2011-11"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-7ce8e5175cc9",
+      "subject": "[statnet_help] visualizing networks?",
+      "message_count": 3,
+      "participants": [
+        "Adrian Albert",
+        "David Hunter",
+        "Philip Leifeld"
+      ],
+      "started": "2011-11-12T22:40:41Z",
+      "last_reply": "2011-11-13T04:05:40Z",
+      "root_message_id": "msg-7ce8e5175cc9"
+    },
+    {
+      "id": "thread-2ca590609a45",
+      "subject": "[statnet_help] Problem specifying theta0 in simulate.ergm",
+      "message_count": 1,
+      "participants": [
+        "Ben Domingue"
+      ],
+      "started": "2011-11-18T07:48:47Z",
+      "last_reply": "2011-11-18T07:48:47Z",
+      "root_message_id": "msg-2ca590609a45"
+    }
+  ]
+}

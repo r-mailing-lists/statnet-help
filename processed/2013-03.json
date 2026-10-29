@@ -1,0 +1,446 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2013-03",
+  "messages": [
+    {
+      "id": "msg-2cf378f86dd1",
+      "message_id": "<201303021155220976227@126.com>",
+      "from_name": "ya",
+      "from_email_hash": "bdb50df08d91a8322aab32f6d653237eb97395be0cf167c21b33616e6be32050",
+      "date": "2013-03-02T01:55:26Z",
+      "subject": "[statnet_help] involving covariates in ergm",
+      "subject_clean": "[statnet_help] involving covariates in ergm",
+      "in_reply_to": null,
+      "references": [
+        "<55928.130.203.167.0.1361828559.squirrel@email.science.psu.edu>"
+      ],
+      "body_plain": "Dear list,\n\nThank  you very much for reading this email.\n\nI have been trying to involve some individual covariates such as gender, age, marriage, etc, into the ERGM model. So far, the example I found about this topic usually use an existing network object with the covariates already in it. However, in my case, the data is still in the raw data file. So my question is:\n\n1. By using ERGM package in the statnet suite, is it possible to have the adjacency matrix and the data of the covariates in the same raw data file? or should I put the data of the covariates in a seperate data file?\n\n2. In R, I expect that the adjacency matrix can be read in either way, but how to read the data of the covariates into the network object? Is there any example I can check?\n\nThank you very much.\n\nBest regards,\n\nya\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130302/d93ab6c6/attachment.html>",
+      "body_snippet": "Dear list,\n\nThank  you very much for reading this email.\n\nI have been trying to involve some individual covariates such as gender, age, marriage, etc, into the ERGM model. So far, the example I found ",
+      "thread_id": "thread-2cf378f86dd1",
+      "thread_depth": 0,
+      "month": "2013-03"
+    },
+    {
+      "id": "msg-90dd383d1f0c",
+      "message_id": "<37892938C9FC499B89C0B045046FE8E3@alperin.ca>",
+      "from_name": "Juan Pablo Alperin",
+      "from_email_hash": "c751a4e2599de680f055499bfcb7c1ebf69cc9e384a2141ea91edcf699d92dcc",
+      "date": "2013-03-02T15:33:12Z",
+      "subject": "[statnet_help] involving covariates in ergm",
+      "subject_clean": "[statnet_help] involving covariates in ergm",
+      "in_reply_to": "<201303021155220976227@126.com>",
+      "references": [
+        "<55928.130.203.167.0.1361828559.squirrel@email.science.psu.edu>",
+        "<201303021155220976227@126.com>"
+      ],
+      "body_plain": "I am no expert, but I have been reading my network and my network attributes separately. You have to make sure that the nodes in your adjacency matrix (or edgelist) are in the same order as in your node attributes file. \n\nthen you use the %v% to set network attributes (look at the network package documentation). But it should be something like: \n\nnet %v% \"gender\" <- var_with_nodes_values$gender\n\nJuan\n\nOn Saturday, 2 March, 2013 at 1:55 AM, ya wrote: \n> Dear list,\n>  \n> Thank  you very much for reading this email.\n>  \n> I have been trying to involve some individual covariates such as gender, age, marriage, etc, into the ERGM model. So far, the example I found about this topic usually use an existing network object with the covariates already in it. However, in my case, the data is still in the raw data file. So my question is:\n>  \n> 1. By using ERGM package in the statnet suite, is it possible to have the adjacency matrix and the data of the covariates in the same raw data file? or should I put the data of the covariates in a seperate data file?\n>  \n> 2. In R, I expect that the adjacency matrix can be read in either way, but how to read the data of the covariates into the network object? Is there any example I can check?\n>  \n> Thank you very much.\n>  \n> Best regards,\n>  \n> ya\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu (mailto:statnet_help@u.washington.edu)\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> \n> \n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130302/abe2d9ab/attachment.html>",
+      "body_snippet": "I am no expert, but I have been reading my network and my network attributes separately. You have to make sure that the nodes in your adjacency matrix (or edgelist) are in the same order as in your no",
+      "thread_id": "thread-2cf378f86dd1",
+      "thread_depth": 1,
+      "month": "2013-03"
+    },
+    {
+      "id": "msg-90a1eee94851",
+      "message_id": "<1362412358.8314.YahooMailNeo@web120505.mail.ne1.yahoo.com>",
+      "from_name": "Phil Murphy",
+      "from_email_hash": "9cc1c84b4814962bd98ecdcde4ef95c290b70cdd2e945ffe736f6b65312d3933",
+      "date": "2013-03-04T07:52:38Z",
+      "subject": "[statnet_help] Phil Murphy",
+      "subject_clean": "[statnet_help] Phil Murphy",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "http://www.dt-schneider.de/rgpfs/azdmoyouohftl\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130304/52e7bc80/attachment.html>",
+      "body_snippet": "http://www.dt-schneider.de/rgpfs/azdmoyouohftl\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/201",
+      "thread_id": "thread-90a1eee94851",
+      "thread_depth": 0,
+      "month": "2013-03"
+    },
+    {
+      "id": "msg-8f35e55cbc91",
+      "message_id": "<alpine.WNT.1.10.1303040828350.5792@morrism-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-03-04T08:30:53Z",
+      "subject": "[statnet_help] involving covariates in ergm",
+      "subject_clean": "[statnet_help] involving covariates in ergm",
+      "in_reply_to": "<201303021155220976227@126.com>",
+      "references": [
+        "<55928.130.203.167.0.1361828559.squirrel@email.science.psu.edu>",
+        "<201303021155220976227@126.com>"
+      ],
+      "body_plain": "Ya --\n\nThere are some good tutorials on these issues on the statnet wiki:\n\nhttps://statnet.csde.washington.edu/trac/wiki/Resources#TrainingWorkshopMaterialsSunbelt2012\n\nThe \"Intro\" would be the best place to start.\n\nbest,\nMartina\n\n\nOn Sat, 2 Mar 2013, ya wrote:\n\n> Dear list,\n> \n> Thank? you very much for reading this email.\n> \n> I have been trying to involve some individual covariates such as gender, age, marriage, etc,\n> into the ERGM model. So far, the example I found about this topic usually use an existing\n> network object with the covariates already in it. However, in my case, the data is still in\n> the raw data file. So my question is:\n> \n> 1. By using ERGM package in the statnet suite, is it possible to have the adjacency matrix\n> and the data of the covariates in the same raw data file? or should I put the data of the\n> covariates in a seperate data file?\n> \n> 2. In R, I expect that the adjacency matrix can be read in either way, but how to read the\n> data of the covariates into the network object? Is there any example I can check?\n> \n> Thank you very much.\n> \n> Best regards,\n> \n> ya\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Ya --\n\nThere are some good tutorials on these issues on the statnet wiki:\n\nhttps://statnet.csde.washington.edu/trac/wiki/Resources#TrainingWorkshopMaterialsSunbelt2012\n\nThe \"Intro\" would be the best p",
+      "thread_id": "thread-2cf378f86dd1",
+      "thread_depth": 1,
+      "month": "2013-03"
+    },
+    {
+      "id": "msg-db11db618ea3",
+      "message_id": "<51375776.2050801@helsinki.fi>",
+      "from_name": "Juha Itkonen",
+      "from_email_hash": "428adaab6ca45bf5857d207a689680efdc3023f5792d971c8c02bba6b8e44ce5",
+      "date": "2013-03-06T06:49:26Z",
+      "subject": "[statnet_help] Tractable ERGM?",
+      "subject_clean": "[statnet_help] Tractable ERGM?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear everyone,\n\nI just read a working paper by Arun Chandrasekhar and Matt Jackson \ncalled \"Tractable and Consistent Random Graph Models\" \n(http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2150428), and I \nwould be really interested in what you think of it and how it relates to \nstatnet? It claims to reduce mixing times dramatically and make \nestimation of large ERGMs possible, but I really can't tell whether the \npaper is a breakthrough or a flop.\n\nBest,\nJuha\n\n-- \nJuha Itkonen\nDoctoral student\n\nDepartment of Political and Economic Studies\nEconomics\nP.O. Box 17 (Arkadiankatu 7)\nFI-00014 University of Helsinki\nFinland\n\nEmail: juha.itkonen@helsinki.fi\nPhone: +358 50 318 2260\nFax: +358 9 191 28736\nHomepage: http://blogs.helsinki.fi/jitkonen",
+      "body_snippet": "Dear everyone,\n\nI just read a working paper by Arun Chandrasekhar and Matt Jackson \ncalled \"Tractable and Consistent Random Graph Models\" \n(http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2150428),",
+      "thread_id": "thread-db11db618ea3",
+      "thread_depth": 0,
+      "month": "2013-03"
+    },
+    {
+      "id": "msg-33fd0c310f72",
+      "message_id": "<5138D0DE.9010705@siu.edu>",
+      "from_name": "Shane Gleason",
+      "from_email_hash": "ac41ec97f21ad08d483932a77d2108a01f71b70e5a177513a1cd409ce7614ba0",
+      "date": "2013-03-07T09:39:42Z",
+      "subject": "[statnet_help] ERGM loop and NAN errors",
+      "subject_clean": "[statnet_help] ERGM loop and NAN errors",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello everyone,\n\nI am having two issues, which I feel might be related.\n\nEvery time I run an ERGM with a dataset examining ties between states, I \nget the following error:\n\n[1] \"Warning:  This network contains loops\"\n\nThis is even after specifying that there are no loops in the network at \npractically every step along the way.\n\nHere's the relevant output:\n\nmatrix1994 <- read.csv(\"1994_matrix5.csv\", header=F, stringsAsFactors=F, sep=\"\\t\")\nmatrix1994 <- as.matrix(matrix1994,supress.diag=T)\nattr1994 <- read.csv(\"attr1994.csv\", header=T, stringsAsFactors=F, sep=\"\\t\")\nrownames(matrix1994) <- attr1994$state\ncolnames(matrix1994) <- attr1994$state\n#Let's make this all into an edgelist\ne1994 <- as.edgelist.sna(matrix1994)\nnet1994 <- network(e1994, directed=F, loops=F)\nm0 <- ergm(net1994 ~ density, loops=F   )\n[1] \"Warning:  This network contains loops\"\n\n\nAdditionally, depending on the data I use, I also get an error that NANs \nare produced.  I found a post by Mark Handcock regarding the Nan \nproblem, in which he suggests entering missing values as NA instead of 0 \nor 1.  The thing is, the data I have in a complete sample of all the \nstates, there is actually no missing data.\n\n> matrix1994 <- read.csv(\"1994_matrix.csv\", header=F, stringsAsFactors=F, sep=\"\\t\")\n> matrix1994 <- as.matrix(matrix1994,supress.diag=T)\n> attr1994 <- read.csv(\"attr1994.csv\", header=T, stringsAsFactors=F, sep=\"\\t\")\n> rownames(matrix1994) <- attr1994$state\n> colnames(matrix1994) <- attr1994$state\n> #Let's make this all into an edgelist\n> e1994 <- as.edgelist.sna(matrix1994)\n> net1994 <- network(e1994, directed=F, loops=F)\n> m0 <- ergm(net1994 ~ density, loops=F   )\n[1] \"Warning:  This network contains loops\"\nWarning message:\nIn log(Clist$nedges/(Clist$ndyads - Clist$nedges)) : NaNs produced\n\n\nI have three datasets, 1994_matrix.csv, 1994_matrix5, and 1994_matrix7.  \nThey're all the same data, though the ones followed by a number have \nties valued at less than that number set to zero (ie: if an edge is \nvalued at less than 7 in 199_matrix.csv, it is valued at 0 in \n1994_matrix7.csv).\n\nI've looked through the archives and Google and can't seem to find \nanything addressing these issues.  Does anyone have any ideas?\n\nThanks,\n\nShane\n\n\n\n-- \nShane Gleason\nDoctoral Candidate\nSouthern Illinois University:Carbondale\nDepartment of Political Science\nFaner 3172",
+      "body_snippet": "Hello everyone,\n\nI am having two issues, which I feel might be related.\n\nEvery time I run an ERGM with a dataset examining ties between states, I \nget the following error:\n\n[1] \"Warning:  This network",
+      "thread_id": "thread-33fd0c310f72",
+      "thread_depth": 0,
+      "month": "2013-03"
+    },
+    {
+      "id": "msg-34b8d7e3a055",
+      "message_id": "<alpine.WNT.1.10.1303070941100.8244@morrism-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-03-07T09:44:21Z",
+      "subject": "[statnet_help] ERGM loop and NAN errors",
+      "subject_clean": "[statnet_help] ERGM loop and NAN errors",
+      "in_reply_to": "<5138D0DE.9010705@siu.edu>",
+      "references": [
+        "<5138D0DE.9010705@siu.edu>"
+      ],
+      "body_plain": "Hi Shane,\n\nIt would be good to know which version of ergm you are using. We are days \naway from releasing a new version of ergm and several other packages in \nstatnet. Before we try to trouble shoot this, it's worth making sure that \nyou're using the most up to date version.  Our release candidate 3.0-999 \nis up at:\n\nhttp://statnet.csde.washington.edu/preview/\n\nthanks,\nMartina\n\nOn Thu, 7 Mar 2013, Shane Gleason wrote:\n\n> Hello everyone,\n>\n> I am having two issues, which I feel might be related.\n>\n> Every time I run an ERGM with a dataset examining ties between states, I get \n> the following error:\n>\n> [1] \"Warning:  This network contains loops\"\n>\n> This is even after specifying that there are no loops in the network at \n> practically every step along the way.\n>\n> Here's the relevant output:\n>\n> matrix1994 <- read.csv(\"1994_matrix5.csv\", header=F, stringsAsFactors=F, \n> sep=\"\\t\")\n> matrix1994 <- as.matrix(matrix1994,supress.diag=T)\n> attr1994 <- read.csv(\"attr1994.csv\", header=T, stringsAsFactors=F, sep=\"\\t\")\n> rownames(matrix1994) <- attr1994$state\n> colnames(matrix1994) <- attr1994$state\n> #Let's make this all into an edgelist\n> e1994 <- as.edgelist.sna(matrix1994)\n> net1994 <- network(e1994, directed=F, loops=F)\n> m0 <- ergm(net1994 ~ density, loops=F   )\n> [1] \"Warning:  This network contains loops\"\n>\n>\n> Additionally, depending on the data I use, I also get an error that NANs are \n> produced.  I found a post by Mark Handcock regarding the Nan problem, in \n> which he suggests entering missing values as NA instead of 0 or 1.  The thing \n> is, the data I have in a complete sample of all the states, there is actually \n> no missing data.\n>\n>> matrix1994 <- read.csv(\"1994_matrix.csv\", header=F, stringsAsFactors=F, \n>> sep=\"\\t\")\n>> matrix1994 <- as.matrix(matrix1994,supress.diag=T)\n>> attr1994 <- read.csv(\"attr1994.csv\", header=T, stringsAsFactors=F, \n>> sep=\"\\t\")\n>> rownames(matrix1994) <- attr1994$state\n>> colnames(matrix1994) <- attr1994$state\n>> #Let's make this all into an edgelist\n>> e1994 <- as.edgelist.sna(matrix1994)\n>> net1994 <- network(e1994, directed=F, loops=F)\n>> m0 <- ergm(net1994 ~ density, loops=F   )\n> [1] \"Warning:  This network contains loops\"\n> Warning message:\n> In log(Clist$nedges/(Clist$ndyads - Clist$nedges)) : NaNs produced\n>\n>\n> I have three datasets, 1994_matrix.csv, 1994_matrix5, and 1994_matrix7. \n> They're all the same data, though the ones followed by a number have ties \n> valued at less than that number set to zero (ie: if an edge is valued at less \n> than 7 in 199_matrix.csv, it is valued at 0 in 1994_matrix7.csv).\n>\n> I've looked through the archives and Google and can't seem to find anything \n> addressing these issues.  Does anyone have any ideas?\n>\n> Thanks,\n>\n> Shane\n>\n>\n>\n> -- \n> Shane Gleason\n> Doctoral Candidate\n> Southern Illinois University:Carbondale\n> Department of Political Science\n> Faner 3172\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Shane,\n\nIt would be good to know which version of ergm you are using. We are days \naway from releasing a new version of ergm and several other packages in \nstatnet. Before we try to trouble shoot t",
+      "thread_id": "thread-33fd0c310f72",
+      "thread_depth": 1,
+      "month": "2013-03"
+    },
+    {
+      "id": "msg-ac7d8e383f35",
+      "message_id": "<0D3C6F338C1E4E76B7B5442C2C0D589B@alperin.ca>",
+      "from_name": "Juan Pablo Alperin",
+      "from_email_hash": "c751a4e2599de680f055499bfcb7c1ebf69cc9e384a2141ea91edcf699d92dcc",
+      "date": "2013-03-07T09:51:34Z",
+      "subject": "[statnet_help] Fw: more questions...",
+      "subject_clean": "[statnet_help] Fw: more questions...",
+      "in_reply_to": "<D369B65CFAAB4DC58E3E1BAD6E539F6A@alperin.ca>",
+      "references": [
+        "<D369B65CFAAB4DC58E3E1BAD6E539F6A@alperin.ca>"
+      ],
+      "body_plain": "Hi Pavel (or others), \n\nI was still waiting for a response on a couple of issues. I've synthesized them below. Would love an answer! \n\nThanks\n\nJuan\n@juancommander \n\n1) \n\nHow do you set up a valued network with the network package for the ergm.count module to understand? The documentation I have for the network package does not mention weighted networks explicitly. I've tried loading an adjacency matrix with values and adding a \"weight\" edge attribute with no success. \n\nWhat edge attribute does ergm.count expect for the edge values? \n\nPotentially related: \nWhen I try to use a valued version of the \"mutual\" ergm-term, I am seeing the following error: \nError: mutual model term does not recognize form argument\n\n2)  \n\nI am trying to write my own userterm to do a nodematch, but with a different definition of what it means to match. I want to match if two of the categories share a 2-character substring (instead of matching 100%). \n\nI have made progress: I have defined my userterm, its being loaded, but I am having a hard time figuring out the C code for what I want to do. \n\nI am borrowing code from d_nodematch, but I have a question (added in a comment below).\n\n/*****************\n changestat: d_nodematchsubstr\n*****************/\nCHANGESTAT_FN(d_nodematchsubstr) {\n  double matchval;\n  Vertex tail, head, ninputs;\n  int i, j, edgeflag;\n\n  ninputs = N_INPUT_PARAMS - N_NODES;\n\n  /* *** don't forget tail -> head */\n  ZERO_ALL_CHANGESTATS(i);\n  FOR_EACH_TOGGLE(i) {\n    tail=TAIL(i);\n    head=HEAD(i);\n    matchval = INPUT_PARAM[tail+ninputs-1];\n\n    //\n    // what is the type of matchval here? \n    // how do I get at the String of this attribute for my head and tail nodes? \n    //  \n\n    if (matchval == INPUT_PARAM[head+ninputs-1]) { /* We have a match! */\n      edgeflag = IS_OUTEDGE(tail, head);\n      if (ninputs==0) {/* diff=F in network statistic specification */\n        CHANGE_STAT[0] += edgeflag ? -1.0 : 1.0;\n      } else { /* diff=T */\n        for (j=0; j<ninputs; j++) {\n          if (matchval == INPUT_PARAM[j])\n            CHANGE_STAT[j] += edgeflag ? -1.0 : 1.0;\n        }\n      }\n    }\n    TOGGLE_IF_MORE_TO_COME(i);\n  }\n  UNDO_PREVIOUS_TOGGLES(i);\n} \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130307/596366cb/attachment.html>",
+      "body_snippet": "Hi Pavel (or others), \n\nI was still waiting for a response on a couple of issues. I've synthesized them below. Would love an answer! \n\nThanks\n\nJuan\n@juancommander \n\n1) \n\nHow do you set up a valued net",
+      "thread_id": "thread-ac7d8e383f35",
+      "thread_depth": 0,
+      "month": "2013-03"
+    },
+    {
+      "id": "msg-2960732facdc",
+      "message_id": "<513DB63B.9020500@lerner.co.il>",
+      "from_name": "Reuven M. Lerner",
+      "from_email_hash": "13c80cd3f6505b6ed4f427be56ea693cc39f0e33eca62c756968bc65ef3d94d1",
+      "date": "2013-03-11T03:47:23Z",
+      "subject": "[statnet_help] Problems installing statnet on R 2.15",
+      "subject_clean": "[statnet_help] Problems installing statnet on R 2.15",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi, everyone.  I've used statnet off and on over the last few years for \nsome data analysis, and have always found it to be spot on for my needs.\n\nI'm once again interested in using it, but can't seem to install it via \nthe latest version of R (2.15.2), running on my Mac (OS X 10.8.2).  The \nstatnet package isn't available via the CRAN package manager, and my \nvarious attempts to install it manually, as suggested in these list \narchives, haven't worked.\n\nFirst, here's my environment:\n\n>> sessionInfo()\n> R version 2.15.2 (2012-10-26)\n> Platform: i386-apple-darwin9.8.0/i386 (32-bit)\n>\n> locale:\n> [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n>\n> attached base packages:\n> [1] stats     graphics  grDevices utils     datasets  methods   base\n>> getOption(\"pkgType\")\n> [1] \"mac.binary.leopard\"\n\nThere was a recommendation on this last to install it directly from the \nstatnet home page, which I tried:\n\ninstall.packages(\"statnet\", repos=\"http://www.csde.washington.edu/statnet\")\n\n\nI got the following:\n\n>> install.packages(\"statnet\", repos=\"http://www.csde.washington.edu/statnet\")\n> also installing the dependencies ?network?, ?sna?, ?networkDynamic?\n>\n> trying URL 'http://www.csde.washington.edu/statnet/bin/macosx/leopard/contrib/2.15/network_1.7-1.tgz'\n> Error in download.file(url, destfile, method, mode = \"wb\", ...) :\n>   cannot open URL 'http://www.csde.washington.edu/statnet/bin/macosx/leopard/contrib/2.15/network_1.7-1.tgz'\n> In addition: Warning message:\n> In download.file(url, destfile, method, mode = \"wb\", ...) :\n>   cannot open: HTTP status was '0 (null)'\n> Warning in download.packages(pkgs, destdir = tmpd, available = available,  :\n>   download of package ?network? failed\n> trying URL 'http://www.csde.washington.edu/statnet/bin/macosx/leopard/contrib/2.15/sna_2.2-0.tgz'\n> Content type 'application/x-gzip' length 986746 bytes (963 Kb)\n> opened URL\n> ==================================================\n> downloaded 963 Kb\n>\n> trying URL 'http://www.csde.washington.edu/statnet/bin/macosx/leopard/contrib/2.15/networkDynamic_0.2-2.tgz'\n> Content type 'application/x-gzip' length 366726 bytes (358 Kb)\n> opened URL\n> ==================================================\n> downloaded 358 Kb\n>\n> trying URL 'http://www.csde.washington.edu/statnet/bin/macosx/leopard/contrib/2.15/statnet_3.0.tgz'\n> Content type 'application/x-gzip' length 23450 bytes (22 Kb)\n> opened URL\n> ==================================================\n> downloaded 22 Kb\n>\n>\n> The downloaded binary packages are in\n> \t/var/folders/d9/v8tsklln4477fll05wkgcpth0000gn/T//Rtmplq5hgb/downloaded_packages\n\nI'm increasingly wondering whether the problem is that I upgraded to R \n2.15, and that statnet hasn't been updated to handle that version.  Am I \nright?  Should I downgrade my version of R, or should I modify the \npackage definitions on my system, such that they'll agree to be \ninstalled by 2.15?\n\nThanks in advance for any help you can offer,\n\nReuven\n\n-- \nReuven M. Lerner -- Web development, consulting, and training\nMobile: +972-54-496-8405 * US phone: 847-230-9795\nhttp://lerner.co.il * Skype/AIM: reuvenlerner",
+      "body_snippet": "Hi, everyone.  I've used statnet off and on over the last few years for \nsome data analysis, and have always found it to be spot on for my needs.\n\nI'm once again interested in using it, but can't seem",
+      "thread_id": "thread-2960732facdc",
+      "thread_depth": 0,
+      "month": "2013-03"
+    },
+    {
+      "id": "msg-cd6a90aea8cc",
+      "message_id": "<513E5864.4040405@lerner.co.il>",
+      "from_name": "Reuven M. Lerner",
+      "from_email_hash": "13c80cd3f6505b6ed4f427be56ea693cc39f0e33eca62c756968bc65ef3d94d1",
+      "date": "2013-03-11T15:19:16Z",
+      "subject": "[statnet_help] Re: Problems installing statnet on R 2.15",
+      "subject_clean": "[statnet_help] Re: Problems installing statnet on R 2.15",
+      "in_reply_to": "<513DB63B.9020500@lerner.co.il>",
+      "references": [
+        "<513DB63B.9020500@lerner.co.il>"
+      ],
+      "body_plain": "Hi again, everyone.  Thanks to some great people on the #r IRC channel, \nI was able to install statnet.\n\nThe problem was that my installation of R was defaulting to the mtu.edu \nCRAN repository, which (for whatever reason) didn't have the latest \npackages for R 2.15.  By changing the CRAN repository, I was able to get \nit to download.\n\nReuven",
+      "body_snippet": "Hi again, everyone.  Thanks to some great people on the #r IRC channel, \nI was able to install statnet.\n\nThe problem was that my installation of R was defaulting to the mtu.edu \nCRAN repository, which",
+      "thread_id": "thread-2960732facdc",
+      "thread_depth": 1,
+      "month": "2013-03"
+    },
+    {
+      "id": "msg-d43febcbc62e",
+      "message_id": "<CAC6acoL1GFirMJNsQGZPDesaTMcWuHNVrf8D6NBbxAi7nR7XGA@mail.gmail.com>",
+      "from_name": "Mengxiao Zhu",
+      "from_email_hash": "28fac92ef04c829420b7a246b9018aac67660421c61cd24e5805a76e67b72144",
+      "date": "2013-03-13T13:59:10Z",
+      "subject": "[statnet_help] covariate one-mode network for bipartite network",
+      "subject_clean": "[statnet_help] covariate one-mode network for bipartite network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear users and developers,\n\nI am recently working on a project involving the analysis of the impact of\nthe covariate one-mode network on a bipartite network. For instance, the\nbipartite network can be even-user network and the one-mode network is\nfriendship network among users.\n\nDoes anyone have any experience doing that? I checked the ergm manual and\ndidn't find any existing terms. Do I need to create the custom terms by\nmyself or is there any way to work around it?\n\nAny suggestions are welcome!\n\nBest,\n\nMengxiao\n\n-- \nMengxiao Zhu\nPh.D. Candidate\nDepartment of Industrial Engineering and Management Sciences\nNorthwestern University\n\n2145 Sheridan Rd Room C210, Evanston, IL 60208-3119\n\nmzhu@northwestern.edu\nhttp://sites.google.com/site/mengxiaozhu/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130313/60583d7e/attachment.html>",
+      "body_snippet": "Dear users and developers,\n\nI am recently working on a project involving the analysis of the impact of\nthe covariate one-mode network on a bipartite network. For instance, the\nbipartite network can be",
+      "thread_id": "thread-d43febcbc62e",
+      "thread_depth": 0,
+      "month": "2013-03"
+    },
+    {
+      "id": "msg-a31999f44640",
+      "message_id": "<5144CBF4.5080407@siu.edu>",
+      "from_name": "Shane Gleason",
+      "from_email_hash": "ac41ec97f21ad08d483932a77d2108a01f71b70e5a177513a1cd409ce7614ba0",
+      "date": "2013-03-16T12:45:56Z",
+      "subject": "[statnet_help] AIC/BIC returns NaN with sociality term in non-directed network",
+      "subject_clean": "[statnet_help] AIC/BIC returns NaN with sociality term in non-directed network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello everyone,\n\nI'm estimating non-directed ERGM models with a sociality term and my \nAIC/BIC and residual deviance return as NaN.  I thought this might \nperhaps be because some of my actors are isolates, but when I use a \ndirected network with either sender or reciever effects I am able to \nproduce AIC/BIC and residual deviance values even with isolate actors.\n\nIt looks like this issue has come up before, though the thread was not \nresolved, at least not publicly.  I've contacted the poster from the \nprevious post and he suggests I have to specify that statnet should \ncalculate loglikihoods.  Including eval.loglik=T has no effect on the model.\n\nCan anyone shed any light on how to estimate AIC/BIC/residual deviance?\n\nThanks in advance,\n\nShane\n\nPS:  That previous post is here:\n\nhttp://mailman2.u.washington.edu/pipermail/statnet_help/2011/001066.html\n\n-- \nShane Gleason\nDoctoral Candidate\nSouthern Illinois University:Carbondale\nDepartment of Political Science\nFaner 3172",
+      "body_snippet": "Hello everyone,\n\nI'm estimating non-directed ERGM models with a sociality term and my \nAIC/BIC and residual deviance return as NaN.  I thought this might \nperhaps be because some of my actors are isol",
+      "thread_id": "thread-a31999f44640",
+      "thread_depth": 0,
+      "month": "2013-03"
+    },
+    {
+      "id": "msg-fbc22a74d8b4",
+      "message_id": "<7482E4AC-0430-4DD5-8E86-E96F26EC67C2@manchester.ac.uk>",
+      "from_name": "Mark Tranmer",
+      "from_email_hash": "95bce005c7b1d0e12a12ac83d40e24b91b0a71b2fc7567e7b1093681aa7cede9",
+      "date": "2013-03-23T16:27:21Z",
+      "subject": "[statnet_help] rem.dyad terms in relevent in R",
+      "subject_clean": "[statnet_help] rem.dyad terms in relevent in R",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All,\n\nCan someone please help me with this query about the interpretation of terms in the rem.dyad model in relevent in R?\n\nI am particularly interested in the distinction between this term:\n\nPSAB-BA: P-Shift effect (turn receiving) ? AB->BA (dyadic)\n\nAnd these two terms:\n\nRRecSnd: Recency of receipt of actions from v? affects v?s future rate of sending to v?\nRSndSnd: Recency of sending to v? affects v?s future rate of sending to v?\n\nMy guess is the PSAB-BA refers specifically to the very next event that happens and whether this is a reciprocated action, whereas the other two terms RRecSnd and RSndSnd are more general exchanges for recent events, which makes me wonder how exactly \"Recency\" is defined.\n\nCan someone please give me an example of the difference of their interperpration and/or point me to a relevant reference online or elsewhere?\n\nThanks a lot!\n\nCheers,\n\nMark.\n\nDr Mark Tranmer\nSenior Lecturer\nCCSR\nSocial Statistics\nSchool of Social Sciences\nHumanities Bridgeford Street Building\nUniversity of Manchester\nManchester\nM13 9PL\n\ntel.: +44 (0) 161 275 4744\nfax: +44 (0) 161 275 4722\n\nhttp://www.ccsr.ac.uk/staff/markhome1.htm\n\n\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130323/f6943cc8/attachment.html>",
+      "body_snippet": "Dear All,\n\nCan someone please help me with this query about the interpretation of terms in the rem.dyad model in relevent in R?\n\nI am particularly interested in the distinction between this term:\n\nPSA",
+      "thread_id": "thread-fbc22a74d8b4",
+      "thread_depth": 0,
+      "month": "2013-03"
+    },
+    {
+      "id": "msg-a3fc6ebeaf75",
+      "message_id": "<514FA604.2060004@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2013-03-24T18:19:00Z",
+      "subject": "[statnet_help] rem.dyad terms in relevent in R",
+      "subject_clean": "[statnet_help] rem.dyad terms in relevent in R",
+      "in_reply_to": "<7482E4AC-0430-4DD5-8E86-E96F26EC67C2@manchester.ac.uk>",
+      "references": [
+        "<7482E4AC-0430-4DD5-8E86-E96F26EC67C2@manchester.ac.uk>"
+      ],
+      "body_plain": "Hi, Mark.  You are indeed correct: the P-shift terms relate to the next \nevent in the sequence, while the R* terms reflect overall recency in \nterms of events ever received (RRec) or sent (RSnd) by the focal actor.\n\nThe statistics associated with these terms are described formally in:\n\nButts, C.T. (2008). \"A Relational Event Framework for Social Action.\"  \nSociological Methodology, 38(1), 155-200.\n\nNote that, as a general matter, RRecSnd and PSAB-BA involve distinct \ntypes of reciprocity, and both can be active within the same exchange.  \nThe former reflects the tendency of ego to send to alters who have most \nrecently directed events to him or her (relative to other alters who \nhave directed events towards ego); this depends only on ego's incoming \nevent history, and not on other activity within the event sequence.  By \ncontrast, the latter reflects temporally local turn-taking dynamics (the \ntendency of the next event to be a response from the last receiver to \nthe last sender), and is not egocentric in character.  If you are \ndealing with a small-group setting, you will probably find P-shift \neffects (including the AB-BA shift) to be quite important; in a setting \nwhere actions are not globally observable (e.g., email), such effects \nare typically contraindicated.\n\nHope that helps,\n\n-Carter\n\nOn 03/23/2013 04:27 PM, Mark Tranmer wrote:\n> Dear All,\n>\n> Can someone please help me with this query about the interpretation of \n> terms in the rem.dyad model in relevent in R?\n>\n> I am particularly interested in the distinction between this term:\n>\n> PSAB-BA: P-Shift effect (turn receiving) -- AB->BA (dyadic)\n>\n> And these two terms:\n>\n> RRecSnd: Recency of receipt of actions from v? affects v's future rate \n> of sending to v?\n> RSndSnd: Recency of sending to v? affects v's future rate of sending to v?\n>\n> My guess is the PSAB-BA refers specifically to the very next event \n> that happens and whether this is a reciprocated action, whereas the \n> other two terms RRecSnd and RSndSnd are more general exchanges for \n> recent events, which makes me wonder how exactly \"Recency\" is defined.\n>\n> Can someone please give me an example of the difference of their \n> interperpration and/or point me to a relevant reference online or \n> elsewhere?\n>\n> Thanks a lot!\n>\n> Cheers,\n>\n> Mark.\n>\n> Dr Mark Tranmer\n> Senior Lecturer\n> CCSR\n> Social Statistics\n> School of Social Sciences\n> Humanities Bridgeford Street Building\n> University of Manchester\n> Manchester\n> M13 9PL\n>\n> tel.: +44 (0) 161 275 4744\n> fax: +44 (0) 161 275 4722\n>\n> http://www.ccsr.ac.uk/staff/markhome1.htm\n>\n>\n>\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130324/22e98863/attachment.html>",
+      "body_snippet": "Hi, Mark.  You are indeed correct: the P-shift terms relate to the next \nevent in the sequence, while the R* terms reflect overall recency in \nterms of events ever received (RRec) or sent (RSnd) by th",
+      "thread_id": "thread-fbc22a74d8b4",
+      "thread_depth": 1,
+      "month": "2013-03"
+    },
+    {
+      "id": "msg-1c0426429098",
+      "message_id": "<CACiWmAzVsyTSs=_nNqMEQjgGUy33vaXjHToVDkrJ0E5poWrobQ@mail.gmail.com>",
+      "from_name": "Ravi Goyal",
+      "from_email_hash": "f2be4e9a82f76a52284a444aadc5cfacda1e60a99f73c13e10e0a695792ae83b",
+      "date": "2013-03-26T08:03:32Z",
+      "subject": "[statnet_help] Error using ergm command with target.stats and constraints",
+      "subject_clean": "[statnet_help] Error using ergm command with target.stats and constraints",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet Team and Mailing List,\n\nI am having some problems when using the 'ergm' command with both the\ntarget.stats and constraints options.  Any help is greatly appreciated.  My\ncode is the following:\n\n#########CODE################\nlibrary('sna')\nlibrary('ergm')\n\nER_g = rgnm(1, 100, 100, mode = \"graph\", diag = FALSE, return.as.edgelist =\nFALSE)\n\ng.net <-network.initialize(100, directed = F) #Initialize the network\ng.net = network.adjacency(ER_g,g.net) #Import the edge data\n\ng.net %v% 'set' <- c(rep(1,50),rep(2,50))\n\n#MODEL\ng.ergm = ergm(g.net~nodemix('set', base = -2),\n        target.stats=c(20),\n        constraints =~degrees,\n        verbose = TRUE\n        )\n#######CODE###################\n\nI get the following output and error:\n\n######OUTPUT MODEL 1#########\n\n> #MODEL\n> g.ergm = ergm(g.net~nodemix('set', base = -2),\n+ target.stats=c(20),\n+ constraints =~degrees,\n+ verbose = TRUE\n+ )\n\nEvaluating network in model\nConstructing an approximate response network.\nError: No model specified for network  +No model specified for network\nconddegmpleNo model specified for network  nodemix(\"set\", base = -2)\n\n######OUTPUT MODEL 1#########\n\nBelow are details from  sessionInfo() and  getOption(\"pkgType\")\n\n>   sessionInfo()\nR version 2.15.3 (2013-03-01)\nPlatform: x86_64-w64-mingw32/x64 (64-bit)\n\nlocale:\n[1] LC_COLLATE=English_United States.1252  LC_CTYPE=English_United\nStates.1252\n[3] LC_MONETARY=English_United States.1252 LC_NUMERIC=C\n\n[5] LC_TIME=English_United States.1252\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base\n\nother attached packages:\n [1] sna_2.3-1        degreenet_1.2    ergm_3.0-3       coda_0.16-1\nnlme_3.1-108\n [6] trust_0.1-2      Matrix_1.0-11    lattice_0.20-13  robustbase_0.9-7\nnetwork_1.7-1.1\n\nloaded via a namespace (and not attached):\n[1] grid_2.15.3  tools_2.15.3\n\n>   getOption(\"pkgType\")\n[1] \"win.binary\"\n\n\nThank you!\n\nSincerely,\n   Ravi\n\nRavi Goyal\nResearch Associate\nDept. of Biostatistics\nHarvard University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130326/569211af/attachment.html>",
+      "body_snippet": "Dear Statnet Team and Mailing List,\n\nI am having some problems when using the 'ergm' command with both the\ntarget.stats and constraints options.  Any help is greatly appreciated.  My\ncode is the follo",
+      "thread_id": "thread-1c0426429098",
+      "thread_depth": 0,
+      "month": "2013-03"
+    },
+    {
+      "id": "msg-d8d3cc15a261",
+      "message_id": "<2E7BD17460E6414DBB876FFFEAD7D082@alperin.ca>",
+      "from_name": "Juan Pablo Alperin",
+      "from_email_hash": "c751a4e2599de680f055499bfcb7c1ebf69cc9e384a2141ea91edcf699d92dcc",
+      "date": "2013-03-29T10:28:01Z",
+      "subject": "[statnet_help] Re: more questions...",
+      "subject_clean": "[statnet_help] Re: more questions...",
+      "in_reply_to": "<0D3C6F338C1E4E76B7B5442C2C0D589B@alperin.ca>",
+      "references": [
+        "<D369B65CFAAB4DC58E3E1BAD6E539F6A@alperin.ca>",
+        "<0D3C6F338C1E4E76B7B5442C2C0D589B@alperin.ca>"
+      ],
+      "body_plain": "bump.\n\n\n\n\nOn Thursday, 7 March, 2013 at 9:51 AM, Juan Pablo Alperin wrote:\n\n> Hi Pavel (or others), \n> \n> I was still waiting for a response on a couple of issues. I've synthesized them below. Would love an answer! \n> \n> Thanks\n> \n> Juan\n> @juancommander \n> \n> 1) \n> \n> How do you set up a valued network with the network package for the ergm.count module to understand? The documentation I have for the network package does not mention weighted networks explicitly. I've tried loading an adjacency matrix with values and adding a \"weight\" edge attribute with no success. \n> \n> What edge attribute does ergm.count expect for the edge values? \n> \n> Potentially related: \n> When I try to use a valued version of the \"mutual\" ergm-term, I am seeing the following error: \n> Error: mutual model term does not recognize form argument\n> \n> 2)  \n> \n> I am trying to write my own userterm to do a nodematch, but with a different definition of what it means to match. I want to match if two of the categories share a 2-character substring (instead of matching 100%). \n> \n> I have made progress: I have defined my userterm, its being loaded, but I am having a hard time figuring out the C code for what I want to do. \n> \n> I am borrowing code from d_nodematch, but I have a question (added in a comment below).\n> \n> /*****************\n>  changestat: d_nodematchsubstr\n> *****************/\n> CHANGESTAT_FN(d_nodematchsubstr) {\n>   double matchval;\n>   Vertex tail, head, ninputs;\n>   int i, j, edgeflag;\n> \n>   ninputs = N_INPUT_PARAMS - N_NODES;\n> \n>   /* *** don't forget tail -> head */\n>   ZERO_ALL_CHANGESTATS(i);\n>   FOR_EACH_TOGGLE(i) {\n>     tail=TAIL(i);\n>     head=HEAD(i);\n>     matchval = INPUT_PARAM[tail+ninputs-1];\n> \n>     //\n>     // what is the type of matchval here? \n>     // how do I get at the String of this attribute for my head and tail nodes? \n>     //  \n> \n>     if (matchval == INPUT_PARAM[head+ninputs-1]) { /* We have a match! */\n>       edgeflag = IS_OUTEDGE(tail, head);\n>       if (ninputs==0) {/* diff=F in network statistic specification */\n>         CHANGE_STAT[0] += edgeflag ? -1.0 : 1.0;\n>       } else { /* diff=T */\n>         for (j=0; j<ninputs; j++) {\n>           if (matchval == INPUT_PARAM[j])\n>             CHANGE_STAT[j] += edgeflag ? -1.0 : 1.0;\n>         }\n>       }\n>     }\n>     TOGGLE_IF_MORE_TO_COME(i);\n>   }\n>   UNDO_PREVIOUS_TOGGLES(i);\n> } \n> \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130329/f548273c/attachment.html>",
+      "body_snippet": "bump.\n\n\n\n\nOn Thursday, 7 March, 2013 at 9:51 AM, Juan Pablo Alperin wrote:\n\n> Hi Pavel (or others), \n> \n> I was still waiting for a response on a couple of issues. I've synthesized them below. Would l",
+      "thread_id": "thread-ac7d8e383f35",
+      "thread_depth": 1,
+      "month": "2013-03"
+    },
+    {
+      "id": "msg-7d8d0b1418d0",
+      "message_id": "<alpine.WNT.1.10.1303291219020.2180@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-03-29T12:19:47Z",
+      "subject": "[statnet_help] Re: more questions...",
+      "subject_clean": "[statnet_help] Re: more questions...",
+      "in_reply_to": "<2E7BD17460E6414DBB876FFFEAD7D082@alperin.ca>",
+      "references": [
+        "<D369B65CFAAB4DC58E3E1BAD6E539F6A@alperin.ca>",
+        "<0D3C6F338C1E4E76B7B5442C2C0D589B@alperin.ca>",
+        "<2E7BD17460E6414DBB876FFFEAD7D082@alperin.ca>"
+      ],
+      "body_plain": "Juan,\n\nWe're right in the middle of putting our our next release, so all hands \nare otherwise occupied.  Thanks for your patience.\n\nbest,\nmm\n\nOn Fri, 29 Mar 2013, Juan Pablo Alperin wrote:\n\n> bump.\n> \n> \n> On Thursday, 7 March, 2013 at 9:51 AM, Juan Pablo Alperin wrote:\n>\n>       Hi Pavel (or others), \n> \n> I was still waiting for a response on a couple of issues. I've synthesized them below. Would love an answer! \n> \n> Thanks\n> \n> Juan\n> @juancommander \n> \n> 1) \n> \n> How do you set up a valued network with the network package for the ergm.count module to understand? The\n> documentation I have for the network package does not mention weighted networks explicitly. I've tried loading\n> an adjacency matrix with values and adding a \"weight\" edge attribute with no success. \n> \n> What edge attribute does ergm.count expect for the edge values? \n> \n> Potentially related: \n> When I try to use a valued version of the \"mutual\" ergm-term, I am seeing the following error: \n> Error: mutual model term does not recognize form argument\n> \n> 2) \n> \n> I am trying to write my own userterm to do a nodematch, but with a different definition of what it means to\n> match. I want to match if two of the categories share a 2-character substring (instead of matching 100%). \n> \n> I have made progress: I have defined my userterm, its being loaded, but I am having a hard time figuring out the\n> C code for what I want to do. \n> \n> I am borrowing code from d_nodematch, but I have a question (added in a comment below).\n> \n> /*****************\n> ?changestat: d_nodematchsubstr\n> *****************/\n> CHANGESTAT_FN(d_nodematchsubstr) {\n> ? double matchval;\n> ? Vertex tail, head, ninputs;\n> ? int i, j, edgeflag;\n>\n> ? ninputs = N_INPUT_PARAMS - N_NODES;\n>\n> ? /* *** don't forget tail -> head */\n> ? ZERO_ALL_CHANGESTATS(i);\n> ? FOR_EACH_TOGGLE(i) {\n> ? ? tail=TAIL(i);\n> ? ? head=HEAD(i);\n> ? ? matchval = INPUT_PARAM[tail+ninputs-1];\n>\n> ? ? //\n> ? ? // what is the type of matchval here?\n> ? ? // how do I get at the String of this attribute for my head and tail nodes?\n> ? ? // \n>\n> ? ? if (matchval == INPUT_PARAM[head+ninputs-1]) { /* We have a match! */\n> ? ? ? edgeflag = IS_OUTEDGE(tail, head);\n> ? ? ? if (ninputs==0) {/* diff=F in network statistic specification */\n> ? ? ? ? CHANGE_STAT[0] += edgeflag ? -1.0 : 1.0;\n> ? ? ? } else { /* diff=T */\n> ? ? ? ? for (j=0; j<ninputs; j++) {\n> ? ? ? ? ? if (matchval == INPUT_PARAM[j])\n> ? ? ? ? ? ? CHANGE_STAT[j] += edgeflag ? -1.0 : 1.0;\n> ? ? ? ? }\n> ? ? ? }\n> ? ? }\n> ? ? TOGGLE_IF_MORE_TO_COME(i);\n> ? }\n> ? UNDO_PREVIOUS_TOGGLES(i);\n> }\n> \n> \n> \n>\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Juan,\n\nWe're right in the middle of putting our our next release, so all hands \nare otherwise occupied.  Thanks for your patience.\n\nbest,\nmm\n\nOn Fri, 29 Mar 2013, Juan Pablo Alperin wrote:\n\n> bump.\n> ",
+      "thread_id": "thread-ac7d8e383f35",
+      "thread_depth": 2,
+      "month": "2013-03"
+    },
+    {
+      "id": "msg-54e81895f608",
+      "message_id": "<CAJdgHs93Y5Zd7gTbL-uu9CxHJYx19wLTJN=kPSGLvxN5wrTOzg@mail.gmail.com>",
+      "from_name": "Saeed Nasehi Moghadam",
+      "from_email_hash": "bd649562b27e56fdf90f5219df591b4859bb28486c4beabc53908bcc516096e8",
+      "date": "2013-03-31T03:26:04Z",
+      "subject": "[statnet_help] Help:Question about Best way to reveal Structural Equivalence Classes in R Packages:Statnet",
+      "subject_clean": "[statnet_help] Help:Question about Best way to reveal Structural Equivalence Classes in R Packages:Statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All\nHi\nCan someone help me with this query about the Best way to reveal Positions\nin Positional Analysis in R?\nin fact my question is about best clustering method to perform Positional\nAnalysis based on Structural Equivalence. Indeed i want to know which\nfunction in R packages performs best blockmodeling based on Structural\nEquivalence. If Hierarchical Clustering is approved which distance method\nis best? and if Hierarchical Clustering is questionable method which\nclustering method is best to reveal SE Classes in network in R package such\nas sna,...?\nThanks a lot for any attention!!\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130331/e7a5c9ae/attachment.html>",
+      "body_snippet": "Dear All\nHi\nCan someone help me with this query about the Best way to reveal Positions\nin Positional Analysis in R?\nin fact my question is about best clustering method to perform Positional\nAnalysis b",
+      "thread_id": "thread-54e81895f608",
+      "thread_depth": 0,
+      "month": "2013-03"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-2cf378f86dd1",
+      "subject": "[statnet_help] involving covariates in ergm",
+      "message_count": 3,
+      "participants": [
+        "Juan Pablo Alperin",
+        "Martina Morris",
+        "ya"
+      ],
+      "started": "2013-03-02T01:55:26Z",
+      "last_reply": "2013-03-04T08:30:53Z",
+      "root_message_id": "msg-2cf378f86dd1"
+    },
+    {
+      "id": "thread-90a1eee94851",
+      "subject": "[statnet_help] Phil Murphy",
+      "message_count": 1,
+      "participants": [
+        "Phil Murphy"
+      ],
+      "started": "2013-03-04T07:52:38Z",
+      "last_reply": "2013-03-04T07:52:38Z",
+      "root_message_id": "msg-90a1eee94851"
+    },
+    {
+      "id": "thread-db11db618ea3",
+      "subject": "[statnet_help] Tractable ERGM?",
+      "message_count": 1,
+      "participants": [
+        "Juha Itkonen"
+      ],
+      "started": "2013-03-06T06:49:26Z",
+      "last_reply": "2013-03-06T06:49:26Z",
+      "root_message_id": "msg-db11db618ea3"
+    },
+    {
+      "id": "thread-33fd0c310f72",
+      "subject": "[statnet_help] ERGM loop and NAN errors",
+      "message_count": 2,
+      "participants": [
+        "Martina Morris",
+        "Shane Gleason"
+      ],
+      "started": "2013-03-07T09:39:42Z",
+      "last_reply": "2013-03-07T09:44:21Z",
+      "root_message_id": "msg-33fd0c310f72"
+    },
+    {
+      "id": "thread-ac7d8e383f35",
+      "subject": "[statnet_help] Fw: more questions...",
+      "message_count": 3,
+      "participants": [
+        "Juan Pablo Alperin",
+        "martina morris"
+      ],
+      "started": "2013-03-07T09:51:34Z",
+      "last_reply": "2013-03-29T12:19:47Z",
+      "root_message_id": "msg-ac7d8e383f35"
+    },
+    {
+      "id": "thread-2960732facdc",
+      "subject": "[statnet_help] Problems installing statnet on R 2.15",
+      "message_count": 2,
+      "participants": [
+        "Reuven M. Lerner"
+      ],
+      "started": "2013-03-11T03:47:23Z",
+      "last_reply": "2013-03-11T15:19:16Z",
+      "root_message_id": "msg-2960732facdc"
+    },
+    {
+      "id": "thread-d43febcbc62e",
+      "subject": "[statnet_help] covariate one-mode network for bipartite network",
+      "message_count": 1,
+      "participants": [
+        "Mengxiao Zhu"
+      ],
+      "started": "2013-03-13T13:59:10Z",
+      "last_reply": "2013-03-13T13:59:10Z",
+      "root_message_id": "msg-d43febcbc62e"
+    },
+    {
+      "id": "thread-a31999f44640",
+      "subject": "[statnet_help] AIC/BIC returns NaN with sociality term in non-directed network",
+      "message_count": 1,
+      "participants": [
+        "Shane Gleason"
+      ],
+      "started": "2013-03-16T12:45:56Z",
+      "last_reply": "2013-03-16T12:45:56Z",
+      "root_message_id": "msg-a31999f44640"
+    },
+    {
+      "id": "thread-fbc22a74d8b4",
+      "subject": "[statnet_help] rem.dyad terms in relevent in R",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Mark Tranmer"
+      ],
+      "started": "2013-03-23T16:27:21Z",
+      "last_reply": "2013-03-24T18:19:00Z",
+      "root_message_id": "msg-fbc22a74d8b4"
+    },
+    {
+      "id": "thread-1c0426429098",
+      "subject": "[statnet_help] Error using ergm command with target.stats and constraints",
+      "message_count": 1,
+      "participants": [
+        "Ravi Goyal"
+      ],
+      "started": "2013-03-26T08:03:32Z",
+      "last_reply": "2013-03-26T08:03:32Z",
+      "root_message_id": "msg-1c0426429098"
+    },
+    {
+      "id": "thread-54e81895f608",
+      "subject": "[statnet_help] Help:Question about Best way to reveal Structural Equivalence Classes in R Packages:Statnet",
+      "message_count": 1,
+      "participants": [
+        "Saeed Nasehi Moghadam"
+      ],
+      "started": "2013-03-31T03:26:04Z",
+      "last_reply": "2013-03-31T03:26:04Z",
+      "root_message_id": "msg-54e81895f608"
+    }
+  ]
+}

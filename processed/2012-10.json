@@ -1,0 +1,397 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2012-10",
+  "messages": [
+    {
+      "id": "msg-e49aba57fe11",
+      "message_id": "<506AE092.9000207@eawag.ch>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "5ca3a759bddb9505661daafb6664f38c57cb4d334ac3b6411b49b7d1a9d8d151",
+      "date": "2012-10-02T05:39:46Z",
+      "subject": "[statnet_help] STERGM simulation crashes",
+      "subject_clean": "[statnet_help] STERGM simulation crashes",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI am trying to replicate the STERGM example from the STERGM tutorial \n(Krivitsky/Goodreau, March 19, 2012), but R quits unexpectedly every \ntime I run the code. This seems to be a problem with the C code. Please \nfind below the code and the output on the R terminal. Any idea what went \nwrong? My ergm version is 3.0-1 (2012-03-08). I am using Ubuntu x86_64 \nand R 2.15.1. Thanks,\n\nPhilip\n\n##########\n1> stergm.fit.1 <- stergm(flobusiness,\n1+ formation= ~edges+gwesp(0,fixed=T),\n1+ dissolution = ~offset(edges),\n1+ targets=\"formation\",\n1+ offset.coef.diss = theta.diss,\n1+ estimate = \"EGMME\",\n1+ #control=control.stergm(SA.plot.progress=TRUE)\n1+ )\nIteration 1 of at most 20:\nthe log-likelihood improved by 0.07428\nIteration 2 of at most 20:\nthe log-likelihood improved by 0.01405\nIteration 3 of at most 20:\nthe log-likelihood improved by 0.002037\nIteration 4 of at most 20:\nthe log-likelihood improved by 0.0008114\nIteration 5 of at most 20:\nConvergence detected. Stopping early.\nthe log-likelihood improved by < 0.0001\n\nThis model was fit using MCMC.  To examine model diagnostics and check \nfor degeneracy, use the mcmc.diagnostics() function.\n========  Phase 1: Burn in, get initial gradient values, and find a \nconfiguration under which all targets vary. ========\nBurning in... Done.\nAttempt 1 :\nParameters f.(edges) do not have a detectable effect. Shifting jitter to \nthem.\nAttempt 2 :\nGradients estimated and all statistics are moving. Proceeding to Phase 2.\n========  Phase 2: Find and refine the estimate. ========\nSubphase 2.1 .!.?...!.?...!.........?..\nSubphase 2.2 ...?....\nSubphase 2.3 ........!\nSubphase 2.4 ...............................................\nSubphase 2.5 ..........\nSubphase 2.6 ...........\nSubphase 2.7 ............\nSubphase 2.8 .............\nSubphase 2.9 ..............\nSubphase 2.10 ...?.........?...\n========  Phase 3: Simulate from the fit and estimate standard errors. \n========\n\n  *** caught segfault ***\naddress (nil), cause 'unknown'\n\nTraceback:\n  1: .C(\"MCMCDyn_wrapper\", as.integer(Clist.form$tails), \nas.integer(Clist.form$heads),     time = if (is.null(Clist.form$time)) \nas.integer(0) else as.integer(Clist.form$time),     lasttoggle = if \n(is.null(Clist.form$lasttoggle)) as.integer(NULL) else \nas.integer(Clist.form$lasttoggle),     as.integer(Clist.form$nedges), \nas.integer(Clist.form$n),     as.integer(Clist.form$dir), \nas.integer(Clist.form$bipartite),     as.integer(Clist.form$nterms), \nas.character(Clist.form$fnamestring), \nas.character(Clist.form$snamestring), \nas.character(MHproposal.form$name), \nas.character(MHproposal.form$package), as.double(Clist.form$inputs), \n  as.double(eta.form), as.integer(Clist.diss$nterms), \nas.character(Clist.diss$fnamestring), \nas.character(Clist.diss$snamestring), \nas.character(MHproposal.diss$name), \nas.character(MHproposal.diss$package), as.double(Clist.diss$inputs), \n  as.double(eta.diss), if (!is.null(model.mon)) \nas.integer(Clist.mon$nterms) else as.integer(0),     if \n(!is.null(model.mon)) as.character(Clist.mon$fnamestring),     if \n(!is.null(model.mon)) as.character(Clist.mon$snamestring),     if \n(!is.null(model.mon)) as.double(Clist.mon$inputs), \nas.integer(MHproposal.form$arguments$constraints$bd$attribs), \nas.integer(MHproposal.form$arguments$constraints$bd$maxout), \nas.integer(MHproposal.form$arguments$constraints$bd$maxin), \nas.integer(MHproposal.form$arguments$constraints$bd$minout), \nas.integer(MHproposal.form$arguments$constraints$bd$minin), \nas.integer(MHproposal.form$arguments$constraints$bd$condAllDegExact), \n   as.integer(length(MHproposal.form$arguments$constraints$bd$attribs)), \n     as.double(control$time.samplesize), \nas.integer(control$MCMC.burnin),     as.double(control$time.burnin), \nas.double(control$time.interval),     s.form = if (collect.form) \ndouble(Clist.form$nstats * (control$time.samplesize +         1)) else \ndouble(0), s.diss = if (collect.diss) double(Clist.diss$nstats * \n  (control$time.samplesize + 1)) else double(0), s.mon = if \n(!is.null(model.mon)) double(Clist.mon$nstats * \n(control$time.samplesize + 1)) else double(0), as.integer(maxedges), \n  newnwtails = integer(maxchanges), newnwheads = integer(maxchanges), \n   as.integer(maxchanges), diffnwtime = integer(maxchanges), \ndiffnwtails = integer(maxchanges), diffnwheads = integer(maxchanges), \n   as.integer(verbose), status = integer(1), PACKAGE = \"ergm\")\n  2: stergm.getMCMCsample(state$nw, model.form, model.diss, model.mon, \n    MHproposal.form, MHproposal.diss, eta.form, eta.diss, \ncontrol.phase3,     verbose)\n  3: stergm.EGMME.SA(initialfit$formation.fit$coef, \ninitialfit$dissolution.fit$coef,     nw, model.form, model.diss, \nmodel.mon, control = control,     MHproposal.form = MHproposal.form, \nMHproposal.diss = MHproposal.diss,     verbose)\n  4: stergm.EGMME(nw, formation, dissolution, offset.coef.form, \noffset.coef.diss,     targets, target.stats, estimate, control, verbose)\n  5: stergm(flobusiness, formation = ~edges + gwesp(0, fixed = T), \ndissolution = ~offset(edges), targets = \"formation\", offset.coef.diss = \ntheta.diss,     estimate = \"EGMME\", )\n\nPossible actions:\n1: abort (with core dump, if enabled)\n2: normal R exit\n3: exit R without saving workspace\n4: exit R saving workspace\nSelection:\n\n##########\n\n\n\n-- \nDr. Philip Leifeld\n\nEawag: Das Wasserforschungsinstitut des ETH-Bereichs\nSwiss Federal Institute of Aquatic Science and Technology\n\nUniversit?t Bern, Institut f?r Politikwissenschaft\nUniversity of Bern, Institute of Political Science\n\nEawag, ?berlandstr. 133, 8600 D?bendorf, Switzerland\nPhone: +41 58 765 5673 | E-mail: philip.leifeld@eawag.ch\nOffice: FC-E18 | Homepage: http://www.philipleifeld.de",
+      "body_snippet": "Hi,\n\nI am trying to replicate the STERGM example from the STERGM tutorial \n(Krivitsky/Goodreau, March 19, 2012), but R quits unexpectedly every \ntime I run the code. This seems to be a problem with th",
+      "thread_id": "thread-e49aba57fe11",
+      "thread_depth": 0,
+      "month": "2012-10"
+    },
+    {
+      "id": "msg-613eed280fbd",
+      "message_id": "<CALTKvDvYjUqW50goMKatGXBuCSw5_1q72r3Qbo+NoEj+BJSuUg@mail.gmail.com>",
+      "from_name": "Brian Keegan",
+      "from_email_hash": "0a040d156157c7a0846c2e199462b4a90b1286ad17bfecf6c905da0c405bc047",
+      "date": "2012-10-09T06:27:42Z",
+      "subject": "[statnet_help] Lessons on exponential random graph modeling from Grey’s Anatomy hook-ups",
+      "subject_clean": "[statnet_help] Lessons on exponential random graph modeling from Grey’s Anatomy hook-ups",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Excellent demo and tutorial using a super trashy TV drama as a dataset.\n\nhttp://badhessian.org/lessons-on-exponential-random-graph-modeling-from-greys-anatomy-hook-ups/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20121009/e1f5a397/attachment.html>",
+      "body_snippet": "Excellent demo and tutorial using a super trashy TV drama as a dataset.\n\nhttp://badhessian.org/lessons-on-exponential-random-graph-modeling-from-greys-anatomy-hook-ups/\n-------------- next part ------",
+      "thread_id": "thread-613eed280fbd",
+      "thread_depth": 0,
+      "month": "2012-10"
+    },
+    {
+      "id": "msg-9a80f22e2c1c",
+      "message_id": "<CANqgAXhdJpCCSYGdHW8pe7De+keRm4d=VX=24NZ1j+f8oCm4fg@mail.gmail.com>",
+      "from_name": "chengjun wang",
+      "from_email_hash": "48d0e4355a7b670f78b80a940ebdd6d299c8a10a0424a9369941196090fcd120",
+      "date": "2012-10-20T07:24:57Z",
+      "subject": "[statnet_help] Understanding dyad in statnet",
+      "subject_clean": "[statnet_help] Understanding dyad in statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone,\n\nAccording to the term dyadcov in statnet library:\n\nWith the parameter of ?dyadcov? term, we add three statistics to the model,\neach equal to the sum of the covariate values for all dyads occupying one\nof the three possible non-empty dyad states (mutual, upper-triangular\nasymmetric, and lower-triangular asymmetric dyads, respectively).\n\nwhat is the difference between upper-triangular asymmetric dyads (utri) and\nlower-triangular asymmetric dyads (ltri)?\nBased on my understanding, it?s related to the direction of ties, see the\nfigure below. Is it right?\n\n[image: Inline image 1]\n\n\nMany thanks.\n\nBest regards.\n\nChengjun Wang\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20121020/4f9224b9/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: dyad.png\nType: image/png\nSize: 73538 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20121020/4f9224b9/attachment.png>",
+      "body_snippet": "Hi everyone,\n\nAccording to the term dyadcov in statnet library:\n\nWith the parameter of ?dyadcov? term, we add three statistics to the model,\neach equal to the sum of the covariate values for all dyads",
+      "thread_id": "thread-9a80f22e2c1c",
+      "thread_depth": 0,
+      "month": "2012-10"
+    },
+    {
+      "id": "msg-cefd7f4a91fc",
+      "message_id": "<CANqgAXhKvXmHMD41ZacGnFyxmGZ7aQXUt-UoxHXHc2zM3-B_Mg@mail.gmail.com>",
+      "from_name": "chengjun wang",
+      "from_email_hash": "48d0e4355a7b670f78b80a940ebdd6d299c8a10a0424a9369941196090fcd120",
+      "date": "2012-10-20T20:10:53Z",
+      "subject": "[statnet_help] weighted network analysis with statnet ?",
+      "subject_clean": "[statnet_help] weighted network analysis with statnet ?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone,\n\nI am wondering whether statnet could deal with weighted network or not.\nDoes anyone know?\n\nI have tried to convert weighted network into adjacency matrix, does it\nwork?\n\n# get adjacency matrix\n>  library(igraph)\n> gflow <- graph.data.frame(flows[,1:3], directed=T)\n> gflowWeight<-get.adjacency(gflow, type=\"both\", attr=\"clickstream\")\n> # get statnet object\n> library(statnet)\n> n=network(gflowWeight,vertex.attr=NULL,\n> vertex.attrnames=NULL,matrix.type=\"adjacency\",directed=TRUE) # creates an\n> edgelist using the unique IDs\n>\n\nBest regards.\n\nChengjun Wang\n\nWeb Mining Lab\nDepartment of Media and Communication\nCity University of Hong Kong.\nRoom 5008, 18 Tat Hong Avenue, Run Run Shaw Creative Media Centre\nKowloon. Hong Kong\nEmail: wangchj04@gmail.com; chengwang6@student.cityu.edu.hk\nMobile: +852-96442905\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20121021/016ebef4/attachment.html>",
+      "body_snippet": "Hi everyone,\n\nI am wondering whether statnet could deal with weighted network or not.\nDoes anyone know?\n\nI have tried to convert weighted network into adjacency matrix, does it\nwork?\n\n# get adjacency ",
+      "thread_id": "thread-cefd7f4a91fc",
+      "thread_depth": 0,
+      "month": "2012-10"
+    },
+    {
+      "id": "msg-97c5db0d7dfc",
+      "message_id": "<1350808201.23792.mnt23021@law.ritsumei.ac.jp>",
+      "from_name": "megumi nishimura",
+      "from_email_hash": "ae4b0f6185210f5ff5dc2cff29c3961dcc310f2f7a2c0d750955eb4c5361f827",
+      "date": "2012-10-21T01:30:01Z",
+      "subject": "[statnet_help] Re: bi-partite network with attributes, and run ergm",
+      "subject_clean": "[statnet_help] Re: bi-partite network with attributes, and run ergm",
+      "in_reply_to": "<1350796266.32219.mnt23021@law.ritsumei.ac.jp>",
+      "references": [
+        "<20120730231234.12195kaocuo179k2@umail.oit.umass.edu>",
+        "<000001cd7657$0e7edd80$2b7c9880$@hildebrand@unisg.ch>",
+        "<20120814122946.10783tq7pdgq4bga@umail.oit.umass.edu>",
+        "<1350796266.32219.mnt23021@law.ritsumei.ac.jp>"
+      ],
+      "body_plain": "Dear User community,\n\n1) I have a bi-partite network data, and I have 159 nodes (b1), and 116 events (b2).  I have made my network into bi-partite in the below command. \n\n I load my first mode (b1) attributes (its name=\"ethnicity3\"), and run ergm model.  When I load my second mode (b2=events), I did NOT have any error message in R.  But, I tried to run ergm model with \"b2factor\" command with attribute name (\"dom\"), R shows error message, telling there is no such attributes name in vertex.\n\nI look foward to your reply.\n\n##read my edgelist\nmydata<-read.table(\"edge.txt\", stringsAsFactors=FALSE)\n\n## transform event numbers which is consecutive from nodes, we have 159 nodes. \nmydata[, 2]<-mydata[, 2]+159\n\n##change data from dataframe to network, \n##and set as bipartite w 159 nodes, undirected graph\nnetmydata<-network(mydata, bipartite=159, directed=F)\n\n## read node attr list\nnodeatt<-read.csv(\"node.csv\", stringsAsFactors=FALSE)\n\n## read event attr list\neventatt<-read.csv(\"event.csv\", stringsAsFactors=FALSE)\n\n## set 1st node attribute from 1:159\n##var names:ethnicity3\nset.vertex.attribute(netmydata, attrname=names(nodeatt)[1], value=nodeatt[, 1], v=1:159)\n\n##set 1st event attribute from 160:275\nset.vertex.attribute(netmydata, attrname=names(eventatt)[1], value=eventatt[, 1], v=160:275)\n##var names:dom\n\n##The following b1factor model can be run\nresultb1<-ergm(netmydata~edges+b1factor(\"ethnicity3\", base=1)+gwb1degree(0.25, fixed=T)+gwb2degree(0.25, fixed=T), seed=100)\n\n##b2factor model can never run\nresultb2<-ergm(netmydata~edges+b2factor(\"dom\", base=1)+gwb1degree(0.25, fixed=T)+gwb2degree(0.25, fixed=T), seed=100)",
+      "body_snippet": "Dear User community,\n\n1) I have a bi-partite network data, and I have 159 nodes (b1), and 116 events (b2).  I have made my network into bi-partite in the below command. \n\n I load my first mode (b1) at",
+      "thread_id": "thread-97c5db0d7dfc",
+      "thread_depth": 0,
+      "month": "2012-10"
+    },
+    {
+      "id": "msg-7fa862e9015b",
+      "message_id": "<CABq6fO55Q_LHSbN4Q6hgZPPaKkooQW0BsmSAzDm1r=ar+XCpnQ@mail.gmail.com>",
+      "from_name": "Richard Benton",
+      "from_email_hash": "91cbca4ab4a31ceadd6dc5b79dbd2e7daeafd68abe8fba4d852dff480407746c",
+      "date": "2012-10-21T14:16:14Z",
+      "subject": "[statnet_help] Moran and Geary statistics in nacf",
+      "subject_clean": "[statnet_help] Moran and Geary statistics in nacf",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Everyone,\nI'm fairly new to the statnet and R in general but I've found the\ndocumentation for the statnet packages very useful and I'm learning\nquickly. I have a question about using nacf to calculate moran and\ngeary statistics for a network with 563 vertices and a continuous\nactor attribute. I've used UCINET before to calculate these statistics\nand interpret significance levels for network autocorrelation but I'm\nunfamiliar with how this procedure is implimented in sna. It looks\nlike nacf produces autocorrelation stats for each neighborhood but I\ncouldn't find information on how to calculate to coefficient for the\nentire network. Do i need to read these statistics into lnam and get\nthe coefficients this way? Any information would be helpful.\nThank You.\nRichard\n\n-- \nRichard Benton\nGraduate Student\nDepartment of Sociology and Anthropology\nNorth Carolina State University",
+      "body_snippet": "Hi Everyone,\nI'm fairly new to the statnet and R in general but I've found the\ndocumentation for the statnet packages very useful and I'm learning\nquickly. I have a question about using nacf to calcul",
+      "thread_id": "thread-7fa862e9015b",
+      "thread_depth": 0,
+      "month": "2012-10"
+    },
+    {
+      "id": "msg-33bf72b43b1a",
+      "message_id": "<alpine.WNT.1.10.1210221151480.5820@morrism-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2012-10-22T11:55:20Z",
+      "subject": "[statnet_help] Understanding dyad in statnet",
+      "subject_clean": "[statnet_help] Understanding dyad in statnet",
+      "in_reply_to": "<CANqgAXhdJpCCSYGdHW8pe7De+keRm4d=VX=24NZ1j+f8oCm4fg@mail.gmail.com>",
+      "references": [
+        "<CANqgAXhdJpCCSYGdHW8pe7De+keRm4d=VX=24NZ1j+f8oCm4fg@mail.gmail.com>"
+      ],
+      "body_plain": "Yes, the upper and lower triangles of the sociomatrix may differ for a \ndirected graph.  You might want to read the literature on \"MAN\" \n(mutual, asymmetric, null) dyads in the social network literature.\n\nhth,\nMartina\n\nOn Sat, 20 Oct 2012, chengjun wang wrote:\n\n> Hi everyone,\n> \n> According to the term dyadcov in statnet library:\n>\n>       With the parameter of ?dyadcov? term, we add three statistics to the model, each equal to\n>       the sum of the covariate values for all dyads occupying one of the three possible non-empty\n>       dyad states (mutual, upper-triangular asymmetric, and lower-triangular asymmetric dyads,\n>       respectively).\n> \n> what is the difference between?upper-triangular asymmetric dyads (utri) and lower-triangular asymmetric\n> dyads (ltri)?\n> Based on my understanding, it?s related to the direction of ties, see the figure below. Is it right?\n> \n> Inline image 1\n> \n> \n> Many thanks. \n> \n> Best regards. \n> Chengjun Wang\n> \n> \n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Yes, the upper and lower triangles of the sociomatrix may differ for a \ndirected graph.  You might want to read the literature on \"MAN\" \n(mutual, asymmetric, null) dyads in the social network literatu",
+      "thread_id": "thread-9a80f22e2c1c",
+      "thread_depth": 1,
+      "month": "2012-10"
+    },
+    {
+      "id": "msg-61014abb9f2c",
+      "message_id": "<CANqgAXjdj1hDfuGE5+aeKOC88B10UF3zfkG_=y6LHWWC5ptBWw@mail.gmail.com>",
+      "from_name": "chengjun wang",
+      "from_email_hash": "48d0e4355a7b670f78b80a940ebdd6d299c8a10a0424a9369941196090fcd120",
+      "date": "2012-10-22T20:46:58Z",
+      "subject": "[statnet_help] Re: statnet_help Digest, Vol 75, Issue 5",
+      "subject_clean": "[statnet_help] Re: statnet_help Digest, Vol 75, Issue 5",
+      "in_reply_to": "<201210221902.q9MJ2Gim023430@mxout14.cac.washington.edu>",
+      "references": [
+        "<201210221902.q9MJ2Gim023430@mxout14.cac.washington.edu>"
+      ],
+      "body_plain": ">\n> Yes, the upper and lower triangles of the sociomatrix may differ for a\n> directed graph.\n\n\nThank you for your reply.\n\nI have learnt about the MAN classification about dyad. However, in directed\nnetworks,asymmetric dyads are separated into two kinds: upper-triangular\nasymmetric dyad, lower-triangular asymmetric dyad. I could not find any\nformal definitions. Any one knows?\n\nI wrote a blog for this question, check here:\nhttp://weblab.com.cityu.edu.hk/blog/chengjun/understanding-dyad-in-ergm/\n\nBest regards.\n\nChengjun Wang\n\nWeb Mining Lab\nDepartment of Media and Communication\nCity University of Hong Kong.\nRoom 5008, 18 Tat Hong Avenue, Run Run Shaw Creative Media Centre\nKowloon. Hong Kong\nEmail: wangchj04@gmail.com; chengwang6@student.cityu.edu.hk\nMobile: +852-96442905\n\n\n\n\n\nOn Tue, Oct 23, 2012 at 3:02 AM, <\nstatnet_help-request@mailman2.u.washington.edu> wrote:\n\n> Send statnet_help mailing list submissions to\n>         statnet_help@u.washington.edu\n>\n> To subscribe or unsubscribe via the World Wide Web, visit\n>         http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> or, via email, send a message with subject or body 'help' to\n>         statnet_help-request@mailman2.u.washington.edu\n>\n> You can reach the person managing the list at\n>         statnet_help-owner@mailman2.u.washington.edu\n>\n> When replying, please edit your Subject line so it is more specific\n> than \"Re: Contents of statnet_help digest...\"\n>\n> Today's Topics:\n>\n>    1. Moran and Geary statistics in nacf (Richard Benton)\n>    2. Re: Understanding dyad in statnet (Martina Morris)\n>\n>\n> ---------- Forwarded message ----------\n> From: Richard Benton <rabenton@ncsu.edu>\n> To: statnet_help@u.washington.edu\n> Cc:\n> Date: Sun, 21 Oct 2012 17:16:14 -0400\n> Subject: [statnet_help] Moran and Geary statistics in nacf\n> Hi Everyone,\n> I'm fairly new to the statnet and R in general but I've found the\n> documentation for the statnet packages very useful and I'm learning\n> quickly. I have a question about using nacf to calculate moran and\n> geary statistics for a network with 563 vertices and a continuous\n> actor attribute. I've used UCINET before to calculate these statistics\n> and interpret significance levels for network autocorrelation but I'm\n> unfamiliar with how this procedure is implimented in sna. It looks\n> like nacf produces autocorrelation stats for each neighborhood but I\n> couldn't find information on how to calculate to coefficient for the\n> entire network. Do i need to read these statistics into lnam and get\n> the coefficients this way? Any information would be helpful.\n> Thank You.\n> Richard\n>\n> --\n> Richard Benton\n> Graduate Student\n> Department of Sociology and Anthropology\n> North Carolina State University\n>\n>\n>\n> ---------- Forwarded message ----------\n> From: Martina Morris <morrism@u.washington.edu>\n> To: chengjun wang <wangchj04@gmail.com>\n> Cc: statnet_help@u.washington.edu\n> Date: Mon, 22 Oct 2012 11:55:20 -0700 (Pacific Daylight Time)\n> Subject: Re: [statnet_help] Understanding dyad in statnet\n> Yes, the upper and lower triangles of the sociomatrix may differ for a\n> directed graph.  You might want to read the literature on \"MAN\" (mutual,\n> asymmetric, null) dyads in the social network literature.\n>\n> hth,\n> Martina\n>\n> On Sat, 20 Oct 2012, chengjun wang wrote:\n>\n>  Hi everyone,\n>>\n>> According to the term dyadcov in statnet library:\n>>\n>>       With the parameter of ?dyadcov? term, we add three statistics to\n>> the model, each equal to\n>>       the sum of the covariate values for all dyads occupying one of the\n>> three possible non-empty\n>>       dyad states (mutual, upper-triangular asymmetric, and\n>> lower-triangular asymmetric dyads,\n>>       respectively).\n>>\n>> what is the difference between upper-triangular asymmetric dyads (utri)\n>> and lower-triangular asymmetric\n>> dyads (ltri)?\n>> Based on my understanding, it?s related to the direction of ties, see the\n>> figure below. Is it right?\n>>\n>> Inline image 1\n>>\n>>\n>> Many thanks.\n>> Best regards. Chengjun Wang\n>>\n>>\n>>\n>>\n>>\n>>\n> ********************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/**morrism/<http://faculty.washington.edu/morrism/>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@mailman2.u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20121023/8f3c2b05/attachment.html>",
+      "body_snippet": ">\n> Yes, the upper and lower triangles of the sociomatrix may differ for a\n> directed graph.\n\n\nThank you for your reply.\n\nI have learnt about the MAN classification about dyad. However, in directed\nne",
+      "thread_id": "thread-61014abb9f2c",
+      "thread_depth": 0,
+      "month": "2012-10"
+    },
+    {
+      "id": "msg-bac90c4e0e80",
+      "message_id": "<508C18DE.8070009@eawag.ch>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "5ca3a759bddb9505661daafb6664f38c57cb4d334ac3b6411b49b7d1a9d8d151",
+      "date": "2012-10-27T10:24:46Z",
+      "subject": "[statnet_help] STERGM with time-varying nodal covariates",
+      "subject_clean": "[statnet_help] STERGM with time-varying nodal covariates",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nIf I estimate a STERGM using CMLE with (time-varying) node attributes as \ncovariates (say, as nodeicov), how do I have to interpret the nodal \ncovariates? Let's say I have two time slices and a quantitative node \nattribute, which can change over time. Does it make sense to include \nboth (1) the absolute attribute value of alter and (2) the change \nbetween the two time periods to predict tie formation and dissolution? \nWhich of the two attribute vectors does STERGM use as a covariate -- the \none at t=1 or the one at t=2 or some kind of pooled value or the \nabsolute change between them?\n\nThanks and best regards\n\nPhilip\n\n-- \nDr. Philip Leifeld\n\nEawag: Das Wasserforschungsinstitut des ETH-Bereichs\nSwiss Federal Institute of Aquatic Science and Technology\n\nUniversit?t Bern, Institut f?r Politikwissenschaft\nUniversity of Bern, Institute of Political Science\n\nEawag, ?berlandstr. 133, 8600 D?bendorf, Switzerland\nPhone: +41 58 765 5673 | E-mail: philip.leifeld@eawag.ch\nOffice: FC-E18 | Homepage: http://www.philipleifeld.de",
+      "body_snippet": "Hi,\n\nIf I estimate a STERGM using CMLE with (time-varying) node attributes as \ncovariates (say, as nodeicov), how do I have to interpret the nodal \ncovariates? Let's say I have two time slices and a q",
+      "thread_id": "thread-bac90c4e0e80",
+      "thread_depth": 0,
+      "month": "2012-10"
+    },
+    {
+      "id": "msg-c32631b5f8d7",
+      "message_id": "<OF42D93A4F.41E60E20-ONC1257AA4.006EB7CE-C1257AA4.006EB7CF@be.ibm.com>",
+      "from_name": "Tom Kochuyt",
+      "from_email_hash": "46f39e60ea17044367574233c6036a3c2ecdd09badcc49c19d1b5d76f9ccf618",
+      "date": "2012-10-27T13:09:20Z",
+      "subject": "[statnet_help] AUTO: Tom Kochuyt is out of the office (returning 05-11-2012)",
+      "subject_clean": "[statnet_help] AUTO: Tom Kochuyt is out of the office (returning 05-11-2012)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I am out of the office until 05-11-2012.\n\nDear,\n\nI'm out of the office from October 27th until November 5th.\nFor all urgent matters related to leads and opportunities Jilco Schuurmans\ncan be contacted.\n\nI will respond to all other mails as soon as I am back in the office.\n\n\nKind regards,\n\nTom Kochuyt\n\n\nNote: This is an automated response to your message  \"statnet_help Digest,\nVol 75, Issue 7\" sent on 27/10/2012 21:03:47.\n\nThis is the only notification you will receive while this person is away.",
+      "body_snippet": "I am out of the office until 05-11-2012.\n\nDear,\n\nI'm out of the office from October 27th until November 5th.\nFor all urgent matters related to leads and opportunities Jilco Schuurmans\ncan be contacted",
+      "thread_id": "thread-c32631b5f8d7",
+      "thread_depth": 0,
+      "month": "2012-10"
+    },
+    {
+      "id": "msg-da405fe761fa",
+      "message_id": "<CAH8ZVCbup7xHNf7e8hXdrsu4rjm0nXFQFSR7Qcdy1RXDTKbfpA@mail.gmail.com>",
+      "from_name": "Phillip Caliburn",
+      "from_email_hash": "1e106b71850e585a778d71ef68eab0551c926dd0ad4c52a125961307b2ff4121",
+      "date": "2012-10-27T22:40:51Z",
+      "subject": "[statnet_help] GraphML Format",
+      "subject_clean": "[statnet_help] GraphML Format",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI'm new to statnet. Thank you for a great package! I've been following the\nergm tutorials, and I was wondering whether it is possible to import data\nthat is in the GraphML format? If this is at all possible, is there an\nexample of how to do it? I've seen it done in igraph, but I'm not too sure\nabout statnet. If it isn't possible to import GraphML data, what formats\ndoes statnet support? Very exciting stuff, but I'm also very new at this,\nso I hope I can ask lots of questions on here.\n\nThank you!\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20121028/93cceff2/attachment.html>",
+      "body_snippet": "Hello,\n\nI'm new to statnet. Thank you for a great package! I've been following the\nergm tutorials, and I was wondering whether it is possible to import data\nthat is in the GraphML format? If this is a",
+      "thread_id": "thread-da405fe761fa",
+      "thread_depth": 0,
+      "month": "2012-10"
+    },
+    {
+      "id": "msg-5e20e8c06f8f",
+      "message_id": "<825714794.15020155.1351429179417.JavaMail.root@stanford.edu>",
+      "from_name": "Soong Moon Kang",
+      "from_email_hash": "8a640c7e0832c2a9c7b499e9c448f860a9887787b44a1c25ffc71fe22c6edd0d",
+      "date": "2012-10-28T05:59:39Z",
+      "subject": "[statnet_help] Changing email address of mailing list",
+      "subject_clean": "[statnet_help] Changing email address of mailing list",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI would like to change the email address for statnet mailing list.\n\nCurrently, it's under kang@stanford.edu.  I would like to have the mailing list to be sent only to soong.moon.kang@gmail.com (NOT to kang@stanford.edu anymore).\n\nI tried to find out in your website http://mailman2.u.washington.edu/mailman/listinfo/statnet_help, but couldn't find any info about this change of address.\n\nThank you very much,\n\n--Soong\n\nSoong Moon Kang\nDepartment of Management Science and Innovation\nUniversity College London\nGower Street\nLondon, WC1E 6BT\nUnited Kingdom\nWebpage: http://www.ucl.ac.uk/msi/people/soong",
+      "body_snippet": "Hello,\n\nI would like to change the email address for statnet mailing list.\n\nCurrently, it's under kang@stanford.edu.  I would like to have the mailing list to be sent only to soong.moon.kang@gmail.com",
+      "thread_id": "thread-5e20e8c06f8f",
+      "thread_depth": 0,
+      "month": "2012-10"
+    },
+    {
+      "id": "msg-6e761d7d6fd9",
+      "message_id": "<1351576012.5065.71.camel@Navi.krivitsky.homeip.net>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "460258cbd680ea347ee0196adc8a17e139024de6f74b950cba8add8e35654b6f",
+      "date": "2012-10-29T22:46:52Z",
+      "subject": "[statnet_help] Preview release for Statnet suite packages (ergm, latentnet, and others).",
+      "subject_clean": "[statnet_help] Preview release for Statnet suite packages (ergm, latentnet, and others).",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet Users,\n\nSince our last release in March, we have fixed a number of bugs and made\na number of improvements to Statnet Project packages. This includes\nvalued ERGM functionality --- ERGMs for networks whose ties have\nweights.\n\nWe have created a repository for a preview release (3.0-999) while the\npackages make their way through the CRAN system. Installation\ninstructions can be found at: http://statnet.org/preview . The package\ndependencies should install automatically if you follow these\ninstructions.\n\nBoth ergm and latentnet have been updated, and there are three new\npackages:\n\n       * tergm:  dynamic network modeling facilities (e.g.,\n         stergm()); these were briefly a part of the ergm package,\n         but have now been split out into their own R package.\n\n       * ergm.count: extensions for fitting ERGMs to networks\n         whose tie values are counts. (See Krivitsky (2012) reference in\n         the package documentation for more information.)\n\n       * statnet.common: A library with a set of routines used by other\n         packages; it will install automatically\n\nThe preview packages have been tested internally, but they have not been\nchecked by CRAN and may be incomplete in other ways. We would very much\nappreciate any bug reports and other feedback.\n\n                             Pavel Krivitsky (for the Statnet Dev. Team)",
+      "body_snippet": "Dear Statnet Users,\n\nSince our last release in March, we have fixed a number of bugs and made\na number of improvements to Statnet Project packages. This includes\nvalued ERGM functionality --- ERGMs fo",
+      "thread_id": "thread-6e761d7d6fd9",
+      "thread_depth": 0,
+      "month": "2012-10"
+    },
+    {
+      "id": "msg-b9b1e8dc4ca2",
+      "message_id": "<1351576698.5065.77.camel@Navi.krivitsky.homeip.net>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "460258cbd680ea347ee0196adc8a17e139024de6f74b950cba8add8e35654b6f",
+      "date": "2012-10-29T22:58:18Z",
+      "subject": "[statnet_help] weighted network analysis with statnet ?",
+      "subject_clean": "[statnet_help] weighted network analysis with statnet ?",
+      "in_reply_to": "<CANqgAXhKvXmHMD41ZacGnFyxmGZ7aQXUt-UoxHXHc2zM3-B_Mg@mail.gmail.com>",
+      "references": [
+        "<CANqgAXhKvXmHMD41ZacGnFyxmGZ7aQXUt-UoxHXHc2zM3-B_Mg@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Chengjun Wang,\n\n> I am wondering whether statnet could deal with weighted network or\n> not. Does anyone know?\n\nThe current version of network can handle them, and latentnet can fit\nsome models to them. There is a preview release of ergm\n( http://www.statnet.org/preview ) which can fit ERGMs to counts of\ninteractions.\n\n> I have tried to convert weighted network into adjacency matrix, does\n> it work?\n> \n> \n>         # get adjacency matrix\n>          library(igraph)\n>         gflow <- graph.data.frame(flows[,1:3], directed=T)\n>         gflowWeight<-get.adjacency(gflow, type=\"both\",\n>         attr=\"clickstream\")  \n>         # get statnet object\n>         library(statnet)\n>         n=network(gflowWeight,vertex.attr=NULL,\n>         vertex.attrnames=NULL,matrix.type=\"adjacency\",directed=TRUE) #\n>         creates an edgelist using the unique IDs\n\nTry\n\nn=as.network(gflowWeight,matrix.type=\"adjacency\",directed=TRUE,names.eval=\"clickstream\",ignore.eval=FALSE)\n\n                               I hope this helps,\n                               Pavel Krivitsky",
+      "body_snippet": "Dear Chengjun Wang,\n\n> I am wondering whether statnet could deal with weighted network or\n> not. Does anyone know?\n\nThe current version of network can handle them, and latentnet can fit\nsome models to",
+      "thread_id": "thread-cefd7f4a91fc",
+      "thread_depth": 1,
+      "month": "2012-10"
+    },
+    {
+      "id": "msg-6d96f08fe509",
+      "message_id": "<1351577424.5065.85.camel@Navi.krivitsky.homeip.net>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "460258cbd680ea347ee0196adc8a17e139024de6f74b950cba8add8e35654b6f",
+      "date": "2012-10-29T23:10:24Z",
+      "subject": "[statnet_help] STERGM with time-varying nodal covariates",
+      "subject_clean": "[statnet_help] STERGM with time-varying nodal covariates",
+      "in_reply_to": "<508C18DE.8070009@eawag.ch>",
+      "references": [
+        "<508C18DE.8070009@eawag.ch>"
+      ],
+      "body_plain": "Hi, Philip,\n\n> If I estimate a STERGM using CMLE with (time-varying) node attributes as \n> covariates (say, as nodeicov), how do I have to interpret the nodal \n> covariates? Let's say I have two time slices and a quantitative node \n> attribute, which can change over time. Does it make sense to include \n> both (1) the absolute attribute value of alter and (2) the change \n> between the two time periods to predict tie formation and dissolution? \n\nThe two are distinct, though (2) might be difficult to interpret, unless\nit can be assumed to be entirely exogenous to the network process. If it\nis exogenous, its effect can be interpreted as the effect of that\nparticular attribute changing. (If it's not exogenous --- the state of\nthe network can affect it --- then it's not clear.)\n\n> Which of the two attribute vectors does STERGM use as a covariate -- the \n> one at t=1 or the one at t=2 or some kind of pooled value or the \n> absolute change between them?\n\nt=1 network's attributes are used to predict the transition.\n\n                 I hope this helps,\n                 Pavel",
+      "body_snippet": "Hi, Philip,\n\n> If I estimate a STERGM using CMLE with (time-varying) node attributes as \n> covariates (say, as nodeicov), how do I have to interpret the nodal \n> covariates? Let's say I have two time ",
+      "thread_id": "thread-bac90c4e0e80",
+      "thread_depth": 1,
+      "month": "2012-10"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-e49aba57fe11",
+      "subject": "[statnet_help] STERGM simulation crashes",
+      "message_count": 1,
+      "participants": [
+        "Philip Leifeld"
+      ],
+      "started": "2012-10-02T05:39:46Z",
+      "last_reply": "2012-10-02T05:39:46Z",
+      "root_message_id": "msg-e49aba57fe11"
+    },
+    {
+      "id": "thread-613eed280fbd",
+      "subject": "[statnet_help] Lessons on exponential random graph modeling from Grey’s Anatomy hook-ups",
+      "message_count": 1,
+      "participants": [
+        "Brian Keegan"
+      ],
+      "started": "2012-10-09T06:27:42Z",
+      "last_reply": "2012-10-09T06:27:42Z",
+      "root_message_id": "msg-613eed280fbd"
+    },
+    {
+      "id": "thread-9a80f22e2c1c",
+      "subject": "[statnet_help] Understanding dyad in statnet",
+      "message_count": 2,
+      "participants": [
+        "Martina Morris",
+        "chengjun wang"
+      ],
+      "started": "2012-10-20T07:24:57Z",
+      "last_reply": "2012-10-22T11:55:20Z",
+      "root_message_id": "msg-9a80f22e2c1c"
+    },
+    {
+      "id": "thread-cefd7f4a91fc",
+      "subject": "[statnet_help] weighted network analysis with statnet ?",
+      "message_count": 2,
+      "participants": [
+        "Pavel N. Krivitsky",
+        "chengjun wang"
+      ],
+      "started": "2012-10-20T20:10:53Z",
+      "last_reply": "2012-10-29T22:58:18Z",
+      "root_message_id": "msg-cefd7f4a91fc"
+    },
+    {
+      "id": "thread-97c5db0d7dfc",
+      "subject": "[statnet_help] Re: bi-partite network with attributes, and run ergm",
+      "message_count": 1,
+      "participants": [
+        "megumi nishimura"
+      ],
+      "started": "2012-10-21T01:30:01Z",
+      "last_reply": "2012-10-21T01:30:01Z",
+      "root_message_id": "msg-97c5db0d7dfc"
+    },
+    {
+      "id": "thread-7fa862e9015b",
+      "subject": "[statnet_help] Moran and Geary statistics in nacf",
+      "message_count": 1,
+      "participants": [
+        "Richard Benton"
+      ],
+      "started": "2012-10-21T14:16:14Z",
+      "last_reply": "2012-10-21T14:16:14Z",
+      "root_message_id": "msg-7fa862e9015b"
+    },
+    {
+      "id": "thread-61014abb9f2c",
+      "subject": "[statnet_help] Re: statnet_help Digest, Vol 75, Issue 5",
+      "message_count": 1,
+      "participants": [
+        "chengjun wang"
+      ],
+      "started": "2012-10-22T20:46:58Z",
+      "last_reply": "2012-10-22T20:46:58Z",
+      "root_message_id": "msg-61014abb9f2c"
+    },
+    {
+      "id": "thread-bac90c4e0e80",
+      "subject": "[statnet_help] STERGM with time-varying nodal covariates",
+      "message_count": 2,
+      "participants": [
+        "Pavel N. Krivitsky",
+        "Philip Leifeld"
+      ],
+      "started": "2012-10-27T10:24:46Z",
+      "last_reply": "2012-10-29T23:10:24Z",
+      "root_message_id": "msg-bac90c4e0e80"
+    },
+    {
+      "id": "thread-c32631b5f8d7",
+      "subject": "[statnet_help] AUTO: Tom Kochuyt is out of the office (returning 05-11-2012)",
+      "message_count": 1,
+      "participants": [
+        "Tom Kochuyt"
+      ],
+      "started": "2012-10-27T13:09:20Z",
+      "last_reply": "2012-10-27T13:09:20Z",
+      "root_message_id": "msg-c32631b5f8d7"
+    },
+    {
+      "id": "thread-da405fe761fa",
+      "subject": "[statnet_help] GraphML Format",
+      "message_count": 1,
+      "participants": [
+        "Phillip Caliburn"
+      ],
+      "started": "2012-10-27T22:40:51Z",
+      "last_reply": "2012-10-27T22:40:51Z",
+      "root_message_id": "msg-da405fe761fa"
+    },
+    {
+      "id": "thread-5e20e8c06f8f",
+      "subject": "[statnet_help] Changing email address of mailing list",
+      "message_count": 1,
+      "participants": [
+        "Soong Moon Kang"
+      ],
+      "started": "2012-10-28T05:59:39Z",
+      "last_reply": "2012-10-28T05:59:39Z",
+      "root_message_id": "msg-5e20e8c06f8f"
+    },
+    {
+      "id": "thread-6e761d7d6fd9",
+      "subject": "[statnet_help] Preview release for Statnet suite packages (ergm, latentnet, and others).",
+      "message_count": 1,
+      "participants": [
+        "Pavel N. Krivitsky"
+      ],
+      "started": "2012-10-29T22:46:52Z",
+      "last_reply": "2012-10-29T22:46:52Z",
+      "root_message_id": "msg-6e761d7d6fd9"
+    }
+  ]
+}

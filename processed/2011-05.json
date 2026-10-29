@@ -1,0 +1,705 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2011-05",
+  "messages": [
+    {
+      "id": "msg-bd8a125cd733",
+      "message_id": "<4DBEA548.7070208@coll.mpg.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "be636dde28cefa502024155d2c668f78a853d393127e9415ccd248c0c80cf950",
+      "date": "2011-05-02T05:36:24Z",
+      "subject": "[statnet_help] Measuring Density by Vertex Attribute",
+      "subject_clean": "[statnet_help] Measuring Density by Vertex Attribute",
+      "in_reply_to": "<798FF3A49CD1EE43BEAE3523FC9EF5B28BFA4D853D@EXCH07-03.apollogrp.edu>",
+      "references": [
+        "<798FF3A49CD1EE43BEAE3523FC9EF5B28BFA4D853D@EXCH07-03.apollogrp.edu>"
+      ],
+      "body_plain": "Hi Philip,\n\nThere are two ways to accomplish this. The first method is based on the \nrDNA package and gives you binary or weighted within- and between-block \ndensities. It takes a sociomatrix as input. Unfortunately, it is not \nvery efficient. If I have time, I will reimplement it in C at some \npoint. The second one is based on statnet. It gives you a mixing matrix \nand does not distinguish between valued and binary edges. But it is \nprobably more efficient for larger networks. There you go:\n\n\n# create a binary 10x10 matrix\nmat <- matrix(rbinom(100,1,0.1), ncol=10)\n\n# create a vector with attributes\nattributes <- c(1,2,2,3,2,1,1,1,2,3)\n\n\n### METHOD 1 using rDNA ###\n\ninstall.packages(\"rJava\")\ninstall.packages(\"rDNA\")\nlibrary(rDNA)\n\n# convert attributes into one-column matrix\ngroups <- matrix(attributes, ncol=1)\n\n# within- and between-block density values:\ndna.density(mat, partitions=groups, weighted=FALSE)\n\n\n### METHOD 2 using statnet ###\n\nlibrary(statnet)\nnw <- network(mat)\nset.vertex.attribute(nw, \"attrib\", attributes)\nmixingmatrix(nw, \"attrib\")\n\n\nCheers,\nPhilip\n\n\nAm 29.04.2011 00:31, schrieb Philip Heinrich:\n> Is there a straight forward way of measuring the density of a network\n> for each of the two levels of a vertex attribute?\n>\n> Thanks.\n>\n> Philip Heinrich, MA, MBA\n> Research Manager - Academic Research Group\n> University of Phoenix\n> 602-557-1783 - Voice\n> 602-557-1854 - Fax\n>\n>\n> ------------------------------------------------------------------------\n> This message is private and confidential. If you have received it in\n> error, please notify the sender and remove it from your system.\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nPhilip Leifeld\nMax Planck Institute for     | +49 (0) 1577 6830349 (mobile)\nResearch on Collective Goods | +49 (0) 228 91416-73 (phone)\nMaxNetAging Doctoral Fellow  | +49 (0) 228 91416-62 (fax)\nKurt-Schumacher-Str. 10      | Leifeld@coll.mpg.de\n53113 Bonn, Germany          | http://www.philipleifeld.de",
+      "body_snippet": "Hi Philip,\n\nThere are two ways to accomplish this. The first method is based on the \nrDNA package and gives you binary or weighted within- and between-block \ndensities. It takes a sociomatrix as input",
+      "thread_id": "thread-bd8a125cd733",
+      "thread_depth": 0,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-085db01db434",
+      "message_id": "<000401cc08eb$931ba120$b952e360$@itesm.mx>",
+      "from_name": "Jorge M Rocha",
+      "from_email_hash": "b18b1d21c30f674c62d2b8e9b379deaad3095478a59320e48db72c3ba2218e45",
+      "date": "2011-05-02T10:08:36Z",
+      "subject": "[statnet_help] ergm question",
+      "subject_clean": "[statnet_help] ergm question",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI have a conceptual question that is probably somewhat na?ve regarding the\nanalytic logic behind ERGM?s (I?ve been using statnet and its suite of\ntools).  If someone in the community could point me in the right direction\nliterature wise, I would appreciate it.  Now let me try to state my\nquestion/doubt as briefly and clearly as I can:\n\n>From what I understand, the modeling framework of an ERGM treats the\nobserved network as the dependent variable and the specified structural\nconfigurations and covariate information about nodes/edges as independent\nvariables whose presence/absence increases the log-likelihood for the model.\nIn other words, what we want to achieve in these models is to gain a better\nunderstanding of the types of processes that might have gone into generating\na network similar to the observed one; hypotheses are about this or that\nconfiguration or node/edge attribute and their effect on the pattern of\nsocial interactions represented in the network. If so, how would I go about\ntesting hypotheses concerning the effects of social interactions on nodal\nattributes (I?m particularly thinking of different types of opinions\nindividuals might tend to have based on their interactions)?   \n\nWhat I?ve done so far is kind of arguing backwards (or at least that is how\nit feels to me ?maybe because I?m coming from a traditional linear/logit\nregression background, and probably part of my problem is thinking in terms\nof DV and IV).  If the coefficients are significant for some node covariate\nof my interest in the ERGM estimation, then I?ve been interpreting this as\nevidence that it is not unreasonable to argue that the pattern of social\ninteractions influences the type of opinion individuals have (I know that if\nI had longitudinal data this issue of reverse causality would not be so much\nof an issue, but so far all I have is cross-sectional data).  How wrong am I\non this (the backward-arguing)?\n\nFinally, part of my worry is that I?ll be sending the research to a consumer\nbehavior/marketing journal where the familiarity with social network stuff\n?let alone ERGM?s?is limited.  Any suggestions on how to best explain these\nissues to a non-specialized audience?\n\nIn advance, thanks,\n\n \n\nJorge M Rocha\n\nEGADE Business School\n\n \n\nDescription: firma smaller\n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110502/afdc6950/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: image001.jpg\nType: image/jpeg\nSize: 70906 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110502/afdc6950/attachment.jpg>",
+      "body_snippet": "Dear all,\n\nI have a conceptual question that is probably somewhat na?ve regarding the\nanalytic logic behind ERGM?s (I?ve been using statnet and its suite of\ntools).  If someone in the community could ",
+      "thread_id": "thread-085db01db434",
+      "thread_depth": 0,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-a52671232da2",
+      "message_id": "<4DBF5C5B.5000408@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2011-05-02T18:37:31Z",
+      "subject": "[statnet_help] ergm question",
+      "subject_clean": "[statnet_help] ergm question",
+      "in_reply_to": "<000401cc08eb$931ba120$b952e360$@itesm.mx>",
+      "references": [
+        "<000401cc08eb$931ba120$b952e360$@itesm.mx>"
+      ],
+      "body_plain": "Hi, Jorge -\n\nYour question raises some important issues that are too deep to address \nwell in email.  But I will take a stab at some of them....\n\nOn 05/02/2011 10:08 AM, Jorge M Rocha wrote:\n>  From what I understand, the modeling framework of an ERGM treats the\n> observed network as the _dependent variable_ and the specified\n> structural configurations and covariate information about nodes/edges as\n> _independent variables_ whose presence/absence increases the\n> log-likelihood for the model.\n\nI think it is important to make some comment on this conceptual issue, \nbecause it lies at the core of one's thinking about the modeling \nprocess.  (In so doing I will speak ex cathedra -- I trust that my \ncolleagues will not be shy in administering correctives, should they \nfind me to be in error.)  In a standard ERGM without covariate effects, \nthere are no independent variables (in a regression-like sense).  The \nmodel is one large stochastic system, and is treated as fully \nendogenous.  (Exogenous effects come about from the use of covariates, \nsuch as vertex attributes.  Of course, these can also be endogenized, \nbut that's a broader model class.)  More to the point, the act of \nwriting down an ERGM is the act of writing down a model for the joint \nprobability distribution of a graph (i.e., the system state).  The \nexponential family form provides the language in which we express that \nmodel; the content and the interpretation must come from elsewhere.\n\nWithin this context, the role of statistics based on structural \nconfigurations is to parametrize the joint distribution of the edge \nstructure.  There are several formally equivalent ways to understand \nthis.  One natural one is to view the parameter associated with a given \nstructural statistic as measuring the tendency of the expectation of \nthat statistic to be higher or lower than what would be observed if the \nparameter in question were zero (equivalently, if it were not in the \nmodel).  From this point of view, all ERGM parameters reflect different \nsorts of structural \"biases\" or \"deviations\" from the behavior of the \nuniform Bernoulli graph (i.e., the homogeneous Bernoulli graph in which \nevery edge occurs with equal probability).\n\nNote that this is a \"holistic\" view of the network as a jointly \ninteracting system -- if you are familiar with the Lagrangian or \nHamiltonian formulations of classical mechanics (in which the behavior \nof a classical system is described by reference to a potential \nfunction), this may prove a useful analogy.  In any event, it's very \ndifferent from the \"elementwise\" view of networks that many folks are \nused to.\n\nFor the latter, it can be helpful to think in terms of the full \nconditionals of the model -- the probability of a given edge being \npresent, given the rest of the structure.  This is a \"local/elementwise\" \nview, perhaps loosely analogous to the way that classical mechanics is \ntaught to beginners (with \"forces\" acting on particles, the conditional \nbehavior of which is defined in terms of the other particle states). \nThis comports better with the intuition of most social scientists, but \nIMHO has many underappreciated pitfalls.  Chief among these is the fact \nthat one can easily forget that the elements of the system are indeed \ninteracting, and the conditional behavior of one variable is only \nmeaningful within the context of the rest of the network.  (For an \nexample of where this intuition led the field astray, one need only look \nat the rise and fall of pseudo-likelihood techniques.)  One can also \neasily confuse conditional edge probabilities with propensities of \n_individuals_ to create edges (e.g., in a choice context), with which \nthey are _not_ always synonymous.  I am thus less sanguine about the \n\"local\" view of ERGMs than some of my colleagues, although there is no \nquestion that this perspective _can_ be very helpful.\n\nI want to stress that, properly understood, the holistic and elementwise \nviews of the ERGM are both correct -- they are two equivalent ways of \ndescribing the same thing.  Nor are these the only ways in which the \nformalism can be validly interpreted.  (For instance, one can also \nunderstand ERGMs in terms of the equilibrium behavior of certain types \nof Markov chains, an interpretation that has value in dynamic \napplications.)  But what all valid interpretations of the ERGM framework \nhave in common is that they recognize that one is modeling a system of \ncomponents, and those components can potentially interact with one \nanother.  As such, my sense is that regression-based thinking can be as \nmuch a hindrance as a help when learning about ERGMs, at least for most \nsocial scientists.  (Those whose familiarity with statistical \nexponential families allows them to understand ERGMs within the broader \ncontext of \"regression-like\" models are exempted, but I daresay that \nthis is not standard training for most social scientists.)  That said, I \noften teach it that way, because the initial approachability of ERGMs as \n\"logistic network regression with independence relaxations\" is higher \nthan \"potential functions on graphs\" for my students.  YMMV.\n\nFor an example of the use of the \"local\" view of ERGMs for model \nparametrization, I suggest the Goodreau et al. 2009 _Demography_ paper. \n  For a different, \"semi-local\" view based on dependence among edges, \none can find many good examples in the work of Pattison and Robins; \ntheir 2002 _Sociological Methodology_ article comes to mind.  (And, of \ncourse, there is the classic Frank and Strauss _JASA_ paper, among \nothers.)  The \"holistic\" view per se is less well-explored, although \nthere are many precursors in structuralist theory.  (The Harary wing of \nstructural balance, for instance, operates entirely from a holistic \nstandpoint.  This is also where I insert my obligatory plug for Bruce \nMayhew.)  Mark Handcock's work on degeneracy (see, e.g., his 2003 \nchapter) has in my opinion very deep substantive implications from the \nholistic side, and there are some other recent technical contributions \n(e.g., a recent arXiv paper by Chatterjee and Diaconis) that are \nlikewise promising.  One could accumulate many more examples, of course.\n\n> In other words, what we want to achieve\n> in these models is to gain a better understanding of the types of\n> processes that might have gone into generating a network similar to the\n> observed one;\n\nThat is one use of the framework, and certainly an important one.\n\n> hypotheses are about this or that configuration or\n> node/edge attribute and their effect on the pattern of social\n> interactions represented in the network.\n\nThis is where we must be careful: a configuration does not \"have\" an \neffect on the network.  One could say, however, that we hypothesize that \nour process of interest will result in networks in which certain \nconfigurations are over or underrepresented.\n\n> If so, how would I go about\n> testing hypotheses concerning the effects of social interactions on\n> nodal attributes (I?m particularly thinking of different types of\n> opinions individuals might tend to have based on their interactions)?\n\nThat depends on whether the attributes affect the network.  If the \nnetwork structure is not affected by the attributes in question (e.g., \nbecause the former evolves over much longer time scales than the \nlatter), then one need not model the network at all: one can condition \non the network, and model the attributes (or, if one just wants to test \na marginal hypothesis, employ an even simpler method such as a \npermutation test).\n\nIf, on the time scale of interest, the network and the attributes both \ncoevolve, then the ERGM language is not expressive enough: you need a \njoint attribute/network model.  Such extensions do exist, although my \nsense is that it is difficult to identify such models without \nlongitudinal data.\n\n>\n> What I?ve done so far is kind of arguing backwards (or at least that is\n> how it feels to me ?maybe because I?m coming from a traditional\n> linear/logit regression background, and probably part of my problem is\n> thinking in terms of DV and IV).  If the coefficients are significant\n> for some node covariate of my interest in the ERGM estimation, then I?ve\n> been interpreting this as evidence that it is not unreasonable to argue\n> that the pattern of social interactions influences the type of opinion\n> individuals have (I know that if I had longitudinal data this issue of\n> reverse causality would not be so much of an issue, but so far all I\n> have is cross-sectional data).  How wrong am I on this (the\n> backward-arguing)?\n\nThere may be some settings in which this could give you the right \nanswer, but I would discourage it unless you can prove that you are in \none of those settings.  If you are dealing with an attribute and a \nnetwork that are jointly endogenous, then conditioning on the latter and \nnot the former is not going to do what you want.  If you just want to \nestablish marginal association (e.g., those who are in certain positions \ntend to have certain kinds of opinions), I would lean towards a \npermutation test or similar procedure.  If you really want to pull \nthings apart, estimate parameters, test more complex hypotheses, etc., \nmy opinion is that you should look for a joint attribute/network model. \n  (We don't have one in statnet right now, but RSiena or pnet might.)\n\n>\n> Finally, part of my worry is that I?ll be sending the research to a\n> consumer behavior/marketing journal where the familiarity with social\n> network stuff ?let alone ERGM?s?is limited.  Any suggestions on how to\n> best explain these issues to a non-specialized audience?\n\nWell, my _personal_ advice in your case would be to look closely at your \nproblem, and try to figure out how much of it you can address without \nusing complex network models -- it's going to be much easier to explain, \nsay, permutation or CUG tests to such a readership than ERGMs.  If you \nreally must model the system as a whole, first determine whether you can \nreasonably approximate one portion (the network or the attribute) as \nbeing fixed relative to the other.  (Some basic knowledge of your case \nis important here: do you have access to ethnographic, observational, or \nother information that might help you evaluate the plausibility of a \none-way effect?)  If you _can_ approximate one portion as fixed, model \naccordingly (e.g., if the network is fixed, you may want something like \na network autocorrelation model, while fixed attributes suggest an \nERGM).  If you are stuck with having to model both the network and \nindividual attributes jointly, you have my sympathy -- this is an \nexciting area of technical research, which generally implies a painful \nexperience for the practitioner.  Getting your hands on a reasonable \ncross-sectional network/attribute model is then a must, as is learning \nto use it properly (bearing in mind that, if the model is new, its \ncreators may have only limited experience in that regard).\n\nThis email has become both long and polemical, but these are important \nand frequently encountered questions.  Perhaps these comments will prove \nhelpful to you, and to others here who are struggling with the same issues.\n\nGood luck!\n\n-Carter",
+      "body_snippet": "Hi, Jorge -\n\nYour question raises some important issues that are too deep to address \nwell in email.  But I will take a stab at some of them....\n\nOn 05/02/2011 10:08 AM, Jorge M Rocha wrote:\n>  From w",
+      "thread_id": "thread-085db01db434",
+      "thread_depth": 1,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-d409caabee43",
+      "message_id": "<4DBFF173.30804@coll.mpg.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "be636dde28cefa502024155d2c668f78a853d393127e9415ccd248c0c80cf950",
+      "date": "2011-05-03T05:13:39Z",
+      "subject": "[statnet_help] Measuring Density by Vertex Attribute",
+      "subject_clean": "[statnet_help] Measuring Density by Vertex Attribute",
+      "in_reply_to": "<798FF3A49CD1EE43BEAE3523FC9EF5B28C061113FF@EXCH07-03.apollogrp.edu>",
+      "references": [
+        "<798FF3A49CD1EE43BEAE3523FC9EF5B28BFA4D853D@EXCH07-03.apollogrp.edu>",
+        "<4DBEA548.7070208@coll.mpg.de>",
+        "<798FF3A49CD1EE43BEAE3523FC9EF5B28C061106AD@EXCH07-03.apollogrp.edu>",
+        "<4DBED896.9010407@coll.mpg.de>",
+        "<798FF3A49CD1EE43BEAE3523FC9EF5B28C061113FF@EXCH07-03.apollogrp.edu>"
+      ],
+      "body_plain": "The network matrix should have row names -- I forgot them in my example, \nsorry! It is also possible just to use a vector of attributes.\n\nTry this:\n\nmat <- matrix(rbinom(100,1,0.2), ncol=10)\nrownames(mat) <- c(\"a\", \"b\", \"c\", \"d\", \"e\", \"f\", \"g\", \"h\", \"i\", \"j\")\nattributes <- c(1,2,2,3,2,1,1,1,2,3)\ndna.density(mat, attributes)\n\nThe method can also infer the appropriate attribute values from a larger \nattribute list by matching the row names:\n\nmat <- matrix(rbinom(100,1,0.2), ncol=10)\nrownames(mat) <- c(\"a\", \"b\", \"c\", \"d\", \"e\", \"f\", \"g\", \"h\", \"i\", \"j\")\nattributes <- matrix(c(1,2,2,3,2,1,1,1,2,3,1,2,2,3,2,1,1,1,2,3))\nrow.names(attributes) <- c(\"a\", \"g\", \"b\", \"f\", \"l\", \"c\", \"m\", \"p\", \"d\", \n\"e\", \"g\", \"j\", \"i\", \"h\", \"k\", \"n\", \"o\", \"q\", \"r\", \"s\")\ndna.density(mat, attributes)\n\nThe result should look like this:\n\n           1         2         3\n1 0.3333333 0.2500000 0.1111111\n2 0.3333333 0.4375000 0.2500000\n3 0.2222222 0.3333333 0.3333333\n\nHope this helps,\n\nPhilip\n\n\nAm 03.05.2011 01:12, schrieb Philip Heinrich:\n> Tried to duplicate your Method 1 without success.\n>\n> mat<-matrix(rbinom(100,1,0.1),ncol=10)\n>> mat\n>        [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]\n>   [1,]    0    0    0    0    0    0    0    0    0     0\n>   [2,]    0    0    0    0    0    0    1    0    0     0\n>   [3,]    0    0    1    0    0    0    0    0    0     0\n>   [4,]    0    0    0    0    0    0    0    1    0     1\n>   [5,]    0    0    0    1    0    0    0    0    0     0\n>   [6,]    1    0    0    0    0    1    0    1    0     0\n>   [7,]    0    1    0    0    0    1    0    0    0     0\n>   [8,]    0    0    0    0    0    0    0    0    0     1\n>   [9,]    0    0    0    0    0    0    1    0    0     0\n> [10,]    1    0    0    0    0    0    0    1    0     0\n>\n>\n>> attributes<-c(1,2,2,3,2,1,1,1,2,3)\n>\n>\n>> attributes\n>   [1] 1 2 2 3 2 1 1 1 2 3\n>\n>\n>> install.packages(\"rJava\")\n> Installing package(s) into 'C:/Users/pfheinri/Documents/R/win-library/2.13'\n> (as 'lib' is unspecified)\n> --- Please select a CRAN mirror for use in this session ---\n> trying URL 'http://www.stats.ox.ac.uk/pub/RWin/bin/windows/contrib/2.13/rJava_0.8-8.zip'\n> Content type 'application/zip' length 646091 bytes (630 Kb)\n> opened URL\n> downloaded 630 Kb\n>\n>\n> The downloaded packages are in\n>          C:\\Users\\pfheinri\\AppData\\Local\\Temp\\RtmpJ4jt0P\\downloaded_packages\n>\n>\n>> install.packages(\"rDNA\")\n> Installing package(s) into 'C:/Users/pfheinri/Documents/R/win-library/2.13'\n> (as 'lib' is unspecified)\n> trying URL 'http://cran.opensourceresources.org/bin/windows/contrib/2.13/rDNA_1.27.zip'\n> Content type 'application/zip' length 116642 bytes (113 Kb)\n> opened URL\n> downloaded 113 Kb\n>\n> package 'rDNA' successfully unpacked and MD5 sums checked\n>\n> The downloaded packages are in\n>          C:\\Users\\pfheinri\\AppData\\Local\\Temp\\RtmpJ4jt0P\\downloaded_packages\n>> library(rDNA)\n> Loading required package: rJava\n>\n>\n>> groups<-matrix(attributes,ncol=1)\n>> groups\n>        [,1]\n>   [1,]    1\n>   [2,]    2\n>   [3,]    2\n>   [4,]    3\n>   [5,]    2\n>   [6,]    1\n>   [7,]    1\n>   [8,]    1\n>   [9,]    2\n> [10,]    3\n>\n>\n>> dna.density(mat,partitions=groups,weighted=FALSE)\n> Error in if (prn == mrn) { : argument is of length zero\n>\n> Thanks for your time.\n>\n>>\n>> -----Original Message-----\n>> From: Philip Leifeld [mailto:Leifeld@coll.mpg.de]\n>> Sent: Monday, May 02, 2011 5:36 AM\n>> To: statnet_help@u.washington.edu\n>> Cc: Philip Heinrich\n>> Subject: Re: [statnet_help] Measuring Density by Vertex Attribute\n>>\n>> Hi Philip,\n>>\n>> There are two ways to accomplish this. The first method is based on the\n>> rDNA package and gives you binary or weighted within- and between-block\n>> densities. It takes a sociomatrix as input. Unfortunately, it is not\n>> very efficient. If I have time, I will reimplement it in C at some\n>> point. The second one is based on statnet. It gives you a mixing matrix\n>> and does not distinguish between valued and binary edges. But it is\n>> probably more efficient for larger networks. There you go:\n>>\n>>\n>> # create a binary 10x10 matrix\n>> mat<- matrix(rbinom(100,1,0.1), ncol=10)\n>>\n>> # create a vector with attributes\n>> attributes<- c(1,2,2,3,2,1,1,1,2,3)\n>>\n>>\n>> ### METHOD 1 using rDNA ###\n>>\n>> install.packages(\"rJava\")\n>> install.packages(\"rDNA\")\n>> library(rDNA)\n>>\n>> # convert attributes into one-column matrix\n>> groups<- matrix(attributes, ncol=1)\n>>\n>> # within- and between-block density values:\n>> dna.density(mat, partitions=groups, weighted=FALSE)\n>>\n>>\n>> ### METHOD 2 using statnet ###\n>>\n>> library(statnet)\n>> nw<- network(mat)\n>> set.vertex.attribute(nw, \"attrib\", attributes)\n>> mixingmatrix(nw, \"attrib\")\n>>\n>>\n>> Cheers,\n>> Philip\n>>\n>>\n>> Am 29.04.2011 00:31, schrieb Philip Heinrich:\n>>> Is there a straight forward way of measuring the density of a network\n>>> for each of the two levels of a vertex attribute?\n>>>\n>>> Thanks.\n>>>\n>>> Philip Heinrich, MA, MBA\n>>> Research Manager - Academic Research Group\n>>> University of Phoenix\n>>> 602-557-1783 - Voice\n>>> 602-557-1854 - Fax\n>>>\n>>>\n>>> ------------------------------------------------------------------------\n>>> This message is private and confidential. If you have received it in\n>>> error, please notify the sender and remove it from your system.\n>>>\n>>>\n\n-- \nPhilip Leifeld\nMax Planck Institute for     | +49 (0) 1577 6830349 (mobile)\nResearch on Collective Goods | +49 (0) 228 91416-73 (phone)\nMaxNetAging Doctoral Fellow  | +49 (0) 228 91416-62 (fax)\nKurt-Schumacher-Str. 10      | Leifeld@coll.mpg.de\n53113 Bonn, Germany          | http://www.philipleifeld.de",
+      "body_snippet": "The network matrix should have row names -- I forgot them in my example, \nsorry! It is also possible just to use a vector of attributes.\n\nTry this:\n\nmat <- matrix(rbinom(100,1,0.2), ncol=10)\nrownames(",
+      "thread_id": "thread-d409caabee43",
+      "thread_depth": 0,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-00cf9c346c42",
+      "message_id": "<5DB528AA-BDCA-4B58-8E97-57B0832B7B51@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2011-05-03T05:27:26Z",
+      "subject": "[statnet_help] ergm question",
+      "subject_clean": "[statnet_help] ergm question",
+      "in_reply_to": "<4DBF5C5B.5000408@uci.edu>",
+      "references": [
+        "<000401cc08eb$931ba120$b952e360$@itesm.mx>",
+        "<4DBF5C5B.5000408@uci.edu>"
+      ],
+      "body_plain": "Hello Jorge.  One of the things Carter said reminded me of something:   \nIn contrasting the \"holistic\" and \"elementwise\" conceptions as he  \nexplains them below, it's important to remember that every  \nholistically-defined model leads to a corresponding set of full  \nconditionals (the elementwise model), but the converse is not true!   \nIn other words, one cannot necessarily define a (holistic) probability  \ndistribution on networks merely by specifying a full set of  \nconditional distributions of each edge given the rest of the network.   \nI point this out because I *think* it's at some level another reason  \nthat the usual dependent / independent variable interpretation is not  \napplicable to the ERGM situation.\n\nThere is some further discussion of the dependent / independent  \nquestion and a comparison with standard generalized linear models in  \nSection 3 of http://www.stat.psu.edu/~dhunter/papers/ergmuserterms.pdf\n\nBest,\nDave\n\n\n\n\nOn May 2, 2011, at 9:37 PM, Carter T. Butts wrote:\n\n> Hi, Jorge -\n>\n> Your question raises some important issues that are too deep to  \n> address well in email.  But I will take a stab at some of them....\n>\n> On 05/02/2011 10:08 AM, Jorge M Rocha wrote:\n>> From what I understand, the modeling framework of an ERGM treats the\n>> observed network as the _dependent variable_ and the specified\n>> structural configurations and covariate information about nodes/ \n>> edges as\n>> _independent variables_ whose presence/absence increases the\n>> log-likelihood for the model.\n>\n> I think it is important to make some comment on this conceptual  \n> issue, because it lies at the core of one's thinking about the  \n> modeling process.  (In so doing I will speak ex cathedra -- I trust  \n> that my colleagues will not be shy in administering correctives,  \n> should they find me to be in error.)  In a standard ERGM without  \n> covariate effects, there are no independent variables (in a  \n> regression-like sense).  The model is one large stochastic system,  \n> and is treated as fully endogenous.  (Exogenous effects come about  \n> from the use of covariates, such as vertex attributes.  Of course,  \n> these can also be endogenized, but that's a broader model class.)   \n> More to the point, the act of writing down an ERGM is the act of  \n> writing down a model for the joint probability distribution of a  \n> graph (i.e., the system state).  The exponential family form  \n> provides the language in which we express that model; the content  \n> and the interpretation must come from elsewhere.\n>\n> Within this context, the role of statistics based on structural  \n> configurations is to parametrize the joint distribution of the edge  \n> structure.  There are several formally equivalent ways to understand  \n> this.  One natural one is to view the parameter associated with a  \n> given structural statistic as measuring the tendency of the  \n> expectation of that statistic to be higher or lower than what would  \n> be observed if the parameter in question were zero (equivalently, if  \n> it were not in the model).  From this point of view, all ERGM  \n> parameters reflect different sorts of structural \"biases\" or  \n> \"deviations\" from the behavior of the uniform Bernoulli graph (i.e.,  \n> the homogeneous Bernoulli graph in which every edge occurs with  \n> equal probability).\n>\n> Note that this is a \"holistic\" view of the network as a jointly  \n> interacting system -- if you are familiar with the Lagrangian or  \n> Hamiltonian formulations of classical mechanics (in which the  \n> behavior of a classical system is described by reference to a  \n> potential function), this may prove a useful analogy.  In any event,  \n> it's very different from the \"elementwise\" view of networks that  \n> many folks are used to.\n>\n> For the latter, it can be helpful to think in terms of the full  \n> conditionals of the model -- the probability of a given edge being  \n> present, given the rest of the structure.  This is a \"local/ \n> elementwise\" view, perhaps loosely analogous to the way that  \n> classical mechanics is taught to beginners (with \"forces\" acting on  \n> particles, the conditional behavior of which is defined in terms of  \n> the other particle states). This comports better with the intuition  \n> of most social scientists, but IMHO has many underappreciated  \n> pitfalls.  Chief among these is the fact that one can easily forget  \n> that the elements of the system are indeed interacting, and the  \n> conditional behavior of one variable is only meaningful within the  \n> context of the rest of the network.  (For an example of where this  \n> intuition led the field astray, one need only look at the rise and  \n> fall of pseudo-likelihood techniques.)  One can also easily confuse  \n> conditional edge probabilities with propensities of _individuals_ to  \n> create edges (e.g., in a choice context), with which they are _not_  \n> always synonymous.  I am thus less sanguine about the \"local\" view  \n> of ERGMs than some of my colleagues, although there is no question  \n> that this perspective _can_ be very helpful.\n>\n> I want to stress that, properly understood, the holistic and  \n> elementwise views of the ERGM are both correct -- they are two  \n> equivalent ways of describing the same thing.  Nor are these the  \n> only ways in which the formalism can be validly interpreted.  (For  \n> instance, one can also understand ERGMs in terms of the equilibrium  \n> behavior of certain types of Markov chains, an interpretation that  \n> has value in dynamic applications.)  But what all valid  \n> interpretations of the ERGM framework have in common is that they  \n> recognize that one is modeling a system of components, and those  \n> components can potentially interact with one another.  As such, my  \n> sense is that regression-based thinking can be as much a hindrance  \n> as a help when learning about ERGMs, at least for most social  \n> scientists.  (Those whose familiarity with statistical exponential  \n> families allows them to understand ERGMs within the broader context  \n> of \"regression-like\" models are exempted, but I daresay that this is  \n> not standard training for most social scientists.)  That said, I  \n> often teach it that way, because the initial approachability of  \n> ERGMs as \"logistic network regression with independence relaxations\"  \n> is higher than \"potential functions on graphs\" for my students.  YMMV.\n>\n> For an example of the use of the \"local\" view of ERGMs for model  \n> parametrization, I suggest the Goodreau et al. 2009 _Demography_  \n> paper.  For a different, \"semi-local\" view based on dependence among  \n> edges, one can find many good examples in the work of Pattison and  \n> Robins; their 2002 _Sociological Methodology_ article comes to  \n> mind.  (And, of course, there is the classic Frank and Strauss  \n> _JASA_ paper, among others.)  The \"holistic\" view per se is less  \n> well-explored, although there are many precursors in structuralist  \n> theory.  (The Harary wing of structural balance, for instance,  \n> operates entirely from a holistic standpoint.  This is also where I  \n> insert my obligatory plug for Bruce Mayhew.)  Mark Handcock's work  \n> on degeneracy (see, e.g., his 2003 chapter) has in my opinion very  \n> deep substantive implications from the holistic side, and there are  \n> some other recent technical contributions (e.g., a recent arXiv  \n> paper by Chatterjee and Diaconis) that are likewise promising.  One  \n> could accumulate many more examples, of course.\n>\n>> In other words, what we want to achieve\n>> in these models is to gain a better understanding of the types of\n>> processes that might have gone into generating a network similar to  \n>> the\n>> observed one;\n>\n> That is one use of the framework, and certainly an important one.\n>\n>> hypotheses are about this or that configuration or\n>> node/edge attribute and their effect on the pattern of social\n>> interactions represented in the network.\n>\n> This is where we must be careful: a configuration does not \"have\" an  \n> effect on the network.  One could say, however, that we hypothesize  \n> that our process of interest will result in networks in which  \n> certain configurations are over or underrepresented.\n>\n>> If so, how would I go about\n>> testing hypotheses concerning the effects of social interactions on\n>> nodal attributes (I?m particularly thinking of different types of\n>> opinions individuals might tend to have based on their interactions)?\n>\n> That depends on whether the attributes affect the network.  If the  \n> network structure is not affected by the attributes in question  \n> (e.g., because the former evolves over much longer time scales than  \n> the latter), then one need not model the network at all: one can  \n> condition on the network, and model the attributes (or, if one just  \n> wants to test a marginal hypothesis, employ an even simpler method  \n> such as a permutation test).\n>\n> If, on the time scale of interest, the network and the attributes  \n> both coevolve, then the ERGM language is not expressive enough: you  \n> need a joint attribute/network model.  Such extensions do exist,  \n> although my sense is that it is difficult to identify such models  \n> without longitudinal data.\n>\n>>\n>> What I?ve done so far is kind of arguing backwards (or at least  \n>> that is\n>> how it feels to me ?maybe because I?m coming from a traditional\n>> linear/logit regression background, and probably part of my problem  \n>> is\n>> thinking in terms of DV and IV).  If the coefficients are significant\n>> for some node covariate of my interest in the ERGM estimation, then  \n>> I?ve\n>> been interpreting this as evidence that it is not unreasonable to  \n>> argue\n>> that the pattern of social interactions influences the type of  \n>> opinion\n>> individuals have (I know that if I had longitudinal data this issue  \n>> of\n>> reverse causality would not be so much of an issue, but so far all I\n>> have is cross-sectional data).  How wrong am I on this (the\n>> backward-arguing)?\n>\n> There may be some settings in which this could give you the right  \n> answer, but I would discourage it unless you can prove that you are  \n> in one of those settings.  If you are dealing with an attribute and  \n> a network that are jointly endogenous, then conditioning on the  \n> latter and not the former is not going to do what you want.  If you  \n> just want to establish marginal association (e.g., those who are in  \n> certain positions tend to have certain kinds of opinions), I would  \n> lean towards a permutation test or similar procedure.  If you really  \n> want to pull things apart, estimate parameters, test more complex  \n> hypotheses, etc., my opinion is that you should look for a joint  \n> attribute/network model.  (We don't have one in statnet right now,  \n> but RSiena or pnet might.)\n>\n>>\n>> Finally, part of my worry is that I?ll be sending the research to a\n>> consumer behavior/marketing journal where the familiarity with social\n>> network stuff ?let alone ERGM?s?is limited.  Any suggestions on how  \n>> to\n>> best explain these issues to a non-specialized audience?\n>\n> Well, my _personal_ advice in your case would be to look closely at  \n> your problem, and try to figure out how much of it you can address  \n> without using complex network models -- it's going to be much easier  \n> to explain, say, permutation or CUG tests to such a readership than  \n> ERGMs.  If you really must model the system as a whole, first  \n> determine whether you can reasonably approximate one portion (the  \n> network or the attribute) as being fixed relative to the other.   \n> (Some basic knowledge of your case is important here: do you have  \n> access to ethnographic, observational, or other information that  \n> might help you evaluate the plausibility of a one-way effect?)  If  \n> you _can_ approximate one portion as fixed, model accordingly (e.g.,  \n> if the network is fixed, you may want something like a network  \n> autocorrelation model, while fixed attributes suggest an ERGM).  If  \n> you are stuck with having to model both the network and individual  \n> attributes jointly, you have my sympathy -- this is an exciting area  \n> of technical research, which generally implies a painful experience  \n> for the practitioner.  Getting your hands on a reasonable cross- \n> sectional network/attribute model is then a must, as is learning to  \n> use it properly (bearing in mind that, if the model is new, its  \n> creators may have only limited experience in that regard).\n>\n> This email has become both long and polemical, but these are  \n> important and frequently encountered questions.  Perhaps these  \n> comments will prove helpful to you, and to others here who are  \n> struggling with the same issues.\n>\n> Good luck!\n>\n> -Carter\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hello Jorge.  One of the things Carter said reminded me of something:   \nIn contrasting the \"holistic\" and \"elementwise\" conceptions as he  \nexplains them below, it's important to remember that every ",
+      "thread_id": "thread-085db01db434",
+      "thread_depth": 2,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-ded8506dd91b",
+      "message_id": "<000501cc09dc$7c88ffb0$759aff10$@itesm.mx>",
+      "from_name": "Jorge M Rocha",
+      "from_email_hash": "b18b1d21c30f674c62d2b8e9b379deaad3095478a59320e48db72c3ba2218e45",
+      "date": "2011-05-03T14:53:07Z",
+      "subject": "[statnet_help] ergm question",
+      "subject_clean": "[statnet_help] ergm question",
+      "in_reply_to": "<5DB528AA-BDCA-4B58-8E97-57B0832B7B51@stat.psu.edu>",
+      "references": [
+        "<000401cc08eb$931ba120$b952e360$@itesm.mx>",
+        "<4DBF5C5B.5000408@uci.edu>",
+        "<5DB528AA-BDCA-4B58-8E97-57B0832B7B51@stat.psu.edu>"
+      ],
+      "body_plain": "Dear all,\nFirst, thank you all for the comments (by Jacob, Filip, Tom, Carter, Dave &\nJohan), they have been quite helpful both in terms of better understanding\nthe analytic logic(s) of ERGM's and how I could (maybe alternatively) go\nabout my research.\nThe distinction between *holistic* and *element-wise* conceptions of an ERGM\nthat Carter elaborated has been most informative (I'm not familiar with\nclassical mechanics, but in my past life I did some ecosystem energy-flow\nmodeling, so I do relate to the notion of a series of equations\nstochastically describing the potential function of a system).  Apart from\nsection 3 of the paper on ERGM terms Dave suggested I don't believe I had\ncome across any explicit statement of why the usual dependent/independent\nvariable interpretation can be misleading.  I believe a published\nelaboration of these notions would be a very helpful and welcome addition to\nthe ERGM literature, which to this point has been mostly of a technical\nnature -for understandable reasons.\nBased on the above, I think I now have a better idea of when it would be\nadvisable to employ an ERGM on my own research.  There are a couple of my\nresearch interests that would indeed benefit from an ERGM since I do want to\nmodel the whole network.  The particular question I had in mind when I wrote\nmy post to the forum, however, I now believe would be better addressed by\nsome form of a network autocorrelation model (I'll have to give it some\nthought -some of the node attributes in which I'm interest are dichotomous,\nsome continuous. And being an anthropologist, I do have ethnographic\ninformation ;-) ).\nAgain, thanks to all for the help\n\nJorge\n\n-----Original Message-----\nFrom: statnet_help-bounces@mailman2.u.washington.edu\n[mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of David\nHunter\nSent: Tuesday, May 03, 2011 7:27 AM\nTo: statnet_help list\nSubject: Re: [statnet_help] ergm question\n\nHello Jorge.  One of the things Carter said reminded me of something:   \nIn contrasting the \"holistic\" and \"elementwise\" conceptions as he explains\nthem below, it's important to remember that every holistically-defined model\nleads to a corresponding set of full  \nconditionals (the elementwise model), but the converse is not true!   \nIn other words, one cannot necessarily define a (holistic) probability\ndistribution on networks merely by specifying a full set of  \nconditional distributions of each edge given the rest of the network.   \nI point this out because I *think* it's at some level another reason that\nthe usual dependent / independent variable interpretation is not applicable\nto the ERGM situation.\n\nThere is some further discussion of the dependent / independent question and\na comparison with standard generalized linear models in Section 3 of\nhttp://www.stat.psu.edu/~dhunter/papers/ergmuserterms.pdf\n\nBest,\nDave\n\n\n\n\nOn May 2, 2011, at 9:37 PM, Carter T. Butts wrote:\n\n> Hi, Jorge -\n>\n> Your question raises some important issues that are too deep to \n> address well in email.  But I will take a stab at some of them....\n>\n> On 05/02/2011 10:08 AM, Jorge M Rocha wrote:\n>> From what I understand, the modeling framework of an ERGM treats the \n>> observed network as the _dependent variable_ and the specified \n>> structural configurations and covariate information about nodes/ \n>> edges as _independent variables_ whose presence/absence increases the \n>> log-likelihood for the model.\n>\n> I think it is important to make some comment on this conceptual issue, \n> because it lies at the core of one's thinking about the modeling \n> process.  (In so doing I will speak ex cathedra -- I trust that my \n> colleagues will not be shy in administering correctives, should they \n> find me to be in error.)  In a standard ERGM without covariate \n> effects, there are no independent variables (in a regression-like \n> sense).  The model is one large stochastic system, and is treated as \n> fully endogenous.  (Exogenous effects come about from the use of \n> covariates, such as vertex attributes.  Of course,\n> these can also be endogenized, but that's a broader model class.)   \n> More to the point, the act of writing down an ERGM is the act of \n> writing down a model for the joint probability distribution of a graph \n> (i.e., the system state).  The exponential family form provides the \n> language in which we express that model; the content and the \n> interpretation must come from elsewhere.\n>\n> Within this context, the role of statistics based on structural \n> configurations is to parametrize the joint distribution of the edge \n> structure.  There are several formally equivalent ways to understand \n> this.  One natural one is to view the parameter associated with a \n> given structural statistic as measuring the tendency of the \n> expectation of that statistic to be higher or lower than what would be \n> observed if the parameter in question were zero (equivalently, if it \n> were not in the model).  From this point of view, all ERGM parameters \n> reflect different sorts of structural \"biases\" or \"deviations\" from \n> the behavior of the uniform Bernoulli graph (i.e., the homogeneous \n> Bernoulli graph in which every edge occurs with equal probability).\n>\n> Note that this is a \"holistic\" view of the network as a jointly \n> interacting system -- if you are familiar with the Lagrangian or \n> Hamiltonian formulations of classical mechanics (in which the behavior \n> of a classical system is described by reference to a potential \n> function), this may prove a useful analogy.  In any event, it's very \n> different from the \"elementwise\" view of networks that many folks are \n> used to.\n>\n> For the latter, it can be helpful to think in terms of the full \n> conditionals of the model -- the probability of a given edge being \n> present, given the rest of the structure.  This is a \"local/ \n> elementwise\" view, perhaps loosely analogous to the way that classical \n> mechanics is taught to beginners (with \"forces\" acting on particles, \n> the conditional behavior of which is defined in terms of the other \n> particle states). This comports better with the intuition of most \n> social scientists, but IMHO has many underappreciated pitfalls.  Chief \n> among these is the fact that one can easily forget that the elements \n> of the system are indeed interacting, and the conditional behavior of \n> one variable is only meaningful within the context of the rest of the \n> network.  (For an example of where this intuition led the field \n> astray, one need only look at the rise and fall of pseudo-likelihood \n> techniques.)  One can also easily confuse conditional edge \n> probabilities with propensities of _individuals_ to create edges \n> (e.g., in a choice context), with which they are _not_ always \n> synonymous.  I am thus less sanguine about the \"local\" view of ERGMs \n> than some of my colleagues, although there is no question that this \n> perspective _can_ be very helpful.\n>\n> I want to stress that, properly understood, the holistic and \n> elementwise views of the ERGM are both correct -- they are two \n> equivalent ways of describing the same thing.  Nor are these the only \n> ways in which the formalism can be validly interpreted.  (For \n> instance, one can also understand ERGMs in terms of the equilibrium \n> behavior of certain types of Markov chains, an interpretation that has \n> value in dynamic applications.)  But what all valid interpretations of \n> the ERGM framework have in common is that they recognize that one is \n> modeling a system of components, and those components can potentially \n> interact with one another.  As such, my sense is that regression-based \n> thinking can be as much a hindrance as a help when learning about \n> ERGMs, at least for most social scientists.  (Those whose familiarity \n> with statistical exponential families allows them to understand ERGMs \n> within the broader context of \"regression-like\" models are exempted, \n> but I daresay that this is not standard training for most social \n> scientists.)  That said, I often teach it that way, because the \n> initial approachability of ERGMs as \"logistic network regression with \n> independence relaxations\"\n> is higher than \"potential functions on graphs\" for my students.  YMMV.\n>\n> For an example of the use of the \"local\" view of ERGMs for model \n> parametrization, I suggest the Goodreau et al. 2009 _Demography_ \n> paper.  For a different, \"semi-local\" view based on dependence among \n> edges, one can find many good examples in the work of Pattison and \n> Robins; their 2002 _Sociological Methodology_ article comes to mind.  \n> (And, of course, there is the classic Frank and Strauss _JASA_ paper, \n> among others.)  The \"holistic\" view per se is less well-explored, \n> although there are many precursors in structuralist theory.  (The \n> Harary wing of structural balance, for instance, operates entirely \n> from a holistic standpoint.  This is also where I insert my obligatory \n> plug for Bruce Mayhew.)  Mark Handcock's work on degeneracy (see, \n> e.g., his 2003 chapter) has in my opinion very deep substantive \n> implications from the holistic side, and there are some other recent \n> technical contributions (e.g., a recent arXiv paper by Chatterjee and \n> Diaconis) that are likewise promising.  One could accumulate many more \n> examples, of course.\n>\n>> In other words, what we want to achieve in these models is to gain a \n>> better understanding of the types of processes that might have gone \n>> into generating a network similar to the observed one;\n>\n> That is one use of the framework, and certainly an important one.\n>\n>> hypotheses are about this or that configuration or node/edge \n>> attribute and their effect on the pattern of social interactions \n>> represented in the network.\n>\n> This is where we must be careful: a configuration does not \"have\" an \n> effect on the network.  One could say, however, that we hypothesize \n> that our process of interest will result in networks in which certain \n> configurations are over or underrepresented.\n>\n>> If so, how would I go about\n>> testing hypotheses concerning the effects of social interactions on \n>> nodal attributes (I'm particularly thinking of different types of \n>> opinions individuals might tend to have based on their interactions)?\n>\n> That depends on whether the attributes affect the network.  If the \n> network structure is not affected by the attributes in question (e.g., \n> because the former evolves over much longer time scales than the \n> latter), then one need not model the network at all: one can condition \n> on the network, and model the attributes (or, if one just wants to \n> test a marginal hypothesis, employ an even simpler method such as a \n> permutation test).\n>\n> If, on the time scale of interest, the network and the attributes both \n> coevolve, then the ERGM language is not expressive enough: you need a \n> joint attribute/network model.  Such extensions do exist, although my \n> sense is that it is difficult to identify such models without \n> longitudinal data.\n>\n>>\n>> What I've done so far is kind of arguing backwards (or at least that \n>> is how it feels to me -maybe because I'm coming from a traditional \n>> linear/logit regression background, and probably part of my problem \n>> is thinking in terms of DV and IV).  If the coefficients are \n>> significant for some node covariate of my interest in the ERGM \n>> estimation, then I've been interpreting this as evidence that it is \n>> not unreasonable to argue that the pattern of social interactions \n>> influences the type of opinion individuals have (I know that if I had \n>> longitudinal data this issue of reverse causality would not be so \n>> much of an issue, but so far all I have is cross-sectional data).  \n>> How wrong am I on this (the backward-arguing)?\n>\n> There may be some settings in which this could give you the right \n> answer, but I would discourage it unless you can prove that you are in \n> one of those settings.  If you are dealing with an attribute and a \n> network that are jointly endogenous, then conditioning on the latter \n> and not the former is not going to do what you want.  If you just want \n> to establish marginal association (e.g., those who are in certain \n> positions tend to have certain kinds of opinions), I would lean \n> towards a permutation test or similar procedure.  If you really want \n> to pull things apart, estimate parameters, test more complex \n> hypotheses, etc., my opinion is that you should look for a joint \n> attribute/network model.  (We don't have one in statnet right now, but \n> RSiena or pnet might.)\n>\n>>\n>> Finally, part of my worry is that I'll be sending the research to a \n>> consumer behavior/marketing journal where the familiarity with social \n>> network stuff -let alone ERGM's-is limited.  Any suggestions on how \n>> to best explain these issues to a non-specialized audience?\n>\n> Well, my _personal_ advice in your case would be to look closely at \n> your problem, and try to figure out how much of it you can address \n> without using complex network models -- it's going to be much easier \n> to explain, say, permutation or CUG tests to such a readership than \n> ERGMs.  If you really must model the system as a whole, first \n> determine whether you can reasonably approximate one portion (the\n> network or the attribute) as being fixed relative to the other.   \n> (Some basic knowledge of your case is important here: do you have \n> access to ethnographic, observational, or other information that might \n> help you evaluate the plausibility of a one-way effect?)  If you _can_ \n> approximate one portion as fixed, model accordingly (e.g., if the \n> network is fixed, you may want something like a network \n> autocorrelation model, while fixed attributes suggest an ERGM).  If \n> you are stuck with having to model both the network and individual \n> attributes jointly, you have my sympathy -- this is an exciting area \n> of technical research, which generally implies a painful experience \n> for the practitioner.  Getting your hands on a reasonable cross- \n> sectional network/attribute model is then a must, as is learning to \n> use it properly (bearing in mind that, if the model is new, its \n> creators may have only limited experience in that regard).\n>\n> This email has become both long and polemical, but these are important \n> and frequently encountered questions.  Perhaps these comments will \n> prove helpful to you, and to others here who are struggling with the \n> same issues.\n>\n> Good luck!\n>\n> -Carter\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear all,\nFirst, thank you all for the comments (by Jacob, Filip, Tom, Carter, Dave &\nJohan), they have been quite helpful both in terms of better understanding\nthe analytic logic(s) of ERGM's and how",
+      "thread_id": "thread-085db01db434",
+      "thread_depth": 3,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-c173c180d1fa",
+      "message_id": "<BANLkTinnNjejBCpnWQhUFtA5hbfp6Ce6yg@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2011-05-04T05:50:51Z",
+      "subject": "[statnet_help] ergm question",
+      "subject_clean": "[statnet_help] ergm question",
+      "in_reply_to": "<4DBF5C5B.5000408@uci.edu>",
+      "references": [
+        "<000401cc08eb$931ba120$b952e360$@itesm.mx>",
+        "<4DBF5C5B.5000408@uci.edu>"
+      ],
+      "body_plain": "Jorge, Carter and others,\n\nThanks for raising an interesting issue and even bigger thanks for\nproviding very informative answers!\n\nThere is one thread I wanted to ask about. It's related to the\n\"choice\" interpretation Carter wrote about, which is said to be not\nalways justified.\n\n1. I recall Carter's talk on Zurich Workshop in 2008 (available online\nhere http://videolectures.net/cvss08_butts_mrwsd/) talking about a\nconnection between ERGMs and potential games. Have this connection\nbeen explored in more detail? I'll be excited to read something about\nit.\n\n2. I also recall a \"qualitative\" passage in Snijders et al (special\nissue of Social Networks, 2010) paper on SIENA models (which do have a\nchoice-theoretic foundation). They write that cross-sectional ERGMs\ncoincide with SIENA (would have the same parameter estimates), if the\nmodeled process is in dynamic equilibrium. Does this have anything to\ndo with:\n\n> (For instance, one can also understand ERGMs in terms of the equilibrium\n> behavior of certain types of Markov chains, an interpretation that\n> has value in dynamic applications.)\n\n?\n\nBTW, I heard some rumors, corroborated with incomplete references on\nsome people's webpages, of an ERGM book coming out soon (i.e. 2011).\nDoes people here happen to know any more details?\n\n\n\nThanks,\n\n~michal\n\n\n\n\n\n\n\n\nOn Tue, May 3, 2011 at 3:37 AM, Carter T. Butts <buttsc@uci.edu> wrote:\n> Hi, Jorge -\n>\n> Your question raises some important issues that are too deep to address well\n> in email. ?But I will take a stab at some of them....\n>\n> On 05/02/2011 10:08 AM, Jorge M Rocha wrote:\n>>\n>> ?From what I understand, the modeling framework of an ERGM treats the\n>> observed network as the _dependent variable_ and the specified\n>> structural configurations and covariate information about nodes/edges as\n>> _independent variables_ whose presence/absence increases the\n>> log-likelihood for the model.\n>\n> I think it is important to make some comment on this conceptual issue,\n> because it lies at the core of one's thinking about the modeling process.\n> ?(In so doing I will speak ex cathedra -- I trust that my colleagues will\n> not be shy in administering correctives, should they find me to be in\n> error.) ?In a standard ERGM without covariate effects, there are no\n> independent variables (in a regression-like sense). ?The model is one large\n> stochastic system, and is treated as fully endogenous. ?(Exogenous effects\n> come about from the use of covariates, such as vertex attributes. ?Of\n> course, these can also be endogenized, but that's a broader model class.)\n> ?More to the point, the act of writing down an ERGM is the act of writing\n> down a model for the joint probability distribution of a graph (i.e., the\n> system state). ?The exponential family form provides the language in which\n> we express that model; the content and the interpretation must come from\n> elsewhere.\n>\n> Within this context, the role of statistics based on structural\n> configurations is to parametrize the joint distribution of the edge\n> structure. ?There are several formally equivalent ways to understand this.\n> ?One natural one is to view the parameter associated with a given structural\n> statistic as measuring the tendency of the expectation of that statistic to\n> be higher or lower than what would be observed if the parameter in question\n> were zero (equivalently, if it were not in the model). ?From this point of\n> view, all ERGM parameters reflect different sorts of structural \"biases\" or\n> \"deviations\" from the behavior of the uniform Bernoulli graph (i.e., the\n> homogeneous Bernoulli graph in which every edge occurs with equal\n> probability).\n>\n> Note that this is a \"holistic\" view of the network as a jointly interacting\n> system -- if you are familiar with the Lagrangian or Hamiltonian\n> formulations of classical mechanics (in which the behavior of a classical\n> system is described by reference to a potential function), this may prove a\n> useful analogy. ?In any event, it's very different from the \"elementwise\"\n> view of networks that many folks are used to.\n>\n> For the latter, it can be helpful to think in terms of the full conditionals\n> of the model -- the probability of a given edge being present, given the\n> rest of the structure. ?This is a \"local/elementwise\" view, perhaps loosely\n> analogous to the way that classical mechanics is taught to beginners (with\n> \"forces\" acting on particles, the conditional behavior of which is defined\n> in terms of the other particle states). This comports better with the\n> intuition of most social scientists, but IMHO has many underappreciated\n> pitfalls. ?Chief among these is the fact that one can easily forget that the\n> elements of the system are indeed interacting, and the conditional behavior\n> of one variable is only meaningful within the context of the rest of the\n> network. ?(For an example of where this intuition led the field astray, one\n> need only look at the rise and fall of pseudo-likelihood techniques.) ?One\n> can also easily confuse conditional edge probabilities with propensities of\n> _individuals_ to create edges (e.g., in a choice context), with which they\n> are _not_ always synonymous. ?I am thus less sanguine about the \"local\" view\n> of ERGMs than some of my colleagues, although there is no question that this\n> perspective _can_ be very helpful.\n>\n> I want to stress that, properly understood, the holistic and elementwise\n> views of the ERGM are both correct -- they are two equivalent ways of\n> describing the same thing. ?Nor are these the only ways in which the\n> formalism can be validly interpreted. ?(For instance, one can also\n> understand ERGMs in terms of the equilibrium behavior of certain types of\n> Markov chains, an interpretation that has value in dynamic applications.)\n> ?But what all valid interpretations of the ERGM framework have in common is\n> that they recognize that one is modeling a system of components, and those\n> components can potentially interact with one another. ?As such, my sense is\n> that regression-based thinking can be as much a hindrance as a help when\n> learning about ERGMs, at least for most social scientists. ?(Those whose\n> familiarity with statistical exponential families allows them to understand\n> ERGMs within the broader context of \"regression-like\" models are exempted,\n> but I daresay that this is not standard training for most social\n> scientists.) ?That said, I often teach it that way, because the initial\n> approachability of ERGMs as \"logistic network regression with independence\n> relaxations\" is higher than \"potential functions on graphs\" for my students.\n> ?YMMV.\n>\n> For an example of the use of the \"local\" view of ERGMs for model\n> parametrization, I suggest the Goodreau et al. 2009 _Demography_ paper. ?For\n> a different, \"semi-local\" view based on dependence among edges, one can find\n> many good examples in the work of Pattison and Robins; their 2002\n> _Sociological Methodology_ article comes to mind. ?(And, of course, there is\n> the classic Frank and Strauss _JASA_ paper, among others.) ?The \"holistic\"\n> view per se is less well-explored, although there are many precursors in\n> structuralist theory. ?(The Harary wing of structural balance, for instance,\n> operates entirely from a holistic standpoint. ?This is also where I insert\n> my obligatory plug for Bruce Mayhew.) ?Mark Handcock's work on degeneracy\n> (see, e.g., his 2003 chapter) has in my opinion very deep substantive\n> implications from the holistic side, and there are some other recent\n> technical contributions (e.g., a recent arXiv paper by Chatterjee and\n> Diaconis) that are likewise promising. ?One could accumulate many more\n> examples, of course.\n>\n>> In other words, what we want to achieve\n>> in these models is to gain a better understanding of the types of\n>> processes that might have gone into generating a network similar to the\n>> observed one;\n>\n> That is one use of the framework, and certainly an important one.\n>\n>> hypotheses are about this or that configuration or\n>> node/edge attribute and their effect on the pattern of social\n>> interactions represented in the network.\n>\n> This is where we must be careful: a configuration does not \"have\" an effect\n> on the network. ?One could say, however, that we hypothesize that our\n> process of interest will result in networks in which certain configurations\n> are over or underrepresented.\n>\n>> If so, how would I go about\n>> testing hypotheses concerning the effects of social interactions on\n>> nodal attributes (I?m particularly thinking of different types of\n>> opinions individuals might tend to have based on their interactions)?\n>\n> That depends on whether the attributes affect the network. ?If the network\n> structure is not affected by the attributes in question (e.g., because the\n> former evolves over much longer time scales than the latter), then one need\n> not model the network at all: one can condition on the network, and model\n> the attributes (or, if one just wants to test a marginal hypothesis, employ\n> an even simpler method such as a permutation test).\n>\n> If, on the time scale of interest, the network and the attributes both\n> coevolve, then the ERGM language is not expressive enough: you need a joint\n> attribute/network model. ?Such extensions do exist, although my sense is\n> that it is difficult to identify such models without longitudinal data.\n>\n>>\n>> What I?ve done so far is kind of arguing backwards (or at least that is\n>> how it feels to me ?maybe because I?m coming from a traditional\n>> linear/logit regression background, and probably part of my problem is\n>> thinking in terms of DV and IV). ?If the coefficients are significant\n>> for some node covariate of my interest in the ERGM estimation, then I?ve\n>> been interpreting this as evidence that it is not unreasonable to argue\n>> that the pattern of social interactions influences the type of opinion\n>> individuals have (I know that if I had longitudinal data this issue of\n>> reverse causality would not be so much of an issue, but so far all I\n>> have is cross-sectional data). ?How wrong am I on this (the\n>> backward-arguing)?\n>\n> There may be some settings in which this could give you the right answer,\n> but I would discourage it unless you can prove that you are in one of those\n> settings. ?If you are dealing with an attribute and a network that are\n> jointly endogenous, then conditioning on the latter and not the former is\n> not going to do what you want. ?If you just want to establish marginal\n> association (e.g., those who are in certain positions tend to have certain\n> kinds of opinions), I would lean towards a permutation test or similar\n> procedure. ?If you really want to pull things apart, estimate parameters,\n> test more complex hypotheses, etc., my opinion is that you should look for a\n> joint attribute/network model. ?(We don't have one in statnet right now, but\n> RSiena or pnet might.)\n>\n>>\n>> Finally, part of my worry is that I?ll be sending the research to a\n>> consumer behavior/marketing journal where the familiarity with social\n>> network stuff ?let alone ERGM?s?is limited. ?Any suggestions on how to\n>> best explain these issues to a non-specialized audience?\n>\n> Well, my _personal_ advice in your case would be to look closely at your\n> problem, and try to figure out how much of it you can address without using\n> complex network models -- it's going to be much easier to explain, say,\n> permutation or CUG tests to such a readership than ERGMs. ?If you really\n> must model the system as a whole, first determine whether you can reasonably\n> approximate one portion (the network or the attribute) as being fixed\n> relative to the other. ?(Some basic knowledge of your case is important\n> here: do you have access to ethnographic, observational, or other\n> information that might help you evaluate the plausibility of a one-way\n> effect?) ?If you _can_ approximate one portion as fixed, model accordingly\n> (e.g., if the network is fixed, you may want something like a network\n> autocorrelation model, while fixed attributes suggest an ERGM). ?If you are\n> stuck with having to model both the network and individual attributes\n> jointly, you have my sympathy -- this is an exciting area of technical\n> research, which generally implies a painful experience for the practitioner.\n> ?Getting your hands on a reasonable cross-sectional network/attribute model\n> is then a must, as is learning to use it properly (bearing in mind that, if\n> the model is new, its creators may have only limited experience in that\n> regard).\n>\n> This email has become both long and polemical, but these are important and\n> frequently encountered questions. ?Perhaps these comments will prove helpful\n> to you, and to others here who are struggling with the same issues.\n>\n> Good luck!\n>\n> -Carter\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Jorge, Carter and others,\n\nThanks for raising an interesting issue and even bigger thanks for\nproviding very informative answers!\n\nThere is one thread I wanted to ask about. It's related to the\n\"choic",
+      "thread_id": "thread-085db01db434",
+      "thread_depth": 2,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-a002d0ca6177",
+      "message_id": "<BANLkTikTNBO0wQEjPoHuyW4PTySPv_x=2A@mail.gmail.com>",
+      "from_name": "Manasa Patnam",
+      "from_email_hash": "668b69075a6ad967b50e19233342d023803d9cf0072f3d5b6ff5f4cdf994d48d",
+      "date": "2011-05-09T05:38:31Z",
+      "subject": "[statnet_help] Error using predict command after ergmm",
+      "subject_clean": "[statnet_help] Error using predict command after ergmm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I have some problems using the predict.ergmm command after running ergmm.  I\nhave fitted an ergmm model and saved the ergmm object (credit.fit23). I then\nload this object and run:\n\npredict(credit.fit23, type=\"mkl\")\n\nbut I get an error saying:\n\nError in latent.effect.fs[[model[[\"latentID\"]]]] :\n  attempt to select less than one element\n\nThis did nto happen before -- I only started getting this problem after I\nupdated latentnet. Please can someone help me on this.\n\nThanks\n\n-- \nM?nasa\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110509/b81e45f6/attachment.html>",
+      "body_snippet": "I have some problems using the predict.ergmm command after running ergmm.  I\nhave fitted an ergmm model and saved the ergmm object (credit.fit23). I then\nload this object and run:\n\npredict(credit.fit2",
+      "thread_id": "thread-a002d0ca6177",
+      "thread_depth": 0,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-842b1bf65108",
+      "message_id": "<1304953545.28558.139.camel@krivitsky.heinz.win.cmu.edu>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "cb70f739514c92e764ee284f71749cc7cd6077e1214aef044b591e1ecaca2fef",
+      "date": "2011-05-09T08:05:45Z",
+      "subject": "[statnet_help] Error using predict command after ergmm",
+      "subject_clean": "[statnet_help] Error using predict command after ergmm",
+      "in_reply_to": "<BANLkTikTNBO0wQEjPoHuyW4PTySPv_x=2A@mail.gmail.com>",
+      "references": [
+        "<BANLkTikTNBO0wQEjPoHuyW4PTySPv_x=2A@mail.gmail.com>"
+      ],
+      "body_plain": "M?nasa,\n\nDid you fit the model before updating latentnet? That could explain it,\nsince I had to change the ergmm object format between versions when I\nadded the bilinear latent space support. If not, it could be a bug.\nCould you send me some data and code to reproduce it?\n\n                     Best,\n                     Pavel\n\nOn Mon, 2011-05-09 at 14:38 +0200, Manasa Patnam wrote:\n> I have some problems using the predict.ergmm command after running\n> ergmm.  I have fitted an ergmm model and saved the ergmm object\n> (credit.fit23). I then load this object and run:\n> \n> predict(credit.fit23, type=\"mkl\")\n> \n> but I get an error saying: \n> \n> Error in latent.effect.fs[[model[[\"latentID\"]]]] : \n>   attempt to select less than one element\n> \n> This did nto happen before -- I only started getting this problem\n> after I updated latentnet. Please can someone help me on this.\n> \n> Thanks\n> \n> -- \n> M?nasa \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "M?nasa,\n\nDid you fit the model before updating latentnet? That could explain it,\nsince I had to change the ergmm object format between versions when I\nadded the bilinear latent space support. If not, ",
+      "thread_id": "thread-a002d0ca6177",
+      "thread_depth": 1,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-6ffc44475fe9",
+      "message_id": "<000001cc0e7c$0b2f6210$218e2630$@edu>",
+      "from_name": "Dalton  Lunga",
+      "from_email_hash": "d6b42668416cc815c2b8bdafa4efd927adf57845b7b5d7178887cb20c80c42c0",
+      "date": "2011-05-09T12:05:20Z",
+      "subject": "[statnet_help] ERGM simulations",
+      "subject_clean": "[statnet_help] ERGM simulations",
+      "in_reply_to": "<201104061901.p36J1UQu029683@mxout13.cac.washington.edu>",
+      "references": [
+        "<201104061901.p36J1UQu029683@mxout13.cac.washington.edu>"
+      ],
+      "body_plain": "Dear all,\n\nCan someone point me to the literature that explains how the MCMC\nsimulations of networks are actually done for ERGMs. So this would be the\nactually equations/algorithm for computing of the MCMC chains to generate\ngraphs from an already estimated ERGM.\n\nI would like to have some understanding of the relevant equations if there\nare any. I mean information beyond what is covered in the help files from\nthe statnet R package.\n\nThank you in advance.\nDalton",
+      "body_snippet": "Dear all,\n\nCan someone point me to the literature that explains how the MCMC\nsimulations of networks are actually done for ERGMs. So this would be the\nactually equations/algorithm for computing of the",
+      "thread_id": "thread-6ffc44475fe9",
+      "thread_depth": 0,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-1a26d266d523",
+      "message_id": "<000001cc0f2c$925f0460$b71d0d20$@edu>",
+      "from_name": "Dalton  Lunga",
+      "from_email_hash": "d6b42668416cc815c2b8bdafa4efd927adf57845b7b5d7178887cb20c80c42c0",
+      "date": "2011-05-10T09:08:59Z",
+      "subject": "[statnet_help] RE: ERGM MCMC simulations",
+      "subject_clean": "[statnet_help] RE: ERGM MCMC simulations",
+      "in_reply_to": null,
+      "references": [
+        "<201104061901.p36J1UQu029683@mxout13.cac.washington.edu>"
+      ],
+      "body_plain": "Dear all,\n\nCan someone point me to the literature that explains how the MCMC\nsimulations of networks are actually done for ERGMs. This would be the\nactual equations/algorithm for computing the MCMC chains to generate graphs\nfrom an already estimated ERGM. I would like to have an understanding of the\nrelevant equations if there are any.\n\nThank you in advance.\nDalton",
+      "body_snippet": "Dear all,\n\nCan someone point me to the literature that explains how the MCMC\nsimulations of networks are actually done for ERGMs. This would be the\nactual equations/algorithm for computing the MCMC ch",
+      "thread_id": "thread-1a26d266d523",
+      "thread_depth": 0,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-7da4a05c1999",
+      "message_id": "<BANLkTikX8kJ5T1xXti+weZTQzw0AiQ_=2w@mail.gmail.com>",
+      "from_name": "Edzard Wesselink",
+      "from_email_hash": "8a092767c71fafda7eaa843ffba5752ce85c6f93c0adf732ffa31ce2e4317609",
+      "date": "2011-05-11T09:36:53Z",
+      "subject": "[statnet_help] Conflicting network indicators",
+      "subject_clean": "[statnet_help] Conflicting network indicators",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI am using the statnet package to analyze a dataset I collected on different\ntypes of collaborations between organizations. I imported the data as\nedgelists, and I want to compare some basic descriptives of these networks\nlike the number of triads, the number of edges, density and such. However, I\nnoticed that there is a disparity between the number of edges and triangles\nR tells me the dataset has, and the actual number of edges and triangles I\nsee when plotting the networks. Even worse, using different methods to\nretrieve this data gives me different numbers. Using\nnetwork.edgecount(network) or gden(network) gives a different number than\nusing summary(network~ edges + triangles + density), and both numbers are\nwrong. Using sum(as.matrix(network))/2 does give the correct number of edges\n\nIn the process of creating networks from the edgelists I specified that the\nnetworks are undirected and that they should not contain multiplex edges. In\nthe original edgelist the data is directed and only part of the edges are\nreciprocal. I have the feeling that there's the problem, and by specifying\nthat the network should not have multiplex edges statnet does not remove the\nmultiplex edges from the dataset. THis would explain why network.edgecount\ngives a number that is too high (by counting the redundant edges), but not\nwhy summary(network~ edges) gives a value that is too low.\n\nSo my question is, is it true that creating an undirected network from\nedgelists that are directed and partially reciprocal does not remove the\nredundant edges, and if so, is there an easy way to remove them from my\nedgelists? Also, does anyone understand why using the network.edgecount\nmethod gives a different result from using summary(network ~ edges)?\n\nThanks in advance for your help!\n\nEdzard Wesselink\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110511/409d152c/attachment.html>",
+      "body_snippet": "Hi,\n\nI am using the statnet package to analyze a dataset I collected on different\ntypes of collaborations between organizations. I imported the data as\nedgelists, and I want to compare some basic desc",
+      "thread_id": "thread-7da4a05c1999",
+      "thread_depth": 0,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-cdfa7776325d",
+      "message_id": "<d797f8ac76f7dc57249cc6a811cd0145@email.unc.edu>",
+      "from_name": "dnolin",
+      "from_email_hash": "9ea4374cadcd0478c9da820629ed01f9f63173dc4f2e1510510ac970233cb3df",
+      "date": "2011-05-11T11:05:43Z",
+      "subject": "[statnet_help] Conflicting network indicators",
+      "subject_clean": "[statnet_help] Conflicting network indicators",
+      "in_reply_to": "<BANLkTikX8kJ5T1xXti+weZTQzw0AiQ_=2w@mail.gmail.com>",
+      "references": [
+        "<BANLkTikX8kJ5T1xXti+weZTQzw0AiQ_=2w@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Edzard,\n\nI just tried the same thing with some of my directed data and got the same\nresults. I created an undirected network object from the directed edgelist,\nwith parameters directed=FALSE, multiple=FALSE. When I execute\n\"summary(network)\", it shows a number of edges equal to the number of edges\nin my original edgelist. However, if I execute \"summary(network~edges)\" it\nshows a number of edges equal to the number of unreciprocated edges in the\noriginal edgelist.\n\nNote that neither figure is the number of edges we expect. Our expectation\nis that an undirected network created from directed data where some ties\nare reciprocated and others are not should have [(number of reciprocal\nties)/2 + (number of asymmetric ties)] edges.\n\nI think the problem arises from viewing the \"network\" command as a tool for\ndata *conversion*, rather than as a function for network *definition*. When\nwe supply \"directed=FALSE\" to the network function, we are telling it what\nkind of data we are supplying; we are not telling it how we want to convert\nthe data.\n\nAnyway, try the following and see if it fixes your problem:\n\ndir.net <- network(your.directed.edgelist)  # create a directed network\nobject using your directed edgelist data\nundir.mat <- as.sociomatrix(dir.net) + t(as.sociomatrix(dir.net))  # create\nan undirected sociomatrix by cell-wise adding the directed network to its\nown transpose\nundir.mat[undir.mat == 2] <- 1  # the previous step sets cell values to \"2\"\nfor reciprocal dyads; this recodes those cells to \"1\"\nundir.net <- network(undir.mat, directed = FALSE)  # create an undirected\nnetwork object from the symmetrical/undirected sociomatrix\nsummary(undir.net)  # check that the stored number of edges is correct\nsummary(undir.net~edges)  # check that the reported number of edges matches\n\nThere's probably an easier, less cumbersome method but that should do the\ntrick.\n\n--Dave\n\n\nOn Wed, 11 May 2011 18:36:53 +0200, Edzard Wesselink <edzardw@gmail.com>\nwrote:\n> Hi,\n> \n> I am using the statnet package to analyze a dataset I collected on\n> different\n> types of collaborations between organizations. I imported the data as\n> edgelists, and I want to compare some basic descriptives of these\nnetworks\n> like the number of triads, the number of edges, density and such.\nHowever,\n> I\n> noticed that there is a disparity between the number of edges and\ntriangles\n> R tells me the dataset has, and the actual number of edges and triangles\nI\n> see when plotting the networks. Even worse, using different methods to\n> retrieve this data gives me different numbers. Using\n> network.edgecount(network) or gden(network) gives a different number than\n> using summary(network~ edges + triangles + density), and both numbers are\n> wrong. Using sum(as.matrix(network))/2 does give the correct number of\n> edges\n> \n> In the process of creating networks from the edgelists I specified that\nthe\n> networks are undirected and that they should not contain multiplex edges.\n> In\n> the original edgelist the data is directed and only part of the edges are\n> reciprocal. I have the feeling that there's the problem, and by\nspecifying\n> that the network should not have multiplex edges statnet does not remove\n> the\n> multiplex edges from the dataset. THis would explain why\nnetwork.edgecount\n> gives a number that is too high (by counting the redundant edges), but\nnot\n> why summary(network~ edges) gives a value that is too low.\n> \n> So my question is, is it true that creating an undirected network from\n> edgelists that are directed and partially reciprocal does not remove the\n> redundant edges, and if so, is there an easy way to remove them from my\n> edgelists? Also, does anyone understand why using the network.edgecount\n> method gives a different result from using summary(network ~ edges)?\n> \n> Thanks in advance for your help!\n> \n> Edzard Wesselink\n\n-- \n_____________________________________________\nDr. David A. Nolin, Ph.D.\nPostdoctoral Scholar, Carolina Population Center\nAdjunct Assistant Professor, Department of Anthropology\nUniversity of North Carolina",
+      "body_snippet": "Hi Edzard,\n\nI just tried the same thing with some of my directed data and got the same\nresults. I created an undirected network object from the directed edgelist,\nwith parameters directed=FALSE, multi",
+      "thread_id": "thread-7da4a05c1999",
+      "thread_depth": 1,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-64dbf7d680a9",
+      "message_id": "<BANLkTinH=k6Hj1NoAQq5K0zwswVpe9pJTg@mail.gmail.com>",
+      "from_name": "Edzard Wesselink",
+      "from_email_hash": "8a092767c71fafda7eaa843ffba5752ce85c6f93c0adf732ffa31ce2e4317609",
+      "date": "2011-05-11T13:10:54Z",
+      "subject": "[statnet_help] Conflicting network indicators",
+      "subject_clean": "[statnet_help] Conflicting network indicators",
+      "in_reply_to": "<d797f8ac76f7dc57249cc6a811cd0145@email.unc.edu>",
+      "references": [
+        "<BANLkTikX8kJ5T1xXti+weZTQzw0AiQ_=2w@mail.gmail.com>",
+        "<d797f8ac76f7dc57249cc6a811cd0145@email.unc.edu>"
+      ],
+      "body_plain": "Dear Dave\n\nThanks a lot! I now understand a bit more about how these functions actually\nwork, and the workaround works perfectly! You saved me a whole lot of time\nand frustration :)\n\nEdzard\n\nOn 11 May 2011 20:05, dnolin <dnolin@email.unc.edu> wrote:\n\n>\n> Hi Edzard,\n>\n> I just tried the same thing with some of my directed data and got the same\n> results. I created an undirected network object from the directed edgelist,\n> with parameters directed=FALSE, multiple=FALSE. When I execute\n> \"summary(network)\", it shows a number of edges equal to the number of edges\n> in my original edgelist. However, if I execute \"summary(network~edges)\" it\n> shows a number of edges equal to the number of unreciprocated edges in the\n> original edgelist.\n>\n> Note that neither figure is the number of edges we expect. Our expectation\n> is that an undirected network created from directed data where some ties\n> are reciprocated and others are not should have [(number of reciprocal\n> ties)/2 + (number of asymmetric ties)] edges.\n>\n> I think the problem arises from viewing the \"network\" command as a tool for\n> data *conversion*, rather than as a function for network *definition*. When\n> we supply \"directed=FALSE\" to the network function, we are telling it what\n> kind of data we are supplying; we are not telling it how we want to convert\n> the data.\n>\n> Anyway, try the following and see if it fixes your problem:\n>\n> dir.net <- network(your.directed.edgelist)  # create a directed network\n> object using your directed edgelist data\n> undir.mat <- as.sociomatrix(dir.net) + t(as.sociomatrix(dir.net))  #\n> create\n> an undirected sociomatrix by cell-wise adding the directed network to its\n> own transpose\n> undir.mat[undir.mat == 2] <- 1  # the previous step sets cell values to \"2\"\n> for reciprocal dyads; this recodes those cells to \"1\"\n> undir.net <- network(undir.mat, directed = FALSE)  # create an undirected\n> network object from the symmetrical/undirected sociomatrix\n> summary(undir.net)  # check that the stored number of edges is correct\n> summary(undir.net~edges)  # check that the reported number of edges\n> matches\n>\n> There's probably an easier, less cumbersome method but that should do the\n> trick.\n>\n> --Dave\n>\n>\n> On Wed, 11 May 2011 18:36:53 +0200, Edzard Wesselink <edzardw@gmail.com>\n> wrote:\n> > Hi,\n> >\n> > I am using the statnet package to analyze a dataset I collected on\n> > different\n> > types of collaborations between organizations. I imported the data as\n> > edgelists, and I want to compare some basic descriptives of these\n> networks\n> > like the number of triads, the number of edges, density and such.\n> However,\n> > I\n> > noticed that there is a disparity between the number of edges and\n> triangles\n> > R tells me the dataset has, and the actual number of edges and triangles\n> I\n> > see when plotting the networks. Even worse, using different methods to\n> > retrieve this data gives me different numbers. Using\n> > network.edgecount(network) or gden(network) gives a different number than\n> > using summary(network~ edges + triangles + density), and both numbers are\n> > wrong. Using sum(as.matrix(network))/2 does give the correct number of\n> > edges\n> >\n> > In the process of creating networks from the edgelists I specified that\n> the\n> > networks are undirected and that they should not contain multiplex edges.\n> > In\n> > the original edgelist the data is directed and only part of the edges are\n> > reciprocal. I have the feeling that there's the problem, and by\n> specifying\n> > that the network should not have multiplex edges statnet does not remove\n> > the\n> > multiplex edges from the dataset. THis would explain why\n> network.edgecount\n> > gives a number that is too high (by counting the redundant edges), but\n> not\n> > why summary(network~ edges) gives a value that is too low.\n> >\n> > So my question is, is it true that creating an undirected network from\n> > edgelists that are directed and partially reciprocal does not remove the\n> > redundant edges, and if so, is there an easy way to remove them from my\n> > edgelists? Also, does anyone understand why using the network.edgecount\n> > method gives a different result from using summary(network ~ edges)?\n> >\n> > Thanks in advance for your help!\n> >\n> > Edzard Wesselink\n>\n> --\n> _____________________________________________\n> Dr. David A. Nolin, Ph.D.\n> Postdoctoral Scholar, Carolina Population Center\n> Adjunct Assistant Professor, Department of Anthropology\n> University of North Carolina\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110511/481832de/attachment.html>",
+      "body_snippet": "Dear Dave\n\nThanks a lot! I now understand a bit more about how these functions actually\nwork, and the workaround works perfectly! You saved me a whole lot of time\nand frustration :)\n\nEdzard\n\nOn 11 May",
+      "thread_id": "thread-7da4a05c1999",
+      "thread_depth": 2,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-824c76633f1b",
+      "message_id": "<BANLkTimLVgeq-cEOg0EtpkGu0AQFV+JGeQ@mail.gmail.com>",
+      "from_name": "Moses Boudourides",
+      "from_email_hash": "c5624448747271419acb164061064e1a7b0a1e969681d0b921805e16e6affe4a",
+      "date": "2011-05-16T03:14:15Z",
+      "subject": "[statnet_help] Finding paths",
+      "subject_clean": "[statnet_help] Finding paths",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nIn statnet (or network etc.) is it possible to count paths (walks\nthrough distinct vertices) between any two vertices of a graph? Does\nthis work on the adjacency matrix or list?\n\nBest,\n\n--Moses",
+      "body_snippet": "Hi,\n\nIn statnet (or network etc.) is it possible to count paths (walks\nthrough distinct vertices) between any two vertices of a graph? Does\nthis work on the adjacency matrix or list?\n\nBest,\n\n--Moses",
+      "thread_id": "thread-824c76633f1b",
+      "thread_depth": 0,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-f180018dc73f",
+      "message_id": "<4DD22B91.2070805@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2011-05-17T01:02:25Z",
+      "subject": "[statnet_help] Finding paths",
+      "subject_clean": "[statnet_help] Finding paths",
+      "in_reply_to": "<BANLkTimLVgeq-cEOg0EtpkGu0AQFV+JGeQ@mail.gmail.com>",
+      "references": [
+        "<BANLkTimLVgeq-cEOg0EtpkGu0AQFV+JGeQ@mail.gmail.com>"
+      ],
+      "body_plain": "Yes.  See kpath.census in sna (and, relatedly, kcycle.census and \nclique.census).\n\n-Carter\n\nOn 05/16/2011 03:14 AM, Moses Boudourides wrote:\n> Hi,\n>\n> In statnet (or network etc.) is it possible to count paths (walks\n> through distinct vertices) between any two vertices of a graph? Does\n> this work on the adjacency matrix or list?\n>\n> Best,\n>\n> --Moses\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Yes.  See kpath.census in sna (and, relatedly, kcycle.census and \nclique.census).\n\n-Carter\n\nOn 05/16/2011 03:14 AM, Moses Boudourides wrote:\n> Hi,\n>\n> In statnet (or network etc.) is it possible to co",
+      "thread_id": "thread-824c76633f1b",
+      "thread_depth": 1,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-1825e08b9b32",
+      "message_id": "<4DD22ECC.6010304@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2011-05-17T01:16:12Z",
+      "subject": "[statnet_help] ergm question",
+      "subject_clean": "[statnet_help] ergm question",
+      "in_reply_to": "<BANLkTinnNjejBCpnWQhUFtA5hbfp6Ce6yg@mail.gmail.com>",
+      "references": [
+        "<000401cc08eb$931ba120$b952e360$@itesm.mx>",
+        "<4DBF5C5B.5000408@uci.edu>",
+        "<BANLkTinnNjejBCpnWQhUFtA5hbfp6Ce6yg@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Michal -\n\nOn 05/04/2011 05:50 AM, Micha? Bojanowski wrote:\n> 1. I recall Carter's talk on Zurich Workshop in 2008 (available online\n> here http://videolectures.net/cvss08_butts_mrwsd/) talking about a\n> connection between ERGMs and potential games. Have this connection\n> been explored in more detail? I'll be excited to read something about\n> it.\n\nYes, although most of the details are sitting in one of those \"almost \ncomplete\" papers that has been in the hopper for a while.  (A somewhat \nmore developed version was presented at ASA in '09.  Let no one say that \nI publish in excessive haste.)  This reminds me of the need to push that \nforward....\n\n>\n> 2. I also recall a \"qualitative\" passage in Snijders et al (special\n> issue of Social Networks, 2010) paper on SIENA models (which do have a\n> choice-theoretic foundation). They write that cross-sectional ERGMs\n> coincide with SIENA (would have the same parameter estimates), if the\n> modeled process is in dynamic equilibrium. Does this have anything to\n> do with:\n>\n>> (For instance, one can also understand ERGMs in terms of the equilibrium\n>> behavior of certain types of Markov chains, an interpretation that\n>> has value in dynamic applications.)\n\nYes, it does.  But there seem to be some subtle issues involved in when \nthis interpretation is justifiable -- in some cases, one cannot uniquely \nrecover utilities from parameter estimates (and, in others, there is no \nobvious way to obtain an analytical expression relating action \npropensities and equilibrium distributions at all!).  The potential game \nformalism I employ provides a sufficient condition for this to work, \nalthough it can be restrictive.\n\n> BTW, I heard some rumors, corroborated with incomplete references on\n> some people's webpages, of an ERGM book coming out soon (i.e. 2011).\n> Does people here happen to know any more details?\n\nI know of one project of that sort, but will let Mark comment on that; \nnot sure that it would appear this year.  Books have a tendency to take \nlonger than one expects, given the lack of time to work on them!  :-)\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "Hi, Michal -\n\nOn 05/04/2011 05:50 AM, Micha? Bojanowski wrote:\n> 1. I recall Carter's talk on Zurich Workshop in 2008 (available online\n> here http://videolectures.net/cvss08_butts_mrwsd/) talking abo",
+      "thread_id": "thread-085db01db434",
+      "thread_depth": 3,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-310e238b2c68",
+      "message_id": "<BANLkTik0Mrz+YEd9DrhNu2KYBF1g+sWVUw@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2011-05-17T02:30:37Z",
+      "subject": "[statnet_help] ergm question",
+      "subject_clean": "[statnet_help] ergm question",
+      "in_reply_to": "<4DD22ECC.6010304@uci.edu>",
+      "references": [
+        "<000401cc08eb$931ba120$b952e360$@itesm.mx>",
+        "<4DBF5C5B.5000408@uci.edu>",
+        "<BANLkTinnNjejBCpnWQhUFtA5hbfp6Ce6yg@mail.gmail.com>",
+        "<4DD22ECC.6010304@uci.edu>"
+      ],
+      "body_plain": "Carter,\n\nThanks for the reply.\n\n>> 1. I recall Carter's talk on Zurich Workshop in 2008 (available online\n>> here http://videolectures.net/cvss08_butts_mrwsd/) talking about a\n>> connection between ERGMs and potential games. Have this connection\n>> been explored in more detail? I'll be excited to read something about\n>> it.\n>\n> Yes, although most of the details are sitting in one of those \"almost\n> complete\" papers that has been in the hopper for a while. ?(A somewhat more\n> developed version was presented at ASA in '09. ?Let no one say that I\n> publish in excessive haste.) ?This reminds me of the need to push that\n> forward....\n\nOh yes, please do :) Eagerly awaiting that one.\n\n\n\n\n>> BTW, I heard some rumors, corroborated with incomplete references on\n>> some people's webpages, of an ERGM book coming out soon (i.e. 2011).\n>> Does people here happen to know any more details?\n>\n> I know of one project of that sort, but will let Mark comment on that; not\n> sure that it would appear this year. ?Books have a tendency to take longer\n> than one expects, given the lack of time to work on them! ?:-)\n\nOK. I found that one:\n\nD., Koskinen, J., & Robins, G. (eds), (contract signed, 23 February\n2009). Exponential Random Graph Models for Social Networks: Theories,\nMethods and Applications. New York: Cambridge University Press.\nStructural Analysis in the Social Sciences Series\n\nDoes it mean that the World will experience the cornucopia of two\nbooks on ERGMs (I also recall that Martina's online CV contained an\nitem that a book on \"statistical analysis of networks\" is under\npreparation).",
+      "body_snippet": "Carter,\n\nThanks for the reply.\n\n>> 1. I recall Carter's talk on Zurich Workshop in 2008 (available online\n>> here http://videolectures.net/cvss08_butts_mrwsd/) talking about a\n>> connection between ER",
+      "thread_id": "thread-085db01db434",
+      "thread_depth": 4,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-e641f20a6832",
+      "message_id": "<4DD3DD04.4040504@u707.jussieu.fr>",
+      "from_name": "Pierre-Yves Boelle",
+      "from_email_hash": "d3d9e38dda3ad48f310d69923c444b7c3e3109264bcd96a7d2680db91c247a30",
+      "date": "2011-05-18T07:51:48Z",
+      "subject": "[statnet_help] network.update and graphs operators",
+      "subject_clean": "[statnet_help] network.update and graphs operators",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello everyone,\n\n(package ergm 2.3 / windows x64)\n\nThe following illustrates some unwanted (?) feature of network.update\nwhen used with simulate.ergm / ergm.getMCMCsample.\n\n------------------------\n#initialize network & put some links\nnw = network.initialize(5,directed=F)\nnw[1,2] = 1\nnw[2,3] = 1\n# nw has 2 links\n\n#update link lists with smaller vertex 1st\nnewedgelist.small.ID.1st.col = matrix(c(1,2,3,4,2,3,5,5),ncol=2)\nnw.small.1st = network.update(nw,newedgelist.small.ID.1st.col,\"edgelist\")\n\n#update link lists with larger vertex first\nnewedgelist.large.ID.1st.col = matrix(c(2,3,5,5,1,2,3,4),ncol=2)\nnw.large.1st = network.update(nw,newedgelist.large.ID.1st.col,\"edgelist\")\n\n#then compute difference\nnw.small.1st - nw # -> gives a network with 2 links, as should be\nnw.large.1st - nw # gives a network with 4 links...\n\n-------------------------------\n\nIt is indeed said in the network.update documentation that when updating\nan undirected graph, the smallest IDs should come first. (consistent\nwith the 1st behaviour).\n\nHOWEVER... ergm.getMCMCsample returns a 'newedgelist' where the larger\nIDs are in the first column, and the code in simulate.formula uses\nnetwork.update.\nThis leads to surprises when arithmetic is done on networks obtained by\nsimulation.\n\nCheers\n\n\n\n\n\n-- \nPierre-Yves Bo?lle, MCU-PH\nFacult? de M?decine Pierre et Marie Curie\nINSERM U707\nParis, France\nTel : 01 49 28 32 26\nFax : 01 49 28 32 33\nMobile : 06 60 59 35 25\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: boelle.vcf\nType: text/x-vcard\nSize: 317 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110518/12eb1ad6/attachment.vcf>",
+      "body_snippet": "Hello everyone,\n\n(package ergm 2.3 / windows x64)\n\nThe following illustrates some unwanted (?) feature of network.update\nwhen used with simulate.ergm / ergm.getMCMCsample.\n\n------------------------\n#i",
+      "thread_id": "thread-e641f20a6832",
+      "thread_depth": 0,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-fc59d1f52aa5",
+      "message_id": "<798FF3A49CD1EE43BEAE3523FC9EF5B29E7D27BDA7@EXCH07-03.apollogrp.edu>",
+      "from_name": "Philip Heinrich",
+      "from_email_hash": "eef65b2d9592fd15623682df130f7f9274763e62d74facbee5922b6659e32584",
+      "date": "2011-05-19T16:01:11Z",
+      "subject": "[statnet_help] Descriptive Statistics",
+      "subject_clean": "[statnet_help] Descriptive Statistics",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I found a statistically significant difference with ergm for one of two vertex attributes.  Now I need to go back in and find out what is driving that difference.  Is there a straight forward way of getting things like density, degree, reciprocity, transitivity, etc. cut by the vertex attribute?\n\nThanks.\n\n________________________________\nThis message is private and confidential. If you have received it in error, please notify the sender and remove it from your system.\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110519/eb0d8b35/attachment.html>",
+      "body_snippet": "I found a statistically significant difference with ergm for one of two vertex attributes.  Now I need to go back in and find out what is driving that difference.  Is there a straight forward way of g",
+      "thread_id": "thread-fc59d1f52aa5",
+      "thread_depth": 0,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-ebb5bdfadf06",
+      "message_id": "<4d3e8528355abbc3e9eadffa6cfdc1dc.squirrel@webmail.stat.unipd.it>",
+      "from_name": "Soriani Nicola",
+      "from_email_hash": "bad2caca9903706f9e3ae9b9200f838b32f69bcb1198b839eb309a817ad8dd27",
+      "date": "2011-05-22T12:46:30Z",
+      "subject": "[statnet_help] simulate.formula for missing data",
+      "subject_clean": "[statnet_help] simulate.formula for missing data",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi All,\n\nI have a question:\n\n- Let Y is an observed network with some edges missing (NA), if I simulate\nN networks by\n\nobj.sim = simulate.formula(formula,nsim=N,theta0=ergm$coef,basis=Y,\nstatsonly=TRUE,constraints=~observed)\n\nthen\n\ncolMeans(obj.sim) are equal to E[g(Y)| Y_obs], the expected value of the\nsufficient statistics conditional the observed values in the nerwork?\n\nThanks.\n\nNicola\n\n-- \nSoriani Nicola\nScuola di Dottorato in Scienze Statistiche XXIII Ciclo\nDipartimento di Scienze Statistiche, Universit? di Padova\nStanza 122 - Tel. 049 827 4174\nPh.D. Student\nDepartment of Statistical Sciences\nUniversity of Padova, Italy",
+      "body_snippet": "Hi All,\n\nI have a question:\n\n- Let Y is an observed network with some edges missing (NA), if I simulate\nN networks by\n\nobj.sim = simulate.formula(formula,nsim=N,theta0=ergm$coef,basis=Y,\nstatsonly=TRU",
+      "thread_id": "thread-ebb5bdfadf06",
+      "thread_depth": 0,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-5f106fac2bfa",
+      "message_id": "<4DD9696F.7030702@ucla.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "fb40357ebb8d7f0a427d9ad2641aa56f67d6763bdb0f1109ba0f3c4b5584b09d",
+      "date": "2011-05-22T12:52:15Z",
+      "subject": "[statnet_help] simulate.formula for missing data",
+      "subject_clean": "[statnet_help] simulate.formula for missing data",
+      "in_reply_to": "<4d3e8528355abbc3e9eadffa6cfdc1dc.squirrel@webmail.stat.unipd.it>",
+      "references": [
+        "<4d3e8528355abbc3e9eadffa6cfdc1dc.squirrel@webmail.stat.unipd.it>"
+      ],
+      "body_plain": "Hi Nicola,\n\nYou are correct: colMeans(obj.sim) is a sample mean with expected value \nE[g(Y)| Y_obs] (under the model with the specified formula).\n\nEnjoy!\n\nMark\n\n----------------------------------------------------\nMark S. Handcock\nProfessor of Statistics\nDepartment of Statistics\nUniversity of California     Phone:  (310) 817-6778\nLos Angeles, CA 90095-1554.   FAX:   (206) 457-1953\nWeb:  www.stat.ucla.edu/~handcock\ninternet:  handcock@ucla.edu\n\nOn 5/22/11 12:46 PM, Soriani Nicola wrote:\n>\n> Hi All,\n>\n> I have a question:\n>\n> - Let Y is an observed network with some edges missing (NA), if I simulate\n> N networks by\n>\n> obj.sim = simulate.formula(formula,nsim=N,theta0=ergm$coef,basis=Y,\n> statsonly=TRUE,constraints=~observed)\n>\n> then\n>\n> colMeans(obj.sim) are equal to E[g(Y)| Y_obs], the expected value of the\n> sufficient statistics conditional the observed values in the nerwork?\n>\n> Thanks.\n>\n> Nicola\n>",
+      "body_snippet": "Hi Nicola,\n\nYou are correct: colMeans(obj.sim) is a sample mean with expected value \nE[g(Y)| Y_obs] (under the model with the specified formula).\n\nEnjoy!\n\nMark\n\n---------------------------------------",
+      "thread_id": "thread-ebb5bdfadf06",
+      "thread_depth": 1,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-eeedefc959fe",
+      "message_id": "<4DDA1550.5050508@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2011-05-23T01:05:36Z",
+      "subject": "[statnet_help] Problem using Coda",
+      "subject_clean": "[statnet_help] Problem using Coda",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI would like to use the coda library to go further with MCMC \ndiagnostics. However, I can't figure out why something like in the \nexample below doesn't work:\n\nlibrary(ergm)\nlibrary(coda)\ndata(sampson)\nms<-ergm(samplike~edges+mutual)\nclass(ms$sample) # \"mcmc\"\nautocorr(ms$sample)\n\n\"Error in attr(data, \"tsp\") <- c(start, end, frequency) :\n   invalid time series parameters specified\"\n\nThis error sounds very cryptic. Does anybody know how to overcome this \nproblem? (R 2.13.0, ergm 2.3, coda 0.14-4)\n\nBest,\nVictorin\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Hi all,\n\nI would like to use the coda library to go further with MCMC \ndiagnostics. However, I can't figure out why something like in the \nexample below doesn't work:\n\nlibrary(ergm)\nlibrary(coda)\ndata",
+      "thread_id": "thread-eeedefc959fe",
+      "thread_depth": 0,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-363400c6634b",
+      "message_id": "<44fa0fa4a094c8b81bfdc00ae5941ef1.squirrel@webmail.stat.unipd.it>",
+      "from_name": "Soriani Nicola",
+      "from_email_hash": "bad2caca9903706f9e3ae9b9200f838b32f69bcb1198b839eb309a817ad8dd27",
+      "date": "2011-05-23T01:14:44Z",
+      "subject": "[statnet_help] simulate.formula for missing data",
+      "subject_clean": "[statnet_help] simulate.formula for missing data",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Mark,\n\nthank you for your reply on my question on the statnet help mail list.\n\nI have some more question about how \"ergm\", by method=\"Stepping\",\nestimates in presence of missing edges in the network.\n\nIf I right understood, when the network has some missing data, ergm should\nimplement the face-value likelihood. This means that the estimating\nalgorithm stops when the constrained mean are equal the unconstrained\nmean.\n\nIn the file attached I estimated a model for the \"kapfts1\" network setting\nrandomly the 20% of edges as missing. As you can see, simulating 500\nnetworks from the coef. of the estimated model, in one case putting in\nsimulate.formula the constrain=observed,  the average statistics are not\nequal. So I don't think that these coef. are really the maximum face-value\nlikelihood estimates.\n\nWhat I think is that  \"ergm\" consider any NA as a 0. In fact I replicated\nten times the same estimation, on the same data with the same missing\nedges, in one case leaving the NA's (Step: col 1,2) and the other setting\nthe NA's to be 0 (Step_0: col 3,4). As you can see, the values are close.\n\nMaybe there are some bugs on ergm.\n\nBests,\n\nNicola\n\n\n\n> Hi Nicola,\n>\n> You are correct: colMeans(obj.sim) is a sample mean with expected value\n> E[g(Y)| Y_obs] (under the model with the specified formula).\n>\n> Enjoy!\n>\n> Mark\n>\n> ----------------------------------------------------\n> Mark S. Handcock\n> Professor of Statistics\n> Department of Statistics\n> University of California     Phone:  (310) 817-6778\n> Los Angeles, CA 90095-1554.   FAX:   (206) 457-1953\n> Web:  www.stat.ucla.edu/~handcock\n> internet:  handcock@ucla.edu\n>\n> On 5/22/11 12:46 PM, Soriani Nicola wrote:\n>>\n>> Hi All,\n>>\n>> I have a question:\n>>\n>> - Let Y is an observed network with some edges missing (NA), if I\n>> simulate\n>> N networks by\n>>\n>> obj.sim = simulate.formula(formula,nsim=N,theta0=ergm$coef,basis=Y,\n>> statsonly=TRUE,constraints=~observed)\n>>\n>> then\n>>\n>> colMeans(obj.sim) are equal to E[g(Y)| Y_obs], the expected value of the\n>> sufficient statistics conditional the observed values in the nerwork?\n>>\n>> Thanks.\n>>\n>> Nicola\n>>\n>\n>\n\n\n-- \nSoriani Nicola\nScuola di Dottorato in Scienze Statistiche XXIII Ciclo\nDipartimento di Scienze Statistiche, Universit? di Padova\nStanza 122 - Tel. 049 827 4174\nPh.D. Student\nDepartment of Statistical Sciences\nUniversity of Padova, Italy",
+      "body_snippet": "Hi Mark,\n\nthank you for your reply on my question on the statnet help mail list.\n\nI have some more question about how \"ergm\", by method=\"Stepping\",\nestimates in presence of missing edges in the networ",
+      "thread_id": "thread-363400c6634b",
+      "thread_depth": 0,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-2fcbea677a5f",
+      "message_id": "<22be4034f6e5d8074cd1c48efc0ec5ec.squirrel@webmail.stat.unipd.it>",
+      "from_name": "Soriani Nicola",
+      "from_email_hash": "bad2caca9903706f9e3ae9b9200f838b32f69bcb1198b839eb309a817ad8dd27",
+      "date": "2011-05-23T02:38:20Z",
+      "subject": "[Re: [statnet_help] simulate.formula for missing data]",
+      "subject_clean": "[Re: [statnet_help] simulate.formula for missing data]",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Mark,\n\nthank you for your reply on my question on the statnet help mail list.\n\nI have some more question about how \"ergm\", by method=\"Stepping\",\nestimates in presence of missing edges in the network.\n\nIf I right understood, when the network has some missing data, ergm should\nimplement the face-value likelihood. This means that the estimating\nalgorithm stops when the constrained mean are equal the unconstrained\nmean.\n\nIn the file attached I estimated a model for the \"kapfts1\" network setting\nrandomly the 20% of edges as missing. As you can see, simulating 500\nnetworks from the coef. of the estimated model, in one case putting in\nsimulate.formula the constrain=observed,  the average statistics are not\nequal. So I don't think that these coef. are really the maximum face-value\nlikelihood estimates.\n\nWhat I think is that  \"ergm\" consider any NA as a 0. In fact I replicated\nten times the same estimation, on the same data with the same missing\nedges, in one case leaving the NA's (Step: col 1,2) and the other setting\nthe NA's to be 0 (Step_0: col 3,4). As you can see, the values are close.\n\nMaybe there are some bugs on ergm.\n\nBests,\n\nNicola\n\n\n\n> Hi Nicola,\n>\n> You are correct: colMeans(obj.sim) is a sample mean with expected value\n> E[g(Y)| Y_obs] (under the model with the specified formula).\n>\n> Enjoy!\n>\n> Mark\n>\n> ----------------------------------------------------\n> Mark S. Handcock\n> Professor of Statistics\n> Department of Statistics\n> University of California     Phone:  (310) 817-6778\n> Los Angeles, CA 90095-1554.   FAX:   (206) 457-1953\n> Web:  www.stat.ucla.edu/~handcock\n> internet:  handcock@ucla.edu\n>\n> On 5/22/11 12:46 PM, Soriani Nicola wrote:\n>>\n>> Hi All,\n>>\n>> I have a question:\n>>\n>> - Let Y is an observed network with some edges missing (NA), if I\n>> simulate\n>> N networks by\n>>\n>> obj.sim = simulate.formula(formula,nsim=N,theta0=ergm$coef,basis=Y,\n>> statsonly=TRUE,constraints=~observed)\n>>\n>> then\n>>\n>> colMeans(obj.sim) are equal to E[g(Y)| Y_obs], the expected value of the\n>> sufficient statistics conditional the observed values in the nerwork?\n>>\n>> Thanks.\n>>\n>> Nicola\n>>\n>\n>\n\n\n-- \nSoriani Nicola\nScuola di Dottorato in Scienze Statistiche XXIII Ciclo\nDipartimento di Scienze Statistiche, Universit? di Padova\nStanza 122 - Tel. 049 827 4174\nPh.D. Student\nDepartment of Statistical Sciences\nUniversity of Padova, Italy\n\n\n-- \nSoriani Nicola\nScuola di Dottorato in Scienze Statistiche XXIII Ciclo\nDipartimento di Scienze Statistiche, Universit? di Padova\nStanza 122 - Tel. 049 827 4174\nPh.D. Student\nDepartment of Statistical Sciences\nUniversity of Padova, Italy\n-------------- next part --------------\nAn embedded and charset-unspecified text was scrubbed...\nName: AboutSteppingNA.txt\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110523/08e13d5f/attachment.txt>",
+      "body_snippet": "Hi Mark,\n\nthank you for your reply on my question on the statnet help mail list.\n\nI have some more question about how \"ergm\", by method=\"Stepping\",\nestimates in presence of missing edges in the networ",
+      "thread_id": "thread-2fcbea677a5f",
+      "thread_depth": 0,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-f0e833c10fa8",
+      "message_id": "<9c4afbeaeb831fbe84c0a643b68c2c7e@email.unc.edu>",
+      "from_name": "dnolin",
+      "from_email_hash": "9ea4374cadcd0478c9da820629ed01f9f63173dc4f2e1510510ac970233cb3df",
+      "date": "2011-05-23T12:41:52Z",
+      "subject": "[statnet_help] ergm.userterms help list?",
+      "subject_clean": "[statnet_help] ergm.userterms help list?",
+      "in_reply_to": "<AB203C40-99F3-4435-ABBD-663A15CCCFFB@stat.psu.edu>",
+      "references": [
+        "<AB203C40-99F3-4435-ABBD-663A15CCCFFB@stat.psu.edu>"
+      ],
+      "body_plain": "I'm currently delving into the world of writing/modifying my own ergm\nterms, and I'm sure I'm not the only one. Steven Goodreau suggested to me\nthere may be enough interest to merit setting up a separate list for those\nwriting their own ergm.userterms. Is anyone else interested in this\npossibility?\n\nCheers,\nDave Nolin\n\n\nOn Fri, 11 Feb 2011 16:25:55 -0500, David Hunter <dhunter@stat.psu.edu>\nwrote:\n> Hi everyone.  The package called ergm.userterms is now up on CRAN.   \n> This package is designed to help folks who are interested in extending  \n> the capabilities of statnet by creating their own terms that can be  \n> used in an ERGM formula.  There is a paper that comes with the package  \n> that explains how this works and also gives a bit of a glimpse under  \n> the hood of the ergm package.\n> \n> The paper is in the inst/doc directory of the source code, or you can  \n> download it separately at\n> http://www.stat.psu.edu/~dhunter/papers/ergmuserterms.pdf\n> \n> Best,\n> Dave\n> \n> PS.  If anyone still at Sunbelt is interested in chatting about this,  \n> try to track down Steve Goodreau, who's still there.\n> \n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \n_____________________________________________\nDr. David A. Nolin, Ph.D.\nPostdoctoral Scholar\nCarolina Population Center\nUniversity of North Carolina",
+      "body_snippet": "I'm currently delving into the world of writing/modifying my own ergm\nterms, and I'm sure I'm not the only one. Steven Goodreau suggested to me\nthere may be enough interest to merit setting up a separ",
+      "thread_id": "thread-f0e833c10fa8",
+      "thread_depth": 0,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-ca724d171f61",
+      "message_id": "<BANLkTimoYJ2j8aryDwr1N1nhQUrncOzkSw@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2011-05-23T15:35:50Z",
+      "subject": "[statnet_help] ergm.userterms help list?",
+      "subject_clean": "[statnet_help] ergm.userterms help list?",
+      "in_reply_to": "<9c4afbeaeb831fbe84c0a643b68c2c7e@email.unc.edu>",
+      "references": [
+        "<AB203C40-99F3-4435-ABBD-663A15CCCFFB@stat.psu.edu>",
+        "<9c4afbeaeb831fbe84c0a643b68c2c7e@email.unc.edu>"
+      ],
+      "body_plain": "As a by-stander of writing ergm user terms (at least for now) I would\ndefinitely would like to see what people are doing.\nThe statnet_help list is relatively low traffic so splitting it is\nIMHO not necessary. Obviously this is up to the\nowners/maintainers/admins...\n\n~michal\n\nOn Mon, May 23, 2011 at 9:41 PM, dnolin <dnolin@email.unc.edu> wrote:\n>\n> I'm currently delving into the world of writing/modifying my own ergm\n> terms, and I'm sure I'm not the only one. Steven Goodreau suggested to me\n> there may be enough interest to merit setting up a separate list for those\n> writing their own ergm.userterms. Is anyone else interested in this\n> possibility?\n>\n> Cheers,\n> Dave Nolin\n>\n>\n> On Fri, 11 Feb 2011 16:25:55 -0500, David Hunter <dhunter@stat.psu.edu>\n> wrote:\n>> Hi everyone. ?The package called ergm.userterms is now up on CRAN.\n>> This package is designed to help folks who are interested in extending\n>> the capabilities of statnet by creating their own terms that can be\n>> used in an ERGM formula. ?There is a paper that comes with the package\n>> that explains how this works and also gives a bit of a glimpse under\n>> the hood of the ergm package.\n>>\n>> The paper is in the inst/doc directory of the source code, or you can\n>> download it separately at\n>> http://www.stat.psu.edu/~dhunter/papers/ergmuserterms.pdf\n>>\n>> Best,\n>> Dave\n>>\n>> PS. ?If anyone still at Sunbelt is interested in chatting about this,\n>> try to track down Steve Goodreau, who's still there.\n>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> --\n> _____________________________________________\n> Dr. David A. Nolin, Ph.D.\n> Postdoctoral Scholar\n> Carolina Population Center\n> University of North Carolina\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "As a by-stander of writing ergm user terms (at least for now) I would\ndefinitely would like to see what people are doing.\nThe statnet_help list is relatively low traffic so splitting it is\nIMHO not ne",
+      "thread_id": "thread-f0e833c10fa8",
+      "thread_depth": 1,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-4a4d89e9d193",
+      "message_id": "<32d049a42090cd1bae1e0c8099d8133d@email.unc.edu>",
+      "from_name": "dnolin",
+      "from_email_hash": "9ea4374cadcd0478c9da820629ed01f9f63173dc4f2e1510510ac970233cb3df",
+      "date": "2011-05-26T15:17:25Z",
+      "subject": "[statnet_help] esp change statistic C code",
+      "subject_clean": "[statnet_help] esp change statistic C code",
+      "in_reply_to": "<BANLkTimoYJ2j8aryDwr1N1nhQUrncOzkSw@mail.gmail.com>",
+      "references": [
+        "<AB203C40-99F3-4435-ABBD-663A15CCCFFB@stat.psu.edu>",
+        "<9c4afbeaeb831fbe84c0a643b68c2c7e@email.unc.edu>",
+        "<BANLkTimoYJ2j8aryDwr1N1nhQUrncOzkSw@mail.gmail.com>"
+      ],
+      "body_plain": "I'm trying to make sense of the C source code for the esp change statistic.\nHere's my understanding so far:\n\n1) First, it steps through the neighborhood (with members indexed by u) of\nthe head (h) node of the proposed toggled edge (i) and counts the number of\nedges to the tail (t) node of the propsed toggled edge. This gives the\ncount of two-paths connecting h and t, stored in varible L2ht.\n\n2) For each node u in the neighborhood of h, the neighborhood of u (with\nmembers indexed by v) is then searched for edges back to nodes t or h. This\ncounts the two-paths follwing u-v-t and u-v-h, which gives the esp count\nfor edges ut and hu, respectively. These counts are stored in L2ut and\nL2hu. (Note that the addition/removal of edge i will increment or decrement\nthese esp counts through the inclusion of paths u-h-t and u-t-h,\nrespectively.)\n\nI found a sketch like the following helped me understand the method:\n\n\nv           v = a node in the neighborhood of u\n|           u = a node in the neighborhood of h\n/  |  \\\n?   u   ?       ? = edges whose existence is being queried for the\ncalculation of\n| /   \\ |           esp counts that may be affected by the addition/removal\nof edge i\n/     \\ \nt  -i-  h       t & h = the tail and head nodes of proposed toggled edge i\n\n\nThis is the point where I become confused, possibly because the variable\nnames don't match my intuition of what is being counted:\n\nif(EdgetreeSearch(MIN(v,head),MAX(v,head),nwp->outedges)!= 0) L2ut++;\nif(EdgetreeSearch(MIN(v,tail),MAX(v,tail),nwp->outedges)!= 0) L2hu++;\n\nThe first of these lines identifies the existence of an edge from v to h\n(or vice versa), then increments the variable L2ut; the second does the\nsame for nodes v and t and increments L2hu. (Note that at this point in the\ncode edges (h,u), (u, t), and (u, v) are all verified to exist.) Verifying\nedge (v,h) establishes a two-path u-v-h, which adds to the esp count for\nedge (h,u), yet the variable that is incremented is L2ut--the opposite of\nwhat I would expect. Am I missing something important about the effect of\nedge (v,h) on the esp count for edge (u,t)?\n\nIn the final step where the change statistics are actually updated, the\ncode for L2ut and L2hu are treated identically, so the labels make no\ndifference to the calculation of the change statistic. I just want to be\nsure I understand how the code actually works before I proceed to tinker.\n\nMany thanks,\nDave\n\n_____________________________________________\nDr. David A. Nolin, Ph.D.\nPostdoctoral Scholar\nCarolina Population Center\nUniversity of North Carolina",
+      "body_snippet": "I'm trying to make sense of the C source code for the esp change statistic.\nHere's my understanding so far:\n\n1) First, it steps through the neighborhood (with members indexed by u) of\nthe head (h) nod",
+      "thread_id": "thread-f0e833c10fa8",
+      "thread_depth": 2,
+      "month": "2011-05"
+    },
+    {
+      "id": "msg-49017a66ac97",
+      "message_id": "<BANLkTinOrAAdnUHBMRPmvWWWvvMCTEx_RQ@mail.gmail.com>",
+      "from_name": "ayn leslie-cook",
+      "from_email_hash": "b484bba69666e42ec8361f3c031b3f4a0f9bfec36a76430261af4a80d061a121",
+      "date": "2011-05-27T09:59:58Z",
+      "subject": "[statnet_help] esp change statistic C code",
+      "subject_clean": "[statnet_help] esp change statistic C code",
+      "in_reply_to": "<32d049a42090cd1bae1e0c8099d8133d@email.unc.edu>",
+      "references": [
+        "<AB203C40-99F3-4435-ABBD-663A15CCCFFB@stat.psu.edu>",
+        "<9c4afbeaeb831fbe84c0a643b68c2c7e@email.unc.edu>",
+        "<BANLkTimoYJ2j8aryDwr1N1nhQUrncOzkSw@mail.gmail.com>",
+        "<32d049a42090cd1bae1e0c8099d8133d@email.unc.edu>"
+      ],
+      "body_plain": "Dave,\n\nYou are correct, the names of the L2ut and L2hu counters are backwards.  And\nthank you for catching this.  This was caused by a change to the ergm code\nin the 2.3 release, which intended to make the ergm and network code\nconsistent in their naming conventions for the head and tail nodes -\nessentially heads and tails were swapped in the ergm code to conform to the\nnotion that a directed tie is the outedge of the tail node and the inedge of\nthe head node.  In that change, the \"t\" in L2ut and the \"h\" in L2hu should\nhave been swapped as well.  They weren't.  You are correct though that this\nmakes no difference in the calculation of the change statistic.\nNonetheless, this issue will be addressed in a future release.\n\nThanks again.\n\nBest,\n\nAyn Leslie-Cook\n\n\n\n\nOn Thu, May 26, 2011 at 3:17 PM, dnolin <dnolin@email.unc.edu> wrote:\n\n>\n> I'm trying to make sense of the C source code for the esp change statistic.\n> Here's my understanding so far:\n>\n> 1) First, it steps through the neighborhood (with members indexed by u) of\n> the head (h) node of the proposed toggled edge (i) and counts the number of\n> edges to the tail (t) node of the propsed toggled edge. This gives the\n> count of two-paths connecting h and t, stored in varible L2ht.\n>\n> 2) For each node u in the neighborhood of h, the neighborhood of u (with\n> members indexed by v) is then searched for edges back to nodes t or h. This\n> counts the two-paths follwing u-v-t and u-v-h, which gives the esp count\n> for edges ut and hu, respectively. These counts are stored in L2ut and\n> L2hu. (Note that the addition/removal of edge i will increment or decrement\n> these esp counts through the inclusion of paths u-h-t and u-t-h,\n> respectively.)\n>\n> I found a sketch like the following helped me understand the method:\n>\n>\n> v           v = a node in the neighborhood of u\n> |           u = a node in the neighborhood of h\n> /  |  \\\n> ?   u   ?       ? = edges whose existence is being queried for the\n> calculation of\n> | /   \\ |           esp counts that may be affected by the addition/removal\n> of edge i\n> /     \\\n> t  -i-  h       t & h = the tail and head nodes of proposed toggled edge i\n>\n>\n> This is the point where I become confused, possibly because the variable\n> names don't match my intuition of what is being counted:\n>\n> if(EdgetreeSearch(MIN(v,head),MAX(v,head),nwp->outedges)!= 0) L2ut++;\n> if(EdgetreeSearch(MIN(v,tail),MAX(v,tail),nwp->outedges)!= 0) L2hu++;\n>\n> The first of these lines identifies the existence of an edge from v to h\n> (or vice versa), then increments the variable L2ut; the second does the\n> same for nodes v and t and increments L2hu. (Note that at this point in the\n> code edges (h,u), (u, t), and (u, v) are all verified to exist.) Verifying\n> edge (v,h) establishes a two-path u-v-h, which adds to the esp count for\n> edge (h,u), yet the variable that is incremented is L2ut--the opposite of\n> what I would expect. Am I missing something important about the effect of\n> edge (v,h) on the esp count for edge (u,t)?\n>\n> In the final step where the change statistics are actually updated, the\n> code for L2ut and L2hu are treated identically, so the labels make no\n> difference to the calculation of the change statistic. I just want to be\n> sure I understand how the code actually works before I proceed to tinker.\n>\n> Many thanks,\n> Dave\n>\n> _____________________________________________\n> Dr. David A. Nolin, Ph.D.\n> Postdoctoral Scholar\n> Carolina Population Center\n> University of North Carolina\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110527/328df71b/attachment.html>",
+      "body_snippet": "Dave,\n\nYou are correct, the names of the L2ut and L2hu counters are backwards.  And\nthank you for catching this.  This was caused by a change to the ergm code\nin the 2.3 release, which intended to mak",
+      "thread_id": "thread-f0e833c10fa8",
+      "thread_depth": 3,
+      "month": "2011-05"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-bd8a125cd733",
+      "subject": "[statnet_help] Measuring Density by Vertex Attribute",
+      "message_count": 1,
+      "participants": [
+        "Philip Leifeld"
+      ],
+      "started": "2011-05-02T05:36:24Z",
+      "last_reply": "2011-05-02T05:36:24Z",
+      "root_message_id": "msg-bd8a125cd733"
+    },
+    {
+      "id": "thread-085db01db434",
+      "subject": "[statnet_help] ergm question",
+      "message_count": 7,
+      "participants": [
+        "Carter T. Butts",
+        "David Hunter",
+        "Jorge M Rocha",
+        "Michał Bojanowski"
+      ],
+      "started": "2011-05-02T10:08:36Z",
+      "last_reply": "2011-05-17T02:30:37Z",
+      "root_message_id": "msg-085db01db434"
+    },
+    {
+      "id": "thread-d409caabee43",
+      "subject": "[statnet_help] Measuring Density by Vertex Attribute",
+      "message_count": 1,
+      "participants": [
+        "Philip Leifeld"
+      ],
+      "started": "2011-05-03T05:13:39Z",
+      "last_reply": "2011-05-03T05:13:39Z",
+      "root_message_id": "msg-d409caabee43"
+    },
+    {
+      "id": "thread-a002d0ca6177",
+      "subject": "[statnet_help] Error using predict command after ergmm",
+      "message_count": 2,
+      "participants": [
+        "Manasa Patnam",
+        "Pavel N. Krivitsky"
+      ],
+      "started": "2011-05-09T05:38:31Z",
+      "last_reply": "2011-05-09T08:05:45Z",
+      "root_message_id": "msg-a002d0ca6177"
+    },
+    {
+      "id": "thread-6ffc44475fe9",
+      "subject": "[statnet_help] ERGM simulations",
+      "message_count": 1,
+      "participants": [
+        "Dalton  Lunga"
+      ],
+      "started": "2011-05-09T12:05:20Z",
+      "last_reply": "2011-05-09T12:05:20Z",
+      "root_message_id": "msg-6ffc44475fe9"
+    },
+    {
+      "id": "thread-1a26d266d523",
+      "subject": "[statnet_help] RE: ERGM MCMC simulations",
+      "message_count": 1,
+      "participants": [
+        "Dalton  Lunga"
+      ],
+      "started": "2011-05-10T09:08:59Z",
+      "last_reply": "2011-05-10T09:08:59Z",
+      "root_message_id": "msg-1a26d266d523"
+    },
+    {
+      "id": "thread-7da4a05c1999",
+      "subject": "[statnet_help] Conflicting network indicators",
+      "message_count": 3,
+      "participants": [
+        "Edzard Wesselink",
+        "dnolin"
+      ],
+      "started": "2011-05-11T09:36:53Z",
+      "last_reply": "2011-05-11T13:10:54Z",
+      "root_message_id": "msg-7da4a05c1999"
+    },
+    {
+      "id": "thread-824c76633f1b",
+      "subject": "[statnet_help] Finding paths",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Moses Boudourides"
+      ],
+      "started": "2011-05-16T03:14:15Z",
+      "last_reply": "2011-05-17T01:02:25Z",
+      "root_message_id": "msg-824c76633f1b"
+    },
+    {
+      "id": "thread-e641f20a6832",
+      "subject": "[statnet_help] network.update and graphs operators",
+      "message_count": 1,
+      "participants": [
+        "Pierre-Yves Boelle"
+      ],
+      "started": "2011-05-18T07:51:48Z",
+      "last_reply": "2011-05-18T07:51:48Z",
+      "root_message_id": "msg-e641f20a6832"
+    },
+    {
+      "id": "thread-fc59d1f52aa5",
+      "subject": "[statnet_help] Descriptive Statistics",
+      "message_count": 1,
+      "participants": [
+        "Philip Heinrich"
+      ],
+      "started": "2011-05-19T16:01:11Z",
+      "last_reply": "2011-05-19T16:01:11Z",
+      "root_message_id": "msg-fc59d1f52aa5"
+    },
+    {
+      "id": "thread-ebb5bdfadf06",
+      "subject": "[statnet_help] simulate.formula for missing data",
+      "message_count": 2,
+      "participants": [
+        "Mark S. Handcock",
+        "Soriani Nicola"
+      ],
+      "started": "2011-05-22T12:46:30Z",
+      "last_reply": "2011-05-22T12:52:15Z",
+      "root_message_id": "msg-ebb5bdfadf06"
+    },
+    {
+      "id": "thread-eeedefc959fe",
+      "subject": "[statnet_help] Problem using Coda",
+      "message_count": 1,
+      "participants": [
+        "Victorin Luisier"
+      ],
+      "started": "2011-05-23T01:05:36Z",
+      "last_reply": "2011-05-23T01:05:36Z",
+      "root_message_id": "msg-eeedefc959fe"
+    },
+    {
+      "id": "thread-363400c6634b",
+      "subject": "[statnet_help] simulate.formula for missing data",
+      "message_count": 1,
+      "participants": [
+        "Soriani Nicola"
+      ],
+      "started": "2011-05-23T01:14:44Z",
+      "last_reply": "2011-05-23T01:14:44Z",
+      "root_message_id": "msg-363400c6634b"
+    },
+    {
+      "id": "thread-2fcbea677a5f",
+      "subject": "[Re: [statnet_help] simulate.formula for missing data]",
+      "message_count": 1,
+      "participants": [
+        "Soriani Nicola"
+      ],
+      "started": "2011-05-23T02:38:20Z",
+      "last_reply": "2011-05-23T02:38:20Z",
+      "root_message_id": "msg-2fcbea677a5f"
+    },
+    {
+      "id": "thread-f0e833c10fa8",
+      "subject": "[statnet_help] ergm.userterms help list?",
+      "message_count": 4,
+      "participants": [
+        "Michał Bojanowski",
+        "ayn leslie-cook",
+        "dnolin"
+      ],
+      "started": "2011-05-23T12:41:52Z",
+      "last_reply": "2011-05-27T09:59:58Z",
+      "root_message_id": "msg-f0e833c10fa8"
+    }
+  ]
+}

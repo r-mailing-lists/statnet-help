@@ -1,0 +1,620 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2008-03",
+  "messages": [
+    {
+      "id": "msg-8ce4c7b9de17",
+      "message_id": "<000001c87dd5$a41932c0$ec4b9840$@DeWolf@UGent.be>",
+      "from_name": "Muriel De Wolf",
+      "from_email_hash": "4c5ec949ba94f77fd1f0e49c39cd922357cfbbd49dec8b672e27f94611774551",
+      "date": "2008-03-04T00:56:31Z",
+      "subject": "[statnet_help] ergm",
+      "subject_clean": "[statnet_help] ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\n \n\nI'm facing a problem with the ergm-package. Whenever I try to run my ergm\nmodel (see attachment), R gives me a notification that there has been a\nmistake in R for Windows GUI front-end and that the program has to be\nclosed, which it does. \n\n \n\nMaybe it has to do with the fact that, when I update the statnet-package I\nget the message 'network namespace cannot be unloaded, package 'network'\ndoes not have a namespace' and this for every package (ergm, statnet, sna,\nlatentnet, degreenet).\n\n \n\nHowever, when I try to run the ergm-model from the article 'Specification of\nExponential-Family Random Graph Models: Terms and Computational Aspects', I\nget the same results as in the article and no problems with R whatsoever.\n\n \n\nI don't know what the problem could be. Could you please have a look to see\nif you can find the problem?\n\n \n\nAs for my model: it's meant to run on a directed network. I haven't found\nany articles where models are run on a directed network (except for the ones\nwhere the directed network is transformed into an undirected.). So I'm\nwondering whether my ergm-formula is a good start to run on a directed\nnetwork.\n\n \n\nThanks\n\nMuriel\n\n \n\n \n\nMuriel De Wolf\n\n \n\nwetenschappelijk medewerker\n\nUniversiteit Gent\n\nVakgroep Sociologie\n\nKorte Meer 5\n\n9000 Gent\n\n09/264.84.72\n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080304/f95857ac/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: syntax model1 tryout.docx\nType: application/vnd.openxmlformats-officedocument.wordprocessingml.document\nSize: 15345 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080304/f95857ac/attachment.docx>",
+      "body_snippet": "Hello,\n\n \n\nI'm facing a problem with the ergm-package. Whenever I try to run my ergm\nmodel (see attachment), R gives me a notification that there has been a\nmistake in R for Windows GUI front-end and ",
+      "thread_id": "thread-8ce4c7b9de17",
+      "thread_depth": 0,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-684cb0b65482",
+      "message_id": "<000801c87e1c$b992d150$0a00a8c0@avranil>",
+      "from_name": "Avranil Sarkar",
+      "from_email_hash": "614dc5347fae6d583a6c3f9685097a3322aae752d33860f65a9351cb449c8507",
+      "date": "2008-03-04T09:25:20Z",
+      "subject": "[statnet_help] using nodemix in ergm-terms",
+      "subject_clean": "[statnet_help] using nodemix in ergm-terms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\nI am working with a directed graph. I want to us a subset of the pairings of my attribute but not all of them. Is there any way of doing it using \"nodemix\". Usually \"nodemix\" gives all possible pairings for an attribute.\n\nThanks,\nAvranil\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080304/26fe5965/attachment.html>",
+      "body_snippet": "Hi,\nI am working with a directed graph. I want to us a subset of the pairings of my attribute but not all of them. Is there any way of doing it using \"nodemix\". Usually \"nodemix\" gives all possible pa",
+      "thread_id": "thread-684cb0b65482",
+      "thread_depth": 0,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-8ed68d32bf8d",
+      "message_id": "<Pine.WNT.4.64.0803051232180.1372@vinaya.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2008-03-05T12:45:15Z",
+      "subject": "[statnet_help] using nodemix in ergm-terms",
+      "subject_clean": "[statnet_help] using nodemix in ergm-terms",
+      "in_reply_to": "<000801c87e1c$b992d150$0a00a8c0@avranil>",
+      "references": [
+        "<000801c87e1c$b992d150$0a00a8c0@avranil>"
+      ],
+      "body_plain": "Hi Avranil,\n\nGood question.  Alas, there isn't currently a direct way of selecting a \nsubset of pairings to model using nodemix.  There is a way to do it \nindirectly, however.  One can define a set of dummy attributes for each \ndirected pair of actors (called an \"edge attribute\" in statnet) that \nrepresents whether or not they belong to a particular vertex-attribute \ncombination, and then include this in the model with an \"edgecov\" term. \nThis gives you the flexibilty to leave out terms representing any \ncombinations you wish to ignore; it also allows you to combine multiple \ncombinations within individual dummy variables to be modeled jointly if \nyou so desire.  So it's a little bit of work, but very flexible.\n\nLet me know if that wasn't clear and you need more guidance.\nCheers,\nSteve\n\n\n                    *PLEASE NOTICE NEW OFFICE LOCATION*\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65855,-122.3091&z=18&t=k             *\n**************************************************************************\n\nOn Tue, 4 Mar 2008, Avranil Sarkar wrote:\n\n> Hi, I am working with a directed graph. I want to us a subset of the \n> pairings of my attribute but not all of them. Is there any way of doing \n> it using \"nodemix\". Usually \"nodemix\" gives all possible pairings for an \n> attribute.\n>\n> Thanks,\n> Avranil",
+      "body_snippet": "Hi Avranil,\n\nGood question.  Alas, there isn't currently a direct way of selecting a \nsubset of pairings to model using nodemix.  There is a way to do it \nindirectly, however.  One can define a set of",
+      "thread_id": "thread-684cb0b65482",
+      "thread_depth": 1,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-f0888d4bbf92",
+      "message_id": "<ED4E0459-0634-4FBF-8B86-5CFF8AE13476@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-03-06T22:00:46Z",
+      "subject": "[statnet_help] ERGM gwdsp and gwodegree",
+      "subject_clean": "[statnet_help] ERGM gwdsp and gwodegree",
+      "in_reply_to": "<001801c86e94$ea8355b0$bf8a0110$@edu>",
+      "references": [
+        "<000401c869ef$2f942f80$8ebc8e80$@edu>",
+        "<43A1753D-DC12-4869-AF53-24E127E702E2@stat.psu.edu>",
+        "<001801c86e94$ea8355b0$bf8a0110$@edu>"
+      ],
+      "body_plain": "Hi Jichao (and Kevin Lewis!)\n\nThanks to both of you for finding this problem and documenting it so  \ncarefully.  I finally was able to spend some time looking into it,  \nand I'm pretty sure I've fixed the problem with gwodegree:  I have  \nbeen able to verify that the gwodegree(..., fixed=TRUE) term gives  \nthe same answers as the gwidegree(..., fixed=TRUE) term applied to  \nthe transpose, as Jichao tried below.\n\nThis will be in the next CRAN version of the package, probably in a  \nfew days.\n\nDave\n\n\nLe 14 f?vr. 08 ? 00:05, Jichao Qian a ?crit :\n\n> Hi Dave,\n>\n>\n>\n> Thanks for your response. However, I still believe that gwodegree  \n> has some problems.\n>\n>\n>\n> What I did was I created a new network (email25_t.net) which is the  \n> transpose of my original network (email25.net) and I ran gwidegree  \n> and gwodegree on both. If I understand this correctly, the  \n> outdegree estimate should be similar to the indegree estimate of  \n> the transpose and vice versa.\n>\n>\n>\n> Here are the 4 ergm models that I ran\n>\n> email25.e_gwo0_org<-ergm(email25.net~edges+gwodegree(0,fixed=TRUE) \n> +edgecov(child.net)+edgecov(parent.net)+edgecov \n> (sibling.net),verbose=TRUE)           #does not converge\n>\n> email25.e_gwi0_org<-ergm(email25.net~edges+gwidegree(0,fixed=TRUE) \n> +edgecov(child.net)+edgecov(parent.net)+edgecov \n> (sibling.net),verbose=TRUE)\n>\n> email25_t.e_gwo0_org<-ergm(email25_t.net~edges+gwodegree \n> (0,fixed=TRUE)+edgecov(child.net)+edgecov(parent.net)+edgecov \n> (sibling.net),verbose=TRUE)   #does not converge\n>\n> email25_t.e_gwi0_org<-ergm(email25_t.net~edges+gwidegree \n> (0,fixed=TRUE)+edgecov(child.net)+edgecov(parent.net)+edgecov \n> (sibling.net),verbose=TRUE)\n>\n>\n>\n> Basically, both networks with gwodegree do not converge while both  \n> converge with gwidegree. (TNT sampler sometimes accepts 0% of  \n> proposed moves when it fails to converge)\n>\n>\n>\n> I have attached the necessary networks in this email. Child.net is  \n> the transpose of parent.net and sibling.net is symmetrical, so they  \n> should not matter when I transposed the original network.\n>\n>\n>\n> Thanks!\n>\n>\n>\n> Jichao\n>\n>\n>\n>\n>\n> From: David Hunter [mailto:dhunter@stat.psu.edu]\n> Sent: Wednesday, February 13, 2008 3:31 AM\n> To: Jichao Qian\n> Cc: statnet_help@u.washington.edu\n> Subject: Re: [statnet_help] ERGM gwdsp and gwodegree\n>\n>\n>\n> Hi Jichao.  There was a bug in the directed version of gwdsp, but I  \n> think that's fixed now so it should show up in the next CRAN  \n> version of ergm (in a few days?).  Also, thanks for noticing that  \n> gwodegree was only named gwodegree instead of gwodegree.fixed.0 --  \n> that was just an oversight but shouldn't have affected the  \n> performance.\n>\n>\n>\n> Dave\n>\n>\n>\n>\n>\n>\n> Le 8 f?vr. 08 ? 02:08, Jichao Qian a ?crit :\n>\n>\n>\n>\n> Hi all,\n>\n>\n>\n> I have a 79x79 directed network of email traffic that I?m trying to  \n> fit to an ERGM model. I?ve run into some problems with the gwdsp  \n> (geometrically weighted dyadwise shared partner) and gwodegree  \n> (geometrically weighted out-degree) parameters.\n>\n>\n>\n> If I include gwdsp in the model, it just does not run and gives the  \n> following output:\n>\n> > email25.e_gwd0<-ergm(email25.net~edges+gwdsp \n> (0,fixed=TRUE),verbose=TRUE)\n>\n> Evaluating network in model\n>\n> Initializing model.\n>\n> Initializing Metropolis-Hastings proposal.\n>\n> Fitting initial model.\n>\n> Fitting ERGM.\n>\n> Iteration 1 of at most 3 with parameter:\n>\n>         edges gwdsp.fixed.0\n>\n>     -2.620430      0.000000\n>\n> Error in ergm.mcmcslave(Clist, MHproposal, eta0, MCMCparams,  \n> maxedges,  :\n>\n>   NA/NaN/Inf in foreign function call (arg 15)\n>\n>\n>\n> If I include gwodegree in the model, it runs but some strange  \n> things happen. First, the model becomes degenerate, even though the  \n> model is ok with gwidegree. If I include gwodegree with gwidegree  \n> or with gwesp, TNT sampler stops accepting all proposals, and thus  \n> the model is degenerate. Also, When fixed=TRUE at 0, gwidegree  \n> parameter is named gwidegree.fixed.0, however, gwodegree is only  \n> named gwodegree, suggesting that it may not actually be fixed.\n>\n>\n>\n> Any ideas/fixes would be greatly appreciated. Thanks!\n>\n>\n>\n> Jichao Qian\n>\n> _______________________________________________\n>\n> statnet_help mailing list\n>\n> statnet_help@u.washington.edu\n>\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n> <email25.net.RData>\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080307/6048469b/attachment.html>",
+      "body_snippet": "Hi Jichao (and Kevin Lewis!)\n\nThanks to both of you for finding this problem and documenting it so  \ncarefully.  I finally was able to spend some time looking into it,  \nand I'm pretty sure I've fixed",
+      "thread_id": "thread-f0888d4bbf92",
+      "thread_depth": 0,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-7bf87129f3b4",
+      "message_id": "<48367543-4309-4D11-94FB-AEA65E2239AD@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-03-06T22:01:44Z",
+      "subject": "[statnet_help] \"mutual\" parameter with attributes suggestion",
+      "subject_clean": "[statnet_help] \"mutual\" parameter with attributes suggestion",
+      "in_reply_to": "<47BD8A83.6010104@wanadoo.fr>",
+      "references": [
+        "<47BD8A83.6010104@wanadoo.fr>"
+      ],
+      "body_plain": "Bonjour Fabien.\n\nGood question.  You are correct that the mutual parameter does not  \nallow a nodal categorical attribute at the moment -- however, this is  \nactually something that I have on my to-do list, for another reason.   \n(Filip, if you're reading this, I haven't forgotten!)\n\nI think it will be done in time for the next CRAN release of ergm.\n\nDave\n\n\nLe 21 f?vr. 08 ? 15:28, Fabien ELOIRE a ?crit :\n\n> Hello,\n> I am a French PhD student in sociology and I took part at the  \n> Sunbelt Workshop in January. For my network analysis I am using  \n> Statnet.\n>\n> I would be very interested in the possibility of using the \"mutual\"  \n> parameter with some attributes in my models, which, to my  \n> knowledge, is not possible at the moment.\n>\n> It would give us the possibility to measure the reciprocity between  \n> the same kind of actors.\n>\n> I asked this question to Mark Handcock after the Sunbelt workshop,  \n> and he seemed to agree with me for this idea.\n>\n> Thank you very much for taking into account my suggestion,\n>\n> Sincerely yours,\n> Fabien Eloire\n>\n> -- \n> Fabien ELOIRE\n> Doctorant en sociologie\n> Universit? de Lille 1, Laboratoire Clers?\n> t?l: 03 20 43 47 39\n> eloire.fabien@wanadoo.fr\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Bonjour Fabien.\n\nGood question.  You are correct that the mutual parameter does not  \nallow a nodal categorical attribute at the moment -- however, this is  \nactually something that I have on my to-do",
+      "thread_id": "thread-7bf87129f3b4",
+      "thread_depth": 0,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-36dbca315635",
+      "message_id": "<145BDABD-6A64-4AF8-92D4-3720F59A4D31@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-03-06T22:27:39Z",
+      "subject": "[statnet_help] ergm",
+      "subject_clean": "[statnet_help] ergm",
+      "in_reply_to": "<000001c87dd5$a41932c0$ec4b9840$@DeWolf@UGent.be>",
+      "references": [
+        "<000001c87dd5$a41932c0$ec4b9840$@DeWolf@UGent.be>"
+      ],
+      "body_plain": "Hello Muriel.  I'm not certain what might be causing this trouble off  \nthe top of my head, but I wonder whether you could send your code and  \n(if possible) any output you get in the text of an email message.  I  \nhad a hard time with the file you attached previously, even after  \nunzipping it.\n\nThanks.\n\nDave\n\nLe 4 mars 08 ? 09:56, Muriel De Wolf a ?crit :\n\n> Hello,\n>\n>\n>\n> I?m facing a problem with the ergm-package. Whenever I try to run  \n> my ergm model (see attachment), R gives me a notification that  \n> there has been a mistake in R for Windows GUI front-end and that  \n> the program has to be closed, which it does?\n>\n>\n>\n> Maybe it has to do with the fact that, when I update the statnet- \n> package I get the message ?network namespace cannot be unloaded,  \n> package ?network? does not have a namespace? and this for every  \n> package (ergm, statnet, sna, latentnet, degreenet).\n>\n>\n>\n> However, when I try to run the ergm-model from the article  \n> ?Specification of Exponential-Family Random Graph Models: Terms and  \n> Computational Aspects?, I get the same results as in the article  \n> and no problems with R whatsoever.\n>\n>\n>\n> I don?t know what the problem could be. Could you please have a  \n> look to see if you can find the problem?\n>\n>\n>\n> As for my model: it?s meant to run on a directed network. I haven?t  \n> found any articles where models are run on a directed network  \n> (except for the ones where the directed network is transformed into  \n> an undirected?). So I?m wondering whether my ergm-formula is a good  \n> start to run on a directed network.\n>\n>\n>\n> Thanks\n>\n> Muriel\n>\n>\n>\n>\n>\n> Muriel De Wolf\n>\n>\n>\n> wetenschappelijk medewerker\n>\n> Universiteit Gent\n>\n> Vakgroep Sociologie\n>\n> Korte Meer 5\n>\n> 9000 Gent\n>\n> 09/264.84.72\n>\n>\n>\n> <syntax model1 tryout.docx>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080307/c4a525c3/attachment.html>",
+      "body_snippet": "Hello Muriel.  I'm not certain what might be causing this trouble off  \nthe top of my head, but I wonder whether you could send your code and  \n(if possible) any output you get in the text of an email",
+      "thread_id": "thread-8ce4c7b9de17",
+      "thread_depth": 1,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-6d6466ae9791",
+      "message_id": "<E10CC136-97E7-4100-B675-5959F52B7CDD@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-03-12T10:02:25Z",
+      "subject": "[statnet_help] new version of ergm on CRAN",
+      "subject_clean": "[statnet_help] new version of ergm on CRAN",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello statnet users.  I just got word that the source code for the new  \nversion of ergm, version 2.0-6, is now on the main CRAN server (http://cran.r-project.org/ \n) and it will propagate to the mirrors in the next couple days.  Also,  \nthe pre-compiled binaries will appear within the next day I think.\n\nThanks to several of you who have sent emails with bug reports in the  \npast few weeks.  I believe these have been fixed now, but as always,  \nplease let us know if you find more!\n\nIn addition to fixing all the bugs, we have added a couple of things:\n   -- The \"asymmetric\" and \"mutual\" model terms now take an optional  \ncategorical nodal covariate argument in case you want to count only  \nthose dyads that have matching values of this covariate.  This type of  \nterm may prove to be quite common for various network configurations.\n   -- It should prove easier and easier to write change statistics  \nfrom scratch, we hope.  The reasons for this are twofold:  First,  \nthere is a new protocol for writing InitErgm functions (i.e., the R  \nfunctions that set up a term to be used in an ERGM):  These functions  \nare now called InitErgmTerm functions and there are several  \nillustrative examples as well as some comments in the file called R/ \nInitErgmTerm.R.  Note that the old way will still work, but using the  \nnew method will supplant the old automatically.  Second, there is now  \na growing list of C macros whose intended purpose is to make the  \nwriting (in C) of the d_xxx changestatistic functions easier.  The  \nmacros are found in src/edgetree.h and more and more of the functions  \nin src/edgetree.c now use them.\n\nEnjoy!\nDave",
+      "body_snippet": "Hello statnet users.  I just got word that the source code for the new  \nversion of ergm, version 2.0-6, is now on the main CRAN server (http://cran.r-project.org/ \n) and it will propagate to the mirr",
+      "thread_id": "thread-6d6466ae9791",
+      "thread_depth": 0,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-11c5a7ccea09",
+      "message_id": "<001601c88ad6$11c1ff20$b8eded80@avranil>",
+      "from_name": "Avranil Sarkar",
+      "from_email_hash": "614dc5347fae6d583a6c3f9685097a3322aae752d33860f65a9351cb449c8507",
+      "date": "2008-03-20T15:02:20Z",
+      "subject": "[statnet_help] using nodematch and edgecov",
+      "subject_clean": "[statnet_help] using nodematch and edgecov",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\nI am trying to fit a model for a directed graph.\ni have only one vertex attribute.\nI am using the edgecov command for a particular value of the that vertex  attribute with the value of the edgecovariate =1 if both nodes have that value and 0 otherwise.  I guess that should give me the same result as using nodematch command for that value of the vertex attribute. But I got totally different results when I tried to fit an ergm model using edgecov the first time and nodematch the second time.\nThanks,\nAvranil \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080320/e409726c/attachment.html>",
+      "body_snippet": "Hi,\nI am trying to fit a model for a directed graph.\ni have only one vertex attribute.\nI am using the edgecov command for a particular value of the that vertex  attribute with the value of the edgecov",
+      "thread_id": "thread-11c5a7ccea09",
+      "thread_depth": 0,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-57c7a4dd9dc5",
+      "message_id": "<F04FDE4B-79F7-4483-B787-1261D33FF518@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-03-20T16:26:21Z",
+      "subject": "[statnet_help] using nodematch and edgecov",
+      "subject_clean": "[statnet_help] using nodematch and edgecov",
+      "in_reply_to": "<001601c88ad6$11c1ff20$b8eded80@avranil>",
+      "references": [
+        "<001601c88ad6$11c1ff20$b8eded80@avranil>"
+      ],
+      "body_plain": "Hi Avranil.  I can't reproduce this problem.  Observe:\n\n > library(ergm); data(sampson)\n > samplike %v% \"group\"\n  [1] \"loyal\"    \"loyal\"    \"loyal\"    \"loyal\"    \"loyal\"     \n\"loyal\"    \"loyal\"\n  [8] \"Turks\"    \"Turks\"    \"Turks\"    \"Turks\"    \"Turks\"     \n\"Turks\"    \"Turks\"\n[15] \"outcasts\" \"outcasts\" \"outcasts\" \"outcasts\"\n > m = matrix(0, 18, 18)\n > m[1:7, 1:7] <- 1; m[8:14, 8:14] <- 1; m[15:18, 15:18] <- 1\n > summary(samplike ~ edgecov(m) + nodematch(\"group\"))\n       edgecov.m nodematch.group\n              63              63\n\nNote that the edgecov and nodematch statistics are exactly the same  \nfor this particular example, as expected.  Of course this doesn't mean  \nthat you haven't found a bug, but I'll need a bit more info to track  \nit down.  Can you provide some example code that doesn't work  \ncorrectly?  (I'm using ergm 2.0-6 above.)\n\nThanks.\n\nDave\n\n\nOn Mar 20, 2008, at 11:02 PM, Avranil Sarkar wrote:\n\n> Hi,\n> I am trying to fit a model for a directed graph.\n> i have only one vertex attribute.\n> I am using the edgecov command for a particular value of the that  \n> vertex  attribute with the value of the edgecovariate =1 if both  \n> nodes have that value and 0 otherwise.  I guess that should give me  \n> the same result as using nodematch command for that value of the  \n> vertex attribute. But I got totally different results when I tried  \n> to fit an ergm model using edgecov the first time and nodematch the  \n> second time.\n> Thanks,\n> Avranil\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080321/86c4a73e/attachment.html>",
+      "body_snippet": "Hi Avranil.  I can't reproduce this problem.  Observe:\n\n > library(ergm); data(sampson)\n > samplike %v% \"group\"\n  [1] \"loyal\"    \"loyal\"    \"loyal\"    \"loyal\"    \"loyal\"     \n\"loyal\"    \"loyal\"\n  [8] ",
+      "thread_id": "thread-11c5a7ccea09",
+      "thread_depth": 1,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-8cefb2739f9e",
+      "message_id": "<Pine.WNT.4.64.0803210834060.1176@vinaya.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2008-03-21T08:38:55Z",
+      "subject": "[statnet_help] using nodematch and edgecov",
+      "subject_clean": "[statnet_help] using nodematch and edgecov",
+      "in_reply_to": "<F04FDE4B-79F7-4483-B787-1261D33FF518@stat.psu.edu>",
+      "references": [
+        "<001601c88ad6$11c1ff20$b8eded80@avranil>",
+        "<F04FDE4B-79F7-4483-B787-1261D33FF518@stat.psu.edu>"
+      ],
+      "body_plain": "Hi Avranil,\n\nYes, your logic is right that they should be the same.  I tried \nsomething similar to Dave, and it also worked fine for me:\n\nlibrary(statnet)\ndata(faux.mesa.high)\nfmh <- faux.mesa.high\nraces <- fmh %v% \"Race\"\nunique(races)\nracecov[races=='Hisp',races=='Hisp'] <- 1\nracecov[races=='NatAm',races=='NatAm'] <- 1\nracecov[races=='White',races=='White'] <- 1\nracecov[races=='Other',races=='Other'] <- 1\nracecov[races=='Black',races=='Black'] <- 1\nsummary(fmh~edgecov(racecov)+nodematch(\"Race\"))\n\nyielded:\n\nedgecov.racecov  nodematch.Race\n             103             103\n\nAnd\n\n> ergm(fmh~edgecov(racecov))\nNewton-Raphson iterations:  7\n\nMLE Coefficients:\nedgecov.racecov\n          -4.381\n\n> ergm(fmh~nodematch(\"Race\"))\nNewton-Raphson iterations:  7\n\nMLE Coefficients:\nnodematch.Race\n         -4.381\n\n\nPossible thoughts that come to mind:\n\n(1) You've found a bug that exists, but only manifests itself in your \nexample for some reason.\n(2) We're using different vesions of ergm (I'm using 2.0-7).\n(3) ??\n\n\n\n\n                    *PLEASE NOTICE NEW OFFICE LOCATION*\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65855,-122.3091&z=18&t=k             *\n**************************************************************************\n\nOn Fri, 21 Mar 2008, David Hunter wrote:\n\n> Hi Avranil.  I can't reproduce this problem.  Observe:\n>\n>> library(ergm); data(sampson)\n>> samplike %v% \"group\"\n> [1] \"loyal\"    \"loyal\"    \"loyal\"    \"loyal\"    \"loyal\"    \"loyal\"    \"loyal\"\n> [8] \"Turks\"    \"Turks\"    \"Turks\"    \"Turks\"    \"Turks\"    \"Turks\"    \"Turks\"\n> [15] \"outcasts\" \"outcasts\" \"outcasts\" \"outcasts\"\n>> m = matrix(0, 18, 18)\n>> m[1:7, 1:7] <- 1; m[8:14, 8:14] <- 1; m[15:18, 15:18] <- 1\n>> summary(samplike ~ edgecov(m) + nodematch(\"group\"))\n>     edgecov.m nodematch.group\n>            63              63\n>\n> Note that the edgecov and nodematch statistics are exactly the same for this \n> particular example, as expected.  Of course this doesn't mean that you \n> haven't found a bug, but I'll need a bit more info to track it down.  Can you \n> provide some example code that doesn't work correctly?  (I'm using ergm 2.0-6 \n> above.)\n>\n> Thanks.\n>\n> Dave\n>\n>\n> On Mar 20, 2008, at 11:02 PM, Avranil Sarkar wrote:\n>\n>> Hi,\n>> I am trying to fit a model for a directed graph.\n>> i have only one vertex attribute.\n>> I am using the edgecov command for a particular value of the that vertex \n>> attribute with the value of the edgecovariate =1 if both nodes have that \n>> value and 0 otherwise.  I guess that should give me the same result as \n>> using nodematch command for that value of the vertex attribute. But I got \n>> totally different results when I tried to fit an ergm model using edgecov \n>> the first time and nodematch the second time.\n>> Thanks,\n>> Avranil\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi Avranil,\n\nYes, your logic is right that they should be the same.  I tried \nsomething similar to Dave, and it also worked fine for me:\n\nlibrary(statnet)\ndata(faux.mesa.high)\nfmh <- faux.mesa.high\nra",
+      "thread_id": "thread-11c5a7ccea09",
+      "thread_depth": 2,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-5098e9ef1c48",
+      "message_id": "<8006A565-9835-49A8-B255-B97EC42CE551@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-03-21T09:01:14Z",
+      "subject": "[statnet_help] using nodematch and edgecov",
+      "subject_clean": "[statnet_help] using nodematch and edgecov",
+      "in_reply_to": "<Pine.WNT.4.64.0803210834060.1176@vinaya.csde.washington.edu>",
+      "references": [
+        "<001601c88ad6$11c1ff20$b8eded80@avranil>",
+        "<F04FDE4B-79F7-4483-B787-1261D33FF518@stat.psu.edu>",
+        "<Pine.WNT.4.64.0803210834060.1176@vinaya.csde.washington.edu>"
+      ],
+      "body_plain": "Another quick follow-up on this topic:\n\nIn some off-line emails back and forth, Avranil and I established that  \nthe edgecov term does work for him when he feeds edgecov a matrix --  \nas Steve and I both did in our examples sent to the list recently --  \nbut he was having problems getting it to work with an edge attribute  \nof a network (as the documentation for edgecov says is possible).  If  \nsomeone can feed me an example of the latter that they believe  \n*should* work but doesn't, I'd like to try to figure out whether there  \nis a bug.\n\nDave\n\n\nOn Mar 21, 2008, at 4:38 PM, Steven Goodreau wrote:\n\n>\n> Hi Avranil,\n>\n> Yes, your logic is right that they should be the same.  I tried  \n> something similar to Dave, and it also worked fine for me:\n>\n> library(statnet)\n> data(faux.mesa.high)\n> fmh <- faux.mesa.high\n> races <- fmh %v% \"Race\"\n> unique(races)\n> racecov[races=='Hisp',races=='Hisp'] <- 1\n> racecov[races=='NatAm',races=='NatAm'] <- 1\n> racecov[races=='White',races=='White'] <- 1\n> racecov[races=='Other',races=='Other'] <- 1\n> racecov[races=='Black',races=='Black'] <- 1\n> summary(fmh~edgecov(racecov)+nodematch(\"Race\"))\n>\n> yielded:\n>\n> edgecov.racecov  nodematch.Race\n>            103             103\n>\n> And\n>\n>> ergm(fmh~edgecov(racecov))\n> Newton-Raphson iterations:  7\n>\n> MLE Coefficients:\n> edgecov.racecov\n>         -4.381\n>\n>> ergm(fmh~nodematch(\"Race\"))\n> Newton-Raphson iterations:  7\n>\n> MLE Coefficients:\n> nodematch.Race\n>        -4.381\n>\n>\n> Possible thoughts that come to mind:\n>\n> (1) You've found a bug that exists, but only manifests itself in  \n> your example for some reason.\n> (2) We're using different vesions of ergm (I'm using 2.0-7).\n> (3) ??\n>\n>\n>\n>\n>                   *PLEASE NOTICE NEW OFFICE LOCATION*\n> **************************************************************************\n> * Steven M. Goodreau / Assistant Professor / Dept. of  \n> Anthropology     *\n> * University of Washington / Denny Hall 452 / Campus Box  \n> 353100        *\n> * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285  \n> (fax)      *\n> * http://faculty.washington.edu/ \n> goodreau                               *\n> * http://maps.google.com/?q= \n> %2047.65855,-122.3091&z=18&t=k             *\n> **************************************************************************\n>\n> On Fri, 21 Mar 2008, David Hunter wrote:\n>\n>> Hi Avranil.  I can't reproduce this problem.  Observe:\n>>\n>>> library(ergm); data(sampson)\n>>> samplike %v% \"group\"\n>> [1] \"loyal\"    \"loyal\"    \"loyal\"    \"loyal\"    \"loyal\"     \n>> \"loyal\"    \"loyal\"\n>> [8] \"Turks\"    \"Turks\"    \"Turks\"    \"Turks\"    \"Turks\"     \n>> \"Turks\"    \"Turks\"\n>> [15] \"outcasts\" \"outcasts\" \"outcasts\" \"outcasts\"\n>>> m = matrix(0, 18, 18)\n>>> m[1:7, 1:7] <- 1; m[8:14, 8:14] <- 1; m[15:18, 15:18] <- 1\n>>> summary(samplike ~ edgecov(m) + nodematch(\"group\"))\n>>    edgecov.m nodematch.group\n>>           63              63\n>>\n>> Note that the edgecov and nodematch statistics are exactly the same  \n>> for this particular example, as expected.  Of course this doesn't  \n>> mean that you haven't found a bug, but I'll need a bit more info to  \n>> track it down.  Can you provide some example code that doesn't work  \n>> correctly?  (I'm using ergm 2.0-6 above.)\n>>\n>> Thanks.\n>>\n>> Dave\n>>\n>>\n>> On Mar 20, 2008, at 11:02 PM, Avranil Sarkar wrote:\n>>\n>>> Hi,\n>>> I am trying to fit a model for a directed graph.\n>>> i have only one vertex attribute.\n>>> I am using the edgecov command for a particular value of the that  \n>>> vertex attribute with the value of the edgecovariate =1 if both  \n>>> nodes have that value and 0 otherwise.  I guess that should give  \n>>> me the same result as using nodematch command for that value of  \n>>> the vertex attribute. But I got totally different results when I  \n>>> tried to fit an ergm model using edgecov the first time and  \n>>> nodematch the second time.\n>>> Thanks,\n>>> Avranil\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>",
+      "body_snippet": "Another quick follow-up on this topic:\n\nIn some off-line emails back and forth, Avranil and I established that  \nthe edgecov term does work for him when he feeds edgecov a matrix --  \nas Steve and I b",
+      "thread_id": "thread-11c5a7ccea09",
+      "thread_depth": 3,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-3af33553a8fb",
+      "message_id": "<9b69d2ac0803231058g36782935uca0b8eefbd2f8b3b@mail.gmail.com>",
+      "from_name": "jenine harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2008-03-23T10:58:52Z",
+      "subject": "[statnet_help] gof results too long to print",
+      "subject_clean": "[statnet_help] gof results too long to print",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI am diagnosing the gof of a model for a directed network with 1877 nodes\nusing the following R-statnet code (the name of my model is \"model11\"):\n\nmodel11gof<-gof(model11, GOF=~idegree+odegree+espartners+distance,\nverbose=TRUE, interval=50000)\n\nOnce the code runs (which takes a while) I can then look at the graphs with\nlogodds (like the Hunter et al article), but I can't get the GOF results to\ncompletely print out. What I get when I type \"model11gof\" or\nprint(model11gof)  is a couple hundred rows of the model11gof object, but\nsince the network has 1877 nodes this is not nearly the whole thing --- it\nscrolls through the entire object so fast and then the first part of it just\ndisappears and leaves only the last couple hundred lines or so.\n\nAnyone have a fix for this? I imagine it's something simple in R that I just\nhaven't run across yet.\n\nThanks!!!\njenine\n\n-- \n************************************\nJenine K. Harris, Ph.D.\nSenior Research Assistant\nCenter for Tobacco Policy Research\nSaint Louis University School of Public Health\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210\n314.977.3234 Fax\nhttp://ctpr.slu.edu/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080323/a61f18f3/attachment.html>",
+      "body_snippet": "Hi,\n\nI am diagnosing the gof of a model for a directed network with 1877 nodes\nusing the following R-statnet code (the name of my model is \"model11\"):\n\nmodel11gof<-gof(model11, GOF=~idegree+odegree+es",
+      "thread_id": "thread-3af33553a8fb",
+      "thread_depth": 0,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-b427c776d3c7",
+      "message_id": "<9b69d2ac0803231938p53d62a8cw433a337630c3eada@mail.gmail.com>",
+      "from_name": "jenine harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2008-03-23T19:38:13Z",
+      "subject": "[statnet_help] nodemix contrast=TRUE omit ref category?",
+      "subject_clean": "[statnet_help] nodemix contrast=TRUE omit ref category?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI am using nodemix on a node attribute with 2 categories (0,1). I want the\ninitial combination (0,0) to be the reference category, which I believe,\naccording to the Morris, Handcock, & Hunter article should work with the\nfollowing code:\n\nnodemix(\"attribute\", contrast=TRUE)\n\n...but I have run this several times, removed the quotes and run it, changed\nthe \"TRUE\" to false in case it was programmed backwards, but still it\nincludes all four types of dyads in the output, like this:\n\nmix.attribute.0.0\nmix.attribute.0.1\nmix.attribute.1.0\nmix attribute.1.1\n\nWith the final category (1,1) always being highly non-significant.\n\nAny one out there used nodemix and omitted a reference category\nsuccessfully?\n\nthanks yet again,\njenine\n\n-- \n************************************\nJenine K. Harris, Ph.D.\nSenior Research Assistant\nCenter for Tobacco Policy Research\nSaint Louis University School of Public Health\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210\n314.977.3234 Fax\nhttp://ctpr.slu.edu/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080323/8b1fd8e4/attachment.html>",
+      "body_snippet": "Hi,\n\nI am using nodemix on a node attribute with 2 categories (0,1). I want the\ninitial combination (0,0) to be the reference category, which I believe,\naccording to the Morris, Handcock, & Hunter art",
+      "thread_id": "thread-b427c776d3c7",
+      "thread_depth": 0,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-e8b459c4e240",
+      "message_id": "<9BEBBB45-48D7-405B-89BD-4751997E8F66@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-03-24T01:48:46Z",
+      "subject": "[statnet_help] nodemix contrast=TRUE omit ref category?",
+      "subject_clean": "[statnet_help] nodemix contrast=TRUE omit ref category?",
+      "in_reply_to": "<9b69d2ac0803231938p53d62a8cw433a337630c3eada@mail.gmail.com>",
+      "references": [
+        "<9b69d2ac0803231938p53d62a8cw433a337630c3eada@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Jenine.  As it turns out, we had noticed that this \"contrast\"  \nargument was slightly awkward and it's now been changed.  Of course  \nthis doesn't answer the question of why you're getting the bizarre  \nbehavior you describe, but it should hopefully turn out to be  \nirrelevant.\n\nThe new version of nodemix (which will be refected in the Morris et al  \npaper when it eventually comes out officially in JSS) uses a \"base\"  \nargument like several other terms.  Apologies to anyone who had come  \nto rely on the \"contrast\" argument, since this will break any code  \nusing \"contrast\".  Here is the relevant excerpt from help(ergm.terms):\n\nnodemix(attrname, base=NULL)\nNodal attribute mixing: The attrname argument is a character string  \ngiving the name of a categorical attribute in the network's vertex  \nattribute list. By default, this term adds one network statistic to  \nthe model for each possible pairing of attribute values. The statistic  \nequals the number of edges in the network in which the nodes have that  \npairing of values. In other words, this term produces one statistic  \nfor every entry in the mixing matrix for the attribute. The ordering  \nof the attribute values is alphabetical (for nominal categories) or  \nnumerical (for ordered categories). The optional base argument is a  \nvector of integers corresponding to the pairings that should not be  \nincluded. If base contains only negative integers, then these integers  \ncorrespond to the only pairings that should be included. By default  \n(i.e., with base=NULL or base=0), all pairings are included.\n\nThis new version will be out on CRAN in probably a week or two, but  \nyou can download the beta version of ergm 2.0-7 that includes the new  \nnodemix if you go to http://www.stat.psu.edu/~dhunter/code/\n\nIf you can't install R from source code, respond to the list with the  \ntype of operating system you're using and someone should be able to  \nproduce a pre-compiled binary for you.\n\nI have to admit I haven't done a lot of testing on the new nodemix  \nterm, so if you find anything fishy please send another email.\n\nDave\n\n\nOn Mar 24, 2008, at 3:38 AM, jenine harris wrote:\n\n> Hi,\n>\n> I am using nodemix on a node attribute with 2 categories (0,1). I  \n> want the initial combination (0,0) to be the reference category,  \n> which I believe, according to the Morris, Handcock, & Hunter article  \n> should work with the following code:\n>\n> nodemix(\"attribute\", contrast=TRUE)\n>\n> ...but I have run this several times, removed the quotes and run it,  \n> changed the \"TRUE\" to false in case it was programmed backwards, but  \n> still it includes all four types of dyads in the output, like this:\n>\n> mix.attribute.0.0\n> mix.attribute.0.1\n> mix.attribute.1.0\n> mix attribute.1.1\n>\n> With the final category (1,1) always being highly non-significant.\n>\n> Any one out there used nodemix and omitted a reference category  \n> successfully?\n>\n> thanks yet again,\n> jenine\n>\n> -- \n> ************************************\n> Jenine K. Harris, Ph.D.\n> Senior Research Assistant\n> Center for Tobacco Policy Research\n> Saint Louis University School of Public Health\n> 3545 Lafayette Ave, Suite 300\n> St. Louis, MO 63104-1399\n> 314.977.8210\n> 314.977.3234 Fax\n> http://ctpr.slu.edu/ _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080324/d69666f6/attachment.html>",
+      "body_snippet": "Hi Jenine.  As it turns out, we had noticed that this \"contrast\"  \nargument was slightly awkward and it's now been changed.  Of course  \nthis doesn't answer the question of why you're getting the biza",
+      "thread_id": "thread-b427c776d3c7",
+      "thread_depth": 1,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-dcc7433f8104",
+      "message_id": "<9b69d2ac0803240715l6db67163y73caf65753f80274@mail.gmail.com>",
+      "from_name": "jenine harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2008-03-24T07:15:22Z",
+      "subject": "[statnet_help] nodemix contrast=TRUE omit ref category?",
+      "subject_clean": "[statnet_help] nodemix contrast=TRUE omit ref category?",
+      "in_reply_to": "<9BEBBB45-48D7-405B-89BD-4751997E8F66@stat.psu.edu>",
+      "references": [
+        "<9b69d2ac0803231938p53d62a8cw433a337630c3eada@mail.gmail.com>",
+        "<9BEBBB45-48D7-405B-89BD-4751997E8F66@stat.psu.edu>"
+      ],
+      "body_plain": "Hi all,\n\nI can't install R from source code, does anyone have a pre-compiled binary\nversion of the the beta ergm 2.0-7 that would work with Windows XP (SP2)?\n\nOr directions for installing from source code might work.\n\nthanks,\njenine\n\nOn Mon, Mar 24, 2008 at 3:48 AM, David Hunter <dhunter@stat.psu.edu> wrote:\n\n> Hi Jenine.  As it turns out, we had noticed that this \"contrast\" argument\n> was slightly awkward and it's now been changed.  Of course this doesn't\n> answer the question of why you're getting the bizarre behavior you describe,\n> but it should hopefully turn out to be irrelevant.\n> The new version of nodemix (which will be refected in the Morris et al\n> paper when it eventually comes out officially in JSS) uses a \"base\" argument\n> like several other terms.  Apologies to anyone who had come to rely on the\n> \"contrast\" argument, since this will break any code using \"contrast\".  Here\n> is the relevant excerpt from help(ergm.terms):\n>\n> nodemix(attrname, base=NULL)*Nodal attribute mixing:* The attrname argument\n> is a character string giving the name of a categorical attribute in the\n> network's vertex attribute list. By default, this term adds one network\n> statistic to the model for each possible pairing of attribute values. The\n> statistic equals the number of edges in the network in which the nodes have\n> that pairing of values. In other words, this term produces one statistic for\n> every entry in the mixing matrix for the attribute. The ordering of the\n> attribute values is alphabetical (for nominal categories) or numerical (for\n> ordered categories). The optional base argument is a vector of integers\n> corresponding to the pairings that should not be included. If base contains\n> only negative integers, then these integers correspond to the only pairings\n> that should be included. By default (i.e., with base=NULL or base=0), all\n> pairings are included.\n> This new version will be out on CRAN in probably a week or two, but you\n> can download the beta version of ergm 2.0-7 that includes the new nodemix\n> if you go to http://www.stat.psu.edu/~dhunter/code/<http://www.stat.psu.edu/%7Edhunter/code/>\n>\n> If you can't install R from source code, respond to the list with the type\n> of operating system you're using and someone should be able to produce a\n> pre-compiled binary for you.\n>\n> I have to admit I haven't done a lot of testing on the new nodemix term,\n> so if you find anything fishy please send another email.\n>\n>  Dave\n>\n>\n> On Mar 24, 2008, at 3:38 AM, jenine harris wrote:\n>\n> Hi,\n>\n> I am using nodemix on a node attribute with 2 categories (0,1). I want the\n> initial combination (0,0) to be the reference category, which I believe,\n> according to the Morris, Handcock, & Hunter article should work with the\n> following code:\n>\n> nodemix(\"attribute\", contrast=TRUE)\n>\n> ...but I have run this several times, removed the quotes and run it,\n> changed the \"TRUE\" to false in case it was programmed backwards, but still\n> it includes all four types of dyads in the output, like this:\n>\n> mix.attribute.0.0\n> mix.attribute.0.1\n> mix.attribute.1.0\n> mix attribute.1.1\n>\n> With the final category (1,1) always being highly non-significant.\n>\n> Any one out there used nodemix and omitted a reference category\n> successfully?\n>\n> thanks yet again,\n> jenine\n>\n> --\n> ************************************\n> Jenine K. Harris, Ph.D.\n> Senior Research Assistant\n> Center for Tobacco Policy Research\n> Saint Louis University School of Public Health\n> 3545 Lafayette Ave, Suite 300\n> St. Louis, MO 63104-1399\n> 314.977.8210\n> 314.977.3234 Fax\n> http://ctpr.slu.edu/ _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n\n\n-- \n************************************\nJenine K. Harris, Ph.D.\nSenior Research Assistant\nCenter for Tobacco Policy Research\nSaint Louis University School of Public Health\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210\n314.977.3234 Fax\nhttp://ctpr.slu.edu/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080324/1c3fd95d/attachment.html>",
+      "body_snippet": "Hi all,\n\nI can't install R from source code, does anyone have a pre-compiled binary\nversion of the the beta ergm 2.0-7 that would work with Windows XP (SP2)?\n\nOr directions for installing from source ",
+      "thread_id": "thread-b427c776d3c7",
+      "thread_depth": 2,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-e59731d420ae",
+      "message_id": "<Pine.WNT.4.64.0803251210050.4836@vinaya.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2008-03-25T12:45:52Z",
+      "subject": "Fwd: [statnet_help] nodemix contrast=TRUE omit ref category?",
+      "subject_clean": "[statnet_help] nodemix contrast=TRUE omit ref category?",
+      "in_reply_to": "<62AB44B4-0E86-4CFA-B127-5789F59C23F4@stat.psu.edu>",
+      "references": [
+        "<9b69d2ac0803240715l6db67163y73caf65753f80274@mail.gmail.com>",
+        "<62AB44B4-0E86-4CFA-B127-5789F59C23F4@stat.psu.edu>"
+      ],
+      "body_plain": "Hi Jenine,\n\nHere are my instructions for installing this version of the ergm package \nfrom the source, for Windows:\n\n1.  Close R.\n\n2.  Get the file (ergm_2.0-7beta.tar.gz) on the website that Dave mentions \nbelow. You can place it anywhere, although you may want it somewhere in \nC:\\Program Files\\R, perhaps in the lib directory for the latest version of \nR that you have on your machine.\n\n3.  Gunzip it.  An easy-to-use free utility for this is win-gz \n(http://www.crispen.org/src/#wingz)\n\n4.  Untar it. An easy-to-use free utility for this is 7-zip \n(http://www.7-zip.org/)\n\n5.  You should now have a folder called ergm_2.0-7beta.  Note its \nlocation.\n\n6.  Open a dos window (Start > Run and type \"cmd\")\n\n7.  Navigate into the ergm_2.0-7beta folder.  (Basic dos commands: \"cd ..\" \nto move up, \"cd name_of_folder\" to move down, \"dir\" to see what files and \nfolders are avaiable in your current folder, \"exit\" to quit.)\n\n8.  Make sure you are just inside the ergm_2.0-7beta folder by typing \n\"dir\"; the contents should be a single dot, a double dot, and \"ergm\".\n\n9.  Type: \"RCMD install ergm\". Lots of installing should ensue.\n\n10.  When it's done, you should be able to open R, and type \n\"library(ergm)\" and have the new version of ergm that you just installed \nloaded.\n\nOK, I think that is everything.  Let me know if something doesn't work. \nIt's possible that you will get an error at Step 9, which means you will \nneed to tweak some of your R settings.\n\nCheers,\nSteve\n\n\n\n\n\n\n\n\"jenine harris\" <harrisjk@slu.edu>\n\n\"jenine harris\" <harrisjk@slu.edu>\n>> Date: March 24, 2008 3:15:22 PM CEST\n>> To: \"David Hunter\" <dhunter@stat.psu.edu>\n>> Cc: statnet_help@u.washington.edu\n>> Subject: Re: [statnet_help] nodemix contrast=TRUE omit ref category?\n>> Reply-To: harrisjk@slu.edu\n>> \n>> Hi all,\n>> \n>> I can't install R from source code, does anyone have a pre-compiled binary \n>> version of the the beta ergm 2.0-7 that would work with Windows XP (SP2)?\n>> \n>> Or directions for installing from source code might work.\n>> \n>> thanks,\n>> jenine\n>> \n>> On Mon, Mar 24, 2008 at 3:48 AM, David Hunter <dhunter@stat.psu.edu> wrote:\n>> Hi Jenine.  As it turns out, we had noticed that this \"contrast\" argument \n>> was slightly awkward and it's now been changed.  Of course this doesn't \n>> answer the question of why you're getting the bizarre behavior you \n>> describe, but it should hopefully turn out to be irrelevant.\n>> \n>> The new version of nodemix (which will be refected in the Morris et al \n>> paper when it eventually comes out officially in JSS) uses a \"base\" \n>> argument like several other terms.  Apologies to anyone who had come to \n>> rely on the \"contrast\" argument, since this will break any code using \n>> \"contrast\".  Here is the relevant excerpt from help(ergm.terms):\n>> \n>> nodemix(attrname, base=NULL)\n>> Nodal attribute mixing: The attrname argument is a character string giving \n>> the name of a categorical attribute in the network's vertex attribute list. \n>> By default, this term adds one network statistic to the model for each \n>> possible pairing of attribute values. The statistic equals the number of \n>> edges in the network in which the nodes have that pairing of values. In \n>> other words, this term produces one statistic for every entry in the mixing \n>> matrix for the attribute. The ordering of the attribute values is \n>> alphabetical (for nominal categories) or numerical (for ordered \n>> categories). The optional base argument is a vector of integers \n>> corresponding to the pairings that should not be included. If base contains \n>> only negative integers, then these integers correspond to the only pairings \n>> that should be included. By default (i.e., with base=NULL or base=0), all \n>> pairings are included.\n>> \n>> This new version will be out on CRAN in probably a week or two, but you can \n>> download the beta version of ergm 2.0-7 that includes the new nodemix if \n>> you go to http://www.stat.psu.edu/~dhunter/code/\n>> \n>> If you can't install R from source code, respond to the list with the type \n>> of operating system you're using and someone should be able to produce a \n>> pre-compiled binary for you.\n>> \n>> I have to admit I haven't done a lot of testing on the new nodemix term, so \n>> if you find anything fishy please send another email.\n>> \n>> Dave\n>> \n>> \n>> On Mar 24, 2008, at 3:38 AM, jenine harris wrote:\n>> \n>>> Hi,\n>>> \n>>> I am using nodemix on a node attribute with 2 categories (0,1). I want the \n>>> initial combination (0,0) to be the reference category, which I believe, \n>>> according to the Morris, Handcock, & Hunter article should work with the \n>>> following code:\n>>> \n>>> nodemix(\"attribute\", contrast=TRUE)\n>>> \n>>> ...but I have run this several times, removed the quotes and run it, \n>>> changed the \"TRUE\" to false in case it was programmed backwards, but still \n>>> it includes all four types of dyads in the output, like this:\n>>> \n>>> mix.attribute.0.0\n>>> mix.attribute.0.1\n>>> mix.attribute.1.0\n>>> mix attribute.1.1\n>>> \n>>> With the final category (1,1) always being highly non-significant.\n>>> \n>>> Any one out there used nodemix and omitted a reference category \n>>> successfully?\n>>> \n>>> thanks yet again,\n>>> jenine\n>>> \n>>> -- \n>>> ************************************\n>>> Jenine K. Harris, Ph.D.\n>>> Senior Research Assistant\n>>> Center for Tobacco Policy Research\n>>> Saint Louis University School of Public Health\n>>> 3545 Lafayette Ave, Suite 300\n>>> St. Louis, MO 63104-1399\n>>> 314.977.8210\n>>> 314.977.3234 Fax\n>>> http://ctpr.slu.edu/ _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>> \n>> \n>> \n>> \n>> -- \n>> ************************************\n>> Jenine K. Harris, Ph.D.\n>> Senior Research Assistant\n>> Center for Tobacco Policy Research\n>> Saint Louis University School of Public Health\n>> 3545 Lafayette Ave, Suite 300\n>> St. Louis, MO 63104-1399\n>> 314.977.8210\n>> 314.977.3234 Fax\n>> http://ctpr.slu.edu/\n>",
+      "body_snippet": "Hi Jenine,\n\nHere are my instructions for installing this version of the ergm package \nfrom the source, for Windows:\n\n1.  Close R.\n\n2.  Get the file (ergm_2.0-7beta.tar.gz) on the website that Dave men",
+      "thread_id": "thread-e59731d420ae",
+      "thread_depth": 0,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-222043d89dfd",
+      "message_id": "<Pine.WNT.4.64.0803251321400.4836@vinaya.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2008-03-25T13:28:05Z",
+      "subject": "[statnet_help] gof results too long to print",
+      "subject_clean": "[statnet_help] gof results too long to print",
+      "in_reply_to": "<9b69d2ac0803231058g36782935uca0b8eefbd2f8b3b@mail.gmail.com>",
+      "references": [
+        "<9b69d2ac0803231058g36782935uca0b8eefbd2f8b3b@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Jenine,\n\nA great question.  We really should make some tweaks to the print.gofoject \nfunction so that it only prints the lines up until everything equals 0. \nWe don't need you to see 1,877 lines to know that none of the nodes in \nyour simulations have degrees above 10 or so!\n\nIn the meanwhile, you can do it yourself by using the command:\n\ngofobject$summary.nameofgofstat[linestoinclude,]\n\nfor any gof statistic of interest.  You can get the names of the gof stats \nby typing \"print.gofobject\" in R to look inside the print.gofobject \nfunction.\n\nSo for instance, if you just want to see the first 20 lines of the degree \ndistrubtions, and your gof object is named model11gof, type:\n\nmodel11gof$summary.deg[1:20,]\n\nCheers,\nSteve\n\n\n\n                    *PLEASE NOTICE NEW OFFICE LOCATION*\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65855,-122.3091&z=18&t=k             *\n**************************************************************************\n\nOn Sun, 23 Mar 2008, jenine harris wrote:\n\n> Hi,\n>\n> I am diagnosing the gof of a model for a directed network with 1877 nodes\n> using the following R-statnet code (the name of my model is \"model11\"):\n>\n> model11gof<-gof(model11, GOF=~idegree+odegree+espartners+distance,\n> verbose=TRUE, interval=50000)\n>\n> Once the code runs (which takes a while) I can then look at the graphs with\n> logodds (like the Hunter et al article), but I can't get the GOF results to\n> completely print out. What I get when I type \"model11gof\" or\n> print(model11gof)  is a couple hundred rows of the model11gof object, but\n> since the network has 1877 nodes this is not nearly the whole thing --- it\n> scrolls through the entire object so fast and then the first part of it just\n> disappears and leaves only the last couple hundred lines or so.\n>\n> Anyone have a fix for this? I imagine it's something simple in R that I just\n> haven't run across yet.\n>\n> Thanks!!!\n> jenine\n>\n> -- \n> ************************************\n> Jenine K. Harris, Ph.D.\n> Senior Research Assistant\n> Center for Tobacco Policy Research\n> Saint Louis University School of Public Health\n> 3545 Lafayette Ave, Suite 300\n> St. Louis, MO 63104-1399\n> 314.977.8210\n> 314.977.3234 Fax\n> http://ctpr.slu.edu/\n>",
+      "body_snippet": "Hi Jenine,\n\nA great question.  We really should make some tweaks to the print.gofoject \nfunction so that it only prints the lines up until everything equals 0. \nWe don't need you to see 1,877 lines to",
+      "thread_id": "thread-3af33553a8fb",
+      "thread_depth": 1,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-bac60a91186d",
+      "message_id": "<9b69d2ac0803260549m10b908ddp8c950ac42fe69251@mail.gmail.com>",
+      "from_name": "jenine harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2008-03-26T05:49:58Z",
+      "subject": "[statnet_help] gof results too long to print",
+      "subject_clean": "[statnet_help] gof results too long to print",
+      "in_reply_to": "<Pine.WNT.4.64.0803251321400.4836@vinaya.csde.washington.edu>",
+      "references": [
+        "<9b69d2ac0803231058g36782935uca0b8eefbd2f8b3b@mail.gmail.com>",
+        "<Pine.WNT.4.64.0803251321400.4836@vinaya.csde.washington.edu>"
+      ],
+      "body_plain": "Works like a charm, thank you.\n\nJenine\n\nOn Tue, Mar 25, 2008 at 3:28 PM, Steven Goodreau <goodreau@u.washington.edu>\nwrote:\n\n>\n> Hi Jenine,\n>\n> A great question.  We really should make some tweaks to the print.gofoject\n> function so that it only prints the lines up until everything equals 0.\n> We don't need you to see 1,877 lines to know that none of the nodes in\n> your simulations have degrees above 10 or so!\n>\n> In the meanwhile, you can do it yourself by using the command:\n>\n> gofobject$summary.nameofgofstat[linestoinclude,]\n>\n> for any gof statistic of interest.  You can get the names of the gof stats\n> by typing \"print.gofobject\" in R to look inside the print.gofobject\n> function.\n>\n> So for instance, if you just want to see the first 20 lines of the degree\n> distrubtions, and your gof object is named model11gof, type:\n>\n> model11gof$summary.deg[1:20,]\n>\n> Cheers,\n> Steve\n>\n>\n>\n>                    *PLEASE NOTICE NEW OFFICE LOCATION*\n> **************************************************************************\n>  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n>  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n>  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n>  * http://faculty.washington.edu/goodreau                               *\n>  * http://maps.google.com/?q=%2047.65855,-122.3091&z=18&t=k             *\n> **************************************************************************\n>\n> On Sun, 23 Mar 2008, jenine harris wrote:\n>\n> > Hi,\n> >\n> > I am diagnosing the gof of a model for a directed network with 1877\n> nodes\n> > using the following R-statnet code (the name of my model is \"model11\"):\n> >\n> > model11gof<-gof(model11, GOF=~idegree+odegree+espartners+distance,\n> > verbose=TRUE, interval=50000)\n> >\n> > Once the code runs (which takes a while) I can then look at the graphs\n> with\n> > logodds (like the Hunter et al article), but I can't get the GOF results\n> to\n> > completely print out. What I get when I type \"model11gof\" or\n> > print(model11gof)  is a couple hundred rows of the model11gof object,\n> but\n> > since the network has 1877 nodes this is not nearly the whole thing ---\n> it\n> > scrolls through the entire object so fast and then the first part of it\n> just\n> > disappears and leaves only the last couple hundred lines or so.\n> >\n> > Anyone have a fix for this? I imagine it's something simple in R that I\n> just\n> > haven't run across yet.\n> >\n> > Thanks!!!\n> > jenine\n> >\n> > --\n> > ************************************\n> > Jenine K. Harris, Ph.D.\n> > Senior Research Assistant\n> > Center for Tobacco Policy Research\n> > Saint Louis University School of Public Health\n> > 3545 Lafayette Ave, Suite 300\n> > St. Louis, MO 63104-1399\n> > 314.977.8210\n> > 314.977.3234 Fax\n> > http://ctpr.slu.edu/\n> >\n>\n\n\n\n-- \n************************************\nJenine K. Harris, Ph.D.\nSenior Research Assistant\nCenter for Tobacco Policy Research\nSaint Louis University School of Public Health\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210\n314.977.3234 Fax\nhttp://ctpr.slu.edu/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080326/3ad0b808/attachment.html>",
+      "body_snippet": "Works like a charm, thank you.\n\nJenine\n\nOn Tue, Mar 25, 2008 at 3:28 PM, Steven Goodreau <goodreau@u.washington.edu>\nwrote:\n\n>\n> Hi Jenine,\n>\n> A great question.  We really should make some tweaks to ",
+      "thread_id": "thread-3af33553a8fb",
+      "thread_depth": 2,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-2dc837211ae8",
+      "message_id": "<9b69d2ac0803261330m1f15acej9ad8a04886f3f3f2@mail.gmail.com>",
+      "from_name": "jenine harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2008-03-26T13:30:14Z",
+      "subject": "Fwd: [statnet_help] nodemix contrast=TRUE omit ref category?",
+      "subject_clean": "[statnet_help] nodemix contrast=TRUE omit ref category?",
+      "in_reply_to": "<Pine.WNT.4.64.0803251210050.4836@vinaya.csde.washington.edu>",
+      "references": [
+        "<9b69d2ac0803240715l6db67163y73caf65753f80274@mail.gmail.com>",
+        "<62AB44B4-0E86-4CFA-B127-5789F59C23F4@stat.psu.edu>",
+        "<Pine.WNT.4.64.0803251210050.4836@vinaya.csde.washington.edu>"
+      ],
+      "body_plain": "I did have an error at Step 9 and Steve sent the following, which worked\nimmediately:\n\nOK, try this:\n\nRight click on My Computer and select Properties. Go to Advanced >\nEnvironment Variables.  Select the system variable named \"Path\" and choose\nEdit.  Now, you want to add your R path at the beginning of this.  For me\nit is:\n\nc:\\Program Files\\R\\R-2.6.1\\bin;\n\nbut it may differ for you, espeically if you have a different version of R\ndownloaded.\n\nthanks everyone! happy network modeling.\nj\n\nOn Tue, Mar 25, 2008 at 2:45 PM, Steven Goodreau <goodreau@u.washington.edu>\nwrote:\n\n>\n> Hi Jenine,\n>\n> Here are my instructions for installing this version of the ergm package\n> from the source, for Windows:\n>\n> 1.  Close R.\n>\n> 2.  Get the file (ergm_2.0-7beta.tar.gz) on the website that Dave mentions\n> below. You can place it anywhere, although you may want it somewhere in\n> C:\\Program Files\\R, perhaps in the lib directory for the latest version of\n> R that you have on your machine.\n>\n> 3.  Gunzip it.  An easy-to-use free utility for this is win-gz\n> (http://www.crispen.org/src/#wingz)\n>\n> 4.  Untar it. An easy-to-use free utility for this is 7-zip\n> (http://www.7-zip.org/)\n>\n> 5.  You should now have a folder called ergm_2.0-7beta.  Note its\n> location.\n>\n> 6.  Open a dos window (Start > Run and type \"cmd\")\n>\n> 7.  Navigate into the ergm_2.0-7beta folder.  (Basic dos commands: \"cd ..\"\n> to move up, \"cd name_of_folder\" to move down, \"dir\" to see what files and\n> folders are avaiable in your current folder, \"exit\" to quit.)\n>\n> 8.  Make sure you are just inside the ergm_2.0-7beta folder by typing\n> \"dir\"; the contents should be a single dot, a double dot, and \"ergm\".\n>\n> 9.  Type: \"RCMD install ergm\". Lots of installing should ensue.\n>\n> 10.  When it's done, you should be able to open R, and type\n> \"library(ergm)\" and have the new version of ergm that you just installed\n> loaded.\n>\n> OK, I think that is everything.  Let me know if something doesn't work.\n> It's possible that you will get an error at Step 9, which means you will\n> need to tweak some of your R settings.\n>\n> Cheers,\n> Steve\n>\n>\n>\n>\n>\n>\n>\n> \"jenine harris\" <harrisjk@slu.edu>\n>\n> \"jenine harris\" <harrisjk@slu.edu>\n> >> Date: March 24, 2008 3:15:22 PM CEST\n> >> To: \"David Hunter\" <dhunter@stat.psu.edu>\n> >> Cc: statnet_help@u.washington.edu\n> >> Subject: Re: [statnet_help] nodemix contrast=TRUE omit ref category?\n> >> Reply-To: harrisjk@slu.edu\n> >>\n> >> Hi all,\n> >>\n> >> I can't install R from source code, does anyone have a pre-compiled\n> binary\n> >> version of the the beta ergm 2.0-7 that would work with Windows XP\n> (SP2)?\n> >>\n> >> Or directions for installing from source code might work.\n> >>\n> >> thanks,\n> >> jenine\n> >>\n> >> On Mon, Mar 24, 2008 at 3:48 AM, David Hunter <dhunter@stat.psu.edu>\n> wrote:\n> >> Hi Jenine.  As it turns out, we had noticed that this \"contrast\"\n> argument\n> >> was slightly awkward and it's now been changed.  Of course this doesn't\n> >> answer the question of why you're getting the bizarre behavior you\n> >> describe, but it should hopefully turn out to be irrelevant.\n> >>\n> >> The new version of nodemix (which will be refected in the Morris et al\n> >> paper when it eventually comes out officially in JSS) uses a \"base\"\n> >> argument like several other terms.  Apologies to anyone who had come to\n> >> rely on the \"contrast\" argument, since this will break any code using\n> >> \"contrast\".  Here is the relevant excerpt from help(ergm.terms):\n> >>\n> >> nodemix(attrname, base=NULL)\n> >> Nodal attribute mixing: The attrname argument is a character string\n> giving\n> >> the name of a categorical attribute in the network's vertex attribute\n> list.\n> >> By default, this term adds one network statistic to the model for each\n> >> possible pairing of attribute values. The statistic equals the number\n> of\n> >> edges in the network in which the nodes have that pairing of values. In\n> >> other words, this term produces one statistic for every entry in the\n> mixing\n> >> matrix for the attribute. The ordering of the attribute values is\n> >> alphabetical (for nominal categories) or numerical (for ordered\n> >> categories). The optional base argument is a vector of integers\n> >> corresponding to the pairings that should not be included. If base\n> contains\n> >> only negative integers, then these integers correspond to the only\n> pairings\n> >> that should be included. By default (i.e., with base=NULL or base=0),\n> all\n> >> pairings are included.\n> >>\n> >> This new version will be out on CRAN in probably a week or two, but you\n> can\n> >> download the beta version of ergm 2.0-7 that includes the new nodemix\n> if\n> >> you go to http://www.stat.psu.edu/~dhunter/code/<http://www.stat.psu.edu/%7Edhunter/code/>\n> >>\n> >> If you can't install R from source code, respond to the list with the\n> type\n> >> of operating system you're using and someone should be able to produce\n> a\n> >> pre-compiled binary for you.\n> >>\n> >> I have to admit I haven't done a lot of testing on the new nodemix\n> term, so\n> >> if you find anything fishy please send another email.\n> >>\n> >> Dave\n> >>\n> >>\n> >> On Mar 24, 2008, at 3:38 AM, jenine harris wrote:\n> >>\n> >>> Hi,\n> >>>\n> >>> I am using nodemix on a node attribute with 2 categories (0,1). I want\n> the\n> >>> initial combination (0,0) to be the reference category, which I\n> believe,\n> >>> according to the Morris, Handcock, & Hunter article should work with\n> the\n> >>> following code:\n> >>>\n> >>> nodemix(\"attribute\", contrast=TRUE)\n> >>>\n> >>> ...but I have run this several times, removed the quotes and run it,\n> >>> changed the \"TRUE\" to false in case it was programmed backwards, but\n> still\n> >>> it includes all four types of dyads in the output, like this:\n> >>>\n> >>> mix.attribute.0.0\n> >>> mix.attribute.0.1\n> >>> mix.attribute.1.0\n> >>> mix attribute.1.1\n> >>>\n> >>> With the final category (1,1) always being highly non-significant.\n> >>>\n> >>> Any one out there used nodemix and omitted a reference category\n> >>> successfully?\n> >>>\n> >>> thanks yet again,\n> >>> jenine\n> >>>\n> >>> --\n> >>> ************************************\n> >>> Jenine K. Harris, Ph.D.\n> >>> Senior Research Assistant\n> >>> Center for Tobacco Policy Research\n> >>> Saint Louis University School of Public Health\n> >>> 3545 Lafayette Ave, Suite 300\n> >>> St. Louis, MO 63104-1399\n> >>> 314.977.8210\n> >>> 314.977.3234 Fax\n> >>> http://ctpr.slu.edu/ _______________________________________________\n> >>> statnet_help mailing list\n> >>> statnet_help@u.washington.edu\n> >>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n> >>\n> >>\n> >>\n> >>\n> >> --\n> >> ************************************\n> >> Jenine K. Harris, Ph.D.\n> >> Senior Research Assistant\n> >> Center for Tobacco Policy Research\n> >> Saint Louis University School of Public Health\n> >> 3545 Lafayette Ave, Suite 300\n> >> St. Louis, MO 63104-1399\n> >> 314.977.8210\n> >> 314.977.3234 Fax\n> >> http://ctpr.slu.edu/\n> >\n>\n\n\n\n-- \n************************************\nJenine K. Harris, Ph.D.\nSenior Research Assistant\nCenter for Tobacco Policy Research\nSaint Louis University School of Public Health\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210\n314.977.3234 Fax\nhttp://ctpr.slu.edu/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080326/9e4f67cc/attachment.html>",
+      "body_snippet": "I did have an error at Step 9 and Steve sent the following, which worked\nimmediately:\n\nOK, try this:\n\nRight click on My Computer and select Properties. Go to Advanced >\nEnvironment Variables.  Select ",
+      "thread_id": "thread-e59731d420ae",
+      "thread_depth": 1,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-7597845d2790",
+      "message_id": "<A4FCC220-CDE4-4822-9420-0E32B89DC837@biomail.ucsd.edu>",
+      "from_name": "Art Poon",
+      "from_email_hash": "f24b65dfd7492932fef4587ed4f65bd2d157ca0dcb81041364d2041e415469d7",
+      "date": "2008-03-26T13:31:36Z",
+      "subject": "[statnet_help] Re: degeneracy with new version ERGM",
+      "subject_clean": "[statnet_help] Re: degeneracy with new version ERGM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet developers and users,\n\nWe are trying to analyze an epidemiological network that is somewhat  \nsparse and highly clustered.  Using a previous version of Statnet,  \nwe've obtained reasonably good fits with only 'edges' and 'triangle'  \nterms in the model (validated via network simulation) that we sought  \nto improve by implementing new user terms.\n\nHowever, using the recent build of ergm and R, the same model now  \nexhibits tremendous degeneracy.  Has anyone else experienced  \napparently 'worse' performance with the newer package?  We are  \nsecretly hoping that this is simply due to 'growing pains' in the  \ncurrent iteration of statnet, instead of being sent back to square one.\n\nBest,\n- Art.",
+      "body_snippet": "Dear Statnet developers and users,\n\nWe are trying to analyze an epidemiological network that is somewhat  \nsparse and highly clustered.  Using a previous version of Statnet,  \nwe've obtained reasonabl",
+      "thread_id": "thread-7597845d2790",
+      "thread_depth": 0,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-27a874cb81b0",
+      "message_id": "<47EAFB6E.5080408@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2008-03-26T18:42:06Z",
+      "subject": "[statnet_help] Re: degeneracy with new version ERGM",
+      "subject_clean": "[statnet_help] Re: degeneracy with new version ERGM",
+      "in_reply_to": "<A4FCC220-CDE4-4822-9420-0E32B89DC837@biomail.ucsd.edu>",
+      "references": [
+        "<A4FCC220-CDE4-4822-9420-0E32B89DC837@biomail.ucsd.edu>"
+      ],
+      "body_plain": "Hi, Art -\n\nArt Poon wrote:\n> Dear Statnet developers and users,\n> \n> We are trying to analyze an epidemiological network that is somewhat \n> sparse and highly clustered.  Using a previous version of Statnet, we've \n> obtained reasonably good fits with only 'edges' and 'triangle' terms in \n> the model (validated via network simulation) that we sought to improve \n> by implementing new user terms.\n> \n> However, using the recent build of ergm and R, the same model now \n> exhibits tremendous degeneracy.  Has anyone else experienced apparently \n> 'worse' performance with the newer package?  We are secretly hoping that \n> this is simply due to 'growing pains' in the current iteration of \n> statnet, instead of being sent back to square one.\n> \n\nThe parameter space of the edge/triangle model has a very small \nnon-degenerate region, so it is plausible that your issues stem from \nbeing close to the boundary of a phase transition (where tiny deviations \ndue to numerical or other factors can produce substantial differences in \nbehavior).  I would strongly recommend simulating draws from the model \nfor a gridded region in the vicinity of your estimate(s), and examining \nthe qualitative behavior of the system -- for instance, by plotting the \nmean edge and triangle statistics -- across the region of interest. \n(Mark has some nice plots of this kind in his degeneracy papers, and the \napproach is sadly underutilized.)  If your data falls near a region of \ndegeneracy, then you should consider the possibility that the model is \ntoo unstable to be socially realistic -- unless, of course, you are \nwilling to posit a sort of \"fine tuning\" hypothesis for your social \nsystem.  (There are probably circumstances in which such a hypothesis \nwould be appropriate, but I doubt this is one of them.)\n\nAs a side note, I would also suggest checking (if you haven't already) \nto be sure that your MCMC is mixing properly, and that it has burned in \nadequately.  Mixing can slow down drastically when one approaches a \nregion of \"frozen\" behavior, and initially salubrious results are \nsometimes found to be the result of insufficient burn-in.  By analogy, \nthink of putting hot water in a freezer at 0 degrees Celsius: if you \ncheck on it after only a few minutes, you will find it to be quite \nliquid; a few hours later, however, it is frozen solid.  A very naive \nobserver making only the former observation (and lacking the means to \ninspect the water temperature directly) might erroneously conclude that \nwater does not freeze at 0 degrees Celsius -- the error, of course, \nwould result from the fact that the system was initially far from \nequilibrium, and was observed before equilibrium was reached.  In the \nERG case, the \"hot water\" corresponds to the initial network state, \nwhich may in fact be very \"hot\" relative to the MLE for the proposed \nmodel.  (Since the ERG parameters are essentially inverse temperatures, \nthe analogy is quite close.)  As the MCMC evolves, the initially \"hot\" \nstate may then \"cool,\" in extreme cases locking into a very narrow range \nof configurations (which we experience as \"degeneracy\").  A degenerate \nmodel is \"frozen\" in equilibrium, but this equilibrium still takes time \nto reach; if we observe the state of the system before the MCMC has \nburned in, we may find that the system still exhibits quite a lot of \nnon-degenerate behavior, and may thus erroneously conclude that the \nmodel is not actually degenerate.  As with our thought experiment, \ndrawing the right conclusion depends on first allowing the system to \nequilibrate.\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "Hi, Art -\n\nArt Poon wrote:\n> Dear Statnet developers and users,\n> \n> We are trying to analyze an epidemiological network that is somewhat \n> sparse and highly clustered.  Using a previous version of S",
+      "thread_id": "thread-7597845d2790",
+      "thread_depth": 1,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-8075bcd22bf8",
+      "message_id": "<200803270154.m2R1rtqP016347@smtp.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2008-03-26T18:53:19Z",
+      "subject": "[statnet_help] nodemix contrast=TRUE omit ref category?",
+      "subject_clean": "[statnet_help] nodemix contrast=TRUE omit ref category?",
+      "in_reply_to": "<Pine.WNT.4.64.0803251210050.4836@vinaya.csde.washington.edu>",
+      "references": [],
+      "body_plain": "Hi Dave and Steve,\n\nOn the install procedure: I have found that using the PACKAGE file method\nmeans that the install can be done by\n\"install.packages(\"ergm\",contriburl=\"http://...\")\nwhich is usually easier. Would it be better to do it this way? I can give\ndetailed instructions if that would be helpful.\n\nMark\n\n\nOn 3/25/08 12:45 PM, \"Steven Goodreau\" <goodreau@u.washington.edu> wrote:\n\n> \n> Hi Jenine,\n> \n> Here are my instructions for installing this version of the ergm package\n> from the source, for Windows:\n> \n> 1.  Close R.\n> \n> 2.  Get the file (ergm_2.0-7beta.tar.gz) on the website that Dave mentions\n> below. You can place it anywhere, although you may want it somewhere in\n> C:\\Program Files\\R, perhaps in the lib directory for the latest version of\n> R that you have on your machine.\n> \n> 3.  Gunzip it.  An easy-to-use free utility for this is win-gz\n> (http://www.crispen.org/src/#wingz)\n> \n> 4.  Untar it. An easy-to-use free utility for this is 7-zip\n> (http://www.7-zip.org/)\n> \n> 5.  You should now have a folder called ergm_2.0-7beta.  Note its\n> location.\n> \n> 6.  Open a dos window (Start > Run and type \"cmd\")\n> \n> 7.  Navigate into the ergm_2.0-7beta folder.  (Basic dos commands: \"cd ..\"\n> to move up, \"cd name_of_folder\" to move down, \"dir\" to see what files and\n> folders are avaiable in your current folder, \"exit\" to quit.)\n> \n> 8.  Make sure you are just inside the ergm_2.0-7beta folder by typing\n> \"dir\"; the contents should be a single dot, a double dot, and \"ergm\".\n> \n> 9.  Type: \"RCMD install ergm\". Lots of installing should ensue.\n> \n> 10.  When it's done, you should be able to open R, and type\n> \"library(ergm)\" and have the new version of ergm that you just installed\n> loaded.\n> \n> OK, I think that is everything.  Let me know if something doesn't work.\n> It's possible that you will get an error at Step 9, which means you will\n> need to tweak some of your R settings.\n> \n> Cheers,\n> Steve\n> \n> \n> \n> \n> \n> \n> \n> \"jenine harris\" <harrisjk@slu.edu>\n> \n> \"jenine harris\" <harrisjk@slu.edu>\n>>> Date: March 24, 2008 3:15:22 PM CEST\n>>> To: \"David Hunter\" <dhunter@stat.psu.edu>\n>>> Cc: statnet_help@u.washington.edu\n>>> Subject: Re: [statnet_help] nodemix contrast=TRUE omit ref category?\n>>> Reply-To: harrisjk@slu.edu\n>>> \n>>> Hi all,\n>>> \n>>> I can't install R from source code, does anyone have a pre-compiled binary\n>>> version of the the beta ergm 2.0-7 that would work with Windows XP (SP2)?\n>>> \n>>> Or directions for installing from source code might work.\n>>> \n>>> thanks,\n>>> jenine\n>>> \n>>> On Mon, Mar 24, 2008 at 3:48 AM, David Hunter <dhunter@stat.psu.edu> wrote:\n>>> Hi Jenine.  As it turns out, we had noticed that this \"contrast\" argument\n>>> was slightly awkward and it's now been changed.  Of course this doesn't\n>>> answer the question of why you're getting the bizarre behavior you\n>>> describe, but it should hopefully turn out to be irrelevant.\n>>> \n>>> The new version of nodemix (which will be refected in the Morris et al\n>>> paper when it eventually comes out officially in JSS) uses a \"base\"\n>>> argument like several other terms.  Apologies to anyone who had come to\n>>> rely on the \"contrast\" argument, since this will break any code using\n>>> \"contrast\".  Here is the relevant excerpt from help(ergm.terms):\n>>> \n>>> nodemix(attrname, base=NULL)\n>>> Nodal attribute mixing: The attrname argument is a character string giving\n>>> the name of a categorical attribute in the network's vertex attribute list.\n>>> By default, this term adds one network statistic to the model for each\n>>> possible pairing of attribute values. The statistic equals the number of\n>>> edges in the network in which the nodes have that pairing of values. In\n>>> other words, this term produces one statistic for every entry in the mixing\n>>> matrix for the attribute. The ordering of the attribute values is\n>>> alphabetical (for nominal categories) or numerical (for ordered\n>>> categories). The optional base argument is a vector of integers\n>>> corresponding to the pairings that should not be included. If base contains\n>>> only negative integers, then these integers correspond to the only pairings\n>>> that should be included. By default (i.e., with base=NULL or base=0), all\n>>> pairings are included.\n>>> \n>>> This new version will be out on CRAN in probably a week or two, but you can\n>>> download the beta version of ergm 2.0-7 that includes the new nodemix if\n>>> you go to http://www.stat.psu.edu/~dhunter/code/\n>>> \n>>> If you can't install R from source code, respond to the list with the type\n>>> of operating system you're using and someone should be able to produce a\n>>> pre-compiled binary for you.\n>>> \n>>> I have to admit I haven't done a lot of testing on the new nodemix term, so\n>>> if you find anything fishy please send another email.\n>>> \n>>> Dave\n>>> \n>>> \n>>> On Mar 24, 2008, at 3:38 AM, jenine harris wrote:\n>>> \n>>>> Hi,\n>>>> \n>>>> I am using nodemix on a node attribute with 2 categories (0,1). I want the\n>>>> initial combination (0,0) to be the reference category, which I believe,\n>>>> according to the Morris, Handcock, & Hunter article should work with the\n>>>> following code:\n>>>> \n>>>> nodemix(\"attribute\", contrast=TRUE)\n>>>> \n>>>> ...but I have run this several times, removed the quotes and run it,\n>>>> changed the \"TRUE\" to false in case it was programmed backwards, but still\n>>>> it includes all four types of dyads in the output, like this:\n>>>> \n>>>> mix.attribute.0.0\n>>>> mix.attribute.0.1\n>>>> mix.attribute.1.0\n>>>> mix attribute.1.1\n>>>> \n>>>> With the final category (1,1) always being highly non-significant.\n>>>> \n>>>> Any one out there used nodemix and omitted a reference category\n>>>> successfully?\n>>>> \n>>>> thanks yet again,\n>>>> jenine\n>>>> \n>>>> -- \n>>>> ************************************\n>>>> Jenine K. Harris, Ph.D.\n>>>> Senior Research Assistant\n>>>> Center for Tobacco Policy Research\n>>>> Saint Louis University School of Public Health\n>>>> 3545 Lafayette Ave, Suite 300\n>>>> St. Louis, MO 63104-1399\n>>>> 314.977.8210\n>>>> 314.977.3234 Fax\n>>>> http://ctpr.slu.edu/ _______________________________________________\n>>>> statnet_help mailing list\n>>>> statnet_help@u.washington.edu\n>>>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>>> \n>>> \n>>> \n>>> \n>>> -- \n>>> ************************************\n>>> Jenine K. Harris, Ph.D.\n>>> Senior Research Assistant\n>>> Center for Tobacco Policy Research\n>>> Saint Louis University School of Public Health\n>>> 3545 Lafayette Ave, Suite 300\n>>> St. Louis, MO 63104-1399\n>>> 314.977.8210\n>>> 314.977.3234 Fax\n>>> http://ctpr.slu.edu/\n>> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Dave and Steve,\n\nOn the install procedure: I have found that using the PACKAGE file method\nmeans that the install can be done by\n\"install.packages(\"ergm\",contriburl=\"http://...\")\nwhich is usually e",
+      "thread_id": "thread-e59731d420ae",
+      "thread_depth": 1,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-b097749939d4",
+      "message_id": "<C4104C1F.2553D%handcock@stat.washington.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "c132e288a4158a9131d6195fe12876f4a9de309d5104eb7b48793e3a4f8eabd5",
+      "date": "2008-03-26T18:53:19Z",
+      "subject": "[statnet_help] nodemix contrast=TRUE omit ref category?",
+      "subject_clean": "[statnet_help] nodemix contrast=TRUE omit ref category?",
+      "in_reply_to": "<Pine.WNT.4.64.0803251210050.4836@vinaya.csde.washington.edu>",
+      "references": [],
+      "body_plain": "Hi Dave and Steve,\n\nOn the install procedure: I have found that using the PACKAGE file method\nmeans that the install can be done by\n\"install.packages(\"ergm\",contriburl=\"http://...\")\nwhich is usually easier. Would it be better to do it this way? I can give\ndetailed instructions if that would be helpful.\n\nMark\n\n\nOn 3/25/08 12:45 PM, \"Steven Goodreau\" <goodreau@u.washington.edu> wrote:\n\n> \n> Hi Jenine,\n> \n> Here are my instructions for installing this version of the ergm package\n> from the source, for Windows:\n> \n> 1.  Close R.\n> \n> 2.  Get the file (ergm_2.0-7beta.tar.gz) on the website that Dave mentions\n> below. You can place it anywhere, although you may want it somewhere in\n> C:\\Program Files\\R, perhaps in the lib directory for the latest version of\n> R that you have on your machine.\n> \n> 3.  Gunzip it.  An easy-to-use free utility for this is win-gz\n> (http://www.crispen.org/src/#wingz)\n> \n> 4.  Untar it. An easy-to-use free utility for this is 7-zip\n> (http://www.7-zip.org/)\n> \n> 5.  You should now have a folder called ergm_2.0-7beta.  Note its\n> location.\n> \n> 6.  Open a dos window (Start > Run and type \"cmd\")\n> \n> 7.  Navigate into the ergm_2.0-7beta folder.  (Basic dos commands: \"cd ..\"\n> to move up, \"cd name_of_folder\" to move down, \"dir\" to see what files and\n> folders are avaiable in your current folder, \"exit\" to quit.)\n> \n> 8.  Make sure you are just inside the ergm_2.0-7beta folder by typing\n> \"dir\"; the contents should be a single dot, a double dot, and \"ergm\".\n> \n> 9.  Type: \"RCMD install ergm\". Lots of installing should ensue.\n> \n> 10.  When it's done, you should be able to open R, and type\n> \"library(ergm)\" and have the new version of ergm that you just installed\n> loaded.\n> \n> OK, I think that is everything.  Let me know if something doesn't work.\n> It's possible that you will get an error at Step 9, which means you will\n> need to tweak some of your R settings.\n> \n> Cheers,\n> Steve\n> \n> \n> \n> \n> \n> \n> \n> \"jenine harris\" <harrisjk@slu.edu>\n> \n> \"jenine harris\" <harrisjk@slu.edu>\n>>> Date: March 24, 2008 3:15:22 PM CEST\n>>> To: \"David Hunter\" <dhunter@stat.psu.edu>\n>>> Cc: statnet_help@u.washington.edu\n>>> Subject: Re: [statnet_help] nodemix contrast=TRUE omit ref category?\n>>> Reply-To: harrisjk@slu.edu\n>>> \n>>> Hi all,\n>>> \n>>> I can't install R from source code, does anyone have a pre-compiled binary\n>>> version of the the beta ergm 2.0-7 that would work with Windows XP (SP2)?\n>>> \n>>> Or directions for installing from source code might work.\n>>> \n>>> thanks,\n>>> jenine\n>>> \n>>> On Mon, Mar 24, 2008 at 3:48 AM, David Hunter <dhunter@stat.psu.edu> wrote:\n>>> Hi Jenine.  As it turns out, we had noticed that this \"contrast\" argument\n>>> was slightly awkward and it's now been changed.  Of course this doesn't\n>>> answer the question of why you're getting the bizarre behavior you\n>>> describe, but it should hopefully turn out to be irrelevant.\n>>> \n>>> The new version of nodemix (which will be refected in the Morris et al\n>>> paper when it eventually comes out officially in JSS) uses a \"base\"\n>>> argument like several other terms.  Apologies to anyone who had come to\n>>> rely on the \"contrast\" argument, since this will break any code using\n>>> \"contrast\".  Here is the relevant excerpt from help(ergm.terms):\n>>> \n>>> nodemix(attrname, base=NULL)\n>>> Nodal attribute mixing: The attrname argument is a character string giving\n>>> the name of a categorical attribute in the network's vertex attribute list.\n>>> By default, this term adds one network statistic to the model for each\n>>> possible pairing of attribute values. The statistic equals the number of\n>>> edges in the network in which the nodes have that pairing of values. In\n>>> other words, this term produces one statistic for every entry in the mixing\n>>> matrix for the attribute. The ordering of the attribute values is\n>>> alphabetical (for nominal categories) or numerical (for ordered\n>>> categories). The optional base argument is a vector of integers\n>>> corresponding to the pairings that should not be included. If base contains\n>>> only negative integers, then these integers correspond to the only pairings\n>>> that should be included. By default (i.e., with base=NULL or base=0), all\n>>> pairings are included.\n>>> \n>>> This new version will be out on CRAN in probably a week or two, but you can\n>>> download the beta version of ergm 2.0-7 that includes the new nodemix if\n>>> you go to http://www.stat.psu.edu/~dhunter/code/\n>>> \n>>> If you can't install R from source code, respond to the list with the type\n>>> of operating system you're using and someone should be able to produce a\n>>> pre-compiled binary for you.\n>>> \n>>> I have to admit I haven't done a lot of testing on the new nodemix term, so\n>>> if you find anything fishy please send another email.\n>>> \n>>> Dave\n>>> \n>>> \n>>> On Mar 24, 2008, at 3:38 AM, jenine harris wrote:\n>>> \n>>>> Hi,\n>>>> \n>>>> I am using nodemix on a node attribute with 2 categories (0,1). I want the\n>>>> initial combination (0,0) to be the reference category, which I believe,\n>>>> according to the Morris, Handcock, & Hunter article should work with the\n>>>> following code:\n>>>> \n>>>> nodemix(\"attribute\", contrast=TRUE)\n>>>> \n>>>> ...but I have run this several times, removed the quotes and run it,\n>>>> changed the \"TRUE\" to false in case it was programmed backwards, but still\n>>>> it includes all four types of dyads in the output, like this:\n>>>> \n>>>> mix.attribute.0.0\n>>>> mix.attribute.0.1\n>>>> mix.attribute.1.0\n>>>> mix attribute.1.1\n>>>> \n>>>> With the final category (1,1) always being highly non-significant.\n>>>> \n>>>> Any one out there used nodemix and omitted a reference category\n>>>> successfully?\n>>>> \n>>>> thanks yet again,\n>>>> jenine\n>>>> \n>>>> -- \n>>>> ************************************\n>>>> Jenine K. Harris, Ph.D.\n>>>> Senior Research Assistant\n>>>> Center for Tobacco Policy Research\n>>>> Saint Louis University School of Public Health\n>>>> 3545 Lafayette Ave, Suite 300\n>>>> St. Louis, MO 63104-1399\n>>>> 314.977.8210\n>>>> 314.977.3234 Fax\n>>>> http://ctpr.slu.edu/ _______________________________________________\n>>>> statnet_help mailing list\n>>>> statnet_help@u.washington.edu\n>>>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>>> \n>>> \n>>> \n>>> \n>>> -- \n>>> ************************************\n>>> Jenine K. Harris, Ph.D.\n>>> Senior Research Assistant\n>>> Center for Tobacco Policy Research\n>>> Saint Louis University School of Public Health\n>>> 3545 Lafayette Ave, Suite 300\n>>> St. Louis, MO 63104-1399\n>>> 314.977.8210\n>>> 314.977.3234 Fax\n>>> http://ctpr.slu.edu/\n>> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Dave and Steve,\n\nOn the install procedure: I have found that using the PACKAGE file method\nmeans that the install can be done by\n\"install.packages(\"ergm\",contriburl=\"http://...\")\nwhich is usually e",
+      "thread_id": "thread-e59731d420ae",
+      "thread_depth": 1,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-3a44f0fe11c6",
+      "message_id": "<B68EB32ADEE6D74594B63A7D2931F0BA07534A@XCH-VN01.sph.ad.jhsph.edu>",
+      "from_name": "Zembower, Kevin",
+      "from_email_hash": "34436534f9f7b579173307e48f93e7c492be5ccbdb21584cf7472be36a9e4601",
+      "date": "2008-03-27T12:07:15Z",
+      "subject": "[statnet_help] Can statnet read DL files?",
+      "subject_clean": "[statnet_help] Can statnet read DL files?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I'm a new user of statnet, network and sna. I'd like to read some DL\nfiles. I was able to find the write.DL(sna) and read.dot(sna) and\nread.nos(sna), but couldn't find anything to read DL. I also searched\nthe archives of this email list on DL and didn't find anything. Does\nsuch a capability exist?\n\nThanks for your help for a newbie.\n\n-Kevin\n\nKevin Zembower\nInternet Services Group manager\nCenter for Communication Programs\nBloomberg School of Public Health\nJohns Hopkins University\n111 Market Place, Suite 310\nBaltimore, Maryland  21202\n410-659-6139",
+      "body_snippet": "I'm a new user of statnet, network and sna. I'd like to read some DL\nfiles. I was able to find the write.DL(sna) and read.dot(sna) and\nread.nos(sna), but couldn't find anything to read DL. I also sear",
+      "thread_id": "thread-3a44f0fe11c6",
+      "thread_depth": 0,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-103bc7eb5608",
+      "message_id": "<47EC3377.1030704@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2008-03-27T16:53:27Z",
+      "subject": "[statnet_help] Can statnet read DL files?",
+      "subject_clean": "[statnet_help] Can statnet read DL files?",
+      "in_reply_to": "<B68EB32ADEE6D74594B63A7D2931F0BA07534A@XCH-VN01.sph.ad.jhsph.edu>",
+      "references": [
+        "<B68EB32ADEE6D74594B63A7D2931F0BA07534A@XCH-VN01.sph.ad.jhsph.edu>"
+      ],
+      "body_plain": "Zembower, Kevin wrote:\n> I'm a new user of statnet, network and sna. I'd like to read some DL\n> files. I was able to find the write.DL(sna) and read.dot(sna) and\n> read.nos(sna), but couldn't find anything to read DL. I also searched\n> the archives of this email list on DL and didn't find anything. Does\n> such a capability exist?\n> \n> Thanks for your help for a newbie.\n> \n>\n\nNo, not at this time.  In addition to the input routines you mentioned, \nyou might try read.paj, or else importing your data in tabular form via \nscan or read.table.\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "Zembower, Kevin wrote:\n> I'm a new user of statnet, network and sna. I'd like to read some DL\n> files. I was able to find the write.DL(sna) and read.dot(sna) and\n> read.nos(sna), but couldn't find any",
+      "thread_id": "thread-3a44f0fe11c6",
+      "thread_depth": 1,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-66de6a3988dc",
+      "message_id": "<9b69d2ac0803310642j7084079aie6d17ad006125ab2@mail.gmail.com>",
+      "from_name": "jenine harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2008-03-31T06:42:37Z",
+      "subject": "[statnet_help] gof results too long to print",
+      "subject_clean": "[statnet_help] gof results too long to print",
+      "in_reply_to": "<Pine.WNT.4.64.0803251321400.4836@vinaya.csde.washington.edu>",
+      "references": [
+        "<9b69d2ac0803231058g36782935uca0b8eefbd2f8b3b@mail.gmail.com>",
+        "<Pine.WNT.4.64.0803251321400.4836@vinaya.csde.washington.edu>"
+      ],
+      "body_plain": "Hi again,\n\nI am afraid I am missing some of the output that would be helpful in\nunderstanding the fit of my model. When I use the strategy below I can look\nat how many nodes there are with each degree, but I don't get any summary\nstats for how well the degree distributions overall fit the observed data.\nIs there another way to print the GOF results so that I can see the top rows\nof the results for idegree, odegree, etc.?\n\nThanks,\njenine\n\nOn Tue, Mar 25, 2008 at 3:28 PM, Steven Goodreau <goodreau@u.washington.edu>\nwrote:\n\n>\n> Hi Jenine,\n>\n> A great question.  We really should make some tweaks to the print.gofoject\n> function so that it only prints the lines up until everything equals 0.\n> We don't need you to see 1,877 lines to know that none of the nodes in\n> your simulations have degrees above 10 or so!\n>\n> In the meanwhile, you can do it yourself by using the command:\n>\n> gofobject$summary.nameofgofstat[linestoinclude,]\n>\n> for any gof statistic of interest.  You can get the names of the gof stats\n> by typing \"print.gofobject\" in R to look inside the print.gofobject\n> function.\n>\n> So for instance, if you just want to see the first 20 lines of the degree\n> distrubtions, and your gof object is named model11gof, type:\n>\n> model11gof$summary.deg[1:20,]\n>\n> Cheers,\n> Steve\n>\n>\n>\n>                    *PLEASE NOTICE NEW OFFICE LOCATION*\n> **************************************************************************\n>  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n>  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n>  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n>  * http://faculty.washington.edu/goodreau                               *\n>  * http://maps.google.com/?q=%2047.65855,-122.3091&z=18&t=k             *\n> **************************************************************************\n>\n> On Sun, 23 Mar 2008, jenine harris wrote:\n>\n> > Hi,\n> >\n> > I am diagnosing the gof of a model for a directed network with 1877\n> nodes\n> > using the following R-statnet code (the name of my model is \"model11\"):\n> >\n> > model11gof<-gof(model11, GOF=~idegree+odegree+espartners+distance,\n> > verbose=TRUE, interval=50000)\n> >\n> > Once the code runs (which takes a while) I can then look at the graphs\n> with\n> > logodds (like the Hunter et al article), but I can't get the GOF results\n> to\n> > completely print out. What I get when I type \"model11gof\" or\n> > print(model11gof)  is a couple hundred rows of the model11gof object,\n> but\n> > since the network has 1877 nodes this is not nearly the whole thing ---\n> it\n> > scrolls through the entire object so fast and then the first part of it\n> just\n> > disappears and leaves only the last couple hundred lines or so.\n> >\n> > Anyone have a fix for this? I imagine it's something simple in R that I\n> just\n> > haven't run across yet.\n> >\n> > Thanks!!!\n> > jenine\n> >\n> > --\n> > ************************************\n> > Jenine K. Harris, Ph.D.\n> > Senior Research Assistant\n> > Center for Tobacco Policy Research\n> > Saint Louis University School of Public Health\n> > 3545 Lafayette Ave, Suite 300\n> > St. Louis, MO 63104-1399\n> > 314.977.8210\n> > 314.977.3234 Fax\n> > http://ctpr.slu.edu/\n> >\n>\n\n\n\n-- \n************************************\nJenine K. Harris, Ph.D.\nSenior Research Assistant\nCenter for Tobacco Policy Research\nSaint Louis University School of Public Health\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210\n314.977.3234 Fax\nhttp://ctpr.slu.edu/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080331/5db2246d/attachment.html>",
+      "body_snippet": "Hi again,\n\nI am afraid I am missing some of the output that would be helpful in\nunderstanding the fit of my model. When I use the strategy below I can look\nat how many nodes there are with each degree",
+      "thread_id": "thread-3af33553a8fb",
+      "thread_depth": 2,
+      "month": "2008-03"
+    },
+    {
+      "id": "msg-3628859fea4f",
+      "message_id": "<64B6B236-028E-443E-8A03-9C90FB2462BA@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-03-31T22:54:59Z",
+      "subject": "[statnet_help] gof results too long to print",
+      "subject_clean": "[statnet_help] gof results too long to print",
+      "in_reply_to": "<9b69d2ac0803310642j7084079aie6d17ad006125ab2@mail.gmail.com>",
+      "references": [
+        "<9b69d2ac0803231058g36782935uca0b8eefbd2f8b3b@mail.gmail.com>",
+        "<Pine.WNT.4.64.0803251321400.4836@vinaya.csde.washington.edu>",
+        "<9b69d2ac0803310642j7084079aie6d17ad006125ab2@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Jenine.  Sorry about the insane version of print.gofobject that was  \nin ergm.  I don't know if this addresses your question completely, but  \ntry copy-and-pasting the code below after loading statnet.  This will  \ncreate a new version of print.gofobject and summary.gofobject (these  \nwill be in ergm 2.0-7, which should be on CRAN in a few days, after  \nwhich time it won't be necessary to copy and paste!).  This version  \nprints only the rows in which the stats aren't all zero.\n\nDave\n\n##COPY AND PASTE STARTING HERE:\nprint.gofobject <- function(x, ...){\n   all.gof.vars <- ergm.rhs.formula(x$GOF)\n   # match variables\n   goftypes <- matrix( c(\n       \"model\", \"model statistics\", \"summary.model\",\n       \"distance\", \"minimum geodesic distance\", \"summary.dist\",\n       \"idegree\", \"in-degree\", \"summary.ideg\",\n       \"odegree\", \"out-degree\", \"summary.odeg\",\n       \"degree\", \"degree\", \"summary.deg\",\n       \"espartners\", \"edgewise shared partner\", \"summary.espart\",\n       \"dspartners\", \"dyadwise shared partner\", \"summary.dspart\",\n       \"triadcensus\", \"triad census\", \"summary.triadcensus\"),\n                       byrow=TRUE, ncol=3)\n   for(i in seq(along=all.gof.vars)){\n     all.gof.vars[i] <- match.arg(all.gof.vars[i], goftypes[,1])\n   }\n   for(statname in all.gof.vars){\n     r <- match(statname, goftypes[,1])  # find row in goftypes matrix\n     cat(\"\\nGoodness-of-fit for\", goftypes[r, 2],\"\\n\\n\")\n     m <- x[[goftypes[r, 3] ]] # get summary statistics\n     zerorows <- m[,\"obs\"]==0 & m[,\"min\"]==0 & m[,\"max\"]==0\n     print(m[!zerorows,])\n   }\n   invisible()\n}\n\nsummary.gofobject <- function(object, ...) {\n   print.gofobject(object, ...) # Nothing better for now\n}\n\n## THAT\"S ALL TO COPY AND PASTE!\n\n\nOn Mar 31, 2008, at 3:42 PM, jenine harris wrote:\n\n> Hi again,\n>\n> I am afraid I am missing some of the output that would be helpful in  \n> understanding the fit of my model. When I use the strategy below I  \n> can look at how many nodes there are with each degree, but I don't  \n> get any summary stats for how well the degree distributions overall  \n> fit the observed data. Is there another way to print the GOF results  \n> so that I can see the top rows of the results for idegree, odegree,  \n> etc.?\n>\n> Thanks,\n> jenine\n>\n> On Tue, Mar 25, 2008 at 3:28 PM, Steven Goodreau <goodreau@u.washington.edu \n> > wrote:\n>\n> Hi Jenine,\n>\n> A great question.  We really should make some tweaks to the  \n> print.gofoject\n> function so that it only prints the lines up until everything equals  \n> 0.\n> We don't need you to see 1,877 lines to know that none of the nodes in\n> your simulations have degrees above 10 or so!\n>\n> In the meanwhile, you can do it yourself by using the command:\n>\n> gofobject$summary.nameofgofstat[linestoinclude,]\n>\n> for any gof statistic of interest.  You can get the names of the gof  \n> stats\n> by typing \"print.gofobject\" in R to look inside the print.gofobject\n> function.\n>\n> So for instance, if you just want to see the first 20 lines of the  \n> degree\n> distrubtions, and your gof object is named model11gof, type:\n>\n> model11gof$summary.deg[1:20,]\n>\n> Cheers,\n> Steve\n>\n>\n>\n>                    *PLEASE NOTICE NEW OFFICE LOCATION*\n> **************************************************************************\n>  * Steven M. Goodreau / Assistant Professor / Dept. of  \n> Anthropology     *\n>  * University of Washington / Denny Hall 452 / Campus Box  \n> 353100        *\n>  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285  \n> (fax)      *\n>  * http://faculty.washington.edu/ \n> goodreau                               *\n>  * http://maps.google.com/?q= \n> %2047.65855,-122.3091&z=18&t=k             *\n> **************************************************************************\n>\n> On Sun, 23 Mar 2008, jenine harris wrote:\n>\n> > Hi,\n> >\n> > I am diagnosing the gof of a model for a directed network with  \n> 1877 nodes\n> > using the following R-statnet code (the name of my model is  \n> \"model11\"):\n> >\n> > model11gof<-gof(model11, GOF=~idegree+odegree+espartners+distance,\n> > verbose=TRUE, interval=50000)\n> >\n> > Once the code runs (which takes a while) I can then look at the  \n> graphs with\n> > logodds (like the Hunter et al article), but I can't get the GOF  \n> results to\n> > completely print out. What I get when I type \"model11gof\" or\n> > print(model11gof)  is a couple hundred rows of the model11gof  \n> object, but\n> > since the network has 1877 nodes this is not nearly the whole  \n> thing --- it\n> > scrolls through the entire object so fast and then the first part  \n> of it just\n> > disappears and leaves only the last couple hundred lines or so.\n> >\n> > Anyone have a fix for this? I imagine it's something simple in R  \n> that I just\n> > haven't run across yet.\n> >\n> > Thanks!!!\n> > jenine\n> >\n> > --\n> > ************************************\n> > Jenine K. Harris, Ph.D.\n> > Senior Research Assistant\n> > Center for Tobacco Policy Research\n> > Saint Louis University School of Public Health\n> > 3545 Lafayette Ave, Suite 300\n> > St. Louis, MO 63104-1399\n> > 314.977.8210\n> > 314.977.3234 Fax\n> > http://ctpr.slu.edu/\n> >\n>\n>\n>\n> -- \n> ************************************\n> Jenine K. Harris, Ph.D.\n> Senior Research Assistant\n> Center for Tobacco Policy Research\n> Saint Louis University School of Public Health\n> 3545 Lafayette Ave, Suite 300\n> St. Louis, MO 63104-1399\n> 314.977.8210\n> 314.977.3234 Fax\n> http://ctpr.slu.edu/ _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080401/0ce177ef/attachment.html>",
+      "body_snippet": "Hi Jenine.  Sorry about the insane version of print.gofobject that was  \nin ergm.  I don't know if this addresses your question completely, but  \ntry copy-and-pasting the code below after loading stat",
+      "thread_id": "thread-3af33553a8fb",
+      "thread_depth": 3,
+      "month": "2008-03"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-8ce4c7b9de17",
+      "subject": "[statnet_help] ergm",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Muriel De Wolf"
+      ],
+      "started": "2008-03-04T00:56:31Z",
+      "last_reply": "2008-03-06T22:27:39Z",
+      "root_message_id": "msg-8ce4c7b9de17"
+    },
+    {
+      "id": "thread-684cb0b65482",
+      "subject": "[statnet_help] using nodemix in ergm-terms",
+      "message_count": 2,
+      "participants": [
+        "Avranil Sarkar",
+        "Steven Goodreau"
+      ],
+      "started": "2008-03-04T09:25:20Z",
+      "last_reply": "2008-03-05T12:45:15Z",
+      "root_message_id": "msg-684cb0b65482"
+    },
+    {
+      "id": "thread-f0888d4bbf92",
+      "subject": "[statnet_help] ERGM gwdsp and gwodegree",
+      "message_count": 1,
+      "participants": [
+        "David Hunter"
+      ],
+      "started": "2008-03-06T22:00:46Z",
+      "last_reply": "2008-03-06T22:00:46Z",
+      "root_message_id": "msg-f0888d4bbf92"
+    },
+    {
+      "id": "thread-7bf87129f3b4",
+      "subject": "[statnet_help] \"mutual\" parameter with attributes suggestion",
+      "message_count": 1,
+      "participants": [
+        "David Hunter"
+      ],
+      "started": "2008-03-06T22:01:44Z",
+      "last_reply": "2008-03-06T22:01:44Z",
+      "root_message_id": "msg-7bf87129f3b4"
+    },
+    {
+      "id": "thread-6d6466ae9791",
+      "subject": "[statnet_help] new version of ergm on CRAN",
+      "message_count": 1,
+      "participants": [
+        "David Hunter"
+      ],
+      "started": "2008-03-12T10:02:25Z",
+      "last_reply": "2008-03-12T10:02:25Z",
+      "root_message_id": "msg-6d6466ae9791"
+    },
+    {
+      "id": "thread-11c5a7ccea09",
+      "subject": "[statnet_help] using nodematch and edgecov",
+      "message_count": 4,
+      "participants": [
+        "Avranil Sarkar",
+        "David Hunter",
+        "Steven Goodreau"
+      ],
+      "started": "2008-03-20T15:02:20Z",
+      "last_reply": "2008-03-21T09:01:14Z",
+      "root_message_id": "msg-11c5a7ccea09"
+    },
+    {
+      "id": "thread-3af33553a8fb",
+      "subject": "[statnet_help] gof results too long to print",
+      "message_count": 5,
+      "participants": [
+        "David Hunter",
+        "Steven Goodreau",
+        "jenine harris"
+      ],
+      "started": "2008-03-23T10:58:52Z",
+      "last_reply": "2008-03-31T22:54:59Z",
+      "root_message_id": "msg-3af33553a8fb"
+    },
+    {
+      "id": "thread-b427c776d3c7",
+      "subject": "[statnet_help] nodemix contrast=TRUE omit ref category?",
+      "message_count": 3,
+      "participants": [
+        "David Hunter",
+        "jenine harris"
+      ],
+      "started": "2008-03-23T19:38:13Z",
+      "last_reply": "2008-03-24T07:15:22Z",
+      "root_message_id": "msg-b427c776d3c7"
+    },
+    {
+      "id": "thread-e59731d420ae",
+      "subject": "[statnet_help] nodemix contrast=TRUE omit ref category?",
+      "message_count": 4,
+      "participants": [
+        "Mark S. Handcock",
+        "Steven Goodreau",
+        "jenine harris"
+      ],
+      "started": "2008-03-25T12:45:52Z",
+      "last_reply": "2008-03-26T18:53:19Z",
+      "root_message_id": "msg-e59731d420ae"
+    },
+    {
+      "id": "thread-7597845d2790",
+      "subject": "[statnet_help] Re: degeneracy with new version ERGM",
+      "message_count": 2,
+      "participants": [
+        "Art Poon",
+        "Carter T. Butts"
+      ],
+      "started": "2008-03-26T13:31:36Z",
+      "last_reply": "2008-03-26T18:42:06Z",
+      "root_message_id": "msg-7597845d2790"
+    },
+    {
+      "id": "thread-3a44f0fe11c6",
+      "subject": "[statnet_help] Can statnet read DL files?",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Zembower, Kevin"
+      ],
+      "started": "2008-03-27T12:07:15Z",
+      "last_reply": "2008-03-27T16:53:27Z",
+      "root_message_id": "msg-3a44f0fe11c6"
+    }
+  ]
+}

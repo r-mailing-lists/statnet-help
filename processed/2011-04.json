@@ -1,0 +1,1024 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2011-04",
+  "messages": [
+    {
+      "id": "msg-4365260ade61",
+      "message_id": "<14731.129.105.161.113.1301669733.squirrel@mail.it.northwestern.edu>",
+      "from_name": "Hugh J Devlin",
+      "from_email_hash": "eb00b10a817fde0a193dccc0dbd0776d612083e53c084a69b3dae82258d1ab15",
+      "date": "2011-04-01T07:55:33Z",
+      "subject": "[statnet_help] doc: simulate.ergm: theta0 vs. prob?",
+      "subject_clean": "[statnet_help] doc: simulate.ergm: theta0 vs. prob?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "hello all,\n\nquick question on the doc: the description of the theta0 parameter to simulate.ergm\nmentions what appears to be another parameter which does not seem to be described\nanywhere; what is prob?\n\nergm version 2.3\n\nthanks!\n\nArguments\n\ntheta0 For Bernoulli networks this is the log-odds of a tie, however it is only used\nif prob is not specified.",
+      "body_snippet": "hello all,\n\nquick question on the doc: the description of the theta0 parameter to simulate.ergm\nmentions what appears to be another parameter which does not seem to be described\nanywhere; what is prob",
+      "thread_id": "thread-4365260ade61",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-40650fabfbb9",
+      "message_id": "<14771.129.105.161.113.1301669954.squirrel@mail.it.northwestern.edu>",
+      "from_name": "Hugh J Devlin",
+      "from_email_hash": "eb00b10a817fde0a193dccc0dbd0776d612083e53c084a69b3dae82258d1ab15",
+      "date": "2011-04-01T07:59:14Z",
+      "subject": "[statnet_help] doc: simulate.ergm: dynamic draws?",
+      "subject_clean": "[statnet_help] doc: simulate.ergm: dynamic draws?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "hello all,\n\nquick question on the doc: the description of the sequential parameter to\nsimulate.ergm mentions \"dynamic\" draws which do not seem to be described; what are\n\"dynamic draws\"?\n\nergm version 2.3\n\nthanks!\nHugh\n-- \nHugh J. Devlin, Ph. D.\nhdevlin@northwestern.edu\n\nArguments\n\nsequential Should the returned draws use the prior draw as the starting network or\nalways use the initially passed network? For random draws the results should be\nsimilar (stochastically), but the sequential=TRUE option is useful for dynamic\ndraws.",
+      "body_snippet": "hello all,\n\nquick question on the doc: the description of the sequential parameter to\nsimulate.ergm mentions \"dynamic\" draws which do not seem to be described; what are\n\"dynamic draws\"?\n\nergm version ",
+      "thread_id": "thread-40650fabfbb9",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-16529515b819",
+      "message_id": "<15402.129.105.161.113.1301674373.squirrel@mail.it.northwestern.edu>",
+      "from_name": "Hugh J Devlin",
+      "from_email_hash": "eb00b10a817fde0a193dccc0dbd0776d612083e53c084a69b3dae82258d1ab15",
+      "date": "2011-04-01T09:12:53Z",
+      "subject": "[statnet_help] simulate.ergm: sequential parameter v. for loop ?",
+      "subject_clean": "[statnet_help] simulate.ergm: sequential parameter v. for loop ?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "hello all,\n\nwith the goal of independence between samples, does wrapping simulate in a for loop\noffer any advantage over the sequential parameter? are these code fragments roughly\nequivalent? is the for loop somehow \"safer\"?\n\nfor(i in 1:numSim){\nnetworks[[i]] = simulate(formula, nsim = 1,\ntheta0 = params, burnin = intBurnin, interval = intNum, verbose = TRUE)\n}\n\nvs.\n\nnetworks = simulate(formula, sequential=TRUE, nsim = numSim,\ntheta0 = params, burnin = intBurnin, interval = intNum, verbose = TRUE)\n\n(please suppress the involuntary gag reflex at the mere sight of a \"for\" loop in R\ncode! ;)\n\nthanks!\nHugh\n-- \nHugh J. Devlin, Ph. D.\nhdevlin@northwestern.edu",
+      "body_snippet": "hello all,\n\nwith the goal of independence between samples, does wrapping simulate in a for loop\noffer any advantage over the sequential parameter? are these code fragments roughly\nequivalent? is the f",
+      "thread_id": "thread-16529515b819",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-7e8d64f2a86a",
+      "message_id": "<alpine.WNT.2.00.1104011833020.4764@Martina-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2011-04-01T18:38:05Z",
+      "subject": "[statnet_help] doc: simulate.ergm: dynamic draws?",
+      "subject_clean": "[statnet_help] doc: simulate.ergm: dynamic draws?",
+      "in_reply_to": "<14771.129.105.161.113.1301669954.squirrel@mail.it.northwestern.edu>",
+      "references": [
+        "<14771.129.105.161.113.1301669954.squirrel@mail.it.northwestern.edu>"
+      ],
+      "body_plain": "Hi Hugh,\n\nI believe that option allows you to take sequential draws from the \nMCMC chain as it simulates the network.  That would approximate a dynamic \nnetwork series, with partnerships forming and dissolving.\n\nbest,\nMartina\n\n\nOn Fri, 1 Apr 2011, Hugh J Devlin wrote:\n\n> hello all,\n>\n> quick question on the doc: the description of the sequential parameter to\n> simulate.ergm mentions \"dynamic\" draws which do not seem to be described; what are\n> \"dynamic draws\"?\n>\n> ergm version 2.3\n>\n> thanks!\n> Hugh\n> -- \n> Hugh J. Devlin, Ph. D.\n> hdevlin@northwestern.edu\n>\n> Arguments\n>\n> sequential Should the returned draws use the prior draw as the starting network or\n> always use the initially passed network? For random draws the results should be\n> similar (stochastically), but the sequential=TRUE option is useful for dynamic\n> draws.\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Hugh,\n\nI believe that option allows you to take sequential draws from the \nMCMC chain as it simulates the network.  That would approximate a dynamic \nnetwork series, with partnerships forming and d",
+      "thread_id": "thread-40650fabfbb9",
+      "thread_depth": 1,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-a01ff1b32539",
+      "message_id": "<alpine.WNT.2.00.1104011838320.4764@Martina-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2011-04-01T18:40:36Z",
+      "subject": "[statnet_help] simulate.ergm: sequential parameter v. for loop ?",
+      "subject_clean": "[statnet_help] simulate.ergm: sequential parameter v. for loop ?",
+      "in_reply_to": "<15402.129.105.161.113.1301674373.squirrel@mail.it.northwestern.edu>",
+      "references": [
+        "<15402.129.105.161.113.1301674373.squirrel@mail.it.northwestern.edu>"
+      ],
+      "body_plain": "Hugh,\n\nJust don't use sequential=TRUE.  The default is intended to \nproduce independent samples as long as the chain is mixing properly.  You \ndon't need to wrap another for loop around it.\n\nbest,\nMartina\n\n\nOn Fri, 1 Apr 2011, Hugh J Devlin wrote:\n\n> hello all,\n>\n> with the goal of independence between samples, does wrapping simulate in a for loop\n> offer any advantage over the sequential parameter? are these code fragments roughly\n> equivalent? is the for loop somehow \"safer\"?\n>\n> for(i in 1:numSim){\n> networks[[i]] = simulate(formula, nsim = 1,\n> theta0 = params, burnin = intBurnin, interval = intNum, verbose = TRUE)\n> }\n>\n> vs.\n>\n> networks = simulate(formula, sequential=TRUE, nsim = numSim,\n> theta0 = params, burnin = intBurnin, interval = intNum, verbose = TRUE)\n>\n> (please suppress the involuntary gag reflex at the mere sight of a \"for\" loop in R\n> code! ;)\n>\n> thanks!\n> Hugh\n> -- \n> Hugh J. Devlin, Ph. D.\n> hdevlin@northwestern.edu\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hugh,\n\nJust don't use sequential=TRUE.  The default is intended to \nproduce independent samples as long as the chain is mixing properly.  You \ndon't need to wrap another for loop around it.\n\nbest,\nMar",
+      "thread_id": "thread-16529515b819",
+      "thread_depth": 1,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-ddcb10c8c78b",
+      "message_id": "<BANLkTinSXsYO2BbgB=Bbuc+5kC9BtiUWOg@mail.gmail.com>",
+      "from_name": "chengjun wang",
+      "from_email_hash": "48d0e4355a7b670f78b80a940ebdd6d299c8a10a0424a9369941196090fcd120",
+      "date": "2011-04-05T05:57:56Z",
+      "subject": "[statnet_help] Re: statnet_help Digest, Vol 56, Issue 11",
+      "subject_clean": "[statnet_help] Re: statnet_help Digest, Vol 56, Issue 11",
+      "in_reply_to": "<201103270436.p2R4awKs013095@mxout11.cac.washington.edu>",
+      "references": [
+        "<201103270436.p2R4awKs013095@mxout11.cac.washington.edu>"
+      ],
+      "body_plain": "Dear everyone:\n\nI am working on using ergm to analyzing online dating data. My datasets\ncontain two part: one is the edge list, another one is the attributes of\nvertex. I am successful in importing the edge list data. My question is how\nto add attributes of vertex into ergm?\n\nYour answer will be appreciated a lot. Thank U.\n\nBest regards.\n\nSincerely yours.\n\nWang Chengjun\n\n\n\nWeb Mining Lab\nDepartment of Media and Communication\nCity university of Hong kong.\nRoom 105D,Hall 8, City university of Hong kong,\n83 Tat Chee Avenue,kowloon.Hong Kong.\nEmail: wangchj04@gmail.com; chengwang6@student.cityu.edu.hk\nMobile:96442905   Tel:34423580\n\n\n\n\nOn Sun, Mar 27, 2011 at 12:36 PM, <\nstatnet_help-request@mailman2.u.washington.edu> wrote:\n\n> Send statnet_help mailing list submissions to\n>        statnet_help@u.washington.edu\n>\n> To subscribe or unsubscribe via the World Wide Web, visit\n>        http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> or, via email, send a message with subject or body 'help' to\n>        statnet_help-request@mailman2.u.washington.edu\n>\n> You can reach the person managing the list at\n>        statnet_help-owner@mailman2.u.washington.edu\n>\n> When replying, please edit your Subject line so it is more specific\n> than \"Re: Contents of statnet_help digest...\"\n>\n> Today's Topics:\n>\n>   1. Re: Real Basic Question (Semenov Alexander)\n>   2. statnet wrongfully reports directed network as    undirected\n>      (Semenov Alexander)\n>   3. Re: Real Basic Question (Wincent)\n>   4. Re: statnet wrongfully reports directed network as        undirected\n>      (Carter T. Butts)\n>\n>\n> ---------- Forwarded message ----------\n> From: Semenov Alexander <semenoffalex@gmail.com>\n> To: Philip Heinrich <philip.heinrich@phoenix.edu>\n> Date: Sun, 27 Mar 2011 05:46:26 +0300\n> Subject: Re: [statnet_help] Real Basic Question\n> Hello, Philip.\n> I usually import *.csv this way: first import it as matrix, than convert\n> matrix object to network objetc.\n> data.mat<-as.matrix(read.table(\"DATA\"))\n> datan.net<-as.network(data.mat)\n> as.network function has several arguments for loops, directed graphs, etc.\n> You can check it out by executing help(as.network).\n> Here is a reference to some R-related SNA resources:\n>\n> http://jeromyanglim.blogspot.com/2009/08/social-network-analysis-resources-for-r.html\n> Best wishes,\n> Alexander.\n>\n> 2011/3/24 Philip Heinrich <philip.heinrich@phoenix.edu>\n>\n>>  I?m learning Social Network Analysis using Statnet.  I?m trying to load\n>> an Excel spreadsheet with Knoke?s Information Exchange data so I can work\n>> through the examples in Hanneman and Riddle?s Introduction to Social Network\n>> Methods (2005).\n>>\n>>\n>>\n>> I?ve been through *R in a Nutshell* by Joseph Adler, the R Data\n>> Import/Export monograph, and three or four other sources that I have Googled\n>> but the only advise I am getting is to save the Excel file as a CSV or TXT.\n>> I?ve tried read.table, read.csv, and several others but keep getting error\n>> messages such as: object not found; unexpected input; and cannot open\n>> connection.  I?m guessing it has something to do with libraries since laying\n>> out the detailed path to the file doesn?t help.\n>>\n>>\n>>\n>> Two things.  Can someone direct me to a good explanation of how to use\n>> libraries in R?  Second, can someone talk me though my short-term problem so\n>> I can continue to SNA.\n>>\n>>\n>>\n>> Thanks.\n>>\n>>\n>>\n>>\n>>\n>> Philip Heinrich, MA, MBA\n>> Research Manager - Academic Research Group\n>> University of Phoenix\n>> 602-557-1783 - Voice\n>> 602-557-1854 - Fax\n>>\n>>\n>>\n>>\n>>\n>> ------------------------------\n>> This message is private and confidential. If you have received it in\n>> error, please notify the sender and remove it from your system.\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>\n>\n> ---------- Forwarded message ----------\n> From: Semenov Alexander <semenoffalex@gmail.com>\n> To: statnet_help@u.washington.edu\n> Date: Sun, 27 Mar 2011 06:22:20 +0300\n> Subject: [statnet_help] statnet wrongfully reports directed network as\n> undirected\n> Hello, everybody.\n> My question may be very lame and the solution to it is very simple, but I\n> have noone else to ask it.\n> I import a directed network from *.csv file but statnet says, that it's\n> undirected.\n> Here are my commands:\n>\n> lazy.mat<-as.matrix(read.table(\"D:/Disser/lazy_soc.csv\"))\n> lazy.net<-as.network(lazy.mat, directed=TRUE)\n> lazy.net\n>\n> here is the output for the last command:\n>\n> Network attributes:\n>   vertices = 22\n>   directed = FALSE\n>   hyper = FALSE\n>   loops = FALSE\n>   multiple = FALSE\n>   bipartite = 21\n>   total edges= 21\n>     missing edges= 0\n>     non-missing edges= 21\n>\n> While there are 20 nodes and 40 edges.\n> It happends to any *.csv file and the pattern is the following: for N\n> vertices in \"real\" data it shows N+2 vertices and N+1 total edges.\n> I did this procedure before, but everything worked fine.\n> I've attached the file so, that you could check it out ourself.\n> Thanks in advance.\n> Best regards,\n> Alexander.\n>\n>\n> ---------- Forwarded message ----------\n> From: Wincent <ronggui.huang@gmail.com>\n> To: Philip Heinrich <philip.heinrich@phoenix.edu>\n> Date: Sun, 27 Mar 2011 11:45:14 +0800\n> Subject: Re: [statnet_help] Real Basic Question\n> I suspect you use Windows, and use / as path separator.\n> If you file is c:\\exam.csv, you need to use\n> > dat <- read.csv(\"c/exam.csv\")\n>\n> Then you can coerce it to matrix and then to network object, etc.\n>\n> Regards,\n>\n> On 25 March 2011 01:19, Philip Heinrich <philip.heinrich@phoenix.edu>wrote:\n>\n>>  I?m learning Social Network Analysis using Statnet.  I?m trying to load\n>> an Excel spreadsheet with Knoke?s Information Exchange data so I can work\n>> through the examples in Hanneman and Riddle?s Introduction to Social Network\n>> Methods (2005).\n>>\n>>\n>>\n>> I?ve been through *R in a Nutshell* by Joseph Adler, the R Data\n>> Import/Export monograph, and three or four other sources that I have Googled\n>> but the only advise I am getting is to save the Excel file as a CSV or TXT.\n>> I?ve tried read.table, read.csv, and several others but keep getting error\n>> messages such as: object not found; unexpected input; and cannot open\n>> connection.  I?m guessing it has something to do with libraries since laying\n>> out the detailed path to the file doesn?t help.\n>>\n>>\n>>\n>> Two things.  Can someone direct me to a good explanation of how to use\n>> libraries in R?  Second, can someone talk me though my short-term problem so\n>> I can continue to SNA.\n>>\n>>\n>>\n>> Thanks.\n>>\n>>\n>>\n>>\n>>\n>> Philip Heinrich, MA, MBA\n>> Research Manager - Academic Research Group\n>> University of Phoenix\n>> 602-557-1783 - Voice\n>> 602-557-1854 - Fax\n>>\n>>\n>>\n>>\n>>\n>> ------------------------------\n>> This message is private and confidential. If you have received it in\n>> error, please notify the sender and remove it from your system.\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>\n>\n> --\n> Wincent Ronggui HUANG\n> Sociology Department of Fudan University\n> PhD of City University of Hong Kong\n> http://asrr.r-forge.r-project.org/rghuang.html\n>\n>\n>\n> ---------- Forwarded message ----------\n> From: \"Carter T. Butts\" <buttsc@uci.edu>\n> To: statnet_help@u.washington.edu\n> Date: Sat, 26 Mar 2011 21:36:01 -0700\n> Subject: Re: [statnet_help] statnet wrongfully reports directed network as\n> undirected\n> Hi, Alexander.  You are using read.table (with default settings) to import\n> your data, but your data is not in the format it expects (a whitespace\n> delimited table); if you check the results, you will see that it has given\n> you something like this:\n>\n> >head(lazy.mat)\n>     V1\n>\n>\n> [1,]\n> \",Student-1,Student-2,Student-3,Student-4,Student-5,Student-6,Student-7,Student-8,Student-9,Student-10,Student-11,Student-12,Student-13,Student-14,Student-15,Student-16,Student-17,Student-18,Student-19,Student-20\"\n> [2,] \"Student-1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0\"\n>\n> [3,] \"Student-2,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0\"\n>\n> [4,] \"Student-3,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0\"\n> ....\n>\n> Try something like this, instead:\n>\n> lazy.mat<-as.matrix(read.csv(\"/tmp/lazy_soc.csv\",row.names=1))\n> lazy.net<-network(lazy.mat)\n>\n> That works fine on this end.\n>\n> Hope that helps,\n>\n> -Carter\n>\n>\n> On 03/26/2011 08:22 PM, Semenov Alexander wrote:\n>\n>> Hello, everybody.\n>> My question may be very lame and the solution to it is very simple, but\n>> I have noone else to ask it.\n>> I import a directed network from *.csv file but statnet says, that it's\n>> undirected.\n>> Here are my commands:\n>>\n>> lazy.mat<-as.matrix(read.table(\"D:/Disser/lazy_soc.csv\"))\n>> lazy.net <http://lazy.net><-as.network(lazy.mat, directed=TRUE)\n>> lazy.net <http://lazy.net>\n>>\n>> here is the output for the last command:\n>>\n>> Network attributes:\n>>   vertices = 22\n>>   directed = FALSE\n>>   hyper = FALSE\n>>   loops = FALSE\n>>   multiple = FALSE\n>>   bipartite = 21\n>>   total edges= 21\n>>     missing edges= 0\n>>     non-missing edges= 21\n>>\n>> While there are 20 nodes and 40 edges.\n>> It happends to any *.csv file and the pattern is the following: for N\n>> vertices in \"real\" data it shows N+2 vertices and N+1 total edges.\n>> I did this procedure before, but everything worked fine.\n>> I've attached the file so, that you could check it out ourself.\n>> Thanks in advance.\n>> Best regards,\n>> Alexander.\n>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@mailman2.u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110405/bbff1460/attachment.html>",
+      "body_snippet": "Dear everyone:\n\nI am working on using ergm to analyzing online dating data. My datasets\ncontain two part: one is the edge list, another one is the attributes of\nvertex. I am successful in importing th",
+      "thread_id": "thread-ddcb10c8c78b",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-f8648f47a950",
+      "message_id": "<4D9C1134.8000404@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2011-04-06T00:07:32Z",
+      "subject": "[statnet_help] Re: statnet_help Digest, Vol 56, Issue 11",
+      "subject_clean": "[statnet_help] Re: statnet_help Digest, Vol 56, Issue 11",
+      "in_reply_to": "<BANLkTinSXsYO2BbgB=Bbuc+5kC9BtiUWOg@mail.gmail.com>",
+      "references": [
+        "<201103270436.p2R4awKs013095@mxout11.cac.washington.edu>",
+        "<BANLkTinSXsYO2BbgB=Bbuc+5kC9BtiUWOg@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Wang,\n\nOnce you have your object of class network, you can use the \nset.vertex.attribute() function to add vertex attributes. You can also \nuse the wrapper \"%v%\". Here is a simple example:\n\n# Initialize an empty network:\nnet<-network.initialize(7)\n\n# Define a vertex attribute defining the age of each node:\nnodeage<-c(10,12,10,11,9,13,14)\nset.vertex.attribute(net,\"age\",nodeage)\n\n#Or identically, you can do:\nnet %v% \"age\" <-nodeage\n\n# To list all existing vertex attributes:\nlist.vertex.attributes(net)\n\nHope this helps,\nVictorin\n\n\nLe 04/05/2011 02:57 PM, chengjun wang a ?crit :\n> Dear everyone:\n>\n> I am working on using ergm to analyzing online dating data. My datasets\n> contain two part: one is the edge list, another one is the attributes of\n> vertex. I am successful in importing the edge list data. My question is\n> how to add attributes of vertex into ergm?\n>\n> Your answer will be appreciated a lot. Thank U.\n>\n> Best regards.\n>\n> Sincerely yours.\n> Wang Chengjun\n>\n>\n>\n> Web Mining Lab\n> Department of Media and Communication\n> City university of Hong kong.\n> Room 105D,Hall 8, City university of Hong kong,\n> 83 Tat Chee Avenue,kowloon.Hong Kong.\n> Email: wangchj04@gmail.com <mailto:wangchj04@gmail.com>;\n> chengwang6@student.cityu.edu.hk <mailto:chengwang6@student.cityu.edu.hk>\n> Mobile:96442905   Tel:34423580\n>\n>\n>\n>\n> On Sun, Mar 27, 2011 at 12:36 PM,\n> <statnet_help-request@mailman2.u.washington.edu\n> <mailto:statnet_help-request@mailman2.u.washington.edu>> wrote:\n>\n>     Send statnet_help mailing list submissions to\n>     statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>\n>     To subscribe or unsubscribe via the World Wide Web, visit\n>     http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>     or, via email, send a message with subject or body 'help' to\n>     statnet_help-request@mailman2.u.washington.edu\n>     <mailto:statnet_help-request@mailman2.u.washington.edu>\n>\n>     You can reach the person managing the list at\n>     statnet_help-owner@mailman2.u.washington.edu\n>     <mailto:statnet_help-owner@mailman2.u.washington.edu>\n>\n>     When replying, please edit your Subject line so it is more specific\n>     than \"Re: Contents of statnet_help digest...\"\n>\n>     Today's Topics:\n>\n>        1. Re: Real Basic Question (Semenov Alexander)\n>        2. statnet wrongfully reports directed network as    undirected\n>           (Semenov Alexander)\n>        3. Re: Real Basic Question (Wincent)\n>        4. Re: statnet wrongfully reports directed network as\n>       undirected\n>           (Carter T. Butts)\n>\n>\n>     ---------- Forwarded message ----------\n>     From: Semenov Alexander <semenoffalex@gmail.com\n>     <mailto:semenoffalex@gmail.com>>\n>     To: Philip Heinrich <philip.heinrich@phoenix.edu\n>     <mailto:philip.heinrich@phoenix.edu>>\n>     Date: Sun, 27 Mar 2011 05:46:26 +0300\n>     Subject: Re: [statnet_help] Real Basic Question\n>     Hello, Philip.\n>     I usually import *.csv this way: first import it as matrix, than\n>     convert matrix object to network objetc.\n>     data.mat<-as.matrix(read.table(\"DATA\"))\n>     datan.net <http://datan.net><-as.network(data.mat)\n>     as.network function has several arguments for loops, directed\n>     graphs, etc. You can check it out by executing help(as.network).\n>     Here is a reference to some R-related SNA resources:\n>     http://jeromyanglim.blogspot.com/2009/08/social-network-analysis-resources-for-r.html\n>     Best wishes,\n>     Alexander.\n>\n>     2011/3/24 Philip Heinrich <philip.heinrich@phoenix.edu\n>     <mailto:philip.heinrich@phoenix.edu>>\n>\n>         I?m learning Social Network Analysis using Statnet.  I?m trying\n>         to load an Excel spreadsheet with Knoke?s Information Exchange\n>         data so I can work through the examples in Hanneman and Riddle?s\n>         Introduction to Social Network Methods (2005).\n>\n>         I?ve been through *R in a Nutshell* by Joseph Adler, the R Data\n>         Import/Export monograph, and three or four other sources that I\n>         have Googled but the only advise I am getting is to save the\n>         Excel file as a CSV or TXT.  I?ve tried read.table, read.csv,\n>         and several others but keep getting error messages such as:\n>         object not found; unexpected input; and cannot open connection.\n>         I?m guessing it has something to do with libraries since laying\n>         out the detailed path to the file doesn?t help.\n>\n>         Two things.  Can someone direct me to a good explanation of how\n>         to use libraries in R?  Second, can someone talk me though my\n>         short-term problem so I can continue to SNA.\n>\n>         Thanks.\n>\n>         Philip Heinrich, MA, MBA\n>         Research Manager - Academic Research Group\n>         University of Phoenix\n>         602-557-1783 - Voice\n>         602-557-1854 - Fax\n>\n>\n>         ------------------------------------------------------------------------\n>         This message is private and confidential. If you have received\n>         it in error, please notify the sender and remove it from your\n>         system.\n>\n>\n>         _______________________________________________\n>         statnet_help mailing list\n>         statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>         http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n>\n>     ---------- Forwarded message ----------\n>     From: Semenov Alexander <semenoffalex@gmail.com\n>     <mailto:semenoffalex@gmail.com>>\n>     To: statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>     Date: Sun, 27 Mar 2011 06:22:20 +0300\n>     Subject: [statnet_help] statnet wrongfully reports directed network\n>     as undirected\n>     Hello, everybody.\n>     My question may be very lame and the solution to it is very simple,\n>     but I have noone else to ask it.\n>     I import a directed network from *.csv file but statnet says, that\n>     it's undirected.\n>     Here are my commands:\n>\n>     lazy.mat<-as.matrix(read.table(\"D:/Disser/lazy_soc.csv\"))\n>     lazy.net <http://lazy.net><-as.network(lazy.mat, directed=TRUE)\n>     lazy.net <http://lazy.net>\n>\n>     here is the output for the last command:\n>\n>     Network attributes:\n>        vertices = 22\n>        directed = FALSE\n>        hyper = FALSE\n>        loops = FALSE\n>        multiple = FALSE\n>        bipartite = 21\n>        total edges= 21\n>          missing edges= 0\n>          non-missing edges= 21\n>\n>     While there are 20 nodes and 40 edges.\n>     It happends to any *.csv file and the pattern is the following: for\n>     N vertices in \"real\" data it shows N+2 vertices and N+1 total edges.\n>     I did this procedure before, but everything worked fine.\n>     I've attached the file so, that you could check it out ourself.\n>     Thanks in advance.\n>     Best regards,\n>     Alexander.\n>\n>\n>     ---------- Forwarded message ----------\n>     From: Wincent <ronggui.huang@gmail.com <mailto:ronggui.huang@gmail.com>>\n>     To: Philip Heinrich <philip.heinrich@phoenix.edu\n>     <mailto:philip.heinrich@phoenix.edu>>\n>     Date: Sun, 27 Mar 2011 11:45:14 +0800\n>     Subject: Re: [statnet_help] Real Basic Question\n>     I suspect you use Windows, and use / as path separator.\n>     If you file is c:\\exam.csv, you need to use\n>      > dat <- read.csv(\"c/exam.csv\")\n>\n>     Then you can coerce it to matrix and then to network object, etc.\n>\n>     Regards,\n>\n>     On 25 March 2011 01:19, Philip Heinrich <philip.heinrich@phoenix.edu\n>     <mailto:philip.heinrich@phoenix.edu>> wrote:\n>\n>         I?m learning Social Network Analysis using Statnet.  I?m trying\n>         to load an Excel spreadsheet with Knoke?s Information Exchange\n>         data so I can work through the examples in Hanneman and Riddle?s\n>         Introduction to Social Network Methods (2005).\n>\n>         I?ve been through *R in a Nutshell* by Joseph Adler, the R Data\n>         Import/Export monograph, and three or four other sources that I\n>         have Googled but the only advise I am getting is to save the\n>         Excel file as a CSV or TXT.  I?ve tried read.table, read.csv,\n>         and several others but keep getting error messages such as:\n>         object not found; unexpected input; and cannot open connection.\n>         I?m guessing it has something to do with libraries since laying\n>         out the detailed path to the file doesn?t help.\n>\n>         Two things.  Can someone direct me to a good explanation of how\n>         to use libraries in R?  Second, can someone talk me though my\n>         short-term problem so I can continue to SNA.\n>\n>         Thanks.\n>\n>         Philip Heinrich, MA, MBA\n>         Research Manager - Academic Research Group\n>         University of Phoenix\n>         602-557-1783 - Voice\n>         602-557-1854 - Fax\n>\n>\n>         ------------------------------------------------------------------------\n>         This message is private and confidential. If you have received\n>         it in error, please notify the sender and remove it from your\n>         system.\n>\n>\n>         _______________________________________________\n>         statnet_help mailing list\n>         statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>         http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n>\n>     --\n>     Wincent Ronggui HUANG\n>     Sociology Department of Fudan University\n>     PhD of City University of Hong Kong\n>     http://asrr.r-forge.r-project.org/rghuang.html\n>\n>\n>\n>     ---------- Forwarded message ----------\n>     From: \"Carter T. Butts\" <buttsc@uci.edu <mailto:buttsc@uci.edu>>\n>     To: statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>     Date: Sat, 26 Mar 2011 21:36:01 -0700\n>     Subject: Re: [statnet_help] statnet wrongfully reports directed\n>     network as undirected\n>     Hi, Alexander.  You are using read.table (with default settings) to\n>     import your data, but your data is not in the format it expects (a\n>     whitespace delimited table); if you check the results, you will see\n>     that it has given you something like this:\n>\n>      >head(lazy.mat)\n>          V1\n>\n>\n>     [1,]\n>     \",Student-1,Student-2,Student-3,Student-4,Student-5,Student-6,Student-7,Student-8,Student-9,Student-10,Student-11,Student-12,Student-13,Student-14,Student-15,Student-16,Student-17,Student-18,Student-19,Student-20\"\n>     [2,] \"Student-1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0\"\n>\n>     [3,] \"Student-2,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0\"\n>\n>     [4,] \"Student-3,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0\"\n>     ....\n>\n>     Try something like this, instead:\n>\n>     lazy.mat<-as.matrix(read.csv(\"/tmp/lazy_soc.csv\",row.names=1))\n>     lazy.net <http://lazy.net><-network(lazy.mat)\n>\n>     That works fine on this end.\n>\n>     Hope that helps,\n>\n>     -Carter\n>\n>\n>     On 03/26/2011 08:22 PM, Semenov Alexander wrote:\n>\n>         Hello, everybody.\n>         My question may be very lame and the solution to it is very\n>         simple, but\n>         I have noone else to ask it.\n>         I import a directed network from *.csv file but statnet says,\n>         that it's\n>         undirected.\n>         Here are my commands:\n>\n>         lazy.mat<-as.matrix(read.table(\"D:/Disser/lazy_soc.csv\"))\n>         lazy.net <http://lazy.net>\n>         <http://lazy.net><-as.network(lazy.mat, directed=TRUE)\n>         lazy.net <http://lazy.net> <http://lazy.net>\n>\n>         here is the output for the last command:\n>\n>         Network attributes:\n>            vertices = 22\n>            directed = FALSE\n>            hyper = FALSE\n>            loops = FALSE\n>            multiple = FALSE\n>            bipartite = 21\n>            total edges= 21\n>              missing edges= 0\n>              non-missing edges= 21\n>\n>         While there are 20 nodes and 40 edges.\n>         It happends to any *.csv file and the pattern is the following:\n>         for N\n>         vertices in \"real\" data it shows N+2 vertices and N+1 total edges.\n>         I did this procedure before, but everything worked fine.\n>         I've attached the file so, that you could check it out ourself.\n>         Thanks in advance.\n>         Best regards,\n>         Alexander.\n>\n>\n>\n>         _______________________________________________\n>         statnet_help mailing list\n>         statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>         http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n>\n>     _______________________________________________\n>     statnet_help mailing list\n>     statnet_help@mailman2.u.washington.edu\n>     <mailto:statnet_help@mailman2.u.washington.edu>\n>     http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Hi Wang,\n\nOnce you have your object of class network, you can use the \nset.vertex.attribute() function to add vertex attributes. You can also \nuse the wrapper \"%v%\". Here is a simple example:\n\n# Initi",
+      "thread_id": "thread-ddcb10c8c78b",
+      "thread_depth": 1,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-e78008ac4984",
+      "message_id": "<7ECAAF7A-42C1-4A1B-B51B-BF8909A05B08@gmail.com>",
+      "from_name": "Simone Gabbriellini",
+      "from_email_hash": "28a5511d14889ed7a9cead1a4c5c2eaa14a88c2b4b5d3fded2bed235eea4d272",
+      "date": "2011-04-06T06:30:23Z",
+      "subject": "[statnet_help] how to manage a bipartite network",
+      "subject_clean": "[statnet_help] how to manage a bipartite network",
+      "in_reply_to": null,
+      "references": [
+        "<97F2FBFD-D8C1-435C-BADE-3B8B664D4AC2@gmail.com>"
+      ],
+      "body_plain": "Dear List,\n\nI would like to try the ergm package on my bipartite network, but I am facing some issues importing my data. \nMy network is in Pajek format, like: \n\n*Vertices 1296\n1 \"1\" circle ic \"cyan\"\n2 \"2\" circle ic \"cyan\"\n3 \"3\" circle ic \"cyan\"\n4 \"4\" square ic \"yellow\"\n5 \"5\" circle ic \"cyan\"\n6 \"6\" circle ic \"cyan\"\n7 \"7\" square ic \"yellow\"\n8 \"8\" circle ic \"cyan\"\n....\n*Edges\n580 1124\n792 1244\n424 539\n784 1275\n288 1261\n919 957\n754 888\n...\n\nI saved it as a pajek file from igraph. \n\nCircle \"cyan\" nodes belong to the actors set, while square \"yellow\" nodes belong to the events set. \n\nI can read the network with read.paj(), but I don't know how to coerce it to bipartite. Is it possible?\n\nThanks in advance for any help.\n\nBest,\nSimone",
+      "body_snippet": "Dear List,\n\nI would like to try the ergm package on my bipartite network, but I am facing some issues importing my data. \nMy network is in Pajek format, like: \n\n*Vertices 1296\n1 \"1\" circle ic \"cyan\"\n2",
+      "thread_id": "thread-e78008ac4984",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-3fb1531cd06a",
+      "message_id": "<798FF3A49CD1EE43BEAE3523FC9EF5B28BF9F03267@EXCH07-03.apollogrp.edu>",
+      "from_name": "Philip Heinrich",
+      "from_email_hash": "eef65b2d9592fd15623682df130f7f9274763e62d74facbee5922b6659e32584",
+      "date": "2011-04-06T08:34:00Z",
+      "subject": "[statnet_help] A Couple of Real Basic Questions",
+      "subject_clean": "[statnet_help] A Couple of Real Basic Questions",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Continuing to struggle getting data into a format where I can actually run some analyses.  So far I have been able to get a 10 by 10 matrix into the Network package by loading an edgelist in csv format first as a matrix and then as a network.  The syntax was as follows:\n\n                Data.mat<-as.matrix(read.table(\"data.csv\",header=FALSE,sep=\",\")\n\n                Data.net<-as.network(Data.mat)\n\nThe answer to two questions will get me quite a bit farther down the road.  First, how do I attach covariates to the 10 by 10 matrix?  I assume that the covariates will show up as additional columns in the matrix.  How do I designate the first ten columns as vertices and the next two as covariates?\n\nThe second question is how do I label the vertices in the matrix?\n\nI have been reading just about everything I can get my hands on for the past two weeks and working my way through examples.  I'm really anxious to start working with some real data.  Virtually everything I have read assumes that the data tables are loaded and ready to go.  There seems to be a real gap in the literature to SPSS users like me who are not familiar with command languages.  Can someone direct me to, \"Getting Data Loaded into Statnet For Dummies?\"\n\n________________________________\nThis message is private and confidential. If you have received it in error, please notify the sender and remove it from your system.\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110406/db59da3d/attachment.html>",
+      "body_snippet": "Continuing to struggle getting data into a format where I can actually run some analyses.  So far I have been able to get a 10 by 10 matrix into the Network package by loading an edgelist in csv forma",
+      "thread_id": "thread-3fb1531cd06a",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-98c183b5749e",
+      "message_id": "<BANLkTimhPS=a4Ep_mJ-zMVpJvtF18QSJVg@mail.gmail.com>",
+      "from_name": "chengjun wang",
+      "from_email_hash": "48d0e4355a7b670f78b80a940ebdd6d299c8a10a0424a9369941196090fcd120",
+      "date": "2011-04-06T09:18:03Z",
+      "subject": "[statnet_help] Re: statnet_help Digest, Vol 57, Issue 4",
+      "subject_clean": "[statnet_help] Re: statnet_help Digest, Vol 57, Issue 4",
+      "in_reply_to": "<201104061534.p36FYJcU004581@mxout12.cac.washington.edu>",
+      "references": [
+        "<201104061534.p36FYJcU004581@mxout12.cac.washington.edu>"
+      ],
+      "body_plain": "Thank you for your reply. It's very helpful.\n\nBest regards.\n\nSincerely yours.\n\nWang Chengjun\n\n\n\nWeb Mining Lab\nDepartment of Media and Communication\nCity university of Hong kong.\nRoom 105D,Hall 8, City university of Hong kong,\n83 Tat Chee Avenue,kowloon.Hong Kong.\nEmail: wangchj04@gmail.com; chengwang6@student.cityu.edu.hk\nMobile:96442905   Tel:34423580\n\n\n\n\nOn Wed, Apr 6, 2011 at 11:34 PM, <\nstatnet_help-request@mailman2.u.washington.edu> wrote:\n\n> Send statnet_help mailing list submissions to\n>        statnet_help@u.washington.edu\n>\n> To subscribe or unsubscribe via the World Wide Web, visit\n>        http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> or, via email, send a message with subject or body 'help' to\n>        statnet_help-request@mailman2.u.washington.edu\n>\n> You can reach the person managing the list at\n>        statnet_help-owner@mailman2.u.washington.edu\n>\n> When replying, please edit your Subject line so it is more specific\n> than \"Re: Contents of statnet_help digest...\"\n>\n> Today's Topics:\n>\n>   1. Re: Re: statnet_help Digest, Vol 56, Issue 11 (Victorin Luisier)\n>   2. how to manage a bipartite network (Simone Gabbriellini)\n>   3. A Couple of Real Basic Questions (Philip Heinrich)\n>\n>\n> ---------- Forwarded message ----------\n> From: Victorin Luisier <Victorin.Luisier@unige.ch>\n> To: statnet_help@u.washington.edu\n> Date: Wed, 06 Apr 2011 09:07:32 +0200\n> Subject: Re: [statnet_help] Re: statnet_help Digest, Vol 56, Issue 11\n> Hi Wang,\n>\n> Once you have your object of class network, you can use the\n> set.vertex.attribute() function to add vertex attributes. You can also use\n> the wrapper \"%v%\". Here is a simple example:\n>\n> # Initialize an empty network:\n> net<-network.initialize(7)\n>\n> # Define a vertex attribute defining the age of each node:\n> nodeage<-c(10,12,10,11,9,13,14)\n> set.vertex.attribute(net,\"age\",nodeage)\n>\n> #Or identically, you can do:\n> net %v% \"age\" <-nodeage\n>\n> # To list all existing vertex attributes:\n> list.vertex.attributes(net)\n>\n> Hope this helps,\n> Victorin\n>\n>\n> Le 04/05/2011 02:57 PM, chengjun wang a ?crit :\n>\n>> Dear everyone:\n>>\n>> I am working on using ergm to analyzing online dating data. My datasets\n>> contain two part: one is the edge list, another one is the attributes of\n>> vertex. I am successful in importing the edge list data. My question is\n>> how to add attributes of vertex into ergm?\n>>\n>> Your answer will be appreciated a lot. Thank U.\n>>\n>> Best regards.\n>>\n>> Sincerely yours.\n>> Wang Chengjun\n>>\n>>\n>>\n>> Web Mining Lab\n>> Department of Media and Communication\n>> City university of Hong kong.\n>> Room 105D,Hall 8, City university of Hong kong,\n>> 83 Tat Chee Avenue,kowloon.Hong Kong.\n>> Email: wangchj04@gmail.com <mailto:wangchj04@gmail.com>;\n>> chengwang6@student.cityu.edu.hk <mailto:chengwang6@student.cityu.edu.hk>\n>> Mobile:96442905   Tel:34423580\n>>\n>>\n>>\n>>\n>> On Sun, Mar 27, 2011 at 12:36 PM,\n>> <statnet_help-request@mailman2.u.washington.edu\n>> <mailto:statnet_help-request@mailman2.u.washington.edu>> wrote:\n>>\n>>    Send statnet_help mailing list submissions to\n>>    statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>>\n>>    To subscribe or unsubscribe via the World Wide Web, visit\n>>    http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>    or, via email, send a message with subject or body 'help' to\n>>    statnet_help-request@mailman2.u.washington.edu\n>>    <mailto:statnet_help-request@mailman2.u.washington.edu>\n>>\n>>    You can reach the person managing the list at\n>>    statnet_help-owner@mailman2.u.washington.edu\n>>    <mailto:statnet_help-owner@mailman2.u.washington.edu>\n>>\n>>    When replying, please edit your Subject line so it is more specific\n>>    than \"Re: Contents of statnet_help digest...\"\n>>\n>>    Today's Topics:\n>>\n>>       1. Re: Real Basic Question (Semenov Alexander)\n>>       2. statnet wrongfully reports directed network as    undirected\n>>          (Semenov Alexander)\n>>       3. Re: Real Basic Question (Wincent)\n>>       4. Re: statnet wrongfully reports directed network as\n>>      undirected\n>>          (Carter T. Butts)\n>>\n>>\n>>    ---------- Forwarded message ----------\n>>    From: Semenov Alexander <semenoffalex@gmail.com\n>>    <mailto:semenoffalex@gmail.com>>\n>>    To: Philip Heinrich <philip.heinrich@phoenix.edu\n>>    <mailto:philip.heinrich@phoenix.edu>>\n>>    Date: Sun, 27 Mar 2011 05:46:26 +0300\n>>    Subject: Re: [statnet_help] Real Basic Question\n>>    Hello, Philip.\n>>    I usually import *.csv this way: first import it as matrix, than\n>>    convert matrix object to network objetc.\n>>    data.mat<-as.matrix(read.table(\"DATA\"))\n>>    datan.net <http://datan.net><-as.network(data.mat)\n>>    as.network function has several arguments for loops, directed\n>>    graphs, etc. You can check it out by executing help(as.network).\n>>    Here is a reference to some R-related SNA resources:\n>>\n>> http://jeromyanglim.blogspot.com/2009/08/social-network-analysis-resources-for-r.html\n>>    Best wishes,\n>>    Alexander.\n>>\n>>    2011/3/24 Philip Heinrich <philip.heinrich@phoenix.edu\n>>    <mailto:philip.heinrich@phoenix.edu>>\n>>\n>>        I?m learning Social Network Analysis using Statnet.  I?m trying\n>>        to load an Excel spreadsheet with Knoke?s Information Exchange\n>>        data so I can work through the examples in Hanneman and Riddle?s\n>>        Introduction to Social Network Methods (2005).\n>>\n>>        I?ve been through *R in a Nutshell* by Joseph Adler, the R Data\n>>        Import/Export monograph, and three or four other sources that I\n>>        have Googled but the only advise I am getting is to save the\n>>        Excel file as a CSV or TXT.  I?ve tried read.table, read.csv,\n>>        and several others but keep getting error messages such as:\n>>        object not found; unexpected input; and cannot open connection.\n>>        I?m guessing it has something to do with libraries since laying\n>>        out the detailed path to the file doesn?t help.\n>>\n>>        Two things.  Can someone direct me to a good explanation of how\n>>        to use libraries in R?  Second, can someone talk me though my\n>>        short-term problem so I can continue to SNA.\n>>\n>>        Thanks.\n>>\n>>        Philip Heinrich, MA, MBA\n>>        Research Manager - Academic Research Group\n>>        University of Phoenix\n>>        602-557-1783 - Voice\n>>        602-557-1854 - Fax\n>>\n>>\n>>\n>>  ------------------------------------------------------------------------\n>>        This message is private and confidential. If you have received\n>>        it in error, please notify the sender and remove it from your\n>>        system.\n>>\n>>\n>>        _______________________________________________\n>>        statnet_help mailing list\n>>        statnet_help@u.washington.edu <mailto:\n>> statnet_help@u.washington.edu>\n>>        http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>>\n>>\n>>    ---------- Forwarded message ----------\n>>    From: Semenov Alexander <semenoffalex@gmail.com\n>>    <mailto:semenoffalex@gmail.com>>\n>>    To: statnet_help@u.washington.edu <mailto:\n>> statnet_help@u.washington.edu>\n>>    Date: Sun, 27 Mar 2011 06:22:20 +0300\n>>    Subject: [statnet_help] statnet wrongfully reports directed network\n>>    as undirected\n>>    Hello, everybody.\n>>    My question may be very lame and the solution to it is very simple,\n>>    but I have noone else to ask it.\n>>    I import a directed network from *.csv file but statnet says, that\n>>    it's undirected.\n>>    Here are my commands:\n>>\n>>    lazy.mat<-as.matrix(read.table(\"D:/Disser/lazy_soc.csv\"))\n>>    lazy.net <http://lazy.net><-as.network(lazy.mat, directed=TRUE)\n>>    lazy.net <http://lazy.net>\n>>\n>>    here is the output for the last command:\n>>\n>>    Network attributes:\n>>       vertices = 22\n>>       directed = FALSE\n>>       hyper = FALSE\n>>       loops = FALSE\n>>       multiple = FALSE\n>>       bipartite = 21\n>>       total edges= 21\n>>         missing edges= 0\n>>         non-missing edges= 21\n>>\n>>    While there are 20 nodes and 40 edges.\n>>    It happends to any *.csv file and the pattern is the following: for\n>>    N vertices in \"real\" data it shows N+2 vertices and N+1 total edges.\n>>    I did this procedure before, but everything worked fine.\n>>    I've attached the file so, that you could check it out ourself.\n>>    Thanks in advance.\n>>    Best regards,\n>>    Alexander.\n>>\n>>\n>>    ---------- Forwarded message ----------\n>>    From: Wincent <ronggui.huang@gmail.com <mailto:ronggui.huang@gmail.com\n>> >>\n>>    To: Philip Heinrich <philip.heinrich@phoenix.edu\n>>    <mailto:philip.heinrich@phoenix.edu>>\n>>    Date: Sun, 27 Mar 2011 11:45:14 +0800\n>>    Subject: Re: [statnet_help] Real Basic Question\n>>    I suspect you use Windows, and use / as path separator.\n>>    If you file is c:\\exam.csv, you need to use\n>>     > dat <- read.csv(\"c/exam.csv\")\n>>\n>>    Then you can coerce it to matrix and then to network object, etc.\n>>\n>>    Regards,\n>>\n>>    On 25 March 2011 01:19, Philip Heinrich <philip.heinrich@phoenix.edu\n>>    <mailto:philip.heinrich@phoenix.edu>> wrote:\n>>\n>>        I?m learning Social Network Analysis using Statnet.  I?m trying\n>>        to load an Excel spreadsheet with Knoke?s Information Exchange\n>>        data so I can work through the examples in Hanneman and Riddle?s\n>>        Introduction to Social Network Methods (2005).\n>>\n>>        I?ve been through *R in a Nutshell* by Joseph Adler, the R Data\n>>        Import/Export monograph, and three or four other sources that I\n>>        have Googled but the only advise I am getting is to save the\n>>        Excel file as a CSV or TXT.  I?ve tried read.table, read.csv,\n>>        and several others but keep getting error messages such as:\n>>        object not found; unexpected input; and cannot open connection.\n>>        I?m guessing it has something to do with libraries since laying\n>>        out the detailed path to the file doesn?t help.\n>>\n>>        Two things.  Can someone direct me to a good explanation of how\n>>        to use libraries in R?  Second, can someone talk me though my\n>>        short-term problem so I can continue to SNA.\n>>\n>>        Thanks.\n>>\n>>        Philip Heinrich, MA, MBA\n>>        Research Manager - Academic Research Group\n>>        University of Phoenix\n>>        602-557-1783 - Voice\n>>        602-557-1854 - Fax\n>>\n>>\n>>\n>>  ------------------------------------------------------------------------\n>>        This message is private and confidential. If you have received\n>>        it in error, please notify the sender and remove it from your\n>>        system.\n>>\n>>\n>>        _______________________________________________\n>>        statnet_help mailing list\n>>        statnet_help@u.washington.edu <mailto:\n>> statnet_help@u.washington.edu>\n>>        http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>>\n>>\n>>    --\n>>    Wincent Ronggui HUANG\n>>    Sociology Department of Fudan University\n>>    PhD of City University of Hong Kong\n>>    http://asrr.r-forge.r-project.org/rghuang.html\n>>\n>>\n>>\n>>    ---------- Forwarded message ----------\n>>    From: \"Carter T. Butts\" <buttsc@uci.edu <mailto:buttsc@uci.edu>>\n>>    To: statnet_help@u.washington.edu <mailto:\n>> statnet_help@u.washington.edu>\n>>    Date: Sat, 26 Mar 2011 21:36:01 -0700\n>>    Subject: Re: [statnet_help] statnet wrongfully reports directed\n>>    network as undirected\n>>    Hi, Alexander.  You are using read.table (with default settings) to\n>>    import your data, but your data is not in the format it expects (a\n>>    whitespace delimited table); if you check the results, you will see\n>>    that it has given you something like this:\n>>\n>>     >head(lazy.mat)\n>>         V1\n>>\n>>\n>>    [1,]\n>>\n>>  \",Student-1,Student-2,Student-3,Student-4,Student-5,Student-6,Student-7,Student-8,Student-9,Student-10,Student-11,Student-12,Student-13,Student-14,Student-15,Student-16,Student-17,Student-18,Student-19,Student-20\"\n>>    [2,] \"Student-1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0\"\n>>\n>>    [3,] \"Student-2,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0\"\n>>\n>>    [4,] \"Student-3,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0\"\n>>    ....\n>>\n>>    Try something like this, instead:\n>>\n>>    lazy.mat<-as.matrix(read.csv(\"/tmp/lazy_soc.csv\",row.names=1))\n>>    lazy.net <http://lazy.net><-network(lazy.mat)\n>>\n>>    That works fine on this end.\n>>\n>>    Hope that helps,\n>>\n>>    -Carter\n>>\n>>\n>>    On 03/26/2011 08:22 PM, Semenov Alexander wrote:\n>>\n>>        Hello, everybody.\n>>        My question may be very lame and the solution to it is very\n>>        simple, but\n>>        I have noone else to ask it.\n>>        I import a directed network from *.csv file but statnet says,\n>>        that it's\n>>        undirected.\n>>        Here are my commands:\n>>\n>>        lazy.mat<-as.matrix(read.table(\"D:/Disser/lazy_soc.csv\"))\n>>        lazy.net <http://lazy.net>\n>>        <http://lazy.net><-as.network(lazy.mat, directed=TRUE)\n>>        lazy.net <http://lazy.net> <http://lazy.net>\n>>\n>>        here is the output for the last command:\n>>\n>>        Network attributes:\n>>           vertices = 22\n>>           directed = FALSE\n>>           hyper = FALSE\n>>           loops = FALSE\n>>           multiple = FALSE\n>>           bipartite = 21\n>>           total edges= 21\n>>             missing edges= 0\n>>             non-missing edges= 21\n>>\n>>        While there are 20 nodes and 40 edges.\n>>        It happends to any *.csv file and the pattern is the following:\n>>        for N\n>>        vertices in \"real\" data it shows N+2 vertices and N+1 total edges.\n>>        I did this procedure before, but everything worked fine.\n>>        I've attached the file so, that you could check it out ourself.\n>>        Thanks in advance.\n>>        Best regards,\n>>        Alexander.\n>>\n>>\n>>\n>>        _______________________________________________\n>>        statnet_help mailing list\n>>        statnet_help@u.washington.edu <mailto:\n>> statnet_help@u.washington.edu>\n>>        http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>>\n>>\n>>    _______________________________________________\n>>    statnet_help mailing list\n>>    statnet_help@mailman2.u.washington.edu\n>>    <mailto:statnet_help@mailman2.u.washington.edu>\n>>    http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n> --\n> Victorin LUISIER, Assistant doctorant\n> M?thodologie et Analyse de donn?es\n> FAPSE - UNIGE\n> Bureau n?4139 - Unimail\n> Bd du Pont d'Arve 40\n> 1211 Gen?ve 4\n> T?l: (+41-22) 379 91 34\n> E-mail: victorin.luisier@unige.ch\n>\n>\n>\n> ---------- Forwarded message ----------\n> From: Simone Gabbriellini <simone.gabbriellini@gmail.com>\n> To: statnet <statnet_help@u.washington.edu>\n> Date: Wed, 6 Apr 2011 15:30:23 +0200\n> Subject: [statnet_help] how to manage a bipartite network\n> Dear List,\n>\n> I would like to try the ergm package on my bipartite network, but I am\n> facing some issues importing my data.\n> My network is in Pajek format, like:\n>\n> *Vertices 1296\n> 1 \"1\" circle ic \"cyan\"\n> 2 \"2\" circle ic \"cyan\"\n> 3 \"3\" circle ic \"cyan\"\n> 4 \"4\" square ic \"yellow\"\n> 5 \"5\" circle ic \"cyan\"\n> 6 \"6\" circle ic \"cyan\"\n> 7 \"7\" square ic \"yellow\"\n> 8 \"8\" circle ic \"cyan\"\n> ....\n> *Edges\n> 580 1124\n> 792 1244\n> 424 539\n> 784 1275\n> 288 1261\n> 919 957\n> 754 888\n> ...\n>\n> I saved it as a pajek file from igraph.\n>\n> Circle \"cyan\" nodes belong to the actors set, while square \"yellow\" nodes\n> belong to the events set.\n>\n> I can read the network with read.paj(), but I don't know how to coerce it\n> to bipartite. Is it possible?\n>\n> Thanks in advance for any help.\n>\n> Best,\n> Simone\n>\n>\n>\n>\n> ---------- Forwarded message ----------\n> From: Philip Heinrich <philip.heinrich@phoenix.edu>\n> To: \"statnet_help@u.washington.edu\" <statnet_help@u.washington.edu>\n> Date: Wed, 6 Apr 2011 08:34:00 -0700\n> Subject: [statnet_help] A Couple of Real Basic Questions\n>\n> Continuing to struggle getting data into a format where I can actually run\n> some analyses.  So far I have been able to get a 10 by 10 matrix into the\n> Network package by loading an edgelist in csv format first as a matrix and\n> then as a network.  The syntax was as follows:\n>\n>\n>\n>\n> Data.mat<-as.matrix(read.table(?data.csv?,header=FALSE,sep=?,?)\n>\n>\n>\n>                 Data.net<-as.network(Data.mat)\n>\n>\n>\n> The answer to two questions will get me quite a bit farther down the road.\n> First, how do I attach covariates to the 10 by 10 matrix?  I assume that the\n> covariates will show up as additional columns in the matrix.  How do I\n> designate the first ten columns as vertices and the next two as covariates?\n>\n>\n>\n> The second question is how do I label the vertices in the matrix?\n>\n>\n>\n> I have been reading just about everything I can get my hands on for the\n> past two weeks and working my way through examples.  I?m really anxious to\n> start working with some real data.  Virtually everything I have read assumes\n> that the data tables are loaded and ready to go.  There seems to be a real\n> gap in the literature to SPSS users like me who are not familiar with\n> command languages.  Can someone direct me to, ?Getting Data Loaded into\n> Statnet For Dummies??\n>\n> ------------------------------\n> This message is private and confidential. If you have received it in error,\n> please notify the sender and remove it from your system.\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@mailman2.u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110407/d65ced30/attachment.html>",
+      "body_snippet": "Thank you for your reply. It's very helpful.\n\nBest regards.\n\nSincerely yours.\n\nWang Chengjun\n\n\n\nWeb Mining Lab\nDepartment of Media and Communication\nCity university of Hong kong.\nRoom 105D,Hall 8, Cit",
+      "thread_id": "thread-98c183b5749e",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-b505a37ad13f",
+      "message_id": "<4D9CA70D.3010109@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2011-04-06T10:46:53Z",
+      "subject": "[statnet_help] A Couple of Real Basic Questions",
+      "subject_clean": "[statnet_help] A Couple of Real Basic Questions",
+      "in_reply_to": "<798FF3A49CD1EE43BEAE3523FC9EF5B28BF9F03267@EXCH07-03.apollogrp.edu>",
+      "references": [
+        "<798FF3A49CD1EE43BEAE3523FC9EF5B28BF9F03267@EXCH07-03.apollogrp.edu>"
+      ],
+      "body_plain": "Hi Philip,\n\n> First, how do I attach covariates to the 10 by 10 matrix?\n\nTo attach covariates to an object of class network, you can use the \nset.vertex.attribute() function. For example:\n\nnodeage<-c(10,12,10,11,9,13,14,23,21,21) # age of each node:\nset.vertex.attribute(Data.net,\"age\",nodeage)\n\nIdentically, you could use:\n\nData.net %v% \"age\"<-nodeage\n\n> The second question is how do I label the vertices in the matrix?\n\nWhen you list the existing attributes in you network object, you see \nthat a \"vertex.name\" atttribute already exist:\n\nlist.vertex.attributes(Data.net) #list existing vertex attributes\nget.vertex.attribute(Data.net,\"vertex.names\")\n\nTo replace the default values:\n\nnames<-c(\"A\",\"B\",\"C\",\"D\",\"E\",\"F\",\"G\",\"H\",\"I\",\"J\")\nset.vertex.attribute(Data.net,\"vertex.names\",names)\n\nIdentically:\n\nData.net %v% \"vertex.names\"<-names\n\n> Can someone direct me to, ?Getting Data Loaded into Statnet For Dummies??\n\nSince the network objects used by Statnet are of class \"network\" (this \nclass is defined in the network package), I recommend you to read: \nButts, C. T. (2008). network: a Package for Managing Relational Data in \nR. Journal of Statistical.\n\nSee also the help pages:\nhelp(attribute.methods)\n\nHope this will help,\nVictorin Luisier\n\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Hi Philip,\n\n> First, how do I attach covariates to the 10 by 10 matrix?\n\nTo attach covariates to an object of class network, you can use the \nset.vertex.attribute() function. For example:\n\nnodeage<-c(",
+      "thread_id": "thread-3fb1531cd06a",
+      "thread_depth": 1,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-30ade3350fc7",
+      "message_id": "<alpine.LRH.2.01.1104070914370.24595@hymn33.u.washington.edu>",
+      "from_name": "stanj@u.washington.edu",
+      "from_email_hash": "67c87847c37c18e652cb63f9975cd85d256dc0a7b95ab36680da1e84be17d41b",
+      "date": "2011-04-07T09:14:37Z",
+      "subject": "[statnet_help] Nodemix Coefficient Estimates",
+      "subject_clean": "[statnet_help] Nodemix Coefficient Estimates",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello Everyone,\nI was running a simple nodemix model and getting some interesting results.  I have a directed network with 358 vertices and 353 edges.  I have several binary node classifications coded as vertex attributes (where around 45-50 vertices are classified with a 1 and the rest with a 0). I am several different node mixing models, such as: ergm(allnet~nodemix(\"a\")), ergm(allnet~nodemix(\"b\")), ergm(allnet~nodemix(\"a\")+nodecov(\"z\")), etc...\n\nMy classification of interest (\"a\") is yielding the same estimate (and standard error) for both mixed pairings.  This is regardless of whether I include any nodecov terms.  I have printed an example below:\n\nmix.a.0.0 -6.50457    0.08311        NA  <1e-04 ***\nmix.a.1.0 -5.26241    0.11655        NA  <1e-04 ***\nmix.a.0.1 -5.26241    0.11655        NA  <1e-04 ***\nmix.a.1.1 -3.65862    0.14045        NA  <1e-04 ***\n\n\nWhen I run the other classification (\"b\"). I don't get this same result.  Maybe this is just the luck of the draw, but a part of me (and I know reviewers) has a hard time believing that the log-odds of a directed tie from 1 to 0 is the exact same as 0 to 1.  Is there anything that might explain this?  \n\nI have also tabulated the number of connection types (and ensured there wasn't a coding error where the 1.0 ties are the same as the 0.1 ties):\n0.0 147\n1.0  77\n0.1  75\n1.1 118\n\n\nAny thoughts would be greatly appreciated!\nJared",
+      "body_snippet": "Hello Everyone,\nI was running a simple nodemix model and getting some interesting results.  I have a directed network with 358 vertices and 353 edges.  I have several binary node classifications coded",
+      "thread_id": "thread-30ade3350fc7",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-9070ed954fa0",
+      "message_id": "<alpine.LRH.2.01.1104070916420.24595@hymn33.u.washington.edu>",
+      "from_name": "stanj@u.washington.edu",
+      "from_email_hash": "67c87847c37c18e652cb63f9975cd85d256dc0a7b95ab36680da1e84be17d41b",
+      "date": "2011-04-07T09:16:42Z",
+      "subject": "[statnet_help] Re: Nodemix Coefficient Estimates",
+      "subject_clean": "[statnet_help] Re: Nodemix Coefficient Estimates",
+      "in_reply_to": "<alpine.LRH.2.01.1104070914370.24595@hymn33.u.washington.edu>",
+      "references": [],
+      "body_plain": "I made a typo in my previous email that I have corrected, the number of 1.1 edges is 54, not 118.\n\nOn Thu, 7 Apr 2011, stanj@u.washington.edu wrote:\n\n> Hello Everyone,\n> I was running a simple nodemix model and getting some interesting results.  I have a directed network with 358 vertices and 353 edges.  I have several binary node classifications coded as vertex attributes (where around 45-50 vertices are classified with a 1 and the rest with a 0). I am several different node mixing models, such as: ergm(allnet~nodemix(\"a\")), ergm(allnet~nodemix(\"b\")), ergm(allnet~nodemix(\"a\")+nodecov(\"z\")), etc...\n>\n> My classification of interest (\"a\") is yielding the same estimate (and standard error) for both mixed pairings.  This is regardless of whether I include any nodecov terms.  I have printed an example below:\n>\n> mix.a.0.0 -6.50457    0.08311        NA  <1e-04 ***\n> mix.a.1.0 -5.26241    0.11655        NA  <1e-04 ***\n> mix.a.0.1 -5.26241    0.11655        NA  <1e-04 ***\n> mix.a.1.1 -3.65862    0.14045        NA  <1e-04 ***\n>\n>\n> When I run the other classification (\"b\"). I don't get this same result.  Maybe this is just the luck of the draw, but a part of me (and I know reviewers) has a hard time believing that the log-odds of a directed tie from 1 to 0 is the exact same as 0 to 1.  Is there anything that might explain this?\n>\n> I have also tabulated the number of connection types (and ensured there wasn't a coding error where the 1.0 ties are the same as the 0.1 ties):\n> 0.0 147\n> 1.0  77\n> 0.1  75\n> 1.1  54\n>\n>\n> Any thoughts would be greatly appreciated!\n> Jared\n>\n>\n>",
+      "body_snippet": "I made a typo in my previous email that I have corrected, the number of 1.1 edges is 54, not 118.\n\nOn Thu, 7 Apr 2011, stanj@u.washington.edu wrote:\n\n> Hello Everyone,\n> I was running a simple nodemix",
+      "thread_id": "thread-30ade3350fc7",
+      "thread_depth": 1,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-27d508adb00a",
+      "message_id": "<alpine.WNT.2.00.1104070921490.5908@Martina-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2011-04-07T09:22:08Z",
+      "subject": "[statnet_help] Nodemix Coefficient Estimates",
+      "subject_clean": "[statnet_help] Nodemix Coefficient Estimates",
+      "in_reply_to": "<alpine.LRH.2.01.1104070914370.24595@hymn33.u.washington.edu>",
+      "references": [
+        "<alpine.LRH.2.01.1104070914370.24595@hymn33.u.washington.edu>"
+      ],
+      "body_plain": "Hi Stan,\n\nWhat are the edge coef estimates for the different models?\n\nbest,\nMartina\n\nOn Thu, 7 Apr 2011, stanj@u.washington.edu wrote:\n\n> Hello Everyone,\n> I was running a simple nodemix model and getting some interesting results.  I have a directed network with 358 vertices and 353 edges.  I have several binary node classifications coded as vertex attributes (where around 45-50 vertices are classified with a 1 and the rest with a 0). I am several different node mixing models, such as: ergm(allnet~nodemix(\"a\")), ergm(allnet~nodemix(\"b\")), ergm(allnet~nodemix(\"a\")+nodecov(\"z\")), etc...\n>\n> My classification of interest (\"a\") is yielding the same estimate (and standard error) for both mixed pairings.  This is regardless of whether I include any nodecov terms.  I have printed an example below:\n>\n> mix.a.0.0 -6.50457    0.08311        NA  <1e-04 ***\n> mix.a.1.0 -5.26241    0.11655        NA  <1e-04 ***\n> mix.a.0.1 -5.26241    0.11655        NA  <1e-04 ***\n> mix.a.1.1 -3.65862    0.14045        NA  <1e-04 ***\n>\n>\n> When I run the other classification (\"b\"). I don't get this same result.  Maybe this is just the luck of the draw, but a part of me (and I know reviewers) has a hard time believing that the log-odds of a directed tie from 1 to 0 is the exact same as 0 to 1.  Is there anything that might explain this?\n>\n> I have also tabulated the number of connection types (and ensured there wasn't a coding error where the 1.0 ties are the same as the 0.1 ties):\n> 0.0 147\n> 1.0  77\n> 0.1  75\n> 1.1 118\n>\n>\n> Any thoughts would be greatly appreciated!\n> Jared\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Stan,\n\nWhat are the edge coef estimates for the different models?\n\nbest,\nMartina\n\nOn Thu, 7 Apr 2011, stanj@u.washington.edu wrote:\n\n> Hello Everyone,\n> I was running a simple nodemix model and get",
+      "thread_id": "thread-30ade3350fc7",
+      "thread_depth": 1,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-b1a244afe11e",
+      "message_id": "<alpine.LRH.2.01.1104070941110.24595@hymn33.u.washington.edu>",
+      "from_name": "stanj@u.washington.edu",
+      "from_email_hash": "67c87847c37c18e652cb63f9975cd85d256dc0a7b95ab36680da1e84be17d41b",
+      "date": "2011-04-07T09:41:11Z",
+      "subject": "[statnet_help] Nodemix Coefficient Estimates",
+      "subject_clean": "[statnet_help] Nodemix Coefficient Estimates",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Martina,\nThanks for the reply, I set the network as directed and just did a summary to check and got the following:  \n\nNetwork attributes:\n vertices = 358\n directed = TRUE\n hyper = FALSE\n loops = FALSE\n multiple = FALSE\n bipartite = FALSE\n summary.print.adj = TRUE\n total edges = 353 \n   missing edges = 0 \n   non-missing edges = 353 \n density = 0.002761999 \n\nSo I don't think that the network is undirected.  In addition, I get results indicative of a directed network using another edge attribute (\"b\"). It is somewhat correlated with \"a\" (around 0.16 or so) and is again a binary classification.\n\nmix.b.0.0 -6.43725    0.13141        NA  <1e-04 ***\nmix.b.1.0 -5.78222    0.10117        NA  <1e-04 ***\nmix.b.0.1 -6.07752    0.11718        NA  <1e-04 ***\nmix.b.1.1 -5.47220    0.09304        NA  <1e-04 ***\n\nLet me know what you think.\n\nJared\n\n\n \n\n> Date: Thu, 7 Apr 2011 09:33:56 -0700\n> From: morrism@u.washington.edu\n> To: stanj@u.washington.edu\n> Subject: Re: [statnet_help] Nodemix Coefficient Estimates\n> \n> Hi Stan,\n> \n> I fired off that email before taking a closer look. I see now you're \n> not using an edge term (which is fine).\n> \n> It almost looks like the network is being treated as undirected. Is there \n> any chance of that?\n> \n> best,\n> Martina\n> \n> On Thu, 7 Apr 2011, stanj@u.washington.edu wrote:\n> \n> > Hello Everyone,\n> > I was running a simple nodemix model and getting some interesting results. I have a directed network with 358 vertices and 353 edges. I have several binary node classifications coded as vertex attributes (where around 45-50 vertices are classified with a 1 and the rest with a 0). I am several different node mixing models, such as: ergm(allnet~nodemix(\"a\")), ergm(allnet~nodemix(\"b\")), ergm(allnet~nodemix(\"a\")+nodecov(\"z\")), etc...\n> >\n> > My classification of interest (\"a\") is yielding the same estimate (and standard error) for both mixed pairings. This is regardless of whether I include any nodecov terms. I have printed an example below:\n> >\n> > mix.a.0.0 -6.50457 0.08311 NA <1e-04 ***\n> > mix.a.1.0 -5.26241 0.11655 NA <1e-04 ***\n> > mix.a.0.1 -5.26241 0.11655 NA <1e-04 ***\n> > mix.a.1.1 -3.65862 0.14045 NA <1e-04 ***\n> >\n> >\n> > When I run the other classification (\"b\"). I don't get this same result. Maybe this is just the luck of the draw, but a part of me (and I know reviewers) has a hard time believing that the log-odds of a directed tie from 1 to 0 is the exact same as 0 to 1. Is there anything that might explain this?\n> >\n> > I have also tabulated the number of connection types (and ensured there wasn't a coding error where the 1.0 ties are the same as the 0.1 ties):\n> > 0.0 147\n> > 1.0 77\n> > 0.1 75\n> > 1.1 118\n> >\n> >\n> > Any thoughts would be greatly appreciated!\n> > Jared\n> >\n> >\n> > _______________________________________________\n> > statnet_help mailing list\n> > statnet_help@u.washington.edu\n> > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> >\n> \n> ****************************************************************\n> Professor of Sociology and Statistics\n> Director, UWCFAR Sociobehavioral and Prevention Research Core\n> Box 354322\n> University of Washington\n> Seattle, WA 98195-4322\n> \n> Office: (206) 685-3402\n> Dept Office: (206) 543-5882, 543-7237\n> Fax: (206) 685-7419\n> \n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Martina,\nThanks for the reply, I set the network as directed and just did a summary to check and got the following:  \n\nNetwork attributes:\n vertices = 358\n directed = TRUE\n hyper = FALSE\n loops = F",
+      "thread_id": "thread-b1a244afe11e",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-7a11fd112e7b",
+      "message_id": "<alpine.WNT.2.00.1104070952430.16856@csde-ts3.csde.washington.edu>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2011-04-07T09:56:07Z",
+      "subject": "[statnet_help] Nodemix Coefficient Estimates",
+      "subject_clean": "[statnet_help] Nodemix Coefficient Estimates",
+      "in_reply_to": "<alpine.LRH.2.01.1104070941110.24595@hymn33.u.washington.edu>",
+      "references": [
+        "<alpine.LRH.2.01.1104070941110.24595@hymn33.u.washington.edu>"
+      ],
+      "body_plain": "Thanks Stan,\n\nCan you run this and send the output:\n\nmixingmatrix(allnet, \"a\")\nmixingmatrix(allnet, \"b\")\n\nThis is not about stochastic estimation diffs -- the nodemix term is a \ndyadic independent term, so the estimation does not use MCMC.\n\nbest,\nmm\n\n\nOn Thu, 7 Apr 2011, stanj@u.washington.edu wrote:\n\n> Hi Martina,\n> Thanks for the reply, I set the network as directed and just did a summary to check and got the following:\n>\n> Network attributes:\n> vertices = 358\n> directed = TRUE\n> hyper = FALSE\n> loops = FALSE\n> multiple = FALSE\n> bipartite = FALSE\n> summary.print.adj = TRUE\n> total edges = 353\n>   missing edges = 0\n>   non-missing edges = 353\n> density = 0.002761999\n>\n> So I don't think that the network is undirected.  In addition, I get results indicative of a directed network using another edge attribute (\"b\"). It is somewhat correlated with \"a\" (around 0.16 or so) and is again a binary classification.\n>\n> mix.b.0.0 -6.43725    0.13141        NA  <1e-04 ***\n> mix.b.1.0 -5.78222    0.10117        NA  <1e-04 ***\n> mix.b.0.1 -6.07752    0.11718        NA  <1e-04 ***\n> mix.b.1.1 -5.47220    0.09304        NA  <1e-04 ***\n>\n> Let me know what you think.\n>\n> Jared\n>\n>\n>\n>\n>> Date: Thu, 7 Apr 2011 09:33:56 -0700\n>> From: morrism@u.washington.edu\n>> To: stanj@u.washington.edu\n>> Subject: Re: [statnet_help] Nodemix Coefficient Estimates\n>>\n>> Hi Stan,\n>>\n>> I fired off that email before taking a closer look. I see now you're\n>> not using an edge term (which is fine).\n>>\n>> It almost looks like the network is being treated as undirected. Is there\n>> any chance of that?\n>>\n>> best,\n>> Martina\n>>\n>> On Thu, 7 Apr 2011, stanj@u.washington.edu wrote:\n>>\n>>> Hello Everyone, I was running a simple nodemix model and getting some \n>>> interesting results. I have a directed network with 358 vertices and \n>>> 353 edges. I have several binary node classifications coded as vertex \n>>> attributes (where around 45-50 vertices are classified with a 1 and \n>>> the rest with a 0). I am several different node mixing models, such \n>>> as: ergm(allnet~nodemix(\"a\")), ergm(allnet~nodemix(\"b\")), \n>>> ergm(allnet~nodemix(\"a\")+nodecov(\"z\")), etc...\n>>>\n>>> My classification of interest (\"a\") is yielding the same estimate (and standard error) for both mixed pairings. This is regardless of whether I include any nodecov terms. I have printed an example below:\n>>>\n>>> mix.a.0.0 -6.50457 0.08311 NA <1e-04 ***\n>>> mix.a.1.0 -5.26241 0.11655 NA <1e-04 ***\n>>> mix.a.0.1 -5.26241 0.11655 NA <1e-04 ***\n>>> mix.a.1.1 -3.65862 0.14045 NA <1e-04 ***\n>>>\n>>>\n>>> When I run the other classification (\"b\"). I don't get this same result. Maybe this is just the luck of the draw, but a part of me (and I know reviewers) has a hard time believing that the log-odds of a directed tie from 1 to 0 is the exact same as 0 to 1. Is there anything that might explain this?\n>>>\n>>> I have also tabulated the number of connection types (and ensured there wasn't a coding error where the 1.0 ties are the same as the 0.1 ties):\n>>> 0.0 147\n>>> 1.0 77\n>>> 0.1 75\n>>> 1.1 118\n>>>\n>>>\n>>> Any thoughts would be greatly appreciated!\n>>> Jared\n>>>\n>>>\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>>\n>> ****************************************************************\n>> Professor of Sociology and Statistics\n>> Director, UWCFAR Sociobehavioral and Prevention Research Core\n>> Box 354322\n>> University of Washington\n>> Seattle, WA 98195-4322\n>>\n>> Office: (206) 685-3402\n>> Dept Office: (206) 543-5882, 543-7237\n>> Fax: (206) 685-7419\n>>\n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Thanks Stan,\n\nCan you run this and send the output:\n\nmixingmatrix(allnet, \"a\")\nmixingmatrix(allnet, \"b\")\n\nThis is not about stochastic estimation diffs -- the nodemix term is a \ndyadic independent ter",
+      "thread_id": "thread-b1a244afe11e",
+      "thread_depth": 1,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-a54bbc859b11",
+      "message_id": "<alpine.LRH.2.01.1104071056010.24595@hymn33.u.washington.edu>",
+      "from_name": "stanj@u.washington.edu",
+      "from_email_hash": "67c87847c37c18e652cb63f9975cd85d256dc0a7b95ab36680da1e84be17d41b",
+      "date": "2011-04-07T10:56:01Z",
+      "subject": "[statnet_help] Nodemix Coefficient Estimates",
+      "subject_clean": "[statnet_help] Nodemix Coefficient Estimates",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Thanks Martina,\nHere is the output\nmixingmatrix(allnet, \"a\")\n       To\n>From      0   1 Total\n  0     147  75   222\n  1      77  54   131\n  Total 224 129   353\n\nmixingmatrix(allnet, \"b\")\n       To\n>From      0   1 Total\n  0      59  74   133\n  1     102 118   220\n  Total 161 192   353\n\nJust as a note, I don't have the issue when I use a third vertex attribute that is more in line with the proportions of \"a\".\n\nJared \n\n \n\n> Date: Thu, 7 Apr 2011 09:56:07 -0700\n> From: morrism@u.washington.edu\n> To: stanj@u.washington.edu\n> CC: statnet_help@u.washington.edu\n> Subject: RE: [statnet_help] Nodemix Coefficient Estimates\n> \n> Thanks Stan,\n> \n> Can you run this and send the output:\n> \n> mixingmatrix(allnet, \"a\")\n> mixingmatrix(allnet, \"b\")\n> \n> This is not about stochastic estimation diffs -- the nodemix term is a \n> dyadic independent term, so the estimation does not use MCMC.\n> \n> best,\n> mm\n> \n> \n> On Thu, 7 Apr 2011, stanj@u.washington.edu wrote:\n> \n> > Hi Martina,\n> > Thanks for the reply, I set the network as directed and just did a summary to check and got the following:\n> >\n> > Network attributes:\n> > vertices = 358\n> > directed = TRUE\n> > hyper = FALSE\n> > loops = FALSE\n> > multiple = FALSE\n> > bipartite = FALSE\n> > summary.print.adj = TRUE\n> > total edges = 353\n> > missing edges = 0\n> > non-missing edges = 353\n> > density = 0.002761999\n> >\n> > So I don't think that the network is undirected. In addition, I get results indicative of a directed network using another edge attribute (\"b\"). It is somewhat correlated with \"a\" (around 0.16 or so) and is again a binary classification.\n> >\n> > mix.b.0.0 -6.43725 0.13141 NA <1e-04 ***\n> > mix.b.1.0 -5.78222 0.10117 NA <1e-04 ***\n> > mix.b.0.1 -6.07752 0.11718 NA <1e-04 ***\n> > mix.b.1.1 -5.47220 0.09304 NA <1e-04 ***\n> >\n> > Let me know what you think.\n> >\n> > Jared\n> >\n> >\n> >\n> >\n> >> Date: Thu, 7 Apr 2011 09:33:56 -0700\n> >> From: morrism@u.washington.edu\n> >> To: stanj@u.washington.edu\n> >> Subject: Re: [statnet_help] Nodemix Coefficient Estimates\n> >>\n> >> Hi Stan,\n> >>\n> >> I fired off that email before taking a closer look. I see now you're\n> >> not using an edge term (which is fine).\n> >>\n> >> It almost looks like the network is being treated as undirected. Is there\n> >> any chance of that?\n> >>\n> >> best,\n> >> Martina\n> >>\n> >> On Thu, 7 Apr 2011, stanj@u.washington.edu wrote:\n> >>\n> >>> Hello Everyone, I was running a simple nodemix model and getting some \n> >>> interesting results. I have a directed network with 358 vertices and \n> >>> 353 edges. I have several binary node classifications coded as vertex \n> >>> attributes (where around 45-50 vertices are classified with a 1 and \n> >>> the rest with a 0). I am several different node mixing models, such \n> >>> as: ergm(allnet~nodemix(\"a\")), ergm(allnet~nodemix(\"b\")), \n> >>> ergm(allnet~nodemix(\"a\")+nodecov(\"z\")), etc...\n> >>>\n> >>> My classification of interest (\"a\") is yielding the same estimate (and standard error) for both mixed pairings. This is regardless of whether I include any nodecov terms. I have printed an example below:\n> >>>\n> >>> mix.a.0.0 -6.50457 0.08311 NA <1e-04 ***\n> >>> mix.a.1.0 -5.26241 0.11655 NA <1e-04 ***\n> >>> mix.a.0.1 -5.26241 0.11655 NA <1e-04 ***\n> >>> mix.a.1.1 -3.65862 0.14045 NA <1e-04 ***\n> >>>\n> >>>\n> >>> When I run the other classification (\"b\"). I don't get this same result. Maybe this is just the luck of the draw, but a part of me (and I know reviewers) has a hard time believing that the log-odds of a directed tie from 1 to 0 is the exact same as 0 to 1. Is there anything that might explain this?\n> >>>\n> >>> I have also tabulated the number of connection types (and ensured there wasn't a coding error where the 1.0 ties are the same as the 0.1 ties):\n> >>> 0.0 147\n> >>> 1.0 77\n> >>> 0.1 75\n> >>> 1.1 118\n> >>>\n> >>>\n> >>> Any thoughts would be greatly appreciated!\n> >>> Jared\n> >>>\n> >>>\n> >>> _______________________________________________\n> >>> statnet_help mailing list\n> >>> statnet_help@u.washington.edu\n> >>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> >>>\n> >>\n> >> ****************************************************************\n> >> Professor of Sociology and Statistics\n> >> Director, UWCFAR Sociobehavioral and Prevention Research Core\n> >> Box 354322\n> >> University of Washington\n> >> Seattle, WA 98195-4322\n> >>\n> >> Office: (206) 685-3402\n> >> Dept Office: (206) 543-5882, 543-7237\n> >> Fax: (206) 685-7419\n> >>\n> >> morrism@u.washington.edu\n> >> http://faculty.washington.edu/morrism/\n> >\n> >\n> > _______________________________________________\n> > statnet_help mailing list\n> > statnet_help@u.washington.edu\n> > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> >\n> \n> ****************************************************************\n> Professor of Sociology and Statistics\n> Director, UWCFAR Sociobehavioral and Prevention Research Core\n> Box 354322\n> University of Washington\n> Seattle, WA 98195-4322\n> \n> Office: (206) 685-3402\n> Dept Office: (206) 543-5882, 543-7237\n> Fax: (206) 685-7419\n> \n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/",
+      "body_snippet": "Thanks Martina,\nHere is the output\nmixingmatrix(allnet, \"a\")\n       To\n>From      0   1 Total\n  0     147  75   222\n  1      77  54   131\n  Total 224 129   353\n\nmixingmatrix(allnet, \"b\")\n       To\n>Fr",
+      "thread_id": "thread-a54bbc859b11",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-4fbba5b339e8",
+      "message_id": "<51757.75.21.85.35.1302361614.squirrel@mail.it.northwestern.edu>",
+      "from_name": "Hugh J Devlin",
+      "from_email_hash": "eb00b10a817fde0a193dccc0dbd0776d612083e53c084a69b3dae82258d1ab15",
+      "date": "2011-04-09T08:06:54Z",
+      "subject": "[statnet_help] doc: ergm: which parameters rendered moot by MPLEonly=TRUE?",
+      "subject_clean": "[statnet_help] doc: ergm: which parameters rendered moot by MPLEonly=TRUE?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "MPLEonly logical; TRUE if the maximum pseudo-likelihood estimate is to be computed\nand returned. Note that MPLEonly=TRUE will render moot most other parameters in this\nlist.\n\nmore informative would be:\n\n...Note that MPLEonly=TRUE renders moot the ... parameters.",
+      "body_snippet": "MPLEonly logical; TRUE if the maximum pseudo-likelihood estimate is to be computed\nand returned. Note that MPLEonly=TRUE will render moot most other parameters in this\nlist.\n\nmore informative would be",
+      "thread_id": "thread-4fbba5b339e8",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-42c9c94a6191",
+      "message_id": "<4DA5A576.9090907@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2011-04-13T06:30:30Z",
+      "subject": "[statnet_help] ergm.userterms is on CRAN",
+      "subject_clean": "[statnet_help] ergm.userterms is on CRAN",
+      "in_reply_to": "<E494FE15-1D33-4F44-AC55-F721DAADC87B@stat.psu.edu>",
+      "references": [
+        "<AB203C40-99F3-4435-ABBD-663A15CCCFFB@stat.psu.edu>",
+        "<4D9EEE3D.1000105@unige.ch>",
+        "<E494FE15-1D33-4F44-AC55-F721DAADC87B@stat.psu.edu>"
+      ],
+      "body_plain": "Hi Dave, Steven and Mark,\n\nI've just finished to read your really helpful article. However, I don't \nunderstand at page 18, last piece of C code, why you use the IS_OUTEDGE \nmacro instead of the IS_UNDIRECTED_EDGE one.\n\nIn effect, using the latter would be for me in accordance with your \nremarks on the way undirected networks are stored in ERGM (third \nparagraph, page 5; footnote 2, page 14, etc.)\n\nThanks a lot for your help,\nVictorin\n\nLe 04/08/2011 05:11 PM, David Hunter a ?crit :\n> Hello Victorin. You are correct! The q() functions are correct but the\n> probabilities are reversed in equation 3. Thanks for pointing it out.\n> I've just posted a modified version (along with a couple other changes)\n> at http://www.stat.psu.edu/~dhunter/papers/ergmuserterms.pdf\n>\n> Best wishes,\n> Dave\n>\n>\n>\n> On Apr 8, 2011, at 7:15 AM, Victorin Luisier wrote:\n>\n>> Hi Dave and Steven,\n>>\n>> I'm reading your article \"ergm.userterms: A template Package for\n>> extending Statnet\" and I think that I found a mistake on equation 3:\n>>\n>> Let assume in this equation that both q() are the same. So, when y^k\n>> is more probable than z, the Hastings ratio > 1.\n>> But after that you note in the article that z is always accepted if\n>> H.R > 1 (despite y^k is more probable).\n>> I think it would be better to invert the two probabilities in equation\n>> 3, wouldn't it?\n>>\n>> If the equation 3 was faulty, it would be also important to adapt the\n>> sign's interpretation of equation 4.\n>>\n>> Best regards and sorry if I'm misleading,\n>> Victorin\n>>\n>> Le 02/11/2011 10:25 PM, David Hunter a ?crit :\n>>> Hi everyone. The package called ergm.userterms is now up on CRAN. This\n>>> package is designed to help folks who are interested in extending the\n>>> capabilities of statnet by creating their own terms that can be used in\n>>> an ERGM formula. There is a paper that comes with the package that\n>>> explains how this works and also gives a bit of a glimpse under the hood\n>>> of the ergm package.\n>>>\n>>> The paper is in the inst/doc directory of the source code, or you can\n>>> download it separately at\n>>> http://www.stat.psu.edu/~dhunter/papers/ergmuserterms.pdf\n>>>\n>>> Best,\n>>> Dave\n>>>\n>>> PS. If anyone still at Sunbelt is interested in chatting about this, try\n>>> to track down Steve Goodreau, who's still there.\n>>>\n>>>\n>>>\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>> --\n>> Victorin LUISIER, Assistant doctorant\n>> M?thodologie et Analyse de donn?es\n>> FAPSE - UNIGE\n>> Bureau n?4139 - Unimail\n>> Bd du Pont d'Arve 40\n>> 1211 Gen?ve 4\n>> T?l: (+41-22) 379 91 34\n>> E-mail: victorin.luisier@unige.ch\n>\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Hi Dave, Steven and Mark,\n\nI've just finished to read your really helpful article. However, I don't \nunderstand at page 18, last piece of C code, why you use the IS_OUTEDGE \nmacro instead of the IS_UN",
+      "thread_id": "thread-42c9c94a6191",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-99f1ce5e566a",
+      "message_id": "<BANLkTi=_CGP24B21R8aGY-eD1aoDGsmmcA@mail.gmail.com>",
+      "from_name": "Scott McClurg",
+      "from_email_hash": "917c33a9af5a1c4462a724d1a2a5c438181423315e5adaf0261cddca0d5e96f7",
+      "date": "2011-04-15T14:11:42Z",
+      "subject": "[statnet_help] Newbie Question",
+      "subject_clean": "[statnet_help] Newbie Question",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I'm brand new to statnet and have a very newbie question.  I'm trying take a\nsquare adjacency matrix with 435 nodes from a csv file into an edge list for\nthe purposes of plotting and analysis.  The ties are non-directed and\nvalued.  So far, I haven't be able to pound R into preserving the tie\nvalues.  Here is the code I'm using and I'm hoping someone can point my\n(surely obvious) mistake:\n\ndefense.csv <- read.csv(\"defense.csv\", row.names=1, header=T )\ndim(defense.csv)\ndefense.csv <- as.matrix(defense.csv)\ndiag(defense.csv) <- 0\ndefense.net<-network(defense.csv, directed=F, loops=F, hyper=F, mulitple=F,\nbipartite=F,  ignore.eval=F)\n\nIf I don't use the \"ignore.eval\" option, it runs but turns the values in to\n1.  If I use it, I get the following error:\n\n\"There were 50 or more warnings (use warnings() to see the first 50)\"\n\n\nAlso, at some point I'll want to turn the ties into dichotomous ones based\non some threshold.  Is there a handy guide to figuring out the code for that\nas well?\n\nBest,\n\nscott\n\n\n\n-- \n\nScott D. McClurg\nAssociate Professor of Political Science\nPN-L Moderator\nDepartment of Political Science\nSouthern Illinois University\nMailcode 4501\nCarbondale, IL 62901\n\n(e) mcclurg@siu.edu\n(p) 618.453.3191\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110415/0c97b28e/attachment.html>",
+      "body_snippet": "I'm brand new to statnet and have a very newbie question.  I'm trying take a\nsquare adjacency matrix with 435 nodes from a csv file into an edge list for\nthe purposes of plotting and analysis.  The ti",
+      "thread_id": "thread-99f1ce5e566a",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-152c631d7fcf",
+      "message_id": "<9b6136e814f327f5c3be27a298bf17a9.squirrel@webmail.stat.unipd.it>",
+      "from_name": "Soriani Nicola",
+      "from_email_hash": "bad2caca9903706f9e3ae9b9200f838b32f69bcb1198b839eb309a817ad8dd27",
+      "date": "2011-04-16T06:51:28Z",
+      "subject": "[statnet_help] error in ergm with style \"Stepping\"",
+      "subject_clean": "[statnet_help] error in ergm with style \"Stepping\"",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Alls,\n\nsometimes ergm returns to me this message:\n\nError in ergm.stepping(theta0, nw, model, Clist, initialfit, MCMCparams =\nMCMCparams,  :\n  Observed statistics are not in final sample convex hull.\n\nI would like to know why this happens.\n\nThanks a lot.\n\nNicola\n\n\n-- \nSoriani Nicola\nScuola di Dottorato in Scienze Statistiche XXIII Ciclo\nDipartimento di Scienze Statistiche, Universit? di Padova\nStanza 122 - Tel. 049 827 4174\nPh.D. Student\nDepartment of Statistical Sciences\nUniversity of Padova, Italy",
+      "body_snippet": "Hi Alls,\n\nsometimes ergm returns to me this message:\n\nError in ergm.stepping(theta0, nw, model, Clist, initialfit, MCMCparams =\nMCMCparams,  :\n  Observed statistics are not in final sample convex hull",
+      "thread_id": "thread-152c631d7fcf",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-f7fcdd14205c",
+      "message_id": "<239990EE-2C8F-4400-852D-1370B2DA47EE@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2011-04-17T08:35:06Z",
+      "subject": "[statnet_help] ERGM crash help",
+      "subject_clean": "[statnet_help] ERGM crash help",
+      "in_reply_to": "<01DC41C390C400479C7F2C44CE0E095109874A5EC1@PITT-EXCH-14.univ.pitt.edu>",
+      "references": [
+        "<01DC41C390C400479C7F2C44CE0E095109874A5EC1@PITT-EXCH-14.univ.pitt.edu>"
+      ],
+      "body_plain": "Hi Jennifer.  This is indeed strange, since none of the terms you  \nnamed would require any sort of MCMC to perform the estimation; they  \nwould require only a maximum pseudo-likelihood estimate, which can be  \nfound numerically.  Perhaps it is a memory issue of some sort on your  \nmachine.  Can you provide an example that creates this crash on your  \nmachine that we could test?  If you're saying that a model with an  \nedges plus a nodematch term will crash, I'd be interested to see that.\n\nThanks,\nDave\n\n\n\n\nOn Mar 15, 2011, at 4:35 PM, Victor, Jennifer Nicoll wrote:\n\n> Hello users and experts:\n>\n> I am trying to estimate an ERGM that causes R to crash (by \"crash,\"  \n> I mean that the program spontaneously closes while doing the  \n> calculation).  I have two similar models, of different size, and the  \n> smaller one estimates fine. The larger one has the problem.  The  \n> call is:\n>\n> model02.hou<-ergm(dichot.hou.vote.net~edges \n> +edgecov(dichot.hou.vote.net, attrname=\"houlob\") \n> +edgecov(dichot.hou.vote.net, attrname=\"houcom\"))\n>\n> I've tried alternative specifications.  A model with only \"edges\"  \n> will estimate.  Adding any other variables, using \"nodematch,\"  \n> \"nodecov,\" \"edgecov,\" etc., causes it to crash.\n>\n> The network is 438x438.  It has 47,842 edges, and its density is 0.5.\n>\n> My smaller model (of size 101) with all the variables specified that  \n> I want, estimates fine.\n>\n> Suggestions?\n> Thanks,\n> Jennifer Victor\n> ___________________________________________\n> Jennifer Nicoll Victor\n> Assistant Professor\n> Department of Political Science\n> University of Pittsburgh\n> 4600 Wesley W. Posvar Hall\n> (412) 624-7204\n> E-mail:  jnvictor@pitt.edu\n> Homepage:  http://www.pitt.edu/~jnvictor\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Jennifer.  This is indeed strange, since none of the terms you  \nnamed would require any sort of MCMC to perform the estimation; they  \nwould require only a maximum pseudo-likelihood estimate, whic",
+      "thread_id": "thread-f7fcdd14205c",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-f9c4a58dc585",
+      "message_id": "<9F9E0C74-D970-4678-B4F5-A0F3390FC682@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2011-04-17T09:18:46Z",
+      "subject": "[statnet_help] problems using san() to create a network from egocentric data",
+      "subject_clean": "[statnet_help] problems using san() to create a network from egocentric data",
+      "in_reply_to": "<AANLkTin8S8148-=9F5xZZrotiObp0gSAhbUzywjsYdXO@mail.gmail.com>",
+      "references": [
+        "<AANLkTin8S8148-=9F5xZZrotiObp0gSAhbUzywjsYdXO@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Olivier.  Please see below.\n\n\nOn Mar 17, 2011, at 12:12 PM, Olivier Robineau wrote:\n\n> Hello,\n>\n> I am a new user of statnet and I work on sexual relationship in  \n> France with egocentric data.\n>\n> To be familiar with statnet function,I am trying to build a network  \n> of 53 edges by  using the function san(). I have many problems to  \n> find the network i expect:\n>\n> each vertex can have 0 to 3 edges\n> relationship can only be heterosexual (reason why I use a bipartite  \n> network)\n> Vertices can have two different type of edges: regular and occasional\n> each vertex can have 1 or 2 regular partner but a vertex with this  \n> attribute can have an occasional relationship with a vertex  having  \n> the  'regular'  attribute. That is the problem, I have tried to  \n> introduce this attribute in many different fonction and I always  \n> have problems with my final edge count:\n>\n> N=network.initialize(100,directed=FALSE,bipartite=50)\n>\n> sex=c(rep('F',50),rep('M',50))\n> nbpart=c(rep(1,40),rep(2,5),3,rep(0,4),rep(1,30),rep(2,10),3,rep(0,9))\n> nbpartF=c(rep(1,40),rep(2,5),3,rep(0,4),rep(0,50))\n> nbpartM=c(rep(0,50),rep(1,30),rep(2,10),3,rep(0,9))\n> regular=c(rep('Y',20),rep('N',20),rep('Y',3),rep('N',2),rep('N', \n> 5),rep('Y',19),rep('N',19),rep('Y',3),rep('N',9))\n> nbregular=c(rep(1,20),rep(0,20),rep(1,2), \n> 2,rep(0,2),rep(0,5),rep(1,19),rep(0,19),2,2,1,rep(0,9))\n> regularM=c(rep('N',50),rep('Y',19),rep('N',19),rep('Y',3),rep(0,9))\n> regularF=c(rep('Y',20),rep('N',20),rep('Y',3),rep('N',2),rep('N', \n> 5),rep('N',50))\n>\n> N %v% 'sex'=sex\n> N %v% 'nbpart'= nbpart\n> N %v% 'nbpartF'= nbpartF\n> N %v% 'nbpartM'= nbpartM\n> N %v% 'regular'= regular\n> N %v% 'nbregular'= nbregular\n> N %v% 'regularF'= regularF\n> N %v% 'regularM'= regularM\n>\n>\n>\n> ##correct number of relationship\n> S=san(N~edges \n> + \n> degree \n> (1 \n> : \n> 3 \n> ,'sex \n> '),meanstats \n> = \n> c \n> (53,40,5,1,30,10,1 \n> ),nsim \n> = \n> 1 \n> ,burnin \n> = \n> 4000000 \n> ,MCMCsamplesize \n> =2000000,sequential=TRUE,interval=1000,constraints=~bd(maxout=3))\n> summary(S~edges+degree(0:5)+degree(0:5,'sex'))\n>\n\nI double-checked and the above worked for me too.\n\n\n> #introducing 'regular' partnership (all vertice with this attribute  \n> have an edge with a vertex with this attribute)\n>\n> S1=san(N~edges+degree(1:3,'sex') \n> + \n> nodematch \n> ('regular \n> ',diff \n> = \n> TRUE \n> ,keep \n> = \n> 2 \n> ),meanstats \n> = \n> c \n> (53,40,5,1,30,10,1,24 \n> ),nsim \n> = \n> 1 \n> ,burnin \n> = \n> 4000000 \n> ,MCMCsamplesize \n> =3000000,sequential=TRUE,interval=1000,constraints=~bd(maxout=3))\n> summary(S1~edges+degree(0:5)+degree(0:5,'sex')+degree(0:5,'regular'))\n> mixingmatrix(S1,'regular')\n>\n\nI'm not sure why the degree distributions above are not matching your  \nmeanstats vector.  I notice that the edges and nodematch statistics do  \nmatch perfectly in my simulations, though, so I'm wondering whether it  \nis simply impossible, or at least very difficult, to construct a  \nnetwork with the male and female degree(1:3) statistics you specify  \nsuch that there are 24 regular-regular matches.   Can you construct  \nsuch an example by hand?\n\n> ##using edgecov\n> N1=N\n> N1[regularH=='Y',regularF=='Y']=1\n>\n> S1=san(N~edges+degree(1:3,'sex') \n> + \n> edgecov \n> (N1 \n> ),meanstats \n> = \n> c \n> (53,40,5,1,30,10,1,24 \n> ),nsim \n> = \n> 1 \n> ,burnin \n> = \n> 4000000 \n> ,MCMCsamplesize \n> =3000000,sequential=TRUE,interval=1000,constraints=~bd(maxout=3))  \n> ##too many degree 3\n\nAs far as I can tell, the edgecov method is equivalent to the  \nnodematch method.  Do you find the same results using both of them?\n\nI hope this helps for now.\n\nDave\n\n\n\n>\n> Many thanks for you help\n>\n> Olivier Robineau\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Olivier.  Please see below.\n\n\nOn Mar 17, 2011, at 12:12 PM, Olivier Robineau wrote:\n\n> Hello,\n>\n> I am a new user of statnet and I work on sexual relationship in  \n> France with egocentric data.\n>\n",
+      "thread_id": "thread-f9c4a58dc585",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-1f03ec4ee510",
+      "message_id": "<CA437DA5-94B1-43C4-B0E9-B2E049F2332D@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2011-04-17T09:35:45Z",
+      "subject": "[statnet_help] doc: simulate.ergm: dynamic draws?",
+      "subject_clean": "[statnet_help] doc: simulate.ergm: dynamic draws?",
+      "in_reply_to": "<14771.129.105.161.113.1301669954.squirrel@mail.it.northwestern.edu>",
+      "references": [
+        "<14771.129.105.161.113.1301669954.squirrel@mail.it.northwestern.edu>"
+      ],
+      "body_plain": "Hi Hugh.  Thanks for your comments on the docs.\n\nFirst off, \"dynamic\" draws in this context refer to networks that  \nchange over time, and that comment is in the docs only to point out  \nthat the MCMC process itself could be considered to be a time-changing  \n(i.e., dynamic) network process.  But it's a bit confusing and I'll  \nedit it out.\n\nWith regard to your other question about the non-existent \"prob\"  \nargument referred to in the \"theta0\" explanation, it turns out that  \ndocumentation is a vestige of an earlier version and I'll edit that as  \nwell.  Sorry about that!\n\nBest,\nDave\n\n\n\n\nOn Apr 1, 2011, at 10:59 AM, Hugh J Devlin wrote:\n\n> hello all,\n>\n> quick question on the doc: the description of the sequential  \n> parameter to\n> simulate.ergm mentions \"dynamic\" draws which do not seem to be  \n> described; what are\n> \"dynamic draws\"?\n>\n> ergm version 2.3\n>\n> thanks!\n> Hugh\n> -- \n> Hugh J. Devlin, Ph. D.\n> hdevlin@northwestern.edu\n>\n> Arguments\n>\n> sequential Should the returned draws use the prior draw as the  \n> starting network or\n> always use the initially passed network? For random draws the  \n> results should be\n> similar (stochastically), but the sequential=TRUE option is useful  \n> for dynamic\n> draws.\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Hugh.  Thanks for your comments on the docs.\n\nFirst off, \"dynamic\" draws in this context refer to networks that  \nchange over time, and that comment is in the docs only to point out  \nthat the MCMC",
+      "thread_id": "thread-40650fabfbb9",
+      "thread_depth": 1,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-d39d59e39212",
+      "message_id": "<123FC835-E592-477D-A186-2F32A9A8A894@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2011-04-17T09:41:49Z",
+      "subject": "[statnet_help] how to manage a bipartite network",
+      "subject_clean": "[statnet_help] how to manage a bipartite network",
+      "in_reply_to": "<7ECAAF7A-42C1-4A1B-B51B-BF8909A05B08@gmail.com>",
+      "references": [
+        "<97F2FBFD-D8C1-435C-BADE-3B8B664D4AC2@gmail.com>",
+        "<7ECAAF7A-42C1-4A1B-B51B-BF8909A05B08@gmail.com>"
+      ],
+      "body_plain": "Hello Simone.  I notice that your edge list:\n\n> 580 1124\n> 792 1244\n> 424 539\n> 784 1275\n> 288 1261\n> 919 957\n> 754 888\n\n... does not have the property that all mode-1 nodes (actors, in many  \ncontexts) have smaller numbers than all mode-2 nodes (events).  In the  \nnetwork package, a bipartite network is specified by a non-NULL value  \nof the \"bipartite\" flag, which then becomes the number of actors.  So  \nI think it would be easy to coerce your network to bipartite if you  \nfirst re-numbered all of your nodes so that all of the actors had  \nlabels 1 through the value of bipartite, then the events were bipartite \n+1 through n.\n\nI hope this helps.\nDave\n\n\nOn Apr 6, 2011, at 9:30 AM, Simone Gabbriellini wrote:\n\n> Dear List,\n>\n> I would like to try the ergm package on my bipartite network, but I  \n> am facing some issues importing my data.\n> My network is in Pajek format, like:\n>\n> *Vertices 1296\n> 1 \"1\" circle ic \"cyan\"\n> 2 \"2\" circle ic \"cyan\"\n> 3 \"3\" circle ic \"cyan\"\n> 4 \"4\" square ic \"yellow\"\n> 5 \"5\" circle ic \"cyan\"\n> 6 \"6\" circle ic \"cyan\"\n> 7 \"7\" square ic \"yellow\"\n> 8 \"8\" circle ic \"cyan\"\n> ....\n> *Edges\n> 580 1124\n> 792 1244\n> 424 539\n> 784 1275\n> 288 1261\n> 919 957\n> 754 888\n> ...\n>\n> I saved it as a pajek file from igraph.\n>\n> Circle \"cyan\" nodes belong to the actors set, while square \"yellow\"  \n> nodes belong to the events set.\n>\n> I can read the network with read.paj(), but I don't know how to  \n> coerce it to bipartite. Is it possible?\n>\n> Thanks in advance for any help.\n>\n> Best,\n> Simone\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hello Simone.  I notice that your edge list:\n\n> 580 1124\n> 792 1244\n> 424 539\n> 784 1275\n> 288 1261\n> 919 957\n> 754 888\n\n... does not have the property that all mode-1 nodes (actors, in many  \ncontext",
+      "thread_id": "thread-e78008ac4984",
+      "thread_depth": 1,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-969b2fc6059b",
+      "message_id": "<1943A441-17FE-4911-8DED-DD6590DDA3BC@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2011-04-17T09:58:05Z",
+      "subject": "[statnet_help] error in ergm with style \"Stepping\"",
+      "subject_clean": "[statnet_help] error in ergm with style \"Stepping\"",
+      "in_reply_to": "<9b6136e814f327f5c3be27a298bf17a9.squirrel@webmail.stat.unipd.it>",
+      "references": [
+        "<9b6136e814f327f5c3be27a298bf17a9.squirrel@webmail.stat.unipd.it>"
+      ],
+      "body_plain": "Hi Nicola.   Are you familiar with the manuscript that introduces this  \nstepping idea?  An earlier version is available at http://www.stat.psu.edu/~dhunter/papers/tr1003.pdf \n  and it will be coming out sometime soon in J Comp Graph Stat.\n\nEven if you are familiar with it, the error might still need a bit of  \nexplanation.  Ideally, the stepping algorithm uses a series of \"steps\"  \nto gradually close in on the MLE.  When it gets close enough so that  \nit appears plain MCMCMLE can be used to get a final estimate, the  \nalgorithm draws one more large sample for this final estimate.  If,  \nfor some reason, the observed vector of statistics is not contained  \ninside the convex hull of sampled statistics, then the approximate MLE  \nwill not exist (and somehow the stepping algorithm didn't quite do its  \njob even though it believed that it had done so).  The default  \nbehavior of the code at this point is to throw the error you're seeing.\n\nI hope this explains it.\n\nBest,\nDave\n\n\n\n\nOn Apr 16, 2011, at 9:51 AM, Soriani Nicola wrote:\n\n> Hi Alls,\n>\n> sometimes ergm returns to me this message:\n>\n> Error in ergm.stepping(theta0, nw, model, Clist, initialfit,  \n> MCMCparams =\n> MCMCparams,  :\n>  Observed statistics are not in final sample convex hull.\n>\n> I would like to know why this happens.\n>\n> Thanks a lot.\n>\n> Nicola\n>\n>\n> -- \n> Soriani Nicola\n> Scuola di Dottorato in Scienze Statistiche XXIII Ciclo\n> Dipartimento di Scienze Statistiche, Universit? di Padova\n> Stanza 122 - Tel. 049 827 4174\n> Ph.D. Student\n> Department of Statistical Sciences\n> University of Padova, Italy\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Nicola.   Are you familiar with the manuscript that introduces this  \nstepping idea?  An earlier version is available at http://www.stat.psu.edu/~dhunter/papers/tr1003.pdf \n  and it will be coming ",
+      "thread_id": "thread-152c631d7fcf",
+      "thread_depth": 1,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-2e6ece7b754e",
+      "message_id": "<BANLkTimtDxvYNHVz6MiZ1y=isQU1bwkK-Q@mail.gmail.com>",
+      "from_name": "Brian Keegan",
+      "from_email_hash": "0a040d156157c7a0846c2e199462b4a90b1286ad17bfecf6c905da0c405bc047",
+      "date": "2011-04-17T12:37:18Z",
+      "subject": "[statnet_help] Degree assortativity parameter",
+      "subject_clean": "[statnet_help] Degree assortativity parameter",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Are there any plans to implement a degree assortativity parameter?\nAlternatively, is there another way to substantively capture the tendency\nfor high-degree nodes to preferentially link to other high-degree nodes?\n\nA potentially topical article:\n\nJae Dong Noh. 2008. \"Percolation transition in networks with degree-degree\ncorrelation.\"  Phys. Rev. E 76, 026116.\n\nhttp://arxiv.org/PS_cache/arxiv/pdf/0705/0705.0087v1.pdf\n\n-- \nBrian C. Keegan\nPh.D. Student - Media, Technology, & Society\nSchool of Communication, Northwestern University\n\nScience of Networks in Communities, Laboratory for Collaborative Technology\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110417/e23d0bc6/attachment.html>",
+      "body_snippet": "Are there any plans to implement a degree assortativity parameter?\nAlternatively, is there another way to substantively capture the tendency\nfor high-degree nodes to preferentially link to other high-",
+      "thread_id": "thread-2e6ece7b754e",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-1c1ebbb979ef",
+      "message_id": "<4DAB4782.10209@ucla.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "fb40357ebb8d7f0a427d9ad2641aa56f67d6763bdb0f1109ba0f3c4b5584b09d",
+      "date": "2011-04-17T13:03:14Z",
+      "subject": "[statnet_help] Degree assortativity parameter",
+      "subject_clean": "[statnet_help] Degree assortativity parameter",
+      "in_reply_to": "<BANLkTimtDxvYNHVz6MiZ1y=isQU1bwkK-Q@mail.gmail.com>",
+      "references": [
+        "<BANLkTimtDxvYNHVz6MiZ1y=isQU1bwkK-Q@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Brian,\n\nThe terms \"degcrossprod\" and \"degcor\" are intended to do this. Search \nfor them in \"ergm-terms\" for details. Many varaitions are possible and \ncan be coded via facilities in the \"ergmuserterms\" package.\n\nEnjoy!\n\nMark\n\n----------------------------------------------------\nMark S. Handcock\nProfessor of Statistics\nDepartment of Statistics\nUniversity of California     Phone:  (310) 817-6778\nLos Angeles, CA 90095-1554.   FAX:   (206) 457-1953\nWeb:  www.stat.ucla.edu/~handcock\ninternet:  handcock@ucla.edu\n\nOn 4/17/11 12:37 PM, Brian Keegan wrote:\n> Are there any plans to implement a degree assortativity parameter?\n> Alternatively, is there another way to substantively capture the\n> tendency for high-degree nodes to preferentially link to other\n> high-degree nodes?\n>\n> A potentially topical article:\n>\n> Jae Dong Noh. 2008. \"Percolation transition in networks with\n> degree-degree correlation.\"  Phys. Rev. E 76, 026116.\n>\n> http://arxiv.org/PS_cache/arxiv/pdf/0705/0705.0087v1.pdf\n>\n> --\n> Brian C. Keegan\n> Ph.D. Student - Media, Technology, & Society\n> School of Communication, Northwestern University\n>\n> Science of Networks in Communities, Laboratory for Collaborative Technology\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Brian,\n\nThe terms \"degcrossprod\" and \"degcor\" are intended to do this. Search \nfor them in \"ergm-terms\" for details. Many varaitions are possible and \ncan be coded via facilities in the \"ergmuserte",
+      "thread_id": "thread-2e6ece7b754e",
+      "thread_depth": 1,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-8f07e5bfa8b3",
+      "message_id": "<8034B2CA-02C2-488B-BA07-7608FE7DD802@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2011-04-17T15:06:07Z",
+      "subject": "[statnet_help] Newbie Question",
+      "subject_clean": "[statnet_help] Newbie Question",
+      "in_reply_to": "<BANLkTi=_CGP24B21R8aGY-eD1aoDGsmmcA@mail.gmail.com>",
+      "references": [
+        "<BANLkTi=_CGP24B21R8aGY-eD1aoDGsmmcA@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Scott.  Your question (which actually turned out to be a bit  \ntricky) prompted a bit of back-and-forth among the statnet developers,  \nand Carter pointed out that you should be able to get around this  \nerror by adding the argument 'names.eval', as in\n\ndefense.net <- network(defense.csv, directed=F, loops=F, hyper=F,  \nmultiple=F, bipartite=F, ignore.eval=F, names.eval=\"edgevarname\")\n\nHere, \"edgevarname\" should be whatever you'd like that name to be.\n\nThanks, Carter.\nDave\n\n\nOn Apr 15, 2011, at 5:11 PM, Scott McClurg wrote:\n\n> I'm brand new to statnet and have a very newbie question.  I'm  \n> trying take a square adjacency matrix with 435 nodes from a csv file  \n> into an edge list for the purposes of plotting and analysis.  The  \n> ties are non-directed and valued.  So far, I haven't be able to  \n> pound R into preserving the tie values.  Here is the code I'm using  \n> and I'm hoping someone can point my (surely obvious) mistake:\n>\n> defense.csv <- read.csv(\"defense.csv\", row.names=1, header=T )\n> dim(defense.csv)\n> defense.csv <- as.matrix(defense.csv)\n> diag(defense.csv) <- 0\n> defense.net<-network(defense.csv, directed=F, loops=F, hyper=F,  \n> mulitple=F, bipartite=F,  ignore.eval=F)\n>\n> If I don't use the \"ignore.eval\" option, it runs but turns the  \n> values in to 1.  If I use it, I get the following error:\n>\n> \"There were 50 or more warnings (use warnings() to see the first 50)\"\n>\n>\n> Also, at some point I'll want to turn the ties into dichotomous ones  \n> based on some threshold.  Is there a handy guide to figuring out the  \n> code for that as well?\n>\n> Best,\n>\n> scott\n>\n>\n>\n> -- \n>\n> Scott D. McClurg\n> Associate Professor of Political Science\n> PN-L Moderator\n> Department of Political Science\n> Southern Illinois University\n> Mailcode 4501\n> Carbondale, IL 62901\n>\n> (e) mcclurg@siu.edu\n> (p) 618.453.3191\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110417/dee26072/attachment.html>",
+      "body_snippet": "Hi Scott.  Your question (which actually turned out to be a bit  \ntricky) prompted a bit of back-and-forth among the statnet developers,  \nand Carter pointed out that you should be able to get around ",
+      "thread_id": "thread-99f1ce5e566a",
+      "thread_depth": 1,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-dcc2f508475d",
+      "message_id": "<BANLkTi=avG_4ssLywb692orfaBUfij_W7Q@mail.gmail.com>",
+      "from_name": "Semenov Alexander",
+      "from_email_hash": "6e5c1fbfadfa41a39f5196efe167a24af19fbcdae65a1300008188c51bdc86f1",
+      "date": "2011-04-17T21:01:54Z",
+      "subject": "[statnet_help] Order of steps in fitting the model",
+      "subject_clean": "[statnet_help] Order of steps in fitting the model",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello, everybody.\nI have a basic question on the steps in model bilding and fitting. As far as\nI could get , I need to get rid of degeneracy first and only after that add\nmeaningful parameters to my model.\n\nI started from a very simple model: edges + mutual and began increasing\nburn-in and MCMCsamplesize (from 100 000 and 10 000 respectively based on\nGoodreau 2007 as I have directed network n=1209, e=5555) and got the\nfollowing model :\n\nmodela<-ergm(soc.net ~ edges + mutual, verbose = TRUE, control =\ncontrol.ergm(check.degeneracy = TRUE), burnin=400000, MCMCsamplesize=40000,\ninterval=1000)\n\nwhich showed decent results accordint to MCMCdiagnostics. Although the\ngraphs for traces were not straight horisontal lines, the density started\napproximate normal distribution and there were enough samples everywhere.\n\nSo, I decided to run the next model from the theta's of this one:\n\nmodel1c<-ergm(soc.net ~ edges + mutual, verbose = FALSE, theta0 =\nmodela$coef, control = control.ergm(check.degeneracy = TRUE), burnin=400000,\nMCMCsamplesize=40000, interval=1000)\n\nBut this one demonstrated worse results on MCMCdiagnostics: even the samples\nwere not enough.\nSo, here are my questions:\n\n1) What is the order of steps? Am I doing it right or I should start\nfighting degeneracy after entering all the parametres?\n2) How increasing burnin and MCMCsamplesize from the model, reported to have\nenough of samples for both of them, results lack of samples on the following\nmodels?\n\nThanks in advance,\nAlexander.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110418/a0685e22/attachment.html>",
+      "body_snippet": "Hello, everybody.\nI have a basic question on the steps in model bilding and fitting. As far as\nI could get , I need to get rid of degeneracy first and only after that add\nmeaningful parameters to my m",
+      "thread_id": "thread-dcc2f508475d",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-900c4c6a84cd",
+      "message_id": "<90822D1E-B390-4FAF-AF39-928E0248A5A3@gmail.com>",
+      "from_name": "Simone Gabbriellini",
+      "from_email_hash": "28a5511d14889ed7a9cead1a4c5c2eaa14a88c2b4b5d3fded2bed235eea4d272",
+      "date": "2011-04-18T03:23:00Z",
+      "subject": "[statnet_help] how to manage a bipartite network",
+      "subject_clean": "[statnet_help] how to manage a bipartite network",
+      "in_reply_to": "<123FC835-E592-477D-A186-2F32A9A8A894@stat.psu.edu>",
+      "references": [
+        "<97F2FBFD-D8C1-435C-BADE-3B8B664D4AC2@gmail.com>",
+        "<7ECAAF7A-42C1-4A1B-B51B-BF8909A05B08@gmail.com>",
+        "<123FC835-E592-477D-A186-2F32A9A8A894@stat.psu.edu>"
+      ],
+      "body_plain": "Thanks, yes, I have noticed that, I was just hoping that there was a way to tell network that all nodes with color = cyan are actors and all nodes with color = yellow are events... \n\nit is not a criticism at all, statnet is amazing, but let me just leave a comment: what is the reason in keeping them ordered by id? what if my network grows? should I always re-numer everything? it doesn't seem efficient...\n\nThanks for your help...\n\nbest,\nSimone\n\nIl giorno 17/apr/2011, alle ore 18.41, David Hunter ha scritto:\n\n> Hello Simone.  I notice that your edge list:\n> \n>> 580 1124\n>> 792 1244\n>> 424 539\n>> 784 1275\n>> 288 1261\n>> 919 957\n>> 754 888\n> \n> ... does not have the property that all mode-1 nodes (actors, in many contexts) have smaller numbers than all mode-2 nodes (events).  In the network package, a bipartite network is specified by a non-NULL value of the \"bipartite\" flag, which then becomes the number of actors.  So I think it would be easy to coerce your network to bipartite if you first re-numbered all of your nodes so that all of the actors had labels 1 through the value of bipartite, then the events were bipartite+1 through n.\n> \n> I hope this helps.\n> Dave\n> \n> \n> On Apr 6, 2011, at 9:30 AM, Simone Gabbriellini wrote:\n> \n>> Dear List,\n>> \n>> I would like to try the ergm package on my bipartite network, but I am facing some issues importing my data.\n>> My network is in Pajek format, like:\n>> \n>> *Vertices 1296\n>> 1 \"1\" circle ic \"cyan\"\n>> 2 \"2\" circle ic \"cyan\"\n>> 3 \"3\" circle ic \"cyan\"\n>> 4 \"4\" square ic \"yellow\"\n>> 5 \"5\" circle ic \"cyan\"\n>> 6 \"6\" circle ic \"cyan\"\n>> 7 \"7\" square ic \"yellow\"\n>> 8 \"8\" circle ic \"cyan\"\n>> ....\n>> *Edges\n>> 580 1124\n>> 792 1244\n>> 424 539\n>> 784 1275\n>> 288 1261\n>> 919 957\n>> 754 888\n>> ...\n>> \n>> I saved it as a pajek file from igraph.\n>> \n>> Circle \"cyan\" nodes belong to the actors set, while square \"yellow\" nodes belong to the events set.\n>> \n>> I can read the network with read.paj(), but I don't know how to coerce it to bipartite. Is it possible?\n>> \n>> Thanks in advance for any help.\n>> \n>> Best,\n>> Simone\n>> \n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Thanks, yes, I have noticed that, I was just hoping that there was a way to tell network that all nodes with color = cyan are actors and all nodes with color = yellow are events... \n\nit is not a criti",
+      "thread_id": "thread-e78008ac4984",
+      "thread_depth": 2,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-aacd13f1fc7c",
+      "message_id": "<BANLkTik_m4D12DP9_186Xwuid_iz=Bv6BA@mail.gmail.com>",
+      "from_name": "Sam Stewart",
+      "from_email_hash": "51b57d9e397a077e24243651cef0d1d3aa1bf70a60060faa096fc9f957fe6cc3",
+      "date": "2011-04-18T04:19:32Z",
+      "subject": "[statnet_help] how to manage a bipartite network",
+      "subject_clean": "[statnet_help] how to manage a bipartite network",
+      "in_reply_to": "<90822D1E-B390-4FAF-AF39-928E0248A5A3@gmail.com>",
+      "references": [
+        "<97F2FBFD-D8C1-435C-BADE-3B8B664D4AC2@gmail.com>",
+        "<7ECAAF7A-42C1-4A1B-B51B-BF8909A05B08@gmail.com>",
+        "<123FC835-E592-477D-A186-2F32A9A8A894@stat.psu.edu>",
+        "<90822D1E-B390-4FAF-AF39-928E0248A5A3@gmail.com>"
+      ],
+      "body_plain": "I've been working with 2-mode networks a fair bit, and statnet isn't design\nwell for them.\n\nI found the best way was to assign labels to all of them: for my dataset I'm\nworking with users and discussion threads, so for reading the data in I\npasted a \"T\" to the front of all my threads, which prevents actor 132\ngetting confused with thread T132.\n\nSam\n\nOn Mon, Apr 18, 2011 at 7:23 AM, Simone Gabbriellini <\nsimone.gabbriellini@gmail.com> wrote:\n\n> Thanks, yes, I have noticed that, I was just hoping that there was a way to\n> tell network that all nodes with color = cyan are actors and all nodes with\n> color = yellow are events...\n>\n> it is not a criticism at all, statnet is amazing, but let me just leave a\n> comment: what is the reason in keeping them ordered by id? what if my\n> network grows? should I always re-numer everything? it doesn't seem\n> efficient...\n>\n> Thanks for your help...\n>\n> best,\n> Simone\n>\n> Il giorno 17/apr/2011, alle ore 18.41, David Hunter ha scritto:\n>\n> > Hello Simone.  I notice that your edge list:\n> >\n> >> 580 1124\n> >> 792 1244\n> >> 424 539\n> >> 784 1275\n> >> 288 1261\n> >> 919 957\n> >> 754 888\n> >\n> > ... does not have the property that all mode-1 nodes (actors, in many\n> contexts) have smaller numbers than all mode-2 nodes (events).  In the\n> network package, a bipartite network is specified by a non-NULL value of the\n> \"bipartite\" flag, which then becomes the number of actors.  So I think it\n> would be easy to coerce your network to bipartite if you first re-numbered\n> all of your nodes so that all of the actors had labels 1 through the value\n> of bipartite, then the events were bipartite+1 through n.\n> >\n> > I hope this helps.\n> > Dave\n> >\n> >\n> > On Apr 6, 2011, at 9:30 AM, Simone Gabbriellini wrote:\n> >\n> >> Dear List,\n> >>\n> >> I would like to try the ergm package on my bipartite network, but I am\n> facing some issues importing my data.\n> >> My network is in Pajek format, like:\n> >>\n> >> *Vertices 1296\n> >> 1 \"1\" circle ic \"cyan\"\n> >> 2 \"2\" circle ic \"cyan\"\n> >> 3 \"3\" circle ic \"cyan\"\n> >> 4 \"4\" square ic \"yellow\"\n> >> 5 \"5\" circle ic \"cyan\"\n> >> 6 \"6\" circle ic \"cyan\"\n> >> 7 \"7\" square ic \"yellow\"\n> >> 8 \"8\" circle ic \"cyan\"\n> >> ....\n> >> *Edges\n> >> 580 1124\n> >> 792 1244\n> >> 424 539\n> >> 784 1275\n> >> 288 1261\n> >> 919 957\n> >> 754 888\n> >> ...\n> >>\n> >> I saved it as a pajek file from igraph.\n> >>\n> >> Circle \"cyan\" nodes belong to the actors set, while square \"yellow\"\n> nodes belong to the events set.\n> >>\n> >> I can read the network with read.paj(), but I don't know how to coerce\n> it to bipartite. Is it possible?\n> >>\n> >> Thanks in advance for any help.\n> >>\n> >> Best,\n> >> Simone\n> >>\n> >> _______________________________________________\n> >> statnet_help mailing list\n> >> statnet_help@u.washington.edu\n> >> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> >\n> > _______________________________________________\n> > statnet_help mailing list\n> > statnet_help@u.washington.edu\n> > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \nSam Stewart, MMath, A.Stat\nIDPhD Candidate (Health Informatics)\nFaculty of Computer Science, Dalhousie University\n6050 University Ave.\nHalifax, NS, Canada, B3H 1W5\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110418/49aa9ebc/attachment.html>",
+      "body_snippet": "I've been working with 2-mode networks a fair bit, and statnet isn't design\nwell for them.\n\nI found the best way was to assign labels to all of them: for my dataset I'm\nworking with users and discussi",
+      "thread_id": "thread-e78008ac4984",
+      "thread_depth": 3,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-5a8bbe529abf",
+      "message_id": "<000e01cc012f$00fd1b20$02f75160$@socy.umd.edu>",
+      "from_name": "Christina Prell",
+      "from_email_hash": "d22ea3633e247fc3ed0de59e75743884d0ace1d87249383c97d08c1dde0024b0",
+      "date": "2011-04-22T13:51:04Z",
+      "subject": "[statnet_help] Positional analysis/block modelling in Statnet",
+      "subject_clean": "[statnet_help] Positional analysis/block modelling in Statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\n \n\nI first ran a positional analysis in UCINET (the Concor procedure, and also\nusing Pearson r for generating the similarity matrix). I want to see if I\ncan duplicate these results in R, to make sure I'm understanding R. I have\none question and one problem. \n\n \n\n1.       The question: When I tell statnet that I'm making use of a diagraph\nfor my blockmodel, does it automatically include the transpose in its\ncalculation? \n\n\n\n2.       The problem:\n\n \n\n \n\n> sedist(dat, method=\"correlation\", diag=TRUE) -> se    #So now I have my\nsimiliarity matrix based on correlation\n\n# method, and including the diagonal. \n\n \n\n \n\n> blockmodel(dat,se,k=5)-> B                    #So here I am trying to now\ncreate the block model, with 5 blocks, \n\n \n#and making use of the similiarity matrix I generated in the previous step.\n\n \n\nError in mean(d[i, b == j, b == k, drop = FALSE], na.rm = TRUE) : \n\n  (subscript) logical subscript too long\n#This is the error message I got. \n\n#What am I doing wrong here?\n\n \n\n \n\nThanks!\n\nChristina Prell\n\n2112 Art-Sociology Building, University of Maryland, College Park, MD 20742\n\nOffice: 3149\n\nPhone: 310 405 9369\n\nWebpage:  <http://www.bsos.umd.edu/socy/people/Prell.htm>\nhttp://www.bsos.umd.edu/socy/people/Prell.htm\n\n \n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110422/85c80c3c/attachment.html>",
+      "body_snippet": "Hi all,\n\n \n\nI first ran a positional analysis in UCINET (the Concor procedure, and also\nusing Pearson r for generating the similarity matrix). I want to see if I\ncan duplicate these results in R, to m",
+      "thread_id": "thread-5a8bbe529abf",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-eb5df48eeefc",
+      "message_id": "<BANLkTikNOtVLGb3tT9EEejxwULKeoZ-X5Q@mail.gmail.com>",
+      "from_name": "Jesse Blocher",
+      "from_email_hash": "c7b71f9a060b1fefb82c3d7fd68e834f4c2fd310db6ba43a95293c419b4640d7",
+      "date": "2011-04-27T10:24:37Z",
+      "subject": "[statnet_help] getting data out of netlm object?",
+      "subject_clean": "[statnet_help] getting data out of netlm object?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all -\nI'm running netlm on a sequence of networks through time and would like to\nsee how the parameters change. Specifically, I'm imagining a sequence of\nboxplots (one plot per parameter) with time on the x axis and the paramer\ndistribution (with estimate) in a column for each t.\n(side note: this may be a good idea for a plot() function for the netlm\nobject except the x axis would be each parameter, perhaps, if someone feels\nup to coding it.)\n\nTo create this plot, I would like to programmatically get the parameter\nestimates and distributions out of my netlm object, which is of mode list.\nBut I can't figure out the names of the constituents of the list to get them\nout - summary, which normally shows the contents of the list shows the\noutput of the OLS estimates and QAP test.\n\nSo, if I do\n> net.model <- netlm(x,y,...)\n\nis there a corresponding\n> net.model$<x1.distribution>\n> net.model$<parameter.estimates>\nmatrix or vector I can access?\n\nEven if the entire distribution isn't available, the summary\nmin/max/med/quantiles displayed would be sufficient. And the estimate, of\ncourse.\n\nThanks,\n\n-- \nJesse Blocher ? Doctoral Candidate, Finance ? UNC?s Kenan-Flagler Business\nSchool\nCampus Box 3490 ? McColl Building ? Chapel Hill, NC 27599-3490 ? fax\n919-962-2068 ?\njesse_blocher@unc.edu ? http://www.kenan-flagler.unc.edu ?\nhttp://www.unc.edu/~jabloche\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110427/b8acfaab/attachment.html>",
+      "body_snippet": "Hi all -\nI'm running netlm on a sequence of networks through time and would like to\nsee how the parameters change. Specifically, I'm imagining a sequence of\nboxplots (one plot per parameter) with time",
+      "thread_id": "thread-eb5df48eeefc",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-6bd16f27a4c9",
+      "message_id": "<798FF3A49CD1EE43BEAE3523FC9EF5B28BFA46104D@EXCH07-03.apollogrp.edu>",
+      "from_name": "Philip Heinrich",
+      "from_email_hash": "eef65b2d9592fd15623682df130f7f9274763e62d74facbee5922b6659e32584",
+      "date": "2011-04-27T14:39:00Z",
+      "subject": "[statnet_help] Question About Plotting",
+      "subject_clean": "[statnet_help] Question About Plotting",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I'm trying to plot a small network with the following statement.  Group and General are vertex attributes.\n\nplot(knoke,displaylabels=T,vertex.col=Group,vertex.sides=General)\n\nWithout the \"vertex.sides...\" statement I get the plot in two colors; black and white.  I would rather the colors be red and blue.  When I add the \"vertex.sides...\" statement I get the following message and the nodes disappear.\n\nWarning messages:\n1: In cos(ang) : NaNs produced\n2: In sin(ang) : NaNs produced\n3: In cos(ang) : NaNs produced\n4: In sin(ang) : NaNs produced\n5: In cos(ang) : NaNs produced\n6: In sin(ang) : NaNs produced\n7: In cos(ang) : NaNs produced\n8: In sin(ang) : NaNs produced\n9: In cos(ang) : NaNs produced\n10: In sin(ang) : NaNs produced\n\nI would like the two levels of General to be squares and triangles.  Any advice?\n\nPhilip\n\n\n________________________________\nThis message is private and confidential. If you have received it in error, please notify the sender and remove it from your system.\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110427/37dedb77/attachment.html>",
+      "body_snippet": "I'm trying to plot a small network with the following statement.  Group and General are vertex attributes.\n\nplot(knoke,displaylabels=T,vertex.col=Group,vertex.sides=General)\n\nWithout the \"vertex.sides",
+      "thread_id": "thread-6bd16f27a4c9",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-ebae462c4be1",
+      "message_id": "<798FF3A49CD1EE43BEAE3523FC9EF5B28BFA4964C8@EXCH07-03.apollogrp.edu>",
+      "from_name": "Philip Heinrich",
+      "from_email_hash": "eef65b2d9592fd15623682df130f7f9274763e62d74facbee5922b6659e32584",
+      "date": "2011-04-28T08:31:17Z",
+      "subject": "[statnet_help] Recode Command",
+      "subject_clean": "[statnet_help] Recode Command",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Is there a straight forward way to recode the codes in a matrix?  I want to change the codes from 1 and 2 to 0 and 1.\n\nThanks.\n\n\nPhilip Heinrich, MA, MBA\nResearch Manager - Academic Research Group\nUniversity of Phoenix\n602-557-1783 - Voice\n602-557-1854 - Fax\n\n\n\n________________________________\nThis message is private and confidential. If you have received it in error, please notify the sender and remove it from your system.\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110428/a63224b4/attachment.html>",
+      "body_snippet": "Is there a straight forward way to recode the codes in a matrix?  I want to change the codes from 1 and 2 to 0 and 1.\n\nThanks.\n\n\nPhilip Heinrich, MA, MBA\nResearch Manager - Academic Research Group\nUni",
+      "thread_id": "thread-ebae462c4be1",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-81e0e12c5ba0",
+      "message_id": "<56377eda42cba146d58bb9d00c939cd5@email.unc.edu>",
+      "from_name": "dnolin",
+      "from_email_hash": "9ea4374cadcd0478c9da820629ed01f9f63173dc4f2e1510510ac970233cb3df",
+      "date": "2011-04-28T08:48:40Z",
+      "subject": "[statnet_help] Recode Command",
+      "subject_clean": "[statnet_help] Recode Command",
+      "in_reply_to": "<798FF3A49CD1EE43BEAE3523FC9EF5B28BFA4964C8@EXCH07-03.apollogrp.edu>",
+      "references": [
+        "<798FF3A49CD1EE43BEAE3523FC9EF5B28BFA4964C8@EXCH07-03.apollogrp.edu>"
+      ],
+      "body_plain": "Hi Philip,\n\nThis example should illustrate what you want to do:\n\n> mat <- matrix(c(0,1,1,0,1,0,1,1,0), ncol=3)\n> mat\n[,1] [,2] [,3]\n[1,]    0    0    1\n[2,]    1    1    1\n[3,]    1    0    0\n\n> mat[mat==1] <- 2\n> mat\n[,1] [,2] [,3]\n[1,]    0    0    2\n[2,]    2    2    2\n[3,]    2    0    0\n\n> mat[mat==0] <- 1\n> mat\n[,1] [,2] [,3]\n[1,]    1    1    2\n[2,]    2    2    2\n[3,]    2    1    1\n\n\nCheers,\nDave\n\n\nOn Thu, 28 Apr 2011 08:31:17 -0700, Philip Heinrich\n<philip.heinrich@phoenix.edu> wrote:\n> Is there a straight forward way to recode the codes in a matrix?  I want\nto\n> change the codes from 1 and 2 to 0 and 1.\n> \n> Thanks.\n> \n> \n> Philip Heinrich, MA, MBA\n> Research Manager - Academic Research Group\n> University of Phoenix\n> 602-557-1783 - Voice\n> 602-557-1854 - Fax\n> \n> \n> \n> ________________________________\n> This message is private and confidential. If you have received it in\nerror,\n> please notify the sender and remove it from your system.\n\n-- \n_____________________________________________\nDavid A. Nolin\nPostdoctoral Scholar, Carolina Population Center\nAdjunct Assistant Professor, Department of Anthropology\nUniversity of North Carolina",
+      "body_snippet": "Hi Philip,\n\nThis example should illustrate what you want to do:\n\n> mat <- matrix(c(0,1,1,0,1,0,1,1,0), ncol=3)\n> mat\n[,1] [,2] [,3]\n[1,]    0    0    1\n[2,]    1    1    1\n[3,]    1    0    0\n\n> mat[m",
+      "thread_id": "thread-ebae462c4be1",
+      "thread_depth": 1,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-7d65f3a8ba76",
+      "message_id": "<4DB98D6A.2070808@coll.mpg.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "be636dde28cefa502024155d2c668f78a853d393127e9415ccd248c0c80cf950",
+      "date": "2011-04-28T08:53:14Z",
+      "subject": "[statnet_help] Recode Command",
+      "subject_clean": "[statnet_help] Recode Command",
+      "in_reply_to": "<798FF3A49CD1EE43BEAE3523FC9EF5B28BFA4964C8@EXCH07-03.apollogrp.edu>",
+      "references": [
+        "<798FF3A49CD1EE43BEAE3523FC9EF5B28BFA4964C8@EXCH07-03.apollogrp.edu>"
+      ],
+      "body_plain": "d <- 6  # dimensions of the matrix\nmat <- matrix(rbinom(d*d, 1, 0.5) + 1, d, d)\nmat  # matrix with 1 and 2 values\nnew.mat <- mat - 1\nnew.mat  # matrix with 0 and 1 values\n\n# or, alternatively:\n\nmat[mat==1] <- 0\nmat[mat==2] <- 1\n\nDoes this work for you?\n\nPhilip\n\nOn 28.04.2011 17:31, Philip Heinrich wrote:\n> Is there a straight forward way to recode the codes in a matrix? I want\n> to change the codes from 1 and 2 to 0 and 1.\n>\n> Thanks.\n>\n> Philip Heinrich, MA, MBA\n> Research Manager - Academic Research Group\n> University of Phoenix\n> 602-557-1783 - Voice\n> 602-557-1854 - Fax\n>\n>\n> ------------------------------------------------------------------------\n> This message is private and confidential. If you have received it in\n> error, please notify the sender and remove it from your system.\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nPhilip Leifeld\nMax Planck Institute for     | +49 (0) 1577 6830349 (mobile)\nResearch on Collective Goods | +49 (0) 228 91416-73 (phone)\nMaxNetAging Doctoral Fellow  | +49 (0) 228 91416-62 (fax)\nKurt-Schumacher-Str. 10      | Leifeld@coll.mpg.de\n53113 Bonn, Germany          | http://www.philipleifeld.de",
+      "body_snippet": "d <- 6  # dimensions of the matrix\nmat <- matrix(rbinom(d*d, 1, 0.5) + 1, d, d)\nmat  # matrix with 1 and 2 values\nnew.mat <- mat - 1\nnew.mat  # matrix with 0 and 1 values\n\n# or, alternatively:\n\nmat[ma",
+      "thread_id": "thread-ebae462c4be1",
+      "thread_depth": 1,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-444e9657d7fe",
+      "message_id": "<000801cc05bd$36a25d70$a3e71850$@socy.umd.edu>",
+      "from_name": "Christina Prell",
+      "from_email_hash": "d22ea3633e247fc3ed0de59e75743884d0ace1d87249383c97d08c1dde0024b0",
+      "date": "2011-04-28T08:59:09Z",
+      "subject": "[statnet_help] STATNET - 2nd attempt: Positional analysis/block modelling",
+      "subject_clean": "[statnet_help] STATNET - 2nd attempt: Positional analysis/block modelling",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\n \n\nI sent this last week, and I haven't heard back. Could someone please kindly\nadvise? Thanks much, Christina\n\n \n\nFrom: Christina Prell [mailto:cprell@socy.umd.edu] \nSent: Friday, April 22, 2011 4:51 PM\nTo: 'statnet_help@u.washington.edu'\nSubject: Positional analysis/block modelling in Statnet\n\n \n\nHi all,\n\n \n\nI first ran a positional analysis in UCINET (the Concor procedure, and also\nusing Pearson r for generating the similarity matrix). I want to see if I\ncan duplicate these results in R, to make sure I'm understanding R. I have\none question and one problem. \n\n \n\n1.       The question: When I tell statnet that I'm making use of a diagraph\nfor my blockmodel, does it automatically include the transpose in its\ncalculation? \n\n2.       The problem:\n\n \n\n \n\n> sedist(dat, method=\"correlation\", diag=TRUE) -> se    #So now I have my\nsimiliarity matrix based on correlation\n\n# method, and including the diagonal. \n\n \n\n \n\n> blockmodel(dat,se,k=5)-> B                    #So here I am trying to now\ncreate the block model, with 5 blocks, \n\n \n#and making use of the similiarity matrix I generated in the previous step.\n\n \n\nError in mean(d[i, b == j, b == k, drop = FALSE], na.rm = TRUE) : \n\n  (subscript) logical subscript too long\n#This is the error message I got. \n\n#What am I doing wrong here?\n\n \n\n \n\nThanks!\n\nChristina Prell\n\n2112 Art-Sociology Building, University of Maryland, College Park, MD 20742\n\nOffice: 3149\n\nPhone: 310 405 9369\n\nWebpage:  <http://www.bsos.umd.edu/socy/people/Prell.htm>\nhttp://www.bsos.umd.edu/socy/people/Prell.htm\n\n \n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110428/5a160703/attachment.html>",
+      "body_snippet": "Hi all,\n\n \n\nI sent this last week, and I haven't heard back. Could someone please kindly\nadvise? Thanks much, Christina\n\n \n\nFrom: Christina Prell [mailto:cprell@socy.umd.edu] \nSent: Friday, April 22, ",
+      "thread_id": "thread-444e9657d7fe",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-aea880a1496e",
+      "message_id": "<798FF3A49CD1EE43BEAE3523FC9EF5B28BFA4D853D@EXCH07-03.apollogrp.edu>",
+      "from_name": "Philip Heinrich",
+      "from_email_hash": "eef65b2d9592fd15623682df130f7f9274763e62d74facbee5922b6659e32584",
+      "date": "2011-04-28T15:31:17Z",
+      "subject": "[statnet_help] Measuring Density by Vertex Attribute",
+      "subject_clean": "[statnet_help] Measuring Density by Vertex Attribute",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Is there a straight forward way of measuring the density of a network for each of the two levels of a vertex attribute?\n\nThanks.\n\n\nPhilip Heinrich, MA, MBA\nResearch Manager - Academic Research Group\nUniversity of Phoenix\n602-557-1783 - Voice\n602-557-1854 - Fax\n\n\n\n________________________________\nThis message is private and confidential. If you have received it in error, please notify the sender and remove it from your system.\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110428/f6df02ee/attachment.html>",
+      "body_snippet": "Is there a straight forward way of measuring the density of a network for each of the two levels of a vertex attribute?\n\nThanks.\n\n\nPhilip Heinrich, MA, MBA\nResearch Manager - Academic Research Group\nU",
+      "thread_id": "thread-aea880a1496e",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-7d2ebb24a38d",
+      "message_id": "<00ba01cc0690$b828a330$2879e990$@washington.edu>",
+      "from_name": "deven hamilton",
+      "from_email_hash": "505d525ebea95ad8cb849368a6f973cb22b141b846f861f4a987295b8ffdac07",
+      "date": "2011-04-29T10:13:12Z",
+      "subject": "[statnet_help] which nodes are which",
+      "subject_clean": "[statnet_help] which nodes are which",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I have a quick question about identifying my nodes in a network.  I have a\nbipartite network size 5000 which I created with two attributes, sex and\nrace.\n\n \n\n                network_1 <-\nnetwork.initialize(5000,bipartite=2500,directed=F)\n\n                network_1 <-\nset.vertex.attribute(network_1,\"race\",c(rep(\"W\",2125),rep(\"B\",375),rep(\"W\",2\n125),rep(\"B\",375)))\n\n                network_1 <-\nset.vertex.attribute(network_1,\"sex\",c(rep(\"M\",2500),rep(\"F\",2500)))  \n\n \n\nAfter that I created and ergm and simulated from it to get the following.  I\nknow it says edges =0 but this is just the first in a series and the network\nstarts out empty.   What I need to know is which nodes are which. \n\n \n\nsim$network\n\nNetwork attributes:\n\n  vertices = 5000 \n\n  directed = FALSE \n\n  hyper = FALSE \n\n  loops = FALSE \n\n  multiple = FALSE \n\n  bipartite = 2500 \n\n  total edges= 0 \n\n    missing edges= 0 \n\n    non-missing edges= 0 \n\n \n\nVertex attribute names: \n\n    race sex vertex.names\n\n \n\nIt is not 100% clear to me what order the nodes are in.  In this case are\nnodes 1:2500 male and 2501:5000 female or the opposite.  Similarly are the\nfist 375 males the black males are the last 375.  Is there a quick way to\nget statnet to tell me which are which.  This seems like it should be simple\nI just can't seem to come up with the right call.\n\n \n\nThanks\n\nDeven\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20110429/1f9aa1a3/attachment.html>",
+      "body_snippet": "I have a quick question about identifying my nodes in a network.  I have a\nbipartite network size 5000 which I created with two attributes, sex and\nrace.\n\n \n\n                network_1 <-\nnetwork.initi",
+      "thread_id": "thread-7d2ebb24a38d",
+      "thread_depth": 0,
+      "month": "2011-04"
+    },
+    {
+      "id": "msg-58f8d9b9ca5d",
+      "message_id": "<4DBB06BE.1080108@u.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2011-04-29T11:43:10Z",
+      "subject": "[statnet_help] which nodes are which",
+      "subject_clean": "[statnet_help] which nodes are which",
+      "in_reply_to": "<00ba01cc0690$b828a330$2879e990$@washington.edu>",
+      "references": [
+        "<00ba01cc0690$b828a330$2879e990$@washington.edu>"
+      ],
+      "body_plain": "Hi Deven,\n\nYou just need to use the command get.vertex.attribute:\n\nget.vertex.attribute(network_1,\"race\")\nget.vertex.attribute(network_1,\"sex\")\n\nThis will tell you the sex and race of each node, in node order; you'll \nsee that the nodes are in the order that you passed the attributes: \n1-2125=white males, etc.\n\nYou can also use the handy short-cut version of the same commands:\n\nnetwork_1 %v% \"race\"\nnetwork_1 %v% \"sex\"\n\nSteve\n\nOn 4/29/2011 1:13 PM, deven hamilton wrote:\n> I have a quick question about identifying my nodes in a network. I have\n> a bipartite network size 5000 which I created with two attributes, sex\n> and race.\n>\n> network_1 <- network.initialize(5000,bipartite=2500,directed=F)\n>\n> network_1 <-\n> set.vertex.attribute(network_1,\"race\",c(rep(\"W\",2125),rep(\"B\",375),rep(\"W\",2125),rep(\"B\",375)))\n>\n> network_1 <-\n> set.vertex.attribute(network_1,\"sex\",c(rep(\"M\",2500),rep(\"F\",2500)))\n>\n> After that I created and ergm and simulated from it to get the\n> following. I know it says edges =0 but this is just the first in a\n> series and the network starts out empty. What I need to know is which\n> nodes are which.\n>\n> sim$network\n>\n> Network attributes:\n>\n> vertices = 5000\n>\n> directed = FALSE\n>\n> hyper = FALSE\n>\n> loops = FALSE\n>\n> multiple = FALSE\n>\n> bipartite = 2500\n>\n> total edges= 0\n>\n> missing edges= 0\n>\n> non-missing edges= 0\n>\n> Vertex attribute names:\n>\n> race sex vertex.names\n>\n> It is not 100% clear to me what order the nodes are in. In this case are\n> nodes 1:2500 male and 2501:5000 female or the opposite. Similarly are\n> the fist 375 males the black males are the last 375. Is there a quick\n> way to get statnet to tell me which are which. This seems like it should\n> be simple I just can?t seem to come up with the right call.\n>\n> Thanks\n>\n> Deven\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n\n-- \n\n***********************************************************************\n  * Steven M. Goodreau / Assoc. Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100     *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)   *\n  * http://faculty.washington.edu/goodreau                            *\n  * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k         *\n***********************************************************************",
+      "body_snippet": "Hi Deven,\n\nYou just need to use the command get.vertex.attribute:\n\nget.vertex.attribute(network_1,\"race\")\nget.vertex.attribute(network_1,\"sex\")\n\nThis will tell you the sex and race of each node, in no",
+      "thread_id": "thread-7d2ebb24a38d",
+      "thread_depth": 1,
+      "month": "2011-04"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-4365260ade61",
+      "subject": "[statnet_help] doc: simulate.ergm: theta0 vs. prob?",
+      "message_count": 1,
+      "participants": [
+        "Hugh J Devlin"
+      ],
+      "started": "2011-04-01T07:55:33Z",
+      "last_reply": "2011-04-01T07:55:33Z",
+      "root_message_id": "msg-4365260ade61"
+    },
+    {
+      "id": "thread-40650fabfbb9",
+      "subject": "[statnet_help] doc: simulate.ergm: dynamic draws?",
+      "message_count": 3,
+      "participants": [
+        "David Hunter",
+        "Hugh J Devlin",
+        "Martina Morris"
+      ],
+      "started": "2011-04-01T07:59:14Z",
+      "last_reply": "2011-04-17T09:35:45Z",
+      "root_message_id": "msg-40650fabfbb9"
+    },
+    {
+      "id": "thread-16529515b819",
+      "subject": "[statnet_help] simulate.ergm: sequential parameter v. for loop ?",
+      "message_count": 2,
+      "participants": [
+        "Hugh J Devlin",
+        "Martina Morris"
+      ],
+      "started": "2011-04-01T09:12:53Z",
+      "last_reply": "2011-04-01T18:40:36Z",
+      "root_message_id": "msg-16529515b819"
+    },
+    {
+      "id": "thread-ddcb10c8c78b",
+      "subject": "[statnet_help] Re: statnet_help Digest, Vol 56, Issue 11",
+      "message_count": 2,
+      "participants": [
+        "Victorin Luisier",
+        "chengjun wang"
+      ],
+      "started": "2011-04-05T05:57:56Z",
+      "last_reply": "2011-04-06T00:07:32Z",
+      "root_message_id": "msg-ddcb10c8c78b"
+    },
+    {
+      "id": "thread-e78008ac4984",
+      "subject": "[statnet_help] how to manage a bipartite network",
+      "message_count": 4,
+      "participants": [
+        "David Hunter",
+        "Sam Stewart",
+        "Simone Gabbriellini"
+      ],
+      "started": "2011-04-06T06:30:23Z",
+      "last_reply": "2011-04-18T04:19:32Z",
+      "root_message_id": "msg-e78008ac4984"
+    },
+    {
+      "id": "thread-3fb1531cd06a",
+      "subject": "[statnet_help] A Couple of Real Basic Questions",
+      "message_count": 2,
+      "participants": [
+        "Philip Heinrich",
+        "Victorin Luisier"
+      ],
+      "started": "2011-04-06T08:34:00Z",
+      "last_reply": "2011-04-06T10:46:53Z",
+      "root_message_id": "msg-3fb1531cd06a"
+    },
+    {
+      "id": "thread-98c183b5749e",
+      "subject": "[statnet_help] Re: statnet_help Digest, Vol 57, Issue 4",
+      "message_count": 1,
+      "participants": [
+        "chengjun wang"
+      ],
+      "started": "2011-04-06T09:18:03Z",
+      "last_reply": "2011-04-06T09:18:03Z",
+      "root_message_id": "msg-98c183b5749e"
+    },
+    {
+      "id": "thread-30ade3350fc7",
+      "subject": "[statnet_help] Nodemix Coefficient Estimates",
+      "message_count": 3,
+      "participants": [
+        "Martina Morris",
+        "stanj@u.washington.edu"
+      ],
+      "started": "2011-04-07T09:14:37Z",
+      "last_reply": "2011-04-07T09:22:08Z",
+      "root_message_id": "msg-30ade3350fc7"
+    },
+    {
+      "id": "thread-b1a244afe11e",
+      "subject": "[statnet_help] Nodemix Coefficient Estimates",
+      "message_count": 2,
+      "participants": [
+        "Martina Morris",
+        "stanj@u.washington.edu"
+      ],
+      "started": "2011-04-07T09:41:11Z",
+      "last_reply": "2011-04-07T09:56:07Z",
+      "root_message_id": "msg-b1a244afe11e"
+    },
+    {
+      "id": "thread-a54bbc859b11",
+      "subject": "[statnet_help] Nodemix Coefficient Estimates",
+      "message_count": 1,
+      "participants": [
+        "stanj@u.washington.edu"
+      ],
+      "started": "2011-04-07T10:56:01Z",
+      "last_reply": "2011-04-07T10:56:01Z",
+      "root_message_id": "msg-a54bbc859b11"
+    },
+    {
+      "id": "thread-4fbba5b339e8",
+      "subject": "[statnet_help] doc: ergm: which parameters rendered moot by MPLEonly=TRUE?",
+      "message_count": 1,
+      "participants": [
+        "Hugh J Devlin"
+      ],
+      "started": "2011-04-09T08:06:54Z",
+      "last_reply": "2011-04-09T08:06:54Z",
+      "root_message_id": "msg-4fbba5b339e8"
+    },
+    {
+      "id": "thread-42c9c94a6191",
+      "subject": "[statnet_help] ergm.userterms is on CRAN",
+      "message_count": 1,
+      "participants": [
+        "Victorin Luisier"
+      ],
+      "started": "2011-04-13T06:30:30Z",
+      "last_reply": "2011-04-13T06:30:30Z",
+      "root_message_id": "msg-42c9c94a6191"
+    },
+    {
+      "id": "thread-99f1ce5e566a",
+      "subject": "[statnet_help] Newbie Question",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Scott McClurg"
+      ],
+      "started": "2011-04-15T14:11:42Z",
+      "last_reply": "2011-04-17T15:06:07Z",
+      "root_message_id": "msg-99f1ce5e566a"
+    },
+    {
+      "id": "thread-152c631d7fcf",
+      "subject": "[statnet_help] error in ergm with style \"Stepping\"",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Soriani Nicola"
+      ],
+      "started": "2011-04-16T06:51:28Z",
+      "last_reply": "2011-04-17T09:58:05Z",
+      "root_message_id": "msg-152c631d7fcf"
+    },
+    {
+      "id": "thread-f7fcdd14205c",
+      "subject": "[statnet_help] ERGM crash help",
+      "message_count": 1,
+      "participants": [
+        "David Hunter"
+      ],
+      "started": "2011-04-17T08:35:06Z",
+      "last_reply": "2011-04-17T08:35:06Z",
+      "root_message_id": "msg-f7fcdd14205c"
+    },
+    {
+      "id": "thread-f9c4a58dc585",
+      "subject": "[statnet_help] problems using san() to create a network from egocentric data",
+      "message_count": 1,
+      "participants": [
+        "David Hunter"
+      ],
+      "started": "2011-04-17T09:18:46Z",
+      "last_reply": "2011-04-17T09:18:46Z",
+      "root_message_id": "msg-f9c4a58dc585"
+    },
+    {
+      "id": "thread-2e6ece7b754e",
+      "subject": "[statnet_help] Degree assortativity parameter",
+      "message_count": 2,
+      "participants": [
+        "Brian Keegan",
+        "Mark S. Handcock"
+      ],
+      "started": "2011-04-17T12:37:18Z",
+      "last_reply": "2011-04-17T13:03:14Z",
+      "root_message_id": "msg-2e6ece7b754e"
+    },
+    {
+      "id": "thread-dcc2f508475d",
+      "subject": "[statnet_help] Order of steps in fitting the model",
+      "message_count": 1,
+      "participants": [
+        "Semenov Alexander"
+      ],
+      "started": "2011-04-17T21:01:54Z",
+      "last_reply": "2011-04-17T21:01:54Z",
+      "root_message_id": "msg-dcc2f508475d"
+    },
+    {
+      "id": "thread-5a8bbe529abf",
+      "subject": "[statnet_help] Positional analysis/block modelling in Statnet",
+      "message_count": 1,
+      "participants": [
+        "Christina Prell"
+      ],
+      "started": "2011-04-22T13:51:04Z",
+      "last_reply": "2011-04-22T13:51:04Z",
+      "root_message_id": "msg-5a8bbe529abf"
+    },
+    {
+      "id": "thread-eb5df48eeefc",
+      "subject": "[statnet_help] getting data out of netlm object?",
+      "message_count": 1,
+      "participants": [
+        "Jesse Blocher"
+      ],
+      "started": "2011-04-27T10:24:37Z",
+      "last_reply": "2011-04-27T10:24:37Z",
+      "root_message_id": "msg-eb5df48eeefc"
+    },
+    {
+      "id": "thread-6bd16f27a4c9",
+      "subject": "[statnet_help] Question About Plotting",
+      "message_count": 1,
+      "participants": [
+        "Philip Heinrich"
+      ],
+      "started": "2011-04-27T14:39:00Z",
+      "last_reply": "2011-04-27T14:39:00Z",
+      "root_message_id": "msg-6bd16f27a4c9"
+    },
+    {
+      "id": "thread-ebae462c4be1",
+      "subject": "[statnet_help] Recode Command",
+      "message_count": 3,
+      "participants": [
+        "Philip Heinrich",
+        "Philip Leifeld",
+        "dnolin"
+      ],
+      "started": "2011-04-28T08:31:17Z",
+      "last_reply": "2011-04-28T08:53:14Z",
+      "root_message_id": "msg-ebae462c4be1"
+    },
+    {
+      "id": "thread-444e9657d7fe",
+      "subject": "[statnet_help] STATNET - 2nd attempt: Positional analysis/block modelling",
+      "message_count": 1,
+      "participants": [
+        "Christina Prell"
+      ],
+      "started": "2011-04-28T08:59:09Z",
+      "last_reply": "2011-04-28T08:59:09Z",
+      "root_message_id": "msg-444e9657d7fe"
+    },
+    {
+      "id": "thread-aea880a1496e",
+      "subject": "[statnet_help] Measuring Density by Vertex Attribute",
+      "message_count": 1,
+      "participants": [
+        "Philip Heinrich"
+      ],
+      "started": "2011-04-28T15:31:17Z",
+      "last_reply": "2011-04-28T15:31:17Z",
+      "root_message_id": "msg-aea880a1496e"
+    },
+    {
+      "id": "thread-7d2ebb24a38d",
+      "subject": "[statnet_help] which nodes are which",
+      "message_count": 2,
+      "participants": [
+        "Steven Goodreau",
+        "deven hamilton"
+      ],
+      "started": "2011-04-29T10:13:12Z",
+      "last_reply": "2011-04-29T11:43:10Z",
+      "root_message_id": "msg-7d2ebb24a38d"
+    }
+  ]
+}

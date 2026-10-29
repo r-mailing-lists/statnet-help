@@ -1,0 +1,112 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2021-07",
+  "messages": [
+    {
+      "id": "msg-199338fae662",
+      "message_id": "<CAByPayFY1B8PF7Y-s0wkQWkpBo+xhTXgFwP0wWtoS7QzNHNcvQ@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2021-07-01T09:56:51Z",
+      "subject": "[statnet_help] Question about egocentric networks",
+      "subject_clean": "[statnet_help] Question about egocentric networks",
+      "in_reply_to": "<alpine.WNT.2.21.999.2106241320070.28252@LAPTOP-PHUBQHL5>",
+      "references": [
+        "<CAFNg8yo+H5tsTu+ZNKVD_xzN+et40eX-yORxzd7JhO_S0HCkVA@mail.gmail.com>",
+        "<alpine.WNT.2.21.999.2106241320070.28252@LAPTOP-PHUBQHL5>"
+      ],
+      "body_plain": "Hi all,\n\nThis is interesting! Unless I am missing something (sorry in advance\nif this is the case) Adam's data is essentially a simple random sample\nof *dyads* from the population network.\n\nIf only dyad-independent ERGMs are of interest and K*K is much smaller\nthan the number of dyads in the population network (assuming we have a\ngood guess about that) a simple approximation would be to estimate\ndyadic GLMs for K*K dyads with binary dependent variable whether there\nis a tie in the dyad or not and with predictors pretending to\nattributes of egos, alters, dyadic attributes etc.\n\nI think ignoring the no-tie dyads and using ergm.ego directly might be\nproblematic. E.g. while the (halved) sum over egos of the number of\nties in ego-centric census is equal to the number of ties in the\npopulation network, the sum of ties from K sampled dyads incident on\neach ego in a egocentric census is not. However, I can easily imagine\nthat it should be possible to derive (some of) the suffstatistics from\nAdams design and then use ergm() to fit a model to a vector such\nsuffstats...\n\nMichal\n\nOn Fri, Jun 25, 2021 at 1:43 AM martina morris <morrism@uw.edu> wrote:\n>\n> Hi Adam,\n>\n> Your data is a bit different than what is currently designed for\n> ergm.ego, in that you have information on a sample of ego's non-ties, as\n> well as their ties.\n>\n> It would be straightforward to use ergm.ego on the sample of ego/alter tie\n> data (so, ignoring the non-tie info).  So you might consider starting\n> there.  You can, with this approach, use the non-tie data as validation\n> data: simulate from your models and see if they reproduce the tie vs.\n> non-tie distributions.\n>\n> I'm cc'ing Pavel Krivitsky and Michal Bojanowski who may have some ideas\n> about how to use the non-tie egodata.\n>\n> Finally, we are teaching the ergm.ego workshop next week: Mon., 6/28\n> 20:00-23:00 ET for the Sunbelt remote workshop.  More info here:\n> https://networks2021.net/workshops\n>\n> best,\n> mm\n>\n>\n> On Thu, 24 Jun 2021, Adam Haber wrote:\n>\n> > Hello,\n> >\n> > I have measured connectivity data in a biological network, and I want to understand if it is reasonable\n> > to try and model it using ergm.ego.\n> >\n> > The data is of the following form: I have a big biological network that I can't fully observe, and whose\n> > size is unknown to me (but I can provide an order-of-magnitude estimate).\n> > For a single, random node in this network, I conducted an experiment in which I measured if it is\n> > connected to a random sample of N other nodes. It was connected to some, but not all. I also measured\n> > various node/edge level covariates of the sampled \"ego\" and potential \"alters\".\n> > Finally, I repeated this analysis K times, so I have K \"egos\" and K sets (of different sizes) of\n> > \"potential alters\", some of which were connected to the corresponding ego and some were not, as well as\n> > the relevant covariates.\n> >\n> > I have never used ergm.ego, and curious to know if it can be used in such an analysis. Specifically,\n> > from the tutorials I have found online it is not clear to me how to use the information in the\n> > sampled-but-not-connected nodes in each of the K experiments (and their covariates).\n> >\n> > Any help would be much appreciated!\n> > Best,\n> > Adam\n> >\n> >\n> >\n>\n> ****************************************************************\n>   Professor Emerita of Sociology and Statistics\n>   Box 354322\n>   University of Washington\n>   Seattle, WA 98195-4322\n>\n>   Office:        (206) 685-3402\n>   Dept Office:   (206) 543-5882, 543-7237\n>   Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/_______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi all,\n\nThis is interesting! Unless I am missing something (sorry in advance\nif this is the case) Adam's data is essentially a simple random sample\nof *dyads* from the population network.\n\nIf only dy",
+      "thread_id": "thread-199338fae662",
+      "thread_depth": 0,
+      "month": "2021-07"
+    },
+    {
+      "id": "msg-f8f5c51a119c",
+      "message_id": "<848aba16bf994281a9290674a8962061@kit.edu>",
+      "from_name": "Wolbring, Laura (IFSS)",
+      "from_email_hash": "672c122e3a59b47813725b429e51b057f11921f7e582c0aa88e0bd29125acd99",
+      "date": "2021-07-13T09:02:51Z",
+      "subject": "[statnet_help] MCMC diagnostics function to assess convergence of ergm fit",
+      "subject_clean": "[statnet_help] MCMC diagnostics function to assess convergence of ergm fit",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI would like to assess model convergence of my ergm fit including dyad dependent terms.\nSince I installed the new statnet update, the mcmc.diagnostics function produces two pairs of plots for each statistic (e.g. two different trace plots and two different deviation plots for the gwdsp term). Can anyone tell what might be the difference between the two pairs of plots and which pair is the right one to check for convergence?\n\nThanks in advance and best regards\nLaura\n\n\nKarlsruhe Institute of Technology (KIT)\nInstitute of Sports and Sports Science (IfSS)\n\nLaura Wolbring\nResearch Assistant\n\nEngler-Bunte-Ring 15\nBuilding 40.40\nRoom -110\n76131 Karlsruhe\nPhone : +49 721 608-46696\n\nE-Mail:laura.wolbring@kit.edu<mailto:laura.wolbring@kit.edu>\nWeb: www.sport.kit.edu<http://www.sport.kit.edu>\n\nKIT - Die Forschungsuniversit?t in der Helmholtz-Gemeinschaft\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210713/1ea04611/attachment.html>",
+      "body_snippet": "Dear all,\n\nI would like to assess model convergence of my ergm fit including dyad dependent terms.\nSince I installed the new statnet update, the mcmc.diagnostics function produces two pairs of plots f",
+      "thread_id": "thread-f8f5c51a119c",
+      "thread_depth": 0,
+      "month": "2021-07"
+    },
+    {
+      "id": "msg-a17bf15fbb9a",
+      "message_id": "<CALv=FNAnVij9YieLg4wF+bGZpHFMNOa188nsZoSECy2xH8Ci5A@mail.gmail.com>",
+      "from_name": "Meng-Hao Li",
+      "from_email_hash": "5ba22c82216565a088036ab59ff0cba461bf93cdf99eddc9e9f83a2fa6fc9cda",
+      "date": "2021-07-15T11:46:05Z",
+      "subject": "[statnet_help] How to obtain predicted probability in stergm",
+      "subject_clean": "[statnet_help] How to obtain predicted probability in stergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI am running stergm models. I have no problems obtaining the fitted results\nbut am not sure how to calculate predicted probability between two nodes.\n\nThe interpret() function in xergm looks like what I am looking for, but I\nwas not able to find a similar function for the stergm fitted object.\n\nI would be very grateful for any advice on how to calculate predicted\nprobability between two nodes in stergm models.\n\nKind regards,\nMeng-Hao\n-- \nMeng-hao Li\nPhD candidate in Public Policy\nGeorge Mason University\nGoogle Scholar Profile\n<https://scholar.google.com/citations?user=LjppBHYAAAAJ&hl=en>\nLinkedIn Profile <https://www.linkedin.com/in/meng-hao-li-7400a844/>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210715/cbd2606f/attachment.html>",
+      "body_snippet": "Dear all,\n\nI am running stergm models. I have no problems obtaining the fitted results\nbut am not sure how to calculate predicted probability between two nodes.\n\nThe interpret() function in xergm look",
+      "thread_id": "thread-a17bf15fbb9a",
+      "thread_depth": 0,
+      "month": "2021-07"
+    },
+    {
+      "id": "msg-4f0238b09daf",
+      "message_id": "<alpine.WNT.2.21.999.2107201711070.19700@LAPTOP-PHUBQHL5>",
+      "from_name": "martina morris",
+      "from_email_hash": "723fa6c3cfc81bc0b636cb6ab264b9e07126ad90bc6bb940e8243a073bbb4b8b",
+      "date": "2021-07-20T17:11:43Z",
+      "subject": "[statnet_help] MCMC diagnostics function to assess convergence of ergm fit",
+      "subject_clean": "[statnet_help] MCMC diagnostics function to assess convergence of ergm fit",
+      "in_reply_to": "<848aba16bf994281a9290674a8962061@kit.edu>",
+      "references": [
+        "<848aba16bf994281a9290674a8962061@kit.edu>"
+      ],
+      "body_plain": "Hi Laura,\n\nCan you please include a small reproducible example with one of the \nbuiltin datasets (like faux.mesa.high)?\n\nthx,\nMartina\n\nOn Tue, 13 Jul 2021, Wolbring, Laura (IFSS) wrote:\n\n> \n> Dear all,\n>\n> \n> \n> I would like to assess model convergence of my ergm fit including dyad dependent terms.\n> \n> Since I installed the new statnet update, the mcmc.diagnostics function produces two pairs of plots for\n> each statistic (e.g. two different trace plots and two different deviation plots for the gwdsp term).\n> Can anyone tell what might be the difference between the two pairs of plots and which pair is the right\n> one to check for convergence?\n>\n> \n> \n> Thanks in advance and best regards\n> \n> Laura\n>\n> \n>\n> \n> \n> Karlsruhe Institute of Technology (KIT)\n> \n> Institute of Sports and Sports Science (IfSS)\n>\n> \n> \n> Laura Wolbring\n> \n> Research Assistant\n>\n> \n> \n> Engler-Bunte-Ring 15\n> \n> Building 40.40\n> \n> Room -110\n> \n> 76131 Karlsruhe\n> \n> Phone : +49 721 608-46696\n>\n> \n> \n> E-Mail:laura.wolbring@kit.edu\n> \n> Web: www.sport.kit.edu\n>\n> \n> \n> KIT - Die Forschungsuniversit?t in der Helmholtz-Gemeinschaft\n> \n> \n>\n\n****************************************************************\n  Professor Emerita of Sociology and Statistics\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Laura,\n\nCan you please include a small reproducible example with one of the \nbuiltin datasets (like faux.mesa.high)?\n\nthx,\nMartina\n\nOn Tue, 13 Jul 2021, Wolbring, Laura (IFSS) wrote:\n\n> \n> Dear all",
+      "thread_id": "thread-f8f5c51a119c",
+      "thread_depth": 1,
+      "month": "2021-07"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-199338fae662",
+      "subject": "[statnet_help] Question about egocentric networks",
+      "message_count": 1,
+      "participants": [
+        "Michał Bojanowski"
+      ],
+      "started": "2021-07-01T09:56:51Z",
+      "last_reply": "2021-07-01T09:56:51Z",
+      "root_message_id": "msg-199338fae662"
+    },
+    {
+      "id": "thread-f8f5c51a119c",
+      "subject": "[statnet_help] MCMC diagnostics function to assess convergence of ergm fit",
+      "message_count": 2,
+      "participants": [
+        "Wolbring, Laura (IFSS)",
+        "martina morris"
+      ],
+      "started": "2021-07-13T09:02:51Z",
+      "last_reply": "2021-07-20T17:11:43Z",
+      "root_message_id": "msg-f8f5c51a119c"
+    },
+    {
+      "id": "thread-a17bf15fbb9a",
+      "subject": "[statnet_help] How to obtain predicted probability in stergm",
+      "message_count": 1,
+      "participants": [
+        "Meng-Hao Li"
+      ],
+      "started": "2021-07-15T11:46:05Z",
+      "last_reply": "2021-07-15T11:46:05Z",
+      "root_message_id": "msg-a17bf15fbb9a"
+    }
+  ]
+}

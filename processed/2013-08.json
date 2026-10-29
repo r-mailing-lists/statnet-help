@@ -1,0 +1,762 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2013-08",
+  "messages": [
+    {
+      "id": "msg-784f033fd195",
+      "message_id": "<CAD5742667680B489D6A39571B8E7FA72DD02664@ICTSC-W-S204.soliscom.uu.nl>",
+      "from_name": "Smith, S. (Sanne)",
+      "from_email_hash": "684dffe9c680b86c503f0b2dede5b862c2e510b7909bc2cfd47270b9f9653c84",
+      "date": "2013-08-01T03:45:46Z",
+      "subject": "[statnet_help] mcmc diagnostics error",
+      "subject_clean": "[statnet_help] mcmc diagnostics error",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI've been trying to use the mcmc.diagnostics function to check for degeneracy, but it returns the error\n\nError in UseMethod(\"as.mcmc\") :\n  no applicable method for 'as.mcmc' applied to an object of class \"mcmc\"\n\nI did not have any problems using this command before and I noticed that ?mcmc.diagnostics does not return the help file. I also ran the Florentine marriage example code, and it returned the same error. As such, might the error be due to the recent update to R3.0.0?\n\nBest wishes,\n\nSanne Smith\n\n\nSanne Smith / Phd student / Universiteit Utrecht / Department Sociology / Padualaan 14, 3584 CH Utrecht / kamer C2.16 / Postbus 80140, 3508 TC Utrecht / +31 30 253 40 75 / s.smith@uu.nl\n\n\n\nOutput florentine example:\n\n> data(florentine)\n> gest <- ergm(flomarriage ~ edges + kstar(2))\nIteration 1 of at most 20:\nConvergence test P-value: 1.2e-01\nThe log-likelihood improved by < 0.0001\nIteration 2 of at most 20:\nConvergence test P-value: 1e+00\nConvergence detected. Stopping.\nThe log-likelihood improved by < 0.0001\n\nThis model was fit using MCMC.  To examine model diagnostics and check for degeneracy, use the mcmc.diagnostics() function.\n> mcmc.diagnostics(gest)\nSample statistics summary:\n\nIterations = 10000:1009900\nThinning interval = 100\nNumber of chains = 1\nSample size per chain = 10000\n\n1. Empirical mean and standard deviation for each variable,\n   plus standard error of the mean:\n\n         Mean     SD Naive SE Time-series SE\nedges  0.0025  4.212  0.04212        0.04694\nkstar2 0.0154 20.596  0.20596        0.22407\n\n2. Quantiles for each variable:\n\n       2.5% 25% 50% 75% 97.5%\nedges    -8  -3   0   3     9\nkstar2  -32 -15  -3  12    47\n\n\nAre sample statistics significantly different from observed?\n                edges     kstar2 Overall (Chi^2)\ndiff.      0.00250000 0.01540000              NA\ntest stat. 0.05325904 0.06872903     0.006780522\nP-val.     0.95752552 0.94520531     0.996615480\n\nSample statistics cross-correlations:\n           edges    kstar2\nedges  1.0000000 0.9599012\nkstar2 0.9599012 1.0000000\n\nSample statistics auto-correlation:\nChain 1\n              edges       kstar2\nLag 0   1.000000000  1.000000000\nLag 100 0.093234371  0.084025326\nLag 200 0.023315396  0.018670673\nLag 300 0.000422513 -0.001786714\nLag 400 0.019262300  0.012976082\nLag 500 0.004289678  0.004027498\n\nSample statistics burn-in diagnostic (Geweke):\nError in UseMethod(\"as.mcmc\") :\n  no applicable method for 'as.mcmc' applied to an object of class \"mcmc\"\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130801/8d772ff3/attachment.html>",
+      "body_snippet": "Dear all,\n\nI've been trying to use the mcmc.diagnostics function to check for degeneracy, but it returns the error\n\nError in UseMethod(\"as.mcmc\") :\n  no applicable method for 'as.mcmc' applied to an o",
+      "thread_id": "thread-784f033fd195",
+      "thread_depth": 0,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-6489c35410de",
+      "message_id": "<51FB9C75.3090101@uni-konstanz.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "0e8856775b020043f064c122aa5e96f11a67360200ec15df7ed5c1cadf4a2652",
+      "date": "2013-08-02T04:48:05Z",
+      "subject": "[statnet_help] Replication of old ergm analysis fails with new package versions but same seed, code, and data",
+      "subject_clean": "[statnet_help] Replication of old ergm analysis fails with new package versions but same seed, code, and data",
+      "in_reply_to": "<63824EEFC783EF4E9098598A12B4304C02F5A41AA0BF@EXCMS01.ad.uow.edu.au>",
+      "references": [
+        "<51DD317E.8050902@uni-konstanz.de>",
+        "<alpine.WNT.1.10.1307110948000.2572@morrism-PC>",
+        "<51DEEA35.7090703@uni-konstanz.de>",
+        "<alpine.WNT.1.10.1307111343560.6664@morrism-PC>",
+        "<51DF2AAC.6020903@uni-konstanz.de>",
+        "<C91649F2-17CD-4ED4-BB4D-AC2AC80D22A2@stat.psu.edu>",
+        "<63824EEFC783EF4E9098598A12B4304C02F5A41AA0BF@EXCMS01.ad.uow.edu.au>"
+      ],
+      "body_plain": "Hi Pavel,\n\nThanks, I think you *may* be on the right track. If I rename the edge \nattributes as suggested, the estimation in the new statnet version runs \nconsiderably faster and shows much smaller log-likelihood improvements. \nThe results are also closer to the original results. However, they are \nstill not *very* close to the original results, with some of the \nestimates deviating significantly from the original estimates (in \nparticular edges and gwesp but fortunately not the covariates).\n\nI also re-ran the adjusted model 2 on the machine where the old package \nwas installed, and the results didn't change compared to the published \npaper. I will paste the output of the estimation below. I don't remember \nexactly which version I was using in the paper (probably something close \nto 2.4 but not exactly 2.4), so the estimates below (produced using \nversion 2.4) show some very small deviation from the AJPS version, but \nnothing to worry about. They are still different from the adjusted model \n2 estimates using the new ergm version though. You can also see that the \nnames would *not* have ended up being identical in version 2.4, no \nmatter if I renamed them or not.\n\nThe bottom line is that renaming doesn't change the results for version \n2.4, but it does change the results for version 3.1-0. In spite of the \nimprovement, the adjusted model in the new ergm version still shows some \ndeviations from the original results (but apparently much less severe \nthan before).\n\nTake care,\n\nPhilip\n\n                                Estimate Std. Error MCMC s.e. p-value\nedges                          -3.52034    0.19259     0.071  <1e-04 ***\nedgecov.nw.intpos.prefsim       0.03085    0.07327     0.025   0.674\nmutual                          0.75831    0.07708     0.003  <1e-04 ***\nmix.orgtype.ig.ig               1.16113    0.13196     0.006  <1e-04 ***\nnodeifactor.orgtype.gov         0.57556    0.06625     0.003  <1e-04 ***\nnodeofactor.orgtype.sci         0.03254    0.08461     0.001   0.701\nedgecov.nw.committee.committee  0.30317    0.01680     0.000  <1e-04 ***\nedgecov.nw.sci                  3.16430    0.29523     0.011  <1e-04 ***\nedgecov.nw.infrep               0.86032    0.06878     0.001  <1e-04 ***\ngwesp.fixed.0.1                 1.26434    0.03055     0.000  <1e-04 ***\ngwdsp.fixed.0.1                -0.15623    0.01474     0.000  <1e-04 ***\n---\nSignif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n\n     Null  Deviance: 1206.08  on 870  degrees of freedom\n  Residual Deviance:  832.70  on 859  degrees of freedom\n           Deviance:  373.38  on  11  degrees of freedom\n\nAIC: 854.7    BIC: 907.15\n'log Lik.' -416.3495 (df=11)\n\n\nAm 02.08.2013 12:34, schrieb Pavel Krivitsky:\n> Hi,\n>\n> Sorry about coming so late to the party, but here are my 2 (Australian)\n> cents.\n>\n> I think the cause of the problem is that two of the terms ---\n> edgecov(nw.intpos, \"weight\") and edgecov(nw.committee, \"weight\") --- end\n> up with the same name: \"edgecov.weight\", which appears to confuse some\n> component in the ergm package, though I am not sure which one. When I\n> passed the matrices in directly, i.e.,\n>\n> model2m <- ergm(nw.pol ~ edges + edgecov(prefsim, \"prefsim\") + mutual + nodemix(\"orgtype\", base = -7) + nodeifactor(\"orgtype\", base = -1) + nodeofactor(\"orgtype\", base = -5) + edgecov(committee, \"committee\") + edgecov(nw.sci) + edgecov(nw.infrep) + gwesp(0.1, fixed = TRUE) + gwdsp(0.1, fixed = TRUE), seed=12345)\n>\n> or renamed the network attributes, i.e.,\n>\n> set.edge.value(nw.committee, \"committee\", committee)\n> set.edge.value(nw.intpos, \"intpos\", prefsim)\n> model2n <- ergm(nw.pol ~ edges + edgecov(nw.intpos, \"intpos\") + mutual + nodemix(\"orgtype\", base = -7) + nodeifactor(\"orgtype\", base = -1) + nodeofactor(\"orgtype\", base = -5) + edgecov(nw.committee, \"committee\") + edgecov(nw.sci) + edgecov(nw.infrep) + gwesp(0.1, fixed = TRUE) + gwdsp(0.1, fixed = TRUE), seed=12345)\n>\n> the fits converged without problems. (In fact, they are identical due to\n> having the same seed.) It would be interesting to see whether 2.4 would\n> produce a different result if the names didn't overlap. (Philip, what\n> were the exact coefficients you got?)\n>\n> To address this, we should either track down and figure out what's\n> causing the sensitivity to parameter names or we should explicitly check\n> and warn the user about repeated parameter names. (On the other hand,\n> they never caused us trouble in offset models.)\n>\n>                                    Pavel\n>",
+      "body_snippet": "Hi Pavel,\n\nThanks, I think you *may* be on the right track. If I rename the edge \nattributes as suggested, the estimation in the new statnet version runs \nconsiderably faster and shows much smaller lo",
+      "thread_id": "thread-6489c35410de",
+      "thread_depth": 0,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-c066a1357b46",
+      "message_id": "<201308021536210584781@126.com>",
+      "from_name": "ya",
+      "from_email_hash": "bdb50df08d91a8322aab32f6d653237eb97395be0cf167c21b33616e6be32050",
+      "date": "2013-08-02T05:36:26Z",
+      "subject": "[statnet_help] how to include categorical covariate?",
+      "subject_clean": "[statnet_help] how to include categorical covariate?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear list,\n\nI am trying to include a categorical variable (gender) into an ERGM model. I got the following error when I make the network object. Please give me some advice please?\n\n> dutchnet=network(dutchadj,directed=T,vertex.attr=list(as.factor(dutchdata[,46]),dutchdata[,47],dutchdata[,48]),vertex.attrnames=list(\"gender\", \"delinquency\",\"friend\"))\nError in set.vertex.attribute(g, vertex.attrnames[[i]], vertex.attr[[i]]) : \n  Inappropriate value given in set.vertex.attribute.\n\nThank you very much.\n\nBest regards,\n\n\n\nya\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130802/9914c7c9/attachment.html>",
+      "body_snippet": "Dear list,\n\nI am trying to include a categorical variable (gender) into an ERGM model. I got the following error when I make the network object. Please give me some advice please?\n\n> dutchnet=network(",
+      "thread_id": "thread-c066a1357b46",
+      "thread_depth": 0,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-4a02f76d2bae",
+      "message_id": "<51FBDD4B.2010107@skyeome.net>",
+      "from_name": "Skye Bender-deMoll",
+      "from_email_hash": "016c31bf83672a8e8fce6b664eb68ddff364b5df6912775ec31eeceebce90340",
+      "date": "2013-08-02T09:24:43Z",
+      "subject": "[statnet_help] how to include categorical covariate?",
+      "subject_clean": "[statnet_help] how to include categorical covariate?",
+      "in_reply_to": "<201308021536210584781@126.com>",
+      "references": [
+        "<201308021536210584781@126.com>"
+      ],
+      "body_plain": "Dear ya,\n\nI think it is likely that the as.factor() around the first data element \nis breaking the vertex data import.\n\nFor example, this works fine:\n\ntest<-network(network.initialize(3),vertex.attr=list(c(\"A\",\"B\",\"C\")),vertex.attrnames=list(\"Letters\"))\n\nbut this breaks:\n\ntest<-network(network.initialize(3),vertex.attr=list(as.factor(c(\"A\",\"B\",\"C\"))),vertex.attrnames=list(\"Letters\"))\n\nError in set.vertex.attribute(g, vertex.attrnames[[i]], \nvertex.attr[[i]]) :\n   Inappropriate value given in set.vertex.attribute.\n\nIf your goal is to convert dutchdata[,46] into numeric values, maybe it \nwould work to wrap it in a call to as.numeric:\n\nas.numeric(as.factor(dutchdata[,46]))\n\nbest,\n  -skye\n\nOn 08/02/2013 05:36 AM, ya wrote:\n>\n> Dear list,\n>\n> I am trying to include a categorical variable (gender) into an ERGM model. I got the following error when I make the network object. Please give me some advice please?\n>\n>> dutchnet=network(dutchadj,directed=T,vertex.attr=list(as.factor(dutchdata[,46]),dutchdata[,47],dutchdata[,48]),vertex.attrnames=list(\"gender\", \"delinquency\",\"friend\"))\n> Error in set.vertex.attribute(g, vertex.attrnames[[i]], vertex.attr[[i]]) :\n>    Inappropriate value given in set.vertex.attribute.\n>\n> Thank you very much.\n>\n> Best regards,\n>\n>\n>\n> ya\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Dear ya,\n\nI think it is likely that the as.factor() around the first data element \nis breaking the vertex data import.\n\nFor example, this works fine:\n\ntest<-network(network.initialize(3),vertex.attr=l",
+      "thread_id": "thread-c066a1357b46",
+      "thread_depth": 1,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-01490a817ce2",
+      "message_id": "<2013080220094783194223@126.com>",
+      "from_name": "ya",
+      "from_email_hash": "bdb50df08d91a8322aab32f6d653237eb97395be0cf167c21b33616e6be32050",
+      "date": "2013-08-02T10:10:16Z",
+      "subject": "[statnet_help] how to include categorical covariate?",
+      "subject_clean": "[statnet_help] how to include categorical covariate?",
+      "in_reply_to": null,
+      "references": [
+        "<201308021536210584781@126.com>",
+        "<51FBDD4B.2010107@skyeome.net>"
+      ],
+      "body_plain": "Hi Skye?\n\nThank you very much for the suggestion.\n\nI have figured out that I actually do not need to covert the categorical variables to factors because my goal was to fit a ERGM model. When fitting this model, the ergm-terms provide function for recognizing if a variable is categorical or continuous. For instance, if I include a gender predictor, then I can treat gender as continous and put it into the network object, then I fit the ERGM in which the gender is used with \"nodefactor\" like this: nodefactor(gender). In this way, the gender variable will be treated as a factor.\n\nThank you very much for the help.\n\nBest regards,\n\n\n\n\nya\n\nFrom: Skye Bender-deMoll\nDate: 2013-08-02 19:24\nTo: statnet_help; xinxi813\nSubject: Re: [statnet_help] how to include categorical covariate?\nDear ya,\n\nI think it is likely that the as.factor() around the first data element \nis breaking the vertex data import.\n\nFor example, this works fine:\n\ntest<-network(network.initialize(3),vertex.attr=list(c(\"A\",\"B\",\"C\")),vertex.attrnames=list(\"Letters\"))\n\nbut this breaks:\n\ntest<-network(network.initialize(3),vertex.attr=list(as.factor(c(\"A\",\"B\",\"C\"))),vertex.attrnames=list(\"Letters\"))\n\nError in set.vertex.attribute(g, vertex.attrnames[[i]], \nvertex.attr[[i]]) :\n   Inappropriate value given in set.vertex.attribute.\n\nIf your goal is to convert dutchdata[,46] into numeric values, maybe it \nwould work to wrap it in a call to as.numeric:\n\nas.numeric(as.factor(dutchdata[,46]))\n\nbest,\n  -skye\n\nOn 08/02/2013 05:36 AM, ya wrote:\n>\n> Dear list,\n>\n> I am trying to include a categorical variable (gender) into an ERGM model. I got the following error when I make the network object. Please give me some advice please?\n>\n>> dutchnet=network(dutchadj,directed=T,vertex.attr=list(as.factor(dutchdata[,46]),dutchdata[,47],dutchdata[,48]),vertex.attrnames=list(\"gender\", \"delinquency\",\"friend\"))\n> Error in set.vertex.attribute(g, vertex.attrnames[[i]], vertex.attr[[i]]) :\n>    Inappropriate value given in set.vertex.attribute.\n>\n> Thank you very much.\n>\n> Best regards,\n>\n>\n>\n> ya\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130802/788433ff/attachment.html>",
+      "body_snippet": "Hi Skye?\n\nThank you very much for the suggestion.\n\nI have figured out that I actually do not need to covert the categorical variables to factors because my goal was to fit a ERGM model. When fitting t",
+      "thread_id": "thread-c066a1357b46",
+      "thread_depth": 2,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-77cfcdeb41e6",
+      "message_id": "<alpine.WNT.1.10.1308021238420.6212@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-08-02T12:42:41Z",
+      "subject": "[statnet_help] mcmc diagnostics error",
+      "subject_clean": "[statnet_help] mcmc diagnostics error",
+      "in_reply_to": "<CAD5742667680B489D6A39571B8E7FA72DD02664@ICTSC-W-S204.soliscom.uu.nl>",
+      "references": [
+        "<CAD5742667680B489D6A39571B8E7FA72DD02664@ICTSC-W-S204.soliscom.uu.nl>"
+      ],
+      "body_plain": "Hi Sanne,\n\nI can't replicate this error on my Dell laptop using R3.0.1 and the most \nrecent version of ergm 3.1-0.\n\nCan you make sure you're running with the most recent versions of R and \nthe statnet packages and try again?\n\nbest,\nMartina\n\n\nOn Thu, 1 Aug 2013, Smith, S. (Sanne) wrote:\n\n> Dear all,\n> \n> I've been trying to use the mcmc.diagnostics function to check for degeneracy, but it returns the error\n> \n> Error in UseMethod(\"as.mcmc\") :\n> ? no applicable method for 'as.mcmc' applied to an object of class \"mcmc\"\n> \n> I did not have any problems using this command before and I noticed that ?mcmc.diagnostics does not return the help\n> file. I also ran the Florentine marriage example code, and it returned the same error. As such, might the error be due\n> to the recent update to R3.0.0? \n> \n> Best wishes,\n> \n> Sanne Smith\n> \n> \n> Sanne Smith / Phd student / Universiteit Utrecht / Department Sociology / Padualaan 14, 3584 CH Utrecht / kamer C2.16\n> / Postbus 80140, 3508 TC Utrecht / +31 30 253 40 75 /?s.smith@uu.nl\n> \n> \n> \n> Output florentine example:\n> \n> > data(florentine)\n> > gest <- ergm(flomarriage ~ edges + kstar(2))\n> Iteration 1 of at most 20: \n> Convergence test P-value: 1.2e-01 \n> The log-likelihood improved by < 0.0001 \n> Iteration 2 of at most 20: \n> Convergence test P-value: 1e+00 \n> Convergence detected. Stopping.\n> The log-likelihood improved by < 0.0001 \n> \n> This model was fit using MCMC. ?To examine model diagnostics and check for degeneracy, use the mcmc.diagnostics()\n> function.\n> > mcmc.diagnostics(gest)\n> Sample statistics summary:\n> \n> Iterations = 10000:1009900\n> Thinning interval = 100 \n> Number of chains = 1 \n> Sample size per chain = 10000 \n> \n> 1. Empirical mean and standard deviation for each variable,\n> ? ?plus standard error of the mean:\n>\n> ? ? ? ? ?Mean ? ? SD Naive SE Time-series SE\n> edges ?0.0025 ?4.212 ?0.04212 ? ? ? ?0.04694\n> kstar2 0.0154 20.596 ?0.20596 ? ? ? ?0.22407\n> \n> 2. Quantiles for each variable:\n>\n> ? ? ? ?2.5% 25% 50% 75% 97.5%\n> edges ? ?-8 ?-3 ? 0 ? 3 ? ? 9\n> kstar2 ?-32 -15 ?-3 ?12 ? ?47\n> \n> \n> Are sample statistics significantly different from observed?\n> ? ? ? ? ? ? ? ? edges ? ? kstar2 Overall (Chi^2)\n> diff. ? ? ?0.00250000 0.01540000 ? ? ? ? ? ? ?NA\n> test stat. 0.05325904 0.06872903 ? ? 0.006780522\n> P-val. ? ? 0.95752552 0.94520531 ? ? 0.996615480\n> \n> Sample statistics cross-correlations:\n> ? ? ? ? ? ?edges ? ?kstar2\n> edges ?1.0000000 0.9599012\n> kstar2 0.9599012 1.0000000\n> \n> Sample statistics auto-correlation:\n> Chain 1\n> ? ? ? ? ? ? ? edges ? ? ? kstar2\n> Lag 0 ? 1.000000000 ?1.000000000\n> Lag 100 0.093234371 ?0.084025326\n> Lag 200 0.023315396 ?0.018670673\n> Lag 300 0.000422513 -0.001786714\n> Lag 400 0.019262300 ?0.012976082\n> Lag 500 0.004289678 ?0.004027498\n> \n> Sample statistics burn-in diagnostic (Geweke):\n> Error in UseMethod(\"as.mcmc\") :\n> ? no applicable method for 'as.mcmc' applied to an object of class \"mcmc\"\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Sanne,\n\nI can't replicate this error on my Dell laptop using R3.0.1 and the most \nrecent version of ergm 3.1-0.\n\nCan you make sure you're running with the most recent versions of R and \nthe statnet",
+      "thread_id": "thread-784f033fd195",
+      "thread_depth": 1,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-3c46505c08c4",
+      "message_id": "<72E8CAED492B92449DEDAD0250390A361D967542@exch-mbx-02.utu.fi>",
+      "from_name": "Shupin Li",
+      "from_email_hash": "38700f5808ab105ec199cbb8075d83f0e4e2f5a90ba6f54b05dba2c790f968a0",
+      "date": "2013-08-06T07:46:52Z",
+      "subject": "[statnet_help] Symmetric and asymmetric networks in statnet",
+      "subject_clean": "[statnet_help] Symmetric and asymmetric networks in statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear folks,\n\nCan statnet distinguish symmetric and asymmetric networks? I think the default is asymmetric network.\nWhat command(s) shall I type to tell statnet that my network is symmetric (i.e. Facebook network)?\nThanks in advance:)\n\nBest,\nShupin",
+      "body_snippet": "Dear folks,\n\nCan statnet distinguish symmetric and asymmetric networks? I think the default is asymmetric network.\nWhat command(s) shall I type to tell statnet that my network is symmetric (i.e. Faceb",
+      "thread_id": "thread-3c46505c08c4",
+      "thread_depth": 0,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-91bd07b77dcb",
+      "message_id": "<alpine.WNT.1.10.1308061005200.4968@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-08-06T10:08:31Z",
+      "subject": "[statnet_help] Symmetric and asymmetric networks in statnet",
+      "subject_clean": "[statnet_help] Symmetric and asymmetric networks in statnet",
+      "in_reply_to": "<72E8CAED492B92449DEDAD0250390A361D967542@exch-mbx-02.utu.fi>",
+      "references": [
+        "<72E8CAED492B92449DEDAD0250390A361D967542@exch-mbx-02.utu.fi>"
+      ],
+      "body_plain": "Shupin,\n\nThe language we use is \"directed\" for symmetric, and \"undirected\" for \nasymetric.  Setting this is handled by the \"network\" package, and there \nare examples in the introductory sunbelt tutorials on the statnet wiki:\n\nhttps://statnet.csde.washington.edu/trac/wiki/Sunbelt2013\n\nbest,\nMartina\n\nOn Tue, 6 Aug 2013, Shupin Li wrote:\n\n> Dear folks,\n>\n> Can statnet distinguish symmetric and asymmetric networks? I think the default is asymmetric network.\n> What command(s) shall I type to tell statnet that my network is symmetric (i.e. Facebook network)?\n> Thanks in advance:)\n>\n> Best,\n> Shupin_______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Shupin,\n\nThe language we use is \"directed\" for symmetric, and \"undirected\" for \nasymetric.  Setting this is handled by the \"network\" package, and there \nare examples in the introductory sunbelt tutori",
+      "thread_id": "thread-3c46505c08c4",
+      "thread_depth": 1,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-c79870a5a5d2",
+      "message_id": "<alpine.WNT.1.10.1308061320130.4968@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-08-06T13:21:26Z",
+      "subject": "[statnet_help] Symmetric and asymmetric networks in statnet",
+      "subject_clean": "[statnet_help] Symmetric and asymmetric networks in statnet",
+      "in_reply_to": "<alpine.WNT.1.10.1308061005200.4968@morrism-PC>",
+      "references": [
+        "<72E8CAED492B92449DEDAD0250390A361D967542@exch-mbx-02.utu.fi>",
+        "<alpine.WNT.1.10.1308061005200.4968@morrism-PC>"
+      ],
+      "body_plain": "Of course, what I meant to type was that we use \"directed\" for \nasymmetric, and \"undirected\" for symmetric.  Sorry about that :-|\n\n\nOn Tue, 6 Aug 2013, martina morris wrote:\n\n> Shupin,\n>\n> The language we use is \"directed\" for symmetric, and \"undirected\" for \n> asymetric.  Setting this is handled by the \"network\" package, and there are \n> examples in the introductory sunbelt tutorials on the statnet wiki:\n>\n> https://statnet.csde.washington.edu/trac/wiki/Sunbelt2013\n>\n> best,\n> Martina\n>\n> On Tue, 6 Aug 2013, Shupin Li wrote:\n>\n>> Dear folks,\n>> \n>> Can statnet distinguish symmetric and asymmetric networks? I think the \n>> default is asymmetric network.\n>> What command(s) shall I type to tell statnet that my network is symmetric \n>> (i.e. Facebook network)?\n>> Thanks in advance:)\n>> \n>> Best,\n>> Shupin_______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>> \n>\n> ****************************************************************\n> Professor of Sociology and Statistics\n> Director, UWCFAR Sociobehavioral and Prevention Research Core\n> Box 354322\n> University of Washington\n> Seattle, WA 98195-4322\n>\n> Office:        (206) 685-3402\n> Dept Office:   (206) 543-5882, 543-7237\n> Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Of course, what I meant to type was that we use \"directed\" for \nasymmetric, and \"undirected\" for symmetric.  Sorry about that :-|\n\n\nOn Tue, 6 Aug 2013, martina morris wrote:\n\n> Shupin,\n>\n> The languag",
+      "thread_id": "thread-3c46505c08c4",
+      "thread_depth": 2,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-6ed43d102e79",
+      "message_id": "<72E8CAED492B92449DEDAD0250390A361D967582@exch-mbx-02.utu.fi>",
+      "from_name": "Shupin Li",
+      "from_email_hash": "38700f5808ab105ec199cbb8075d83f0e4e2f5a90ba6f54b05dba2c790f968a0",
+      "date": "2013-08-06T13:38:34Z",
+      "subject": "[statnet_help] Multi-dimensional scaling and block analysis in statnet",
+      "subject_clean": "[statnet_help] Multi-dimensional scaling and block analysis in statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear folks,\n\nThank you very much for your help on symmetric stuff:)\nBy the way, do you know any commands to do multi-dimensional scaling and block analysis in statnet?\nHow shall we interpret the results from R? \n\nBest,\nShupin\n\n________________________________________\n???: martina morris [morrism@u.washington.edu]\n????: 2013?8?6? 23:21\n???: Shupin Li\n??: statnet_help@u.washington.edu\n??: Re: [statnet_help] Symmetric and asymmetric networks in statnet\n\nOf course, what I meant to type was that we use \"directed\" for\nasymmetric, and \"undirected\" for symmetric.  Sorry about that :-|\n\n\nOn Tue, 6 Aug 2013, martina morris wrote:\n\n> Shupin,\n>\n> The language we use is \"directed\" for symmetric, and \"undirected\" for\n> asymetric.  Setting this is handled by the \"network\" package, and there are\n> examples in the introductory sunbelt tutorials on the statnet wiki:\n>\n> https://statnet.csde.washington.edu/trac/wiki/Sunbelt2013\n>\n> best,\n> Martina\n>\n> On Tue, 6 Aug 2013, Shupin Li wrote:\n>\n>> Dear folks,\n>>\n>> Can statnet distinguish symmetric and asymmetric networks? I think the\n>> default is asymmetric network.\n>> What command(s) shall I type to tell statnet that my network is symmetric\n>> (i.e. Facebook network)?\n>> Thanks in advance:)\n>>\n>> Best,\n>> Shupin_______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n> ****************************************************************\n> Professor of Sociology and Statistics\n> Director, UWCFAR Sociobehavioral and Prevention Research Core\n> Box 354322\n> University of Washington\n> Seattle, WA 98195-4322\n>\n> Office:        (206) 685-3402\n> Dept Office:   (206) 543-5882, 543-7237\n> Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Dear folks,\n\nThank you very much for your help on symmetric stuff:)\nBy the way, do you know any commands to do multi-dimensional scaling and block analysis in statnet?\nHow shall we interpret the resul",
+      "thread_id": "thread-6ed43d102e79",
+      "thread_depth": 0,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-d70715672513",
+      "message_id": "<alpine.WNT.1.10.1308061351570.4968@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-08-06T13:54:18Z",
+      "subject": "[statnet_help] Re: Multi-dimensional scaling and block analysis in statnet",
+      "subject_clean": "[statnet_help] Re: Multi-dimensional scaling and block analysis in statnet",
+      "in_reply_to": "<72E8CAED492B92449DEDAD0250390A361D967582@exch-mbx-02.utu.fi>",
+      "references": [
+        "<72E8CAED492B92449DEDAD0250390A361D967582@exch-mbx-02.utu.fi>"
+      ],
+      "body_plain": "Shupin,\n\nStatnet doesn't do multi-dimensional scaling, but there are probably \nother R packages that do.\n\nI'm not sure what you mean by \"block analysis\".  If you mean stochastic \nblockmodeling, you should take a look at the statnet package \n\"latentnet\".\n\nAs to interpretation, I would suggest reading through the Sunbelt ergm \ntutorial carefully from start to finish (on the same page as the intro \ntutorials on the statnet wiki).\n\nbest,\nMartina\n\nOn Tue, 6 Aug 2013, Shupin Li wrote:\n\n> Dear folks,\n>\n> Thank you very much for your help on symmetric stuff:)\n> By the way, do you know any commands to do multi-dimensional scaling and block analysis in statnet?\n> How shall we interpret the results from R?\n>\n> Best,\n> Shupin\n>\n> ________________________________________\n> ???: martina morris [morrism@u.washington.edu]\n> ????: 2013?8?6? 23:21\n> ???: Shupin Li\n> ??: statnet_help@u.washington.edu\n> ??: Re: [statnet_help] Symmetric and asymmetric networks in statnet\n>\n> Of course, what I meant to type was that we use \"directed\" for\n> asymmetric, and \"undirected\" for symmetric.  Sorry about that :-|\n>\n>\n> On Tue, 6 Aug 2013, martina morris wrote:\n>\n>> Shupin,\n>>\n>> The language we use is \"directed\" for symmetric, and \"undirected\" for\n>> asymetric.  Setting this is handled by the \"network\" package, and there are\n>> examples in the introductory sunbelt tutorials on the statnet wiki:\n>>\n>> https://statnet.csde.washington.edu/trac/wiki/Sunbelt2013\n>>\n>> best,\n>> Martina\n>>\n>> On Tue, 6 Aug 2013, Shupin Li wrote:\n>>\n>>> Dear folks,\n>>>\n>>> Can statnet distinguish symmetric and asymmetric networks? I think the\n>>> default is asymmetric network.\n>>> What command(s) shall I type to tell statnet that my network is symmetric\n>>> (i.e. Facebook network)?\n>>> Thanks in advance:)\n>>>\n>>> Best,\n>>> Shupin_______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>>\n>> ****************************************************************\n>> Professor of Sociology and Statistics\n>> Director, UWCFAR Sociobehavioral and Prevention Research Core\n>> Box 354322\n>> University of Washington\n>> Seattle, WA 98195-4322\n>>\n>> Office:        (206) 685-3402\n>> Dept Office:   (206) 543-5882, 543-7237\n>> Fax:           (206) 685-7419\n>>\n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>>\n>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Shupin,\n\nStatnet doesn't do multi-dimensional scaling, but there are probably \nother R packages that do.\n\nI'm not sure what you mean by \"block analysis\".  If you mean stochastic \nblockmodeling, you sh",
+      "thread_id": "thread-6ed43d102e79",
+      "thread_depth": 1,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-c0c38490664b",
+      "message_id": "<520167A0.5010307@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2013-08-06T14:16:16Z",
+      "subject": "[statnet_help] Multi-dimensional scaling and block analysis in statnet",
+      "subject_clean": "[statnet_help] Multi-dimensional scaling and block analysis in statnet",
+      "in_reply_to": "<72E8CAED492B92449DEDAD0250390A361D967582@exch-mbx-02.utu.fi>",
+      "references": [
+        "<72E8CAED492B92449DEDAD0250390A361D967582@exch-mbx-02.utu.fi>"
+      ],
+      "body_plain": "Hi, Shupin.  You can find MDS and blockmodeling (in various forms) in \nthe sna package (which should be loaded by default when you load \nstatnet).  In general, you can generally find out what sorts of things \nthe packages do by browsing the included documentation; please see the R \nhelp for how to use the help browser.\n\nHope that helps,\n\n-Carter\n\nOn 08/06/2013 01:38 PM, Shupin Li wrote:\n> Dear folks,\n>\n> Thank you very much for your help on symmetric stuff:)\n> By the way, do you know any commands to do multi-dimensional scaling and block analysis in statnet?\n> How shall we interpret the results from R?\n>\n> Best,\n> Shupin\n>\n> ________________________________________\n> ???: martina morris [morrism@u.washington.edu]\n> ????: 2013?8?6? 23:21\n> ???: Shupin Li\n> ??: statnet_help@u.washington.edu\n> ??: Re: [statnet_help] Symmetric and asymmetric networks in statnet\n>\n> Of course, what I meant to type was that we use \"directed\" for\n> asymmetric, and \"undirected\" for symmetric.  Sorry about that :-|\n>\n>\n> On Tue, 6 Aug 2013, martina morris wrote:\n>\n>> Shupin,\n>>\n>> The language we use is \"directed\" for symmetric, and \"undirected\" for\n>> asymetric.  Setting this is handled by the \"network\" package, and there are\n>> examples in the introductory sunbelt tutorials on the statnet wiki:\n>>\n>> https://statnet.csde.washington.edu/trac/wiki/Sunbelt2013\n>>\n>> best,\n>> Martina\n>>\n>> On Tue, 6 Aug 2013, Shupin Li wrote:\n>>\n>>> Dear folks,\n>>>\n>>> Can statnet distinguish symmetric and asymmetric networks? I think the\n>>> default is asymmetric network.\n>>> What command(s) shall I type to tell statnet that my network is symmetric\n>>> (i.e. Facebook network)?\n>>> Thanks in advance:)\n>>>\n>>> Best,\n>>> Shupin_______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>> ****************************************************************\n>> Professor of Sociology and Statistics\n>> Director, UWCFAR Sociobehavioral and Prevention Research Core\n>> Box 354322\n>> University of Washington\n>> Seattle, WA 98195-4322\n>>\n>> Office:        (206) 685-3402\n>> Dept Office:   (206) 543-5882, 543-7237\n>> Fax:           (206) 685-7419\n>>\n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>>\n> ****************************************************************\n>    Professor of Sociology and Statistics\n>    Director, UWCFAR Sociobehavioral and Prevention Research Core\n>    Box 354322\n>    University of Washington\n>    Seattle, WA 98195-4322\n>\n>    Office:        (206) 685-3402\n>    Dept Office:   (206) 543-5882, 543-7237\n>    Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130806/c00785c1/attachment.html>",
+      "body_snippet": "Hi, Shupin.  You can find MDS and blockmodeling (in various forms) in \nthe sna package (which should be loaded by default when you load \nstatnet).  In general, you can generally find out what sorts of",
+      "thread_id": "thread-6ed43d102e79",
+      "thread_depth": 1,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-de5d146fa22b",
+      "message_id": "<52024C87.4090909@ipgovernance.eu>",
+      "from_name": "Sebastian Haunss",
+      "from_email_hash": "05dba600bd153ce6aeccb3f221011d77b705ea60745a3f411436b0feefc8a70c",
+      "date": "2013-08-07T06:32:55Z",
+      "subject": "[statnet_help] STERGM with signed 2-mode network?",
+      "subject_clean": "[statnet_help] STERGM with signed 2-mode network?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet community,\n\nI have a 2-mode network with edge attributes in with the following kinds of relations:\n\nActor A agrees with statemt X\nActor A agrees with statemt Y\nActor B agrees to statemt X\n...\nActor C disagrees to statemt X\n...\n\nA tie between and actor and a statement can thus have the attribute agreement (1) or disagreement (-1).\n\nHow would I construct a STERGM term that accounts for 3-paths with similar edge attributes?\nThe idea is that agreement between actors may influence tie formation, while disagreement may influence tie dissolution.\n\nKind regards\nSebastian\n\n-- \n\nPD Dr. Sebastian Haunss\nSfB 597 - Transformations of the State\nUniversit?t Bremen\nLinzer Str. 9a\n28359 Bremen\nT: +49-(0)421-218-56654\nhttp://shaunss.ipgovernance.eu/\n\nRecently published:\n? Conflicts in the Knowledge Society. The Contentious Politics of Intellectual Property, Cambridge: Cambridge University Press (http://www.cambridge.org/catalogue/catalogue.asp?isbn=9781107036420)",
+      "body_snippet": "Dear statnet community,\n\nI have a 2-mode network with edge attributes in with the following kinds of relations:\n\nActor A agrees with statemt X\nActor A agrees with statemt Y\nActor B agrees to statemt X",
+      "thread_id": "thread-de5d146fa22b",
+      "thread_depth": 0,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-5a1ec6abcb42",
+      "message_id": "<63824EEFC783EF4E9098598A12B4304C02F5A41AA0DB@EXCMS01.ad.uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2013-08-07T18:21:22Z",
+      "subject": "[statnet_help] Re: Multi-dimensional scaling and block analysis in statnet",
+      "subject_clean": "[statnet_help] Re: Multi-dimensional scaling and block analysis in statnet",
+      "in_reply_to": "<alpine.WNT.1.10.1308061351570.4968@morrism-PC>",
+      "references": [
+        "<72E8CAED492B92449DEDAD0250390A361D967582@exch-mbx-02.utu.fi>",
+        "<alpine.WNT.1.10.1308061351570.4968@morrism-PC>"
+      ],
+      "body_plain": "Hi,\n\nJust to pre-empt any potential confusion, latentnet doesn't do\nstochastic blockmodels a.k.a. latent class models (at this point). It\ndoes latent cluster models.\n\n                                   Pavel\n\nOn Tue, 2013-08-06 at 13:54 -0700, martina morris wrote:\n> Shupin,\n> \n> Statnet doesn't do multi-dimensional scaling, but there are probably \n> other R packages that do.\n> \n> I'm not sure what you mean by \"block analysis\".  If you mean stochastic \n> blockmodeling, you should take a look at the statnet package \n> \"latentnet\".\n> \n> As to interpretation, I would suggest reading through the Sunbelt ergm \n> tutorial carefully from start to finish (on the same page as the intro \n> tutorials on the statnet wiki).\n> \n> best,\n> Martina\n> \n> On Tue, 6 Aug 2013, Shupin Li wrote:\n> \n> > Dear folks,\n> >\n> > Thank you very much for your help on symmetric stuff:)\n> > By the way, do you know any commands to do multi-dimensional scaling and block analysis in statnet?\n> > How shall we interpret the results from R?\n> >\n> > Best,\n> > Shupin\n> >\n> > ________________________________________\n> > ???: martina morris [morrism@u.washington.edu]\n> > ????: 2013?8?6? 23:21\n> > ???: Shupin Li\n> > ??: statnet_help@u.washington.edu\n> > ??: Re: [statnet_help] Symmetric and asymmetric networks in statnet\n> >\n> > Of course, what I meant to type was that we use \"directed\" for\n> > asymmetric, and \"undirected\" for symmetric.  Sorry about that :-|\n> >\n> >\n> > On Tue, 6 Aug 2013, martina morris wrote:\n> >\n> >> Shupin,\n> >>\n> >> The language we use is \"directed\" for symmetric, and \"undirected\" for\n> >> asymetric.  Setting this is handled by the \"network\" package, and there are\n> >> examples in the introductory sunbelt tutorials on the statnet wiki:\n> >>\n> >> https://statnet.csde.washington.edu/trac/wiki/Sunbelt2013\n> >>\n> >> best,\n> >> Martina\n> >>\n> >> On Tue, 6 Aug 2013, Shupin Li wrote:\n> >>\n> >>> Dear folks,\n> >>>\n> >>> Can statnet distinguish symmetric and asymmetric networks? I think the\n> >>> default is asymmetric network.\n> >>> What command(s) shall I type to tell statnet that my network is symmetric\n> >>> (i.e. Facebook network)?\n> >>> Thanks in advance:)\n> >>>\n> >>> Best,\n> >>> Shupin_______________________________________________\n> >>> statnet_help mailing list\n> >>> statnet_help@u.washington.edu\n> >>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> >>>\n> >>\n> >> ****************************************************************\n> >> Professor of Sociology and Statistics\n> >> Director, UWCFAR Sociobehavioral and Prevention Research Core\n> >> Box 354322\n> >> University of Washington\n> >> Seattle, WA 98195-4322\n> >>\n> >> Office:        (206) 685-3402\n> >> Dept Office:   (206) 543-5882, 543-7237\n> >> Fax:           (206) 685-7419\n> >>\n> >> morrism@u.washington.edu\n> >> http://faculty.washington.edu/morrism/\n> >>\n> >\n> > ****************************************************************\n> >  Professor of Sociology and Statistics\n> >  Director, UWCFAR Sociobehavioral and Prevention Research Core\n> >  Box 354322\n> >  University of Washington\n> >  Seattle, WA 98195-4322\n> >\n> >  Office:        (206) 685-3402\n> >  Dept Office:   (206) 543-5882, 543-7237\n> >  Fax:           (206) 685-7419\n> >\n> > morrism@u.washington.edu\n> > http://faculty.washington.edu/morrism/\n> \n> ****************************************************************\n>   Professor of Sociology and Statistics\n>   Director, UWCFAR Sociobehavioral and Prevention Research Core\n>   Box 354322\n>   University of Washington\n>   Seattle, WA 98195-4322\n> \n>   Office:        (206) 685-3402\n>   Dept Office:   (206) 543-5882, 543-7237\n>   Fax:           (206) 685-7419\n> \n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n\n-- \nDr. Pavel N. Krivitsky\nLecturer in Statistics\nBuilding 39C, Room 185\nSchool of Mathematics and Applied Statistics\nUniversity of Wollongong, NSW 2522\nWeb: http://www.krivitsky.net/research\nPhone: +61242213713",
+      "body_snippet": "Hi,\n\nJust to pre-empt any potential confusion, latentnet doesn't do\nstochastic blockmodels a.k.a. latent class models (at this point). It\ndoes latent cluster models.\n\n                                 ",
+      "thread_id": "thread-6ed43d102e79",
+      "thread_depth": 2,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-b3fa75f6600a",
+      "message_id": "<CAPrR4vtTwFs4N99=hpOd-AcaHcYS1ByXEj7JrOqNUugkG-ERuw@mail.gmail.com>",
+      "from_name": "Andrew Pilny",
+      "from_email_hash": "7d501461dbb837a0ec1315b7a86ea4ec7d9cdb2631073c97d8e1b84f52f8677a",
+      "date": "2013-08-09T08:34:08Z",
+      "subject": "[statnet_help] Structural zeros in STERGM",
+      "subject_clean": "[statnet_help] Structural zeros in STERGM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All,\n\nIs there a way to define cells as structural zeros (i.e., ties that can't\nexist) in the STERGM package? If so, does it differ from the transitioning\n\"to\" and \"from\" networks? Much appreciated!\n\nBest,\nAndy\n\n-- \nAndrew Pilny\nGraduate Research Assistant & Student\nDepartment of Communication\nUniversity of Illinois Urbana-Champaign\nNational Center for Supercomputing Applications\n1205 W. Clark St.\nRoom 3017 (office)\nUrbana, IL 61801\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130809/dbaf91a3/attachment.html>",
+      "body_snippet": "Dear All,\n\nIs there a way to define cells as structural zeros (i.e., ties that can't\nexist) in the STERGM package? If so, does it differ from the transitioning\n\"to\" and \"from\" networks? Much appreciat",
+      "thread_id": "thread-b3fa75f6600a",
+      "thread_depth": 0,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-5ef266389590",
+      "message_id": "<06b001ce951b$08399490$18acbdb0$@washington.edu>",
+      "from_name": "deven hamilton",
+      "from_email_hash": "505d525ebea95ad8cb849368a6f973cb22b141b846f861f4a987295b8ffdac07",
+      "date": "2013-08-09T09:10:57Z",
+      "subject": "[statnet_help] Structural zeros in STERGM",
+      "subject_clean": "[statnet_help] Structural zeros in STERGM",
+      "in_reply_to": "<CAPrR4vtTwFs4N99=hpOd-AcaHcYS1ByXEj7JrOqNUugkG-ERuw@mail.gmail.com>",
+      "references": [
+        "<CAPrR4vtTwFs4N99=hpOd-AcaHcYS1ByXEj7JrOqNUugkG-ERuw@mail.gmail.com>"
+      ],
+      "body_plain": "Andy,\n\nOne way to define structural zeros for a set of edges is to set the\nnodefactor value that defines the propensity for those ties to occur to\nnegative infinity.  Hope that helps.\n\n \n\n-Deven \n\n \n\nFrom: statnet_help-bounces@mailman2.u.washington.edu\n[mailto:statnet_help-bounces@mailman2.u.washington.edu] On Behalf Of Andrew\nPilny\nSent: Friday, August 09, 2013 8:34 AM\nTo: statnet_help@u.washington.edu\nSubject: [statnet_help] Structural zeros in STERGM\n\n \n\nDear All,\n\n \n\nIs there a way to define cells as structural zeros (i.e., ties that can't\nexist) in the STERGM package? If so, does it differ from the transitioning\n\"to\" and \"from\" networks? Much appreciated!\n\n \n\nBest,\n\nAndy \n\n\n \n\n-- \nAndrew Pilny\nGraduate Research Assistant & Student\nDepartment of Communication\nUniversity of Illinois Urbana-Champaign\nNational Center for Supercomputing Applications\n1205 W. Clark St.\nRoom 3017 (office)\nUrbana, IL 61801\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20130809/505c0db9/attachment.html>",
+      "body_snippet": "Andy,\n\nOne way to define structural zeros for a set of edges is to set the\nnodefactor value that defines the propensity for those ties to occur to\nnegative infinity.  Hope that helps.\n\n \n\n-Deven \n\n \n\n",
+      "thread_id": "thread-b3fa75f6600a",
+      "thread_depth": 1,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-bd3102b3dc70",
+      "message_id": "<1376190509.26028.mnt23021@law.ritsumei.ac.jp>",
+      "from_name": "megumi nishimura",
+      "from_email_hash": "ae4b0f6185210f5ff5dc2cff29c3961dcc310f2f7a2c0d750955eb4c5361f827",
+      "date": "2013-08-10T20:08:29Z",
+      "subject": "[statnet_help] re: gwb1degree, gwb2degree, gwdsp, when alpha=0 or 1",
+      "subject_clean": "[statnet_help] re: gwb1degree, gwb2degree, gwdsp, when alpha=0 or 1",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet community,\r\n\r\nRelating the below communications, I have slightly different questions.\r\n\r\nI run bipartite network models which include gwb1degree, gwb2degree, gwdsp.  I set my alphas for these parameter as gwb1degree(alpha=1), gwb2degree(alpha=1), gwdsp(alpha=0).  I could NON-degenerating models, and produced some estimations.\r\n\r\nI set these alpha parameters, because they recover my geodesic distance best in gof simulations from the various combinations of parameters.\r\n\r\nIs alpha=1 or 0 problematic?  Can someone explain qualitatively on how alpha=0 and alpha=1 differ substantially? Or, in other words, how lower values of alpha and higher value of alpha differ substantially?\r\n\r\nI look forward your reply.\r\n\r\nSincerely,\r\n\r\nMegumi Nishimura\r\nRitsumeikan University\r\n\r\n\r\n\r\n\r\n[statnet_help] interpreting GWDSP?\r\n Steven Goodreau goodreau at u.washington.edu \r\nTue Aug 18 08:22:03 PDT 2009 \r\n&#8226;Previous message: [statnet_help] interpreting GWDSP? \r\n&#8226;Next message: [statnet_help] interpreting GWDSP? \r\n&#8226;Messages sorted by: [ date ] [ thread ] [ subject ] [ author ] \r\n\r\n--------------------------------------------------------------------------------\r\n  \r\nOn Thu, 6 Aug 2009, Jenine Harris wrote: \r\n\r\n\r\n> I was wondering if anyone has an example of how a GWDSP term would be \r\n\r\n> interpreted in somewhat lay terms. From my understanding GWDSP accounts for \r\n\r\n> the distribution of shared partnership for each dyad in a network, but I'm \r\n\r\n> not sure how to go about interpreting a negative signficant GWDSP \r\n\r\n> coefficient of -0.25 in an actual ERGM model. What does this say about the \r\n\r\n> distribution and how does it influence the likelihood of a tie? \r\n\r\n\r\n\r\nHi Jenine, \r\n\r\nA great question. Yes, I do think GWDSP is a bit trickier than interpret \r\nthan any of the other terms we commonly work with. I can give you my own \r\nidiosyncratic approach. \r\n\r\nFirst, as technical background: As you probably know, GWDSP is a \r\nparametric summary measure of the tendency for two actors to have x \r\npartners in common, regardless of whether the two actors themselves are \r\ntied. GWESP is the same measure, but only counted across two actors who \r\nare tied. The two are comparable to the \"alternating 2-paths\" and \r\n\"alternating k-triangles\" that Snijders et al discuss in a series of \r\npapers. The two measures, combined with a third (GW degree, or the \r\ncomparable alternating k-stars) are derived in those papers by placing a \r\nparametric constraint on three sets of statistics that emerge when making \r\na very sociologically reasonable set of assumptions about relational \r\ndependence. The three parametric stats are also seen to work well in \r\npractice at modeling real-world social networks and avoiding degeneracy \r\nwhen doing so. \r\n\r\nSo, on to interpretation. As I said, I agree that GWDSP is the hardest to \r\ninterpret. In fact, I personally never use a GWDSP term without also \r\nusing a GWESP term. And once I combined the two, I always find that the \r\nGWDSP coefficient is close to zero, and non-significant. Let me see if I \r\ncan give good intuition as to why. \r\n\r\nGWESP has some relatively clear interpetations (which I discuss in a few \r\nof my papers). In real-world data of friendship or collaboration or \r\nsimilar kinds of networks, it is generally significantly positive. This \r\nmeans that those who are tied are more likely than chance to have multiple \r\nshared partners. \r\n\r\nGWDSP tells whether shared partners tend to clump together, regardless of \r\nwhether two people are tied or not. For example, whether or not you and I \r\nare friends, if we have one friend in common, are we more likely than \r\nexpected by chance to have a second friend in common? And so on. If yes, \r\nthe GWDSP coefficient will be positive. If it is zero, then we are as \r\nlikely as chance to have one in common; if negative, then less. \r\n\r\nIf one only uses GWDSP and not GWESP, then it's hard to know whether an \r\nobserved non-random shared partner distribution is driven by pairs who are \r\nthemselves tied, pairs who are not tied, or both. If you include both \r\nGWESP and GWDSP, then it becomes clear - GWDSP is the base effect (which \r\nnow isolates the effect for those not tied only); GWESP occurs on top of \r\nthis base, and isolates the effect for those who are tied. And what I \r\nhave always found is that the GWESP effect is then strong and significant, \r\nand the GWDSP is tiny and insignificant. It may be that in different \r\nkinds of data GWDSP would be significant itself, though. \r\n\r\nMy questions for you are: is your GWDSP term significant? Does it remain \r\nso when GWESP is added? If the answer to both questions is yes, then you \r\nhave something particuarly interesting (and unprecendented, at least for \r\nme) on your hands. If it remains negative and significant, then that says \r\nthat people who are not tied tend not to have multiple shared partners. \r\nOnce two unconnected people have one shared partner, they're less likely \r\nthan chance to have a second; if they do have a second, they're less \r\nlikely than chance to have a third, and so on. I can't think of a type of \r\nsocial relationship I would anticipate this pattern for, but it could just \r\nbe that I've never thought about the kind of relaitonship that you're \r\nstudying, and it makes perfect sense to you. \r\n\r\nMy other quesiton would be what your alpha is; that changes the fine \r\nquantitative details of the interpretation, but not the general \r\nqualitative interpretation. Unless your alpha is either essentially 0 or \r\nvery very high, in which case it would change the latter as well. If it's \r\nin the 0.1 - 2.0 range, I don't think it would. \r\n\r\nI hope that helps! \r\nSteve \r\n\r\n\r\n************************************************************************** \r\n * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology * \r\n * University of Washington / Denny Hall 452 / Campus Box 353100 * \r\n * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax) * \r\n * http://faculty.washington.edu/goodreau * \r\n * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k * \r\n************************************************************************** \r\n\r\n\r\n\r\n  \r\n--------------------------------------------------------------------------------\r\n\r\n &#8226;Previous message: [statnet_help] interpreting GWDSP? \r\n&#8226;Next message: [statnet_help] interpreting GWDSP? \r\n&#8226;Messages sorted by: [ date ] [ thread ] [ subject ] [ author ] \r\n\r\n--------------------------------------------------------------------------------\r\nMore information about the statnet_help mailing list",
+      "body_snippet": "Dear statnet community,\r\n\r\nRelating the below communications, I have slightly different questions.\r\n\r\nI run bipartite network models which include gwb1degree, gwb2degree, gwdsp.  I set my alphas for t",
+      "thread_id": "thread-bd3102b3dc70",
+      "thread_depth": 0,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-0646e9a4baee",
+      "message_id": "<alpine.WNT.1.10.1308111055000.9508@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-08-11T10:55:41Z",
+      "subject": "[statnet_help] Replication of old ergm analysis fails with new package versions but same seed, code, and data (fwd)",
+      "subject_clean": "[statnet_help] Replication of old ergm analysis fails with new package versions but same seed, code, and data (fwd)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet community --\n\nWe've tracked down what led to the issues that Philip raised in his email. \nPlease see below for a summary.  The bottom line is good, in his case. If \nanyone else finds that results are not replicated by new releases of the \nsoftware, it's really helpful for us to know about it, so please shoot\nus an email.\n\nbest,\nMartina (for the statnet dev team)\n\n---------- Forwarded message ----------\nDate: Fri, 2 Aug 2013 10:23:05 -0700 (Pacific Daylight Time)\nFrom: martina morris <morrism@u.washington.edu>\nTo: Philip Leifeld <philip.leifeld@uni-konstanz.de>\nCc: dave hunter <dhunter@stat.psu.edu>,\n     Steven M. Goodreau <goodreau@u.washington.edu>, \nstatnet_dev@u.washington.edu\nSubject: Re: [statnet_help] Replication of old ergm analysis fails with new\n     package versions but same seed, code, and data\n\nHi Philip,\n\nFirst, thanks for your patience.  This turned out to be a problem with many \nmoving pieces, so it took a while to pin down each part.  And thanks for \nreporting this in the first place.\n\nSecond, I think we have basically good news to report:  your example revealed a \ncouple of bugs (in both ergm 2.4 and 3.1), and a problem in your model, but the \nresults you published were essentially correct.\n\nIn tracking down why your model didn't converge in 3.1, we ended up finding 4 \nissues that contributed in different ways.  i'll list them in order of \nseverity.\n\n1. the unique naming problem\n\nThis was what prevented 3.1 from being able to fit your model at all (as Pavel \ncorrectly noted).  It's due to a change from 2.4 to 3.1 in the way variable \nnames are used.  And while it's not clear that we want to encourage users to \nuse the same name for two variables (in your case \"weight\"), ergm should detect \nand provide a warning rather than fail completely.  So this will be fixed.\n\nAs you and Pavel both noted, once you rename one of the offending variables, \nyour model fits successfully and quickly in 3.1.  But, you don't get exactly \nthe same results...\n\n2. compression algorithm\n\nThere is an algorithm deep in ergm (\"ergm.sufftoprob\") that is intended to \nspeed up computations, but was not written well.  It was called by default in \n2.4 (control=control.ergm(compress=T)), and is not called by default in 3.1 \n(control=control.ergm(MCMC.compress=F)).  When it fails (as it did in your \nmodel), the result is that the SEs are often biased downward (as it was in your \ncase).\n\nRemoving compression increases the size of the SEs.  Not enough to change the \nnominal significance levels for any of the coef you reported as significant, \nbut enough to notice.\n\n\n3. default fitting iterations\n\nIn 2.4, the default was 3 iterations, in 3.1 it has been raised to 20. If your \nmodel is difficult to fit or converges slowly (as it does in your case) more \niterations can lead to different point estimates.\n\nThis is part of why the point estimates for your model are different in 3.1.\n\n\n4. model issues:  colinearity\n\nIt turns out your model had a hidden colinearity problem.  The edges and gwesp \nstatistic were nearly colinear (correlation above 0.99).  The reason is because \nyou have a relatively dense network, so almost every edge is involved in at \nleast one triangle.  Using a low alpha for gwesp (as you did) leads that \nstatistic towards measuring how many edges are involved in at least one \ntriangle (it is exactly that when alpha=0).  So each edge contributed the same \namount to the change statistics for these two terms.\n\nergm 3.1 handles that colinearity better both because it has more fitting \niterations, and because it doesn't use compression by default so the SEs are \naccurate.  so a default fit (with unique names) will show that edges and gwesp \nare highly correlated and the coef are not signficant.\n\nBut if you increase alpha (to, say, 1), you'll find that the colinearity is \nsufficiently reduced that the gwesp term becomes significant.  At this point, \nthe gwDsp term is no longer significant.  You may find that changing the alpha \nfor that term helps -- we left off here.\n\n\nI've attached a spreadsheet that documents all of the models we fit to track \ndown these different problems and verify what was causing what. There's a \nsummary sheet up front that shows what matters substantively for your paper, \nand lots of stuff on the other two sheets to see the details.\n\nI hope this helps -- let us know if you have any other questions.\n\nbest,\nMartina, Dave and Steve\n\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Dear statnet community --\n\nWe've tracked down what led to the issues that Philip raised in his email. \nPlease see below for a summary.  The bottom line is good, in his case. If \nanyone else finds that",
+      "thread_id": "thread-0646e9a4baee",
+      "thread_depth": 0,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-d6b268b0111f",
+      "message_id": "<72E8CAED492B92449DEDAD0250390A361D967F30@exch-mbx-02.utu.fi>",
+      "from_name": "Shupin Li",
+      "from_email_hash": "38700f5808ab105ec199cbb8075d83f0e4e2f5a90ba6f54b05dba2c790f968a0",
+      "date": "2013-08-12T11:01:27Z",
+      "subject": "[statnet_help] Interpret p values in ERGM",
+      "subject_clean": "[statnet_help] Interpret p values in ERGM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear list,\n\nI put a categorical attribute (gender) into ERGM to see whether edge probabilities are a function of gender. However, I have below 2 questions concerning interpreting results.\n\n1) I got below result, p values of edge and gender are significant. But how to interpret this negative relationship? Did participants tend to make a tie with people from other gender group?\n\n==========================\nSummary of model fit\n==========================\nFormula:   co13 ~ edges + nodefactor(\"gender\")\nIterations:  20 \nMonte Carlo MLE Results:\n                    Estimate Std. Error MCMC %  p-value    \nedges                 0.5115     0.2334     NA 0.029330 *  \nnodefactor.gender.2  -0.6790     0.1972     NA 0.000669 ***\nSignif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1 \n    Null  Deviance: 360.437  on 260  degrees of freedom\n Residual Deviance: 346.024  on 258  degrees of freedom\n          Deviance:  14.412  on   2  degrees of freedom\n AIC: 350.02    BIC: 355.23\n\n2) How to interpret results when only p of edge is significant or when only p of gender is significant like belows?\n\n==========================\nSummary of model fit\n==========================\nFormula:   co16 ~ edges + nodefactor(\"gender\")\nIterations:  20 \nMonte Carlo MLE Results:\n                    Estimate Std. Error MCMC % p-value    \nedges                 1.0121     0.1633     NA  <1e-04 ***\nnodefactor.gender.2  -0.2338     0.1365     NA  0.0874 .  \nSignif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1 \n    Null  Deviance: 731.963  on 528  degrees of freedom\n Residual Deviance: 652.919  on 526  degrees of freedom\n          Deviance:  79.044  on   2  degrees of freedom\n AIC: 656.92    BIC: 665.16\n\n\n==========================\nSummary of model fit\n==========================\nFormula:   co14 ~ edges + nodefactor(\"gender\")\nIterations:  20 \nMonte Carlo MLE Results:\n                    Estimate Std. Error MCMC % p-value  \nedges                 0.3780     0.2293     NA  0.1004  \nnodefactor.gender.2  -0.4186     0.1899     NA  0.0283 *\nSignif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1 \n    Null  Deviance: 360.4365  on 260  degrees of freedom\n Residual Deviance: 355.3300  on 258  degrees of freedom\n          Deviance:   5.1065  on   2  degrees of freedom\n AIC: 359.33    BIC: 364.54\n\nThank you in advance guys:)\n\nBest,\nShupin",
+      "body_snippet": "Dear list,\n\nI put a categorical attribute (gender) into ERGM to see whether edge probabilities are a function of gender. However, I have below 2 questions concerning interpreting results.\n\n1) I got be",
+      "thread_id": "thread-d6b268b0111f",
+      "thread_depth": 0,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-51bbb40555c4",
+      "message_id": "<alpine.WNT.1.10.1308131324420.3580@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-08-13T13:25:24Z",
+      "subject": "[statnet_help] Interpret p values in ERGM",
+      "subject_clean": "[statnet_help] Interpret p values in ERGM",
+      "in_reply_to": "<72E8CAED492B92449DEDAD0250390A361D967F30@exch-mbx-02.utu.fi>",
+      "references": [
+        "<72E8CAED492B92449DEDAD0250390A361D967F30@exch-mbx-02.utu.fi>"
+      ],
+      "body_plain": "Shupin,\n\nNodefactor reflects differences in mean degree by category.  Nodematch \nis what you need to capture homophily.\n\nMartina\n\nOn Mon, 12 Aug 2013, Shupin Li wrote:\n\n> Dear list,\n>\n> I put a categorical attribute (gender) into ERGM to see whether edge probabilities are a function of gender. However, I have below 2 questions concerning interpreting results.\n>\n> 1) I got below result, p values of edge and gender are significant. But how to interpret this negative relationship? Did participants tend to make a tie with people from other gender group?\n>\n> ==========================\n> Summary of model fit\n> ==========================\n> Formula:   co13 ~ edges + nodefactor(\"gender\")\n> Iterations:  20\n> Monte Carlo MLE Results:\n>                    Estimate Std. Error MCMC %  p-value\n> edges                 0.5115     0.2334     NA 0.029330 *\n> nodefactor.gender.2  -0.6790     0.1972     NA 0.000669 ***\n> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>    Null  Deviance: 360.437  on 260  degrees of freedom\n> Residual Deviance: 346.024  on 258  degrees of freedom\n>          Deviance:  14.412  on   2  degrees of freedom\n> AIC: 350.02    BIC: 355.23\n>\n> 2) How to interpret results when only p of edge is significant or when only p of gender is significant like belows?\n>\n> ==========================\n> Summary of model fit\n> ==========================\n> Formula:   co16 ~ edges + nodefactor(\"gender\")\n> Iterations:  20\n> Monte Carlo MLE Results:\n>                    Estimate Std. Error MCMC % p-value\n> edges                 1.0121     0.1633     NA  <1e-04 ***\n> nodefactor.gender.2  -0.2338     0.1365     NA  0.0874 .\n> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>    Null  Deviance: 731.963  on 528  degrees of freedom\n> Residual Deviance: 652.919  on 526  degrees of freedom\n>          Deviance:  79.044  on   2  degrees of freedom\n> AIC: 656.92    BIC: 665.16\n>\n>\n> ==========================\n> Summary of model fit\n> ==========================\n> Formula:   co14 ~ edges + nodefactor(\"gender\")\n> Iterations:  20\n> Monte Carlo MLE Results:\n>                    Estimate Std. Error MCMC % p-value\n> edges                 0.3780     0.2293     NA  0.1004\n> nodefactor.gender.2  -0.4186     0.1899     NA  0.0283 *\n> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>    Null  Deviance: 360.4365  on 260  degrees of freedom\n> Residual Deviance: 355.3300  on 258  degrees of freedom\n>          Deviance:   5.1065  on   2  degrees of freedom\n> AIC: 359.33    BIC: 364.54\n>\n> Thank you in advance guys:)\n>\n> Best,\n> Shupin_______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Shupin,\n\nNodefactor reflects differences in mean degree by category.  Nodematch \nis what you need to capture homophily.\n\nMartina\n\nOn Mon, 12 Aug 2013, Shupin Li wrote:\n\n> Dear list,\n>\n> I put a catego",
+      "thread_id": "thread-d6b268b0111f",
+      "thread_depth": 1,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-32c23b005c59",
+      "message_id": "<alpine.WNT.1.10.1308131658140.3580@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-08-13T17:02:45Z",
+      "subject": "[statnet_help] re: gwb1degree, gwb2degree, gwdsp, when alpha=0 or 1",
+      "subject_clean": "[statnet_help] re: gwb1degree, gwb2degree, gwdsp, when alpha=0 or 1",
+      "in_reply_to": "<1376190509.26028.mnt23021@law.ritsumei.ac.jp>",
+      "references": [
+        "<1376190509.26028.mnt23021@law.ritsumei.ac.jp>"
+      ],
+      "body_plain": "Megumi,\n\nThese value of alpha are not inherently problematic.  But you should be \naware of the impact on the interpretation of the gwdsp term, and pay \nattention to the impact on the correlation between the gwdsp term and the \nedges term.  For very dense networks, setting alpha=0 can result in very \nhigh correlations (.99+) between edges and gwEsp terms.  I'm not sure \nwhether the same holds for gwDsp terms, but you should keep an eye on it. \nIf that problem does occur, increasing alpha may help.\n\nbest,\nMartina\n\nOn Sun, 11 Aug 2013, megumi nishimura wrote:\n\n> Dear statnet community,\n>\n> Relating the below communications, I have slightly different questions.\n>\n> I run bipartite network models which include gwb1degree, gwb2degree, gwdsp.  I set my alphas for these parameter as gwb1degree(alpha=1), gwb2degree(alpha=1), gwdsp(alpha=0).  I could NON-degenerating models, and produced some estimations.\n>\n> I set these alpha parameters, because they recover my geodesic distance best in gof simulations from the various combinations of parameters.\n>\n> Is alpha=1 or 0 problematic?  Can someone explain qualitatively on how alpha=0 and alpha=1 differ substantially? Or, in other words, how lower values of alpha and higher value of alpha differ substantially?\n>\n> I look forward your reply.\n>\n> Sincerely,\n>\n> Megumi Nishimura\n> Ritsumeikan University\n>\n>\n>\n>\n> [statnet_help] interpreting GWDSP?\n> Steven Goodreau goodreau at u.washington.edu\n> Tue Aug 18 08:22:03 PDT 2009\n> &#8226;Previous message: [statnet_help] interpreting GWDSP?\n> &#8226;Next message: [statnet_help] interpreting GWDSP?\n> &#8226;Messages sorted by: [ date ] [ thread ] [ subject ] [ author ]\n>\n> --------------------------------------------------------------------------------\n>\n> On Thu, 6 Aug 2009, Jenine Harris wrote:\n>\n>\n>> I was wondering if anyone has an example of how a GWDSP term would be\n>\n>> interpreted in somewhat lay terms. From my understanding GWDSP accounts for\n>\n>> the distribution of shared partnership for each dyad in a network, but I'm\n>\n>> not sure how to go about interpreting a negative signficant GWDSP\n>\n>> coefficient of -0.25 in an actual ERGM model. What does this say about the\n>\n>> distribution and how does it influence the likelihood of a tie?\n>\n>\n>\n> Hi Jenine,\n>\n> A great question. Yes, I do think GWDSP is a bit trickier than interpret\n> than any of the other terms we commonly work with. I can give you my own\n> idiosyncratic approach.\n>\n> First, as technical background: As you probably know, GWDSP is a\n> parametric summary measure of the tendency for two actors to have x\n> partners in common, regardless of whether the two actors themselves are\n> tied. GWESP is the same measure, but only counted across two actors who\n> are tied. The two are comparable to the \"alternating 2-paths\" and\n> \"alternating k-triangles\" that Snijders et al discuss in a series of\n> papers. The two measures, combined with a third (GW degree, or the\n> comparable alternating k-stars) are derived in those papers by placing a\n> parametric constraint on three sets of statistics that emerge when making\n> a very sociologically reasonable set of assumptions about relational\n> dependence. The three parametric stats are also seen to work well in\n> practice at modeling real-world social networks and avoiding degeneracy\n> when doing so.\n>\n> So, on to interpretation. As I said, I agree that GWDSP is the hardest to\n> interpret. In fact, I personally never use a GWDSP term without also\n> using a GWESP term. And once I combined the two, I always find that the\n> GWDSP coefficient is close to zero, and non-significant. Let me see if I\n> can give good intuition as to why.\n>\n> GWESP has some relatively clear interpetations (which I discuss in a few\n> of my papers). In real-world data of friendship or collaboration or\n> similar kinds of networks, it is generally significantly positive. This\n> means that those who are tied are more likely than chance to have multiple\n> shared partners.\n>\n> GWDSP tells whether shared partners tend to clump together, regardless of\n> whether two people are tied or not. For example, whether or not you and I\n> are friends, if we have one friend in common, are we more likely than\n> expected by chance to have a second friend in common? And so on. If yes,\n> the GWDSP coefficient will be positive. If it is zero, then we are as\n> likely as chance to have one in common; if negative, then less.\n>\n> If one only uses GWDSP and not GWESP, then it's hard to know whether an\n> observed non-random shared partner distribution is driven by pairs who are\n> themselves tied, pairs who are not tied, or both. If you include both\n> GWESP and GWDSP, then it becomes clear - GWDSP is the base effect (which\n> now isolates the effect for those not tied only); GWESP occurs on top of\n> this base, and isolates the effect for those who are tied. And what I\n> have always found is that the GWESP effect is then strong and significant,\n> and the GWDSP is tiny and insignificant. It may be that in different\n> kinds of data GWDSP would be significant itself, though.\n>\n> My questions for you are: is your GWDSP term significant? Does it remain\n> so when GWESP is added? If the answer to both questions is yes, then you\n> have something particuarly interesting (and unprecendented, at least for\n> me) on your hands. If it remains negative and significant, then that says\n> that people who are not tied tend not to have multiple shared partners.\n> Once two unconnected people have one shared partner, they're less likely\n> than chance to have a second; if they do have a second, they're less\n> likely than chance to have a third, and so on. I can't think of a type of\n> social relationship I would anticipate this pattern for, but it could just\n> be that I've never thought about the kind of relaitonship that you're\n> studying, and it makes perfect sense to you.\n>\n> My other quesiton would be what your alpha is; that changes the fine\n> quantitative details of the interpretation, but not the general\n> qualitative interpretation. Unless your alpha is either essentially 0 or\n> very very high, in which case it would change the latter as well. If it's\n> in the 0.1 - 2.0 range, I don't think it would.\n>\n> I hope that helps!\n> Steve\n>\n>\n> **************************************************************************\n> * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology *\n> * University of Washington / Denny Hall 452 / Campus Box 353100 *\n> * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax) *\n> * http://faculty.washington.edu/goodreau *\n> * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k *\n> **************************************************************************\n>\n>\n>\n>\n> --------------------------------------------------------------------------------\n>\n> &#8226;Previous message: [statnet_help] interpreting GWDSP?\n> &#8226;Next message: [statnet_help] interpreting GWDSP?\n> &#8226;Messages sorted by: [ date ] [ thread ] [ subject ] [ author ]\n>\n> --------------------------------------------------------------------------------\n> More information about the statnet_help mailing list\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Megumi,\n\nThese value of alpha are not inherently problematic.  But you should be \naware of the impact on the interpretation of the gwdsp term, and pay \nattention to the impact on the correlation betwe",
+      "thread_id": "thread-bd3102b3dc70",
+      "thread_depth": 1,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-6eb618cfce17",
+      "message_id": "<72E8CAED492B92449DEDAD0250390A361D967FA2@exch-mbx-02.utu.fi>",
+      "from_name": "Shupin Li",
+      "from_email_hash": "38700f5808ab105ec199cbb8075d83f0e4e2f5a90ba6f54b05dba2c790f968a0",
+      "date": "2013-08-14T01:03:05Z",
+      "subject": "答复: [statnet_help] Interpret p values in ERGM",
+      "subject_clean": "答复: [statnet_help] Interpret p values in ERGM",
+      "in_reply_to": "<alpine.WNT.1.10.1308131324420.3580@morrism-PC>",
+      "references": [
+        "<72E8CAED492B92449DEDAD0250390A361D967F30@exch-mbx-02.utu.fi>",
+        "<alpine.WNT.1.10.1308131324420.3580@morrism-PC>"
+      ],
+      "body_plain": "Hi Martina,\n\nThank you very much for your help:)\n\nI got below result using nodematch, do we need both two p less 0.05 to conclude ?\nIf I got negative value of \"nodematch.gender\" (both p for \"edges\" and \"nodematch.gender\" less than 0.05), can I conclude that people in the network tend to make ties with nodes from other gender group?\n\n==========================\nSummary of model fit\n==========================\nFormula:   co1 ~ edges + nodematch(\"gender\")\nIterations:  20 \nMonte Carlo MLE Results:\n                 Estimate Std. Error MCMC % p-value    \nedges              0.8367     0.1452     NA  <1e-04 ***\nnodematch.gender  -0.1296     0.2052     NA   0.528    \n---\nSignif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1 \n    Null  Deviance: 609.970  on 440  degrees of freedom\n Residual Deviance: 548.499  on 438  degrees of freedom\n          Deviance:  61.471  on   2  degrees of freedom\n \nAIC: 552.5    BIC: 560.35 \n\nThanks again!\n\nBest,\nShupin\n\n________________________________________\n???: martina morris [morrism@u.washington.edu]\n????: 2013?8?13? 23:25\n???: Shupin Li\n??: statnet_help@u.washington.edu\n??: Re: [statnet_help] Interpret p values in ERGM\n\nShupin,\n\nNodefactor reflects differences in mean degree by category.  Nodematch\nis what you need to capture homophily.\n\nMartina\n\nOn Mon, 12 Aug 2013, Shupin Li wrote:\n\n> Dear list,\n>\n> I put a categorical attribute (gender) into ERGM to see whether edge probabilities are a function of gender. However, I have below 2 questions concerning interpreting results.\n>\n> 1) I got below result, p values of edge and gender are significant. But how to interpret this negative relationship? Did participants tend to make a tie with people from other gender group?\n>\n> ==========================\n> Summary of model fit\n> ==========================\n> Formula:   co13 ~ edges + nodefactor(\"gender\")\n> Iterations:  20\n> Monte Carlo MLE Results:\n>                    Estimate Std. Error MCMC %  p-value\n> edges                 0.5115     0.2334     NA 0.029330 *\n> nodefactor.gender.2  -0.6790     0.1972     NA 0.000669 ***\n> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>    Null  Deviance: 360.437  on 260  degrees of freedom\n> Residual Deviance: 346.024  on 258  degrees of freedom\n>          Deviance:  14.412  on   2  degrees of freedom\n> AIC: 350.02    BIC: 355.23\n>\n> 2) How to interpret results when only p of edge is significant or when only p of gender is significant like belows?\n>\n> ==========================\n> Summary of model fit\n> ==========================\n> Formula:   co16 ~ edges + nodefactor(\"gender\")\n> Iterations:  20\n> Monte Carlo MLE Results:\n>                    Estimate Std. Error MCMC % p-value\n> edges                 1.0121     0.1633     NA  <1e-04 ***\n> nodefactor.gender.2  -0.2338     0.1365     NA  0.0874 .\n> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>    Null  Deviance: 731.963  on 528  degrees of freedom\n> Residual Deviance: 652.919  on 526  degrees of freedom\n>          Deviance:  79.044  on   2  degrees of freedom\n> AIC: 656.92    BIC: 665.16\n>\n>\n> ==========================\n> Summary of model fit\n> ==========================\n> Formula:   co14 ~ edges + nodefactor(\"gender\")\n> Iterations:  20\n> Monte Carlo MLE Results:\n>                    Estimate Std. Error MCMC % p-value\n> edges                 0.3780     0.2293     NA  0.1004\n> nodefactor.gender.2  -0.4186     0.1899     NA  0.0283 *\n> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>    Null  Deviance: 360.4365  on 260  degrees of freedom\n> Residual Deviance: 355.3300  on 258  degrees of freedom\n>          Deviance:   5.1065  on   2  degrees of freedom\n> AIC: 359.33    BIC: 364.54\n>\n> Thank you in advance guys:)\n>\n> Best,\n> Shupin_______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Martina,\n\nThank you very much for your help:)\n\nI got below result using nodematch, do we need both two p less 0.05 to conclude ?\nIf I got negative value of \"nodematch.gender\" (both p for \"edges\" an",
+      "thread_id": "thread-d6b268b0111f",
+      "thread_depth": 2,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-cf84b960ca9f",
+      "message_id": "<520B5DCD.4050700@ipgovernance.eu>",
+      "from_name": "Sebastian Haunss",
+      "from_email_hash": "05dba600bd153ce6aeccb3f221011d77b705ea60745a3f411436b0feefc8a70c",
+      "date": "2013-08-14T03:37:01Z",
+      "subject": "[statnet_help] STERGM and bipartite networks",
+      "subject_clean": "[statnet_help] STERGM and bipartite networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Is it possible to fit STERGM models for bipartite networks?\nI do have a time series of 2-mode networks, but if I try to fit a model in R I get the following error:\n\nFehler in combine.networks(y0s, standardized = TRUE, blockname = \".stergm.CMLE.time.index\") :\n  Bipartite networks are not supported at this time.\n\nBest\nSebastian",
+      "body_snippet": "Is it possible to fit STERGM models for bipartite networks?\nI do have a time series of 2-mode networks, but if I try to fit a model in R I get the following error:\n\nFehler in combine.networks(y0s, sta",
+      "thread_id": "thread-cf84b960ca9f",
+      "thread_depth": 0,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-fa0994d6757b",
+      "message_id": "<alpine.WNT.1.10.1308141047200.6512@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-08-14T10:48:50Z",
+      "subject": "Re: 答复: [statnet_help] Interpret p values in ERGM",
+      "subject_clean": "答复: [statnet_help] Interpret p values in ERGM",
+      "in_reply_to": "<72E8CAED492B92449DEDAD0250390A361D967FA2@exch-mbx-02.utu.fi>",
+      "references": [
+        "<72E8CAED492B92449DEDAD0250390A361D967F30@exch-mbx-02.utu.fi>",
+        "<alpine.WNT.1.10.1308131324420.3580@morrism-PC>",
+        "<72E8CAED492B92449DEDAD0250390A361D967FA2@exch-mbx-02.utu.fi>"
+      ],
+      "body_plain": "Your p-value is not significant.  But you need to have both nodefactor and \nnodematch in the equation to test this properly.\n\nPlease read our paper \"Birds of a Feather...\" (Goodreau, Kitts and Morris) \nto understand how to model homophily properly in a network.\n\nOn Wed, 14 Aug 2013, Shupin Li wrote:\n\n> Hi Martina,\n>\n> Thank you very much for your help:)\n>\n> I got below result using nodematch, do we need both two p less 0.05 to conclude ?\n> If I got negative value of \"nodematch.gender\" (both p for \"edges\" and \"nodematch.gender\" less than 0.05), can I conclude that people in the network tend to make ties with nodes from other gender group?\n>\n> ==========================\n> Summary of model fit\n> ==========================\n> Formula:   co1 ~ edges + nodematch(\"gender\")\n> Iterations:  20\n> Monte Carlo MLE Results:\n>                 Estimate Std. Error MCMC % p-value\n> edges              0.8367     0.1452     NA  <1e-04 ***\n> nodematch.gender  -0.1296     0.2052     NA   0.528\n> ---\n> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>    Null  Deviance: 609.970  on 440  degrees of freedom\n> Residual Deviance: 548.499  on 438  degrees of freedom\n>          Deviance:  61.471  on   2  degrees of freedom\n>\n> AIC: 552.5    BIC: 560.35\n>\n> Thanks again!\n>\n> Best,\n> Shupin\n>\n> ________________________________________\n> ???: martina morris [morrism@u.washington.edu]\n> ????: 2013?8?13? 23:25\n> ???: Shupin Li\n> ??: statnet_help@u.washington.edu\n> ??: Re: [statnet_help] Interpret p values in ERGM\n>\n> Shupin,\n>\n> Nodefactor reflects differences in mean degree by category.  Nodematch\n> is what you need to capture homophily.\n>\n> Martina\n>\n> On Mon, 12 Aug 2013, Shupin Li wrote:\n>\n>> Dear list,\n>>\n>> I put a categorical attribute (gender) into ERGM to see whether edge probabilities are a function of gender. However, I have below 2 questions concerning interpreting results.\n>>\n>> 1) I got below result, p values of edge and gender are significant. But how to interpret this negative relationship? Did participants tend to make a tie with people from other gender group?\n>>\n>> ==========================\n>> Summary of model fit\n>> ==========================\n>> Formula:   co13 ~ edges + nodefactor(\"gender\")\n>> Iterations:  20\n>> Monte Carlo MLE Results:\n>>                    Estimate Std. Error MCMC %  p-value\n>> edges                 0.5115     0.2334     NA 0.029330 *\n>> nodefactor.gender.2  -0.6790     0.1972     NA 0.000669 ***\n>> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>>    Null  Deviance: 360.437  on 260  degrees of freedom\n>> Residual Deviance: 346.024  on 258  degrees of freedom\n>>          Deviance:  14.412  on   2  degrees of freedom\n>> AIC: 350.02    BIC: 355.23\n>>\n>> 2) How to interpret results when only p of edge is significant or when only p of gender is significant like belows?\n>>\n>> ==========================\n>> Summary of model fit\n>> ==========================\n>> Formula:   co16 ~ edges + nodefactor(\"gender\")\n>> Iterations:  20\n>> Monte Carlo MLE Results:\n>>                    Estimate Std. Error MCMC % p-value\n>> edges                 1.0121     0.1633     NA  <1e-04 ***\n>> nodefactor.gender.2  -0.2338     0.1365     NA  0.0874 .\n>> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>>    Null  Deviance: 731.963  on 528  degrees of freedom\n>> Residual Deviance: 652.919  on 526  degrees of freedom\n>>          Deviance:  79.044  on   2  degrees of freedom\n>> AIC: 656.92    BIC: 665.16\n>>\n>>\n>> ==========================\n>> Summary of model fit\n>> ==========================\n>> Formula:   co14 ~ edges + nodefactor(\"gender\")\n>> Iterations:  20\n>> Monte Carlo MLE Results:\n>>                    Estimate Std. Error MCMC % p-value\n>> edges                 0.3780     0.2293     NA  0.1004\n>> nodefactor.gender.2  -0.4186     0.1899     NA  0.0283 *\n>> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>>    Null  Deviance: 360.4365  on 260  degrees of freedom\n>> Residual Deviance: 355.3300  on 258  degrees of freedom\n>>          Deviance:   5.1065  on   2  degrees of freedom\n>> AIC: 359.33    BIC: 364.54\n>>\n>> Thank you in advance guys:)\n>>\n>> Best,\n>> Shupin_______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Your p-value is not significant.  But you need to have both nodefactor and \nnodematch in the equation to test this properly.\n\nPlease read our paper \"Birds of a Feather...\" (Goodreau, Kitts and Morris)",
+      "thread_id": "thread-d6b268b0111f",
+      "thread_depth": 3,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-34a8c3a9543d",
+      "message_id": "<alpine.WNT.1.10.1308151119400.5596@morrism-PC>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2013-08-15T11:21:46Z",
+      "subject": "[statnet_help] STERGM and bipartite networks",
+      "subject_clean": "[statnet_help] STERGM and bipartite networks",
+      "in_reply_to": "<520B5DCD.4050700@ipgovernance.eu>",
+      "references": [
+        "<520B5DCD.4050700@ipgovernance.eu>"
+      ],
+      "body_plain": "Sebastian,\n\nYes STERGM can be used on bipartite networks, so the problem is likely \nbeing triggered from something else in your code.\n\nFirst -- are you using the most current versions of the software?  If \nnot, please update and see if that fixes the problem.\n\nIf it doesn't, send the full set of code so we can replicate.\n\nbest,\nMartina\n\nOn Wed, 14 Aug 2013, Sebastian Haunss wrote:\n\n> Is it possible to fit STERGM models for bipartite networks?\n> I do have a time series of 2-mode networks, but if I try to fit a model in R I get the following error:\n>\n> Fehler in combine.networks(y0s, standardized = TRUE, blockname = \".stergm.CMLE.time.index\") :\n>  Bipartite networks are not supported at this time.\n>\n> Best\n> Sebastian\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Sebastian,\n\nYes STERGM can be used on bipartite networks, so the problem is likely \nbeing triggered from something else in your code.\n\nFirst -- are you using the most current versions of the software?",
+      "thread_id": "thread-cf84b960ca9f",
+      "thread_depth": 1,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-97525f323158",
+      "message_id": "<520E4159.2080606@uni-bremen.de>",
+      "from_name": "Florian Umlauf (CRIE)",
+      "from_email_hash": "52381ca681e0d2b9acc139619dad1e73c88ca9cbf6423ff553ecb7de555f0f4f",
+      "date": "2013-08-16T08:12:25Z",
+      "subject": "[statnet_help] coudn't find \"InitWtMHP.TNT\"",
+      "subject_clean": "[statnet_help] coudn't find \"InitWtMHP.TNT\"",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI have a problem with executing ergm in parallel modus. I try to run \nergm on one single linux machine.\n\nVersion :\n                _\nplatform       x86_64-pc-linux-gnu\narch           x86_64\nos             linux-gnu\nsystem         x86_64, linux-gnu\nstatus\nmajor          3\nminor          0.1\nyear           2013\nmonth          05\nday            16\nsvn rev        62743\nlanguage       R\nversion.string R version 3.0.1 (2013-05-16)\nnickname       Good Sport\n\nMy Ergm Version is: 3.1-0, created on 2013-04-17\n\nWhen I run the simple script:\n\nlibrary(statnet)\ndata(flo)\nflomarriage <- network(flo,directed=FALSE)\ngest <- ergm(flomarriage ~ kstar(1:2) + gwesp(0.5)+ \ntriangle,control.ergm( parallel=2),verbose=TRUE)\n\nI got in return:\n\ngest <- ergm(flomarriage ~ kstar(1:2) + gwesp(0.5)+ triangle,control.ergm(\n+ parallel=2),verbose=TRUE)\nEvaluating network in model\nInitializing Metropolis-Hastings proposal.\nFehler in eval(expr, envir, enclos) :\n   konnte Funktion \"InitWtMHP.TNT\" nicht finden\nFailer in in eval(expr, envir, enclos) : couldn't find function \n\"InitWtMHP.TNT\"\n\nAny idea whats going wrong?\nTanks a lot\nFlorian\n\n\n\n >  sessionInfo()\nR version 3.0.1 (2013-05-16)\nPlatform: x86_64-pc-linux-gnu (64-bit)\n\nlocale:\n  [1] LC_CTYPE=de_DE.UTF-8       LC_NUMERIC=C\n  [3] LC_TIME=de_DE.UTF-8        LC_COLLATE=de_DE.UTF-8\n  [5] LC_MONETARY=de_DE.UTF-8    LC_MESSAGES=de_DE.UTF-8\n  [7] LC_PAPER=C                 LC_NAME=C\n  [9] LC_ADDRESS=C               LC_TELEPHONE=C\n[11] LC_MEASUREMENT=de_DE.UTF-8 LC_IDENTIFICATION=C\n\nattached base packages:\n  [1] tools     parallel  tcltk     stats     graphics  grDevices utils\n  [8] datasets  methods   base\n\nother attached packages:\n  [1] statnet_3.1-0        latentnet_2.4-5      mvtnorm_0.9-9995\n  [4] abind_1.4-0          ergm.count_3.1-0     tergm_3.1-0\n  [7] networkDynamic_0.4.1 ergm_3.1-0           coda_0.16-1\n[10] nlme_3.1-110         trust_0.1-4          Matrix_1.0-12\n[13] lattice_0.20-15      robustbase_0.9-10    statnet.common_3.1-0\n[16] sna_2.3-1            network_1.7.2        RSiena_1.1-232\n\nloaded via a namespace (and not attached):\n[1] grid_3.0.1\n\n > getOption(\"pkgType\")\n[1] \"source\"",
+      "body_snippet": "Hi,\n\nI have a problem with executing ergm in parallel modus. I try to run \nergm on one single linux machine.\n\nVersion :\n                _\nplatform       x86_64-pc-linux-gnu\narch           x86_64\nos   ",
+      "thread_id": "thread-97525f323158",
+      "thread_depth": 0,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-2e266fa21ddc",
+      "message_id": "<520F3DCD.2030107@uni-bremen.de>",
+      "from_name": "Florian Umlauf (CRIE)",
+      "from_email_hash": "52381ca681e0d2b9acc139619dad1e73c88ca9cbf6423ff553ecb7de555f0f4f",
+      "date": "2013-08-17T02:09:33Z",
+      "subject": "[statnet_help] coudn't find \"InitWtMHP.TNT\"",
+      "subject_clean": "[statnet_help] coudn't find \"InitWtMHP.TNT\"",
+      "in_reply_to": "<66DDDD79FB3E0C41B48055C9D6C35025289B687C@EMBX-CHAM1.cdc.gov>",
+      "references": [
+        "<520E4159.2080606@uni-bremen.de>",
+        "<66DDDD79FB3E0C41B48055C9D6C35025289B687C@EMBX-CHAM1.cdc.gov>"
+      ],
+      "body_plain": "Thanks for your reply Kevin! Unfortunately it returns the same error \nmassage.\n\nergm(flomarriage ~ kstar(1:2) + gwesp(0.5)+ triangle,control.ergm( \ncontrol.san(parallel=2)),verbose=TRUE)\nEvaluating network in model\nInitializing Metropolis-Hastings proposal.\nFehler in eval(expr, envir, enclos) :\n   konnte Funktion \"InitWtMHP.TNT\" nicht finden\n\nI tested it also on another linux computer with the same result.\n\nPerhaps I have to insert the function InitWtMHP.TNT() on my own but I \ncan't find it.\n\nAm 16.08.2013 21:15, schrieb Delaney, Kevin P. (CDC/OID/NCHHSTP):\n> Haven't done this myself (don't have a unix box to play with yet) but I think the call for parallelism should be:\n>\n> ergm(flomarriage ~ kstar(1:2) + gwesp(0.5)+ triangle,control.ergm( control.san(parallel=2)),verbose=TRUE)\n>\n>\n> -----Original Message-----\n> From: Florian Umlauf (CRIE) [mailto:umlauf@uni-bremen.de]\n> Sent: Friday, August 16, 2013 11:12 AM\n> To: statnet_help@u.washington.edu\n> Subject: [statnet_help] coudn't find \"InitWtMHP.TNT\"\n>\n> Hi,\n>\n> I have a problem with executing ergm in parallel modus. I try to run ergm on one single linux machine.\n>\n> Version :\n>                  _\n> platform       x86_64-pc-linux-gnu\n> arch           x86_64\n> os             linux-gnu\n> system         x86_64, linux-gnu\n> status\n> major          3\n> minor          0.1\n> year           2013\n> month          05\n> day            16\n> svn rev        62743\n> language       R\n> version.string R version 3.0.1 (2013-05-16)\n> nickname       Good Sport\n>\n> My Ergm Version is: 3.1-0, created on 2013-04-17\n>\n> When I run the simple script:\n>\n> library(statnet)\n> data(flo)\n> flomarriage <- network(flo,directed=FALSE) gest <- ergm(flomarriage ~ kstar(1:2) + gwesp(0.5)+ triangle,control.ergm( parallel=2),verbose=TRUE)\n>\n> I got in return:\n>\n> gest <- ergm(flomarriage ~ kstar(1:2) + gwesp(0.5)+ triangle,control.ergm(\n> + parallel=2),verbose=TRUE)\n> Evaluating network in model\n> Initializing Metropolis-Hastings proposal.\n> Fehler in eval(expr, envir, enclos) :\n>     konnte Funktion \"InitWtMHP.TNT\" nicht finden Failer in in eval(expr, envir, enclos) : couldn't find function \"InitWtMHP.TNT\"\n>\n> Any idea whats going wrong?\n> Tanks a lot\n> Florian\n>\n>\n>\n>   >  sessionInfo()\n> R version 3.0.1 (2013-05-16)\n> Platform: x86_64-pc-linux-gnu (64-bit)\n>\n> locale:\n>    [1] LC_CTYPE=de_DE.UTF-8       LC_NUMERIC=C\n>    [3] LC_TIME=de_DE.UTF-8        LC_COLLATE=de_DE.UTF-8\n>    [5] LC_MONETARY=de_DE.UTF-8    LC_MESSAGES=de_DE.UTF-8\n>    [7] LC_PAPER=C                 LC_NAME=C\n>    [9] LC_ADDRESS=C               LC_TELEPHONE=C\n> [11] LC_MEASUREMENT=de_DE.UTF-8 LC_IDENTIFICATION=C\n>\n> attached base packages:\n>    [1] tools     parallel  tcltk     stats     graphics  grDevices utils\n>    [8] datasets  methods   base\n>\n> other attached packages:\n>    [1] statnet_3.1-0        latentnet_2.4-5      mvtnorm_0.9-9995\n>    [4] abind_1.4-0          ergm.count_3.1-0     tergm_3.1-0\n>    [7] networkDynamic_0.4.1 ergm_3.1-0           coda_0.16-1\n> [10] nlme_3.1-110         trust_0.1-4          Matrix_1.0-12\n> [13] lattice_0.20-15      robustbase_0.9-10    statnet.common_3.1-0\n> [16] sna_2.3-1            network_1.7.2        RSiena_1.1-232\n>\n> loaded via a namespace (and not attached):\n> [1] grid_3.0.1\n>\n>   > getOption(\"pkgType\")\n> [1] \"source\"\n>\n>",
+      "body_snippet": "Thanks for your reply Kevin! Unfortunately it returns the same error \nmassage.\n\nergm(flomarriage ~ kstar(1:2) + gwesp(0.5)+ triangle,control.ergm( \ncontrol.san(parallel=2)),verbose=TRUE)\nEvaluating ne",
+      "thread_id": "thread-2e266fa21ddc",
+      "thread_depth": 0,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-2bf84f1758b6",
+      "message_id": "<520FEF49.3020807@uni-bremen.de>",
+      "from_name": "Florian Umlauf (Crie)",
+      "from_email_hash": "52381ca681e0d2b9acc139619dad1e73c88ca9cbf6423ff553ecb7de555f0f4f",
+      "date": "2013-08-17T14:46:49Z",
+      "subject": "[statnet_help] coudn't find \"InitWtMHP.TNT\"",
+      "subject_clean": "[statnet_help] coudn't find \"InitWtMHP.TNT\"",
+      "in_reply_to": "<520F3DCD.2030107@uni-bremen.de>",
+      "references": [
+        "<520E4159.2080606@uni-bremen.de>",
+        "<66DDDD79FB3E0C41B48055C9D6C35025289B687C@EMBX-CHAM1.cdc.gov>",
+        "<520F3DCD.2030107@uni-bremen.de>"
+      ],
+      "body_plain": "I think it's might a bug of the new ergm v.3.1. Before this version \ncomes up there was no file called InitWtMHP.R inside the ergm_x.taz.gz \nfiles. Perhaps it's just missing?\n\nOn 17.08.2013 11:09, Florian Umlauf (CRIE) wrote:\n>\n> Thanks for your reply Kevin! Unfortunately it returns the same error\n> massage.\n>\n> ergm(flomarriage ~ kstar(1:2) + gwesp(0.5)+ triangle,control.ergm(\n> control.san(parallel=2)),verbose=TRUE)\n> Evaluating network in model\n> Initializing Metropolis-Hastings proposal.\n> Fehler in eval(expr, envir, enclos) :\n>    konnte Funktion \"InitWtMHP.TNT\" nicht finden\n>\n> I tested it also on another linux computer with the same result.\n>\n> Perhaps I have to insert the function InitWtMHP.TNT() on my own but I\n> can't find it.\n>\n> Am 16.08.2013 21:15, schrieb Delaney, Kevin P. (CDC/OID/NCHHSTP):\n>> Haven't done this myself (don't have a unix box to play with yet) but\n>> I think the call for parallelism should be:\n>>\n>> ergm(flomarriage ~ kstar(1:2) + gwesp(0.5)+ triangle,control.ergm(\n>> control.san(parallel=2)),verbose=TRUE)\n>>\n>>\n>> -----Original Message-----\n>> From: Florian Umlauf (CRIE) [mailto:umlauf@uni-bremen.de]\n>> Sent: Friday, August 16, 2013 11:12 AM\n>> To: statnet_help@u.washington.edu\n>> Subject: [statnet_help] coudn't find \"InitWtMHP.TNT\"\n>>\n>> Hi,\n>>\n>> I have a problem with executing ergm in parallel modus. I try to run\n>> ergm on one single linux machine.\n>>\n>> Version :\n>>                  _\n>> platform       x86_64-pc-linux-gnu\n>> arch           x86_64\n>> os             linux-gnu\n>> system         x86_64, linux-gnu\n>> status\n>> major          3\n>> minor          0.1\n>> year           2013\n>> month          05\n>> day            16\n>> svn rev        62743\n>> language       R\n>> version.string R version 3.0.1 (2013-05-16)\n>> nickname       Good Sport\n>>\n>> My Ergm Version is: 3.1-0, created on 2013-04-17\n>>\n>> When I run the simple script:\n>>\n>> library(statnet)\n>> data(flo)\n>> flomarriage <- network(flo,directed=FALSE) gest <- ergm(flomarriage ~\n>> kstar(1:2) + gwesp(0.5)+ triangle,control.ergm( parallel=2),verbose=TRUE)\n>>\n>> I got in return:\n>>\n>> gest <- ergm(flomarriage ~ kstar(1:2) + gwesp(0.5)+\n>> triangle,control.ergm(\n>> + parallel=2),verbose=TRUE)\n>> Evaluating network in model\n>> Initializing Metropolis-Hastings proposal.\n>> Fehler in eval(expr, envir, enclos) :\n>>     konnte Funktion \"InitWtMHP.TNT\" nicht finden Failer in in\n>> eval(expr, envir, enclos) : couldn't find function \"InitWtMHP.TNT\"\n>>\n>> Any idea whats going wrong?\n>> Tanks a lot\n>> Florian\n>>\n>>\n>>\n>>   >  sessionInfo()\n>> R version 3.0.1 (2013-05-16)\n>> Platform: x86_64-pc-linux-gnu (64-bit)\n>>\n>> locale:\n>>    [1] LC_CTYPE=de_DE.UTF-8       LC_NUMERIC=C\n>>    [3] LC_TIME=de_DE.UTF-8        LC_COLLATE=de_DE.UTF-8\n>>    [5] LC_MONETARY=de_DE.UTF-8    LC_MESSAGES=de_DE.UTF-8\n>>    [7] LC_PAPER=C                 LC_NAME=C\n>>    [9] LC_ADDRESS=C               LC_TELEPHONE=C\n>> [11] LC_MEASUREMENT=de_DE.UTF-8 LC_IDENTIFICATION=C\n>>\n>> attached base packages:\n>>    [1] tools     parallel  tcltk     stats     graphics  grDevices utils\n>>    [8] datasets  methods   base\n>>\n>> other attached packages:\n>>    [1] statnet_3.1-0        latentnet_2.4-5      mvtnorm_0.9-9995\n>>    [4] abind_1.4-0          ergm.count_3.1-0     tergm_3.1-0\n>>    [7] networkDynamic_0.4.1 ergm_3.1-0           coda_0.16-1\n>> [10] nlme_3.1-110         trust_0.1-4          Matrix_1.0-12\n>> [13] lattice_0.20-15      robustbase_0.9-10    statnet.common_3.1-0\n>> [16] sna_2.3-1            network_1.7.2        RSiena_1.1-232\n>>\n>> loaded via a namespace (and not attached):\n>> [1] grid_3.0.1\n>>\n>>   > getOption(\"pkgType\")\n>> [1] \"source\"\n>>\n>>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "I think it's might a bug of the new ergm v.3.1. Before this version \ncomes up there was no file called InitWtMHP.R inside the ergm_x.taz.gz \nfiles. Perhaps it's just missing?\n\nOn 17.08.2013 11:09, Flo",
+      "thread_id": "thread-2e266fa21ddc",
+      "thread_depth": 1,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-8ebd192151ec",
+      "message_id": "<63824EEFC783EF4E9098598A12B4304C03081A21FD2B@EXCMS01.ad.uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2013-08-18T20:41:51Z",
+      "subject": "[statnet_help] coudn't find \"InitWtMHP.TNT\"",
+      "subject_clean": "[statnet_help] coudn't find \"InitWtMHP.TNT\"",
+      "in_reply_to": "<520E4159.2080606@uni-bremen.de>",
+      "references": [
+        "<520E4159.2080606@uni-bremen.de>"
+      ],
+      "body_plain": "Hi, Florian,\n\nTry\n\ngest <- ergm(flomarriage ~ kstar(1:2) + gwesp(0.5) + triangle, control = control.ergm( parallel=2),verbose=TRUE)\n\nYou have to pass the control= argument by name.\n\n                               Pavel\n\n-- \nDr. Pavel N. Krivitsky\nLecturer in Statistics\nBuilding 39C, Room 185\nSchool of Mathematics and Applied Statistics\nUniversity of Wollongong, NSW 2522, Australia\nWeb: http://www.krivitsky.net/research\nPhone: +61 (2) 4221 3713",
+      "body_snippet": "Hi, Florian,\n\nTry\n\ngest <- ergm(flomarriage ~ kstar(1:2) + gwesp(0.5) + triangle, control = control.ergm( parallel=2),verbose=TRUE)\n\nYou have to pass the control= argument by name.\n\n                  ",
+      "thread_id": "thread-97525f323158",
+      "thread_depth": 1,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-291051d01d80",
+      "message_id": "<CAD5742667680B489D6A39571B8E7FA72DD0917D@ICTSC-W-S204.soliscom.uu.nl>",
+      "from_name": "Smith, S. (Sanne)",
+      "from_email_hash": "684dffe9c680b86c503f0b2dede5b862c2e510b7909bc2cfd47270b9f9653c84",
+      "date": "2013-08-22T02:27:27Z",
+      "subject": "[statnet_help] mcmc diagnostics error",
+      "subject_clean": "[statnet_help] mcmc diagnostics error",
+      "in_reply_to": "<alpine.WNT.1.10.1308021238420.6212@morrism-PC>",
+      "references": [
+        "<CAD5742667680B489D6A39571B8E7FA72DD02664@ICTSC-W-S204.soliscom.uu.nl>",
+        "<alpine.WNT.1.10.1308021238420.6212@morrism-PC>"
+      ],
+      "body_plain": "Hi Martina,\n\nA bit late (holidays), but thank you for your reply!\nAs you suggested, I tried again and used the most recent versions of R (3.0.1) and statnet (3.1-0), but ran into the problem as well. I'm working on a mac os x 10.6.8. It is good to know I can run  it on a pc, that works for me :).\n\nBest wishes,\n\nSanne\n\n\n-----Original Message-----\nFrom: martina morris [mailto:morrism@u.washington.edu] \nSent: vrijdag 2 augustus 2013 21:43\nTo: Smith, S. (Sanne)\nCc: statnet_help@u.washington.edu; handcock@stat.washington.edu\nSubject: Re: [statnet_help] mcmc diagnostics error\n\nHi Sanne,\n\nI can't replicate this error on my Dell laptop using R3.0.1 and the most recent version of ergm 3.1-0.\n\nCan you make sure you're running with the most recent versions of R and the statnet packages and try again?\n\nbest,\nMartina\n\n\nOn Thu, 1 Aug 2013, Smith, S. (Sanne) wrote:\n\n> Dear all,\n> \n> I've been trying to use the mcmc.diagnostics function to check for \n> degeneracy, but it returns the error\n> \n> Error in UseMethod(\"as.mcmc\") :\n> ? no applicable method for 'as.mcmc' applied to an object of class \"mcmc\"\n> \n> I did not have any problems using this command before and I noticed \n> that ?mcmc.diagnostics does not return the help file. I also ran the \n> Florentine marriage example code, and it returned the same error. As such, might the error be due to the recent update to R3.0.0?\n> \n> Best wishes,\n> \n> Sanne Smith\n> \n> \n> Sanne Smith / Phd student / Universiteit Utrecht / Department \n> Sociology / Padualaan 14, 3584 CH Utrecht / kamer C2.16 / Postbus \n> 80140, 3508 TC Utrecht / +31 30 253 40 75 /?s.smith@uu.nl\n> \n> \n> \n> Output florentine example:\n> \n> > data(florentine)\n> > gest <- ergm(flomarriage ~ edges + kstar(2))\n> Iteration 1 of at most 20: \n> Convergence test P-value: 1.2e-01\n> The log-likelihood improved by < 0.0001 Iteration 2 of at most 20:\n> Convergence test P-value: 1e+00\n> Convergence detected. Stopping.\n> The log-likelihood improved by < 0.0001\n> \n> This model was fit using MCMC. ?To examine model diagnostics and check \n> for degeneracy, use the mcmc.diagnostics() function.\n> > mcmc.diagnostics(gest)\n> Sample statistics summary:\n> \n> Iterations = 10000:1009900\n> Thinning interval = 100\n> Number of chains = 1\n> Sample size per chain = 10000\n> \n> 1. Empirical mean and standard deviation for each variable,\n> ? ?plus standard error of the mean:\n>\n> ? ? ? ? ?Mean ? ? SD Naive SE Time-series SE edges ?0.0025 ?4.212 ?\n> 0.04212 ? ? ? ?0.04694\n> kstar2 0.0154 20.596 ?0.20596 ? ? ? ?0.22407\n> \n> 2. Quantiles for each variable:\n>\n> ? ? ? ?2.5% 25% 50% 75% 97.5%\n> edges ? ?-8 ?-3 ? 0 ? 3 ? ? 9\n> kstar2 ?-32 -15 ?-3 ?12 ? ?47\n> \n> \n> Are sample statistics significantly different from observed?\n> ? ? ? ? ? ? ? ? edges ? ? kstar2 Overall (Chi^2) diff. ? ? ?0.00250000 \n> 0.01540000 ? ? ? ? ? ? ?NA test stat. 0.05325904 0.06872903 ? ? \n> 0.006780522 P-val. ? ? 0.95752552 0.94520531 ? ? 0.996615480\n> \n> Sample statistics cross-correlations:\n> ? ? ? ? ? ?edges ? ?kstar2\n> edges ?1.0000000 0.9599012\n> kstar2 0.9599012 1.0000000\n> \n> Sample statistics auto-correlation:\n> Chain 1\n> ? ? ? ? ? ? ? edges ? ? ? kstar2\n> Lag 0 ? 1.000000000 ?1.000000000\n> Lag 100 0.093234371 ?0.084025326\n> Lag 200 0.023315396 ?0.018670673\n> Lag 300 0.000422513 -0.001786714\n> Lag 400 0.019262300 ?0.012976082\n> Lag 500 0.004289678 ?0.004027498\n> \n> Sample statistics burn-in diagnostic (Geweke):\n> Error in UseMethod(\"as.mcmc\") :\n> ? no applicable method for 'as.mcmc' applied to an object of class \"mcmc\"\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Martina,\n\nA bit late (holidays), but thank you for your reply!\nAs you suggested, I tried again and used the most recent versions of R (3.0.1) and statnet (3.1-0), but ran into the problem as well. ",
+      "thread_id": "thread-784f033fd195",
+      "thread_depth": 2,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-04ed54d11ced",
+      "message_id": "<5215E8DA.7050207@uni-bremen.de>",
+      "from_name": "Florian Umlauf (CRIE)",
+      "from_email_hash": "52381ca681e0d2b9acc139619dad1e73c88ca9cbf6423ff553ecb7de555f0f4f",
+      "date": "2013-08-22T03:32:58Z",
+      "subject": "[statnet_help] failure ergm with warings Too many unique dyads!",
+      "subject_clean": "[statnet_help] failure ergm with warings Too many unique dyads!",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\ni having trouble at the end of my ergm execution. Perhaps it is because \nI run an MPI cluster for estimating, but it seems to me that the cluster \nis working fine. At the final estimation step 20 I receive the error term:\n\nAT STEP 20!\n\nThe log-likelihood improved by 19.94\nEvaluating log-likelihood at the estimate.\nFehler (Fail) in ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m, \ntheta.offset = init,  :\n   Too many unique dyads!\nCalls: source ... ergm -> ergm.initialfit -> ergm.mple -> ergm.pl -> .C\nZus?tzlich: Warnmeldungen:\n1: In eval(expr, envir, enclos) :\n   non-integer #successes in a binomial glm!\n2: glm.fit: fitted probabilities numerically 0 or 1 occurred\n3: In eval(expr, envir, enclos) :\n   non-integer #successes in a binomial glm!\n4: In eval(expr, envir, enclos) :\n   non-integer #successes in a binomial glm!\nAusf?hrung angehalten (Execution stopped)\n\nI have already set the variable maxNumDyads up to \nnetwork.size(buffer_net)^2/2 because I use a large undirected network \nwith 6992 vertices and 30754.\n\nmaxNumDyads=network.size(buffer_net)^2/2\nbuffer_control.ergm \n<-control.ergm(MPLE.max.dyad.types=maxNumDyads,MPLE.samplesize=100000,MCMC.interval=1000,parallel=buffer_np,parallel.type=\"MPI\")\n\nergm(buffer_net ~ \nedges+gwesp(0.6)+balance+nodecov(\"evcent\"),control=buffer_control.ergm,verbose=TRUE)\n\nsessionInfo()\nR version 3.0.1 (2013-05-16)\nPlatform: x86_64-pc-linux-gnu (64-bit)\n\nlocale:\n  [1] LC_CTYPE=de_DE.UTF-8       LC_NUMERIC=C\n  [3] LC_TIME=de_DE.UTF-8        LC_COLLATE=de_DE.UTF-8\n  [5] LC_MONETARY=de_DE.UTF-8    LC_MESSAGES=de_DE.UTF-8\n  [7] LC_PAPER=C                 LC_NAME=C\n  [9] LC_ADDRESS=C               LC_TELEPHONE=C\n[11] LC_MEASUREMENT=de_DE.UTF-8 LC_IDENTIFICATION=C\n\nattached base packages:\n[1] tools     stats     graphics  grDevices utils     datasets  methods\n[8] base\n\nother attached packages:\n  [1] statnet_3.1-0        latentnet_2.4-5      mvtnorm_0.9-9995\n  [4] abind_1.4-0          ergm.count_3.1-0     tergm_3.1-0\n  [7] networkDynamic_0.4.1 sna_2.3-1            ergm_3.1-0\n[10] coda_0.16-1          nlme_3.1-110         trust_0.1-4\n[13] Matrix_1.0-12        lattice_0.20-21      robustbase_0.9-10\n[16] network_1.7.2        statnet.common_3.1-0\n\nloaded via a namespace (and not attached):\n[1] grid_3.0.1\n >\n >   getOption(\"pkgType\")\n[1] \"source\"\n >\n\nThanks for your suggestions!\n\nI am also not concerned about the warings. Do they matter?\n\nFlorian",
+      "body_snippet": "Hi,\n\ni having trouble at the end of my ergm execution. Perhaps it is because \nI run an MPI cluster for estimating, but it seems to me that the cluster \nis working fine. At the final estimation step 20",
+      "thread_id": "thread-04ed54d11ced",
+      "thread_depth": 0,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-c7cd6b832ad3",
+      "message_id": "<5216097C.7010903@uni-bremen.de>",
+      "from_name": "Florian Umlauf (CRIE)",
+      "from_email_hash": "52381ca681e0d2b9acc139619dad1e73c88ca9cbf6423ff553ecb7de555f0f4f",
+      "date": "2013-08-22T05:52:12Z",
+      "subject": "[statnet_help] failure ergm with warings Too many unique dyads!",
+      "subject_clean": "[statnet_help] failure ergm with warings Too many unique dyads!",
+      "in_reply_to": "<5215E8DA.7050207@uni-bremen.de>",
+      "references": [
+        "<5215E8DA.7050207@uni-bremen.de>"
+      ],
+      "body_plain": "Same with maxNumDyads=network.size(buffer_net)^2\n\nFlorian\n\n\n\nAm 22.08.2013 12:32, schrieb Florian Umlauf (CRIE):\n> Hi,\n>\n> i having trouble at the end of my ergm execution. Perhaps it is because\n> I run an MPI cluster for estimating, but it seems to me that the cluster\n> is working fine. At the final estimation step 20 I receive the error term:\n>\n> AT STEP 20!\n>\n> The log-likelihood improved by 19.94\n> Evaluating log-likelihood at the estimate.\n> Fehler (Fail) in ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m,\n> theta.offset = init,  :\n>    Too many unique dyads!\n> Calls: source ... ergm -> ergm.initialfit -> ergm.mple -> ergm.pl -> .C\n> Zus?tzlich: Warnmeldungen:\n> 1: In eval(expr, envir, enclos) :\n>    non-integer #successes in a binomial glm!\n> 2: glm.fit: fitted probabilities numerically 0 or 1 occurred\n> 3: In eval(expr, envir, enclos) :\n>    non-integer #successes in a binomial glm!\n> 4: In eval(expr, envir, enclos) :\n>    non-integer #successes in a binomial glm!\n> Ausf?hrung angehalten (Execution stopped)\n>\n> I have already set the variable maxNumDyads up to\n> network.size(buffer_net)^2/2 because I use a large undirected network\n> with 6992 vertices and 30754.\n>\n> maxNumDyads=network.size(buffer_net)^2/2\n> buffer_control.ergm\n> <-control.ergm(MPLE.max.dyad.types=maxNumDyads,MPLE.samplesize=100000,MCMC.interval=1000,parallel=buffer_np,parallel.type=\"MPI\")\n>\n>\n> ergm(buffer_net ~\n> edges+gwesp(0.6)+balance+nodecov(\"evcent\"),control=buffer_control.ergm,verbose=TRUE)\n>\n>\n> sessionInfo()\n> R version 3.0.1 (2013-05-16)\n> Platform: x86_64-pc-linux-gnu (64-bit)\n>\n> locale:\n>   [1] LC_CTYPE=de_DE.UTF-8       LC_NUMERIC=C\n>   [3] LC_TIME=de_DE.UTF-8        LC_COLLATE=de_DE.UTF-8\n>   [5] LC_MONETARY=de_DE.UTF-8    LC_MESSAGES=de_DE.UTF-8\n>   [7] LC_PAPER=C                 LC_NAME=C\n>   [9] LC_ADDRESS=C               LC_TELEPHONE=C\n> [11] LC_MEASUREMENT=de_DE.UTF-8 LC_IDENTIFICATION=C\n>\n> attached base packages:\n> [1] tools     stats     graphics  grDevices utils     datasets  methods\n> [8] base\n>\n> other attached packages:\n>   [1] statnet_3.1-0        latentnet_2.4-5      mvtnorm_0.9-9995\n>   [4] abind_1.4-0          ergm.count_3.1-0     tergm_3.1-0\n>   [7] networkDynamic_0.4.1 sna_2.3-1            ergm_3.1-0\n> [10] coda_0.16-1          nlme_3.1-110         trust_0.1-4\n> [13] Matrix_1.0-12        lattice_0.20-21      robustbase_0.9-10\n> [16] network_1.7.2        statnet.common_3.1-0\n>\n> loaded via a namespace (and not attached):\n> [1] grid_3.0.1\n>  >\n>  >   getOption(\"pkgType\")\n> [1] \"source\"\n>  >\n>\n> Thanks for your suggestions!\n>\n> I am also not concerned about the warings. Do they matter?\n>\n> Florian\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Same with maxNumDyads=network.size(buffer_net)^2\n\nFlorian\n\n\n\nAm 22.08.2013 12:32, schrieb Florian Umlauf (CRIE):\n> Hi,\n>\n> i having trouble at the end of my ergm execution. Perhaps it is because\n> I r",
+      "thread_id": "thread-04ed54d11ced",
+      "thread_depth": 1,
+      "month": "2013-08"
+    },
+    {
+      "id": "msg-0af21af133df",
+      "message_id": "<5217208B.6020805@uni-bremen.de>",
+      "from_name": "Florian Umlauf (CRIE)",
+      "from_email_hash": "52381ca681e0d2b9acc139619dad1e73c88ca9cbf6423ff553ecb7de555f0f4f",
+      "date": "2013-08-23T01:42:51Z",
+      "subject": "[statnet_help] failure ergm with warings Too many unique dyads!",
+      "subject_clean": "[statnet_help] failure ergm with warings Too many unique dyads!",
+      "in_reply_to": "<5216097C.7010903@uni-bremen.de>",
+      "references": [
+        "<5215E8DA.7050207@uni-bremen.de>",
+        "<5216097C.7010903@uni-bremen.de>"
+      ],
+      "body_plain": "Hello @all. Sorry for my updates but I keep on trying. I used two other \ncombinations of settings. Perhaps it helps you to find out whats going \nwrong.\n\nWhen I setup another estimation with just edges+gwesp(0.6) it works fine \nwith network.size(buffer_net)^2.\n\nIf I try the old one \"edges+gwesp(0.6)+balance+nodecov(\"evcent\")\" with a \nvery very large maxNumDyads=network.size(buffer_net)^3 it's still the same.\n\nFehler in ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m, \ntheta.offset = init,  :\n   Too many unique dyads!\nCalls: source ... ergm -> ergm.initialfit -> ergm.mple -> ergm.pl -> .C\nZus?tzlich: Warnmeldungen:\n1: In eval(expr, envir, enclos) :\n   non-integer #successes in a binomial glm!\n2: glm.fit: fitted probabilities numerically 0 or 1 occurred\n3: In eval(expr, envir, enclos) :\n   non-integer #successes in a binomial glm!\n4: In eval(expr, envir, enclos) :\n   non-integer #successes in a binomial glm!\nAusf?hrung angehalten\n\n\nI am sure that I set the ergm controll term correctly.\n\n##############\n\nbuffer_control.ergm <- \ncontrol.ergm(MPLE.max.dyad.types=maxNumDyads,MPLE.samplesize=10000,MCMC.interval=1000,parallel=buffer_np,parallel.type=\"MPI\",MCMLE.maxit=2)\n > buffer_control.ergm\nControl parameter list generated by control.ergm or equivalent. Non-NULL \nparameters:\ndrop: TRUE\nmain.method: MCMLE\nforce.main: FALSE\nmain.hessian: TRUE\nMPLE.max.dyad.types: 341825343488\nMPLE.samplesize: 10000\nMPLE.type: glm\nMCMC.prop.weights: default\nMCMC.prop.args: list()\nMCMC.burnin: 10000\nMCMC.interval: 1000\nMCMC.samplesize: 10000\nMCMC.return.stats: TRUE\nMCMC.burnin.retries: 0\nMCMC.burnin.check.last: 0.5\nMCMC.burnin.check.alpha: 0.01\nMCMC.runtime.traceplot: FALSE\nMCMC.init.maxedges: 20000\nMCMC.max.maxedges: Inf\nMCMC.addto.se: TRUE\nMCMC.compress: FALSE\nSAN.maxit: 10\nSAN.control: Control parameter list generated by control.san or \nequivalent. Non-NULL parameters:\nSAN.tau: 1\nSAN.burnin: 10000\nSAN.interval: 1000\nSAN.init.maxedges: 20000\nSAN.prop.weights: default\nSAN.prop.args: list()\nMPLE.samplesize: 50000\nnetwork.output: network\nparallel: 21\nparallel.type: MPI\nparallel.version.check: TRUE\nMCMLE.maxit: 2\nMCMLE.conv.min.pval: 0.5\nMCMLE.NR.maxit: 100\nMCMLE.NR.reltol: 1.490116e-08\nobs.MCMC.samplesize: 10000\nobs.MCMC.interval: 1000\nobs.MCMC.burnin: 10000\nMCMLE.check.degeneracy: FALSE\nMCMLE.MCMC.precision: 0.05\nMCMLE.metric: lognormal\nMCMLE.method: BFGS\nMCMLE.trustregion: 20\nMCMLE.dampening: FALSE\nMCMLE.dampening.min.ess: 20\nMCMLE.dampening.level: 0.1\nMCMLE.steplength: 0.5\nMCMLE.adaptive.trustregion: 3\nMCMLE.adaptive.epsilon: 0.01\nMCMLE.sequential: TRUE\nMCMLE.density.guard.min: 10000\nMCMLE.density.guard: 20.08554\nSA.nsubphases: 2\nSA.trustregion: 0.5\nRM.phase1n_base: 7\nRM.phase2n_base: 100\nRM.phase2sub: 7\nRM.init_gain: 0.5\nRM.phase3n: 500\nStep.MCMC.samplesize: 100\nStep.maxit: 50\nStep.gridsize: 100\nloglik.control: Control parameter list generated by control.logLik.ergm \nor equivalent. Non-NULL parameters:\nnsteps: 20\nwarn.dyads: TRUE\nparallel: 21\nparallel.type: MPI\nparallel.version.check: TRUE\n\n\nergm(buffer_net \n~edges+gwesp(0.6)+balance+nodecov(\"evcent\"),control=buffer_control.ergm,verbose=TRUE) \n\n\nAm 22.08.2013 14:52, schrieb Florian Umlauf (CRIE):\n> Same with maxNumDyads=network.size(buffer_net)^2\n>\n> Florian\n>\n>\n>\n> Am 22.08.2013 12:32, schrieb Florian Umlauf (CRIE):\n>> Hi,\n>>\n>> i having trouble at the end of my ergm execution. Perhaps it is because\n>> I run an MPI cluster for estimating, but it seems to me that the cluster\n>> is working fine. At the final estimation step 20 I receive the error\n>> term:\n>>\n>> AT STEP 20!\n>>\n>> The log-likelihood improved by 19.94\n>> Evaluating log-likelihood at the estimate.\n>> Fehler (Fail) in ergm.pl(Clist = Clist, Clist.miss = Clist.miss, m = m,\n>> theta.offset = init,  :\n>>    Too many unique dyads!\n>> Calls: source ... ergm -> ergm.initialfit -> ergm.mple -> ergm.pl -> .C\n>> Zus?tzlich: Warnmeldungen:\n>> 1: In eval(expr, envir, enclos) :\n>>    non-integer #successes in a binomial glm!\n>> 2: glm.fit: fitted probabilities numerically 0 or 1 occurred\n>> 3: In eval(expr, envir, enclos) :\n>>    non-integer #successes in a binomial glm!\n>> 4: In eval(expr, envir, enclos) :\n>>    non-integer #successes in a binomial glm!\n>> Ausf?hrung angehalten (Execution stopped)\n>>\n>> I have already set the variable maxNumDyads up to\n>> network.size(buffer_net)^2/2 because I use a large undirected network\n>> with 6992 vertices and 30754.\n>>\n>> maxNumDyads=network.size(buffer_net)^2/2\n>> buffer_control.ergm\n>> <-control.ergm(MPLE.max.dyad.types=maxNumDyads,MPLE.samplesize=100000,MCMC.interval=1000,parallel=buffer_np,parallel.type=\"MPI\")\n>>\n>>\n>>\n>> ergm(buffer_net ~\n>> edges+gwesp(0.6)+balance+nodecov(\"evcent\"),control=buffer_control.ergm,verbose=TRUE)\n>>\n>>\n>>\n>> sessionInfo()\n>> R version 3.0.1 (2013-05-16)\n>> Platform: x86_64-pc-linux-gnu (64-bit)\n>>\n>> locale:\n>>   [1] LC_CTYPE=de_DE.UTF-8       LC_NUMERIC=C\n>>   [3] LC_TIME=de_DE.UTF-8        LC_COLLATE=de_DE.UTF-8\n>>   [5] LC_MONETARY=de_DE.UTF-8    LC_MESSAGES=de_DE.UTF-8\n>>   [7] LC_PAPER=C                 LC_NAME=C\n>>   [9] LC_ADDRESS=C               LC_TELEPHONE=C\n>> [11] LC_MEASUREMENT=de_DE.UTF-8 LC_IDENTIFICATION=C\n>>\n>> attached base packages:\n>> [1] tools     stats     graphics  grDevices utils     datasets  methods\n>> [8] base\n>>\n>> other attached packages:\n>>   [1] statnet_3.1-0        latentnet_2.4-5      mvtnorm_0.9-9995\n>>   [4] abind_1.4-0          ergm.count_3.1-0     tergm_3.1-0\n>>   [7] networkDynamic_0.4.1 sna_2.3-1            ergm_3.1-0\n>> [10] coda_0.16-1          nlme_3.1-110         trust_0.1-4\n>> [13] Matrix_1.0-12        lattice_0.20-21      robustbase_0.9-10\n>> [16] network_1.7.2        statnet.common_3.1-0\n>>\n>> loaded via a namespace (and not attached):\n>> [1] grid_3.0.1\n>>  >\n>>  >   getOption(\"pkgType\")\n>> [1] \"source\"\n>>  >\n>>\n>> Thanks for your suggestions!\n>>\n>> I am also not concerned about the warings. Do they matter?\n>>\n>> Florian\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hello @all. Sorry for my updates but I keep on trying. I used two other \ncombinations of settings. Perhaps it helps you to find out whats going \nwrong.\n\nWhen I setup another estimation with just edges",
+      "thread_id": "thread-04ed54d11ced",
+      "thread_depth": 2,
+      "month": "2013-08"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-784f033fd195",
+      "subject": "[statnet_help] mcmc diagnostics error",
+      "message_count": 3,
+      "participants": [
+        "Smith, S. (Sanne)",
+        "martina morris"
+      ],
+      "started": "2013-08-01T03:45:46Z",
+      "last_reply": "2013-08-22T02:27:27Z",
+      "root_message_id": "msg-784f033fd195"
+    },
+    {
+      "id": "thread-6489c35410de",
+      "subject": "[statnet_help] Replication of old ergm analysis fails with new package versions but same seed, code, and data",
+      "message_count": 1,
+      "participants": [
+        "Philip Leifeld"
+      ],
+      "started": "2013-08-02T04:48:05Z",
+      "last_reply": "2013-08-02T04:48:05Z",
+      "root_message_id": "msg-6489c35410de"
+    },
+    {
+      "id": "thread-c066a1357b46",
+      "subject": "[statnet_help] how to include categorical covariate?",
+      "message_count": 3,
+      "participants": [
+        "Skye Bender-deMoll",
+        "ya"
+      ],
+      "started": "2013-08-02T05:36:26Z",
+      "last_reply": "2013-08-02T10:10:16Z",
+      "root_message_id": "msg-c066a1357b46"
+    },
+    {
+      "id": "thread-3c46505c08c4",
+      "subject": "[statnet_help] Symmetric and asymmetric networks in statnet",
+      "message_count": 3,
+      "participants": [
+        "Shupin Li",
+        "martina morris"
+      ],
+      "started": "2013-08-06T07:46:52Z",
+      "last_reply": "2013-08-06T13:21:26Z",
+      "root_message_id": "msg-3c46505c08c4"
+    },
+    {
+      "id": "thread-6ed43d102e79",
+      "subject": "[statnet_help] Multi-dimensional scaling and block analysis in statnet",
+      "message_count": 4,
+      "participants": [
+        "Carter T. Butts",
+        "Pavel Krivitsky",
+        "Shupin Li",
+        "martina morris"
+      ],
+      "started": "2013-08-06T13:38:34Z",
+      "last_reply": "2013-08-07T18:21:22Z",
+      "root_message_id": "msg-6ed43d102e79"
+    },
+    {
+      "id": "thread-de5d146fa22b",
+      "subject": "[statnet_help] STERGM with signed 2-mode network?",
+      "message_count": 1,
+      "participants": [
+        "Sebastian Haunss"
+      ],
+      "started": "2013-08-07T06:32:55Z",
+      "last_reply": "2013-08-07T06:32:55Z",
+      "root_message_id": "msg-de5d146fa22b"
+    },
+    {
+      "id": "thread-b3fa75f6600a",
+      "subject": "[statnet_help] Structural zeros in STERGM",
+      "message_count": 2,
+      "participants": [
+        "Andrew Pilny",
+        "deven hamilton"
+      ],
+      "started": "2013-08-09T08:34:08Z",
+      "last_reply": "2013-08-09T09:10:57Z",
+      "root_message_id": "msg-b3fa75f6600a"
+    },
+    {
+      "id": "thread-bd3102b3dc70",
+      "subject": "[statnet_help] re: gwb1degree, gwb2degree, gwdsp, when alpha=0 or 1",
+      "message_count": 2,
+      "participants": [
+        "martina morris",
+        "megumi nishimura"
+      ],
+      "started": "2013-08-10T20:08:29Z",
+      "last_reply": "2013-08-13T17:02:45Z",
+      "root_message_id": "msg-bd3102b3dc70"
+    },
+    {
+      "id": "thread-0646e9a4baee",
+      "subject": "[statnet_help] Replication of old ergm analysis fails with new package versions but same seed, code, and data (fwd)",
+      "message_count": 1,
+      "participants": [
+        "martina morris"
+      ],
+      "started": "2013-08-11T10:55:41Z",
+      "last_reply": "2013-08-11T10:55:41Z",
+      "root_message_id": "msg-0646e9a4baee"
+    },
+    {
+      "id": "thread-d6b268b0111f",
+      "subject": "[statnet_help] Interpret p values in ERGM",
+      "message_count": 4,
+      "participants": [
+        "Shupin Li",
+        "martina morris"
+      ],
+      "started": "2013-08-12T11:01:27Z",
+      "last_reply": "2013-08-14T10:48:50Z",
+      "root_message_id": "msg-d6b268b0111f"
+    },
+    {
+      "id": "thread-cf84b960ca9f",
+      "subject": "[statnet_help] STERGM and bipartite networks",
+      "message_count": 2,
+      "participants": [
+        "Sebastian Haunss",
+        "martina morris"
+      ],
+      "started": "2013-08-14T03:37:01Z",
+      "last_reply": "2013-08-15T11:21:46Z",
+      "root_message_id": "msg-cf84b960ca9f"
+    },
+    {
+      "id": "thread-97525f323158",
+      "subject": "[statnet_help] coudn't find \"InitWtMHP.TNT\"",
+      "message_count": 2,
+      "participants": [
+        "Florian Umlauf (CRIE)",
+        "Pavel Krivitsky"
+      ],
+      "started": "2013-08-16T08:12:25Z",
+      "last_reply": "2013-08-18T20:41:51Z",
+      "root_message_id": "msg-97525f323158"
+    },
+    {
+      "id": "thread-2e266fa21ddc",
+      "subject": "[statnet_help] coudn't find \"InitWtMHP.TNT\"",
+      "message_count": 2,
+      "participants": [
+        "Florian Umlauf (CRIE)",
+        "Florian Umlauf (Crie)"
+      ],
+      "started": "2013-08-17T02:09:33Z",
+      "last_reply": "2013-08-17T14:46:49Z",
+      "root_message_id": "msg-2e266fa21ddc"
+    },
+    {
+      "id": "thread-04ed54d11ced",
+      "subject": "[statnet_help] failure ergm with warings Too many unique dyads!",
+      "message_count": 3,
+      "participants": [
+        "Florian Umlauf (CRIE)"
+      ],
+      "started": "2013-08-22T03:32:58Z",
+      "last_reply": "2013-08-23T01:42:51Z",
+      "root_message_id": "msg-04ed54d11ced"
+    }
+  ]
+}

@@ -1,0 +1,566 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2010-12",
+  "messages": [
+    {
+      "id": "msg-530ad047e291",
+      "message_id": "<4CF7B2E9.7040109@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2010-12-02T06:53:29Z",
+      "subject": "[statnet_help] ?ergm -> \"proposaltype\" option",
+      "subject_clean": "[statnet_help] ?ergm -> \"proposaltype\" option",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Dave,\n\nIn the ergm help page (?ergm) - section \"Notes on model specification\", \nthere is an allusion to a \"proposaltype\" option (and documentation):\n\n\"The default mechanism for proposing new networks for the MCMC\nsample space is the Metropolis-Hastings algorithm, which simply\nchooses a dyad at random and proposes to toggle that edge; each\npossible dyad is equally likely.  The ?proposaltype? option allow\nmany more complex proposals to be specified. We have developed and\nimplemented a wide range of algorithms. These are described in the\ndocumentation for ?proposaltype?.\"\n\nUnfortunately, I cannot find this option directly inside the ergm \nfunction, nor its documentation. Is it be better to refer to the \ncontrol.ergm() documentation?\n\nBest,\nVic.\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Hi Dave,\n\nIn the ergm help page (?ergm) - section \"Notes on model specification\", \nthere is an allusion to a \"proposaltype\" option (and documentation):\n\n\"The default mechanism for proposing new networ",
+      "thread_id": "thread-530ad047e291",
+      "thread_depth": 0,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-7f8f8f8b123b",
+      "message_id": "<5D8FEA3F-3F29-40AD-8D4F-17BDD19769BB@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-12-04T15:48:30Z",
+      "subject": "[statnet_help] ?ergm -> \"proposaltype\" option",
+      "subject_clean": "[statnet_help] ?ergm -> \"proposaltype\" option",
+      "in_reply_to": "<4CF7B2E9.7040109@unige.ch>",
+      "references": [
+        "<4CF7B2E9.7040109@unige.ch>"
+      ],
+      "body_plain": "Hi Vic.  Hmm, you're correct:  It does not seem as though any proposal  \ntypes are documented.  I'll put this on the to-do list.  In the  \nmeantime, at least the TNT proposal is explained in Section 4.1 of http://www.jstatsoft.org/v24/i04\n\nDave\n\n\n\nOn Dec 2, 2010, at 9:53 AM, Victorin Luisier wrote:\n\n> Hi Dave,\n>\n> In the ergm help page (?ergm) - section \"Notes on model  \n> specification\", there is an allusion to a \"proposaltype\" option (and  \n> documentation):\n>\n> \"The default mechanism for proposing new networks for the MCMC\n> sample space is the Metropolis-Hastings algorithm, which simply\n> chooses a dyad at random and proposes to toggle that edge; each\n> possible dyad is equally likely.  The ?proposaltype? option allow\n> many more complex proposals to be specified. We have developed and\n> implemented a wide range of algorithms. These are described in the\n> documentation for ?proposaltype?.\"\n>\n> Unfortunately, I cannot find this option directly inside the ergm  \n> function, nor its documentation. Is it be better to refer to the  \n> control.ergm() documentation?\n>\n> Best,\n> Vic.\n>\n> -- \n> Victorin LUISIER, Assistant doctorant\n> M?thodologie et Analyse de donn?es\n> FAPSE - UNIGE\n> Bureau n?4139 - Unimail\n> Bd du Pont d'Arve 40\n> 1211 Gen?ve 4\n> T?l: (+41-22) 379 91 34\n> E-mail: victorin.luisier@unige.ch\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Vic.  Hmm, you're correct:  It does not seem as though any proposal  \ntypes are documented.  I'll put this on the to-do list.  In the  \nmeantime, at least the TNT proposal is explained in Section 4",
+      "thread_id": "thread-530ad047e291",
+      "thread_depth": 1,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-6a47b7cd9568",
+      "message_id": "<4CFCF12F.30301@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2010-12-06T06:20:31Z",
+      "subject": "[statnet_help] ?ergm -> \"proposaltype\" option",
+      "subject_clean": "[statnet_help] ?ergm -> \"proposaltype\" option",
+      "in_reply_to": "<5D8FEA3F-3F29-40AD-8D4F-17BDD19769BB@stat.psu.edu>",
+      "references": [
+        "<4CF7B2E9.7040109@unige.ch>",
+        "<5D8FEA3F-3F29-40AD-8D4F-17BDD19769BB@stat.psu.edu>"
+      ],
+      "body_plain": "Hi Dave, Thanks a lot for the info!\n\nVic.\n\nLe 12/05/2010 12:48 AM, David Hunter a ?crit :\n> Hi Vic. Hmm, you're correct: It does not seem as though any proposal\n> types are documented. I'll put this on the to-do list. In the meantime,\n> at least the TNT proposal is explained in Section 4.1 of\n> http://www.jstatsoft.org/v24/i04\n>\n> Dave\n>\n>\n>\n> On Dec 2, 2010, at 9:53 AM, Victorin Luisier wrote:\n>\n>> Hi Dave,\n>>\n>> In the ergm help page (?ergm) - section \"Notes on model\n>> specification\", there is an allusion to a \"proposaltype\" option (and\n>> documentation):\n>>\n>> \"The default mechanism for proposing new networks for the MCMC\n>> sample space is the Metropolis-Hastings algorithm, which simply\n>> chooses a dyad at random and proposes to toggle that edge; each\n>> possible dyad is equally likely. The ?proposaltype? option allow\n>> many more complex proposals to be specified. We have developed and\n>> implemented a wide range of algorithms. These are described in the\n>> documentation for ?proposaltype?.\"\n>>\n>> Unfortunately, I cannot find this option directly inside the ergm\n>> function, nor its documentation. Is it be better to refer to the\n>> control.ergm() documentation?\n>>\n>> Best,\n>> Vic.\n>>\n>> --\n>> Victorin LUISIER, Assistant doctorant\n>> M?thodologie et Analyse de donn?es\n>> FAPSE - UNIGE\n>> Bureau n?4139 - Unimail\n>> Bd du Pont d'Arve 40\n>> 1211 Gen?ve 4\n>> T?l: (+41-22) 379 91 34\n>> E-mail: victorin.luisier@unige.ch\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Hi Dave, Thanks a lot for the info!\n\nVic.\n\nLe 12/05/2010 12:48 AM, David Hunter a ?crit :\n> Hi Vic. Hmm, you're correct: It does not seem as though any proposal\n> types are documented. I'll put this o",
+      "thread_id": "thread-530ad047e291",
+      "thread_depth": 2,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-2f44d0c8c849",
+      "message_id": "<3920DC962E323A46B40D415ADC1CD6C25F8F848938@EX10.asurite.ad.asu.edu>",
+      "from_name": "David Schaefer",
+      "from_email_hash": "68ed60123835f929b1bceff70c06e4abcd7c94aab073da013ffb873fd56ee511",
+      "date": "2010-12-07T15:34:12Z",
+      "subject": "[statnet_help] ERGMs to estimate network change",
+      "subject_clean": "[statnet_help] ERGMs to estimate network change",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet users,\n\nI have a question about whether ERGMs are appropriate to answer the question of whether similarity on a stable attribute can predict network change.  I know SIENA was developed for this purpose; however, for the purposes of a paper I am combining a longitudinal analysis with another analysis that is necessarily cross-sectional.  Because I am writing for a non-network audience I thought it would be more straightforward to use ERGMs for all of the analyses.\n\nHere is the question: is it acceptable to estimate an ERGM that predicts the time 2 network and includes the following predictors: (1) attribute similarity at time 1, (2) the network at time 1 (as a dyadic covariate), and (3) structural effects for the time 2 network?  Would this approach tell me whether similarity on the attribute drives network change (assuming the attribute itself is constant over time)?\n\nHere is the specific syntax:\nmodel6 <- ergm(net2 ~ edges + edgecov(net1) + edgecov(activities) +\n    nodematch(\"educ\") + nodematch(\"sex\") + nodematch(\"race\") + nodematch(\"grade\") +\n    gwdegree(.25, fixed=TRUE) + gwdsp(.25, fixed=TRUE) + gwesp(.25, fixed=TRUE) )\n\nIs this type of an ERGM approach justifiable in this situation?  Are there other tradeoffs between the two approaches that should be considered?  I have seen this approach used in at least one published piece, but I haven't seen a statistician's take on it.\n\nI appreciate any insight on this issue.\n\nThanks,\nDavid\n\n***********************************\nDavid R. Schaefer, Ph.D.\nAssistant Professor\nSchool of Social and Family Dynamics\nArizona State University\nwww.public.asu.edu/~schaef/\nhttp://ssfd.clas.asu.edu/cluster\n***********************************\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101207/237590ca/attachment.html>",
+      "body_snippet": "Dear statnet users,\n\nI have a question about whether ERGMs are appropriate to answer the question of whether similarity on a stable attribute can predict network change.  I know SIENA was developed fo",
+      "thread_id": "thread-2f44d0c8c849",
+      "thread_depth": 0,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-02cf464810f4",
+      "message_id": "<4D021C62.1080005@rug.nl>",
+      "from_name": "Christian Steglich",
+      "from_email_hash": "451ac801cb13030df85867128669a31a9211bde96d61e052695b1357564ad56d",
+      "date": "2010-12-10T04:26:10Z",
+      "subject": "[statnet_help] PhD positions in Groningen, The Netherlands",
+      "subject_clean": "[statnet_help] PhD positions in Groningen, The Netherlands",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear colleagues,\n\nas part of its annual recruitment and selection procedure for \nPhD-students, the Interuniversity Center for Social Science Theory and \nMethodology (ICS) in the Netherlands is looking for excellent candidates \nfor a couple of four-year-long PhD projects on several network-related \ntopics. In particular, we are looking for candidates interested in the \nfollowing projects in statistical network analysis:\n\n    Project \"Statistical Models for Three-Way Network Data\"\n    Examples of three-way social processes are gossip (where two people\n    choose a third person, an ?object? to talk about), informal\n    mediation (where a colleague might entrust a problem with another\n    colleague to a third colleague, who acts as mediator to solve the\n    problem), or social cognitive maps (where actors in a dyadic network\n    report their perceptions of the whole network). While in dyadic\n    network data actors have two roles, as 'sender' and 'receiver', in\n    triadic observations they have a third role, for instance as\n    'object' (of gossip), as 'mediator' (of problems with colleagues),\n    or as 'observer' (of dyadic relations). While older work\n    (Krackhardt, 1987) focused on how to summarize triadic data to\n    obtain a dyadic network, such data reduction implies a potentially\n    severe loss of information. So far, not much work has been done to\n    develop statistical models for three-way data (see Bond & Kenny,\n    2002, for an exception). This project focuses on the development of\n    appropriate statistical models to handle the richness of this type\n    of data.\n\n    Project \"Validity of Models for Network Structure and Social\n    Influence Processes\"\n    In the past decade, the analysis of social networks with statistical\n    models has developed rapidly with the availability of new estimation\n    methods, using advanced computational techniques, coupled with new\n    insights in the complex structure of social network data. On the one\n    hand, these are models explaining the shape of networks as such,\n    i.e., the interdependencies between the network actors. On the other\n    hand, there are models using networks to explain other phenomena,\n    such as (change in) status, performance, or peer influence. Many new\n    methods and models have been proposed, one of them being stochastic\n    actor-based modeling (\"SIENA\"), proposed by the project initiators.\n    However, there are hardly any studies comparing the different\n    approaches.As a consequence, the demarcation of the conclusions that\n    can reliably be drawn with the available methods remains an open\n    question and guidelines for the selection of appropriate analytical\n    methods are lacking. This project aims to fill these gaps.\n\nThe two projects will be supervised by Christian Steglich, Marijtje van \nDuijn, Mark Huisman, and Tom Snijders. The recruitment and selection \nprocedure for our scholarships starts December 11, 2010. Applications, \nonline only, should be delivered through the ICS website before January \n15, 2011. The interviews will be conducted on March 3, 4, 8 and 9, 2011.\n\nMore details, also about the other available positions, can be found via \nthe website http://www.ics-graduateschool.nl/vacancies/\n\nWe very much appreciate your interest and cooperation,\nChristian Steglich, Marijtje van Duijn, Mark Huisman, Tom Snijders\non behalf of Rafael Wittek,\nScientific Director ICS\n\n\n_ __ ___ ____ ___ __ _ __ ___ ____ ___ __ _\n\nChristian Steglich, researcher\nFaculty of Behavioural and Social Sciences\nUniversity of Groningen\nGrote Rozenstraat 31\n9712 TG Groningen\nThe Netherlands\n\nfon +31-(0)50-363 6189\nfax +31-(0)50-363 6226\n\nhttp://www.gmw.rug.nl/~steglich/\n_ __ ___ ____ ___ __ _ __ ___ ____ ___ __ _\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101210/c3c95fd6/attachment.html>",
+      "body_snippet": "Dear colleagues,\n\nas part of its annual recruitment and selection procedure for \nPhD-students, the Interuniversity Center for Social Science Theory and \nMethodology (ICS) in the Netherlands is looking",
+      "thread_id": "thread-02cf464810f4",
+      "thread_depth": 0,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-d545d4e8bd08",
+      "message_id": "<alpine.WNT.2.00.1012101526120.14340@csde-ts3.csde.washington.edu>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2010-12-10T15:32:20Z",
+      "subject": "[statnet_help] ERGMs to estimate network change",
+      "subject_clean": "[statnet_help] ERGMs to estimate network change",
+      "in_reply_to": "<3920DC962E323A46B40D415ADC1CD6C25F8F848938@EX10.asurite.ad.asu.edu>",
+      "references": [
+        "<3920DC962E323A46B40D415ADC1CD6C25F8F848938@EX10.asurite.ad.asu.edu>"
+      ],
+      "body_plain": "Hi David,\n\nYour question provoked a bit of discussion behind the curtain, so you \nmay get more than one response.  In theory, yes, you should be able to do \nthis.  My own guess is that estimation will be pretty unstable unless you \nhave a lot of change from t1 to t2.\n\nWith respect to the interpretation of the paramters, I'm not sure this \nwould be the right way to identify how nodal attributes drive network \nchange.  That's because change has 2 components: formation and dissolution \nof ties.  There may be different dynamics driving the two factors, and \nthey would be confounded in the approach you're taking.\n\nbest,\nmm\n\nOn Tue, 7 Dec 2010, David Schaefer wrote:\n\n> \n> Dear statnet users,\n> \n> I have a question about whether ERGMs are appropriate to answer the question of whether similarity on a stable\n> attribute can predict network change. ?I know SIENA was developed for this purpose; however, for the purposes\n> of a paper I am combining a longitudinal analysis with another analysis that is necessarily cross-sectional.\n> ?Because I am writing for a non-network audience I thought it would be more straightforward to use ERGMs for\n> all of the analyses.\n>\n> \n> \n> Here is the question: is it acceptable to estimate an ERGM that predicts the time 2 network and includes the\n> following predictors: (1) attribute similarity at time 1, (2) the network at time 1 (as a dyadic covariate),\n> and (3) structural effects for the time 2 network? ?Would this approach tell me whether similarity on the\n> attribute drives network change (assuming the attribute itself is constant over time)?\n>\n> \n> \n> Here is the specific syntax:\n> \n> model6 <- ergm(net2 ~ edges + edgecov(net1) + edgecov(activities) +\n> ????nodematch(\"educ\") + nodematch(\"sex\") + nodematch(\"race\") + nodematch(\"grade\") +\n> ????gwdegree(.25, fixed=TRUE) + gwdsp(.25, fixed=TRUE) + gwesp(.25, fixed=TRUE) )\n> \n> Is this type of an ERGM approach justifiable in this situation? ?Are there other tradeoffs between the two\n> approaches that should be considered? ?I have seen this approach used in at least one published piece, but I\n> haven?t seen a statistician?s take on it.\n> \n> I appreciate any insight on this issue.\n> \n> \n> Thanks,\n> David\n> \n> ***********************************\n> David R. Schaefer, Ph.D.\n> Assistant Professor\n> School of Social and Family Dynamics\n> Arizona State University\n> www.public.asu.edu/~schaef/\n> http://ssfd.clas.asu.edu/cluster\n> ***********************************\n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi David,\n\nYour question provoked a bit of discussion behind the curtain, so you \nmay get more than one response.  In theory, yes, you should be able to do \nthis.  My own guess is that estimation will",
+      "thread_id": "thread-2f44d0c8c849",
+      "thread_depth": 1,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-e83cdd688c2d",
+      "message_id": "<AANLkTiksqemWdrPcoEVeqwxgQYwoJa8MCbxkUO4z4FxR@mail.gmail.com>",
+      "from_name": "Balazs Kovacs",
+      "from_email_hash": "be7edc9e3a84e6bd17f26591e6dd22c359144d2abab55b62d31f977be5f7b15c",
+      "date": "2010-12-13T10:07:48Z",
+      "subject": "[statnet_help] Directed network bug? + GoF test",
+      "subject_clean": "[statnet_help] Directed network bug? + GoF test",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI'd have two questions.\n\nFirst, the ergm command seems to be doing something weird for directed\nnetwork (yes, I have the latest version): gwidegree provides a\ndecay-estimate, but gwodegree doesn't. See log below. This seems strange to\nme but maybe I'm wrong. And this did not happen in the previous ergm\nversion. Any suggestion?\n\nSecond, I'd have a newb question about gof. That is, what exactly is the\ndifference between running gof(model_individ3test) and\ngof(model_individ3test~idegree+odegree)? Do they both simulate networks\nbased on all estimated coefficients and the latter only reports the idegree\nand odegree goodness-of-fits? Or gof(model_individ3test~idegree+odegree) only\nsimulates networks based on idegree and odegree estimates?\n\nAnd, as opposed to gof(model_individ3test), what does\ngof(model_individ3test~model) do?\n\n[btw, if you look at the gof-s at the end of the email, that indicates as\nwell that something is wrong with outdegree]\n\nThanks a lot,\nBalazs\n\nmodel_individ3test <- ergm(email_individ ~ edges + mutual + gwidegree(0.5) +\ngwodegree(0.5) + gwesp(0.5) + gwdsp(0.5))\nsummary(model_individ3test)\n\n==========================\nSummary of model fit\n==========================\n\nFormula:   email_individ ~ edges + mutual + gwidegree(0.5) + gwodegree(0.5)\n+\n   gwesp(0.5) + gwdsp(0.5)\n\nNewton-Raphson iterations:  278\nMCMC sample of size 10000\n\nMonte Carlo MLE Results:\n                 Estimate Std. Error MCMC s.e. p-value\nedges           -3.1222033  0.0813811     0.814  <1e-04 ***\nmutual           3.1567326  0.2847796     7.290  <1e-04 ***\ngwidegree        0.4508974  1.0409670   156.222  0.6649\ngwidegree.decay  0.4279343  0.2111033   345.873  0.0427 *\ngwodegree        0.0773101  1.4807604     0.830  0.9584\ngwesp            0.7414554  0.0776284     0.076  <1e-04 ***\ngwesp.alpha      0.6233758  0.1094926     0.143  <1e-04 ***\ngwdsp           -0.1224949  0.0005296     0.017  <1e-04 ***\ngwdsp.alpha      0.4483909  0.0720531     0.141  <1e-04 ***\n---\nSignif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n\n   Null  Deviance: 17544.9  on 12656  degrees of freedom\nResidual Deviance:  4183.5  on 12647  degrees of freedom\n         Deviance: 13361.5  on     9  degrees of freedom\n\nAIC: 4201.5    BIC: 4268.5\n\ngof(model_individ3test)\nError: degree model term may not be used with a directed network.\n\ngof(model_individ3test~model)\n> md\n\nGoodness-of-fit for model statistics\n\n                   obs       min      mean       max MC p-value\nedges        1221.0000  921.0000 1091.4800 1582.0000       0.26\nmutual        409.0000  214.0000  256.5400  349.0000       0.00\ngwidegree#1     1.0000    0.0000    0.0800    1.0000       0.16\ngwidegree#2     3.0000    0.0000    0.4900    4.0000       0.04\ngwidegree#3     2.0000    0.0000    0.7200    3.0000       0.44\ngwidegree#4     6.0000    0.0000    4.1200   10.0000       0.60\ngwidegree#5     7.0000    0.0000    6.0900   14.0000       0.82\ngwidegree#6    12.0000    1.0000    5.1500   14.0000       0.02\ngwidegree#7    11.0000    2.0000   15.0200   30.0000       0.54\ngwidegree#8     6.0000    1.0000   11.4300   56.0000       0.28\ngwidegree#9     6.0000    3.0000   12.9600   30.0000       0.14\ngwidegree#10    8.0000    1.0000   14.0400   65.0000       0.22\ngwidegree#11    7.0000    0.0000   11.3900   19.0000       0.32\ngwidegree#12    6.0000    0.0000    8.8600   21.0000       0.58\ngwidegree#13    9.0000    0.0000    9.9900   69.0000       0.74\ngwidegree#14    4.0000    0.0000    5.1400   19.0000       1.00\ngwidegree#15    3.0000    0.0000    3.1000   13.0000       1.00\ngwidegree#16    5.0000    0.0000    1.6600   10.0000       0.20\ngwidegree#17    3.0000    0.0000    0.9800    6.0000       0.30\ngwidegree#18    4.0000    0.0000    0.8000    6.0000       0.10\ngwidegree#19    1.0000    0.0000    0.4600    6.0000       0.60\ngwidegree#20    0.0000    0.0000    0.2200    4.0000       1.00\ngwidegree#21    3.0000    0.0000    0.1600    2.0000       0.00\ngwidegree#22    0.0000    0.0000    0.0500    1.0000       1.00\ngwidegree#23    1.0000    0.0000    0.0400    1.0000       0.08\ngwidegree#24    1.0000    0.0000    0.0200    1.0000       0.04\ngwidegree#25    0.0000    0.0000    0.0100    1.0000       1.00\ngwidegree#27    1.0000    0.0000    0.0000    0.0000       0.00\ngwidegree#28    1.0000    0.0000    0.0000    0.0000       0.00\ngwidegree#29    1.0000    0.0000    0.0000    0.0000       0.00\ngwidegree#35    1.0000    0.0000    0.0000    0.0000       0.00\ngwodegree     183.4681  184.1184  185.7392  186.2868       0.00\nesp#1         150.0000  279.0000  396.5400  736.0000       0.00\nesp#2         161.0000   89.0000  165.7900  408.0000       0.80\nesp#3         165.0000   15.0000   51.3100  216.0000       0.06\nesp#4         156.0000    1.0000   16.9000  131.0000       0.00\nesp#5         129.0000    0.0000    4.9200   90.0000       0.00\nesp#6          99.0000    0.0000    1.3300   46.0000       0.00\nesp#7          92.0000    0.0000    0.5200   20.0000       0.00\nesp#8          59.0000    0.0000    0.1700   11.0000       0.00\nesp#9          45.0000    0.0000    0.0800    5.0000       0.00\nesp#10         34.0000    0.0000    0.0000    0.0000       0.00\nesp#11         22.0000    0.0000    0.0000    0.0000       0.00\nesp#12         11.0000    0.0000    0.0000    0.0000       0.00\nesp#13          5.0000    0.0000    0.0000    0.0000       0.00\nesp#14          9.0000    0.0000    0.0000    0.0000       0.00\nesp#15          8.0000    0.0000    0.0000    0.0000       0.00\nesp#16          4.0000    0.0000    0.0000    0.0000       0.00\nesp#17          3.0000    0.0000    0.0000    0.0000       0.00\nesp#18          5.0000    0.0000    0.0000    0.0000       0.00\nesp#19          1.0000    0.0000    0.0000    0.0000       0.00\nesp#20          1.0000    0.0000    0.0000    0.0000       0.00\nesp#23          1.0000    0.0000    0.0000    0.0000       0.00\ngwdsp#1      2065.0000 3904.0000 4500.9500 5365.0000       0.00\ngwdsp#2      1197.0000 1267.0000 1886.7800 3368.0000       0.00\ngwdsp#3       795.0000  230.0000  538.3500 1726.0000       0.30\ngwdsp#4       476.0000   24.0000  137.6300 1028.0000       0.04\ngwdsp#5       329.0000    3.0000   28.0800  251.0000       0.00\ngwdsp#6       205.0000    0.0000    5.8300   96.0000       0.00\ngwdsp#7       163.0000    0.0000    1.4700   38.0000       0.00\ngwdsp#8        95.0000    0.0000    0.5100   22.0000       0.00\ngwdsp#9        61.0000    0.0000    0.2000   12.0000       0.00\ngwdsp#10       40.0000    0.0000    0.0800    4.0000       0.00\ngwdsp#11       29.0000    0.0000    0.0000    0.0000       0.00\ngwdsp#12       13.0000    0.0000    0.0000    0.0000       0.00\ngwdsp#13        5.0000    0.0000    0.0000    0.0000       0.00\ngwdsp#14        9.0000    0.0000    0.0000    0.0000       0.00\ngwdsp#15        9.0000    0.0000    0.0000    0.0000       0.00\ngwdsp#16        4.0000    0.0000    0.0000    0.0000       0.00\ngwdsp#17        3.0000    0.0000    0.0000    0.0000       0.00\ngwdsp#18        5.0000    0.0000    0.0000    0.0000       0.00\ngwdsp#19        1.0000    0.0000    0.0000    0.0000       0.00\ngwdsp#20        1.0000    0.0000    0.0000    0.0000       0.00\ngwdsp#23        1.0000    0.0000    0.0000    0.0000       0.00\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101213/add48619/attachment.html>",
+      "body_snippet": "Hi all,\n\nI'd have two questions.\n\nFirst, the ergm command seems to be doing something weird for directed\nnetwork (yes, I have the latest version): gwidegree provides a\ndecay-estimate, but gwodegree do",
+      "thread_id": "thread-e83cdd688c2d",
+      "thread_depth": 0,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-86b8582ffe2f",
+      "message_id": "<4D067056.9050007@fas.harvard.edu>",
+      "from_name": "Kevin Lewis",
+      "from_email_hash": "3e16f115495b0e59b9f7583fd0cfe6f012b826a6e99dfab804f7275bfb0c581c",
+      "date": "2010-12-13T11:13:26Z",
+      "subject": "[statnet_help] Directed network bug? + GoF test",
+      "subject_clean": "[statnet_help] Directed network bug? + GoF test",
+      "in_reply_to": "<AANLkTiksqemWdrPcoEVeqwxgQYwoJa8MCbxkUO4z4FxR@mail.gmail.com>",
+      "references": [
+        "<AANLkTiksqemWdrPcoEVeqwxgQYwoJa8MCbxkUO4z4FxR@mail.gmail.com>"
+      ],
+      "body_plain": "hello,\n\nthought i'd pipe up also- the problem i'm running into is not identical, \nbut the mention of the gwdegree terms caught my eye so thought this \nmight be worth mentioning at the same time (this also may relate to \ndave's post on 11/30 about directed network simulations).\n\ni am not sure whether this results from a bug, or because i am \nmisinterpreting how the higher-order terms work (or entering the \nincorrect command!). i am using ergm version 2.2-7. i have a random \n(directed) network with 500 actors and 2600 ties. i then tried to \nsimulate two new networks (keeping density constant), one with a \npositive value for gwidegree and one with a negative value for gwidegree:\n\n > \ntest1=simulate(random~gwidegree(.25,fixed=TRUE),theta0=5,burnin=1e+6,verbose=TRUE,constraints=~edges)\nStarting 1 MCMC iteration of 1e+06 steps.\nConstantEdges sampler accepted 95.911% of 1000000 proposed steps.\nFinished simulation 1 of 1.\n > \ntest2=simulate(random~gwidegree(.25,fixed=TRUE),theta0=-5,burnin=1e+6,verbose=TRUE,constraints=~edges)\nStarting 1 MCMC iteration of 1e+06 steps.\nConstantEdges sampler accepted 71.419% of 1000000 proposed steps.\nFinished simulation 1 of 1.\n\nhowever, here is what i get when i look at the in-degree distributions \n(also comparing them to the original random network):\n\n > summary(test1~idegree(0:20))\n  idegree0  idegree1  idegree2  idegree3  idegree4  idegree5  idegree6  \nidegree7\n         0         6        34        81        93        89        \n72        48\n  idegree8  idegree9 idegree10 idegree11 idegree12 idegree13 idegree14 \nidegree15\n        32        24        11         5         4         1         \n0         0\nidegree16 idegree17 idegree18 idegree19 idegree20\n         0         0         0         0         0\n > summary(test2~idegree(0:20))\n  idegree0  idegree1  idegree2  idegree3  idegree4  idegree5  idegree6  \nidegree7\n       147         4         7        10        32        36        \n56        41\n  idegree8  idegree9 idegree10 idegree11 idegree12 idegree13 idegree14 \nidegree15\n        47        42        33        25        11         4         \n2         0\nidegree16 idegree17 idegree18 idegree19 idegree20\n         2         0         1         0         0\n > summary(random~idegree(0:20))\n  idegree0  idegree1  idegree2  idegree3  idegree4  idegree5  idegree6  \nidegree7\n         3        13        35        66        84        85        \n81        63\n  idegree8  idegree9 idegree10 idegree11 idegree12 idegree13 idegree14 \nidegree15\n        36        15        10         3         3         3         \n0         0\nidegree16 idegree17 idegree18 idegree19 idegree20\n         0         0         0         0         0\n\nmy understanding (e.g. from robins et al. 2007, \"recent \ndevelopments...\"), is that a positive parameter should produce networks \nwith some higher degree nodes (hubs), whereas a negative parameter \nshould produce few if any hubs and a smaller variance between degrees \n(p. 198). here, however, it seems the opposite is taking place? as the \nnetwork simulated from a negative value (test2) has a ton of nodes with \nzero incoming ties but also a considerable number of hubs; whereas the \nnetwork simulated from a positive value (test1) has a much more balanced \ndistribution.\n\nany guidance on this would be much appreciated! thanks as always,\n\n-kevin\n\nOn 12/13/2010 1:07 PM, Balazs Kovacs wrote:\n> Hi all,\n>\n> I'd have two questions.\n>\n> First, the ergm command seems to be doing something weird for directed \n> network (yes, I have the latest version): gwidegree provides a \n> decay-estimate, but gwodegree doesn't. See log below. This seems \n> strange to me but maybe I'm wrong. And this did not happen in the \n> previous ergm version. Any suggestion?\n>\n> Second, I'd have a newb question about gof. That is, what exactly is \n> the difference between running gof(model_individ3test) and \n> gof(model_individ3test~idegree+odegree)? Do they both simulate \n> networks based on all estimated coefficients and the latter only \n> reports the idegree and odegree goodness-of-fits? Or \n> gof(model_individ3test~idegree+odegree) only simulates networks based \n> on idegree and odegree estimates?\n>\n> And, as opposed to gof(model_individ3test), what does \n> gof(model_individ3test~model) do?\n>\n> [btw, if you look at the gof-s at the end of the email, that indicates \n> as well that something is wrong with outdegree]\n>\n> Thanks a lot,\n> Balazs\n>\n> model_individ3test <- ergm(email_individ ~ edges + mutual + \n> gwidegree(0.5) + gwodegree(0.5) + gwesp(0.5) + gwdsp(0.5))\n> summary(model_individ3test)\n>\n> ==========================\n> Summary of model fit\n> ==========================\n>\n> Formula:   email_individ ~ edges + mutual + gwidegree(0.5) + \n> gwodegree(0.5) +\n>    gwesp(0.5) + gwdsp(0.5)\n>\n> Newton-Raphson iterations:  278\n> MCMC sample of size 10000\n>\n> Monte Carlo MLE Results:\n>                  Estimate Std. Error MCMC s.e. p-value\n> edges           -3.1222033  0.0813811     0.814 <1e-04 ***\n> mutual           3.1567326  0.2847796     7.290 <1e-04 ***\n> gwidegree        0.4508974  1.0409670   156.222  0.6649\n> gwidegree.decay  0.4279343  0.2111033   345.873  0.0427 *\n> gwodegree        0.0773101  1.4807604     0.830  0.9584\n> gwesp            0.7414554  0.0776284     0.076 <1e-04 ***\n> gwesp.alpha      0.6233758  0.1094926     0.143 <1e-04 ***\n> gwdsp           -0.1224949  0.0005296     0.017 <1e-04 ***\n> gwdsp.alpha      0.4483909  0.0720531     0.141 <1e-04 ***\n> ---\n> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>\n>    Null  Deviance: 17544.9  on 12656  degrees of freedom\n> Residual Deviance:  4183.5  on 12647  degrees of freedom\n>          Deviance: 13361.5  on     9  degrees of freedom\n>\n> AIC: 4201.5    BIC: 4268.5\n>\n> gof(model_individ3test)\n> Error: degree model term may not be used with a directed network.\n>\n> gof(model_individ3test~model)\n> > md\n>\n> Goodness-of-fit for model statistics\n>\n>                    obs       min      mean       max MC p-value\n> edges        1221.0000  921.0000 1091.4800 1582.0000       0.26\n> mutual        409.0000  214.0000  256.5400  349.0000       0.00\n> gwidegree#1     1.0000    0.0000    0.0800    1.0000       0.16\n> gwidegree#2     3.0000    0.0000    0.4900    4.0000       0.04\n> gwidegree#3     2.0000    0.0000    0.7200    3.0000       0.44\n> gwidegree#4     6.0000    0.0000    4.1200   10.0000       0.60\n> gwidegree#5     7.0000    0.0000    6.0900   14.0000       0.82\n> gwidegree#6    12.0000    1.0000    5.1500   14.0000       0.02\n> gwidegree#7    11.0000    2.0000   15.0200   30.0000       0.54\n> gwidegree#8     6.0000    1.0000   11.4300   56.0000       0.28\n> gwidegree#9     6.0000    3.0000   12.9600   30.0000       0.14\n> gwidegree#10    8.0000    1.0000   14.0400   65.0000       0.22\n> gwidegree#11    7.0000    0.0000   11.3900   19.0000       0.32\n> gwidegree#12    6.0000    0.0000    8.8600   21.0000       0.58\n> gwidegree#13    9.0000    0.0000    9.9900   69.0000       0.74\n> gwidegree#14    4.0000    0.0000    5.1400   19.0000       1.00\n> gwidegree#15    3.0000    0.0000    3.1000   13.0000       1.00\n> gwidegree#16    5.0000    0.0000    1.6600   10.0000       0.20\n> gwidegree#17    3.0000    0.0000    0.9800    6.0000       0.30\n> gwidegree#18    4.0000    0.0000    0.8000    6.0000       0.10\n> gwidegree#19    1.0000    0.0000    0.4600    6.0000       0.60\n> gwidegree#20    0.0000    0.0000    0.2200    4.0000       1.00\n> gwidegree#21    3.0000    0.0000    0.1600    2.0000       0.00\n> gwidegree#22    0.0000    0.0000    0.0500    1.0000       1.00\n> gwidegree#23    1.0000    0.0000    0.0400    1.0000       0.08\n> gwidegree#24    1.0000    0.0000    0.0200    1.0000       0.04\n> gwidegree#25    0.0000    0.0000    0.0100    1.0000       1.00\n> gwidegree#27    1.0000    0.0000    0.0000    0.0000       0.00\n> gwidegree#28    1.0000    0.0000    0.0000    0.0000       0.00\n> gwidegree#29    1.0000    0.0000    0.0000    0.0000       0.00\n> gwidegree#35    1.0000    0.0000    0.0000    0.0000       0.00\n> gwodegree     183.4681  184.1184  185.7392  186.2868       0.00\n> esp#1         150.0000  279.0000  396.5400  736.0000       0.00\n> esp#2         161.0000   89.0000  165.7900  408.0000       0.80\n> esp#3         165.0000   15.0000   51.3100  216.0000       0.06\n> esp#4         156.0000    1.0000   16.9000  131.0000       0.00\n> esp#5         129.0000    0.0000    4.9200   90.0000       0.00\n> esp#6          99.0000    0.0000    1.3300   46.0000       0.00\n> esp#7          92.0000    0.0000    0.5200   20.0000       0.00\n> esp#8          59.0000    0.0000    0.1700   11.0000       0.00\n> esp#9          45.0000    0.0000    0.0800    5.0000       0.00\n> esp#10         34.0000    0.0000    0.0000    0.0000       0.00\n> esp#11         22.0000    0.0000    0.0000    0.0000       0.00\n> esp#12         11.0000    0.0000    0.0000    0.0000       0.00\n> esp#13          5.0000    0.0000    0.0000    0.0000       0.00\n> esp#14          9.0000    0.0000    0.0000    0.0000       0.00\n> esp#15          8.0000    0.0000    0.0000    0.0000       0.00\n> esp#16          4.0000    0.0000    0.0000    0.0000       0.00\n> esp#17          3.0000    0.0000    0.0000    0.0000       0.00\n> esp#18          5.0000    0.0000    0.0000    0.0000       0.00\n> esp#19          1.0000    0.0000    0.0000    0.0000       0.00\n> esp#20          1.0000    0.0000    0.0000    0.0000       0.00\n> esp#23          1.0000    0.0000    0.0000    0.0000       0.00\n> gwdsp#1      2065.0000 3904.0000 4500.9500 5365.0000       0.00\n> gwdsp#2      1197.0000 1267.0000 1886.7800 3368.0000       0.00\n> gwdsp#3       795.0000  230.0000  538.3500 1726.0000       0.30\n> gwdsp#4       476.0000   24.0000  137.6300 1028.0000       0.04\n> gwdsp#5       329.0000    3.0000   28.0800  251.0000       0.00\n> gwdsp#6       205.0000    0.0000    5.8300   96.0000       0.00\n> gwdsp#7       163.0000    0.0000    1.4700   38.0000       0.00\n> gwdsp#8        95.0000    0.0000    0.5100   22.0000       0.00\n> gwdsp#9        61.0000    0.0000    0.2000   12.0000       0.00\n> gwdsp#10       40.0000    0.0000    0.0800    4.0000       0.00\n> gwdsp#11       29.0000    0.0000    0.0000    0.0000       0.00\n> gwdsp#12       13.0000    0.0000    0.0000    0.0000       0.00\n> gwdsp#13        5.0000    0.0000    0.0000    0.0000       0.00\n> gwdsp#14        9.0000    0.0000    0.0000    0.0000       0.00\n> gwdsp#15        9.0000    0.0000    0.0000    0.0000       0.00\n> gwdsp#16        4.0000    0.0000    0.0000    0.0000       0.00\n> gwdsp#17        3.0000    0.0000    0.0000    0.0000       0.00\n> gwdsp#18        5.0000    0.0000    0.0000    0.0000       0.00\n> gwdsp#19        1.0000    0.0000    0.0000    0.0000       0.00\n> gwdsp#20        1.0000    0.0000    0.0000    0.0000       0.00\n> gwdsp#23        1.0000    0.0000    0.0000    0.0000       0.00\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nKevin Lewis\nPh.D. Candidate in Sociology\nHarvard University\n33 Kirkland Street\nCambridge, MA 02138\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101213/0fcf6ec4/attachment.html>",
+      "body_snippet": "hello,\n\nthought i'd pipe up also- the problem i'm running into is not identical, \nbut the mention of the gwdegree terms caught my eye so thought this \nmight be worth mentioning at the same time (this ",
+      "thread_id": "thread-e83cdd688c2d",
+      "thread_depth": 1,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-e0a8347759cf",
+      "message_id": "<07A9F7B1-BB22-42ED-8DCC-343302AB9679@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-12-14T06:47:02Z",
+      "subject": "[statnet_help] Directed network bug? + GoF test",
+      "subject_clean": "[statnet_help] Directed network bug? + GoF test",
+      "in_reply_to": "<4D067056.9050007@fas.harvard.edu>",
+      "references": [
+        "<AANLkTiksqemWdrPcoEVeqwxgQYwoJa8MCbxkUO4z4FxR@mail.gmail.com>",
+        "<4D067056.9050007@fas.harvard.edu>"
+      ],
+      "body_plain": "Dear Kevin and Balazs,\n\nHmm, it does look as though something odd is going on here and I'll  \ncheck it out (though probably not for a couple of days).  Your  \ndetailed explanations make it really easy to figure out what to look  \nat!  Thank you!\n\nDave\n\n\n\n\nOn Dec 13, 2010, at 2:13 PM, Kevin Lewis wrote:\n\n> hello,\n>\n> thought i'd pipe up also- the problem i'm running into is not  \n> identical, but the mention of the gwdegree terms caught my eye so  \n> thought this might be worth mentioning at the same time (this also  \n> may relate to dave's post on 11/30 about directed network  \n> simulations).\n>\n> i am not sure whether this results from a bug, or because i am  \n> misinterpreting how the higher-order terms work (or entering the  \n> incorrect command!). i am using ergm version 2.2-7. i have a random  \n> (directed) network with 500 actors and 2600 ties. i then tried to  \n> simulate two new networks (keeping density constant), one with a  \n> positive value for gwidegree and one with a negative value for  \n> gwidegree:\n>\n> > test1=simulate(random~gwidegree(.25,fixed=TRUE),theta0=5,burnin=1e \n> +6,verbose=TRUE,constraints=~edges)\n> Starting 1 MCMC iteration of 1e+06 steps.\n> ConstantEdges sampler accepted 95.911% of 1000000 proposed steps.\n> Finished simulation 1 of 1.\n> > test2=simulate(random~gwidegree(.25,fixed=TRUE),theta0=-5,burnin=1e \n> +6,verbose=TRUE,constraints=~edges)\n> Starting 1 MCMC iteration of 1e+06 steps.\n> ConstantEdges sampler accepted 71.419% of 1000000 proposed steps.\n> Finished simulation 1 of 1.\n>\n> however, here is what i get when i look at the in-degree  \n> distributions (also comparing them to the original random network):\n>\n> > summary(test1~idegree(0:20))\n>  idegree0  idegree1  idegree2  idegree3  idegree4  idegree5   \n> idegree6  idegree7\n>         0         6        34        81        93        89         \n> 72        48\n>  idegree8  idegree9 idegree10 idegree11 idegree12 idegree13  \n> idegree14 idegree15\n>        32        24        11         5         4         1          \n> 0         0\n> idegree16 idegree17 idegree18 idegree19 idegree20\n>         0         0         0         0         0\n> > summary(test2~idegree(0:20))\n>  idegree0  idegree1  idegree2  idegree3  idegree4  idegree5   \n> idegree6  idegree7\n>       147         4         7        10        32        36         \n> 56        41\n>  idegree8  idegree9 idegree10 idegree11 idegree12 idegree13  \n> idegree14 idegree15\n>        47        42        33        25        11         4          \n> 2         0\n> idegree16 idegree17 idegree18 idegree19 idegree20\n>         2         0         1         0         0\n> > summary(random~idegree(0:20))\n>  idegree0  idegree1  idegree2  idegree3  idegree4  idegree5   \n> idegree6  idegree7\n>         3        13        35        66        84        85         \n> 81        63\n>  idegree8  idegree9 idegree10 idegree11 idegree12 idegree13  \n> idegree14 idegree15\n>        36        15        10         3         3         3          \n> 0         0\n> idegree16 idegree17 idegree18 idegree19 idegree20\n>         0         0         0         0         0\n>\n> my understanding (e.g. from robins et al. 2007, \"recent  \n> developments...\"), is that a positive parameter should produce  \n> networks with some higher degree nodes (hubs), whereas a negative  \n> parameter should produce few if any hubs and a smaller variance  \n> between degrees (p. 198). here, however, it seems the opposite is  \n> taking place? as the network simulated from a negative value (test2)  \n> has a ton of nodes with zero incoming ties but also a considerable  \n> number of hubs; whereas the network simulated from a positive value  \n> (test1) has a much more balanced distribution.\n>\n> any guidance on this would be much appreciated! thanks as always,\n>\n> -kevin\n>\n> On 12/13/2010 1:07 PM, Balazs Kovacs wrote:\n>>\n>> Hi all,\n>>\n>> I'd have two questions.\n>>\n>> First, the ergm command seems to be doing something weird for  \n>> directed network (yes, I have the latest version): gwidegree  \n>> provides a decay-estimate, but gwodegree doesn't. See log below.  \n>> This seems strange to me but maybe I'm wrong. And this did not  \n>> happen in the previous ergm version. Any suggestion?\n>>\n>> Second, I'd have a newb question about gof. That is, what exactly  \n>> is the difference between running gof(model_individ3test) and  \n>> gof(model_individ3test~idegree+odegree)? Do they both simulate  \n>> networks based on all estimated coefficients and the latter only  \n>> reports the idegree and odegree goodness-of-fits? Or  \n>> gof(model_individ3test~idegree+odegree) only simulates networks  \n>> based on idegree and odegree estimates?\n>>\n>> And, as opposed to gof(model_individ3test), what does  \n>> gof(model_individ3test~model) do?\n>>\n>> [btw, if you look at the gof-s at the end of the email, that  \n>> indicates as well that something is wrong with outdegree]\n>>\n>> Thanks a lot,\n>> Balazs\n>>\n>> model_individ3test <- ergm(email_individ ~ edges + mutual +  \n>> gwidegree(0.5) + gwodegree(0.5) + gwesp(0.5) + gwdsp(0.5))\n>> summary(model_individ3test)\n>>\n>> ==========================\n>> Summary of model fit\n>> ==========================\n>>\n>> Formula:   email_individ ~ edges + mutual + gwidegree(0.5) +  \n>> gwodegree(0.5) +\n>>    gwesp(0.5) + gwdsp(0.5)\n>>\n>> Newton-Raphson iterations:  278\n>> MCMC sample of size 10000\n>>\n>> Monte Carlo MLE Results:\n>>                  Estimate Std. Error MCMC s.e. p-value\n>> edges           -3.1222033  0.0813811     0.814  <1e-04 ***\n>> mutual           3.1567326  0.2847796     7.290  <1e-04 ***\n>> gwidegree        0.4508974  1.0409670   156.222  0.6649\n>> gwidegree.decay  0.4279343  0.2111033   345.873  0.0427 *\n>> gwodegree        0.0773101  1.4807604     0.830  0.9584\n>> gwesp            0.7414554  0.0776284     0.076  <1e-04 ***\n>> gwesp.alpha      0.6233758  0.1094926     0.143  <1e-04 ***\n>> gwdsp           -0.1224949  0.0005296     0.017  <1e-04 ***\n>> gwdsp.alpha      0.4483909  0.0720531     0.141  <1e-04 ***\n>> ---\n>> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>>\n>>    Null  Deviance: 17544.9  on 12656  degrees of freedom\n>> Residual Deviance:  4183.5  on 12647  degrees of freedom\n>>          Deviance: 13361.5  on     9  degrees of freedom\n>>\n>> AIC: 4201.5    BIC: 4268.5\n>>\n>> gof(model_individ3test)\n>> Error: degree model term may not be used with a directed network.\n>>\n>> gof(model_individ3test~model)\n>> > md\n>>\n>> Goodness-of-fit for model statistics\n>>\n>>                    obs       min      mean       max MC p-value\n>> edges        1221.0000  921.0000 1091.4800 1582.0000       0.26\n>> mutual        409.0000  214.0000  256.5400  349.0000       0.00\n>> gwidegree#1     1.0000    0.0000    0.0800    1.0000       0.16\n>> gwidegree#2     3.0000    0.0000    0.4900    4.0000       0.04\n>> gwidegree#3     2.0000    0.0000    0.7200    3.0000       0.44\n>> gwidegree#4     6.0000    0.0000    4.1200   10.0000       0.60\n>> gwidegree#5     7.0000    0.0000    6.0900   14.0000       0.82\n>> gwidegree#6    12.0000    1.0000    5.1500   14.0000       0.02\n>> gwidegree#7    11.0000    2.0000   15.0200   30.0000       0.54\n>> gwidegree#8     6.0000    1.0000   11.4300   56.0000       0.28\n>> gwidegree#9     6.0000    3.0000   12.9600   30.0000       0.14\n>> gwidegree#10    8.0000    1.0000   14.0400   65.0000       0.22\n>> gwidegree#11    7.0000    0.0000   11.3900   19.0000       0.32\n>> gwidegree#12    6.0000    0.0000    8.8600   21.0000       0.58\n>> gwidegree#13    9.0000    0.0000    9.9900   69.0000       0.74\n>> gwidegree#14    4.0000    0.0000    5.1400   19.0000       1.00\n>> gwidegree#15    3.0000    0.0000    3.1000   13.0000       1.00\n>> gwidegree#16    5.0000    0.0000    1.6600   10.0000       0.20\n>> gwidegree#17    3.0000    0.0000    0.9800    6.0000       0.30\n>> gwidegree#18    4.0000    0.0000    0.8000    6.0000       0.10\n>> gwidegree#19    1.0000    0.0000    0.4600    6.0000       0.60\n>> gwidegree#20    0.0000    0.0000    0.2200    4.0000       1.00\n>> gwidegree#21    3.0000    0.0000    0.1600    2.0000       0.00\n>> gwidegree#22    0.0000    0.0000    0.0500    1.0000       1.00\n>> gwidegree#23    1.0000    0.0000    0.0400    1.0000       0.08\n>> gwidegree#24    1.0000    0.0000    0.0200    1.0000       0.04\n>> gwidegree#25    0.0000    0.0000    0.0100    1.0000       1.00\n>> gwidegree#27    1.0000    0.0000    0.0000    0.0000       0.00\n>> gwidegree#28    1.0000    0.0000    0.0000    0.0000       0.00\n>> gwidegree#29    1.0000    0.0000    0.0000    0.0000       0.00\n>> gwidegree#35    1.0000    0.0000    0.0000    0.0000       0.00\n>> gwodegree     183.4681  184.1184  185.7392  186.2868       0.00\n>> esp#1         150.0000  279.0000  396.5400  736.0000       0.00\n>> esp#2         161.0000   89.0000  165.7900  408.0000       0.80\n>> esp#3         165.0000   15.0000   51.3100  216.0000       0.06\n>> esp#4         156.0000    1.0000   16.9000  131.0000       0.00\n>> esp#5         129.0000    0.0000    4.9200   90.0000       0.00\n>> esp#6          99.0000    0.0000    1.3300   46.0000       0.00\n>> esp#7          92.0000    0.0000    0.5200   20.0000       0.00\n>> esp#8          59.0000    0.0000    0.1700   11.0000       0.00\n>> esp#9          45.0000    0.0000    0.0800    5.0000       0.00\n>> esp#10         34.0000    0.0000    0.0000    0.0000       0.00\n>> esp#11         22.0000    0.0000    0.0000    0.0000       0.00\n>> esp#12         11.0000    0.0000    0.0000    0.0000       0.00\n>> esp#13          5.0000    0.0000    0.0000    0.0000       0.00\n>> esp#14          9.0000    0.0000    0.0000    0.0000       0.00\n>> esp#15          8.0000    0.0000    0.0000    0.0000       0.00\n>> esp#16          4.0000    0.0000    0.0000    0.0000       0.00\n>> esp#17          3.0000    0.0000    0.0000    0.0000       0.00\n>> esp#18          5.0000    0.0000    0.0000    0.0000       0.00\n>> esp#19          1.0000    0.0000    0.0000    0.0000       0.00\n>> esp#20          1.0000    0.0000    0.0000    0.0000       0.00\n>> esp#23          1.0000    0.0000    0.0000    0.0000       0.00\n>> gwdsp#1      2065.0000 3904.0000 4500.9500 5365.0000       0.00\n>> gwdsp#2      1197.0000 1267.0000 1886.7800 3368.0000       0.00\n>> gwdsp#3       795.0000  230.0000  538.3500 1726.0000       0.30\n>> gwdsp#4       476.0000   24.0000  137.6300 1028.0000       0.04\n>> gwdsp#5       329.0000    3.0000   28.0800  251.0000       0.00\n>> gwdsp#6       205.0000    0.0000    5.8300   96.0000       0.00\n>> gwdsp#7       163.0000    0.0000    1.4700   38.0000       0.00\n>> gwdsp#8        95.0000    0.0000    0.5100   22.0000       0.00\n>> gwdsp#9        61.0000    0.0000    0.2000   12.0000       0.00\n>> gwdsp#10       40.0000    0.0000    0.0800    4.0000       0.00\n>> gwdsp#11       29.0000    0.0000    0.0000    0.0000       0.00\n>> gwdsp#12       13.0000    0.0000    0.0000    0.0000       0.00\n>> gwdsp#13        5.0000    0.0000    0.0000    0.0000       0.00\n>> gwdsp#14        9.0000    0.0000    0.0000    0.0000       0.00\n>> gwdsp#15        9.0000    0.0000    0.0000    0.0000       0.00\n>> gwdsp#16        4.0000    0.0000    0.0000    0.0000       0.00\n>> gwdsp#17        3.0000    0.0000    0.0000    0.0000       0.00\n>> gwdsp#18        5.0000    0.0000    0.0000    0.0000       0.00\n>> gwdsp#19        1.0000    0.0000    0.0000    0.0000       0.00\n>> gwdsp#20        1.0000    0.0000    0.0000    0.0000       0.00\n>> gwdsp#23        1.0000    0.0000    0.0000    0.0000       0.00\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> -- \n> Kevin Lewis\n> Ph.D. Candidate in Sociology\n> Harvard University\n> 33 Kirkland Street\n> Cambridge, MA 02138\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101214/b77aa6d9/attachment.html>",
+      "body_snippet": "Dear Kevin and Balazs,\n\nHmm, it does look as though something odd is going on here and I'll  \ncheck it out (though probably not for a couple of days).  Your  \ndetailed explanations make it really easy",
+      "thread_id": "thread-e83cdd688c2d",
+      "thread_depth": 2,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-6f253b2a1cf8",
+      "message_id": "<24650a46ab87551dd70ea6f9bb741c02.squirrel@webmail.stat.unipd.it>",
+      "from_name": "Soriani Nicola",
+      "from_email_hash": "bad2caca9903706f9e3ae9b9200f838b32f69bcb1198b839eb309a817ad8dd27",
+      "date": "2010-12-14T15:19:50Z",
+      "subject": "[statnet_help] degeneracy with missing dyads",
+      "subject_clean": "[statnet_help] degeneracy with missing dyads",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi All,\n\nWhen I try to estimate model for an undirected network with a large number of\ndyads set as missing (NA), it returns me degenerate models.\n\nIn what I am working on, I need to set as NA the 20% of the dyads. I tried\nwith Lazega's Lawyers and Kapfter's tailor shop data.\n\nThese problems there were not until the version ergm 2.2-5, I think that\nit is not a bug but a problem of the algorithm with low density network.\n\nAttached find a toy example:\n\n\n\n\nlibrary(statnet)\n\n###################\n\ngetDyad<-function(net){\nn<-network.size(net)\npair<-NULL\nif(is.directed(net)){\n\tfor(i in 1:(n-1))for(j in (i+1):n) pair<-rbind(pair,c(i,j),c(j,i))\n}\nelse{\n\tfor(i in 1:(n-1))for(j in (i+1):n) pair<-rbind(pair,c(i,j))\n}\nreturn(pair)\n}\n\n###################################\n\n#### low density\n\nm <- matrix(rbinom(30^2,1,.07),30,30)\ndiag(m) <- 0\ng <- network(m, directed=FALSE)\nsummary(g)\nplot(g)\n\n\n\nERGMa1<-ergm(g~edges\n#+gwdegree(.5,fixed=TRUE)\n+gwesp(.5,fixed=TRUE)\n#+gwdsp(0.25,fixed=TRUE)\n,burnin=100000,interval=5000, MCMCsamplesize=10000,maxit=5)\n\n\n\n\nsummary(ERGMa1)\nplot(ERGMa1)\n\n\n\ncoppie<-getDyad(g)\n\nm<-dim(coppie)[1]\n\nc<-sample(1:m,40)\n\nprova<-g\n\nprova[coppie[c,]]<-NA\n\n\nERGMa2<-ergm(prova~edges\n#+gwdegree(.5,fixed=TRUE)\n+gwesp(1,fixed=TRUE)\n#+gwdsp(0.25,fixed=TRUE)\n,burnin=100000,interval=5000, MCMCsamplesize=10000,maxit=5)\n\n\nsummary(ERGMa2)\nplot(ERGMa2)\n\n\n######### large density\n\nm <- matrix(rbinom(30^2,1,.3),30,30)\ndiag(m) <- 0\ng2 <- network(m, directed=FALSE)\nsummary(g2)\nplot(g2)\n\n\n\n\nERGMb1<-ergm(g2~edges\n#+gwdegree(.5,fixed=TRUE)\n+gwesp(1,fixed=TRUE)\n#+gwdsp(0.25,fixed=TRUE)\n,burnin=100000,interval=5000, MCMCsamplesize=5000)\n\n\nsummary(ERGMb1)\nplot(ERGMb1)\n\n\nprova2<-g2\n\nprova2[coppie[c,]]<-NA\n\n\nERGMb2<-ergm(prova2~edges\n#+gwdegree(.5,fixed=TRUE)\n+gwesp(1,fixed=TRUE)\n#+gwdsp(0.25,fixed=TRUE)\n,burnin=100000,interval=5000, MCMCsamplesize=5000)\n\n\nsummary(ERGMb2)\nplot(ERGMb2)\n\n\n\n\n\n-- \nSoriani Nicola\nScuola di Dottorato in Scienze Statistiche XXIII Ciclo\nDipartimento di Scienze Statistiche, Universit? di Padova\nStanza 122 - Tel. 049 827 4174\nPh.D. Student\nDepartment of Statistical Sciences\nUniversity of Padova, Italy",
+      "body_snippet": "Hi All,\n\nWhen I try to estimate model for an undirected network with a large number of\ndyads set as missing (NA), it returns me degenerate models.\n\nIn what I am working on, I need to set as NA the 20%",
+      "thread_id": "thread-6f253b2a1cf8",
+      "thread_depth": 0,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-403dcd135481",
+      "message_id": "<AANLkTim8mLObeiBn--gKUkeeQR_NFnwJG02eGK5zfv5C@mail.gmail.com>",
+      "from_name": "Deepak Sharma",
+      "from_email_hash": "e10b667921d04f8d899be3857871b1174efce9358da0e05c88351789ce5f9690",
+      "date": "2010-12-15T04:19:34Z",
+      "subject": "[statnet_help] Memory Issue with a large directed network",
+      "subject_clean": "[statnet_help] Memory Issue with a large directed network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello Everyone,\n\nI am new to R and network modeling so forgive my ignorance. Here is the\nproblem I am facing.\n\nI am working with a very large directed network. It has about 10^7 edges and\nabout 10^6 unique nodes. I created a 'network' data object collection using\nthe network() command. The object is created and saved. But the object takes\na lot of memory when loaded, around 2.6 GB of memory. Due to this when I run\na 'summary' or 'degree' function on the graph my computer hangs.\n\nI am using a 64-bit 4GB machine running Windows Vista and R 2.10.1.\n\nI was wondering if there is a way I can break the network into chunks or\nwork around the memory problem somehow. Please let me know.\n\n-- \nDeepak Sharma\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101215/d81412e8/attachment.html>",
+      "body_snippet": "Hello Everyone,\n\nI am new to R and network modeling so forgive my ignorance. Here is the\nproblem I am facing.\n\nI am working with a very large directed network. It has about 10^7 edges and\nabout 10^6 u",
+      "thread_id": "thread-403dcd135481",
+      "thread_depth": 0,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-6f1e91e8c7bf",
+      "message_id": "<5FF3F894-3A97-45B8-BCEA-EA3AE78686ED@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-12-15T14:07:49Z",
+      "subject": "[statnet_help] degeneracy with missing dyads",
+      "subject_clean": "[statnet_help] degeneracy with missing dyads",
+      "in_reply_to": "<24650a46ab87551dd70ea6f9bb741c02.squirrel@webmail.stat.unipd.it>",
+      "references": [
+        "<24650a46ab87551dd70ea6f9bb741c02.squirrel@webmail.stat.unipd.it>"
+      ],
+      "body_plain": "Hi Nicola.  Try this patch:\n\nFind the line in ergm.mainfitlloop:\n   z <- ergm.getMCMCsample(MCMCparams$Clist.miss, MHproposal.miss,  \nmcmc.eta0, MCMCparams, verbose)\n\nThen change the \"MCMCparams$Clist.miss\" to simply \"Clist\".\n\nAlternatively, just source in the attached file, which contains this  \npatch.  Then try rerunning your example.  Does it work better?\n\nDave\n\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: ergm.mainfitloop.R\nType: application/octet-stream\nSize: 9762 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101215/7d3126b2/attachment.obj>\n-------------- next part --------------\n\n\n\n\nOn Dec 14, 2010, at 6:19 PM, Soriani Nicola wrote:\n\n> Hi All,\n>\n> When I try to estimate model for an undirected network with a large  \n> number of\n> dyads set as missing (NA), it returns me degenerate models.\n>\n> In what I am working on, I need to set as NA the 20% of the dyads. I  \n> tried\n> with Lazega's Lawyers and Kapfter's tailor shop data.\n>\n> These problems there were not until the version ergm 2.2-5, I think  \n> that\n> it is not a bug but a problem of the algorithm with low density  \n> network.\n>\n> Attached find a toy example:\n>\n>\n>\n>\n> library(statnet)\n>\n> ###################\n>\n> getDyad<-function(net){\n> n<-network.size(net)\n> pair<-NULL\n> if(is.directed(net)){\n> \tfor(i in 1:(n-1))for(j in (i+1):n) pair<-rbind(pair,c(i,j),c(j,i))\n> }\n> else{\n> \tfor(i in 1:(n-1))for(j in (i+1):n) pair<-rbind(pair,c(i,j))\n> }\n> return(pair)\n> }\n>\n> ###################################\n>\n> #### low density\n>\n> m <- matrix(rbinom(30^2,1,.07),30,30)\n> diag(m) <- 0\n> g <- network(m, directed=FALSE)\n> summary(g)\n> plot(g)\n>\n>\n>\n> ERGMa1<-ergm(g~edges\n> #+gwdegree(.5,fixed=TRUE)\n> +gwesp(.5,fixed=TRUE)\n> #+gwdsp(0.25,fixed=TRUE)\n> ,burnin=100000,interval=5000, MCMCsamplesize=10000,maxit=5)\n>\n>\n>\n>\n> summary(ERGMa1)\n> plot(ERGMa1)\n>\n>\n>\n> coppie<-getDyad(g)\n>\n> m<-dim(coppie)[1]\n>\n> c<-sample(1:m,40)\n>\n> prova<-g\n>\n> prova[coppie[c,]]<-NA\n>\n>\n> ERGMa2<-ergm(prova~edges\n> #+gwdegree(.5,fixed=TRUE)\n> +gwesp(1,fixed=TRUE)\n> #+gwdsp(0.25,fixed=TRUE)\n> ,burnin=100000,interval=5000, MCMCsamplesize=10000,maxit=5)\n>\n>\n> summary(ERGMa2)\n> plot(ERGMa2)\n>\n>\n> ######### large density\n>\n> m <- matrix(rbinom(30^2,1,.3),30,30)\n> diag(m) <- 0\n> g2 <- network(m, directed=FALSE)\n> summary(g2)\n> plot(g2)\n>\n>\n>\n>\n> ERGMb1<-ergm(g2~edges\n> #+gwdegree(.5,fixed=TRUE)\n> +gwesp(1,fixed=TRUE)\n> #+gwdsp(0.25,fixed=TRUE)\n> ,burnin=100000,interval=5000, MCMCsamplesize=5000)\n>\n>\n> summary(ERGMb1)\n> plot(ERGMb1)\n>\n>\n> prova2<-g2\n>\n> prova2[coppie[c,]]<-NA\n>\n>\n> ERGMb2<-ergm(prova2~edges\n> #+gwdegree(.5,fixed=TRUE)\n> +gwesp(1,fixed=TRUE)\n> #+gwdsp(0.25,fixed=TRUE)\n> ,burnin=100000,interval=5000, MCMCsamplesize=5000)\n>\n>\n> summary(ERGMb2)\n> plot(ERGMb2)\n>\n>\n>\n>\n>\n> -- \n> Soriani Nicola\n> Scuola di Dottorato in Scienze Statistiche XXIII Ciclo\n> Dipartimento di Scienze Statistiche, Universit? di Padova\n> Stanza 122 - Tel. 049 827 4174\n> Ph.D. Student\n> Department of Statistical Sciences\n> University of Padova, Italy\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Nicola.  Try this patch:\n\nFind the line in ergm.mainfitlloop:\n   z <- ergm.getMCMCsample(MCMCparams$Clist.miss, MHproposal.miss,  \nmcmc.eta0, MCMCparams, verbose)\n\nThen change the \"MCMCparams$Clist",
+      "thread_id": "thread-6f253b2a1cf8",
+      "thread_depth": 1,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-93ccb1c3653a",
+      "message_id": "<AANLkTin1NfPj7SrsUTgycbzNq=pvuTGbE027KD-BQ1T-@mail.gmail.com>",
+      "from_name": "Moses Boudourides",
+      "from_email_hash": "c5624448747271419acb164061064e1a7b0a1e969681d0b921805e16e6affe4a",
+      "date": "2010-12-20T03:29:07Z",
+      "subject": "[statnet_help] community detection",
+      "subject_clean": "[statnet_help] community detection",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nSorry if this question has been already discussed in the list or it is\nanswered in the documentation (that I didn't bother to read): is it\npossible to run any community detection analyses in statnet (or\nnetwork or iGraph or etc.)?\n\nActually my data are directed graphs and so I would be interested in\nan implementation of the Newman-Leicht modularity maximization\ntechnique.\n\nAny assistance will be greatly appreciated,\n\nRegards,\n\n--Moses",
+      "body_snippet": "Hello,\n\nSorry if this question has been already discussed in the list or it is\nanswered in the documentation (that I didn't bother to read): is it\npossible to run any community detection analyses in s",
+      "thread_id": "thread-93ccb1c3653a",
+      "thread_depth": 0,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-e93c97b6ba89",
+      "message_id": "<4D0F47A0.6020208@uu.nl>",
+      "from_name": "Michal Bojanowski",
+      "from_email_hash": "b72e0a534c25ec0973b778cd472059c61c5350ce731228b66a3a79a50069f13f",
+      "date": "2010-12-20T04:10:08Z",
+      "subject": "[statnet_help] community detection",
+      "subject_clean": "[statnet_help] community detection",
+      "in_reply_to": "<AANLkTin1NfPj7SrsUTgycbzNq=pvuTGbE027KD-BQ1T-@mail.gmail.com>",
+      "references": [
+        "<AANLkTin1NfPj7SrsUTgycbzNq=pvuTGbE027KD-BQ1T-@mail.gmail.com>"
+      ],
+      "body_plain": "On 12/20/2010 12:29 PM, Moses Boudourides wrote:\n> Sorry if this question has been already discussed in the list or it\n> is answered in the documentation (that I didn't bother to read): is\n> it possible to run any community detection analyses in statnet (or\n> network or iGraph or etc.)?\n>\n> Actually my data are directed graphs and so I would be interested in\n> an implementation of the Newman-Leicht modularity maximization\n> technique.\n\n\nA couple of algorithms are implemented in 'igraph'.\nSee http://igraph.sourceforge.net/doc/R/00Index.html\nand http://igraph.sourceforge.net/doc/R/community.structure.html\n\nNot sure if this is exactly the version of modularity you are looking\nfor, but have a look at this\nhttp://igraph.sourceforge.net/doc/R/modularity.html and this\nhttp://igraph.sourceforge.net/doc/R/fastgreedy.community.html\n\n\nhth,\n\nMichal\n\n\n-----------------------------\nMichal Bojanowski\nPhD Candidate\nICS / Department of Sociology\nUtrecht University\nhttp://www.fss.uu.nl/soc/bojanowski\nhttp://www.bojanorama.pl",
+      "body_snippet": "On 12/20/2010 12:29 PM, Moses Boudourides wrote:\n> Sorry if this question has been already discussed in the list or it\n> is answered in the documentation (that I didn't bother to read): is\n> it possib",
+      "thread_id": "thread-93ccb1c3653a",
+      "thread_depth": 1,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-ed6a8cc2dde9",
+      "message_id": "<4D0F5989.6070700@ucla.edu>",
+      "from_name": "Mark S. Handcock",
+      "from_email_hash": "fb40357ebb8d7f0a427d9ad2641aa56f67d6763bdb0f1109ba0f3c4b5584b09d",
+      "date": "2010-12-20T05:26:33Z",
+      "subject": "[statnet_help] community detection",
+      "subject_clean": "[statnet_help] community detection",
+      "in_reply_to": "<4D0F47A0.6020208@uu.nl>",
+      "references": [
+        "<AANLkTin1NfPj7SrsUTgycbzNq=pvuTGbE027KD-BQ1T-@mail.gmail.com>",
+        "<4D0F47A0.6020208@uu.nl>"
+      ],
+      "body_plain": "Hi Moses,\n\nThis is an interesting question, one that is best answered by another: What is the scientific purpose of the community detection?\n\nIf the purpose is to find a categorization of the nodes into relatively homogeneous groups then any of the commonly used algorithms can achieve this. They can produce useful \ndescriptives.\n\nIf the purpose is to detect underlying categorizations in the presence of stochastic variation, to test if such categorizations are real, to look at other categorizations that have \nsupport from the data, etc, then it is scientifically better to consider model-based approaches. This also allows to define communities adjusted for nodal and dyadic covariates, \nand to adjust for node specific heterogeneity, etc. We have taken this latter approach in \"statnet\".\n\nIn particular, I would point you toward \"latentnet\". It has a latent position cluster model that embeds the nodes within a latent social space and estimates \nclusters/communities/groups via a stochastic model. It incorporates the statistical uncertainty, especially uncertainty in the community identifications. It is a very visual model. \nOne reference is <http://www.jstatsoft.org/v24/i05/paper> and a later paper in Social Networks.\n\nThere are other model-based approaches, but this is a start and well supported and developed in \"statnet\".\n\nI hope this helps.\n\nCheers,\n\nMark\n\n----------------------------------------------------\nMark S. Handcock\nProfessor of Statistics\nDepartment of Statistics\nUniversity of California     Phone:  (310) 817-6778\nLos Angeles, CA 90095-1554.   FAX:   (206) 457-1953\nWeb:  www.stat.ucla.edu/~handcock\ninternet:  handcock@ucla.edu\n\n\n\n\nOn 12/20/10 8:10 PM, Michal Bojanowski wrote:\n> On 12/20/2010 12:29 PM, Moses Boudourides wrote:\n>> Sorry if this question has been already discussed in the list or it\n>> is answered in the documentation (that I didn't bother to read): is\n>> it possible to run any community detection analyses in statnet (or\n>> network or iGraph or etc.)?\n>>\n>> Actually my data are directed graphs and so I would be interested in\n>> an implementation of the Newman-Leicht modularity maximization\n>> technique.\n>\n>\n> A couple of algorithms are implemented in 'igraph'.\n> See http://igraph.sourceforge.net/doc/R/00Index.html\n> and http://igraph.sourceforge.net/doc/R/community.structure.html\n>\n> Not sure if this is exactly the version of modularity you are looking\n> for, but have a look at this\n> http://igraph.sourceforge.net/doc/R/modularity.html and this\n> http://igraph.sourceforge.net/doc/R/fastgreedy.community.html\n>\n>\n> hth,\n>\n> Michal\n>\n>\n> -----------------------------\n> Michal Bojanowski\n> PhD Candidate\n> ICS / Department of Sociology\n> Utrecht University\n> http://www.fss.uu.nl/soc/bojanowski\n> http://www.bojanorama.pl\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Moses,\n\nThis is an interesting question, one that is best answered by another: What is the scientific purpose of the community detection?\n\nIf the purpose is to find a categorization of the nodes in",
+      "thread_id": "thread-93ccb1c3653a",
+      "thread_depth": 2,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-bb32b019ac15",
+      "message_id": "<f7ac355c7312a828493fc95fa78d15ec.squirrel@webmail.stat.unipd.it>",
+      "from_name": "Soriani Nicola",
+      "from_email_hash": "bad2caca9903706f9e3ae9b9200f838b32f69bcb1198b839eb309a817ad8dd27",
+      "date": "2010-12-20T12:39:28Z",
+      "subject": "[statnet_help] degeneracy with missing dyads",
+      "subject_clean": "[statnet_help] degeneracy with missing dyads",
+      "in_reply_to": "<201012162002.oBGK2LoT020504@mxout11.cac.washington.edu>",
+      "references": [
+        "<201012162002.oBGK2LoT020504@mxout11.cac.washington.edu>"
+      ],
+      "body_plain": "I tried your patch, but it did not work.\n\nI send you the codes for the real data example\n\nThanks.\n\nNicola\n\n> Hi Nicola.  Try this patch:\n>\n> Find the line in ergm.mainfitlloop:\n>    z <- ergm.getMCMCsample(MCMCparams$Clist.miss, MHproposal.miss,\n> mcmc.eta0, MCMCparams, verbose)\n>\n> Then change the \"MCMCparams$Clist.miss\" to simply \"Clist\".\n>\n> Alternatively, just source in the attached file, which contains this\n> patch.  Then try rerunning your example.  Does it work better?\n>\n> Dave\n>\n>\n>\n>\n>\n> On Dec 14, 2010, at 6:19 PM, Soriani Nicola wrote:\n>\n>> Hi All,\n>>\n>> When I try to estimate model for an undirected network with a large\n>> number of\n>> dyads set as missing (NA), it returns me degenerate models.\n>>\n>> In what I am working on, I need to set as NA the 20% of the dyads. I\n>> tried\n>> with Lazega's Lawyers and Kapfter's tailor shop data.\n>>\n>> These problems there were not until the version ergm 2.2-5, I think\n>> that\n>> it is not a bug but a problem of the algorithm with low density\n>> network.\n>>\n>> Attached find a toy example:\n>>\n>>\n>>\n>>\n>> library(statnet)\n>>\n>> ###################\n>>\n>> getDyad<-function(net){\n>> n<-network.size(net)\n>> pair<-NULL\n>> if(is.directed(net)){\n>> \tfor(i in 1:(n-1))for(j in (i+1):n) pair<-rbind(pair,c(i,j),c(j,i))\n>> }\n>> else{\n>> \tfor(i in 1:(n-1))for(j in (i+1):n) pair<-rbind(pair,c(i,j))\n>> }\n>> return(pair)\n>> }\n>>\n>> ###################################\n>>\n>> #### low density\n>>\n>> m <- matrix(rbinom(30^2,1,.07),30,30)\n>> diag(m) <- 0\n>> g <- network(m, directed=FALSE)\n>> summary(g)\n>> plot(g)\n>>\n>>\n>>\n>> ERGMa1<-ergm(g~edges\n>> #+gwdegree(.5,fixed=TRUE)\n>> +gwesp(.5,fixed=TRUE)\n>> #+gwdsp(0.25,fixed=TRUE)\n>> ,burnin=100000,interval=5000, MCMCsamplesize=10000,maxit=5)\n>>\n>>\n>>\n>>\n>> summary(ERGMa1)\n>> plot(ERGMa1)\n>>\n>>\n>>\n>> coppie<-getDyad(g)\n>>\n>> m<-dim(coppie)[1]\n>>\n>> c<-sample(1:m,40)\n>>\n>> prova<-g\n>>\n>> prova[coppie[c,]]<-NA\n>>\n>>\n>> ERGMa2<-ergm(prova~edges\n>> #+gwdegree(.5,fixed=TRUE)\n>> +gwesp(1,fixed=TRUE)\n>> #+gwdsp(0.25,fixed=TRUE)\n>> ,burnin=100000,interval=5000, MCMCsamplesize=10000,maxit=5)\n>>\n>>\n>> summary(ERGMa2)\n>> plot(ERGMa2)\n>>\n>>\n>> ######### large density\n>>\n>> m <- matrix(rbinom(30^2,1,.3),30,30)\n>> diag(m) <- 0\n>> g2 <- network(m, directed=FALSE)\n>> summary(g2)\n>> plot(g2)\n>>\n>>\n>>\n>>\n>> ERGMb1<-ergm(g2~edges\n>> #+gwdegree(.5,fixed=TRUE)\n>> +gwesp(1,fixed=TRUE)\n>> #+gwdsp(0.25,fixed=TRUE)\n>> ,burnin=100000,interval=5000, MCMCsamplesize=5000)\n>>\n>>\n>> summary(ERGMb1)\n>> plot(ERGMb1)\n>>\n>>\n>> prova2<-g2\n>>\n>> prova2[coppie[c,]]<-NA\n>>\n>>\n>> ERGMb2<-ergm(prova2~edges\n>> #+gwdegree(.5,fixed=TRUE)\n>> +gwesp(1,fixed=TRUE)\n>> #+gwdsp(0.25,fixed=TRUE)\n>> ,burnin=100000,interval=5000, MCMCsamplesize=5000)\n>>\n>>\n>> summary(ERGMb2)\n>> plot(ERGMb2)\n>>\n>>\n>>\n>>\n>>\n>> --\n>> Soriani Nicola\n>> Scuola di Dottorato in Scienze Statistiche XXIII Ciclo\n>> Dipartimento di Scienze Statistiche, Universit? di Padova\n>> Stanza 122 - Tel. 049 827 4174\n>> Ph.D. Student\n>> Department of Statistical Sciences\n>> University of Padova, Italy\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n\n-- \nSoriani Nicola\nScuola di Dottorato in Scienze Statistiche XXIII Ciclo\nDipartimento di Scienze Statistiche, Universit? di Padova\nStanza 122 - Tel. 049 827 4174\nPh.D. Student\nDepartment of Statistical Sciences\nUniversity of Padova, Italy\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: LawyerData.R\nType: /\nSize: 29041 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101220/9409dc78/attachment.bin>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: esempio.r\nType: /\nSize: 5747 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101220/9409dc78/attachment-0001.bin>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: KaptailData.R\nType: /\nSize: 93377 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101220/9409dc78/attachment-0002.bin>",
+      "body_snippet": "I tried your patch, but it did not work.\n\nI send you the codes for the real data example\n\nThanks.\n\nNicola\n\n> Hi Nicola.  Try this patch:\n>\n> Find the line in ergm.mainfitlloop:\n>    z <- ergm.getMCMCs",
+      "thread_id": "thread-bb32b019ac15",
+      "thread_depth": 0,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-b7e4257c9d38",
+      "message_id": "<AANLkTimXLte860Mv2dY=QRdAaoVksxUBavPQ-3OC1_tm@mail.gmail.com>",
+      "from_name": "Moses Boudourides",
+      "from_email_hash": "c5624448747271419acb164061064e1a7b0a1e969681d0b921805e16e6affe4a",
+      "date": "2010-12-21T05:59:14Z",
+      "subject": "[statnet_help] community detection",
+      "subject_clean": "[statnet_help] community detection",
+      "in_reply_to": "<4D0F5989.6070700@ucla.edu>",
+      "references": [
+        "<AANLkTin1NfPj7SrsUTgycbzNq=pvuTGbE027KD-BQ1T-@mail.gmail.com>",
+        "<4D0F47A0.6020208@uu.nl>",
+        "<4D0F5989.6070700@ucla.edu>"
+      ],
+      "body_plain": "Thanks, Mark. I've started reading your paper on the latent approach\nto clustering and it really seems to me that it is extremely\ninteresting. However, I'd like to ask you two (perhaps naive)\nquestions:\n\nIn this approach, covariates are link-dependent. But you say that\ncovariates might be vector valued. Does this mean that you may also\nconsider actor-dependent covariates?\n\nIs the latent space approach applicable to 2-mode networks? Actually,\nas I have already told you on another occasion, I've got a number of\ndata which form an incomplete 3-mode graph: vertices in the first mode\nare connected both to vertices in a second and a third mode (but there\nare no direct associations among vertices in the second and the third\nmode). Would the latent space clustering method be applicable in such\nnetworks? If yes, any existing references?\n\nBest regards,\n\n--Moses\n\n\nOn Mon, Dec 20, 2010 at 2:26 PM, Mark S. Handcock <handcock@ucla.edu> wrote:\n> Hi Moses,\n>\n> This is an interesting question, one that is best answered by another: What\n> is the scientific purpose of the community detection?\n>\n> If the purpose is to find a categorization of the nodes into relatively\n> homogeneous groups then any of the commonly used algorithms can achieve\n> this. They can produce useful descriptives.\n>\n> If the purpose is to detect underlying categorizations in the presence of\n> stochastic variation, to test if such categorizations are real, to look at\n> other categorizations that have support from the data, etc, then it is\n> scientifically better to consider model-based approaches. This also allows\n> to define communities adjusted for nodal and dyadic covariates, and to\n> adjust for node specific heterogeneity, etc. We have taken this latter\n> approach in \"statnet\".\n>\n> In particular, I would point you toward \"latentnet\". It has a latent\n> position cluster model that embeds the nodes within a latent social space\n> and estimates clusters/communities/groups via a stochastic model. It\n> incorporates the statistical uncertainty, especially uncertainty in the\n> community identifications. It is a very visual model. One reference is\n> <http://www.jstatsoft.org/v24/i05/paper> and a later paper in Social\n> Networks.\n>\n> There are other model-based approaches, but this is a start and well\n> supported and developed in \"statnet\".\n>\n> I hope this helps.\n>\n> Cheers,\n>\n> Mark\n>\n> ----------------------------------------------------\n> Mark S. Handcock\n> Professor of Statistics\n> Department of Statistics\n> University of California ? ? Phone: ?(310) 817-6778\n> Los Angeles, CA 90095-1554. ? FAX: ? (206) 457-1953\n> Web: ?www.stat.ucla.edu/~handcock\n> internet: ?handcock@ucla.edu\n>\n>\n>\n>\n> On 12/20/10 8:10 PM, Michal Bojanowski wrote:\n>>\n>> On 12/20/2010 12:29 PM, Moses Boudourides wrote:\n>>>\n>>> Sorry if this question has been already discussed in the list or it\n>>> is answered in the documentation (that I didn't bother to read): is\n>>> it possible to run any community detection analyses in statnet (or\n>>> network or iGraph or etc.)?\n>>>\n>>> Actually my data are directed graphs and so I would be interested in\n>>> an implementation of the Newman-Leicht modularity maximization\n>>> technique.\n>>\n>>\n>> A couple of algorithms are implemented in 'igraph'.\n>> See http://igraph.sourceforge.net/doc/R/00Index.html\n>> and http://igraph.sourceforge.net/doc/R/community.structure.html\n>>\n>> Not sure if this is exactly the version of modularity you are looking\n>> for, but have a look at this\n>> http://igraph.sourceforge.net/doc/R/modularity.html and this\n>> http://igraph.sourceforge.net/doc/R/fastgreedy.community.html\n>>\n>>\n>> hth,\n>>\n>> Michal\n>>\n>>\n>> -----------------------------\n>> Michal Bojanowski\n>> PhD Candidate\n>> ICS / Department of Sociology\n>> Utrecht University\n>> http://www.fss.uu.nl/soc/bojanowski\n>> http://www.bojanorama.pl\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Thanks, Mark. I've started reading your paper on the latent approach\nto clustering and it really seems to me that it is extremely\ninteresting. However, I'd like to ask you two (perhaps naive)\nquestion",
+      "thread_id": "thread-93ccb1c3653a",
+      "thread_depth": 3,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-a18915833eba",
+      "message_id": "<88769.67125.qm@web28404.mail.ukl.yahoo.com>",
+      "from_name": "Richard Heidler",
+      "from_email_hash": "77c858fe1d3386aaa2fc336c33ea7ed68d72e7e4fa9aa4d07ef95d5328adee9e",
+      "date": "2010-12-21T07:41:40Z",
+      "subject": "[statnet_help] Homophily with absdiff",
+      "subject_clean": "[statnet_help] Homophily with absdiff",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear List members,\n\nI have a question that probably is easy to answer, but I was not able to find a clear answer, neither in \n\nHunter DR, Handcock MS, Butts CT, Goodreau SM, Morris M (2008b). ergm: A Package to Fit, Simulate and Diagnose Exponential-Family Models for Networks. Journal of Statistical Software, 24(3).\n\nnor elsewhere. It concerns the interpretation of the absdiff effect.\n\nIf I have a metric attribute (like size of company), and my model goes as follows:\n\nmodel <- ergm(net ~ edges + absdiff(\"size\"))\n\nwhat does it mean when I get a significant positive, a significant negative or no significant coefficient. Since the term uses the difference a significant positive effect should imply a heterophily of for the size of companies. So companies have a tendency to collaborate, when there size is different, am I right? A significant negative effect then, should indicate homophily. No significant effect would mean, there is no special pattern. Is the interpretation the same for directed and undirected network?\nSorry for posing such a beginners question \nkind regards\nrichard\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101221/efae7e94/attachment.html>",
+      "body_snippet": "Dear List members,\n\nI have a question that probably is easy to answer, but I was not able to find a clear answer, neither in \n\nHunter DR, Handcock MS, Butts CT, Goodreau SM, Morris M (2008b). ergm: A ",
+      "thread_id": "thread-a18915833eba",
+      "thread_depth": 0,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-e43a86c0b1e1",
+      "message_id": "<EDC28F07-1C65-49F2-982A-7FA6C480D738@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-12-23T08:52:13Z",
+      "subject": "[statnet_help] Homophily with absdiff",
+      "subject_clean": "[statnet_help] Homophily with absdiff",
+      "in_reply_to": "<88769.67125.qm@web28404.mail.ukl.yahoo.com>",
+      "references": [
+        "<88769.67125.qm@web28404.mail.ukl.yahoo.com>"
+      ],
+      "body_plain": "Dear Richard,\n\nYour interpretation is exactly right:  Since the absolute difference  \nof size decreases as the sizes become more homophilous, a negative  \nabsdiff coefficient points to stronger homophily (after correcting for  \neverything else in the model) and vice-versa.\n\nBest wishes,\nDave\n\n\n\nOn Dec 21, 2010, at 10:41 AM, Richard Heidler wrote:\n\n> Dear List members,\n>\n> I have a question that probably is easy to answer, but I was not  \n> able to find a clear answer, neither in\n>\n> Hunter DR, Handcock MS, Butts CT, Goodreau SM, Morris M (2008b).  \n> ergm: A Package to Fit, Simulate and Diagnose Exponential-Family  \n> Models for Networks. Journal of Statistical Software, 24(3).\n>\n> nor elsewhere. It concerns the interpretation of the absdiff effect.\n>\n> If I have a metric attribute (like size of company), and my model  \n> goes as follows:\n>\n> model <- ergm(net ~ edges + absdiff(\"size\"))\n>\n> what does it mean when I get a significant positive, a significant  \n> negative or no significant coefficient. Since the term uses the  \n> difference a significant positive effect should imply a heterophily  \n> of for the size of companies. So companies have a tendency to  \n> collaborate, when there size is different, am I right? A significant  \n> negative effect then, should indicate homophily. No significant  \n> effect would mean, there is no special pattern. Is the  \n> interpretation the same for directed and undirected network?\n> Sorry for posing such a beginners question\n> kind regards\n> richard\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101223/ea92297f/attachment.html>",
+      "body_snippet": "Dear Richard,\n\nYour interpretation is exactly right:  Since the absolute difference  \nof size decreases as the sizes become more homophilous, a negative  \nabsdiff coefficient points to stronger homoph",
+      "thread_id": "thread-a18915833eba",
+      "thread_depth": 1,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-d833571bebf5",
+      "message_id": "<174B878F92356F4EADEB87F69311E99C142D77@brown-mail1.gwb.wustl.edu>",
+      "from_name": "Jenine Harris",
+      "from_email_hash": "58e5b70d2876440f1ad8d8b44b872ef827aa4a06e922f831941fe71a43c4bbd0",
+      "date": "2010-12-26T08:32:42Z",
+      "subject": "[statnet_help] error installing previous versions of ergm using tar.gz files ~ ideas or zip files available?",
+      "subject_clean": "[statnet_help] error installing previous versions of ergm using tar.gz files ~ ideas or zip files available?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI'm looking for a way to install previous versions of ergm and have had absolutely no luck with the tar.gz files in the archive at http://cran.r-project.org/src/contrib/Archive/ergm/. I have searched the statnet archives and google for options to combat this error:\n\nError in gzfile(file, \"r\") : cannot open the connection\nIn addition: Warning messages:\n1: In unzip(zipname, exdir = dest) : error 1 in extracting from zip file\n2: In gzfile(file, \"r\") :\n  cannot open compressed file 'ergm_2.0-4.tar.gz/DESCRIPTION', probable reason 'No such file or directory'\n\n....and have found a few ideas, but so far none have worked. I have also tried untar-ing the files and installing from the resulting unzipped ergm folders. The computers I have access to are running Windows 7 and I have tried several strategies in R-2.11 and then in the latest R-2.12. I have tried at home (no firewall) and at work (firewall) on computers with and without admin access. If anyone has successfully installed any of these archived packages or other tar.gz packages, I would greatly appreciate any tips. Or, if there are zip ergm files available somewhere, they seem to install without issue.\n\nThanks a million,\nJenine\n\n--\nJenine K. Harris, PhD\nAssistant Professor\nGeorge Warren Brown School of Social Work\nWashington University in St. Louis\nOne Brookings Drive\nCampus Box 1196\nSt. Louis, MO 63130\nPhone: 314-935-3939  Fax: 314-935-8126\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101226/3702fd1d/attachment.html>",
+      "body_snippet": "Hi,\n\nI'm looking for a way to install previous versions of ergm and have had absolutely no luck with the tar.gz files in the archive at http://cran.r-project.org/src/contrib/Archive/ergm/. I have sear",
+      "thread_id": "thread-d833571bebf5",
+      "thread_depth": 0,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-cb84203560c9",
+      "message_id": "<4D066B22-9A2E-4C8A-8152-D2BB17E9E50A@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-12-27T07:51:49Z",
+      "subject": "[statnet_help] error installing previous versions of ergm using tar.gz files ~ ideas or zip files available?",
+      "subject_clean": "[statnet_help] error installing previous versions of ergm using tar.gz files ~ ideas or zip files available?",
+      "in_reply_to": "<174B878F92356F4EADEB87F69311E99C142D77@brown-mail1.gwb.wustl.edu>",
+      "references": [
+        "<174B878F92356F4EADEB87F69311E99C142D77@brown-mail1.gwb.wustl.edu>"
+      ],
+      "body_plain": "Hi all.  Since this is likely to be helpful to others running windows,  \nI'll post a quick update:  Jenine was able to get this to work but it  \ninvolved jumping through a few hoops.  Jumping through these hoops  \nwill allow windows users to install R packages from their source code  \n(which is different from downloading the pre-compiled binary versions  \nand which is sometimes a very useful thing to be able to do):\n\n(1) Visit http://www.murdoch-sutherland.com/Rtools/ and download and  \ninstall the latest version of Rtools for windows.\n(2) open a terminal (DOS) window.  Don't start R yet.\n(3) If you have source code for any version of an R package (such as  \nergm_2.0-4.tar.gz in the email below), type the following after cd'ing  \nto the directory containing the source code:\n\nRcmd INSTALL ergm_2.0-4.tar.gz\n\n(4) Start R\n(5) Type library(ergm) or library(statnet) or whatever the name of  \nyour package is.\n\nThere are still a few things that can go wrong here -- for instance,  \nif you don't have a version of the network package installed, then  \nyou'll get an error when trying to install ergm -- but if you run into  \ntrouble, sometimes the following web page can be helpful:\nhttp://cran.r-project.org/doc/manuals/R-admin.html#The-Windows-toolset\n\nHope this helps,\nDave\n\n\n\n\nOn Dec 26, 2010, at 11:32 AM, Jenine Harris wrote:\n\n> Hi,\n>\n> I?m looking for a way to install previous versions of ergm and have  \n> had absolutely no luck with the tar.gz files in the archive at http://cran.r-project.org/src/contrib/Archive/ergm/ \n> . I have searched the statnet archives and google for options to  \n> combat this error:\n>\n> Error in gzfile(file, \"r\") : cannot open the connection\n> In addition: Warning messages:\n> 1: In unzip(zipname, exdir = dest) : error 1 in extracting from zip  \n> file\n> 2: In gzfile(file, \"r\") :\n>   cannot open compressed file 'ergm_2.0-4.tar.gz/DESCRIPTION',  \n> probable reason 'No such file or directory'\n>\n> ?.and have found a few ideas, but so far none have worked. I have  \n> also tried untar-ing the files and installing from the resulting  \n> unzipped ergm folders. The computers I have access to are running  \n> Windows 7 and I have tried several strategies in R-2.11 and then in  \n> the latest R-2.12. I have tried at home (no firewall) and at work  \n> (firewall) on computers with and without admin access. If anyone has  \n> successfully installed any of these archived packages or other  \n> tar.gz packages, I would greatly appreciate any tips. Or, if there  \n> are zip ergm files available somewhere, they seem to install without  \n> issue.\n>\n> Thanks a million,\n> Jenine\n>\n> --\n> Jenine K. Harris, PhD\n> Assistant Professor\n> George Warren Brown School of Social Work\n> Washington University in St. Louis\n> One Brookings Drive\n> Campus Box 1196\n> St. Louis, MO 63130\n> Phone: 314-935-3939  Fax: 314-935-8126\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101227/f818e80c/attachment.html>",
+      "body_snippet": "Hi all.  Since this is likely to be helpful to others running windows,  \nI'll post a quick update:  Jenine was able to get this to work but it  \ninvolved jumping through a few hoops.  Jumping through ",
+      "thread_id": "thread-d833571bebf5",
+      "thread_depth": 1,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-e4cc8f931099",
+      "message_id": "<AANLkTikQbgwT__oH+Y-16FhOKZTaL2o_HPxknDObJmqu@mail.gmail.com>",
+      "from_name": "Moses Boudourides",
+      "from_email_hash": "c5624448747271419acb164061064e1a7b0a1e969681d0b921805e16e6affe4a",
+      "date": "2010-12-28T12:06:59Z",
+      "subject": "[statnet_help] Questions on plotting a latentnet fit",
+      "subject_clean": "[statnet_help] Questions on plotting a latentnet fit",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nAfter fitting  a maximum likelihood estimator for a latent position\nmodel with two dimensions to a directed graph and then plotting\npositions and groups, I've obtained the plot in the attachment.\n\nWhy do we observe a number of nodes which appear to be isolated\n(although there are no isolates in this network)? Actually there are\nsome arrows incident to these nodes but there are no arcs. Could you\nexplain what we have here?\n\nAlso, is there a way to zoom specific areas of the latent space in\norder to be able to see more details? How can this be done in\nergm/latentnet?\n\nBest regards,\n\n--Moses\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: multilinear_May1999_ergmmresults.pdf\nType: application/pdf\nSize: 29363 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101228/f49a6190/attachment.pdf>",
+      "body_snippet": "Hello,\n\nAfter fitting  a maximum likelihood estimator for a latent position\nmodel with two dimensions to a directed graph and then plotting\npositions and groups, I've obtained the plot in the attachme",
+      "thread_id": "thread-e4cc8f931099",
+      "thread_depth": 0,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-63c1685145b7",
+      "message_id": "<3D02D96F-1888-46FB-AB52-E2E79E83C458@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-12-31T10:19:17Z",
+      "subject": "[statnet_help] ergm.userterms package and document",
+      "subject_clean": "[statnet_help] ergm.userterms package and document",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all.  For the few of you who might be waiting for the document  \ndescribing how to write your own terms to use with the statnet  \npackages, this is just a quick update:  The article is essentially  \nready to go, but it's become clear that there are a couple of  \nsubstantial changes that should be made to the ergm package prior to  \nthe article's release.  The reason for the changes is semantics:  We  \nwant to make sure that we're using terminology consistently throughout  \nthe internal workings of the ergm package now that we're writing about  \nhow to add to those internal workings using ergm.userterms.\n\nSo, we're sorry for this latest delay, but the article and new  \nergm.userterms package should be available soon.\n\nHappy new year to everyone!\nDave",
+      "body_snippet": "Hi all.  For the few of you who might be waiting for the document  \ndescribing how to write your own terms to use with the statnet  \npackages, this is just a quick update:  The article is essentially ",
+      "thread_id": "thread-63c1685145b7",
+      "thread_depth": 0,
+      "month": "2010-12"
+    },
+    {
+      "id": "msg-d5b210003adc",
+      "message_id": "<9717C5EFA7999845927498ECD9F6877C2BA1BD@uu01msg-exb01.soliscom.uu.nl>",
+      "from_name": "Bojanowski, M.J.  (Michal)",
+      "from_email_hash": "27858c02eeddab5f13c84d02582fd09242a7632ae83e730aa500cec040f23e67",
+      "date": "2010-12-31T10:46:13Z",
+      "subject": "[statnet_help] ergm.userterms package and document",
+      "subject_clean": "[statnet_help] ergm.userterms package and document",
+      "in_reply_to": null,
+      "references": [
+        "<3D02D96F-1888-46FB-AB52-E2E79E83C458@stat.psu.edu>"
+      ],
+      "body_plain": "Thanks for the news. I'm looking forward to that paper.\n\nHappy New Year 2011 to the entire Statnet team!\n\n~michal\n\n____________________________________\nMichal Bojanowski\nICS / Department of Sociology\nUtrecht University\nHeidelberglaan 2; 3584 CS Utrecht\nThe Netherlands\nm.j.bojanowski at uu dot nl\nhttp://www.fss.uu.nl/soc/bojanowski/\nhttp://www.bojanorama.pl\n\n\n\n\n-----Original Message-----\nFrom: statnet_help-bounces@mailman2.u.washington.edu on behalf of David Hunter\nSent: Fri 2010-12-31 19:19\nTo: statnet_help mailing list\nSubject: [statnet_help] ergm.userterms package and document\n \nHi all.  For the few of you who might be waiting for the document  \ndescribing how to write your own terms to use with the statnet  \npackages, this is just a quick update:  The article is essentially  \nready to go, but it's become clear that there are a couple of  \nsubstantial changes that should be made to the ergm package prior to  \nthe article's release.  The reason for the changes is semantics:  We  \nwant to make sure that we're using terminology consistently throughout  \nthe internal workings of the ergm package now that we're writing about  \nhow to add to those internal workings using ergm.userterms.\n\nSo, we're sorry for this latest delay, but the article and new  \nergm.userterms package should be available soon.\n\nHappy new year to everyone!\nDave\n\n\n\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20101231/de15657e/attachment.html>",
+      "body_snippet": "Thanks for the news. I'm looking forward to that paper.\n\nHappy New Year 2011 to the entire Statnet team!\n\n~michal\n\n____________________________________\nMichal Bojanowski\nICS / Department of Sociology\n",
+      "thread_id": "thread-63c1685145b7",
+      "thread_depth": 1,
+      "month": "2010-12"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-530ad047e291",
+      "subject": "[statnet_help] ?ergm -> \"proposaltype\" option",
+      "message_count": 3,
+      "participants": [
+        "David Hunter",
+        "Victorin Luisier"
+      ],
+      "started": "2010-12-02T06:53:29Z",
+      "last_reply": "2010-12-06T06:20:31Z",
+      "root_message_id": "msg-530ad047e291"
+    },
+    {
+      "id": "thread-2f44d0c8c849",
+      "subject": "[statnet_help] ERGMs to estimate network change",
+      "message_count": 2,
+      "participants": [
+        "David Schaefer",
+        "Martina Morris"
+      ],
+      "started": "2010-12-07T15:34:12Z",
+      "last_reply": "2010-12-10T15:32:20Z",
+      "root_message_id": "msg-2f44d0c8c849"
+    },
+    {
+      "id": "thread-02cf464810f4",
+      "subject": "[statnet_help] PhD positions in Groningen, The Netherlands",
+      "message_count": 1,
+      "participants": [
+        "Christian Steglich"
+      ],
+      "started": "2010-12-10T04:26:10Z",
+      "last_reply": "2010-12-10T04:26:10Z",
+      "root_message_id": "msg-02cf464810f4"
+    },
+    {
+      "id": "thread-e83cdd688c2d",
+      "subject": "[statnet_help] Directed network bug? + GoF test",
+      "message_count": 3,
+      "participants": [
+        "Balazs Kovacs",
+        "David Hunter",
+        "Kevin Lewis"
+      ],
+      "started": "2010-12-13T10:07:48Z",
+      "last_reply": "2010-12-14T06:47:02Z",
+      "root_message_id": "msg-e83cdd688c2d"
+    },
+    {
+      "id": "thread-6f253b2a1cf8",
+      "subject": "[statnet_help] degeneracy with missing dyads",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Soriani Nicola"
+      ],
+      "started": "2010-12-14T15:19:50Z",
+      "last_reply": "2010-12-15T14:07:49Z",
+      "root_message_id": "msg-6f253b2a1cf8"
+    },
+    {
+      "id": "thread-403dcd135481",
+      "subject": "[statnet_help] Memory Issue with a large directed network",
+      "message_count": 1,
+      "participants": [
+        "Deepak Sharma"
+      ],
+      "started": "2010-12-15T04:19:34Z",
+      "last_reply": "2010-12-15T04:19:34Z",
+      "root_message_id": "msg-403dcd135481"
+    },
+    {
+      "id": "thread-93ccb1c3653a",
+      "subject": "[statnet_help] community detection",
+      "message_count": 4,
+      "participants": [
+        "Mark S. Handcock",
+        "Michal Bojanowski",
+        "Moses Boudourides"
+      ],
+      "started": "2010-12-20T03:29:07Z",
+      "last_reply": "2010-12-21T05:59:14Z",
+      "root_message_id": "msg-93ccb1c3653a"
+    },
+    {
+      "id": "thread-bb32b019ac15",
+      "subject": "[statnet_help] degeneracy with missing dyads",
+      "message_count": 1,
+      "participants": [
+        "Soriani Nicola"
+      ],
+      "started": "2010-12-20T12:39:28Z",
+      "last_reply": "2010-12-20T12:39:28Z",
+      "root_message_id": "msg-bb32b019ac15"
+    },
+    {
+      "id": "thread-a18915833eba",
+      "subject": "[statnet_help] Homophily with absdiff",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Richard Heidler"
+      ],
+      "started": "2010-12-21T07:41:40Z",
+      "last_reply": "2010-12-23T08:52:13Z",
+      "root_message_id": "msg-a18915833eba"
+    },
+    {
+      "id": "thread-d833571bebf5",
+      "subject": "[statnet_help] error installing previous versions of ergm using tar.gz files ~ ideas or zip files available?",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Jenine Harris"
+      ],
+      "started": "2010-12-26T08:32:42Z",
+      "last_reply": "2010-12-27T07:51:49Z",
+      "root_message_id": "msg-d833571bebf5"
+    },
+    {
+      "id": "thread-e4cc8f931099",
+      "subject": "[statnet_help] Questions on plotting a latentnet fit",
+      "message_count": 1,
+      "participants": [
+        "Moses Boudourides"
+      ],
+      "started": "2010-12-28T12:06:59Z",
+      "last_reply": "2010-12-28T12:06:59Z",
+      "root_message_id": "msg-e4cc8f931099"
+    },
+    {
+      "id": "thread-63c1685145b7",
+      "subject": "[statnet_help] ergm.userterms package and document",
+      "message_count": 2,
+      "participants": [
+        "Bojanowski, M.J.  (Michal)",
+        "David Hunter"
+      ],
+      "started": "2010-12-31T10:19:17Z",
+      "last_reply": "2010-12-31T10:46:13Z",
+      "root_message_id": "msg-63c1685145b7"
+    }
+  ]
+}

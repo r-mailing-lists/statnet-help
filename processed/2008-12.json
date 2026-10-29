@@ -1,0 +1,222 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2008-12",
+  "messages": [
+    {
+      "id": "msg-d0ec1c75d6ec",
+      "message_id": "<00679E51EE311B44B2A060470D0A5002023DD66A@EX05.asurite.ad.asu.edu>",
+      "from_name": "David Schaefer",
+      "from_email_hash": "68ed60123835f929b1bceff70c06e4abcd7c94aab073da013ffb873fd56ee511",
+      "date": "2008-12-01T20:35:40Z",
+      "subject": "[statnet_help] ergm out of memory error",
+      "subject_clean": "[statnet_help] ergm out of memory error",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet users,\n\nI am trying to estimate an ERGM and keep getting an error that not\nenough memory can be allocated.  The code I'm using and the\ncorresponding error message are included below.  \n\nI'm trying to recreate and modify the analyses from Goodreau et al's\nstatnet tutorial in the Journal of Statistical Software.  I'm using the\nfaux.mesa.high data, which has 205 vertices and 203 edges.  The problem\nappears when I add the gwdegree parameter to a model that otherwise\nincludes only nodematch terms.  I've increased the memory available to R\nbut that does not help.  Based on what I've read in previous posts, it\ndoesn't appear that the network is too large or that there are too many\nrows or terms in the model.  I'm using version 2.1 of statnet and\nversion 2.8 of R.  \n\nI would appreciate any suggestions to overcome this error.\n\nThanks,\nDavid\n\n> memory.limit(4000)\n> fmh <- faux.mesa.high\n> model4b <- ergm(fmh ~ edges + nodematch(\"Grade\") + nodematch(\"Race\") +\n\n  nodematch(\"Sex\") + gwdegree(1, fixed=FALSE), MCMCsamplesize = 1e+5,\nmaxit \n  = 15, verbose = TRUE, control = control.ergm(steplength = 0.25), \n  seed = 123)\n\nEvaluating network in model\nInitializing model.\nInitializing Metropolis-Hastings proposal.\nFitting initial model.\nCompressed MPLE covariate matrix has 584 rows.\nFitting ERGM.\nIteration 1 of at most 15 with parameter: \n          edges nodematch.Grade  nodematch.Race   nodematch.Sex \n     -4.9537419       2.7962712       0.4734459       0.5879183 \n       gwdegree  gwdegree.decay \n     -1.7433720       1.0000000 \nTNT sampler accepted 30.805% of 10000000 proposed steps.\nError: cannot allocate vector of size 158.7 Mb\n\n*********************************************\nDavid R. Schaefer, Ph.D.\nSchool of Social and Family Dynamics\nArizona State University\nhttp://www.public.asu.edu/~schaef/\n*********************************************",
+      "body_snippet": "Dear statnet users,\n\nI am trying to estimate an ERGM and keep getting an error that not\nenough memory can be allocated.  The code I'm using and the\ncorresponding error message are included below.  \n\nI",
+      "thread_id": "thread-d0ec1c75d6ec",
+      "thread_depth": 0,
+      "month": "2008-12"
+    },
+    {
+      "id": "msg-516f70fbedb2",
+      "message_id": "<A326B3E0-6215-4FCC-8D49-440DAE2CA3D4@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-12-02T08:40:26Z",
+      "subject": "[statnet_help] ergm out of memory error",
+      "subject_clean": "[statnet_help] ergm out of memory error",
+      "in_reply_to": "<00679E51EE311B44B2A060470D0A5002023DD66A@EX05.asurite.ad.asu.edu>",
+      "references": [
+        "<00679E51EE311B44B2A060470D0A5002023DD66A@EX05.asurite.ad.asu.edu>"
+      ],
+      "body_plain": "Hi David.  I'm not sure why you're getting an error about trying to  \nallocate an object of 158.7 Mb, which doesn't seem that large to me,  \nbut nonetheless one suggestion I have is to use \"fixed=TRUE\" (perhaps  \nwith several values of the parameter) as in Section 7 of the JSS  \narticle you mention instead of \"fixed=FALSE\".  It is MUCH more  \ncomputationally intensive to do \"fixed=FALSE\" because the ergm routine  \nis trying to fit a complicated curved exponential family model,  \nwhereas with \"fixed=TRUE\" the model is actually just a standard ergm.\n\nHope this helps,\nDave\n\nDavid Hunter\nAssociate professor\nDepartment of Statistics\nPenn State University\nPhone:  (814) 863-0979\nFax:  (814) 863-7114\nwww.stat.psu.edu/~dhunter\n\n\n\nOn Dec 1, 2008, at 11:35 PM, David Schaefer wrote:\n\n> Dear statnet users,\n>\n> I am trying to estimate an ERGM and keep getting an error that not\n> enough memory can be allocated.  The code I'm using and the\n> corresponding error message are included below.\n>\n> I'm trying to recreate and modify the analyses from Goodreau et al's\n> statnet tutorial in the Journal of Statistical Software.  I'm using  \n> the\n> faux.mesa.high data, which has 205 vertices and 203 edges.  The  \n> problem\n> appears when I add the gwdegree parameter to a model that otherwise\n> includes only nodematch terms.  I've increased the memory available  \n> to R\n> but that does not help.  Based on what I've read in previous posts, it\n> doesn't appear that the network is too large or that there are too  \n> many\n> rows or terms in the model.  I'm using version 2.1 of statnet and\n> version 2.8 of R.\n>\n> I would appreciate any suggestions to overcome this error.\n>\n> Thanks,\n> David\n>\n>> memory.limit(4000)\n>> fmh <- faux.mesa.high\n>> model4b <- ergm(fmh ~ edges + nodematch(\"Grade\") +  \n>> nodematch(\"Race\") +\n>\n>  nodematch(\"Sex\") + gwdegree(1, fixed=FALSE), MCMCsamplesize = 1e+5,\n> maxit\n>  = 15, verbose = TRUE, control = control.ergm(steplength = 0.25),\n>  seed = 123)\n>\n> Evaluating network in model\n> Initializing model.\n> Initializing Metropolis-Hastings proposal.\n> Fitting initial model.\n> Compressed MPLE covariate matrix has 584 rows.\n> Fitting ERGM.\n> Iteration 1 of at most 15 with parameter:\n>          edges nodematch.Grade  nodematch.Race   nodematch.Sex\n>     -4.9537419       2.7962712       0.4734459       0.5879183\n>       gwdegree  gwdegree.decay\n>     -1.7433720       1.0000000\n> TNT sampler accepted 30.805% of 10000000 proposed steps.\n> Error: cannot allocate vector of size 158.7 Mb\n>\n> *********************************************\n> David R. Schaefer, Ph.D.\n> School of Social and Family Dynamics\n> Arizona State University\n> http://www.public.asu.edu/~schaef/\n> *********************************************\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi David.  I'm not sure why you're getting an error about trying to  \nallocate an object of 158.7 Mb, which doesn't seem that large to me,  \nbut nonetheless one suggestion I have is to use \"fixed=TRUE",
+      "thread_id": "thread-d0ec1c75d6ec",
+      "thread_depth": 1,
+      "month": "2008-12"
+    },
+    {
+      "id": "msg-2e2daeb8f5bc",
+      "message_id": "<49417975.7060008@hawaii.edu>",
+      "from_name": "Andy Taylor",
+      "from_email_hash": "81d14be04f86406681b25edebdededc353ecf90877c02000d059e9b960b16838",
+      "date": "2008-12-11T12:35:01Z",
+      "subject": "[statnet_help] sis",
+      "subject_clean": "[statnet_help] sis",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Could someone direct me to a primer on sequential importance sampling?  \nI'm new to these sorts of methods, and SIS is not the standard method \nused for generating random graphs by people in my research field \n(ecological interaction webs), so I want to be sure I'm using and \nreporting the procedure correctly.\n\nI also have a specific question about the _Journal of Statistical \nSoftware_ article on networksis (Admiraal & Handcock 2008):  on page 11, \nwhen using the Hmisc functions for calculating quantiles, mean, etc., \nwhy are the weights  'p / sum(p)'  rather than '(1/p) / sum(1/p)'  as in \nthe histogram on page 10?  Following from this, which weights would be \nused to calculate a P-value (summing the weights for all graphs giving a \nresult more extreme than the observed)?\n\nThanks in advance for any and all guidance.\n\nAndy Taylor\n\nAndrew D. Taylor\nDepartment of Zoology\nUniversity of Hawaii at Manoa",
+      "body_snippet": "Could someone direct me to a primer on sequential importance sampling?  \nI'm new to these sorts of methods, and SIS is not the standard method \nused for generating random graphs by people in my resear",
+      "thread_id": "thread-2e2daeb8f5bc",
+      "thread_depth": 0,
+      "month": "2008-12"
+    },
+    {
+      "id": "msg-943e184fb6ef",
+      "message_id": "<53f641360812111852i37037badnc8cba2e631d86884@mail.gmail.com>",
+      "from_name": "Elena Grewal",
+      "from_email_hash": "82405de478d2a4af660d23848680f3c2a591c80e9451bcbddb6fe3ad2968a022",
+      "date": "2008-12-11T18:52:15Z",
+      "subject": "[statnet_help] questions about statnet",
+      "subject_clean": "[statnet_help] questions about statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI am a graduate student at the Stanford School of Education, running\nergms using Add Health data. I have two questions.\n\n1. I would like to include a parameter which adds a statistic for all\nthe ties where the difference in parental level of education between\ntwo students in a tie is less than three. the command is\nsmalldiff(\"fameduc\", 3). However I get an error message:\n\n \"Error in ergm.pl(Clist = Clist, Clist.miss = Clist2, m = m,\ntheta.offset=theta.offset, : Na/NaN/Inf in foreign function call (arg\n11)\".\n\nI tried changing the scalar to 2 or 4 and get the same error. have you\never seen an error like this?\n\n2. I am trying to make plots of school networks and am having trouble\nsetting the color and shape of the nodes. I would like to have the\ncolor of the nodes represent race and the shape represent GPA (four\ncategories). Is there a way to code this? I was trying the following:\nplot(net, vertex.col=4-nodes$\"srace\", vertex.sides=4+nodes$\"gpa\") and\ngot the following error message: Error in 1:s : NA/NaN argument\n\nAny suggestions for how to set the actual colors for the different\nraces? The default for my first category, white, is a black dot, which\nis not the most intuitive :)\n\nThanks so much for your help. I hope I am using this listserv correctly...\n\nElena\n\n-- \nElena Grewal\nInstitute for Research on Education Policy & Practice\nStanford University\n203-887-4858",
+      "body_snippet": "Hi,\n\nI am a graduate student at the Stanford School of Education, running\nergms using Add Health data. I have two questions.\n\n1. I would like to include a parameter which adds a statistic for all\nthe ",
+      "thread_id": "thread-943e184fb6ef",
+      "thread_depth": 0,
+      "month": "2008-12"
+    },
+    {
+      "id": "msg-345ffcb0d178",
+      "message_id": "<4941FC55.9030008@stanford.edu>",
+      "from_name": "James Holland Jones",
+      "from_email_hash": "acb826446b123a69e69bcb08e635e786bb139ab855a8cfa560a293990f9fb6ea",
+      "date": "2008-12-11T21:53:25Z",
+      "subject": "[statnet_help] questions about statnet",
+      "subject_clean": "[statnet_help] questions about statnet",
+      "in_reply_to": "<53f641360812111852i37037badnc8cba2e631d86884@mail.gmail.com>",
+      "references": [
+        "<53f641360812111852i37037badnc8cba2e631d86884@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Elena,\n\nI can't help you with the first question, but I can tell you how I \nsolved the second.\n\nSay you have a graph called \"net\" and two vectors (the length of which \ncorresponds to the number of vertices in your graph): \"gpa\" and \"race\". \n  Set these as vertex attributes:\n\nset.vertex.attribute(net,\"gpa\",floor(gpa)+2) # gpa=1 => triangle\nset.vertex.attribute(net,\"race\", race)\n\nNow you can plot the graph:\n\nplot(net,\n      vertex.col=\"race\",\n      vertex.sides=\"gpa\"\n      edge.lwd=1)\n\nYou can do more tweaking, but that's the general idea.  You can rig your \ncolors to be something more mnemonic using palette().  Type this command \nat the R prompt and you will see what the default color order is. Either \nset the race such that they correspond to the colors you want or change \nthe order in palette() -- just remember what you did to change it!\n\nHope this helps.\n\nCheers,\n\nJamie\n-- \nJames Holland Jones\nAssistant Professor, Department of Anthropology\nFellow, Woods Institute for the Environment\n\n450 Serra Mall\nBuilding 50\nStanford, CA 94305-2034\n\nphone:  650-723-4824\nfax:    650-725-0605\nemail:  jhj1@stanford.edu\nurl:    http://www.stanford.edu/~jhj1",
+      "body_snippet": "Hi Elena,\n\nI can't help you with the first question, but I can tell you how I \nsolved the second.\n\nSay you have a graph called \"net\" and two vectors (the length of which \ncorresponds to the number of ",
+      "thread_id": "thread-943e184fb6ef",
+      "thread_depth": 1,
+      "month": "2008-12"
+    },
+    {
+      "id": "msg-c04b5219f807",
+      "message_id": "<Pine.WNT.4.64.0812121133330.1920@mmorris>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2008-12-12T12:10:55Z",
+      "subject": "[statnet_help] longitudinal analyses",
+      "subject_clean": "[statnet_help] longitudinal analyses",
+      "in_reply_to": "<6423_1226788523_mAFMZJqc015873_491F4E4B.3090709@fas.harvard.edu>",
+      "references": [
+        "<6423_1226788523_mAFMZJqc015873_491F4E4B.3090709@fas.harvard.edu>"
+      ],
+      "body_plain": "Hi Kevin,\n\nSorry it has taken so long to respond to your email.  The short answer is \nthat the development team is hard at work developing a fully dynamic \nmodeling capacity in statnet.  Some of this is functional now in our \ndevelopment code, and the rest is likely to be within the next 6-9 months.\n\nThere are two types of dynamics in networks: dynamics that govern ties \n(formation, dissolution, attribute changes) and dynamics that govern nodes \n(entry, exit, attribute changes).  We've been calling these \"tie dynamics\" \nand \"vital dynamics\" respectively.\n\nWe have a working version of a simple tie dynamic process up and running \nnow in our development version of statnet.  It uses an ERGM model to \ngovern tie formation, and one or more duration parameters to govern tie \ndissolution.  The size and composition of the network are fixed.  We have \nused this model to simulate an epidemic over a network where the ties form \nand dissolve over time, preserving a set of mean statistics (defined by \nthe ERGM terms) and a duration distribution (both estimated from data). \nA paper that uses this model this will be published in the American \nJournal of Public Health in June 2009.\n\nOne of our graduate students, Pavel Krivitsky, is currently working on \ndeveloping the modeling framework for vital dynamics in his dissertation. \nThe fundamental question for the model is: what stays invariant as network \nsize and composition change?  The answer depends in part on what kind of \ndata you have.  Even cross sectional network data can be used to drive a \nfully dynamic network simulation, if you are willing to make assumptions \nabout the parts of the process that you do not observe.  Pavel is \npresenting a paper up at the NIPS conference (today!) that presents one \napproach to that topic.\n\nMaking the network fully dynamic (tie and vital) also requires reworking \nsome of the data storage and retrieval aspects of the code.  We have been \ndeveloping the specifications for that over the past month, and hope to \nhave the framework settled by the end of January.\n\nIf you (or others) are interested in more discussion about this, let us \nknow.  If there are specific kinds of functionality that you would like to \nsee implemented, it's a good time to speak up.  We can't promise to make \nit happen in the first pass, but if it is easy to incorporate, we will.\n\nbest of the season to all,\nMartina\n\n\n\nOn Sat, 15 Nov 2008, Kevin Lewis wrote:\n\n> hi statnet team,\n>\n> i know there are now options available for visualizing dynamic network data \n> (e.g. the last article in the special issue of joss)- but does statnet offer \n> any way of actually modeling longitudinal data using ergms? or is SIENA still \n> the only program available to do this (although using a different statistical \n> framework)? in general, i would love to hear what other kinds of things we \n> may see in the future of statnet, and any thoughts you may have on the \n> longitudinal modeling issue. thanks!\n>\n> -kevin\n>\n> -- \n> Kevin Lewis\n> Ph.D. Candidate in Sociology\n> Harvard University\n> 641 William James Hall\n> 33 Kirkland Street\n> Cambridge, MA 02138\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Kevin,\n\nSorry it has taken so long to respond to your email.  The short answer is \nthat the development team is hard at work developing a fully dynamic \nmodeling capacity in statnet.  Some of this ",
+      "thread_id": "thread-c04b5219f807",
+      "thread_depth": 0,
+      "month": "2008-12"
+    },
+    {
+      "id": "msg-58aeb7e700e3",
+      "message_id": "<Pine.WNT.4.64.0812121839320.5248@vinaya.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2008-12-12T18:44:57Z",
+      "subject": "[statnet_help] questions about statnet",
+      "subject_clean": "[statnet_help] questions about statnet",
+      "in_reply_to": "<53f641360812111852i37037badnc8cba2e631d86884@mail.gmail.com>",
+      "references": [
+        "<53f641360812111852i37037badnc8cba2e631d86884@mail.gmail.com>"
+      ],
+      "body_plain": "> I am a graduate student at the Stanford School of Education, running\n> ergms using Add Health data. I have two questions.\n>\n> 1. I would like to include a parameter which adds a statistic for all\n> the ties where the difference in parental level of education between\n> two students in a tie is less than three. the command is\n> smalldiff(\"fameduc\", 3). However I get an error message:\n>\n> \"Error in ergm.pl(Clist = Clist, Clist.miss = Clist2, m = m,\n> theta.offset=theta.offset, : Na/NaN/Inf in foreign function call (arg\n> 11)\".\n>\n> I tried changing the scalar to 2 or 4 and get the same error. have you\n> ever seen an error like this?\n\nHi Elena,\n\nMy first guess would be that you have an NA for at least one student's \nparental education level in your data.  Is that right?  I do believe that \nsmalldiff as written does not handle missing attribute values.\n\nIf that's the problem, then you might consider somehow imputing your \nmissing values. Better, more model-based approaches to handling missing \ndata in ergms are in development, but I would consider starting there.\n\nIf that's not the problem, let me know and I'll brainstorm some more.\n\nSteve",
+      "body_snippet": "> I am a graduate student at the Stanford School of Education, running\n> ergms using Add Health data. I have two questions.\n>\n> 1. I would like to include a parameter which adds a statistic for all\n> ",
+      "thread_id": "thread-943e184fb6ef",
+      "thread_depth": 1,
+      "month": "2008-12"
+    },
+    {
+      "id": "msg-93b4fc6bc3cf",
+      "message_id": "<494BF9BF.5010706@fas.harvard.edu>",
+      "from_name": "Kevin Lewis",
+      "from_email_hash": "3e16f115495b0e59b9f7583fd0cfe6f012b826a6e99dfab804f7275bfb0c581c",
+      "date": "2008-12-19T11:45:03Z",
+      "subject": "[statnet_help] gof p-values",
+      "subject_clean": "[statnet_help] gof p-values",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "greetings,\n\ni am wondering if someone could help me interpret the specific meaning \nof p-values listed in the output for the gof function. for instance, the \nfollowing is an excerpt from the gof for geodesic distance. what do the \np-values of 0.84, 0.00, 0.00, and 0.12 mean with respect to my 100 \nsimulations? (i cannot find this in any of the online user guides or the \nR help.) it seems like a higher p-value is in this case better- are \nthere any recommended quantitative guidelines for assessing what is \n\"acceptable,\" as opposed to visual inspection of the plots? thanks greatly!\n\n-kevin\n\nGoodness-of-fit for minimum geodesic distance\n\n       obs    min      mean    max MC p-value\n1     5641   4938   5496.79   5928       0.84\n2    32828  24759  26464.17  28581       0.00\n3   129666  89610  99867.30 112361       0.00\n4   199184 191645 208298.86 221721       0.12\n\n-- \nKevin Lewis\nPh.D. Candidate in Sociology\nHarvard University\n641 William James Hall\n33 Kirkland Street\nCambridge, MA 02138",
+      "body_snippet": "greetings,\n\ni am wondering if someone could help me interpret the specific meaning \nof p-values listed in the output for the gof function. for instance, the \nfollowing is an excerpt from the gof for g",
+      "thread_id": "thread-93b4fc6bc3cf",
+      "thread_depth": 0,
+      "month": "2008-12"
+    },
+    {
+      "id": "msg-b79d6dc1eca1",
+      "message_id": "<AE68207B-06C7-4078-BE20-58D9F504C188@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-12-19T12:19:43Z",
+      "subject": "[statnet_help] gof p-values",
+      "subject_clean": "[statnet_help] gof p-values",
+      "in_reply_to": "<494BF9BF.5010706@fas.harvard.edu>",
+      "references": [
+        "<494BF9BF.5010706@fas.harvard.edu>"
+      ],
+      "body_plain": "Hi Kevin.  The idea behind the MCMC p-value is simply that you  \ncalculate what proportion of the \"null\" distribution (in this case,  \nrepresented by the 100 simulated values) is at least as extreme as the  \nobserved statistic.  Here, I believe that \"at least as extreme\" means  \n\"at least as far from the sample mean\", which would give essentially a  \n2-sided hypothesis test of the null that says the observed came from  \nthe same distribution as the simulations, though I'm not 100% sure  \nthat's the exact method of calculation.\n\nYou are therefore correct that large p-values in this instance are  \n\"good\", in the sense that they give no evidence that the null  \nhypothesis is false (i.e., no evidence that the observed stat comes  \nfrom a different distribution than the simulated stats).\n\nHope this helps.\n\nDave\n\n\n\nOn Dec 19, 2008, at 2:45 PM, Kevin Lewis wrote:\n\n> greetings,\n>\n> i am wondering if someone could help me interpret the specific  \n> meaning of p-values listed in the output for the gof function. for  \n> instance, the following is an excerpt from the gof for geodesic  \n> distance. what do the p-values of 0.84, 0.00, 0.00, and 0.12 mean  \n> with respect to my 100 simulations? (i cannot find this in any of  \n> the online user guides or the R help.) it seems like a higher p- \n> value is in this case better- are there any recommended quantitative  \n> guidelines for assessing what is \"acceptable,\" as opposed to visual  \n> inspection of the plots? thanks greatly!\n>\n> -kevin\n>\n> Goodness-of-fit for minimum geodesic distance\n>\n>      obs    min      mean    max MC p-value\n> 1     5641   4938   5496.79   5928       0.84\n> 2    32828  24759  26464.17  28581       0.00\n> 3   129666  89610  99867.30 112361       0.00\n> 4   199184 191645 208298.86 221721       0.12\n>\n> -- \n> Kevin Lewis\n> Ph.D. Candidate in Sociology\n> Harvard University\n> 641 William James Hall\n> 33 Kirkland Street\n> Cambridge, MA 02138\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Kevin.  The idea behind the MCMC p-value is simply that you  \ncalculate what proportion of the \"null\" distribution (in this case,  \nrepresented by the 100 simulated values) is at least as extreme a",
+      "thread_id": "thread-93b4fc6bc3cf",
+      "thread_depth": 1,
+      "month": "2008-12"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-d0ec1c75d6ec",
+      "subject": "[statnet_help] ergm out of memory error",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "David Schaefer"
+      ],
+      "started": "2008-12-01T20:35:40Z",
+      "last_reply": "2008-12-02T08:40:26Z",
+      "root_message_id": "msg-d0ec1c75d6ec"
+    },
+    {
+      "id": "thread-2e2daeb8f5bc",
+      "subject": "[statnet_help] sis",
+      "message_count": 1,
+      "participants": [
+        "Andy Taylor"
+      ],
+      "started": "2008-12-11T12:35:01Z",
+      "last_reply": "2008-12-11T12:35:01Z",
+      "root_message_id": "msg-2e2daeb8f5bc"
+    },
+    {
+      "id": "thread-943e184fb6ef",
+      "subject": "[statnet_help] questions about statnet",
+      "message_count": 3,
+      "participants": [
+        "Elena Grewal",
+        "James Holland Jones",
+        "Steven Goodreau"
+      ],
+      "started": "2008-12-11T18:52:15Z",
+      "last_reply": "2008-12-12T18:44:57Z",
+      "root_message_id": "msg-943e184fb6ef"
+    },
+    {
+      "id": "thread-c04b5219f807",
+      "subject": "[statnet_help] longitudinal analyses",
+      "message_count": 1,
+      "participants": [
+        "Martina Morris"
+      ],
+      "started": "2008-12-12T12:10:55Z",
+      "last_reply": "2008-12-12T12:10:55Z",
+      "root_message_id": "msg-c04b5219f807"
+    },
+    {
+      "id": "thread-93b4fc6bc3cf",
+      "subject": "[statnet_help] gof p-values",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Kevin Lewis"
+      ],
+      "started": "2008-12-19T11:45:03Z",
+      "last_reply": "2008-12-19T12:19:43Z",
+      "root_message_id": "msg-93b4fc6bc3cf"
+    }
+  ]
+}

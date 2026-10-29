@@ -1,0 +1,225 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2021-04",
+  "messages": [
+    {
+      "id": "msg-d1f38bbab043",
+      "message_id": "<C7FF4171-D80C-4795-8286-C811AAD3852A@colorado.edu>",
+      "from_name": "Chuck Hayward",
+      "from_email_hash": "ecab7674e06db35397b5c1e7243acb7f82906c6fdbc556287155961e91252104",
+      "date": "2021-04-02T10:52:06Z",
+      "subject": "[statnet_help] Missing final isolate node",
+      "subject_clean": "[statnet_help] Missing final isolate node",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nAbout 5 years ago, I did a network analysis of a listserv. I?m no programmer, but I pieced together the code from examples I found online and reading lots of the available help resources. I?m now trying to rerun it on another dataset that is set up exactly the same as the original. My node list imports correctly with 153 nodes and I?m separately loading the edgelist (which is just a list of edges based on from/to node definitions, so no isolates are included in the edgelist). When I build the network object from these two, I?m only getting 152 nodes. The final node is missing and happens to be an isolate (it is defined in the node list but does not appear in the edgelist). I modified the edgelist to make the final node have an edge, and then it shows up, so I?m assuming it has something to do with the node being an isolate. Is there a way to fix this problem of a final isolate node missing when creating a network object?\n\nHere is the relevant code:\n#read edge lists to create networks.\noptions(stringsAsFactors = FALSE)\nmEL<-read.csv(\"mEL.csv\", as.is=TRUE, header = TRUE)\n\n#load attributes.\nmInfo=read.csv(\"mInfo.csv\", as.is = TRUE, header = TRUE)\n\n#create network object.\nmnet<-network(mEL, matrix.type=\"edgelist\", vertex.attr = mInfo, directed = TRUE)\n\nThanks for any insight you can provide,\n\n\n--------------------------------------------\nChuck Hayward (he/him)\nSenior Professional Research Assistant\nEthnography & Evaluation Research (E&ER)\nUniversity of Colorado Boulder\nhttps://www.colorado.edu/eer/\n\nSchedule a meeting with me:\nhttps://calendly.com/chuck-hayward\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210402/7391a42b/attachment.html>",
+      "body_snippet": "Hi all,\n\nAbout 5 years ago, I did a network analysis of a listserv. I?m no programmer, but I pieced together the code from examples I found online and reading lots of the available help resources. I?m",
+      "thread_id": "thread-d1f38bbab043",
+      "thread_depth": 0,
+      "month": "2021-04"
+    },
+    {
+      "id": "msg-910e453557d5",
+      "message_id": "<aaeab4db-f868-fd44-c34d-36bb94a2cdfe@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2021-04-02T20:26:58Z",
+      "subject": "[statnet_help] Missing final isolate node",
+      "subject_clean": "[statnet_help] Missing final isolate node",
+      "in_reply_to": "<C7FF4171-D80C-4795-8286-C811AAD3852A@colorado.edu>",
+      "references": [
+        "<C7FF4171-D80C-4795-8286-C811AAD3852A@colorado.edu>"
+      ],
+      "body_plain": "Hi, Chuck -\n\nYour problem is that your edgelist doesn't contain information on the \nnumber of vertices; when this information is not present, network() will \nmake its best guess by taking the largest vertex ID referred to in the \nedge set as the vertex count.? In your case, that doesn't work due to \nhaving an isolate in last position.\n\nA simple and generic fix is to ensure that your edgelists always have \nvertex size information appended.? You can do that by setting the \"n\" \nattribute of the edgelist.? E.g., if your edgelist is in a matrix called \nmyedgelist, and you have vertnum vertices in network, this will do the \ntrick:\n\nattr(myedgelist,\"n\") <- vertnum? #Set the number of vertices to vertnum\n\nPassing this to network() should create a network with the correct \nnumber of vertices.? (Likewise, you can use an sna edgelist, which also \ncontains this information.)\n\nHope that helps!\n\n-Carter\n\nOn 4/2/21 10:52 AM, Chuck Hayward wrote:\n>\n> Hi all,\n>\n> About 5 years ago, I did a network analysis of a listserv. I?m no \n> programmer, but I pieced together the code from examples I found \n> online and reading lots of the available help resources. I?m now \n> trying to rerun it on another dataset that is set up exactly the same \n> as the original. My node list imports correctly with 153 nodes and I?m \n> separately loading the edgelist (which is just a list of edges based \n> on from/to node definitions, so no isolates are included in the \n> edgelist). When I build the network object from these two, I?m only \n> getting 152 nodes. The final node is missing and happens to be an \n> isolate (it is defined in the node list but does not appear in the \n> edgelist). I modified the edgelist to make the final node have an \n> edge, and then it shows up, so I?m assuming it has something to do \n> with the node being an isolate. Is there a way to fix this problem of \n> a final isolate node missing when creating a network object?\n>\n> Here is the relevant code:\n>\n> #read edge lists to create networks.\n>\n> options(stringsAsFactors = FALSE)\n>\n> mEL<-read.csv(\"mEL.csv\", as.is=TRUE, header = TRUE)\n>\n> #load attributes.\n>\n> mInfo=read.csv(\"mInfo.csv\", as.is = TRUE, header = TRUE)\n>\n> #create network object.\n>\n> mnet<-network(mEL, matrix.type=\"edgelist\", vertex.attr = mInfo, \n> directed = TRUE)\n>\n> Thanks for any insight you can provide,\n>\n> --------------------------------------------\n>\n> *Chuck Hayward*(he/him)\n>\n> Senior Professional Research Assistant\n>\n> /Ethnography & Evaluation Research (E&ER)/\n>\n> /University of Colorado Boulder/\n>\n> https://www.colorado.edu/eer/ <https://www.colorado.edu/eer/>\n>\n> Schedule a meeting with me:\n>\n> https://calendly.com/chuck-hayward <https://calendly.com/chuck-hayward>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210402/0d4fc93b/attachment.html>",
+      "body_snippet": "Hi, Chuck -\n\nYour problem is that your edgelist doesn't contain information on the \nnumber of vertices; when this information is not present, network() will \nmake its best guess by taking the largest ",
+      "thread_id": "thread-d1f38bbab043",
+      "thread_depth": 1,
+      "month": "2021-04"
+    },
+    {
+      "id": "msg-3ddfae2e5c9d",
+      "message_id": "<23609ade11cd43ae9a5fd479f7707a91@kit.edu>",
+      "from_name": "Wolbring, Laura (IFSS)",
+      "from_email_hash": "672c122e3a59b47813725b429e51b057f11921f7e582c0aa88e0bd29125acd99",
+      "date": "2021-04-14T08:57:54Z",
+      "subject": "[statnet_help] Add odds ratios and 95% confidence interval to ergm summary table",
+      "subject_clean": "[statnet_help] Add odds ratios and 95% confidence interval to ergm summary table",
+      "in_reply_to": "<c3507e3ee80dc766f05bafee2e7e28bab223d5f4.camel@unsw.edu.au>",
+      "references": [
+        "<aae42d1cd8a94aa28be065236ecac3e2@kit.edu>",
+        "<c3507e3ee80dc766f05bafee2e7e28bab223d5f4.camel@unsw.edu.au>"
+      ],
+      "body_plain": "Dear Pavel,\n\nThanks a lot, that worked and helped me out!\n\nJust to be sure: Are the odds ratios and confidence intervals calculated with the code you suggest also meaningful for the dependence terms (gwdegree, gwdsp, gwesp)?\nI ask because I get the same values for odds ratios and confidence intervals with the code you suggest as when I use a code from Harris (Jenine K. Harris (2014). An Introduction to Exponential Random Graph Modeling. Thousand Oaks: Sage) which she says cannot be applied to models that contain dependence terms.\n\nThank you very much and best regards,\nLaura\n\nVon: Pavel N. Krivitsky <p.krivitsky@unsw.edu.au>\nGesendet: Dienstag, 30. M?rz 2021 01:17\nAn: Wolbring, Laura (IFSS) <laura.wolbring@kit.edu>; statnet_help@u.washington.edu\nBetreff: Re: [statnet_help] Add odds ratios and 95% confidence interval to ergm summary table\n\nDear Laura,\n\nThe quickest way to calculate the odds ratios is probably to use the built-in confint() function to get the intervals for the parameters and then call exp() on those.\n\nYou can extract the summary table by calling coef(summary(ergm_fit)).\n\nPutting it all together, something like\n\n\ncbind(coef(summary(ergm_fit)), exp(confint(ergm_fit)))\n\nshould do the trick.\n\n                                                         I hope this helps,\n                                                         Pavel\n\nOn Mon, 2021-03-29 at 11:57 +0000, Wolbring, Laura (IFSS) wrote:\nDear all,\n\nI want to add odds ratios and a 95% confidence interval to my ergm summary table including dependence terms (gwdsp, gwdegree, gwesp).\nTo calculate odds ratios, I already used the exp() and sqrt() functions but I have read that standard errors for dependence models are adjusted due to the use of MCMC estimation. Therefore, odds ratios for dependence models should only be calculated by editing the underlying code of the summary table.\n\nI would be very grateful for any advice on how to add odds ratios to the ergm summary table.\n\nThanks in advance and best regards\nLaura\n\nKarlsruhe Institute of Technology (KIT)\nInstitute of Sports and Sports Science (IfSS)\n\nLaura Wolbring\nResearch Assistant\n\nEngler-Bunte-Ring 15\nBuilding 40.40\nRoom -110\n76131 Karlsruhe\nPhone : +49 721 608-46696\n\nE-Mail:laura.wolbring@kit.edu<mailto:laura.wolbring@kit.edu>\nWeb: www.sport.kit.edu<http://www.sport.kit.edu>\n\nKIT - Die Forschungsuniversit?t in der Helmholtz-Gemeinschaft\nDas KIT ist seit 2010 als familiengerechte Hochschule zertifiziert.\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210414/61beb9dc/attachment.html>",
+      "body_snippet": "Dear Pavel,\n\nThanks a lot, that worked and helped me out!\n\nJust to be sure: Are the odds ratios and confidence intervals calculated with the code you suggest also meaningful for the dependence terms (",
+      "thread_id": "thread-3ddfae2e5c9d",
+      "thread_depth": 0,
+      "month": "2021-04"
+    },
+    {
+      "id": "msg-6922fbdc0bc3",
+      "message_id": "<8910D8CA-CC9A-4906-A074-251F0B0CDB75@ucdenver.edu>",
+      "from_name": "Adams, Jimi",
+      "from_email_hash": "9aec449cac94c1a0e96f8f76afa24d5cae644ad5471ccdfee9b909fb918b5a7b",
+      "date": "2021-04-14T12:37:54Z",
+      "subject": "[statnet_help] mutuality interaction",
+      "subject_clean": "[statnet_help] mutuality interaction",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "HI all,\nI have a potentially naive question about how to estimate an effect of interest to us. Effectively, the question is whether homophily on an attribute amplifies social closure processes; for now, let?s just focus on the mutuality (dyadic) version. \n\t?> So we want to estimate whether there?s an extra effect *on mutuality* for those who are the same on an attribute compared to differing on that attribute. \n\nGiven some of the options in the mutuality term, we kluged together an approach, but I suspect I may be missing something about how those options combine, and therefore this might not be what we?re after. \n\t?> So, the question is whether either of the options we?ve tried actually gets at what we?re after, and/or if there?s a simpler way to do this correctly?\n\nWhat we did was estimate a model using the ?same? option in the mutuality term, combined with a general mutual term. So we have:\n\nm3 <- ergm(net~edges + mutual + mutual(same=?attr?))\n\nWhile I was hoping that combo of effects would (a) be estimable (it was!) & (b) be essentially what we are after, diagnostics and thinking about the opportunities for those to arise led us to think we also needed the ?main effects? so we added those:\n\nm3a <- ergm(net~edges + nodeifactor(?attr?) + nodeofactor(?attr?) + nodematch(?attr?) + mutual + mutual(same=?attr?))\n\nLike I said above, I suspect there?s something I?m missing here in the combinations, and therefore isn?t really testing for what we?re after. So, I?m wondering if that?s the case. And if so, is there a way to actually do what we?re trying to?\n\nThanks!\njimi\n\n\njimi adams\n(on leave 2020-21)\nAssociate Professor, Health & Behavioral Sciences\nUniversity of Colorado Denver\n\no. https://ucdenver.zoom.us/my/jimiadams\np. 303.315.7177 (messages only)\ne. jimi.adams@ucdenver.edu\nw. jimiadams.com",
+      "body_snippet": "HI all,\nI have a potentially naive question about how to estimate an effect of interest to us. Effectively, the question is whether homophily on an attribute amplifies social closure processes; for no",
+      "thread_id": "thread-6922fbdc0bc3",
+      "thread_depth": 0,
+      "month": "2021-04"
+    },
+    {
+      "id": "msg-58e68e3cee9a",
+      "message_id": "<55ff55d2-5f98-6d48-3749-621b4140417d@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2021-04-16T15:48:21Z",
+      "subject": "[statnet_help] mutuality interaction",
+      "subject_clean": "[statnet_help] mutuality interaction",
+      "in_reply_to": "<8910D8CA-CC9A-4906-A074-251F0B0CDB75@ucdenver.edu>",
+      "references": [
+        "<8910D8CA-CC9A-4906-A074-251F0B0CDB75@ucdenver.edu>"
+      ],
+      "body_plain": "hi jimi, hope all is well with you.\n\ni think the way you're approaching this makes lots of sense.? many folks \nwould do it the first way you're doing it, but you're right that \nincluding all of the lower-order effects involving that attribute will \nprovide a purer estimate of the specific phenomenon you're interested \nin.? i don't know of an easier way to do this with ergm terms than what \nyou've done, although that doesn't mean it doesn't exist!\n\nso: was the mutual(same=\"attr\") coefficient positive???\n\nbest,\nsteve\n\n\nOn 4/14/2021 12:37 PM, Adams, Jimi wrote:\n> HI all,\n> I have a potentially naive question about how to estimate an effect of interest to us. Effectively, the question is whether homophily on an attribute amplifies social closure processes; for now, let?s just focus on the mutuality (dyadic) version.\n> \t?> So we want to estimate whether there?s an extra effect *on mutuality* for those who are the same on an attribute compared to differing on that attribute.\n>\n> Given some of the options in the mutuality term, we kluged together an approach, but I suspect I may be missing something about how those options combine, and therefore this might not be what we?re after.\n> \t?> So, the question is whether either of the options we?ve tried actually gets at what we?re after, and/or if there?s a simpler way to do this correctly?\n>\n> What we did was estimate a model using the ?same? option in the mutuality term, combined with a general mutual term. So we have:\n>\n> m3 <- ergm(net~edges + mutual + mutual(same=?attr?))\n>\n> While I was hoping that combo of effects would (a) be estimable (it was!) & (b) be essentially what we are after, diagnostics and thinking about the opportunities for those to arise led us to think we also needed the ?main effects? so we added those:\n>\n> m3a <- ergm(net~edges + nodeifactor(?attr?) + nodeofactor(?attr?) + nodematch(?attr?) + mutual + mutual(same=?attr?))\n>\n> Like I said above, I suspect there?s something I?m missing here in the combinations, and therefore isn?t really testing for what we?re after. So, I?m wondering if that?s the case. And if so, is there a way to actually do what we?re trying to?\n>\n> Thanks!\n> jimi\n>\n>\n> jimi adams\n> (on leave 2020-21)\n> Associate Professor, Health & Behavioral Sciences\n> University of Colorado Denver\n>\n> o. https://ucdenver.zoom.us/my/jimiadams\n> p. 303.315.7177 (messages only)\n> e. jimi.adams@ucdenver.edu\n> w. jimiadams.com\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \n*****************************************************************\nSteven M. Goodreau / Professor / Dept. of Anthropology\nPhysical address: Denny Hall M236\nMailing address: Campus Box 353100 / 4216 Memorial Way NE\nUniv. of Washington / Seattle WA 98195\n1-206-685-3870 (phone) /1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau\n*****************************************************************",
+      "body_snippet": "hi jimi, hope all is well with you.\n\ni think the way you're approaching this makes lots of sense.? many folks \nwould do it the first way you're doing it, but you're right that \nincluding all of the lo",
+      "thread_id": "thread-6922fbdc0bc3",
+      "thread_depth": 1,
+      "month": "2021-04"
+    },
+    {
+      "id": "msg-b975b3b0c4bf",
+      "message_id": "<BN7PR08MB3876B417EA928108AA7868E5B2469@BN7PR08MB3876.namprd08.prod.outlook.com>",
+      "from_name": "Skvoretz, John JR.",
+      "from_email_hash": "d9d92440a6f7507e6f71b399ecfe0420ea9f4b43f43f0b19e718f2889e60e420",
+      "date": "2021-04-22T06:18:09Z",
+      "subject": "[statnet_help] advice on interpretation valued graphs",
+      "subject_clean": "[statnet_help] advice on interpretation valued graphs",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "As an exercise I use Lazaga lawyer data to set up a valued directed graph with a count on edges from 0 to 3 based on the number of tie types between i and j, eg. 3 if i names j as a friend, an advisor, and a collaborator.  I then estimate a model with effects for sum and for matching on \"rank\" which has the two values P and A for partner and associate.  so nothing fancy.  I pick discrete uniform as the reference distribution (and would appreciate advice on what to consider in making this choice vs the Binomial).  Here are the results\n\nvm1r <- ergm(law.tot ~ sum + nodematch(\"rank\"), response=\"nr\", reference=~DiscUnif(0,3))\n\nMonte Carlo MLE Results\n                   Estimate Std. Error MCMC % z value Pr(>|z|)\nsum                -1.19084    0.02886      0 -41.265   <1e-04 ***  nodematch.sum.rank  0.37575    0.03877      0   9.693   <1e-04 ***\n  ---\n  Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n\nNull Deviance:     0  on 4970  degrees of freedom\nResidual Deviance: -4401  on 4968  degrees of freedom\n\nI would like to have a local interpretation of this model for an ij pair that parallels the interpretation of a model for binary data.  For binary data, one way to think about a model?s prediction for the probability of an ij tie is to assign a vector of 0s to the model features representing the absence of an ij tie, getting a total score of 0 for this outcome and then calculate the similar total score for vector of model features if an ij tie is present.  Then the probability of the ij tie is the latter exponentiated score divided by the sum of it and 1, the value of exp(0).\nBack to the valued example, I consider an ij pair that match on rank:  if there is no ij tie then the profile for that pair on the features sum and nodematch.sum.rank is (0,0) and so the score for that outcome is 0, an ij tie of value 1 has a profile (1,1) and so a score of (-1.19084+0.37575) for that outcome, an ij tie of value 2 has a profile (2,2) and so a score of 2*(-1.19084+0.37575) and finally an ij tie of value 3 corresponds to a profile of (3,3) and so a score of 3*(-1.19084+0.37575).\nNow exp(score) is proportional to the probability of the network in which the ij dyad has one of these four scores and the rest of the pairs are fixed at their observed outcomes. So I calculate the probability of each of the four outcomes as the exp of its score divided by the sum of the exp of the four scores yielding\n\nPr(y_ij=0|Y_-ij & rank_i=rank_j) = 0.57964401\n\nPr(y_ij=1|Y_-ij & rank_i=rank_j) = 0.25655021\n\nPr(y_ij=2|Y_-ij & rank_i=rank_j) = 0.11354903\n\nPr(y_ij=3|Y_-ij & rank_i=rank_j) = 0.05025676\n\n\n\nWhich can be compared with the values when the ij pair do not match on rank:\n\n\n\nPr(y_ij=0|Y_-ij & rank_i<>rank_j) = 0.70202741\n\nPr(y_ij=1|Y_-ij & rank_i<>rank_j) = 0.21339225\n\nPr(y_ij=2|Y_-ij & rank_i<>rank_j) = 0.06486393\n\nPr(y_ij=3|Y_-ij & rank_i<>rank_j) = 0.01971641\n\n\n\nSo my questions are:  (1) is this an acceptable way of interpretation for discrete limited count data and (2) what considerations should be used to select a reference distribution for such data?\n\n\nJohn Skvoretz, AAAS Fellow\nDistinguished University Professor of Sociology\nDistinguished University Professor of Computer Science and Engineering (by courtesy)\nCarolina Distinguished Professor Emeritus\nEditor, Journal of Social Structure\nSociology\nUSF\n4202 E Fowler Ave CPR 107\nTampa, FL 33620\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210422/8099c73e/attachment.html>",
+      "body_snippet": "As an exercise I use Lazaga lawyer data to set up a valued directed graph with a count on edges from 0 to 3 based on the number of tie types between i and j, eg. 3 if i names j as a friend, an advisor",
+      "thread_id": "thread-b975b3b0c4bf",
+      "thread_depth": 0,
+      "month": "2021-04"
+    },
+    {
+      "id": "msg-45b3b352854c",
+      "message_id": "<c8964add-5e67-99e4-ada5-5ff54cc429d1@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2021-04-23T23:24:32Z",
+      "subject": "[statnet_help] advice on interpretation valued graphs",
+      "subject_clean": "[statnet_help] advice on interpretation valued graphs",
+      "in_reply_to": "<BN7PR08MB3876B417EA928108AA7868E5B2469@BN7PR08MB3876.namprd08.prod.outlook.com>",
+      "references": [
+        "<BN7PR08MB3876B417EA928108AA7868E5B2469@BN7PR08MB3876.namprd08.prod.outlook.com>"
+      ],
+      "body_plain": "Hi, John -\n\n\nOn 4/22/21 6:18 AM, Skvoretz, John JR. wrote:\n>\n> As an exercise I use Lazaga lawyer data to set up a valued directed \n> graph with a count on edges from 0 to 3 based on the number of tie \n> types between i and j, eg. 3 if i names j as a friend, an advisor, and \n> a collaborator.I then estimate a model with effects for sum and for \n> matching on \"rank\" which has the two values P and A for partner and \n> associate.so nothing fancy.I pick discrete uniform as the reference \n> distribution (and would appreciate advice on what to consider in \n> making this choice vs the Binomial).Here are the results\n>\n>\n\nI would use a Binomial reference here, because you are modeling this as \nthe sum of indicators for three different interaction types, any of \nwhich could be present.? The reference model for the edge value would \nthen be the sum of three IID Bernoulli trials, which is obviously \nBinomial in character.\n\n\n> vm1r <- ergm(law.tot ~ sum + nodematch(\"rank\"), response=\"nr\", \n> reference=~DiscUnif(0,3))\n>\n> Monte Carlo MLE Results\n>\n> Estimate Std. Error MCMC % z value Pr(>|z|)\n>\n> sum-1.190840.028860 -41.265<1e-04 \n> ***nodematch.sum.rank0.375750.0387709.693<1e-04 ***\n>\n> ---\n>\n> Signif. codes:0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>\n> Null Deviance:0on 4970degrees of freedom\n>\n> Residual Deviance: -4401on 4968degrees of freedom\n>\n> I would like to have a local interpretation of this model for an ij \n> pair that parallels the interpretation of a model for binary data.\n>\n\nThe conditional probability of Yij=yij here is given by\n\n\nexp(-1.19 yij + 0.38 yij Xij)/[sum_{k=0}^3 exp(-1.19 k + 0.38 k Xij)]\n\n\nwhere Xij is 1 if rank_i=rank_j, and 0 otherwise.? This is just like the \nbinary case, except that our \"local normalizing factor\" has to sum over \na larger set of edge values (0 to 3).? Note that, if we were using a \ndifferent reference measure, we would need to factor that in to both the \nnumerator and denominator.? To get a changescore-like representation, we \ncan divide by the numerator:\n\n\n[sum_{k=0}^3 exp(-1.19 (k-yij) + 0.38 Xij (k-yij) )]^-1\n\n\nwhich is, sadly, not as lovely as the binary case.? But it's there.? \nPavel has proposed some other ways to think about the local \ninterpretations of these terms, which could be worth looking up; it may \nalso be worth stealing the sorts of visualizations used to depict energy \nlevel diagrams to visualize these effects.? For instance:\n\n\n\n\nThe \"edge potential,\" as I am calling it here, is the log numerator of \nthe conditional edge value probability.? This ladder representation can \nbe helpful in getting a feel for the relative gaps in probability \nbetween possible states; for instance, if state A is about 0.7 units \nabove state B, then it is about twice as likely to be observed \n(conditionally speaking).? For a network of order N, drawing a line \nabout log(choose(N,2)) units below the top state could in some cases be \ninformative in eliminating states that are rare enough that you'd expect \nto get one of them on average if the entire network were composed of \nedges with the same potential \"ladder.\"? Doubtless there are other \ncreative ways to draw heuristic thresholds that would give a sense of \nwhich states were plausible and which states were not.? Anyway, here's \nthe code for this picture - it's thrown together, but could be useful:\n\n\neleva<- -1.190*(0:3)\n\nplot(1,0,main=\"Edge Potential by Edge Value and Nodematch\", type=\"n\", \nxlim=c(0,3), axes=F, xlab=\"\", ylab=\"Edge Potential\", \nylim=c(3*-1.2,0.38), font.lab=2, font.axis=2)\n\naxis(2,font.axis=2)\n\naxis(1,at=c(1,2),font.axis=2,label=c(\"nodematch(rank)=0\",\"nodematch(rank)=1\")) \n\n\nsegments(0.75,eleva,1.25,eleva,lwd=3); \ntext(0.5,eleva,label=paste(\"Y_ij=\",0:3,sep=\"\"),font=2)\n\nsegments(1.75,eleva+0.37575,2.25,eleva+0.37575,lwd=3,col=2)\n\ntext(2.5,eleva+0.37575,label=paste(\"Y_ij=\",0:3,sep=\"\"),font=2,col=2)\n\n\n(Super pedantic aside for people who are interested in this: in an \nactual energy level diagram, lower numbers would indicate more favorable \nstates (not less), but since we usually like to think in terms of \nprobabilities, I'm putting more probable values higher up.? But there is \na genuine connection - what I'm plotting here is the equivalent of \n-E/(kT), where k is Boltzmann's constant and T is the temperature.? In \nthe absence of an externally meaningful scale, nothing prevents us from \ndeclaring kT=1 by fiat, and then these are just negative energies (in \nour idiosyncratic units). This actually does matter when applying ERGMs \nin physical applications, but I bring it up here in case anyone gets \ninterested in this type of visualization, goes looking for examples, and \ngets confused because the graphs they find online seem to be the wrong \nway around.? For whatever reason, it is conventional to speak of social \nthings as wanting to go up and physical things as wanting to go down.? :-))\n\n\n>\n> So my questions are:(1) is this an acceptable way of interpretation \n> for discrete limited count data\n>\n\nYes - I get the same numbers from the above as for your calculations.\n\n\n> and (2) what considerations should be used to select a reference \n> distribution for such data?\n>\n>\n\nThe reference distribution can be thought of in more than one way.? One \nview is that it sets the form of the conditional distribution.? Another \nview is that it tells you what the \"baseline\" distribution looks like, \nbefore other effects are added to the model.? And yet another is that it \ntells you about the entropy of each graph state - a substantive \ninterpretation of which is that there are hidden degrees of freedom that \ngive you more ways to get some graphs than others (irrespective of the \nmodel parameters), whose collective effect is captured by the reference \nmeasure.? For instance, in this case we envision a generative process in \nwhich there are three discrete ways of interacting, each of which \nindependently is present (or not) within a dyad.? That means that there \nare more ways for the count of interaction modes to be 1 or 2 than 0 or \n3; we can't see the individual interaction modes (those are our hidden \ndegrees of freedom), but they still affect the network by \"biasing\" the \ncounts.? A Binomial reference measure accounts for the influence of that \ntype of process.? If we use a uniform reference, by contrast, we are \nassuming that each edge value is a priori equally likely: there are no \nhidden factors that give us more ways to get a 0 versus a 1 or a 2.\n\n\nThis logic also applies to reference measures in the binary case.? Some \nrather beautiful theory comes of it, in my highly biased opinion.? :-)\n\n\nHope that helps!\n\n\n-Carter\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210423/b0cbd0b8/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: iaimjooannoblbbg.png\nType: image/png\nSize: 35280 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210423/b0cbd0b8/attachment.png>",
+      "body_snippet": "Hi, John -\n\n\nOn 4/22/21 6:18 AM, Skvoretz, John JR. wrote:\n>\n> As an exercise I use Lazaga lawyer data to set up a valued directed \n> graph with a count on edges from 0 to 3 based on the number of tie",
+      "thread_id": "thread-b975b3b0c4bf",
+      "thread_depth": 1,
+      "month": "2021-04"
+    },
+    {
+      "id": "msg-81ad40cc479e",
+      "message_id": "<75db4a6723aa093175054cefec0f72f0abd00095.camel@unsw.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "41572807418827d3378242dec6425ef03cf45319ec22768b112bc8c068097b67",
+      "date": "2021-04-25T23:45:21Z",
+      "subject": "[statnet_help] Add odds ratios and 95% confidence interval to ergm summary table",
+      "subject_clean": "[statnet_help] Add odds ratios and 95% confidence interval to ergm summary table",
+      "in_reply_to": "<23609ade11cd43ae9a5fd479f7707a91@kit.edu>",
+      "references": [
+        "<aae42d1cd8a94aa28be065236ecac3e2@kit.edu>",
+        "<c3507e3ee80dc766f05bafee2e7e28bab223d5f4.camel@unsw.edu.au>",
+        "<23609ade11cd43ae9a5fd479f7707a91@kit.edu>"
+      ],
+      "body_plain": "Dear Laura,\n\nFor dyad-dependent models, they become conditional odds ratios given the rest of the network. That is, the \"odds\" in questions are not P(Yij = 1)/P(Yij = 0) but something more like P(network with Yij = 1)/P(otherwise identical network with Yij = 0).\n\nI hope this helps,\nPavel\n\nOn Wed, 2021-04-14 at 15:57 +0000, Wolbring, Laura (IFSS) wrote:\nDear Pavel,\n\nThanks a lot, that worked and helped me out!\n\nJust to be sure: Are the odds ratios and confidence intervals calculated with the code you suggest also meaningful for the dependence terms (gwdegree, gwdsp, gwesp)?\nI ask because I get the same values for odds ratios and confidence intervals with the code you suggest as when I use a code from Harris (Jenine K. Harris (2014).An Introduction to Exponential Random Graph Modeling. Thousand Oaks: Sage) which she says cannot be applied to models that contain dependence terms.\n\nThank you very much and best regards,\nLaura\n\nVon: Pavel N. Krivitsky <p.krivitsky@unsw.edu.au>\nGesendet: Dienstag, 30. M?rz 2021 01:17\nAn: Wolbring, Laura (IFSS) <laura.wolbring@kit.edu>; statnet_help@u.washington.edu\nBetreff: Re: [statnet_help] Add odds ratios and 95% confidence interval to ergm summary table\n\nDear Laura,\n\nThe quickest way to calculate the odds ratios is probably to use the built-inconfint() function to get the intervals for the parameters and then callexp() on those.\n\nYou can extract the summary table by callingcoef(summary(ergm_fit)).\n\nPutting it all together, something like\n\n\ncbind(coef(summary(ergm_fit)), exp(confint(ergm_fit)))\n\nshould do the trick.\n\n                                                        I hope this helps,\n                                                        Pavel\n\nOn Mon, 2021-03-29 at 11:57 +0000, Wolbring, Laura (IFSS) wrote:\nDear all,\n\nI want to add odds ratios and a 95% confidence interval to my ergm summary table including dependence terms (gwdsp, gwdegree, gwesp).\nTo calculate odds ratios, I already used the exp() and sqrt() functions but I have read that standard errors for dependence models are adjusted due to the use of MCMC estimation. Therefore, odds ratios for dependence models should only be calculated by editing the underlying code of the summary table.\n\nI would be very grateful for any advice on how to add odds ratios to the ergm summary table.\n\nThanks in advance and best regards\nLaura\n\nKarlsruhe Institute of Technology (KIT)\nInstitute of Sports and Sports Science (IfSS)\n\nLaura Wolbring\nResearch Assistant\n\nEngler-Bunte-Ring 15\nBuilding 40.40\nRoom -110\n76131 Karlsruhe\nPhone : +49 721 608-46696\n\nE-Mail:laura.wolbring@kit.edu<mailto:laura.wolbring@kit.edu>\nWeb: www.sport.kit.edu<http://www.sport.kit.edu>\n\nKIT - Die Forschungsuniversit?t in der Helmholtz-Gemeinschaft\nDas KIT ist seit 2010 als familiengerechte Hochschule zertifiziert.\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210426/9e736b93/attachment.html>",
+      "body_snippet": "Dear Laura,\n\nFor dyad-dependent models, they become conditional odds ratios given the rest of the network. That is, the \"odds\" in questions are not P(Yij = 1)/P(Yij = 0) but something more like P(netw",
+      "thread_id": "thread-3ddfae2e5c9d",
+      "thread_depth": 1,
+      "month": "2021-04"
+    },
+    {
+      "id": "msg-b8d274a4dcc1",
+      "message_id": "<CH2PR13MB3303B059AF8E7F569D4325D1FD409@CH2PR13MB3303.namprd13.prod.outlook.com>",
+      "from_name": "Molina, Yamile",
+      "from_email_hash": "fc3bf586ad8db1ca00ac89a73f1c7b9638db3664ec06ed8e5f9f15fcbdfde0ff",
+      "date": "2021-04-28T10:54:49Z",
+      "subject": "[statnet_help] Question regarding exploring mediation with ERGMS",
+      "subject_clean": "[statnet_help] Question regarding exploring mediation with ERGMS",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI was wondering if anyone had experience or resources regarding how to test multiple mediation pathways with ERGMS.\n\nHere is a brief description of the analysis I am hoping to conduct. I am interested in examining potential mediators (e.g., ego's network position, network density, ego-alter relationship type, communication/message quality) that may underlie interventions' effects on breast cancer screening among alters of participants (who are the egos).\n\nThank you,\nYami\n--\nYamil? Molina, MS, MPH, PhD\nPronouns: They/Their/Them\nAssistant Professor, Division of Community Health Sciences, School of Public Health\n\n649 SPHPI MC923\n\nPh: 312-355-2679\n\nFaculty Affiliate, Center for Research on Women and Gender\n\n507 DHSP MC980\n\nPh: 312-355-1791\n\nInitiative Director for Policy/Advocacy and Partnership Development, Cancer Center\n\nUniversity of Illinois Chicago\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210428/8258bc08/attachment.html>",
+      "body_snippet": "Hello,\n\nI was wondering if anyone had experience or resources regarding how to test multiple mediation pathways with ERGMS.\n\nHere is a brief description of the analysis I am hoping to conduct. I am in",
+      "thread_id": "thread-b8d274a4dcc1",
+      "thread_depth": 0,
+      "month": "2021-04"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-d1f38bbab043",
+      "subject": "[statnet_help] Missing final isolate node",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Chuck Hayward"
+      ],
+      "started": "2021-04-02T10:52:06Z",
+      "last_reply": "2021-04-02T20:26:58Z",
+      "root_message_id": "msg-d1f38bbab043"
+    },
+    {
+      "id": "thread-3ddfae2e5c9d",
+      "subject": "[statnet_help] Add odds ratios and 95% confidence interval to ergm summary table",
+      "message_count": 2,
+      "participants": [
+        "Pavel Krivitsky",
+        "Wolbring, Laura (IFSS)"
+      ],
+      "started": "2021-04-14T08:57:54Z",
+      "last_reply": "2021-04-25T23:45:21Z",
+      "root_message_id": "msg-3ddfae2e5c9d"
+    },
+    {
+      "id": "thread-6922fbdc0bc3",
+      "subject": "[statnet_help] mutuality interaction",
+      "message_count": 2,
+      "participants": [
+        "Adams, Jimi",
+        "Steven Goodreau"
+      ],
+      "started": "2021-04-14T12:37:54Z",
+      "last_reply": "2021-04-16T15:48:21Z",
+      "root_message_id": "msg-6922fbdc0bc3"
+    },
+    {
+      "id": "thread-b975b3b0c4bf",
+      "subject": "[statnet_help] advice on interpretation valued graphs",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Skvoretz, John JR."
+      ],
+      "started": "2021-04-22T06:18:09Z",
+      "last_reply": "2021-04-23T23:24:32Z",
+      "root_message_id": "msg-b975b3b0c4bf"
+    },
+    {
+      "id": "thread-b8d274a4dcc1",
+      "subject": "[statnet_help] Question regarding exploring mediation with ERGMS",
+      "message_count": 1,
+      "participants": [
+        "Molina, Yamile"
+      ],
+      "started": "2021-04-28T10:54:49Z",
+      "last_reply": "2021-04-28T10:54:49Z",
+      "root_message_id": "msg-b8d274a4dcc1"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2012-06",
+  "messages": [
+    {
+      "id": "msg-be3e7c5a7f23",
+      "message_id": "<20120601180554.14744nqzsmxrtu2o@web.mail.umich.edu>",
+      "from_name": "Michael T. Heaney",
+      "from_email_hash": "4d6403dbcaae8825781ae6c49066171f12df256ce970fec71e8e0e6fc8ca3792",
+      "date": "2012-06-01T15:05:54Z",
+      "subject": "[statnet_help] MCMC% in ERGM",
+      "subject_clean": "[statnet_help] MCMC% in ERGM",
+      "in_reply_to": "<CAOnZp+e5hri5zfJXOa7tk2i4vh5ZndpQj5XuQ6r1GPUAL1-FHw@mail.gmail.com>",
+      "references": [
+        "<CAOnZp+e5hri5zfJXOa7tk2i4vh5ZndpQj5XuQ6r1GPUAL1-FHw@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Statnet Users,\n\nThe current version of ERGM reports the MCMC%, instead of the MCMC s.e.\n\nIs there anyone that could explain the MCMC% ?  How is it similar to  \nand different from the MCMC s.e.?\n\nThanks in advance for any help. :)\n\nMichael\n\n-- \nMichael T. Heaney, Ph.D.\nAssistant Professor of Organizational Studies & Political Science\nUniversity of Michigan\n722 Dennison Building\n500 Church Street\nAnn Arbor, MI 48109-1042\n\nCell phone: 202-236-3369\nE-mail: mheaney@umich.edu\nhttp://www.umich.edu/~mheaney/",
+      "body_snippet": "Dear Statnet Users,\n\nThe current version of ERGM reports the MCMC%, instead of the MCMC s.e.\n\nIs there anyone that could explain the MCMC% ?  How is it similar to  \nand different from the MCMC s.e.?\n\n",
+      "thread_id": "thread-be3e7c5a7f23",
+      "thread_depth": 0,
+      "month": "2012-06"
+    },
+    {
+      "id": "msg-2a9044cd8efe",
+      "message_id": "<CAA4+SXOHJOoJ+aSzcLeQJ5KOjHKBa4gS40QkSF_KBWzEugufYw@mail.gmail.com>",
+      "from_name": "Nick Duncan",
+      "from_email_hash": "42905d7f39879a9e3ee2c73139a36c5e24f9950947bb7598ebfd47295a74e2d8",
+      "date": "2012-06-02T10:29:18Z",
+      "subject": "[statnet_help] Combining UCINET Adj.Matrices with categorical data in excel",
+      "subject_clean": "[statnet_help] Combining UCINET Adj.Matrices with categorical data in excel",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statneters,\n\nI am a relative newcomer to R and am looking to merge my work in networks\nwith the conventional scale data I have on an organisation (p=58).\nI have a large number of processed binary adjacency matrices developed in\nUCINET, which I can output as excel files. I also have a large number of\ndata frames within excel files.\nThe AM's and the excel files all share a common coding so 1 identifies the\nsame person in the network as it does in the attribute dataframes.\n\nI would like to explore how much of the network analysis I can do in\nStatnet/R. At present I am finding it hard to know how I might most\nconveniently link the AM's to the various categorical data I have (e.g.\npersonality, values, perceived trustworthiness and so on).\nI would like to be able to carry out both ego and network correlations and\nregressions.\nFor example I might want to regress personality profile on network\ncentrality (there is not uniformity of number of edges between the network\ndata and the attribute data, some attribute data may apply to a subset of\nthe network e.g. managers).\n\nI have looked through a number of the supporting documents, and found\n'Network Analysis with statnet for Individual , Organizational , and\nInternational Relations Applications' to be particularly helpful.\nBut, it looks as though I would need to code each attribute link\nindividually which would not be practical.\nMy guess (fervent hope...) is that there is a simple way of knitting these\ndata together that I have not registered.\n\nPlease don't hesitate to ask if more information/clarification is needed.\n\nAny help or link to a suitable document on this would make my jubilee\nweekend!\n\nBest,\nNick Duncan\nUniversity of Cambridge\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20120602/7e25b902/attachment.html>",
+      "body_snippet": "Dear Statneters,\n\nI am a relative newcomer to R and am looking to merge my work in networks\nwith the conventional scale data I have on an organisation (p=58).\nI have a large number of processed binary",
+      "thread_id": "thread-2a9044cd8efe",
+      "thread_depth": 0,
+      "month": "2012-06"
+    },
+    {
+      "id": "msg-f68dcd6fcfa5",
+      "message_id": "<135EFAA6D6095A4C923A117412BA2A9208D68387@MBXD-02.exchange.cornell.edu>",
+      "from_name": "Brian Rubineau",
+      "from_email_hash": "07982f3e85165fce9ba79b68bac170d226a27f1270c3b55761e6817dde7ac78b",
+      "date": "2012-06-04T11:56:58Z",
+      "subject": "[statnet_help] RE: Combining UCINET Adj.Matrices with categorical data in excel",
+      "subject_clean": "[statnet_help] RE: Combining UCINET Adj.Matrices with categorical data in excel",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Nick\nI may be misinterpreting what you mean by \"link,\" but I can suggest how you can create a network object with an arbitrarily large number of vertex attributes.\nI find it convenient to save my Excel network-related data as CSV files and import into R.  For the adjacency matrix, be sure that the first COLUMN is NOT the names/numbers of the nodes, but the first ROW can be (and perhaps should be, if you want to keep the vertex names you provide). You need not specify each node attribute singly, but can read it in as a table, and use the \"vertex.attr\" option when creating your network object in R.\n\nnodeData <- read.csv(\"C:\\\\Path\\\\nodeData.csv\",header=T)  # read in node data\nadjMat <- read.csv(\"C:\\\\Path\\\\AdjacencyMatrix.csv\",header=T)  # read in adjacency matrix\nnodeData$nodeNames <- names(adjMat)  # add a \"nodeNames\" variable to the node data populated with the vertex names from the first row of the adjacency matrix file\nmyNetwork <- network(as.matrix(adjMat),vertex.attr=nodeData, directed=?)  # create a network object with the node data - specify directed=T or F as appropriate\nmyNetwork # see a description of the network object including a listing of the node data variables\n\nCheers,\nBrian Rubineau\n\n-----Original Message-----\nFrom: Nick Duncan <nickdunc@gmail.com>\nSent: Sat 6/2/2012 1:29 PM\nTo: statnet_help@u.washington.edu\nSubject: Combining UCINET Adj.Matrices with categorical data in excel\n\nDear Statneters,\n\nI am a relative newcomer to R and am looking to merge my work in networks with the conventional scale data I have on an organisation (p=58). \nI have a large number of processed binary adjacency matrices developed in UCINET, which I can output as excel files. I also have a large number of data frames within excel files. \nThe AM's and the excel files all share a common coding so 1 identifies the same person in the network as it does in the attribute dataframes.\n\nI would like to explore how much of the network analysis I can do in Statnet/R. At present I am finding it hard to know how I might most conveniently link the AM's to the various categorical data I have (e.g. personality, values, perceived trustworthiness and so on).\nI would like to be able to carry out both ego and network correlations and regressions.\nFor example I might want to regress personality profile on network centrality (there is not uniformity of number of edges between the network data and the attribute data, some attribute data may apply to a subset of the network e.g. managers).\n\nI have looked through a number of the supporting documents, and found 'Network Analysis with statnet for Individual , Organizational , and International Relations Applications' to be particularly helpful.\nBut, it looks as though I would need to code each attribute link individually which would not be practical.\nMy guess (fervent hope...) is that there is a simple way of knitting these data together that I have not registered.\n\nPlease don't hesitate to ask if more information/clarification is needed.\n\nAny help or link to a suitable document on this would make my jubilee weekend!\n\nBest,\nNick Duncan\nUniversity of Cambridge",
+      "body_snippet": "Hi Nick\nI may be misinterpreting what you mean by \"link,\" but I can suggest how you can create a network object with an arbitrarily large number of vertex attributes.\nI find it convenient to save my E",
+      "thread_id": "thread-f68dcd6fcfa5",
+      "thread_depth": 0,
+      "month": "2012-06"
+    },
+    {
+      "id": "msg-491c2f9a0e95",
+      "message_id": "<20120605161005.14375rkfljo3tfs4@web.mail.umich.edu>",
+      "from_name": "Michael T. Heaney",
+      "from_email_hash": "4d6403dbcaae8825781ae6c49066171f12df256ce970fec71e8e0e6fc8ca3792",
+      "date": "2012-06-05T13:10:05Z",
+      "subject": "[statnet_help] bbnam -- Random Number Seed?",
+      "subject_clean": "[statnet_help] bbnam -- Random Number Seed?",
+      "in_reply_to": "<135EFAA6D6095A4C923A117412BA2A9208D68387@MBXD-02.exchange.cornell.edu>",
+      "references": [
+        "<135EFAA6D6095A4C923A117412BA2A9208D68387@MBXD-02.exchange.cornell.edu>"
+      ],
+      "body_plain": "Dear bbnam users:\n\nIs there a way to feed a random number seed to bbnam?\n\nMichael\n\n-- \nMichael T. Heaney, Ph.D.\nAssistant Professor of Organizational Studies & Political Science\nUniversity of Michigan\n722 Dennison Building\n500 Church Street\nAnn Arbor, MI 48109-1042\n\nCell phone: 202-236-3369\nE-mail: mheaney@umich.edu\nhttp://www.umich.edu/~mheaney/",
+      "body_snippet": "Dear bbnam users:\n\nIs there a way to feed a random number seed to bbnam?\n\nMichael\n\n-- \nMichael T. Heaney, Ph.D.\nAssistant Professor of Organizational Studies & Political Science\nUniversity of Michigan",
+      "thread_id": "thread-f68dcd6fcfa5",
+      "thread_depth": 1,
+      "month": "2012-06"
+    },
+    {
+      "id": "msg-2fc1c42c3757",
+      "message_id": "<CAA4+SXNCxmQGyE_y=ZKQHZVsfzQCuoR_JyUtvSFJ7+V4G0ij0Q@mail.gmail.com>",
+      "from_name": "Nick Duncan",
+      "from_email_hash": "42905d7f39879a9e3ee2c73139a36c5e24f9950947bb7598ebfd47295a74e2d8",
+      "date": "2012-06-07T03:34:33Z",
+      "subject": "[statnet_help] Vertex.Col: A problem and a question",
+      "subject_clean": "[statnet_help] Vertex.Col: A problem and a question",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All,\n\n\nThanks to your help, I am now hapily creating network objects with\nattribute data that look plausible.\nMy first steps have been to visualise some attribute data within different\nnetworks.\nHaving overcome (I hope) the issue of having missing data in the\nattributes, by suppressing the relevant rows in the attribute matrix, I'd\nlike to be quite sure about the interpretation that can be made of the\ncolour of the node markers.\n\nI have used plot.network which seems very flexible.\n'vertex.col=\"HH\" where HH is a range of scores between 1 and 5.\n\nI am having one problem and have one question.\n\nProblem: I cannot understand the logic of the colour selection, and what\ncolour is assigned to the nodes with missing attibute data. In a test it\nseemed that white/no colour was assigned to zero or missing data). However\nin the real data, a grey scale seems to have been adopted with white/no\ncolour being a high score.\n\nI can't see a way of configuring vertex.col - should I perhaps use a\ndifferent plot command such as gplot? It would be important to be able to\nassign a specific colour to the missing data to avoid confusion.\n\nMy question: Could I get a heatmap type colouring in the node marker (which\nhas the nice option of using either relative or absolute scores)?\n\nMany thanks for any pointer on this.\n\nNick Duncan\nCentre of Development Studies\nUniversity of Cambridge\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20120607/d45e2176/attachment.html>",
+      "body_snippet": "Dear All,\n\n\nThanks to your help, I am now hapily creating network objects with\nattribute data that look plausible.\nMy first steps have been to visualise some attribute data within different\nnetworks.\n",
+      "thread_id": "thread-2fc1c42c3757",
+      "thread_depth": 0,
+      "month": "2012-06"
+    },
+    {
+      "id": "msg-7bccd5bf434e",
+      "message_id": "<884DA0B126EC7646BC5B9FB76E36997E7D8EB3D2@xmail33.ad.ua.ac.be>",
+      "from_name": "Beyers Jan",
+      "from_email_hash": "9d18b4f0c39f20f943907a911857b73d17f9b1006d7f69a1dfc59d26be5b94f1",
+      "date": "2012-06-07T23:09:28Z",
+      "subject": "[statnet_help] installation",
+      "subject_clean": "[statnet_help] installation",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet supporting team,\n\nAs I want to run some autocorrelation and ERGM models I would like to turn to STATNET. I am trying to install the software in R, but I get the following message:\n\nWarning message:\npackage ?statnet? is not available (for R version 2.15.0)\n\nThink I have the latest version of R. Probably this is a small thing... sorry for the hassle.\n\nBest\n\nJ\n\n\nProf. Jan Beyers\nACIM - Antwerp Centre for Institutions and Multilevel Politics\nDepartment of Political Science\nUniversiteit Antwerpen\nSint Jacobstraat 2 - BE 2000 Antwerp - Belgium\n+ 32 3 265 56 00\nhttp://acim.ua.ac.be<http://acim.ua.ac.be/>\nhttp://www.ua.ac.be/jan.beyers\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20120608/84d89bc0/attachment.html>",
+      "body_snippet": "Dear statnet supporting team,\n\nAs I want to run some autocorrelation and ERGM models I would like to turn to STATNET. I am trying to install the software in R, but I get the following message:\n\nWarnin",
+      "thread_id": "thread-7bccd5bf434e",
+      "thread_depth": 0,
+      "month": "2012-06"
+    },
+    {
+      "id": "msg-10687953ce97",
+      "message_id": "<alpine.WNT.1.10.1206072342550.3116@morrism-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2012-06-07T23:43:42Z",
+      "subject": "[statnet_help] installing problem (fwd)",
+      "subject_clean": "[statnet_help] installing problem (fwd)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "---------- Forwarded message ----------\nDate: Wed, 30 May 2012 09:55:37 -0400\nFrom: David Hunter <dhunter@stat.psu.edu>\nTo: statnet help mailing list <statnet_help@u.washington.edu>\nSubject: Re: [statnet_help] installing problem\n\nWhat Micha? says is correct, though we'll probably re-upload an updated version of statnet before long.\n\n(Reason for taking statnet down:  The R team recently made some changes to R, which affected the latentnet package and all those packages, like statnet, that depended on latentnet.)\n\nYou can follow the link below, which suggests downloading the individual packages in statnet from CRAN, or alternatively you can download statnet itself from a different repository using\n\ninstall.packages(\"statnet\", repos=\"http://www.csde.washington.edu/statnet\")\n\nBest,\nDave\n\n\nOn May 30, 2012, at 8:32 AM, Micha? Bojanowski wrote:\n\n> as far as i know \"statnet\" package is temporarly off CRAN. that does\n> not seem to affect other statnet packages, i.e. network, ergm etc...\n>\n> See this email by Martina to this list:\n> http://mailman2.u.washington.edu/pipermail/statnet_help/2012/001208.html\n>\n> ~micha?\n>\n>\n> On Wed, May 30, 2012 at 2:13 PM, Ehsan Sabaghian <e.sabaghian@gmail.com> wrote:\n>> Dear all\n>>\n>> i followed the installation instruction for package which is\n>> in: http://statnet.org\n>> but there is an error:\n>>\n>> package ?statnet? is not available (for R version 2.14.2)\n>>\n>> what is the problem?\n>>\n>> Many thanks\n>>\n>> Ehsan\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "---------- Forwarded message ----------\nDate: Wed, 30 May 2012 09:55:37 -0400\nFrom: David Hunter <dhunter@stat.psu.edu>\nTo: statnet help mailing list <statnet_help@u.washington.edu>\nSubject: Re: [stat",
+      "thread_id": "thread-10687953ce97",
+      "thread_depth": 0,
+      "month": "2012-06"
+    },
+    {
+      "id": "msg-c9366b2ffb67",
+      "message_id": "<4FE33C81.6070205@eawag.ch>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "5ca3a759bddb9505661daafb6664f38c57cb4d334ac3b6411b49b7d1a9d8d151",
+      "date": "2012-06-21T08:23:45Z",
+      "subject": "[statnet_help] texreg: ergm output --> LaTeX (for multiple models)",
+      "subject_clean": "[statnet_help] texreg: ergm output --> LaTeX (for multiple models)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI thought I should share my latest R package with you since it works \nquite well with the ergm package.\n\nI frequently have to copy and paste coefficients, standard errors, \nsignificance levels and AIC, BIC etc. manually into my LaTeX papers. I \nusually have several models which should be merged into a single table, \nand I didn't really find a good solution for this problem. There is of \ncourse the apsrtable package, but it does not accept ergm objects \n(except for a quick and dirty hack I found somewhere on the web).\n\nIn case you encounter the same difficulties and want a simple solution, \nyou may want to take a look at my new R package texreg, which converts \nthe output of ergm, lm, lme, glm and gls objects into fancy LaTeX \ntables. The project website is located here:\n\nhttp://r-forge.r-project.org/projects/texreg/\n\nThe current version is already on CRAN, but it may take a few days until \nit is available on all mirrors and until you can install it regularly by \nentering install.packages(\"texreg\"). In the meantime, you can use the \nr-forge repository and enter install.packages(\"texreg\", \nrepos=\"http://R-Forge.R-project.org\").\n\nThe package is easily customizable for other model types (maybe someone \nwould like to work with me on latentnet ergmm objects or other model \ntypes?). It also works well in conjunction with Sweave. The \ndocumentation is available here:\n\nhttp://cran.r-project.org/web/packages/texreg/vignettes/texreg.pdf\n\nBest regards\n\nPhilip\n\n-- \nDr. Philip Leifeld\n\nSwiss Federal Institute of Aquatic Science and Technology, Zurich\n\nUniversity of Bern, Institute of Political Science\n\nEawag, ?berlandstr. 133, 8600 D?bendorf, Switzerland\nPhone: +41 58 765 5673 | E-mail: philip.leifeld@eawag.ch\nOffice: FC-E18 | Homepage: http://www.philipleifeld.de",
+      "body_snippet": "Hi,\n\nI thought I should share my latest R package with you since it works \nquite well with the ergm package.\n\nI frequently have to copy and paste coefficients, standard errors, \nsignificance levels an",
+      "thread_id": "thread-c9366b2ffb67",
+      "thread_depth": 0,
+      "month": "2012-06"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-be3e7c5a7f23",
+      "subject": "[statnet_help] MCMC% in ERGM",
+      "message_count": 1,
+      "participants": [
+        "Michael T. Heaney"
+      ],
+      "started": "2012-06-01T15:05:54Z",
+      "last_reply": "2012-06-01T15:05:54Z",
+      "root_message_id": "msg-be3e7c5a7f23"
+    },
+    {
+      "id": "thread-2a9044cd8efe",
+      "subject": "[statnet_help] Combining UCINET Adj.Matrices with categorical data in excel",
+      "message_count": 1,
+      "participants": [
+        "Nick Duncan"
+      ],
+      "started": "2012-06-02T10:29:18Z",
+      "last_reply": "2012-06-02T10:29:18Z",
+      "root_message_id": "msg-2a9044cd8efe"
+    },
+    {
+      "id": "thread-f68dcd6fcfa5",
+      "subject": "[statnet_help] RE: Combining UCINET Adj.Matrices with categorical data in excel",
+      "message_count": 2,
+      "participants": [
+        "Brian Rubineau",
+        "Michael T. Heaney"
+      ],
+      "started": "2012-06-04T11:56:58Z",
+      "last_reply": "2012-06-05T13:10:05Z",
+      "root_message_id": "msg-f68dcd6fcfa5"
+    },
+    {
+      "id": "thread-2fc1c42c3757",
+      "subject": "[statnet_help] Vertex.Col: A problem and a question",
+      "message_count": 1,
+      "participants": [
+        "Nick Duncan"
+      ],
+      "started": "2012-06-07T03:34:33Z",
+      "last_reply": "2012-06-07T03:34:33Z",
+      "root_message_id": "msg-2fc1c42c3757"
+    },
+    {
+      "id": "thread-7bccd5bf434e",
+      "subject": "[statnet_help] installation",
+      "message_count": 1,
+      "participants": [
+        "Beyers Jan"
+      ],
+      "started": "2012-06-07T23:09:28Z",
+      "last_reply": "2012-06-07T23:09:28Z",
+      "root_message_id": "msg-7bccd5bf434e"
+    },
+    {
+      "id": "thread-10687953ce97",
+      "subject": "[statnet_help] installing problem (fwd)",
+      "message_count": 1,
+      "participants": [
+        "Martina Morris"
+      ],
+      "started": "2012-06-07T23:43:42Z",
+      "last_reply": "2012-06-07T23:43:42Z",
+      "root_message_id": "msg-10687953ce97"
+    },
+    {
+      "id": "thread-c9366b2ffb67",
+      "subject": "[statnet_help] texreg: ergm output --> LaTeX (for multiple models)",
+      "message_count": 1,
+      "participants": [
+        "Philip Leifeld"
+      ],
+      "started": "2012-06-21T08:23:45Z",
+      "last_reply": "2012-06-21T08:23:45Z",
+      "root_message_id": "msg-c9366b2ffb67"
+    }
+  ]
+}

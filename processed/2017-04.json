@@ -1,0 +1,774 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2017-04",
+  "messages": [
+    {
+      "id": "msg-85baaf2a6284",
+      "message_id": "<CAOfAux-+R7sCubcsM2=cO_Wav4JgDf7hpQNGsF-CL3WX-HaoRg@mail.gmail.com>",
+      "from_name": "Chiara Sumich",
+      "from_email_hash": "0ef904a25e91b58d7e3f011cc845241116f32209ef1e84dc181c98d1f7bdeecf",
+      "date": "2017-04-04T17:38:53Z",
+      "subject": "[statnet_help] ergm.ego: overall degree distribution",
+      "subject_clean": "[statnet_help] ergm.ego: overall degree distribution",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello!\n\nI hope it's okay that I email here about ergm.ego. I'm having some problems\nand the team who developed ergm.ego appear to be the same as the one who\ndeveloped statnet. I'm trying to pull out some summary statistics from my\negocentric network data using ergm.ego. I've written in two data frames:\none for egos with one column labelled \"egoIDcol\" and all other columns with\nego attributes and one for alters with one column also labelled \"egoIDcol\"\nand all other columns alter attributes.\n\n*read.csv(\"NB.ego.subset.csv\")*\n*ego<-read.csv(\"NB.ego.subset.csv\")*\n*ego*\n\n*read.csv(\"NB.alter.subset.csv\")*\n*alter<-read.csv(\"NB.alter.subset.csv\")*\n*alter*\n\n*egodata(ego, alters=alter, egoIDcol = \"egoID\")*\n*NB.network<-as.egodata(ego, alters=alter, egoIDcol = \"egoID\")*\n\nI've used a few basic functions to look at the data and they seem to be\nworking fine.\n\n*dim.egodata(NB.network)*\n*nrow(NB.network)*\n*dimnames.egodata(NB.network)*\n*str(NB.network)*\n*summary(NB.network)*\n*nrow(NB.network$alters)*\n*nrow(NB.network$egos)/nrow(NB.network$alters)*\n\nHowever, when I try to pull out the overall degree distribution I receive\nthe following error.\n\n*summary(NB.network ~ degree(0:50))*\n*> summary(NB.network ~ degree(0:50))*\n*Error in `[.data.frame`(egos, c(egoIDcol, by)) : *\n*  undefined columns selected*\n\nI'm not trying to get degree distribution by an attribute though so I'm not\nsure what I'm doing wrong. Any help would be appreciated.\n\nThank you!\nChiara Sumich\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170405/a80382d7/attachment.html>",
+      "body_snippet": "Hello!\n\nI hope it's okay that I email here about ergm.ego. I'm having some problems\nand the team who developed ergm.ego appear to be the same as the one who\ndeveloped statnet. I'm trying to pull out s",
+      "thread_id": "thread-85baaf2a6284",
+      "thread_depth": 0,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-1f0b20d1db55",
+      "message_id": "<007d01d2ada8$522d09c0$f6871d40$@u.washington.edu>",
+      "from_name": "Deven Hamilton",
+      "from_email_hash": "505d525ebea95ad8cb849368a6f973cb22b141b846f861f4a987295b8ffdac07",
+      "date": "2017-04-04T18:02:38Z",
+      "subject": "[statnet_help] ergm.ego: overall degree distribution",
+      "subject_clean": "[statnet_help] ergm.ego: overall degree distribution",
+      "in_reply_to": "<CAOfAux-+R7sCubcsM2=cO_Wav4JgDf7hpQNGsF-CL3WX-HaoRg@mail.gmail.com>",
+      "references": [
+        "<CAOfAux-+R7sCubcsM2=cO_Wav4JgDf7hpQNGsF-CL3WX-HaoRg@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Chiara,\n\nI think the issue you are having is that you have labeled your egoIDcol ?egoIDcol?, but when you call it in your code you have it labeled ?egoID?.  If you change \n\n \n\negodata(ego, alters=alter, egoIDcol = \"egoID\")\n\nNB.network<-as.egodata(ego, alters=alter, egoIDcol = \"egoID\")\n\n \n\nto\n\n \n\negodata(ego, alters=alter, egoIDcol = \" egoIDcol \")\n\nNB.network<-as.egodata(ego, alters=alter, egoIDcol = \" egoIDcol \")\n\n \n\nThat should help. \n\n \n\n-Deven\n\n \n\nFrom: statnet_help [mailto:statnet_help-bounces@mailman13.u.washington.edu] On Behalf Of Chiara Sumich\nSent: Tuesday, April 4, 2017 5:39 PM\nTo: statnet_help@u.washington.edu\nSubject: [statnet_help] ergm.ego: overall degree distribution\n\n \n\nHello!\n\n \n\nI hope it's okay that I email here about ergm.ego. I'm having some problems and the team who developed ergm.ego appear to be the same as the one who developed statnet. I'm trying to pull out some summary statistics from my egocentric network data using ergm.ego. I've written in two data frames: one for egos with one column labelled \"egoIDcol\" and all other columns with ego attributes and one for alters with one column also labelled \"egoIDcol\" and all other columns alter attributes. \n\n \n\nread.csv(\"NB.ego.subset.csv\")\n\nego<-read.csv(\"NB.ego.subset.csv\")\n\nego\n\n \n\nread.csv(\"NB.alter.subset.csv\")\n\nalter<-read.csv(\"NB.alter.subset.csv\")\n\nalter\n\n \n\negodata(ego, alters=alter, egoIDcol = \"egoID\")\n\nNB.network<-as.egodata(ego, alters=alter, egoIDcol = \"egoID\")\n\n \n\nI've used a few basic functions to look at the data and they seem to be working fine. \n\n \n\ndim.egodata(NB.network)\n\nnrow(NB.network)\n\ndimnames.egodata(NB.network)\n\nstr(NB.network)\n\nsummary(NB.network)\n\nnrow(NB.network$alters)\n\nnrow(NB.network$egos)/nrow(NB.network$alters)\n\n \n\nHowever, when I try to pull out the overall degree distribution I receive the following error. \n\n \n\nsummary(NB.network ~ degree(0:50))\n\n> summary(NB.network ~ degree(0:50))\n\nError in `[.data.frame`(egos, c(egoIDcol, by)) : \n\n  undefined columns selected\n\n \n\nI'm not trying to get degree distribution by an attribute though so I'm not sure what I'm doing wrong. Any help would be appreciated. \n\n \n\nThank you!\n\nChiara Sumich\n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170404/863987c8/attachment.html>",
+      "body_snippet": "Hi Chiara,\n\nI think the issue you are having is that you have labeled your egoIDcol ?egoIDcol?, but when you call it in your code you have it labeled ?egoID?.  If you change \n\n \n\negodata(ego, alters=a",
+      "thread_id": "thread-85baaf2a6284",
+      "thread_depth": 1,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-7e39db08cb13",
+      "message_id": "<0e510d3f-2067-a42f-ff63-3e039ba70a50@manchester.ac.uk>",
+      "from_name": "Wouter Spekkink",
+      "from_email_hash": "a5484cf6ccc64d635969a14ea4c22370ebefa6e071393afac31c815292bdd8b6",
+      "date": "2017-04-05T09:41:27Z",
+      "subject": "[statnet_help] Question about directed shared partner terms",
+      "subject_clean": "[statnet_help] Question about directed shared partner terms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI encountered a puzzling issue related to the terms for shared partner \ndistributions, specifically the directed versions.\n\nI am working with directed networks. Based on the descriptions in the \nreference manual, I thought that Outgoing Two-Paths (OTP) version of \nddsp (for example) is essentially the same as the original dsp. \nHowever,  I tend to get different results for the two versions. The same \ngoes for the parametric (gw) versions of these terms. I suspect it might \nbe a problem with counts in the distribution of shared partners. To \nillustrate what I mean I generated a random directed network (with an \nErd?s?R?nyi model), and printed summaries using both versions of the dsp \nterm. See the result below.\n\n > summary(net~dsp(0:10))\n  dsp0  dsp1  dsp2  dsp3  dsp4  dsp5  dsp6  dsp7  dsp8  dsp9 dsp10\n  2420    30     0     0     0     0     0     0     0     0     0\n\n > summary(net~ddsp(0:10, type = 'OTP'))\n  dsp.OTP0  dsp.OTP1  dsp.OTP2  dsp.OTP3  dsp.OTP4  dsp.OTP5 dsp.OTP6  \ndsp.OTP7\n       -30        30         0         0         0 0         0         0\n  dsp.OTP8  dsp.OTP9 dsp.OTP10\n         0         0         0\n\nThe -30 in the dsp.OTP0 category is wrong, I assume? Is this perhaps a \nproblem with the directed versions of the shared partner distributions, \nor is it correct and am I simply overlooking something?\n\nThank you in advance.\n\nBest,\n\nWouter Spekkink",
+      "body_snippet": "Dear all,\n\nI encountered a puzzling issue related to the terms for shared partner \ndistributions, specifically the directed versions.\n\nI am working with directed networks. Based on the descriptions in",
+      "thread_id": "thread-7e39db08cb13",
+      "thread_depth": 0,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-8ac499c805a6",
+      "message_id": "<CAOoQ-Y5hOy1Zy-SHYGUnTjd-3gMGMx7PTUUAne8ODwmFT09Yqg@mail.gmail.com>",
+      "from_name": "Zachary Charles Heinemann",
+      "from_email_hash": "53189dd70bb76f9aaacebcbb4693423eb9ab523be29ef59bccf22434f6776323",
+      "date": "2017-04-05T09:54:46Z",
+      "subject": "[statnet_help] Interaction / Summation Terms in ERGMs",
+      "subject_clean": "[statnet_help] Interaction / Summation Terms in ERGMs",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello All!\n\nI have seen some derivatives of this question asked but not quite what I'm\ncurious about. Is it possible to do a proper interaction term between\nsender and receiver in ERGM?\n\nFor example, we are curious if the sender having a high / low personality\ntrait and the receiver having a high / lower [different!] personality trait\neffects the formation of a tie -- is there a way to cross, for example,\nsender extraversion and receiver agreeableness?\n\nAdditionally, is there a way to sum [like total dyad extraversion score]?\nWe were thinking of calculating these manually and then having them as an\nedge attribute. If so, what would be best to evaluate them in the model?\nergm.count?\n\n\nThanks so much!\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170405/fd957d9b/attachment.html>",
+      "body_snippet": "Hello All!\n\nI have seen some derivatives of this question asked but not quite what I'm\ncurious about. Is it possible to do a proper interaction term between\nsender and receiver in ERGM?\n\nFor example, ",
+      "thread_id": "thread-8ac499c805a6",
+      "thread_depth": 0,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-604abb325267",
+      "message_id": "<CAHxdZpzuhZ3K1DiSOKxybD1DpsheN9=z5im-Qvpx378t4iuveA@mail.gmail.com>",
+      "from_name": "Caleb Pomeroy",
+      "from_email_hash": "7642438147e6177f5ec7fda5f0e505d877094ce32a1748f021f070decbb709d4",
+      "date": "2017-04-10T17:18:02Z",
+      "subject": "[statnet_help] Object 'm2crs' not found",
+      "subject_clean": "[statnet_help] Object 'm2crs' not found",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear members,\n\nFirst post, so apologies if this isn't the right place.\n\nI'm receiving a cryptic error I haven't seen before when fitting ERGMs.\n`ergm()` is handling `edgecov` terms fine, but when specifying (endogenous)\nnetwork statistics (e.g. `gwesp`, `triangle`, etc.), the following is\nreturned:\n\n\"Error in rbind(if (!is.null(x2)) t(gamma * t(x2crs) + (1 - margin * gamma)\n*  :\n  object 'm2crs' not found\"\n\nAny thoughts would be greatly appreciated!\n\nThanks!\n\nCaleb Pomeroy\nUniversity College London\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170410/a50aa773/attachment.html>",
+      "body_snippet": "Dear members,\n\nFirst post, so apologies if this isn't the right place.\n\nI'm receiving a cryptic error I haven't seen before when fitting ERGMs.\n`ergm()` is handling `edgecov` terms fine, but when spec",
+      "thread_id": "thread-604abb325267",
+      "thread_depth": 0,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-cfd3bb334d90",
+      "message_id": "<1491946884.2946.21.camel@uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2017-04-11T14:41:26Z",
+      "subject": "[statnet_help] Interaction / Summation Terms in ERGMs",
+      "subject_clean": "[statnet_help] Interaction / Summation Terms in ERGMs",
+      "in_reply_to": "<CAOoQ-Y5hOy1Zy-SHYGUnTjd-3gMGMx7PTUUAne8ODwmFT09Yqg@mail.gmail.com>",
+      "references": [
+        "<CAOoQ-Y5hOy1Zy-SHYGUnTjd-3gMGMx7PTUUAne8ODwmFT09Yqg@mail.gmail.com>"
+      ],
+      "body_plain": "Hello, Zachary,\n\nAt the moment, the only way to do it is manually (or via a custom change stat term). However, we have implemented full support for * and : syntax for interactions in ergm 4.0, which we are planning to release in the next month or so.\n\nBest,\nPavel\n\nOn Wed, 2017-04-05 at 12:54 -0400, Zachary Charles Heinemann wrote:\nHello All!\n\nI have seen some derivatives of this question asked but not quite what I'm curious about. Is it possible to do a proper interaction term between sender and receiver in ERGM?\n\nFor example, we are curious if the sender having a high / low personality trait and the receiver having a high / lower [different!] personality trait effects the formation of a tie -- is there a way to cross, for example, sender extraversion and receiver agreeableness?\n\nAdditionally, is there a way to sum [like total dyad extraversion score]? We were thinking of calculating these manually and then having them as an edge attribute. If so, what would be best to evaluate them in the model? ergm.count?\n\n\nThanks so much!\n\n\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n--\n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA)<http://niasra.uow.edu.au/index.html> | Web (Personal)<http://www.krivitsky.net/research> | ResearchGate<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID: 0000-0002-9101-3362<orcid.org/0000-0002-9101-3362>\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170411/a862b910/attachment.html>",
+      "body_snippet": "Hello, Zachary,\n\nAt the moment, the only way to do it is manually (or via a custom change stat term). However, we have implemented full support for * and : syntax for interactions in ergm 4.0, which w",
+      "thread_id": "thread-8ac499c805a6",
+      "thread_depth": 1,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-3b9f263e0fb8",
+      "message_id": "<1491947070.2946.25.camel@uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2017-04-11T14:44:31Z",
+      "subject": "[statnet_help] Object 'm2crs' not found",
+      "subject_clean": "[statnet_help] Object 'm2crs' not found",
+      "in_reply_to": "<CAHxdZpzuhZ3K1DiSOKxybD1DpsheN9=z5im-Qvpx378t4iuveA@mail.gmail.com>",
+      "references": [
+        "<CAHxdZpzuhZ3K1DiSOKxybD1DpsheN9=z5im-Qvpx378t4iuveA@mail.gmail.com>"
+      ],
+      "body_plain": "Hello, Caleb,\n\nThis is the right place. However, can you\n\n1) Update to the latest version of ergm(), in case it's something we've fixed.\n2) If it doesn't help, send me the code and the data to reproduce the problem.\n\nBest,\nPavel\n\nOn Mon, 2017-04-10 at 19:18 -0500, Caleb Pomeroy wrote:\nDear members,\n\nFirst post, so apologies if this isn't the right place.\n\nI'm receiving a cryptic error I haven't seen before when fitting ERGMs. `ergm()` is handling `edgecov` terms fine, but when specifying (endogenous) network statistics (e.g. `gwesp`, `triangle`, etc.), the following is returned:\n\n\"Error in rbind(if (!is.null(x2)) t(gamma * t(x2crs) + (1 - margin * gamma) *  :\n  object 'm2crs' not found\"\n\nAny thoughts would be greatly appreciated!\n\nThanks!\n\nCaleb Pomeroy\nUniversity College London\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n--\n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA)<http://niasra.uow.edu.au/index.html> | Web (Personal)<http://www.krivitsky.net/research> | ResearchGate<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID: 0000-0002-9101-3362<orcid.org/0000-0002-9101-3362>\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170411/cee94565/attachment.html>",
+      "body_snippet": "Hello, Caleb,\n\nThis is the right place. However, can you\n\n1) Update to the latest version of ergm(), in case it's something we've fixed.\n2) If it doesn't help, send me the code and the data to reprodu",
+      "thread_id": "thread-604abb325267",
+      "thread_depth": 1,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-e02f1fcf5e6c",
+      "message_id": "<1491947084.2946.27.camel@uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2017-04-11T14:44:44Z",
+      "subject": "[statnet_help] Question about directed shared partner terms",
+      "subject_clean": "[statnet_help] Question about directed shared partner terms",
+      "in_reply_to": "<0e510d3f-2067-a42f-ff63-3e039ba70a50@manchester.ac.uk>",
+      "references": [
+        "<0e510d3f-2067-a42f-ff63-3e039ba70a50@manchester.ac.uk>"
+      ],
+      "body_plain": "Dear Wouter,\n\nIndeed, it looks like a bug. Can you save the net object to an .RData\nfile and send to me?\n\n\t\t\t\t\tThanks,\n\t\t\t\t\tPavel\n\nOn Wed, 2017-04-05 at 17:41 +0100, Wouter Spekkink wrote:\n> Dear all,\n> \n> I encountered a puzzling issue related to the terms for shared partner \n> distributions, specifically the directed versions.\n> \n> I am working with directed networks. Based on the descriptions in the \n> reference manual, I thought that Outgoing Two-Paths (OTP) version of \n> ddsp (for example) is essentially the same as the original dsp. \n> However,  I tend to get different results for the two versions. The same \n> goes for the parametric (gw) versions of these terms. I suspect it might \n> be a problem with counts in the distribution of shared partners. To \n> illustrate what I mean I generated a random directed network (with an \n> Erd?s?R?nyi model), and printed summaries using both versions of the dsp \n> term. See the result below.\n> \n>  > summary(net~dsp(0:10))\n>   dsp0  dsp1  dsp2  dsp3  dsp4  dsp5  dsp6  dsp7  dsp8  dsp9 dsp10\n>   2420    30     0     0     0     0     0     0     0     0     0\n> \n>  > summary(net~ddsp(0:10, type = 'OTP'))\n>   dsp.OTP0  dsp.OTP1  dsp.OTP2  dsp.OTP3  dsp.OTP4  dsp.OTP5 dsp.OTP6  \n> dsp.OTP7\n>        -30        30         0         0         0 0         0         0\n>   dsp.OTP8  dsp.OTP9 dsp.OTP10\n>          0         0         0\n> \n> The -30 in the dsp.OTP0 category is wrong, I assume? Is this perhaps a \n> problem with the directed versions of the shared partner distributions, \n> or is it correct and am I simply overlooking something?\n> \n> Thank you in advance.\n> \n> Best,\n> \n> Wouter Spekkink\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n-- \nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA): http://niasra.uow.edu.au/index.html\nWeb (Personal): http://www.krivitsky.net/research\nORCID: 0000-0002-9101-3362\n\nNOTICE: This email is intended for the addressee named and may contain\nconfidential information. If you are not the intended recipient, please\ndelete it and notify the sender. Please consider the environment before\nprinting this email.",
+      "body_snippet": "Dear Wouter,\n\nIndeed, it looks like a bug. Can you save the net object to an .RData\nfile and send to me?\n\n\t\t\t\t\tThanks,\n\t\t\t\t\tPavel\n\nOn Wed, 2017-04-05 at 17:41 +0100, Wouter Spekkink wrote:\n> Dear all,",
+      "thread_id": "thread-7e39db08cb13",
+      "thread_depth": 1,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-f6499e278c51",
+      "message_id": "<94E0B5C30F5FB749AC54ADE051A4674E1B92F336@MBXP02.ds.man.ac.uk>",
+      "from_name": "Wouter Spekkink",
+      "from_email_hash": "a5484cf6ccc64d635969a14ea4c22370ebefa6e071393afac31c815292bdd8b6",
+      "date": "2017-04-12T15:04:17Z",
+      "subject": "[statnet_help] Question about directed shared partner terms",
+      "subject_clean": "[statnet_help] Question about directed shared partner terms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Pavel,\n\nThanks for getting back to me. With the net object, do you mean the network I ran the formula on? It was just a randomly generated network that I didn't save (I generated it to illustrate the problem). However, the problem occurs for me whenever I try to use the directed versions of shared partner terms.\n\nIf you want, I can of course generate a new file and send that your way.\n\nThanks again.\n\nBest,\n\nWouter\n\nSent from my FairPhone\n\nOn 11 Apr 2017 10:45 pm, Pavel Krivitsky <pavel@uow.edu.au> wrote:\nDear Wouter,\n\nIndeed, it looks like a bug. Can you save the net object to an .RData\nfile and send to me?\n\n                                        Thanks,\n                                        Pavel\n\nOn Wed, 2017-04-05 at 17:41 +0100, Wouter Spekkink wrote:\n> Dear all,\n>\n> I encountered a puzzling issue related to the terms for shared partner\n> distributions, specifically the directed versions.\n>\n> I am working with directed networks. Based on the descriptions in the\n> reference manual, I thought that Outgoing Two-Paths (OTP) version of\n> ddsp (for example) is essentially the same as the original dsp.\n> However,  I tend to get different results for the two versions. The same\n> goes for the parametric (gw) versions of these terms. I suspect it might\n> be a problem with counts in the distribution of shared partners. To\n> illustrate what I mean I generated a random directed network (with an\n> Erd?s?R?nyi model), and printed summaries using both versions of the dsp\n> term. See the result below.\n>\n>  > summary(net~dsp(0:10))\n>   dsp0  dsp1  dsp2  dsp3  dsp4  dsp5  dsp6  dsp7  dsp8  dsp9 dsp10\n>   2420    30     0     0     0     0     0     0     0     0     0\n>\n>  > summary(net~ddsp(0:10, type = 'OTP'))\n>   dsp.OTP0  dsp.OTP1  dsp.OTP2  dsp.OTP3  dsp.OTP4  dsp.OTP5 dsp.OTP6\n> dsp.OTP7\n>        -30        30         0         0         0 0         0         0\n>   dsp.OTP8  dsp.OTP9 dsp.OTP10\n>          0         0         0\n>\n> The -30 in the dsp.OTP0 category is wrong, I assume? Is this perhaps a\n> problem with the directed versions of the shared partner distributions,\n> or is it correct and am I simply overlooking something?\n>\n> Thank you in advance.\n>\n> Best,\n>\n> Wouter Spekkink\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n--\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA): http://niasra.uow.edu.au/index.html\nWeb (Personal): http://www.krivitsky.net/research\nORCID: 0000-0002-9101-3362\n\nNOTICE: This email is intended for the addressee named and may contain\nconfidential information. If you are not the intended recipient, please\ndelete it and notify the sender. Please consider the environment before\nprinting this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170412/3dab4e6a/attachment.html>",
+      "body_snippet": "Dear Pavel,\n\nThanks for getting back to me. With the net object, do you mean the network I ran the formula on? It was just a randomly generated network that I didn't save (I generated it to illustrate",
+      "thread_id": "thread-f6499e278c51",
+      "thread_depth": 0,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-95d44cbb32be",
+      "message_id": "<1492038602.2946.50.camel@uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2017-04-12T16:10:05Z",
+      "subject": "[statnet_help] Question about directed shared partner terms",
+      "subject_clean": "[statnet_help] Question about directed shared partner terms",
+      "in_reply_to": "<94E0B5C30F5FB749AC54ADE051A4674E1B92F336@MBXP02.ds.man.ac.uk>",
+      "references": [
+        "<94E0B5C30F5FB749AC54ADE051A4674E1B92F336@MBXP02.ds.man.ac.uk>"
+      ],
+      "body_plain": "Hi, Wouter,\n\nI think I found the problem. Will fix in the next release.\n\nBest,\nPavel\n\nOn Wed, 2017-04-12 at 22:04 +0000, Wouter Spekkink wrote:\n\nDear Pavel,\n\nThanks for getting back to me. With the net object, do you mean the network I ran the formula on? It was just a randomly generated network that I didn't save (I generated it to illustrate the problem). However, the problem occurs for me whenever I try to use the directed versions of shared partner terms.\n\nIf you want, I can of course generate a new file and send that your way.\n\nThanks again.\n\nBest,\n\nWouter\n\nSent from my FairPhone\n\nOn 11 Apr 2017 10:45 pm, Pavel Krivitsky <pavel@uow.edu.au> wrote:\nDear Wouter,\n\nIndeed, it looks like a bug. Can you save the net object to an .RData\nfile and send to me?\n\n                                        Thanks,\n                                        Pavel\n\nOn Wed, 2017-04-05 at 17:41 +0100, Wouter Spekkink wrote:\n> Dear all,\n>\n> I encountered a puzzling issue related to the terms for shared partner\n> distributions, specifically the directed versions.\n>\n> I am working with directed networks. Based on the descriptions in the\n> reference manual, I thought that Outgoing Two-Paths (OTP) version of\n> ddsp (for example) is essentially the same as the original dsp.\n> However,  I tend to get different results for the two versions. The same\n> goes for the parametric (gw) versions of these terms. I suspect it might\n> be a problem with counts in the distribution of shared partners. To\n> illustrate what I mean I generated a random directed network (with an\n> Erd?s?R?nyi model), and printed summaries using both versions of the dsp\n> term. See the result below.\n>\n>  > summary(net~dsp(0:10))\n>   dsp0  dsp1  dsp2  dsp3  dsp4  dsp5  dsp6  dsp7  dsp8  dsp9 dsp10\n>   2420    30     0     0     0     0     0     0     0     0     0\n>\n>  > summary(net~ddsp(0:10, type = 'OTP'))\n>   dsp.OTP0  dsp.OTP1  dsp.OTP2  dsp.OTP3  dsp.OTP4  dsp.OTP5 dsp.OTP6\n> dsp.OTP7\n>        -30        30         0         0         0 0         0         0\n>   dsp.OTP8  dsp.OTP9 dsp.OTP10\n>          0         0         0\n>\n> The -30 in the dsp.OTP0 category is wrong, I assume? Is this perhaps a\n> problem with the directed versions of the shared partner distributions,\n> or is it correct and am I simply overlooking something?\n>\n> Thank you in advance.\n>\n> Best,\n>\n> Wouter Spekkink\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n--\n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA)<http://niasra.uow.edu.au/index.html> | Web (Personal)<http://www.krivitsky.net/research> | ResearchGate<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID: 0000-0002-9101-3362<orcid.org/0000-0002-9101-3362>\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170412/5e2e4221/attachment.html>",
+      "body_snippet": "Hi, Wouter,\n\nI think I found the problem. Will fix in the next release.\n\nBest,\nPavel\n\nOn Wed, 2017-04-12 at 22:04 +0000, Wouter Spekkink wrote:\n\nDear Pavel,\n\nThanks for getting back to me. With the ne",
+      "thread_id": "thread-f6499e278c51",
+      "thread_depth": 1,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-c5e806957474",
+      "message_id": "<94E0B5C30F5FB749AC54ADE051A4674E1B92F4E2@MBXP02.ds.man.ac.uk>",
+      "from_name": "Wouter Spekkink",
+      "from_email_hash": "a5484cf6ccc64d635969a14ea4c22370ebefa6e071393afac31c815292bdd8b6",
+      "date": "2017-04-12T16:12:38Z",
+      "subject": "[statnet_help] Question about directed shared partner terms",
+      "subject_clean": "[statnet_help] Question about directed shared partner terms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Pavel,\n\nThat is great to hear. I look forward to the next release then.\n\nBest,\n\nWouter\n\nSent from my FairPhone\n\nOn 13 Apr 2017 12:10 am, Pavel Krivitsky <pavel@uow.edu.au> wrote:\nHi, Wouter,\n\nI think I found the problem. Will fix in the next release.\n\nBest,\nPavel\n\nOn Wed, 2017-04-12 at 22:04 +0000, Wouter Spekkink wrote:\n\nDear Pavel,\n\nThanks for getting back to me. With the net object, do you mean the network I ran the formula on? It was just a randomly generated network that I didn't save (I generated it to illustrate the problem). However, the problem occurs for me whenever I try to use the directed versions of shared partner terms.\n\nIf you want, I can of course generate a new file and send that your way.\n\nThanks again.\n\nBest,\n\nWouter\n\nSent from my FairPhone\n\nOn 11 Apr 2017 10:45 pm, Pavel Krivitsky <pavel@uow.edu.au> wrote:\nDear Wouter,\n\nIndeed, it looks like a bug. Can you save the net object to an .RData\nfile and send to me?\n\n                                        Thanks,\n                                        Pavel\n\nOn Wed, 2017-04-05 at 17:41 +0100, Wouter Spekkink wrote:\n> Dear all,\n>\n> I encountered a puzzling issue related to the terms for shared partner\n> distributions, specifically the directed versions.\n>\n> I am working with directed networks. Based on the descriptions in the\n> reference manual, I thought that Outgoing Two-Paths (OTP) version of\n> ddsp (for example) is essentially the same as the original dsp.\n> However,  I tend to get different results for the two versions. The same\n> goes for the parametric (gw) versions of these terms. I suspect it might\n> be a problem with counts in the distribution of shared partners. To\n> illustrate what I mean I generated a random directed network (with an\n> Erd?s?R?nyi model), and printed summaries using both versions of the dsp\n> term. See the result below.\n>\n>  > summary(net~dsp(0:10))\n>   dsp0  dsp1  dsp2  dsp3  dsp4  dsp5  dsp6  dsp7  dsp8  dsp9 dsp10\n>   2420    30     0     0     0     0     0     0     0     0     0\n>\n>  > summary(net~ddsp(0:10, type = 'OTP'))\n>   dsp.OTP0  dsp.OTP1  dsp.OTP2  dsp.OTP3  dsp.OTP4  dsp.OTP5 dsp.OTP6\n> dsp.OTP7\n>        -30        30         0         0         0 0         0         0\n>   dsp.OTP8  dsp.OTP9 dsp.OTP10\n>          0         0         0\n>\n> The -30 in the dsp.OTP0 category is wrong, I assume? Is this perhaps a\n> problem with the directed versions of the shared partner distributions,\n> or is it correct and am I simply overlooking something?\n>\n> Thank you in advance.\n>\n> Best,\n>\n> Wouter Spekkink\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n--\n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA)<http://niasra.uow.edu.au/index.html> | Web (Personal)<http://www.krivitsky.net/research> | ResearchGate<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID: 0000-0002-9101-3362\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170412/8c943e6c/attachment.html>",
+      "body_snippet": "Dear Pavel,\n\nThat is great to hear. I look forward to the next release then.\n\nBest,\n\nWouter\n\nSent from my FairPhone\n\nOn 13 Apr 2017 12:10 am, Pavel Krivitsky <pavel@uow.edu.au> wrote:\nHi, Wouter,\n\nI t",
+      "thread_id": "thread-c5e806957474",
+      "thread_depth": 0,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-7fba56ff35be",
+      "message_id": "<CAENSEbWYsKBx3oJKtKD-Y02z6Ge64VxRdpvpJwxn82RSSv3vLQ@mail.gmail.com>",
+      "from_name": "Michael Levy",
+      "from_email_hash": "03cf81384732776750b91438028da6ede681ced4d3fba0e2a1fda3266c4aff57",
+      "date": "2017-04-12T16:46:47Z",
+      "subject": "[statnet_help] Power analysis for ERGM",
+      "subject_clean": "[statnet_help] Power analysis for ERGM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nWe just got a review back on an ERGM paper that said our \"sample\" size was\ninadequate. Has anything been written on power analysis for ERGMs? Or, does\nanyone have thoughts on how to respond to criticisms like that from folks\nwho see a network of size N and think of an N-row data table? Thanks,\n\nMichael\n\n\n\nMichael Levy\nPhD Candidate\nDepartment of Environmental Science and Policy\nUniversity of California, Davis\nmalevy@ucdavis.edu\n*www.michaellevy.name <http://www.michaellevy.name/>*\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170412/efb82f3f/attachment.html>",
+      "body_snippet": "Hi all,\n\nWe just got a review back on an ERGM paper that said our \"sample\" size was\ninadequate. Has anything been written on power analysis for ERGMs? Or, does\nanyone have thoughts on how to respond t",
+      "thread_id": "thread-7fba56ff35be",
+      "thread_depth": 0,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-4044e03cc8a1",
+      "message_id": "<0498AB8E-6D12-4268-9CC0-E60E517DD857@devingaffney.com>",
+      "from_name": "Devin Gaffney",
+      "from_email_hash": "2bed067e953dd04ccfea381f7b2107e02797fa7c7d34554bcd1aab9647c7306a",
+      "date": "2017-04-17T15:39:33Z",
+      "subject": "[statnet_help] Valued ERGMs with highly skewed edge weights",
+      "subject_clean": "[statnet_help] Valued ERGMs with highly skewed edge weights",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello all - I have highly skewed edge weights for a 50 node network. Most edges have values in the single or maybe double digits, while several edges have values in the 10^4->10^5 region. In other contexts I would log-transform the data during a regression and then talk about coefficients in reference to the log value of the variable, but I?m not sure how to do that with valued ERGMs. In other words, I have a highly skewed edge weight distribution, and models often fail to converge. When transforming to log-space, it seems to converge much more reliably (I *think* because the reference parameter doesn?t expect distributions like mine?). Is there a way to either A. ensure convergence for such highly skewed edge weights or B. reasonably interpret a log transformed edge weight?\n\nDevin",
+      "body_snippet": "Hello all - I have highly skewed edge weights for a 50 node network. Most edges have values in the single or maybe double digits, while several edges have values in the 10^4->10^5 region. In other con",
+      "thread_id": "thread-4044e03cc8a1",
+      "thread_depth": 0,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-bd656db5e7ba",
+      "message_id": "<30977e18-4043-b314-b73a-2f46da8329b6@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2017-04-17T16:20:05Z",
+      "subject": "[statnet_help] Power analysis for ERGM",
+      "subject_clean": "[statnet_help] Power analysis for ERGM",
+      "in_reply_to": "<CAENSEbWYsKBx3oJKtKD-Y02z6Ge64VxRdpvpJwxn82RSSv3vLQ@mail.gmail.com>",
+      "references": [
+        "<CAENSEbWYsKBx3oJKtKD-Y02z6Ge64VxRdpvpJwxn82RSSv3vLQ@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Michael -\n\nPower analysis in the context of dependent data is not trivial, and \nindeed a lot is unknown; ERGMs are no exception.  However, here are some \npractical suggestions:\n\n- In the special case of edgewise independent data, ERGMs reduce to \nlogistic network regression, which is nothing more than logistic \nregression where the variables have been expressed as matrices rather \nthan vectors.  Standard logistic regression results apply here, and you \ncan employ them in the event that you happen to be in this regime.  (In \nparticular, note that in this case you have N(N-1)/2 data degrees of \nfreedom in the undirected case, and N(N-1) in the directed case, \nassuming no loops.)\n\n- Likewise, dyad (but not edgewise) independent models are akin to \nmultinomial logit models on the dyad states, and can be treated accordingly.\n\n- In the more general case, your best bet is probably simulation.  There \nare various ways to proceed, depending on what you want to know - it's \nhard to tell from your description what the specific complaint was, but \nI would look at what, specifically, it is claimed that you would not \nhave the power to detect and attempt to assess that by conditional \nsimulation.  So, e.g., if you don't find an effect for statistic t, then \none way to assess how large/small a value t_obs would have been needed \n(holding all else constant) to obtain a significant result at p<k is to \n(1) simulate draws from your model (w/out the t effect), (2) calculate t \nfor each draw, and (3) examine the 1-k simulation interval.  (This \nmirrors the type of test for which ERGMs were initially introduced - see \nthe later part of Holland and Leinhardt's 1981 JASA paper, on testing \nfor triadic effects using p1 as a baseline.)  Other types of questions \nrequire other procedures, of course.\n\nHope that helps!\n\n-Carter\n\n\nOn 04/12/2017 04:46 PM, Michael Levy wrote:\n> Hi all,\n>\n> We just got a review back on an ERGM paper that said our \"sample\" size \n> was inadequate. Has anything been written on power analysis for ERGMs? \n> Or, does anyone have thoughts on how to respond to criticisms like \n> that from folks who see a network of size N and think of an N-row data \n> table? Thanks,\n>\n> Michael\n>\n>\n>\n> Michael Levy\n>\n> PhD Candidate\n> Department of Environmental Science and Policy\n> University of California, Davis\n> malevy@ucdavis.edu <mailto:malevy@ucdavis.edu>\n> _www.michaellevy.name <http://www.michaellevy.name/>_\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170417/80924a1e/attachment.html>",
+      "body_snippet": "Hi, Michael -\n\nPower analysis in the context of dependent data is not trivial, and \nindeed a lot is unknown; ERGMs are no exception.  However, here are some \npractical suggestions:\n\n- In the special c",
+      "thread_id": "thread-7fba56ff35be",
+      "thread_depth": 1,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-71a5e521be32",
+      "message_id": "<ae733d73-e6b3-6b73-d36f-d6addbd94c10@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2017-04-17T17:49:48Z",
+      "subject": "[statnet_help] Valued ERGMs with highly skewed edge weights",
+      "subject_clean": "[statnet_help] Valued ERGMs with highly skewed edge weights",
+      "in_reply_to": "<0498AB8E-6D12-4268-9CC0-E60E517DD857@devingaffney.com>",
+      "references": [
+        "<0498AB8E-6D12-4268-9CC0-E60E517DD857@devingaffney.com>"
+      ],
+      "body_plain": "Hi, Devin -\n\nAs always, one's first step is to consider what the weights mean (i.e., \nwhat is being measured?) and make sure that the model one is positing \nmakes sense in that light.  There are relatively few relational \nquantities (binding affinities?) I can think of that vary over 4-5 \norders of magnitude, so this is presumably not a typical social system; \nincluding edge values over such a wide range would seem to imply either \nthat they are being normalized by interacting with similarly large \ncoefficients as part of some other process (e.g., molar substrate \nquantities in a chemical system, firing events over a long period of \ntime in a neural system) or that the response to the edge weight is not \non the same scale (i.e., a unit increase in edge weight yields much less \nthan a unit increase in response at high weight levels).  In the former \ncase, one might consider dichotomizing the data (since the low-weight \nedges might as well be zero weight), while in the latter case it might \nbe more reasonable to transform the data into a phenomenologically \nreasonable scale.  But it's hard to know how to proceed further without \nknowing more about what the network represents, and what you want the \nmodel to accomplish.\n\nHope that helps (by spurring productive questions, at least!),\n\n-Carter\n\nOn 04/17/2017 03:39 PM, Devin Gaffney wrote:\n> Hello all - I have highly skewed edge weights for a 50 node network. Most edges have values in the single or maybe double digits, while several edges have values in the 10^4->10^5 region. In other contexts I would log-transform the data during a regression and then talk about coefficients in reference to the log value of the variable, but I?m not sure how to do that with valued ERGMs. In other words, I have a highly skewed edge weight distribution, and models often fail to converge. When transforming to log-space, it seems to converge much more reliably (I *think* because the reference parameter doesn?t expect distributions like mine?). Is there a way to either A. ensure convergence for such highly skewed edge weights or B. reasonably interpret a log transformed edge weight?\n>\n> Devin\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi, Devin -\n\nAs always, one's first step is to consider what the weights mean (i.e., \nwhat is being measured?) and make sure that the model one is positing \nmakes sense in that light.  There are relat",
+      "thread_id": "thread-4044e03cc8a1",
+      "thread_depth": 1,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-2a836358c0f8",
+      "message_id": "<18EBD925-65F4-4D87-87E0-9C747982DD4C@devingaffney.com>",
+      "from_name": "Devin Gaffney",
+      "from_email_hash": "2bed067e953dd04ccfea381f7b2107e02797fa7c7d34554bcd1aab9647c7306a",
+      "date": "2017-04-17T18:18:58Z",
+      "subject": "[statnet_help] Valued ERGMs with highly skewed edge weights",
+      "subject_clean": "[statnet_help] Valued ERGMs with highly skewed edge weights",
+      "in_reply_to": "<ae733d73-e6b3-6b73-d36f-d6addbd94c10@uci.edu>",
+      "references": [
+        "<0498AB8E-6D12-4268-9CC0-E60E517DD857@devingaffney.com>",
+        "<ae733d73-e6b3-6b73-d36f-d6addbd94c10@uci.edu>"
+      ],
+      "body_plain": "Ah yes, the nodes-and-edges question. This is part of a study on how people move around on Reddit (i.e. why people post on some subreddit and then another and so forth). The network is a snapshot of the transition matrix of dominant subreddits, where nodes are subreddits and edges are the number of people who posted on subreddit A and then subsequently posted on subreddit B (I?m assuming some familiarity with Reddit as a forum, correct me if I?m wrong in assuming that!). The problem is that, when considering the largest subreddit transitions (such as people posting on AskReddit and then posting on videos, for example, the number of people moving in that direction could be, for some snapshot, many thousands of people, while transitions between two much smaller subreddits may have only a dozen or so people moving that direction. The goal of fitting this into an ERGM is to see if there is a topical homophily effect (i.e. do people move between political subreddits more often than chance). I?m controlling for sum+nonzero+mutual+edges as a first pass, and am adding nodecov on the number of people posting on each subreddit to attempt to control for subreddit size - any and all advice/productive-question-asking is definitely sought!\n\nDevin\n\n> On Apr 17, 2017, at 8:49 PM, Carter T. Butts <buttsc@uci.edu> wrote:\n> \n> Hi, Devin -\n> \n> As always, one's first step is to consider what the weights mean (i.e., what is being measured?) and make sure that the model one is positing makes sense in that light.  There are relatively few relational quantities (binding affinities?) I can think of that vary over 4-5 orders of magnitude, so this is presumably not a typical social system; including edge values over such a wide range would seem to imply either that they are being normalized by interacting with similarly large coefficients as part of some other process (e.g., molar substrate quantities in a chemical system, firing events over a long period of time in a neural system) or that the response to the edge weight is not on the same scale (i.e., a unit increase in edge weight yields much less than a unit increase in response at high weight levels).  In the former case, one might consider dichotomizing the data (since the low-weight edges might as well be zero weight), while in the latter case it might be more reasonable to transform the data into a phenomenologically reasonable scale.  But it's hard to know how to proceed further without knowing more about what the network represents, and what you want the model to accomplish.\n> \n> Hope that helps (by spurring productive questions, at least!),\n> \n> -Carter\n> \n> On 04/17/2017 03:39 PM, Devin Gaffney wrote:\n>> Hello all - I have highly skewed edge weights for a 50 node network. Most edges have values in the single or maybe double digits, while several edges have values in the 10^4->10^5 region. In other contexts I would log-transform the data during a regression and then talk about coefficients in reference to the log value of the variable, but I?m not sure how to do that with valued ERGMs. In other words, I have a highly skewed edge weight distribution, and models often fail to converge. When transforming to log-space, it seems to converge much more reliably (I *think* because the reference parameter doesn?t expect distributions like mine?). Is there a way to either A. ensure convergence for such highly skewed edge weights or B. reasonably interpret a log transformed edge weight?\n>> \n>> Devin\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Ah yes, the nodes-and-edges question. This is part of a study on how people move around on Reddit (i.e. why people post on some subreddit and then another and so forth). The network is a snapshot of t",
+      "thread_id": "thread-4044e03cc8a1",
+      "thread_depth": 2,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-8d46368e1bb7",
+      "message_id": "<1492507483.30648.36.camel@uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2017-04-18T02:24:45Z",
+      "subject": "[statnet_help] Valued ERGMs with highly skewed edge weights",
+      "subject_clean": "[statnet_help] Valued ERGMs with highly skewed edge weights",
+      "in_reply_to": "<18EBD925-65F4-4D87-87E0-9C747982DD4C@devingaffney.com>",
+      "references": [
+        "<0498AB8E-6D12-4268-9CC0-E60E517DD857@devingaffney.com>",
+        "<ae733d73-e6b3-6b73-d36f-d6addbd94c10@uci.edu>",
+        "<18EBD925-65F4-4D87-87E0-9C747982DD4C@devingaffney.com>"
+      ],
+      "body_plain": "Hi, Devin,\n\nSounds like a very interesting analysis. Assuming a Poisson-reference\nERGM, I would recommend using log(number of posters), since that would\n(for a coefficient of around 1) predict that the number of movements\nbeing proportional to the number of people.\n\n\t\t\t\t\tBest,\n\t\t\t\t\tPavel\n\nOn Mon, 2017-04-17 at 21:18 -0400, Devin Gaffney wrote:\n> Ah yes, the nodes-and-edges question. This is part of a study on how\n> people move around on Reddit (i.e. why people post on some subreddit\n> and then another and so forth). The network is a snapshot of the\n> transition matrix of dominant subreddits, where nodes are subreddits\n> and edges are the number of people who posted on subreddit A and then\n> subsequently posted on subreddit B (I?m assuming some familiarity\n> with Reddit as a forum, correct me if I?m wrong in assuming that!).\n> The problem is that, when considering the largest subreddit\n> transitions (such as people posting on AskReddit and then posting on\n> videos, for example, the number of people moving in that direction\n> could be, for some snapshot, many thousands of people, while\n> transitions between two much smaller subreddits may have only a dozen\n> or so people moving that direction. The goal of fitting this into an\n> ERGM is to see if there is a topical homophily effect (i.e. do people\n> move between political subreddits more often than chance). I?m\n> controlling for sum+nonzero+mutual+edges as a first pass, and am\n> adding nodecov on the number of people posting on each subreddit to\n> attempt to control for subreddit size - any and all\n> advice/productive-question-asking is definitely sought!\n> \n> Devin\n> \n> > On Apr 17, 2017, at 8:49 PM, Carter T. Butts <buttsc@uci.edu>\n> > wrote:\n> > \n> > Hi, Devin -\n> > \n> > As always, one's first step is to consider what the weights mean\n> > (i.e., what is being measured?) and make sure that the model one is\n> > positing makes sense in that light.??There are relatively few\n> > relational quantities (binding affinities?) I can think of that\n> > vary over 4-5 orders of magnitude, so this is presumably not a\n> > typical social system; including edge values over such a wide range\n> > would seem to imply either that they are being normalized by\n> > interacting with similarly large coefficients as part of some other\n> > process (e.g., molar substrate quantities in a chemical system,\n> > firing events over a long period of time in a neural system) or\n> > that the response to the edge weight is not on the same scale\n> > (i.e., a unit increase in edge weight yields much less than a unit\n> > increase in response at high weight levels).??In the former case,\n> > one might consider dichotomizing the data (since the low-weight\n> > edges might as well be zero weight), while in the latter case it\n> > might be more reasonable to transform the data into a\n> > phenomenologically reasonable scale.??But it's hard to know how to\n> > proceed further without knowing more about what the network\n> > represents, and what you want the model to accomplish.\n> > \n> > Hope that helps (by spurring productive questions, at least!),\n> > \n> > -Carter\n> > \n> > On 04/17/2017 03:39 PM, Devin Gaffney wrote:\n> > > Hello all - I have highly skewed edge weights for a 50 node\n> > > network. Most edges have values in the single or maybe double\n> > > digits, while several edges have values in the 10^4->10^5 region.\n> > > In other contexts I would log-transform the data during a\n> > > regression and then talk about coefficients in reference to the\n> > > log value of the variable, but I?m not sure how to do that with\n> > > valued ERGMs. In other words, I have a highly skewed edge weight\n> > > distribution, and models often fail to converge. When\n> > > transforming to log-space, it seems to converge much more\n> > > reliably (I *think* because the reference parameter doesn?t\n> > > expect distributions like mine?). Is there a way to either A.\n> > > ensure convergence for such highly skewed edge weights or B.\n> > > reasonably interpret a log transformed edge weight?\n> > > \n> > > Devin\n> > > _______________________________________________\n> > > statnet_help mailing list\n> > > statnet_help@u.washington.edu\n> > > http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> > > \n> > \n> > _______________________________________________\n> > statnet_help mailing list\n> > statnet_help@u.washington.edu\n> > http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> \n-- \nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA): http://niasra.uow.edu.au/index.html\nWeb (Personal): http://www.krivitsky.net/research\nORCID: 0000-0002-9101-3362\n\nNOTICE: This email is intended for the addressee named and may contain\nconfidential information. If you are not the intended recipient, please\ndelete it and notify the sender. Please consider the environment before\nprinting this email.",
+      "body_snippet": "Hi, Devin,\n\nSounds like a very interesting analysis. Assuming a Poisson-reference\nERGM, I would recommend using log(number of posters), since that would\n(for a coefficient of around 1) predict that th",
+      "thread_id": "thread-4044e03cc8a1",
+      "thread_depth": 3,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-3cf92e570523",
+      "message_id": "<ECC10088-B0AA-4CD0-95A9-81939BF694A8@umass.edu>",
+      "from_name": "Mark Pachucki",
+      "from_email_hash": "f15ba514e27f8f00c83457926d6665e81d4766d5cf291ea79912081cac0225cc",
+      "date": "2017-04-18T06:16:37Z",
+      "subject": "[statnet_help] extending lnam with \"snow\" or \"parallel\"?",
+      "subject_clean": "[statnet_help] extending lnam with \"snow\" or \"parallel\"?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi listserv, \n\nI?m working on a lnam (sna) specification with a matrix (~6000x6000 nodes), and thinking through ways to cut down on the hours/days it currently takes to obtain estimates. Although I?m working with a fairly decent computing cluster, I?m not seeing radically different estimation times regardless of how much RAM I?m allocating, or the # of cores I?m setting aside.\n\nI noted some prior discussion about parallel computing in the listserv archives: \n(a) a bunch of conversations related to ergm parallelization \n(b) (w/r/t computing geodesics, 2016, answered by M. Handcock): http://mailman13.u.washington.edu/mailman/htdig/statnet_help/2016/002227.html\n(c) (w/r/t QAP, 2008, answered by C. Butts): http://mailman13.u.washington.edu/mailman/htdig/statnet_help/2008/000162.html <http://mailman13.u.washington.edu/mailman/htdig/statnet_help/2008/000162.html>\n\nMy question seems already hinted at in the negative by others, and is this: \n\tQ: Can lnam(optim), as written, take advantage of multiple cores in the way that, for instance, ergm can?  \n\nMy guess is no, because no part of the underlying optimization procedure is permutation-based, correct? (I?d be thrilled to learn otherwise.) At the same time, reads of the package documentation, and prior listserv guidance suggest that one could, in principle, make use of the ?snow? (or parallel) package, but based on some of the discussion I?m not clear that it would improve things all that much, if at all. Does anyone have thoughts they might share? \n\nThanks, \nMark \n______________________________\nMark C. Pachucki\nAssistant Professor\nUniversity of Massachusetts\nDepartment of Sociology\nComputational Social Science Institute\n200 Hicks Way, Thompson Hall 532\nAmherst, MA 01003-9277\nEmail: mpachucki@umass.edu\nOffice: 413-545-7526\nhttp://www.markpachucki.com\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170418/4dfd2dc9/attachment.html>",
+      "body_snippet": "Hi listserv, \n\nI?m working on a lnam (sna) specification with a matrix (~6000x6000 nodes), and thinking through ways to cut down on the hours/days it currently takes to obtain estimates. Although I?m ",
+      "thread_id": "thread-3cf92e570523",
+      "thread_depth": 0,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-d78a3785d0c4",
+      "message_id": "<6300EFC3DD5D4048AAC68932176922C941290E46@CMS11-01.campus.gla.ac.uk>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "fc15c5af3086c39b452f2c7197d876e960af137e6e952be7313ac1d9a46ba449",
+      "date": "2017-04-18T06:37:19Z",
+      "subject": "[statnet_help] extending lnam with \"snow\" or \"parallel\"?",
+      "subject_clean": "[statnet_help] extending lnam with \"snow\" or \"parallel\"?",
+      "in_reply_to": null,
+      "references": [
+        "<ECC10088-B0AA-4CD0-95A9-81939BF694A8@umass.edu>"
+      ],
+      "body_plain": "Hi Mark,\n\nI don't think the underlying optim function permits parallelization, and \nI can't of any good ways to do this task in parallel. However, it may be \npossible to speed up computations by employing a canned GLM routine that \nis optimized for speed, such as the speedglm package. If you are willing \nto use the tnam package instead of the lnam function, you can use its \ntnamdata function to prepare a data frame with the relevant terms and \nthen hand it over to some fast GLM implementation like speedglm. But \nthis is experimental, so make sure you compare your findings to lnam \nwith a smaller dataset.\n\nBest,\n\nPhilip\n\n--\nDr Philip Leifeld\nSenior Lecturer in Research Methods\nDirector of Postgraduate Research Training\nSchool of Social and Political Sciences\nUniversity of Glasgow\nhttp://www.philipleifeld.com\n\nOn 18/04/17 14:21, Mark Pachucki wrote:\n> Hi listserv,\n>\n> I?m working on a lnam (sna) specification with a matrix (~6000x6000\n> nodes), and thinking through ways to cut down on the hours/days it\n> currently takes to obtain estimates. Although I?m working with a fairly\n> decent computing cluster, I?m not seeing radically different estimation\n> times regardless of how much RAM I?m allocating, or the # of cores I?m\n> setting aside.\n>\n> I noted some prior discussion about parallel computing in the listserv\n> archives:\n> (a) a bunch of conversations related to ergm parallelization\n> (b) (w/r/t computing geodesics, 2016, answered by M. Handcock):\n> http://mailman13.u.washington.edu/mailman/htdig/statnet_help/2016/002227.html\n> (c) (w/r/t QAP, 2008, answered by C. Butts):\n> http://mailman13.u.washington.edu/mailman/htdig/statnet_help/2008/000162.html\n>\n> My question seems already hinted at in the negative by others, and is this:\n> Q: Can lnam(optim), as written, take advantage of multiple cores in the\n> way that, for instance, ergm can?\n>\n> My guess is no, because no part of the underlying optimization procedure\n> is permutation-based, correct? (I?d be thrilled to learn otherwise.) At\n> the same time, reads of the package documentation, and prior listserv\n> guidance suggest that one could, in principle, make use of the ?snow?\n> (or parallel) package, but based on some of the discussion I?m not clear\n> that it would improve things all that much, if at all. Does anyone have\n> thoughts they might share?\n>\n> Thanks,\n> Mark\n> ______________________________\n> Mark C. Pachucki\n> Assistant Professor\n> University of Massachusetts\n> Department of Sociology\n> Computational Social Science Institute\n> 200 Hicks Way, Thompson Hall 532\n> Amherst, MA 01003-9277\n> Email: mpachucki@umass.edu <mailto:mpachucki@umass.edu>\n> Office: 413-545-7526\n> http://www.markpachucki.com\n>\n>\n>",
+      "body_snippet": "Hi Mark,\n\nI don't think the underlying optim function permits parallelization, and \nI can't of any good ways to do this task in parallel. However, it may be \npossible to speed up computations by emplo",
+      "thread_id": "thread-3cf92e570523",
+      "thread_depth": 1,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-9d5c05cfc3de",
+      "message_id": "<f041ea82-8a74-9e43-dc60-6646a8d54dc5@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2017-04-18T13:36:54Z",
+      "subject": "[statnet_help] extending lnam with \"snow\" or \"parallel\"?",
+      "subject_clean": "[statnet_help] extending lnam with \"snow\" or \"parallel\"?",
+      "in_reply_to": "<ECC10088-B0AA-4CD0-95A9-81939BF694A8@umass.edu>",
+      "references": [
+        "<ECC10088-B0AA-4CD0-95A9-81939BF694A8@umass.edu>"
+      ],
+      "body_plain": "Hi, Mark.  Your question seems to conflate lnam and netlm.  In what \nanalysis are you actually interested?  (I would note that neither \ncurrently has a parallel implementation, but the issues involved in \nparallelizing each are very different.  Also, there are other \noptimizations for large, sparse matrices that can in principle be \nemployed for network autocorrelation models that cannot be used for \nnetlm, and vice versa.)\n\nAs a general matter, just setting aside cores is not going to result in \nperformance enhancement for most computation: you have to actually have \nand specifically employ a parallel implementation.  Depending on the \nproblem, the difficulty of parallelization can vary from trivial to \nimpossible (and it always involves engineering tradeoffs).  But it's \nsomething that has to be actively designed in.\n\n-Carter\n\n\n\nOn 04/18/2017 06:16 AM, Mark Pachucki wrote:\n> Hi listserv,\n>\n> I?m working on a lnam (sna) specification with a matrix (~6000x6000 \n> nodes), and thinking through ways to cut down on the hours/days it \n> currently takes to obtain estimates. Although I?m working with a \n> fairly decent computing cluster, I?m not seeing radically different \n> estimation times regardless of how much RAM I?m allocating, or the # \n> of cores I?m setting aside.\n>\n> I noted some prior discussion about parallel computing in the listserv \n> archives:\n> (a) a bunch of conversations related to ergm parallelization\n> (b) (w/r/t computing geodesics, 2016, answered by M. Handcock): \n> http://mailman13.u.washington.edu/mailman/htdig/statnet_help/2016/002227.html\n> (c) (w/r/t QAP, 2008, answered by C. Butts): \n> http://mailman13.u.washington.edu/mailman/htdig/statnet_help/2008/000162.html\n>\n> My question seems already hinted at in the negative by others, and is \n> this:\n> Q: Can lnam(optim), as written, take advantage of multiple cores in \n> the way that, for instance, ergm can?\n>\n> My guess is no, because no part of the underlying optimization \n> procedure is permutation-based, correct? (I?d be thrilled to learn \n> otherwise.) At the same time, reads of the package documentation, and \n> prior listserv guidance suggest that one could, in principle, make use \n> of the ?snow? (or parallel) package, but based on some of the \n> discussion I?m not clear that it would improve things all that much, \n> if at all. Does anyone have thoughts they might share?\n>\n> Thanks,\n> Mark\n> ______________________________\n> Mark C. Pachucki\n> Assistant Professor\n> University of Massachusetts\n> Department of Sociology\n> Computational Social Science Institute\n> 200 Hicks Way, Thompson Hall 532\n> Amherst, MA 01003-9277\n> Email: mpachucki@umass.edu <mailto:mpachucki@umass.edu>\n> Office: 413-545-7526\n> http://www.markpachucki.com\n>\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170418/8b541cd1/attachment.html>",
+      "body_snippet": "Hi, Mark.  Your question seems to conflate lnam and netlm.  In what \nanalysis are you actually interested?  (I would note that neither \ncurrently has a parallel implementation, but the issues involved",
+      "thread_id": "thread-3cf92e570523",
+      "thread_depth": 1,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-858874e3e576",
+      "message_id": "<5C683FC8-CC78-4FEF-838B-C653CB3A65D3@umass.edu>",
+      "from_name": "Mark Pachucki",
+      "from_email_hash": "f15ba514e27f8f00c83457926d6665e81d4766d5cf291ea79912081cac0225cc",
+      "date": "2017-04-21T10:32:47Z",
+      "subject": "[statnet_help] statnet_help Digest, Vol 129, Issue 11",
+      "subject_clean": "[statnet_help] statnet_help Digest, Vol 129, Issue 11",
+      "in_reply_to": "<mailman.973.1492628482.27624.statnet_help@mailman13.u.washington.edu>",
+      "references": [
+        "<mailman.973.1492628482.27624.statnet_help@mailman13.u.washington.edu>"
+      ],
+      "body_plain": "I appreciate your comments & suggestions, Philip & Carter! \n\nPhilip: I can certainly try to look into tnam and compare how it performs relative to lnam. \n\nCarter:  I?m interested in estimating an individual outcomes model that estimates ego/alter association on a trait, accounting for network autocorrelation using a weighted adjacency or geodesic matrix. O?Malley & Marsden (2008, Health Services Outcomes Research Methods) provided some sample R code in their paper that illustrated how the [optim] package compares & relates to the [lnam] package, so I?ve been following that as a guide. \n\nI?d definitely be interested in any literature/examples you might point me towards to help me understand some of the other optimizations for large, sparse matrices if they might possibly be employed for network autocorrelation models.  \n\nCheers, \nMark  \n______________________________\nMark C. Pachucki\nAssistant Professor\nUniversity of Massachusetts\nDepartment of Sociology\nComputational Social Science Institute\n200 Hicks Way, Thompson Hall 532\nAmherst, MA 01003-9277\nEmail: mpachucki@umass.edu\nOffice: 413-545-7526\nhttp://www.markpachucki.com\n\n\n\n> On Apr 19, 2017, at 3:01 PM, statnet_help-request@mailman13.u.washington.edu wrote:\n> \n> Send statnet_help mailing list submissions to\n> \tstatnet_help@u.washington.edu\n> \n> To subscribe or unsubscribe via the World Wide Web, visit\n> \thttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> or, via email, send a message with subject or body 'help' to\n> \tstatnet_help-request@mailman13.u.washington.edu\n> \n> You can reach the person managing the list at\n> \tstatnet_help-owner@mailman13.u.washington.edu\n> \n> When replying, please edit your Subject line so it is more specific\n> than \"Re: Contents of statnet_help digest...\"\n> Today's Topics:\n> \n>   1. Re: extending lnam with \"snow\" or \"parallel\"? (Carter T. Butts)\n> \n> From: \"Carter T. Butts\" <buttsc@uci.edu>\n> Subject: Re: [statnet_help] extending lnam with \"snow\" or \"parallel\"?\n> Date: April 18, 2017 at 4:36:54 PM EDT\n> To: statnet_help@u.washington.edu\n> \n> \n> Hi, Mark.  Your question seems to conflate lnam and netlm.  In what analysis are you actually interested?  (I would note that neither currently has a parallel implementation, but the issues involved in parallelizing each are very different.  Also, there are other optimizations for large, sparse matrices that can in principle be employed for network autocorrelation models that cannot be used for netlm, and vice versa.)\n> \n> As a general matter, just setting aside cores is not going to result in performance enhancement for most computation: you have to actually have and specifically employ a parallel implementation.  Depending on the problem, the difficulty of parallelization can vary from trivial to impossible (and it always involves engineering tradeoffs).  But it's something that has to be actively designed in.\n> \n> -Carter\n> \n> \n> On 04/18/2017 06:16 AM, Mark Pachucki wrote:\n>> Hi listserv, \n>> \n>> I?m working on a lnam (sna) specification with a matrix (~6000x6000 nodes), and thinking through ways to cut down on the hours/days it currently takes to obtain estimates. Although I?m working with a fairly decent computing cluster, I?m not seeing radically different estimation times regardless of how much RAM I?m allocating, or the # of cores I?m setting aside.\n>> \n>> I noted some prior discussion about parallel computing in the listserv archives: \n>> (a) a bunch of conversations related to ergm parallelization \n>> (b) (w/r/t computing geodesics, 2016, answered by M. Handcock): http://mailman13.u.washington.edu/mailman/htdig/statnet_help/2016/002227.html <http://mailman13.u.washington.edu/mailman/htdig/statnet_help/2016/002227.html>\n>> (c) (w/r/t QAP, 2008, answered by C. Butts): http://mailman13.u.washington.edu/mailman/htdig/statnet_help/2008/000162.html <http://mailman13.u.washington.edu/mailman/htdig/statnet_help/2008/000162.html>\n>> \n>> My question seems already hinted at in the negative by others, and is this: \n>> \tQ: Can lnam(optim), as written, take advantage of multiple cores in the way that, for instance, ergm can?  \n>> \n>> My guess is no, because no part of the underlying optimization procedure is permutation-based, correct? (I?d be         thrilled to learn otherwise.) At the same time, reads of the package documentation, and prior listserv guidance suggest that one could, in principle, make use of the ?snow? (or parallel) package, but based on some of the discussion I?m not clear that it would improve things all that much, if at all. Does anyone have thoughts they might share? \n>> \n>> Thanks, \n>> Mark \n>> ______________________________\n>> Mark C. Pachucki\n>> Assistant Professor\n>> University of Massachusetts\n>> Department of Sociology\n>> Computational Social Science Institute\n>> 200 Hicks Way, Thompson Hall 532\n>> Amherst, MA 01003-9277\n>> Email: mpachucki@umass.edu <mailto:mpachucki@umass.edu>\n>> Office: 413-545-7526\n>> http://www.markpachucki.com <http://www.markpachucki.com/>\n>> \n>> \n>> \n>> \n>> \n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help <http://mailman13.u.washington.edu/mailman/listinfo/statnet_help>\n> \n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@mailman13.u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170421/58f54e3f/attachment.html>",
+      "body_snippet": "I appreciate your comments & suggestions, Philip & Carter! \n\nPhilip: I can certainly try to look into tnam and compare how it performs relative to lnam. \n\nCarter:  I?m interested in estimating an indi",
+      "thread_id": "thread-858874e3e576",
+      "thread_depth": 0,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-0dde586f2640",
+      "message_id": "<CAKAbm6PSti+H43AvNXue+EbFAPEH2-QM9X_wLNDtSfM_pH4KkA@mail.gmail.com>",
+      "from_name": "Matt Robbins",
+      "from_email_hash": "018cdea43f93204130d9a33cdd30fb8cda78346c0b60a3a8b5fbbe116a85af46",
+      "date": "2017-04-21T16:06:12Z",
+      "subject": "[statnet_help] Clarification requested on summary.statistics()",
+      "subject_clean": "[statnet_help] Clarification requested on summary.statistics()",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Salutations,\n\nFor the most part, the numbers returned by summary(net ~ term1 + term2\n+etc.) are straightforwardly interpreted as the count of ties corresponding\nto that term.  Some terms are a bit more obscure.  For example, gwdegree\nreturns a non-whole number.  *How is the returned value for gwdegree to be\ninterpreted?*\n\nA related question: why might there be a discrepancy between the number of\nedges in the network and the edges value returned by summary()?  I have an\nundirected network with 2496 edges.  Summary(net~edges) returns 1238.\nDoubling that to account for non-directedness equals 2476  which is off by\n20.  All the network default argument values are in place, so there are,\nfor example,  no self-loops that could throw off the count.\n\nThanks in advance,\nMateo\n\n\n\n-- \nPh.D. Candidate\nCenter for Environmental Policy and Behavior\n<http://environmentalpolicy.ucdavis.edu/>\nDepartment of Environmental Science and Policy\nGraduate Group in Ecology\nUniversity of California, Davis\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170421/de5c710e/attachment.html>",
+      "body_snippet": "Salutations,\n\nFor the most part, the numbers returned by summary(net ~ term1 + term2\n+etc.) are straightforwardly interpreted as the count of ties corresponding\nto that term.  Some terms are a bit mor",
+      "thread_id": "thread-0dde586f2640",
+      "thread_depth": 0,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-19713b23cce8",
+      "message_id": "<0878be22-cf8a-9adf-a7c1-0e410ddb5300@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2017-04-22T07:41:13Z",
+      "subject": "[statnet_help] Clarification requested on summary.statistics()",
+      "subject_clean": "[statnet_help] Clarification requested on summary.statistics()",
+      "in_reply_to": "<CAKAbm6PSti+H43AvNXue+EbFAPEH2-QM9X_wLNDtSfM_pH4KkA@mail.gmail.com>",
+      "references": [
+        "<CAKAbm6PSti+H43AvNXue+EbFAPEH2-QM9X_wLNDtSfM_pH4KkA@mail.gmail.com>"
+      ],
+      "body_plain": "Hello Mateo,\n\n> For the most part, the numbers returned by summary(net ~ term1 + term2 \n> +etc.) are straightforwardly interpreted as the count of ties \n> corresponding to that term. Some terms are a bit more obscure.  For \n> example, gwdegree returns a non-whole number. *How is the returned \n> value for gwdegree to be interpreted?*\nIndeed, different statistics come in different flavors--some are counts \nof ties, as you mentioned (e.g. edges, nodefactor), others are counts of \nnodes (e.g. degree), or of attribute values (nodecov), of other \nstructures (e.g. triangle, cycle).  And then there are the gw* terms.  \nThey are definitely more complicated than any of the others.  For the \nformal interpretation of any statistic, I'd suggest starting with the \nentry in help(\"ergm-terms\"). In this case, since it's more complicated \nthan others, that points you to a few papers: Hunter and Handcock, 2006, \nand Hunter (2007). The definition is in both, but perhaps clearest as \nEquation 14 in Hunter (2007).  Another important paper for understanding \nthe theoretical and practical motivations for this and related terms is \nSnijders et al 2006.\n\nHunter DR, Handcock MS. Inference in Curved Exponential Family Models \nfor Networks. Journal of Computational and Graphical Statistics. \n2006;15(3):565?583.\n\nHunter 2007: Hunter DR. Curved Exponential Family Models for Social \nNetworks. Social Networks. 2007;29:216?230. \nhttps://www.ncbi.nlm.nih.gov/pmc/articles/PMC2031865/\n\nSnijders TAB, Pattison P, Robins GL, Handcock MS. New Specifications for \nExponential Random Graph Models. Sociological Methodology. 2006;36:99?153.\n> A related question: why might there be a discrepancy between the \n> number of edges in the network and the edges value returned by \n> summary()?  I have an undirected network with 2496 edges.  \n> Summary(net~edges) returns 1238.  Doubling that to account for \n> non-directedness equals 2476  which is off by 20. All the network \n> default argument values are in place, so there are, for example,  no \n> self-loops that could throw off the count.\nI suspect that you've made some mis-steps in the process of converting \nyour data from whatever original form you had it in to the network class \nobject. As network objects are set up in statnet, you shouldn't have to \ndouble the number of ties at all - summary should give you 2496, if \nthat's how many edges your undirected network is meant to have. The \neasiest way to diagnose this might be if you could explain the original \nform your data came in and all the exact steps (with syntax) that you \ntook to convert it to the network object.  Or, even better, if you could \ncreate a simple example that mimics the process and recreates a version \nof the problem, without having to share your actual data. Of course, if \nyou're willing to share your data (with just me, not the whole list), \nthen that would make it easiest, but I understand why that's not an \noption for most users.\n\nHTH,\nSteve\n\n\nThanks in advance,\n> Mateo\n>\n>\n>\n> -- \n> Ph.D. Candidate\n> Center for Environmental Policy and Behavior \n> <http://environmentalpolicy.ucdavis.edu/>\n> Department of Environmental Science and Policy\n> Graduate Group in Ecology\n> University of California, Davis\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \n\n*******************************************************************\n!!! NOTE NEW OFFICE LOCATION AS OF SEPTEMBER 2016 !!!\n*******************************************************************\nSteven M. Goodreau / Assoc. Professor / Dept. of Anthropology\nPhysical address: Denny Hall M236 / 4216 Memorial Way NE\nMailing address: Campus Box 353100\nUniv. of Washington / Seattle WA 98195\n1-206-685-3870 (phone) /1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau\n*******************************************************************\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170422/959c2c13/attachment.html>",
+      "body_snippet": "Hello Mateo,\n\n> For the most part, the numbers returned by summary(net ~ term1 + term2 \n> +etc.) are straightforwardly interpreted as the count of ties \n> corresponding to that term. Some terms are a ",
+      "thread_id": "thread-0dde586f2640",
+      "thread_depth": 1,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-bd5198120947",
+      "message_id": "<alpine.WNT.2.00.1704221206460.5280@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2017-04-22T12:11:37Z",
+      "subject": "[statnet_help] Clarification requested on summary.statistics()",
+      "subject_clean": "[statnet_help] Clarification requested on summary.statistics()",
+      "in_reply_to": "<0878be22-cf8a-9adf-a7c1-0e410ddb5300@uw.edu>",
+      "references": [
+        "<CAKAbm6PSti+H43AvNXue+EbFAPEH2-QM9X_wLNDtSfM_pH4KkA@mail.gmail.com>",
+        "<0878be22-cf8a-9adf-a7c1-0e410ddb5300@uw.edu>"
+      ],
+      "body_plain": "Just a quick additional comment.\n\nYou can think of the GW terms as weighted sums (of either degree \nsequences for the GWD terms, or of shared partner sequences for the \nGW*SP terms).  The weight is\n\n{1 - (1-exp{-decay})^i}\n\nwhere i is the degree (or shared partner) value\n\n>From this you can see why the weighted sum will (often) produce \nnon-integers.\n\nbest,\nmm\n\n\nOn Sat, 22 Apr 2017, Steven Goodreau wrote:\n\n> \n> Hello Mateo,\n>\n>       For the most part, the numbers returned by summary(net ~ term1 + term2 +etc.) are straightforwardly\n>       interpreted as the count of ties corresponding to that term.? Some terms are a bit more obscure.? For\n>       example, gwdegree returns a non-whole number. ?How is the returned value for gwdegree to be interpreted? \n> \n> Indeed, different statistics come in different flavors--some are counts of ties, as you mentioned (e.g. edges,\n> nodefactor), others are counts of nodes (e.g. degree), or of attribute values (nodecov), of other structures (e.g.\n> triangle, cycle).? And then there are the gw* terms.? They are definitely more complicated than any of the others.? For\n> the formal interpretation of any statistic, I'd suggest starting with the entry in help(\"ergm-terms\"). In this case,\n> since it's more complicated than others, that points you to a few papers:? Hunter and Handcock, 2006, and Hunter (2007).\n> The definition is in both, but perhaps clearest as Equation 14 in Hunter (2007).? Another important paper for\n> understanding the theoretical and practical motivations for this and related terms is Snijders et al 2006.\n> \n> Hunter DR, Handcock MS. Inference in Curved Exponential Family Models for Networks. Journal of Computational and\n> Graphical Statistics. 2006;15(3):565?583.\n> \n> Hunter 2007: Hunter DR. Curved Exponential Family Models for Social Networks. Social Networks. 2007;29:216?230.\n> https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2031865/\n> \n> Snijders TAB, Pattison P, Robins GL, Handcock MS. New Specifications for Exponential Random Graph Models. Sociological\n> Methodology. 2006;36:99?153.\n>       A related question: why might there be a discrepancy between the number of edges in the network and the edges\n>       value returned by summary()?? I have an undirected network with 2496 edges.? Summary(net~edges)\n>       returns?1238.? Doubling that to account for non-directedness equals 2476 ?which is off by 20.? All the\n>       network default argument values are in place, so there are, for example, ?no self-loops that could throw off\n>       the count.\n> \n> I suspect that you've made some mis-steps in the process of converting your data from whatever original form you had it\n> in to the network class object. As network objects are set up in statnet, you shouldn't have to double the number of ties\n> at all - summary should give you 2496, if that's how many edges your undirected network is meant to have. The easiest way\n> to diagnose this might be if you could explain the original form your data came in and all the exact steps (with syntax)\n> that you took to convert it to the network object.? Or, even better, if you could create a simple example that mimics the\n> process and recreates a version of the problem, without having to share your actual data. Of course, if you're willing to\n> share your data (with just me, not the whole list), then that would make it easiest, but I understand why that's not an\n> option for most users.\n> \n> HTH,\n> Steve\n> \n> \n> Thanks in advance,\n>       Mateo\n> \n> \n> \n> --? Ph.D. Candidate\n> Center for Environmental Policy and Behavior\n> Department of Environmental Science and Policy\n> Graduate Group in Ecology\n> University of California, Davis\n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> \n> \n> -- \n> \n> *******************************************************************\n> !!! NOTE NEW OFFICE LOCATION AS OF SEPTEMBER 2016 !!!\n> *******************************************************************\n> Steven M. Goodreau / Assoc. Professor / Dept. of Anthropology\n> Physical address: Denny Hall M236 / 4216 Memorial Way NE\n> Mailing address: Campus Box 353100\n> Univ. of Washington / Seattle WA 98195\n> 1-206-685-3870 (phone) /1-206-543-3285 (fax) \n> http://faculty.washington.edu/goodreau\n> ******************************************************************* \n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Just a quick additional comment.\n\nYou can think of the GW terms as weighted sums (of either degree \nsequences for the GWD terms, or of shared partner sequences for the \nGW*SP terms).  The weight is\n\n{",
+      "thread_id": "thread-0dde586f2640",
+      "thread_depth": 2,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-0e8079f29198",
+      "message_id": "<CA+CFxkWaY9DYgtz6y1vKz_3Ex3PFS-m0PWSF=AM+A1PV-7aJTw@mail.gmail.com>",
+      "from_name": "Jesse Sayles",
+      "from_email_hash": "66b1d382040bb381e54b6d659aa9c3a124dc209c0d2735793f5592d6518a6a15",
+      "date": "2017-04-24T10:57:39Z",
+      "subject": "[statnet_help] error with induced subgraph, edge IDs",
+      "subject_clean": "[statnet_help] error with induced subgraph, edge IDs",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Statnet users,\n\nI have run into an odd issue that I hope someone might be able to help\nwith. I am getting an error message of invalid edge IDs when inducing a\nsubgraph, but if I just call the edge IDs by attribute value I get those\nIDs. Below is line by line commented code explaining what works and what\ndoes not. Does anyone have an idea why I might be having this problem or\nhow I might best try to back track it? The only out of the ordinary issue\nhere is that I am calling my network object from a list of stored networks,\nbut I cannot see why that would be causing an error.\n\nThank you and best wishes\nJesse\n\n\n# Here we see that my network, which is stored in a list, is indeed a\nnetwork object\n\n> class(expNets[[1]])\n\n[1] \"network\"\n\n# it is a network object, with no missing edges, and the edge attribute\ncalled \"effect\"\n\n> expNets[[1]]\n\n Network attributes:\n  vertices = 32\n  directed = TRUE\n  hyper = FALSE\n  loops = TRUE\n  multiple = FALSE\n  bipartite = FALSE\n  source = Exposure2.csv\n  name = Exposure2_s1\n  total edges= 127\n    missing edges= 0\n    non-missing edges= 127\n\n Vertex attribute names:\n    abrv cat sub1 sub2 sub3 sub4 vertex.names\n\n Edge attribute names:\n    effect\n\n\n# I can check to see which edges have an \"effect\" attribute value of 3\n\n> expNets[[1]] %e% \"effect\"==3\n\n  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n TRUE  TRUE FALSE\n [15] FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE\nFALSE FALSE FALSE\n [29] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\nFALSE FALSE FALSE\n [43] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE\n TRUE  TRUE  TRUE\n [57]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE\n TRUE  TRUE  TRUE\n [71]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n TRUE  TRUE  TRUE\n [85] FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\nFALSE  TRUE  TRUE\n [99]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE\n TRUE  TRUE  TRUE\n[113] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\nFALSE FALSE FALSE\n[127] FALSE\n\n\n# and I can create a vector of edge IDs with effect value of 3\n\n> which(expNets[[1]] %e% \"effect\"==3)\n\n [1]  12  13  17  18  19  20  21  50  51  52  53  54  55  56  57  58  59\n 60  61  63  64\n[22]  65  66  67  68  69  70  71  72  73  75  76  77  78  79  80  81  82\n 83  84  86  87\n[43]  88  90  91  92  93  94  95  97  98  99 100 101 103 104 105 107 108\n109 110 111 112\n[64] 114\n\n#but when I try to induce a subgraph based on those edge IDs I get an error\nsaying there are non-valid edge IDs.\n\n> get.inducedSubgraph(expNets[[1]], eid=which(expNets[[1]] %e% \"effect\"==3))\n\nError in get.inducedSubgraph(expNets[[1]], eid = which(expNets[[1]] %e%  :\n  eid argument contains non-valid edge ids\n\n# What might be causing this error or how might I track it down?\n# thank you :)\n\n-- \n\n*Jesse Sayles, PhD*\n\n*saylesunchartedwaters.com <http://saylesunchartedwaters.com/>*\n\n\n\n*Postdoctoral Fellow*\n\n*Department of Geography *\n\n*McGill University*\n*Climate Change **Adaptation **Research **Group* <http://www.jamesford.ca/>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170424/724aae5e/attachment.html>",
+      "body_snippet": "Hi Statnet users,\n\nI have run into an odd issue that I hope someone might be able to help\nwith. I am getting an error message of invalid edge IDs when inducing a\nsubgraph, but if I just call the edge ",
+      "thread_id": "thread-0e8079f29198",
+      "thread_depth": 0,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-641fd8a8ec92",
+      "message_id": "<CA+CFxkUB4TFFH9Yufg=Dr_BuLQ3ONLP4Bj+cLv+bEKBfjXWzZQ@mail.gmail.com>",
+      "from_name": "Jesse Sayles",
+      "from_email_hash": "66b1d382040bb381e54b6d659aa9c3a124dc209c0d2735793f5592d6518a6a15",
+      "date": "2017-04-24T13:56:32Z",
+      "subject": "[statnet_help] error with induced subgraph, edge IDs",
+      "subject_clean": "[statnet_help] error with induced subgraph, edge IDs",
+      "in_reply_to": "<CA+CFxkWaY9DYgtz6y1vKz_3Ex3PFS-m0PWSF=AM+A1PV-7aJTw@mail.gmail.com>",
+      "references": [
+        "<CA+CFxkWaY9DYgtz6y1vKz_3Ex3PFS-m0PWSF=AM+A1PV-7aJTw@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Statnet users,\n\nAfter digging around for a while, I have found the underlying problem and\ncome up with a solution that I would like to share so that 1) if others end\nup in a similar situation they can use it; and 2) to ask if there is a\nsimpler solution that someone might know about. Again, at the end of my\nmessages is commented code with the example.\n\nThe problem seems to stem from the fact the network I am trying to get a\nsubgraph from is already a subgraph of another network. Creating a vector\nof edge IDs based on edge attribute produces a vector that does not\ncorrespond to the original edge IDs of the network. I demonstrate this\nbelow and illustrate a solution. But I am curious if anyone knows why the\noriginal IDs are not retained when selecting be edge attribute. Also, does\nanyone know a simpler solution?\n\nBest wishes\nJesse\n\n\n# Here are the valid edge IDs of my network. Notice that it is not a\nsequential number list as the network is itself a subgraph from another\nnetwork.\n# there are 127 edges in this network and edge 13 has an ID of 22; 113 had\nID 124; 127 has ID of 148. And for the sake of the example, there is no\nedge ID = 13\n\n> valid.eids(expNets[[1]])\n\n  [1]   1   2   3   4   5   6   7   8   9  10  11  12  22  23  24  25  26\n 32  33  34  35\n [22]  36  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52\n 53  54  55  56\n [43]  57  58  59  60  61  62  63  70  71  72  73  74  75  76  77  78  79\n 80  81  82  83\n [64]  84  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100\n101 102 103 104\n [85] 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121\n122 123 124 125\n[106] 126 127 128 129 130 131 132 133 134 136 137 138 139 140 141 142 143\n144 145 146 147\n[127] 148\n\n# Here is list of edge IDs when extracting edges with attribute value 3 for\n\"effect\"\n# the edge IDs do not correspond to the original IDs above. Example, there\nis an edge ID =13\n# the IDs here correspond to the list 1:127. (I.e., 127 edges in\nexpNets[[1]].)\n*# I dont know why the network package does this ???? *\n\n> which(expNets[[1]] %e% \"effect\"==3)\n\n [1]  12  13  17  18  19  20  21  50  51  52  53  54  55  56  57  58  59\n 60  61  63  64\n[22]  65  66  67  68  69  70  71  72  73  75  76  77  78  79  80  81  82\n 83  84  86  87\n[43]  88  90  91  92  93  94  95  97  98  99 100 101 103 104 105 107 108\n109 110 111 112\n[64] 114\n\n# To solve the problem, simply use the vector generated by\nwhich(expNets[[1]] %e% \"effect\"==3) to select from the valid IDs of\nexpNets[[1]]\n# note, as a sanity check, edge ID 13 calls 22; 114 calls 134\n\n> valid.eids(expNets[[1]])[which(expNets[[1]] %e% \"effect\"==3)]\n\n [1]  12  22  26  32  33  34  35  70  71  72  73  74  75  76  77  78  79\n 80  81  83  84\n[22]  85  86  87  88  89  90  91  92  93  95  96  97  98  99 100 101 102\n103 104 106 107\n[43] 108 110 111 112 113 114 115 117 118 119 120 121 123 124 125 127 128\n129 130 131 132\n[64] 134\n\n\n# The subgraph is now produced. It has 64 edges.\n# If we convert the original network to a valued matrix and count the\nnumber of edges that equal 3, we also see that there are 64 edges\n# Further, checking the vertex names of the induced subgraph and the same\nnetwork derived from the valued matrix also shows that the the expected\nsubgraph is prduced (not shown here)\n\n> get.inducedSubgraph(expNets[[1]],\neid=valid.eids(expNets[[1]])[which(expNets[[1]] %e% \"effect\"==3)])\n Network attributes:\n  vertices = 24\n  directed = TRUE\n  hyper = FALSE\n  loops = TRUE\n  multiple = FALSE\n  bipartite = FALSE\n  source = Exposure2.csv\n  name = Exposure2_s1\n  total edges= 64\n    missing edges= 0\n    non-missing edges= 64\n\n Vertex attribute names:\n    abrv cat sub1 sub2 sub3 sub4 vertex.names\n\n Edge attribute names:\n    effect\n\n\n> table(as.matrix(expNets[[1]],attrname = \"effect\")==3)\n\nFALSE  TRUE\n  960    64\n\n\nOn Mon, Apr 24, 2017 at 1:57 PM, Jesse Sayles <Jesse.Sayles@asu.edu> wrote:\n\n> Hi Statnet users,\n>\n> I have run into an odd issue that I hope someone might be able to help\n> with. I am getting an error message of invalid edge IDs when inducing a\n> subgraph, but if I just call the edge IDs by attribute value I get those\n> IDs. Below is line by line commented code explaining what works and what\n> does not. Does anyone have an idea why I might be having this problem or\n> how I might best try to back track it? The only out of the ordinary issue\n> here is that I am calling my network object from a list of stored networks,\n> but I cannot see why that would be causing an error.\n>\n> Thank you and best wishes\n> Jesse\n>\n>\n> # Here we see that my network, which is stored in a list, is indeed a\n> network object\n>\n> > class(expNets[[1]])\n>\n> [1] \"network\"\n>\n> # it is a network object, with no missing edges, and the edge attribute\n> called \"effect\"\n>\n> > expNets[[1]]\n>\n>  Network attributes:\n>   vertices = 32\n>   directed = TRUE\n>   hyper = FALSE\n>   loops = TRUE\n>   multiple = FALSE\n>   bipartite = FALSE\n>   source = Exposure2.csv\n>   name = Exposure2_s1\n>   total edges= 127\n>     missing edges= 0\n>     non-missing edges= 127\n>\n>  Vertex attribute names:\n>     abrv cat sub1 sub2 sub3 sub4 vertex.names\n>\n>  Edge attribute names:\n>     effect\n>\n>\n> # I can check to see which edges have an \"effect\" attribute value of 3\n>\n> > expNets[[1]] %e% \"effect\"==3\n>\n>   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n>  TRUE  TRUE FALSE\n>  [15] FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE\n> FALSE FALSE FALSE\n>  [29] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n> FALSE FALSE FALSE\n>  [43] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE\n>  TRUE  TRUE  TRUE\n>  [57]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE\n>  TRUE  TRUE  TRUE\n>  [71]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n>  TRUE  TRUE  TRUE\n>  [85] FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n> FALSE  TRUE  TRUE\n>  [99]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE\n>  TRUE  TRUE  TRUE\n> [113] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n> FALSE FALSE FALSE\n> [127] FALSE\n>\n>\n> # and I can create a vector of edge IDs with effect value of 3\n>\n> > which(expNets[[1]] %e% \"effect\"==3)\n>\n>  [1]  12  13  17  18  19  20  21  50  51  52  53  54  55  56  57  58  59\n>  60  61  63  64\n> [22]  65  66  67  68  69  70  71  72  73  75  76  77  78  79  80  81  82\n>  83  84  86  87\n> [43]  88  90  91  92  93  94  95  97  98  99 100 101 103 104 105 107 108\n> 109 110 111 112\n> [64] 114\n>\n> #but when I try to induce a subgraph based on those edge IDs I get an\n> error saying there are non-valid edge IDs.\n>\n> > get.inducedSubgraph(expNets[[1]], eid=which(expNets[[1]] %e%\n> \"effect\"==3))\n>\n> Error in get.inducedSubgraph(expNets[[1]], eid = which(expNets[[1]] %e%\n>  :\n>   eid argument contains non-valid edge ids\n>\n> # What might be causing this error or how might I track it down?\n> # thank you :)\n>\n> --\n>\n> *Jesse Sayles, PhD*\n>\n> *saylesunchartedwaters.com <http://saylesunchartedwaters.com/>*\n>\n>\n>\n> *Postdoctoral Fellow*\n>\n> *Department of Geography *\n>\n> *McGill University*\n> *Climate Change **Adaptation **Research **Group*\n> <http://www.jamesford.ca/>\n>\n\n\n\n-- \n\n*Jesse Sayles, PhD*\n\n*saylesunchartedwaters.com <http://saylesunchartedwaters.com/>*\n\n\n\n*Postdoctoral Fellow*\n\n*Department of Geography *\n\n*McGill University*\n*Climate Change **Adaptation **Research **Group* <http://www.jamesford.ca/>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170424/0a1c88b3/attachment.html>",
+      "body_snippet": "Dear Statnet users,\n\nAfter digging around for a while, I have found the underlying problem and\ncome up with a solution that I would like to share so that 1) if others end\nup in a similar situation the",
+      "thread_id": "thread-0e8079f29198",
+      "thread_depth": 1,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-ddd9547d3e93",
+      "message_id": "<80fac2e7-d82d-771d-3641-3092eca2e3e3@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2017-04-24T17:04:00Z",
+      "subject": "[statnet_help] error with induced subgraph, edge IDs",
+      "subject_clean": "[statnet_help] error with induced subgraph, edge IDs",
+      "in_reply_to": "<CA+CFxkWaY9DYgtz6y1vKz_3Ex3PFS-m0PWSF=AM+A1PV-7aJTw@mail.gmail.com>",
+      "references": [
+        "<CA+CFxkWaY9DYgtz6y1vKz_3Ex3PFS-m0PWSF=AM+A1PV-7aJTw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Jesse -\n\nYour problem appears to stem from using \nwhich(expNets[[1]]%e%\"effect\"==3) to get the edge IDs.  This will only \nwork if your edge IDs happen to be exactly the same as their ordering \n(1, 2, 3...).  This is usually the case for newly created network \nobjects, but it does not have to be true in general: e.g., your edge IDs \ncould be 2, 5, 10, 31, 127, and so forth.  Such \"gaps\" in edge ID \nsequence usually arise from edges having been deleted from a network \nobject at some stage.  As you discovered, the safe way to select edge \nIDs is to use valid.eids() to obtain the ordered list of valid edge IDs, \nand then to subset this list by the output of %e%.\n\nHope that helps,\n\n-Carter\n\n\nOn 04/24/2017 10:57 AM, Jesse Sayles wrote:\n> Hi Statnet users,\n>\n> I have run into an odd issue that I hope someone might be able to help \n> with. I am getting an error message of invalid edge IDs when inducing \n> a subgraph, but if I just call the edge IDs by attribute value I get \n> those IDs. Below is line by line commented code explaining what works \n> and what does not. Does anyone have an idea why I might be having this \n> problem or how I might best try to back track it? The only out of the \n> ordinary issue here is that I am calling my network object from a list \n> of stored networks, but I cannot see why that would be causing an error.\n>\n> Thank you and best wishes\n> Jesse\n>\n>\n> # Here we see that my network, which is stored in a list, is indeed a \n> network object\n>\n> > class(expNets[[1]])\n>\n> [1] \"network\"\n>\n> # it is a network object, with no missing edges, and the edge \n> attribute called \"effect\"\n>\n> > expNets[[1]]\n>\n>  Network attributes:\n>   vertices = 32\n>   directed = TRUE\n>   hyper = FALSE\n>   loops = TRUE\n>   multiple = FALSE\n>   bipartite = FALSE\n>   source = Exposure2.csv\n>   name = Exposure2_s1\n>   total edges= 127\n>     missing edges= 0\n>     non-missing edges= 127\n>\n>  Vertex attribute names:\n>     abrv cat sub1 sub2 sub3 sub4 vertex.names\n>\n>  Edge attribute names:\n>     effect\n>\n>\n> # I can check to see which edges have an \"effect\" attribute value of 3\n>\n> > expNets[[1]] %e% \"effect\"==3\n>\n>   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE \n> FALSE  TRUE  TRUE FALSE\n>  [15] FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE \n> FALSE FALSE FALSE FALSE\n>  [29] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE \n> FALSE FALSE FALSE FALSE\n>  [43] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE \n>  TRUE  TRUE  TRUE  TRUE\n>  [57]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE \n>  TRUE  TRUE  TRUE  TRUE\n>  [71]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE \n>  TRUE  TRUE  TRUE  TRUE\n>  [85] FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE \n>  TRUE FALSE  TRUE  TRUE\n>  [99]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE \n>  TRUE  TRUE  TRUE  TRUE\n> [113] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE \n> FALSE FALSE FALSE FALSE\n> [127] FALSE\n>\n>\n> # and I can create a vector of edge IDs with effect value of 3\n>\n> > which(expNets[[1]] %e% \"effect\"==3)\n>\n>  [1]  12  13  17  18  19  20  21  50  51  52  53  54  55  56  57  58 \n>  59  60  61  63  64\n> [22]  65  66  67  68  69  70  71  72  73  75  76  77  78  79  80  81 \n>  82  83  84  86  87\n> [43]  88  90  91  92  93  94  95  97  98  99 100 101 103 104 105 107 \n> 108 109 110 111 112\n> [64] 114\n>\n> #but when I try to induce a subgraph based on those edge IDs I get an \n> error saying there are non-valid edge IDs.\n>\n> > get.inducedSubgraph(expNets[[1]], eid=which(expNets[[1]] %e% \n> \"effect\"==3))\n>\n> Error in get.inducedSubgraph(expNets[[1]], eid = which(expNets[[1]] \n> %e%  :\n>   eid argument contains non-valid edge ids\n>\n> # What might be causing this error or how might I track it down?\n> # thank you :)\n>\n> -- \n>\n> /Jesse Sayles, PhD/\n>\n> /saylesunchartedwaters.com <http://saylesunchartedwaters.com/>/\n>\n>\n> /Postdoctoral Fellow\n> /\n>\n> /Department of Geography /\n>\n> /McGill University//\n> /\n>\n> /Climate Change //Adaptation //Research //Group/ \n> <http://www.jamesford.ca/>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170424/6cff2284/attachment.html>",
+      "body_snippet": "Hi, Jesse -\n\nYour problem appears to stem from using \nwhich(expNets[[1]]%e%\"effect\"==3) to get the edge IDs.  This will only \nwork if your edge IDs happen to be exactly the same as their ordering \n(1,",
+      "thread_id": "thread-0e8079f29198",
+      "thread_depth": 1,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-3a8bea2c275e",
+      "message_id": "<390d4d4b-19f1-68b0-c32e-94c2f09d07dd@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2017-04-24T17:57:26Z",
+      "subject": "[statnet_help] statnet_help Digest, Vol 129, Issue 11",
+      "subject_clean": "[statnet_help] statnet_help Digest, Vol 129, Issue 11",
+      "in_reply_to": "<5C683FC8-CC78-4FEF-838B-C653CB3A65D3@umass.edu>",
+      "references": [
+        "<mailman.973.1492628482.27624.statnet_help@mailman13.u.washington.edu>",
+        "<5C683FC8-CC78-4FEF-838B-C653CB3A65D3@umass.edu>"
+      ],
+      "body_plain": "Hi, Mark -\n\nIt sounds like lnam may be what you want (though see below), or an \nequivalent implementation. (There are lots of linear network \nautocorrelation implementations floating around, often under confusingly \ndifferent names.)  I can't speak to how tnam does things (Philip, if you \nare pushing the results to a standard glm function, are you fitting by \nMPLE here?), but indeed the lnam function is hard to parallelize.  It's \nbeen a while since I looked into this, but IIRC the main bottleneck in \nsuch algorithms is the determinant calculation (which is needed for the \nnormalizing factor in the likelihood function).  If your weight matrix \nis sparse (as is usually the case e.g. for spatial data), there are \nsparse determinant functions that can speed things up; IIRC I have an \nexperimental implementation lying around somewhere, but it's not \nthoroughly tested.  However, if you are using geodesics (or functions \nthereof) for your weight matrix, your matrix is probably *not* sparse.  \nAs I recall, the next trick in line is to use a low-dimensional \napproximation of your matrix to get an (approximate) determinant, which \nwill work well when the weights have a sufficiently simple global \nstructure.  YMMV.\n\nBTW, as lovely as the network autocorrelation model is from a \nmathematical point of view, it is often a dubious model in practice: it \nis based on pretty strong assumptions about the data generating process \nthat may or may not be plausible approximations in any given situation.  \nIf you have a 6000 node network, do you have reason to think that (1) \ndiffusion of your outcome variable actually works the way the model \nassumes, and (2) the system was at least approximately equilibrated when \nmeasured?  It could well be the best game going for your problem (even \nif imperfect), but you might want to be sure before investing lots of \ntime in scaling it.\n\nThe other thing that gives me pause is that you say you are looking at \nindividual outcomes, while also saying that you are looking at \n\"ego/alter association on a trait.\"  The latter would seem to be a \nrelational outcome, not an individual one (and hence my confusion about \nwhether you wanted netlm or lnam).  On a fixed network, one could use \nlnams to model edge values (i.e., you are assuming that the network \ntopology is fixed on the time scale of the social process, but the \nvalues of the edges can adjust by interaction with other edges to which \nthey are associated in the line graph of the original network), but that \nwould be a somewhat unusual application.  For relational outcomes on a \nnetwork that varies on the time scale of the focal process, one would \nusually consider positing a network regression or some other flavor of \nvalued ERGM (or, possibly, a latent variable model).  Individual \noutcomes, subject to influence effects, which coevolve on the same time \nscale as the network are very hard, and usually one needs to reach for \ndynamic data to make much headway.  (See, however, Ian Fellows's work \nfor some cross-sectional results.)\n\nI think the above counts as more questions than answers, but hopefully \nit is helpful,\n\n-Carter\n\nOn 04/21/2017 10:32 AM, Mark Pachucki wrote:\n> I appreciate your comments & suggestions, Philip & Carter!\n>\n> Philip: I can certainly try to look into tnam and compare how it \n> performs relative to lnam.\n>\n> Carter:  I?m interested in estimating an individual outcomes model \n> that estimates ego/alter association on a trait, accounting for \n> network autocorrelation using a weighted adjacency or geodesic matrix. \n> O?Malley & Marsden (2008, Health Services Outcomes Research Methods) \n> provided some sample R code in their paper that illustrated how the \n> [optim] package compares & relates to the [lnam] package, so I?ve been \n> following that as a guide.\n>\n> I?d definitely be interested in any literature/examples you might \n> point me towards to help me understand some of the other optimizations \n> for large, sparse matrices if they might possibly be employed for \n> network autocorrelation models.\n>\n> Cheers,\n> Mark\n> ______________________________\n> Mark C. Pachucki\n> Assistant Professor\n> University of Massachusetts\n> Department of Sociology\n> Computational Social Science Institute\n> 200 Hicks Way, Thompson Hall 532\n> Amherst, MA 01003-9277\n> Email: mpachucki@umass.edu <mailto:mpachucki@umass.edu>\n> Office: 413-545-7526\n> http://www.markpachucki.com\n>\n>\n>\n>> On Apr 19, 2017, at 3:01 PM, \n>> statnet_help-request@mailman13.u.washington.edu \n>> <mailto:statnet_help-request@mailman13.u.washington.edu> wrote:\n>>\n>> Send statnet_help mailing list submissions to\n>> statnet_help@u.washington.edu <mailto:statnet_help@u.washington.edu>\n>>\n>> To subscribe or unsubscribe via the World Wide Web, visit\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>> or, via email, send a message with subject or body 'help' to\n>> statnet_help-request@mailman13.u.washington.edu\n>>\n>> You can reach the person managing the list at\n>> statnet_help-owner@mailman13.u.washington.edu\n>>\n>> When replying, please edit your Subject line so it is more specific\n>> than \"Re: Contents of statnet_help digest...\"\n>> Today's Topics:\n>>\n>>   1. Re: extending lnam with \"snow\" or \"parallel\"? (Carter T. Butts)\n>>\n>> *From: *\"Carter T. Butts\" <buttsc@uci.edu>\n>> *Subject: **Re: [statnet_help] extending lnam with \"snow\" or \"parallel\"?*\n>> *Date: *April 18, 2017 at 4:36:54 PM EDT\n>> *To: *statnet_help@u.washington.edu\n>>\n>>\n>> Hi, Mark.  Your question seems to conflate lnam and netlm.  In what \n>> analysis are you actually interested?  (I would note that neither \n>> currently has a parallel implementation, but the issues involved in \n>> parallelizing each are very different. Also, there are other \n>> optimizations for large, sparse matrices that can in principle be \n>> employed for network autocorrelation models that cannot be used for \n>> netlm, and vice versa.)\n>>\n>> As a general matter, just setting aside cores is not going to result \n>> in performance enhancement for most computation: you have to actually \n>> have and specifically employ a parallel implementation.  Depending on \n>> the problem, the difficulty of parallelization can vary from trivial \n>> to impossible (and it always involves engineering tradeoffs).  But \n>> it's something that has to be actively designed in.\n>>\n>> -Carter\n>>\n>>\n>>\n>> On 04/18/2017 06:16 AM, Mark Pachucki wrote:\n>>> Hi listserv,\n>>>\n>>> I?m working on a lnam (sna) specification with a matrix (~6000x6000 \n>>> nodes), and thinking through ways to cut down on the hours/days it \n>>> currently takes to obtain estimates. Although I?m working with a \n>>> fairly decent computing cluster, I?m not seeing radically different \n>>> estimation times regardless of how much RAM I?m allocating, or the # \n>>> of cores I?m setting aside.\n>>>\n>>> I noted some prior discussion about parallel computing in the \n>>> listserv archives:\n>>> (a) a bunch of conversations related to ergm parallelization\n>>> (b) (w/r/t computing geodesics, 2016, answered by M. Handcock): \n>>> http://mailman13.u.washington.edu/mailman/htdig/statnet_help/2016/002227.html\n>>> (c) (w/r/t QAP, 2008, answered by C. Butts): \n>>> http://mailman13.u.washington.edu/mailman/htdig/statnet_help/2008/000162.html\n>>>\n>>> My question seems already hinted at in the negative by others, and \n>>> is this:\n>>> Q: Can lnam(optim), as written, take advantage of multiple cores in \n>>> the way that, for instance, ergm can?\n>>>\n>>> My guess is no, because no part of the underlying optimization \n>>> procedure is permutation-based, correct? (I?d be thrilled to learn \n>>> otherwise.) At the same time, reads of the package documentation, \n>>> and prior listserv guidance suggest that one could, in principle, \n>>> make use of the ?snow? (or parallel) package, but based on some of \n>>> the discussion I?m not clear that it would improve things all that \n>>> much, if at all. Does anyone have thoughts they might share?\n>>>\n>>> Thanks,\n>>> Mark\n>>> ______________________________\n>>> Mark C. Pachucki\n>>> Assistant Professor\n>>> University of Massachusetts\n>>> Department of Sociology\n>>> Computational Social Science Institute\n>>> 200 Hicks Way, Thompson Hall 532\n>>> Amherst, MA 01003-9277\n>>> Email: mpachucki@umass.edu <mailto:mpachucki@umass.edu>\n>>> Office: 413-545-7526\n>>> http://www.markpachucki.com <http://www.markpachucki.com/>\n>>>\n>>>\n>>>\n>>>\n>>>\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@mailman13.u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170424/6a0183be/attachment.html>",
+      "body_snippet": "Hi, Mark -\n\nIt sounds like lnam may be what you want (though see below), or an \nequivalent implementation. (There are lots of linear network \nautocorrelation implementations floating around, often und",
+      "thread_id": "thread-858874e3e576",
+      "thread_depth": 1,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-8ca1d1075c12",
+      "message_id": "<cdd95b20-7e35-a92f-8134-dd44a43f5afe@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2017-04-24T18:21:00Z",
+      "subject": "[statnet_help] Valued ERGMs with highly skewed edge weights",
+      "subject_clean": "[statnet_help] Valued ERGMs with highly skewed edge weights",
+      "in_reply_to": "<18EBD925-65F4-4D87-87E0-9C747982DD4C@devingaffney.com>",
+      "references": [
+        "<0498AB8E-6D12-4268-9CC0-E60E517DD857@devingaffney.com>",
+        "<ae733d73-e6b3-6b73-d36f-d6addbd94c10@uci.edu>",
+        "<18EBD925-65F4-4D87-87E0-9C747982DD4C@devingaffney.com>"
+      ],
+      "body_plain": "Hi, Devin.  Pavel provided one useful approach.  Since you are dealing \nwith transition matrices, another natural approach would be to \nrow-normalize: your i,j cell is then the probability of posting on j \nnext, given that one has previously posted on i.  (I would also consider \nusing a simple local posterior mean for those probability estimates, \ntreating the counts in each row as multinomial and using a minimally \ninformative prior - this will give you some shrinkage for extremes in \nthe case of small sending groups, and will pull your probability \nestimates away from 0 in the no-observed-transition case.  It's also \nextremely easy to do.)  It would then be natural to work on the logit \nscale, and obvious controls would be column effects (you don't need row \neffects, obviously) and reciprocity.  In principle this can be fit with \nergm() using the StdNormal reference, although Pavel may want to comment \non how thoroughly this has been tested to date. Another approach would \nbe to fit a latentnet model with receiver effects to control for \npopularity, and then use a permutation test to see if political \nsubreddits are closer than would be expected in the residual space.  \n(You could put the homophily effect in the model directly, but given the \nissues with accurately estimating the latent versus manifest components \nof latent space models, it's probably just as well to map the subs into \nthe latent space and then assess proximity after the fact.)\n\nHope that helps,\n\n-Carter\n\n\nOn 04/17/2017 06:18 PM, Devin Gaffney wrote:\n> Ah yes, the nodes-and-edges question. This is part of a study on how people move around on Reddit (i.e. why people post on some subreddit and then another and so forth). The network is a snapshot of the transition matrix of dominant subreddits, where nodes are subreddits and edges are the number of people who posted on subreddit A and then subsequently posted on subreddit B (I?m assuming some familiarity with Reddit as a forum, correct me if I?m wrong in assuming that!). The problem is that, when considering the largest subreddit transitions (such as people posting on AskReddit and then posting on videos, for example, the number of people moving in that direction could be, for some snapshot, many thousands of people, while transitions between two much smaller subreddits may have only a dozen or so people moving that direction. The goal of fitting this into an ERGM is to see if there is a topical homophily effect (i.e. do people move between political subreddits more often than chance). I?m controlling for sum+nonzero+mutual+edges as a first pass, and am adding nodecov on the number of people posting on each subreddit to attempt to control for subreddit size - any and all advice/productive-question-asking is definitely sought!\n>\n> Devin\n>\n>> On Apr 17, 2017, at 8:49 PM, Carter T. Butts <buttsc@uci.edu> wrote:\n>>\n>> Hi, Devin -\n>>\n>> As always, one's first step is to consider what the weights mean (i.e., what is being measured?) and make sure that the model one is positing makes sense in that light.  There are relatively few relational quantities (binding affinities?) I can think of that vary over 4-5 orders of magnitude, so this is presumably not a typical social system; including edge values over such a wide range would seem to imply either that they are being normalized by interacting with similarly large coefficients as part of some other process (e.g., molar substrate quantities in a chemical system, firing events over a long period of time in a neural system) or that the response to the edge weight is not on the same scale (i.e., a unit increase in edge weight yields much less than a unit increase in response at high weight levels).  In the former case, one might consider dichotomizing the data (since the low-weight edges might as well be zero weight), while in the latter case it might be more reasonable to transform the data into a phenomenologically reasonable scale.  But it's hard to know how to proceed further without knowing more about what the network represents, and what you want the model to accomplish.\n>>\n>> Hope that helps (by spurring productive questions, at least!),\n>>\n>> -Carter\n>>\n>> On 04/17/2017 03:39 PM, Devin Gaffney wrote:\n>>> Hello all - I have highly skewed edge weights for a 50 node network. Most edges have values in the single or maybe double digits, while several edges have values in the 10^4->10^5 region. In other contexts I would log-transform the data during a regression and then talk about coefficients in reference to the log value of the variable, but I?m not sure how to do that with valued ERGMs. In other words, I have a highly skewed edge weight distribution, and models often fail to converge. When transforming to log-space, it seems to converge much more reliably (I *think* because the reference parameter doesn?t expect distributions like mine?). Is there a way to either A. ensure convergence for such highly skewed edge weights or B. reasonably interpret a log transformed edge weight?\n>>>\n>>> Devin\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi, Devin.  Pavel provided one useful approach.  Since you are dealing \nwith transition matrices, another natural approach would be to \nrow-normalize: your i,j cell is then the probability of posting ",
+      "thread_id": "thread-4044e03cc8a1",
+      "thread_depth": 3,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-0a4c7daed6ae",
+      "message_id": "<6300EFC3DD5D4048AAC68932176922C9412981E7@CMS11-01.campus.gla.ac.uk>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "fc15c5af3086c39b452f2c7197d876e960af137e6e952be7313ac1d9a46ba449",
+      "date": "2017-04-25T14:08:46Z",
+      "subject": "[statnet_help] Custom user term question: b1homophily",
+      "subject_clean": "[statnet_help] Custom user term question: b1homophily",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi there,\n\nTL;DR: My custom user term generates different values each time I call \nit using 'summary'.\n\nThe long version:\n\nI have a question about the ergm.userterms package. I've been trying to \nimplement an absdiff term for the first mode in bipartite networks. At \nsome point, I want to add alpha and beta weights as in the b1nodematch \nterm (see Bomiriya et al), but for now I'm happy without these weights \nfor testing purposes. I am experimenting with non-edges as well. The \nstatistic is supposed to have the following form:\n\nh_\\text{b1absdiff} = \\sum_i \\sum_j \\sum_{k \\neq i} N_{ij} N_{kj} \\vert \nx_i - x_k \\vert + (1 - N_{ij}) (1 - N_{kj}) \\vert x_i - x_k \\vert\n\nwhere N is the network matrix and x is a metric nodal covariate. That \nis, absolute differences between the covariate of nodes i and k should \nbe summed over all k nodes that are also connected to node j of the \nsecond partition, and absolute differences should also be summed up \nwhere neither i nor k is connected to j, and that second sum should be \noptional. Except for the optional non-edges part, this is really similar \nto b1nodematch.\n\nHere is what I have written up:\n\nInitErgmTerm.b1absdiff <- function(nw, arglist, ...) {\n   a <- check.ErgmTerm(nw,\n                       arglist,\n                       directed = FALSE,\n                       bipartite = TRUE,\n                       varnames = c(\"attrname\", \"nonedges\"),\n                       vartypes = c(\"character\", \"logical\"),\n                       required = c(TRUE, FALSE),\n                       defaultvalues = list(NULL, FALSE))\n   if (is.null(a$attrname)) {\n     stop(\"'attrname' must be provided.\")\n   } else if (length(a$attrname) != 1) {\n     stop(\"'attrname' must contain the name of exactly one nodal\n          attribute.\")\n   } else {\n     nodecov <- get.node.attr(nw, a$attrname)\n     coef.names <- paste0(\"b1absdiff.\", a$attrname)\n     ne <- ifelse(a$nonedges == TRUE, 1, 0)\n   }\n   list(name = \"b1absdiff\",\n       coef.names = coef.names,\n       pkgname = \"ergm.userterms\",\n       inputs = c(nodecov, ne),\n       dependence = TRUE\n   )\n}\n\nCHANGESTAT_FN(d_b1absdiff) {\n   int i;\n   Vertex h, t, k;\n   double diff1_edge, diff1_noedge, diff2_edge, diff2_noedge;\n   int nonedges = INPUT_PARAM[N_INPUT_PARAMS - 1];\n   Vertex bip = BIPARTITE;\n   double diff_current = 0.0;\n\n   ZERO_ALL_CHANGESTATS(i);\n   FOR_EACH_TOGGLE(i) {\n     t = TAIL(i);\n     h = HEAD(i);\n     diff1_edge = 0.0;\n     diff1_noedge = 0.0;\n     diff2_edge = 0.0;\n     diff2_noedge = 0.0;\n\n     for (k = 0; k < N_NODES; k++) {\n       if (IS_OUTEDGE(k, h) && t < bip && k < bip && h >= bip &&\n           t != k) {\n         diff_current = fabs(INPUT_PARAM[t - 1] - INPUT_PARAM[k - 1]);\n         if (IS_OUTEDGE(t, h)) {\n           diff1_edge = diff1_edge + diff_current;\n         } else {\n           diff1_noedge = diff1_noedge + diff_current;\n         }\n       } else if (!IS_OUTEDGE(k, h) && nonedges == 1 && t < bip &&\n                  k < bip && h >= bip && t != k) {\n         diff_current = fabs(INPUT_PARAM[t - 1] - INPUT_PARAM[k - 1]);\n         if (IS_OUTEDGE(t, h)) {\n           diff2_edge = diff2_edge + diff_current;\n         } else {\n           diff2_noedge = diff2_noedge + diff_current;\n         }\n       }\n     }\n     CHANGE_STAT[0] += (IS_OUTEDGE(t, h) ? (diff2_edge - diff1_edge) :\n                       (diff1_noedge - diff2_noedge));\n     TOGGLE_IF_MORE_TO_COME(i);\n   }\n   UNDO_PREVIOUS_TOGGLES(i);\n}\n\nThe first part of this code is the ErgmInit code, and the second part is \nthe change statistic in C. This code works reasonably well (I think; but \nI will need to conduct more tests). The diff_edge and diff_noedge parts \nmay be a bit redundant, but I don't care for now.\n\nNow I'd like to abstract a bit more and supply a similarity or distance \nmatrix as an argument. So the change statistic should not compute the \nabsolute distance, but the user supplies an m x m distance matrix. That \nwill be useful because I can then supply node matches, absolute \ndifferences, one-mode network relations and many more things:\n\nh_\\text{b1homophily} = \\sum_i \\sum_j \\sum_{k \\neq i} N_{ij} N_{kj} \nX_{ik} + (1 - N_{ij}) (1 - N_{kj}) X_{ik}\n\nwhere X is the square covariate matrix with the same number of rows and \ncolumns as N has rows. Here is my attempt at writing this down as code:\n\nInitErgmTerm.b1homophily <- function(nw, arglist, ...) {\n   a <- check.ErgmTerm(nw,\n                       arglist,\n                       directed = FALSE,\n                       bipartite = TRUE,\n                       varnames = c(\"mat\", \"nonedges\"),\n                       vartypes = c(\"matrix\", \"logical\"),\n                       required = c(TRUE, FALSE),\n                       defaultvalues = list(NULL, FALSE))\n   if (is.null(a$mat)) {\n     stop(\"'mat' must be provided.\")\n   } else if (class(a$mat) != \"matrix\") {\n     stop(\"'mat' must be an m x m matrix with similarity or dissimarity\n          values for the first mode.\")\n   } else {\n     coef.names <- paste(\"b1homophily\",\n                         as.character(sys.call(0)[[3]][2]), sep = \".\")\n     ne <- ifelse(a$nonedges == TRUE, 1, 0)\n     m <- as.numeric(a$mat)\n   }\n   list(name = \"b1homophily\",\n       coef.names = coef.names,\n       pkgname = \"ergm.userterms\",\n       inputs = c(m, ne),\n       dependence = TRUE\n   )\n}\n\nCHANGESTAT_FN(d_b1homophily) {\n   int i;\n   Vertex h, t, k;\n   double diff1_edge, diff1_noedge, diff2_edge, diff2_noedge;\n   int nonedges = INPUT_PARAM[N_INPUT_PARAMS - 1];\n   Vertex bip = BIPARTITE;\n   double diff_current = 0.0;\n\n   ZERO_ALL_CHANGESTATS(i);\n   FOR_EACH_TOGGLE(i) {\n     t = TAIL(i);\n     h = HEAD(i);\n     diff1_edge = 0.0;\n     diff1_noedge = 0.0;\n     diff2_edge = 0.0;\n     diff2_noedge = 0.0;\n\n     for (k = 0; k < N_NODES; k++) {\n       if (IS_OUTEDGE(k, h) && t < bip && k < bip && h >= bip &&\n           t != k) {\n         diff_current = INPUT_PARAM[(k - 1) * bip + t - 1];\n         if (IS_OUTEDGE(t, h)) {\n           diff1_edge = diff1_edge + diff_current;\n         } else {\n           diff1_noedge = diff1_noedge + diff_current;\n         }\n       } else if (!IS_OUTEDGE(k, h) && nonedges == 1 && t < bip &&\n                  k < bip && h >= bip && t != k) {\n         diff_current = INPUT_PARAM[(k - 1) * bip + t - 1];\n         if (IS_OUTEDGE(t, h)) {\n           diff2_edge = diff2_edge + diff_current;\n         } else {\n           diff2_noedge = diff2_noedge + diff_current;\n         }\n       }\n     }\n     CHANGE_STAT[0] += (IS_OUTEDGE(t, h) ? (diff2_edge - diff1_edge) :\n                       (diff1_noedge - diff2_noedge));\n     TOGGLE_IF_MORE_TO_COME(i);\n   }\n   UNDO_PREVIOUS_TOGGLES(i);\n}\n\nAs you can see, this code is nearly identical to the previous code \nchunk. The only difference is that a matrix is supplied by the user, and \nthe C code computes the index of the respective similarity or \ndissimilarity value in the INPUT_PARAM vector before using it (instead \nof computing the absolute difference).\n\nHowever, the statistic seems to return different values each time it is \nused. I don't understand why this is the case since I don't modify any \nvalues in the input parameter vector. Any hint would be greatly appreciated.\n\nHere is a simulation that illustrates the problem:\n\nlibrary(\"statnet\")\nlibrary(\"ergm.userterms\")\nset.seed(12345)\n\nmat <- matrix(rbinom(200, 1, 0.15), nrow = 20)\nnode_cov <- rnorm(30, 0, 1)\nsimilarity <- matrix(rnorm(200, 0, 1), nrow = 20)\nnw <- network(mat, bipartite = TRUE, directed = FALSE)\nset.vertex.attribute(nw, \"nodecov\", node_cov)\n\nmodel <- ergm(nw ~ edges + b1absdiff(\"nodecov\"))\n\nsapply(1:100, function(x) summary(nw ~ b1absdiff(\"nodecov\")))\nsapply(1:100, function(x) summary(nw ~ b1homophily(similarity)))\n\nHere, the second-to-last line of code returns 100 times the same value \nwhile the last line of code generates slightly different values each \ntime it is called on the same network. Why does this happen? Is this \nbecause of some previous toggles I need to reset? Or some trivial coding \nmistake on my part? I'm having a hard time wrapping my head around this \nright now.\n\nMany thanks,\n\nPhilip\n\nPS: I may be unable to reply to follow-up messages between April 27 and \nMay 14, but I thought I'd get this out there before I travel.\n\n--\nDr Philip Leifeld\nSenior Lecturer in Research Methods\nDirector of Postgraduate Research Training\nSchool of Social and Political Sciences\nUniversity of Glasgow\nhttp://www.philipleifeld.com",
+      "body_snippet": "Hi there,\n\nTL;DR: My custom user term generates different values each time I call \nit using 'summary'.\n\nThe long version:\n\nI have a question about the ergm.userterms package. I've been trying to \nimpl",
+      "thread_id": "thread-0a4c7daed6ae",
+      "thread_depth": 0,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-2e6f025a3b8f",
+      "message_id": "<CALPwDKWE70b+fvG3pTGt+Ymr=FS3BOCG87Smw8GdR13Ut=43QA@mail.gmail.com>",
+      "from_name": "Rezvan Sherkati",
+      "from_email_hash": "518e09ee5185c6e860bc6ff0240d1b6bf0016373a6e77928628a43a4a98fccc8",
+      "date": "2017-04-30T14:05:24Z",
+      "subject": "[statnet_help] ERGM warning",
+      "subject_clean": "[statnet_help] ERGM warning",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\nI?m trying to run a ERGM model on my network. My model is:\n\nmodel <- ergm(graph~nodefactor(\"employer\"),\n              response=\"weight\", reference=~Poisson)\n\nand when I use mcmc.disgnostics, it gives me a warning:\n\nWarning messages:\n1: In cor(as.matrix(x)) : the standard deviation is zero\n2: In approx.hotelling.diff.test(x1, x2, var.equal = TRUE) :\n  Vector(s)  do not vary but equal mu0; they have been ignored for the\npurposes of testing.\n\nCan you help me what this warning is for?\nAlso I have tried that with model <- ergm(graph~edges+nodefactor(\"e\nmployer\"),\n              response=\"weight\", reference=~Poisson)\nand I still get the warning.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170430/49a9426f/attachment.html>",
+      "body_snippet": "Hi,\nI?m trying to run a ERGM model on my network. My model is:\n\nmodel <- ergm(graph~nodefactor(\"employer\"),\n              response=\"weight\", reference=~Poisson)\n\nand when I use mcmc.disgnostics, it gi",
+      "thread_id": "thread-2e6f025a3b8f",
+      "thread_depth": 0,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-0f5316253048",
+      "message_id": "<1493606230.23974.3.camel@uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2017-04-30T19:37:23Z",
+      "subject": "[statnet_help] ERGM warning",
+      "subject_clean": "[statnet_help] ERGM warning",
+      "in_reply_to": "<CALPwDKWE70b+fvG3pTGt+Ymr=FS3BOCG87Smw8GdR13Ut=43QA@mail.gmail.com>",
+      "references": [
+        "<CALPwDKWE70b+fvG3pTGt+Ymr=FS3BOCG87Smw8GdR13Ut=43QA@mail.gmail.com>"
+      ],
+      "body_plain": "Hi,\n\nI recommend trying sum, rather than edges. In valued ERGMs, edges is the number of nonzero dyads, whereas nodefactor defaults to form=\"sum\".\n\nBest,\nPavel\n\n\nOn Sun, 2017-04-30 at 17:05 -0400, Rezvan Sherkati wrote:\nHi,\nI?m trying to run a ERGM model on my network. My model is:\n\nmodel <- ergm(graph~nodefactor(\"employer\"),\n              response=\"weight\", reference=~Poisson)\n\nand when I use mcmc.disgnostics, it gives me a warning:\n\nWarning messages:\n1: In cor(as.matrix(x)) : the standard deviation is zero\n2: In approx.hotelling.diff.test(x1, x2, var.equal = TRUE) :\n  Vector(s)  do not vary but equal mu0; they have been ignored for the purposes of testing.\n\nCan you help me what this warning is for?\nAlso I have tried that with model <- ergm(graph~edges+nodefactor(\"employer\"),\n              response=\"weight\", reference=~Poisson)\nand I still get the warning.\n\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n--\n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA)<http://niasra.uow.edu.au/index.html> | Web (Personal)<http://www.krivitsky.net/research> | ResearchGate<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID: 0000-0002-9101-3362<orcid.org/0000-0002-9101-3362>\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170501/456bf657/attachment.html>",
+      "body_snippet": "Hi,\n\nI recommend trying sum, rather than edges. In valued ERGMs, edges is the number of nonzero dyads, whereas nodefactor defaults to form=\"sum\".\n\nBest,\nPavel\n\n\nOn Sun, 2017-04-30 at 17:05 -0400, Rezv",
+      "thread_id": "thread-2e6f025a3b8f",
+      "thread_depth": 1,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-c7bbaefdf6c8",
+      "message_id": "<CALPwDKWCeV+LYWAxsr-U7Ox0gUCsbKwGdePV7GaAiDr+Yi7VqA@mail.gmail.com>",
+      "from_name": "Rezvan Sherkati",
+      "from_email_hash": "518e09ee5185c6e860bc6ff0240d1b6bf0016373a6e77928628a43a4a98fccc8",
+      "date": "2017-04-30T19:51:05Z",
+      "subject": "[statnet_help] ERGM warning",
+      "subject_clean": "[statnet_help] ERGM warning",
+      "in_reply_to": "<1493606230.23974.3.camel@uow.edu.au>",
+      "references": [
+        "<CALPwDKWE70b+fvG3pTGt+Ymr=FS3BOCG87Smw8GdR13Ut=43QA@mail.gmail.com>",
+        "<1493606230.23974.3.camel@uow.edu.au>"
+      ],
+      "body_plain": "I tried sum too but I still get the same warning....\n\nOn Sun, Apr 30, 2017 at 10:37 PM, Pavel Krivitsky <pavel@uow.edu.au> wrote:\n\n> Hi,\n>\n> I recommend trying sum, rather than edges. In valued ERGMs, edges is the\n> number of nonzero dyads, whereas nodefactor defaults to form=\"sum\".\n>\n> Best,\n> Pavel\n>\n>\n> On Sun, 2017-04-30 at 17:05 -0400, Rezvan Sherkati wrote:\n>\n> Hi,\n> I?m trying to run a ERGM model on my network. My model is:\n>\n> model <- ergm(graph~nodefactor(\"employer\"),\n>               response=\"weight\", reference=~Poisson)\n>\n> and when I use mcmc.disgnostics, it gives me a warning:\n>\n> Warning messages:\n> 1: In cor(as.matrix(x)) : the standard deviation is zero\n> 2: In approx.hotelling.diff.test(x1, x2, var.equal = TRUE) :\n>   Vector(s)  do not vary but equal mu0; they have been ignored for the\n> purposes of testing.\n>\n> Can you help me what this warning is for?\n> Also I have tried that with model <- ergm(graph~edges+nodefactor(\"e\n> mployer\"),\n>               response=\"weight\", reference=~Poisson)\n> and I still get the warning.\n>\n> _______________________________________________\n> statnet_help mailing liststatnet_help@u.washington.eduhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n> --\n>\n> Pavel Krivitsky\n> Lecturer in Statistics\n> National Institute of Applied Statistics Research Australia (NIASRA)\n> School of Mathematics and Applied Statistics | Building 39C Room 154\n> University of Wollongong NSW 2522 Australia\n> *T *+61 2 4221 3713 <+61%202%204221%203713>\n> Web (NIASRA) <http://niasra.uow.edu.au/index.html> | Web (Personal)\n> <http://www.krivitsky.net/research> | ResearchGate\n> <http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID:\n> 0000-0002-9101-3362 <http://orcid.org/0000-0002-9101-3362>\n> NOTICE: This email is intended for the addressee named and may contain\n> confidential information. If you are not the intended recipient, please\n> delete it and notify the sender. Please consider the environment before\n> printing this email.\n>\n\n\n\n-- \nRezvan Sherkati\nGraduate Student at Network Science Institute\nNortheastern University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170430/3493f36b/attachment.html>",
+      "body_snippet": "I tried sum too but I still get the same warning....\n\nOn Sun, Apr 30, 2017 at 10:37 PM, Pavel Krivitsky <pavel@uow.edu.au> wrote:\n\n> Hi,\n>\n> I recommend trying sum, rather than edges. In valued ERGMs,",
+      "thread_id": "thread-2e6f025a3b8f",
+      "thread_depth": 2,
+      "month": "2017-04"
+    },
+    {
+      "id": "msg-9c38bb9f51ec",
+      "message_id": "<1493607225.23974.5.camel@uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2017-04-30T19:53:54Z",
+      "subject": "[statnet_help] ERGM warning",
+      "subject_clean": "[statnet_help] ERGM warning",
+      "in_reply_to": "<CALPwDKWCeV+LYWAxsr-U7Ox0gUCsbKwGdePV7GaAiDr+Yi7VqA@mail.gmail.com>",
+      "references": [
+        "<CALPwDKWE70b+fvG3pTGt+Ymr=FS3BOCG87Smw8GdR13Ut=43QA@mail.gmail.com>",
+        "<1493606230.23974.3.camel@uow.edu.au>",
+        "<CALPwDKWCeV+LYWAxsr-U7Ox0gUCsbKwGdePV7GaAiDr+Yi7VqA@mail.gmail.com>"
+      ],
+      "body_plain": "Hi,\n\nIt seems like poor mixing, but it's odd that it's fitting at all, then. Can you send me enough information to reproduce?\n\nBest,\nPavel\n\nOn Sun, 2017-04-30 at 22:51 -0400, Rezvan Sherkati wrote:\nI tried sum too but I still get the same warning....\n\nOn Sun, Apr 30, 2017 at 10:37 PM, Pavel Krivitsky <pavel@uow.edu.au<mailto:pavel@uow.edu.au>> wrote:\nHi,\n\nI recommend trying sum, rather than edges. In valued ERGMs, edges is the number of nonzero dyads, whereas nodefactor defaults to form=\"sum\".\n\nBest,\nPavel\n\n\nOn Sun, 2017-04-30 at 17:05 -0400, Rezvan Sherkati wrote:\nHi,\nI?m trying to run a ERGM model on my network. My model is:\n\nmodel <- ergm(graph~nodefactor(\"employer\"),\n              response=\"weight\", reference=~Poisson)\n\nand when I use mcmc.disgnostics, it gives me a warning:\n\nWarning messages:\n1: In cor(as.matrix(x)) : the standard deviation is zero\n2: In approx.hotelling.diff.test(x1, x2, var.equal = TRUE) :\n  Vector(s)  do not vary but equal mu0; they have been ignored for the purposes of testing.\n\nCan you help me what this warning is for?\nAlso I have tried that with model <- ergm(graph~edges+nodefactor(\"employer\"),\n              response=\"weight\", reference=~Poisson)\nand I still get the warning.\n\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n--\n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713<tel:+61%202%204221%203713>\nWeb (NIASRA)<http://niasra.uow.edu.au/index.html> | Web (Personal)<http://www.krivitsky.net/research> | ResearchGate<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID: 0000-0002-9101-3362<http://orcid.org/0000-0002-9101-3362>\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n\n\n\n\n--\nRezvan Sherkati\nGraduate Student at Network Science Institute\nNortheastern University\n\n--\n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA)<http://niasra.uow.edu.au/index.html> | Web (Personal)<http://www.krivitsky.net/research> | ResearchGate<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID: 0000-0002-9101-3362<orcid.org/0000-0002-9101-3362>\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170501/ad118645/attachment.html>",
+      "body_snippet": "Hi,\n\nIt seems like poor mixing, but it's odd that it's fitting at all, then. Can you send me enough information to reproduce?\n\nBest,\nPavel\n\nOn Sun, 2017-04-30 at 22:51 -0400, Rezvan Sherkati wrote:\nI ",
+      "thread_id": "thread-2e6f025a3b8f",
+      "thread_depth": 3,
+      "month": "2017-04"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-85baaf2a6284",
+      "subject": "[statnet_help] ergm.ego: overall degree distribution",
+      "message_count": 2,
+      "participants": [
+        "Chiara Sumich",
+        "Deven Hamilton"
+      ],
+      "started": "2017-04-04T17:38:53Z",
+      "last_reply": "2017-04-04T18:02:38Z",
+      "root_message_id": "msg-85baaf2a6284"
+    },
+    {
+      "id": "thread-7e39db08cb13",
+      "subject": "[statnet_help] Question about directed shared partner terms",
+      "message_count": 2,
+      "participants": [
+        "Pavel Krivitsky",
+        "Wouter Spekkink"
+      ],
+      "started": "2017-04-05T09:41:27Z",
+      "last_reply": "2017-04-11T14:44:44Z",
+      "root_message_id": "msg-7e39db08cb13"
+    },
+    {
+      "id": "thread-8ac499c805a6",
+      "subject": "[statnet_help] Interaction / Summation Terms in ERGMs",
+      "message_count": 2,
+      "participants": [
+        "Pavel Krivitsky",
+        "Zachary Charles Heinemann"
+      ],
+      "started": "2017-04-05T09:54:46Z",
+      "last_reply": "2017-04-11T14:41:26Z",
+      "root_message_id": "msg-8ac499c805a6"
+    },
+    {
+      "id": "thread-604abb325267",
+      "subject": "[statnet_help] Object 'm2crs' not found",
+      "message_count": 2,
+      "participants": [
+        "Caleb Pomeroy",
+        "Pavel Krivitsky"
+      ],
+      "started": "2017-04-10T17:18:02Z",
+      "last_reply": "2017-04-11T14:44:31Z",
+      "root_message_id": "msg-604abb325267"
+    },
+    {
+      "id": "thread-f6499e278c51",
+      "subject": "[statnet_help] Question about directed shared partner terms",
+      "message_count": 2,
+      "participants": [
+        "Pavel Krivitsky",
+        "Wouter Spekkink"
+      ],
+      "started": "2017-04-12T15:04:17Z",
+      "last_reply": "2017-04-12T16:10:05Z",
+      "root_message_id": "msg-f6499e278c51"
+    },
+    {
+      "id": "thread-c5e806957474",
+      "subject": "[statnet_help] Question about directed shared partner terms",
+      "message_count": 1,
+      "participants": [
+        "Wouter Spekkink"
+      ],
+      "started": "2017-04-12T16:12:38Z",
+      "last_reply": "2017-04-12T16:12:38Z",
+      "root_message_id": "msg-c5e806957474"
+    },
+    {
+      "id": "thread-7fba56ff35be",
+      "subject": "[statnet_help] Power analysis for ERGM",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Michael Levy"
+      ],
+      "started": "2017-04-12T16:46:47Z",
+      "last_reply": "2017-04-17T16:20:05Z",
+      "root_message_id": "msg-7fba56ff35be"
+    },
+    {
+      "id": "thread-4044e03cc8a1",
+      "subject": "[statnet_help] Valued ERGMs with highly skewed edge weights",
+      "message_count": 5,
+      "participants": [
+        "Carter T. Butts",
+        "Devin Gaffney",
+        "Pavel Krivitsky"
+      ],
+      "started": "2017-04-17T15:39:33Z",
+      "last_reply": "2017-04-24T18:21:00Z",
+      "root_message_id": "msg-4044e03cc8a1"
+    },
+    {
+      "id": "thread-3cf92e570523",
+      "subject": "[statnet_help] extending lnam with \"snow\" or \"parallel\"?",
+      "message_count": 3,
+      "participants": [
+        "Carter T. Butts",
+        "Mark Pachucki",
+        "Philip Leifeld"
+      ],
+      "started": "2017-04-18T06:16:37Z",
+      "last_reply": "2017-04-18T13:36:54Z",
+      "root_message_id": "msg-3cf92e570523"
+    },
+    {
+      "id": "thread-858874e3e576",
+      "subject": "[statnet_help] statnet_help Digest, Vol 129, Issue 11",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Mark Pachucki"
+      ],
+      "started": "2017-04-21T10:32:47Z",
+      "last_reply": "2017-04-24T17:57:26Z",
+      "root_message_id": "msg-858874e3e576"
+    },
+    {
+      "id": "thread-0dde586f2640",
+      "subject": "[statnet_help] Clarification requested on summary.statistics()",
+      "message_count": 3,
+      "participants": [
+        "Matt Robbins",
+        "Steven Goodreau",
+        "martina morris"
+      ],
+      "started": "2017-04-21T16:06:12Z",
+      "last_reply": "2017-04-22T12:11:37Z",
+      "root_message_id": "msg-0dde586f2640"
+    },
+    {
+      "id": "thread-0e8079f29198",
+      "subject": "[statnet_help] error with induced subgraph, edge IDs",
+      "message_count": 3,
+      "participants": [
+        "Carter T. Butts",
+        "Jesse Sayles"
+      ],
+      "started": "2017-04-24T10:57:39Z",
+      "last_reply": "2017-04-24T17:04:00Z",
+      "root_message_id": "msg-0e8079f29198"
+    },
+    {
+      "id": "thread-0a4c7daed6ae",
+      "subject": "[statnet_help] Custom user term question: b1homophily",
+      "message_count": 1,
+      "participants": [
+        "Philip Leifeld"
+      ],
+      "started": "2017-04-25T14:08:46Z",
+      "last_reply": "2017-04-25T14:08:46Z",
+      "root_message_id": "msg-0a4c7daed6ae"
+    },
+    {
+      "id": "thread-2e6f025a3b8f",
+      "subject": "[statnet_help] ERGM warning",
+      "message_count": 4,
+      "participants": [
+        "Pavel Krivitsky",
+        "Rezvan Sherkati"
+      ],
+      "started": "2017-04-30T14:05:24Z",
+      "last_reply": "2017-04-30T19:53:54Z",
+      "root_message_id": "msg-2e6f025a3b8f"
+    }
+  ]
+}

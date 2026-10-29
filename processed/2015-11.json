@@ -1,0 +1,570 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2015-11",
+  "messages": [
+    {
+      "id": "msg-d1dcd02eb0ac",
+      "message_id": "<D25D54B3.8915%akhanna@medicine.bsd.uchicago.edu>",
+      "from_name": "Khanna, Aditya [MED]",
+      "from_email_hash": "bcbc2ecefb65f657cdc48dbcb34944add56ec462b1b27bb58447f547a9f880c3",
+      "date": "2015-11-02T15:58:14Z",
+      "subject": "[statnet_help] parallel ergm processing using an MPI cluster",
+      "subject_clean": "[statnet_help] parallel ergm processing using an MPI cluster",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI am trying to fit an ergm model by using parallel processing in an MPI cluster. I am running the R file using the following command in a batch script\n\nmpirun -n 1 Rscript file.R\n\nbut I get an error that says\n'Error in which.package.InitFunction(v[[i]][[1]], formula.env) :\n could not find function ?findFunction?. (log below)\n\nThis error seems to occur when the ?ergm? or ?ergm.parallel? functions are called. Can anyone help me understand what might be going wrong?\n\nThanks,\nAditya\n\n?????Error Log ?\nError in which.package.InitFunction(v[[i]][[1]], formula.env) :\n  could not find function \"findFunction\"\nCalls: summary ... summary.statistics.network -> ergm.getmodel -> which.package.InitFunction\nExecution halted\n-------------------------------------------------------\nPrimary job  terminated normally, but 1 process returned\na non-zero exit code.. Per user-direction, the job has been aborted.\n-------------------------------------------------------\n--------------------------------------------------------------------------\nmpirun detected that one or more processes exited with non-zero status, thus causing\nthe job to be terminated. The first process to do so was:\n\n  Process name: [[17295,1],0]\n  Exit code:    1\n------------\n\n********************************************************************************\nThis e-mail is intended only for the use of the individual or entity to which\nit is addressed and may contain information that is privileged and confidential.\nIf the reader of this e-mail message is not the intended recipient, you are \nhereby notified that any dissemination, distribution or copying of this\ncommunication is prohibited. If you have received this e-mail in error, please \nnotify the sender and destroy all copies of the transmittal. \n\nThank you\nUniversity of Chicago Medicine and Biological Sciences \n********************************************************************************",
+      "body_snippet": "Hello,\n\nI am trying to fit an ergm model by using parallel processing in an MPI cluster. I am running the R file using the following command in a batch script\n\nmpirun -n 1 Rscript file.R\n\nbut I get an",
+      "thread_id": "thread-d1dcd02eb0ac",
+      "thread_depth": 0,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-9c988cce20c0",
+      "message_id": "<21437554.1508563.1446541652136.JavaMail.zimbra@iplesp.upmc.fr>",
+      "from_name": "Thomas Obadia",
+      "from_email_hash": "ec8ad380f56cc4bda40f88b713e2b6b2bf8d8d2bf6da320165adfec6aa6c268f",
+      "date": "2015-11-03T01:07:32Z",
+      "subject": "[statnet_help] parallel ergm processing using an MPI cluster",
+      "subject_clean": "[statnet_help] parallel ergm processing using an MPI cluster",
+      "in_reply_to": "<977809159.1508556.1446541644178.JavaMail.zimbra@iplesp.upmc.fr>",
+      "references": [
+        "<D25D54B3.8915%akhanna@medicine.bsd.uchicago.edu>"
+      ],
+      "body_plain": "Hi statnet list, Aditya,\n\nAs I've already run into this error and it took some reading to find out where it came from, I'll share this here. It could be useful to anyone running jobs on a cluster.\nNote that it is not specific to ERGM libraries, but rather to the Rscript call.\nSee ?Rscript:\n\"--default-packages=list\nwhere list is a comma-separated list of package names or NULL. Sets the environment variable R_DEFAULT_PACKAGES which determines the packages loaded on startup. The default for Rscript omits methods as it takes about 60% of the startup time.\"\n\nThe function being called during the summary ends up calling findFunction, which has not been loaded since the \"methods\" library hasn't been loaded.\nQuick fix is to load it by hand at the beginning of your file.R with library(methods)\n\nHope that helps,\nThomas\n\n----- Mail original -----\nDe: \"Aditya Khanna [MED]\" <akhanna@medicine.bsd.uchicago.edu>\n?: \"statnet help\" <statnet_help@u.washington.edu>\nEnvoy?: Mardi 3 Novembre 2015 00:58:14\nObjet: [statnet_help] parallel ergm processing using an MPI cluster\n\nHello,\n\nI am trying to fit an ergm model by using parallel processing in an MPI cluster. I am running the R file using the following command in a batch script\n\nmpirun -n 1 Rscript file.R\n\nbut I get an error that says\n'Error in which.package.InitFunction(v[[i]][[1]], formula.env) :\n could not find function ?findFunction?. (log below)\n\nThis error seems to occur when the ?ergm? or ?ergm.parallel? functions are called. Can anyone help me understand what might be going wrong?\n\nThanks,\nAditya\n\n?????Error Log ?\nError in which.package.InitFunction(v[[i]][[1]], formula.env) :\n  could not find function \"findFunction\"\nCalls: summary ... summary.statistics.network -> ergm.getmodel -> which.package.InitFunction\nExecution halted\n-------------------------------------------------------\nPrimary job  terminated normally, but 1 process returned\na non-zero exit code.. Per user-direction, the job has been aborted.\n-------------------------------------------------------\n--------------------------------------------------------------------------\nmpirun detected that one or more processes exited with non-zero status, thus causing\nthe job to be terminated. The first process to do so was:\n\n  Process name: [[17295,1],0]\n  Exit code:    1\n------------\n\n********************************************************************************\nThis e-mail is intended only for the use of the individual or entity to which\nit is addressed and may contain information that is privileged and confidential.\nIf the reader of this e-mail message is not the intended recipient, you are \nhereby notified that any dissemination, distribution or copying of this\ncommunication is prohibited. If you have received this e-mail in error, please \nnotify the sender and destroy all copies of the transmittal. \n\nThank you\nUniversity of Chicago Medicine and Biological Sciences \n********************************************************************************\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi statnet list, Aditya,\n\nAs I've already run into this error and it took some reading to find out where it came from, I'll share this here. It could be useful to anyone running jobs on a cluster.\nNot",
+      "thread_id": "thread-d1dcd02eb0ac",
+      "thread_depth": 1,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-fd0b4bc71e05",
+      "message_id": "<1446808300.14401.52.camel@uow.edu.au>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2015-11-06T03:11:40Z",
+      "subject": "[statnet_help] parallel ergm processing using an MPI cluster",
+      "subject_clean": "[statnet_help] parallel ergm processing using an MPI cluster",
+      "in_reply_to": "<21437554.1508563.1446541652136.JavaMail.zimbra@iplesp.upmc.fr>",
+      "references": [
+        "<D25D54B3.8915%akhanna@medicine.bsd.uchicago.edu>",
+        "<21437554.1508563.1446541652136.JavaMail.zimbra@iplesp.upmc.fr>"
+      ],
+      "body_plain": "Hi, Thomas and Aditya,\n\nThanks for the tip. Can you try this with the latest version of ergm? I\nthink that we might have fixed this in the most recent (ergm 3.5.1)\nrelease, in late October, and it should work without the --default-\npackages changes now.\n\n\t\t\t\tBest,\n\t\t\t\tPavel\n\n\n\nOn Tue, 2015-11-03 at 10:07 +0100, Thomas Obadia wrote:\n> Hi statnet list, Aditya,\n> \n> As I've already run into this error and it took some reading to find\n> out where it came from, I'll share this here. It could be useful to\n> anyone running jobs on a cluster.\n> Note that it is not specific to ERGM libraries, but rather to the\n> Rscript call.\n> See ?Rscript:\n> \"--default-packages=list\n> where list is a comma-separated list of package names or NULL. Sets\n> the environment variable R_DEFAULT_PACKAGES which determines the\n> packages loaded on startup. The default for Rscript omits methods as\n> it takes about 60% of the startup time.\"\n> \n> The function being called during the summary ends up calling\n> findFunction, which has not been loaded since the \"methods\" library\n> hasn't been loaded.\n> Quick fix is to load it by hand at the beginning of your file.R with\n> library(methods)\n> \n> Hope that helps,\n> Thomas\n> \n> ----- Mail original -----\n> De: \"Aditya Khanna [MED]\" <akhanna@medicine.bsd.uchicago.edu>\n> ?: \"statnet help\" <statnet_help@u.washington.edu>\n> Envoy?: Mardi 3 Novembre 2015 00:58:14\n> Objet: [statnet_help] parallel ergm processing using an MPI cluster\n> \n> Hello,\n> \n> I am trying to fit an ergm model by using parallel processing in an\n> MPI cluster. I am running the R file using the following command in a\n> batch script\n> \n> mpirun -n 1 Rscript file.R\n> \n> but I get an error that says\n> 'Error in which.package.InitFunction(v[[i]][[1]], formula.env) :\n> ?could not find function ?findFunction?. (log below)\n> \n> This error seems to occur when the ?ergm? or ?ergm.parallel?\n> functions are called. Can anyone help me understand what might be\n> going wrong?\n> \n> Thanks,\n> Aditya\n> \n> ?????Error Log ?\n> Error in which.package.InitFunction(v[[i]][[1]], formula.env) :\n> ? could not find function \"findFunction\"\n> Calls: summary ... summary.statistics.network -> ergm.getmodel ->\n> which.package.InitFunction\n> Execution halted\n> -------------------------------------------------------\n> Primary job??terminated normally, but 1 process returned\n> a non-zero exit code.. Per user-direction, the job has been aborted.\n> -------------------------------------------------------\n> -------------------------------------------------------------------\n> -------\n> mpirun detected that one or more processes exited with non-zero\n> status, thus causing\n> the job to be terminated. The first process to do so was:\n> \n> ? Process name: [[17295,1],0]\n> ? Exit code:????1\n> ------------\n> \n> *********************************************************************\n> ***********\n> This e-mail is intended only for the use of the individual or entity\n> to which\n> it is addressed and may contain information that is privileged and\n> confidential.\n> If the reader of this e-mail message is not the intended recipient,\n> you are \n> hereby notified that any dissemination, distribution or copying of\n> this\n> communication is prohibited. If you have received this e-mail in\n> error, please \n> notify the sender and destroy all copies of the transmittal. \n> \n> Thank you\n> University of Chicago Medicine and Biological Sciences \n> *********************************************************************\n> ***********\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n-- \nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 185\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA): http://niasra.uow.edu.au/index.html\nWeb (Personal): http://www.krivitsky.net/research\nORCID: 0000-0002-9101-3362\n\nNOTICE: This email is intended for the addressee named and may contain\nconfidential information. If you are not the intended recipient, please\ndelete it and notify the sender. Please consider the environment before\nprinting this email.",
+      "body_snippet": "Hi, Thomas and Aditya,\n\nThanks for the tip. Can you try this with the latest version of ergm? I\nthink that we might have fixed this in the most recent (ergm 3.5.1)\nrelease, in late October, and it sho",
+      "thread_id": "thread-d1dcd02eb0ac",
+      "thread_depth": 2,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-758e8006554f",
+      "message_id": "<CAEzSE6XFWH=aeuuCr+eCtAuTrHtTi4pOHyiaixhiomaL2N0yLg@mail.gmail.com>",
+      "from_name": "Michael Heaney",
+      "from_email_hash": "4d6403dbcaae8825781ae6c49066171f12df256ce970fec71e8e0e6fc8ca3792",
+      "date": "2015-11-06T09:45:03Z",
+      "subject": "[statnet_help] Fwd: Multiplicative Attribute Graph model for SNA_from Italy",
+      "subject_clean": "[statnet_help] Fwd: Multiplicative Attribute Graph model for SNA_from Italy",
+      "in_reply_to": "<CAO3OewGwJ+7-Tw5-vvJuxCY8MZghN=SLB1i=idT-cxxf3iKqPQ@mail.gmail.com>",
+      "references": [
+        "<CAO3OewGwJ+7-Tw5-vvJuxCY8MZghN=SLB1i=idT-cxxf3iKqPQ@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Marta,\n\nI am forwarding your question to the statnet_help@u.washington.edu list.  I\nsuggest that you subscribe to that list.  I think there's a high likelihood\nthat someone there will be able to answer your question.\n\nMichael Heaney\n\n\n---------- Forwarded message ----------\nFrom: MARTA ROCCHI <marta.rocchi@studenti.unipr.it>\nDate: Fri, Nov 6, 2015 at 8:38 AM\nSubject: Multiplicative Attribute Graph model for SNA_from Italy\nTo: mheaney@umich.edu\n\n\nDear Mr. Heaney,\n\nI'm an italian PhD student in \"Evolutionary Biology and Ecology\".\nI'm interested in network research, in particular in the study of\nsocial-ecological system (SES) with R.\n\nAfter reading \"*Heaney, M. T. (2014). Intro to Social Network Computing\nwith R*.\" I've decided to write this email.\n\nI'm trying to study a fisher community coupled with a marine food web.\nI need to build a social network, but I have information only about nodes\nattributes (nothing about links).\nI've read about Multiplicative Attribute Graph model (I attached the\npaper): The Multiplicative Attribute Graphs model (MAG) is a class of\ngenerative models for networks with node attributes. MAG combines\ncategorical node attributes with their affinities to compute the\nprobability of a link.\n\nDo you know if this method is already implemented with R? or do you know\nother methods to bulid up a social network only from nodes attributes\n(i.e., in which someone can detect the probability of a link accoring to a\nsubset of nodes attribute) with R?\n\nThank you in advance for any help you might be able to provide.\n\nSincerely,\n\nMarta Rocchi\n\n\n\n\n-- \nMichael T. Heaney, Ph.D.\nAssistant Professor of Organizational Studies and Political Science\nUniversity of Michigan\n2016-J Ruthven Museums Building\n1109 Geddes Avenue\nAnn Arbor, MI  48109-1079\n\nCell Phone: 202-236-3369\nE-mail: mheaney@umich.edu\nhttp://sites.lsa.umich.edu/mheaney/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151106/0e259b27/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: Multiplicative Attribute Graphs (MAG).pdf\nType: application/pdf\nSize: 462149 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151106/0e259b27/attachment.pdf>",
+      "body_snippet": "Dear Marta,\n\nI am forwarding your question to the statnet_help@u.washington.edu list.  I\nsuggest that you subscribe to that list.  I think there's a high likelihood\nthat someone there will be able to ",
+      "thread_id": "thread-758e8006554f",
+      "thread_depth": 0,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-f5dcd112dc77",
+      "message_id": "<alpine.WNT.2.00.1511090839530.7976@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2015-11-09T08:48:03Z",
+      "subject": "[statnet_help] Fwd: Multiplicative Attribute Graph model for SNA_from Italy",
+      "subject_clean": "[statnet_help] Fwd: Multiplicative Attribute Graph model for SNA_from Italy",
+      "in_reply_to": "<CAEzSE6XFWH=aeuuCr+eCtAuTrHtTi4pOHyiaixhiomaL2N0yLg@mail.gmail.com>",
+      "references": [
+        "<CAO3OewGwJ+7-Tw5-vvJuxCY8MZghN=SLB1i=idT-cxxf3iKqPQ@mail.gmail.com>",
+        "<CAEzSE6XFWH=aeuuCr+eCtAuTrHtTi4pOHyiaixhiomaL2N0yLg@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Marta,\n\nThe statnet tools (and the MAG methods you sent) are designed to estimate \nmodels from link data -- nodal attributes can be part of the model, but \nnodal attributes alone can not be used to specify a network model in the \nabsence data on the links.\n\nStatnet tools can also be used to estimate/simulate networks from target \nstatistics -- summary statistics on the links like the number of links, \nthe number of links between nodes of different types, the number of closed \ntriads, etc.  But there, too, you would need data on the links.\n\nIf you don't have data on links, how do you propose to understand your \ndata as a network?\n\n\nbest,\nMartina\n\nOn Fri, 6 Nov 2015, Michael Heaney wrote:\n\n> Dear Marta,\n> \n> I am forwarding your question to the statnet_help@u.washington.edu list.? I suggest that you subscribe to that list.? I\n> think there's a high likelihood that someone there will be able to answer your question.\n> \n> Michael Heaney\n> \n> \n> ---------- Forwarded message ----------\n> From: MARTA ROCCHI <marta.rocchi@studenti.unipr.it>\n> Date: Fri, Nov 6, 2015 at 8:38 AM\n> Subject: Multiplicative Attribute Graph model for SNA_from Italy\n> To: mheaney@umich.edu\n> \n> \n> Dear Mr. Heaney,\n> I'm an italian PhD student in \"Evolutionary Biology and Ecology\".\n> I'm interested in network research, in particular in the study of social-ecological system (SES) with R.\n> \n> After reading \"Heaney, M. T. (2014). Intro to Social Network Computing with R.\" I've decided to write this email. \n> \n> I'm trying to study a fisher community coupled with a marine food web. \n> I need to build a social network, but I have information only about nodes attributes (nothing about links).\n> I've read about Multiplicative Attribute Graph model (I attached the paper):?The Multiplicative Attribute Graphs model\n> (MAG) is a class of generative models for networks with node attributes. MAG combines categorical node attributes with\n> their affinities to compute the probability of a link.\n> \n> Do you know if this method is already implemented with R? or do you know other methods to bulid up a social network only\n> from nodes attributes (i.e.,?in which someone can detect the probability of a link accoring to a subset of nodes\n> attribute)?with R?\n> \n> Thank you in advance for any help you might be able to provide.\n> \n> Sincerely,\n> \n> \n> Marta Rocchi\n> \n> \n> \n> \n> --\n> Michael T. Heaney, Ph.D.\n> Assistant Professor of Organizational Studies and Political Science\n> University of Michigan\n> 2016-J Ruthven Museums Building\n> 1109 Geddes Avenue\n> Ann Arbor, MI ?48109-1079\n> \n> Cell Phone: 202-236-3369\n> E-mail:?mheaney@umich.edu\n> http://sites.lsa.umich.edu/mheaney/\n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Marta,\n\nThe statnet tools (and the MAG methods you sent) are designed to estimate \nmodels from link data -- nodal attributes can be part of the model, but \nnodal attributes alone can not be used to",
+      "thread_id": "thread-758e8006554f",
+      "thread_depth": 1,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-cc45099055ef",
+      "message_id": "<56439CB0.3080707@skyeome.net>",
+      "from_name": "Skye Bender-deMoll",
+      "from_email_hash": "016c31bf83672a8e8fce6b664eb68ddff364b5df6912775ec31eeceebce90340",
+      "date": "2015-11-11T11:53:20Z",
+      "subject": "[statnet_help] statnet release 2015.11",
+      "subject_clean": "[statnet_help] statnet release 2015.11",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet community,\n\nYou may already have noticed, but we wanted to let you know that the \nstatnet team (finally!) released an update to the statnet \"meta package\" \nthis week which will trigger updates  updates to many of the constituent \npackages it encompasses.\n\nThis would be a good time to run update.package() to make sure your R \ninstallation has the most recent versions of the software with the \nvarious new features and fixes.\n\nWe've also released a 'tsna' package with some preliminary tools for \nTemporal Social Network Analysis\n\nFor additional information about the updates, please see the news file \nfor each of the packages:\n\n\nergm 3.5.1 (2015-20-24)\nNEWS: https://cran.r-project.org/web/packages/ergm/news.html\n\nterm 3.3.1 (2015-10-25)\nNEWS: https://cran.r-project.org/web/packages/tergm/news.html\n\nnetwork 1.13 (2015-9-19)\nChangelog: https://cran.r-project.org/web/packages/network/ChangeLog\n\nnetworkDynamic (2015-10-7)\nChangelog: https://cran.r-project.org/web/packages/networkDynamic/ChangeLog\n\nEpiModel 1.2.2 (2015-11-03)\nNEWS: https://cran.r-project.org/web/packages/EpiModel/NEWS\n\nndtv 0.7.0 (2015-10-15\nchangelog: https://cran.r-project.org/web/packages/ndtv/ChangeLog\n\n\nAs always, please let us know if you encounter any issues.\n\nbest,\n  -skye (for the statnet team)",
+      "body_snippet": "Dear statnet community,\n\nYou may already have noticed, but we wanted to let you know that the \nstatnet team (finally!) released an update to the statnet \"meta package\" \nthis week which will trigger up",
+      "thread_id": "thread-cc45099055ef",
+      "thread_depth": 0,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-1dd26692a8f2",
+      "message_id": "<D2690C4E.8B49%akhanna@medicine.bsd.uchicago.edu>",
+      "from_name": "Khanna, Aditya [MED]",
+      "from_email_hash": "bcbc2ecefb65f657cdc48dbcb34944add56ec462b1b27bb58447f547a9f880c3",
+      "date": "2015-11-11T13:22:30Z",
+      "subject": "[statnet_help] parallel ergm processing using an MPI cluster",
+      "subject_clean": "[statnet_help] parallel ergm processing using an MPI cluster",
+      "in_reply_to": "<1446808300.14401.52.camel@uow.edu.au>",
+      "references": [
+        "<D25D54B3.8915%akhanna@medicine.bsd.uchicago.edu>",
+        "<21437554.1508563.1446541652136.JavaMail.zimbra@iplesp.upmc.fr>",
+        "<1446808300.14401.52.camel@uow.edu.au>"
+      ],
+      "body_plain": "Hi Pavel,\n\nThanks for your response. I?ll try with the latest version of ergm,\nespecially given Skye?s announcement today. Two followup questions:\n\n1. How does one decide the optimal number of cores to be requested to fit\nERGM?s in parallel? For example, if I was  trying to parallelize some\noperation(s)  on a list, then having more cores than the length of the\nlist will result in some cores just sitting  idle?\n \n\n2. In some rough benchmarking that I last tried about a week ago,\nincreasing the number of cores from 10 to 32 did not seem to affect the\ntime of fitting an ergm. And, the time required to fit the model did not\nappear to change from the case where I only used a single core. Does this\nobservation match your expectations? If not, is there an example of such\nbenchmarking available somewhere that I can try to reproduce?\n\nThanks,\nAditya\n\n\n\n\n\nOn 11/6/15, 5:11 AM, \"statnet_help on behalf of Pavel N. Krivitsky\"\n<statnet_help-bounces@mailman13.u.washington.edu on behalf of\npavel@uow.edu.au> wrote:\n\n>Hi, Thomas and Aditya,\n>\n>Thanks for the tip. Can you try this with the latest version of ergm? I\n>think that we might have fixed this in the most recent (ergm 3.5.1)\n>release, in late October, and it should work without the --default-\n>packages changes now.\n>\n>\t\t\t\tBest,\n>\t\t\t\tPavel\n>\n>\n>\n>On Tue, 2015-11-03 at 10:07 +0100, Thomas Obadia wrote:\n>> Hi statnet list, Aditya,\n>> \n>> As I've already run into this error and it took some reading to find\n>> out where it came from, I'll share this here. It could be useful to\n>> anyone running jobs on a cluster.\n>> Note that it is not specific to ERGM libraries, but rather to the\n>> Rscript call.\n>> See ?Rscript:\n>> \"--default-packages=list\n>> where list is a comma-separated list of package names or NULL. Sets\n>> the environment variable R_DEFAULT_PACKAGES which determines the\n>> packages loaded on startup. The default for Rscript omits methods as\n>> it takes about 60% of the startup time.\"\n>> \n>> The function being called during the summary ends up calling\n>> findFunction, which has not been loaded since the \"methods\" library\n>> hasn't been loaded.\n>> Quick fix is to load it by hand at the beginning of your file.R with\n>> library(methods)\n>> \n>> Hope that helps,\n>> Thomas\n>> \n>> ----- Mail original -----\n>> De: \"Aditya Khanna [MED]\" <akhanna@medicine.bsd.uchicago.edu>\n>> ?: \"statnet help\" <statnet_help@u.washington.edu>\n>> Envoy?: Mardi 3 Novembre 2015 00:58:14\n>> Objet: [statnet_help] parallel ergm processing using an MPI cluster\n>> \n>> Hello,\n>> \n>> I am trying to fit an ergm model by using parallel processing in an\n>> MPI cluster. I am running the R file using the following command in a\n>> batch script\n>> \n>> mpirun -n 1 Rscript file.R\n>> \n>> but I get an error that says\n>> 'Error in which.package.InitFunction(v[[i]][[1]], formula.env) :\n>>  could not find function ?findFunction?. (log below)\n>> \n>> This error seems to occur when the ?ergm? or ?ergm.parallel?\n>> functions are called. Can anyone help me understand what might be\n>> going wrong?\n>> \n>> Thanks,\n>> Aditya\n>> \n>> ?????Error Log ?\n>> Error in which.package.InitFunction(v[[i]][[1]], formula.env) :\n>>   could not find function \"findFunction\"\n>> Calls: summary ... summary.statistics.network -> ergm.getmodel ->\n>> which.package.InitFunction\n>> Execution halted\n>> -------------------------------------------------------\n>> Primary job  terminated normally, but 1 process returned\n>> a non-zero exit code.. Per user-direction, the job has been aborted.\n>> -------------------------------------------------------\n>> -------------------------------------------------------------------\n>> -------\n>> mpirun detected that one or more processes exited with non-zero\n>> status, thus causing\n>> the job to be terminated. The first process to do so was:\n>> \n>>   Process name: [[17295,1],0]\n>>   Exit code:    1\n>> ------------\n>> \n>> *********************************************************************\n>> ***********\n>> This e-mail is intended only for the use of the individual or entity\n>> to which\n>> it is addressed and may contain information that is privileged and\n>> confidential.\n>> If the reader of this e-mail message is not the intended recipient,\n>> you are \n>> hereby notified that any dissemination, distribution or copying of\n>> this\n>> communication is prohibited. If you have received this e-mail in\n>> error, please \n>> notify the sender and destroy all copies of the transmittal.\n>> \n>> Thank you\n>> University of Chicago Medicine and Biological Sciences\n>> *********************************************************************\n>> ***********\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>-- \n>Pavel Krivitsky\n>Lecturer in Statistics\n>National Institute of Applied Statistics Research Australia (NIASRA)\n>School of Mathematics and Applied Statistics | Building 39C Room 185\n>University of Wollongong NSW 2522 Australia\n>T +61 2 4221 3713\n>Web (NIASRA): http://niasra.uow.edu.au/index.html\n>Web (Personal): http://www.krivitsky.net/research\n>ORCID: 0000-0002-9101-3362\n>\n>NOTICE: This email is intended for the addressee named and may contain\n>confidential information. If you are not the intended recipient, please\n>delete it and notify the sender. Please consider the environment before\n>printing this email.\n>\n>_______________________________________________\n>statnet_help mailing list\n>statnet_help@u.washington.edu\n>http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n********************************************************************************\nThis e-mail is intended only for the use of the individual or entity to which\nit is addressed and may contain information that is privileged and confidential.\nIf the reader of this e-mail message is not the intended recipient, you are \nhereby notified that any dissemination, distribution or copying of this\ncommunication is prohibited. If you have received this e-mail in error, please \nnotify the sender and destroy all copies of the transmittal. \n\nThank you\nUniversity of Chicago Medicine and Biological Sciences \n********************************************************************************",
+      "body_snippet": "Hi Pavel,\n\nThanks for your response. I?ll try with the latest version of ergm,\nespecially given Skye?s announcement today. Two followup questions:\n\n1. How does one decide the optimal number of cores t",
+      "thread_id": "thread-d1dcd02eb0ac",
+      "thread_depth": 3,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-db029a860b99",
+      "message_id": "<CAENSEbWK=hYC3y8DVW31jWhsaY4TJayndKQPeC3mObZq_-dmmQ@mail.gmail.com>",
+      "from_name": "Michael Levy",
+      "from_email_hash": "03cf81384732776750b91438028da6ede681ced4d3fba0e2a1fda3266c4aff57",
+      "date": "2015-11-16T11:03:50Z",
+      "subject": "[statnet_help] Comparing observed to simulated networks on arbitrary statistics",
+      "subject_clean": "[statnet_help] Comparing observed to simulated networks on arbitrary statistics",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI am trying to assess model fit for models with some coefficients fixed to\n-infinity because their statistics are unobserved. If I understand\ncorrectly, that means deviance and log-likelihood aren?t calculable, so I\ncan?t use xIC.\n\nIn older versions of statnet, mcmc.diagnostics returned a joint p-value\ncomparing the observed statistics to the distribution from simulations. Now\nthere?s a message about using gof for this functionality, but I can?t find\nthat statistic: An assessment of the probability that the observed graph?s\nstatistics are drawn from a different population than the simulated\ngraph?s. Using gof(m, GOF = ~model) provides a p-value for each univariate\ndistribution, but I can?t find one for the joint distribution.\n\nTo make things a little trickier, I would like to provide a set of\nstatistics rather than using the model?s and unfortunately they are not in\nthe list of supported GOF statistics. My workaround is to simulate from the\nmodel and compare the observed statistics to those from simulations, but\nI?m not sure about how to make that comparison (currently comparing the\nobserved statistics to a multivariate normal distribution constructed from\nthe simulations), so I?m wondering how mcmc.diagnostics used to do that and\nif there might be built-in functionality that could help.\n\nThanks,\n\nMichael\n\nMichael Levy\n\nPhD Candidate\nDepartment of Environmental Science and Policy\nUniversity of California, Davis\nmalevy@ucdavis.edu\nwww.michaellevy.name\n?\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151116/8ff2c81c/attachment.html>",
+      "body_snippet": "Hi all,\n\nI am trying to assess model fit for models with some coefficients fixed to\n-infinity because their statistics are unobserved. If I understand\ncorrectly, that means deviance and log-likelihood",
+      "thread_id": "thread-db029a860b99",
+      "thread_depth": 0,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-6f49065aa1f9",
+      "message_id": "<564AC40F.8000406@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2015-11-16T22:07:11Z",
+      "subject": "[statnet_help] Comparing observed to simulated networks on arbitrary statistics",
+      "subject_clean": "[statnet_help] Comparing observed to simulated networks on arbitrary statistics",
+      "in_reply_to": "<CAENSEbWK=hYC3y8DVW31jWhsaY4TJayndKQPeC3mObZq_-dmmQ@mail.gmail.com>",
+      "references": [
+        "<CAENSEbWK=hYC3y8DVW31jWhsaY4TJayndKQPeC3mObZq_-dmmQ@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Michael -\n\nThere are many ways to make such comparisons, although the most direct \nis to examine the quantiles of the observed graph statistics in the \ndistribution of simulated statistics under your proposed model.  Testing \na joint hypothesis is more complex, and will depend on how the \nhypothesis is defined; a good example is the classic omnibus triad \ncensus test, of which you can find a discussion in Wasserman and Faust \n(1994).  (One need not use Gaussian approximations in a modern setting: \none can just simulate the distribution of the test statistic under one's \nproposed model.)  If you want a more elaborate approach, you could also \nconsider the quantile modeling methods in Butts (Sociological \nMethodology, 2011); see the comments in section 5.1 about using a \ngeneral probability model (rather than a CUG model) to produce reference \nquantiles.  I would not recommend this for basic hypothesis testing, but \nthe approach can be useful in meta-analytic settings where one has \nmultiple networks from a possibly heterogeneous population.\n\nHope that helps,\n\n-Carter\n\nOn 11/16/2015 11:03 AM, Michael Levy wrote:\n>\n> Hi all,\n>\n> I am trying to assess model fit for models with some coefficients \n> fixed to -infinity because their statistics are unobserved. If I \n> understand correctly, that means deviance and log-likelihood aren?t \n> calculable, so I can?t use xIC.\n>\n> In older versions of statnet, |mcmc.diagnostics| returned a joint \n> p-value comparing the observed statistics to the distribution from \n> simulations. Now there?s a message about using |gof| for this \n> functionality, but I can?t find that statistic: An assessment of the \n> probability that the observed graph?s statistics are drawn from a \n> different population than the simulated graph?s. Using |gof(m, GOF = \n> ~model)| provides a p-value for each univariate distribution, but I \n> can?t find one for the joint distribution.\n>\n> To make things a little trickier, I would like to provide a set of \n> statistics rather than using the model?s and unfortunately they are \n> not in the list of supported GOF statistics. My workaround is to \n> simulate from the model and compare the observed statistics to those \n> from simulations, but I?m not sure about how to make that comparison \n> (currently comparing the observed statistics to a multivariate normal \n> distribution constructed from the simulations), so I?m wondering how \n> |mcmc.diagnostics| used to do that and if there might be built-in \n> functionality that could help.\n>\n> Thanks,\n>\n> Michael\n>\n> Michael Levy\n>\n> PhD Candidate\n> Department of Environmental Science and Policy\n> University of California, Davis\n> malevy@ucdavis.edu <mailto:malevy@ucdavis.edu>\n> www.michaellevy.name <http://www.michaellevy.name/>\n>\n> ?\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151116/4069deca/attachment.html>",
+      "body_snippet": "Hi, Michael -\n\nThere are many ways to make such comparisons, although the most direct \nis to examine the quantiles of the observed graph statistics in the \ndistribution of simulated statistics under y",
+      "thread_id": "thread-db029a860b99",
+      "thread_depth": 1,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-bf6658163113",
+      "message_id": "<CAENSEbXHE9r4qYYJ_0qz403_xj0QSvS-OtGKJk2Ok9-7ceqVFg@mail.gmail.com>",
+      "from_name": "Michael Levy",
+      "from_email_hash": "03cf81384732776750b91438028da6ede681ced4d3fba0e2a1fda3266c4aff57",
+      "date": "2015-11-18T16:00:03Z",
+      "subject": "[statnet_help] Comparing observed to simulated networks on arbitrary statistics",
+      "subject_clean": "[statnet_help] Comparing observed to simulated networks on arbitrary statistics",
+      "in_reply_to": "<564AC40F.8000406@uci.edu>",
+      "references": [
+        "<CAENSEbWK=hYC3y8DVW31jWhsaY4TJayndKQPeC3mObZq_-dmmQ@mail.gmail.com>",
+        "<564AC40F.8000406@uci.edu>"
+      ],
+      "body_plain": "Thanks, Carter. I didn't realize I could use an empirical CDF for a\nmultivariate comparison, but that should work nicely. I was also\npointed to this\narticle <http://www.sciencedirect.com/science/article/pii/S0378873315000301>\non spectral goodness of fit which may be useful here.\n\n\n\nMichael Levy\nPhD Candidate\nDepartment of Environmental Science and Policy\nUniversity of California, Davis\nmalevy@ucdavis.edu\n*www.michaellevy.name <http://www.michaellevy.name/>*\n\n\nOn Mon, Nov 16, 2015 at 10:07 PM, Carter T. Butts <buttsc@uci.edu> wrote:\n\n> Hi, Michael -\n>\n> There are many ways to make such comparisons, although the most direct is\n> to examine the quantiles of the observed graph statistics in the\n> distribution of simulated statistics under your proposed model.  Testing a\n> joint hypothesis is more complex, and will depend on how the hypothesis is\n> defined; a good example is the classic omnibus triad census test, of which\n> you can find a discussion in Wasserman and Faust (1994).  (One need not use\n> Gaussian approximations in a modern setting: one can just simulate the\n> distribution of the test statistic under one's proposed model.)  If you\n> want a more elaborate approach, you could also consider the quantile\n> modeling methods in Butts (Sociological Methodology, 2011); see the\n> comments in section 5.1 about using a general probability model (rather\n> than a CUG model) to produce reference quantiles.  I would not recommend\n> this for basic hypothesis testing, but the approach can be useful in\n> meta-analytic settings where one has multiple networks from a possibly\n> heterogeneous population.\n>\n> Hope that helps,\n>\n> -Carter\n>\n>\n> On 11/16/2015 11:03 AM, Michael Levy wrote:\n>\n> Hi all,\n>\n> I am trying to assess model fit for models with some coefficients fixed to\n> -infinity because their statistics are unobserved. If I understand\n> correctly, that means deviance and log-likelihood aren?t calculable, so I\n> can?t use xIC.\n>\n> In older versions of statnet, mcmc.diagnostics returned a joint p-value\n> comparing the observed statistics to the distribution from simulations. Now\n> there?s a message about using gof for this functionality, but I can?t\n> find that statistic: An assessment of the probability that the observed\n> graph?s statistics are drawn from a different population than the simulated\n> graph?s. Using gof(m, GOF = ~model) provides a p-value for each\n> univariate distribution, but I can?t find one for the joint distribution.\n>\n> To make things a little trickier, I would like to provide a set of\n> statistics rather than using the model?s and unfortunately they are not in\n> the list of supported GOF statistics. My workaround is to simulate from the\n> model and compare the observed statistics to those from simulations, but\n> I?m not sure about how to make that comparison (currently comparing the\n> observed statistics to a multivariate normal distribution constructed from\n> the simulations), so I?m wondering how mcmc.diagnostics used to do that\n> and if there might be built-in functionality that could help.\n>\n> Thanks,\n>\n> Michael\n>\n> Michael Levy\n>\n> PhD Candidate\n> Department of Environmental Science and Policy\n> University of California, Davis\n> malevy@ucdavis.edu\n> www.michaellevy.name\n> ?\n>\n>\n> _______________________________________________\n> statnet_help mailing liststatnet_help@u.washington.eduhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151118/682ef8d1/attachment.html>",
+      "body_snippet": "Thanks, Carter. I didn't realize I could use an empirical CDF for a\nmultivariate comparison, but that should work nicely. I was also\npointed to this\narticle <http://www.sciencedirect.com/science/artic",
+      "thread_id": "thread-db029a860b99",
+      "thread_depth": 2,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-d7bd570dec3a",
+      "message_id": "<alpine.WNT.2.00.1511181701150.13580@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2015-11-18T17:09:23Z",
+      "subject": "[statnet_help] Comparing observed to simulated networks on arbitrary statistics",
+      "subject_clean": "[statnet_help] Comparing observed to simulated networks on arbitrary statistics",
+      "in_reply_to": "<CAENSEbXHE9r4qYYJ_0qz403_xj0QSvS-OtGKJk2Ok9-7ceqVFg@mail.gmail.com>",
+      "references": [
+        "<CAENSEbWK=hYC3y8DVW31jWhsaY4TJayndKQPeC3mObZq_-dmmQ@mail.gmail.com>",
+        "<564AC40F.8000406@uci.edu>",
+        "<CAENSEbXHE9r4qYYJ_0qz403_xj0QSvS-OtGKJk2Ok9-7ceqVFg@mail.gmail.com>"
+      ],
+      "body_plain": "On Wed, 18 Nov 2015, Michael Levy wrote:\n\n>       Hi all,\n>\n>       I am trying to assess model fit for models with some coefficients fixed to -infinity because their\n>       statistics are unobserved. If I understand correctly, that means deviance and log-likelihood aren?t\n>       calculable, so I can?t use xIC.\n\nMichael -- just to make sure, when you say \"unobserved\", do you mean that \nthese stats take the value 0 in your data, or do you mean that you do not \nobserve the value of these stats in your data (e.g., if you have an \nunlabeled egocentric sample, you won't observe triads).\n\nIf you set a coef to -inf, the model is not agnostic to the configuration \nrepresented by the statistics, it effectively prevents the configuration \nfrom occurring.  So that's the appropriate thing to do if these statistics \nare known to be 0.  But it's not appropriate if the statistics are simply \nnot observed.\n\nbest,\nmm\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "On Wed, 18 Nov 2015, Michael Levy wrote:\n\n>       Hi all,\n>\n>       I am trying to assess model fit for models with some coefficients fixed to -infinity because their\n>       statistics are unobserved",
+      "thread_id": "thread-db029a860b99",
+      "thread_depth": 3,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-1b3baf93aa7b",
+      "message_id": "<CAENSEbUEcB93VJ1__vfDp-R4ftbsWC+hDVrgfBD+wtKoNdqSPg@mail.gmail.com>",
+      "from_name": "Michael Levy",
+      "from_email_hash": "03cf81384732776750b91438028da6ede681ced4d3fba0e2a1fda3266c4aff57",
+      "date": "2015-11-19T09:12:22Z",
+      "subject": "[statnet_help] Comparing observed to simulated networks on arbitrary statistics",
+      "subject_clean": "[statnet_help] Comparing observed to simulated networks on arbitrary statistics",
+      "in_reply_to": "<alpine.WNT.2.00.1511181701150.13580@morrism-laptop>",
+      "references": [
+        "<CAENSEbWK=hYC3y8DVW31jWhsaY4TJayndKQPeC3mObZq_-dmmQ@mail.gmail.com>",
+        "<564AC40F.8000406@uci.edu>",
+        "<CAENSEbXHE9r4qYYJ_0qz403_xj0QSvS-OtGKJk2Ok9-7ceqVFg@mail.gmail.com>",
+        "<alpine.WNT.2.00.1511181701150.13580@morrism-laptop>"
+      ],
+      "body_plain": "Hi Martina,\n\nGood point. I am referring to structures could but do not occur in the\nempirical networks. Thanks for checking,\n\nMichael\n\n\n\nMichael Levy\nPhD Candidate\nDepartment of Environmental Science and Policy\nUniversity of California, Davis\nmalevy@ucdavis.edu\n*www.michaellevy.name <http://www.michaellevy.name/>*\n\n\nOn Wed, Nov 18, 2015 at 5:09 PM, martina morris <morrism@u.washington.edu>\nwrote:\n\n> On Wed, 18 Nov 2015, Michael Levy wrote:\n>\n>       Hi all,\n>>\n>>       I am trying to assess model fit for models with some coefficients\n>> fixed to -infinity because their\n>>       statistics are unobserved. If I understand correctly, that means\n>> deviance and log-likelihood aren?t\n>>       calculable, so I can?t use xIC.\n>>\n>\n> Michael -- just to make sure, when you say \"unobserved\", do you mean that\n> these stats take the value 0 in your data, or do you mean that you do not\n> observe the value of these stats in your data (e.g., if you have an\n> unlabeled egocentric sample, you won't observe triads).\n>\n> If you set a coef to -inf, the model is not agnostic to the configuration\n> represented by the statistics, it effectively prevents the configuration\n> from occurring.  So that's the appropriate thing to do if these statistics\n> are known to be 0.  But it's not appropriate if the statistics are simply\n> not observed.\n>\n> best,\n> mm\n>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151119/21e0ca8f/attachment.html>",
+      "body_snippet": "Hi Martina,\n\nGood point. I am referring to structures could but do not occur in the\nempirical networks. Thanks for checking,\n\nMichael\n\n\n\nMichael Levy\nPhD Candidate\nDepartment of Environmental Science ",
+      "thread_id": "thread-db029a860b99",
+      "thread_depth": 4,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-c4abc7dd6c82",
+      "message_id": "<CABSzbEzcc0jc7ipNozABQo-4xfFsQoFU0+Kz18F-q0+=+pEx6g@mail.gmail.com>",
+      "from_name": "Oren Tsur",
+      "from_email_hash": "034488c7dcb47eac98a0a03b2d8a502a7c34acd49a5c220c2d41de32fec43e02",
+      "date": "2015-11-23T12:00:49Z",
+      "subject": "[statnet_help] interpretation of nodefactor covariate in a directed network",
+      "subject_clean": "[statnet_help] interpretation of nodefactor covariate in a directed network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Everyone,\n\nI may be missing something in the way I understand the model/implementation\nof ERGM.\nReading some documentation and tutorials I see that nodefactor can be used\nin order to model the contribution of a nodal attribute to a tie formation.\nHowever, in case of a directed graph - how can I separate the the effect of\na nodal attribute on the incoming edges vs. the outgoing edges.\n\nHere is a toy example: let's consider the famous high school friendship\nnetwork and assume it's not an undirected friendship network but a directed\n\"hitting on\" network. Now assume we want to test the hypothesis that guys\nare less shy than girls thus they are more likely to be the ones that ask\nfor a date (a directed edge).\n\nSo models like:\nrgm(faux.mesa.high ~ edges +  nodefactor(\"Sex\"))\n\nwill produce  an estimate for the likelihood of the gender to have an\neffect on tie formation, that is to be *involved* in a tie but not on the\nthe role of the node as a source or a target.\n\nAm I right about it?\nIs there a way to use nodefactor (or nodal attributes) in the context of\nthe direction of the edges?\n\nThanks a lot!\n\nOren Tsur\nNetwork Science Institute, Northeastern University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151123/acd75b35/attachment.html>",
+      "body_snippet": "Hi Everyone,\n\nI may be missing something in the way I understand the model/implementation\nof ERGM.\nReading some documentation and tutorials I see that nodefactor can be used\nin order to model the cont",
+      "thread_id": "thread-c4abc7dd6c82",
+      "thread_depth": 0,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-6599b2cac5d5",
+      "message_id": "<331E1C3620E3EC48A22463908F29695CD9F9A7@chimbx3.ad.uillinois.edu>",
+      "from_name": "Benton, Richard",
+      "from_email_hash": "6836949321d604790a2ef74872930b75624abf573fe3b40dc6959310d02cc586",
+      "date": "2015-11-23T12:11:01Z",
+      "subject": "[statnet_help] interpretation of nodefactor covariate in a directed\tnetwork",
+      "subject_clean": "[statnet_help] interpretation of nodefactor covariate in a directed\tnetwork",
+      "in_reply_to": "<CABSzbEzcc0jc7ipNozABQo-4xfFsQoFU0+Kz18F-q0+=+pEx6g@mail.gmail.com>",
+      "references": [
+        "<CABSzbEzcc0jc7ipNozABQo-4xfFsQoFU0+Kz18F-q0+=+pEx6g@mail.gmail.com>"
+      ],
+      "body_plain": "Oren,\nYou want the nodeifactor and nodeofactor terms. They control for a categorical attribute effect for in-edges and out-edges respectively.\nHope that helps,\nRichard\n\nRichard A. Benton\nAssistant Professor\nSchool of Labor and Employment Relations\nUniversity of Illinois, Urbana-Champaign\n________________________________\nFrom: Oren Tsur [o.tsur@neu.edu]\nSent: Monday, November 23, 2015 2:00 PM\nTo: statnet_help@u.washington.edu\nSubject: [statnet_help] interpretation of nodefactor covariate in a directed network\n\nHi Everyone,\n\nI may be missing something in the way I understand the model/implementation of ERGM.\nReading some documentation and tutorials I see that nodefactor can be used in order to model the contribution of a nodal attribute to a tie formation. However, in case of a directed graph - how can I separate the the effect of a nodal attribute on the incoming edges vs. the outgoing edges.\n\nHere is a toy example: let's consider the famous high school friendship network and assume it's not an undirected friendship network but a directed \"hitting on\" network. Now assume we want to test the hypothesis that guys are less shy than girls thus they are more likely to be the ones that ask for a date (a directed edge).\n\nSo models like:\nrgm(faux.mesa.high ~ edges +  nodefactor(\"Sex\"))\n\nwill produce  an estimate for the likelihood of the gender to have an effect on tie formation, that is to be *involved* in a tie but not on the the role of the node as a source or a target.\n\nAm I right about it?\nIs there a way to use nodefactor (or nodal attributes) in the context of the direction of the edges?\n\nThanks a lot!\n\nOren Tsur\nNetwork Science Institute, Northeastern University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151123/378f7157/attachment.html>",
+      "body_snippet": "Oren,\nYou want the nodeifactor and nodeofactor terms. They control for a categorical attribute effect for in-edges and out-edges respectively.\nHope that helps,\nRichard\n\nRichard A. Benton\nAssistant Pro",
+      "thread_id": "thread-c4abc7dd6c82",
+      "thread_depth": 1,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-64e51f2c76f8",
+      "message_id": "<CAH7AL4YOLD6hkVOLu3SRHyh9P-HcT5BhHKpwV_VwgvPSypkWRw@mail.gmail.com>",
+      "from_name": "Franziska Barbara Keller",
+      "from_email_hash": "3ee91461cbfb44cfc74faf4f43c1decb29759f2a597ca5a35dd97c8ed9a62d69",
+      "date": "2015-11-23T12:19:39Z",
+      "subject": "[statnet_help] statnet_help Digest, Vol 112, Issue 9",
+      "subject_clean": "[statnet_help] statnet_help Digest, Vol 112, Issue 9",
+      "in_reply_to": "<mailman.600.1448308933.31664.statnet_help@mailman13.u.washington.edu>",
+      "references": [
+        "<mailman.600.1448308933.31664.statnet_help@mailman13.u.washington.edu>"
+      ],
+      "body_plain": "Hi Oren,\n\nnodeifactor and nodeofactor should give you what you want (if I understand\nyour problem correctly).\n\nBest,\n\nFranziska\n\n--\n\nFranziska Barbara Keller\nPostDoctoral Fellow, Harriman Institute, Columbia University\nphone US: (+1) 646-829-5277 / phone CH: (+41) 78 808 66 62\nwww.fbkeller.net\n\n\nOn Mon, Nov 23, 2015 at 3:02 PM, <\nstatnet_help-request@mailman13.u.washington.edu> wrote:\n\n> Send statnet_help mailing list submissions to\n>         statnet_help@u.washington.edu\n>\n> To subscribe or unsubscribe via the World Wide Web, visit\n>         http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> or, via email, send a message with subject or body 'help' to\n>         statnet_help-request@mailman13.u.washington.edu\n>\n> You can reach the person managing the list at\n>         statnet_help-owner@mailman13.u.washington.edu\n>\n> When replying, please edit your Subject line so it is more specific\n> than \"Re: Contents of statnet_help digest...\"\n>\n> Today's Topics:\n>\n>    1. interpretation of nodefactor covariate in a directed      network\n>       (Oren Tsur)\n>\n>\n> ---------- Forwarded message ----------\n> From: Oren Tsur <o.tsur@neu.edu>\n> To: <statnet_help@u.washington.edu>\n> Cc:\n> Date: Mon, 23 Nov 2015 15:00:49 -0500\n> Subject: [statnet_help] interpretation of nodefactor covariate in a\n> directed network\n> Hi Everyone,\n>\n> I may be missing something in the way I understand the\n> model/implementation of ERGM.\n> Reading some documentation and tutorials I see that nodefactor can be used\n> in order to model the contribution of a nodal attribute to a tie formation.\n> However, in case of a directed graph - how can I separate the the effect of\n> a nodal attribute on the incoming edges vs. the outgoing edges.\n>\n> Here is a toy example: let's consider the famous high school friendship\n> network and assume it's not an undirected friendship network but a directed\n> \"hitting on\" network. Now assume we want to test the hypothesis that guys\n> are less shy than girls thus they are more likely to be the ones that ask\n> for a date (a directed edge).\n>\n> So models like:\n> rgm(faux.mesa.high ~ edges +  nodefactor(\"Sex\"))\n>\n> will produce  an estimate for the likelihood of the gender to have an\n> effect on tie formation, that is to be *involved* in a tie but not on the\n> the role of the node as a source or a target.\n>\n> Am I right about it?\n> Is there a way to use nodefactor (or nodal attributes) in the context of\n> the direction of the edges?\n>\n> Thanks a lot!\n>\n> Oren Tsur\n> Network Science Institute, Northeastern University\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@mailman13.u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151123/86efdfd9/attachment.html>",
+      "body_snippet": "Hi Oren,\n\nnodeifactor and nodeofactor should give you what you want (if I understand\nyour problem correctly).\n\nBest,\n\nFranziska\n\n--\n\nFranziska Barbara Keller\nPostDoctoral Fellow, Harriman Institute, C",
+      "thread_id": "thread-64e51f2c76f8",
+      "thread_depth": 0,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-20fa0049cbdd",
+      "message_id": "<CABSzbEw=M-pmLJ_CcZhhpKjfC1CBJWNZHps=QU1Uajd0PCJUpw@mail.gmail.com>",
+      "from_name": "Oren Tsur",
+      "from_email_hash": "034488c7dcb47eac98a0a03b2d8a502a7c34acd49a5c220c2d41de32fec43e02",
+      "date": "2015-11-23T12:46:37Z",
+      "subject": "[statnet_help] interpretation of nodefactor covariate in a directed network",
+      "subject_clean": "[statnet_help] interpretation of nodefactor covariate in a directed network",
+      "in_reply_to": "<3a708b4396324275ba88d96841a9fa99@SN2PR0601MB0926.namprd06.prod.outlook.com>",
+      "references": [
+        "<CABSzbEzcc0jc7ipNozABQo-4xfFsQoFU0+Kz18F-q0+=+pEx6g@mail.gmail.com>",
+        "<3a708b4396324275ba88d96841a9fa99@SN2PR0601MB0926.namprd06.prod.outlook.com>"
+      ],
+      "body_plain": "thank you. Exactly what I was looking for.\n\n--\nOren\nhttp://people.seas.harvard.edu/~orentsur/\n\nOn Mon, Nov 23, 2015 at 3:11 PM, Benton, Richard <rabenton@illinois.edu>\nwrote:\n\n> Oren,\n> You want the nodeifactor and nodeofactor terms. They control for a\n> categorical attribute effect for in-edges and out-edges respectively.\n> Hope that helps,\n> Richard\n>\n> Richard A. Benton\n> Assistant Professor\n> School of Labor and Employment Relations\n> University of Illinois, Urbana-Champaign\n> ------------------------------\n> *From:* Oren Tsur [o.tsur@neu.edu]\n> *Sent:* Monday, November 23, 2015 2:00 PM\n> *To:* statnet_help@u.washington.edu\n> *Subject:* [statnet_help] interpretation of nodefactor covariate in a\n> directed network\n>\n> Hi Everyone,\n>\n> I may be missing something in the way I understand the\n> model/implementation of ERGM.\n> Reading some documentation and tutorials I see that nodefactor can be used\n> in order to model the contribution of a nodal attribute to a tie formation.\n> However, in case of a directed graph - how can I separate the the effect of\n> a nodal attribute on the incoming edges vs. the outgoing edges.\n>\n> Here is a toy example: let's consider the famous high school friendship\n> network and assume it's not an undirected friendship network but a directed\n> \"hitting on\" network. Now assume we want to test the hypothesis that guys\n> are less shy than girls thus they are more likely to be the ones that ask\n> for a date (a directed edge).\n>\n> So models like:\n> rgm(faux.mesa.high ~ edges +  nodefactor(\"Sex\"))\n>\n> will produce  an estimate for the likelihood of the gender to have an\n> effect on tie formation, that is to be *involved* in a tie but not on the\n> the role of the node as a source or a target.\n>\n> Am I right about it?\n> Is there a way to use nodefactor (or nodal attributes) in the context of\n> the direction of the edges?\n>\n> Thanks a lot!\n>\n> Oren Tsur\n> Network Science Institute, Northeastern University\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151123/084a307b/attachment.html>",
+      "body_snippet": "thank you. Exactly what I was looking for.\n\n--\nOren\nhttp://people.seas.harvard.edu/~orentsur/\n\nOn Mon, Nov 23, 2015 at 3:11 PM, Benton, Richard <rabenton@illinois.edu>\nwrote:\n\n> Oren,\n> You want the n",
+      "thread_id": "thread-20fa0049cbdd",
+      "thread_depth": 0,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-339a7043960f",
+      "message_id": "<CABSzbExrypVCgQxHhVzo=oxr8LBmCnzq6g_591BXC0wGFJMbEQ@mail.gmail.com>",
+      "from_name": "Oren Tsur",
+      "from_email_hash": "034488c7dcb47eac98a0a03b2d8a502a7c34acd49a5c220c2d41de32fec43e02",
+      "date": "2015-11-23T14:13:54Z",
+      "subject": "[statnet_help] representing and estimating a \"partial homophily\" term",
+      "subject_clean": "[statnet_help] representing and estimating a \"partial homophily\" term",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "(a second question for the day).\n\nLet's consider the famous high school friendship network. Now assume that\nstudent are taking extra-curricular activities such as clubs. Unlike the\n\"grade\" covariate, assume that a student can be affiliated with more than\none club.\nI would like to introduce a term (binary/weighted) that reflects the facts\nthat two students are members of the same club as I suspect that such a\nnodematch increase the likelihood of an edge.\n\nI could have a binary nodal attribute for each club then use nodematch for\neach of these attributes but (a) I suspect it will be very inefficient and\n(b) I don't care about the specific clubs - I only care about the mutual\nmembership (this can be viewed as another network N based on mutual\nmembership where N[i,j] = k where k is the number of clubs i and j share\nmembership to. In a more simplistic scenario k is a binary attribute\nindicating if they share any club membership or not).\n\nIs there a way to introduce such a term into an ERGM model (and represent\nit as a node attribute of type list) or that I have to add a separate nodal\nattribute for each club and introduce a nodematch(\"<club>\") term for each\nclub?\n\nAn alternative way to think about it whether it is possible to have a term\nrepresenting *another network* N2, hypothesizing that a (weighted?) tie in\nN2 increases the likelihood of observing a tie in the network in question.\n\nThanks again!\n\n--\nOren Tsur\nNetwork Science Institute, Northeastern University\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151123/04634f73/attachment.html>",
+      "body_snippet": "(a second question for the day).\n\nLet's consider the famous high school friendship network. Now assume that\nstudent are taking extra-curricular activities such as clubs. Unlike the\n\"grade\" covariate, ",
+      "thread_id": "thread-339a7043960f",
+      "thread_depth": 0,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-85435772d341",
+      "message_id": "<alpine.WNT.2.00.1511231724470.14936@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2015-11-23T17:28:35Z",
+      "subject": "[statnet_help] representing and estimating a \"partial homophily\" term",
+      "subject_clean": "[statnet_help] representing and estimating a \"partial homophily\" term",
+      "in_reply_to": "<CABSzbExrypVCgQxHhVzo=oxr8LBmCnzq6g_591BXC0wGFJMbEQ@mail.gmail.com>",
+      "references": [
+        "<CABSzbExrypVCgQxHhVzo=oxr8LBmCnzq6g_591BXC0wGFJMbEQ@mail.gmail.com>"
+      ],
+      "body_plain": "On Mon, 23 Nov 2015, Oren Tsur wrote:\n\n> \n> (a second question for the day).\n> \n> Let's consider the famous high school friendship network. Now assume that student are taking\n> extra-curricular activities such as clubs. Unlike the \"grade\" covariate, assume that a student can be\n> affiliated with more than one club. \n> I would like to introduce a term (binary/weighted) that reflects the facts that two students are members\n> of the same club as I suspect that such a nodematch increase the likelihood of an edge. \n> \n> I could have a binary nodal attribute for each club then use nodematch for each of these attributes but\n> (a) I suspect it will be very inefficient\n\nsince this is a dyad independent effect, the estimation is pretty \nstraightforward (essentially the same as logistic regression) so there's \nno real issue of efficiency.\n\n> and (b)? I don't care about the specific clubs - I only care\n> about the mutual membership (this can be viewed as another network N based on mutual membership where\n> N[i,j] = k where k is the number of clubs i and j share membership to. In a more simplistic scenario k\n> is a binary attribute indicating if they share any club membership or not).\n\ni would think you might be more interested in a quantitative measure of \nhow many club memberships they have in common.\n\n> Is there a way to introduce such a term into an ERGM model (and represent it as a node attribute of type\n> list) or that I have to add a separate nodal attribute for each club and introduce a nodematch(\"<club>\")\n> term for each club?\n\nyou can create a dyad covariate that takes the value 1 if they share any \nclub memberships, but you'll need to do this outside of the ergm call. \nit's a data processing step that will use the utilities in R and the \nnetwork package.\n\n> An alternative way to think about it whether it is possible to have a term representing *another\n> network* N2, hypothesizing that a (weighted?) tie in N2 increases the likelihood of observing a tie in\n> the network in question. \n> \n> Thanks again!\n> \n> --\n> Oren Tsur\n> Network Science Institute, Northeastern University \n> \n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "On Mon, 23 Nov 2015, Oren Tsur wrote:\n\n> \n> (a second question for the day).\n> \n> Let's consider the famous high school friendship network. Now assume that student are taking\n> extra-curricular activi",
+      "thread_id": "thread-339a7043960f",
+      "thread_depth": 1,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-b1cd2484a8f5",
+      "message_id": "<CABSzbEzxqO13vXHqAbucx2f78E69Ku+7jc+LgWP_LZVh+YYx7Q@mail.gmail.com>",
+      "from_name": "Oren Tsur",
+      "from_email_hash": "034488c7dcb47eac98a0a03b2d8a502a7c34acd49a5c220c2d41de32fec43e02",
+      "date": "2015-11-23T18:19:07Z",
+      "subject": "[statnet_help] representing and estimating a \"partial homophily\" term",
+      "subject_clean": "[statnet_help] representing and estimating a \"partial homophily\" term",
+      "in_reply_to": "<f3150738a21e40fe892b695590fee4fa@SN2PR0601MB0926.namprd06.prod.outlook.com>",
+      "references": [
+        "<CABSzbExrypVCgQxHhVzo=oxr8LBmCnzq6g_591BXC0wGFJMbEQ@mail.gmail.com>",
+        "<f3150738a21e40fe892b695590fee4fa@SN2PR0601MB0926.namprd06.prod.outlook.com>"
+      ],
+      "body_plain": "thank you! it seems that this is exactly what I needed.\n\n--\nOren\nhttp://people.seas.harvard.edu/~orentsur/\n\nOn Mon, Nov 23, 2015 at 8:28 PM, martina morris <morrism@u.washington.edu>\nwrote:\n\n> On Mon, 23 Nov 2015, Oren Tsur wrote:\n>\n> >\n> > (a second question for the day).\n> >\n> > Let's consider the famous high school friendship network. Now assume\n> that student are taking\n> > extra-curricular activities such as clubs. Unlike the \"grade\" covariate,\n> assume that a student can be\n> > affiliated with more than one club.\n> > I would like to introduce a term (binary/weighted) that reflects the\n> facts that two students are members\n> > of the same club as I suspect that such a nodematch increase the\n> likelihood of an edge.\n> >\n> > I could have a binary nodal attribute for each club then use nodematch\n> for each of these attributes but\n> > (a) I suspect it will be very inefficient\n>\n> since this is a dyad independent effect, the estimation is pretty\n> straightforward (essentially the same as logistic regression) so there's\n> no real issue of efficiency.\n>\n> > and (b)  I don't care about the specific clubs - I only care\n> > about the mutual membership (this can be viewed as another network N\n> based on mutual membership where\n> > N[i,j] = k where k is the number of clubs i and j share membership to.\n> In a more simplistic scenario k\n> > is a binary attribute indicating if they share any club membership or\n> not).\n>\n> i would think you might be more interested in a quantitative measure of\n> how many club memberships they have in common.\n>\n> > Is there a way to introduce such a term into an ERGM model (and\n> represent it as a node attribute of type\n> > list) or that I have to add a separate nodal attribute for each club and\n> introduce a nodematch(\"<club>\")\n> > term for each club?\n>\n> you can create a dyad covariate that takes the value 1 if they share any\n> club memberships, but you'll need to do this outside of the ergm call.\n> it's a data processing step that will use the utilities in R and the\n> network package.\n>\n> > An alternative way to think about it whether it is possible to have a\n> term representing *another\n> > network* N2, hypothesizing that a (weighted?) tie in N2 increases the\n> likelihood of observing a tie in\n> > the network in question.\n> >\n> > Thanks again!\n> >\n> > --\n> > Oren Tsur\n> > Network Science Institute, Northeastern University\n> >\n> >\n> >\n> >\n>\n> ****************************************************************\n>   Professor of Sociology and Statistics\n>   Director, UWCFAR Sociobehavioral and Prevention Research Core\n>   Box 354322\n>   University of Washington\n>   Seattle, WA 98195-4322\n>\n>   Office:        (206) 685-3402\n>   Dept Office:   (206) 543-5882, 543-7237\n>   Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151123/b297acea/attachment.html>",
+      "body_snippet": "thank you! it seems that this is exactly what I needed.\n\n--\nOren\nhttp://people.seas.harvard.edu/~orentsur/\n\nOn Mon, Nov 23, 2015 at 8:28 PM, martina morris <morrism@u.washington.edu>\nwrote:\n\n> On Mon,",
+      "thread_id": "thread-b1cd2484a8f5",
+      "thread_depth": 0,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-ca19b4962b3e",
+      "message_id": "<E913ABB937F1DE4BA868F430F7197E10381590F9@EXMBXPR07CCD.UCHAD.uchospitals.edu>",
+      "from_name": "Khanna, Aditya [MED]",
+      "from_email_hash": "bcbc2ecefb65f657cdc48dbcb34944add56ec462b1b27bb58447f547a9f880c3",
+      "date": "2015-11-24T08:22:20Z",
+      "subject": "[statnet_help] ordering vertices of a network object by a custom rule",
+      "subject_clean": "[statnet_help] ordering vertices of a network object by a custom rule",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello Statnet Community,\n\nI have a quick question about how the ordering of vertices within network objects can be customized. I need this customization to be able to make certain plots seamlessly later. The vertex names of my network objects are not simply numeric, they are character strings that identify individuals, and indicators of their participation in a select group are encoded in these names.\n\nI am not able to customize this ordering. I see that\n    net$iel\npresents a list of all the vertex id's that each vertex id is linked to. But I am not able to see how I can manipulate the ordering within this list, to fit my needs.\n\nI'd appreciate any help in figuring this problem out.\n\nMany thanks,\nAditya\n\n--\nAditya Khanna (Webpage)<http://home.uchicago.edu/~khanna7/>\nChicago Center for HIV Elimination\nStaff Scientist, Director of Network Modeling\nDepartment of Medicine\nDivision of Biological Sciences\nUniversity of Chicago\n5841 S Maryland Ave - MC 5065\nChicago IL 60637\noffice: (773) 834-5635<tel:%28773%29%20702-8349>; fax:  (773) 702-8998<tel:%28773%29%20702-8998>\n\n[cid:image001.png@01CFCCDE.ACA64EA0]    [medicine]\nWebsite: http://hivelimination.uchicago.edu<http://hivelimination.uchicago.edu/>\nFacebook: https://www.facebook.com/hivelimination\nTwitter: @HIVElimination\n\n********************************************************************************\nThis e-mail is intended only for the use of the individual or entity to which\nit is addressed and may contain information that is privileged and confidential.\nIf the reader of this e-mail message is not the intended recipient, you are \nhereby notified that any dissemination, distribution or copying of this\ncommunication is prohibited. If you have received this e-mail in error, please \nnotify the sender and destroy all copies of the transmittal. \n\nThank you\nUniversity of Chicago Medicine and Biological Sciences \n********************************************************************************\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151124/9be80667/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: image001.png\nType: image/png\nSize: 31128 bytes\nDesc: image001.png\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151124/9be80667/attachment.png>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: image002.jpg\nType: image/jpeg\nSize: 3766 bytes\nDesc: image002.jpg\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151124/9be80667/attachment.jpg>",
+      "body_snippet": "Hello Statnet Community,\n\nI have a quick question about how the ordering of vertices within network objects can be customized. I need this customization to be able to make certain plots seamlessly lat",
+      "thread_id": "thread-ca19b4962b3e",
+      "thread_depth": 0,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-4542523d64f6",
+      "message_id": "<5654A019.1010407@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2015-11-24T09:36:25Z",
+      "subject": "[statnet_help] ordering vertices of a network object by a custom rule",
+      "subject_clean": "[statnet_help] ordering vertices of a network object by a custom rule",
+      "in_reply_to": "<E913ABB937F1DE4BA868F430F7197E10381590F9@EXMBXPR07CCD.UCHAD.uchospitals.edu>",
+      "references": [
+        "<E913ABB937F1DE4BA868F430F7197E10381590F9@EXMBXPR07CCD.UCHAD.uchospitals.edu>"
+      ],
+      "body_plain": "See ?permute.vertexIDs in the network package.\n\nHope that helps,\n\n-Carter\n\nOn 11/24/2015 08:22 AM, Khanna, Aditya [MED] wrote:\n>\n> Hello Statnet Community,\n>\n>\n> I have a quick question about how the ordering of vertices within \n> network objects can be customized. I need this customization to be \n> able to make certain plots seamlessly later. The vertex names of my \n> network objects are not simply numeric, they are character strings \n> that identify individuals, and indicators of their participation in a \n> select group are encoded in these names.\n>\n> I am not able to customize this ordering. I see that\n>\n>     net$iel\n>\n> presents a list of all the vertex id?s that each vertex id is linked \n> to. But I am not able to see how I can manipulate the ordering within \n> this list, to fit my needs.\n>\n> I?d appreciate any help in figuring this problem out.\n>\n> Many thanks,\n>\n> Aditya\n>\n> --\n>\n> Aditya Khanna (Webpage) <http://home.uchicago.edu/%7Ekhanna7/>\n>\n> Chicago Center for HIV Elimination\n>\n> Staff Scientist, Director of Network Modeling\n>\n> Department of Medicine\n>\n> Division of Biological Sciences\n>\n> University of Chicago\n>\n> 5841 S Maryland Ave - MC 5065\n>\n> Chicago IL 60637\n>\n> office: (773) 834-5635 <tel:%28773%29%20702-8349>; fax: (773) 702-8998 \n> <tel:%28773%29%20702-8998>\n>\n> cid:image001.png@01CFCCDE.ACA64EA0 medicine\n>\n> Website: http://hivelimination.uchicago.edu \n> <http://hivelimination.uchicago.edu/>\n> Facebook: https://www.facebook.com/hivelimination\n> Twitter: @HIVElimination\n>\n> ********************************************************************************\n> This e-mail is intended only for the use of the individual or entity \n> to which\n> it is addressed and may contain information that is privileged and \n> confidential.\n> If the reader of this e-mail message is not the intended recipient, \n> you are\n> hereby notified that any dissemination, distribution or copying of this\n> communication is prohibited. If you have received this e-mail in \n> error, please\n> notify the sender and destroy all copies of the transmittal.\n>\n> Thank you\n> University of Chicago Medicine and Biological Sciences\n> ********************************************************************************\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151124/22e99b32/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: not available\nType: image/png\nSize: 31128 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151124/22e99b32/attachment.png>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: not available\nType: image/jpeg\nSize: 3766 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151124/22e99b32/attachment.jpe>",
+      "body_snippet": "See ?permute.vertexIDs in the network package.\n\nHope that helps,\n\n-Carter\n\nOn 11/24/2015 08:22 AM, Khanna, Aditya [MED] wrote:\n>\n> Hello Statnet Community,\n>\n>\n> I have a quick question about how the ",
+      "thread_id": "thread-ca19b4962b3e",
+      "thread_depth": 1,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-619dd288fba6",
+      "message_id": "<E913ABB937F1DE4BA868F430F7197E1038159215@EXMBXPR07CCD.UCHAD.uchospitals.edu>",
+      "from_name": "Khanna, Aditya [MED]",
+      "from_email_hash": "bcbc2ecefb65f657cdc48dbcb34944add56ec462b1b27bb58447f547a9f880c3",
+      "date": "2015-11-24T11:49:52Z",
+      "subject": "[statnet_help] ordering vertices of a network object by a custom rule",
+      "subject_clean": "[statnet_help] ordering vertices of a network object by a custom rule",
+      "in_reply_to": "<5654A019.1010407@uci.edu>",
+      "references": [
+        "<E913ABB937F1DE4BA868F430F7197E10381590F9@EXMBXPR07CCD.UCHAD.uchospitals.edu>",
+        "<5654A019.1010407@uci.edu>"
+      ],
+      "body_plain": "Thanks Carter, 'permute.vertexIDs' solved my problem. Thank you!\n\nFrom: statnet_help [mailto:statnet_help-bounces@mailman13.u.washington.edu] On Behalf Of Carter T. Butts\nSent: Tuesday, November 24, 2015 11:36 AM\nTo: statnet_help@u.washington.edu\nSubject: Re: [statnet_help] ordering vertices of a network object by a custom rule\n\nSee ?permute.vertexIDs in the network package.\n\nHope that helps,\n\n-Carter\n\nOn 11/24/2015 08:22 AM, Khanna, Aditya [MED] wrote:\nHello Statnet Community,\n\nI have a quick question about how the ordering of vertices within network objects can be customized. I need this customization to be able to make certain plots seamlessly later. The vertex names of my network objects are not simply numeric, they are character strings that identify individuals, and indicators of their participation in a select group are encoded in these names.\n\nI am not able to customize this ordering. I see that\n    net$iel\npresents a list of all the vertex id's that each vertex id is linked to. But I am not able to see how I can manipulate the ordering within this list, to fit my needs.\n\nI'd appreciate any help in figuring this problem out.\n\nMany thanks,\nAditya\n\n--\nAditya Khanna (Webpage)<http://home.uchicago.edu/%7Ekhanna7/>\nChicago Center for HIV Elimination\nStaff Scientist, Director of Network Modeling\nDepartment of Medicine\nDivision of Biological Sciences\nUniversity of Chicago\n5841 S Maryland Ave - MC 5065\nChicago IL 60637\noffice: (773) 834-5635<tel:%28773%29%20702-8349>; fax:  (773) 702-8998<tel:%28773%29%20702-8998>\n\n[cid:image001.png@01CFCCDE.ACA64EA0]    [medicine]\nWebsite: http://hivelimination.uchicago.edu\nFacebook: https://www.facebook.com/hivelimination\nTwitter: @HIVElimination\n\n********************************************************************************\nThis e-mail is intended only for the use of the individual or entity to which\nit is addressed and may contain information that is privileged and confidential.\nIf the reader of this e-mail message is not the intended recipient, you are\nhereby notified that any dissemination, distribution or copying of this\ncommunication is prohibited. If you have received this e-mail in error, please\nnotify the sender and destroy all copies of the transmittal.\n\nThank you\nUniversity of Chicago Medicine and Biological Sciences\n********************************************************************************\n\n\n\n\n_______________________________________________\n\nstatnet_help mailing list\n\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\n\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n********************************************************************************\nThis e-mail is intended only for the use of the individual or entity to which\nit is addressed and may contain information that is privileged and confidential.\nIf the reader of this e-mail message is not the intended recipient, you are \nhereby notified that any dissemination, distribution or copying of this\ncommunication is prohibited. If you have received this e-mail in error, please \nnotify the sender and destroy all copies of the transmittal. \n\nThank you\nUniversity of Chicago Medicine and Biological Sciences \n********************************************************************************\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151124/e37916d1/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: image001.png\nType: image/png\nSize: 31128 bytes\nDesc: image001.png\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151124/e37916d1/attachment.png>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: image002.jpg\nType: image/jpeg\nSize: 3766 bytes\nDesc: image002.jpg\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151124/e37916d1/attachment.jpg>",
+      "body_snippet": "Thanks Carter, 'permute.vertexIDs' solved my problem. Thank you!\n\nFrom: statnet_help [mailto:statnet_help-bounces@mailman13.u.washington.edu] On Behalf Of Carter T. Butts\nSent: Tuesday, November 24, 2",
+      "thread_id": "thread-ca19b4962b3e",
+      "thread_depth": 2,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-5ae2a6c81781",
+      "message_id": "<CAC1OX+AfPE1HkjB7UoqFtURfijXZy9LoP4FiNp+zBA97fR=M8A@mail.gmail.com>",
+      "from_name": "baidao",
+      "from_email_hash": "59cac8577d0ba10dda2125aa9000f3d92466e8242fa51ee75db8039189cae826",
+      "date": "2015-11-26T06:08:46Z",
+      "subject": "[statnet_help] edgecov and the support of sparse matrix",
+      "subject_clean": "[statnet_help] edgecov and the support of sparse matrix",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear StatNet community,\n?\nI need to add several edgecov() parameters to the network which\n? has about 50k nodes.? So for each edgecov(), the matrix takes about 3G\nmemory, and the whole model would blow up system memory (64G).\n\nSince all my edge-wise matrics are very sparse, I wonder if it's possible\nfor edgecov() to support sparse matrics, such as slam's\nsimple_triplet_matrix or dgCMatrix in Matrix package.? Thanks.\n\n\n\nBest,\n\nChen, Huashan\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20151126/6935bdd6/attachment.html>",
+      "body_snippet": "Dear StatNet community,\n?\nI need to add several edgecov() parameters to the network which\n? has about 50k nodes.? So for each edgecov(), the matrix takes about 3G\nmemory, and the whole model would blo",
+      "thread_id": "thread-5ae2a6c81781",
+      "thread_depth": 0,
+      "month": "2015-11"
+    },
+    {
+      "id": "msg-57fbb7d33e00",
+      "message_id": "<alpine.WNT.2.00.1511271810500.8060@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2015-11-27T18:11:05Z",
+      "subject": "[statnet_help] edgecov and the support of sparse matrix",
+      "subject_clean": "[statnet_help] edgecov and the support of sparse matrix",
+      "in_reply_to": "<CAC1OX+AfPE1HkjB7UoqFtURfijXZy9LoP4FiNp+zBA97fR=M8A@mail.gmail.com>",
+      "references": [
+        "<CAC1OX+AfPE1HkjB7UoqFtURfijXZy9LoP4FiNp+zBA97fR=M8A@mail.gmail.com>"
+      ],
+      "body_plain": "thanks for the suggestion baido -- we'll look into it :)\n\nOn Thu, 26 Nov 2015, baidao wrote:\n\n> Dear StatNet community,\n> ?I need to add several edgecov() parameters to the network which\n> ?has about 50k nodes.? So for each edgecov(), the matrix takes about 3G memory, and the whole model would\n> blow up system memory (64G).\n> \n> Since all my edge-wise matrics are very sparse, I wonder if it's possible for edgecov() to support\n> sparse matrics, such as slam's simple_triplet_matrix or dgCMatrix in Matrix package.? Thanks.\n> \n> \n> \n> Best,\n> \n> Chen, Huashan\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "thanks for the suggestion baido -- we'll look into it :)\n\nOn Thu, 26 Nov 2015, baidao wrote:\n\n> Dear StatNet community,\n> ?I need to add several edgecov() parameters to the network which\n> ?has about ",
+      "thread_id": "thread-5ae2a6c81781",
+      "thread_depth": 1,
+      "month": "2015-11"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-d1dcd02eb0ac",
+      "subject": "[statnet_help] parallel ergm processing using an MPI cluster",
+      "message_count": 4,
+      "participants": [
+        "Khanna, Aditya [MED]",
+        "Pavel N. Krivitsky",
+        "Thomas Obadia"
+      ],
+      "started": "2015-11-02T15:58:14Z",
+      "last_reply": "2015-11-11T13:22:30Z",
+      "root_message_id": "msg-d1dcd02eb0ac"
+    },
+    {
+      "id": "thread-758e8006554f",
+      "subject": "[statnet_help] Fwd: Multiplicative Attribute Graph model for SNA_from Italy",
+      "message_count": 2,
+      "participants": [
+        "Michael Heaney",
+        "martina morris"
+      ],
+      "started": "2015-11-06T09:45:03Z",
+      "last_reply": "2015-11-09T08:48:03Z",
+      "root_message_id": "msg-758e8006554f"
+    },
+    {
+      "id": "thread-cc45099055ef",
+      "subject": "[statnet_help] statnet release 2015.11",
+      "message_count": 1,
+      "participants": [
+        "Skye Bender-deMoll"
+      ],
+      "started": "2015-11-11T11:53:20Z",
+      "last_reply": "2015-11-11T11:53:20Z",
+      "root_message_id": "msg-cc45099055ef"
+    },
+    {
+      "id": "thread-db029a860b99",
+      "subject": "[statnet_help] Comparing observed to simulated networks on arbitrary statistics",
+      "message_count": 5,
+      "participants": [
+        "Carter T. Butts",
+        "Michael Levy",
+        "martina morris"
+      ],
+      "started": "2015-11-16T11:03:50Z",
+      "last_reply": "2015-11-19T09:12:22Z",
+      "root_message_id": "msg-db029a860b99"
+    },
+    {
+      "id": "thread-c4abc7dd6c82",
+      "subject": "[statnet_help] interpretation of nodefactor covariate in a directed network",
+      "message_count": 2,
+      "participants": [
+        "Benton, Richard",
+        "Oren Tsur"
+      ],
+      "started": "2015-11-23T12:00:49Z",
+      "last_reply": "2015-11-23T12:11:01Z",
+      "root_message_id": "msg-c4abc7dd6c82"
+    },
+    {
+      "id": "thread-64e51f2c76f8",
+      "subject": "[statnet_help] statnet_help Digest, Vol 112, Issue 9",
+      "message_count": 1,
+      "participants": [
+        "Franziska Barbara Keller"
+      ],
+      "started": "2015-11-23T12:19:39Z",
+      "last_reply": "2015-11-23T12:19:39Z",
+      "root_message_id": "msg-64e51f2c76f8"
+    },
+    {
+      "id": "thread-20fa0049cbdd",
+      "subject": "[statnet_help] interpretation of nodefactor covariate in a directed network",
+      "message_count": 1,
+      "participants": [
+        "Oren Tsur"
+      ],
+      "started": "2015-11-23T12:46:37Z",
+      "last_reply": "2015-11-23T12:46:37Z",
+      "root_message_id": "msg-20fa0049cbdd"
+    },
+    {
+      "id": "thread-339a7043960f",
+      "subject": "[statnet_help] representing and estimating a \"partial homophily\" term",
+      "message_count": 2,
+      "participants": [
+        "Oren Tsur",
+        "martina morris"
+      ],
+      "started": "2015-11-23T14:13:54Z",
+      "last_reply": "2015-11-23T17:28:35Z",
+      "root_message_id": "msg-339a7043960f"
+    },
+    {
+      "id": "thread-b1cd2484a8f5",
+      "subject": "[statnet_help] representing and estimating a \"partial homophily\" term",
+      "message_count": 1,
+      "participants": [
+        "Oren Tsur"
+      ],
+      "started": "2015-11-23T18:19:07Z",
+      "last_reply": "2015-11-23T18:19:07Z",
+      "root_message_id": "msg-b1cd2484a8f5"
+    },
+    {
+      "id": "thread-ca19b4962b3e",
+      "subject": "[statnet_help] ordering vertices of a network object by a custom rule",
+      "message_count": 3,
+      "participants": [
+        "Carter T. Butts",
+        "Khanna, Aditya [MED]"
+      ],
+      "started": "2015-11-24T08:22:20Z",
+      "last_reply": "2015-11-24T11:49:52Z",
+      "root_message_id": "msg-ca19b4962b3e"
+    },
+    {
+      "id": "thread-5ae2a6c81781",
+      "subject": "[statnet_help] edgecov and the support of sparse matrix",
+      "message_count": 2,
+      "participants": [
+        "baidao",
+        "martina morris"
+      ],
+      "started": "2015-11-26T06:08:46Z",
+      "last_reply": "2015-11-27T18:11:05Z",
+      "root_message_id": "msg-5ae2a6c81781"
+    }
+  ]
+}

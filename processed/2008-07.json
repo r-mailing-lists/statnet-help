@@ -1,0 +1,373 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2008-07",
+  "messages": [
+    {
+      "id": "msg-e839bcf0cf7f",
+      "message_id": "<003A2E0848EA41C485BC374498E0808F@Heidler08>",
+      "from_name": "Richard Heidler",
+      "from_email_hash": "191bdba0a24e1ea5f132868e311c6a3d286ed23acb07b78da5156ef2f95cb49a",
+      "date": "2008-07-04T01:55:09Z",
+      "subject": "[statnet_help] SNA Blockmodeling",
+      "subject_clean": "[statnet_help] SNA Blockmodeling",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnetlist,\n\n \n\nI'm a german sociologist using your Network-Package and the SNA-Package of\nButts and have some problems, perhaps you can help me.\n\nI installed the network-package and read a network (containing over 2000\nvertexes)\n\n \n\nnetwork <- read.paj(\"C:/test.net\")\n\n \n\nI wanted to generate a blockdensity matrix for the network. I have a\npartition data set in pajek for the actors and wanted to use this partition\nto generate the blockdensity matrix. I tried to read the partition as\nfollows:\n\n \n\npartition <- read.table(\"C:/part.net\")\n\n \n\nI tried to generate a blockmodel\n\n \n\nblockmodel(testnet, partition, block.content=\"density\")\n\n \n\nAnd got the Error:\n\n \n\nFehler in dimnames(o$blocked.data) <- list(plabels[pord], plabels[pord]) : \n\n  'dimnames' angewendet auf Nicht-Array\n\n \n\n \n\nWhat am I doing wrong?  How can a create a \"membership vector\" ?\n\n \n\nKind regards\n\n \n\nRichard Heidler\n\n \n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080704/7de0046e/attachment.html>",
+      "body_snippet": "Dear Statnetlist,\n\n \n\nI'm a german sociologist using your Network-Package and the SNA-Package of\nButts and have some problems, perhaps you can help me.\n\nI installed the network-package and read a netw",
+      "thread_id": "thread-e839bcf0cf7f",
+      "thread_depth": 0,
+      "month": "2008-07"
+    },
+    {
+      "id": "msg-65d8dd63025b",
+      "message_id": "<58e008a80807042214k1a47033qa24e63a658941e04@mail.gmail.com>",
+      "from_name": "Hyun Go",
+      "from_email_hash": "099e9b578e9defb6eb7cf60e7b919124477b4bd6627c15d6767c70bcb8cf5055",
+      "date": "2008-07-04T22:14:37Z",
+      "subject": "[statnet_help] Question on Latentnet/LatentnetHRT",
+      "subject_clean": "[statnet_help] Question on Latentnet/LatentnetHRT",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI'm currently analyzing Add Health data using Latentnet/LatentnetHRT. I\nespecially like the fact that latentnet is able to provide the likeliest\nnumber of clusters in a given sample and can express individual's membership\nin clusters in probabilities. The problem is, I have been trying to use the\nprogram as described in Krivitsky and Handcock (2007) in the Journal of\nStatistical Software, but it seems latentnet program has been updated to\nsuch an extent that the codes used as examples in the article are pretty\nmuch no longer valid. After some tinkering I have figured out how to use\nergmm command and plot the cluster structure in two dimensions but I still\ncan't find the way to use BIC information to find out the likeliest number\nof clusters in a given sample.\nI suppose I could run separate ergmm commands with different constraints on\ngroup numbers (i.e., ngroups=1, 2, 3, 4... so forth) and then compare their\nBICs as in the figure 6 in Handcock, Raftery, and Tantrum (2007) in the J R\nStatist Soc A --where the x-axis is the number of clusters and y-axis is\nBIC-- but given the time it takes to process a sample with 71 vertices it is\npractically impossible to use this for any bigger sample. So what I would\nlike know is as follows:\n\n- a command/options in latentnet (or statnet?) library that compares model\nfit with a range of possible number of clusters in one go. Ideally, a flag\nin ergmm option that addresses it...\n- is there a working paper, monograph, or updated help file that supersedes\nKrivitsky and Handcock (2007), which is rather outdated, unless I'm missing\nsomething?\n\nThanks for the help,\n\nHyun\n\n-------------------------\nGo Myong-Hyun\nDoctoral Fellow\nPardee RAND Graduate School\nSanta Monica, CA 90401\nemail: mhgo@prgs.edu\nTel: 1 310 393 0411 x8464\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080704/946db5df/attachment.html>",
+      "body_snippet": "Hi all,\n\nI'm currently analyzing Add Health data using Latentnet/LatentnetHRT. I\nespecially like the fact that latentnet is able to provide the likeliest\nnumber of clusters in a given sample and can e",
+      "thread_id": "thread-65d8dd63025b",
+      "thread_depth": 0,
+      "month": "2008-07"
+    },
+    {
+      "id": "msg-5011d081d37b",
+      "message_id": "<71C5E339-A150-4380-9913-29C016AC5D9D@reed.edu>",
+      "from_name": "Alexander H. Montgomery",
+      "from_email_hash": "d1c48c3c695c97a51e653a3cc66bc8e8fd7c5c03b9e0a43fd4b72da306733d40",
+      "date": "2008-07-06T12:50:29Z",
+      "subject": "[statnet_help] SNA Blockmodeling",
+      "subject_clean": "[statnet_help] SNA Blockmodeling",
+      "in_reply_to": "<003A2E0848EA41C485BC374498E0808F@Heidler08>",
+      "references": [
+        "<003A2E0848EA41C485BC374498E0808F@Heidler08>"
+      ],
+      "body_plain": "Dear Richard,\n\nIt would probably help if you posted your data somewhere (preferably  \non a website, don't send it to the list) so others could test out your  \ndata; it's difficult to troubleshoot without data access.\n\n-AHM\n\nOn 2008-07-04, at 1:55 AM, Richard Heidler wrote:\n\n> Dear Statnetlist,\n>\n> I?m a german sociologist using your Network-Package and the SNA- \n> Package of Butts and have some problems, perhaps you can help me.\n> I installed the network-package and read a network (containing over  \n> 2000 vertexes)\n>\n> network <- read.paj(\"C:/test.net\")\n>\n> I wanted to generate a blockdensity matrix for the network. I have a  \n> partition data set in pajek for the actors and wanted to use this  \n> partition to generate the blockdensity matrix. I tried to read the  \n> partition as follows:\n>\n> partition <- read.table(\"C:/part.net\")\n>\n> I tried to generate a blockmodel\n>\n> blockmodel(testnet, partition, block.content=\"density\")\n>\n> And got the Error:\n>\n> Fehler in dimnames(o$blocked.data) <- list(plabels[pord],  \n> plabels[pord]) :\n>   'dimnames' angewendet auf Nicht-Array\n>\n>\n> What am I doing wrong?  How can a create a ?membership vector? ?\n>\n> Kind regards\n>\n> Richard Heidler\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dear Richard,\n\nIt would probably help if you posted your data somewhere (preferably  \non a website, don't send it to the list) so others could test out your  \ndata; it's difficult to troubleshoot with",
+      "thread_id": "thread-e839bcf0cf7f",
+      "thread_depth": 1,
+      "month": "2008-07"
+    },
+    {
+      "id": "msg-80c72643a70b",
+      "message_id": "<9B6D909F8A814ECF9EC3630177E4473E@Heidler08>",
+      "from_name": "Richard Heidler",
+      "from_email_hash": "191bdba0a24e1ea5f132868e311c6a3d286ed23acb07b78da5156ef2f95cb49a",
+      "date": "2008-07-07T02:00:10Z",
+      "subject": "[statnet_help] AW: SNA Blockmodeling",
+      "subject_clean": "[statnet_help] AW: SNA Blockmodeling",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear List,\n\n \n\nThank you for your answer.\n\nI'm sorry that I can't send out the original data, but it contains\nconfidential information. Nevertheless I can reproduce the problem with a\nsimple dataset that I send to you.\n\n \n\nIf I put the data on the C Directory I get following results:\n\n \n\nThe Beispielrik2.net\n\n \n\n*Vertices 8\n\n 1 \"John Bosco\"      \n\n 2 \"Gregory\"          \n\n 3 \"Basil\"            \n\n 4 \"Peter\"           \n\n 5 \"Bonaventure\"     \n\n 6 \"Berthold\"       \n\n 7 \"Mark\"            \n\n 8 \"Victor\"          \n\n*Arcs\n\n1  5  1\n\n5  1  1\n\n3  1  1\n\n3  5  1\n\n7  1  1\n\n7  5  1\n\n8  1  1\n\n8  5  1\n\n6  4  1\n\n4  6  1\n\n6  2  1\n\n4  2  1\n\n2  6  1\n\n2  4  1\n\n \n\nnetwork <- read.paj(\"C:/Beispielrik2.net\")\n\ngplot(network)\n\n \n\nThe network is plotted, so I suppose the network data is OK.\n\nUsually for blockmodeling an equivalence measure is computed and on this\nbase, a partition is made. This is also called a posteriori blockmodeling.\nFor a priori blockmodeling there is already a given partition (for example\nage groups in a friendship network). I have such a partition and want to\ngenerate a blockdensity matrix on the base of this partition. Butts write\nfor the SNA package:\n\n \n\n\"Given a set of equivalence classes (in the form of an equiv.clust or hclust\nobject, or membership vector) and one or more graphs, blockmodel will form a\nblockmodel of the input graph(s) based on the classes in question, using the\nspecied block content type.\"\n\n \n\nI want to generate such a membership vector out of the blockpart.txt data!\n\n \n\nThe blockpart.txt\n\n \n\n1\n\n3\n\n2\n\n3\n\n1\n\n3\n\n2\n\n2\n\n \n\n \n\npartition <- read.table(\"C:/blockpart.txt\")\n\n \n\nblockmodel(network, partition, block.content=\"density\")\n\n \n\nbut I get the same error. I really tried to solve the problem by myself but\nI don't get it.\n\n \n\nKind regards\n\nRichard Heidler\n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080707/e452576a/attachment.html>",
+      "body_snippet": "Dear List,\n\n \n\nThank you for your answer.\n\nI'm sorry that I can't send out the original data, but it contains\nconfidential information. Nevertheless I can reproduce the problem with a\nsimple dataset t",
+      "thread_id": "thread-80c72643a70b",
+      "thread_depth": 0,
+      "month": "2008-07"
+    },
+    {
+      "id": "msg-7b77ca61b3e3",
+      "message_id": "<745FE67A-0586-46DA-A2E7-6018CAC06150@reed.edu>",
+      "from_name": "Alexander H. Montgomery",
+      "from_email_hash": "d1c48c3c695c97a51e653a3cc66bc8e8fd7c5c03b9e0a43fd4b72da306733d40",
+      "date": "2008-07-07T09:56:18Z",
+      "subject": "[statnet_help] AW: SNA Blockmodeling",
+      "subject_clean": "[statnet_help] AW: SNA Blockmodeling",
+      "in_reply_to": "<9B6D909F8A814ECF9EC3630177E4473E@Heidler08>",
+      "references": [
+        "<9B6D909F8A814ECF9EC3630177E4473E@Heidler08>"
+      ],
+      "body_plain": "Richard:\n\nIt looks like the blockmodel() function in sna is choking on the  \npartition object. When you use read.table, it reads in the information  \nas a data.frame, whereas blockmodel() is expecting a vector. So:\n\n > partition <- read.table(\"blockpart.txt\")\n > partition\n   V1\n1  1\n2  3\n3  2\n4  3\n5  1\n6  3\n7  2\n8  2\n\nSo partition is a data.frame with one named column (V1). You can  \naccess that column as a vector in one of three ways:\n\n > partition[,1]\n[1] 1 3 2 3 1 3 2 2\n > partition[[1]]\n[1] 1 3 2 3 1 3 2 2\n > partition$V1\n[1] 1 3 2 3 1 3 2 2\n\nIf you pass that vector instead of the entire data.frame to  \nblockmodel, it should work fine:\n\n > blockmodel(network,partition[,1])\n\nNetwork Blockmodel:\n\nBlock membership:\n\n1 2 3 4 5 6 7 8\n1 3 2 3 1 3 2 2\n\nReduced form blockmodel:\n\n\t 1 2 3 4 5 6 7 8\n         Block 1 Block 2 Block 3\nBlock 1       1       1       0\nBlock 2       0       0       0\nBlock 3       0       0       1\n\nIncidentally, you don't need to call gplot; plot will work just fine,  \nsince R knows that it's a network.\n\n-AHM\n\n--\nAlexander H. Montgomery\nAssistant Professor\nReed College Dept. of Political Science\n3203 SE Woodstock Blvd\nPortland, OR 97202-8199\nwork (503) 517-7395\nfax (503) 777-7776\nahm@reed.edu\nhttp://www.reed.edu/~ahm\n\nOn 2008-07-07, at 2:00 AM, Richard Heidler wrote:\n\n> Dear List,\n>\n> Thank you for your answer.\n> I'm sorry that I can't send out the original data, but it contains  \n> confidential information. Nevertheless I can reproduce the problem  \n> with a simple dataset that I send to you.\n>\n> If I put the data on the C Directory I get following results:\n>\n> The Beispielrik2.net\n>\n> *Vertices 8\n>  1 \"John Bosco\"\n>  2 \"Gregory\"\n>  3 \"Basil\"\n>  4 \"Peter\"\n>  5 \"Bonaventure\"\n>  6 \"Berthold\"\n>  7 \"Mark\"\n>  8 \"Victor\"\n> *Arcs\n> 1  5  1\n> 5  1  1\n> 3  1  1\n> 3  5  1\n> 7  1  1\n> 7  5  1\n> 8  1  1\n> 8  5  1\n> 6  4  1\n> 4  6  1\n> 6  2  1\n> 4  2  1\n> 2  6  1\n> 2  4  1\n>\n> network <- read.paj(\"C:/Beispielrik2.net\")\n> gplot(network)\n>\n> The network is plotted, so I suppose the network data is OK.\n> Usually for blockmodeling an equivalence measure is computed and on  \n> this base, a partition is made. This is also called a posteriori  \n> blockmodeling. For a priori blockmodeling there is already a given  \n> partition (for example age groups in a friendship network). I have  \n> such a partition and want to generate a blockdensity matrix on the  \n> base of this partition. Butts write for the SNA package:\n>\n> \"Given a set of equivalence classes (in the form of an equiv.clust  \n> or hclust object, or membership vector) and one or more graphs,  \n> blockmodel will form a blockmodel of the input graph(s) based on the  \n> classes in question, using the specied block content type.\"\n>\n> I want to generate such a membership vector out of the blockpart.txt  \n> data!\n>\n> The blockpart.txt\n>\n> 1\n> 3\n> 2\n> 3\n> 1\n> 3\n> 2\n> 2\n>\n>\n> partition <- read.table(\"C:/blockpart.txt\")\n>\n> blockmodel(network, partition, block.content=\"density\")\n>\n> but I get the same error. I really tried to solve the problem by  \n> myself but I don't get it.\n>\n> Kind regards\n> Richard Heidler",
+      "body_snippet": "Richard:\n\nIt looks like the blockmodel() function in sna is choking on the  \npartition object. When you use read.table, it reads in the information  \nas a data.frame, whereas blockmodel() is expecting",
+      "thread_id": "thread-80c72643a70b",
+      "thread_depth": 1,
+      "month": "2008-07"
+    },
+    {
+      "id": "msg-e31b158ade88",
+      "message_id": "<4873EF51.9090106@asu.edu>",
+      "from_name": "Rodolfo Espino",
+      "from_email_hash": "9061408f6e7d1a4d8738bfa4be36cf5104f9967d1583eed56b20e5cae21f7ec2",
+      "date": "2008-07-08T15:50:57Z",
+      "subject": "[statnet_help] \"subscript out of bounds\" error in simulate.sisnetwork",
+      "subject_clean": "[statnet_help] \"subscript out of bounds\" error in simulate.sisnetwork",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Should I expect an error when a bipartite network has isolates and I try \nto use \"simulate\" from the sisnetwork library?\n\nI am receiving the following error:\n\n##############\n\n > sim <- simulate(Cong110.g2, n=100)\nError in simulate.sisnetwork(object, nsim = nsim, seed = seed, \nsave.networks = FALSE,  :\n  subscript out of bounds\n\n##############\n\nI have a bipartite graph with: 446 actors, 27 events, 927 edges. (there \nare 12 isolates).\n\nThanks,\n\nRudy\n\n\n-- \nRodolfo Espino, Arizona State University\nAssistant Professor, Department of Political Science\nAffiliate Professor, Transborder Chicana/o & Latina/o Studies",
+      "body_snippet": "Should I expect an error when a bipartite network has isolates and I try \nto use \"simulate\" from the sisnetwork library?\n\nI am receiving the following error:\n\n##############\n\n > sim <- simulate(Cong11",
+      "thread_id": "thread-e31b158ade88",
+      "thread_depth": 0,
+      "month": "2008-07"
+    },
+    {
+      "id": "msg-f4944613d7e4",
+      "message_id": "<4A0713AC-C561-4194-9025-062B2E8E3515@umich.edu>",
+      "from_name": "Theodore Iwashyna",
+      "from_email_hash": "e7a0bc660b2e161189dc882966e36099e6d2ac399e11eb92ceeefc359e30d36c",
+      "date": "2008-07-10T08:32:10Z",
+      "subject": "[statnet_help] awkwardness in initial statnet install (Mac OS X, today)",
+      "subject_clean": "[statnet_help] awkwardness in initial statnet install (Mac OS X, today)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "When I installed statnet today, it seems that the basic installation  \ndid not include degreenet, sna, and networksis, and so I had to go  \nback and install them by hand as the error messages popped up.  it was  \nnot a problem, per se, just an inelegance I thought you might want to  \nknow about.\n\nAn edited transcript is:\n\nR version 2.7.1 (2008-06-23)\nCopyright (C) 2008 The R Foundation for Statistical Computing\nISBN 3-900051-07-0\n\nR is free software and comes with ABSOLUTELY NO WARRANTY.\nYou are welcome to redistribute it under certain conditions.\nType 'license()' or 'licence()' for distribution details.\n\n   Natural language support but running in an English locale\n\nR is a collaborative project with many contributors.\nType 'contributors()' for more information and\n'citation()' on how to cite R or R packages in publications.\n\nType 'demo()' for some demos, 'help()' for on-line help, or\n'help.start()' for an HTML browser interface to help.\nType 'q()' to quit R.\n\n > install.packages(\"statnet\")\nalso installing the dependencies ?scatterplot3d?, ?rgl?, ?abind?,  \n?shapes?, ?network?, ?ergm?, ?latentnet?\n\ntrying URL 'http://lib.stat.cmu.edu/R/CRAN/bin/macosx/universal/contrib/2.7/scatterplot3d_0.3-27.tgz'\nContent type 'application/x-gzip' length 516705 bytes (504 Kb)\nopened URL\n==================================================\ndownloaded 504 Kb\n\ntrying URL 'http://lib.stat.cmu.edu/R/CRAN/bin/macosx/universal/contrib/2.7/rgl_0.79.tgz'\nContent type 'application/x-gzip' length 5384627 bytes (5.1 Mb)\nopened URL\n==================================================\ndownloaded 5.1 Mb\n\ntrying URL 'http://lib.stat.cmu.edu/R/CRAN/bin/macosx/universal/contrib/2.7/abind_1.1-0.tgz'\nContent type 'application/x-gzip' length 16397 bytes (16 Kb)\nopened URL\n==================================================\ndownloaded 16 Kb\n\ntrying URL 'http://lib.stat.cmu.edu/R/CRAN/bin/macosx/universal/contrib/2.7/shapes_1.1-1.tgz'\nContent type 'application/x-gzip' length 163005 bytes (159 Kb)\nopened URL\n==================================================\ndownloaded 159 Kb\n\ntrying URL 'http://lib.stat.cmu.edu/R/CRAN/bin/macosx/universal/contrib/2.7/network_1.3.tgz'\nContent type 'application/x-gzip' length 211552 bytes (206 Kb)\nopened URL\n==================================================\ndownloaded 206 Kb\n\ntrying URL 'http://lib.stat.cmu.edu/R/CRAN/bin/macosx/universal/contrib/2.7/ergm_2.1.tgz'\nContent type 'application/x-gzip' length 499150 bytes (487 Kb)\nopened URL\n==================================================\ndownloaded 487 Kb\n\ntrying URL 'http://lib.stat.cmu.edu/R/CRAN/bin/macosx/universal/contrib/2.7/latentnet_2.1-1.tgz'\nContent type 'application/x-gzip' length 199055 bytes (194 Kb)\nopened URL\n==================================================\ndownloaded 194 Kb\n\ntrying URL 'http://lib.stat.cmu.edu/R/CRAN/bin/macosx/universal/contrib/2.7/statnet_2.1.tgz'\nContent type 'application/x-gzip' length 23277 bytes (22 Kb)\nopened URL\n==================================================\ndownloaded 22 Kb\n\n\nThe downloaded packages are in\n\t/var/folders/vR/vRgvIZ8cEDCJxrRFWqg2m++++TQ/-Tmp-//RtmprC832G/ \ndownloaded_packages\n\n > library(statnet)\nLoading required package: network\nClasses for Relational Data\nVersion 1.3 created on January 31, 2008.\ncopyright (c) 2005, Carter T. Butts, University of California-Irvine\n                     Mark S. Handcock, University of Washington\n                     David R. Hunter, Penn State University\n                     Martina Morris, University of Washington\nFor citation information, type citation(\"network\").\nType help(package=\"network-package\") to get started.\nLoading required package: ergm\n\nergm: Fit, Simulate and Diagnose Exponential-Family Models for\nNetworks\nVersion 2.1 created on April 25, 2008\ncopyright (c) 2003, Mark S. Handcock, University of Washington\n                     David R. Hunter, Penn State University\n                     Carter T. Butts, University of California-Irvine\n                     Steven M. Goodreau, University of Washington\n                     Martina Morris, University of Washington\nType help(package=\"ergm\") to get started.\n\nBased on \"statnet\" project software (http://statnetproject.org).\n  For license and citation information see http://statnetproject.org/attribution\n  or type citation(\"ergm\").\nLoading required package: latentnet\nLoading required package: abind\nLoading required package: shapes\nLoading required package: scatterplot3d\nLoading required package: rgl\nLoading required package: tools\nLatent position and cluster models for statistical networks\nVersion 2.1-1 created on 2008-02-28.\ncopyright (c) 2003-2008, Pavel N. Krivitsky, University of Washington\n                          Mark S. Handcock, University of Washington\n                          and others; see LICENSE for the full list of\n                          contributors.\nThis package is part of statnet project (http://www.statnetproject.org).\nFor citation information type 'citation(\"latentnet\")'.\nType 'help(package=\"latentnet\")' to get started.\n\nAttaching package: 'latentnet'\n\n\n\tThe following object(s) are masked from package:ergm :\n\n\t gof,\n\t mcmc.diagnostics,\n\t mcmc.diagnostics.default,\n\t robust.inverse\n\nError: package 'degreenet' required by 'statnet' could not be found\n\n > install.packages(\"sna\")\ntrying URL 'http://lib.stat.cmu.edu/R/CRAN/bin/macosx/universal/contrib/2.7/sna_1.5.tgz'\nContent type 'application/x-gzip' length 641333 bytes (626 Kb)\nopened URL\n==================================================\ndownloaded 626 Kb\n\n\nThe downloaded packages are in\n\t/var/folders/vR/vRgvIZ8cEDCJxrRFWqg2m++++TQ/-Tmp-//RtmprC832G/ \ndownloaded_packages\n\n > install.packages(\"degreenet\")\ntrying URL 'http://lib.stat.cmu.edu/R/CRAN/bin/macosx/universal/contrib/2.7/degreenet_1.0.tgz'\nContent type 'application/x-gzip' length 183652 bytes (179 Kb)\nopened URL\n==================================================\ndownloaded 179 Kb\n\n\nThe downloaded packages are in\n\t/var/folders/vR/vRgvIZ8cEDCJxrRFWqg2m++++TQ/-Tmp-//RtmprC832G/ \ndownloaded_packages\n\n >rm()\n\n > library(statnet)\nLoading required package: degreenet\nModels for Skewed Count Distributions Relevant to Networks\nVersion 1.0 created on 2008-1-01.\ncopyright (c) 2003, Mark S. Handcock, University of Washington\n                     David R. Hunter, Penn State University\n                     Carter T. Butts, University of California-Irvine\n                     Steven M. Goodreau, University of Washington\n                     Martina Morris, University of Washington\nType help(package=\"degreenet\") to get started.\n\nBased on \"statnet\" project software (http://statnetproject.org).\n  For license and citation information see http://statnetproject.org/attribution\n  or type citation(\"degreenet\").\nLoading required package: sna\nTools for Social Network Analysis\nVersion 1.5 created on 2007-07-31.\ncopyright (c) 2005, Carter T. Butts, University of California-Irvine\nType help(package=\"sna\") to get started.\n\nAttaching package: 'sna'\n\n\n\tThe following object(s) are masked from package:network :\n\n\t %c%\n\nError: package 'networksis' required by 'statnet' could not be found\n\n > library(sna)\n\n > install.packages(\"networksis\")\ntrying URL 'http://lib.stat.cmu.edu/R/CRAN/bin/macosx/universal/contrib/2.7/networksis_1.0.tgz'\nContent type 'application/x-gzip' length 56548 bytes (55 Kb)\nopened URL\n==================================================\ndownloaded 55 Kb\n\n\nThe downloaded packages are in\n\t/var/folders/vR/vRgvIZ8cEDCJxrRFWqg2m++++TQ/-Tmp-//RtmprC832G/ \ndownloaded_packages\n\n > library(foreign)\n > library(reshape)\n > library(statnet)\nLoading required package: networksis\nSimulate bipartite graphs with fixed marginals through\n                sequential importance sampling\nVersion 1.0 created on January 1, 2008.\nType help(package=\"networksis\") to get started.\n\nBased on \"statnet\" project software (http://statnetproject.org).\n  For license and citation information see http://statnetproject.org/attribution\n  or type citation(\"networksis\").\n\nstatnet: Software tools for the Statistical Modeling of Network Data\nVersion 2.1 created on 2008-27-04\ncopyright (c) 2003, Mark S. Handcock, University of Washington\n                     David R. Hunter, Penn State University\n                     Carter T. Butts, University of California-Irvine\n                     Steven M. Goodreau, University of Washington\n                     Martina Morris, University of Washington\nType help(package=\"statnet\") to get started.\n\nBased on \"statnet\" project software (http://statnetproject.org).\n  For license and citation information see http://statnetproject.org/attribution\n  or type citation(\"statnet\").\n\n\n\n\n** Please Note NEW CONTACT INFO **\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\nTheodore J. Iwashyna, M.D., Ph.D.\n\nAssistant Professor of Internal Medicine\nPulmonary & Critical Care Medicine\nUniversity of Michigan\n\n3A23 300 NIB, SPC 5419\n300 North Ingalls\nAnn Arbor, MI  48109-5419\n(734) 232-0787.office\n(734) 764-2655.fax\n\nemail: tiwashyn@umich.edu",
+      "body_snippet": "When I installed statnet today, it seems that the basic installation  \ndid not include degreenet, sna, and networksis, and so I had to go  \nback and install them by hand as the error messages popped u",
+      "thread_id": "thread-f4944613d7e4",
+      "thread_depth": 0,
+      "month": "2008-07"
+    },
+    {
+      "id": "msg-1a60fac3b61f",
+      "message_id": "<6F3F6D7A-8780-453F-A5DF-BAA3D36DE342@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-07-11T05:29:31Z",
+      "subject": "[statnet_help] \"subscript out of bounds\" error in simulate.sisnetwork",
+      "subject_clean": "[statnet_help] \"subscript out of bounds\" error in simulate.sisnetwork",
+      "in_reply_to": "<4873EF51.9090106@asu.edu>",
+      "references": [
+        "<4873EF51.9090106@asu.edu>"
+      ],
+      "body_plain": "Hi Rodolfo.  I'm not too familiar with the simulate.sisnetwork  \nfunction, but I wonder whether you could provide a sample object  \n(perhaps Cong110.g2 itself, or another if it contains sensitive data)  \nthat produces this error so that we could duplicate it.  Though  \noccasionally we can suggest possible causes of bugs based solely on  \nthe content of an error message, it is usually impossible for us to  \ndiagnose problems like this without being able to recreate them.   \nAlso, if we can solve the problem after seeing it happen before our  \neyes, then the bug fix will make it into a future version, which helps  \neveryone!\n\nThanks!\nDave\n\n\n\nOn Jul 9, 2008, at 12:50 AM, Rodolfo Espino wrote:\n\n> Should I expect an error when a bipartite network has isolates and I  \n> try to use \"simulate\" from the sisnetwork library?\n>\n> I am receiving the following error:\n>\n> ##############\n>\n> > sim <- simulate(Cong110.g2, n=100)\n> Error in simulate.sisnetwork(object, nsim = nsim, seed = seed,  \n> save.networks = FALSE,  :\n> subscript out of bounds\n>\n> ##############\n>\n> I have a bipartite graph with: 446 actors, 27 events, 927 edges.  \n> (there are 12 isolates).\n>\n> Thanks,\n>\n> Rudy\n>\n>\n> -- \n> Rodolfo Espino, Arizona State University\n> Assistant Professor, Department of Political Science\n> Affiliate Professor, Transborder Chicana/o & Latina/o Studies\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Rodolfo.  I'm not too familiar with the simulate.sisnetwork  \nfunction, but I wonder whether you could provide a sample object  \n(perhaps Cong110.g2 itself, or another if it contains sensitive data",
+      "thread_id": "thread-e31b158ade88",
+      "thread_depth": 1,
+      "month": "2008-07"
+    },
+    {
+      "id": "msg-34233d54d937",
+      "message_id": "<4877DB52.1030504@asu.edu>",
+      "from_name": "Rodolfo Espino",
+      "from_email_hash": "9061408f6e7d1a4d8738bfa4be36cf5104f9967d1583eed56b20e5cae21f7ec2",
+      "date": "2008-07-11T15:14:42Z",
+      "subject": "[statnet_help] \"subscript out of bounds\" error in simulate.sisnetwork",
+      "subject_clean": "[statnet_help] \"subscript out of bounds\" error in simulate.sisnetwork",
+      "in_reply_to": "<6F3F6D7A-8780-453F-A5DF-BAA3D36DE342@stat.psu.edu>",
+      "references": [
+        "<4873EF51.9090106@asu.edu>",
+        "<6F3F6D7A-8780-453F-A5DF-BAA3D36DE342@stat.psu.edu>"
+      ],
+      "body_plain": "Sure thing.  Data represents members from the U.S. House of \nRepresentatives (446 actors) and their committee assignments (27 events).\n\n####\n\nlibrary(\"statnet\")\nCong110.g1 <- \nas.matrix(read.csv(\"http://www.public.asu.edu/~respino1/Cong110Matrix.csv\"))\nCong110.g2 <- network(Cong110.g1)\nsummary(Cong110.g2)\nis.bipartite(Cong110.g2)\nplot(Cong110.g2,displayisolates=TRUE)\nsim <- simulate(Cong110.g2,n=10)\n\n####\n\nThanks,\n\nRudy\n\n\nDavid Hunter wrote:\n> Hi Rodolfo.  I'm not too familiar with the simulate.sisnetwork \n> function, but I wonder whether you could provide a sample object \n> (perhaps Cong110.g2 itself, or another if it contains sensitive data) \n> that produces this error so that we could duplicate it.  Though \n> occasionally we can suggest possible causes of bugs based solely on \n> the content of an error message, it is usually impossible for us to \n> diagnose problems like this without being able to recreate them.  \n> Also, if we can solve the problem after seeing it happen before our \n> eyes, then the bug fix will make it into a future version, which helps \n> everyone!\n>\n> Thanks!\n> Dave\n>\n>\n>\n> On Jul 9, 2008, at 12:50 AM, Rodolfo Espino wrote:\n>\n>> Should I expect an error when a bipartite network has isolates and I \n>> try to use \"simulate\" from the sisnetwork library?\n>>\n>> I am receiving the following error:\n>>\n>> ##############\n>>\n>> > sim <- simulate(Cong110.g2, n=100)\n>> Error in simulate.sisnetwork(object, nsim = nsim, seed = seed, \n>> save.networks = FALSE,  :\n>> subscript out of bounds\n>>\n>> ##############\n>>\n>> I have a bipartite graph with: 446 actors, 27 events, 927 edges. \n>> (there are 12 isolates).\n>>\n>> Thanks,\n>>\n>> Rudy\n>>\n>>\n>> -- \n>> Rodolfo Espino, Arizona State University\n>> Assistant Professor, Department of Political Science\n>> Affiliate Professor, Transborder Chicana/o & Latina/o Studies\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Sure thing.  Data represents members from the U.S. House of \nRepresentatives (446 actors) and their committee assignments (27 events).\n\n####\n\nlibrary(\"statnet\")\nCong110.g1 <- \nas.matrix(read.csv(\"http",
+      "thread_id": "thread-e31b158ade88",
+      "thread_depth": 2,
+      "month": "2008-07"
+    },
+    {
+      "id": "msg-32623ed90ff9",
+      "message_id": "<2373307C-A492-4DD3-9921-A1FAC826E45C@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-07-14T23:31:57Z",
+      "subject": "[statnet_help] \"subscript out of bounds\" error in simulate.sisnetwork",
+      "subject_clean": "[statnet_help] \"subscript out of bounds\" error in simulate.sisnetwork",
+      "in_reply_to": "<4877DB52.1030504@asu.edu>",
+      "references": [
+        "<4873EF51.9090106@asu.edu>",
+        "<6F3F6D7A-8780-453F-A5DF-BAA3D36DE342@stat.psu.edu>",
+        "<4877DB52.1030504@asu.edu>"
+      ],
+      "body_plain": "Hi Rodolfo.  I found what I think are a couple bugs in the  \nsimulate.sisnetwork function:  I believe that the line\n\n     mat[1:nrow.nonnull, 1:ncol.nonnull] <- matrix(s$newmat,\n         ncol=ncol.nonnull)[,order(order.col.sums)]\n\nis incorrect and that it should be replaced by these lines:\n\n     mat[1:nrow.nonnull, 1:ncol.nonnull] <- matrix(s$newmat,\n         ncol=ncol.nonnull)\n     mat <- mat[,order(order.col.sums)]\n\nin two different places.  Also, the  line\n   mat <- matrix(0, nrow=nrow, ncol=ncol)\n\nshould be moved just inside the for loop.  If you \"source\" the  \nattached file (which contains these modifications), then your code  \nshould run.  You might also read the help file for simulate.sisnetwork  \njust to make sure this is actually what you want -- i.e., a network  \nwhose marginals are exactly the same as the one you passed.\n\nOne further issue:  If you were expecting 10 different networks, your  \ncode won't produce that -- there is something I don't understand about  \nthe way the \"simulate.network\" function processes its \"save.networks\"  \nargument that prevents using it to simulate multiple networks  \n(possibly another bug?).  If you want 10 different networks then the  \nfollowing code should do it:\n\n  tmp <- as.sociomatrix(Cong110.g2)\n  tmp2 <- list(rows=rowSums(tmp), cols=colSums(tmp))\n  class(tmp2) <- \"sisnetwork\"\n  sim=simulate.sisnetwork(tmp2, n=10, save.networks=T)\n\nHope this helps.\nDave\n\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: simulate.sisnetwork.R\nType: application/octet-stream\nSize: 3737 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080715/7a2e9f4b/attachment.obj>\n-------------- next part --------------\n\n\n\n\nOn Jul 12, 2008, at 12:14 AM, Rodolfo Espino wrote:\n\n> Sure thing.  Data represents members from the U.S. House of  \n> Representatives (446 actors) and their committee assignments (27  \n> events).\n>\n> ####\n>\n> library(\"statnet\")\n> Cong110.g1 <- as.matrix(read.csv(\"http://www.public.asu.edu/~respino1/Cong110Matrix.csv \n> \"))\n> Cong110.g2 <- network(Cong110.g1)\n> summary(Cong110.g2)\n> is.bipartite(Cong110.g2)\n> plot(Cong110.g2,displayisolates=TRUE)\n> sim <- simulate(Cong110.g2,n=10)\n>\n> ####\n>\n> Thanks,\n>\n> Rudy\n>\n>\n> David Hunter wrote:\n>> Hi Rodolfo.  I'm not too familiar with the simulate.sisnetwork  \n>> function, but I wonder whether you could provide a sample object  \n>> (perhaps Cong110.g2 itself, or another if it contains sensitive  \n>> data) that produces this error so that we could duplicate it.   \n>> Though occasionally we can suggest possible causes of bugs based  \n>> solely on the content of an error message, it is usually impossible  \n>> for us to diagnose problems like this without being able to  \n>> recreate them.  Also, if we can solve the problem after seeing it  \n>> happen before our eyes, then the bug fix will make it into a future  \n>> version, which helps everyone!\n>>\n>> Thanks!\n>> Dave\n>>\n>>\n>>\n>> On Jul 9, 2008, at 12:50 AM, Rodolfo Espino wrote:\n>>\n>>> Should I expect an error when a bipartite network has isolates and  \n>>> I try to use \"simulate\" from the sisnetwork library?\n>>>\n>>> I am receiving the following error:\n>>>\n>>> ##############\n>>>\n>>> > sim <- simulate(Cong110.g2, n=100)\n>>> Error in simulate.sisnetwork(object, nsim = nsim, seed = seed,  \n>>> save.networks = FALSE,  :\n>>> subscript out of bounds\n>>>\n>>> ##############\n>>>\n>>> I have a bipartite graph with: 446 actors, 27 events, 927 edges.  \n>>> (there are 12 isolates).\n>>>\n>>> Thanks,\n>>>\n>>> Rudy\n>>>\n>>>\n>>> -- \n>>> Rodolfo Espino, Arizona State University\n>>> Assistant Professor, Department of Political Science\n>>> Affiliate Professor, Transborder Chicana/o & Latina/o Studies\n>>>\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Rodolfo.  I found what I think are a couple bugs in the  \nsimulate.sisnetwork function:  I believe that the line\n\n     mat[1:nrow.nonnull, 1:ncol.nonnull] <- matrix(s$newmat,\n         ncol=ncol.non",
+      "thread_id": "thread-e31b158ade88",
+      "thread_depth": 3,
+      "month": "2008-07"
+    },
+    {
+      "id": "msg-5641c0e24d33",
+      "message_id": "<57e71d6f0807210812n735878a2v2f2737f1c288ebe@mail.gmail.com>",
+      "from_name": "João R.",
+      "from_email_hash": "4fa742d8a059350bbec33be7541a49381a79ed6aa8f0affac585a6d9d9114452",
+      "date": "2008-07-21T08:12:51Z",
+      "subject": "[statnet_help] ergm",
+      "subject_clean": "[statnet_help] ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello.\n\nI've been trying to apply ERGM to friendship network data and I was\nwondering if anyone could clear me this doubt:\n- I have 12 different social networks (sizes ranging from 20-25) for which I\nhave different parameter values. Is it possible to compare the parameters\nacross the different groups, for example to say that in group A transity\neffect is stronger than in group B, even if the two groups have different\nsizes?\n\nThanks for your help,\nJo?o\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080721/1addadb5/attachment.html>",
+      "body_snippet": "Hello.\n\nI've been trying to apply ERGM to friendship network data and I was\nwondering if anyone could clear me this doubt:\n- I have 12 different social networks (sizes ranging from 20-25) for which I\n",
+      "thread_id": "thread-5641c0e24d33",
+      "thread_depth": 0,
+      "month": "2008-07"
+    },
+    {
+      "id": "msg-47c612fd1da0",
+      "message_id": "<488C0EC4.4010101@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2008-07-26T22:59:32Z",
+      "subject": "[statnet_help] network v1.4",
+      "subject_clean": "[statnet_help] network v1.4",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Greetings, statnet users.  This is a quick note to let you know that \nnetwork version 1.4-1 (the next public release from 1.3) is now en route \nto CRAN.  You can get a preview by downloading directly from my page at \nhttp://erzuli.ss.uci.edu/R.stuff, or just wait a day or so for it to \nbecome available on CRAN.\n\nThis release includes fixes for most (hopefully all!) of the currently \nknown bugs, as well as some other minor enhancements; probably the most \nmajor of the latter is more complete implementation of the edgewise \nmissing data system (previously extant, but mostly quiescent).  Check \nthe ChangeLog for details.\n\nThanks to all who submitted bug reports and fixes since the last revision!\n\n-Carter",
+      "body_snippet": "Greetings, statnet users.  This is a quick note to let you know that \nnetwork version 1.4-1 (the next public release from 1.3) is now en route \nto CRAN.  You can get a preview by downloading directly ",
+      "thread_id": "thread-47c612fd1da0",
+      "thread_depth": 0,
+      "month": "2008-07"
+    },
+    {
+      "id": "msg-c331264db6fa",
+      "message_id": "<2547C67B-DB00-48AE-8B0A-F6C3BA9F1416@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-07-30T22:20:08Z",
+      "subject": "[statnet_help] ergm",
+      "subject_clean": "[statnet_help] ergm",
+      "in_reply_to": "<57e71d6f0807210812n735878a2v2f2737f1c288ebe@mail.gmail.com>",
+      "references": [
+        "<57e71d6f0807210812n735878a2v2f2737f1c288ebe@mail.gmail.com>"
+      ],
+      "body_plain": "Hello Jo?o.  It is not generally possible to do this kind of  \ncomparison, especially in a way that allow things like hypothesis  \ntests (is the transitivity effect significantly different?).  That  \nsaid, there are some methods that people do use from time to time to  \nmake such comparisons in logistic regression models, and perhaps  \nsomeday in the not-too-distant future we'll have an easy  \ngeneralization to the ERGM case...\n\nDave\n\n\nOn Jul 21, 2008, at 5:12 PM, Jo?o R. wrote:\n\n> Hello.\n>\n> I've been trying to apply ERGM to friendship network data and I was  \n> wondering if anyone could clear me this doubt:\n> - I have 12 different social networks (sizes ranging from 20-25) for  \n> which I have different parameter values. Is it possible to compare  \n> the parameters across the different groups, for example to say that  \n> in group A transity effect is stronger than in group B, even if the  \n> two groups have different sizes?\n>\n> Thanks for your help,\n> Jo?o\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hello Jo?o.  It is not generally possible to do this kind of  \ncomparison, especially in a way that allow things like hypothesis  \ntests (is the transitivity effect significantly different?).  That  \n",
+      "thread_id": "thread-5641c0e24d33",
+      "thread_depth": 1,
+      "month": "2008-07"
+    },
+    {
+      "id": "msg-d4bd957d7fe9",
+      "message_id": "<Pine.WNT.4.64.0807302227030.7876@mmorris>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2008-07-30T23:11:13Z",
+      "subject": "[statnet_help] ergm",
+      "subject_clean": "[statnet_help] ergm",
+      "in_reply_to": "<2547C67B-DB00-48AE-8B0A-F6C3BA9F1416@stat.psu.edu>",
+      "references": [
+        "<57e71d6f0807210812n735878a2v2f2737f1c288ebe@mail.gmail.com>",
+        "<2547C67B-DB00-48AE-8B0A-F6C3BA9F1416@stat.psu.edu>"
+      ],
+      "body_plain": "Hello Jo?o --\n\nThis is a very fundamental problem in network analysis:  are there size \ninvariant parameters that can be estimated for network processes.  That \nis, parameters that govern the generative process of tie formation that \nare independent of the size (and composition) of the network.\n\nThe problem is easy to understand even with a simple Bernoulli random \ngraph.  The single ergm parameter in that case measures the log-odds of a \ntie -- essentially, a scaled version of network density.  So the question \nis what happens to network density as the size of the network increases \n(or decreases)?  One possibility is that the mean degree remains fixed. \nSo, for example, as the population increases, people do not have \nincreasingly more friends, they probably max out at a certain point. \nThat would be the fixed parameter of interest -- the parameter that is \ninvariant to network size.\n\nYou can estimate a fixed parameter like this, but it clearly depends on \nwhat you think should remain fixed. If you were to posit a simple model \nlike the mean degree remains constant as network size increases, you can \nfit this with something like an offset term to control for the expected \ndecline in network density.\n\nThere is no one-size-fits-all here, though.  It will depend on the type of \nnetwork and process that you are trying to represent.\n\nWe are working on these types of models now, for an application in network \nepidemiology.  The capabilities will be added to statnet when they're \nworking.\n\nbest,\nMartina\n\n  On Thu, 31 Jul 2008, David Hunter wrote:\n\n> Hello Jo?o.  It is not generally possible to do this kind of comparison, \n> especially in a way that allow things like hypothesis tests (is the \n> transitivity effect significantly different?).  That said, there are some \n> methods that people do use from time to time to make such comparisons in \n> logistic regression models, and perhaps someday in the not-too-distant future \n> we'll have an easy generalization to the ERGM case...\n>\n> Dave\n>\n>\n> On Jul 21, 2008, at 5:12 PM, Jo?o R. wrote:\n>\n>> Hello.\n>> \n>> I've been trying to apply ERGM to friendship network data and I was \n>> wondering if anyone could clear me this doubt:\n>> - I have 12 different social networks (sizes ranging from 20-25) for which \n>> I have different parameter values. Is it possible to compare the parameters \n>> across the different groups, for example to say that in group A transity \n>> effect is stronger than in group B, even if the two groups have different \n>> sizes?\n>> \n>> Thanks for your help,\n>> Jo?o\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hello Jo?o --\n\nThis is a very fundamental problem in network analysis:  are there size \ninvariant parameters that can be estimated for network processes.  That \nis, parameters that govern the generati",
+      "thread_id": "thread-5641c0e24d33",
+      "thread_depth": 2,
+      "month": "2008-07"
+    },
+    {
+      "id": "msg-b63c33e8a839",
+      "message_id": "<489158D6.50108@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2008-07-30T23:16:54Z",
+      "subject": "[statnet_help] ergm",
+      "subject_clean": "[statnet_help] ergm",
+      "in_reply_to": "<2547C67B-DB00-48AE-8B0A-F6C3BA9F1416@stat.psu.edu>",
+      "references": [
+        "<57e71d6f0807210812n735878a2v2f2737f1c288ebe@mail.gmail.com>",
+        "<2547C67B-DB00-48AE-8B0A-F6C3BA9F1416@stat.psu.edu>"
+      ],
+      "body_plain": "David Hunter wrote:\n> Hello Jo?o.  It is not generally possible to do this kind of comparison, \n> especially in a way that allow things like hypothesis tests (is the \n> transitivity effect significantly different?).  That said, there are \n> some methods that people do use from time to time to make such \n> comparisons in logistic regression models, and perhaps someday in the \n> not-too-distant future we'll have an easy generalization to the ERGM \n> case...\n\nJust to elaborate on Dave's point, the problem here is that many \nparameters have practical implications which are difficult to interpret \nwhen the support (i.e., the set of possible graphs) is changed.  There \nis a technical sense in which one can ask whether the MLE for the \ntriangle parameter of graph A is larger than that of graph B, and it \ndoes have a conditional log-odds interpretation...however, this is very \nunlikely to map in a simple way to your scientific intuition about a \n\"stronger\" effect.  Thus, the conservative answer is that parameter \ncomparison is not well-understood at this time, and probably should be \navoided.\n\nThat said, there are some cases in which parameters have clear \nsize-independent interpretations, and comparison can be fairly \nintuitive.  For instance, if your model leads to dyadic independence, \nmost reasonable effects (e.g., edge covariates) can be interpreted in a \nsize-independent fashion.  (Of course, this assumes that the model is \ncorrect, or at least that you are interpreting the parameters in the \ncorrect marginal way.)\n\nUltimately, the real problem is that the kinds of social ``forces'' \nparameterized by standard models (especially in the general case) have \neffects which scale in a non-obvious way with graph size.  A triangle \nparameter of 0.1 says, in essence, that the conditional log-odds of an \nedge are increased by 0.1 for every triangle which would be added by \nthat edge's appearance.  In a small graph, there are not many possible \ntriangles, and the impact of this parameter on triangle formation is \nfairly small (in a practical sense).  In a large graph, however, there \nare many ways to attain a very large number of ``pre-triangles,'' and \nthe same 0.1 ``triangulation force'' will lead the entire structure to \ncollapse with large probability into a clique.  (This is the degeneracy \nproblem -- see David Strauss's 1986 SIAM review paper for an early \ntechnical argument, or Mark Handcock's work for a more recent take.)  To \nuse an alternate (but technically justifiable!) metaphor, the ``freezing \npoint'' of a large graph (vis a vis triangle temperature) is much higher \nthan the freezing point of a small graph, and thus the former will \nbecome degenerate at temperatures at which the latter would be in a \n``fluid'' state.  One could thus find a small graph with a large \ntriangle parameter (i.e. at lower temperature) and a large graph with a \nsmall triangle parameter (at higher temperature), and simultaneously \nobserve a much greater manifested tendency towards triangulation in the \nlatter than the former.\n\nThis apparent contradiction could lead one to assert any of the \nfollowing: (1) larger social structures really do have something which \nreduces the strength of ``social forces'' like the triangle effect, as \ncompared to smaller structures; (2) one's real measure of ``strength'' \nshould not be the natural parameter value, but the corresponding mean \nvalue parameter (or some such); or (3) the triangle model (and others of \nits ilk) are not modeling ``social forces'' in an appropriate way (at \nleast for large graphs).  All of the above have been kicked around by \nworkers in the field, and each is probably meritorious in particular \nempirical contexts.  This is a fundamentally _theoretical_ problem, and \nhas to be resolved by close attention to the properties of the process \nyou are trying to capture -- it's not some little artifact which can be \nautomagically ``corrected'' or otherwise brushed under the rug.\n\nAnd now you know why Dave simply told you, \"don't do it.\"  :-)\n\nAs far as other means of graph comparison, I discuss some of the \nalternatives in my recent AJSP review paper.  There are actually two \nERGM-like ways to compare graphs at present, but both require the graphs \nto be on the same vertex set.  (One of these is supported in the netperm \npackage, if you'd like to try it out -- it also works with valued data.) \n  Kathleen Carley and I have also used distance-based methods to compare \ngraphs on different vertex sets, but the kind of comparison this gives \nis an omnibus notion of similarity (i.e., it does not separate out \ndifferent kinds of underlying structural biases) and it is purely data \nanalytic in character.\n\nThat's a long answer to a short question; hope it helps,\n\n-Carter",
+      "body_snippet": "David Hunter wrote:\n> Hello Jo?o.  It is not generally possible to do this kind of comparison, \n> especially in a way that allow things like hypothesis tests (is the \n> transitivity effect significant",
+      "thread_id": "thread-5641c0e24d33",
+      "thread_depth": 2,
+      "month": "2008-07"
+    },
+    {
+      "id": "msg-617ea8408245",
+      "message_id": "<57e71d6f0807310245w61325cd3h69619b5ec9a5a878@mail.gmail.com>",
+      "from_name": "João R.",
+      "from_email_hash": "4fa742d8a059350bbec33be7541a49381a79ed6aa8f0affac585a6d9d9114452",
+      "date": "2008-07-31T02:45:41Z",
+      "subject": "[statnet_help] ergm",
+      "subject_clean": "[statnet_help] ergm",
+      "in_reply_to": "<489158D6.50108@uci.edu>",
+      "references": [
+        "<57e71d6f0807210812n735878a2v2f2737f1c288ebe@mail.gmail.com>",
+        "<2547C67B-DB00-48AE-8B0A-F6C3BA9F1416@stat.psu.edu>",
+        "<489158D6.50108@uci.edu>"
+      ],
+      "body_plain": "Thanks for your help (David Hunter, Martina Morris, Carter T. Butts).\n\nfollowing on your comments, I have another question.\n\nI've looked into Lubbers & Snjiders 2005 SNA; Lubbers 2003 SN and Snijders &\nBaerveldt 2003 JMS and they use meta-analytical procedures to summarize\nfindings over different networks (i.e. weighted least squares estimators of\neach parameter). Although not comparing parameters, basically an average\nvalue (with some corrections) is being computed. Following your line of\nargument, than this meta-analytical procedure raises some questions. Am I\nthinking straight or making no sense at all?\n\nThanks\nJo?o\n\nOn Thu, Jul 31, 2008 at 7:16 AM, Carter T. Butts <buttsc@uci.edu> wrote:\n\n> David Hunter wrote:\n>\n>> Hello Jo?o.  It is not generally possible to do this kind of comparison,\n>> especially in a way that allow things like hypothesis tests (is the\n>> transitivity effect significantly different?).  That said, there are some\n>> methods that people do use from time to time to make such comparisons in\n>> logistic regression models, and perhaps someday in the not-too-distant\n>> future we'll have an easy generalization to the ERGM case...\n>>\n>\n> Just to elaborate on Dave's point, the problem here is that many parameters\n> have practical implications which are difficult to interpret when the\n> support (i.e., the set of possible graphs) is changed.  There is a technical\n> sense in which one can ask whether the MLE for the triangle parameter of\n> graph A is larger than that of graph B, and it does have a conditional\n> log-odds interpretation...however, this is very unlikely to map in a simple\n> way to your scientific intuition about a \"stronger\" effect.  Thus, the\n> conservative answer is that parameter comparison is not well-understood at\n> this time, and probably should be avoided.\n>\n> That said, there are some cases in which parameters have clear\n> size-independent interpretations, and comparison can be fairly intuitive.\n>  For instance, if your model leads to dyadic independence, most reasonable\n> effects (e.g., edge covariates) can be interpreted in a size-independent\n> fashion.  (Of course, this assumes that the model is correct, or at least\n> that you are interpreting the parameters in the correct marginal way.)\n>\n> Ultimately, the real problem is that the kinds of social ``forces''\n> parameterized by standard models (especially in the general case) have\n> effects which scale in a non-obvious way with graph size.  A triangle\n> parameter of 0.1 says, in essence, that the conditional log-odds of an edge\n> are increased by 0.1 for every triangle which would be added by that edge's\n> appearance.  In a small graph, there are not many possible triangles, and\n> the impact of this parameter on triangle formation is fairly small (in a\n> practical sense).  In a large graph, however, there are many ways to attain\n> a very large number of ``pre-triangles,'' and the same 0.1 ``triangulation\n> force'' will lead the entire structure to collapse with large probability\n> into a clique.  (This is the degeneracy problem -- see David Strauss's 1986\n> SIAM review paper for an early technical argument, or Mark Handcock's work\n> for a more recent take.)  To use an alternate (but technically justifiable!)\n> metaphor, the ``freezing point'' of a large graph (vis a vis triangle\n> temperature) is much higher than the freezing point of a small graph, and\n> thus the former will become degenerate at temperatures at which the latter\n> would be in a ``fluid'' state.  One could thus find a small graph with a\n> large triangle parameter (i.e. at lower temperature) and a large graph with\n> a small triangle parameter (at higher temperature), and simultaneously\n> observe a much greater manifested tendency towards triangulation in the\n> latter than the former.\n>\n> This apparent contradiction could lead one to assert any of the following:\n> (1) larger social structures really do have something which reduces the\n> strength of ``social forces'' like the triangle effect, as compared to\n> smaller structures; (2) one's real measure of ``strength'' should not be the\n> natural parameter value, but the corresponding mean value parameter (or some\n> such); or (3) the triangle model (and others of its ilk) are not modeling\n> ``social forces'' in an appropriate way (at least for large graphs).  All of\n> the above have been kicked around by workers in the field, and each is\n> probably meritorious in particular empirical contexts.  This is a\n> fundamentally _theoretical_ problem, and has to be resolved by close\n> attention to the properties of the process you are trying to capture -- it's\n> not some little artifact which can be automagically ``corrected'' or\n> otherwise brushed under the rug.\n>\n> And now you know why Dave simply told you, \"don't do it.\"  :-)\n>\n> As far as other means of graph comparison, I discuss some of the\n> alternatives in my recent AJSP review paper.  There are actually two\n> ERGM-like ways to compare graphs at present, but both require the graphs to\n> be on the same vertex set.  (One of these is supported in the netperm\n> package, if you'd like to try it out -- it also works with valued data.)\n>  Kathleen Carley and I have also used distance-based methods to compare\n> graphs on different vertex sets, but the kind of comparison this gives is an\n> omnibus notion of similarity (i.e., it does not separate out different kinds\n> of underlying structural biases) and it is purely data analytic in\n> character.\n>\n> That's a long answer to a short question; hope it helps,\n>\n> -Carter\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080731/359acb62/attachment.html>",
+      "body_snippet": "Thanks for your help (David Hunter, Martina Morris, Carter T. Butts).\n\nfollowing on your comments, I have another question.\n\nI've looked into Lubbers & Snjiders 2005 SNA; Lubbers 2003 SN and Snijders ",
+      "thread_id": "thread-5641c0e24d33",
+      "thread_depth": 3,
+      "month": "2008-07"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-e839bcf0cf7f",
+      "subject": "[statnet_help] SNA Blockmodeling",
+      "message_count": 2,
+      "participants": [
+        "Alexander H. Montgomery",
+        "Richard Heidler"
+      ],
+      "started": "2008-07-04T01:55:09Z",
+      "last_reply": "2008-07-06T12:50:29Z",
+      "root_message_id": "msg-e839bcf0cf7f"
+    },
+    {
+      "id": "thread-65d8dd63025b",
+      "subject": "[statnet_help] Question on Latentnet/LatentnetHRT",
+      "message_count": 1,
+      "participants": [
+        "Hyun Go"
+      ],
+      "started": "2008-07-04T22:14:37Z",
+      "last_reply": "2008-07-04T22:14:37Z",
+      "root_message_id": "msg-65d8dd63025b"
+    },
+    {
+      "id": "thread-80c72643a70b",
+      "subject": "[statnet_help] AW: SNA Blockmodeling",
+      "message_count": 2,
+      "participants": [
+        "Alexander H. Montgomery",
+        "Richard Heidler"
+      ],
+      "started": "2008-07-07T02:00:10Z",
+      "last_reply": "2008-07-07T09:56:18Z",
+      "root_message_id": "msg-80c72643a70b"
+    },
+    {
+      "id": "thread-e31b158ade88",
+      "subject": "[statnet_help] \"subscript out of bounds\" error in simulate.sisnetwork",
+      "message_count": 4,
+      "participants": [
+        "David Hunter",
+        "Rodolfo Espino"
+      ],
+      "started": "2008-07-08T15:50:57Z",
+      "last_reply": "2008-07-14T23:31:57Z",
+      "root_message_id": "msg-e31b158ade88"
+    },
+    {
+      "id": "thread-f4944613d7e4",
+      "subject": "[statnet_help] awkwardness in initial statnet install (Mac OS X, today)",
+      "message_count": 1,
+      "participants": [
+        "Theodore Iwashyna"
+      ],
+      "started": "2008-07-10T08:32:10Z",
+      "last_reply": "2008-07-10T08:32:10Z",
+      "root_message_id": "msg-f4944613d7e4"
+    },
+    {
+      "id": "thread-5641c0e24d33",
+      "subject": "[statnet_help] ergm",
+      "message_count": 5,
+      "participants": [
+        "Carter T. Butts",
+        "David Hunter",
+        "João R.",
+        "Martina Morris"
+      ],
+      "started": "2008-07-21T08:12:51Z",
+      "last_reply": "2008-07-31T02:45:41Z",
+      "root_message_id": "msg-5641c0e24d33"
+    },
+    {
+      "id": "thread-47c612fd1da0",
+      "subject": "[statnet_help] network v1.4",
+      "message_count": 1,
+      "participants": [
+        "Carter T. Butts"
+      ],
+      "started": "2008-07-26T22:59:32Z",
+      "last_reply": "2008-07-26T22:59:32Z",
+      "root_message_id": "msg-47c612fd1da0"
+    }
+  ]
+}

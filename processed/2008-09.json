@@ -1,0 +1,247 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2008-09",
+  "messages": [
+    {
+      "id": "msg-de9049be5bc7",
+      "message_id": "<48BC8230.6000105@ucsd.edu>",
+      "from_name": "Simon Frost",
+      "from_email_hash": "035b0ea7e424ab86c49e75c8ef123f13dce97b7aaadbb47397e5c83707ce33a8",
+      "date": "2008-09-01T17:00:48Z",
+      "subject": "[statnet_help] OpenMP and Statnet",
+      "subject_clean": "[statnet_help] OpenMP and Statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Folks,\n\nI've been playing around with OpenMP recently, to see if I can speed up \nsome ergm code. My code compiles just fine, although R crashes when I \ntry to run OMP-enabled analyses e.g. here's the code for d_edges in \nchangestats.c\n\nD_CHANGESTAT_FN(d_edges) {\n  int edgeflag, i;\n  Vertex h, t;\n \n  CHANGE_STAT[0] = 0.0;\n  #pragma omp parallel for shared(ntoggles,nwp,mtp) \nprivate(i,h,t,edgeflag,heads,tails)\n  for (i=0; i < ntoggles; i++)\n    {\n      edgeflag = IS_OUTEDGE(h = heads[i], t = tails[i]);\n      CHANGE_STAT[0] += edgeflag ? - 1 : 1;\n      TOGGLE_IF_MORE_TO_COME(i);\n    }\n  UNDO_PREVIOUS_TOGGLES(i);\n}\n\nWith gcc, the Makevars file is\n\nPKG_LIBS=-fopenmp -lgomp -lpthread\nPKG_CFLAGS=-fopenmp\n\nThe obfuscating macros don't help for me to see which should be shared \nand which should be private. I know that only certain proposals will \nbenefit from multithreading here, but I'm unfamiliar with the statnet \nAPI, I wanted to know whether the code was thread-safe, and if so, \nwhether multithreading may belong elsewhere in the code.\n\nBest\nSimon",
+      "body_snippet": "Hi Folks,\n\nI've been playing around with OpenMP recently, to see if I can speed up \nsome ergm code. My code compiles just fine, although R crashes when I \ntry to run OMP-enabled analyses e.g. here's t",
+      "thread_id": "thread-de9049be5bc7",
+      "thread_depth": 0,
+      "month": "2008-09"
+    },
+    {
+      "id": "msg-28f7e5b468d5",
+      "message_id": "<BAB334C4D29E7545AB5CEA9E017C927CEDDE60@CAMPUSV2.xds.umail.utah.edu>",
+      "from_name": "Xiulian Ma",
+      "from_email_hash": "f71cf7e18097eb134a78c2fbb226c254eac288635f3cb77f8fa84bed8ba9b8fa",
+      "date": "2008-09-07T23:53:29Z",
+      "subject": "[statnet_help] how to read valued edgelist data into a network? ",
+      "subject_clean": "[statnet_help] how to read valued edgelist data into a network?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Can anybody help with reading valued edgelist data into a network\nobject? \n\nSuppose there are three columns of data, the first two specify edges,\nand the third one tells the value (which could be any number) of each\nedge.\n\n My code is (But, I just don't know where and how to specify the edge\nattribute): \n\n \n\n \n\nanw <- network(a, directed=FALSE, hyper=FALSE, loops=FALSE,\nmultiple=FALSE, bipartite = 10, matrix.type=\"edgelist\", vertex.attr =\nstatus)\n\n \n\n \n\nThanks a lot! \n\nXiulian\n\n \n\n \n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080908/d782256f/attachment.html>",
+      "body_snippet": "Can anybody help with reading valued edgelist data into a network\nobject? \n\nSuppose there are three columns of data, the first two specify edges,\nand the third one tells the value (which could be any ",
+      "thread_id": "thread-28f7e5b468d5",
+      "thread_depth": 0,
+      "month": "2008-09"
+    },
+    {
+      "id": "msg-a1afd2a67077",
+      "message_id": "<544FE328-1D7F-48A9-812E-B07902A1C03F@gmail.com>",
+      "from_name": "Hannu Rajaniemi",
+      "from_email_hash": "780375e33f94d44b6c4859248f9f8e205273d09270cee0211778e5a8ccc6f435",
+      "date": "2008-09-10T08:57:16Z",
+      "subject": "[statnet_help] A question about ERGMs and simulating networks with an arbitrary number of nodes",
+      "subject_clean": "[statnet_help] A question about ERGMs and simulating networks with an arbitrary number of nodes",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet List,\n\nI have been playing with statnet a bit for a hobby project, and am a  \nbit confused about drawing sample networks using \"simulate\" and a  \nmodel fitted using the ergm function.\n\nThis may be a result of my poor understanding of the theory of ERGMs  \nin general, but I was wondering if it is possible to simulate a  \nnetwork with more or less nodes than the original network -- i.e.  \nsimulate a network that is larger/smaller than the original but with  \nsimilar statistical characteristics in the ERGM sense.\n\nFor example, let's say I fit an ERGM model using the full  \nfaux.magnolia graph (1400 nodes or so, but only wish to generate  \nsample networks with, say, 20 actors but with the same ERGM model  \ncharacteristics. Is there any way to do this? And does the question  \neven make sense....? :-)\n\nAny advice would be much appreciated.\n\nkind regards,\n\n-- Hannu Rajaniemi",
+      "body_snippet": "Dear Statnet List,\n\nI have been playing with statnet a bit for a hobby project, and am a  \nbit confused about drawing sample networks using \"simulate\" and a  \nmodel fitted using the ergm function.\n\nT",
+      "thread_id": "thread-a1afd2a67077",
+      "thread_depth": 0,
+      "month": "2008-09"
+    },
+    {
+      "id": "msg-e514c0f2c4e1",
+      "message_id": "<F95E940D-FC94-41B9-8BF5-60C28A6E93C3@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-09-10T10:35:18Z",
+      "subject": "[statnet_help] A question about ERGMs and simulating networks with an arbitrary number of nodes",
+      "subject_clean": "[statnet_help] A question about ERGMs and simulating networks with an arbitrary number of nodes",
+      "in_reply_to": "<544FE328-1D7F-48A9-812E-B07902A1C03F@gmail.com>",
+      "references": [
+        "<544FE328-1D7F-48A9-812E-B07902A1C03F@gmail.com>"
+      ],
+      "body_plain": "Hi Hannu.  In general, the question comes down to what you mean by  \n\"similar statistical characteristics\".  It turns out that this phrase  \nis not always so easy to define in terms of the only thing that  \nmatters about a network in the context of a specific ERGM, namely, the  \nvector of network statistics.  Thus, your question is best answered  \nwith another question:  What do you mean precisely by \"the same ERGM  \nmodel characteristics\"?\n\n(I should add that this question is sometimes fairly easy to answer  \nsatisfactorily, sometimes not!)\n\nDave\n\n\n\nOn Sep 10, 2008, at 11:57 AM, Hannu Rajaniemi wrote:\n\n> Dear Statnet List,\n>\n> I have been playing with statnet a bit for a hobby project, and am  \n> a bit confused about drawing sample networks using \"simulate\" and a  \n> model fitted using the ergm function.\n>\n> This may be a result of my poor understanding of the theory of ERGMs  \n> in general, but I was wondering if it is possible to simulate a  \n> network with more or less nodes than the original network -- i.e.  \n> simulate a network that is larger/smaller than the original but with  \n> similar statistical characteristics in the ERGM sense.\n>\n> For example, let's say I fit an ERGM model using the full  \n> faux.magnolia graph (1400 nodes or so, but only wish to generate  \n> sample networks with, say, 20 actors but with the same ERGM model  \n> characteristics. Is there any way to do this? And does the question  \n> even make sense....? :-)\n>\n> Any advice would be much appreciated.\n>\n> kind regards,\n>\n> -- Hannu Rajaniemi\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Hannu.  In general, the question comes down to what you mean by  \n\"similar statistical characteristics\".  It turns out that this phrase  \nis not always so easy to define in terms of the only thing ",
+      "thread_id": "thread-a1afd2a67077",
+      "thread_depth": 1,
+      "month": "2008-09"
+    },
+    {
+      "id": "msg-79d39f0972cf",
+      "message_id": "<48C8094C.4050609@ucsd.edu>",
+      "from_name": "Simon Frost",
+      "from_email_hash": "035b0ea7e424ab86c49e75c8ef123f13dce97b7aaadbb47397e5c83707ce33a8",
+      "date": "2008-09-10T10:52:12Z",
+      "subject": "[statnet_help] Off topic: upcoming postdoctoral positions in Cambridge, England",
+      "subject_clean": "[statnet_help] Off topic: upcoming postdoctoral positions in Cambridge, England",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet List,\n\nI apologize that this is off-topic, but I'm looking for a couple of \nhighly technical postdoctoral students to work on social and sexual \nnetworks. One position (up to 2 years) involves the use of bipartite \nERGMs to model people and the places they socialize and meet sexual \npartners, with some modeling of dynamic bipartite networks. The second \n(up to 4 years) involves modeling respondent-driven sampling \n(www.respondentdrivensampling.org). Both positions require a healthy \nknowledge of C/C++, R (or Python), a keen interest in statistical models \n(especially ERGMs, causal inference), networks, and simulation. The \npositions will be the Department of Veterinary Medicine at the \nUniversity of Cambridge, which also houses the Cambridge Infectious \nDisease Consortium (http://www.vet.cam.ac.uk/cidc/). The positions \naren't 100% official yet, as I am trying to transfer funds from the US \nto the UK - no mean feat! Please feel free to email me for further \ninformation.\n\nBest\nSimon",
+      "body_snippet": "Dear Statnet List,\n\nI apologize that this is off-topic, but I'm looking for a couple of \nhighly technical postdoctoral students to work on social and sexual \nnetworks. One position (up to 2 years) inv",
+      "thread_id": "thread-79d39f0972cf",
+      "thread_depth": 0,
+      "month": "2008-09"
+    },
+    {
+      "id": "msg-25b851988297",
+      "message_id": "<48C8BD2D.4050306@stanford.edu>",
+      "from_name": "James Holland Jones",
+      "from_email_hash": "acb826446b123a69e69bcb08e635e786bb139ab855a8cfa560a293990f9fb6ea",
+      "date": "2008-09-10T23:39:41Z",
+      "subject": "[statnet_help] plot.network() with colored edges",
+      "subject_clean": "[statnet_help] plot.network() with colored edges",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI'm worried that I'm just being dumb here, but I seem to be stuck.  I'm \ntrying to draw a network in which edges are colored according to some \nvertex attribute.  Specifically, I have a sexual contact network with \nsero-status measured for the vertices. I want all edges connecting to a \npositive vertex to be colored, say, red. I seem to be missing something \nabout the sort order for the edge list.  I think this simple code \nreproduces the problem I'm having with real data.  I create a network \nobject from a simulated edge list.  I then arbitrarily infect nodes 17, \n22, and 44. I create a dummy vector (which I also attach as an edge \nattribute) indicating whether or not an edge is incident with an \ninfected vertex.  When I plot the network, the coloring does not come \nout the way I expected it to.\n\nset.seed(1234567)\nn1 <- round(1+50*runif(100))\nn2 <- round(1+50*runif(100))\neee <- cbind(n1,n2)[order(n1),]\nnet <- network(eee,directed=FALSE)\n\nedge.status <- rep(0,100)\naaa <- eee[,1]==17 | eee[,2]==17\nedge.status[aaa] <- 1\naaa <- eee[,1]==22 | eee[,2]==22\nedge.status[aaa] <- 1\naaa <- eee[,1]==44 | eee[,2]==44\nedge.status[aaa] <- 1\n\nnet %e% \"edge.status\" <- edge.status\nstatus <- rep(0,51)\nstatus[c(17,22,44)] <- 1\n\nplot(net,\n      vertex.col=1+status,\n      vertex.cex=1,\n      edge.lwd=2,\n      edge.col=1+edge.status)\n\nI hope someone can help illuminate what I'm doing wrong here.\n\nA somewhat related question: is there a way to extract an edge list as \none sees when summarizing a network, summary(net)?\n\nSorry if I'm just being obtuse -- it is getting late...\n\nCheers,\n\nJamie\n\n-- \nJames Holland Jones\nAssistant Professor, Department of Anthropology\nFellow, Woods Institute for the Environment\n\n450 Serra Mall\nBuilding 50\nStanford, CA 94305-2034\n\nphone:  650-723-4824\nfax:    650-725-0605\nemail:  jhj1@stanford.edu\nurl:    http://www.stanford.edu/~jhj1",
+      "body_snippet": "Hi all,\n\nI'm worried that I'm just being dumb here, but I seem to be stuck.  I'm \ntrying to draw a network in which edges are colored according to some \nvertex attribute.  Specifically, I have a sexua",
+      "thread_id": "thread-25b851988297",
+      "thread_depth": 0,
+      "month": "2008-09"
+    },
+    {
+      "id": "msg-d0d933f7061d",
+      "message_id": "<48C8C8C3.8080507@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2008-09-11T00:29:07Z",
+      "subject": "[statnet_help] plot.network() with colored edges",
+      "subject_clean": "[statnet_help] plot.network() with colored edges",
+      "in_reply_to": "<48C8BD2D.4050306@stanford.edu>",
+      "references": [
+        "<48C8BD2D.4050306@stanford.edu>"
+      ],
+      "body_plain": "Hi, Jamie -\n\nJames Holland Jones wrote:\n> Hi all,\n> \n> I'm worried that I'm just being dumb here, but I seem to be stuck.  I'm \n> trying to draw a network in which edges are colored according to some \n> vertex attribute.  Specifically, I have a sexual contact network with \n> sero-status measured for the vertices. I want all edges connecting to a \n> positive vertex to be colored, say, red. I seem to be missing something \n> about the sort order for the edge list.  I think this simple code \n> reproduces the problem I'm having with real data.  I create a network \n> object from a simulated edge list.  I then arbitrarily infect nodes 17, \n> 22, and 44. I create a dummy vector (which I also attach as an edge \n> attribute) indicating whether or not an edge is incident with an \n> infected vertex.  When I plot the network, the coloring does not come \n> out the way I expected it to.\n> \n<snip>\n> \n> I hope someone can help illuminate what I'm doing wrong here.\n\nThe %e% operator is a front-end to set.edge.value, which expects edges \nto be listed in their adjacency matrix order.  To adjust edge attributes \nin edge ID order, you need to use set.edge.attribute.  In your case,\n\nset.edge.attribute(net,\"edge.status\",edge.status+1)\nplot(net,vertex.col=1+status,edge.col=\"edge.status\")\n\nseems to produce the desired result.  (Note that edge.col uses matrix \norder, too, but can also take attributes as arguments.)\n\n> \n> A somewhat related question: is there a way to extract an edge list as \n> one sees when summarizing a network, summary(net)?\n\nYes:\n\nas.matrix(net,matrix.type=\"edgelist\")\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "Hi, Jamie -\n\nJames Holland Jones wrote:\n> Hi all,\n> \n> I'm worried that I'm just being dumb here, but I seem to be stuck.  I'm \n> trying to draw a network in which edges are colored according to some ",
+      "thread_id": "thread-25b851988297",
+      "thread_depth": 1,
+      "month": "2008-09"
+    },
+    {
+      "id": "msg-02df126838af",
+      "message_id": "<200809120910.AA2097436@imail.iuj.ac.jp>",
+      "from_name": "Ozcan_Kerimcan",
+      "from_email_hash": "f7c6673d8ba708f6169116ad94d5ec63caac1b4c94231d9b466ad4dbeab1d23f",
+      "date": "2008-09-11T17:10:55Z",
+      "subject": "[statnet_help] Problem with transitive term?",
+      "subject_clean": "[statnet_help] Problem with transitive term?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi!\n\nThis is my first message to the list. I have been using R for network research and have some experience with sna and igraph but I just started working with ergm and come across this peculiar situation. The term \"transitive\" gives some wildly erratic counts for transitive triad counts when entered as an argument in a summary function. Here are some examples (compare it with the triadcensus of the corresponding triad types--which I believe give the correct count):\n\n## Example 1 (bernoulli graph with 5 nodes)\n\n> g.sim <- simulate(network(5) ~ transitive);\nWarning message:\nIn simulate.formula(network(5) ~ transitive) :\n  No parameter values given, using Bernouli network\n> summary(g.sim ~ transitive);\ntransitive \n         7 \n> summary(g.sim ~ triadcensus(c(8,11,12,15)));\ntriadcensus.030T triadcensus.120D triadcensus.120U  triadcensus.300 \n               2                0                4                1 \n\n## Example 2 (bernoulli graph with 10 nodes)\n\n> g.sim <- simulate(network(10) ~ transitive);\nWarning message:\nIn simulate.formula(network(10) ~ transitive) :\n  No parameter values given, using Bernouli network\n> summary(g.sim ~ transitive);\ntransitive \n        18 \n> summary(g.sim ~ triadcensus(c(8,11,12,15)));\ntriadcensus.030T triadcensus.120D triadcensus.120U  triadcensus.300 \n               7               10                7                2 \n\n## Example 3 (bernoulli graph with 100 nodes)\n\n> g.sim <- simulate(network(100) ~ transitive);\nWarning message:\nIn simulate.formula(network(100) ~ transitive) :\n  No parameter values given, using Bernouli network\n> summary(g.sim ~ transitive);\ntransitive \n    158966 \n> summary(g.sim ~ triadcensus(c(8,11,12,15)));\ntriadcensus.030T triadcensus.120D triadcensus.120U  triadcensus.300 \n             118                1                4                0 \n\n## Example 4 (bernoulli graph with 1000 nodes)\n\n> g.sim <- simulate(network(1000) ~ transitive);\nWarning message:\nIn simulate.formula(network(1000) ~ transitive) :\n  No parameter values given, using Bernouli network\n> summary(g.sim ~ transitive);\ntransitive \n 166164655 \n> summary(g.sim ~ triadcensus(c(8,11,12,15)));\ntriadcensus.030T triadcensus.120D triadcensus.120U  triadcensus.300 \n               3                0                0                0 \n\nWhat gives?? Are the estimations regarding transitive term reliable? Do the simulations involving the transitive term yield reliable networks?\n\nDr. Kerimcan Ozcan",
+      "body_snippet": "Hi!\n\nThis is my first message to the list. I have been using R for network research and have some experience with sna and igraph but I just started working with ergm and come across this peculiar situ",
+      "thread_id": "thread-02df126838af",
+      "thread_depth": 0,
+      "month": "2008-09"
+    },
+    {
+      "id": "msg-d5268d5f7a82",
+      "message_id": "<DF56F2DB-14DB-4710-8C17-742B0E36046A@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-09-13T14:13:36Z",
+      "subject": "[statnet_help] Problem with transitive term?",
+      "subject_clean": "[statnet_help] Problem with transitive term?",
+      "in_reply_to": "<200809120910.AA2097436@imail.iuj.ac.jp>",
+      "references": [
+        "<200809120910.AA2097436@imail.iuj.ac.jp>"
+      ],
+      "body_plain": "Hi Kerimcan.  This certainly looks strange!  I'll take a look and see  \nif I can figure out what's going on.  Thanks for the heads up.\n\nDavid Hunter\nAssociate professor\nDepartment of Statistics\nPenn State University\nPhone:  (814) 863-0979\nFax:  (814) 863-7114\nwww.stat.psu.edu/~dhunter\n\n\n\nOn Sep 11, 2008, at 8:10 PM, Ozcan_Kerimcan wrote:\n\n> Hi!\n>\n> This is my first message to the list. I have been using R for  \n> network research and have some experience with sna and igraph but I  \n> just started working with ergm and come across this peculiar  \n> situation. The term \"transitive\" gives some wildly erratic counts  \n> for transitive triad counts when entered as an argument in a summary  \n> function. Here are some examples (compare it with the triadcensus of  \n> the corresponding triad types--which I believe give the correct  \n> count):\n>\n> ## Example 1 (bernoulli graph with 5 nodes)\n>\n>> g.sim <- simulate(network(5) ~ transitive);\n> Warning message:\n> In simulate.formula(network(5) ~ transitive) :\n>  No parameter values given, using Bernouli network\n>> summary(g.sim ~ transitive);\n> transitive\n>         7\n>> summary(g.sim ~ triadcensus(c(8,11,12,15)));\n> triadcensus.030T triadcensus.120D triadcensus.120U  triadcensus.300\n>               2                0                4                1\n>\n> ## Example 2 (bernoulli graph with 10 nodes)\n>\n>> g.sim <- simulate(network(10) ~ transitive);\n> Warning message:\n> In simulate.formula(network(10) ~ transitive) :\n>  No parameter values given, using Bernouli network\n>> summary(g.sim ~ transitive);\n> transitive\n>        18\n>> summary(g.sim ~ triadcensus(c(8,11,12,15)));\n> triadcensus.030T triadcensus.120D triadcensus.120U  triadcensus.300\n>               7               10                7                2\n>\n> ## Example 3 (bernoulli graph with 100 nodes)\n>\n>> g.sim <- simulate(network(100) ~ transitive);\n> Warning message:\n> In simulate.formula(network(100) ~ transitive) :\n>  No parameter values given, using Bernouli network\n>> summary(g.sim ~ transitive);\n> transitive\n>    158966\n>> summary(g.sim ~ triadcensus(c(8,11,12,15)));\n> triadcensus.030T triadcensus.120D triadcensus.120U  triadcensus.300\n>             118                1                4                0\n>\n> ## Example 4 (bernoulli graph with 1000 nodes)\n>\n>> g.sim <- simulate(network(1000) ~ transitive);\n> Warning message:\n> In simulate.formula(network(1000) ~ transitive) :\n>  No parameter values given, using Bernouli network\n>> summary(g.sim ~ transitive);\n> transitive\n> 166164655\n>> summary(g.sim ~ triadcensus(c(8,11,12,15)));\n> triadcensus.030T triadcensus.120D triadcensus.120U  triadcensus.300\n>               3                0                0                0\n>\n> What gives?? Are the estimations regarding transitive term reliable?  \n> Do the simulations involving the transitive term yield reliable  \n> networks?\n>\n> Dr. Kerimcan Ozcan\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Kerimcan.  This certainly looks strange!  I'll take a look and see  \nif I can figure out what's going on.  Thanks for the heads up.\n\nDavid Hunter\nAssociate professor\nDepartment of Statistics\nPenn S",
+      "thread_id": "thread-02df126838af",
+      "thread_depth": 1,
+      "month": "2008-09"
+    },
+    {
+      "id": "msg-80594f1534c7",
+      "message_id": "<1DACC243-2169-4DF8-BD5A-BE5589E00FB7@gmail.com>",
+      "from_name": "Hannu Rajaniemi",
+      "from_email_hash": "780375e33f94d44b6c4859248f9f8e205273d09270cee0211778e5a8ccc6f435",
+      "date": "2008-09-29T07:47:40Z",
+      "subject": "[statnet_help] A question about ERGMs and simulating networks with an arbitrary number of nodes",
+      "subject_clean": "[statnet_help] A question about ERGMs and simulating networks with an arbitrary number of nodes",
+      "in_reply_to": "<F95E940D-FC94-41B9-8BF5-60C28A6E93C3@stat.psu.edu>",
+      "references": [
+        "<544FE328-1D7F-48A9-812E-B07902A1C03F@gmail.com>",
+        "<F95E940D-FC94-41B9-8BF5-60C28A6E93C3@stat.psu.edu>"
+      ],
+      "body_plain": "Hi Dave and the rest of the list,\n\nThanks for the response. Apologies if the question was confusing --  \nwhat I was wondering about if it would be possible to:\n\n* fit an ERGM model into a network dataset with n nodes\n* create a model with the *same* ERGM model coefficients, but for m !=  \nn nodes\n* draw graph samples from that model.\n\nAnother way of saying this would be that given a graph with some  \nattribute data, I would like to generate random graphs which are  \nstatistically similar to it (in terms of homophily, number of  \ntriangles, etc.) but which have a smaller (or larger) number of nodes  \nthan the original graph.\n\nIs there an easy way to do this?\n\nkind regards,\n\n-- Hannu \n\n\n\nOn 10 Sep 2008, at 18:35, David Hunter wrote:\n\n> Hi Hannu.  In general, the question comes down to what you mean by  \n> \"similar statistical characteristics\".  It turns out that this  \n> phrase is not always so easy to define in terms of the only thing  \n> that matters about a network in the context of a specific ERGM,  \n> namely, the vector of network statistics.  Thus, your question is  \n> best answered with another question:  What do you mean precisely by  \n> \"the same ERGM model characteristics\"?\n>\n> (I should add that this question is sometimes fairly easy to answer  \n> satisfactorily, sometimes not!)\n>\n> Dave\n>\n>\n>\n> On Sep 10, 2008, at 11:57 AM, Hannu Rajaniemi wrote:\n>\n>> Dear Statnet List,\n>>\n>> I have been playing with statnet a bit for a hobby project, and am  \n>> a bit confused about drawing sample networks using \"simulate\" and a  \n>> model fitted using the ergm function.\n>>\n>> This may be a result of my poor understanding of the theory of  \n>> ERGMs in general, but I was wondering if it is possible to simulate  \n>> a network with more or less nodes than the original network -- i.e.  \n>> simulate a network that is larger/smaller than the original but  \n>> with similar statistical characteristics in the ERGM sense.\n>>\n>> For example, let's say I fit an ERGM model using the full  \n>> faux.magnolia graph (1400 nodes or so, but only wish to generate  \n>> sample networks with, say, 20 actors but with the same ERGM model  \n>> characteristics. Is there any way to do this? And does the question  \n>> even make sense....? :-)\n>>\n>> Any advice would be much appreciated.\n>>\n>> kind regards,\n>>\n>> -- Hannu Rajaniemi\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Dave and the rest of the list,\n\nThanks for the response. Apologies if the question was confusing --  \nwhat I was wondering about if it would be possible to:\n\n* fit an ERGM model into a network data",
+      "thread_id": "thread-a1afd2a67077",
+      "thread_depth": 2,
+      "month": "2008-09"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-de9049be5bc7",
+      "subject": "[statnet_help] OpenMP and Statnet",
+      "message_count": 1,
+      "participants": [
+        "Simon Frost"
+      ],
+      "started": "2008-09-01T17:00:48Z",
+      "last_reply": "2008-09-01T17:00:48Z",
+      "root_message_id": "msg-de9049be5bc7"
+    },
+    {
+      "id": "thread-28f7e5b468d5",
+      "subject": "[statnet_help] how to read valued edgelist data into a network?",
+      "message_count": 1,
+      "participants": [
+        "Xiulian Ma"
+      ],
+      "started": "2008-09-07T23:53:29Z",
+      "last_reply": "2008-09-07T23:53:29Z",
+      "root_message_id": "msg-28f7e5b468d5"
+    },
+    {
+      "id": "thread-a1afd2a67077",
+      "subject": "[statnet_help] A question about ERGMs and simulating networks with an arbitrary number of nodes",
+      "message_count": 3,
+      "participants": [
+        "David Hunter",
+        "Hannu Rajaniemi"
+      ],
+      "started": "2008-09-10T08:57:16Z",
+      "last_reply": "2008-09-29T07:47:40Z",
+      "root_message_id": "msg-a1afd2a67077"
+    },
+    {
+      "id": "thread-79d39f0972cf",
+      "subject": "[statnet_help] Off topic: upcoming postdoctoral positions in Cambridge, England",
+      "message_count": 1,
+      "participants": [
+        "Simon Frost"
+      ],
+      "started": "2008-09-10T10:52:12Z",
+      "last_reply": "2008-09-10T10:52:12Z",
+      "root_message_id": "msg-79d39f0972cf"
+    },
+    {
+      "id": "thread-25b851988297",
+      "subject": "[statnet_help] plot.network() with colored edges",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "James Holland Jones"
+      ],
+      "started": "2008-09-10T23:39:41Z",
+      "last_reply": "2008-09-11T00:29:07Z",
+      "root_message_id": "msg-25b851988297"
+    },
+    {
+      "id": "thread-02df126838af",
+      "subject": "[statnet_help] Problem with transitive term?",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Ozcan_Kerimcan"
+      ],
+      "started": "2008-09-11T17:10:55Z",
+      "last_reply": "2008-09-13T14:13:36Z",
+      "root_message_id": "msg-02df126838af"
+    }
+  ]
+}

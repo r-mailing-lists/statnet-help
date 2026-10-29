@@ -1,0 +1,226 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2015-01",
+  "messages": [
+    {
+      "id": "msg-6d5f21c7e0bd",
+      "message_id": "<72E8CAED492B92449DEDAD0250390A3622A73B84@exch-mbx-02.utu.fi>",
+      "from_name": "Shupin Li",
+      "from_email_hash": "38700f5808ab105ec199cbb8075d83f0e4e2f5a90ba6f54b05dba2c790f968a0",
+      "date": "2015-01-07T01:40:30Z",
+      "subject": "[statnet_help] Unbalanced sample size for testing homophily effect",
+      "subject_clean": "[statnet_help] Unbalanced sample size for testing homophily effect",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear folks,\n\nI have several classroom directed friendship network data collected by classroom roster. I want to try to test the gender homophily within each classroom. But the number of students from each gender is not balanced in some classrooms, for example, 4 boys and 21 girls in a class.\n\n I am wondering whether such unbalanced sample size of each gender will lead to incorrect results via nodematch()? How could I solve this problem if unbalanced sample size matters?\n\nBy the way, how shall I interpret results from different classroom networks (i.e. how shall I \"generalize\" a result from homophily tests of different classrooms)?\n\nThanks for your kind help in advance and all the best for the new year!\n\nBest,\nShupin",
+      "body_snippet": "Dear folks,\n\nI have several classroom directed friendship network data collected by classroom roster. I want to try to test the gender homophily within each classroom. But the number of students from ",
+      "thread_id": "thread-6d5f21c7e0bd",
+      "thread_depth": 0,
+      "month": "2015-01"
+    },
+    {
+      "id": "msg-df584b3f4286",
+      "message_id": "<alpine.WNT.2.00.1501071133440.8808@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2015-01-07T11:37:37Z",
+      "subject": "[statnet_help] Unbalanced sample size for testing homophily effect",
+      "subject_clean": "[statnet_help] Unbalanced sample size for testing homophily effect",
+      "in_reply_to": "<72E8CAED492B92449DEDAD0250390A3622A73B84@exch-mbx-02.utu.fi>",
+      "references": [
+        "<72E8CAED492B92449DEDAD0250390A3622A73B84@exch-mbx-02.utu.fi>"
+      ],
+      "body_plain": "Shupin,\n\nAs long as you include a main effect for sex (nodefactor(sex)) in the \nmodel, this should control for the composition differences and give you an \nestimate for the homophily term that can be compared across classrooms.\n\nBut note that with only 4 boys in a classroom, there is not much \ninformation that can be obtained, and I would expect the se's to be large \nin that case.\n\nhth,\nMartina\n\nOn Wed, 7 Jan 2015, Shupin Li wrote:\n\n> Dear folks,\n>\n> I have several classroom directed friendship network data collected by \n> classroom roster. I want to try to test the gender homophily within each \n> classroom. But the number of students from each gender is not balanced \n> in some classrooms, for example, 4 boys and 21 girls in a class.\n>\n> I am wondering whether such unbalanced sample size of each gender will \n> lead to incorrect results via nodematch()? How could I solve this \n> problem if unbalanced sample size matters?\n>\n> By the way, how shall I interpret results from different classroom \n> networks (i.e. how shall I \"generalize\" a result from homophily tests of \n> different classrooms)?\n>\n> Thanks for your kind help in advance and all the best for the new year!\n>\n> Best,\n> Shupin\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Shupin,\n\nAs long as you include a main effect for sex (nodefactor(sex)) in the \nmodel, this should control for the composition differences and give you an \nestimate for the homophily term that can be ",
+      "thread_id": "thread-6d5f21c7e0bd",
+      "thread_depth": 1,
+      "month": "2015-01"
+    },
+    {
+      "id": "msg-4673bd84c33f",
+      "message_id": "<72E8CAED492B92449DEDAD0250390A3622A74C81@exch-mbx-02.utu.fi>",
+      "from_name": "Shupin Li",
+      "from_email_hash": "38700f5808ab105ec199cbb8075d83f0e4e2f5a90ba6f54b05dba2c790f968a0",
+      "date": "2015-01-07T23:56:19Z",
+      "subject": "[statnet_help] Unbalanced sample size for testing homophily effect",
+      "subject_clean": "[statnet_help] Unbalanced sample size for testing homophily effect",
+      "in_reply_to": "<alpine.WNT.2.00.1501071133440.8808@morrism-laptop>",
+      "references": [
+        "<72E8CAED492B92449DEDAD0250390A3622A73B84@exch-mbx-02.utu.fi>",
+        "<alpine.WNT.2.00.1501071133440.8808@morrism-laptop>"
+      ],
+      "body_plain": "Thanks Martina. Shall I have some general rules for statnet regarding the sample size of each group to test homophily effect if there is any? Do you know if there is some literature regarding this issue?\n\nBest,\nShupin\n\n________________________________________\n???: martina morris [morrism@u.washington.edu]\n????: 2015?1?7? 21:37\n???: Shupin Li\n??: statnet_help@u.washington.edu\n??: Re: [statnet_help] Unbalanced sample size for testing homophily effect\n\nShupin,\n\nAs long as you include a main effect for sex (nodefactor(sex)) in the\nmodel, this should control for the composition differences and give you an\nestimate for the homophily term that can be compared across classrooms.\n\nBut note that with only 4 boys in a classroom, there is not much\ninformation that can be obtained, and I would expect the se's to be large\nin that case.\n\nhth,\nMartina\n\nOn Wed, 7 Jan 2015, Shupin Li wrote:\n\n> Dear folks,\n>\n> I have several classroom directed friendship network data collected by\n> classroom roster. I want to try to test the gender homophily within each\n> classroom. But the number of students from each gender is not balanced\n> in some classrooms, for example, 4 boys and 21 girls in a class.\n>\n> I am wondering whether such unbalanced sample size of each gender will\n> lead to incorrect results via nodematch()? How could I solve this\n> problem if unbalanced sample size matters?\n>\n> By the way, how shall I interpret results from different classroom\n> networks (i.e. how shall I \"generalize\" a result from homophily tests of\n> different classrooms)?\n>\n> Thanks for your kind help in advance and all the best for the new year!\n>\n> Best,\n> Shupin\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Thanks Martina. Shall I have some general rules for statnet regarding the sample size of each group to test homophily effect if there is any? Do you know if there is some literature regarding this iss",
+      "thread_id": "thread-6d5f21c7e0bd",
+      "thread_depth": 2,
+      "month": "2015-01"
+    },
+    {
+      "id": "msg-e122e43ac082",
+      "message_id": "<CAHKh5TJRA+Jt=iu9O=WjxJ70nrby9P94Lc90XcDNh5xDy1Hh6g@mail.gmail.com>",
+      "from_name": "Alexander Semenov",
+      "from_email_hash": "6e5c1fbfadfa41a39f5196efe167a24af19fbcdae65a1300008188c51bdc86f1",
+      "date": "2015-01-08T06:41:44Z",
+      "subject": "[statnet_help] Table from output of summary() function applied to several networks",
+      "subject_clean": "[statnet_help] Table from output of summary() function applied to several networks",
+      "in_reply_to": "<CAN=W0uofSm+0vmGQnE=wzmi5pDPt2JEG0vOEyxf++LEWkzdcxw@mail.gmail.com>",
+      "references": [
+        "<CAHKh5T+tYs4O9sUFPR36MPBQsDHTSwVs+=FB6qrdKTynT+tT7Q@mail.gmail.com>",
+        "<CAN=W0uofSm+0vmGQnE=wzmi5pDPt2JEG0vOEyxf++LEWkzdcxw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi!\n\nI used similar receipt, but without plyr():\n\nlibrary(statnet)\nnet_summary <- function(net){\n\n        size <- network.size(net)\n        net_density <- gden(net)\n        dyad_recip <- grecip(net)\n        edge_recip <- grecip(net, measure=\"edgewise\")\n        trans <- gtrans(net)\n        max_in <- max(api_indeg)\n        max_out <- max(api_outdeg)\n        max_clo <- max(api_clo)\n        deg_centr <- centralization(net, degree, cmode=\"indegree\")\n\n        list(\"# of Nodes\" = size,\n             \"Density\" = net_density,\n             \"Max in-degree\" = max_in,\n             \"Max out-degree\" = max_out,\n             \"Degree centralization\" = deg_centr,\n             \"Max betweenness\" = max_bet,\n             \"Dyadic reciprocity\" = dyad_recip,\n             \"Edgewise reciprocity\" = edge_recip,\n             \"Transitivity\" = trans)\n}\n\nnet_summary_df <- sapply(networks, net_summary)\nnet_comparison <- as.data.frame(net_summary_df)\n\nBut I thought there is an easier and more natural way to add something to\nstatnet summary() function, because other SNA tools (ORA, NodeXL) show\nbasic things like density and reciprocity right away.\n\nBest,\nAlex.\n\n(Social | Network | Data) Analyst\n\nJunior Research Fellow at the International Laboratory of Applied Network\nResearch\nNational Research University Higher School of Economics\nhttp://anr.hse.ru/en/\n\nhttp://jarens.ru\nru.linkedin.com/in/semenoffalex/\nhttps://www.facebook.com/semenoffalex\nhttps://twitter.com/jarens\n\nskype: semenoffalex\ntel: +7 926 602 25 51\n\n\n\n2014-12-28 23:00 GMT+03:00 Jake Fisher <jcf26@duke.edu>:\n\n> Hi Alex,\n>\n> It's not the most elegant solution, but you can make a function to output\n> the results that you want as a data.frame, and then ldply (from the plyr\n> package) over the list.  For example:\n>\n> rm(list = ls())\n> library(statnet)\n> library(plyr)\n>\n> netSummaryDf <- function(net) {\n>   # Returns the attributes from summary.network as a data.frame\n>   #\n>   # Args:\n>   #   network: a statnet network object\n>   #\n>   # Returns:\n>   #   A data.frame with num. vertices, directed, hyper, loops, multiple,\n> edges\n>   #   (missing and not), and density\n>\n>   require(statnet)\n>   if (!is.network(net))\n>     stop(\"netSummaryDf takes a statnet network object as an argument.\")\n>\n>   out <- data.frame(\n>       vertices = network.size(net),\n>       directed = is.directed(net),\n>       hyper = is.hyper(net),\n>       loops = has.loops(net),\n>       multiple = is.multiplex(net),\n>       total.edges = network.edgecount(net, na.omit = FALSE),\n>       missing.edges= network.naedgecount(net),\n>       non.missing.edges = network.edgecount(net, na.omit = TRUE)\n>       )\n>\n>   return(out)\n> }\n>\n> data(emon)\n>\n> (test <- ldply(emon, netSummaryDf))\n>\n> Hopefully someone else from the list will come up with a cleaner solution,\n> but this should be a good temporary workaround.\n>\n> All the best,\n>\n> Jake Fisher\n> Ph.D. Candidate\n> Duke University Department of Sociology\n>\n>\n> On Sat, Dec 27, 2014 at 8:43 PM, Alexander Semenov <semenoffalex@gmail.com\n> > wrote:\n>\n>> Hi, all.\n>>\n>> I have a list of network objects (nets) and I want to have the output of\n>> \"for (i in nets) print (summary(i, print.adj=F))\" command in a table, not\n>> series of summaries?\n>>\n>> Are there simple ways to do that?\n>>\n>> Thanks in advance!\n>>\n>> Best,\n>> Alex.\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150108/02e29f71/attachment.html>",
+      "body_snippet": "Hi!\n\nI used similar receipt, but without plyr():\n\nlibrary(statnet)\nnet_summary <- function(net){\n\n        size <- network.size(net)\n        net_density <- gden(net)\n        dyad_recip <- grecip(net)\n ",
+      "thread_id": "thread-e122e43ac082",
+      "thread_depth": 0,
+      "month": "2015-01"
+    },
+    {
+      "id": "msg-5928b48211b7",
+      "message_id": "<alpine.WNT.2.00.1501080716030.8808@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2015-01-08T07:58:50Z",
+      "subject": "[statnet_help] Unbalanced sample size for testing homophily effect",
+      "subject_clean": "[statnet_help] Unbalanced sample size for testing homophily effect",
+      "in_reply_to": "<72E8CAED492B92449DEDAD0250390A3622A74C81@exch-mbx-02.utu.fi>",
+      "references": [
+        "<72E8CAED492B92449DEDAD0250390A3622A73B84@exch-mbx-02.utu.fi>",
+        "<alpine.WNT.2.00.1501071133440.8808@morrism-laptop>",
+        "<72E8CAED492B92449DEDAD0250390A3622A74C81@exch-mbx-02.utu.fi>"
+      ],
+      "body_plain": "Shupin,\n\nI'm not sure that has been established for ergms yet.\n\nIn this case I would recommend using something like the rule of thumb for \nloglinear models, since you are fitting something similar to a multi-way \ntable (at least 5 observations per cell) or the rule of thumb for logistic \nregressions (at least 10 \"events\" per predictor).  There's a good paper \nby Vittinghoff and McCullough on the latter here:\nhttp://aje.oxfordjournals.org/content/165/6/710.full\n\nThe dependence across observations in network data make these rules of \nthumb for GLMs not directly comparable.\n\nPerhaps someone else on the list has a better suggestion?\n\nbest,\nmm\n\nOn Thu, 8 Jan 2015, Shupin Li wrote:\n\n> Thanks Martina. Shall I have some general rules for statnet regarding the sample size of each group to test homophily effect if there is any? Do you know if there is some literature regarding this issue?\n>\n> Best,\n> Shupin\n>\n> ________________________________________\n> ???: martina morris [morrism@u.washington.edu]\n> ????: 2015?1?7? 21:37\n> ???: Shupin Li\n> ??: statnet_help@u.washington.edu\n> ??: Re: [statnet_help] Unbalanced sample size for testing homophily effect\n>\n> Shupin,\n>\n> As long as you include a main effect for sex (nodefactor(sex)) in the\n> model, this should control for the composition differences and give you an\n> estimate for the homophily term that can be compared across classrooms.\n>\n> But note that with only 4 boys in a classroom, there is not much\n> information that can be obtained, and I would expect the se's to be large\n> in that case.\n>\n> hth,\n> Martina\n>\n> On Wed, 7 Jan 2015, Shupin Li wrote:\n>\n>> Dear folks,\n>>\n>> I have several classroom directed friendship network data collected by\n>> classroom roster. I want to try to test the gender homophily within each\n>> classroom. But the number of students from each gender is not balanced\n>> in some classrooms, for example, 4 boys and 21 girls in a class.\n>>\n>> I am wondering whether such unbalanced sample size of each gender will\n>> lead to incorrect results via nodematch()? How could I solve this\n>> problem if unbalanced sample size matters?\n>>\n>> By the way, how shall I interpret results from different classroom\n>> networks (i.e. how shall I \"generalize\" a result from homophily tests of\n>> different classrooms)?\n>>\n>> Thanks for your kind help in advance and all the best for the new year!\n>>\n>> Best,\n>> Shupin\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Shupin,\n\nI'm not sure that has been established for ergms yet.\n\nIn this case I would recommend using something like the rule of thumb for \nloglinear models, since you are fitting something similar to ",
+      "thread_id": "thread-6d5f21c7e0bd",
+      "thread_depth": 3,
+      "month": "2015-01"
+    },
+    {
+      "id": "msg-767f9355c4cb",
+      "message_id": "<1421300364.4354.14.camel@uow.edu.au>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2015-01-14T21:39:24Z",
+      "subject": "[statnet_help] ergm for weighted graphs",
+      "subject_clean": "[statnet_help] ergm for weighted graphs",
+      "in_reply_to": "<op.xrolcetlryrw2o@migedi729969.unicatt.it>",
+      "references": [
+        "<op.xrolcetlryrw2o@migedi729969.unicatt.it>"
+      ],
+      "body_plain": "Dear Giulia,\n\n> I have a weighted network which is made of countries and the drug\n> exchanges (estimated quantity) among them, and I would like to use an\n> ergm to analyse it. I see from the workshop materials of the 2014\n> Sunbelt that ergms for valued ties has been added in the list of\n> additional functionalities. I have two questions about this:\n> - Is there an updated tutorial on ergms for weighted graphs? (Or\n> should I refer to the 2013 Sunbelt tutorial on valued networks? And,\n> if so, is there any update since then?)\n\nThere is no updated tutorial, though we are planning to update it for\nthe 2016 Sunbelt. The 2013 tutorial is still valid, I think.\n\n> - Do I need discrete data in my weighted network to run the ergm?\n\nThe ERGM terms designed for counts should also work reasonably well for\npositive continuous measurements like what you have.\n\nYou can specify a continuous reference distribution by setting\nreference=~Unif(a,b) where a and b are the minimum and the maximum\nvalues or using reference=~StdNorm (with terms to model mean and\nstandard deviation --- let me know if you want more details), but\nformulation and interpretation of these models has not yet been\nexplored.\n\nIn particular, if, in your data, there are 0s that are not just there\nbecause the data are not available (missing), then the two references\nabove might not be appropriate. This is subject for ongoing work, but as\na stopgap, it might be appropriate to model such data conditionally: set\n0s to NAs and fit a valued model using Unif or StdNorm, then fit a\nbinary ERGM for whether the value is 0 vs. nonzero (coded as 1).\n\n                                                                   Sorry\nI can't be more helpful,\n                                                                   Pavel\n\n-- \nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics\nBuilding 39C Room 185\nUniversity of Wollongong NSW 2522\nP +61 2 4221 3713\nW niasra.uow.edu.au\nPlease consider the environment before printing this email\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150115/2c539c26/attachment.html>",
+      "body_snippet": "Dear Giulia,\n\n> I have a weighted network which is made of countries and the drug\n> exchanges (estimated quantity) among them, and I would like to use an\n> ergm to analyse it. I see from the workshop ",
+      "thread_id": "thread-767f9355c4cb",
+      "thread_depth": 0,
+      "month": "2015-01"
+    },
+    {
+      "id": "msg-2c1ebaa0eee1",
+      "message_id": "<CAO7K4NhiWu4jw9LAc9TGjYW3sC61sJccK7Vkg6S68OLA3UBjQQ@mail.gmail.com>",
+      "from_name": "Margaux Rat",
+      "from_email_hash": "b853a8f97a7200f9b9d58b777b2497c26dd9157ceaa92622b424668923697cc9",
+      "date": "2015-01-19T01:48:16Z",
+      "subject": "[statnet_help] issues with representing edges weight",
+      "subject_clean": "[statnet_help] issues with representing edges weight",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone,\n\nI am facing an issue with sna:gplot and the representation of \"edge weight\"\nwhich I cannot make sense of. I have used the lines of code bellow before\nand it worked perfectly so I have obviously omitted/modify something but I\ncannot figure out what.\n\nI am sure the error is probably stupid and obvious but I would really\nappreciate if someone can point it out, I have read the code lines over and\nover and I cannot find it.\n\nThank you all for your kind help, I also welcome other suggestions to\nintroduce edge weight and visualize them than the procedure I am trying to\nuse.\n\nRegards\n\nMargaux\n\n---------------\n\nHere is an example of the command I am trying to execute returning the\nerror I am facing.\n\n*#example of matrix*\nm<-matrix(c(NA,4,2,0,4,NA,NA,3,2,NA,NA,1,0,3,1,NA),nrow=4,byrow=T)\ncolnames(m)=rownames(m)=c(\"A\",\"B\",\"C\",\"D\")\n\n*#assigning network property to the matrix*\nnetm<-network(m,matrix.type=\"adjacency\",directed=FALSE,ignore.eval=FALSE,\n  names.eval=\"Weight\")\n\n*#assigning edge weight to the network*\nwnet<-as.sociomatrix(netm,\"Weight\")\nsummary(netm) *###### the edge weight have been attached to the network\nfrom what I can read in the summary*\n\n*#Visualize the network (well, trying to)*\ngplot(netm,edge.lwd=netm%e%\"Weight\") *#### Error in if (edge.lwd[i] > 0) {\n: missing value where TRUE/FALSE needed*\n\n\n-- \nMargaux Rat\n\n\n\n\n*PhD candidatePercy FitzPatrick Institute, DST-NRF Centre of\nExcellence.University of Cape Town*\n\n\n\n\n\n\n\n\n\n\n\n*email:   margaux.rat@gmail.com <margaux.rat@gmail.com>web:\nhttp://www.fitzpatrick.uct.ac.za/docs/margaux.html\n<http://www.fitzpatrick.uct.ac.za/docs/margaux.html>\nhttp://www.fitzpatrick.uct.ac.za/docs/sociable_weaver.htm\n<http://www.fitzpatrick.uct.ac.za/docs/sociable_weaver.html>phone:  (+27)21\n650 3310 post:     Room 2.20,            John Day Zoology Building\n    Upper Campus, U.C.T.            Rondebosch             7701*\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150119/dc902e8e/attachment.html>",
+      "body_snippet": "Hi everyone,\n\nI am facing an issue with sna:gplot and the representation of \"edge weight\"\nwhich I cannot make sense of. I have used the lines of code bellow before\nand it worked perfectly so I have ob",
+      "thread_id": "thread-2c1ebaa0eee1",
+      "thread_depth": 0,
+      "month": "2015-01"
+    },
+    {
+      "id": "msg-180d05d6ca47",
+      "message_id": "<54BCDEFE.4040003@uni-konstanz.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "0e8856775b020043f064c122aa5e96f11a67360200ec15df7ed5c1cadf4a2652",
+      "date": "2015-01-19T02:39:58Z",
+      "subject": "[statnet_help] issues with representing edges weight",
+      "subject_clean": "[statnet_help] issues with representing edges weight",
+      "in_reply_to": "<CAO7K4NhiWu4jw9LAc9TGjYW3sC61sJccK7Vkg6S68OLA3UBjQQ@mail.gmail.com>",
+      "references": [
+        "<CAO7K4NhiWu4jw9LAc9TGjYW3sC61sJccK7Vkg6S68OLA3UBjQQ@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Margaux,\n\nIt can't cope with NA values. There is a missing value for the dyad \n{B,C}. If you replace it with a non-negative real value, it works fine.\n\nYou may also want to use plot instead of gplot when you deal with \nnetwork objects because it makes use of additional information like \nwhether the network is directed (and thus omit the arrow heads \nautomatically) etc.\n\nBest,\nPhilip\n\nAm 19.01.2015 um 10:48 schrieb Margaux Rat:\n> Hi everyone,\n>\n> I am facing an issue with sna:gplot and the representation of \"edge\n> weight\" which I cannot make sense of. I have used the lines of code\n> bellow before and it worked perfectly so I have obviously omitted/modify\n> something but I cannot figure out what.\n>\n> I am sure the error is probably stupid and obvious but I would really\n> appreciate if someone can point it out, I have read the code lines over\n> and over and I cannot find it.\n>\n> Thank you all for your kind help, I also welcome other suggestions to\n> introduce edge weight and visualize them than the procedure I am trying\n> to use.\n>\n> Regards\n>\n> Margaux\n>\n> ---------------\n>\n> Here is an example of the command I am trying to execute returning the\n> error I am facing.\n>\n> *#example of matrix*\n> m<-matrix(c(NA,4,2,0,4,NA,NA,3,2,NA,NA,1,0,3,1,NA),nrow=4,byrow=T)\n> colnames(m)=rownames(m)=c(\"A\",\"B\",\"C\",\"D\")\n>\n> *#assigning network property to the matrix*\n> netm<-network(m,matrix.type=\"adjacency\",directed=FALSE,ignore.eval=FALSE,\n>    names.eval=\"Weight\")\n>\n> *#assigning edge weight to the network*\n> wnet<-as.sociomatrix(netm,\"Weight\")\n> summary(netm) /###### the edge weight have been attached to the network\n> from what I can read in the summary/\n>\n> *#Visualize the network (well, trying to)*\n> gplot(netm,edge.lwd=netm%e%\"Weight\") /#### *Error in if (edge.lwd[i] >\n> 0) { : missing value where TRUE/FALSE needed*/\n> /*\n> */\n>\n> --\n> Margaux Rat\n> /\n> PhD candidate\n> Percy FitzPatrick Institute, DST-NRF Centre of Excellence.\n> University of Cape Town\n> /\n> /email: margaux.rat@gmail.com <mailto:margaux.rat@gmail.com>\n> web: http://www.fitzpatrick.uct.ac.za/docs/margaux.html\n> http://www.fitzpatrick.uct.ac.za/docs/sociable_weaver.htm\n> <http://www.fitzpatrick.uct.ac.za/docs/sociable_weaver.html>\n> /\n> phone:  (+27)21 650 3310\n> post:     Room 2.20,\n>              John Day Zoology Building\n>              Upper Campus, U.C.T.\n>              Rondebosch\n>              7701\n> /\n> /\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi Margaux,\n\nIt can't cope with NA values. There is a missing value for the dyad \n{B,C}. If you replace it with a non-negative real value, it works fine.\n\nYou may also want to use plot instead of gplo",
+      "thread_id": "thread-2c1ebaa0eee1",
+      "thread_depth": 1,
+      "month": "2015-01"
+    },
+    {
+      "id": "msg-d776d04304d3",
+      "message_id": "<54C21808.8070102@iplesp.upmc.fr>",
+      "from_name": "Thomas Obadia",
+      "from_email_hash": "ec8ad380f56cc4bda40f88b713e2b6b2bf8d8d2bf6da320165adfec6aa6c268f",
+      "date": "2015-01-23T01:44:40Z",
+      "subject": "[statnet_help] Imputate missing edges with ERGM using an EM approach",
+      "subject_clean": "[statnet_help] Imputate missing edges with ERGM using an EM approach",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi statnet users,\n\nAs part of my PhD, I'm working with a huge dynamical contact network \n(30s granularity, 600 nodes, ~6 months of data collection, roughly 3M \nedges in an undirected network). Ultimately, the idea is to study how \ndynamical processes influence the spread of nosocomial pathogens. The \ncontact network was measured in a hospital and there is a clear \nclustering according to medical wards (5 in the dataset). Before doing \nanything about a spreading process, I'm trying to deal with missing \ndata. I'm working with daily-aggregated networks for now, i.e. a set of \ndaily edges between each pair of nodes. Although I could weight edges \nwith daily-cumulative contact time, it's not really important right now.\n\nAll records were captured with individual sensors (meaning all \nparticipants wore a small wireless sensor at all time) that recorded the \nID of other sensors in close proximity. Obviously some sensor batteries \nfailed before others, and were not replaced until sheduled (there were 3 \ninterruptions in data collection on fixed date). Plotting the number of \ndaily edges shows a tendency to decrease after batteries are replaced, \nwhich makes sense: therefore, the dataset is incomplete, with missing \nvertices (and edges going from/to them)... up until the next battery change.\n\ni'm trying to implement an EM-like algorithm to impute missing edges, \nbut so far it leads to degeneracy by leading to a graph with way more \nedges than I should expect (initially 1900 edges, 10% density ; ends at \n16000 edges ; 40% density). Here is the idea:\n1) Initialize the network (let's call it nw) with all observed vertices \nand edges on day T.\n2) From sensor attribution record, identify missing vertices from the \nnetwork and add them (with add.vertices) along with a nodal attribute \nthat keeps trace of them.\n3) Fit an ERGM to nw, e.g.:\nergm.fit <- ergm(nw ~ edges + nodematch(\"affectation\", diff=TRUE, \nkeep=4:8) + nodematch(\"building\", diff=T, keep=c(1,3)) + \nnodefactor(\"service\") + nodecov(\"mif\"))\n\nNB: I have tried many of the higher-order structure ERGM termes (gwesp, \ngwdsp, altkstar) but couldn't really reproduce my observed graphs using \nthem. However the ERGM I quote here is able to reproduce graphs that \nlook a lot like the one I have observed in my dataset.\n\n4) Simulate a new graph from the fit (call it nw.sim)\n5) Extract the neighborhood of all vertices that have the \"missing\" \nattribute, and add these edges to the observed network nw\n6) Repeat steps 4 and 5 until Beta estimates are stable enough between \ntwo iterations.\n\n\nHere is the code I'm using:\n\nnw.orig <- nw\nconverge <- FALSE\niter <- 1\ntrace <- list()\ntrace[[iter]] <- list(nw=nw.orig, ergm=ergm.fit)\n\nwhile(!converge) {\n\n   #Simulate from previous ERGM fit\n   my.sim <- simulate(ergm.fit)\n\n   #Extract new edges from missing vertices\n   for (v in which(nw.orig %v% \"missing\")) {\n     #cat(match(v, which(nw.orig %v% \"missing\")), \"/\", \nlength(which(nw.orig %v% \"missing\")), \"\\n\", sep=\"\")\n     v.neighbors <- get.neighborhood(my.sim, v=v)\n     if (iter > 1) v.neighbors <- setdiff(v.neighbors, \nget.neighborhood(trace[[iter-1]]$nw, v=v))\n\n     #Add them to the original network\n     add.edges(nw, head=rep(v, length(v.neighbors)), tail=v.neighbors)\n   }\n   ergm.fit <- ergm(nw ~ edges + nodematch(\"affectation\", diff=TRUE, \nkeep=4:8) + nodematch(\"building\", diff=T, keep=c(1,3)) + \nnodefactor(\"service\") + nodecov(\"mif\"))\n   trace[[iter+1]] <- list(nw=nw, ergm=ergm.fit)\n   plot(trace[[iter]]$ergm$coef - ergm.fit$coef, main=paste0(\"Iteration \n\", iter))\n\n   #Is convergency reached ? Obviously the threshold is too high, but \nfor testing purposes ATM\n   conv <- trace[[iter]]$ergm$coef - ergm.fit$coef\n   if (!(any(conv > 0.1))) converge <- TRUE\n\n   #Failsafe...\n   if (iter > 100) break\n   iter <- iter+1\n}\n\n\n\nI am wondering if this approach is correct. Maybe I should constrain \nfits to graphs that have the same density as the observed ones ? Offset \nthe edges term ? I think degeneracy has to do with the terms in the ERGM \nbeing dependant on the number of edges, which is increasing from an \niteration to the next.\n\nI have another unrelated question, about ST-ERGMs. Are they in any way \nsuitable to use with this kind of data (see first paragraph with a quick \ndescription of the dynamical network), to simulate formation and \ndissolution of edges ? Daily-aggregated networks are already a \ncompressed version of the network, with time consistency not being kept, \nand I'm wondering how discretization might affect a spreading process. \nBut fitting an ST-ERGM to such a big dataset... maybe not a good idea ?\n\nAny help will be appreciated, and I hope I was clear enough!\nRegards,\nThomas\n\n-- \nThomas Obadia - PhD Student\n+33 (0)1 49 28 32 27\n\nINSERM U1136 - E1 : \"Surveillance et Mod?lisation des maladies infectieuses\"\nB?timent Caroli (Porte 2, rez-de-chauss?e)\nHopital Saint-Antoine\n184, rue du Faubourg Saint Antoine\n75571 PARIS CEDEX 12\nFRANCE",
+      "body_snippet": "Hi statnet users,\n\nAs part of my PhD, I'm working with a huge dynamical contact network \n(30s granularity, 600 nodes, ~6 months of data collection, roughly 3M \nedges in an undirected network). Ultimat",
+      "thread_id": "thread-d776d04304d3",
+      "thread_depth": 0,
+      "month": "2015-01"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-6d5f21c7e0bd",
+      "subject": "[statnet_help] Unbalanced sample size for testing homophily effect",
+      "message_count": 4,
+      "participants": [
+        "Shupin Li",
+        "martina morris"
+      ],
+      "started": "2015-01-07T01:40:30Z",
+      "last_reply": "2015-01-08T07:58:50Z",
+      "root_message_id": "msg-6d5f21c7e0bd"
+    },
+    {
+      "id": "thread-e122e43ac082",
+      "subject": "[statnet_help] Table from output of summary() function applied to several networks",
+      "message_count": 1,
+      "participants": [
+        "Alexander Semenov"
+      ],
+      "started": "2015-01-08T06:41:44Z",
+      "last_reply": "2015-01-08T06:41:44Z",
+      "root_message_id": "msg-e122e43ac082"
+    },
+    {
+      "id": "thread-767f9355c4cb",
+      "subject": "[statnet_help] ergm for weighted graphs",
+      "message_count": 1,
+      "participants": [
+        "Pavel N. Krivitsky"
+      ],
+      "started": "2015-01-14T21:39:24Z",
+      "last_reply": "2015-01-14T21:39:24Z",
+      "root_message_id": "msg-767f9355c4cb"
+    },
+    {
+      "id": "thread-2c1ebaa0eee1",
+      "subject": "[statnet_help] issues with representing edges weight",
+      "message_count": 2,
+      "participants": [
+        "Margaux Rat",
+        "Philip Leifeld"
+      ],
+      "started": "2015-01-19T01:48:16Z",
+      "last_reply": "2015-01-19T02:39:58Z",
+      "root_message_id": "msg-2c1ebaa0eee1"
+    },
+    {
+      "id": "thread-d776d04304d3",
+      "subject": "[statnet_help] Imputate missing edges with ERGM using an EM approach",
+      "message_count": 1,
+      "participants": [
+        "Thomas Obadia"
+      ],
+      "started": "2015-01-23T01:44:40Z",
+      "last_reply": "2015-01-23T01:44:40Z",
+      "root_message_id": "msg-d776d04304d3"
+    }
+  ]
+}

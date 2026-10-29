@@ -1,0 +1,231 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2010-05",
+  "messages": [
+    {
+      "id": "msg-7c72ae61ce4a",
+      "message_id": "<bc5af9c5a28efb433e58d1ebe69f1a4d@email.unc.edu>",
+      "from_name": "dnolin",
+      "from_email_hash": "9ea4374cadcd0478c9da820629ed01f9f63173dc4f2e1510510ac970233cb3df",
+      "date": "2010-05-04T10:31:38Z",
+      "subject": "[statnet_help] anyone know how to extract largest connected subnetwork from a netowrk object",
+      "subject_clean": "[statnet_help] anyone know how to extract largest connected subnetwork from a netowrk object",
+      "in_reply_to": "<53C997A6-C3D9-4DAC-9D1B-6FBA5AB9818B@stat.psu.edu>",
+      "references": [
+        "<021601cadb88$2f58e2b0$8e0aa810$@edu>",
+        "<53C997A6-C3D9-4DAC-9D1B-6FBA5AB9818B@stat.psu.edu>"
+      ],
+      "body_plain": "I don't know if this was ever satisfactorily answered, but the general\nmethod I use to extract a subnetwork is to create a copy of the source\nnetwork using network.copy()*, then delete from the copy the nodes I don't\nwant. This retains all the attribute data for the sub-network. (*If you use\nregular assignment to create a copy of your network then any vertices\ndeleted from the child network object will also be deleted from the parent\nnetwork object for some reason!)\n\nI've included two example functions (below my sig). The firstextracts the\nlargest component from a network; the second extracts a network consisting\nof all nodes sharing a specified vertex attribute value. I think these\nfunctions should be pretty generic, though I've only tested them on two\nnetworks.\n\nCheers,\nDave\n____________________________\nDavid A. Nolin\nPostdoctoral Scholar\nCarolina Population Center\nUniversity of North Carolina\n\n\n### Function to extract largest component of a network:\n### Step 1: Create network copy of source network\n### Step 2: Extract node set of largest component\n### Step 3: Define a cut set consisting of all other nodes\n### Step 4: Delete nodes not in largest component from network copy\n\nextract.lc.net<-function(x){\ntemp<-network.copy(x)\ntemp.lc<-component.largest(temp)\ncut.set<-row(as.matrix(temp.lc))[temp.lc==F]\ntemp<-delete.vertices(temp, cut.set)\nreturn(temp)}\n\n### Load example data\ndata(\"faux.magnolia.high\")\n\n### Extract largest component\nfmh.lc<-extract.lc.net(faux.magnolia.high)\n\n### Test: check that new network is same size as largest component\nnetwork.size(fmh.lc)\nlength(component.largest(faux.magnolia.high)[component.largest(faux.magnolia.high)==T])\n\n### Check that attributes are attached\nlist.vertex.attributes(fmh.lc)\n\n\n### Function to extract a network of all nodes having a specified attribute\nvalue\nextract.att.net<-function(net,att,val){\ntemp<-network.copy(net)\nnodes.having.val<-temp%v%att==val\ncut.set<-row(as.matrix(nodes.having.val))[nodes.having.val==F]\ntemp<-delete.vertices(temp, cut.set)\nreturn(temp)}\n\n### Test: extract seperate networks of all females and males from\nfaux.magnolia.high\nfmh.F<-extract.att.net(faux.magnolia.high, \"Sex\", \"F\")\nfmh.M<-extract.att.net(faux.magnolia.high, \"Sex\", \"M\")\n\n### Check result\nnetwork.size(fmh.F)\nnetwork.size(fmh.M)\ntable(faux.magnolia.high%v%\"Sex\")\n\n### Check that attributes are attached:\nlist.vertex.attributes(fmh.F)\nlist.vertex.attributes(fmh.M)\n\n\n\n\n\nOn Wed, 14 Apr 2010 08:02:06 -0400, David Hunter <dhunter@stat.psu.edu>\nwrote:\n> The sna package has a 'component.largest' function that will identify  \n> the correct nodes.\n> \n>  > large <- component.largest(faux.mesa.high)\n>  > sum(large)\n> [1] 120\n> \n> How you use this depends on what you mean by \"extract\".  For instance,  \n> if you just want to plot, you could use\n> \n> m <- faux.mesa.high[large,large]\n> plot(network(m, dir=F))\n> \n> What I don't know how to do is to quickly create a new network object  \n> on just these 120 nodes that retains all of the same properties of the  \n> original, such as node and edge covariates.  One could do it by hand,  \n> but does anyone know of another way?\n> \n> Dave\n> \n> \n> \n> On Apr 14, 2010, at 12:08 AM, Feng Luo wrote:\n> \n>> Dear All:\n>>\n>> I would like to extract the largest connected subnetwork from the  \n>> faux.mesa.high data provided by ergm package. anyone know a quick  \n>> way to do this? Thanks in advance!\n>>\n>> Best,\n>> Feng\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "I don't know if this was ever satisfactorily answered, but the general\nmethod I use to extract a subnetwork is to create a copy of the source\nnetwork using network.copy()*, then delete from the copy t",
+      "thread_id": "thread-7c72ae61ce4a",
+      "thread_depth": 0,
+      "month": "2010-05"
+    },
+    {
+      "id": "msg-ef1a70bc6ec4",
+      "message_id": "<56028.165.91.113.161.1273726560.squirrel@m1.stat.tamu.edu>",
+      "from_name": "kentjin@stat.tamu.edu",
+      "from_email_hash": "60ea3323291c210446e5500f2304ead7db34b77a128be681cead1fcaae67439d",
+      "date": "2010-05-12T21:56:00Z",
+      "subject": "[statnet_help] Use ERGM with Robbins-Monro Algorithm.",
+      "subject_clean": "[statnet_help] Use ERGM with Robbins-Monro Algorithm.",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello! I want to analyze my network data using Robbins-Monro algorithm\nproposed by Snijders (2002).\n\nHere is my code for Robbins-Monro algorithm\n-------------------------------------------------------------------------\nform <- X ~ edges + gwdegree(0.2, fixed=TRUE) + gwesp(0.2, fixed=TRUE)\nm1 <- ergm(formula=form, MPLEonly=TRUE)\nm2 <- ergm(formula=form, theta0=m1$coef, seed=12345,\n  control=control.ergm(style=\"Robbins-Monro\"), verb=TRUE)\n-------------------------------------------------------------------------\n\nHowever, I have an error message as following:\n-------------------------------------------------------------------------\nEvaluating network in model\nInitializing model.\nInitializing Metropolis-Hastings proposal.\nFitting initial model.\nFitting ERGM.\nRobbins-Monro algorithm with theta_0 equal to:\n          edges        gwdegree gwesp.fixed.0.2\n     -3.0849596      -0.3656705       1.1951401\nPhase 1:  16 iterations (interval=100)\nError in vector(\"integer\", length) : invalid 'length' argument\n-------------------------------------------------------------------------\n\nHow can I correct my code to find MCMCMLE with Robbins-Monro algorithm?\nThank you very much.\n\nSincerely,\nIck Hoon Jin",
+      "body_snippet": "Hello! I want to analyze my network data using Robbins-Monro algorithm\nproposed by Snijders (2002).\n\nHere is my code for Robbins-Monro algorithm\n-------------------------------------------------------",
+      "thread_id": "thread-ef1a70bc6ec4",
+      "thread_depth": 0,
+      "month": "2010-05"
+    },
+    {
+      "id": "msg-54f0144b0d01",
+      "message_id": "<AANLkTimGcRobReR-HAPleBOXo_WwyQ167NCvXr2iLQF3@mail.gmail.com>",
+      "from_name": "Moses Boudourides",
+      "from_email_hash": "c5624448747271419acb164061064e1a7b0a1e969681d0b921805e16e6affe4a",
+      "date": "2010-05-16T08:56:53Z",
+      "subject": "[statnet_help] Question about measuring associations among a set of valued networks",
+      "subject_clean": "[statnet_help] Question about measuring associations among a set of valued networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI've got 9 valued networks each one with 24 actors and each one for 8\ndifferent countries., i.e., totally 72 valued graphs, and I would like\nto compute the QAP correlation among all pairs of networks in this set\n(i.e., 2,556 pairs of networks).\n\nI was wondering if there is an automatic way to obtain this\ncorrelation matrix altogether instead of running it separately for\neach pair of networks.\n\nAlso: what is the QAP command in statnet? If I knew this, I might try\nto program the total computation in R.\n\nBest,\n\n--Moses",
+      "body_snippet": "Hello,\n\nI've got 9 valued networks each one with 24 actors and each one for 8\ndifferent countries., i.e., totally 72 valued graphs, and I would like\nto compute the QAP correlation among all pairs of n",
+      "thread_id": "thread-54f0144b0d01",
+      "thread_depth": 0,
+      "month": "2010-05"
+    },
+    {
+      "id": "msg-93d1debe52fa",
+      "message_id": "<4BF04AAC.3070903@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-05-16T12:42:36Z",
+      "subject": "[statnet_help] Question about measuring associations among a set of\tvalued networks",
+      "subject_clean": "[statnet_help] Question about measuring associations among a set of\tvalued networks",
+      "in_reply_to": "<AANLkTimGcRobReR-HAPleBOXo_WwyQ167NCvXr2iLQF3@mail.gmail.com>",
+      "references": [
+        "<AANLkTimGcRobReR-HAPleBOXo_WwyQ167NCvXr2iLQF3@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Moses.  To get graph correlations/covariances, try gcor and gcov. \n(gscor and gscov do the same thing for partially labeled structures; see \nalso hdist and structdist for distances.)  If passed multiple graphs, \nthese will return the appropriate correlation/covariance matrix (and the \ndata can be valued).  QAP is a permutation procedure that provides a \nnull distribution for bivariate graph statistics (e.g., the graph \ncorrelation, Hubert's gamma, Hamming distance, etc.), so there's not \nactually such a thing as a \"QAP Correlation\" per se.  The correlations \nand such obtained from the above can, however, be compared against QAP \nnulls using the qaptest command.  For a related parametric approach, try \nthe optional netperm package.\n\nHope that helps,\n\n-Carter\n\nOn 05/16/2010 08:56 AM, Moses Boudourides wrote:\n> Hello,\n>\n> I've got 9 valued networks each one with 24 actors and each one for 8\n> different countries., i.e., totally 72 valued graphs, and I would like\n> to compute the QAP correlation among all pairs of networks in this set\n> (i.e., 2,556 pairs of networks).\n>\n> I was wondering if there is an automatic way to obtain this\n> correlation matrix altogether instead of running it separately for\n> each pair of networks.\n>\n> Also: what is the QAP command in statnet? If I knew this, I might try\n> to program the total computation in R.\n>\n> Best,\n>\n> --Moses\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi, Moses.  To get graph correlations/covariances, try gcor and gcov. \n(gscor and gscov do the same thing for partially labeled structures; see \nalso hdist and structdist for distances.)  If passed mu",
+      "thread_id": "thread-54f0144b0d01",
+      "thread_depth": 1,
+      "month": "2010-05"
+    },
+    {
+      "id": "msg-f9d5ed17c7a6",
+      "message_id": "<7BA5BF9A-4457-45C0-BC48-D38D7CBF97C6@gmail.com>",
+      "from_name": "David Huffaker",
+      "from_email_hash": "74e176968cb9462d0080ef5543b9db095040b2b269bdd4e207714237cc99f271",
+      "date": "2010-05-20T10:11:58Z",
+      "subject": "[statnet_help] decay for gwidegree",
+      "subject_clean": "[statnet_help] decay for gwidegree",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nIs there a best practices for setting the decay attribute in the gwidegree term? \n\nThanks in advance!\n\nDavid",
+      "body_snippet": "Hi all,\n\nIs there a best practices for setting the decay attribute in the gwidegree term? \n\nThanks in advance!\n\nDavid",
+      "thread_id": "thread-f9d5ed17c7a6",
+      "thread_depth": 0,
+      "month": "2010-05"
+    },
+    {
+      "id": "msg-787e22b3ef56",
+      "message_id": "<alpine.WNT.2.00.1005201325250.3360@chandra.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2010-05-20T13:28:51Z",
+      "subject": "[statnet_help] decay for gwidegree",
+      "subject_clean": "[statnet_help] decay for gwidegree",
+      "in_reply_to": "<7BA5BF9A-4457-45C0-BC48-D38D7CBF97C6@gmail.com>",
+      "references": [
+        "<7BA5BF9A-4457-45C0-BC48-D38D7CBF97C6@gmail.com>"
+      ],
+      "body_plain": "Hi David,\n\nI'm not a big user of the directed gw* terms, but for the undirected ones \nmy general rule of thumb is to start low with the decay term.  As a \ngeneral rule of thumb for empirical data, the lower the decay term is, the \nless likely the model is to be degenerate. So I typically start around \n0.25 or so.  For data I've worked with I often find there is little \ndiffence in model fit across a range of decay terms, often 0.5 to 1.5 or \nso. But then again, I've only applied these to a specific social network \ndomain (adolescent friendship nets) and the details of my experience may \nnot be universal.\n\nCheers,\nSteve\n\n\n\nOn Thu, 20 May \n2010, David Huffaker wrote:\n\n> Date: Thu, 20 May 2010 13:11:58 -0400\n> From: David Huffaker <huffakerlist@gmail.com>\n> To: statnet_help@u.washington.edu\n> Subject: [statnet_help] decay for gwidegree\n> \n> Hi all,\n>\n> Is there a best practices for setting the decay attribute in the gwidegree term?\n>\n> Thanks in advance!\n>\n> David_______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k            *\n**************************************************************************",
+      "body_snippet": "Hi David,\n\nI'm not a big user of the directed gw* terms, but for the undirected ones \nmy general rule of thumb is to start low with the decay term.  As a \ngeneral rule of thumb for empirical data, the",
+      "thread_id": "thread-f9d5ed17c7a6",
+      "thread_depth": 1,
+      "month": "2010-05"
+    },
+    {
+      "id": "msg-f729767dc632",
+      "message_id": "<7dc8bd151e936a198f38fe04a154faa0.squirrel@webmail.stat.unipd.it>",
+      "from_name": "Soriani Nicola",
+      "from_email_hash": "bad2caca9903706f9e3ae9b9200f838b32f69bcb1198b839eb309a817ad8dd27",
+      "date": "2010-05-21T14:45:42Z",
+      "subject": "[statnet_help] Problems for ERGMM",
+      "subject_clean": "[statnet_help] Problems for ERGMM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI still have problems for ERGMM to combine covariates and random effect.\n\n> For direct network it gives me an error message, for example:\n\ndata(sampson)\n\nergmm(samplike~euclidean(d=2,G=3)\n+ +rsender(var=1, var.df=3)+rreceiver(var=1, var.df=3)\n+ +sendercov(\"group\", force.factor=FALSE,  mean=0, var=4)\n+ +receivercov(\"group\", force.factor=FALSE,  mean=0, var=4)\n+ ,control=ergmm.control(burnin=20000))\n\nErrore in ergmm.MCMC.C(model, burnin.state, prior, burnin.control,\nsample.size = burnin.size) :\n  NA/NaN/Inf in chiamata a funzione esterna (arg 56)\n\n> For undirected the algorithm converges to a model with a bad diagnosis,\nexample:\n\ndata(florentine)\n\nm<-ergmm(flobusiness~euclidean(d=2)+socialitycov(\"priorates\"))\nmcmc.diagnostics(m)\n\nm1<-ergmm(flobusiness~euclidean(d=2)+rsociality+socialitycov(\"priorates\"))\nmcmc.diagnostics(m1)\n\nThanks in advance!\n\nNicola\n\n\n\n-- \nSoriani Nicola\nScuola di Dottorato in Scienze Statistiche XXIII Ciclo\nDipartimento di Scienze Statistiche, Universit? di Padova\nStanza 122 - Tel. 049 827 4174\nPh.D. Student\nDepartment of Statistical Sciences\nUniversity of Padova, Italy",
+      "body_snippet": "Hi all,\n\nI still have problems for ERGMM to combine covariates and random effect.\n\n> For direct network it gives me an error message, for example:\n\ndata(sampson)\n\nergmm(samplike~euclidean(d=2,G=3)\n+ +",
+      "thread_id": "thread-f729767dc632",
+      "thread_depth": 0,
+      "month": "2010-05"
+    },
+    {
+      "id": "msg-721c0341b62d",
+      "message_id": "<5A885756137C76448B1DFEADAF4EAD4F0604D115@EXCHF2.lse.ac.uk>",
+      "from_name": "Y.Millo@lse.ac.uk",
+      "from_email_hash": "58819dca9561ff642d527dc6d8013b295b629b04d52354e389ad5f44d64b6d52",
+      "date": "2010-05-25T01:17:08Z",
+      "subject": "[statnet_help] Modelling 'combined' homophily",
+      "subject_clean": "[statnet_help] Modelling 'combined' homophily",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\nThis may be a newbie question, so apologies in advance. \nI am trying to run a model for a dataset of fund managers and brokers. It is an undirected network of 26 nodes and 70 ties. Each node has two attributes: ?type?, which can get one of two categorical values (either ?fund manager? or ?broker) and ?last job?, which can get one of 11 values. The effect I would like to model is the following: if, for two nodes, the ?type? value is identical and equals ?fund manager? and, for the same two nodes, ?last job? is identical then I expect to find homophily above chance. In contrast, if the two nodes? ?type? variable is different  or both nodes have ?broker? as ?type? then I would not expect to find significant homophily.\nI am not sure how to model. In case this helps, I used the following model to check for the ?non-combined? effect (?type? on its own and ?last job? on its own):\n\n> m2.7<-ergm( g ~ edges + nodematch(\"type\") + nodematch(\"lastjob\") )\n> summary(m2.7)\n\n==========================\nSummary of model fit\n==========================\n\nFormula:   g ~ edges + nodematch(\"type\") + nodematch(\"lastjob\")\n\nNewton-Raphson iterations:  5 \n\nMaximum Likelihood Results:\n                  Estimate Std. Error MCMC s.e.  p-value    \nedges              -0.3711     0.2024        NA 0.067721 .  \nnodematch.type     -2.0826     0.3176        NA  < 1e-04 ***\nnodematch.lastjob   1.5025     0.4079        NA 0.000269 ***\n---\nSignif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1 \n\nFor this model, the pseudolikelihood is the same as the likelihood.\n\n    Null  Deviance: 450.55  on 325  degrees of freedom\n Residual Deviance: 282.39  on 322  degrees of freedom\n          Deviance: 168.16  on   3  degrees of freedom\n \nAIC: 288.39    BIC: 299.74\n\nI also tried to combine the ?type? and ?last job? to one variable, but then the results were not significant:\n\n> m2.71<-ergm( g ~ edges + nodematch(\"type\") + nodematch(\"lastjob\") + nodematch(\"typelastjob\") )\n> summary(m2.71)\n\n==========================\nSummary of model fit\n==========================\n\nFormula:   g ~ edges + nodematch(\"type\") + nodematch(\"lastjob\") + nodematch(\"typelastjob\")\n\nNewton-Raphson iterations:  6 \n\nMaximum Likelihood Results:\n                      Estimate Std. Error MCMC s.e. p-value    \nedges                  -0.3365     0.2070        NA   0.105    \nnodematch.type         -2.1778     0.3465        NA  <1e-04 ***\nnodematch.lastjob       1.0296     0.7368        NA   0.163    \nnodematch.typelastjob   0.6517     0.8738        NA   0.456    \n---\nSignif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1 \n\nFor this model, the pseudolikelihood is the same as the likelihood.\n\n    Null  Deviance: 450.55  on 325  degrees of freedom\n Residual Deviance: 281.85  on 321  degrees of freedom\n          Deviance: 168.70  on   4  degrees of freedom\n \nAIC: 289.85    BIC: 304.98\n\nSo, any ideas how I can go about modelling this effect would be highly appreciated.\nMany thanks,\nYuval\n\n\nYuval Millo \nLecturer \nDepartment of Accounting \nLondon School of Economics and Political Science\nHoughton Street\nLondon WC2A 2AE \nUnited Kingdom\n\nhttp://www.lse.ac.uk/collections/accounting/facultyAndStaff/profiles/Millo.htm \n\n\nPlease access the attached hyperlink for an important electronic communications disclaimer: http://www.lse.ac.uk/collections/planningAndCorporatePolicy/legalandComplianceTeam/legal/disclaimer.htm",
+      "body_snippet": "Hi,\nThis may be a newbie question, so apologies in advance. \nI am trying to run a model for a dataset of fund managers and brokers. It is an undirected network of 26 nodes and 70 ties. Each node has t",
+      "thread_id": "thread-721c0341b62d",
+      "thread_depth": 0,
+      "month": "2010-05"
+    },
+    {
+      "id": "msg-b1eb9491ad47",
+      "message_id": "<AANLkTilP88hzCOe9E2zFHsgIky2fKAOi2ImXRh8Em5ei@mail.gmail.com>",
+      "from_name": "Yun Huang",
+      "from_email_hash": "adf4da61062e4fa75371efaffb9053bf686d51778199fff94d9a21334bfff133",
+      "date": "2010-05-25T08:23:27Z",
+      "subject": "[statnet_help] Modelling 'combined' homophily",
+      "subject_clean": "[statnet_help] Modelling 'combined' homophily",
+      "in_reply_to": "<5A885756137C76448B1DFEADAF4EAD4F0604D115@EXCHF2.lse.ac.uk>",
+      "references": [
+        "<5A885756137C76448B1DFEADAF4EAD4F0604D115@EXCHF2.lse.ac.uk>"
+      ],
+      "body_plain": "Hi Yuval,\n\nOne thing you can try it to use nodematch(\"type\", diff = TRUE) instead\nof nodematch(\"type\"). This will introduce two statistics in the model:\n\nnodematch.type ?fund manager?=?fund manager?\nnodematch.type ?broker?=?broker?\n\nCombining with nodematch.lastjob you should be able to explain the\nhomophily effects.\n\nBest,\nYun\n\n\nOn Tue, May 25, 2010 at 3:17 AM,  <Y.Millo@lse.ac.uk> wrote:\n> Hi,\n> This may be a newbie question, so apologies in advance.\n> I am trying to run a model for a dataset of fund managers and brokers. It is an undirected network of 26 nodes and 70 ties. Each node has two attributes: ?type?, which can get one of two categorical values (either ?fund manager? or ?broker) and ?last job?, which can get one of 11 values. The effect I would like to model is the following: if, for two nodes, the ?type? value is identical and equals ?fund manager? and, for the same two nodes, ?last job? is identical then I expect to find homophily above chance. In contrast, if the two nodes? ?type? variable is different ?or both nodes have ?broker? as ?type? then I would not expect to find significant homophily.\n> I am not sure how to model. In case this helps, I used the following model to check for the ?non-combined? effect (?type? on its own and ?last job? on its own):\n>\n>> m2.7<-ergm( g ~ edges + nodematch(\"type\") + nodematch(\"lastjob\") )\n>> summary(m2.7)\n>\n> ==========================\n> Summary of model fit\n> ==========================\n>\n> Formula: ? g ~ edges + nodematch(\"type\") + nodematch(\"lastjob\")\n>\n> Newton-Raphson iterations: ?5\n>\n> Maximum Likelihood Results:\n> ? ? ? ? ? ? ? ? ?Estimate Std. Error MCMC s.e. ?p-value\n> edges ? ? ? ? ? ? ?-0.3711 ? ? 0.2024 ? ? ? ?NA 0.067721 .\n> nodematch.type ? ? -2.0826 ? ? 0.3176 ? ? ? ?NA ?< 1e-04 ***\n> nodematch.lastjob ? 1.5025 ? ? 0.4079 ? ? ? ?NA 0.000269 ***\n> ---\n> Signif. codes: ?0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>\n> For this model, the pseudolikelihood is the same as the likelihood.\n>\n> ? ?Null ?Deviance: 450.55 ?on 325 ?degrees of freedom\n> ?Residual Deviance: 282.39 ?on 322 ?degrees of freedom\n> ? ? ? ? ?Deviance: 168.16 ?on ? 3 ?degrees of freedom\n>\n> AIC: 288.39 ? ?BIC: 299.74\n>\n> I also tried to combine the ?type? and ?last job? to one variable, but then the results were not significant:\n>\n>> m2.71<-ergm( g ~ edges + nodematch(\"type\") + nodematch(\"lastjob\") + nodematch(\"typelastjob\") )\n>> summary(m2.71)\n>\n> ==========================\n> Summary of model fit\n> ==========================\n>\n> Formula: ? g ~ edges + nodematch(\"type\") + nodematch(\"lastjob\") + nodematch(\"typelastjob\")\n>\n> Newton-Raphson iterations: ?6\n>\n> Maximum Likelihood Results:\n> ? ? ? ? ? ? ? ? ? ? ?Estimate Std. Error MCMC s.e. p-value\n> edges ? ? ? ? ? ? ? ? ?-0.3365 ? ? 0.2070 ? ? ? ?NA ? 0.105\n> nodematch.type ? ? ? ? -2.1778 ? ? 0.3465 ? ? ? ?NA ?<1e-04 ***\n> nodematch.lastjob ? ? ? 1.0296 ? ? 0.7368 ? ? ? ?NA ? 0.163\n> nodematch.typelastjob ? 0.6517 ? ? 0.8738 ? ? ? ?NA ? 0.456\n> ---\n> Signif. codes: ?0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>\n> For this model, the pseudolikelihood is the same as the likelihood.\n>\n> ? ?Null ?Deviance: 450.55 ?on 325 ?degrees of freedom\n> ?Residual Deviance: 281.85 ?on 321 ?degrees of freedom\n> ? ? ? ? ?Deviance: 168.70 ?on ? 4 ?degrees of freedom\n>\n> AIC: 289.85 ? ?BIC: 304.98\n>\n> So, any ideas how I can go about modelling this effect would be highly appreciated.\n> Many thanks,\n> Yuval\n>\n>\n> Yuval Millo\n> Lecturer\n> Department of Accounting\n> London School of Economics and Political Science\n> Houghton Street\n> London WC2A 2AE\n> United Kingdom\n>\n> http://www.lse.ac.uk/collections/accounting/facultyAndStaff/profiles/Millo.htm\n>\n>\n> Please access the attached hyperlink for an important electronic communications disclaimer: http://www.lse.ac.uk/collections/planningAndCorporatePolicy/legalandComplianceTeam/legal/disclaimer.htm\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \nScience of Networks in Communities (SONIC)\nIndustrial Engineering and Management Sciences\nNorthwestern University\nGoogle Voice: 847-220-7310\nOffice: FSB 1.459",
+      "body_snippet": "Hi Yuval,\n\nOne thing you can try it to use nodematch(\"type\", diff = TRUE) instead\nof nodematch(\"type\"). This will introduce two statistics in the model:\n\nnodematch.type ?fund manager?=?fund manager?\nn",
+      "thread_id": "thread-721c0341b62d",
+      "thread_depth": 1,
+      "month": "2010-05"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-7c72ae61ce4a",
+      "subject": "[statnet_help] anyone know how to extract largest connected subnetwork from a netowrk object",
+      "message_count": 1,
+      "participants": [
+        "dnolin"
+      ],
+      "started": "2010-05-04T10:31:38Z",
+      "last_reply": "2010-05-04T10:31:38Z",
+      "root_message_id": "msg-7c72ae61ce4a"
+    },
+    {
+      "id": "thread-ef1a70bc6ec4",
+      "subject": "[statnet_help] Use ERGM with Robbins-Monro Algorithm.",
+      "message_count": 1,
+      "participants": [
+        "kentjin@stat.tamu.edu"
+      ],
+      "started": "2010-05-12T21:56:00Z",
+      "last_reply": "2010-05-12T21:56:00Z",
+      "root_message_id": "msg-ef1a70bc6ec4"
+    },
+    {
+      "id": "thread-54f0144b0d01",
+      "subject": "[statnet_help] Question about measuring associations among a set of valued networks",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Moses Boudourides"
+      ],
+      "started": "2010-05-16T08:56:53Z",
+      "last_reply": "2010-05-16T12:42:36Z",
+      "root_message_id": "msg-54f0144b0d01"
+    },
+    {
+      "id": "thread-f9d5ed17c7a6",
+      "subject": "[statnet_help] decay for gwidegree",
+      "message_count": 2,
+      "participants": [
+        "David Huffaker",
+        "Steven Goodreau"
+      ],
+      "started": "2010-05-20T10:11:58Z",
+      "last_reply": "2010-05-20T13:28:51Z",
+      "root_message_id": "msg-f9d5ed17c7a6"
+    },
+    {
+      "id": "thread-f729767dc632",
+      "subject": "[statnet_help] Problems for ERGMM",
+      "message_count": 1,
+      "participants": [
+        "Soriani Nicola"
+      ],
+      "started": "2010-05-21T14:45:42Z",
+      "last_reply": "2010-05-21T14:45:42Z",
+      "root_message_id": "msg-f729767dc632"
+    },
+    {
+      "id": "thread-721c0341b62d",
+      "subject": "[statnet_help] Modelling 'combined' homophily",
+      "message_count": 2,
+      "participants": [
+        "Y.Millo@lse.ac.uk",
+        "Yun Huang"
+      ],
+      "started": "2010-05-25T01:17:08Z",
+      "last_reply": "2010-05-25T08:23:27Z",
+      "root_message_id": "msg-721c0341b62d"
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2009-02",
+  "messages": [
+    {
+      "id": "msg-5aefc13ded5e",
+      "message_id": "<5FABCA8D-DE67-4E46-9619-B7893C934641@uchicago.edu>",
+      "from_name": "Smith, Edward C",
+      "from_email_hash": "8dbd2818f01eb1a9069a9733a5590e14e398569371a92cc9fffa7090ab84c41e",
+      "date": "2009-02-01T22:27:26Z",
+      "subject": "[statnet_help] 64-bit arch install?",
+      "subject_clean": "[statnet_help] 64-bit arch install?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi list - I'm having memory allocation errors on a 32-bit architecture  \n(on a Mac OSX - Leopard).  Not sure why that is as I have 4gb RAM and  \nI am getting the \"Error: Cannot allocate vector of length xxxx\" where  \nxxxx is 200mb.  Unfortunately, I can't seem to figure out how to up my  \nmemory allocation as the R options that are standard on a PC platform  \ndo not do anything on a Mac OS.  So, first, I guess I should ask if  \nanyone else uses a Mac and if they know of a solution to this. Second,  \nbecause of the memory issues, I installed the 64-bit version of R  \nalong with a Mac GUI to run the 64-bit version.  Does well, runs fast,  \nthe only problem is, I can't load statnet, getting the message that  \nstatnet is only for a 32-bit architecture.  So, one way gets me the  \npackage I need without the memory.  The other gets me the memory  \nwithout the package.  Any suggestions or workarounds would be much  \nappreciated.\n\nThanks,\nNed",
+      "body_snippet": "Hi list - I'm having memory allocation errors on a 32-bit architecture  \n(on a Mac OSX - Leopard).  Not sure why that is as I have 4gb RAM and  \nI am getting the \"Error: Cannot allocate vector of leng",
+      "thread_id": "thread-5aefc13ded5e",
+      "thread_depth": 0,
+      "month": "2009-02"
+    },
+    {
+      "id": "msg-2745d1cc549b",
+      "message_id": "<alpine.OSX.1.10.0902051801130.36354@hill60.bio.warwick.ac.uk>",
+      "from_name": "Thomas House",
+      "from_email_hash": "44e1dc2875e4948e805dbf7792c4b8dfc4c9a11a8290220ced2459bb1c24eaa6",
+      "date": "2009-02-05T10:28:32Z",
+      "subject": "[statnet_help] Epidemic Modelling",
+      "subject_clean": "[statnet_help] Epidemic Modelling",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI was wondering if this list could help me with a couple of questions\nrelated to some work I am doing with the aim of modelling infectious\ndisease. While I'm new to both R and statnet, I would much rather\ncontribute to an existing (particularly open-source) project than write\nthings from scratch.\n\n1) I would like to generate undirected networks with a certain number of\nnodes, edges, triangles, 4-loops and other 4-motifs. Most of the statnet\ndocumentation assumes that there is a comparator 'real' dataset, but is\nthere a simple way to construct networks a priori? (Data on\nepidemiological rather than social connections is less often a detailed\nstudy of a small group and more often population-level measurements or\ninference on local structure.)\n\n2) Assuming that model terms for the full family of undirected\nfour-motifs is not already being coded by somebody, does anyone have any\nquick hints on how to start contributing? I've downloaded ergmuserterms\nand I'm proficient in C but as I said above, am new to R so it's not\nthat easy for me to understand that package just from the download.\n\nThanks in advance,\nThomas.\n\n\n=====================================================================\nDepartment of Biological Sciences (and Warwick Mathematics Institute)\nUniversity of Warwick, Coventry, CV4 7AL.       Tel: +44 24 7652 8368\nwww2.warwick.ac.uk/fac/sci/bio/res/populations/riginfo/people/thomas/",
+      "body_snippet": "Hello,\n\nI was wondering if this list could help me with a couple of questions\nrelated to some work I am doing with the aim of modelling infectious\ndisease. While I'm new to both R and statnet, I would",
+      "thread_id": "thread-2745d1cc549b",
+      "thread_depth": 0,
+      "month": "2009-02"
+    },
+    {
+      "id": "msg-4c24eeb703d5",
+      "message_id": "<2B7F23B2-9226-4E08-ABF9-A4C110F83EE8@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2009-02-13T13:15:52Z",
+      "subject": "[statnet_help] Epidemic Modelling",
+      "subject_clean": "[statnet_help] Epidemic Modelling",
+      "in_reply_to": "<alpine.OSX.1.10.0902051801130.36354@hill60.bio.warwick.ac.uk>",
+      "references": [
+        "<alpine.OSX.1.10.0902051801130.36354@hill60.bio.warwick.ac.uk>"
+      ],
+      "body_plain": "Hi Thomas.  I've written some comments below.  I apologize in advance  \nthat they're a bit on the vague side.\n\nOn Feb 5, 2009, at 1:28 PM, Thomas House wrote:\n\n> Hello,\n>\n> I was wondering if this list could help me with a couple of questions\n> related to some work I am doing with the aim of modelling infectious\n> disease. While I'm new to both R and statnet, I would much rather\n> contribute to an existing (particularly open-source) project than  \n> write\n> things from scratch.\n>\n\nHear, hear! :)\n\n> 1) I would like to generate undirected networks with a certain  \n> number of\n> nodes, edges, triangles, 4-loops and other 4-motifs. Most of the  \n> statnet\n> documentation assumes that there is a comparator 'real' dataset, but  \n> is\n> there a simple way to construct networks a priori? (Data on\n> epidemiological rather than social connections is less often a  \n> detailed\n> study of a small group and more often population-level measurements or\n> inference on local structure.)\n>\n\nI think that the answer is no -- there is not an easy way to do this  \nand in general (i.e., for general types of motifs that you'd like to  \nsee) I think this is a research-level question -- though perhaps  \nsomeone else on the list can supply a more complete answer.\n\n> 2) Assuming that model terms for the full family of undirected\n> four-motifs is not already being coded by somebody, does anyone have  \n> any\n> quick hints on how to start contributing? I've downloaded  \n> ergmuserterms\n> and I'm proficient in C but as I said above, am new to R so it's not\n> that easy for me to understand that package just from the download.\n>\n\nI am not aware of anyone, at least in our group, who has coded the  \nfour-motifs.\n\nThe best thing to do at present is to do exactly what you have done,  \nnamely download ergmuserterms.  You should also take a look at the  \ncode in that package, particularly in the files InitErgmTerm.users.R  \n(see the comments at the top) and changestats.h.  However, in the not- \ntoo-distant future there will be better documentation on this, and I  \nmust apologize personally that said documentation does not already  \nexist!  (It's on the to-do list...)\n\nHope this helps a bit,\nDave\n\n\n> Thanks in advance,\n> Thomas.\n>\n>\n> =====================================================================\n> Department of Biological Sciences (and Warwick Mathematics Institute)\n> University of Warwick, Coventry, CV4 7AL.       Tel: +44 24 7652 8368\n> www2.warwick.ac.uk/fac/sci/bio/res/populations/riginfo/people/thomas/\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Thomas.  I've written some comments below.  I apologize in advance  \nthat they're a bit on the vague side.\n\nOn Feb 5, 2009, at 1:28 PM, Thomas House wrote:\n\n> Hello,\n>\n> I was wondering if this lis",
+      "thread_id": "thread-2745d1cc549b",
+      "thread_depth": 1,
+      "month": "2009-02"
+    },
+    {
+      "id": "msg-3d101e38dc39",
+      "message_id": "<01ee01c99541$7e2ad940$7a808bc0$@dierkes@gmx.de>",
+      "from_name": "Torsten Dierkes",
+      "from_email_hash": "9db4e5f4cda56b4a94c5659d5858514dd68394077ba1b4f03ab5b04e94305132",
+      "date": "2009-02-22T15:01:27Z",
+      "subject": "[statnet_help] selecting subgraphs based on vertex attribute values",
+      "subject_clean": "[statnet_help] selecting subgraphs based on vertex attribute values",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\n \n\nI've got some problems handling network objects. \n\n \n\nI've created a bunch of network objects with a vertex attribute. What I\nwould like to do now for each network is selecting a subgraph based on the\nvertex attribute value and then finding the largest component in the\nresulting subgraph. In the end, I am interested in each network's largest\ncomponent whose nodes were preselected to fulfill certain criteria. \n\n \n\nMany thanks in advance,\n\nTorsten\n\n \n\n \n\n \n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20090223/e915c258/attachment.html>",
+      "body_snippet": "Hi all,\n\n \n\nI've got some problems handling network objects. \n\n \n\nI've created a bunch of network objects with a vertex attribute. What I\nwould like to do now for each network is selecting a subgraph ",
+      "thread_id": "thread-3d101e38dc39",
+      "thread_depth": 0,
+      "month": "2009-02"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-5aefc13ded5e",
+      "subject": "[statnet_help] 64-bit arch install?",
+      "message_count": 1,
+      "participants": [
+        "Smith, Edward C"
+      ],
+      "started": "2009-02-01T22:27:26Z",
+      "last_reply": "2009-02-01T22:27:26Z",
+      "root_message_id": "msg-5aefc13ded5e"
+    },
+    {
+      "id": "thread-2745d1cc549b",
+      "subject": "[statnet_help] Epidemic Modelling",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Thomas House"
+      ],
+      "started": "2009-02-05T10:28:32Z",
+      "last_reply": "2009-02-13T13:15:52Z",
+      "root_message_id": "msg-2745d1cc549b"
+    },
+    {
+      "id": "thread-3d101e38dc39",
+      "subject": "[statnet_help] selecting subgraphs based on vertex attribute values",
+      "message_count": 1,
+      "participants": [
+        "Torsten Dierkes"
+      ],
+      "started": "2009-02-22T15:01:27Z",
+      "last_reply": "2009-02-22T15:01:27Z",
+      "root_message_id": "msg-3d101e38dc39"
+    }
+  ]
+}

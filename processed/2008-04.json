@@ -1,0 +1,515 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2008-04",
+  "messages": [
+    {
+      "id": "msg-0561443463bc",
+      "message_id": "<0DB5F310-8D3C-424F-9CF9-31B25BAA47F8@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-04-01T04:19:14Z",
+      "subject": "[statnet_help] MPLE and large networks/models",
+      "subject_clean": "[statnet_help] MPLE and large networks/models",
+      "in_reply_to": "<47DFE420.6000700@fas.harvard.edu>",
+      "references": [
+        "<47DFE420.6000700@fas.harvard.edu>"
+      ],
+      "body_plain": "Hi Kevin.  Just wanted to give you an update.  I hope you don't mind  \nI'm forwarding this to the list; I thought others might find this  \ndiscussion helpful.  (A bit of background for others:  Kevin is trying  \nto fit an ERGM with 71 terms on a directed network with 736 nodes.   \nFour of the 71 terms are \"gw\" terms like gwidegree etc.)\n\nOne problem that your example was causing is that it could not even  \nfit an MPLE.  This is because it is a large network and you are using  \na large number of terms.  The former means means that the number of  \ndyads is large; and the combination of the two means that number of  \nunique rows in the matrix of change statistics (when considering a  \nchange in every single dyad in the network) is also very large.  We  \nhad written a very simplistic algorithm -- really only meant as a  \nstopgap but then forgotten about, sort of like what caused the whole  \nY2K problem :) -- to check for unique rows, and it was getting  \ncompletely bogged down by your model / network combination.  We also  \nhad placed a ceiling on the max number of rows, 100K, which your model/ \nnetwork combo was exceeding and this is what I think was part of what  \nled to the errors you obtained.  (Note:  Now the ceiling is a miillion  \nbut this can be adjusted using control.ergm(maxNumDyadTypes=xxx))\n\nPavel has now replaced the old row-checking algorithm, so now it works  \nmuch faster.  However, the problem still remains that with your  \nnetwork and the model you have chosen, almost each of the 500K+  \npossible dyad changes gives a unique value for the 71-dimensional  \nchange statistic vector.  As a result, the logistic regression used to  \nfind the MPLE (which is then used as the starting value for the MCMC  \nMLE routine) has to deal with an enormous covariate matrix.\n\nActually, it turns out that there are \"only\" 458362 unique rows (out  \nof 736*735 = 540960 possible), which means that the covariate  \n(predictor) matrix for the logistic regression is 458362 x 71.  To  \nfind the MPLE, we use the \"glm\" function of R.  It turns out that this  \nfunction is not very good with very large covariate matrices, so just  \ntrying to find the MPLE made my machine choke.  This is not a problem  \nwith ergm, which found the 458362 x 71 matrix very quickly with the  \nnew code; it is (I think) the fact that glm can't seem to handle a  \nmatrix this large.  So I guess this is sort of bad news -- we don't  \nplan to rewrite \"glm\", which would be a lot of work, so we have to  \nlive with its limitations in the absence of something better.\n\nNote, however, that simplifying the model makes a big difference in  \nthe number of unique rows.  For instance, can you do without some of  \nthe four GW terms?  These really increase the number of rows  \ndramatically, since their change statistics are real-valued variables  \n(as opposed to integers, which allow for lots of duplication).\n\nAlternatively, you could try avoiding the MPLE altogether by giving an  \nexplicit starting value for the parameters via the \"theta0\" argument  \nto ergm, but this is pretty hard to do without any guidance.  One  \nthing that might work, though:  Fit an MPLE using all but the four gw  \nterms.  Then take those parameter estimates, tack on four zeros for  \nthe gw terms, and use the resulting vector as the starting value for  \nthe MCMC MLE routine.  This should avoid the big problems with glm.  I  \ntried this, and in fact it seemed to work, or at least it ran (I  \ndidn't check the results too thoroughly).  I'll send you the code I  \nused in a separate email.\n\nDave\n\nPS.  Of course, this code assumes ergm 2.0-7, a beta version of which  \n(source code only) is at http://www.stat.psu.edu/~dhunter/code/\n\n\n\nOn Mar 18, 2008, at 4:47 PM, Kevin Lewis wrote:\n\n> hi again dave,\n>\n> so, it was with much excitement that i finally got version 2.0-6 up  \n> and running the other day, and gave my analyses another shot. alas,  \n> i was still unsuccessful. here are the things i tried:\n>\n> \"test 1\"- i began with a purely \"structural\" model, with terms for  \n> edges, mutual, gwidegree, gwodegree, gwesp, and gwdsp only. very  \n> large sample size, interval, etc. statnet came back with a long  \n> error message that is beyond my comprehension!\n>\n> next, i did some fiddling around with various terms on my own  \n> computer, using the default settings except maxit=1 just to see if i  \n> could get anything to go through. i came across some bizarre  \n> results. all of the higher-order terms seemed to work by themselves  \n> (i.e. a model was successfully estimated), but when i combined the  \n> terms together R shut down on me (perhaps the same thing that was  \n> happening to that other woman, and what would have happened if i ran  \n> \"test 1\" on my own machine instead of remotely). i seemed to be  \n> having particular trouble with the \"gwdsp\" term- the \"test 1\" model  \n> without gwdsp didn't cause R to quit.\n>\n> \"test 2\"- brought the big guns back out, and tried my comprehensive  \n> model, but without gwdsp. different error message this time, \"memory  \n> not mapped\"?\n>\n> \"test 3\"- same thing, except i think i also dropped the gwidegree  \n> term, and this time went with the default settings, plus maxit=5. i  \n> thought perhaps the large sample size and interval were messing  \n> things up. this time the chain seemed to start, but still cut off  \n> after the first iteration- another new error message.\n>\n\n<snipped>",
+      "body_snippet": "Hi Kevin.  Just wanted to give you an update.  I hope you don't mind  \nI'm forwarding this to the list; I thought others might find this  \ndiscussion helpful.  (A bit of background for others:  Kevin ",
+      "thread_id": "thread-0561443463bc",
+      "thread_depth": 0,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-446b549ebec6",
+      "message_id": "<47F25797.1070409@fas.harvard.edu>",
+      "from_name": "Kevin Lewis",
+      "from_email_hash": "3e16f115495b0e59b9f7583fd0cfe6f012b826a6e99dfab804f7275bfb0c581c",
+      "date": "2008-04-01T08:41:11Z",
+      "subject": "[statnet_help] Re: MPLE and large networks/models",
+      "subject_clean": "[statnet_help] Re: MPLE and large networks/models",
+      "in_reply_to": "<0DB5F310-8D3C-424F-9CF9-31B25BAA47F8@stat.psu.edu>",
+      "references": [
+        "<47DFE420.6000700@fas.harvard.edu>",
+        "<0DB5F310-8D3C-424F-9CF9-31B25BAA47F8@stat.psu.edu>"
+      ],
+      "body_plain": "hi dave,\n\nthank you so much! this is EXTREMELY helpful, and i am sure good for the \nothers to know as well! :)\n\n-kevin\n\nOn 4/1/2008 7:19 AM, David Hunter wrote:\n> Hi Kevin.  Just wanted to give you an update.  I hope you don't mind \n> I'm forwarding this to the list; I thought others might find this \n> discussion helpful.  (A bit of background for others:  Kevin is trying \n> to fit an ERGM with 71 terms on a directed network with 736 nodes.  \n> Four of the 71 terms are \"gw\" terms like gwidegree etc.)\n>\n> One problem that your example was causing is that it could not even \n> fit an MPLE.  This is because it is a large network and you are using \n> a large number of terms.  The former means means that the number of \n> dyads is large; and the combination of the two means that number of \n> unique rows in the matrix of change statistics (when considering a \n> change in every single dyad in the network) is also very large.  We \n> had written a very simplistic algorithm -- really only meant as a \n> stopgap but then forgotten about, sort of like what caused the whole \n> Y2K problem :) -- to check for unique rows, and it was getting \n> completely bogged down by your model / network combination.  We also \n> had placed a ceiling on the max number of rows, 100K, which your \n> model/network combo was exceeding and this is what I think was part of \n> what led to the errors you obtained.  (Note:  Now the ceiling is a \n> miillion but this can be adjusted using \n> control.ergm(maxNumDyadTypes=xxx))\n>\n> Pavel has now replaced the old row-checking algorithm, so now it works \n> much faster.  However, the problem still remains that with your \n> network and the model you have chosen, almost each of the 500K+ \n> possible dyad changes gives a unique value for the 71-dimensional \n> change statistic vector.  As a result, the logistic regression used to \n> find the MPLE (which is then used as the starting value for the MCMC \n> MLE routine) has to deal with an enormous covariate matrix.\n>\n> Actually, it turns out that there are \"only\" 458362 unique rows (out \n> of 736*735 = 540960 possible), which means that the covariate \n> (predictor) matrix for the logistic regression is 458362 x 71.  To \n> find the MPLE, we use the \"glm\" function of R.  It turns out that this \n> function is not very good with very large covariate matrices, so just \n> trying to find the MPLE made my machine choke.  This is not a problem \n> with ergm, which found the 458362 x 71 matrix very quickly with the \n> new code; it is (I think) the fact that glm can't seem to handle a \n> matrix this large.  So I guess this is sort of bad news -- we don't \n> plan to rewrite \"glm\", which would be a lot of work, so we have to \n> live with its limitations in the absence of something better.\n>\n> Note, however, that simplifying the model makes a big difference in \n> the number of unique rows.  For instance, can you do without some of \n> the four GW terms?  These really increase the number of rows \n> dramatically, since their change statistics are real-valued variables \n> (as opposed to integers, which allow for lots of duplication).\n>\n> Alternatively, you could try avoiding the MPLE altogether by giving an \n> explicit starting value for the parameters via the \"theta0\" argument \n> to ergm, but this is pretty hard to do without any guidance.  One \n> thing that might work, though:  Fit an MPLE using all but the four gw \n> terms.  Then take those parameter estimates, tack on four zeros for \n> the gw terms, and use the resulting vector as the starting value for \n> the MCMC MLE routine.  This should avoid the big problems with glm.  I \n> tried this, and in fact it seemed to work, or at least it ran (I \n> didn't check the results too thoroughly).  I'll send you the code I \n> used in a separate email.\n>\n> Dave\n>\n> PS.  Of course, this code assumes ergm 2.0-7, a beta version of which \n> (source code only) is at http://www.stat.psu.edu/~dhunter/code/\n>\n>\n>\n> On Mar 18, 2008, at 4:47 PM, Kevin Lewis wrote:\n>\n>> hi again dave,\n>>\n>> so, it was with much excitement that i finally got version 2.0-6 up \n>> and running the other day, and gave my analyses another shot. alas, i \n>> was still unsuccessful. here are the things i tried:\n>>\n>> \"test 1\"- i began with a purely \"structural\" model, with terms for \n>> edges, mutual, gwidegree, gwodegree, gwesp, and gwdsp only. very \n>> large sample size, interval, etc. statnet came back with a long error \n>> message that is beyond my comprehension!\n>>\n>> next, i did some fiddling around with various terms on my own \n>> computer, using the default settings except maxit=1 just to see if i \n>> could get anything to go through. i came across some bizarre results. \n>> all of the higher-order terms seemed to work by themselves (i.e. a \n>> model was successfully estimated), but when i combined the terms \n>> together R shut down on me (perhaps the same thing that was happening \n>> to that other woman, and what would have happened if i ran \"test 1\" \n>> on my own machine instead of remotely). i seemed to be having \n>> particular trouble with the \"gwdsp\" term- the \"test 1\" model without \n>> gwdsp didn't cause R to quit.\n>>\n>> \"test 2\"- brought the big guns back out, and tried my comprehensive \n>> model, but without gwdsp. different error message this time, \"memory \n>> not mapped\"?\n>>\n>> \"test 3\"- same thing, except i think i also dropped the gwidegree \n>> term, and this time went with the default settings, plus maxit=5. i \n>> thought perhaps the large sample size and interval were messing \n>> things up. this time the chain seemed to start, but still cut off \n>> after the first iteration- another new error message.\n>>\n>\n> <snipped>",
+      "body_snippet": "hi dave,\n\nthank you so much! this is EXTREMELY helpful, and i am sure good for the \nothers to know as well! :)\n\n-kevin\n\nOn 4/1/2008 7:19 AM, David Hunter wrote:\n> Hi Kevin.  Just wanted to give you an",
+      "thread_id": "thread-0561443463bc",
+      "thread_depth": 1,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-73c1ad608be5",
+      "message_id": "<47F5134D.1080403@u.washington.edu>",
+      "from_name": "Cori Mar",
+      "from_email_hash": "7bf08557300a9717bc96d0134f656cecaebb0feefbb56c5f18ce273a6bd8578e",
+      "date": "2008-04-03T10:26:37Z",
+      "subject": "[statnet_help] plotting edge colors",
+      "subject_clean": "[statnet_help] plotting edge colors",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I'm passing a vector of color names to plot.network.ergm via the \nedge.col tag and my plot has the wrong number of colors.\n\nI ask for\n7 \"blue\"\n4 \"gray70\"\n3 \"red\"\n\nand instead I get\n7 \"blue\"\n2 \"gray70\"\n5 \"red\"\n\nHelp! These are for figures for a presentation next Thursday.\n\nThanks,\nCori Mar",
+      "body_snippet": "I'm passing a vector of color names to plot.network.ergm via the \nedge.col tag and my plot has the wrong number of colors.\n\nI ask for\n7 \"blue\"\n4 \"gray70\"\n3 \"red\"\n\nand instead I get\n7 \"blue\"\n2 \"gray70\"",
+      "thread_id": "thread-73c1ad608be5",
+      "thread_depth": 0,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-5d1c51faa9a3",
+      "message_id": "<040820080212.24979.47FAD4890007FB1B0000619322070032010E0297089C0E9907D2050C0E06@comcast.net>",
+      "from_name": "jack.iwashyna@comcast.net",
+      "from_email_hash": "1e6c1ec9835f8bc411e1e6b5dc6a680165fbbb6f02ffdb1449cefce51fe5e2c0",
+      "date": "2008-04-07T19:12:25Z",
+      "subject": "[statnet_help] QAP double semi-partialing",
+      "subject_clean": "[statnet_help] QAP double semi-partialing",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Has anyone in statnet implemented the QAP “double semi-partialing” method of Dekker, Krackhardt and Snijders 2008 Pscyhometrica paper?  If so, is there a specific routine to call it?  It wasn't obvious to me from the documentation.\n\nthanks!\n Jack\n\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\nTheodore J. Iwashyna, M.D., Ph.D.\n\nDivision of Pulmonary and Critical Care\nDepartment of Medicine\nHospital of the University of Pennsylvania\n\nemail: iwashyna@alumni.Princeton.edu\nalternate: theodore.iwashyna@uphs.upenn.edu",
+      "body_snippet": "Has anyone in statnet implemented the QAP “double semi-partialing” method of Dekker, Krackhardt and Snijders 2008 Pscyhometrica paper?  If so, is there a specific routine to call it?  It wasn't obviou",
+      "thread_id": "thread-5d1c51faa9a3",
+      "thread_depth": 0,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-7fe33b5c5aa7",
+      "message_id": "<47FB0066.5090407@fas.harvard.edu>",
+      "from_name": "Kevin Lewis",
+      "from_email_hash": "3e16f115495b0e59b9f7583fd0cfe6f012b826a6e99dfab804f7275bfb0c581c",
+      "date": "2008-04-07T22:19:34Z",
+      "subject": "[statnet_help] QAP double semi-partialing",
+      "subject_clean": "[statnet_help] QAP double semi-partialing",
+      "in_reply_to": "<040820080212.24979.47FAD4890007FB1B0000619322070032010E0297089C0E9907D2050C0E06@comcast.net>",
+      "references": [
+        "<040820080212.24979.47FAD4890007FB1B0000619322070032010E0297089C0E9907D2050C0E06@comcast.net>"
+      ],
+      "body_plain": "FYI, i am not sure about statnet, but i know this method has been \navailable through UCINET for some time now, very easy to use. (a 30-day \ntrial version of UCINET can be downloaded free on their website.)\n\n-kevin\n\nOn 4/7/2008 10:12 PM, jack.iwashyna@comcast.net wrote:\n> Has anyone in statnet implemented the QAP ?double semi-partialing? method of Dekker, Krackhardt and Snijders 2008 Pscyhometrica paper?  If so, is there a specific routine to call it?  It wasn't obvious to me from the documentation.\n>\n> thanks!\n>  Jack\n>\n>\n> -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n> Theodore J. Iwashyna, M.D., Ph.D.\n>\n> Division of Pulmonary and Critical Care\n> Department of Medicine\n> Hospital of the University of Pennsylvania\n>\n> email: iwashyna@alumni.Princeton.edu\n> alternate: theodore.iwashyna@uphs.upenn.edu\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "FYI, i am not sure about statnet, but i know this method has been \navailable through UCINET for some time now, very easy to use. (a 30-day \ntrial version of UCINET can be downloaded free on their webs",
+      "thread_id": "thread-5d1c51faa9a3",
+      "thread_depth": 1,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-cd1f5fa07654",
+      "message_id": "<ca5106b30804082245j4d0c0d39ja50293d3eb13fc9f@mail.gmail.com>",
+      "from_name": "Mengxiao Zhu",
+      "from_email_hash": "28fac92ef04c829420b7a246b9018aac67660421c61cd24e5805a76e67b72144",
+      "date": "2008-04-08T22:45:27Z",
+      "subject": "[statnet_help] Question on interpreting goodness-of-fit diagnostics",
+      "subject_clean": "[statnet_help] Question on interpreting goodness-of-fit diagnostics",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI have some question on interpreting the goodness-of-fit diagnostics output\nfigures in Statnet. For example, in the plot for (edge-wise shared\npartners)X(log-odds for an edge), if in the observed data (solid line),\nthere is a data point at the position of 8 edge-wise shared partners and\nlog-odds for an edge of -3.5. So, p = e^(-3.5)/ (1+ e^(-3.5)) = 0.03 Then\ncan I interpret it as the probability of an edge in the observed network\nhaving 8 edge-wise shared partners is 0.03, and given the total number of\nedges in the network as 483, the total number of edges that have 8 edge-wise\nshared partners is about 14?\n\n\nThanks,\n\nMengxiao\n\n-- \nZhu, Mengxiao\n\nDepartment of Industrial Engineering and Management Science, McCormick\nSchool of Engineering;\nScience of Networks in Communities(SONIC) Group\nNorthwestern University\n\n2145 Sheridan Rd Room C210, Evanston, IL 60208-3119\n\nmzhu@northwestern.edu\nhttps://netfiles.uiuc.edu/mzhu4/www/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080409/fa8fc8e7/attachment.html>",
+      "body_snippet": "Hi,\n\nI have some question on interpreting the goodness-of-fit diagnostics output\nfigures in Statnet. For example, in the plot for (edge-wise shared\npartners)X(log-odds for an edge), if in the observed",
+      "thread_id": "thread-cd1f5fa07654",
+      "thread_depth": 0,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-a13298ef3aea",
+      "message_id": "<327ABFBE-0E91-43FE-A5F0-3A88D1BA2520@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-04-09T02:06:12Z",
+      "subject": "[statnet_help] Question on interpreting goodness-of-fit diagnostics",
+      "subject_clean": "[statnet_help] Question on interpreting goodness-of-fit diagnostics",
+      "in_reply_to": "<ca5106b30804082245j4d0c0d39ja50293d3eb13fc9f@mail.gmail.com>",
+      "references": [
+        "<ca5106b30804082245j4d0c0d39ja50293d3eb13fc9f@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Mengxiao.  Yes, this is exactly right, though I would replace  \n\"probability of an edge in the observed network\" by \"proportion of  \nedges in the observed network\" (the former makes an implicit  \nassumption about what you mean by \"probability\", whereas the latter is  \ntechnically correct as is).\n\nBy the way, you can find out exactly how many edges have 8 edge-wise  \nshared partners by using\nsummary (yournetwork ~ esp(8))\n\n--Dave\n\n\nDavid Hunter\nAssociate professor\nDepartment of Statistics\nPenn State University\nPhone:  (814) 863-0979\nFax:  (814) 863-7114\nwww.stat.psu.edu/~dhunter\n\n\nLe 9 avr. 08 ? 07:45, Mengxiao Zhu a ?crit :\n\n> Hi,\n>\n> I have some question on interpreting the goodness-of-fit diagnostics  \n> output figures in Statnet. For example, in the plot for (edge-wise  \n> shared partners)X(log-odds for an edge), if in the observed data  \n> (solid line), there is a data point at the position of 8 edge-wise  \n> shared partners and log-odds for an edge of -3.5. So, p = e^(-3.5)/  \n> (1+ e^(-3.5)) = 0.03 Then can I interpret it as the probability of  \n> an edge in the observed network having 8 edge-wise shared partners  \n> is 0.03, and given the total number of edges in the network as 483,  \n> the total number of edges that have 8 edge-wise shared partners is  \n> about 14?\n>\n>\n> Thanks,\n>\n> Mengxiao\n>\n> -- \n> Zhu, Mengxiao\n>\n> Department of Industrial Engineering and Management Science,  \n> McCormick School of Engineering;\n> Science of Networks in Communities(SONIC) Group\n> Northwestern University\n>\n> 2145 Sheridan Rd Room C210, Evanston, IL 60208-3119\n>\n> mzhu@northwestern.edu\n> https://netfiles.uiuc.edu/mzhu4/www/  \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080409/39016cbc/attachment.html>",
+      "body_snippet": "Hi Mengxiao.  Yes, this is exactly right, though I would replace  \n\"probability of an edge in the observed network\" by \"proportion of  \nedges in the observed network\" (the former makes an implicit  \na",
+      "thread_id": "thread-cd1f5fa07654",
+      "thread_depth": 1,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-08a62b282842",
+      "message_id": "<ca5106b30804090805r17d06fd2gd3ab663c6da7628@mail.gmail.com>",
+      "from_name": "Mengxiao Zhu",
+      "from_email_hash": "28fac92ef04c829420b7a246b9018aac67660421c61cd24e5805a76e67b72144",
+      "date": "2008-04-09T08:05:54Z",
+      "subject": "[statnet_help] Question on interpreting goodness-of-fit diagnostics",
+      "subject_clean": "[statnet_help] Question on interpreting goodness-of-fit diagnostics",
+      "in_reply_to": "<327ABFBE-0E91-43FE-A5F0-3A88D1BA2520@stat.psu.edu>",
+      "references": [
+        "<ca5106b30804082245j4d0c0d39ja50293d3eb13fc9f@mail.gmail.com>",
+        "<327ABFBE-0E91-43FE-A5F0-3A88D1BA2520@stat.psu.edu>"
+      ],
+      "body_plain": "Thank you Dave! This is very helpful.\n\nOn Wed, Apr 9, 2008 at 4:06 AM, David Hunter <dhunter@stat.psu.edu> wrote:\n\n> Hi Mengxiao.  Yes, this is exactly right, though I would\n> replace \"probability of an edge in the observed network\" by \"proportion of\n> edges in the observed network\" (the former makes an implicit assumption\n> about what you mean by \"probability\", whereas the latter is technically\n> correct as is).\n>\n> By the way, you can find out exactly how many edges have 8 edge-wise\n> shared partners by using\n> summary (yournetwork ~ esp(8))\n>\n> --Dave\n>\n>\n> David Hunter\n> Associate professor\n> Department of Statistics\n> Penn State University\n> Phone:  (814) 863-0979\n> Fax:  (814) 863-7114\n> www.stat.psu.edu/~dhunter <http://www.stat.psu.edu/%7Edhunter>\n>\n>\n> Le 9 avr. 08 ? 07:45, Mengxiao Zhu a ?crit :\n>\n> Hi,\n>\n> I have some question on interpreting the goodness-of-fit diagnostics\n> output figures in Statnet. For example, in the plot for (edge-wise shared\n> partners)X(log-odds for an edge), if in the observed data (solid line),\n> there is a data point at the position of 8 edge-wise shared partners and\n> log-odds for an edge of -3.5. So, p = e^(-3.5)/ (1+ e^(-3.5)) = 0.03 Then\n> can I interpret it as the probability of an edge in the observed network\n> having 8 edge-wise shared partners is 0.03, and given the total number of\n> edges in the network as 483, the total number of edges that have 8 edge-wise\n> shared partners is about 14?\n>\n>\n> Thanks,\n>\n> Mengxiao\n>\n> --\n> Zhu, Mengxiao\n>\n> Department of Industrial Engineering and Management Science, McCormick\n> School of Engineering;\n> Science of Networks in Communities(SONIC) Group\n> Northwestern University\n>\n> 2145 Sheridan Rd Room C210, Evanston, IL 60208-3119\n>\n> mzhu@northwestern.edu\n> https://netfiles.uiuc.edu/mzhu4/www/_______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n\n\n-- \nZhu, Mengxiao\n\nDepartment of Industrial Engineering and Management Science, McCormick\nSchool of Engineering;\nScience of Networks in Communities(SONIC) Group\nNorthwestern University\n\n2145 Sheridan Rd Room C210, Evanston, IL 60208-3119\n\nmzhu@northwestern.edu\nhttps://netfiles.uiuc.edu/mzhu4/www/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080409/36d80f1e/attachment.html>",
+      "body_snippet": "Thank you Dave! This is very helpful.\n\nOn Wed, Apr 9, 2008 at 4:06 AM, David Hunter <dhunter@stat.psu.edu> wrote:\n\n> Hi Mengxiao.  Yes, this is exactly right, though I would\n> replace \"probability of ",
+      "thread_id": "thread-cd1f5fa07654",
+      "thread_depth": 2,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-680098f1012c",
+      "message_id": "<47FDB032.2030303@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2008-04-09T23:14:10Z",
+      "subject": "[statnet_help] QAP double semi-partialing",
+      "subject_clean": "[statnet_help] QAP double semi-partialing",
+      "in_reply_to": "<040820080212.24979.47FAD4890007FB1B0000619322070032010E0297089C0E9907D2050C0E06@comcast.net>",
+      "references": [
+        "<040820080212.24979.47FAD4890007FB1B0000619322070032010E0297089C0E9907D2050C0E06@comcast.net>"
+      ],
+      "body_plain": "jack.iwashyna@comcast.net wrote:\n> Has anyone in statnet implemented the QAP ?double semi-partialing?\n> method of Dekker, Krackhardt and Snijders 2008 Pscyhometrica paper?\n> If so, is there a specific routine to call it?  It wasn't obvious to\n> me from the documentation.\n> \n\nThe default method in netlm is equivalent to this procedure (it just \ngoes by a name they were using for it earlier).  However, the statistic \nused is still the regression coefficient, which is not pivotal.  The \nnext release will use the t-statistics instead; this should give more \nrobust performance under certain scenarios.\n\nYou might also try the netperm package, which provides an alternative \napproach to this kind of question.\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "jack.iwashyna@comcast.net wrote:\n> Has anyone in statnet implemented the QAP ?double semi-partialing?\n> method of Dekker, Krackhardt and Snijders 2008 Pscyhometrica paper?\n> If so, is there a specific",
+      "thread_id": "thread-5d1c51faa9a3",
+      "thread_depth": 1,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-df7378833104",
+      "message_id": "<47FDB398.5020802@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2008-04-09T23:28:40Z",
+      "subject": "[statnet_help] QAP double semi-partialing",
+      "subject_clean": "[statnet_help] QAP double semi-partialing",
+      "in_reply_to": "<47FB0066.5090407@fas.harvard.edu>",
+      "references": [
+        "<040820080212.24979.47FAD4890007FB1B0000619322070032010E0297089C0E9907D2050C0E06@comcast.net>",
+        "<47FB0066.5090407@fas.harvard.edu>"
+      ],
+      "body_plain": "Kevin Lewis wrote:\n> FYI, i am not sure about statnet, but i know this method has been \n> available through UCINET for some time now, very easy to use. (a 30-day \n> trial version of UCINET can be downloaded free on their website.)\n\nYes, Steve has always kept good support for permutation tests in UCINET, \ndespite their conspicuous absence from a certain well-known text. \n(Comparison of the elaboration of the former techniques to the degree of \nsupport within UCINET for \"p*\" was, at least in the 1990s, instructive \nabout certain structural matters on which I will not elaborate.)\n\n-Carter\n\nPS. statnet history trivia: the first routine in what would become the \nsna package was netlogit, produced as a favor for someone (not me) whose \nreviewers (also not me) demanded that the author use logistic regression \nwith a QAP procedure.  This was not available elsewhere at the time.  In \npractice, it's not all that clear that QAP works well in a non-OLS GLM \ncontext -- see the cautionary notes in the associated man page -- but \nsuch is the uneven march of progress.",
+      "body_snippet": "Kevin Lewis wrote:\n> FYI, i am not sure about statnet, but i know this method has been \n> available through UCINET for some time now, very easy to use. (a 30-day \n> trial version of UCINET can be down",
+      "thread_id": "thread-5d1c51faa9a3",
+      "thread_depth": 2,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-cd433916b697",
+      "message_id": "<Pine.LNX.4.43.0804101811460.12869@hymn32.u.washington.edu>",
+      "from_name": "Gail E Potter",
+      "from_email_hash": "ffd248b6b1aa0d59611c20abf6a970525c733a6535f326484d352fbfc9969f70",
+      "date": "2008-04-10T18:11:46Z",
+      "subject": "[statnet_help] nodeicov question",
+      "subject_clean": "[statnet_help] nodeicov question",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi statnet help\n\nI am having trouble using the nodeicov term in fitting an ergm.  When I try:\n\n> net.mod1 = ergm(net104 ~nodeicov(\"poorhealth\"), MPLEonly=FALSE)\n\nI get:\n\nError in ergm.getmodel(formula, nw, drop = con$drop, initialfit = TRUE) :  The \nterm nodeicov does not exist. Are you sure you have the right name?\n\nMy network is directed and I've recently updated statnet.  Am I missing something?  I can get it to work for nodecov, but not nodeicov.\n\nThanks very much\n\nGail",
+      "body_snippet": "Hi statnet help\n\nI am having trouble using the nodeicov term in fitting an ergm.  When I try:\n\n> net.mod1 = ergm(net104 ~nodeicov(\"poorhealth\"), MPLEonly=FALSE)\n\nI get:\n\nError in ergm.getmodel(formula",
+      "thread_id": "thread-cd433916b697",
+      "thread_depth": 0,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-71ff98d16048",
+      "message_id": "<6AAAC0D2-F8C6-4EB8-A1E4-E417D721190C@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-04-13T21:51:46Z",
+      "subject": "[statnet_help] nodeicov question",
+      "subject_clean": "[statnet_help] nodeicov question",
+      "in_reply_to": "<Pine.LNX.4.43.0804101811460.12869@hymn32.u.washington.edu>",
+      "references": [
+        "<Pine.LNX.4.43.0804101811460.12869@hymn32.u.washington.edu>"
+      ],
+      "body_plain": "Hi Gail.  I'm unable to duplicate your error, though I did notice that  \nboth \"nodeicov\" and \"nodeocov\" improperly fit an MCMC MLE by default  \nwhen they are in a model by themselves (such a model is one example in  \nwhich MPLE=MLE, so ergm should recognize this automatically).  This is  \na bug, and I will fix this for the next version of ergm, but it should  \nnot produce the error you got.\n\nTry running these four lines of code (after loading statnet or ergm):\n  data(sampson)\n  set.seed(9)\n  samplike %v% \"test\" <- rnorm(18)\n  ergm(samplike ~ nodeicov(\"test\"))\n\nDo you get this output?\nIteration 1 of at most 3: the log-likelihood improved by 0.0009291\nIteration 2 of at most 3: the log-likelihood improved by < 0.0001\nIteration 3 of at most 3: the log-likelihood improved by 0.001819\nNewton-Raphson iterations:  7\nMCMC sample of size 10000 based on:\nnodeicov.test\n        0.2998\n\nMonte Carlo MLE Coefficients:\nnodeicov.test\n        0.3070\n\n\nDave\n\n\nOn Apr 11, 2008, at 3:11 AM, Gail E Potter wrote:\n\n>\n> Hi statnet help\n>\n> I am having trouble using the nodeicov term in fitting an ergm.   \n> When I try:\n>\n>> net.mod1 = ergm(net104 ~nodeicov(\"poorhealth\"), MPLEonly=FALSE)\n>\n> I get:\n>\n> Error in ergm.getmodel(formula, nw, drop = con$drop, initialfit =  \n> TRUE) :  The term nodeicov does not exist. Are you sure you have the  \n> right name?\n>\n> My network is directed and I've recently updated statnet.  Am I  \n> missing something?  I can get it to work for nodecov, but not  \n> nodeicov.\n>\n> Thanks very much\n>\n> Gail\n>\n>\n>\n>\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Gail.  I'm unable to duplicate your error, though I did notice that  \nboth \"nodeicov\" and \"nodeocov\" improperly fit an MCMC MLE by default  \nwhen they are in a model by themselves (such a model is ",
+      "thread_id": "thread-cd433916b697",
+      "thread_depth": 1,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-77273d4f576a",
+      "message_id": "<Pine.LNX.4.43.0804141221450.1073@hymn12.u.washington.edu>",
+      "from_name": "Gail E Potter",
+      "from_email_hash": "ffd248b6b1aa0d59611c20abf6a970525c733a6535f326484d352fbfc9969f70",
+      "date": "2008-04-14T12:21:45Z",
+      "subject": "[statnet_help] nodeicov question",
+      "subject_clean": "[statnet_help] nodeicov question",
+      "in_reply_to": "<6AAAC0D2-F8C6-4EB8-A1E4-E417D721190C@stat.psu.edu>",
+      "references": [],
+      "body_plain": "Hi Dave,\n\nYes, this works for me.. there must be a problem elsewhere in my code.  Thanks for looking into it for me.\n\nGail\n\n\nOn Mon, 14 Apr 2008, David Hunter wrote:\n\n> Hi Gail.  I'm unable to duplicate your error, though I did notice that both \n> \"nodeicov\" and \"nodeocov\" improperly fit an MCMC MLE by default when they are \n> in a model by themselves (such a model is one example in which MPLE=MLE, so \n> ergm should recognize this automatically).  This is a bug, and I will fix this \n> for the next version of ergm, but it should not produce the error you got.\n>\n> Try running these four lines of code (after loading statnet or ergm):\n> data(sampson)\n> set.seed(9)\n> samplike %v% \"test\" <- rnorm(18)\n> ergm(samplike ~ nodeicov(\"test\"))\n>\n> Do you get this output?\n> Iteration 1 of at most 3: the log-likelihood improved by 0.0009291\n> Iteration 2 of at most 3: the log-likelihood improved by < 0.0001\n> Iteration 3 of at most 3: the log-likelihood improved by 0.001819\n> Newton-Raphson iterations:  7\n> MCMC sample of size 10000 based on:\n> nodeicov.test\n>       0.2998\n>\n> Monte Carlo MLE Coefficients:\n> nodeicov.test\n>       0.3070\n>\n>\n> Dave\n>\n>\n> On Apr 11, 2008, at 3:11 AM, Gail E Potter wrote:\n>\n>> \n>> Hi statnet help\n>> \n>> I am having trouble using the nodeicov term in fitting an ergm.  When I try:\n>> \n>>> net.mod1 = ergm(net104 ~nodeicov(\"poorhealth\"), MPLEonly=FALSE)\n>> \n>> I get:\n>> \n>> Error in ergm.getmodel(formula, nw, drop = con$drop, initialfit = TRUE) : \n>> The term nodeicov does not exist. Are you sure you have the right name?\n>> \n>> My network is directed and I've recently updated statnet.  Am I missing \n>> something?  I can get it to work for nodecov, but not nodeicov.\n>> \n>> Thanks very much\n>> \n>> Gail\n>> \n>> \n>> \n>> \n>> \n>> \n>> \n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n>",
+      "body_snippet": "Hi Dave,\n\nYes, this works for me.. there must be a problem elsewhere in my code.  Thanks for looking into it for me.\n\nGail\n\n\nOn Mon, 14 Apr 2008, David Hunter wrote:\n\n> Hi Gail.  I'm unable to duplica",
+      "thread_id": "thread-cd433916b697",
+      "thread_depth": 2,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-3654a7f7e98b",
+      "message_id": "<B68EB32ADEE6D74594B63A7D2931F0BA437351@XCH-VN01.sph.ad.jhsph.edu>",
+      "from_name": "Zembower, Kevin",
+      "from_email_hash": "34436534f9f7b579173307e48f93e7c492be5ccbdb21584cf7472be36a9e4601",
+      "date": "2008-04-17T09:09:42Z",
+      "subject": "[statnet_help] Newbie: doubled edges in undirected network?",
+      "subject_clean": "[statnet_help] Newbie: doubled edges in undirected network?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I'm trying to create an undirected graph with this:\n# This example tries to recreate figure 3.2 on page 76 of Wasserman and\nFaust, Social Network Analysis Methods and Applications. This sociogram\nrepresents three different relationships.\n\nlibrary(\"network\")\n\n# These are the names of the actors\nlabels <- c(\"Allison\", \"Drew\", \"Ross\", \"Sarah\", \"Eliot\", \"Keith\")\n\n# Relationship 3\n# Add edges using an edge list.\n# Note that this is NOT a directed graph.\n# Data on page 75.\nnet3 <- network(matrix(c(1,3,\n                         1,4,\n                         2,5,\n                         6,3,\n                         6,4,\n                         3,4\n                         ),\n                      nrow=6, byrow=TRUE),\n                matrix.type=\"edgelist\", loops=FALSE, hyper=FALSE,\ndirected=FALSE)\n\n# Label the verticies\nnet3 %v% \"vertex.names\" <- labels\n\n#Output options\nnet3\nsummary(net3)\n\n#Graphing output\nplot(net3, displaylabels=TRUE, usecurve=TRUE, edge.curve=0.9,\nedge.lty=3)\n\nWhen this is printed or plotted, there are two edges, one above the main\ndiagonal and one below, for each relationship. I would have thought that\n'directed=FALSE' would have taken care of this. There should be only\none. However, network.edgecount(net3)==6. What am I overlooking to plot\nit correctly?\n\nThanks for your advice and help.\n\n-Kevin\n\nKevin Zembower\nInternet Services Group manager\nCenter for Communication Programs\nBloomberg School of Public Health\nJohns Hopkins University\n111 Market Place, Suite 310\nBaltimore, Maryland  21202\n410-659-6139",
+      "body_snippet": "I'm trying to create an undirected graph with this:\n# This example tries to recreate figure 3.2 on page 76 of Wasserman and\nFaust, Social Network Analysis Methods and Applications. This sociogram\nrepr",
+      "thread_id": "thread-3654a7f7e98b",
+      "thread_depth": 0,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-3fbe8344cbd6",
+      "message_id": "<D850E3CA-6B6B-48AE-940E-3AD5E07F59ED@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-04-17T22:13:44Z",
+      "subject": "[statnet_help] Newbie: doubled edges in undirected network?",
+      "subject_clean": "[statnet_help] Newbie: doubled edges in undirected network?",
+      "in_reply_to": "<B68EB32ADEE6D74594B63A7D2931F0BA437351@XCH-VN01.sph.ad.jhsph.edu>",
+      "references": [
+        "<B68EB32ADEE6D74594B63A7D2931F0BA437351@XCH-VN01.sph.ad.jhsph.edu>"
+      ],
+      "body_plain": "Hi Kevin.  The fact that you're seeing a symmetric matrix when you  \ntype 'net3' is no cause for alarm; this is merely how undirected  \nnetworks are represented:  Even though you see twelve ones in the  \nmatrix, each pair represents only a single edge in the matrix.  Of  \ncourse, only the lower triangle is relevant, so one might well ask  \nwhat is the point of seeing a symmetric matrix other than simple  \naesthetics.  One answer to this is that it's sometimes of interest to  \nstudy the eigenvalues of the adjacency matrix, which are guaranteed to  \nbe real because it's a real symmetric matrix.\n\nAs for the plot, you may have found a bug here -- I've never used  \nedge.curve before (cool!), but it does appear that something fishy is  \ngoing on here.  I'll leave this one for Carter...\n\nDave\n\n\nOn Apr 17, 2008, at 6:09 PM, Zembower, Kevin wrote:\n\n> I'm trying to create an undirected graph with this:\n> # This example tries to recreate figure 3.2 on page 76 of Wasserman  \n> and\n> Faust, Social Network Analysis Methods and Applications. This  \n> sociogram\n> represents three different relationships.\n>\n> library(\"network\")\n>\n> # These are the names of the actors\n> labels <- c(\"Allison\", \"Drew\", \"Ross\", \"Sarah\", \"Eliot\", \"Keith\")\n>\n> # Relationship 3\n> # Add edges using an edge list.\n> # Note that this is NOT a directed graph.\n> # Data on page 75.\n> net3 <- network(matrix(c(1,3,\n>                         1,4,\n>                         2,5,\n>                         6,3,\n>                         6,4,\n>                         3,4\n>                         ),\n>                      nrow=6, byrow=TRUE),\n>                matrix.type=\"edgelist\", loops=FALSE, hyper=FALSE,\n> directed=FALSE)\n>\n> # Label the verticies\n> net3 %v% \"vertex.names\" <- labels\n>\n> #Output options\n> net3\n> summary(net3)\n>\n> #Graphing output\n> plot(net3, displaylabels=TRUE, usecurve=TRUE, edge.curve=0.9,\n> edge.lty=3)\n>\n> When this is printed or plotted, there are two edges, one above the  \n> main\n> diagonal and one below, for each relationship. I would have thought  \n> that\n> 'directed=FALSE' would have taken care of this. There should be only\n> one. However, network.edgecount(net3)==6. What am I overlooking to  \n> plot\n> it correctly?\n>\n> Thanks for your advice and help.\n>\n> -Kevin\n>\n> Kevin Zembower\n> Internet Services Group manager\n> Center for Communication Programs\n> Bloomberg School of Public Health\n> Johns Hopkins University\n> 111 Market Place, Suite 310\n> Baltimore, Maryland  21202\n> 410-659-6139\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Kevin.  The fact that you're seeing a symmetric matrix when you  \ntype 'net3' is no cause for alarm; this is merely how undirected  \nnetworks are represented:  Even though you see twelve ones in th",
+      "thread_id": "thread-3654a7f7e98b",
+      "thread_depth": 1,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-bfc29208b70e",
+      "message_id": "<B68EB32ADEE6D74594B63A7D2931F0BA437361@XCH-VN01.sph.ad.jhsph.edu>",
+      "from_name": "Zembower, Kevin",
+      "from_email_hash": "34436534f9f7b579173307e48f93e7c492be5ccbdb21584cf7472be36a9e4601",
+      "date": "2008-04-18T09:38:24Z",
+      "subject": "[statnet_help] Newbie: doubled edges in undirected network?",
+      "subject_clean": "[statnet_help] Newbie: doubled edges in undirected network?",
+      "in_reply_to": "<D850E3CA-6B6B-48AE-940E-3AD5E07F59ED@stat.psu.edu>",
+      "references": [
+        "<B68EB32ADEE6D74594B63A7D2931F0BA437351@XCH-VN01.sph.ad.jhsph.edu>",
+        "<D850E3CA-6B6B-48AE-940E-3AD5E07F59ED@stat.psu.edu>"
+      ],
+      "body_plain": "Dave, thanks so much for your note. I'm pleased that I might have been\nable to contribute something to the project, just by being confused.\n\nHowever, I'm still confused about the output of degree in this sequence\nof commands:\nlibrary(\"sna\")\nlibrary(\"network\")\ndata(flo)\ndegree(flo, gmode=\"graph\")\n\nFor instance, this shows Medici=12, which is the total count of 1s in\nthe 'flo' adjacency matrix. Since this is an undirected graph, the count\nis really 6. Wasserman, in his section on undirected graphs, says that\nthe degree of a node is the number of edges connected to it, or the\nnumber of nodes adjacent to it. For Medici, this is 6. I know that I can\nget this answer by using 'cmode=\"indegree\"', but it seems like I\nshouldn't have to do this if I use 'gmode=\"graph\"'.\n\nIs my confusion just due to my inexperience with SNA and modern\ndefinitions of terms like 'degree' and the way the sna package is\ndeliberately designed, or should the output above for Medici be 6?\n\nThanks, again, for your patience with a beginner.\n\n-Kevin\n\n-----Original Message-----\nFrom: David Hunter [mailto:dhunter@stat.psu.edu] \nSent: Friday, April 18, 2008 1:14 AM\nTo: Zembower, Kevin\nCc: statnet_help@u.washington.edu\nSubject: Re: [statnet_help] Newbie: doubled edges in undirected network?\n\nHi Kevin.  The fact that you're seeing a symmetric matrix when you  \ntype 'net3' is no cause for alarm; this is merely how undirected  \nnetworks are represented:  Even though you see twelve ones in the  \nmatrix, each pair represents only a single edge in the matrix.  Of  \ncourse, only the lower triangle is relevant, so one might well ask  \nwhat is the point of seeing a symmetric matrix other than simple  \naesthetics.  One answer to this is that it's sometimes of interest to  \nstudy the eigenvalues of the adjacency matrix, which are guaranteed to  \nbe real because it's a real symmetric matrix.\n\nAs for the plot, you may have found a bug here -- I've never used  \nedge.curve before (cool!), but it does appear that something fishy is  \ngoing on here.  I'll leave this one for Carter...\n\nDave\n\n\nOn Apr 17, 2008, at 6:09 PM, Zembower, Kevin wrote:\n\n> I'm trying to create an undirected graph with this:\n> # This example tries to recreate figure 3.2 on page 76 of Wasserman  \n> and\n> Faust, Social Network Analysis Methods and Applications. This  \n> sociogram\n> represents three different relationships.\n>\n> library(\"network\")\n>\n> # These are the names of the actors\n> labels <- c(\"Allison\", \"Drew\", \"Ross\", \"Sarah\", \"Eliot\", \"Keith\")\n>\n> # Relationship 3\n> # Add edges using an edge list.\n> # Note that this is NOT a directed graph.\n> # Data on page 75.\n> net3 <- network(matrix(c(1,3,\n>                         1,4,\n>                         2,5,\n>                         6,3,\n>                         6,4,\n>                         3,4\n>                         ),\n>                      nrow=6, byrow=TRUE),\n>                matrix.type=\"edgelist\", loops=FALSE, hyper=FALSE,\n> directed=FALSE)\n>\n> # Label the verticies\n> net3 %v% \"vertex.names\" <- labels\n>\n> #Output options\n> net3\n> summary(net3)\n>\n> #Graphing output\n> plot(net3, displaylabels=TRUE, usecurve=TRUE, edge.curve=0.9,\n> edge.lty=3)\n>\n> When this is printed or plotted, there are two edges, one above the  \n> main\n> diagonal and one below, for each relationship. I would have thought  \n> that\n> 'directed=FALSE' would have taken care of this. There should be only\n> one. However, network.edgecount(net3)==6. What am I overlooking to  \n> plot\n> it correctly?\n>\n> Thanks for your advice and help.\n>\n> -Kevin\n>\n> Kevin Zembower\n> Internet Services Group manager\n> Center for Communication Programs\n> Bloomberg School of Public Health\n> Johns Hopkins University\n> 111 Market Place, Suite 310\n> Baltimore, Maryland  21202\n> 410-659-6139\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Dave, thanks so much for your note. I'm pleased that I might have been\nable to contribute something to the project, just by being confused.\n\nHowever, I'm still confused about the output of degree in t",
+      "thread_id": "thread-3654a7f7e98b",
+      "thread_depth": 2,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-b1d916b267a9",
+      "message_id": "<273CE30E-6FC2-4730-997E-51207DB84AA7@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2008-04-18T12:11:21Z",
+      "subject": "[statnet_help] Newbie: doubled edges in undirected network?",
+      "subject_clean": "[statnet_help] Newbie: doubled edges in undirected network?",
+      "in_reply_to": "<B68EB32ADEE6D74594B63A7D2931F0BA437361@XCH-VN01.sph.ad.jhsph.edu>",
+      "references": [
+        "<B68EB32ADEE6D74594B63A7D2931F0BA437351@XCH-VN01.sph.ad.jhsph.edu>",
+        "<D850E3CA-6B6B-48AE-940E-3AD5E07F59ED@stat.psu.edu>",
+        "<B68EB32ADEE6D74594B63A7D2931F0BA437361@XCH-VN01.sph.ad.jhsph.edu>"
+      ],
+      "body_plain": "Hi Kevin.  This time the problem is merely semantics.  If you type  \n'help(degree, package=\"sna\")', you'll see in the \"Details\" section why  \n12 is returned for the degree centrality of the Medici family.  That  \nsaid, you're also correct that by \"degree\" most people would mean 6 in  \nthat example.  Others who have a much better sense of the literature  \nthan I might be able to comment more fully on the notion of \"degree  \ncentrality\" used in sna!  (But there is also a reference given on the  \nhelp page that might help.)\n\nHope this helps a bit.\n\nDave\n\n\nOn Apr 18, 2008, at 6:38 PM, Zembower, Kevin wrote:\n\n> Dave, thanks so much for your note. I'm pleased that I might have been\n> able to contribute something to the project, just by being confused.\n>\n> However, I'm still confused about the output of degree in this  \n> sequence\n> of commands:\n> library(\"sna\")\n> library(\"network\")\n> data(flo)\n> degree(flo, gmode=\"graph\")\n>\n> For instance, this shows Medici=12, which is the total count of 1s in\n> the 'flo' adjacency matrix. Since this is an undirected graph, the  \n> count\n> is really 6. Wasserman, in his section on undirected graphs, says that\n> the degree of a node is the number of edges connected to it, or the\n> number of nodes adjacent to it. For Medici, this is 6. I know that I  \n> can\n> get this answer by using 'cmode=\"indegree\"', but it seems like I\n> shouldn't have to do this if I use 'gmode=\"graph\"'.\n>\n> Is my confusion just due to my inexperience with SNA and modern\n> definitions of terms like 'degree' and the way the sna package is\n> deliberately designed, or should the output above for Medici be 6?\n>\n> Thanks, again, for your patience with a beginner.\n>\n> -Kevin\n>\n> -----Original Message-----\n> From: David Hunter [mailto:dhunter@stat.psu.edu]\n> Sent: Friday, April 18, 2008 1:14 AM\n> To: Zembower, Kevin\n> Cc: statnet_help@u.washington.edu\n> Subject: Re: [statnet_help] Newbie: doubled edges in undirected  \n> network?\n>\n> Hi Kevin.  The fact that you're seeing a symmetric matrix when you\n> type 'net3' is no cause for alarm; this is merely how undirected\n> networks are represented:  Even though you see twelve ones in the\n> matrix, each pair represents only a single edge in the matrix.  Of\n> course, only the lower triangle is relevant, so one might well ask\n> what is the point of seeing a symmetric matrix other than simple\n> aesthetics.  One answer to this is that it's sometimes of interest to\n> study the eigenvalues of the adjacency matrix, which are guaranteed to\n> be real because it's a real symmetric matrix.\n>\n> As for the plot, you may have found a bug here -- I've never used\n> edge.curve before (cool!), but it does appear that something fishy is\n> going on here.  I'll leave this one for Carter...\n>\n> Dave\n>\n>\n> On Apr 17, 2008, at 6:09 PM, Zembower, Kevin wrote:\n>\n>> I'm trying to create an undirected graph with this:\n>> # This example tries to recreate figure 3.2 on page 76 of Wasserman\n>> and\n>> Faust, Social Network Analysis Methods and Applications. This\n>> sociogram\n>> represents three different relationships.\n>>\n>> library(\"network\")\n>>\n>> # These are the names of the actors\n>> labels <- c(\"Allison\", \"Drew\", \"Ross\", \"Sarah\", \"Eliot\", \"Keith\")\n>>\n>> # Relationship 3\n>> # Add edges using an edge list.\n>> # Note that this is NOT a directed graph.\n>> # Data on page 75.\n>> net3 <- network(matrix(c(1,3,\n>>                        1,4,\n>>                        2,5,\n>>                        6,3,\n>>                        6,4,\n>>                        3,4\n>>                        ),\n>>                     nrow=6, byrow=TRUE),\n>>               matrix.type=\"edgelist\", loops=FALSE, hyper=FALSE,\n>> directed=FALSE)\n>>\n>> # Label the verticies\n>> net3 %v% \"vertex.names\" <- labels\n>>\n>> #Output options\n>> net3\n>> summary(net3)\n>>\n>> #Graphing output\n>> plot(net3, displaylabels=TRUE, usecurve=TRUE, edge.curve=0.9,\n>> edge.lty=3)\n>>\n>> When this is printed or plotted, there are two edges, one above the\n>> main\n>> diagonal and one below, for each relationship. I would have thought\n>> that\n>> 'directed=FALSE' would have taken care of this. There should be only\n>> one. However, network.edgecount(net3)==6. What am I overlooking to\n>> plot\n>> it correctly?\n>>\n>> Thanks for your advice and help.\n>>\n>> -Kevin\n>>\n>> Kevin Zembower\n>> Internet Services Group manager\n>> Center for Communication Programs\n>> Bloomberg School of Public Health\n>> Johns Hopkins University\n>> 111 Market Place, Suite 310\n>> Baltimore, Maryland  21202\n>> 410-659-6139\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://mailman1.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Kevin.  This time the problem is merely semantics.  If you type  \n'help(degree, package=\"sna\")', you'll see in the \"Details\" section why  \n12 is returned for the degree centrality of the Medici fam",
+      "thread_id": "thread-3654a7f7e98b",
+      "thread_depth": 3,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-91bb19984039",
+      "message_id": "<48090976.1010308@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2008-04-18T13:49:58Z",
+      "subject": "[statnet_help] Newbie: doubled edges in undirected network?",
+      "subject_clean": "[statnet_help] Newbie: doubled edges in undirected network?",
+      "in_reply_to": "<B68EB32ADEE6D74594B63A7D2931F0BA437361@XCH-VN01.sph.ad.jhsph.edu>",
+      "references": [
+        "<B68EB32ADEE6D74594B63A7D2931F0BA437351@XCH-VN01.sph.ad.jhsph.edu>",
+        "<D850E3CA-6B6B-48AE-940E-3AD5E07F59ED@stat.psu.edu>",
+        "<B68EB32ADEE6D74594B63A7D2931F0BA437361@XCH-VN01.sph.ad.jhsph.edu>"
+      ],
+      "body_plain": "Zembower, Kevin wrote:\n> Is my confusion just due to my inexperience with SNA and modern\n> definitions of terms like 'degree' and the way the sna package is\n> deliberately designed, or should the output above for Medici be 6?\n\nPer the man page, the degree() command returns the total (aka \"Freeman\") \ndegree by default; as also noted on the man page, \nindegree=outdegree=total degree/2 for simple graphs.  Thus, the output \nfor Medici is correct.  If you want to get the graph theoretic degree, \nyou can either choose \"indegree\" or \"outdegree,\" or else divide the \nreturn value by 2.\n\nWith respect to \"doubled edges\" with usecurv=T, this is just the way \nthat the curved edge option handles mutual dyads: they are always \ndisplayed with an arc going in each direction, to emphasize the fact \nthat the dyad is mutual.  In an undirected graph, of course, all dyads \nare either mutual (arc in each direction) or null (no arcs) -- the way \nthis is drawn is a display convention, and doesn't suggest anything deep \nor mysterious about your structure.  Generally, there's no reason to use \nusecurv with undirected graphs, but the option is left available for \nthose who prefer to display their structure in this manner.\n\nHope that clarifies things,\n\n-Carter",
+      "body_snippet": "Zembower, Kevin wrote:\n> Is my confusion just due to my inexperience with SNA and modern\n> definitions of terms like 'degree' and the way the sna package is\n> deliberately designed, or should the outp",
+      "thread_id": "thread-3654a7f7e98b",
+      "thread_depth": 3,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-154b1c2e32c0",
+      "message_id": "<B68EB32ADEE6D74594B63A7D2931F0BA437366@XCH-VN01.sph.ad.jhsph.edu>",
+      "from_name": "Zembower, Kevin",
+      "from_email_hash": "34436534f9f7b579173307e48f93e7c492be5ccbdb21584cf7472be36a9e4601",
+      "date": "2008-04-18T13:53:16Z",
+      "subject": "[statnet_help] Newbie: doubled edges in undirected network?",
+      "subject_clean": "[statnet_help] Newbie: doubled edges in undirected network?",
+      "in_reply_to": "<48090976.1010308@uci.edu>",
+      "references": [
+        "<B68EB32ADEE6D74594B63A7D2931F0BA437351@XCH-VN01.sph.ad.jhsph.edu>",
+        "<D850E3CA-6B6B-48AE-940E-3AD5E07F59ED@stat.psu.edu>",
+        "<B68EB32ADEE6D74594B63A7D2931F0BA437361@XCH-VN01.sph.ad.jhsph.edu>",
+        "<48090976.1010308@uci.edu>"
+      ],
+      "body_plain": "Yes, this clarifies things. I appreciate your response to my question. \n\nI agree that usecurve=TRUE wouldn't be normally necessary, but I came\nacross it trying to duplicate as closely as possible the graph in\nWasserman, page 76, and then got sidetracked by the number of edges it\nseemed to show.\n\nThanks, again. \n\n-Kevin\n\n-----Original Message-----\nFrom: Carter T. Butts [mailto:buttsc@uci.edu] \nSent: Friday, April 18, 2008 4:50 PM\nTo: Zembower, Kevin\nCc: statnet_help@u.washington.edu\nSubject: Re: [statnet_help] Newbie: doubled edges in undirected network?\n\nZembower, Kevin wrote:\n> Is my confusion just due to my inexperience with SNA and modern\n> definitions of terms like 'degree' and the way the sna package is\n> deliberately designed, or should the output above for Medici be 6?\n\nPer the man page, the degree() command returns the total (aka \"Freeman\")\n\ndegree by default; as also noted on the man page, \nindegree=outdegree=total degree/2 for simple graphs.  Thus, the output \nfor Medici is correct.  If you want to get the graph theoretic degree, \nyou can either choose \"indegree\" or \"outdegree,\" or else divide the \nreturn value by 2.\n\nWith respect to \"doubled edges\" with usecurv=T, this is just the way \nthat the curved edge option handles mutual dyads: they are always \ndisplayed with an arc going in each direction, to emphasize the fact \nthat the dyad is mutual.  In an undirected graph, of course, all dyads \nare either mutual (arc in each direction) or null (no arcs) -- the way \nthis is drawn is a display convention, and doesn't suggest anything deep\n\nor mysterious about your structure.  Generally, there's no reason to use\n\nusecurv with undirected graphs, but the option is left available for \nthose who prefer to display their structure in this manner.\n\nHope that clarifies things,\n\n-Carter",
+      "body_snippet": "Yes, this clarifies things. I appreciate your response to my question. \n\nI agree that usecurve=TRUE wouldn't be normally necessary, but I came\nacross it trying to duplicate as closely as possible the ",
+      "thread_id": "thread-3654a7f7e98b",
+      "thread_depth": 4,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-f90ff02033e9",
+      "message_id": "<000901c8a44d$8b4cc380$a1e64a80$@DeWolf@UGent.be>",
+      "from_name": "Muriel De Wolf",
+      "from_email_hash": "4c5ec949ba94f77fd1f0e49c39cd922357cfbbd49dec8b672e27f94611774551",
+      "date": "2008-04-22T00:50:33Z",
+      "subject": "[statnet_help] problem",
+      "subject_clean": "[statnet_help] problem",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi!\n\n \n\nI have been trying for weeks now to run the model in attachment, but\nsomething keeps going wrong. I first tried it on a Windows-run computer,\nthen on Linux. After 70 hours it was still running so I stopped the\nanalysis. Can you have a look if I have done something wrong in my syntax?\n\n \n\nThanks\n\nMuriel\n\n \n\n \n\nMuriel De Wolf\n\n \n\nwetenschappelijk medewerker\n\nUniversiteit Gent\n\nVakgroep Sociologie\n\nKorte Meer 5\n\n9000 Gent\n\n09/264.84.72\n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080422/c08b5cb9/attachment.html>\n-------------- next part --------------\nAn embedded and charset-unspecified text was scrubbed...\nName: x013.txt\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080422/c08b5cb9/attachment.txt>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: syntax model1 tryout.docx\nType: application/vnd.openxmlformats-officedocument.wordprocessingml.document\nSize: 15345 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080422/c08b5cb9/attachment.docx>\n-------------- next part --------------\nAn embedded and charset-unspecified text was scrubbed...\nName: VLO0013_M.txt\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20080422/c08b5cb9/attachment-0001.txt>",
+      "body_snippet": "Hi!\n\n \n\nI have been trying for weeks now to run the model in attachment, but\nsomething keeps going wrong. I first tried it on a Windows-run computer,\nthen on Linux. After 70 hours it was still running",
+      "thread_id": "thread-f90ff02033e9",
+      "thread_depth": 0,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-ce6ac77e5736",
+      "message_id": "<B68EB32ADEE6D74594B63A7D2931F0BA437375@XCH-VN01.sph.ad.jhsph.edu>",
+      "from_name": "Zembower, Kevin",
+      "from_email_hash": "34436534f9f7b579173307e48f93e7c492be5ccbdb21584cf7472be36a9e4601",
+      "date": "2008-04-23T11:10:28Z",
+      "subject": "[statnet_help] Anyone experienced with graphNEL objects?",
+      "subject_clean": "[statnet_help] Anyone experienced with graphNEL objects?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "In trying to work through some of the examples in Wasserman and Faust, I\ndiscovered that someone had taken the time to load all the data from the\nappendices into 'graphNEL' objects (see\nhttp://bioconductor.org/packages/2.1/data/experiment/html/SNAData.html\nand\nhttp://bioconductor.org/packages/2.1/data/experiment/vignettes/SNAData/i\nnst/doc/SNAData.pdf). These seem to be part of the Bioconductor project\nfor R. I'd like to see if I can convert these objects into 'network'\nobjects, for use with 'network' and 'sna.' I was successful in\ninstalling Bioconductor and the SNAData package, but I want to use them\nin 'sna' and not in the Bioconductor 'graph' package, for which it looks\nas if they're intended.\n\nHas anyone ever worked with these objects and can give me advice to\nconvert them? I've pasted in information from the help pages for\n'graphNEL' and 'graphAM' that refers to a 'coerce' method, but I've been\nunsuccessful in applying this. The source code for the SNAData package\nis available at\nhttp://bioconductor.org/packages/2.1/data/experiment/src/contrib/SNAData\n_1.8.0.tar.gz, but this is a series of .rda files that I don't know how\nto use.\n\nAny suggestions on how to accomplish this task? If I'm successful, I'd\nbe happy to donate either the final product, or a script to accomplish\nthe task, to anyone interested.\n\nThanks for your advice and suggestions.\n\n-Kevin\n\nKevin Zembower\nInternet Services Group manager\nCenter for Communication Programs\nBloomberg School of Public Health\nJohns Hopkins University\n111 Market Place, Suite 310\nBaltimore, Maryland  21202\n410-659-6139 \n\n==========================================================\n>From graphAM-class (package = graph) help page:\nMethods\naddEdge\nsignature(from = \"character\", to = \"character\", graph = \"graphAM\",\nweights = \"missing\"): ... \naddNode\nsignature(object = \"graphAM\", nodes = \"character\"): ... \nclearNode\nsignature(node = \"character\", object = \"graphAM\"): ... \ncoerce\nsignature(from = \"graphAM\", to = \"graphNEL\"): ... \ncoerce\nsignature(from = \"graphAM\", to = \"matrix\"): In converting to a matrix,\nif an edge attribute named \"weight\" is defined, the non-zero elements of\nthe matrix will contain the corresponding attribute value. For more\nflexible matrix conversion, see toMatrix. \ncoerce\nsignature(from = \"matrix\", to = \"graphAM\"): This coerce method exists\nfor symmetry. In most cases, creating a new graphAM instance using new\ngives one more control over the resulting graph.\n==================================================\nNote, the only page that comes up with a RSiteSearch(\"toMatrix\") is this\nhelp page itself.\n==================================================\n>From graphNEL-class (package = graph) help page:\nMethods\n<snip>\ncoerce\nsignature(from = \"graphNEL\", to = \"graphAM\"): Called via as, the method\nconverts to an adjacency matrix representation. See graphAM-class.\n=========================================\nHere's some of the commands I tried that failed, with the 'friendship'\ndataset:\ncoerce(friendship, fs-mat)\ncoerce(friendship, fsmat)\nas.matrix(friendship)\nas.graphAM(friendship)\ncoerce(from=\"friendship\", to=\"fsmat\")",
+      "body_snippet": "In trying to work through some of the examples in Wasserman and Faust, I\ndiscovered that someone had taken the time to load all the data from the\nappendices into 'graphNEL' objects (see\nhttp://biocond",
+      "thread_id": "thread-ce6ac77e5736",
+      "thread_depth": 0,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-9a044ae9bbb8",
+      "message_id": "<94E133D09AA24D43BF6341B675C01A33A4F6EC@uu01msg-exb01.soliscom.uu.nl>",
+      "from_name": "Bojanowski, M.J.  (Michal)",
+      "from_email_hash": "27858c02eeddab5f13c84d02582fd09242a7632ae83e730aa500cec040f23e67",
+      "date": "2008-04-25T03:40:35Z",
+      "subject": "[statnet_help] Anyone experienced with graphNEL objects?",
+      "subject_clean": "[statnet_help] Anyone experienced with graphNEL objects?",
+      "in_reply_to": "<B68EB32ADEE6D74594B63A7D2931F0BA437375@XCH-VN01.sph.ad.jhsph.edu>",
+      "references": [
+        "<B68EB32ADEE6D74594B63A7D2931F0BA437375@XCH-VN01.sph.ad.jhsph.edu>"
+      ],
+      "body_plain": "Hi Kevin,\n\nThe 'graph' package has a set nice vignettes that explain hot to use it, di you try them? These are\n\nGraphClass: Graph Design (source, pdf)\nclusterGraph: clusterGraph and distGraph (source, pdf)\ngraph: Graph (source, pdf)\ngraphAttributes: Attributes for Graph Objects (source, pdf)\n\nYou can open them with vignette() function from R, for example vignette(graph)\n\nYou should be able to convert the objects to 'network' class, or any other, by first using 'edgeMatrix' on 'graph' object which essentially returns an edge list. Then you can supply it to network(), or as.network() to create the network object.\n\nHTH\n\nBest,\nMicha?\n\n____________________________________\nMicha? Bojanowski\nICS / Department of Sociology\nUtrecht University\nHeidelberglaan 2; 3584 CS Utrecht\nRoom 1428\nm.j.bojanowski at uu.nl\nhttp://www.fss.uu.nl/soc/bojanowski/\nhttp://bojan.3e.pl/weblog \n\n> -----Original Message-----\n> From: Zembower, Kevin [mailto:kzembowe@jhuccp.org] \n> Sent: Wednesday, April 23, 2008 8:10 PM\n> To: statnet_help@u.washington.edu\n> Subject: [statnet_help] Anyone experienced with graphNEL objects?\n> \n> In trying to work through some of the examples in Wasserman \n> and Faust, I\n> discovered that someone had taken the time to load all the \n> data from the\n> appendices into 'graphNEL' objects (see\n> http://bioconductor.org/packages/2.1/data/experiment/html/SNAData.html\n> and\n> http://bioconductor.org/packages/2.1/data/experiment/vignettes\n> /SNAData/i\n> nst/doc/SNAData.pdf). These seem to be part of the \n> Bioconductor project\n> for R. I'd like to see if I can convert these objects into 'network'\n> objects, for use with 'network' and 'sna.' I was successful in\n> installing Bioconductor and the SNAData package, but I want \n> to use them\n> in 'sna' and not in the Bioconductor 'graph' package, for \n> which it looks\n> as if they're intended.\n> \n> Has anyone ever worked with these objects and can give me advice to\n> convert them? I've pasted in information from the help pages for\n> 'graphNEL' and 'graphAM' that refers to a 'coerce' method, \n> but I've been\n> unsuccessful in applying this. The source code for the SNAData package\n> is available at\n> http://bioconductor.org/packages/2.1/data/experiment/src/contr\n> ib/SNAData\n> _1.8.0.tar.gz, but this is a series of .rda files that I \n> don't know how\n> to use.\n> \n> Any suggestions on how to accomplish this task? If I'm successful, I'd\n> be happy to donate either the final product, or a script to accomplish\n> the task, to anyone interested.\n> \n> Thanks for your advice and suggestions.\n> \n> -Kevin\n> \n> Kevin Zembower\n> Internet Services Group manager\n> Center for Communication Programs\n> Bloomberg School of Public Health\n> Johns Hopkins University\n> 111 Market Place, Suite 310\n> Baltimore, Maryland  21202\n> 410-659-6139 \n> \n> ==========================================================\n> >From graphAM-class (package = graph) help page:\n> Methods\n> addEdge\n> signature(from = \"character\", to = \"character\", graph = \"graphAM\",\n> weights = \"missing\"): ... \n> addNode\n> signature(object = \"graphAM\", nodes = \"character\"): ... \n> clearNode\n> signature(node = \"character\", object = \"graphAM\"): ... \n> coerce\n> signature(from = \"graphAM\", to = \"graphNEL\"): ... \n> coerce\n> signature(from = \"graphAM\", to = \"matrix\"): In converting to a matrix,\n> if an edge attribute named \"weight\" is defined, the non-zero \n> elements of\n> the matrix will contain the corresponding attribute value. For more\n> flexible matrix conversion, see toMatrix. \n> coerce\n> signature(from = \"matrix\", to = \"graphAM\"): This coerce method exists\n> for symmetry. In most cases, creating a new graphAM instance using new\n> gives one more control over the resulting graph.\n> ==================================================\n> Note, the only page that comes up with a \n> RSiteSearch(\"toMatrix\") is this\n> help page itself.\n> ==================================================\n> >From graphNEL-class (package = graph) help page:\n> Methods\n> <snip>\n> coerce\n> signature(from = \"graphNEL\", to = \"graphAM\"): Called via as, \n> the method\n> converts to an adjacency matrix representation. See graphAM-class.\n> =========================================\n> Here's some of the commands I tried that failed, with the 'friendship'\n> dataset:\n> coerce(friendship, fs-mat)\n> coerce(friendship, fsmat)\n> as.matrix(friendship)\n> as.graphAM(friendship)\n> coerce(from=\"friendship\", to=\"fsmat\")\n> \n>",
+      "body_snippet": "Hi Kevin,\n\nThe 'graph' package has a set nice vignettes that explain hot to use it, di you try them? These are\n\nGraphClass: Graph Design (source, pdf)\nclusterGraph: clusterGraph and distGraph (source,",
+      "thread_id": "thread-ce6ac77e5736",
+      "thread_depth": 1,
+      "month": "2008-04"
+    },
+    {
+      "id": "msg-1bb53992fdaf",
+      "message_id": "<B68EB32ADEE6D74594B63A7D2931F0BA43738E@XCH-VN01.sph.ad.jhsph.edu>",
+      "from_name": "Zembower, Kevin",
+      "from_email_hash": "34436534f9f7b579173307e48f93e7c492be5ccbdb21584cf7472be36a9e4601",
+      "date": "2008-04-25T08:29:24Z",
+      "subject": "[statnet_help] Anyone experienced with graphNEL objects?",
+      "subject_clean": "[statnet_help] Anyone experienced with graphNEL objects?",
+      "in_reply_to": "<94E133D09AA24D43BF6341B675C01A33A4F6EC@uu01msg-exb01.soliscom.uu.nl>",
+      "references": [
+        "<B68EB32ADEE6D74594B63A7D2931F0BA437375@XCH-VN01.sph.ad.jhsph.edu>",
+        "<94E133D09AA24D43BF6341B675C01A33A4F6EC@uu01msg-exb01.soliscom.uu.nl>"
+      ],
+      "body_plain": "Hello, Micha?, thanks for responding.\n\nI did read the vignettes, but they didn't help. So, I wrote to the R-users list, and the maintainer of the 'graph' package, Robert Gentleman, wrote back with a solution that worked perfectly:\n\n# Assumes working installation of Bioconductor, 'graph' and 'SNAData'.\nlibrary(\"SNAData\")        # from Bioconductor, installs 'graph' too.\ndata(friendship)          # Krackhardt's high-tech manager's friendships\nas(friendship, \"matrix\")  # view the adjacency matrix\nlibrary(\"network\")\nfnet <- network(as(friendship, \"matrix\"))\nfnet\n\nOn a tangential note, Mr. Gentleman recommended that I read and use the RBGL Bioconductor package that he maintains, to replicate the examples in Wasserman. Just briefly reading the documentation (at http://bioconductor.org/packages/2.1/bioc/vignettes/RBGL/inst/doc/RBGL.pdf) seems to indicate that this may work, in addition to sna. I'm going to try a couple of examples and see if both sna and RBGL give the same answers. I would have never thought that Bioconductor would be the proper location for SNA or graph analysis. I only learned of this by Mr. Gentleman's note.\n\nAny thoughts from this group regarding use of RBGL to analyze social networks?\n\nThanks, again, for all your advice and suggestions.\n\n-Kevin\n\n-----Original Message-----\nFrom: Bojanowski, M.J. (Michal) [mailto:M.J.Bojanowski@uu.nl] \nSent: Friday, April 25, 2008 6:41 AM\nTo: Zembower, Kevin; statnet_help@u.washington.edu\nSubject: RE: [statnet_help] Anyone experienced with graphNEL objects?\n\nHi Kevin,\n\nThe 'graph' package has a set nice vignettes that explain hot to use it, di you try them? These are\n\nGraphClass: Graph Design (source, pdf)\nclusterGraph: clusterGraph and distGraph (source, pdf)\ngraph: Graph (source, pdf)\ngraphAttributes: Attributes for Graph Objects (source, pdf)\n\nYou can open them with vignette() function from R, for example vignette(graph)\n\nYou should be able to convert the objects to 'network' class, or any other, by first using 'edgeMatrix' on 'graph' object which essentially returns an edge list. Then you can supply it to network(), or as.network() to create the network object.\n\nHTH\n\nBest,\nMicha?\n\n____________________________________\nMicha? Bojanowski\nICS / Department of Sociology\nUtrecht University\nHeidelberglaan 2; 3584 CS Utrecht\nRoom 1428\nm.j.bojanowski at uu.nl\nhttp://www.fss.uu.nl/soc/bojanowski/\nhttp://bojan.3e.pl/weblog \n\n> -----Original Message-----\n> From: Zembower, Kevin [mailto:kzembowe@jhuccp.org] \n> Sent: Wednesday, April 23, 2008 8:10 PM\n> To: statnet_help@u.washington.edu\n> Subject: [statnet_help] Anyone experienced with graphNEL objects?\n> \n> In trying to work through some of the examples in Wasserman \n> and Faust, I\n> discovered that someone had taken the time to load all the \n> data from the\n> appendices into 'graphNEL' objects (see\n> http://bioconductor.org/packages/2.1/data/experiment/html/SNAData.html\n> and\n> http://bioconductor.org/packages/2.1/data/experiment/vignettes\n> /SNAData/i\n> nst/doc/SNAData.pdf). These seem to be part of the \n> Bioconductor project\n> for R. I'd like to see if I can convert these objects into 'network'\n> objects, for use with 'network' and 'sna.' I was successful in\n> installing Bioconductor and the SNAData package, but I want \n> to use them\n> in 'sna' and not in the Bioconductor 'graph' package, for \n> which it looks\n> as if they're intended.\n> \n> Has anyone ever worked with these objects and can give me advice to\n> convert them? I've pasted in information from the help pages for\n> 'graphNEL' and 'graphAM' that refers to a 'coerce' method, \n> but I've been\n> unsuccessful in applying this. The source code for the SNAData package\n> is available at\n> http://bioconductor.org/packages/2.1/data/experiment/src/contr\n> ib/SNAData\n> _1.8.0.tar.gz, but this is a series of .rda files that I \n> don't know how\n> to use.\n> \n> Any suggestions on how to accomplish this task? If I'm successful, I'd\n> be happy to donate either the final product, or a script to accomplish\n> the task, to anyone interested.\n> \n> Thanks for your advice and suggestions.\n> \n> -Kevin\n> \n> Kevin Zembower\n> Internet Services Group manager\n> Center for Communication Programs\n> Bloomberg School of Public Health\n> Johns Hopkins University\n> 111 Market Place, Suite 310\n> Baltimore, Maryland  21202\n> 410-659-6139 \n> \n> ==========================================================\n> >From graphAM-class (package = graph) help page:\n> Methods\n> addEdge\n> signature(from = \"character\", to = \"character\", graph = \"graphAM\",\n> weights = \"missing\"): ... \n> addNode\n> signature(object = \"graphAM\", nodes = \"character\"): ... \n> clearNode\n> signature(node = \"character\", object = \"graphAM\"): ... \n> coerce\n> signature(from = \"graphAM\", to = \"graphNEL\"): ... \n> coerce\n> signature(from = \"graphAM\", to = \"matrix\"): In converting to a matrix,\n> if an edge attribute named \"weight\" is defined, the non-zero \n> elements of\n> the matrix will contain the corresponding attribute value. For more\n> flexible matrix conversion, see toMatrix. \n> coerce\n> signature(from = \"matrix\", to = \"graphAM\"): This coerce method exists\n> for symmetry. In most cases, creating a new graphAM instance using new\n> gives one more control over the resulting graph.\n> ==================================================\n> Note, the only page that comes up with a \n> RSiteSearch(\"toMatrix\") is this\n> help page itself.\n> ==================================================\n> >From graphNEL-class (package = graph) help page:\n> Methods\n> <snip>\n> coerce\n> signature(from = \"graphNEL\", to = \"graphAM\"): Called via as, \n> the method\n> converts to an adjacency matrix representation. See graphAM-class.\n> =========================================\n> Here's some of the commands I tried that failed, with the 'friendship'\n> dataset:\n> coerce(friendship, fs-mat)\n> coerce(friendship, fsmat)\n> as.matrix(friendship)\n> as.graphAM(friendship)\n> coerce(from=\"friendship\", to=\"fsmat\")\n> \n>",
+      "body_snippet": "Hello, Micha?, thanks for responding.\n\nI did read the vignettes, but they didn't help. So, I wrote to the R-users list, and the maintainer of the 'graph' package, Robert Gentleman, wrote back with a s",
+      "thread_id": "thread-ce6ac77e5736",
+      "thread_depth": 2,
+      "month": "2008-04"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-0561443463bc",
+      "subject": "[statnet_help] MPLE and large networks/models",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Kevin Lewis"
+      ],
+      "started": "2008-04-01T04:19:14Z",
+      "last_reply": "2008-04-01T08:41:11Z",
+      "root_message_id": "msg-0561443463bc"
+    },
+    {
+      "id": "thread-73c1ad608be5",
+      "subject": "[statnet_help] plotting edge colors",
+      "message_count": 1,
+      "participants": [
+        "Cori Mar"
+      ],
+      "started": "2008-04-03T10:26:37Z",
+      "last_reply": "2008-04-03T10:26:37Z",
+      "root_message_id": "msg-73c1ad608be5"
+    },
+    {
+      "id": "thread-5d1c51faa9a3",
+      "subject": "[statnet_help] QAP double semi-partialing",
+      "message_count": 4,
+      "participants": [
+        "Carter T. Butts",
+        "Kevin Lewis",
+        "jack.iwashyna@comcast.net"
+      ],
+      "started": "2008-04-07T19:12:25Z",
+      "last_reply": "2008-04-09T23:28:40Z",
+      "root_message_id": "msg-5d1c51faa9a3"
+    },
+    {
+      "id": "thread-cd1f5fa07654",
+      "subject": "[statnet_help] Question on interpreting goodness-of-fit diagnostics",
+      "message_count": 3,
+      "participants": [
+        "David Hunter",
+        "Mengxiao Zhu"
+      ],
+      "started": "2008-04-08T22:45:27Z",
+      "last_reply": "2008-04-09T08:05:54Z",
+      "root_message_id": "msg-cd1f5fa07654"
+    },
+    {
+      "id": "thread-cd433916b697",
+      "subject": "[statnet_help] nodeicov question",
+      "message_count": 3,
+      "participants": [
+        "David Hunter",
+        "Gail E Potter"
+      ],
+      "started": "2008-04-10T18:11:46Z",
+      "last_reply": "2008-04-14T12:21:45Z",
+      "root_message_id": "msg-cd433916b697"
+    },
+    {
+      "id": "thread-3654a7f7e98b",
+      "subject": "[statnet_help] Newbie: doubled edges in undirected network?",
+      "message_count": 6,
+      "participants": [
+        "Carter T. Butts",
+        "David Hunter",
+        "Zembower, Kevin"
+      ],
+      "started": "2008-04-17T09:09:42Z",
+      "last_reply": "2008-04-18T13:53:16Z",
+      "root_message_id": "msg-3654a7f7e98b"
+    },
+    {
+      "id": "thread-f90ff02033e9",
+      "subject": "[statnet_help] problem",
+      "message_count": 1,
+      "participants": [
+        "Muriel De Wolf"
+      ],
+      "started": "2008-04-22T00:50:33Z",
+      "last_reply": "2008-04-22T00:50:33Z",
+      "root_message_id": "msg-f90ff02033e9"
+    },
+    {
+      "id": "thread-ce6ac77e5736",
+      "subject": "[statnet_help] Anyone experienced with graphNEL objects?",
+      "message_count": 3,
+      "participants": [
+        "Bojanowski, M.J.  (Michal)",
+        "Zembower, Kevin"
+      ],
+      "started": "2008-04-23T11:10:28Z",
+      "last_reply": "2008-04-25T08:29:24Z",
+      "root_message_id": "msg-ce6ac77e5736"
+    }
+  ]
+}

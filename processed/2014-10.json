@@ -1,0 +1,549 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2014-10",
+  "messages": [
+    {
+      "id": "msg-c955bd50e622",
+      "message_id": "<CAN=W0uo6X3hd+jqmiqB_Hw-EdKCD6upk5ReS9X1L=SuDCh7JjQ@mail.gmail.com>",
+      "from_name": "Jake Fisher",
+      "from_email_hash": "d2a7f9670f98a15e722e12833a57754e23ef7f98ffb4a541e2f19656a53fcf7a",
+      "date": "2014-10-03T07:44:17Z",
+      "subject": "[statnet_help] Significant memory use for gof.ergmm",
+      "subject_clean": "[statnet_help] Significant memory use for gof.ergmm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone,\n\nI'm trying to use the gof.ergmm function from the latentnet package, and it\nseems to be creating unexpectedly large gofobject objects, which is causing\nproblems when I'm trying to save a goodness of fit object from several\nnetworks.  Does anyone know why, or how to fix it?  I've included more\ndetail, and a possible partial solution below.\n\nHere's an example:\n\n> rm(list = ls())> library(statnet)> > # Library for memory use; see http://adv-r.had.co.nz/memory.html> library(pryr)> > data(sampson)> samp.fit <- ergmm(samplike ~ euclidean(d = 2))> > samp.gof <- gof(samp.fit)> object_size(samp.gof)6.98 MB\n\nRunning gof.ergmm on the example from the documentation gives a 7MB file.\nFor a single network, this isn't a huge problem -- my computer isn't\nchoking on 7MB -- but it becomes a problem when you try to loop over many\nmodel fits, for many networks.\n\nMy best guess is that R is doing a poor job of garbage collection at the\nend of the gof.ergmm function.  The gof.ergmm function simulates several\nnetworks from the model fit, and then calculates statistics using those.\nWhen it's done, it doesn't seem to return the memory used by the\nsimulations.  Adding a rm(SimNetworkSeriesObj) statement in the function\nseems to produce much smaller gofobject objects, presumably because then R\nreturns the memory used by the simulations.  Code for this is below\n(apologies for the length -- I copied and pasted the gof.ergmm function).\n\n> # Set up workspace> rm(list = ls())> library(statnet)> > # Library for memory use; see http://adv-r.had.co.nz/memory.html> library(pryr)> > # Modified GOF object> newGOF <- function (object, ..., nsim = 100, GOF = ~idegree + odegree + +                            distance, verbose = FALSE) + {+   formula <- object[[\"model\"]][[\"formula\"]]+   trms <- ergm.getterms(formula)+   if (length(trms) > 2) {+     nw <- eval(trms[[2]], sys.parent())+   }+   else {+     stop(\"A network object on the RHS of the formula argument must be given\")+   }+   nsim <- max(nsim, dim(object[[\"Z\"]])[3])+   all.gof.vars <- all.vars(GOF)+   for (i in seq(along = all.gof.vars)) {+     all.gof.vars[i] <- match.arg(all.gof.vars[i], c(\"distance\", +                                                     \"espartners\", \"dspartners\", \"odegree\", \"idegree\", +                                                     \"degree\", \"triadcensus\", \"model\"))+   }+   GOF <- as.formula(paste(\"~\", paste(all.gof.vars, collapse = \"+\")))+   if (!is.network(nw)) {+     stop(\"A network object on the RHS of the formula argument must be given\")+   }+   pval.model <- pval.triadcensus <- pval.dist <- pval.deg <- pval.espart <- pval.espart <- NULL+   obs.model <- pobs.model <- sim.model <- psim.model <- pval.model <- bds.model <- NULL+   obs.triadcensus <- pobs.triadcensus <- sim.triadcensus <- psim.triadcensus <- pval.triadcensus <- bds.triadcensus <- NULL+   obs.dist <- pobs.dist <- sim.dist <- psim.dist <- pval.dist <- bds.dist <- NULL+   obs.deg <- pobs.deg <- sim.deg <- psim.deg <- pval.deg <- bds.deg <- NULL+   obs.espart <- pobs.espart <- sim.espart <- psim.espart <- pval.espart <- bds.espart <- NULL+   obs.dspart <- pobs.dspart <- sim.dspart <- psim.dspart <- pval.dspart <- bds.dspart <- NULL+   obs.ideg <- pobs.ideg <- sim.ideg <- psim.ideg <- pval.ideg <- bds.ideg <- pval.ideg <- NULL+   obs.odeg <- pobs.odeg <- sim.odeg <- psim.odeg <- pval.odeg <- bds.odeg <- pval.odeg <- NULL+   n <- network.size(nw)+   if (\"model\" %in% all.gof.vars) {+     obs.model <- summary(formula)+     sim.model <- array(0, dim = c(nsim, length(obs.model)))+     dimnames(sim.model) <- list(paste(c(1:nsim)), names(obs.model))+   }+   if (\"distance\" %in% all.gof.vars) {+     obs.dist <- ergm.geodistdist(nw)+     obs.dist[obs.dist == Inf] <- n+     sim.dist <- array(0, dim = c(nsim, n))+     dimnames(sim.dist) <- list(paste(c(1:nsim)), paste(1:n))+   }+   if (\"odegree\" %in% all.gof.vars) {+     mesp <- paste(\"c(\", paste(0:(n - 1), collapse = \",\"), +                   \")\", sep = \"\")+     obs.odeg <- summary(as.formula(paste(\"nw ~ odegree(\", +                                          mesp, \")\", sep = \"\")), drop = FALSE)+     sim.odeg <- array(0, dim = c(nsim, n))+     dimnames(sim.odeg) <- list(paste(c(1:nsim)), paste(0:(n - +                                                             1)))+     names(obs.odeg) <- dimnames(sim.odeg)[[2]]+   }+   if (\"idegree\" %in% all.gof.vars) {+     mesp <- paste(\"c(\", paste(0:(n - 1), collapse = \",\"), +                   \")\", sep = \"\")+     obs.ideg <- summary(as.formula(paste(\"nw ~ idegree(\", +                                          mesp, \")\", sep = \"\")), drop = FALSE)+     sim.ideg <- array(0, dim = c(nsim, n))+     dimnames(sim.ideg) <- list(paste(c(1:nsim)), paste(0:(n - +                                                             1)))+     names(obs.ideg) <- dimnames(sim.ideg)[[2]]+   }+   if (\"degree\" %in% all.gof.vars) {+     mesp <- paste(\"c(\", paste(0:(n - 1), collapse = \",\"), +                   \")\", sep = \"\")+     obs.deg <- summary(as.formula(paste(\"nw ~ degree(\", mesp, +                                         \")\", sep = \"\")), drop = FALSE)+     sim.deg <- array(0, dim = c(nsim, n))+     dimnames(sim.deg) <- list(paste(c(1:nsim)), paste(0:(n - +                                                            1)))+     names(obs.deg) <- dimnames(sim.deg)[[2]]+   }+   if (\"espartners\" %in% all.gof.vars) {+     mesp <- paste(\"c(\", paste(0:(network.size(nw) - 2), collapse = \",\"), +                   \")\", sep = \"\")+     obs.espart <- summary(as.formula(paste(\"nw ~ esp(\", mesp, +                                            \")\", sep = \"\")), drop = FALSE)+     sim.espart <- array(0, dim = c(nsim, n - 1))+     dimnames(sim.espart) <- list(paste(c(1:nsim)), paste(0:(n - +                                                               2)))+   }+   if (\"dspartners\" %in% all.gof.vars) {+     mesp <- paste(\"c(\", paste(0:(network.size(nw) - 2), collapse = \",\"), +                   \")\", sep = \"\")+     obs.dspart <- summary(as.formula(paste(\"nw ~ dsp(\", mesp, +                                            \")\", sep = \"\")), drop = FALSE)+     sim.dspart <- array(0, dim = c(nsim, n - 1))+     dimnames(sim.dspart) <- list(paste(c(1:nsim)), paste(0:(n - +                                                               2)))+   }+   if (\"triadcensus\" %in% all.gof.vars) {+     if (is.directed(nw)) {+       triadcensus <- 0:15+       namestriadcensus <- c(\"003\", \"012\", \"102\", \"021D\", +                             \"021U\", \"021C\", \"111D\", \"111U\", \"030T\", \"030C\", +                             \"201\", \"120D\", \"120U\", \"120C\", \"210\", \"300\")+       triadcensus.formula <- \"~ triadcensus(0:15)\"+     }+     else {+       triadcensus <- 0:3+       namestriadcensus <- c(\"0\", \"1\", \"2\", \"3\")+       triadcensus.formula <- \"~ triadcensus(0:3)\"+     }+     obs.triadcensus <- summary(as.formula(paste(\"nw\", triadcensus.formula, +                                                 sep = \"\")), drop = FALSE)+     sim.triadcensus <- array(0, dim = c(nsim, length(triadcensus)))+     dimnames(sim.triadcensus) <- list(paste(c(1:nsim)), namestriadcensus)+     names(obs.triadcensus) <- namestriadcensus+   }+   SimNetworkSeriesObj <- simulate(object, nsim = nsim)+   if (verbose) {+     cat(\"\\nCollating simulations\\n\")+   }+   for (i in 1:nsim) {+     if (verbose) {+       cat(\"\\nCalculating statistics for simulation\", i, +           \"\\n\")+     }+     if (\"model\" %in% all.gof.vars) {+       sim.model[i, ] <- summary(update(formula, SimNetworkSeriesObj[[\"networks\"]][[i]] ~ +                                          .))+     }+     if (\"distance\" %in% all.gof.vars) {+       sim.dist[i, ] <- ergm.geodistdist(SimNetworkSeriesObj[[\"networks\"]][[i]])+     }+     if (\"idegree\" %in% all.gof.vars) {+       mesp <- paste(\"c(\", paste(0:(n - 1), collapse = \",\"), +                     \")\", sep = \"\")+       gi <- SimNetworkSeriesObj[[\"networks\"]][[i]]+       sim.ideg[i, ] <- summary(as.formula(paste(\"gi ~ idegree(\", +                                                 mesp, \")\", sep = \"\")), drop = FALSE)+     }+     if (\"odegree\" %in% all.gof.vars) {+       mesp <- paste(\"c(\", paste(0:(n - 1), collapse = \",\"), +                     \")\", sep = \"\")+       gi <- SimNetworkSeriesObj[[\"networks\"]][[i]]+       sim.odeg[i, ] <- summary(as.formula(paste(\"gi ~ odegree(\", +                                                 mesp, \")\", sep = \"\")), drop = FALSE)+     }+     if (\"degree\" %in% all.gof.vars) {+       gi <- SimNetworkSeriesObj[[\"networks\"]][[i]]+       if (is.bipartite(gi)) {+         temp <- degreedist(gi, print = FALSE)[[\"event\"]]+         sim.deg[i, ] <- c(temp, rep(0, n - length(temp)))+       }+       else {+         mesp <- paste(\"c(\", paste(0:(n - 1), collapse = \",\"), +                       \")\", sep = \"\")+         sim.deg[i, ] <- summary(as.formula(paste(\"gi ~ degree(\", +                                                  mesp, \")\", sep = \"\")), drop = FALSE)+       }+     }+     if (\"espartners\" %in% all.gof.vars) {+       gi <- SimNetworkSeriesObj[[\"networks\"]][[i]]+       mesp <- paste(\"c(\", paste(0:(network.size(gi) - 2), +                                 collapse = \",\"), \")\", sep = \"\")+       sim.espart[i, ] <- summary(as.formula(paste(\"gi ~ esp(\", +                                                   mesp, \")\", sep = \"\")), drop = FALSE)+     }+     if (\"dspartners\" %in% all.gof.vars) {+       gi <- SimNetworkSeriesObj[[\"networks\"]][[i]]+       mesp <- paste(\"c(\", paste(0:(network.size(gi) - 2), +                                 collapse = \",\"), \")\", sep = \"\")+       sim.dspart[i, ] <- summary(as.formula(paste(\"gi ~ dsp(\", +                                                   mesp, \")\", sep = \"\")), drop = FALSE)+     }+     if (\"triadcensus\" %in% all.gof.vars) {+       gi <- SimNetworkSeriesObj[[\"networks\"]][[i]]+       sim.triadcensus[i, ] <- summary(as.formula(paste(\"gi\", +                                                        triadcensus.formula, sep = \"\")), drop = FALSE)+     }+   }+   rm(SimNetworkSeriesObj)  # My addition -- frees some memory+   if (\"model\" %in% all.gof.vars) {+     pval.model <- apply(sim.model <= obs.model[col(sim.model)], +                         2, mean)+     pval.model.top <- apply(sim.model >= obs.model[col(sim.model)], +                             2, mean)+     pval.model <- cbind(obs.model, apply(sim.model, 2, min), +                         apply(sim.model, 2, mean), apply(sim.model, 2, max), +                         pmin(1, 2 * pmin(pval.model, pval.model.top)))+     dimnames(pval.model)[[2]] <- c(\"obs\", \"min\", \"mean\", +                                    \"max\", \"MC p-value\")+     pobs.model <- pval.model.top+     psim.model <- apply(sim.model, 2, rank)/nrow(sim.model)+     bds.model <- apply(psim.model, 2, quantile, probs = c(0.025, +                                                           0.975))+   }+   if (\"distance\" %in% all.gof.vars) {+     pval.dist <- apply(sim.dist <= obs.dist[col(sim.dist)], +                        2, mean)+     pval.dist.top <- apply(sim.dist >= obs.dist[col(sim.dist)], +                            2, mean)+     pval.dist <- cbind(obs.dist, apply(sim.dist, 2, min), +                        apply(sim.dist, 2, mean), apply(sim.dist, 2, max), +                        pmin(1, 2 * pmin(pval.dist, pval.dist.top)))+     dimnames(pval.dist)[[2]] <- c(\"obs\", \"min\", \"mean\", \"max\", +                                   \"MC p-value\")+     pobs.dist <- obs.dist/sum(obs.dist)+     psim.dist <- sweep(sim.dist, 1, apply(sim.dist, 1, sum), +                        \"/\")+     psim.dist[is.na(psim.dist)] <- 1+     bds.dist <- apply(psim.dist, 2, quantile, probs = c(0.025, +                                                         0.975))+   }+   if (\"idegree\" %in% all.gof.vars) {+     pval.ideg <- apply(sim.ideg <= obs.ideg[col(sim.ideg)], +                        2, mean)+     pval.ideg.top <- apply(sim.ideg >= obs.ideg[col(sim.ideg)], +                            2, mean)+     pval.ideg <- cbind(obs.ideg, apply(sim.ideg, 2, min), +                        apply(sim.ideg, 2, mean), apply(sim.ideg, 2, max), +                        pmin(1, 2 * pmin(pval.ideg, pval.ideg.top)))+     dimnames(pval.ideg)[[2]] <- c(\"obs\", \"min\", \"mean\", \"max\", +                                   \"MC p-value\")+     pobs.ideg <- obs.ideg/sum(obs.ideg)+     psim.ideg <- sweep(sim.ideg, 1, apply(sim.ideg, 1, sum), +                        \"/\")+     psim.ideg[is.na(psim.ideg)] <- 1+     bds.ideg <- apply(psim.ideg, 2, quantile, probs = c(0.025, +                                                         0.975))+   }+   if (\"odegree\" %in% all.gof.vars) {+     pval.odeg <- apply(sim.odeg <= obs.odeg[col(sim.odeg)], +                        2, mean)+     pval.odeg.top <- apply(sim.odeg >= obs.odeg[col(sim.odeg)], +                            2, mean)+     pval.odeg <- cbind(obs.odeg, apply(sim.odeg, 2, min), +                        apply(sim.odeg, 2, mean), apply(sim.odeg, 2, max), +                        pmin(1, 2 * pmin(pval.odeg, pval.odeg.top)))+     dimnames(pval.odeg)[[2]] <- c(\"obs\", \"min\", \"mean\", \"max\", +                                   \"MC p-value\")+     pobs.odeg <- obs.odeg/sum(obs.odeg)+     psim.odeg <- sweep(sim.odeg, 1, apply(sim.odeg, 1, sum), +                        \"/\")+     psim.odeg[is.na(psim.odeg)] <- 1+     bds.odeg <- apply(psim.odeg, 2, quantile, probs = c(0.025, +                                                         0.975))+   }+   if (\"degree\" %in% all.gof.vars) {+     pval.deg <- apply(sim.deg <= obs.deg[col(sim.deg)], 2, +                       mean)+     pval.deg.top <- apply(sim.deg >= obs.deg[col(sim.deg)], +                           2, mean)+     pval.deg <- cbind(obs.deg, apply(sim.deg, 2, min), apply(sim.deg, +                                                              2, mean), apply(sim.deg, 2, max), pmin(1, 2 * pmin(pval.deg, +                                                                                                                 pval.deg.top)))+     dimnames(pval.deg)[[2]] <- c(\"obs\", \"min\", \"mean\", \"max\", +                                  \"MC p-value\")+     pobs.deg <- obs.deg/sum(obs.deg)+     psim.deg <- sweep(sim.deg, 1, apply(sim.deg, 1, sum), +                       \"/\")+     psim.deg[is.na(psim.deg)] <- 1+     bds.deg <- apply(psim.deg, 2, quantile, probs = c(0.025, +                                                       0.975))+   }+   if (\"espartners\" %in% all.gof.vars) {+     pval.espart <- apply(sim.espart <= obs.espart[col(sim.espart)], +                          2, mean)+     pval.espart.top <- apply(sim.espart >= obs.espart[col(sim.espart)], +                              2, mean)+     pval.espart <- cbind(obs.espart, apply(sim.espart, 2, +                                            min), apply(sim.espart, 2, mean), apply(sim.espart, +                                                                                    2, max), pmin(1, 2 * pmin(pval.espart, pval.espart.top)))+     dimnames(pval.espart)[[2]] <- c(\"obs\", \"min\", \"mean\", +                                     \"max\", \"MC p-value\")+     pobs.espart <- obs.espart/sum(obs.espart)+     psim.espart <- sweep(sim.espart, 1, apply(sim.espart, +                                               1, sum), \"/\")+     psim.espart[is.na(psim.espart)] <- 1+     bds.espart <- apply(psim.espart, 2, quantile, probs = c(0.025, +                                                             0.975))+   }+   if (\"dspartners\" %in% all.gof.vars) {+     pval.dspart <- apply(sim.dspart <= obs.dspart[col(sim.dspart)], +                          2, mean)+     pval.dspart.top <- apply(sim.dspart >= obs.dspart[col(sim.dspart)], +                              2, mean)+     pval.dspart <- cbind(obs.dspart, apply(sim.dspart, 2, +                                            min), apply(sim.dspart, 2, mean), apply(sim.dspart, +                                                                                    2, max), pmin(1, 2 * pmin(pval.dspart, pval.dspart.top)))+     dimnames(pval.dspart)[[2]] <- c(\"obs\", \"min\", \"mean\", +                                     \"max\", \"MC p-value\")+     pobs.dspart <- obs.dspart/sum(obs.dspart)+     psim.dspart <- sweep(sim.dspart, 1, apply(sim.dspart, +                                               1, sum), \"/\")+     psim.dspart[is.na(psim.dspart)] <- 1+     bds.dspart <- apply(psim.dspart, 2, quantile, probs = c(0.025, +                                                             0.975))+   }+   if (\"triadcensus\" %in% all.gof.vars) {+     pval.triadcensus <- apply(sim.triadcensus <= obs.triadcensus[col(sim.triadcensus)], +                               2, mean)+     pval.triadcensus.top <- apply(sim.triadcensus >= obs.triadcensus[col(sim.triadcensus)], +                                   2, mean)+     pval.triadcensus <- cbind(obs.triadcensus, apply(sim.triadcensus, +                                                      2, min), apply(sim.triadcensus, 2, mean), apply(sim.triadcensus, +                                                                                                      2, max), pmin(1, 2 * pmin(pval.triadcensus, pval.triadcensus.top)))+     dimnames(pval.triadcensus)[[2]] <- c(\"obs\", \"min\", \"mean\", +                                          \"max\", \"MC p-value\")+     pobs.triadcensus <- obs.triadcensus/sum(obs.triadcensus)+     psim.triadcensus <- sweep(sim.triadcensus, 1, apply(sim.triadcensus, +                                                         1, sum), \"/\")+     psim.triadcensus[is.na(psim.triadcensus)] <- 1+     bds.triadcensus <- apply(psim.triadcensus, 2, quantile, +                              probs = c(0.025, 0.975))+   }+   returnlist <- list(n, pval.model, pval.triadcensus, pval.dist, +                      pval.ideg, pval.odeg, pval.deg, pval.espart, pval.dspart, +                      obs.model, pobs.model, sim.model, psim.model, pval.model, +                      bds.model, obs.triadcensus, pobs.triadcensus, sim.triadcensus, +                      psim.triadcensus, pval.triadcensus, bds.triadcensus, +                      obs.dist, pobs.dist, sim.dist, psim.dist, pval.dist, +                      bds.dist, obs.ideg, pobs.ideg, sim.ideg, psim.ideg, pval.ideg, +                      bds.ideg, obs.odeg, pobs.odeg, sim.odeg, psim.odeg, pval.odeg, +                      bds.odeg, obs.deg, pobs.deg, sim.deg, psim.deg, pval.deg, +                      bds.deg, obs.espart, pobs.espart, sim.espart, psim.espart, +                      pval.espart, bds.espart, obs.dspart, pobs.dspart, sim.dspart, +                      psim.dspart, pval.dspart, bds.dspart, GOF)+   names(returnlist) <- c(\"network.size\", \"summary.model\", \"summary.triadcensus\", +                          \"summary.dist\", \"summary.ideg\", \"summary.odeg\", \"summary.deg\", +                          \"summary.espart\", \"summary.dspart\", \"obs.model\", \"pobs.model\", +                          \"sim.model\", \"psim.model\", \"pval.model\", \"bds.model\", +                          \"obs.triadcensus\", \"pobs.triadcensus\", \"sim.triadcensus\", +                          \"psim.triadcensus\", \"pval.triadcensus\", \"bds.triadcensus\", +                          \"obs.dist\", \"pobs.dist\", \"sim.dist\", \"psim.dist\", \"pval.dist\", +                          \"bds.dist\", \"obs.ideg\", \"pobs.ideg\", \"sim.ideg\", \"psim.ideg\", +                          \"pval.ideg\", \"bds.ideg\", \"obs.odeg\", \"pobs.odeg\", \"sim.odeg\", +                          \"psim.odeg\", \"pval.odeg\", \"bds.odeg\", \"obs.deg\", \"pobs.deg\", +                          \"sim.deg\", \"psim.deg\", \"pval.deg\", \"bds.deg\", \"obs.espart\", +                          \"pobs.espart\", \"sim.espart\", \"psim.espart\", \"pval.espart\", +                          \"bds.espart\", \"obs.dspart\", \"pobs.dspart\", \"sim.dspart\", +                          \"psim.dspart\", \"pval.dspart\", \"bds.dspart\", \"GOF\")+   class(returnlist) <- \"gofobject\"+   returnlist+ }> > data(sampson)> samp.fit <- ergmm(samplike ~ euclidean(d = 2))> > samp.gof <- gof(samp.fit)> object_size(samp.gof)7.01 MB> > samp.new.gof <- newGOF(samp.fit)> object_size(samp.new.gof)1.67 MB\n\nThis seems to create much smaller gofobject objects (1.67 MB vs. 7MB),\nalthough still perhaps larger than one would expect.  Does anyone know\nwhether including this will break something down the line, or whether\nthere's a better way to fix this problem?\n\nThanks,\n\nJake Fisher\nPh.D. Candidate\nDuke University Department of Sociology\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20141003/deec84f1/attachment.html>",
+      "body_snippet": "Hi everyone,\n\nI'm trying to use the gof.ergmm function from the latentnet package, and it\nseems to be creating unexpectedly large gofobject objects, which is causing\nproblems when I'm trying to save a",
+      "thread_id": "thread-c955bd50e622",
+      "thread_depth": 0,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-74f78792d73a",
+      "message_id": "<542EDBE0.5060307@skyeome.net>",
+      "from_name": "Skye Bender-deMoll",
+      "from_email_hash": "016c31bf83672a8e8fce6b664eb68ddff364b5df6912775ec31eeceebce90340",
+      "date": "2014-10-03T10:24:48Z",
+      "subject": "[statnet_help] do you use statnet's parallel functionality on non-unix MPI clusters?",
+      "subject_clean": "[statnet_help] do you use statnet's parallel functionality on non-unix MPI clusters?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet Users,\n\nDo you run statnet on windows- or mac-based MPI parallel computing\nclusters?  Are you aware of any statnet users or colleagues who use a\nnon-unix cluster? If so, please let me know.\n\nThe statnet team is in the process of overhauling and improving the \nparallelization functionality in ergm, and we are trying to determine if \nnon-unix clusters are something we need to actively support for statnet \n-- which would require that we devote additional time to testing and \nmaintaining the functionality on other platforms.\n\nIf we do de-prioritize testing on non-unix MPI clusters, we would of \ncourse still support single machine multicore parallel functionality on \nall three platforms.\n\nbest,\n  -skye",
+      "body_snippet": "Dear Statnet Users,\n\nDo you run statnet on windows- or mac-based MPI parallel computing\nclusters?  Are you aware of any statnet users or colleagues who use a\nnon-unix cluster? If so, please let me kno",
+      "thread_id": "thread-74f78792d73a",
+      "thread_depth": 0,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-efcfff516c08",
+      "message_id": "<CAH7AL4am9a=xm6JChp_UUXioX=9rc8BNYn+W8C3bayCuHdkEWA@mail.gmail.com>",
+      "from_name": "Franziska Barbara Keller",
+      "from_email_hash": "3ee91461cbfb44cfc74faf4f43c1decb29759f2a597ca5a35dd97c8ed9a62d69",
+      "date": "2014-10-05T17:01:38Z",
+      "subject": "[statnet_help] ergm: nodematch and nodefactor, edgecov and ?",
+      "subject_clean": "[statnet_help] ergm: nodematch and nodefactor, edgecov and ?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone,\n\nIf I understand it correctly, then we might get biased estimates on the\nhomophily parameters (the nodematch term) if some groups are just much more\n\"sociable\" than others, and therefore I should also always add a nodefactor\nterm, correct?\n\nHowever, what if I suspect that the network of interest is determined not\nsimply by belonging to one or another group, but by the underlying social\nstructure within the groups and therefore instead include an edgecov term\n(and enter the network that represents this underlying social structure, in\nmy case a complex star network with quite a few isolates).\n\nIs there an equivalent to the nodefactor term that I should add to avoid\nbias (e.g. a nodefactor term for \"part of underlying network vs. isolate\")?\n\nThanks in advance for any suggestions,\n\nFranziska\n\n\n--\n\nFranziska Barbara Keller\nPhD Candidate, Department of Politics, New York University\nphone US: (+1) 347-437-1074  / phone CH: (+41) 78 808 66 62\nwww.fbkeller.net\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20141005/d3ff2a26/attachment.html>",
+      "body_snippet": "Hi everyone,\n\nIf I understand it correctly, then we might get biased estimates on the\nhomophily parameters (the nodematch term) if some groups are just much more\n\"sociable\" than others, and therefore ",
+      "thread_id": "thread-efcfff516c08",
+      "thread_depth": 0,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-b3d5dda0c319",
+      "message_id": "<CABZBCRiU7JTVqkLG6=dRXexkULD2EW-GS9ZdC=4FAKYuqQB5Gw@mail.gmail.com>",
+      "from_name": "Warren Ronsiek",
+      "from_email_hash": "db7384186ff6369e814f6283ee4f2e1755a9d31149f617b8a5c4c56bd5b4e523",
+      "date": "2014-10-05T17:50:35Z",
+      "subject": "[statnet_help] Possible network.arrow() bug",
+      "subject_clean": "[statnet_help] Possible network.arrow() bug",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI ran into a possible bug with network.arrow(). Basically, when you specify\nthe \"curve\" option, the arrows look strange. I have documented this\nphenomenon on stackoverflow at:\n\nhttp://stackoverflow.com/questions/25777757/r-network-arrow-looks-strange-when-curved\n\nAlternately, you can simply run the following code to generate an example:\n\nlibrary(maps)\nlibrary(network)\nmap(\"usa\")\nnetwork.arrow(-110,37,-85,40,length=5,width=1,angle=20,curve=2)\n\nTo whom it may concern, I am running Mac OSX 10.9.5 with R version 3.02. My\nnetwork package is version 1.10.2.\n\nSincerely,\n\nWarren Ronsiek\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20141005/5d96c3fe/attachment.html>",
+      "body_snippet": "Hi,\n\nI ran into a possible bug with network.arrow(). Basically, when you specify\nthe \"curve\" option, the arrows look strange. I have documented this\nphenomenon on stackoverflow at:\n\nhttp://stackoverfl",
+      "thread_id": "thread-b3d5dda0c319",
+      "thread_depth": 0,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-959478170fdc",
+      "message_id": "<alpine.WNT.2.00.1410061011120.10228@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2014-10-06T10:14:08Z",
+      "subject": "[statnet_help] ergm: nodematch and nodefactor, edgecov and ?",
+      "subject_clean": "[statnet_help] ergm: nodematch and nodefactor, edgecov and ?",
+      "in_reply_to": "<CAH7AL4am9a=xm6JChp_UUXioX=9rc8BNYn+W8C3bayCuHdkEWA@mail.gmail.com>",
+      "references": [
+        "<CAH7AL4am9a=xm6JChp_UUXioX=9rc8BNYn+W8C3bayCuHdkEWA@mail.gmail.com>"
+      ],
+      "body_plain": "Franziska,\n\nOn Sun, 5 Oct 2014, Franziska Barbara Keller wrote:\n\n> Hi everyone,\n> \n> If I understand it correctly, then we might get biased estimates on the homophily parameters (the nodematch term) if some\n> groups are just much more \"sociable\" than others, and therefore I should also always add a nodefactor term, correct?\n\ncorrect\n\n> However, what if I suspect that the network of interest is determined not simply by belonging to one or another group,\n> but by the underlying social structure within the groups and therefore instead include an edgecov term (and enter the\n> network that represents this underlying social structure, in my case a complex star network with quite a few isolates).\n> \n> Is there an equivalent to the nodefactor term that I should add to avoid bias (e.g. a nodefactor term for \"part of\n> underlying network vs. isolate\")?\n\nnot directly, since this is an endogenous property.  however, if \nyour network comprises a set of completely disconnected components, you \ncan identify the components and use the component ID as a nodecov.\n\n> Thanks in advance for any suggestions,\n> \n> Franziska\n> \n> \n> --\n> \n> Franziska Barbara Keller\n> PhD Candidate, Department of Politics, New York University\n> phone US: (+1) 347-437-1074? / phone CH: (+41) 78 808 66 62\n> www.fbkeller.net\n> \n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Franziska,\n\nOn Sun, 5 Oct 2014, Franziska Barbara Keller wrote:\n\n> Hi everyone,\n> \n> If I understand it correctly, then we might get biased estimates on the homophily parameters (the nodematch term) i",
+      "thread_id": "thread-efcfff516c08",
+      "thread_depth": 1,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-cfe08c57e624",
+      "message_id": "<DC3A32B8-B7A1-4065-9316-6FC5AAFD9874@gmail.com>",
+      "from_name": "jimi adams",
+      "from_email_hash": "d387d68c739c196c625768794dffa30321694dced194798b4c5c7e0b3a23c752",
+      "date": "2014-10-06T12:43:34Z",
+      "subject": "[statnet_help] 4-cycles",
+      "subject_clean": "[statnet_help] 4-cycles",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi folks,\nMany of you are likely aware of the Bearman, Moody & Stovel paper in the American Journal of Sociology (2004; 110(1):44-91). A key aspect of their findings was the students? avoidance of 4-cycles. I was wondering if anyone has been able to get a parameter (set) to work in ergms that would capture that feature?\n\nThanks!\njimi\n\njimi adams\nAssociate Professor\nHealth and Behavioral Sciences\nUniversity of Colorado Denver\nw. jimiadams.com\ne. jimi.adams@ucdenver.edu",
+      "body_snippet": "Hi folks,\nMany of you are likely aware of the Bearman, Moody & Stovel paper in the American Journal of Sociology (2004; 110(1):44-91). A key aspect of their findings was the students? avoidance of 4-c",
+      "thread_id": "thread-cfe08c57e624",
+      "thread_depth": 0,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-49429ab2e1de",
+      "message_id": "<543321E6.6000204@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2014-10-06T16:12:38Z",
+      "subject": "[statnet_help] 4-cycles",
+      "subject_clean": "[statnet_help] 4-cycles",
+      "in_reply_to": "<DC3A32B8-B7A1-4065-9316-6FC5AAFD9874@gmail.com>",
+      "references": [
+        "<DC3A32B8-B7A1-4065-9316-6FC5AAFD9874@gmail.com>"
+      ],
+      "body_plain": "Hi, jimi -\n\nTry the cycle() term.  cycle(4) will add a term equal to the number of \n4-cycles; the changescore is then interpreted as the effect of the \nnumber of i,j 3-paths on the conditional log odds of an i,j edge.\n\nHope that helps,\n\n-Carter\n\nOn 10/06/2014 12:43 PM, jimi adams wrote:\n> Hi folks,\n> Many of you are likely aware of the Bearman, Moody & Stovel paper in the American Journal of Sociology (2004; 110(1):44-91). A key aspect of their findings was the students? avoidance of 4-cycles. I was wondering if anyone has been able to get a parameter (set) to work in ergms that would capture that feature?\n>\n> Thanks!\n> jimi\n>\n> jimi adams\n> Associate Professor\n> Health and Behavioral Sciences\n> University of Colorado Denver\n> w. jimiadams.com\n> e. jimi.adams@ucdenver.edu\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi, jimi -\n\nTry the cycle() term.  cycle(4) will add a term equal to the number of \n4-cycles; the changescore is then interpreted as the effect of the \nnumber of i,j 3-paths on the conditional log odd",
+      "thread_id": "thread-cfe08c57e624",
+      "thread_depth": 1,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-5cc0bf3d50f3",
+      "message_id": "<alpine.WNT.2.00.1410061748430.43192@csde-ts3.csde.washington.edu>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2014-10-06T17:52:17Z",
+      "subject": "[statnet_help] 4-cycles",
+      "subject_clean": "[statnet_help] 4-cycles",
+      "in_reply_to": "<DC3A32B8-B7A1-4065-9316-6FC5AAFD9874@gmail.com>",
+      "references": [
+        "<DC3A32B8-B7A1-4065-9316-6FC5AAFD9874@gmail.com>"
+      ],
+      "body_plain": "Hi jimi,\n\ngwnsp actually measures 4 cycles, but not as a cycle census.  I'm guessing \na 4-cycle term would have the same unfortunate properties that we've come \nto know and love about the triangle term.  So it may be that gwnsp is a \ngood first cut.  And if you set gwnsp(alpha=0, fixed=TRUE), the term \nmeasures how many dyads (without a tie) are in at least one 4-cycle.\n\nbest,\nmm\n\nOn Mon, 6 Oct 2014, jimi adams wrote:\n\n> Hi folks,\n> Many of you are likely aware of the Bearman, Moody & Stovel paper in the American Journal of Sociology (2004; 110(1):44-91). A key aspect of their findings was the students? avoidance of 4-cycles. I was wondering if anyone has been able to get a parameter (set) to work in ergms that would capture that feature?\n>\n> Thanks!\n> jimi\n>\n> jimi adams\n> Associate Professor\n> Health and Behavioral Sciences\n> University of Colorado Denver\n> w. jimiadams.com\n> e. jimi.adams@ucdenver.edu\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi jimi,\n\ngwnsp actually measures 4 cycles, but not as a cycle census.  I'm guessing \na 4-cycle term would have the same unfortunate properties that we've come \nto know and love about the triangle ter",
+      "thread_id": "thread-cfe08c57e624",
+      "thread_depth": 1,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-f27aac34cdea",
+      "message_id": "<54336279.1080008@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2014-10-06T20:48:09Z",
+      "subject": "[statnet_help] 4-cycles",
+      "subject_clean": "[statnet_help] 4-cycles",
+      "in_reply_to": "<alpine.WNT.2.00.1410061748430.43192@csde-ts3.csde.washington.edu>",
+      "references": [
+        "<DC3A32B8-B7A1-4065-9316-6FC5AAFD9874@gmail.com>",
+        "<alpine.WNT.2.00.1410061748430.43192@csde-ts3.csde.washington.edu>"
+      ],
+      "body_plain": "Just to comment further on this, the dyadwise shared partner (DSP) terms \nof order >=2 will measure the concentration of 4-cycles on arbitrary \ndyads; if you want 4-cycles _with at most one chord_, then the nullwise \nshared partners  (NSPs) of order >=2 will pick this up.  (ESPs >=2 will \ncorrespondingly capture 4-cycles with at _least_ one chord.) As Martina \nnoted, none of these are directly counting the 4-cycles per se, so one \nwould need to be careful in their interpretation vis a vis \ncycle-specific mechanisms.  Also, gwdsp/gwnsp/gwesp will put weight on \nDSP/NSP/ESP terms of order 0 and 1 (which do not contain 4-cycles), so \nthis may require correction.\n\nWhile it is true that the k-cycles for k>3 are not provably safe \nstatistics, in my experience they are often better behaved than the \ntriangle term.  \"Often\" does not mean \"always.\"  They can certainly \nproduce poor results...on the other hand, I'm currently fitting models \nwith cycle lengths as large as 10 to networks with >250 nodes.  Much \ndepends on the details of the network, the other terms in the model, \nconstraints, etc.\n\nOne additional point that bears note is that a 4-cycle term with a \nnegative parameter (as proposed here) will not lead e.g. to the density \nexplosion route to degeneracy.  That does not in and of itself guarantee \ngood behavior, but as a practical matter it is usually the positive \nterms that cause problems.  (An easy way to probe the impact of such a \nterm is to refit the model with the cycle term as an offset, and examine \nthe behavior of simulated networks under the refitted model as a \nfunction of the offset parameter.  This can be useful in identifying \nwhether e.g. models in the portion of the parameter space that is of \ninterest are well-behaved, one is close to a phase transition, etc.)\n\nCycles are a rich source of interesting problems, of both the good kind \nand the bad kind.  Hopefully, the above observations will prove useful \nto those seeking to employ cycle terms in their models!\n\n-Carter\n\n\nOn 10/06/2014 05:52 PM, martina morris wrote:\n> Hi jimi,\n>\n> gwnsp actually measures 4 cycles, but not as a cycle census.  I'm \n> guessing a 4-cycle term would have the same unfortunate properties \n> that we've come to know and love about the triangle term.  So it may \n> be that gwnsp is a good first cut.  And if you set gwnsp(alpha=0, \n> fixed=TRUE), the term measures how many dyads (without a tie) are in \n> at least one 4-cycle.\n>\n> best,\n> mm\n>\n> On Mon, 6 Oct 2014, jimi adams wrote:\n>\n>> Hi folks,\n>> Many of you are likely aware of the Bearman, Moody & Stovel paper in \n>> the American Journal of Sociology (2004; 110(1):44-91). A key aspect \n>> of their findings was the students' avoidance of 4-cycles. I was \n>> wondering if anyone has been able to get a parameter (set) to work in \n>> ergms that would capture that feature?\n>>\n>> Thanks!\n>> jimi\n>>\n>> jimi adams\n>> Associate Professor\n>> Health and Behavioral Sciences\n>> University of Colorado Denver\n>> w. jimiadams.com\n>> e. jimi.adams@ucdenver.edu\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20141006/439b7a2c/attachment.html>",
+      "body_snippet": "Just to comment further on this, the dyadwise shared partner (DSP) terms \nof order >=2 will measure the concentration of 4-cycles on arbitrary \ndyads; if you want 4-cycles _with at most one chord_, th",
+      "thread_id": "thread-cfe08c57e624",
+      "thread_depth": 2,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-5066fe53f04d",
+      "message_id": "<CAHKh5T+tdgYg98v3Qxx8j=-=n2UYxFCFDX5yqfTk6A3cocZrXw@mail.gmail.com>",
+      "from_name": "Alexander Semenov",
+      "from_email_hash": "6e5c1fbfadfa41a39f5196efe167a24af19fbcdae65a1300008188c51bdc86f1",
+      "date": "2014-10-10T03:39:09Z",
+      "subject": "[statnet_help] Network objects cannot be of negative order.",
+      "subject_clean": "[statnet_help] Network objects cannot be of negative order.",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi, all!\n\nI'm trying to import a network from and edgelist with this code (which used\nto work perfectly):\nel=read.csv(file.choose(),header=TRUE, stringsAsFactors=F)\nel[,1]=as.character(el[,1])\nel[,2]=as.character(el[,2])\nn=network(el,matrix.type=\"edgelist\",directed=T)\n\nBut now instead of network object I receive the following error message:\n> n=network(el,matrix.type=\"edgelist\",directed=T)\nError in if (n < 0) stop(\"Network objects cannot be of negative order.\") :\n  missing value where TRUE/FALSE needed\n\nThe data is 2 column csv file with header and ~1600 lines of edges,\nseparated by comma. R version 3.0.2 (2013-09-25). Windows 8.1, 64-bit.\n\nThanks in advance!\n\nBest regards,\nAlex.\n\nAlexander Semenov\n(Social | Network | Data) Analyst\n\nskype: semenoffalex\ntel: +7 926 602 25 51\n\nru.linkedin.com/in/semenoffalex/\nhttp://jarens.ru\nhttps://www.facebook.com/semenoffalex\nhttps://twitter.com/jarens\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20141010/ef00def9/attachment.html>",
+      "body_snippet": "Hi, all!\n\nI'm trying to import a network from and edgelist with this code (which used\nto work perfectly):\nel=read.csv(file.choose(),header=TRUE, stringsAsFactors=F)\nel[,1]=as.character(el[,1])\nel[,2]=",
+      "thread_id": "thread-5066fe53f04d",
+      "thread_depth": 0,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-4b2f1e470d1e",
+      "message_id": "<DUB125-W861D4902DFF4F8DDC31CF1B3AE0@phx.gbl>",
+      "from_name": "Ragia Ibrahim",
+      "from_email_hash": "2ecfacb089ab26af71751a5a36a869f09f16f34bd39598ea996d1585a19ffa68",
+      "date": "2014-10-10T21:29:03Z",
+      "subject": "[statnet_help] Write network  into a file",
+      "subject_clean": "[statnet_help] Write network  into a file",
+      "in_reply_to": "<mailman.0.1413001463.18004.statnet_help@mailman13.u.washington.edu>",
+      "references": [
+        "<mailman.0.1413001463.18004.statnet_help@mailman13.u.washington.edu>"
+      ],
+      "body_plain": "Hi,\nkindly how can I write an network object that has nodes and their attributes into a file, to open it in Gephi for visualization.\nthanks in advance\nRagia \n \t\t \t   \t\t  \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20141011/4a0b748b/attachment.html>",
+      "body_snippet": "Hi,\nkindly how can I write an network object that has nodes and their attributes into a file, to open it in Gephi for visualization.\nthanks in advance\nRagia \n \t\t \t   \t\t  \n-------------- next part ----",
+      "thread_id": "thread-4b2f1e470d1e",
+      "thread_depth": 0,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-f581d3daa2f9",
+      "message_id": "<CAByaRb_3o7dpnwknGv1bjXpfHtyd4UCydCapcye=sS9DKidYnw@mail.gmail.com>",
+      "from_name": "Narges Dorratoltaj",
+      "from_email_hash": "9b4fbc318e02429f293fc61e940aae0657eef29f0b9b1f76e4fb0c9189a64201",
+      "date": "2014-10-14T12:04:50Z",
+      "subject": "[statnet_help] Error in solve.default(H)",
+      "subject_clean": "[statnet_help] Error in solve.default(H)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI desprately need help on the following error:\n\nI am trying to fit a model to a sexual network data from Uganda. I chose a\nbipartite network and have the balanced degree distribution for all nodes.\nI want to fit the ergm model, using total edges, b1degree(1:2), and\nb2degree(1:2) as the target stats of the model. but I get the following\nerror.\nWould you please help me with that?\n\nError in solve.default(H) :\n  system is computationally singular: reciprocal condition number =\n2.15052e-17\n\nps: I decided to change my target stats to total edges, b1degree(1), and\nb2degree(1) to prevent getting the error, but fitted model was not an\nappropriate fit.\n\nHere are the codes:\n\nrm(list = ls())\ndev.off()\nlibrary(statnet)\nlibrary(ergm)\nlibrary(EpiModel)\nlibrary(sna)\nlibrary(coda)\n\nset.seed(0)\n\nnum.females <- 500\nnum.males <- 400\nnw <- network.initialize(num.females +\nnum.males,bipartite=num.females,directed=F)\nnw %v% 'sex' <- c(rep(1,num.females),rep(2,num.males))\n\ndeg.dist.males <- c(0.27,\n                    0.53,\n                    0.17,\n                    0.030\n\n)\ndeg.dist.females <- c(0.256,\n                      0.722,\n                      0.02,\n                      0.002\n\n)\n\n#target stat\ntg.edges <- round(sum(num.males*deg.dist.males%*%c(0,1,2,3)),0)\ntg.m.1 <- round(num.males*deg.dist.males[2],0)\ntg.f.1 <- round(num.females*deg.dist.females[2],0)\ntg.f.2 <- round(num.females*deg.dist.males[3],0)\ntg.m.2 <- round(num.females*deg.dist.females[3],0)\n\ntarget.stats <- c(tg.edges,tg.f.1,tg.f.2,tg.m.1,tg.m.2)\n\ncheck_bip_degdist(num.females, num.males, deg.dist.females, deg.dist.males)\n\nergm.fit <- ergm(nw ~ edges + b1degree(1:2) + b2degree(1:2), verbose=TRUE,\n                 target.stats=target.stats,\n\n control=control.ergm(MCMC.samplesize=1e+5,MCMC.interval=1000,\n                                      MCMLE.maxit = 5,\n                                      MCMC.burnin = 1e+5,\n                                      MCMLE.steplength = 0.25,seed=125))\n\n*sessionInfo()*\nR version 3.0.2 (2013-09-25)\nPlatform: x86_64-w64-mingw32/x64 (64-bit)\n\nlocale:\n[1] LC_COLLATE=English_United States.1252  LC_CTYPE=English_United\nStates.1252\n[3] LC_MONETARY=English_United States.1252 LC_NUMERIC=C\n\n[5] LC_TIME=English_United States.1252\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base\n\nother attached packages:\n [1] latticeExtra_0.6-26  RColorBrewer_1.0-5   coda_0.16-1\n lattice_0.20-29\n [5] EpiModel_1.0         statnet_2014.2.0     latentnet_2.5.1\n ergm.count_3.1.1\n [9] tergm_3.1.4          networkDynamic_0.6.3 sna_2.3-2\n ergm_3.1.2\n[13] statnet.common_3.1.1 network_1.9.0\n\nloaded via a namespace (and not attached):\n [1] abind_1.4-0       DEoptimR_1.0-1    deSolve_1.10-8    grid_3.0.2\n Matrix_1.0-14\n [6] mvtnorm_0.9-9996  nlme_3.1-111      robustbase_0.90-2 tools_3.0.2\n  trust_0.1-4\n*getOption(\"pkgType\")*\n[1] \"win.binary\"\n\n\n\n\nThanks,\nNarges\n\n\n-- \n*Narges Dorratoltaj, M.Sc., M.P.H.*\n*PhD Candidate*\n*Biomedical and Veterinary Sciences*\n*Department of Population Health Sciences*\n*Virginia-Maryland Regional College of Veterinary Medicine*\n*Virginia Tech, Blacksburg, VA, 24060*\n* (310) 880 0616*\n*nargesd@vt.edu <nargesd@vt.edu>*\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20141014/f647fef2/attachment.html>",
+      "body_snippet": "Hi,\n\nI desprately need help on the following error:\n\nI am trying to fit a model to a sexual network data from Uganda. I chose a\nbipartite network and have the balanced degree distribution for all node",
+      "thread_id": "thread-f581d3daa2f9",
+      "thread_depth": 0,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-3c5f5941a6e0",
+      "message_id": "<543E80C6.1080608@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2014-10-15T07:12:22Z",
+      "subject": "[statnet_help] Error in solve.default(H)",
+      "subject_clean": "[statnet_help] Error in solve.default(H)",
+      "in_reply_to": "<CAByaRb_3o7dpnwknGv1bjXpfHtyd4UCydCapcye=sS9DKidYnw@mail.gmail.com>",
+      "references": [
+        "<CAByaRb_3o7dpnwknGv1bjXpfHtyd4UCydCapcye=sS9DKidYnw@mail.gmail.com>"
+      ],
+      "body_plain": "Hello Narges,\n\nI just took a look at your degree distributions to make sure that they \nwere in balance (female total degree = male total degree) and indeed \nthey are, so that's good.\n\nLooking at the actual distributions, my suspicion is that the issue is \njust with the females (of whom very few are above degree 1; 20 with \ndegree 2 and 3 with degree 3) but not with the men (where the \ncorresponding figures are 136 and 36).  You tried reducing the terms for \nboth females and males, and that prevented the eror but provided poor \nfit.  I would try just reducing the females down to a single degree \nterm, but leaving the males at both.\n\nAlso, I notice that you don't have a maximum degree constraint in the \nmodel.  Did you intend to?  If so, the argument would be \nconstraints=~bd(maxout=3).  That might add to your problems with \ncomputational singularity, or it might actually be the trick you need.  \nPerhaps that in combination with one of the reduced models will be the \ncombo you need.\n\nYours,\nSteve\n\n\nOn 10/14/2014 12:04 PM, Narges Dorratoltaj wrote:\n> Hi,\n>\n> I desprately need help on the following error:\n>\n> I am trying to fit a model to a sexual network data from Uganda. I \n> chose a bipartite network and have the balanced degree distribution \n> for all nodes.\n> I want to fit the ergm model, using total edges, b1degree(1:2), and \n> b2degree(1:2) as the target stats of the model. but I get the \n> following error.\n> Would you please help me with that?\n>\n> Error in solve.default(H) :\n>   system is computationally singular: reciprocal condition number = \n> 2.15052e-17\n>\n> ps: I decided to change my target stats to total edges, b1degree(1), \n> and b2degree(1) to prevent getting the error, but fitted model was not \n> an appropriate fit.\n>\n> Here are the codes:\n>\n> rm(list = ls())\n> dev.off()\n> library(statnet)\n> library(ergm)\n> library(EpiModel)\n> library(sna)\n> library(coda)\n>\n> set.seed(0)\n>\n> num.females <- 500\n> num.males <- 400\n> nw <- network.initialize(num.females + \n> num.males,bipartite=num.females,directed=F)\n> nw %v% 'sex' <- c(rep(1,num.females),rep(2,num.males))\n>\n> deg.dist.males <- c(0.27,\n>                     0.53,\n>                     0.17,\n>                     0.030\n> )\n> deg.dist.females <- c(0.256,\n>                       0.722,\n>                       0.02,\n>                       0.002\n> )\n>\n> #target stat\n> tg.edges <- round(sum(num.males*deg.dist.males%*%c(0,1,2,3)),0)\n> tg.m.1 <- round(num.males*deg.dist.males[2],0)\n> tg.f.1 <- round(num.females*deg.dist.females[2],0)\n> tg.f.2 <- round(num.females*deg.dist.males[3],0)\n> tg.m.2 <- round(num.females*deg.dist.females[3],0)\n>\n> target.stats <- c(tg.edges,tg.f.1,tg.f.2,tg.m.1,tg.m.2)\n>\n> check_bip_degdist(num.females, num.males, deg.dist.females, \n> deg.dist.males)\n>\n> ergm.fit <- ergm(nw ~ edges + b1degree(1:2) + b2degree(1:2), verbose=TRUE,\n>                  target.stats=target.stats,\n>  control=control.ergm(MCMC.samplesize=1e+5,MCMC.interval=1000,\n>                                       MCMLE.maxit = 5,\n>                                       MCMC.burnin = 1e+5,\n> MCMLE.steplength = 0.25,seed=125))\n>\n> *sessionInfo()*\n> R version 3.0.2 (2013-09-25)\n> Platform: x86_64-w64-mingw32/x64 (64-bit)\n>\n> locale:\n> [1] LC_COLLATE=English_United States.1252  LC_CTYPE=English_United \n> States.1252\n> [3] LC_MONETARY=English_United States.1252 LC_NUMERIC=C\n> [5] LC_TIME=English_United States.1252\n>\n> attached base packages:\n> [1] stats     graphics  grDevices utils     datasets  methods   base\n>\n> other attached packages:\n>  [1] latticeExtra_0.6-26  RColorBrewer_1.0-5 coda_0.16-1         \n>  lattice_0.20-29\n>  [5] EpiModel_1.0         statnet_2014.2.0 latentnet_2.5.1     \n>  ergm.count_3.1.1\n>  [9] tergm_3.1.4          networkDynamic_0.6.3 sna_2.3-2           \n>  ergm_3.1.2\n> [13] statnet.common_3.1.1 network_1.9.0\n>\n> loaded via a namespace (and not attached):\n>  [1] abind_1.4-0       DEoptimR_1.0-1  deSolve_1.10-8    grid_3.0.2   \n>      Matrix_1.0-14\n>  [6] mvtnorm_0.9-9996  nlme_3.1-111  robustbase_0.90-2 tools_3.0.2     \n>   trust_0.1-4\n> *getOption(\"pkgType\")*\n> [1] \"win.binary\"\n>\n>\n>\n>\n> Thanks,\n> Narges\n>\n>\n> -- \n> /Narges Dorratoltaj, M.Sc., M.P.H./\n> /PhD Candidate/\n> /Biomedical and Veterinary Sciences/\n> /Department of Population Health Sciences/\n> /Virginia-Maryland Regional College of Veterinary Medicine/\n> /Virginia Tech, Blacksburg, VA, 24060/\n> /(310) 880 0616/\n> /nargesd@vt.edu <mailto:nargesd@vt.edu>/\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \n\n*******************************************************************\nSteven M. Goodreau / Assoc. Professor / Dept. of Anthropology\nUniversity of Washington / Denny Hall 423 / Campus Box 353100\nSeattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)\nhttp://faculty.washington.edu/goodreau\n*******************************************************************\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20141015/c46d6f8e/attachment.html>",
+      "body_snippet": "Hello Narges,\n\nI just took a look at your degree distributions to make sure that they \nwere in balance (female total degree = male total degree) and indeed \nthey are, so that's good.\n\nLooking at the a",
+      "thread_id": "thread-f581d3daa2f9",
+      "thread_depth": 1,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-8e882631fda3",
+      "message_id": "<D41A0B4F-095D-4CE3-B714-D3CD71C9CFFC@exchange.asu.edu>",
+      "from_name": "Jacob Young",
+      "from_email_hash": "12c71d887256658db8b65b764d2e601cbc5532ce4160d333ce75996b6a7593e1",
+      "date": "2014-10-15T09:07:25Z",
+      "subject": "[statnet_help] Question about using b1starmix term for multiple k values",
+      "subject_clean": "[statnet_help] Question about using b1starmix term for multiple k values",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI am estimating a model using the b1starmix term and have set k=2. However, I am interested in exploring higher values of k. Should I include an additional term of b1starmix where k=3? Or, should I just include the b1starmix term for k=3. That is, whether i should use: ergm(network ~ b1starmix(2,attribute) + b1starmix(3,attribute)) or just ergm(network ~  b1starmix(3,attribute)). I was not sure since the 2-star configuration is included in the 3-star configuration.\n\nPlease let me know at your convenience.\n\nThanks,\n\n--\nJacob T.N. Young, PhD\nAssistant Professor\nSchool of Criminology and Criminal Justice\nArizona State University\nJacob.Young.1@asu.edu<mailto:Jacob.Young.1@asu.edu> (email)\nJacobTNYoung.com<http://www.jacobtnyoung.com/> (web)\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20141015/3a8c8233/attachment.html>",
+      "body_snippet": "Hello,\n\nI am estimating a model using the b1starmix term and have set k=2. However, I am interested in exploring higher values of k. Should I include an additional term of b1starmix where k=3? Or, sho",
+      "thread_id": "thread-8e882631fda3",
+      "thread_depth": 0,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-2e54b6c73baf",
+      "message_id": "<20141016135846.20862exgmg6lrpli@umail.oit.umass.edu>",
+      "from_name": "Chris Smith",
+      "from_email_hash": "5bfe8e49eb158f0c9d6562b24376763d29c9a6257ff960d877af70073529b52a",
+      "date": "2014-10-16T10:58:46Z",
+      "subject": "[statnet_help] ERGMS on multiple networks in XPNet",
+      "subject_clean": "[statnet_help] ERGMS on multiple networks in XPNet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet Community,\n\nMy colleague and I are involved in a lengthy R&R that required us to  \nmove from Statnet to the XPNet program from the MelNet team  \n(http://sna.unimelb.edu.au/PNet) in order to simultaneously model  \nco-occurance between two networks.\n\nTo the best of our knowledge, modeling within-network effects plus  \ncross-network effects between two networks is not possible in the  \ncurrent statnet package. However, I might be wrong and wanted to check  \nif anyone has done work on this within statnet. Ideally, we would like  \nto complete our modeling in R to take advantage of parallel processing  \n(we have a rather large network) rather than an external (java-based)  \nprogram.\n\nAny insights or suggestions would be welcome.\n\nThank you.\n\nSincerely,\nChris Smith\n\nDepartment of Sociology\nUniversity of Massachusetts Amherst\ncmsmith@soc.umass.edu",
+      "body_snippet": "Dear Statnet Community,\n\nMy colleague and I are involved in a lengthy R&R that required us to  \nmove from Statnet to the XPNet program from the MelNet team  \n(http://sna.unimelb.edu.au/PNet) in order ",
+      "thread_id": "thread-2e54b6c73baf",
+      "thread_depth": 0,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-bf172f272a96",
+      "message_id": "<54400CE2.3050103@uni-konstanz.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "0e8856775b020043f064c122aa5e96f11a67360200ec15df7ed5c1cadf4a2652",
+      "date": "2014-10-16T11:22:26Z",
+      "subject": "[statnet_help] ERGMS on multiple networks in XPNet",
+      "subject_clean": "[statnet_help] ERGMS on multiple networks in XPNet",
+      "in_reply_to": "<20141016135846.20862exgmg6lrpli@umail.oit.umass.edu>",
+      "references": [
+        "<20141016135846.20862exgmg6lrpli@umail.oit.umass.edu>"
+      ],
+      "body_plain": "Hi Chris,\n\nI think one potential solution would be to include both networks in a \nsingle block-diagonal matrix and use structural zeros for the \noff-diagonal blocks. You can code independent variables as matrices \nwhich are conformable to the block-diagonal dependent matrix. I did \nsomething like this for my MCMC MLE implementation of TERGMs in the \nxergm package (the mtergm function). But to see whether this actually \nworks in your case, it would be helpful to see the model terms you want \nto include. (Note that I will be traveling for the next couple of days \nand might not be able to reply immediately.)\n\nBest,\nPhilip\n\nAm 16.10.2014 um 19:58 schrieb Chris Smith:\n> Dear Statnet Community,\n>\n> My colleague and I are involved in a lengthy R&R that required us to\n> move from Statnet to the XPNet program from the MelNet team\n> (http://sna.unimelb.edu.au/PNet) in order to simultaneously model\n> co-occurance between two networks.\n>\n> To the best of our knowledge, modeling within-network effects plus\n> cross-network effects between two networks is not possible in the\n> current statnet package. However, I might be wrong and wanted to check\n> if anyone has done work on this within statnet. Ideally, we would like\n> to complete our modeling in R to take advantage of parallel processing\n> (we have a rather large network) rather than an external (java-based)\n> program.\n>\n> Any insights or suggestions would be welcome.\n>\n> Thank you.\n>\n> Sincerely,\n> Chris Smith\n>\n> Department of Sociology\n> University of Massachusetts Amherst\n> cmsmith@soc.umass.edu\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Chris,\n\nI think one potential solution would be to include both networks in a \nsingle block-diagonal matrix and use structural zeros for the \noff-diagonal blocks. You can code independent variables",
+      "thread_id": "thread-2e54b6c73baf",
+      "thread_depth": 1,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-81d5c53b78c9",
+      "message_id": "<69AD021970EB5C4181A53E9C165E0A6976D49114@CIO-KRC-D1MBX05.osuad.osu.edu>",
+      "from_name": "Doogan, Nathan",
+      "from_email_hash": "f61bb204c3d79d6cfb66539bdd5292e6b3f57b321ec9501d6a5c10b0243238d9",
+      "date": "2014-10-16T11:41:55Z",
+      "subject": "[statnet_help] ERGMS on multiple networks in XPNet",
+      "subject_clean": "[statnet_help] ERGMS on multiple networks in XPNet",
+      "in_reply_to": "<54400CE2.3050103@uni-konstanz.de>",
+      "references": [
+        "<20141016135846.20862exgmg6lrpli@umail.oit.umass.edu>",
+        "<54400CE2.3050103@uni-konstanz.de>"
+      ],
+      "body_plain": "As an interested third party, I am going to expand a bit, or possibly take this in a different direction (since I'm not sure I understand Philip's suggestion entirely). Say the two relations on the same set of nodes are represented in matrices A and B. Then the network to model is \n\nA 0\n0 B\n\nWhere a 0 represents structural zeros. If cross network reciprocity is a desired model term, then the covariate matrix would look something like \n\nB' 0\n0  A'\n\nIs that a correct understanding? Are there inferential issues here to think about?\n\n-Nate\n\n\n--\nNathan J. Doogan, Ph.D.  | College of Public Health\nPost-Doctoral Researcher | The Ohio State University\n\n\n-----Original Message-----\nFrom: statnet_help [mailto:statnet_help-bounces@mailman13.u.washington.edu] On Behalf Of Philip Leifeld\nSent: Thursday, October 16, 2014 2:22 PM\nTo: statnet_help@u.washington.edu\nCc: cmsmith@soc.umass.edu\nSubject: Re: [statnet_help] ERGMS on multiple networks in XPNet\n\nHi Chris,\n\nI think one potential solution would be to include both networks in a single block-diagonal matrix and use structural zeros for the off-diagonal blocks. You can code independent variables as matrices which are conformable to the block-diagonal dependent matrix. I did something like this for my MCMC MLE implementation of TERGMs in the xergm package (the mtergm function). But to see whether this actually works in your case, it would be helpful to see the model terms you want to include. (Note that I will be traveling for the next couple of days and might not be able to reply immediately.)\n\nBest,\nPhilip\n\nAm 16.10.2014 um 19:58 schrieb Chris Smith:\n> Dear Statnet Community,\n>\n> My colleague and I are involved in a lengthy R&R that required us to \n> move from Statnet to the XPNet program from the MelNet team\n> (http://sna.unimelb.edu.au/PNet) in order to simultaneously model \n> co-occurance between two networks.\n>\n> To the best of our knowledge, modeling within-network effects plus \n> cross-network effects between two networks is not possible in the \n> current statnet package. However, I might be wrong and wanted to check \n> if anyone has done work on this within statnet. Ideally, we would like \n> to complete our modeling in R to take advantage of parallel processing \n> (we have a rather large network) rather than an external (java-based) \n> program.\n>\n> Any insights or suggestions would be welcome.\n>\n> Thank you.\n>\n> Sincerely,\n> Chris Smith\n>\n> Department of Sociology\n> University of Massachusetts Amherst\n> cmsmith@soc.umass.edu\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "As an interested third party, I am going to expand a bit, or possibly take this in a different direction (since I'm not sure I understand Philip's suggestion entirely). Say the two relations on the sa",
+      "thread_id": "thread-2e54b6c73baf",
+      "thread_depth": 2,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-22b4659cef13",
+      "message_id": "<5446AE52.4060706@uni-konstanz.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "0e8856775b020043f064c122aa5e96f11a67360200ec15df7ed5c1cadf4a2652",
+      "date": "2014-10-21T12:04:50Z",
+      "subject": "[statnet_help] ERGMS on multiple networks in XPNet",
+      "subject_clean": "[statnet_help] ERGMS on multiple networks in XPNet",
+      "in_reply_to": "<20141017071304.919988knl1na15ts@umail.oit.umass.edu>",
+      "references": [
+        "<20141016135846.20862exgmg6lrpli@umail.oit.umass.edu>",
+        "<54400CE2.3050103@uni-konstanz.de>",
+        "<20141017071304.919988knl1na15ts@umail.oit.umass.edu>"
+      ],
+      "body_plain": "Hi Chris and Nate,\n\nI think there are two important things here: modeling the distribution \nof the relation(s) adequately, and deciding whether it's necessary and \nuseful to model them jointly in one dependent variable. The alternative \nwould be to model them separately and include each relation or a \ntransformation thereof as a covariate (which would make it easier to \nthink of endogenous network statistics), but I assume you have already \ntried that. Given that you are quite sure that both should be modeled \njointly, you could accommodate both relations/networks in a single \nmatrix (with each node being duplicated, e.g., in a block-diagonal \nmatrix) and set the type of nodes (i.e., which original network relation \nis this node from?) as a nodal covariate. Then you would have to come up \nwith statistics that describe the features of the joint network, for \nexample a statistic counting how often x_ij from relation 1 and x_ij \nfrom relation 2 are both tied (= cross-relation reciprocity), or how \noften x_ij and x_jk form a two-path in relation 1 AND x_ik are tied in \nrelation 2 or vice-versa (= cross-relation triadic closure), and so on. \nThis is kind of the bottleneck because you would presumably have to \nimplement some of these statistics on your own while others can probably \nbe implemented using covariates (as suggested by Nate in his example). \nFor example, if you want to model interdependent triadic closure as in a \ncollaboration and conflict setting (where A and C are likely to have a \npositive tie when A and B as well as B and C have negative ties, due to \nsocial balance), you can most likely do that by creating a covariate \nmatrix which contains the two-paths of relation 1 as direct ties in the \nblock of relation 2 and possibly vice-versa. That might work, but I am \nstill a bit hesitant because simple triadic closure and other simpler \nnetwork statistics might actually look very different across the two \nrelations, and modeling these different distributions through one joint \nmodel term at a time may not necessarily capture their joint \ndistribution very well. It may also be problematic because things like \nsocial balance may not necessarily work in the same way for both \nrelations or directions (--+ is social balance, but ++- would not be \nbalanced), so you really have to think about theory and about how to \naccommodate this in covariate matrices. So I would say it's possible in \nprinciple but use it cautiously.\n\nFunny coincidence: the two of you are located at Columbus and Amherst, \nand I am currently a visiting scholar at OSU in Columbus and will then \nmove on to Amherst for a couple of days in mid-November.\n\nI hope that's helpful.\n\nBest,\nPhilip\n\nAm 17.10.2014 um 07:13 schrieb Chris Smith:\n> Thanks, for your reply Philip.\n>\n> The networks are undirected. Currently the model includes a co-occurring\n> edges term, a gwesp term, a degree=2 term, and 1 attribute. We need to\n> add more terms because the reviewer wants to see a better model fit.\n>\n> Does this still sound possible given the approach you described?\n>\n> Thank you again.\n>\n> Sincerely,\n> Chris\n>\n> Department of Sociology\n> University of Massachusetts Amherst\n>\n> Quoting Philip Leifeld <philip.leifeld@uni-konstanz.de>:\n>\n>> Hi Chris,\n>>\n>> I think one potential solution would be to include both networks in a\n>> single block-diagonal matrix and use structural zeros for the\n>> off-diagonal blocks. You can code independent variables as matrices\n>> which are conformable to the block-diagonal dependent matrix. I did\n>> something like this for my MCMC MLE implementation of TERGMs in the\n>> xergm package (the mtergm function). But to see whether this actually\n>> works in your case, it would be helpful to see the model terms you\n>> want to include. (Note that I will be traveling for the next couple of\n>> days and might not be able to reply immediately.)\n>>\n>> Best,\n>> Philip\n>>\n>> Am 16.10.2014 um 19:58 schrieb Chris Smith:\n>>> Dear Statnet Community,\n>>>\n>>> My colleague and I are involved in a lengthy R&R that required us to\n>>> move from Statnet to the XPNet program from the MelNet team\n>>> (http://sna.unimelb.edu.au/PNet) in order to simultaneously model\n>>> co-occurance between two networks.\n>>>\n>>> To the best of our knowledge, modeling within-network effects plus\n>>> cross-network effects between two networks is not possible in the\n>>> current statnet package. However, I might be wrong and wanted to check\n>>> if anyone has done work on this within statnet. Ideally, we would like\n>>> to complete our modeling in R to take advantage of parallel processing\n>>> (we have a rather large network) rather than an external (java-based)\n>>> program.\n>>>\n>>> Any insights or suggestions would be welcome.\n>>>\n>>> Thank you.\n>>>\n>>> Sincerely,\n>>> Chris Smith\n>>>\n>>> Department of Sociology\n>>> University of Massachusetts Amherst\n>>> cmsmith@soc.umass.edu\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n>",
+      "body_snippet": "Hi Chris and Nate,\n\nI think there are two important things here: modeling the distribution \nof the relation(s) adequately, and deciding whether it's necessary and \nuseful to model them jointly in one ",
+      "thread_id": "thread-22b4659cef13",
+      "thread_depth": 0,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-2e5d91fbd329",
+      "message_id": "<54482C01.4020707@uni-konstanz.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "0e8856775b020043f064c122aa5e96f11a67360200ec15df7ed5c1cadf4a2652",
+      "date": "2014-10-22T15:13:21Z",
+      "subject": "[statnet_help] ERGM vs. QAP vs. latent space: why does LS deviate from the other models?",
+      "subject_clean": "[statnet_help] ERGM vs. QAP vs. latent space: why does LS deviate from the other models?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n            Warning text added to this message by\n                  UW Information Technology\n                        help@uw.edu\n\n  ATTACHMENTS RENAMED\n\n  This message came to the UW with an attached file with a\n  name that ended in .zip or .exe.  Because files of this\n  type can automatically infect computers with a virus, the\n  attachment has been renamed.\n\n  o If the sender of the message is known to you, and you\n    were expecting the message, you need simply save the\n    attachment using the original name or save it as is and\n    rename it back to the original name on your computer.\n\n  o If the sender is not known to you, it is possible that\n    the attachment contains a virus and you may simply\n    delete the message.\n\n  o If this message claims to be official and\n    instructs you to open the attachment to get\n    important information, it is likely to be fake.\n    Virus writers are increasingly using sophisticated\n    social engineering techniques to mislead people.\n\n  UW-IT never sends important information about your\n  account or password in an email attachment.  Instead\n  you will be directed to a web page on a UW-IT site.\n\n  If you have further questions, please contact your\n  local computing support or\n    UW Information Technology\n    email: help@uw.edu\n    phone: 206.221.5000\n\n           Warning text added to this message by\n                 UW Information Technology\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\nDear all,\n\nI am currently comparing an ERGM, QAP netlogit, and a latent space model \nbased on the same data with the same formula (except for the additional \nendogenous model terms in the ERGM case and the euclidean distance \nparameter in the latent space model). I tend to think that all three \nmodels should return fairly similar results, but this is apparently not \nthe case: the ERGM and the QAP model look pretty similar, but the latent \nspace model has some coefficients which are significant in the opposite \ndirection. I'd like to learn more about where it's going wrong. Any \nideas or suggestions on what I could try? Here is a results table for \nthe three models:\n\n========================================================================\n                         ERGM         Latent Space Model  QAP Logit Model\n------------------------------------------------------------------------\nEdges/Intercept           -5.57 ***     0.63               -2.59 ***\n                           (1.06)     [-0.20;  1.48]        ()\nAlter = Gov. actor         1.10 ***    -0.69 *              0.42\n                           (0.21)     [-1.16; -0.21]        ()\nEgo = Interest group       0.30        -0.92 *              0.64\n                           (0.16)     [-1.46; -0.41]        ()\nPreference similarity      0.12         0.14                0.13\n                           (0.08)     [-0.08;  0.34]        ()\nShared committees          0.56 ***     1.00 *              0.76 ***\n                           (0.12)     [ 0.73;  1.28]        ()\nShared committees^2       -0.03 *      -0.06 *             -0.05 ***\n                           (0.01)     [-0.09; -0.03]        ()\nScientific inf. ex.        2.84 ***     1.80 *              3.01 ***\n                           (0.64)     [ 0.95;  2.77]        ()\nInfluence attribution      1.03 ***    -0.13                0.93 ***\n                           (0.19)     [-0.57;  0.32]        ()\nMutuality                  1.35 ***\n                           (0.30)\nOut-2-stars                0.15 ***\n                           (0.01)\nTransitive ties            1.63\n                           (1.01)\nCyclic triples            -0.19 ***\n                           (0.04)\n------------------------------------------------------------------------\nAIC                      762.48                           862.37\nBIC                      819.70                           900.52\nLog Likelihood          -369.24\nBIC (Overall)                        1105.17\nBIC (Likelihood)                      916.01\nBIC (Latent Positions)                189.17\nDeviance                                                  846.37\nNull deviance                                            1206.08\nNum. obs.                                                 870.00\n========================================================================\n*** p < 0.001, ** p < 0.01, * p < 0.05 (or 0 outside the confidence \ninterval).\n\nA couple of ideas I had:\n\n- I tried to use different numbers of dimensions for the euclidean term, \nbut nothing between 1 and 5 made any substantial difference. The model \nfit according to AIC gets better the fewer dimensions there are.\n\n- I get the following message during the estimation of the latent space \nmodel: \"Burning in... Backing off: too few acceptances. If you see this \nmessage several times in a row, use a longer burnin. Finished.\" Since I \nget this message only once, I don't care about it. Should I? What does \nit mean, and can it bias the estimates so severely? I tried much higher \nburnin values, but that didn't change anything.\n\n- The Minimum Kullback-Leibler estimates look slightly better, but they \nare still somewhat different from the QAP and ERG models. Plus, I don't \nget any uncertainty measure for them (why is this not reported/not \npossible?).\n\n- I tried adding rsender and rreceiver terms, but this didn't change \nanything.\n\n- I tried to install the old latentnetHRT package to see if it makes any \ndifference, but the installation does not work due to a lot of changes \nin the ways namespaces are handled in R between 2007 and 2014 and due to \nmissing dependencies.\n\nAnything else I could try? Any idea why the latent space models are so \ndifferent? I know a bit about ERGMs and QAP, but I'm a beginner with \nregard to latent space models, so any hint would be appreciated.\n\nI will attach a self-contained example for your convenience.\n\nThanks,\nPhilip\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: example.zip-UWunsafe\nType: application/zip\nSize: 5459 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20141022/40967714/attachment.zip>",
+      "body_snippet": "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n            Warning text added to this message by\n                  UW Information Technology\n                        help@uw.edu\n\n  ATTA",
+      "thread_id": "thread-2e5d91fbd329",
+      "thread_depth": 0,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-2ee873f889a8",
+      "message_id": "<544A169F.5010505@uni-bremen.de>",
+      "from_name": "Florian Umlauf (CRIE)",
+      "from_email_hash": "52381ca681e0d2b9acc139619dad1e73c88ca9cbf6423ff553ecb7de555f0f4f",
+      "date": "2014-10-24T02:06:39Z",
+      "subject": "[statnet_help] STERGM and bipartite networks",
+      "subject_clean": "[statnet_help] STERGM and bipartite networks",
+      "in_reply_to": "<alpine.WNT.1.10.1308151119400.5596@morrism-PC>",
+      "references": [
+        "<520B5DCD.4050700@ipgovernance.eu>",
+        "<alpine.WNT.1.10.1308151119400.5596@morrism-PC>"
+      ],
+      "body_plain": "Hello,\n\ncurrently I have the same problem. I am trying to use bipartite networks \nwith stergm. Since I am unable find a manual on that topic, I don't know \nwhats going wrong.\n\nHere an example which is quite similar to my problem. It doesn't make \nany sense, but is easy to replicate:\n\nlibrary(networksis)\nlibrary(statnet)\ndata(finch)\nsim <- simulate(finch, nsim = 5, save.networks = TRUE)\n\t\nstergm(sim$network,formation=~edges+mutual+transitiveties+cyclicalties,dissolution=~edges+mutual+transitiveties+cyclicalties,estimate=\"CMLE\")\n\nBest\n\nFlorian\n\n++++++++++++++++++++++++++++\nsessionInfo()\nR version 3.1.0 (2014-04-10)\nPlatform: x86_64-w64-mingw32/x64 (64-bit)\n\nlocale:\n[1] LC_COLLATE=German_Germany.1252  LC_CTYPE=German_Germany.1252\n[3] LC_MONETARY=German_Germany.1252 LC_NUMERIC=C\n[5] LC_TIME=German_Germany.1252\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base\n\nother attached packages:\n  [1] networksis_2.1-2     statnet_2014.2.0     latentnet_2.5.1\n  [4] ergm.count_3.1.1     tergm_3.1.4          networkDynamic_0.6.3\n  [7] sna_2.3-2            ergm_3.1.3           statnet.common_3.1.1\n[10] network_1.10.2\n\nloaded via a namespace (and not attached):\n  [1] abind_1.4-0       coda_0.16-1       DEoptimR_1.0-2    grid_3.1.0 \n\n  [5] lattice_0.20-29   Matrix_1.1-4      mvtnorm_1.0-0     nlme_3.1-118 \n\n  [9] robustbase_0.91-1 tools_3.1.0       trust_0.1-6\n+++++++++++++++++++++++++++\n\n\nAm 15.08.2013 20:21, schrieb martina morris:> Sebastian,\n >\n > Yes STERGM can be used on bipartite networks, so the problem is likely\n > being triggered from something else in your code.\n >\n > First -- are you using the most current versions of the software?  If\n > not, please update and see if that fixes the problem.\n >\n > If it doesn't, send the full set of code so we can replicate.\n >\n > best,\n > Martina\n >\n > On Wed, 14 Aug 2013, Sebastian Haunss wrote:\n >\n >> Is it possible to fit STERGM models for bipartite networks?\n >> I do have a time series of 2-mode networks, but if I try to fit a\n >> model in R I get the following error:\n >>\n >> Fehler in combine.networks(y0s, standardized = TRUE, blockname =\n >> \".stergm.CMLE.time.index\") :\n >>  Bipartite networks are not supported at this time.\n >>\n >> Best\n >> Sebastian\n >>\n >> _______________________________________________\n >> statnet_help mailing list\n >> statnet_help@u.washington.edu\n >> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n >>\n >\n > ****************************************************************\n >   Professor of Sociology and Statistics\n >   Director, UWCFAR Sociobehavioral and Prevention Research Core\n >   Box 354322\n >   University of Washington\n >   Seattle, WA 98195-4322\n >\n >   Office:        (206) 685-3402\n >   Dept Office:   (206) 543-5882, 543-7237\n >   Fax:           (206) 685-7419\n >\n > morrism@u.washington.edu\n > http://faculty.washington.edu/morrism/\n > _______________________________________________\n > statnet_help mailing list\n > statnet_help@u.washington.edu\n > http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nFlorian Umlauf\nVolkswirt, M.Sc.\nUniversit?t Bremen\nCentre for Regional and Innovation Economics\nWilhelm-Herbst-Str. 12\n28359 Bremen\n\nTelefon: +(49) 421 218 66537\nTelefax: +(49) 421 218 66832\nEmail: fumlauf@uni-bremen.de",
+      "body_snippet": "Hello,\n\ncurrently I have the same problem. I am trying to use bipartite networks \nwith stergm. Since I am unable find a manual on that topic, I don't know \nwhats going wrong.\n\nHere an example which is",
+      "thread_id": "thread-2ee873f889a8",
+      "thread_depth": 0,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-15ef72923eac",
+      "message_id": "<2048C0F878A59A458F3F156E444EF0D558B14F0F@CITESMBX3.ad.uillinois.edu>",
+      "from_name": "Fischer, Jason Donald",
+      "from_email_hash": "7b376154d07e032258e2a5f0d1fa174bf4dc3079002d7d5434960dcb7cced8ab",
+      "date": "2014-10-26T11:41:15Z",
+      "subject": "[statnet_help] Nodemix interpretation",
+      "subject_clean": "[statnet_help] Nodemix interpretation",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Good afternoon,\n\nI have a question about the interpretation of nodemix coefficients. Let's say I have a simple model looking at associations among sexes and I use the default of 0 for the base option [edges +nodemix(\"sex\")] .\n\nIf the coefficient for male-male associations was significant and positive, would it be correct to interpret this as\nmale-male associations positively affect (i.e., increase) the likelihood of edges occurring in the network? Would it also be accurate to say that male-male associations are more likely to occur than expected by chance given the density of the network?\n\nIf a base was specified (say it was set to female-female associations) and the male-male coefficient was still significant and positive, would the interpretation change to edges are more likely occur between males than between females? Or does the base option just specify terms that are not of interest and should be left out of the model?\n\nThank you for your time,\nJason Fischer\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20141026/9f7d8176/attachment.html>",
+      "body_snippet": "Good afternoon,\n\nI have a question about the interpretation of nodemix coefficients. Let's say I have a simple model looking at associations among sexes and I use the default of 0 for the base option ",
+      "thread_id": "thread-15ef72923eac",
+      "thread_depth": 0,
+      "month": "2014-10"
+    },
+    {
+      "id": "msg-e6f003c854ff",
+      "message_id": "<54526354.7020000@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2014-10-30T09:12:04Z",
+      "subject": "[statnet_help] Nodemix interpretation",
+      "subject_clean": "[statnet_help] Nodemix interpretation",
+      "in_reply_to": "<2048C0F878A59A458F3F156E444EF0D558B14F0F@CITESMBX3.ad.uillinois.edu>",
+      "references": [
+        "<2048C0F878A59A458F3F156E444EF0D558B14F0F@CITESMBX3.ad.uillinois.edu>"
+      ],
+      "body_plain": "On 10/26/2014 11:41 AM, Fischer, Jason Donald wrote:\n> I have a question about the interpretation of nodemix coefficients. \n> Let's say I have a simple model looking at associations among sexes \n> and I use the default of 0 for the base option [edges +nodemix(\"sex\")] .\n>\n> If the coefficient for male-male associations was significant and \n> positive, would it be correct to interpret this as\n> male-male associations positively affect (i.e., increase) the \n> likelihood of edges occurring in the network? Would it also be \n> accurate to say that male-male associations are more likely to occur \n> than expected by chance given the density of the network?\n>\n> If a base was specified (say it was set to female-female associations) \n> and the male-male coefficient was still significant and positive, \n> would the interpretation change to edges are more likely occur between \n> males than between females? Or does the base option just specify terms \n> that are not of interest and should be left out of the model?\nHi Jason,\n\nI think it'll be most clear if I walk through three models in turn. Let \nme create a network with a single attribute, and then purely random ties \nunrelated to that attribute. Because this is undirected, there are only \na total of three kinds of attribute combos, not four:\n\n > library(ergm)\n > aaa <- network.initialize(100, directed=F)\n > aaa %v% 'sex' <- sample(c('F','M'),100, replace=T)\n > aaa <- simulate(ergm(aaa~edges,target.stats=200))\n\nFirst, if you have a nodemix term with a base of 0 and you *don't* have \nan edges term, then you can interpret each coefficient in there as an \neffect for that type of tie.  But note that you are *not* conditioning \non the density of the network in this case, because there is no edges \nterm.  If nodemix were the only term in your model, then the \ncoefficients would all be defined as the propensity for that type of \ntie, relative to a density of 0.5.  Note how the coefficients are all \nroughly equal to each other; each is defined relative to a density of 0.5:\n\n > (ccc <- ergm(aaa~nodemix('sex')))\n\nMLE Coefficients:\nmix.sex.F.F  mix.sex.F.M  mix.sex.M.M\n      -3.185       -3.211       -3.104\n\nSecond, if you have an edges and nodemix term, and you leave one \ncategory out as a base, then the edges term can be interpreted in terms \nof the propensity for ties of the omitted category, and the others can \nbe interpreted as the propensity for the various groups, relative to the \nomitted category:\n\n > (ddd <- ergm(aaa~edges+nodemix('sex',base=1)))\n\nMLE Coefficients:\n       edges  mix.sex.F.M  mix.sex.M.M\n    -3.18475     -0.02635      0.08064\n\nNote how here the edges coefficient is equal to the nodemix.FF \ncoefficient in the previous model; and the other two represent the \ndifference between that value and the other values in the previous model.\n\nFinally, if you have a nodemix with a base of 0 in combination with an \nedges term, then you will end up with collinearity: one of your terms \nwill be dropped out.  E.g.:\n\n > (bbb <- ergm(aaa~edges+nodemix('sex')))\n\nMLE Coefficients:\n       edges  mix.sex.F.F  mix.sex.F.M  mix.sex.M.M\n    -3.10411     -0.08064     -0.10699           NA\n\nHTH,\nSteve\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20141030/cfa84a96/attachment.html>",
+      "body_snippet": "On 10/26/2014 11:41 AM, Fischer, Jason Donald wrote:\n> I have a question about the interpretation of nodemix coefficients. \n> Let's say I have a simple model looking at associations among sexes \n> and",
+      "thread_id": "thread-15ef72923eac",
+      "thread_depth": 1,
+      "month": "2014-10"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-c955bd50e622",
+      "subject": "[statnet_help] Significant memory use for gof.ergmm",
+      "message_count": 1,
+      "participants": [
+        "Jake Fisher"
+      ],
+      "started": "2014-10-03T07:44:17Z",
+      "last_reply": "2014-10-03T07:44:17Z",
+      "root_message_id": "msg-c955bd50e622"
+    },
+    {
+      "id": "thread-74f78792d73a",
+      "subject": "[statnet_help] do you use statnet's parallel functionality on non-unix MPI clusters?",
+      "message_count": 1,
+      "participants": [
+        "Skye Bender-deMoll"
+      ],
+      "started": "2014-10-03T10:24:48Z",
+      "last_reply": "2014-10-03T10:24:48Z",
+      "root_message_id": "msg-74f78792d73a"
+    },
+    {
+      "id": "thread-efcfff516c08",
+      "subject": "[statnet_help] ergm: nodematch and nodefactor, edgecov and ?",
+      "message_count": 2,
+      "participants": [
+        "Franziska Barbara Keller",
+        "martina morris"
+      ],
+      "started": "2014-10-05T17:01:38Z",
+      "last_reply": "2014-10-06T10:14:08Z",
+      "root_message_id": "msg-efcfff516c08"
+    },
+    {
+      "id": "thread-b3d5dda0c319",
+      "subject": "[statnet_help] Possible network.arrow() bug",
+      "message_count": 1,
+      "participants": [
+        "Warren Ronsiek"
+      ],
+      "started": "2014-10-05T17:50:35Z",
+      "last_reply": "2014-10-05T17:50:35Z",
+      "root_message_id": "msg-b3d5dda0c319"
+    },
+    {
+      "id": "thread-cfe08c57e624",
+      "subject": "[statnet_help] 4-cycles",
+      "message_count": 4,
+      "participants": [
+        "Carter T. Butts",
+        "jimi adams",
+        "martina morris"
+      ],
+      "started": "2014-10-06T12:43:34Z",
+      "last_reply": "2014-10-06T20:48:09Z",
+      "root_message_id": "msg-cfe08c57e624"
+    },
+    {
+      "id": "thread-5066fe53f04d",
+      "subject": "[statnet_help] Network objects cannot be of negative order.",
+      "message_count": 1,
+      "participants": [
+        "Alexander Semenov"
+      ],
+      "started": "2014-10-10T03:39:09Z",
+      "last_reply": "2014-10-10T03:39:09Z",
+      "root_message_id": "msg-5066fe53f04d"
+    },
+    {
+      "id": "thread-4b2f1e470d1e",
+      "subject": "[statnet_help] Write network  into a file",
+      "message_count": 1,
+      "participants": [
+        "Ragia Ibrahim"
+      ],
+      "started": "2014-10-10T21:29:03Z",
+      "last_reply": "2014-10-10T21:29:03Z",
+      "root_message_id": "msg-4b2f1e470d1e"
+    },
+    {
+      "id": "thread-f581d3daa2f9",
+      "subject": "[statnet_help] Error in solve.default(H)",
+      "message_count": 2,
+      "participants": [
+        "Narges Dorratoltaj",
+        "Steven Goodreau"
+      ],
+      "started": "2014-10-14T12:04:50Z",
+      "last_reply": "2014-10-15T07:12:22Z",
+      "root_message_id": "msg-f581d3daa2f9"
+    },
+    {
+      "id": "thread-8e882631fda3",
+      "subject": "[statnet_help] Question about using b1starmix term for multiple k values",
+      "message_count": 1,
+      "participants": [
+        "Jacob Young"
+      ],
+      "started": "2014-10-15T09:07:25Z",
+      "last_reply": "2014-10-15T09:07:25Z",
+      "root_message_id": "msg-8e882631fda3"
+    },
+    {
+      "id": "thread-2e54b6c73baf",
+      "subject": "[statnet_help] ERGMS on multiple networks in XPNet",
+      "message_count": 3,
+      "participants": [
+        "Chris Smith",
+        "Doogan, Nathan",
+        "Philip Leifeld"
+      ],
+      "started": "2014-10-16T10:58:46Z",
+      "last_reply": "2014-10-16T11:41:55Z",
+      "root_message_id": "msg-2e54b6c73baf"
+    },
+    {
+      "id": "thread-22b4659cef13",
+      "subject": "[statnet_help] ERGMS on multiple networks in XPNet",
+      "message_count": 1,
+      "participants": [
+        "Philip Leifeld"
+      ],
+      "started": "2014-10-21T12:04:50Z",
+      "last_reply": "2014-10-21T12:04:50Z",
+      "root_message_id": "msg-22b4659cef13"
+    },
+    {
+      "id": "thread-2e5d91fbd329",
+      "subject": "[statnet_help] ERGM vs. QAP vs. latent space: why does LS deviate from the other models?",
+      "message_count": 1,
+      "participants": [
+        "Philip Leifeld"
+      ],
+      "started": "2014-10-22T15:13:21Z",
+      "last_reply": "2014-10-22T15:13:21Z",
+      "root_message_id": "msg-2e5d91fbd329"
+    },
+    {
+      "id": "thread-2ee873f889a8",
+      "subject": "[statnet_help] STERGM and bipartite networks",
+      "message_count": 1,
+      "participants": [
+        "Florian Umlauf (CRIE)"
+      ],
+      "started": "2014-10-24T02:06:39Z",
+      "last_reply": "2014-10-24T02:06:39Z",
+      "root_message_id": "msg-2ee873f889a8"
+    },
+    {
+      "id": "thread-15ef72923eac",
+      "subject": "[statnet_help] Nodemix interpretation",
+      "message_count": 2,
+      "participants": [
+        "Fischer, Jason Donald",
+        "Steven Goodreau"
+      ],
+      "started": "2014-10-26T11:41:15Z",
+      "last_reply": "2014-10-30T09:12:04Z",
+      "root_message_id": "msg-15ef72923eac"
+    }
+  ]
+}

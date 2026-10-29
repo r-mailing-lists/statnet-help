@@ -1,0 +1,1042 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2010-04",
+  "messages": [
+    {
+      "id": "msg-843fcacbae3a",
+      "message_id": "<k2lc3de8e2a1004011223z9e7e315ew3c3fe1d412d78044@mail.gmail.com>",
+      "from_name": "Dai Shizuka",
+      "from_email_hash": "0821b2ad1f8274594f16f40474bb605d24560d46df345789005069d0a7638667",
+      "date": "2010-04-01T12:23:06Z",
+      "subject": "[statnet_help] Node labels",
+      "subject_clean": "[statnet_help] Node labels",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "How about using, for example:\ngplot(net, label=network.vertex.names(net))\n\nThat should label your nodes with whatever your node names are. I haven't\ntried it on a \"chess game\" type network, but it could be a start?\n\nDai\n----------\nDaizaburo Shizuka\nPostdoctoral Researcher\nDepartment of Zoology & Physiology\nUniversity of Wyoming\n1000 E. University Ave\nLaramie, Wyoming 82071\n\n\nOn Thu, Apr 1, 2010 at 1:00 PM, <\nstatnet_help-request@mailman2.u.washington.edu> wrote:\n\n> Send statnet_help mailing list submissions to\n>        statnet_help@u.washington.edu\n>\n> To subscribe or unsubscribe via the World Wide Web, visit\n>        http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> or, via email, send a message with subject or body 'help' to\n>        statnet_help-request@mailman2.u.washington.edu\n>\n> You can reach the person managing the list at\n>        statnet_help-owner@mailman2.u.washington.edu\n>\n> When replying, please edit your Subject line so it is more specific\n> than \"Re: Contents of statnet_help digest...\"\n>\n> Today's Topics:\n>\n>   1. (no subject) (Johnson, B. x26460 H1)\n>\n>\n> ---------- Forwarded message ----------\n> From: \"Johnson, B. x26460 H1\" <Benjamin.Johnson2@usma.edu>\n> To: \"statnet_help@u.washington.edu\" <statnet_help@u.washington.edu>\n> Date: Wed, 31 Mar 2010 17:32:30 -0400\n> Subject: [statnet_help] (no subject)\n>\n> To Whom It May Concern:\n>\n>\n>\n> I have a longitudinal data set that I am trying to run an RSiena simulation\n> for but because the network is a chess game nodes disappear. I was hoping\n> that someone could help me establish a way to be able to label the nodes so\n> that when I run an edgelist command the nodes appear as how I named them no\n> matter what size the network is.\n>\n>\n>\n> Respectfully,\n>\n> CDT CPL Benjamin Johnson\n>\n> United States Military Academy\n>\n> H-1 USCC 2012\n>\n> W: 845-515-5004\n>\n> C: 845-825-0103\n>\n> Benjamin.johnson2@usma.edu\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@mailman2.u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100401/bb741a25/attachment.html>",
+      "body_snippet": "How about using, for example:\ngplot(net, label=network.vertex.names(net))\n\nThat should label your nodes with whatever your node names are. I haven't\ntried it on a \"chess game\" type network, but it cou",
+      "thread_id": "thread-843fcacbae3a",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-54d8c70a1690",
+      "message_id": "<20100405210514.213218vwht6vzg2s@webaccess.umail.ucsb.edu>",
+      "from_name": "Hamid Ghofrani",
+      "from_email_hash": "e1317a22b3331f978a5bcd2a8748865e22849f9eb723a6fe61c70ad52d3f8b64",
+      "date": "2010-04-05T21:05:14Z",
+      "subject": "[statnet_help] Probability of a source node reaching a destination node in k steps",
+      "subject_clean": "[statnet_help] Probability of a source node reaching a destination node in k steps",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All,\n\nI am trying to find the probability of a node i reaching a node j in k  \nsteps for a directed network of size n, given that I have already  \nidentified an appropriate and non-degenerate model.\nThis what i did as a test.\nm <- matrix(rbinom(n^2,1,.6),n,n);diag(m) <- 0;g <- network(m, directed=T)\nmodel <- ergm(g ~ edges + triangle)\nsim <- simulate.ergm(model,nsim=100,control=control.ergm(check.degeneracy=T))\n\n1- in a loop, I calculate the min distance of i,j for each simulated  \nnetwork, using geodist(sim$net[[l]])\n\n2- calculate the proportion of times the dist between i,j(Dij=k),  \nwhich will give me the empirical distribution for the distance between  \ni,j(Dij) for any k=1,..,n\n\n3- The results did not match the original graph!\n\n- Is there a better way to do this in statnet?\n- What did I do wrong?\n\nAny comment is greatly appreciated.\nThanks\n\n\n\n\n-- \nHamid Ghofrani\nhamid@umail.ucsb.edu",
+      "body_snippet": "Dear All,\n\nI am trying to find the probability of a node i reaching a node j in k  \nsteps for a directed network of size n, given that I have already  \nidentified an appropriate and non-degenerate mod",
+      "thread_id": "thread-54d8c70a1690",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-95638327508d",
+      "message_id": "<D6ED1AA7-FA69-427A-9A24-E024CE7C6C7F@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-04-06T07:20:29Z",
+      "subject": "[statnet_help] Version 2.2-3 of ergm on CRAN",
+      "subject_clean": "[statnet_help] Version 2.2-3 of ergm on CRAN",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all.  A new version of ergm (version 2.2-3) just went up on CRAN.   \nThis version has a few new features that might be of interest:\n\n(1) There are new simulate.formula and simulate.ergm functions that  \nallow a bit more control over output of simulated networks and that  \nshould increase efficiency if only network statistics are desired.   \nMostly, this change will be invisible, but if you simulate random  \nnetwork statistics using statsonly=TRUE then you may notice an  \nimprovement in speed.\n\n(2) In response to a couple of requests from this list, there is now a  \nfunction, called ergmMPLE, that will return the response and  \npredictors (the latter is sometimes called the matrix of change  \nstatistics) that can be plugged into a logistic regression routine to  \nobtain the MPLE (maximum pseudolikelihood estimate).  Check ?ergmMPLE  \nfor details.\n\n(3) There is a new algorithm for fitting ERGMs, called \"stepping\",  \nthat is implemented as a 'style' in the control.ergm function.  See ? \ncontrol.ergm for details.  This algorithm is described in a tech  \nreport:  http://www.stat.psu.edu/~dhunter/papers/step.pdf\n\n(4) Assorted odds and ends, used for various and sundry purposes:   \nCheck out ?is.inCH, ?wtd.median, ?ecoli\n\n\nAlready, there are a few bugs that I did not fix before uploading the  \nnew version.  Thus, another new version (2.2-4) will go up in just a  \nfew days.  So I'm curious:  Are there bugs that we've missed, or  \nsimple additions that would be helpful?  If so, I might be able to  \nfix / add them before the next release.\n\nThanks in advance,\nDave",
+      "body_snippet": "Hi all.  A new version of ergm (version 2.2-3) just went up on CRAN.   \nThis version has a few new features that might be of interest:\n\n(1) There are new simulate.formula and simulate.ergm functions t",
+      "thread_id": "thread-95638327508d",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-901346ff9460",
+      "message_id": "<OFB926CDB3.E7070BF1-ONC12576FD.006E5309-C12576FD.006E5309@be.ibm.com>",
+      "from_name": "Tom Kochuyt",
+      "from_email_hash": "46f39e60ea17044367574233c6036a3c2ecdd09badcc49c19d1b5d76f9ccf618",
+      "date": "2010-04-06T13:05:02Z",
+      "subject": "[statnet_help] AUTO: Tom Kochuyt is out of the office (returning 19/04/2010)",
+      "subject_clean": "[statnet_help] AUTO: Tom Kochuyt is out of the office (returning 19/04/2010)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I am out of the office until 19/04/2010.\n\nDear,\n\n\nI'm out of the office from April 5th until April 19th.\n- For all questions concerning the Ethias ITGovernance engagement, please\ncontact Christel Raddoux\n- For all questions concerning the Ethias Lean engagement, please contact\nFreddy Withagels\n\nI will respond to other mails as soon as I am back in the office.\n\n\n\nKind regards,\n\nTom Kochuyt\n\n\nNote: This is an automated response to your message  \"statnet_help Digest,\nVol 45, Issue 3\" sent on 6/4/10 21:02:44.\n\nThis is the only notification you will receive while this person is away.",
+      "body_snippet": "I am out of the office until 19/04/2010.\n\nDear,\n\n\nI'm out of the office from April 5th until April 19th.\n- For all questions concerning the Ethias ITGovernance engagement, please\ncontact Christel Radd",
+      "thread_id": "thread-901346ff9460",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-b2657f9c19de",
+      "message_id": "<k2r5ef543831004071147h54807a17heb80bdf7291f131d@mail.gmail.com>",
+      "from_name": "Sun Kyung Kim",
+      "from_email_hash": "35f48a1f027bf76938a27a5837e98a4b2603b665ecac80f43ad43f7c8905b6c3",
+      "date": "2010-04-07T11:47:47Z",
+      "subject": "[statnet_help] Algorithm on simulation in statnet package ?",
+      "subject_clean": "[statnet_help] Algorithm on simulation in statnet package ?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n have quick question.\nOn statnet, when simulate data using simulate command, the algorithm is by\nGibbs sampling (analogous to pseudo approximation)?\n\nOn Tue, Apr 6, 2010 at 9:20 AM, David Hunter <dhunter@stat.psu.edu> wrote:\n\n> Hi all.  A new version of ergm (version 2.2-3) just went up on CRAN.  This\n> version has a few new features that might be of interest:\n>\n> (1) There are new simulate.formula and simulate.ergm functions that allow a\n> bit more control over output of simulated networks and that should increase\n> efficiency if only network statistics are desired.  Mostly, this change will\n> be invisible, but if you simulate random network statistics using\n> statsonly=TRUE then you may notice an improvement in speed.\n>\n> (2) In response to a couple of requests from this list, there is now a\n> function, called ergmMPLE, that will return the response and predictors (the\n> latter is sometimes called the matrix of change statistics) that can be\n> plugged into a logistic regression routine to obtain the MPLE (maximum\n> pseudolikelihood estimate).  Check ?ergmMPLE for details.\n>\n> (3) There is a new algorithm for fitting ERGMs, called \"stepping\", that is\n> implemented as a 'style' in the control.ergm function.  See ?control.ergm\n> for details.  This algorithm is described in a tech report:\n> http://www.stat.psu.edu/~dhunter/papers/step.pdf<http://www.stat.psu.edu/%7Edhunter/papers/step.pdf>\n>\n> (4) Assorted odds and ends, used for various and sundry purposes:  Check\n> out ?is.inCH, ?wtd.median, ?ecoli\n>\n>\n> Already, there are a few bugs that I did not fix before uploading the new\n> version.  Thus, another new version (2.2-4) will go up in just a few days.\n>  So I'm curious:  Are there bugs that we've missed, or simple additions that\n> would be helpful?  If so, I might be able to fix / add them before the next\n> release.\n>\n> Thanks in advance,\n> Dave\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n-- \nBest,\nSun Kyung Kim\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100407/2fe3b2d0/attachment.html>",
+      "body_snippet": "Hi all,\n have quick question.\nOn statnet, when simulate data using simulate command, the algorithm is by\nGibbs sampling (analogous to pseudo approximation)?\n\nOn Tue, Apr 6, 2010 at 9:20 AM, David Hunt",
+      "thread_id": "thread-b2657f9c19de",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-5edf6469e74d",
+      "message_id": "<15226CB4-EB04-451B-AC43-4864CBD9849E@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-04-07T11:52:28Z",
+      "subject": "[statnet_help] Re: Algorithm on simulation in statnet package ?",
+      "subject_clean": "[statnet_help] Re: Algorithm on simulation in statnet package ?",
+      "in_reply_to": "<k2r5ef543831004071147h54807a17heb80bdf7291f131d@mail.gmail.com>",
+      "references": [
+        "<k2r5ef543831004071147h54807a17heb80bdf7291f131d@mail.gmail.com>"
+      ],
+      "body_plain": "No, it's actually done with a more general form of a Metropolis- \nHastings algorithm (Gibbs sampling is a very special kind of MH, and  \nit's not what ergm uses).\nSome details are in Section 6 of http://www.jstatsoft.org/v24/i03\n\nHope this helps.\nDave\n\nOn Apr 7, 2010, at 2:47 PM, Sun Kyung Kim wrote:\n\n> Hi all,\n>  have quick question.\n> On statnet, when simulate data using simulate command, the algorithm  \n> is by Gibbs sampling (analogous to pseudo approximation)?\n>\n> On Tue, Apr 6, 2010 at 9:20 AM, David Hunter <dhunter@stat.psu.edu>  \n> wrote:\n> Hi all.  A new version of ergm (version 2.2-3) just went up on  \n> CRAN.  This version has a few new features that might be of interest:\n>\n> (1) There are new simulate.formula and simulate.ergm functions that  \n> allow a bit more control over output of simulated networks and that  \n> should increase efficiency if only network statistics are desired.   \n> Mostly, this change will be invisible, but if you simulate random  \n> network statistics using statsonly=TRUE then you may notice an  \n> improvement in speed.\n>\n> (2) In response to a couple of requests from this list, there is now  \n> a function, called ergmMPLE, that will return the response and  \n> predictors (the latter is sometimes called the matrix of change  \n> statistics) that can be plugged into a logistic regression routine  \n> to obtain the MPLE (maximum pseudolikelihood estimate).  Check ? \n> ergmMPLE for details.\n>\n> (3) There is a new algorithm for fitting ERGMs, called \"stepping\",  \n> that is implemented as a 'style' in the control.ergm function.  See ? \n> control.ergm for details.  This algorithm is described in a tech  \n> report:  http://www.stat.psu.edu/~dhunter/papers/step.pdf\n>\n> (4) Assorted odds and ends, used for various and sundry purposes:   \n> Check out ?is.inCH, ?wtd.median, ?ecoli\n>\n>\n> Already, there are a few bugs that I did not fix before uploading  \n> the new version.  Thus, another new version (2.2-4) will go up in  \n> just a few days.  So I'm curious:  Are there bugs that we've missed,  \n> or simple additions that would be helpful?  If so, I might be able  \n> to fix / add them before the next release.\n>\n> Thanks in advance,\n> Dave\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n> -- \n> Best,\n> Sun Kyung Kim\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100407/3022b3c3/attachment.html>",
+      "body_snippet": "No, it's actually done with a more general form of a Metropolis- \nHastings algorithm (Gibbs sampling is a very special kind of MH, and  \nit's not what ergm uses).\nSome details are in Section 6 of http",
+      "thread_id": "thread-b2657f9c19de",
+      "thread_depth": 1,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-a4ab84ecc89f",
+      "message_id": "<1270766681.4376.16.camel@gm1330>",
+      "from_name": "Guido Conaldi",
+      "from_email_hash": "cafaed32974c2432c035d6911f12e21f638205d0091ffd052f37e860b720b044",
+      "date": "2010-04-08T15:44:41Z",
+      "subject": "[statnet_help] Geometrically weighted dyadwise shared partner distribution terms for bipartite networks",
+      "subject_clean": "[statnet_help] Geometrically weighted dyadwise shared partner distribution terms for bipartite networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI am modelling several co-collaboration networks (all bipartite\nnetworks, approximately 100 x 700) using the ergm package.\nUnsurprisingly enough, these networks are very difficult to model\nincluding only markovian terms. The inclusion of gwb1degree and\ngwb2degree terms improves the situation considerably.\n\nI would like to include also two gwdsp terms, distinguishing between\ndyads formed by actors of the first mode and dyads of the second mode\n(similarly, at least in my understanding, with what BPNet does by\nallowing for two alternating-k-two-path terms).\n\nIs there any reason for this not to a sensible modeling attempt?\nAnd if so, can the ergm package handle this?\n\nThanks in advance,\nBest,\n\nGuido\n\n\n\n-- \nGuido Conaldi\nAssistant Post-doc\nCentre for Organisational Research\nUniversity of Lugano\nVia Giuseppe Buffi, 13\nCH-6904 Lugano, Switzerland\nOffice Phone: ?+41 (0)58 666 4471",
+      "body_snippet": "Dear all,\n\nI am modelling several co-collaboration networks (all bipartite\nnetworks, approximately 100 x 700) using the ergm package.\nUnsurprisingly enough, these networks are very difficult to model\n",
+      "thread_id": "thread-a4ab84ecc89f",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-dc9a2423e78a",
+      "message_id": "<zEvBDV3I.1270997884.5652460.bl@193.55.107.97>",
+      "from_name": "Beauguitte laurent",
+      "from_email_hash": "734f2e168c23e133dff79bc18f48a819ecaad9cf36aeaa844873328f9e31ce25",
+      "date": "2010-04-11T07:58:04Z",
+      "subject": "[statnet_help] Re: statnet_help Digest, Vol 44, Issue 6",
+      "subject_clean": "[statnet_help] Re: statnet_help Digest, Vol 44, Issue 6",
+      "in_reply_to": "<201003181901.o2IJ1cRe032291@mxout11.cac.washington.edu>",
+      "references": [],
+      "body_plain": "Dear Darakhshan,\n\nI found the Lazega dataset on this page, I hope its the one you were\nlooking for\nhttp://www.stats.ox.ac.uk/~snijders/siena/\nas siena became a R package, (Rsiena), it should be easy (?) to read it\n\nBest regards, Laurent\n\nLe 18/3/2010, \"statnet_help-request@mailman2.u.washington.edu\"\n<statnet_help-request@mailman2.u.washington.edu> a ?crit:\n\n>Send statnet_help mailing list submissions to\n>\tstatnet_help@u.washington.edu\n>\n>To subscribe or unsubscribe via the World Wide Web, visit\n>\thttp://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>or, via email, send a message with subject or body 'help' to\n>\tstatnet_help-request@mailman2.u.washington.edu\n>\n>You can reach the person managing the list at\n>\tstatnet_help-owner@mailman2.u.washington.edu\n>\n>When replying, please edit your Subject line so it is more specific\n>than \"Re: Contents of statnet_help digest...\"",
+      "body_snippet": "Dear Darakhshan,\n\nI found the Lazega dataset on this page, I hope its the one you were\nlooking for\nhttp://www.stats.ox.ac.uk/~snijders/siena/\nas siena became a R package, (Rsiena), it should be easy (",
+      "thread_id": "thread-dc9a2423e78a",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-89e0a1244f2f",
+      "message_id": "<20100411110445.11993xvox4jwaag4@webaccess.umail.ucsb.edu>",
+      "from_name": "Hamid Ghofrani",
+      "from_email_hash": "e1317a22b3331f978a5bcd2a8748865e22849f9eb723a6fe61c70ad52d3f8b64",
+      "date": "2010-04-11T11:04:45Z",
+      "subject": "[statnet_help] Probablility distribution function for the Min distance between two nodes.",
+      "subject_clean": "[statnet_help] Probablility distribution function for the Min distance between two nodes.",
+      "in_reply_to": "<20100405210514.213218vwht6vzg2s@webaccess.umail.ucsb.edu>",
+      "references": [
+        "<20100405210514.213218vwht6vzg2s@webaccess.umail.ucsb.edu>"
+      ],
+      "body_plain": "Dear All,\nI am trying to find the PDF of a the Min distance between two specific  \nnodes in a network. That si what I did.\n1- Model the network.\n2- simulate a bunch of networks based on this model and find the min  \ndistance s using geodist function.\n3-find the ratios of different distances between these two nodes for  \nall these simulated networks and that would be my empirical pdf.\n4- my results don't seem to be consistent. Is this the right approach?\nIs there any other way to do this?\nI appreicate any comment.\nHamid",
+      "body_snippet": "Dear All,\nI am trying to find the PDF of a the Min distance between two specific  \nnodes in a network. That si what I did.\n1- Model the network.\n2- simulate a bunch of networks based on this model and",
+      "thread_id": "thread-54d8c70a1690",
+      "thread_depth": 1,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-fee975b01f09",
+      "message_id": "<1271075677.3217.7.camel@gm1330>",
+      "from_name": "Guido Conaldi",
+      "from_email_hash": "cafaed32974c2432c035d6911f12e21f638205d0091ffd052f37e860b720b044",
+      "date": "2010-04-12T05:34:37Z",
+      "subject": "[statnet_help] are ergm's parameters and change statistics standardized?",
+      "subject_clean": "[statnet_help] are ergm's parameters and change statistics standardized?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI have a basic question about the parameters and the change statistics\nreturned respectively by ergm and ergmMPLE. Are they standardized?\n\nMy take is that they are not, and I would need them both standardized in\norder to replicate Faust and Skvoretz (2002) and compare networks using\ntheir predictors.\n\nIf I am correct and they are not standardized, what is the correct way\nof standardizing ERGM's parameters and change statistics? Especially\nparameters seem tricky to me to standardize.\n\nThanks in advance.\nBest,\n\nGuido",
+      "body_snippet": "Dear all,\n\nI have a basic question about the parameters and the change statistics\nreturned respectively by ergm and ergmMPLE. Are they standardized?\n\nMy take is that they are not, and I would need the",
+      "thread_id": "thread-fee975b01f09",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-5a8c50d69c4e",
+      "message_id": "<ce2a2e41c700f8d2de795f39104a5759@email.unc.edu>",
+      "from_name": "dnolin",
+      "from_email_hash": "9ea4374cadcd0478c9da820629ed01f9f63173dc4f2e1510510ac970233cb3df",
+      "date": "2010-04-12T13:35:25Z",
+      "subject": "[statnet_help] are ergm's parameters and change statistics standardized?",
+      "subject_clean": "[statnet_help] are ergm's parameters and change statistics standardized?",
+      "in_reply_to": "<1271075677.3217.7.camel@gm1330>",
+      "references": [
+        "<1271075677.3217.7.camel@gm1330>"
+      ],
+      "body_plain": "Hi Guido,\n\nI was looking at this very same problem this past week. There are a number\nof different methods for standardizing log-odds coefficients. Most of these\nrequire information about the standard deviation of the independent\nvariable, the dependent variable, or both. The problem with ergm models is\nthat we do not know the standard deviation of the network-structural\nindependent variables of the model.\n\nMenard (2004) has proposed an information-based method for standardizing\nlog-odds coefficients. The advantage of using this method with ergm\ncoefficients is that it does not require an estimate of the standard\ndeviation of the independent variable, just the log-likelihood values from\nthe set of all possible nested models. The disadvantage is that with even\nmodest numbers of covariates the number of models that must be run can\nbecome cumbersome.\n\nPerhaps someone more versed in ergm statistics will respond on the\nappropriateness of this method for ergm coefficients.\n\nA further question I have on this subject is, What is the appropriate Null\nmodel to use for these types of comparisons? The null deviance in the ergm\noutput appears to be based on an Erdos-Renyi random graph with p = 0.5.\nHowever, the literature I've been reading on standardizing logistic\nregression coefficients appears ambiguous on what is meant by the \"null\"\nmodel. In some cases, it appears to mean the model with the theoretical\nmaximum deviance; in other cases the null model is described as a model\nfitted \"without parameters\", but apparently including an intercept term\n(i.e. edges, in the ergm case). (For an example of this ambiguity, see\nNagelkerke's (1991) generalized R-squared.)\n\nCheers,\nDave\n\nMenard, Scott. 2004. Six approaches to calculating standardized logistic\nregression coefficients. The American Statistician, 58: 218-223.\n\nNagelkerke, N.J.D. 1991. A note on a general definition of the coefficient\nof determination. Biometrika, 78: 691-692.\n\n____________________________\nDavid A. Nolin\nPostdoctoral Scholar\nCarolina Population Center\nUniversity of North Carolina\n\n\n\nOn Mon, 12 Apr 2010 14:34:37 +0200, Guido Conaldi <conaldi@gmail.com>\nwrote:\n> Dear all,\n> \n> I have a basic question about the parameters and the change statistics\n> returned respectively by ergm and ergmMPLE. Are they standardized?\n> \n> My take is that they are not, and I would need them both standardized in\n> order to replicate Faust and Skvoretz (2002) and compare networks using\n> their predictors.\n> \n> If I am correct and they are not standardized, what is the correct way\n> of standardizing ERGM's parameters and change statistics? Especially\n> parameters seem tricky to me to standardize.\n> \n> Thanks in advance.\n> Best,\n> \n> Guido \n>  \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \n____________________________\nDavid A. Nolin\nPostdoctoral Scholar\nCarolina Population Center\nUniversity of North Carolina",
+      "body_snippet": "Hi Guido,\n\nI was looking at this very same problem this past week. There are a number\nof different methods for standardizing log-odds coefficients. Most of these\nrequire information about the standard",
+      "thread_id": "thread-fee975b01f09",
+      "thread_depth": 1,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-7490c1643f0d",
+      "message_id": "<4BC528B7.8040403@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-04-13T19:30:15Z",
+      "subject": "[statnet_help] are ergm's parameters and change statistics\tstandardized?",
+      "subject_clean": "[statnet_help] are ergm's parameters and change statistics\tstandardized?",
+      "in_reply_to": "<1271075677.3217.7.camel@gm1330>",
+      "references": [
+        "<1271075677.3217.7.camel@gm1330>"
+      ],
+      "body_plain": "Hi, Guido -\n\nGuido Conaldi wrote:\n> Dear all,\n> \n> I have a basic question about the parameters and the change statistics\n> returned respectively by ergm and ergmMPLE. Are they standardized?\n\nNo.\n\n> \n> My take is that they are not, and I would need them both standardized in\n> order to replicate Faust and Skvoretz (2002) and compare networks using\n> their predictors.\n> \n> If I am correct and they are not standardized, what is the correct way\n> of standardizing ERGM's parameters and change statistics? Especially\n> parameters seem tricky to me to standardize.\n\nYou will need to clarify the sense in which you want them to be \n\"standardized.\"  One can, e.g., \"standardize\" them in the sense of \napproximate z-scores by dividing the coefficient by its approximate \nstandard error; if, on the other hand, you want to \"standardize\" an \neffect by reparameterizing it in such a manner that e.g., it maintains a \nfixed scaling relationship with some given statistic (e.g., N), then a \ndifferent approach will be needed.\n\n-Carter",
+      "body_snippet": "Hi, Guido -\n\nGuido Conaldi wrote:\n> Dear all,\n> \n> I have a basic question about the parameters and the change statistics\n> returned respectively by ergm and ergmMPLE. Are they standardized?\n\nNo.\n\n> \n",
+      "thread_id": "thread-fee975b01f09",
+      "thread_depth": 1,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-231a6e06c315",
+      "message_id": "<4BC53018.3010707@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-04-13T20:01:44Z",
+      "subject": "[statnet_help] are ergm's parameters and change statistics standardized?",
+      "subject_clean": "[statnet_help] are ergm's parameters and change statistics standardized?",
+      "in_reply_to": "<ce2a2e41c700f8d2de795f39104a5759@email.unc.edu>",
+      "references": [
+        "<1271075677.3217.7.camel@gm1330>",
+        "<ce2a2e41c700f8d2de795f39104a5759@email.unc.edu>"
+      ],
+      "body_plain": "Hi, Dave -\n\ndnolin wrote:\n> A further question I have on this subject is, What is the appropriate Null\n> model to use for these types of comparisons? The null deviance in the ergm\n> output appears to be based on an Erdos-Renyi random graph with p = 0.5.\n> However, the literature I've been reading on standardizing logistic\n> regression coefficients appears ambiguous on what is meant by the \"null\"\n> model. In some cases, it appears to mean the model with the theoretical\n> maximum deviance; in other cases the null model is described as a model\n> fitted \"without parameters\", but apparently including an intercept term\n> (i.e. edges, in the ergm case). (For an example of this ambiguity, see\n> Nagelkerke's (1991) generalized R-squared.)\n\nAs is always the case, your null should be based on the baseline process \nagainst which you wish to test.  The null on which the ergm() parameter \np-values are based is a model in which all parameters but the indicated \none are fixed at their MLEs, with the indicated parameter being fixed at \n0 (i.e., the associated statistic is not in the model).  As far as the \nnull _deviance_, this is indeed based on the uniform random graph \n(conditional on number of vertices).  Nothing prevents one, however, \nfrom comparing one's fitted model to other baselines, such as the \nmaximum likelihood homogeneous Bernoulli graph (i.e., the model with \nonly an edge term), a degree distribution model, etc.  Indeed, Holland \nand Leinhardt's original paper suggests the use of the p1 family as a \nnull model against which to test a hypothesis of excess triangulation \n(something that could not be estimated directly at the time, although \nthey discuss the possibility).  Note that they suggest performing this \ntest in the mean value space, not the natural parameter space, since (as \nnoted) they could not fit models with dyadic dependence.\n\nTesting in the mean value space is also the logic behind conditional \nuniform graph tests, and the use of general ERGMs as nulls in this \nmanner is a natural extension to this philosophy (and, indeed, can be \nthought of generalized baseline models in a \"pure\" Mayhewan sense, since \nthey maximize entropy given the support and mean stats).  The model \nadequacy checks in ergm.gof() can be viewed in this light.  Choosing an \nappropriate baseline model is as much a matter of substantive theory as \nstatistics per se, and your choice should reflect your knowledge of the \nsystem under study (e.g., through the \"obvious\" baseline effects that \nare known to be present, and which must be discounted before concluding \nthat something more interesting is afoot).  For this reason, there can \nbe no universally \"correct\" null.\n\nIn general, my sense is that one is better served by reasoning about \nthese models from first principles, than by trying to directly import \nideas from the logistic regression world sans attention to context. \nThat's not to say that no such concepts can be brought over -- after \nall, the logistic case is a special case of the discrete exponential \nfamily framework -- but techniques developed for a world of independent, \nnon-relational variables can often be misleading and/or useless when \ndealing with network data.  Start with what you know and what you want \nto measure.  If this leads you back to a problem for which a known (and \napplicable) solution exists in the logistic/GLM literature, great!  If \nnot, then trying to apply an inapplicable technique from conventional \nregression is probably going to get you in trouble.\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "Hi, Dave -\n\ndnolin wrote:\n> A further question I have on this subject is, What is the appropriate Null\n> model to use for these types of comparisons? The null deviance in the ergm\n> output appears to ",
+      "thread_id": "thread-fee975b01f09",
+      "thread_depth": 2,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-815429aef924",
+      "message_id": "<021601cadb88$2f58e2b0$8e0aa810$@edu>",
+      "from_name": "Feng Luo",
+      "from_email_hash": "bfc7d29e4eff62d6266aecf66adefcd400ad659f4c8b6598d95e0c30f79d4cd7",
+      "date": "2010-04-13T21:08:48Z",
+      "subject": "[statnet_help] anyone know how to extract largest connected subnetwork from a netowrk object",
+      "subject_clean": "[statnet_help] anyone know how to extract largest connected subnetwork from a netowrk object",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All:\n\n \n\nI would like to extract the largest connected subnetwork from the\nfaux.mesa.high data provided by ergm package. anyone know a quick way to do\nthis? Thanks in advance!\n\n \n\nBest,\n\nFeng\n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100414/4564fb79/attachment.html>",
+      "body_snippet": "Dear All:\n\n \n\nI would like to extract the largest connected subnetwork from the\nfaux.mesa.high data provided by ergm package. anyone know a quick way to do\nthis? Thanks in advance!\n\n \n\nBest,\n\nFeng\n\n \n",
+      "thread_id": "thread-815429aef924",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-a946db2bce71",
+      "message_id": "<53C997A6-C3D9-4DAC-9D1B-6FBA5AB9818B@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-04-14T05:02:06Z",
+      "subject": "[statnet_help] anyone know how to extract largest connected subnetwork from a netowrk object",
+      "subject_clean": "[statnet_help] anyone know how to extract largest connected subnetwork from a netowrk object",
+      "in_reply_to": "<021601cadb88$2f58e2b0$8e0aa810$@edu>",
+      "references": [
+        "<021601cadb88$2f58e2b0$8e0aa810$@edu>"
+      ],
+      "body_plain": "The sna package has a 'component.largest' function that will identify  \nthe correct nodes.\n\n > large <- component.largest(faux.mesa.high)\n > sum(large)\n[1] 120\n\nHow you use this depends on what you mean by \"extract\".  For instance,  \nif you just want to plot, you could use\n\nm <- faux.mesa.high[large,large]\nplot(network(m, dir=F))\n\nWhat I don't know how to do is to quickly create a new network object  \non just these 120 nodes that retains all of the same properties of the  \noriginal, such as node and edge covariates.  One could do it by hand,  \nbut does anyone know of another way?\n\nDave\n\n\n\nOn Apr 14, 2010, at 12:08 AM, Feng Luo wrote:\n\n> Dear All:\n>\n> I would like to extract the largest connected subnetwork from the  \n> faux.mesa.high data provided by ergm package. anyone know a quick  \n> way to do this? Thanks in advance!\n>\n> Best,\n> Feng\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100414/bf27b639/attachment.html>",
+      "body_snippet": "The sna package has a 'component.largest' function that will identify  \nthe correct nodes.\n\n > large <- component.largest(faux.mesa.high)\n > sum(large)\n[1] 120\n\nHow you use this depends on what you me",
+      "thread_id": "thread-815429aef924",
+      "thread_depth": 1,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-ff4ba0429a54",
+      "message_id": "<001f01cadc45$1dbf9770$593ec650$@edu>",
+      "from_name": "Feng Luo",
+      "from_email_hash": "bfc7d29e4eff62d6266aecf66adefcd400ad659f4c8b6598d95e0c30f79d4cd7",
+      "date": "2010-04-14T19:41:12Z",
+      "subject": "[statnet_help] help on simulate network",
+      "subject_clean": "[statnet_help] help on simulate network",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All:\n\n \n\nSorry to bother you again!\n\nI learned a ERGM model from a fully connected network. Is there a way I can\nguarantee my simulated networks are also fully connected?\n\n \n\nBest wishes,\n\nFeng\n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100414/649e4322/attachment.html>",
+      "body_snippet": "Dear All:\n\n \n\nSorry to bother you again!\n\nI learned a ERGM model from a fully connected network. Is there a way I can\nguarantee my simulated networks are also fully connected?\n\n \n\nBest wishes,\n\nFeng\n\n",
+      "thread_id": "thread-ff4ba0429a54",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-cadc2b731e11",
+      "message_id": "<4BC684C6.7070307@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-04-14T20:15:18Z",
+      "subject": "[statnet_help] help on simulate network",
+      "subject_clean": "[statnet_help] help on simulate network",
+      "in_reply_to": "<001f01cadc45$1dbf9770$593ec650$@edu>",
+      "references": [
+        "<001f01cadc45$1dbf9770$593ec650$@edu>"
+      ],
+      "body_plain": "Feng Luo wrote:\n> Dear All:\n> \n>  \n> \n> Sorry to bother you again!\n> \n> I learned a ERGM model from a fully connected network. Is there a way I \n> can guarantee my simulated networks are also fully connected?\n\nYes: simulate normally, and subsequently filter out only the connected \ngraphs (using is.connected or the like to identify those you need to \nkeep).  This is a trivial rejection sampling scheme, and will give you \ndraws from the model conditional on being connected.\n\n(Note, however, that this is not the same as _fitting_ a model \nconditional on the graph being fully connected (i.e., a model whose \nsupport is on the connected graphs of order matching the observed \ngraph).  For that, you would need to use an MCMC proposal that preserved \nconnectedness.  I don't believe we have one of those at present, \nalthough I could be mistaken.)\n\nHope that helps,\n\n-Carter",
+      "body_snippet": "Feng Luo wrote:\n> Dear All:\n> \n>  \n> \n> Sorry to bother you again!\n> \n> I learned a ERGM model from a fully connected network. Is there a way I \n> can guarantee my simulated networks are also fully co",
+      "thread_id": "thread-ff4ba0429a54",
+      "thread_depth": 1,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-25bbcbaa93dd",
+      "message_id": "<alpine.WNT.2.00.1004150903300.5856@Martina-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2010-04-15T09:07:31Z",
+      "subject": "[statnet_help] are ergm's parameters and change statistics standardized?",
+      "subject_clean": "[statnet_help] are ergm's parameters and change statistics standardized?",
+      "in_reply_to": "<4BC53018.3010707@uci.edu>",
+      "references": [
+        "<1271075677.3217.7.camel@gm1330>",
+        "<ce2a2e41c700f8d2de795f39104a5759@email.unc.edu>",
+        "<4BC53018.3010707@uci.edu>"
+      ],
+      "body_plain": "On Tue, 13 Apr 2010, Carter T. Butts wrote:\n\n> Indeed, Holland and Leinhardt's original paper \n> suggests the use of the p1 family as a null model against which to test a \n> hypothesis of excess triangulation (something that could not be estimated \n> directly at the time, although they discuss the possibility).  Note that they\n\n\nIt's worth reading Mark Granovetter's take on this -- he notes that you \nneed to think from first principles here:  which comes first, the \ntransitivity bias (which creates more ties), or the sociality effect \n(which will occasionally make triangles at random)?\n\nGrannovetter, M.  (1979).  The theory gap in social network analysis. \nPerspectives in Social Network Analysis .\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "On Tue, 13 Apr 2010, Carter T. Butts wrote:\n\n> Indeed, Holland and Leinhardt's original paper \n> suggests the use of the p1 family as a null model against which to test a \n> hypothesis of excess trian",
+      "thread_id": "thread-fee975b01f09",
+      "thread_depth": 3,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-d88f21663c29",
+      "message_id": "<4BC75BD5.5000200@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2010-04-15T11:32:53Z",
+      "subject": "[statnet_help] sna 2.1 released",
+      "subject_clean": "[statnet_help] sna 2.1 released",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Just FYI, sna 2.1 is now on CRAN (or will be, presently).  This is \nmostly a minor bugfix release, but some performance enhancements are \nalso included.  Thanks to all who contributed!\n\n-Carter",
+      "body_snippet": "Just FYI, sna 2.1 is now on CRAN (or will be, presently).  This is \nmostly a minor bugfix release, but some performance enhancements are \nalso included.  Thanks to all who contributed!\n\n-Carter",
+      "thread_id": "thread-d88f21663c29",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-c7ea81f7719c",
+      "message_id": "<u2k1ea8d8281004151450z66af0679s4a1bfbe46ca263f1@mail.gmail.com>",
+      "from_name": "Jenine Harris",
+      "from_email_hash": "979d1dcac5c1f94e2e919d7b22e848f77ca152cb94f399ec9cdad9f603c3c21a",
+      "date": "2010-04-15T14:50:48Z",
+      "subject": "[statnet_help] interpreting gwodegree?",
+      "subject_clean": "[statnet_help] interpreting gwodegree?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI have a directed network of referrals among cancer services organizations\n(who refers patients to whom) and in my ergm model I am getting what seems\nto be a strange result --- the GWODegree, which I believe assesses the\npropensity of a node with a high outdegree to form partnerships, is negative\nand significant and of a large magnitude. Does this mean that organizations\nwith a high outdegree are much less likely than other organizations to form\npartnerships? This seems counter-intuitive to me.\n\nPerhaps there is a directional issue with the interpretation? Are they less\nlikely to form indegree partnerships?\n\nAny help greatly appreciated! I looked through the statnet resources that I\nam aware of and was not able to find anything.\n\nJenine\n\n-- \n************************************\nJenine K. Harris, Ph.D.\nAssistant Professor of Community Health\nBiostatistics Division\nSaint Louis University School of Public Health\nAssistant Director of Research\nCenter for Tobacco Policy Research\n3545 Lafayette Ave, Suite 300\nSt. Louis, MO 63104-1399\n314.977.8210 (SLU phone)\n314.977.3234 (SLU fax)\n314.935.3744 (WU phone)\n314.935.3756 (WU fax)\nhttp://ctpr.wustl.edu/\n\nPlease note: I split my time between two offices, email is typically the\nbest way to reach me.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100415/340effc1/attachment.html>",
+      "body_snippet": "Hi all,\n\nI have a directed network of referrals among cancer services organizations\n(who refers patients to whom) and in my ergm model I am getting what seems\nto be a strange result --- the GWODegree,",
+      "thread_id": "thread-c7ea81f7719c",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-7098c62b0fcb",
+      "message_id": "<01DC41C390C400479C7F2C44CE0E095107EA9EA5F6@PITT-EXCH-14.univ.pitt.edu>",
+      "from_name": "Victor, Jennifer Nicoll",
+      "from_email_hash": "ff5e0a55ef0a100c3bb19faf407905174b26664120f09691690bd3801f859695",
+      "date": "2010-04-16T12:13:13Z",
+      "subject": "[statnet_help] setting vertex attributes",
+      "subject_clean": "[statnet_help] setting vertex attributes",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello users:\n\nI am new to Statnet (and R) and I'm looking for some help getting my data loaded properly.  I have a dichotomized adjacency matrix loaded into Statnet, but I'm having trouble getting vertex attributes in.  I have row and column names on my adjacency matrix, and I have another matrix of attributes loaded.  My matrix of attributes is a rather standard matrix, where rows represent nodes, or actors, and columns represent characteristics about each actor (gender, party, etc.).  How do I get statnet to recognize these attributes with my adjacency matrix?  I've been working with the set.vertex.attributes command, but I've been unsuccessful as I'm finding the documentation a bit opaque.  I realize this is a pretty basic question, but I appreciate any help you can provide.\n\nBest,\nJennifer Victor\n___________________________________________\nJennifer Nicoll Victor\nAssistant Professor\nDepartment of Political Science\nUniversity of Pittsburgh\n4600 Wesley W. Posvar Hall\n(412) 624-7204\nE-mail:  jnvictor@pitt.edu\nHomepage:  http://www.pitt.edu/~jnvictor",
+      "body_snippet": "Hello users:\n\nI am new to Statnet (and R) and I'm looking for some help getting my data loaded properly.  I have a dichotomized adjacency matrix loaded into Statnet, but I'm having trouble getting ver",
+      "thread_id": "thread-7098c62b0fcb",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-44018e2b0b53",
+      "message_id": "<01DC41C390C400479C7F2C44CE0E095107EA9EA629@PITT-EXCH-14.univ.pitt.edu>",
+      "from_name": "Victor, Jennifer Nicoll",
+      "from_email_hash": "ff5e0a55ef0a100c3bb19faf407905174b26664120f09691690bd3801f859695",
+      "date": "2010-04-16T14:16:11Z",
+      "subject": "[statnet_help] edgecov error",
+      "subject_clean": "[statnet_help] edgecov error",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi users:\n\n\n\nThanks to others who (off-list) helped tremendously with my previous problem.  Now I'm trying to estimate an ergm and I'm getting the following error based on one of my variables that is an edge attribute:\n\n\n\nError: argument number 1 to edgecov model term is not of the expected matrixnetwork type\n\n\n\nFor a little background, below are some descriptions of my data and the model I'd like to estimate.  I have a feeling that my edge attribute is not set correctly. Can you please advise?\n\n\n\n> summary(dichotcpg.net)\n\nNetwork attributes:\n\n vertices = 129\n\n directed = FALSE\n\n hyper = FALSE\n\n loops = FALSE\n\n multiple = FALSE\n\n bipartite = FALSE\n\n total edges = 3123\n\n   missing edges = 0\n\n   non-missing edges = 3123\n\n density = 0.3782703\n\n\n\nVertex attributes:\n\n\n\n exec:\n\n   integer valued attribute\n\n   129values\n\n\n\n gender:\n\n   integer valued attribute\n\n   129values\n\n...\n\nEdge attributes:\n\n\n\n com:\n\n   integer valued attribute\n\n   3123values\n\n\n\nNetwork edgelist matrix:\n\n        [,1] [,2]\n\n   [1,]    7    1\n\n\n\nThe model I'd like:\n\n> model5.nodecov.com<-ergm(dichotcpg.net~edges+nodecov(\"party\")+nodecov(\"gender\")+nodecov(\"region\")+nodecov(\"tenure\")+edgecov(\"com\"))\n\nError: argument number 1 to edgecov model term is not of the expected matrixnetwork type\n\n___________________________________________\n\nJennifer Nicoll Victor\n\nAssistant Professor\n\nDepartment of Political Science\n\nUniversity of Pittsburgh\n\n4600 Wesley W. Posvar Hall\n\n(412) 624-7204\n\nE-mail:  jnvictor@pitt.edu\n\nHomepage:  http://www.pitt.edu/~jnvictor\n\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100416/9da56887/attachment.html>",
+      "body_snippet": "Hi users:\n\n\n\nThanks to others who (off-list) helped tremendously with my previous problem.  Now I'm trying to estimate an ergm and I'm getting the following error based on one of my variables that is ",
+      "thread_id": "thread-44018e2b0b53",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-a56a82a9273a",
+      "message_id": "<4BCD7D32.3050602@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2010-04-20T03:08:50Z",
+      "subject": "[statnet_help] esp and dsp stats with directed networks",
+      "subject_clean": "[statnet_help] esp and dsp stats with directed networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi,\n\nI have a question about the esp statistic; with directed networks, I'm \nnot sure which types of network structures are counted in the esp statistic.\n\nSpeaking about the esp statistic, the article of Morris, Handcock and \nHunter (2008) says : \"For directed networks, the count is over \nhomogeneous shared partners only (i.e. only partners on a directed \ntwo-path connecting the nodes in the edge and in the same direction)\n\nI have attached an example with the different situations I think are \ncounted in an esp(2) stat. Am I correct or did I miss something? Is it \nexactly the same situation for the dsp statistic?\n\nThanks a lot for your response.\n\nBest Regards,\nVictorin Luisier\n\n## Ref:\nMorris, M., Handcock, M. S., & Hunter, D. R. (2008). Specification of \nExponential-Family Random Graph Models: Terms and Computational Aspects. \nJournal of statistical software, 24(4), 1548.\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: esp_statnet_question-copy.pdf\nType: image/pdf\nSize: 5209 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100420/b70481b5/attachment.bin>",
+      "body_snippet": "Hi,\n\nI have a question about the esp statistic; with directed networks, I'm \nnot sure which types of network structures are counted in the esp statistic.\n\nSpeaking about the esp statistic, the article",
+      "thread_id": "thread-a56a82a9273a",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-f389cfb519cd",
+      "message_id": "<497FCD5F-6400-4946-BB55-EEFEB168100B@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-04-20T10:48:25Z",
+      "subject": "[statnet_help] esp and dsp stats with directed networks",
+      "subject_clean": "[statnet_help] esp and dsp stats with directed networks",
+      "in_reply_to": "<4BCD7D32.3050602@unige.ch>",
+      "references": [
+        "<4BCD7D32.3050602@unige.ch>"
+      ],
+      "body_plain": "Hi Victorin.  In your attachment, situations 2 through 5 give  \ndifferent answers for esp(2) and dsp(2).  The direction of the arc  \nfrom node A to node B is important.\n\nSituation 2:  A 2-esp is counted only if the two 2-paths from A to B  \ngo in the same direction as this arc, as in this situation.\nSituation 3:  If both of the 2-paths go in the opposite direction as  \nthe arc from A to B, then this counts as a 2-dsp (because B->A is a  \ndyad without an edge) but not a 2-esp.\nSituations 4 and 5: Finally, if the only two 2-paths from A to B go in  \nopposite directions, then there is no 2-esp nor 2-dsp.\n\nHere is some code that verifies this:\n\n > m=matrix(0,4,4);m[1,2]=1   # situation 2\n > m[1,3]=m[3,2]=m[1,4]=m[4,2]=1;summary(m~esp(2)+dsp(2))\nesp2 dsp2\n    1    1\n > m=matrix(0,4,4);m[1,2]=1   # situation 3\n > m[2,3]=m[3,1]=m[2,4]=m[4,1]=1;summary(m~esp(2)+dsp(2))\nesp2 dsp2\n    0    1\n > m=matrix(0,4,4);m[1,2]=1   # situation 4\n > m[1,3]=m[3,2]=m[2,4]=m[4,1]=1;summary(m~esp(2)+dsp(2))\nesp2 dsp2\n    0    0\n > m=matrix(0,4,4);m[1,2]=1   # situation 5\n > m[2,3]=m[3,1]=m[1,4]=m[4,2]=1;summary(m~esp(2)+dsp(2))\nesp2 dsp2\n    0    0\n\n\nHope this helps.\nDave\n\n\nOn Apr 20, 2010, at 6:08 AM, Victorin Luisier wrote:\n\n> Hi,\n>\n> I have a question about the esp statistic; with directed networks,  \n> I'm not sure which types of network structures are counted in the  \n> esp statistic.\n>\n> Speaking about the esp statistic, the article of Morris, Handcock  \n> and Hunter (2008) says : \"For directed networks, the count is over  \n> homogeneous shared partners only (i.e. only partners on a directed  \n> two-path connecting the nodes in the edge and in the same direction)\n>\n> I have attached an example with the different situations I think are  \n> counted in an esp(2) stat. Am I correct or did I miss something? Is  \n> it exactly the same situation for the dsp statistic?\n>\n> Thanks a lot for your response.\n>\n> Best Regards,\n> Victorin Luisier\n>\n> ## Ref:\n> Morris, M., Handcock, M. S., & Hunter, D. R. (2008). Specification  \n> of Exponential-Family Random Graph Models: Terms and Computational  \n> Aspects. Journal of statistical software, 24(4), 1548.\n>\n> -- \n> Victorin LUISIER, Assistant doctorant\n> M?thodologie et Analyse de donn?es\n> FAPSE - UNIGE\n> Bureau n?4139 - Unimail\n> Bd du Pont d'Arve 40\n> 1211 Gen?ve 4\n> T?l: (+41-22) 379 91 34\n> E-mail: victorin.luisier@unige.ch\n> <esp_statnet_question- \n> copy.pdf>_______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Victorin.  In your attachment, situations 2 through 5 give  \ndifferent answers for esp(2) and dsp(2).  The direction of the arc  \nfrom node A to node B is important.\n\nSituation 2:  A 2-esp is count",
+      "thread_id": "thread-a56a82a9273a",
+      "thread_depth": 1,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-78de6a2137fb",
+      "message_id": "<758883.29680.qm@web114508.mail.gq1.yahoo.com>",
+      "from_name": "Rick L",
+      "from_email_hash": "6cf0345fa249900144ec8956bb128c4ddedda62a5ee18f64b81ec5ff8e0f6111",
+      "date": "2010-04-21T04:29:53Z",
+      "subject": "[statnet_help] Question about preparing data for StatNet with node properties",
+      "subject_clean": "[statnet_help] Question about preparing data for StatNet with node properties",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all, \n\nI'm new to both StatNet and R, so I was wondering if you can help me prepare the data so that it can be used in Statnet - especially that I want to define node properties. \n\nI have some experience with Pajek so I first tried using the read.paj() function. In Pajek I read in the .net file, then added the .vec files (3 of them for three properties). I saved this as a Pajek project file (.paj) and then read it into Statnet. But when I use the \"%v%\" to check the node properties, everything is NA. Is this the right way to prepare the data? I also tried reading in the properties as partitions in Pajek but no luck either. \n\nOn the other hand, since I have those .vec files prepared separately, is it possible to read them in as node properties and somehow attach to the .net file (which can be read into the file using read.paj()).\n\nThank you very much for your help!\n\nRick\n\n\n      \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100421/50293c01/attachment.html>",
+      "body_snippet": "Hi all, \n\nI'm new to both StatNet and R, so I was wondering if you can help me prepare the data so that it can be used in Statnet - especially that I want to define node properties. \n\nI have some expe",
+      "thread_id": "thread-78de6a2137fb",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-bb521b186faf",
+      "message_id": "<4BCEF076.5040304@unige.ch>",
+      "from_name": "Victorin Luisier",
+      "from_email_hash": "7c123e0edcbfcb690ba16ce977ceacbb051138a0057ee682e841621bbd1f7068",
+      "date": "2010-04-21T05:32:54Z",
+      "subject": "[statnet_help] esp and dsp stats with directed networks",
+      "subject_clean": "[statnet_help] esp and dsp stats with directed networks",
+      "in_reply_to": "<497FCD5F-6400-4946-BB55-EEFEB168100B@stat.psu.edu>",
+      "references": [
+        "<4BCD7D32.3050602@unige.ch>",
+        "<497FCD5F-6400-4946-BB55-EEFEB168100B@stat.psu.edu>"
+      ],
+      "body_plain": "Hi Dave,\n\nThanks a lot for your quick, but very precise, reponse.\n\nI had forgotten it, but the use of the summary() fonction is very \nappropriate here and in situations where I'm not sure about a statistic \ndefinition. Thanks a lot for this reminder.\n\nBest Regards,\nVictorin\n\nDavid Hunter a ?crit :\n> Hi Victorin.  In your attachment, situations 2 through 5 give different \n> answers for esp(2) and dsp(2).  The direction of the arc from node A to \n> node B is important.\n> \n> Situation 2:  A 2-esp is counted only if the two 2-paths from A to B go \n> in the same direction as this arc, as in this situation.\n> Situation 3:  If both of the 2-paths go in the opposite direction as the \n> arc from A to B, then this counts as a 2-dsp (because B->A is a dyad \n> without an edge) but not a 2-esp.\n> Situations 4 and 5: Finally, if the only two 2-paths from A to B go in \n> opposite directions, then there is no 2-esp nor 2-dsp.\n> \n> Here is some code that verifies this:\n> \n>  > m=matrix(0,4,4);m[1,2]=1   # situation 2\n>  > m[1,3]=m[3,2]=m[1,4]=m[4,2]=1;summary(m~esp(2)+dsp(2))\n> esp2 dsp2\n>    1    1\n>  > m=matrix(0,4,4);m[1,2]=1   # situation 3\n>  > m[2,3]=m[3,1]=m[2,4]=m[4,1]=1;summary(m~esp(2)+dsp(2))\n> esp2 dsp2\n>    0    1\n>  > m=matrix(0,4,4);m[1,2]=1   # situation 4\n>  > m[1,3]=m[3,2]=m[2,4]=m[4,1]=1;summary(m~esp(2)+dsp(2))\n> esp2 dsp2\n>    0    0\n>  > m=matrix(0,4,4);m[1,2]=1   # situation 5\n>  > m[2,3]=m[3,1]=m[1,4]=m[4,2]=1;summary(m~esp(2)+dsp(2))\n> esp2 dsp2\n>    0    0\n> \n> \n> Hope this helps.\n> Dave\n> \n> \n> On Apr 20, 2010, at 6:08 AM, Victorin Luisier wrote:\n> \n>> Hi,\n>>\n>> I have a question about the esp statistic; with directed networks, I'm \n>> not sure which types of network structures are counted in the esp \n>> statistic.\n>>\n>> Speaking about the esp statistic, the article of Morris, Handcock and \n>> Hunter (2008) says : \"For directed networks, the count is over \n>> homogeneous shared partners only (i.e. only partners on a directed \n>> two-path connecting the nodes in the edge and in the same direction)\n>>\n>> I have attached an example with the different situations I think are \n>> counted in an esp(2) stat. Am I correct or did I miss something? Is it \n>> exactly the same situation for the dsp statistic?\n>>\n>> Thanks a lot for your response.\n>>\n>> Best Regards,\n>> Victorin Luisier\n>>\n>> ## Ref:\n>> Morris, M., Handcock, M. S., & Hunter, D. R. (2008). Specification of \n>> Exponential-Family Random Graph Models: Terms and Computational \n>> Aspects. Journal of statistical software, 24(4), 1548.\n>>\n>> -- \n>> Victorin LUISIER, Assistant doctorant\n>> M?thodologie et Analyse de donn?es\n>> FAPSE - UNIGE\n>> Bureau n?4139 - Unimail\n>> Bd du Pont d'Arve 40\n>> 1211 Gen?ve 4\n>> T?l: (+41-22) 379 91 34\n>> E-mail: victorin.luisier@unige.ch\n>> <esp_statnet_question-copy.pdf>_______________________________________________ \n>>\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nVictorin LUISIER, Assistant doctorant\nM?thodologie et Analyse de donn?es\nFAPSE - UNIGE\nBureau n?4139 - Unimail\nBd du Pont d'Arve 40\n1211 Gen?ve 4\nT?l: (+41-22) 379 91 34\nE-mail: victorin.luisier@unige.ch",
+      "body_snippet": "Hi Dave,\n\nThanks a lot for your quick, but very precise, reponse.\n\nI had forgotten it, but the use of the summary() fonction is very \nappropriate here and in situations where I'm not sure about a stat",
+      "thread_id": "thread-a56a82a9273a",
+      "thread_depth": 2,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-ce0b6e3513d7",
+      "message_id": "<20100421151604.97735k8cp9qbrios@webmail.uni-kassel.de>",
+      "from_name": "mklaus@wirtschaft.uni-kassel.de",
+      "from_email_hash": "680374c9dbd7ccc76f32cb777ecc5e89798b33d124ebf6364002bbfb51e8fd5a",
+      "date": "2010-04-21T06:16:04Z",
+      "subject": "[statnet_help] Color nodes by node name lists",
+      "subject_clean": "[statnet_help] Color nodes by node name lists",
+      "in_reply_to": "<7C7A446E-072A-4008-ADE3-2312BEF95D61@stat.psu.edu>",
+      "references": [
+        "<4BAA3DD0.6080403@wirtschaft.uni-kassel.de>",
+        "<7C7A446E-072A-4008-ADE3-2312BEF95D61@stat.psu.edu>"
+      ],
+      "body_plain": "Dear David,\n\nfirst of all I want to thank you for your answer!\nBut it could not realy fix my problem. Maybe I can make myself a  \nlittle clearer this time.\n\nIf I habe a network with 10 Knots\n\n#Construct a sparse graph\nm<-matrix(rbinom(100,1,1.5/9),10)\ndiag(m)<-0\nm\ng<-network(m)\n\n\n#Plot the graph\nplot(g, displaylabels=TRUE)\n\nThan the knots would be labeled with the letters from A, B ... to, J.\nNow I want to plot the network where all knots are blue but the knot C  \nis green and double the size of the other and the knots A, G anf H  \nshould be red stars also double the size of the others. How could I do  \nthis?\n\nIs my point clear? I hope so :S\nThanks in advance\n\nMartin Klaus\n\n\n\nZitat von David Hunter <dhunter@stat.psu.edu>:\n\n> Note that ?plot won't help; you need to check ?plot.network\n>\n> Check out the following example, which may help:\n>\n>  data(g4)\n>  colors <- rep(c(\"green\",\"red\",\"blue\"), c(1, 2, 1))\n>  sizes <- rep(c(2.0, 2.5, 3.0), c(2, 1, 1))\n>  nsides <- rep(c(3, 4, 8), c(1, 1, 2))\n>  plot(g4, vertex.col=colors, vertex.cex=sizes, vertex.sides=nsides)\n>\n>\n> Dave\n>\n>\n>\n> On Mar 24, 2010, at 12:29 PM, Martin Klaus wrote:\n>\n>> Hey everyone,\n>>\n>> my question should be answerd realy simple but I couldn figure out  \n>> how I can color my nodes by theri names.\n>> Let`s say I have a 10 node network called \"alphabet\" and the nodes  \n>> name are A, B, C, ... J.\n>> Now I would like to plot the network and color the nodes A, B & C  \n>> green. D,E & F should be blue and G, H I, & J should be red.\n>> If possible I also would like to enlarge the central nodes of each  \n>> color cluster. So A, E and J should be a littel bigger than the  \n>> other nodes and maybe also in a differen shape, like a triangle or  \n>> square!\n>>\n>> Now  how do I plot these  special colors, sizes and shapes for not  \n>> only one node but a name list of nodes?\n>> And yes I did read the ?plot and ?gplot carefully and tried so  \n>> solve it myselfe!\n>>\n>> Thank you for answering so much!\n>> Best wisshes from Kassel Germany\n>>\n>> Martin Klaus\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n\n\n----------------------------------------------------------------\nDiese Nachricht wurde mit dem Webmail der Uni Kassel versendet.",
+      "body_snippet": "Dear David,\n\nfirst of all I want to thank you for your answer!\nBut it could not realy fix my problem. Maybe I can make myself a  \nlittle clearer this time.\n\nIf I habe a network with 10 Knots\n\n#Constru",
+      "thread_id": "thread-ce0b6e3513d7",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-87fa60dff70b",
+      "message_id": "<7A3F5953-3B65-4244-B44B-F40ABE1CEED2@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-04-21T10:14:10Z",
+      "subject": "[statnet_help] Color nodes by node name lists",
+      "subject_clean": "[statnet_help] Color nodes by node name lists",
+      "in_reply_to": "<20100421151604.97735k8cp9qbrios@webmail.uni-kassel.de>",
+      "references": [
+        "<4BAA3DD0.6080403@wirtschaft.uni-kassel.de>",
+        "<7C7A446E-072A-4008-ADE3-2312BEF95D61@stat.psu.edu>",
+        "<20100421151604.97735k8cp9qbrios@webmail.uni-kassel.de>"
+      ],
+      "body_plain": "On Apr 21, 2010, at 9:16 AM, mklaus@wirtschaft.uni-kassel.de wrote:\n\n> Dear David,\n>\n> first of all I want to thank you for your answer!\n> But it could not realy fix my problem. Maybe I can make myself a  \n> little clearer this time.\n>\n> If I habe a network with 10 Knots\n>\n> #Construct a sparse graph\n> m<-matrix(rbinom(100,1,1.5/9),10)\n> diag(m)<-0\n> m\n> g<-network(m)\n>\n>\n> #Plot the graph\n> plot(g, displaylabels=TRUE)\n>\n> Than the knots would be labeled with the letters from A, B ... to, J.\n\nActually, I believe they are labeled with the numbers 1 to 10.  Did  \nyou actually get letters when you tried this?\n\n> Now I want to plot the network where all knots are blue but the knot  \n> C is green and double the size of the other and the knots A, G anf H  \n> should be red stars also double the size of the others. How could I  \n> do this?\n>\n\nThe code I sent previously can be modified to do all of this except  \nfor the star part (so the stars become triangles in the code below):\n\n# Your code:\nm<-matrix(rbinom(100,1,1.5/9),10)\ndiag(m)<-0\nm\ng<-network(m)\n# Modified code I sent previously:\ncolors <- rep(\"blue\",10); colors[3]<- \"red\"; colors[c(1, 6, 7)] <-  \n\"green\"\nsizes <- rep(1, 10); sizes[3] <- 2\nnsides <- rep(8, 10); nsides[c(1, 6, 7)] <- 3\n\n#Plot the graph\nplot(g, vertex.col=colors, vertex.cex=sizes, vertex.sides=nsides,  \ndisplaylabels=T)\n\n\n\nHope this helps.\nDave\n\n> Is my point clear? I hope so :S\n> Thanks in advance\n>\n> Martin Klaus\n>\n>\n>\n> Zitat von David Hunter <dhunter@stat.psu.edu>:\n>\n>> Note that ?plot won't help; you need to check ?plot.network\n>>\n>> Check out the following example, which may help:\n>>\n>> data(g4)\n>> colors <- rep(c(\"green\",\"red\",\"blue\"), c(1, 2, 1))\n>> sizes <- rep(c(2.0, 2.5, 3.0), c(2, 1, 1))\n>> nsides <- rep(c(3, 4, 8), c(1, 1, 2))\n>> plot(g4, vertex.col=colors, vertex.cex=sizes, vertex.sides=nsides)\n>>\n>>\n>> Dave\n>>\n>>\n>>\n>> On Mar 24, 2010, at 12:29 PM, Martin Klaus wrote:\n>>\n>>> Hey everyone,\n>>>\n>>> my question should be answerd realy simple but I couldn figure out  \n>>> how I can color my nodes by theri names.\n>>> Let`s say I have a 10 node network called \"alphabet\" and the nodes  \n>>> name are A, B, C, ... J.\n>>> Now I would like to plot the network and color the nodes A, B & C  \n>>> green. D,E & F should be blue and G, H I, & J should be red.\n>>> If possible I also would like to enlarge the central nodes of each  \n>>> color cluster. So A, E and J should be a littel bigger than the  \n>>> other nodes and maybe also in a differen shape, like a triangle or  \n>>> square!\n>>>\n>>> Now  how do I plot these  special colors, sizes and shapes for not  \n>>> only one node but a name list of nodes?\n>>> And yes I did read the ?plot and ?gplot carefully and tried so  \n>>> solve it myselfe!\n>>>\n>>> Thank you for answering so much!\n>>> Best wisshes from Kassel Germany\n>>>\n>>> Martin Klaus\n>>> _______________________________________________\n>>> statnet_help mailing list\n>>> statnet_help@u.washington.edu\n>>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n>\n>\n> ----------------------------------------------------------------\n> Diese Nachricht wurde mit dem Webmail der Uni Kassel versendet.\n>\n>",
+      "body_snippet": "On Apr 21, 2010, at 9:16 AM, mklaus@wirtschaft.uni-kassel.de wrote:\n\n> Dear David,\n>\n> first of all I want to thank you for your answer!\n> But it could not realy fix my problem. Maybe I can make mysel",
+      "thread_id": "thread-ce0b6e3513d7",
+      "thread_depth": 1,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-b382c5418da4",
+      "message_id": "<424958.80669.qm@web114511.mail.gq1.yahoo.com>",
+      "from_name": "Rick L",
+      "from_email_hash": "6cf0345fa249900144ec8956bb128c4ddedda62a5ee18f64b81ec5ff8e0f6111",
+      "date": "2010-04-21T10:15:14Z",
+      "subject": "[statnet_help] Question about preparing data for StatNet with node properties",
+      "subject_clean": "[statnet_help] Question about preparing data for StatNet with node properties",
+      "in_reply_to": "<758883.29680.qm@web114508.mail.gq1.yahoo.com>",
+      "references": [
+        "<758883.29680.qm@web114508.mail.gq1.yahoo.com>"
+      ],
+      "body_plain": "I got a very helpful response which the the author was kind enough to allow me to share - please see below. But I still have a couple of questions to follow up and I hope I can hear from those of you who are more experience with R and StatNet. Thanks!\n\n(1) How about defining properties on the nodes? \n(2) Which model terms in -ergm- can we use for the edge-level attributes? (I'm looking at the Journal of Statistical Software paper on \"Specification of ERGMs: Terms and Computational Aspects\"; the table at the end shows a list of model terms)\n\n\n- ---- \n\nBelow find instructions on importing the edge list, attributes and labels.\n\nThe data is in the following format; the last column is the edge-level property:\n\na a 0\nb a 0.5\nc a 0.9\na b 0.1\nb b 0\nc b 0.2\na c 0.1\nb c 0.3\nc c 0\n\nThis is one of those things that's probably intuitive for someone\nfamiliar with R but I aged trying to figure it out.\n\n#import the text file\nelist <- read.table(\"data1.txt\")\n#create the network object\nn <- network(elist, matrix.typ=\"edgelist\")\n#set the edgelist attributes from the imported text file\nset.edge.attribute(n, \"dist\", elist[[3]])\n#export the data with attributes\nm <- as.sociomatrix(n, \"dist\", method=\"euclidean\")\n\n\n\n\n________________________________\nFrom: Rick L <rick22304@yahoo.com>\nTo: statnet_help@u.washington.edu\nSent: Wed, April 21, 2010 7:29:53 AM\nSubject: [statnet_help] Question about preparing data for StatNet with node properties\n\n\nHi all, \n\nI'm new to both StatNet and R, so I was wondering if you can help me prepare the data so that it can be used in Statnet - especially that I want to define node properties. \n\nI have some experience with Pajek so I first tried using the read.paj() function. In Pajek I read in the .net file, then added the .vec files (3 of them for three properties). I saved this as a Pajek project file (.paj) and then read it into Statnet. But when I use the \"%v%\" to check the node properties, everything is NA. Is this the right way to prepare the data? I also tried reading in the properties as partitions in Pajek but no luck either. \n\nOn the other hand, since I have those .vec files prepared separately, is it possible to read them in as node properties and somehow attach to the .net file (which can be read into the file using read.paj()).\n\nThank you very much for your help!\n\nRick\n\n\n\n      \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100421/5a3562e1/attachment.html>",
+      "body_snippet": "I got a very helpful response which the the author was kind enough to allow me to share - please see below. But I still have a couple of questions to follow up and I hope I can hear from those of you ",
+      "thread_id": "thread-78de6a2137fb",
+      "thread_depth": 1,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-538b995f7194",
+      "message_id": "<436720.7187.qm@web114518.mail.gq1.yahoo.com>",
+      "from_name": "Rick L",
+      "from_email_hash": "6cf0345fa249900144ec8956bb128c4ddedda62a5ee18f64b81ec5ff8e0f6111",
+      "date": "2010-04-21T19:38:52Z",
+      "subject": "[statnet_help] two-mode network in StatNet",
+      "subject_clean": "[statnet_help] two-mode network in StatNet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello statanet listers: \n\nI have a quick question about StatNet - Can StatNet handle two-mode networks? In Pajek's .net file I can specify a 2-mode network, and if I read it into StatNet, will StatNet recognize it as a 2-mode network, and adjust the estimation accordingly? \n\nThanks a lot!\n\nRick",
+      "body_snippet": "Hello statanet listers: \n\nI have a quick question about StatNet - Can StatNet handle two-mode networks? In Pajek's .net file I can specify a 2-mode network, and if I read it into StatNet, will StatNet",
+      "thread_id": "thread-538b995f7194",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-7427161e1038",
+      "message_id": "<006f01cae22b$69738550$3c5a8ff0$@edu>",
+      "from_name": "Feng Luo",
+      "from_email_hash": "bfc7d29e4eff62d6266aecf66adefcd400ad659f4c8b6598d95e0c30f79d4cd7",
+      "date": "2010-04-22T07:52:20Z",
+      "subject": "[statnet_help] model for FMH",
+      "subject_clean": "[statnet_help] model for FMH",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All:\n\n \n\nI am playing the ERGM using the FMH data coming with the ergm package. When\nI used the following formula suggested by help page of the FMH data, it\ncannot converge after one day run. \n\n \n\n  formula <- fmh~  edges + nodefactor(\"Grade\") + nodefactor(\"Race\") +\nnodefactor(\"Sex\")  + nodematch(\"Grade\",diff=T)  + nodematch(\"Sex\",diff=F) +\ngwdegree(1.0,fixed=T) + gwesp(1.0,fixed=T) + gwdsp(1.0,fixed=T)\n\n \n\nhowever, I will be able to learn model using following formula, attached is\nthe GOF:\n\n  formula <- fmh~  edges + nodefactor(\"Grade\") + nodefactor(\"Race\") +\nnodefactor(\"Sex\")  + nodematch(\"Grade\",diff=T)  + nodematch(\"Sex\",diff=F) +\ngwdegree(0,fixed=T) + gwesp(0,fixed=T) + gwdsp(0,fixed=T)\n\n \n\nThe major difference is the alpha value in gwdegree, gwesp and gwdsp. anyone\nknow what is the problem in my first model? Thanks in advance!\n\n \n\nBest wishes,\n\nFeng\n\n \n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100422/7bae9413/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: fmh GOF model3.bmp\nType: image/bmp\nSize: 757974 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100422/7bae9413/attachment.bmp>",
+      "body_snippet": "Dear All:\n\n \n\nI am playing the ERGM using the FMH data coming with the ergm package. When\nI used the following formula suggested by help page of the FMH data, it\ncannot converge after one day run. \n\n ",
+      "thread_id": "thread-7427161e1038",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-18d7ec914424",
+      "message_id": "<alpine.WNT.2.00.1004221042530.4032@Martina-PC>",
+      "from_name": "Martina Morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2010-04-22T10:48:50Z",
+      "subject": "[statnet_help] two-mode network in StatNet",
+      "subject_clean": "[statnet_help] two-mode network in StatNet",
+      "in_reply_to": "<436720.7187.qm@web114518.mail.gq1.yahoo.com>",
+      "references": [
+        "<436720.7187.qm@web114518.mail.gq1.yahoo.com>"
+      ],
+      "body_plain": "Hi Rick,\n\nThe short answer is yes, statnet can recognize and work with bipartite \nnetworks.  I'm not sure about whether this happens automatically when you \nimport a 2mode Pajek .net file, but you can check by using the summary() \nfunction on the network object.  If it is bipartite, that will be \ndisplayed in the summary info at the top.\n\nModeling with bipartite networks requires using bipartite-specific ergm \nterms.  You can see the terms currently available in the Table of Model \nTerms in the JoSS article on Specification of ERGMS (vol 24 i4), available \nhere:\n\nhttp://www.statnetproject.org/users_guide.shtml\n\nbest,\nMartina\n\nOn Wed, 21 Apr 2010, Rick L wrote:\n\n> Hello statanet listers:\n>\n> I have a quick question about StatNet - Can StatNet handle two-mode \n> networks? In Pajek's .net file I can specify a 2-mode network, and if I \n> read it into StatNet, will StatNet recognize it as a 2-mode network, and \n> adjust the estimation accordingly?\n>\n> Thanks a lot!\n>\n> Rick\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:\t(206) 685-3402\n  Dept Office: \t(206) 543-5882, 543-7237\n  Fax: \t\t(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Rick,\n\nThe short answer is yes, statnet can recognize and work with bipartite \nnetworks.  I'm not sure about whether this happens automatically when you \nimport a 2mode Pajek .net file, but you can",
+      "thread_id": "thread-538b995f7194",
+      "thread_depth": 1,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-6787f2985876",
+      "message_id": "<253309.58066.qm@web114505.mail.gq1.yahoo.com>",
+      "from_name": "Rick L",
+      "from_email_hash": "6cf0345fa249900144ec8956bb128c4ddedda62a5ee18f64b81ec5ff8e0f6111",
+      "date": "2010-04-22T11:53:09Z",
+      "subject": "[statnet_help] two-mode network in StatNet",
+      "subject_clean": "[statnet_help] two-mode network in StatNet",
+      "in_reply_to": "<alpine.WNT.2.00.1004221042530.4032@Martina-PC>",
+      "references": [
+        "<436720.7187.qm@web114518.mail.gq1.yahoo.com>",
+        "<alpine.WNT.2.00.1004221042530.4032@Martina-PC>"
+      ],
+      "body_plain": "Hi Professor Morris: \n\nThank you very much for your reply. Unfortunately it seems like StatNet doesn't recognize it as a bipartite graph, but there may be a way to got around it. There's probably an easier way but I'll just post what I did here.  Here's the network (pajek format)\n\n*vertices 10 5\n1 \"a\"\n2 \"b\"\n3 \"c\"\n4 \"d\"\n5 \"e\"\n6 \"u\"\n7 \"v\"\n8 \"w\"\n9 \"x\"\n10 \"y\"\n*arcs\n1 6\n1 9\n1 10\n2 10\n2 8\n2 7\n3 6\n4 6\n5 6\n4 10\n\n\nnet <- read.paj(\"test.net\")\n# can check that this is not bipartite\nis.bipartite(net)\n# FALSE\n\n#This is a bit silly but I'm not sure how else to directly assign the bipartite attribute\ntemp0 <- as.matrix(net)\nnet <- as.network(temp0, bipartite = 5)\nis.bipartite(net)\n# TRUE\n# :-)\n\nRick\n\n\n\n\n\n\n----- Original Message ----\nFrom: Martina Morris <morrism@u.washington.edu>\nTo: Rick L <rick22304@yahoo.com>\nCc: StatNet <statnet_help@u.washington.edu>\nSent: Thu, April 22, 2010 1:48:50 PM\nSubject: Re: [statnet_help] two-mode network in StatNet\n\nHi Rick,\n\nThe short answer is yes, statnet can recognize and work with bipartite networks.  I'm not sure about whether this happens automatically when you import a 2mode Pajek .net file, but you can check by using the summary() function on the network object.  If it is bipartite, that will be displayed in the summary info at the top.\n\nModeling with bipartite networks requires using bipartite-specific ergm terms.  You can see the terms currently available in the Table of Model Terms in the JoSS article on Specification of ERGMS (vol 24 i4), available here:\n\nhttp://www.statnetproject.org/users_guide.shtml\n\nbest,\nMartina\n\nOn Wed, 21 Apr 2010, Rick L wrote:\n\n> Hello statanet listers:\n> \n> I have a quick question about StatNet - Can StatNet handle two-mode networks? In Pajek's .net file I can specify a 2-mode network, and if I read it into StatNet, will StatNet recognize it as a 2-mode network, and adjust the estimation accordingly?\n> \n> Thanks a lot!\n> \n> Rick\n> \n> \n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n> \n\n****************************************************************\nProfessor of Sociology and Statistics\nDirector, UWCFAR Sociobehavioral and Prevention Research Core\nBox 354322\nUniversity of Washington\nSeattle, WA 98195-4322\n\nOffice:    (206) 685-3402\nDept Office:     (206) 543-5882, 543-7237\nFax:         (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Hi Professor Morris: \n\nThank you very much for your reply. Unfortunately it seems like StatNet doesn't recognize it as a bipartite graph, but there may be a way to got around it. There's probably an e",
+      "thread_id": "thread-538b995f7194",
+      "thread_depth": 2,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-f425fa71f00f",
+      "message_id": "<4BD28F91.4070801@gmail.com>",
+      "from_name": "Annie Wang",
+      "from_email_hash": "c6433fe48c3ab2c2ed0469a1cda38254d5527c41abc2abe5d035cc5283cec84b",
+      "date": "2010-04-23T23:28:33Z",
+      "subject": "[statnet_help] adding vertex attribute and summary for mutual(attrname)",
+      "subject_clean": "[statnet_help] adding vertex attribute and summary for mutual(attrname)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet listers,\n\nMy problem might sound silly but it has been very frustrating and I just \ncouldn't figure out what I did wrong.\n\nIn order to test my understanding of some structural terms, I created a \nsimple 5*5 network and an attribute vector called \"attribute\" (see \nbelow), and add the attribute vector to the network.\n\nnetwork: test\n0 1 1 0 0\n1 0 1 0 1\n1 0 0 1 0\n0 0 1 0 1\n1 0 1 1 0\n\nattribute: \"attribute\"\n1\n1\n2\n2\n2\n\nAs I understand, there are 4 mutual arcs (1-2, 1-3, 3-4, 4-5) and 3 \nmutual(\"attribute\") arcs (1-2, 3-4, 4-5). However, when I ran the \nsummary command, the value returned for mutual(\"attribute\") is 1 rather \nthan 3. In addition, when I entered get.vertex.attribute(test, \n\"attribute\"), it returned 25 rather than 5 values. It seems that the \nvertex attribute column was repeated 5 times.\n\nI'm including my commands and output below and my data files and the \nrdata file in the attachment. Any help is greatly appreciated!!\n\nJing (Annie) Wang\n\n > TestMat = read.delim(\"test_network.txt\", header= F, sep= \" \")\n > TestVec = read.delim(\"test_attribute.txt\", header = F)\n > dim(TestMat)\n[1] 5 5\n > dim(TestVec)\n[1] 5 1\n > TestMat = as.matrix(TestMat)\n > TestVec = as.vector(TestVec)\n > test = as.network.matrix(TestMat, matrix.type= \"adjacency\")\n > set.vertex.attribute(test, \"attribute\", TestVec, v=1:network.size(test))\n > save.image(\"test_2.rdata\")\n\n > summary(test ~ mutual + mutual(\"attribute\") + ctriple + \nctriple(\"attribute\"))\n           mutual  mutual.attribute           ctriple ctriple.attribute\n                4                 1                 3                 1\n\n > test\n Network attributes:\n  vertices = 5\n  directed = TRUE\n  hyper = FALSE\n  loops = FALSE\n  multiple = FALSE\n  bipartite = FALSE\n  total edges= 12\n    missing edges= 0\n    non-missing edges= 12\n\n Vertex attribute names:\n    attribute vertex.names\n\n adjacency matrix:\n   V1 V2 V3 V4 V5\nV1  0  1  1  0  0\nV2  1  0  1  0  1\nV3  1  0  0  1  0\nV4  0  0  1  0  1\nV5  1  0  1  1  0\n\n > get.vertex.attribute(test, \"attribute\")\n [1] 1 1 2 2 2 1 1 2 2 2 1 1 2 2 2 1 1 2 2 2 1 1 2 2 2\n\n-------------- next part --------------\nAn embedded and charset-unspecified text was scrubbed...\nName: test_attribute.txt\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100423/a6492635/attachment.txt>\n-------------- next part --------------\nAn embedded and charset-unspecified text was scrubbed...\nName: test_network.txt\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100423/a6492635/attachment-0001.txt>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: test_2.rdata\nType: application/octet-stream\nSize: 512 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100423/a6492635/attachment.obj>",
+      "body_snippet": "Dear statnet listers,\n\nMy problem might sound silly but it has been very frustrating and I just \ncouldn't figure out what I did wrong.\n\nIn order to test my understanding of some structural terms, I cr",
+      "thread_id": "thread-f425fa71f00f",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-bc79dfbf034b",
+      "message_id": "<7B7DB30C-D420-4A71-93DC-6BCA83A695F4@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-04-24T07:23:24Z",
+      "subject": "[statnet_help] adding vertex attribute and summary for mutual(attrname)",
+      "subject_clean": "[statnet_help] adding vertex attribute and summary for mutual(attrname)",
+      "in_reply_to": "<4BD28F91.4070801@gmail.com>",
+      "references": [
+        "<4BD28F91.4070801@gmail.com>"
+      ],
+      "body_plain": "Hi Annie.  Not silly at all -- in fact, this is a vexing problem that  \nwe've seen before.\n\nHere's what's happening:  When you read in TestVec, it is created as  \nan object of type \"data.frame\".  Then, when you try to coerce it to  \ntype \"vector\", essentially nothing happens.  (In particular, the thing  \nyou think has happened, has not.)  You can verify this by typing  \nclass(TestVec), when you'll see that it is STILL a data.frame.  This  \nis something of an R quirk.  I'm sure there is a reason for it, but  \nI'm not sure what the reason is.\n\nIn any case, If you replace your line\nTestVec = as.vector(TestVec)\n\nby, say,\nTestVec = as.vector(TestVec[,1]) # Convert just the first column in  \nthe data frame\n\nor alternatively\nTestVec = as.vector(as.matrix(TestVec)) # Convert data.frame to matrix  \nto vector\n\nthen your example should work.\n\nDave\n\n\n\nOn Apr 24, 2010, at 2:28 AM, Annie Wang wrote:\n\n> Dear statnet listers,\n>\n> My problem might sound silly but it has been very frustrating and I  \n> just couldn't figure out what I did wrong.\n>\n> In order to test my understanding of some structural terms, I  \n> created a simple 5*5 network and an attribute vector called  \n> \"attribute\" (see below), and add the attribute vector to the network.\n>\n> network: test\n> 0 1 1 0 0\n> 1 0 1 0 1\n> 1 0 0 1 0\n> 0 0 1 0 1\n> 1 0 1 1 0\n>\n> attribute: \"attribute\"\n> 1\n> 1\n> 2\n> 2\n> 2\n>\n> As I understand, there are 4 mutual arcs (1-2, 1-3, 3-4, 4-5) and 3  \n> mutual(\"attribute\") arcs (1-2, 3-4, 4-5). However, when I ran the  \n> summary command, the value returned for mutual(\"attribute\") is 1  \n> rather than 3. In addition, when I entered  \n> get.vertex.attribute(test, \"attribute\"), it returned 25 rather than  \n> 5 values. It seems that the vertex attribute column was repeated 5  \n> times.\n>\n> I'm including my commands and output below and my data files and the  \n> rdata file in the attachment. Any help is greatly appreciated!!\n>\n> Jing (Annie) Wang\n>\n> > TestMat = read.delim(\"test_network.txt\", header= F, sep= \" \")\n> > TestVec = read.delim(\"test_attribute.txt\", header = F)\n> > dim(TestMat)\n> [1] 5 5\n> > dim(TestVec)\n> [1] 5 1\n> > TestMat = as.matrix(TestMat)\n> > TestVec = as.vector(TestVec)\n> > test = as.network.matrix(TestMat, matrix.type= \"adjacency\")\n> > set.vertex.attribute(test, \"attribute\", TestVec,  \n> v=1:network.size(test))\n> > save.image(\"test_2.rdata\")\n>\n> > summary(test ~ mutual + mutual(\"attribute\") + ctriple +  \n> ctriple(\"attribute\"))\n>          mutual  mutual.attribute           ctriple ctriple.attribute\n>               4                 1                 3                 1\n>\n> > test\n> Network attributes:\n> vertices = 5\n> directed = TRUE\n> hyper = FALSE\n> loops = FALSE\n> multiple = FALSE\n> bipartite = FALSE\n> total edges= 12\n>   missing edges= 0\n>   non-missing edges= 12\n>\n> Vertex attribute names:\n>   attribute vertex.names\n>\n> adjacency matrix:\n>  V1 V2 V3 V4 V5\n> V1  0  1  1  0  0\n> V2  1  0  1  0  1\n> V3  1  0  0  1  0\n> V4  0  0  1  0  1\n> V5  1  0  1  1  0\n>\n> > get.vertex.attribute(test, \"attribute\")\n> [1] 1 1 2 2 2 1 1 2 2 2 1 1 2 2 2 1 1 2 2 2 1 1 2 2 2\n>\n> 1\n> 1\n> 2\n> 2\n> 2\n> 0 1 1 0 0\n> 1 0 1 0 1\n> 1 0 0 1 0\n> 0 0 1 0 1\n> 1 0 1 1 0\n> <test_2.rdata>_______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Annie.  Not silly at all -- in fact, this is a vexing problem that  \nwe've seen before.\n\nHere's what's happening:  When you read in TestVec, it is created as  \nan object of type \"data.frame\".  Then",
+      "thread_id": "thread-f425fa71f00f",
+      "thread_depth": 1,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-39c49118c9ca",
+      "message_id": "<4BD39E27.8030208@gmail.com>",
+      "from_name": "Annie Wang",
+      "from_email_hash": "c6433fe48c3ab2c2ed0469a1cda38254d5527c41abc2abe5d035cc5283cec84b",
+      "date": "2010-04-24T18:43:03Z",
+      "subject": "[statnet_help] adding vertex attribute and summary for\tmutual(attrname)",
+      "subject_clean": "[statnet_help] adding vertex attribute and summary for\tmutual(attrname)",
+      "in_reply_to": "<7B7DB30C-D420-4A71-93DC-6BCA83A695F4@stat.psu.edu>",
+      "references": [
+        "<4BD28F91.4070801@gmail.com>",
+        "<7B7DB30C-D420-4A71-93DC-6BCA83A695F4@stat.psu.edu>"
+      ],
+      "body_plain": "Dear Prof. Hunter,\n\nThank you very much for your quick reply! I did as you suggested, and \nthe vertex attribute was added with no mistake. And I got the expected \nresult for mutual(\"attribute\") for my example network. So the lesson is: \nFor vectors, need to convert them to matrix and then to vector.\n\nThanks a lot!\nAnnie\n\nDavid Hunter wrote:\n> Hi Annie.  Not silly at all -- in fact, this is a vexing problem that \n> we've seen before.\n>\n> Here's what's happening:  When you read in TestVec, it is created as \n> an object of type \"data.frame\".  Then, when you try to coerce it to \n> type \"vector\", essentially nothing happens.  (In particular, the thing \n> you think has happened, has not.)  You can verify this by typing \n> class(TestVec), when you'll see that it is STILL a data.frame.  This \n> is something of an R quirk.  I'm sure there is a reason for it, but \n> I'm not sure what the reason is.\n>\n> In any case, If you replace your line\n> TestVec = as.vector(TestVec)\n>\n> by, say,\n> TestVec = as.vector(TestVec[,1]) # Convert just the first column in \n> the data frame\n>\n> or alternatively\n> TestVec = as.vector(as.matrix(TestVec)) # Convert data.frame to matrix \n> to vector\n>\n> then your example should work.\n>\n> Dave\n>\n>\n>\n> On Apr 24, 2010, at 2:28 AM, Annie Wang wrote:\n>\n>> Dear statnet listers,\n>>\n>> My problem might sound silly but it has been very frustrating and I \n>> just couldn't figure out what I did wrong.\n>>\n>> In order to test my understanding of some structural terms, I created \n>> a simple 5*5 network and an attribute vector called \"attribute\" (see \n>> below), and add the attribute vector to the network.\n>>\n>> network: test\n>> 0 1 1 0 0\n>> 1 0 1 0 1\n>> 1 0 0 1 0\n>> 0 0 1 0 1\n>> 1 0 1 1 0\n>>\n>> attribute: \"attribute\"\n>> 1\n>> 1\n>> 2\n>> 2\n>> 2\n>>\n>> As I understand, there are 4 mutual arcs (1-2, 1-3, 3-4, 4-5) and 3 \n>> mutual(\"attribute\") arcs (1-2, 3-4, 4-5). However, when I ran the \n>> summary command, the value returned for mutual(\"attribute\") is 1 \n>> rather than 3. In addition, when I entered get.vertex.attribute(test, \n>> \"attribute\"), it returned 25 rather than 5 values. It seems that the \n>> vertex attribute column was repeated 5 times.\n>>\n>> I'm including my commands and output below and my data files and the \n>> rdata file in the attachment. Any help is greatly appreciated!!\n>>\n>> Jing (Annie) Wang\n>>\n>> > TestMat = read.delim(\"test_network.txt\", header= F, sep= \" \")\n>> > TestVec = read.delim(\"test_attribute.txt\", header = F)\n>> > dim(TestMat)\n>> [1] 5 5\n>> > dim(TestVec)\n>> [1] 5 1\n>> > TestMat = as.matrix(TestMat)\n>> > TestVec = as.vector(TestVec)\n>> > test = as.network.matrix(TestMat, matrix.type= \"adjacency\")\n>> > set.vertex.attribute(test, \"attribute\", TestVec, \n>> v=1:network.size(test))\n>> > save.image(\"test_2.rdata\")\n>>\n>> > summary(test ~ mutual + mutual(\"attribute\") + ctriple + \n>> ctriple(\"attribute\"))\n>>          mutual  mutual.attribute           ctriple ctriple.attribute\n>>               4                 1                 3                 1\n>>\n>> > test\n>> Network attributes:\n>> vertices = 5\n>> directed = TRUE\n>> hyper = FALSE\n>> loops = FALSE\n>> multiple = FALSE\n>> bipartite = FALSE\n>> total edges= 12\n>>   missing edges= 0\n>>   non-missing edges= 12\n>>\n>> Vertex attribute names:\n>>   attribute vertex.names\n>>\n>> adjacency matrix:\n>>  V1 V2 V3 V4 V5\n>> V1  0  1  1  0  0\n>> V2  1  0  1  0  1\n>> V3  1  0  0  1  0\n>> V4  0  0  1  0  1\n>> V5  1  0  1  1  0\n>>\n>> > get.vertex.attribute(test, \"attribute\")\n>> [1] 1 1 2 2 2 1 1 2 2 2 1 1 2 2 2 1 1 2 2 2 1 1 2 2 2\n>>\n>> 1\n>> 1\n>> 2\n>> 2\n>> 2\n>> 0 1 1 0 0\n>> 1 0 1 0 1\n>> 1 0 0 1 0\n>> 0 0 1 0 1\n>> 1 0 1 1 0\n>> <test_2.rdata>_______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Dear Prof. Hunter,\n\nThank you very much for your quick reply! I did as you suggested, and \nthe vertex attribute was added with no mistake. And I got the expected \nresult for mutual(\"attribute\") for my",
+      "thread_id": "thread-f425fa71f00f",
+      "thread_depth": 2,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-f15f86b40016",
+      "message_id": "<m2w553586b11004270843zf5fa34afp14aad507c57f7eb9@mail.gmail.com>",
+      "from_name": "Balazs Kovacs",
+      "from_email_hash": "be7edc9e3a84e6bd17f26591e6dd22c359144d2abab55b62d31f977be5f7b15c",
+      "date": "2010-04-27T08:43:40Z",
+      "subject": "[statnet_help] Goodness of fit with directed networks",
+      "subject_clean": "[statnet_help] Goodness of fit with directed networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All,\n\nWe are trying the assess the GOF of a directed network (email data), but for\nsome reason it gets stuck when we want to do the goodness-of-fit plots\n(works fine up to that point). Here is an example below. Does GOF not work\nwith directed data? Or is it something else?\n\n(We also tried with models with more parameters, and got the same)\n\nThanks a lot!\n\nCheers,\nBalazs\n\n>model_rok1 <- ergm(net_rok ~ edges, verbose = TRUE)\n>summary(model_rok1)\n\n==========================\nSummary of model fit\n==========================\nFormula:   halo_rok ~ edges\nNewton-Raphson iterations:  6\nMaximum Likelihood Results:\nEstimate Std. Error MCMC s.e. p-value\nedges -3.17075    0.07425        NA  <1e-04 ***\n---\nSignif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\nFor this model, the pseudolikelihood is the same as the likelihood.\n    Null  Deviance: 6504.5  on 4692  degrees of freedom\n Residual Deviance: 1584.4  on 4691  degrees of freedom\n          Deviance: 4920.1  on    1  degrees of freedom\n\nAIC: 1586.4    BIC: 1592.8\n\n> gof_model_rok1<- gof(model_rok1)\nErrore: degree model term may not be used with a directed network.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100427/790c05e7/attachment.html>",
+      "body_snippet": "Dear All,\n\nWe are trying the assess the GOF of a directed network (email data), but for\nsome reason it gets stuck when we want to do the goodness-of-fit plots\n(works fine up to that point). Here is an",
+      "thread_id": "thread-f15f86b40016",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-a7eb6e9085bf",
+      "message_id": "<4BD72D51.4090307@cs.rutgers.edu>",
+      "from_name": "Darakhshan Mir",
+      "from_email_hash": "42826cbbf3d11dccfb9f63f6e4921435ec4ed96153a994f0ea707fb9f1efae50",
+      "date": "2010-04-27T11:30:41Z",
+      "subject": "[statnet_help] Estimating parameters using noisy statistics",
+      "subject_clean": "[statnet_help] Estimating parameters using noisy statistics",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi All,\nI am relatively new to both statnet and R and was wondering, if there's \nan easy way of doing the following:\nSuppose I have a noise vector \\delta and a statistics vector x from the \nobserved graph. Consider a noisy statistics vector x', where x' = x+ \n\\delta. Is there an easy way of using this noisy vector x', in the ERGM \nestimation algorithm. I know by going through the code that the graph is \nstored as an object of type \"network\", I don't want to have to deal with \nhow to change the graph to be consistent with the noisy statistics. I \njust want the ERGM estimation to pretend that x' is the observed vector \nof statistics, and run the algorithm with x instead of x'. Please let me \nknow if anyone knows an easy way of doing this.\n\nThanks very much,\nDarakhshan",
+      "body_snippet": "Hi All,\nI am relatively new to both statnet and R and was wondering, if there's \nan easy way of doing the following:\nSuppose I have a noise vector \\delta and a statistics vector x from the \nobserved g",
+      "thread_id": "thread-a7eb6e9085bf",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-e31955df13f2",
+      "message_id": "<alpine.WNT.2.00.1004271405400.1120@chandra.csde.washington.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "e4ceab2085a4e7e31332fe50d4790488ce2f9b16196f2fb463d2762674c88f36",
+      "date": "2010-04-27T14:13:09Z",
+      "subject": "[statnet_help] model for FMH",
+      "subject_clean": "[statnet_help] model for FMH",
+      "in_reply_to": "<006f01cae22b$69738550$3c5a8ff0$@edu>",
+      "references": [
+        "<006f01cae22b$69738550$3c5a8ff0$@edu>"
+      ],
+      "body_plain": "Hi Feng,\n\nI just tried fitting your formula, with some well-tuned fitting \nparameters, and I was able to get good model estimates in a couple of \nhours.  This was on a unix cluster, though.  The exact call I used was:\n\nformula <- fmh ~ edges + nodefactor(\"Grade\") + nodefactor(\"Race\") + \nnodefactor(\"Sex\")  + nodematch(\"Grade\",diff=T)  + nodematch(\"Sex\",diff=F) \n+ gwdegree(1.0,fixed=T) + gwesp(1.0,fixed=T) + gwdsp(1.0,fixed=T)\n\nfit <- ergm(formula, burnin = 10000, interval = 1000, MCMCsamplesize = \n2500, maxit = 25, control = control.ergm(steplength = .25))\n\nand the diagnostics are attached, so you can see it worked well.\n\nThere's a bit of a learning curve behind knowing what ergm fitting \nparameters to tweak to get model convergence as quickly as possible. I \nlike taking the general approach I use here with the gw* terms, though; a \nlarger sample size, a high maxit, and a smaller steplength; it seems to \nwork for me in general.\n\nTry this specific run and see how long it takes for you.  If it doesn't \nconverge or takes a really really long time, then you may want to try to \nget access to a more powerful machine somehow.\n\nCheers,\nSteve\n\n\n\nOn Thu, 22 Apr 2010, Feng Luo \nwrote:\n\n> Date: Thu, 22 Apr 2010 10:52:20 -0400\n> From: Feng Luo <luofeng@clemson.edu>\n> To: statnet_help@u.washington.edu\n> Subject: [statnet_help] model for FMH\n> \n> \n> Dear All:\n>\n> \n> \n> I am playing the ERGM using the FMH data coming with the ergm package. When I used the\n> following formula suggested by help page of the FMH data, it cannot converge after one\n> day run.\n>\n> \n>\n> ? formula <- fmh~? edges + nodefactor(\"Grade\") + nodefactor(\"Race\") + nodefactor(\"Sex\") \n> + nodematch(\"Grade\",diff=T)? + nodematch(\"Sex\",diff=F) + gwdegree(1.0,fixed=T) +\n> gwesp(1.0,fixed=T) + gwdsp(1.0,fixed=T)\n>\n> \n> \n> however, I will be able to learn model using following formula, attached is the GOF:\n>\n> ? formula <- fmh~? edges + nodefactor(\"Grade\") + nodefactor(\"Race\") + nodefactor(\"Sex\") \n> + nodematch(\"Grade\",diff=T)? + nodematch(\"Sex\",diff=F) + gwdegree(0,fixed=T) +\n> gwesp(0,fixed=T) + gwdsp(0,fixed=T)\n>\n> \n> \n> The major difference is the alpha value in gwdegree, gwesp and gwdsp. anyone know what is\n> the problem in my first model? Thanks in advance!\n>\n> \n> \n> Best wishes,\n> \n> Feng\n>\n> \n> \n> \n>\n\n**************************************************************************\n  * Steven M. Goodreau / Assistant Professor / Dept. of Anthropology     *\n  * University of Washington / Denny Hall 452 / Campus Box 353100        *\n  * Seattle WA 98195 / 1-206-685-3870 (phone)/ 1-206-543-3285 (fax)      *\n  * http://faculty.washington.edu/goodreau                               *\n  * http://maps.google.com/?q=%2047.65853,-122.30896&z=18&t=k            *\n**************************************************************************\n\n\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: fmh.diag.pdf\nType: application/pdf\nSize: 998456 bytes\nDesc: \nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100427/618b322f/attachment.pdf>",
+      "body_snippet": "Hi Feng,\n\nI just tried fitting your formula, with some well-tuned fitting \nparameters, and I was able to get good model estimates in a couple of \nhours.  This was on a unix cluster, though.  The exact",
+      "thread_id": "thread-7427161e1038",
+      "thread_depth": 1,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-ce702f636bb5",
+      "message_id": "<2B38F848-8C65-462B-82AE-8085E3C83F66@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-04-27T18:21:29Z",
+      "subject": "[statnet_help] Estimating parameters using noisy statistics",
+      "subject_clean": "[statnet_help] Estimating parameters using noisy statistics",
+      "in_reply_to": "<4BD72D51.4090307@cs.rutgers.edu>",
+      "references": [
+        "<4BD72D51.4090307@cs.rutgers.edu>"
+      ],
+      "body_plain": "If you call ergm using the \"meanstats\" argument, that should do what  \nyou're trying to do.   Check out the help page at ?ergm for details --  \nhopefully, that will adequately explain how to use meanstats.\n\nDave\n\n\n\nOn Apr 27, 2010, at 2:30 PM, Darakhshan Mir wrote:\n\n> Hi All,\n> I am relatively new to both statnet and R and was wondering, if  \n> there's an easy way of doing the following:\n> Suppose I have a noise vector \\delta and a statistics vector x from  \n> the observed graph. Consider a noisy statistics vector x', where x'  \n> = x+ \\delta. Is there an easy way of using this noisy vector x', in  \n> the ERGM estimation algorithm. I know by going through the code that  \n> the graph is stored as an object of type \"network\", I don't want to  \n> have to deal with how to change the graph to be consistent with the  \n> noisy statistics. I just want the ERGM estimation to pretend that x'  \n> is the observed vector of statistics, and run the algorithm with x  \n> instead of x'. Please let me know if anyone knows an easy way of  \n> doing this.\n>\n> Thanks very much,\n> Darakhshan\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "If you call ergm using the \"meanstats\" argument, that should do what  \nyou're trying to do.   Check out the help page at ?ergm for details --  \nhopefully, that will adequately explain how to use means",
+      "thread_id": "thread-a7eb6e9085bf",
+      "thread_depth": 1,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-e0621499e754",
+      "message_id": "<B3587E3C-B63C-4F1A-94FB-FB94F780ED84@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2010-04-28T05:33:14Z",
+      "subject": "[statnet_help] Goodness of fit with directed networks",
+      "subject_clean": "[statnet_help] Goodness of fit with directed networks",
+      "in_reply_to": "<m2w553586b11004270843zf5fa34afp14aad507c57f7eb9@mail.gmail.com>",
+      "references": [
+        "<m2w553586b11004270843zf5fa34afp14aad507c57f7eb9@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Balasz.  Good question.  gof does work with directed networks, but  \nI see that the documentation is not good for explaining how this  \nworks.  I ought to fix this in a future version of ergm.\n\nBy typing\ngof_model_rok1 <- gof(model_rok1)\nyou are using the default value of the \"GOF\" argument, which means  \nyou're essentially typing\n\ngof_model_rok1 <- gof(model_rok1, GOF = ~degree + espartners + distance)\n\nand, as you saw, this generates an error because \"degree\" is an  \nundirected-network statistic.  What you can do is replace \"degree\" by  \n\"odegree\" and/or \"idegree\" (outdegree or indegree), or neither, by  \ntyping, say,\n\ngof_model_rok1 <- gof(model_rok1, GOF = ~idegree + odegree +  \nespartners + distance)\n\nOther options are \"dspartners\" for dyadic shared partners and  \n\"triadcensus\" for a census of the sixteen types of triads possible in  \na directed network.  The explanation of the triads is found under  \n\"triadcensus\" in ?ergm-terms.\n\nSorry the gof documentation is lacking!\n\nDave\n\n\n\nOn Apr 27, 2010, at 11:43 AM, Balazs Kovacs wrote:\n\n> Dear All,\n>\n> We are trying the assess the GOF of a directed network (email data),  \n> but for some reason it gets stuck when we want to do the goodness-of- \n> fit plots (works fine up to that point). Here is an example below.  \n> Does GOF not work with directed data? Or is it something else?\n>\n> (We also tried with models with more parameters, and got the same)\n>\n> Thanks a lot!\n>\n> Cheers,\n> Balazs\n>\n> >model_rok1 <- ergm(net_rok ~ edges, verbose = TRUE)\n> >summary(model_rok1)\n>\n> ==========================\n> Summary of model fit\n> ==========================\n> Formula:   halo_rok ~ edges\n> Newton-Raphson iterations:  6\n> Maximum Likelihood Results:\n> Estimate Std. Error MCMC s.e. p-value\n> edges -3.17075    0.07425        NA  <1e-04 ***\n> ---\n> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n> For this model, the pseudolikelihood is the same as the likelihood.\n>     Null  Deviance: 6504.5  on 4692  degrees of freedom\n>  Residual Deviance: 1584.4  on 4691  degrees of freedom\n>           Deviance: 4920.1  on    1  degrees of freedom\n>\n> AIC: 1586.4    BIC: 1592.8\n>\n> > gof_model_rok1<- gof(model_rok1)\n> Errore: degree model term may not be used with a directed network.\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Balasz.  Good question.  gof does work with directed networks, but  \nI see that the documentation is not good for explaining how this  \nworks.  I ought to fix this in a future version of ergm.\n\nBy ",
+      "thread_id": "thread-f15f86b40016",
+      "thread_depth": 1,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-c17f3f35c5ee",
+      "message_id": "<4BD9CB90.7020703@skyeome.net>",
+      "from_name": "Skye Bender-deMoll",
+      "from_email_hash": "016c31bf83672a8e8fce6b664eb68ddff364b5df6912775ec31eeceebce90340",
+      "date": "2010-04-29T11:10:24Z",
+      "subject": "[statnet_help] statnet R package install broken?",
+      "subject_clean": "[statnet_help] statnet R package install broken?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "I was just trying to install statnet on a couple of computers (including\nmy local dir on mosix) and getting errors like:\n\nError : package 'latentnet' required by 'statnet' could not be found\nERROR: lazy loading failed for package ?statnet?\n* removing ?/net/home/skyebend/R/i486-pc-linux-gnu-library/2.11/statnet?\n\ntried to trace it back a little, looks like \"statnet\" fails because\n\"latnent\" fails because \"shapes\" fails because \"rgl\" fails.\n\nMaybe there are some new package dependency problems?  Can anyone reproduce?\n\nany ideas?\n\nbest,\n -skye",
+      "body_snippet": "I was just trying to install statnet on a couple of computers (including\nmy local dir on mosix) and getting errors like:\n\nError : package 'latentnet' required by 'statnet' could not be found\nERROR: la",
+      "thread_id": "thread-c17f3f35c5ee",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-894af1e4c66f",
+      "message_id": "<n2i5ef543831004291306s69fc94daq9821d6780d1afb01@mail.gmail.com>",
+      "from_name": "Sun Kyung Kim",
+      "from_email_hash": "35f48a1f027bf76938a27a5837e98a4b2603b665ecac80f43ad43f7c8905b6c3",
+      "date": "2010-04-29T13:06:46Z",
+      "subject": "[statnet_help] locations of nodes in plot are random?",
+      "subject_clean": "[statnet_help] locations of nodes in plot are random?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi\n\nI want to compare the plots of observed data and the simulated data from the\nfitted model.\nFor comparability, I want the node locations are fixed.\nIs there any way I can do?\n\nThanks,\nSunny Kim\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20100429/7d0b6b2c/attachment.html>",
+      "body_snippet": "Hi\n\nI want to compare the plots of observed data and the simulated data from the\nfitted model.\nFor comparability, I want the node locations are fixed.\nIs there any way I can do?\n\nThanks,\nSunny Kim\n---",
+      "thread_id": "thread-894af1e4c66f",
+      "thread_depth": 0,
+      "month": "2010-04"
+    },
+    {
+      "id": "msg-b23daf492d4c",
+      "message_id": "<4BDAB21B.305@coll.mpg.de>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "be636dde28cefa502024155d2c668f78a853d393127e9415ccd248c0c80cf950",
+      "date": "2010-04-30T03:34:03Z",
+      "subject": "[statnet_help] statnet R package install broken?",
+      "subject_clean": "[statnet_help] statnet R package install broken?",
+      "in_reply_to": "<4BD9CB90.7020703@skyeome.net>",
+      "references": [
+        "<4BD9CB90.7020703@skyeome.net>"
+      ],
+      "body_plain": "Hi,\n\nI can confirm this problem on a machine running Ubuntu Linux 9.10 \n\"Karmic Koala\". It occurred in January 2010. However, installing the RGL \npackage did the trick for me. But I don't remember if I installed RGL \nvia the package repository of Ubuntu (Synaptic or apt-get), or if I did \nthis from within R (install packages). I suppose I used Synaptic though \nbecause I have just installed Ubuntu 10.4 on a new machine and have \ndirectly installed RGL from Synaptic, and I could then install statnet \nin R without any problem. I hope this helps.\n\nBest,\nPhilip\n\nOn 29.04.2010 20:10, Skye Bender-deMoll wrote:\n> I was just trying to install statnet on a couple of computers (including\n> my local dir on mosix) and getting errors like:\n>\n> Error : package 'latentnet' required by 'statnet' could not be found\n> ERROR: lazy loading failed for package ?statnet?\n> * removing ?/net/home/skyebend/R/i486-pc-linux-gnu-library/2.11/statnet?\n>\n> tried to trace it back a little, looks like \"statnet\" fails because\n> \"latnent\" fails because \"shapes\" fails because \"rgl\" fails.\n>\n> Maybe there are some new package dependency problems?  Can anyone reproduce?\n>\n> any ideas?\n>\n> best,\n>   -skye\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman2.u.washington.edu/mailman/listinfo/statnet_help\n\n-- \nPhilip Leifeld\nMax Planck Institute for     | +49 (0) 1577 6830349 (mobile)\nResearch on Collective Goods | +49 (0) 228 91416-73 (phone)\nMaxNetAging Doctoral Fellow  | +49 (0) 228 91416-62 (fax)\nKurt-Schumacher-Str. 10      | Leifeld@coll.mpg.de\n53113 Bonn, Germany          | http://www.philipleifeld.de",
+      "body_snippet": "Hi,\n\nI can confirm this problem on a machine running Ubuntu Linux 9.10 \n\"Karmic Koala\". It occurred in January 2010. However, installing the RGL \npackage did the trick for me. But I don't remember if ",
+      "thread_id": "thread-c17f3f35c5ee",
+      "thread_depth": 1,
+      "month": "2010-04"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-843fcacbae3a",
+      "subject": "[statnet_help] Node labels",
+      "message_count": 1,
+      "participants": [
+        "Dai Shizuka"
+      ],
+      "started": "2010-04-01T12:23:06Z",
+      "last_reply": "2010-04-01T12:23:06Z",
+      "root_message_id": "msg-843fcacbae3a"
+    },
+    {
+      "id": "thread-54d8c70a1690",
+      "subject": "[statnet_help] Probability of a source node reaching a destination node in k steps",
+      "message_count": 2,
+      "participants": [
+        "Hamid Ghofrani"
+      ],
+      "started": "2010-04-05T21:05:14Z",
+      "last_reply": "2010-04-11T11:04:45Z",
+      "root_message_id": "msg-54d8c70a1690"
+    },
+    {
+      "id": "thread-95638327508d",
+      "subject": "[statnet_help] Version 2.2-3 of ergm on CRAN",
+      "message_count": 1,
+      "participants": [
+        "David Hunter"
+      ],
+      "started": "2010-04-06T07:20:29Z",
+      "last_reply": "2010-04-06T07:20:29Z",
+      "root_message_id": "msg-95638327508d"
+    },
+    {
+      "id": "thread-901346ff9460",
+      "subject": "[statnet_help] AUTO: Tom Kochuyt is out of the office (returning 19/04/2010)",
+      "message_count": 1,
+      "participants": [
+        "Tom Kochuyt"
+      ],
+      "started": "2010-04-06T13:05:02Z",
+      "last_reply": "2010-04-06T13:05:02Z",
+      "root_message_id": "msg-901346ff9460"
+    },
+    {
+      "id": "thread-b2657f9c19de",
+      "subject": "[statnet_help] Algorithm on simulation in statnet package ?",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Sun Kyung Kim"
+      ],
+      "started": "2010-04-07T11:47:47Z",
+      "last_reply": "2010-04-07T11:52:28Z",
+      "root_message_id": "msg-b2657f9c19de"
+    },
+    {
+      "id": "thread-a4ab84ecc89f",
+      "subject": "[statnet_help] Geometrically weighted dyadwise shared partner distribution terms for bipartite networks",
+      "message_count": 1,
+      "participants": [
+        "Guido Conaldi"
+      ],
+      "started": "2010-04-08T15:44:41Z",
+      "last_reply": "2010-04-08T15:44:41Z",
+      "root_message_id": "msg-a4ab84ecc89f"
+    },
+    {
+      "id": "thread-dc9a2423e78a",
+      "subject": "[statnet_help] Re: statnet_help Digest, Vol 44, Issue 6",
+      "message_count": 1,
+      "participants": [
+        "Beauguitte laurent"
+      ],
+      "started": "2010-04-11T07:58:04Z",
+      "last_reply": "2010-04-11T07:58:04Z",
+      "root_message_id": "msg-dc9a2423e78a"
+    },
+    {
+      "id": "thread-fee975b01f09",
+      "subject": "[statnet_help] are ergm's parameters and change statistics standardized?",
+      "message_count": 5,
+      "participants": [
+        "Carter T. Butts",
+        "Guido Conaldi",
+        "Martina Morris",
+        "dnolin"
+      ],
+      "started": "2010-04-12T05:34:37Z",
+      "last_reply": "2010-04-15T09:07:31Z",
+      "root_message_id": "msg-fee975b01f09"
+    },
+    {
+      "id": "thread-815429aef924",
+      "subject": "[statnet_help] anyone know how to extract largest connected subnetwork from a netowrk object",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "Feng Luo"
+      ],
+      "started": "2010-04-13T21:08:48Z",
+      "last_reply": "2010-04-14T05:02:06Z",
+      "root_message_id": "msg-815429aef924"
+    },
+    {
+      "id": "thread-ff4ba0429a54",
+      "subject": "[statnet_help] help on simulate network",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Feng Luo"
+      ],
+      "started": "2010-04-14T19:41:12Z",
+      "last_reply": "2010-04-14T20:15:18Z",
+      "root_message_id": "msg-ff4ba0429a54"
+    },
+    {
+      "id": "thread-d88f21663c29",
+      "subject": "[statnet_help] sna 2.1 released",
+      "message_count": 1,
+      "participants": [
+        "Carter T. Butts"
+      ],
+      "started": "2010-04-15T11:32:53Z",
+      "last_reply": "2010-04-15T11:32:53Z",
+      "root_message_id": "msg-d88f21663c29"
+    },
+    {
+      "id": "thread-c7ea81f7719c",
+      "subject": "[statnet_help] interpreting gwodegree?",
+      "message_count": 1,
+      "participants": [
+        "Jenine Harris"
+      ],
+      "started": "2010-04-15T14:50:48Z",
+      "last_reply": "2010-04-15T14:50:48Z",
+      "root_message_id": "msg-c7ea81f7719c"
+    },
+    {
+      "id": "thread-7098c62b0fcb",
+      "subject": "[statnet_help] setting vertex attributes",
+      "message_count": 1,
+      "participants": [
+        "Victor, Jennifer Nicoll"
+      ],
+      "started": "2010-04-16T12:13:13Z",
+      "last_reply": "2010-04-16T12:13:13Z",
+      "root_message_id": "msg-7098c62b0fcb"
+    },
+    {
+      "id": "thread-44018e2b0b53",
+      "subject": "[statnet_help] edgecov error",
+      "message_count": 1,
+      "participants": [
+        "Victor, Jennifer Nicoll"
+      ],
+      "started": "2010-04-16T14:16:11Z",
+      "last_reply": "2010-04-16T14:16:11Z",
+      "root_message_id": "msg-44018e2b0b53"
+    },
+    {
+      "id": "thread-a56a82a9273a",
+      "subject": "[statnet_help] esp and dsp stats with directed networks",
+      "message_count": 3,
+      "participants": [
+        "David Hunter",
+        "Victorin Luisier"
+      ],
+      "started": "2010-04-20T03:08:50Z",
+      "last_reply": "2010-04-21T05:32:54Z",
+      "root_message_id": "msg-a56a82a9273a"
+    },
+    {
+      "id": "thread-78de6a2137fb",
+      "subject": "[statnet_help] Question about preparing data for StatNet with node properties",
+      "message_count": 2,
+      "participants": [
+        "Rick L"
+      ],
+      "started": "2010-04-21T04:29:53Z",
+      "last_reply": "2010-04-21T10:15:14Z",
+      "root_message_id": "msg-78de6a2137fb"
+    },
+    {
+      "id": "thread-ce0b6e3513d7",
+      "subject": "[statnet_help] Color nodes by node name lists",
+      "message_count": 2,
+      "participants": [
+        "David Hunter",
+        "mklaus@wirtschaft.uni-kassel.de"
+      ],
+      "started": "2010-04-21T06:16:04Z",
+      "last_reply": "2010-04-21T10:14:10Z",
+      "root_message_id": "msg-ce0b6e3513d7"
+    },
+    {
+      "id": "thread-538b995f7194",
+      "subject": "[statnet_help] two-mode network in StatNet",
+      "message_count": 3,
+      "participants": [
+        "Martina Morris",
+        "Rick L"
+      ],
+      "started": "2010-04-21T19:38:52Z",
+      "last_reply": "2010-04-22T11:53:09Z",
+      "root_message_id": "msg-538b995f7194"
+    },
+    {
+      "id": "thread-7427161e1038",
+      "subject": "[statnet_help] model for FMH",
+      "message_count": 2,
+      "participants": [
+        "Feng Luo",
+        "Steven Goodreau"
+      ],
+      "started": "2010-04-22T07:52:20Z",
+      "last_reply": "2010-04-27T14:13:09Z",
+      "root_message_id": "msg-7427161e1038"
+    },
+    {
+      "id": "thread-f425fa71f00f",
+      "subject": "[statnet_help] adding vertex attribute and summary for mutual(attrname)",
+      "message_count": 3,
+      "participants": [
+        "Annie Wang",
+        "David Hunter"
+      ],
+      "started": "2010-04-23T23:28:33Z",
+      "last_reply": "2010-04-24T18:43:03Z",
+      "root_message_id": "msg-f425fa71f00f"
+    },
+    {
+      "id": "thread-f15f86b40016",
+      "subject": "[statnet_help] Goodness of fit with directed networks",
+      "message_count": 2,
+      "participants": [
+        "Balazs Kovacs",
+        "David Hunter"
+      ],
+      "started": "2010-04-27T08:43:40Z",
+      "last_reply": "2010-04-28T05:33:14Z",
+      "root_message_id": "msg-f15f86b40016"
+    },
+    {
+      "id": "thread-a7eb6e9085bf",
+      "subject": "[statnet_help] Estimating parameters using noisy statistics",
+      "message_count": 2,
+      "participants": [
+        "Darakhshan Mir",
+        "David Hunter"
+      ],
+      "started": "2010-04-27T11:30:41Z",
+      "last_reply": "2010-04-27T18:21:29Z",
+      "root_message_id": "msg-a7eb6e9085bf"
+    },
+    {
+      "id": "thread-c17f3f35c5ee",
+      "subject": "[statnet_help] statnet R package install broken?",
+      "message_count": 2,
+      "participants": [
+        "Philip Leifeld",
+        "Skye Bender-deMoll"
+      ],
+      "started": "2010-04-29T11:10:24Z",
+      "last_reply": "2010-04-30T03:34:03Z",
+      "root_message_id": "msg-c17f3f35c5ee"
+    },
+    {
+      "id": "thread-894af1e4c66f",
+      "subject": "[statnet_help] locations of nodes in plot are random?",
+      "message_count": 1,
+      "participants": [
+        "Sun Kyung Kim"
+      ],
+      "started": "2010-04-29T13:06:46Z",
+      "last_reply": "2010-04-29T13:06:46Z",
+      "root_message_id": "msg-894af1e4c66f"
+    }
+  ]
+}

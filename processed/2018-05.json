@@ -1,0 +1,258 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2018-05",
+  "messages": [
+    {
+      "id": "msg-99a1c4a932fb",
+      "message_id": "<F5275D13-80D3-47D9-B457-CEC88279FCD3@hsph.harvard.edu>",
+      "from_name": "Zhu, Lin",
+      "from_email_hash": "5280f2abfa6237b5d22ac90b7912aff730368420c188eb69c370bd096fa7fec2",
+      "date": "2018-05-15T08:15:25Z",
+      "subject": "[statnet_help] Simulate a hypothetical network with target statistics",
+      "subject_clean": "[statnet_help] Simulate a hypothetical network with target statistics",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI?m trying to simulate a hypothetical network of 1000 nodes with three ergm terms: edges, absdiff(?age?), and gwesp(0.5). I tried a few target statistics and find it very hard to match the absdiff(?age?). Even I first simulate a network without this term, and then use the value of absdiff(?age?) of that network to be the target statistics, it still tells me ?Unable to match target stats? once I add the absdiff(?age?) term. Are there any tricks to make the target statistics to simulate a hypothetical network?\n\nThank you very much.\n\nBest,\nLin\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180515/2b5e4903/attachment.html>",
+      "body_snippet": "Hi all,\n\nI?m trying to simulate a hypothetical network of 1000 nodes with three ergm terms: edges, absdiff(?age?), and gwesp(0.5). I tried a few target statistics and find it very hard to match the ab",
+      "thread_id": "thread-99a1c4a932fb",
+      "thread_depth": 0,
+      "month": "2018-05"
+    },
+    {
+      "id": "msg-9cf4445ca5f3",
+      "message_id": "<fc8edb28-41b9-e6d7-7a9e-a058f51ce052@uw.edu>",
+      "from_name": "Steven Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2018-05-15T08:56:50Z",
+      "subject": "[statnet_help] Simulate a hypothetical network with target statistics",
+      "subject_clean": "[statnet_help] Simulate a hypothetical network with target statistics",
+      "in_reply_to": "<F5275D13-80D3-47D9-B457-CEC88279FCD3@hsph.harvard.edu>",
+      "references": [
+        "<F5275D13-80D3-47D9-B457-CEC88279FCD3@hsph.harvard.edu>"
+      ],
+      "body_plain": "Hi Lin -\n\nOn 5/15/2018 8:15 AM, Zhu, Lin wrote:\n> I?m trying to simulate a hypothetical network of 1000 nodes with three \n> ergm terms: edges, absdiff(?age?), and gwesp(0.5). I tried a few \n> target statistics and find it very hard to match the absdiff(?age?). \n> Even I first simulate a network without this term, and then use the \n> value of absdiff(?age?) of that network to be the target statistics, \n> it still tells me ?Unable to match target stats? once I add the \n> absdiff(?age?) term. Are there any tricks to make the target \n> statistics to simulate a hypothetical network?\n\nI was intrigued by your questions so just wrote code to give it a try \nmyself. (You caught me over morning coffee when I had just enough \ntime!)? It seemed to work perfectly on my end.? I'm using the latest \nergm (3.8.0).? My code is here, followed by a few thoughts:\n\nlibrary(ergm)\nmynet <- network.initialize(100, directed=FALSE)\nmynet <- set.vertex.attribute(mynet, \"age\", sample(1:80,100,replace=TRUE))\nmynet %v% 'age'\nmyergm1 <- ergm(mynet~edges, target.stats=200)\nmynet <- simulate(myergm1)\nmyformula <- mynet~edges+absdiff(\"age\")+gwesp(0.5, fixed=TRUE)\nmystats <- summary(myformula)\nmyergm2 <- ergm(myformula, target.stats=mystats)\nmynet <- simulate(myergm2)\nmystats\nsummary(myformula)\n\n- The \"unable to match target stats\" sometimes appears as a warning, not \nan error, letting you know as a courtesy that the algorithm cannot get \nthe target stats exactly matched in the initial network.? This is \nespecially true when your target stats are not integers but any \nindividual network can only have integer values for those target stats. \nHowever, this is actually not a problem since the estimation algorithm \nused when supplying target stats is able to work just fine, even if the \nstarting network for estimation is not exactly on the target stats.? \nThat's why it is a warning only, not an error.? I expected this to be \nwhat I saw when I tried recreating your example. However, I didn't even \nget this warning.? Is this showing up for you as a warning or an error?? \nIs the estimation algorithm proceeding after it gives you the message?\n\n- Are you trying to get the final simulated network to match the target \nstatistics exactly?? That is not likely to happen, by design.? Each \nindividual network simulated from an ergm is a stochastic process - they \nwill only match the target statistics on average over many simulations.? \nIf you need to match an exact set of target statistics in a single \nnetwork, you can try using the san command; however this typically only \nworks on relatively simple models.? Actually getting an individual \nnetwork to be guaranteed to match a set of target stats for arbitrarily \ncomplex model is a difficult (impossible?) problem.\n\n- If my code doesn't help you answer your question, can you send me \nyours so I can take a look?\n\nCheers, Steve\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180515/3e4a82fd/attachment.html>",
+      "body_snippet": "Hi Lin -\n\nOn 5/15/2018 8:15 AM, Zhu, Lin wrote:\n> I?m trying to simulate a hypothetical network of 1000 nodes with three \n> ergm terms: edges, absdiff(?age?), and gwesp(0.5). I tried a few \n> target s",
+      "thread_id": "thread-99a1c4a932fb",
+      "thread_depth": 1,
+      "month": "2018-05"
+    },
+    {
+      "id": "msg-86cf1e925c07",
+      "message_id": "<CADJVJ55swLARCigtk45sE2-jcDc_yjGK9dO62=1QiDP8oa6WOw@mail.gmail.com>",
+      "from_name": "Shiran Cohen",
+      "from_email_hash": "c241ecd973add7b4babec09d63445f4e8a130ba0643f8e2862288306595bf1eb",
+      "date": "2018-05-17T04:47:38Z",
+      "subject": "[statnet_help] BTERGM",
+      "subject_clean": "[statnet_help] BTERGM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI got a btergm model (all parameters are significant):\n\n*edges + mutual + ttriple + istar(2) + nodecov(\"term2\") + nodecov(\"term3\")\n+ nodecov(\"term4\") + nodematch(\"V5\") + nodefactor(\"V5\")*\n\n*V5* is a categorical parameters with 5 levels; term2/3/4 are of type\ndouble.\n\n\nThe gof(MyModel, nsim = 50) keeps returning the following error:\n\nError in simulate.formula(form, nsim = nsim, coef = coefs, constraints =\n~.,  :\n  coef has 12 elements, while the model requires 11 parameters.\n\nI checked *coef(MyModel)* and got 12 parameters.\nDoes anyone knows why does the model requires 11 parameters?\n\nBest regards,\nShiran\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180517/766985e0/attachment.html>",
+      "body_snippet": "Dear all,\n\nI got a btergm model (all parameters are significant):\n\n*edges + mutual + ttriple + istar(2) + nodecov(\"term2\") + nodecov(\"term3\")\n+ nodecov(\"term4\") + nodematch(\"V5\") + nodefactor(\"V5\")*\n\n",
+      "thread_id": "thread-86cf1e925c07",
+      "thread_depth": 0,
+      "month": "2018-05"
+    },
+    {
+      "id": "msg-599ebaf7b94c",
+      "message_id": "<6300EFC3DD5D4048AAC68932176922C943EB91AC@CMS11-01.campus.gla.ac.uk>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "fc15c5af3086c39b452f2c7197d876e960af137e6e952be7313ac1d9a46ba449",
+      "date": "2018-05-18T04:46:02Z",
+      "subject": "[statnet_help] BTERGM",
+      "subject_clean": "[statnet_help] BTERGM",
+      "in_reply_to": null,
+      "references": [
+        "<CADJVJ55swLARCigtk45sE2-jcDc_yjGK9dO62=1QiDP8oa6WOw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Shiran,\n\nIf you submit a minimal example to\nhttps://github.com/leifeld/btergm/issues or to me by e-mail, I'm happy\nto take a look.\n\nBest,\n\nPhilip\n\n--\nDr Philip Leifeld\nSenior Lecturer (Associate Professor) in Research Methods\nDirector of Graduate Training\nSchool of Social and Political Sciences\nUniversity of Glasgow\nhttp://www.philipleifeld.com\n\nOn 17/05/18 12:49, Shiran Cohen wrote:\n> Dear all,\n>\n> I got a btergm model (all parameters are significant):\n>\n> /edges + mutual + ttriple + istar(2) + nodecov(\"term2\") +\n> nodecov(\"term3\") + nodecov(\"term4\") + nodematch(\"V5\") + nodefactor(\"V5\")/\n>\n> /V5/ is a categorical parameters with 5 levels; term2/3/4 are of type\n> double.\n>\n>\n> The gof(MyModel, nsim = 50) keeps returning the following error:\n>\n> Error in simulate.formula(form, nsim = nsim, coef = coefs, constraints =\n> ~.,  :\n>    coef has 12 elements, while the model requires 11 parameters.\n>\n> I checked /coef(MyModel)/ and got 12 parameters.\n> Does anyone knows why does the model requires 11 parameters?\n>\n> Best regards,\n> Shiran\n\n[University of Glasgow: The Times Scottish University of the Year 2018]",
+      "body_snippet": "Hi Shiran,\n\nIf you submit a minimal example to\nhttps://github.com/leifeld/btergm/issues or to me by e-mail, I'm happy\nto take a look.\n\nBest,\n\nPhilip\n\n--\nDr Philip Leifeld\nSenior Lecturer (Associate Pr",
+      "thread_id": "thread-86cf1e925c07",
+      "thread_depth": 1,
+      "month": "2018-05"
+    },
+    {
+      "id": "msg-375e0d47b9b1",
+      "message_id": "<CADJVJ55QUBDEGRjgLViMsSdJ4Wmkce9PbAyjYD=kxDp6UmzyVQ@mail.gmail.com>",
+      "from_name": "Shiran Cohen",
+      "from_email_hash": "c241ecd973add7b4babec09d63445f4e8a130ba0643f8e2862288306595bf1eb",
+      "date": "2018-05-18T06:48:47Z",
+      "subject": "[statnet_help] BTERGM",
+      "subject_clean": "[statnet_help] BTERGM",
+      "in_reply_to": "<6300EFC3DD5D4048AAC68932176922C943EB91AC@CMS11-01.campus.gla.ac.uk>",
+      "references": [
+        "<CADJVJ55swLARCigtk45sE2-jcDc_yjGK9dO62=1QiDP8oa6WOw@mail.gmail.com>",
+        "<6300EFC3DD5D4048AAC68932176922C943EB91AC@CMS11-01.campus.gla.ac.uk>"
+      ],
+      "body_plain": "Thank you so much\nI have Emailed you the data\n\nBest regards,\nShiran\n\nOn Fri, May 18, 2018 at 2:46 PM, Philip Leifeld <\nPhilip.Leifeld@glasgow.ac.uk> wrote:\n\n> Hi Shiran,\n>\n> If you submit a minimal example to\n> https://github.com/leifeld/btergm/issues or to me by e-mail, I'm happy\n> to take a look.\n>\n> Best,\n>\n> Philip\n>\n> --\n> Dr Philip Leifeld\n> Senior Lecturer (Associate Professor) in Research Methods\n> Director of Graduate Training\n> School of Social and Political Sciences\n> University of Glasgow\n> http://www.philipleifeld.com\n>\n> On 17/05/18 12:49, Shiran Cohen wrote:\n> > Dear all,\n> >\n> > I got a btergm model (all parameters are significant):\n> >\n> > /edges + mutual + ttriple + istar(2) + nodecov(\"term2\") +\n> > nodecov(\"term3\") + nodecov(\"term4\") + nodematch(\"V5\") + nodefactor(\"V5\")/\n> >\n> > /V5/ is a categorical parameters with 5 levels; term2/3/4 are of type\n> > double.\n> >\n> >\n> > The gof(MyModel, nsim = 50) keeps returning the following error:\n> >\n> > Error in simulate.formula(form, nsim = nsim, coef = coefs, constraints =\n> > ~.,  :\n> >    coef has 12 elements, while the model requires 11 parameters.\n> >\n> > I checked /coef(MyModel)/ and got 12 parameters.\n> > Does anyone knows why does the model requires 11 parameters?\n> >\n> > Best regards,\n> > Shiran\n>\n> [University of Glasgow: The Times Scottish University of the Year 2018]\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180518/eb641a2c/attachment.html>",
+      "body_snippet": "Thank you so much\nI have Emailed you the data\n\nBest regards,\nShiran\n\nOn Fri, May 18, 2018 at 2:46 PM, Philip Leifeld <\nPhilip.Leifeld@glasgow.ac.uk> wrote:\n\n> Hi Shiran,\n>\n> If you submit a minimal ex",
+      "thread_id": "thread-86cf1e925c07",
+      "thread_depth": 2,
+      "month": "2018-05"
+    },
+    {
+      "id": "msg-4d036da6d10f",
+      "message_id": "<CADDtmk-0cxQoDxMEVY5ixT-m3b_qzMk+KbEmxWdyB_bgcujsJA@mail.gmail.com>",
+      "from_name": "golshid sharifnia",
+      "from_email_hash": "40f163bd545793b255e77ef32c136c6508addfab67e61406312db2857d175119",
+      "date": "2018-05-19T23:04:36Z",
+      "subject": "[statnet_help] GWESP-lambda parameter",
+      "subject_clean": "[statnet_help] GWESP-lambda parameter",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all\nI have a question about using GWESP in my ergm model.As I read before,\nfinding the right value for it can be obtained by trial and error and also\nread somewhere that 2 or 3 values fit well in many model and as I know this\nvalue should be greater than 1. I have used several values to test which\none is better but the results are confusing when I get help from gof\nfunction. So I decide to test not to fix the parameter but it gave me less\nthan one value for lambda! How could it be possible???\nMy model when I use fixed values is as:\nErgm(flobusiness~edges+gwesp(0.7, fixed= T),\nnodecov(\"wealth\")+nodecov(\"priorates\")+nodecov(\"totalties\"))\n\nRegards\nGolshid\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180520/99456d96/attachment.html>",
+      "body_snippet": "Dear all\nI have a question about using GWESP in my ergm model.As I read before,\nfinding the right value for it can be obtained by trial and error and also\nread somewhere that 2 or 3 values fit well in",
+      "thread_id": "thread-4d036da6d10f",
+      "thread_depth": 0,
+      "month": "2018-05"
+    },
+    {
+      "id": "msg-92c71d0f6b83",
+      "message_id": "<CAO9oa+nFgHjeNy3=7YCeUA18ASEO_=kZ47J-_GiQ8qqF8V-Sww@mail.gmail.com>",
+      "from_name": "Krause, R.W.",
+      "from_email_hash": "cd1e92998bfba6b0bbc2c456126c7c4554bc697383768f2795e6fd169ef1619f",
+      "date": "2018-05-21T02:24:18Z",
+      "subject": "[statnet_help] GWESP-lambda parameter",
+      "subject_clean": "[statnet_help] GWESP-lambda parameter",
+      "in_reply_to": "<CADDtmk-0cxQoDxMEVY5ixT-m3b_qzMk+KbEmxWdyB_bgcujsJA@mail.gmail.com>",
+      "references": [
+        "<CADDtmk-0cxQoDxMEVY5ixT-m3b_qzMk+KbEmxWdyB_bgcujsJA@mail.gmail.com>"
+      ],
+      "body_plain": "Dear Golshid,\n\nIn ergm you do not set the lambda but the alpha (in prior versions it said\nalpha instead of decay). And lamba is > 1 for every alpha > 0.\nSee Snijders et al 2006\n<http://journals.sagepub.com/doi/abs/10.1111/j.1467-9531.2006.00176.x>,\np.113.\n\n\nBest Regards,\n\nRobert Krause\n\nICS Sociology, PhD Candidate\nUniversity of Groningen\nGrote Rozenstraat 31,\nRoom B119\n9712 TG Groningen, The Netherlands\n\nOn Sun, May 20, 2018 at 8:04 AM, golshid sharifnia <g.sharifnia@gmail.com>\nwrote:\n\n> Dear all\n> I have a question about using GWESP in my ergm model.As I read before,\n> finding the right value for it can be obtained by trial and error and also\n> read somewhere that 2 or 3 values fit well in many model and as I know this\n> value should be greater than 1. I have used several values to test which\n> one is better but the results are confusing when I get help from gof\n> function. So I decide to test not to fix the parameter but it gave me less\n> than one value for lambda! How could it be possible???\n> My model when I use fixed values is as:\n> Ergm(flobusiness~edges+gwesp(0.7, fixed= T), nodecov(\"wealth\")+nodecov(\"\n> priorates\")+nodecov(\"totalties\"))\n>\n> Regards\n> Golshid\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180521/d86bbd44/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: image.png\nType: image/png\nSize: 1339 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180521/d86bbd44/attachment.png>",
+      "body_snippet": "Dear Golshid,\n\nIn ergm you do not set the lambda but the alpha (in prior versions it said\nalpha instead of decay). And lamba is > 1 for every alpha > 0.\nSee Snijders et al 2006\n<http://journals.sagepu",
+      "thread_id": "thread-4d036da6d10f",
+      "thread_depth": 1,
+      "month": "2018-05"
+    },
+    {
+      "id": "msg-c8f0ba727601",
+      "message_id": "<78F1FFDE-4F03-4DB1-85B4-093111096323@gmail.com>",
+      "from_name": "golshid sharifnia",
+      "from_email_hash": "40f163bd545793b255e77ef32c136c6508addfab67e61406312db2857d175119",
+      "date": "2018-05-21T05:27:54Z",
+      "subject": "[statnet_help] GWESP-lambda parameter",
+      "subject_clean": "[statnet_help] GWESP-lambda parameter",
+      "in_reply_to": "<CAO9oa+nFgHjeNy3=7YCeUA18ASEO_=kZ47J-_GiQ8qqF8V-Sww@mail.gmail.com>",
+      "references": [
+        "<CADDtmk-0cxQoDxMEVY5ixT-m3b_qzMk+KbEmxWdyB_bgcujsJA@mail.gmail.com>",
+        "<CAO9oa+nFgHjeNy3=7YCeUA18ASEO_=kZ47J-_GiQ8qqF8V-Sww@mail.gmail.com>"
+      ],
+      "body_plain": "thanx for answering me\nthe value estimatet for alpha is equal to -0.22 which is equal to 0.8 for lambda. how could it be possible to estimate this value for gwesp parameter by ergm function?\nand can you help me to know how can i find the best value for it?\n\nRegards\nGolshid\n\nSent from my iPhone\n\n> On May 21, 2018, at 1:54 PM, Krause, R.W. <r.w.krause@rug.nl> wrote:\n> \n> Dear Golshid,\n> \n> In ergm you do not set the lambda but the alpha (in prior versions it said alpha instead of decay). And lamba is > 1 for every alpha > 0. \n> <image.png>\n> See Snijders et al 2006, p.113.\n> \n> \n> Best Regards,\n> \n> Robert Krause\n> \n> ICS Sociology, PhD Candidate\n> University of Groningen\n> Grote Rozenstraat 31, \n> Room B119\n> 9712 TG Groningen, The Netherlands\n> \n>> On Sun, May 20, 2018 at 8:04 AM, golshid sharifnia <g.sharifnia@gmail.com> wrote:\n>> Dear all\n>> I have a question about using GWESP in my ergm model.As I read before, finding the right value for it can be obtained by trial and error and also read somewhere that 2 or 3 values fit well in many model and as I know this value should be greater than 1. I have used several values to test which one is better but the results are confusing when I get help from gof function. So I decide to test not to fix the parameter but it gave me less than one value for lambda! How could it be possible???\n>> My model when I use fixed values is as:\n>> Ergm(flobusiness~edges+gwesp(0.7, fixed= T), nodecov(\"wealth\")+nodecov(\"priorates\")+nodecov(\"totalties\")) \n>> \n>> Regards\n>> Golshid\n>> \n>> \n>> \n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>> \n> \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180521/76b3b643/attachment.html>",
+      "body_snippet": "thanx for answering me\nthe value estimatet for alpha is equal to -0.22 which is equal to 0.8 for lambda. how could it be possible to estimate this value for gwesp parameter by ergm function?\nand can y",
+      "thread_id": "thread-4d036da6d10f",
+      "thread_depth": 2,
+      "month": "2018-05"
+    },
+    {
+      "id": "msg-d1578b9185f9",
+      "message_id": "<5b039f57.1c69fb81.63dc1.c020@mx.google.com>",
+      "from_name": "Shane A. Scaggs",
+      "from_email_hash": "18afe264002e1c0888b22e1528d8d924e8406808bf452dcc74725ca64b40623e",
+      "date": "2018-05-21T21:41:36Z",
+      "subject": "[statnet_help] gof for valued networks",
+      "subject_clean": "[statnet_help] gof for valued networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all, \n\nI have developed several ERGMs for a sparse network of food sharing in Alaska. The edges in the networks are currently being analyzed as binary but I do also have weighted edges indicating the number of resources exchanged between two nodes. I?ve been able to implement the same ERGMs for this valued network using the ergm.count extensions. The results are promising but the downside is that the goodness of fit tests do not exist for valued networks. \n\nAre there any updates on this issue? I am peripherally interested in developing them myself, assuming I have extra time after finishing my thesis, but the ideal would be to connect with someone that has developed these tools already or has begun to do. \n\nIf anyone has any working code that begins to implement gof() with ergm.count, let me know! \n\nBest, \nShane A. Scaggs \n\nSent from Mail for Windows 10\n\n\n\n---\nThis email has been checked for viruses by Avast antivirus software.\nhttps://www.avast.com/antivirus\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180521/3c345848/attachment.html>",
+      "body_snippet": "Hi all, \n\nI have developed several ERGMs for a sparse network of food sharing in Alaska. The edges in the networks are currently being analyzed as binary but I do also have weighted edges indicating t",
+      "thread_id": "thread-d1578b9185f9",
+      "thread_depth": 0,
+      "month": "2018-05"
+    },
+    {
+      "id": "msg-87ae2a4b78ad",
+      "message_id": "<E913ABB937F1DE4BA868F430F7197E108C64B7E3@EXMBXPR08CCD.UCHAD.uchospitals.edu>",
+      "from_name": "Khanna, Aditya [MED]",
+      "from_email_hash": "bcbc2ecefb65f657cdc48dbcb34944add56ec462b1b27bb58447f547a9f880c3",
+      "date": "2018-05-23T22:51:40Z",
+      "subject": "[statnet_help] Interactions of GWESP with other ERGM terms",
+      "subject_clean": "[statnet_help] Interactions of GWESP with other ERGM terms",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet Community,\n\nDoes it make sense to consider interactions between GWESP and other model terms? Imagine an instance with friendship data where we could hypothesize that the scaling parameter was different for different race/ethnicities, and the coefficient itself might vary by race/ethnicity. This is not precisely the case I am working on, but it seems like a close analogy that makes sense conceptually.\n\nI have not seen an interaction term as described above, and I am asking for your thoughts on whether this would make sense.\n\nMany thanks for your consideration.\nAditya\n\n--\nAditya Khanna (Webpage)<http://home.uchicago.edu/~khanna7/>\nResearch Assistant Professor\nDirector of Network Modeling\nChicago Center for HIV Elimination (CCHE)\nDepartment of Medicine\nDivision of Biological Sciences\nUniversity of Chicago\n5841 S Maryland Ave - MC 5065\nChicago IL 60637\noffice: (773) 834-5635<tel:%28773%29%20702-8349>; fax:  (773) 702-8998<tel:%28773%29%20702-8998>\n\n[cid:image001.png@01CFCCDE.ACA64EA0]    [medicine]\nWebsite: http://hivelimination.uchicago.edu<http://hivelimination.uchicago.edu/>\nFacebook: https://www.facebook.com/hivelimination\nTwitter: @HIVElimination\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180524/eabf5f2b/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: image001.png\nType: image/png\nSize: 31128 bytes\nDesc: image001.png\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180524/eabf5f2b/attachment.png>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: image002.jpg\nType: image/jpeg\nSize: 3766 bytes\nDesc: image002.jpg\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180524/eabf5f2b/attachment.jpg>",
+      "body_snippet": "Dear Statnet Community,\n\nDoes it make sense to consider interactions between GWESP and other model terms? Imagine an instance with friendship data where we could hypothesize that the scaling parameter",
+      "thread_id": "thread-87ae2a4b78ad",
+      "thread_depth": 0,
+      "month": "2018-05"
+    },
+    {
+      "id": "msg-cc8d50500c55",
+      "message_id": "<58c0d640a940db46c454a9289380f45c778d7a75.camel@uow.edu.au>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2018-05-24T23:47:17Z",
+      "subject": "[statnet_help] gof for valued networks",
+      "subject_clean": "[statnet_help] gof for valued networks",
+      "in_reply_to": "<5b039f57.1c69fb81.63dc1.c020@mx.google.com>",
+      "references": [
+        "<5b039f57.1c69fb81.63dc1.c020@mx.google.com>"
+      ],
+      "body_plain": "Hi, Shane,\nOn Mon, 2018-05-21 at 21:41 -0700, Shane A. Scaggs wrote:\n> Hi all, \n>  \n> I have developed several ERGMs for a sparse network of food sharing\n> in Alaska. The edges in the networks are currently being analyzed as\n> binary but I do also have weighted edges indicating the number of\n> resources exchanged between two nodes. I?ve been able to implement\n> the same ERGMs for this valued network using the ergm.count\n> extensions. The results are promising but the downside is that the\n> goodness of fit tests do not exist for valued networks. \n\nGlad it's useful!\n>  \n> Are there any updates on this issue? I am peripherally interested in\n> developing them myself, assuming I have extra time after finishing my\n> thesis, but the ideal would be to connect with someone that has\n> developed these tools already or has begun to do. \nThey are an open problem, though I believe that people in Carter Butt's\ngroup might be working on it.\nAs a first-order diagnostic, it might be worthwhile to see how well the\nmodel predicts the distribution of tie values. Here's a sketch of how\none might do it (using the Zachary dataset example):\nlibrary(ergm.count)example(zach)\n# Simulate from the model fit along with the empirical CDF (the\natmost()s):zach.sim1 <-\nsimulate(zach.fit1,monitor=~atmost(0)+atmost(1)+atmost(2)+atmost(3)+atm\nost(4)+atmost(5)+atmost(6)+atmost(7), response=\"contexts\",\nnsim=1000,statsonly=TRUE)# Get the observed values, including for the\nCDF:zach.obs1 <- summary(update(zach.fit1$formula,\n.~.+atmost(0)+atmost(1)+atmost(2)+atmost(3)+atmost(4)+atmost(5)+atmost(\n6)+atmost(7)), response=\"contexts\")\n# Plot and mark the observed value:boxplot(zach.sim1)points(zach.obs1,\npch=4, col=2)\nThe first half of boxplots are basically a convergence diagnostic. The\nsecond half (the atmost()s)) give some indication of how well the count\ndistribution is being fit.\n\t\t\t\t\t\tI hope this helps,\t\n\t\t\t\t\tPavel\n>  \n> If anyone has any working code that begins to implement gof() with\n> ergm.count, let me know! \n>  \n> Best, \n> Shane A. Scaggs \n>  \n> Sent from Mail for Windows 10\n>  \n> \n> \n> \n> \t\n>         \n> \t\tVirus-free. www.avast.com\n> \t\t\n> \t\n>  \n> _______________________________________________statnet_help mailing\n> liststatnet_help@u.washington.eduhttp://mailman13.u.washington.edu/ma\n> ilman/listinfo/statnet_help\n-- \n\n  \n  \n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA) | Web (Personal) | ResearchGate | ORCID: 0000-0002-9101-3362\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20180525/0679ab3f/attachment.html>",
+      "body_snippet": "Hi, Shane,\nOn Mon, 2018-05-21 at 21:41 -0700, Shane A. Scaggs wrote:\n> Hi all, \n>  \n> I have developed several ERGMs for a sparse network of food sharing\n> in Alaska. The edges in the networks are cur",
+      "thread_id": "thread-d1578b9185f9",
+      "thread_depth": 1,
+      "month": "2018-05"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-99a1c4a932fb",
+      "subject": "[statnet_help] Simulate a hypothetical network with target statistics",
+      "message_count": 2,
+      "participants": [
+        "Steven Goodreau",
+        "Zhu, Lin"
+      ],
+      "started": "2018-05-15T08:15:25Z",
+      "last_reply": "2018-05-15T08:56:50Z",
+      "root_message_id": "msg-99a1c4a932fb"
+    },
+    {
+      "id": "thread-86cf1e925c07",
+      "subject": "[statnet_help] BTERGM",
+      "message_count": 3,
+      "participants": [
+        "Philip Leifeld",
+        "Shiran Cohen"
+      ],
+      "started": "2018-05-17T04:47:38Z",
+      "last_reply": "2018-05-18T06:48:47Z",
+      "root_message_id": "msg-86cf1e925c07"
+    },
+    {
+      "id": "thread-4d036da6d10f",
+      "subject": "[statnet_help] GWESP-lambda parameter",
+      "message_count": 3,
+      "participants": [
+        "Krause, R.W.",
+        "golshid sharifnia"
+      ],
+      "started": "2018-05-19T23:04:36Z",
+      "last_reply": "2018-05-21T05:27:54Z",
+      "root_message_id": "msg-4d036da6d10f"
+    },
+    {
+      "id": "thread-d1578b9185f9",
+      "subject": "[statnet_help] gof for valued networks",
+      "message_count": 2,
+      "participants": [
+        "Pavel N. Krivitsky",
+        "Shane A. Scaggs"
+      ],
+      "started": "2018-05-21T21:41:36Z",
+      "last_reply": "2018-05-24T23:47:17Z",
+      "root_message_id": "msg-d1578b9185f9"
+    },
+    {
+      "id": "thread-87ae2a4b78ad",
+      "subject": "[statnet_help] Interactions of GWESP with other ERGM terms",
+      "message_count": 1,
+      "participants": [
+        "Khanna, Aditya [MED]"
+      ],
+      "started": "2018-05-23T22:51:40Z",
+      "last_reply": "2018-05-23T22:51:40Z",
+      "root_message_id": "msg-87ae2a4b78ad"
+    }
+  ]
+}

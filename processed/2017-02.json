@@ -1,0 +1,630 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2017-02",
+  "messages": [
+    {
+      "id": "msg-3213b9284b92",
+      "message_id": "<CAOoQ-Y6FRgpq6HayP00o3XXhdUDdgTvQEC-093k2DW5TtLEPgA@mail.gmail.com>",
+      "from_name": "Zachary Charles Heinemann",
+      "from_email_hash": "53189dd70bb76f9aaacebcbb4693423eb9ab523be29ef59bccf22434f6776323",
+      "date": "2017-02-02T17:19:32Z",
+      "subject": "[statnet_help] ergm constraints argument freezes R",
+      "subject_clean": "[statnet_help] ergm constraints argument freezes R",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI am currently working on a network of about 70 students who have selected\neach other for friendships. I specified the ergm such as this:\n\nm9A1<-ergm(netA1 ~\n             edges +\n             mutual +\n             absdiff('class') +\n             gwesp(0.25, fixed = TRUE) +\n             gwdsp(0.25, fixed = TRUE) +\n             absdiff('Extraversion.weightedAvg.Self') +\n\n             absdiff('Agreeableness.weightedAvg.Self') +\n\n             absdiff('Conscientiousness.weightedAvg.Self') +\n\n             absdiff('Stability.weightedAvg.Self') +\n\n             absdiff('Openness.weightedAvg.Self') +\n             nodematch('Gender') +\n             nodematch('Race') +\n             absdiff('Age') +\n             absdiff('politicalviews') +\n             nodematch('LT') +\n             absdiff('RelativeAttractiveness') +\n             absdiff('enjoydrinking'),\n           constraints = ~bd(maxout = 5)\n)\n\n\nWhen I originally ran this model, it worked completely fine. However, a few\ndays later, whenever I try to run this code, my R freezes and I have to\nrestart my computer. When I remove the \"constraints\" argument, it works\njust fine. I have tried updating my OS, updating R, updating RStudio,\nupdating statnet and yet the problem still persists. Is there any reason\nwhy this may be happening?\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170202/e8e55367/attachment.html>",
+      "body_snippet": "Hello,\n\nI am currently working on a network of about 70 students who have selected\neach other for friendships. I specified the ergm such as this:\n\nm9A1<-ergm(netA1 ~\n             edges +\n             ",
+      "thread_id": "thread-3213b9284b92",
+      "thread_depth": 0,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-d366b75aedb1",
+      "message_id": "<alpine.WNT.2.00.1702030602260.704@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2017-02-03T06:10:08Z",
+      "subject": "[statnet_help] Comparing ergm coefficients",
+      "subject_clean": "[statnet_help] Comparing ergm coefficients",
+      "in_reply_to": "<CAOoQ-Y645hgs-wHgysyZm-gLD06e2BMkark6nUsHTpHBHDF0SA@mail.gmail.com>",
+      "references": [
+        "<CAOoQ-Y645hgs-wHgysyZm-gLD06e2BMkark6nUsHTpHBHDF0SA@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Zachary,\n\nIn principle, comparing ergm coefficients is much like comparing \ncoefficients from logistic regression.  In general we don't say a \ncoefficient is \"more significant\" if it's p-value is lower.  However, one \nwould typically then be able to say that there is less uncertainty, \nbecause the CI for that coefficient will be tighter (since both the \np-value and the CI depend on the same SE).\n\nKeep in mind also that the magnitude (value) of a coefficient needs to be \ncarefully interpreted.  The nodematch term, for example, takes two values \n(0 for no, 1 for yes), so the coefficient reflects how the odds of a tie \nchanges across these two levels.  In contrast, the absdiff term will take \nas many values as there are levels for this attribute.  If there are, say, \nk levels, then the value of the absdiff coefficient will be multiplied by \nanything from 0 to k to determine the impact on the odds of a tie.  Even \nif the absdiff coefficient is smaller in value than the nodematch \ncoefficient, the potential impact of the product of the coef x termvalue \nmay still be larger.\n\nhth,\nMartina\n\nOn Wed, 1 Feb 2017, Zachary Charles Heinemann wrote:\n\n> Hello,\n> I have run an ergm model that has a series of coefficients. Particularly, one is a nodematch\n> coefficient for respondent race and one is an absdiff coefficient for respondent extraversion.\n> It appears clear from the coefficients and p-values that the nodematch coefficient is much\n> larger than the absdiff coefficient -- is there a way to rigorously test this and get a\n> significance value for the difference between the coefficients?\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Zachary,\n\nIn principle, comparing ergm coefficients is much like comparing \ncoefficients from logistic regression.  In general we don't say a \ncoefficient is \"more significant\" if it's p-value is l",
+      "thread_id": "thread-d366b75aedb1",
+      "thread_depth": 0,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-1c0aa5c68246",
+      "message_id": "<alpine.WNT.2.00.1702030616170.704@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2017-02-03T06:17:04Z",
+      "subject": "[statnet_help] ergm constraints argument freezes R",
+      "subject_clean": "[statnet_help] ergm constraints argument freezes R",
+      "in_reply_to": "<CAOoQ-Y6FRgpq6HayP00o3XXhdUDdgTvQEC-093k2DW5TtLEPgA@mail.gmail.com>",
+      "references": [
+        "<CAOoQ-Y6FRgpq6HayP00o3XXhdUDdgTvQEC-093k2DW5TtLEPgA@mail.gmail.com>"
+      ],
+      "body_plain": "Did anything change between the time it ran well, and the first time it \nfroze?  Did you update anything inbetween?\n\nOn Thu, 2 Feb 2017, Zachary Charles Heinemann wrote:\n\n> Hello,\n> I am currently working on a network of about 70 students who have selected each other for\n> friendships. I specified the ergm such as this:\n> \n> m9A1<-ergm(netA1 ~\n> ? ? ? ? ? ? ?edges +\n> ? ? ? ? ? ? ?mutual +\n> ? ? ? ? ? ? ?absdiff('class') +\n> ? ? ? ? ? ? ?gwesp(0.25, fixed = TRUE) +\n> ? ? ? ? ? ? ?gwdsp(0.25, fixed = TRUE) +\n> ? ? ? ? ? ? ?absdiff('Extraversion.weightedAvg.Self') +\n> ? ? ? ? ? ? ?absdiff('Agreeableness.weightedAvg.Self') +\n> ? ? ? ? ? ? ?absdiff('Conscientiousness.weightedAvg.Self') +\n> ? ? ? ? ? ? ?absdiff('Stability.weightedAvg.Self') +\n> ? ? ? ? ? ? ?absdiff('Openness.weightedAvg.Self') +\n> ? ? ? ? ? ? ?nodematch('Gender') +\n> ? ? ? ? ? ? ?nodematch('Race') +\n> ? ? ? ? ? ? ?absdiff('Age') +\n> ? ? ? ? ? ? ?absdiff('politicalviews') +\n> ? ? ? ? ? ? ?nodematch('LT') +\n> ? ? ? ? ? ? ?absdiff('RelativeAttractiveness') +\n> ? ? ? ? ? ? ?absdiff('enjoydrinking'),\n> ? ? ? ? ? ?constraints = ~bd(maxout = 5)\n> )\n> \n> \n> When I originally ran this model, it worked completely fine. However, a few days later,\n> whenever I try to run this code, my R freezes and I have to restart my computer. When I remove\n> the \"constraints\" argument, it works just fine. I have tried updating my OS, updating R,\n> updating RStudio, updating statnet and yet the problem still persists. Is there any reason why\n> this may be happening?\n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Did anything change between the time it ran well, and the first time it \nfroze?  Did you update anything inbetween?\n\nOn Thu, 2 Feb 2017, Zachary Charles Heinemann wrote:\n\n> Hello,\n> I am currently wor",
+      "thread_id": "thread-3213b9284b92",
+      "thread_depth": 1,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-3733f8e13786",
+      "message_id": "<CAOoQ-Y4sjbQvVS9nQUDuBV5TrFOoS_dR6=16FrV7sj=eLCe-bw@mail.gmail.com>",
+      "from_name": "Zachary Charles Heinemann",
+      "from_email_hash": "53189dd70bb76f9aaacebcbb4693423eb9ab523be29ef59bccf22434f6776323",
+      "date": "2017-02-03T06:21:36Z",
+      "subject": "[statnet_help] ergm constraints argument freezes R",
+      "subject_clean": "[statnet_help] ergm constraints argument freezes R",
+      "in_reply_to": "<alpine.WNT.2.00.1702030616170.704@morrism-laptop>",
+      "references": [
+        "<CAOoQ-Y6FRgpq6HayP00o3XXhdUDdgTvQEC-093k2DW5TtLEPgA@mail.gmail.com>",
+        "<alpine.WNT.2.00.1702030616170.704@morrism-laptop>"
+      ],
+      "body_plain": "Hello,\n\nThanks for your response! Nothing in the code changed -- I somewhat figured\nout the issue. I updated my ergm package from 3.6 to 3.6.1; when I\nuninstalled 3.6.1 and installed 3.6 it worked fine, I'm still not sure as\nto why however.\n\nOn Friday, February 3, 2017, martina morris <morrism@u.washington.edu>\nwrote:\n\n> Did anything change between the time it ran well, and the first time it\n> froze?  Did you update anything inbetween?\n>\n> On Thu, 2 Feb 2017, Zachary Charles Heinemann wrote:\n>\n> Hello,\n>> I am currently working on a network of about 70 students who have\n>> selected each other for\n>> friendships. I specified the ergm such as this:\n>>\n>> m9A1<-ergm(netA1 ~\n>>              edges +\n>>              mutual +\n>>              absdiff('class') +\n>>              gwesp(0.25, fixed = TRUE) +\n>>              gwdsp(0.25, fixed = TRUE) +\n>>              absdiff('Extraversion.weightedAvg.Self') +\n>>              absdiff('Agreeableness.weightedAvg.Self') +\n>>              absdiff('Conscientiousness.weightedAvg.Self') +\n>>              absdiff('Stability.weightedAvg.Self') +\n>>              absdiff('Openness.weightedAvg.Self') +\n>>              nodematch('Gender') +\n>>              nodematch('Race') +\n>>              absdiff('Age') +\n>>              absdiff('politicalviews') +\n>>              nodematch('LT') +\n>>              absdiff('RelativeAttractiveness') +\n>>              absdiff('enjoydrinking'),\n>>            constraints = ~bd(maxout = 5)\n>> )\n>>\n>>\n>> When I originally ran this model, it worked completely fine. However, a\n>> few days later,\n>> whenever I try to run this code, my R freezes and I have to restart my\n>> computer. When I remove\n>> the \"constraints\" argument, it works just fine. I have tried updating my\n>> OS, updating R,\n>> updating RStudio, updating statnet and yet the problem still persists. Is\n>> there any reason why\n>> this may be happening?\n>>\n>>\n>>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170203/6cccace5/attachment.html>",
+      "body_snippet": "Hello,\n\nThanks for your response! Nothing in the code changed -- I somewhat figured\nout the issue. I updated my ergm package from 3.6 to 3.6.1; when I\nuninstalled 3.6.1 and installed 3.6 it worked fin",
+      "thread_id": "thread-3213b9284b92",
+      "thread_depth": 2,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-e37141398f48",
+      "message_id": "<CAOoQ-Y49O2e7D+AYO+FBWJZLOGJ_2e283uxc5XBjwkF3zmcZwQ@mail.gmail.com>",
+      "from_name": "Zachary Charles Heinemann",
+      "from_email_hash": "53189dd70bb76f9aaacebcbb4693423eb9ab523be29ef59bccf22434f6776323",
+      "date": "2017-02-03T06:25:11Z",
+      "subject": "[statnet_help] Comparing ergm coefficients",
+      "subject_clean": "[statnet_help] Comparing ergm coefficients",
+      "in_reply_to": "<alpine.WNT.2.00.1702030602260.704@morrism-laptop>",
+      "references": [
+        "<CAOoQ-Y645hgs-wHgysyZm-gLD06e2BMkark6nUsHTpHBHDF0SA@mail.gmail.com>",
+        "<alpine.WNT.2.00.1702030602260.704@morrism-laptop>"
+      ],
+      "body_plain": "Thanks for your response!\n\nI just realized I didn't phrase my question properly. I'm aware there isn't\n\"more significance\" but rather not certainty and that nodematch and absdiff\nare qualitatively different. My question is rather that there are tests in\nlogistic regression which essentially test whether the effect size of two\ncoefficients are different. Given their interpretations, is it safe to\nthink of absdiff as analogous to a semi-continuous variable (where it is\nthe difference between the two being continuous) and nodematch being akin\nto a dummy variable? If so, would a way that is used to compare effect\nsizes in logistic regression of such be appropriate here?\n\nThanks again!\n\nOn Friday, February 3, 2017, martina morris <morrism@u.washington.edu>\nwrote:\n\n> Hi Zachary,\n>\n> In principle, comparing ergm coefficients is much like comparing\n> coefficients from logistic regression.  In general we don't say a\n> coefficient is \"more significant\" if it's p-value is lower.  However, one\n> would typically then be able to say that there is less uncertainty, because\n> the CI for that coefficient will be tighter (since both the p-value and the\n> CI depend on the same SE).\n>\n> Keep in mind also that the magnitude (value) of a coefficient needs to be\n> carefully interpreted.  The nodematch term, for example, takes two values\n> (0 for no, 1 for yes), so the coefficient reflects how the odds of a tie\n> changes across these two levels.  In contrast, the absdiff term will take\n> as many values as there are levels for this attribute.  If there are, say,\n> k levels, then the value of the absdiff coefficient will be multiplied by\n> anything from 0 to k to determine the impact on the odds of a tie.  Even if\n> the absdiff coefficient is smaller in value than the nodematch coefficient,\n> the potential impact of the product of the coef x termvalue may still be\n> larger.\n>\n> hth,\n> Martina\n>\n> On Wed, 1 Feb 2017, Zachary Charles Heinemann wrote:\n>\n> Hello,\n>> I have run an ergm model that has a series of coefficients. Particularly,\n>> one is a nodematch\n>> coefficient for respondent race and one is an absdiff coefficient for\n>> respondent extraversion.\n>> It appears clear from the coefficients and p-values that the nodematch\n>> coefficient is much\n>> larger than the absdiff coefficient -- is there a way to rigorously test\n>> this and get a\n>> significance value for the difference between the coefficients?\n>>\n>>\n>>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170203/ae857e1e/attachment.html>",
+      "body_snippet": "Thanks for your response!\n\nI just realized I didn't phrase my question properly. I'm aware there isn't\n\"more significance\" but rather not certainty and that nodematch and absdiff\nare qualitatively dif",
+      "thread_id": "thread-d366b75aedb1",
+      "thread_depth": 1,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-510400ff6d6a",
+      "message_id": "<CAByPayF8eKLG68JXOETg8aMyh5sZf0m83x9J4o0L7HfBXpHf8Q@mail.gmail.com>",
+      "from_name": "Michał Bojanowski",
+      "from_email_hash": "9ebbce4471ff8d35b226b55b27871326c000ab05f7078b06027c83f64657016f",
+      "date": "2017-02-03T07:27:34Z",
+      "subject": "[statnet_help] Comparing ergm coefficients",
+      "subject_clean": "[statnet_help] Comparing ergm coefficients",
+      "in_reply_to": "<CAOoQ-Y49O2e7D+AYO+FBWJZLOGJ_2e283uxc5XBjwkF3zmcZwQ@mail.gmail.com>",
+      "references": [
+        "<CAOoQ-Y645hgs-wHgysyZm-gLD06e2BMkark6nUsHTpHBHDF0SA@mail.gmail.com>",
+        "<alpine.WNT.2.00.1702030602260.704@morrism-laptop>",
+        "<CAOoQ-Y49O2e7D+AYO+FBWJZLOGJ_2e283uxc5XBjwkF3zmcZwQ@mail.gmail.com>"
+      ],
+      "body_plain": "Hi\n\nI second Martina's comments with respect to the terms. You need to\nthink carefully about the units, and I think you are on the right\ntrack:\n\nThe nodematch term essentially estimates the odds ratio between\nwithin-group ties and between group ties (group=ethnicity, so it is a\nnominal variable). The coeficient tells you, ceteris paribus, how much\nmore likely the within-group ties are (as opposed to between-group),\nit is an odds-ratio.\n\nThe absdiff term essentially models log-odds of a tie as a linear\nfunction of the absolute difference on some quantitiative node\ncovariate. In other words, the coefficent is also an odds-ratio, but\nthis time you measure how much more likely the ties are between the\nnodes if the absolute difference of their covariate values increases\nby 1. The value of the coefficient is therefore directly related to\nthe units in which your covariate is measrued.\n\nIn that sense these two coefficients are hard to compare directly. To\nget a better grasp which one is more *substantively* significant you\nmay try computing what size of the absolute difference on your node\ncovariate seems to be associated with similar odds ratio as the ethnic\nsimilarity. If in your ERGM results you see e.g.\n\nabsdiff  = -0.69\nnodematch = 1.38\n\nThis means that same-ethnicity ties are exp(1.38) = 4 times more\nlikely than cross-ethnicity ties.\nAnd that the for every unit increase in absolute difference on the\nnode covariate the odds of a tie exp(-0.69) = 0.5 so almost halved (or\n2 times *less* likely).\n\nNow, because 4 / 2 = 2 you could say that the different ethnicities of\npeople makes ties between them less likely by the same factor, as\nbeing different on extraversion scale 2 units away. Whether or not a\ndifference of 2 units on extraversion scale is worth paying attention\nto is a matter of the way how it was measured.\n\n\nI hope this helps.\n\n\nBest,\nMichal\n\n\nPS. I hope i got that right\n\nOn Fri, Feb 3, 2017 at 3:25 PM, Zachary Charles Heinemann\n<zch2101@columbia.edu> wrote:\n> Thanks for your response!\n>\n> I just realized I didn't phrase my question properly. I'm aware there isn't\n> \"more significance\" but rather not certainty and that nodematch and absdiff\n> are qualitatively different. My question is rather that there are tests in\n> logistic regression which essentially test whether the effect size of two\n> coefficients are different. Given their interpretations, is it safe to think\n> of absdiff as analogous to a semi-continuous variable (where it is the\n> difference between the two being continuous) and nodematch being akin to a\n> dummy variable? If so, would a way that is used to compare effect sizes in\n> logistic regression of such be appropriate here?\n>\n> Thanks again!\n>\n>\n> On Friday, February 3, 2017, martina morris <morrism@u.washington.edu>\n> wrote:\n>>\n>> Hi Zachary,\n>>\n>> In principle, comparing ergm coefficients is much like comparing\n>> coefficients from logistic regression.  In general we don't say a\n>> coefficient is \"more significant\" if it's p-value is lower.  However, one\n>> would typically then be able to say that there is less uncertainty, because\n>> the CI for that coefficient will be tighter (since both the p-value and the\n>> CI depend on the same SE).\n>>\n>> Keep in mind also that the magnitude (value) of a coefficient needs to be\n>> carefully interpreted.  The nodematch term, for example, takes two values (0\n>> for no, 1 for yes), so the coefficient reflects how the odds of a tie\n>> changes across these two levels.  In contrast, the absdiff term will take as\n>> many values as there are levels for this attribute.  If there are, say, k\n>> levels, then the value of the absdiff coefficient will be multiplied by\n>> anything from 0 to k to determine the impact on the odds of a tie.  Even if\n>> the absdiff coefficient is smaller in value than the nodematch coefficient,\n>> the potential impact of the product of the coef x termvalue may still be\n>> larger.\n>>\n>> hth,\n>> Martina\n>>\n>> On Wed, 1 Feb 2017, Zachary Charles Heinemann wrote:\n>>\n>>> Hello,\n>>> I have run an ergm model that has a series of coefficients. Particularly,\n>>> one is a nodematch\n>>> coefficient for respondent race and one is an absdiff coefficient for\n>>> respondent extraversion.\n>>> It appears clear from the coefficients and p-values that the nodematch\n>>> coefficient is much\n>>> larger than the absdiff coefficient -- is there a way to rigorously test\n>>> this and get a\n>>> significance value for the difference between the coefficients?\n>>>\n>>>\n>>\n>> ****************************************************************\n>>  Professor of Sociology and Statistics\n>>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>  Box 354322\n>>  University of Washington\n>>  Seattle, WA 98195-4322\n>>\n>>  Office:        (206) 685-3402\n>>  Dept Office:   (206) 543-5882, 543-7237\n>>  Fax:           (206) 685-7419\n>>\n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "Hi\n\nI second Martina's comments with respect to the terms. You need to\nthink carefully about the units, and I think you are on the right\ntrack:\n\nThe nodematch term essentially estimates the odds ratio",
+      "thread_id": "thread-d366b75aedb1",
+      "thread_depth": 2,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-b3ee802866b8",
+      "message_id": "<alpine.WNT.2.00.1702031021460.704@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2017-02-03T10:22:33Z",
+      "subject": "[statnet_help] ergm constraints argument freezes R",
+      "subject_clean": "[statnet_help] ergm constraints argument freezes R",
+      "in_reply_to": "<CAOoQ-Y4sjbQvVS9nQUDuBV5TrFOoS_dR6=16FrV7sj=eLCe-bw@mail.gmail.com>",
+      "references": [
+        "<CAOoQ-Y6FRgpq6HayP00o3XXhdUDdgTvQEC-093k2DW5TtLEPgA@mail.gmail.com>",
+        "<alpine.WNT.2.00.1702030616170.704@morrism-laptop>",
+        "<CAOoQ-Y4sjbQvVS9nQUDuBV5TrFOoS_dR6=16FrV7sj=eLCe-bw@mail.gmail.com>"
+      ],
+      "body_plain": "That means one of the recent changes in the code caused this.  Thx for \nletting us know.\n\nIf it's possible to send the data set and the code, so we can replicate \nand find the problem, that would be really helpful.\n\nthx,\nMartina\n\nOn Fri, 3 Feb 2017, Zachary Charles Heinemann wrote:\n\n> Hello,\n> Thanks for your response! Nothing in the code changed -- I somewhat figured out the issue. I\n> updated my ergm package from 3.6 to 3.6.1; when I uninstalled 3.6.1 and installed 3.6 it worked\n> fine, I'm still not sure as to why however.\n> \n> On Friday, February 3, 2017, martina morris <morrism@u.washington.edu> wrote:\n>       Did anything change between the time it ran well, and the first time it froze?? Did\n>       you update anything inbetween?\n>\n>       On Thu, 2 Feb 2017, Zachary Charles Heinemann wrote:\n>\n>             Hello,\n>             I am currently working on a network of about 70 students who have\n>             selected each other for\n>             friendships. I specified the ergm such as this:\n>\n>             m9A1<-ergm(netA1 ~\n>             ? ? ? ? ? ? ?edges +\n>             ? ? ? ? ? ? ?mutual +\n>             ? ? ? ? ? ? ?absdiff('class') +\n>             ? ? ? ? ? ? ?gwesp(0.25, fixed = TRUE) +\n>             ? ? ? ? ? ? ?gwdsp(0.25, fixed = TRUE) +\n>             ? ? ? ? ? ? ?absdiff('Extraversion.weightedAvg.Self') +\n>             ? ? ? ? ? ? ?absdiff('Agreeableness.weightedAvg.Self') +\n>             ? ? ? ? ? ? ?absdiff('Conscientiousness.weightedAvg.Self') +\n>             ? ? ? ? ? ? ?absdiff('Stability.weightedAvg.Self') +\n>             ? ? ? ? ? ? ?absdiff('Openness.weightedAvg.Self') +\n>             ? ? ? ? ? ? ?nodematch('Gender') +\n>             ? ? ? ? ? ? ?nodematch('Race') +\n>             ? ? ? ? ? ? ?absdiff('Age') +\n>             ? ? ? ? ? ? ?absdiff('politicalviews') +\n>             ? ? ? ? ? ? ?nodematch('LT') +\n>             ? ? ? ? ? ? ?absdiff('RelativeAttractiveness') +\n>             ? ? ? ? ? ? ?absdiff('enjoydrinking'),\n>             ? ? ? ? ? ?constraints = ~bd(maxout = 5)\n>             )\n> \n>\n>             When I originally ran this model, it worked completely fine. However, a\n>             few days later,\n>             whenever I try to run this code, my R freezes and I have to restart my\n>             computer. When I remove\n>             the \"constraints\" argument, it works just fine. I have tried updating\n>             my OS, updating R,\n>             updating RStudio, updating statnet and yet the problem still persists.\n>             Is there any reason why\n>             this may be happening?\n> \n> \n>\n>       ****************************************************************\n>       ?Professor of Sociology and Statistics\n>       ?Director, UWCFAR Sociobehavioral and Prevention Research Core\n>       ?Box 354322\n>       ?University of Washington\n>       ?Seattle, WA 98195-4322\n>\n>       ?Office:? ? ? ? (206) 685-3402\n>       ?Dept Office:? ?(206) 543-5882, 543-7237\n>       ?Fax:? ? ? ? ? ?(206) 685-7419\n>\n>       morrism@u.washington.edu\n>       http://faculty.washington.edu/morrism/\n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "That means one of the recent changes in the code caused this.  Thx for \nletting us know.\n\nIf it's possible to send the data set and the code, so we can replicate \nand find the problem, that would be r",
+      "thread_id": "thread-3213b9284b92",
+      "thread_depth": 3,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-7acef0704056",
+      "message_id": "<alpine.WNT.2.00.1702031025190.704@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2017-02-03T10:26:32Z",
+      "subject": "[statnet_help] Comparing ergm coefficients",
+      "subject_clean": "[statnet_help] Comparing ergm coefficients",
+      "in_reply_to": "<CAOoQ-Y49O2e7D+AYO+FBWJZLOGJ_2e283uxc5XBjwkF3zmcZwQ@mail.gmail.com>",
+      "references": [
+        "<CAOoQ-Y645hgs-wHgysyZm-gLD06e2BMkark6nUsHTpHBHDF0SA@mail.gmail.com>",
+        "<alpine.WNT.2.00.1702030602260.704@morrism-laptop>",
+        "<CAOoQ-Y49O2e7D+AYO+FBWJZLOGJ_2e283uxc5XBjwkF3zmcZwQ@mail.gmail.com>"
+      ],
+      "body_plain": "I can't say \"officially\" yes.  But yes.  Note that you're treating \nabsdiff effectively as a continuous, as the effect is parameterized as \nlinear (in the log odds).\n\nOn Fri, 3 Feb 2017, Zachary Charles Heinemann wrote:\n\n> Thanks for your response!\n> I just realized I didn't phrase my question properly. I'm aware there isn't \"more significance\"\n> but rather not certainty and that nodematch and absdiff are qualitatively different. My\n> question is rather that there are tests in logistic regression which essentially test whether\n> the effect size of two coefficients are different. Given their interpretations, is it safe to\n> think of absdiff as analogous to a semi-continuous variable (where it is the difference between\n> the two being continuous) and nodematch being akin to a dummy variable? If so, would a way that\n> is used to compare effect sizes in logistic regression of such be appropriate here?\n> \n> Thanks again!\n> \n> On Friday, February 3, 2017, martina morris <morrism@u.washington.edu> wrote:\n>       Hi Zachary,\n>\n>       In principle, comparing ergm coefficients is much like comparing coefficients from\n>       logistic regression.? In general we don't say a coefficient is \"more significant\"\n>       if it's p-value is lower.? However, one would typically then be able to say that\n>       there is less uncertainty, because the CI for that coefficient will be tighter\n>       (since both the p-value and the CI depend on the same SE).\n>\n>       Keep in mind also that the magnitude (value) of a coefficient needs to be carefully\n>       interpreted.? The nodematch term, for example, takes two values (0 for no, 1 for\n>       yes), so the coefficient reflects how the odds of a tie changes across these two\n>       levels.? In contrast, the absdiff term will take as many values as there are levels\n>       for this attribute.? If there are, say, k levels, then the value of the absdiff\n>       coefficient will be multiplied by anything from 0 to k to determine the impact on\n>       the odds of a tie.? Even if the absdiff coefficient is smaller in value than the\n>       nodematch coefficient, the potential impact of the product of the coef x termvalue\n>       may still be larger.\n>\n>       hth,\n>       Martina\n>\n>       On Wed, 1 Feb 2017, Zachary Charles Heinemann wrote:\n>\n>             Hello,\n>             I have run an ergm model that has a series of coefficients.\n>             Particularly, one is a nodematch\n>             coefficient for respondent race and one is an absdiff coefficient for\n>             respondent extraversion.\n>             It appears clear from the coefficients and p-values that the nodematch\n>             coefficient is much\n>             larger than the absdiff coefficient -- is there a way to rigorously\n>             test this and get a\n>             significance value for the difference between the coefficients?\n> \n> \n>\n>       ****************************************************************\n>       ?Professor of Sociology and Statistics\n>       ?Director, UWCFAR Sociobehavioral and Prevention Research Core\n>       ?Box 354322\n>       ?University of Washington\n>       ?Seattle, WA 98195-4322\n>\n>       ?Office:? ? ? ? (206) 685-3402\n>       ?Dept Office:? ?(206) 543-5882, 543-7237\n>       ?Fax:? ? ? ? ? ?(206) 685-7419\n>\n>       morrism@u.washington.edu\n>       http://faculty.washington.edu/morrism/\n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "I can't say \"officially\" yes.  But yes.  Note that you're treating \nabsdiff effectively as a continuous, as the effect is parameterized as \nlinear (in the log odds).\n\nOn Fri, 3 Feb 2017, Zachary Charl",
+      "thread_id": "thread-d366b75aedb1",
+      "thread_depth": 2,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-2662a960c4d7",
+      "message_id": "<alpine.WNT.2.00.1702031035280.704@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2017-02-03T10:36:32Z",
+      "subject": "[statnet_help] ergm constraints argument freezes R",
+      "subject_clean": "[statnet_help] ergm constraints argument freezes R",
+      "in_reply_to": "<alpine.WNT.2.00.1702031021460.704@morrism-laptop>",
+      "references": [
+        "<CAOoQ-Y6FRgpq6HayP00o3XXhdUDdgTvQEC-093k2DW5TtLEPgA@mail.gmail.com>",
+        "<alpine.WNT.2.00.1702030616170.704@morrism-laptop>",
+        "<CAOoQ-Y4sjbQvVS9nQUDuBV5TrFOoS_dR6=16FrV7sj=eLCe-bw@mail.gmail.com>",
+        "<alpine.WNT.2.00.1702031021460.704@morrism-laptop>"
+      ],
+      "body_plain": "Scratch that request -- Pavel has already identified the problem and \nimplemented a fix.  The correction will be posted to CRAN soon, and \nwe'll let you know when that happens.\n\nthx,\nMartina\n\nOn Fri, 3 Feb 2017, martina morris wrote:\n\n> That means one of the recent changes in the code caused this.  Thx for \n> letting us know.\n>\n> If it's possible to send the data set and the code, so we can replicate and \n> find the problem, that would be really helpful.\n>\n> thx,\n> Martina\n>\n> On Fri, 3 Feb 2017, Zachary Charles Heinemann wrote:\n>\n>> Hello,\n>> Thanks for your response! Nothing in the code changed -- I somewhat figured \n>> out the issue. I\n>> updated my ergm package from 3.6 to 3.6.1; when I uninstalled 3.6.1 and \n>> installed 3.6 it worked\n>> fine, I'm still not sure as to why however.\n>> \n>> On Friday, February 3, 2017, martina morris <morrism@u.washington.edu> \n>> wrote:\n>>       Did anything change between the time it ran well, and the first time \n>> it froze?? Did\n>>       you update anything inbetween?\n>>\n>>       On Thu, 2 Feb 2017, Zachary Charles Heinemann wrote:\n>>\n>>             Hello,\n>>             I am currently working on a network of about 70 students who \n>> have\n>>             selected each other for\n>>             friendships. I specified the ergm such as this:\n>>\n>>             m9A1<-ergm(netA1 ~\n>>             ? ? ? ? ? ? ?edges +\n>>             ? ? ? ? ? ? ?mutual +\n>>             ? ? ? ? ? ? ?absdiff('class') +\n>>             ? ? ? ? ? ? ?gwesp(0.25, fixed = TRUE) +\n>>             ? ? ? ? ? ? ?gwdsp(0.25, fixed = TRUE) +\n>>             ? ? ? ? ? ? ?absdiff('Extraversion.weightedAvg.Self') +\n>>             ? ? ? ? ? ? ?absdiff('Agreeableness.weightedAvg.Self') +\n>>             ? ? ? ? ? ? ?absdiff('Conscientiousness.weightedAvg.Self') +\n>>             ? ? ? ? ? ? ?absdiff('Stability.weightedAvg.Self') +\n>>             ? ? ? ? ? ? ?absdiff('Openness.weightedAvg.Self') +\n>>             ? ? ? ? ? ? ?nodematch('Gender') +\n>>             ? ? ? ? ? ? ?nodematch('Race') +\n>>             ? ? ? ? ? ? ?absdiff('Age') +\n>>             ? ? ? ? ? ? ?absdiff('politicalviews') +\n>>             ? ? ? ? ? ? ?nodematch('LT') +\n>>             ? ? ? ? ? ? ?absdiff('RelativeAttractiveness') +\n>>             ? ? ? ? ? ? ?absdiff('enjoydrinking'),\n>>             ? ? ? ? ? ?constraints = ~bd(maxout = 5)\n>>             )\n>> \n>>\n>>             When I originally ran this model, it worked completely fine. \n>> However, a\n>>             few days later,\n>>             whenever I try to run this code, my R freezes and I have to \n>> restart my\n>>             computer. When I remove\n>>             the \"constraints\" argument, it works just fine. I have tried \n>> updating\n>>             my OS, updating R,\n>>             updating RStudio, updating statnet and yet the problem still \n>> persists.\n>>             Is there any reason why\n>>             this may be happening?\n>> \n>> \n>>\n>>       ****************************************************************\n>>       ?Professor of Sociology and Statistics\n>>       ?Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>       ?Box 354322\n>>       ?University of Washington\n>>       ?Seattle, WA 98195-4322\n>>\n>>       ?Office:? ? ? ? (206) 685-3402\n>>       ?Dept Office:? ?(206) 543-5882, 543-7237\n>>       ?Fax:? ? ? ? ? ?(206) 685-7419\n>>\n>>       morrism@u.washington.edu\n>>       http://faculty.washington.edu/morrism/\n>> \n>> \n>> \n>\n> ****************************************************************\n> Professor of Sociology and Statistics\n> Director, UWCFAR Sociobehavioral and Prevention Research Core\n> Box 354322\n> University of Washington\n> Seattle, WA 98195-4322\n>\n> Office:        (206) 685-3402\n> Dept Office:   (206) 543-5882, 543-7237\n> Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Scratch that request -- Pavel has already identified the problem and \nimplemented a fix.  The correction will be posted to CRAN soon, and \nwe'll let you know when that happens.\n\nthx,\nMartina\n\nOn Fri, ",
+      "thread_id": "thread-3213b9284b92",
+      "thread_depth": 4,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-681e95684375",
+      "message_id": "<CAOoQ-Y4pnATw8-=UhYw2kqzYXJRVT9SAb4muShQSf-96YCuwjw@mail.gmail.com>",
+      "from_name": "Zachary Charles Heinemann",
+      "from_email_hash": "53189dd70bb76f9aaacebcbb4693423eb9ab523be29ef59bccf22434f6776323",
+      "date": "2017-02-03T18:45:41Z",
+      "subject": "[statnet_help] ergm constraints argument freezes R",
+      "subject_clean": "[statnet_help] ergm constraints argument freezes R",
+      "in_reply_to": "<alpine.WNT.2.00.1702031035280.704@morrism-laptop>",
+      "references": [
+        "<CAOoQ-Y6FRgpq6HayP00o3XXhdUDdgTvQEC-093k2DW5TtLEPgA@mail.gmail.com>",
+        "<alpine.WNT.2.00.1702030616170.704@morrism-laptop>",
+        "<CAOoQ-Y4sjbQvVS9nQUDuBV5TrFOoS_dR6=16FrV7sj=eLCe-bw@mail.gmail.com>",
+        "<alpine.WNT.2.00.1702031021460.704@morrism-laptop>",
+        "<alpine.WNT.2.00.1702031035280.704@morrism-laptop>"
+      ],
+      "body_plain": "Thank you so much!\n\nI have one last question. I believe the answer is no, but it's worth\nseeing: in my model, we find a strong nodematch effect such that there is a\nhomophilic preference for forming tie's within one's race and one's gender.\nGiven previous research on scales of Gender-blindness and Color-blindness\nbeing related to biasing relationship behaviors, we are curious if this\neffect of the nodematch term (specifically that being the same race\nincreases log OR of formation of a tie as it does with gender) may be\nmoderate by Gender-blindness and Color-blindness respectively. We are\nlargely interested in the attribute of the sender (as our network is\ndirected), but are open to broader ways to incorporate these two attributes\ninto the model. Is this possible? For reference, Gender-blindness and\nColor-blindness are measured as a continuous variable.\n\nBest,\nZachary\n\nOn Fri, Feb 3, 2017 at 1:36 PM, martina morris <morrism@u.washington.edu>\nwrote:\n\n> Scratch that request -- Pavel has already identified the problem and\n> implemented a fix.  The correction will be posted to CRAN soon, and we'll\n> let you know when that happens.\n>\n> thx,\n> Martina\n>\n>\n> On Fri, 3 Feb 2017, martina morris wrote:\n>\n> That means one of the recent changes in the code caused this.  Thx for\n>> letting us know.\n>>\n>> If it's possible to send the data set and the code, so we can replicate\n>> and find the problem, that would be really helpful.\n>>\n>> thx,\n>> Martina\n>>\n>> On Fri, 3 Feb 2017, Zachary Charles Heinemann wrote:\n>>\n>> Hello,\n>>> Thanks for your response! Nothing in the code changed -- I somewhat\n>>> figured out the issue. I\n>>> updated my ergm package from 3.6 to 3.6.1; when I uninstalled 3.6.1 and\n>>> installed 3.6 it worked\n>>> fine, I'm still not sure as to why however.\n>>>\n>>> On Friday, February 3, 2017, martina morris <morrism@u.washington.edu>\n>>> wrote:\n>>>       Did anything change between the time it ran well, and the first\n>>> time it froze?  Did\n>>>       you update anything inbetween?\n>>>\n>>>       On Thu, 2 Feb 2017, Zachary Charles Heinemann wrote:\n>>>\n>>>             Hello,\n>>>             I am currently working on a network of about 70 students who\n>>> have\n>>>             selected each other for\n>>>             friendships. I specified the ergm such as this:\n>>>\n>>>             m9A1<-ergm(netA1 ~\n>>>                          edges +\n>>>                          mutual +\n>>>                          absdiff('class') +\n>>>                          gwesp(0.25, fixed = TRUE) +\n>>>                          gwdsp(0.25, fixed = TRUE) +\n>>>                          absdiff('Extraversion.weightedAvg.Self') +\n>>>                          absdiff('Agreeableness.weightedAvg.Self') +\n>>>                          absdiff('Conscientiousness.weightedAvg.Self') +\n>>>                          absdiff('Stability.weightedAvg.Self') +\n>>>                          absdiff('Openness.weightedAvg.Self') +\n>>>                          nodematch('Gender') +\n>>>                          nodematch('Race') +\n>>>                          absdiff('Age') +\n>>>                          absdiff('politicalviews') +\n>>>                          nodematch('LT') +\n>>>                          absdiff('RelativeAttractiveness') +\n>>>                          absdiff('enjoydrinking'),\n>>>                        constraints = ~bd(maxout = 5)\n>>>             )\n>>>\n>>>\n>>>             When I originally ran this model, it worked completely fine.\n>>> However, a\n>>>             few days later,\n>>>             whenever I try to run this code, my R freezes and I have to\n>>> restart my\n>>>             computer. When I remove\n>>>             the \"constraints\" argument, it works just fine. I have tried\n>>> updating\n>>>             my OS, updating R,\n>>>             updating RStudio, updating statnet and yet the problem still\n>>> persists.\n>>>             Is there any reason why\n>>>             this may be happening?\n>>>\n>>>\n>>>\n>>>       ****************************************************************\n>>>        Professor of Sociology and Statistics\n>>>        Director, UWCFAR Sociobehavioral and Prevention Research Core\n>>>        Box 354322\n>>>        University of Washington\n>>>        Seattle, WA 98195-4322\n>>>\n>>>        Office:        (206) 685-3402\n>>>        Dept Office:   (206) 543-5882, 543-7237\n>>>        Fax:           (206) 685-7419\n>>>\n>>>       morrism@u.washington.edu\n>>>       http://faculty.washington.edu/morrism/\n>>>\n>>>\n>>>\n>>>\n>> ****************************************************************\n>> Professor of Sociology and Statistics\n>> Director, UWCFAR Sociobehavioral and Prevention Research Core\n>> Box 354322\n>> University of Washington\n>> Seattle, WA 98195-4322\n>>\n>> Office:        (206) 685-3402\n>> Dept Office:   (206) 543-5882, 543-7237\n>> Fax:           (206) 685-7419\n>>\n>> morrism@u.washington.edu\n>> http://faculty.washington.edu/morrism/\n>>\n>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170203/43eedc76/attachment.html>",
+      "body_snippet": "Thank you so much!\n\nI have one last question. I believe the answer is no, but it's worth\nseeing: in my model, we find a strong nodematch effect such that there is a\nhomophilic preference for forming t",
+      "thread_id": "thread-3213b9284b92",
+      "thread_depth": 5,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-6f308280d8dc",
+      "message_id": "<54A3F4B6-2D45-434A-8472-C10C1A36086D@gmail.com>",
+      "from_name": "Golshid",
+      "from_email_hash": "40f163bd545793b255e77ef32c136c6508addfab67e61406312db2857d175119",
+      "date": "2017-02-04T05:15:19Z",
+      "subject": "[statnet_help] Anova in ergm",
+      "subject_clean": "[statnet_help] Anova in ergm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi\nI want to know how can I use anova in ergm? The only information that I have found is \n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: image1.PNG\nType: image/png\nSize: 237129 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170204/92f01218/attachment.png>\n-------------- next part --------------\n\n\nBut I don't know how can I use the result? And what is the hypothesis in this anova test?\nAnd also I want to know when we should use anova(fit0) or anova(fit0,fit1)\n\n\n\n\nSent from my iPad",
+      "body_snippet": "Hi\nI want to know how can I use anova in ergm? The only information that I have found is \n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: image1.PNG\nType: image/png",
+      "thread_id": "thread-6f308280d8dc",
+      "thread_depth": 0,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-e1a65126f57e",
+      "message_id": "<alpine.WNT.2.00.1702050708190.11784@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2017-02-05T07:10:41Z",
+      "subject": "[statnet_help] Anova in ergm",
+      "subject_clean": "[statnet_help] Anova in ergm",
+      "in_reply_to": "<54A3F4B6-2D45-434A-8472-C10C1A36086D@gmail.com>",
+      "references": [
+        "<54A3F4B6-2D45-434A-8472-C10C1A36086D@gmail.com>"
+      ],
+      "body_plain": "Hi Golshid,\n\nI'm not sure what the screenshot you sent is showing, the header says \napprox.hotelling.diff.test, but the text seems to come from another \nfunction.\n\nIf you type ?anova.ergm you'll get a more complete listing of the \ndocumentation.  In the \"Description\" section you'll find the answers to \nyour questions below.\n\nhth,\nMartina\n\nOn Sat, 4 Feb 2017, Golshid wrote:\n\n>\n> Hi\n> I want to know how can I use anova in ergm? The only information that I have found is\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: image1.PNG\nType: image/png\nSize: 237129 bytes\nDesc: \nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170205/5839aca8/attachment.png>\n-------------- next part --------------\n\n\nBut I don't know how can I use the result? And what is the hypothesis in this anova test?\nAnd also I want to know when we should use anova(fit0) or anova(fit0,fit1)\n\n\n\n\nSent from my iPad\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Hi Golshid,\n\nI'm not sure what the screenshot you sent is showing, the header says \napprox.hotelling.diff.test, but the text seems to come from another \nfunction.\n\nIf you type ?anova.ergm you'll get a",
+      "thread_id": "thread-6f308280d8dc",
+      "thread_depth": 1,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-974f13aa7c02",
+      "message_id": "<alpine.WNT.2.00.1702050729440.11784@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2017-02-05T08:01:04Z",
+      "subject": "[statnet_help] ergm constraints argument freezes R",
+      "subject_clean": "[statnet_help] ergm constraints argument freezes R",
+      "in_reply_to": "<CAOoQ-Y4pnATw8-=UhYw2kqzYXJRVT9SAb4muShQSf-96YCuwjw@mail.gmail.com>",
+      "references": [
+        "<CAOoQ-Y6FRgpq6HayP00o3XXhdUDdgTvQEC-093k2DW5TtLEPgA@mail.gmail.com>",
+        "<alpine.WNT.2.00.1702030616170.704@morrism-laptop>",
+        "<CAOoQ-Y4sjbQvVS9nQUDuBV5TrFOoS_dR6=16FrV7sj=eLCe-bw@mail.gmail.com>",
+        "<alpine.WNT.2.00.1702031021460.704@morrism-laptop>",
+        "<alpine.WNT.2.00.1702031035280.704@morrism-laptop>",
+        "<CAOoQ-Y4pnATw8-=UhYw2kqzYXJRVT9SAb4muShQSf-96YCuwjw@mail.gmail.com>"
+      ],
+      "body_plain": "Zachary,\n\nIf by \"moderate\" you mean the effect of nodematch on friendship choice \ndepends on the blindness attribute -- an interaction effect in statistical \nterms -- it is possible in theory to have such an effect, but one would \nhave to write the ergm term to implement it.\n\nYour question also raises another interesting issue.  Since you're working \nwith a directed network, it may be that you would be more interested in \nthe *difference* rather than the absdiff for some of your variables. \nThat, also is possible in theory, but we haven't written the ergm term to \nimplement it.\n\nWe have a package that helps users write their own ergm terms, and \ntraining workshop materials up online with instructions.  ... if you're \nfeeling frisky :)   The online materials can be found here:\n\nhttps://statnet.csde.washington.edu/trac/wiki/Sunbelt2013\n\nhttps://www.jstatsoft.org/article/view/v052i02\n\nbest,\nMartina\n\nOn \nFri, 3 Feb 2017, Zachary Charles Heinemann wrote:\n\n> Thank you so much!\n> I have one last question. I believe the answer is no, but it's worth seeing: in my model, we\n> find a strong nodematch effect such that there is a homophilic preference for forming tie's\n> within one's race and one's gender. Given previous research on scales of Gender-blindness and\n> Color-blindness being related to biasing relationship behaviors, we are curious if this effect\n> of the nodematch term (specifically that being the same race increases log OR of formation of a\n> tie as it does with gender) may be moderate by Gender-blindness and Color-blindness\n> respectively. We are largely interested in the attribute of the sender (as our network is\n> directed), but are open to broader ways to incorporate these two attributes into the model. Is\n> this possible? For reference, Gender-blindness and Color-blindness are measured as a continuous\n> variable.\n> \n> Best,\n> Zachary\n> \n> On Fri, Feb 3, 2017 at 1:36 PM, martina morris <morrism@u.washington.edu> wrote:\n>       Scratch that request -- Pavel has already identified the problem and implemented a\n>       fix.? The correction will be posted to CRAN soon, and we'll let you know when that\n>       happens.\n>\n>       thx,\n>       Martina\n>\n>       On Fri, 3 Feb 2017, martina morris wrote:\n>\n>             That means one of the recent changes in the code caused this.? Thx for\n>             letting us know.\n>\n>             If it's possible to send the data set and the code, so we can replicate\n>             and find the problem, that would be really helpful.\n>\n>             thx,\n>             Martina\n>\n>             On Fri, 3 Feb 2017, Zachary Charles Heinemann wrote:\n>\n>                   Hello,\n>                   Thanks for your response! Nothing in the code changed -- I\n>                   somewhat figured out the issue. I\n>                   updated my ergm package from 3.6 to 3.6.1; when I\n>                   uninstalled 3.6.1 and installed 3.6 it worked\n>                   fine, I'm still not sure as to why however.\n>\n>                   On Friday, February 3, 2017, martina morris\n>                   <morrism@u.washington.edu> wrote:\n>                   ? ? ? Did anything change between the time it ran well, and\n>                   the first time it froze?? Did\n>                   ? ? ? you update anything inbetween?\n>\n>                   ? ? ? On Thu, 2 Feb 2017, Zachary Charles Heinemann wrote:\n>\n>                   ? ? ? ? ? ? Hello,\n>                   ? ? ? ? ? ? I am currently working on a network of about 70\n>                   students who have\n>                   ? ? ? ? ? ? selected each other for\n>                   ? ? ? ? ? ? friendships. I specified the ergm such as this:\n>\n>                   ? ? ? ? ? ? m9A1<-ergm(netA1 ~\n>                   ? ? ? ? ? ? ? ? ? ? ? ? ?edges +\n>                   ? ? ? ? ? ? ? ? ? ? ? ? ?mutual +\n>                   ? ? ? ? ? ? ? ? ? ? ? ? ?absdiff('class') +\n>                   ? ? ? ? ? ? ? ? ? ? ? ? ?gwesp(0.25, fixed = TRUE) +\n>                   ? ? ? ? ? ? ? ? ? ? ? ? ?gwdsp(0.25, fixed = TRUE) +\n>\n>                   ?absdiff('Extraversion.weightedAvg.Self') +\n>\n>                   ?absdiff('Agreeableness.weightedAvg.Self') +\n>\n>                   ?absdiff('Conscientiousness.weightedAvg.Self') +\n>\n>                   ?absdiff('Stability.weightedAvg.Self') +\n>\n>                   ?absdiff('Openness.weightedAvg.Self') +\n>                   ? ? ? ? ? ? ? ? ? ? ? ? ?nodematch('Gender') +\n>                   ? ? ? ? ? ? ? ? ? ? ? ? ?nodematch('Race') +\n>                   ? ? ? ? ? ? ? ? ? ? ? ? ?absdiff('Age') +\n>                   ? ? ? ? ? ? ? ? ? ? ? ? ?absdiff('politicalviews') +\n>                   ? ? ? ? ? ? ? ? ? ? ? ? ?nodematch('LT') +\n>                   ? ? ? ? ? ? ? ? ? ? ? ? ?absdiff('RelativeAttractiveness')\n>                   +\n>                   ? ? ? ? ? ? ? ? ? ? ? ? ?absdiff('enjoydrinking'),\n>                   ? ? ? ? ? ? ? ? ? ? ? ?constraints = ~bd(maxout = 5)\n>                   ? ? ? ? ? ? )\n> \n>\n>                   ? ? ? ? ? ? When I originally ran this model, it worked\n>                   completely fine. However, a\n>                   ? ? ? ? ? ? few days later,\n>                   ? ? ? ? ? ? whenever I try to run this code, my R freezes\n>                   and I have to restart my\n>                   ? ? ? ? ? ? computer. When I remove\n>                   ? ? ? ? ? ? the \"constraints\" argument, it works just fine.\n>                   I have tried updating\n>                   ? ? ? ? ? ? my OS, updating R,\n>                   ? ? ? ? ? ? updating RStudio, updating statnet and yet the\n>                   problem still persists.\n>                   ? ? ? ? ? ? Is there any reason why\n>                   ? ? ? ? ? ? this may be happening?\n> \n> \n>\n>\n>                   ****************************************************************\n>                   ? ? ? ?Professor of Sociology and Statistics\n>                   ? ? ? ?Director, UWCFAR Sociobehavioral and Prevention\n>                   Research Core\n>                   ? ? ? ?Box 354322\n>                   ? ? ? ?University of Washington\n>                   ? ? ? ?Seattle, WA 98195-4322\n>\n>                   ? ? ? ?Office:? ? ? ? (206) 685-3402\n>                   ? ? ? ?Dept Office:? ?(206) 543-5882, 543-7237\n>                   ? ? ? ?Fax:? ? ? ? ? ?(206) 685-7419\n>\n>                   ? ? ? morrism@u.washington.edu\n>                   ? ? ? http://faculty.washington.edu/morrism/\n> \n> \n> \n>\n>             ****************************************************************\n>             Professor of Sociology and Statistics\n>             Director, UWCFAR Sociobehavioral and Prevention Research Core\n>             Box 354322\n>             University of Washington\n>             Seattle, WA 98195-4322\n>\n>             Office:? ? ? ? (206) 685-3402\n>             Dept Office:? ?(206) 543-5882, 543-7237\n>             Fax:? ? ? ? ? ?(206) 685-7419\n>\n>             morrism@u.washington.edu\n>             http://faculty.washington.edu/morrism/\n> \n>\n>       ****************************************************************\n>       ?Professor of Sociology and Statistics\n>       ?Director, UWCFAR Sociobehavioral and Prevention Research Core\n>       ?Box 354322\n>       ?University of Washington\n>       ?Seattle, WA 98195-4322\n>\n>       ?Office:? ? ? ? (206) 685-3402\n>       ?Dept Office:? ?(206) 543-5882, 543-7237\n>       ?Fax:? ? ? ? ? ?(206) 685-7419\n>\n>       morrism@u.washington.edu\n>       http://faculty.washington.edu/morrism/\n> \n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n> \n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/",
+      "body_snippet": "Zachary,\n\nIf by \"moderate\" you mean the effect of nodematch on friendship choice \ndepends on the blindness attribute -- an interaction effect in statistical \nterms -- it is possible in theory to have ",
+      "thread_id": "thread-3213b9284b92",
+      "thread_depth": 6,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-d46809b4cbc3",
+      "message_id": "<CA+CFxkVK6fweptJAdkLAP=Brpa9xQ9yU599-erOrska9x+8Kpg@mail.gmail.com>",
+      "from_name": "Jesse Sayles",
+      "from_email_hash": "66b1d382040bb381e54b6d659aa9c3a124dc209c0d2735793f5592d6518a6a15",
+      "date": "2017-02-09T10:24:13Z",
+      "subject": "[statnet_help] problem with valued net and degree centrality",
+      "subject_clean": "[statnet_help] problem with valued net and degree centrality",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Statnet users,\n\nThis is almost an embarrassingly simple question, but degree centrality\nseems not to function correctly with valued data. Or am I doing something\n(that is probably simply) wrong?\n\nThanks in advance.\n\nHere is an example:\n\n> # create the valued matrix\n> mat<-matrix(c(0,5,0,3,0,\n+               1,0,2,1,0,\n+               0,1,0,3,3,\n+               1,1,1,0,4,\n+               0,0,1,1,0),nrow=5,ncol=5,byrow=TRUE)\n>\n> # directly create a network from valued matrix,\n> # storing values as attribute named 'pp'\n> net<-as.network(mat,directed=TRUE, ignore.eval = FALSE,names.eval = \"pp\")\n> net\n Network attributes:\n  vertices = 5\n  directed = TRUE\n  hyper = FALSE\n  loops = FALSE\n  multiple = FALSE\n  bipartite = FALSE\n  total edges= 14\n    missing edges= 0\n    non-missing edges= 14\n\n Vertex attribute names:\n    vertex.names\n\n Edge attribute names:\n    pp\n>\n> #test to see that it is a vaued graph\n> get.edge.attribute(net, attrname = \"pp\")\n [1] 1 1 5 1 1 2 1 1 3 1 3 1 3 4\n> as.matrix(net, attrname=\"pp\")\n  1 2 3 4 5\n1 0 5 0 3 0\n2 1 0 2 1 0\n3 0 1 0 3 3\n4 1 1 1 0 4\n5 0 0 1 1 0\n>\n> #Degree centrality should change when ignore.eval= TRUE or FALSE\n> #but it dose not. Why?\n> degree(net, gmode=\"digraph\", ignore.eval=FALSE)\n[1] 4 6 6 8 4\n> degree(net, gmode=\"digraph\", ignore.eval=TRUE)\n[1] 4 6 6 8 4\n> degree(net, gmode=\"graph\", ignore.eval=FALSE)\n[1] 2 3 3 4 2\n> degree(net, gmode=\"graph\", ignore.eval=TRUE)\n[1] 2 3 3 4 2\n>\n\n-- \n\n*Jesse Sayles, PhD*\n\n*saylesunchartedwaters.com <http://saylesunchartedwaters.com/>*\n\n\n\n*Postdoctoral Fellow*\n\n*Department of Geography *\n\n*McGill University*\n*Climate Change **Adaptation **Research **Group* <http://www.jamesford.ca/>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170209/812bfee7/attachment.html>",
+      "body_snippet": "Hi Statnet users,\n\nThis is almost an embarrassingly simple question, but degree centrality\nseems not to function correctly with valued data. Or am I doing something\n(that is probably simply) wrong?\n\nT",
+      "thread_id": "thread-d46809b4cbc3",
+      "thread_depth": 0,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-1a096b074e1e",
+      "message_id": "<b170f219-3fc5-d223-d987-3eaec3d9a968@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2017-02-09T10:59:44Z",
+      "subject": "[statnet_help] problem with valued net and degree centrality",
+      "subject_clean": "[statnet_help] problem with valued net and degree centrality",
+      "in_reply_to": "<CA+CFxkVK6fweptJAdkLAP=Brpa9xQ9yU599-erOrska9x+8Kpg@mail.gmail.com>",
+      "references": [
+        "<CA+CFxkVK6fweptJAdkLAP=Brpa9xQ9yU599-erOrska9x+8Kpg@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Jesse -\n\n/tl;dr: wrapping your input network(s) in as.edgelist.sna with the \nattrname argument set to the name of your edge attribute should do the \ntrick.  See below for a longer explanation of why this is necessary.//\n/\n\nThe issue you are running into is that when you pass a network object to \nan sna function, it has no way of knowing what attribute you want to use \nfor edge values (since you could have many different edge value \nattributes on the same network object). Thus, your network gets coerced \nto an unvalued structure, which is then operated upon (here by degree).  \nTo be more precise, here's what happens \"under the hood\" in a typical \nsna function:\n\n1. Input data gets to checked to see if it is in sna edgelist (or \noccasionally adjacency matrix) form.\n2. If not, input data gets sent to as.edgelist.sna (or occasionally \nas.sociomatrix.sna) for coercion.\n3. If needed, the data is coerced, and the coerced data is returned.\n4. The function operates on the (possibly coerced) input data.\n\nThe upside of this is that these functions can take data in many \ndifferent forms (some of which are very spartan), and operate in a \nmostly transparent fashion.  The downside is that that they cannot \nassume very much about what the input data will contain; network \nobjects, in particular, can contain very rich metadata, and you need to \nexplicitly pass this to the function in order to use it. (It may be \nworth noting here that sna predates network, and until recently did not \ndepend on it, so we couldn't build in automagic network object-centric \nfunctionality without creating an extra dependency that we were trying \nto avoid.  Now that sna does depend on network, we may revisit this \nissue in future releases.)\n\nIn order to pass edge values to an sna function, the best way is usually \nto perform the coercion yourself.  Wrapping your network (or a list \nthereof) in as.edgelist.sna and using the \"attrname\" argument to set the \nattribute you would like to use for edge values will ensure that those \nvalues are extracted and then passed on to degree (or any other function \nof interest).  Telling degree to use the edge value information should \nthen produce the desired results.  As noted above, you can store as many \ndifferent edge value attributes as you like within a single network \nobject, and then use this approach to \"dial in\" only the values that are \nrelevant for your specific analysis.\n\nHope that helps,\n\n-Carter\n\n\nOn 02/09/2017 10:24 AM, Jesse Sayles wrote:\n> Hi Statnet users,\n>\n> This is almost an embarrassingly simple question, but degree \n> centrality seems not to function correctly with valued data. Or am I \n> doing something (that is probably simply) wrong?\n>\n> Thanks in advance.\n>\n> Here is an example:\n>\n> > # create the valued matrix\n> > mat<-matrix(c(0,5,0,3,0,\n> +               1,0,2,1,0,\n> +               0,1,0,3,3,\n> +               1,1,1,0,4,\n> +               0,0,1,1,0),nrow=5,ncol=5,byrow=TRUE)\n> >\n> > # directly create a network from valued matrix,\n> > # storing values as attribute named 'pp'\n> > net<-as.network(mat,directed=TRUE, ignore.eval = FALSE,names.eval = \n> \"pp\")\n> > net\n>  Network attributes:\n>   vertices = 5\n>   directed = TRUE\n>   hyper = FALSE\n>   loops = FALSE\n>   multiple = FALSE\n>   bipartite = FALSE\n>   total edges= 14\n>     missing edges= 0\n>     non-missing edges= 14\n>\n>  Vertex attribute names:\n>     vertex.names\n>\n>  Edge attribute names:\n>     pp\n> >\n> > #test to see that it is a vaued graph\n> > get.edge.attribute(net, attrname = \"pp\")\n>  [1] 1 1 5 1 1 2 1 1 3 1 3 1 3 4\n> > as.matrix(net, attrname=\"pp\")\n>   1 2 3 4 5\n> 1 0 5 0 3 0\n> 2 1 0 2 1 0\n> 3 0 1 0 3 3\n> 4 1 1 1 0 4\n> 5 0 0 1 1 0\n> >\n> > #Degree centrality should change when ignore.eval= TRUE or FALSE\n> > #but it dose not. Why?\n> > degree(net, gmode=\"digraph\", ignore.eval=FALSE)\n> [1] 4 6 6 8 4\n> > degree(net, gmode=\"digraph\", ignore.eval=TRUE)\n> [1] 4 6 6 8 4\n> > degree(net, gmode=\"graph\", ignore.eval=FALSE)\n> [1] 2 3 3 4 2\n> > degree(net, gmode=\"graph\", ignore.eval=TRUE)\n> [1] 2 3 3 4 2\n> >\n>\n> -- \n>\n> /Jesse Sayles, PhD/\n>\n> /saylesunchartedwaters.com <http://saylesunchartedwaters.com/>/\n>\n>\n> /Postdoctoral Fellow\n> /\n>\n> /Department of Geography /\n>\n> /McGill University//\n> /\n>\n> /Climate Change //Adaptation //Research //Group/ \n> <http://www.jamesford.ca/>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170209/e47ec432/attachment.html>",
+      "body_snippet": "Hi, Jesse -\n\n/tl;dr: wrapping your input network(s) in as.edgelist.sna with the \nattrname argument set to the name of your edge attribute should do the \ntrick.  See below for a longer explanation of w",
+      "thread_id": "thread-d46809b4cbc3",
+      "thread_depth": 1,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-cbbdc73167dd",
+      "message_id": "<CAC4stHxxYu0Yb69uMHL5aADZCdrXhs1BX7F0Ao8xpO0-awzgHg@mail.gmail.com>",
+      "from_name": "Jason Morgan",
+      "from_email_hash": "a916098f1ffdfb22911ec8e29e08da2d0dfed0981723f8a481ef37e08d16027a",
+      "date": "2017-02-11T10:15:57Z",
+      "subject": "[statnet_help] ergmm not honoring specified seed",
+      "subject_clean": "[statnet_help] ergmm not honoring specified seed",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear List,\n\nI am trying to assure replicability with some latent space modes, but it\nseems ergmm no longer honors the specified seed:\n\n> summary(ergmm(Strike ~ euclidean(d=2), seed=5, verbose=TRUE))\n...\n==========================\nSummary of model fit\n==========================\n\nFormula:   Strike ~ euclidean(d = 2)\nAttribute: edges\nModel:     Bernoulli\nMCMC sample of size 4000, draws are 10 iterations apart, after burnin of\n10000 iterations.\nCovariate coefficients posterior means:\n            Estimate    2.5%  97.5% 2*min(Pr(>0),Pr(<0))\n(Intercept)  0.99553 0.28098 1.8455               0.0055 **\n---\nSignif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n\nOverall BIC:        308.0204\nLikelihood BIC:     128.0231\nLatent space/clustering BIC:     179.9973\n\nCovariate coefficients MKL:\n              Estimate\n(Intercept) 0.07821429\n\n\n> summary(ergmm(Strike ~ euclidean(d=2), seed=5, verbose=TRUE))\n...\n==========================\nSummary of model fit\n==========================\n\nFormula:   Strike ~ euclidean(d = 2)\nAttribute: edges\nModel:     Bernoulli\nMCMC sample of size 4000, draws are 10 iterations apart, after burnin of\n10000 iterations.\nCovariate coefficients posterior means:\n            Estimate    2.5%  97.5% 2*min(Pr(>0),Pr(<0))\n(Intercept)  0.98846 0.28349 1.8392               0.0055 **\n---\nSignif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n\nOverall BIC:        307.7291\nLikelihood BIC:     129.2389\nLatent space/clustering BIC:     178.4901\n\nCovariate coefficients MKL:\n              Estimate\n(Intercept) 0.05760837\n\nUsing set.seed directly works.\n\nI am using latentnet_2.7.1. Here is my full sessionInfo:\n\n> sessionInfo()\nR version 3.3.2 (2016-10-31)\nPlatform: x86_64-pc-linux-gnu (64-bit)\nRunning under: Ubuntu 16.04.1 LTS\n\nlocale:\n [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C\n [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8\n [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8\n [7] LC_PAPER=en_US.UTF-8       LC_NAME=C\n [9] LC_ADDRESS=C               LC_TELEPHONE=C\n[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base\n\nother attached packages:\n[1] ina_0.0.0.9000       latentnet_2.7.1      ergm_3.6.0\n[4] network_1.13.0       statnet.common_3.3.0 data.table_1.10.4\n[7] devtools_1.12.0\n\nloaded via a namespace (and not attached):\n [1] mvtnorm_1.0-5     lattice_0.20-34   digest_0.6.12     withr_1.0.2\n [5] MASS_7.3-45       grid_3.3.2        coda_0.19-1       robustbase_0.92-7\n [9] Matrix_1.2-8      sna_2.4           trust_0.1-7       tools_3.3.2\n[13] DEoptimR_1.0-8    compiler_3.3.2    abind_1.4-5       parallel_3.3.2\n[17] memoise_1.0.0     lpSolve_5.6.13\n\nThanks\n\n-- \n~ Jason Morgan\n\n\"Those who have had no share in the good fortunes of the mighty\n Often have a share in their misfortunes.\"\n                -- Bertolt Brecht, \"Der Kaukasische Kreidekreis\"\n                                    (The Caucasian Chalk Circle)\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170211/c3468fc1/attachment.html>",
+      "body_snippet": "Dear List,\n\nI am trying to assure replicability with some latent space modes, but it\nseems ergmm no longer honors the specified seed:\n\n> summary(ergmm(Strike ~ euclidean(d=2), seed=5, verbose=TRUE))\n.",
+      "thread_id": "thread-cbbdc73167dd",
+      "thread_depth": 0,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-0c649cee0966",
+      "message_id": "<21dc505f-f405-556f-3298-b5b2941308d0@glasgow.ac.uk>",
+      "from_name": "Philip Leifeld",
+      "from_email_hash": "78251314f8dff0f7be792cbeec3dde77251dfab4ebd0b3b95d65e3015212cd25",
+      "date": "2017-02-11T10:28:14Z",
+      "subject": "[statnet_help] ergmm not honoring specified seed",
+      "subject_clean": "[statnet_help] ergmm not honoring specified seed",
+      "in_reply_to": "<CAC4stHxxYu0Yb69uMHL5aADZCdrXhs1BX7F0Ao8xpO0-awzgHg@mail.gmail.com>",
+      "references": [
+        "<CAC4stHxxYu0Yb69uMHL5aADZCdrXhs1BX7F0Ao8xpO0-awzgHg@mail.gmail.com>"
+      ],
+      "body_plain": "I ran into the same issue about a year ago. (Which is why I had a lot of \ntrouble with the replication policy of the AJPS as they insisted I would \nneed to make the analysis fully replicable.) At the time, I filed a bug \nreport on trac (#1273), which is still open. At least when I last tried \nit, it was possible to call set.seed(5) right before the estimation call \nto make it reproducible. I hope this helps.\n\nBest,\n\nPhilip\n\nOn 11/02/17 18:15, Jason Morgan wrote:\n> Dear List,\n>\n> I am trying to assure replicability with some latent space modes, but it\n> seems ergmm no longer honors the specified seed:\n>\n>> summary(ergmm(Strike ~ euclidean(d=2), seed=5, verbose=TRUE))\n> ...\n> ==========================\n> Summary of model fit\n> ==========================\n>\n> Formula:   Strike ~ euclidean(d = 2)\n> Attribute: edges\n> Model:     Bernoulli\n> MCMC sample of size 4000, draws are 10 iterations apart, after burnin of\n> 10000 iterations.\n> Covariate coefficients posterior means:\n>             Estimate    2.5%  97.5% 2*min(Pr(>0),Pr(<0))\n> (Intercept)  0.99553 0.28098 1.8455               0.0055 **\n> ---\n> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>\n> Overall BIC:        308.0204\n> Likelihood BIC:     128.0231\n> Latent space/clustering BIC:     179.9973\n>\n> Covariate coefficients MKL:\n>               Estimate\n> (Intercept) 0.07821429\n>\n>\n>> summary(ergmm(Strike ~ euclidean(d=2), seed=5, verbose=TRUE))\n> ...\n> ==========================\n> Summary of model fit\n> ==========================\n>\n> Formula:   Strike ~ euclidean(d = 2)\n> Attribute: edges\n> Model:     Bernoulli\n> MCMC sample of size 4000, draws are 10 iterations apart, after burnin of\n> 10000 iterations.\n> Covariate coefficients posterior means:\n>             Estimate    2.5%  97.5% 2*min(Pr(>0),Pr(<0))\n> (Intercept)  0.98846 0.28349 1.8392               0.0055 **\n> ---\n> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>\n> Overall BIC:        307.7291\n> Likelihood BIC:     129.2389\n> Latent space/clustering BIC:     178.4901\n>\n> Covariate coefficients MKL:\n>               Estimate\n> (Intercept) 0.05760837\n>\n> Using set.seed directly works.\n>\n> I am using latentnet_2.7.1. Here is my full sessionInfo:\n>\n>> sessionInfo()\n> R version 3.3.2 (2016-10-31)\n> Platform: x86_64-pc-linux-gnu (64-bit)\n> Running under: Ubuntu 16.04.1 LTS\n>\n> locale:\n>  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C\n>  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8\n>  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8\n>  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C\n>  [9] LC_ADDRESS=C               LC_TELEPHONE=C\n> [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C\n>\n> attached base packages:\n> [1] stats     graphics  grDevices utils     datasets  methods   base\n>\n> other attached packages:\n> [1] ina_0.0.0.9000       latentnet_2.7.1      ergm_3.6.0\n> [4] network_1.13.0       statnet.common_3.3.0 data.table_1.10.4\n> [7] devtools_1.12.0\n>\n> loaded via a namespace (and not attached):\n>  [1] mvtnorm_1.0-5     lattice_0.20-34   digest_0.6.12     withr_1.0.2\n>  [5] MASS_7.3-45       grid_3.3.2        coda_0.19-1       robustbase_0.92-7\n>  [9] Matrix_1.2-8      sna_2.4           trust_0.1-7       tools_3.3.2\n> [13] DEoptimR_1.0-8    compiler_3.3.2    abind_1.4-5       parallel_3.3.2\n> [17] memoise_1.0.0     lpSolve_5.6.13\n>\n> Thanks\n>\n> --\n> ~ Jason Morgan\n>\n> \"Those who have had no share in the good fortunes of the mighty\n>  Often have a share in their misfortunes.\"\n>                 -- Bertolt Brecht, \"Der Kaukasische Kreidekreis\"\n>                                     (The Caucasian Chalk Circle)\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>",
+      "body_snippet": "I ran into the same issue about a year ago. (Which is why I had a lot of \ntrouble with the replication policy of the AJPS as they insisted I would \nneed to make the analysis fully replicable.) At the ",
+      "thread_id": "thread-cbbdc73167dd",
+      "thread_depth": 1,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-428d242cb9f0",
+      "message_id": "<CAC4stHyTunwePTGdPasmUEPb4krU3unXL9nh_oJzzrxhU4ANNA@mail.gmail.com>",
+      "from_name": "Jason Morgan",
+      "from_email_hash": "a916098f1ffdfb22911ec8e29e08da2d0dfed0981723f8a481ef37e08d16027a",
+      "date": "2017-02-11T11:52:02Z",
+      "subject": "[statnet_help] ergmm not honoring specified seed",
+      "subject_clean": "[statnet_help] ergmm not honoring specified seed",
+      "in_reply_to": "<21dc505f-f405-556f-3298-b5b2941308d0@glasgow.ac.uk>",
+      "references": [
+        "<CAC4stHxxYu0Yb69uMHL5aADZCdrXhs1BX7F0Ao8xpO0-awzgHg@mail.gmail.com>",
+        "<21dc505f-f405-556f-3298-b5b2941308d0@glasgow.ac.uk>"
+      ],
+      "body_plain": "Thank you, Philip. I am using set.seed as a workaround.\n\nOn Sat, Feb 11, 2017 at 1:28 PM, Philip Leifeld <\nphilip.leifeld@glasgow.ac.uk> wrote:\n\n> I ran into the same issue about a year ago. (Which is why I had a lot of\n> trouble with the replication policy of the AJPS as they insisted I would\n> need to make the analysis fully replicable.) At the time, I filed a bug\n> report on trac (#1273), which is still open. At least when I last tried it,\n> it was possible to call set.seed(5) right before the estimation call to\n> make it reproducible. I hope this helps.\n>\n> Best,\n>\n> Philip\n>\n>\n> On 11/02/17 18:15, Jason Morgan wrote:\n>\n>> Dear List,\n>>\n>> I am trying to assure replicability with some latent space modes, but it\n>> seems ergmm no longer honors the specified seed:\n>>\n>> summary(ergmm(Strike ~ euclidean(d=2), seed=5, verbose=TRUE))\n>>>\n>> ...\n>> ==========================\n>> Summary of model fit\n>> ==========================\n>>\n>> Formula:   Strike ~ euclidean(d = 2)\n>> Attribute: edges\n>> Model:     Bernoulli\n>> MCMC sample of size 4000, draws are 10 iterations apart, after burnin of\n>> 10000 iterations.\n>> Covariate coefficients posterior means:\n>>             Estimate    2.5%  97.5% 2*min(Pr(>0),Pr(<0))\n>> (Intercept)  0.99553 0.28098 1.8455               0.0055 **\n>> ---\n>> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>>\n>> Overall BIC:        308.0204\n>> Likelihood BIC:     128.0231\n>> Latent space/clustering BIC:     179.9973\n>>\n>> Covariate coefficients MKL:\n>>               Estimate\n>> (Intercept) 0.07821429\n>>\n>>\n>> summary(ergmm(Strike ~ euclidean(d=2), seed=5, verbose=TRUE))\n>>>\n>> ...\n>> ==========================\n>> Summary of model fit\n>> ==========================\n>>\n>> Formula:   Strike ~ euclidean(d = 2)\n>> Attribute: edges\n>> Model:     Bernoulli\n>> MCMC sample of size 4000, draws are 10 iterations apart, after burnin of\n>> 10000 iterations.\n>> Covariate coefficients posterior means:\n>>             Estimate    2.5%  97.5% 2*min(Pr(>0),Pr(<0))\n>> (Intercept)  0.98846 0.28349 1.8392               0.0055 **\n>> ---\n>> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n>>\n>> Overall BIC:        307.7291\n>> Likelihood BIC:     129.2389\n>> Latent space/clustering BIC:     178.4901\n>>\n>> Covariate coefficients MKL:\n>>               Estimate\n>> (Intercept) 0.05760837\n>>\n>> Using set.seed directly works.\n>>\n>> I am using latentnet_2.7.1. Here is my full sessionInfo:\n>>\n>> sessionInfo()\n>>>\n>> R version 3.3.2 (2016-10-31)\n>> Platform: x86_64-pc-linux-gnu (64-bit)\n>> Running under: Ubuntu 16.04.1 LTS\n>>\n>> locale:\n>>  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C\n>>  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8\n>>  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8\n>>  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C\n>>  [9] LC_ADDRESS=C               LC_TELEPHONE=C\n>> [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C\n>>\n>> attached base packages:\n>> [1] stats     graphics  grDevices utils     datasets  methods   base\n>>\n>> other attached packages:\n>> [1] ina_0.0.0.9000       latentnet_2.7.1      ergm_3.6.0\n>> [4] network_1.13.0       statnet.common_3.3.0 data.table_1.10.4\n>> [7] devtools_1.12.0\n>>\n>> loaded via a namespace (and not attached):\n>>  [1] mvtnorm_1.0-5     lattice_0.20-34   digest_0.6.12     withr_1.0.2\n>>  [5] MASS_7.3-45       grid_3.3.2        coda_0.19-1\n>>  robustbase_0.92-7\n>>  [9] Matrix_1.2-8      sna_2.4           trust_0.1-7       tools_3.3.2\n>> [13] DEoptimR_1.0-8    compiler_3.3.2    abind_1.4-5       parallel_3.3.2\n>> [17] memoise_1.0.0     lpSolve_5.6.13\n>>\n>> Thanks\n>>\n>> --\n>> ~ Jason Morgan\n>>\n>> \"Those who have had no share in the good fortunes of the mighty\n>>  Often have a share in their misfortunes.\"\n>>                 -- Bertolt Brecht, \"Der Kaukasische Kreidekreis\"\n>>                                     (The Caucasian Chalk Circle)\n>>\n>>\n>>\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>>\n\n\n-- \n~ Jason Morgan\n\n\"Those who have had no share in the good fortunes of the mighty\n Often have a share in their misfortunes.\"\n                -- Bertolt Brecht, \"Der Kaukasische Kreidekreis\"\n                                    (The Caucasian Chalk Circle)\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170211/f3b2ba83/attachment.html>",
+      "body_snippet": "Thank you, Philip. I am using set.seed as a workaround.\n\nOn Sat, Feb 11, 2017 at 1:28 PM, Philip Leifeld <\nphilip.leifeld@glasgow.ac.uk> wrote:\n\n> I ran into the same issue about a year ago. (Which is",
+      "thread_id": "thread-cbbdc73167dd",
+      "thread_depth": 2,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-285c5805968d",
+      "message_id": "<CAERrrQfMwUyRncsLRQyQUK5p84sqb-o5EmdKj4Qs=BBiXib1iw@mail.gmail.com>",
+      "from_name": "Deborah Rivas-Drake",
+      "from_email_hash": "d4a46975fb05bea1dfc25d862dcd33f18bf057fc2de21c36ff57f611bda7feef",
+      "date": "2017-02-15T06:13:18Z",
+      "subject": "[statnet_help] Please share ads for 2 Postdoctoral fellowships for NSF-funded study of ethnic-racial identity and peer networks",
+      "subject_clean": "[statnet_help] Please share ads for 2 Postdoctoral fellowships for NSF-funded study of ethnic-racial identity and peer networks",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear colleagues:\n\nI hope this message finds you well and apologies for any cross-postings. We\nare excited to announce a new opportunity for two 2-year postdoctoral\nfellowships, one at the University of Michigan and the other at Harvard\nUniversity, for a new NSF-funded study of ethnic-racial identity and peer\nnetworks (and would ideally like someone who has expertise in longitudinal\nSNA and/or ERGMs). Please see the attached ads and forward to potential\ncandidates. Candidates should feel free to apply for both positions.\nBest,\nDebbie\n_________________________________________________________________\nDeborah Rivas-Drake\nAssociate Professor of Education and Psychology\nUniversity of Michigan\nAnn Arbor, MI 48109\ndrivas@umich.edu\nContexts of Academic and Social Adjustment (CASA) Lab\n<http://sites.lsa.umich.edu/casalab/>\n__________________________________________________________________\nIt is time for parents to teach young people early on that in diversity\nthere is beauty and there is strength. ? Maya Angelou\n\nIn the order of nature we cannot render benefits to those from whom we\nreceive them, or only seldom. But the benefit we receive must be rendered\nagain, line for line, deed for deed, cent for cent, to somebody. - Ralph\nWaldo Emerson\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170215/13f44e97/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: eri networks_Michigan_Postdoc_FINAL.pdf\nType: application/pdf\nSize: 86630 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170215/13f44e97/attachment.pdf>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: eri networks_Harvard_Postdoc_Final.pdf\nType: application/pdf\nSize: 72742 bytes\nDesc: not available\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170215/13f44e97/attachment-0001.pdf>",
+      "body_snippet": "Dear colleagues:\n\nI hope this message finds you well and apologies for any cross-postings. We\nare excited to announce a new opportunity for two 2-year postdoctoral\nfellowships, one at the University o",
+      "thread_id": "thread-285c5805968d",
+      "thread_depth": 0,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-49b9bf98ef2a",
+      "message_id": "<1487293631.3034.6.camel@uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2017-02-16T17:07:14Z",
+      "subject": "[statnet_help] ergmm not honoring specified seed",
+      "subject_clean": "[statnet_help] ergmm not honoring specified seed",
+      "in_reply_to": "<CAC4stHyTunwePTGdPasmUEPb4krU3unXL9nh_oJzzrxhU4ANNA@mail.gmail.com>",
+      "references": [
+        "<CAC4stHxxYu0Yb69uMHL5aADZCdrXhs1BX7F0Ao8xpO0-awzgHg@mail.gmail.com>",
+        "<21dc505f-f405-556f-3298-b5b2941308d0@glasgow.ac.uk>",
+        "<CAC4stHyTunwePTGdPasmUEPb4krU3unXL9nh_oJzzrxhU4ANNA@mail.gmail.com>"
+      ],
+      "body_plain": "Hi,\n\nI've fixed this issue in the GitHub repository (https://github.com/statnet/latentnet/), and I'll push it to CRAN in the next week or two. In the meantime, you can get the Windows installers for the fixed version at https://ci.appveyor.com/project/statnet/latentnet/build/artifacts .\n\nBest,\nPavel\n\nOn Sat, 2017-02-11 at 14:52 -0500, Jason Morgan wrote:\nThank you, Philip. I am using set.seed as a workaround.\n\nOn Sat, Feb 11, 2017 at 1:28 PM, Philip Leifeld <philip.leifeld@glasgow.ac.uk<mailto:philip.leifeld@glasgow.ac.uk>> wrote:\nI ran into the same issue about a year ago. (Which is why I had a lot of trouble with the replication policy of the AJPS as they insisted I would need to make the analysis fully replicable.) At the time, I filed a bug report on trac (#1273), which is still open. At least when I last tried it, it was possible to call set.seed(5) right before the estimation call to make it reproducible. I hope this helps.\n\nBest,\n\nPhilip\n\n\nOn 11/02/17 18:15, Jason Morgan wrote:\nDear List,\n\nI am trying to assure replicability with some latent space modes, but it\nseems ergmm no longer honors the specified seed:\n\nsummary(ergmm(Strike ~ euclidean(d=2), seed=5, verbose=TRUE))\n\n...\n==========================\nSummary of model fit\n==========================\n\nFormula:   Strike ~ euclidean(d = 2)\nAttribute: edges\nModel:     Bernoulli\nMCMC sample of size 4000, draws are 10 iterations apart, after burnin of\n10000 iterations.\nCovariate coefficients posterior means:\n            Estimate    2.5%  97.5% 2*min(Pr(>0),Pr(<0))\n(Intercept)  0.99553 0.28098 1.8455               0.0055 **\n---\nSignif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n\nOverall BIC:        308.0204\nLikelihood BIC:     128.0231\nLatent space/clustering BIC:     179.9973\n\nCovariate coefficients MKL:\n              Estimate\n(Intercept) 0.07821429\n\n\nsummary(ergmm(Strike ~ euclidean(d=2), seed=5, verbose=TRUE))\n\n...\n==========================\nSummary of model fit\n==========================\n\nFormula:   Strike ~ euclidean(d = 2)\nAttribute: edges\nModel:     Bernoulli\nMCMC sample of size 4000, draws are 10 iterations apart, after burnin of\n10000 iterations.\nCovariate coefficients posterior means:\n            Estimate    2.5%  97.5% 2*min(Pr(>0),Pr(<0))\n(Intercept)  0.98846 0.28349 1.8392               0.0055 **\n---\nSignif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n\nOverall BIC:        307.7291\nLikelihood BIC:     129.2389\nLatent space/clustering BIC:     178.4901\n\nCovariate coefficients MKL:\n              Estimate\n(Intercept) 0.05760837\n\nUsing set.seed directly works.\n\nI am using latentnet_2.7.1. Here is my full sessionInfo:\n\nsessionInfo()\n\nR version 3.3.2 (2016-10-31)\nPlatform: x86_64-pc-linux-gnu (64-bit)\nRunning under: Ubuntu 16.04.1 LTS\n\nlocale:\n [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C\n [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8\n [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8\n [7] LC_PAPER=en_US.UTF-8       LC_NAME=C\n [9] LC_ADDRESS=C               LC_TELEPHONE=C\n[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base\n\nother attached packages:\n[1] ina_0.0.0.9000       latentnet_2.7.1      ergm_3.6.0\n[4] network_1.13.0       statnet.common_3.3.0 data.table_1.10.4\n[7] devtools_1.12.0\n\nloaded via a namespace (and not attached):\n [1] mvtnorm_1.0-5     lattice_0.20-34   digest_0.6.12     withr_1.0.2\n [5] MASS_7.3-45       grid_3.3.2        coda_0.19-1       robustbase_0.92-7\n [9] Matrix_1.2-8      sna_2.4           trust_0.1-7       tools_3.3.2\n[13] DEoptimR_1.0-8    compiler_3.3.2    abind_1.4-5       parallel_3.3.2\n[17] memoise_1.0.0     lpSolve_5.6.13\n\nThanks\n\n--\n~ Jason Morgan\n\n\"Those who have had no share in the good fortunes of the mighty\n Often have a share in their misfortunes.\"\n                -- Bertolt Brecht, \"Der Kaukasische Kreidekreis\"\n                                    (The Caucasian Chalk Circle)\n\n\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n\n\n\n\n--\n~ Jason Morgan\n\n\"Those who have had no share in the good fortunes of the mighty\n Often have a share in their misfortunes.\"\n                -- Bertolt Brecht, \"Der Kaukasische Kreidekreis\"\n                                    (The Caucasian Chalk Circle)\n\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n--\n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA)<http://niasra.uow.edu.au/index.html> | Web (Personal)<http://www.krivitsky.net/research> | ResearchGate<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID: 0000-0002-9101-3362<orcid.org/0000-0002-9101-3362>\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170217/58ba4e2e/attachment.html>",
+      "body_snippet": "Hi,\n\nI've fixed this issue in the GitHub repository (https://github.com/statnet/latentnet/), and I'll push it to CRAN in the next week or two. In the meantime, you can get the Windows installers for t",
+      "thread_id": "thread-cbbdc73167dd",
+      "thread_depth": 3,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-28de415271f7",
+      "message_id": "<1487294132.3034.8.camel@uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2017-02-16T17:15:33Z",
+      "subject": "[statnet_help] Development of latentnet migrated to GitHub",
+      "subject_clean": "[statnet_help] Development of latentnet migrated to GitHub",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All,\n\nTo facilitate bug reporting, deliver fixes faster, and open up the\npackage to contributions, I have migrated the development of the\nStatnet package latentnet to GitHub.\n\nThe development version can be obtained in the following ways:\nSource code: https://github.com/statnet/latentnet\nWindows binaries: https://ci.appveyor.com/project/statnet/latentnet/build/artifacts (scroll to bottom for the .zip file)\n\n\t\t\t\t\t\tBest Regards,\n\t\t\t\t\t\tPavel\n\n-- \nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA): http://niasra.uow.edu.au/index.html\nWeb (Personal): http://www.krivitsky.net/research\nORCID: 0000-0002-9101-3362\n\nNOTICE: This email is intended for the addressee named and may contain\nconfidential information. If you are not the intended recipient, please\ndelete it and notify the sender. Please consider the environment before\nprinting this email.",
+      "body_snippet": "Dear All,\n\nTo facilitate bug reporting, deliver fixes faster, and open up the\npackage to contributions, I have migrated the development of the\nStatnet package latentnet to GitHub.\n\nThe development ver",
+      "thread_id": "thread-28de415271f7",
+      "thread_depth": 0,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-e806af431413",
+      "message_id": "<CADJVJ54FFiBc8i=qi3AFb2v8PhhEGE-t1Oh4ni1Yp9d02KbNXw@mail.gmail.com>",
+      "from_name": "Shiran Cohen",
+      "from_email_hash": "c241ecd973add7b4babec09d63445f4e8a130ba0643f8e2862288306595bf1eb",
+      "date": "2017-02-23T11:48:08Z",
+      "subject": "[statnet_help] Latentnet package",
+      "subject_clean": "[statnet_help] Latentnet package",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone,\n\nHope this is the right forum for my questions.\n\nI started using the Latentnet package.\n\nI have read the articles: \"Model-based clustering for social networks\" and\n \"Fitting Position Latent Cluster Models for Social Networks with latentnet\"\n\nFollowing the manual \"Latent space models with latentnet\"\n\n1) I was able to run the examples but I did not understand what is the\ndifference between finding latent position models like this code:\nergm(samplk.tot~edges+nodematch(\"group\",diff=TRUE))  and ERGM models.\n\n2) How can I interoperate the summary of the model to latent positions?  is\ncluster affiliation of a node suggests it's role in the network?\n\n3)I did understand that I can find clusters, but how can I explain the\nreason a node was classified to a certain cluster?\nIn k-means the centroids are the mean of  the features that I used in the\nmodel.\n\n4) I read the the classification is based on the Euclidean distance but I\ndid not understand what are the coordinates that are used to determine the\nnode's location in the Euclidean space.\nI guess my question is: how does the algorithm classify nodes to clusters?\n\n5) In the social Euclidean space what do the coordinates represent? is it\nthe probability of two members forming an edge?\n\n6) Also what does random effects mean regarding networks? is it like random\neffects in GLMM (a different interception or slop for each node)?\n\n\nwill appreciate any help,\n\n\nShiran\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170223/0e37a353/attachment.html>",
+      "body_snippet": "Hi everyone,\n\nHope this is the right forum for my questions.\n\nI started using the Latentnet package.\n\nI have read the articles: \"Model-based clustering for social networks\" and\n \"Fitting Position Late",
+      "thread_id": "thread-e806af431413",
+      "thread_depth": 0,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-715125223355",
+      "message_id": "<1487894596.25508.3.camel@uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2017-02-23T16:03:18Z",
+      "subject": "[statnet_help] Latentnet package",
+      "subject_clean": "[statnet_help] Latentnet package",
+      "in_reply_to": "<CADJVJ54FFiBc8i=qi3AFb2v8PhhEGE-t1Oh4ni1Yp9d02KbNXw@mail.gmail.com>",
+      "references": [
+        "<CADJVJ54FFiBc8i=qi3AFb2v8PhhEGE-t1Oh4ni1Yp9d02KbNXw@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Shiran,\n\n1) I was able to run the examples but I did not understand what is the difference between finding latent position models like this code: ergm(samplk.tot~edges+nodematch(\"group\",diff=TRUE))  and ERGM models.\n\nThis model does not ask for a latent space: nodematch() is for exogenous grouping. If you request tofit=\"mle\", the results should be identical to those from ergm().\n\nA latent space fit, like\n\nergmm(samplik.tot~edges + euclidean(d=2, G=3))\n\nwould ask the package to find the groups in the network, whatever they may be.\n\n2) How can I interoperate the summary of the model to latent positions?  is cluster affiliation of a node suggests it's role in the network?\n\nI think that it for Euclidean distance, at least, it suggests is affiliation to a particular cohesive subgroup in the network.\n\n3)I did understand that I can find clusters, but how can I explain the reason a node was classified to a certain cluster?\nIn k-means the centroids are the mean of  the features that I used in the model.\n\nIt's model-based clustering. See the Handcock, Raftery, and Tantrum (2007) paper.\n\n4) I read the the classification is based on the Euclidean distance but I did not understand what are the coordinates that are used to determine the node's location in the Euclidean space.\nI guess my question is: how does the algorithm classify nodes to clusters?\n\nIt estimates them, choosing (loosely) positions such that distances among them correspond to the relations.\n\n5) In the social Euclidean space what do the coordinates represent? is it the probability of two members forming an edge?\n\nYes. Take a look at the papers referenced for the interpretation.\n\n6) Also what does random effects mean regarding networks? is it like random effects in GLMM (a different interception or slop for each node)?\n\nIn a sense, yes. It might be easier to think of it as a latent propensity of each node to send and/or receive ties.\n\nI hope this helps,\nPavel\n\n\n\n\n--\n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA)<http://niasra.uow.edu.au/index.html> | Web (Personal)<http://www.krivitsky.net/research> | ResearchGate<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID: 0000-0002-9101-3362<orcid.org/0000-0002-9101-3362>\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170224/37c8a948/attachment.html>",
+      "body_snippet": "Hi, Shiran,\n\n1) I was able to run the examples but I did not understand what is the difference between finding latent position models like this code: ergm(samplk.tot~edges+nodematch(\"group\",diff=TRUE)",
+      "thread_id": "thread-e806af431413",
+      "thread_depth": 1,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-9b4bf34c2b84",
+      "message_id": "<CADJVJ54VgDcth6dkqmtjb2atBAvsvAuc0DpFd9oHt7aWOLmq9Q@mail.gmail.com>",
+      "from_name": "Shiran Cohen",
+      "from_email_hash": "c241ecd973add7b4babec09d63445f4e8a130ba0643f8e2862288306595bf1eb",
+      "date": "2017-02-24T12:19:40Z",
+      "subject": "[statnet_help] Latent. statnet_help Digest, Vol 127, Issue 13",
+      "subject_clean": "[statnet_help] Latent. statnet_help Digest, Vol 127, Issue 13",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Thank you very much for your quick response.\n\nIf I may ask one more question.  Are there any guidelines for selecting the\nnumber of dimensions in the Euclidean space?\n\nBest,\n\nShiran\n\nOn Feb 24, 2017 10:02 PM, <statnet_help-request@mailman13.u.washington.edu>\nwrote:\n\nSend statnet_help mailing list submissions to\n        statnet_help@u.washington.edu\n\nTo subscribe or unsubscribe via the World Wide Web, visit\n        http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\nor, via email, send a message with subject or body 'help' to\n        statnet_help-request@mailman13.u.washington.edu\n\nYou can reach the person managing the list at\n        statnet_help-owner@mailman13.u.washington.edu\n\nWhen replying, please edit your Subject line so it is more specific\nthan \"Re: Contents of statnet_help digest...\"\n\nToday's Topics:\n\n   1. Re: Latentnet package (Pavel Krivitsky)\n\n\n---------- Forwarded message ----------\nFrom: Pavel Krivitsky <pavel@uow.edu.au>\nTo: \"statnet_help@u.washington.edu\" <statnet_help@u.washington.edu>, \"\nshiran.cohen.2016@gmail.com\" <shiran.cohen.2016@gmail.com>\nCc:\nBcc:\nDate: Fri, 24 Feb 2017 00:03:18 +0000\nSubject: Re: [statnet_help] Latentnet package\nHi, Shiran,\n\n1) I was able to run the examples but I did not understand what is the\ndifference between finding latent position models like this code:\nergm(samplk.tot~edges+nodematch(\"group\",diff=TRUE))  and ERGM models.\n\n\nThis model does not ask for a latent space: nodematch() is for exogenous\ngrouping. If you request tofit=\"mle\", the results should be identical to\nthose from ergm().\n\nA latent space fit, like\n\nergmm(samplik.tot~edges + euclidean(d=2, G=3))\n\nwould ask the package to *find* the groups in the network, whatever they\nmay be.\n\n2) How can I interoperate the summary of the model to latent positions?  is\ncluster affiliation of a node suggests it's role in the network?\n\n\nI think that it for Euclidean distance, at least, it suggests is\naffiliation to a particular cohesive subgroup in the network.\n\n3)I did understand that I can find clusters, but how can I explain the\nreason a node was classified to a certain cluster?\nIn k-means the centroids are the mean of  the features that I used in the\nmodel.\n\n\nIt's model-based clustering. See the Handcock, Raftery, and Tantrum (2007)\npaper.\n\n4) I read the the classification is based on the Euclidean distance but I\ndid not understand what are the coordinates that are used to determine the\nnode's location in the Euclidean space.\nI guess my question is: how does the algorithm classify nodes to clusters?\n\n\nIt estimates them, choosing (loosely) positions such that distances among\nthem correspond to the relations.\n\n5) In the social Euclidean space what do the coordinates represent? is it\nthe probability of two members forming an edge?\n\n\nYes. Take a look at the papers referenced for the interpretation.\n\n6) Also what does random effects mean regarding networks? is it like random\neffects in GLMM (a different interception or slop for each node)?\n\n\nIn a sense, yes. It might be easier to think of it as a latent propensity\nof each node to send and/or receive ties.\n\nI hope this helps,\nPavel\n\n-- \n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\n*T *+61 2 4221 3713 <+61%202%204221%203713>\nWeb (NIASRA) <http://niasra.uow.edu.au/index.html> | Web (Personal)\n<http://www.krivitsky.net/research> | ResearchGate\n<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID:\n0000-0002-9101-3362 <http://orcid.org/0000-0002-9101-3362>\nNOTICE: This email is intended for the addressee named and may contain\nconfidential information. If you are not the intended recipient, please\ndelete it and notify the sender. Please consider the environment before\nprinting this email.\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@mailman13.u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170224/05b0e442/attachment.html>",
+      "body_snippet": "Thank you very much for your quick response.\n\nIf I may ask one more question.  Are there any guidelines for selecting the\nnumber of dimensions in the Euclidean space?\n\nBest,\n\nShiran\n\nOn Feb 24, 2017 1",
+      "thread_id": "thread-9b4bf34c2b84",
+      "thread_depth": 0,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-c6f24ef7b405",
+      "message_id": "<1488009612.3295.10.camel@uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2017-02-25T00:00:14Z",
+      "subject": "[statnet_help] Latent. statnet_help Digest, Vol 127, Issue 13",
+      "subject_clean": "[statnet_help] Latent. statnet_help Digest, Vol 127, Issue 13",
+      "in_reply_to": "<CADJVJ54VgDcth6dkqmtjb2atBAvsvAuc0DpFd9oHt7aWOLmq9Q@mail.gmail.com>",
+      "references": [
+        "<CADJVJ54VgDcth6dkqmtjb2atBAvsvAuc0DpFd9oHt7aWOLmq9Q@mail.gmail.com>"
+      ],
+      "body_plain": "On Fri, 2017-02-24 at 22:19 +0200, Shiran Cohen wrote:\nThank you very much for your quick response.\n\nIf I may ask one more question.  Are there any guidelines for selecting the number of dimensions in the Euclidean space?\n\nIt depends on your goals. For visualisation, 2 or 3 works best, of course. Other than that, BIC can be used, but I seem to recall that it's not a very good metric for selecting dimension count, though it's been a while.\n\nI hope this helps,\nPavel\n\n\nBest,\n\nShiran\n\nOn Feb 24, 2017 10:02 PM, <statnet_help-request@mailman13.u.washington.edu<mailto:statnet_help-request@mailman13.u.washington.edu>> wrote:\nSend statnet_help mailing list submissions to\n        statnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\n\nTo subscribe or unsubscribe via the World Wide Web, visit\n        http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\nor, via email, send a message with subject or body 'help' to\n        statnet_help-request@mailman13.u.washington.edu<mailto:statnet_help-request@mailman13.u.washington.edu>\n\nYou can reach the person managing the list at\n        statnet_help-owner@mailman13.u.washington.edu<mailto:statnet_help-owner@mailman13.u.washington.edu>\n\nWhen replying, please edit your Subject line so it is more specific\nthan \"Re: Contents of statnet_help digest...\"\n\nToday's Topics:\n\n   1. Re: Latentnet package (Pavel Krivitsky)\n\n\n---------- Forwarded message ----------\nFrom: Pavel Krivitsky <pavel@uow.edu.au<mailto:pavel@uow.edu.au>>\nTo: \"statnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\" <statnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>>, \"shiran.cohen.2016@gmail.com<mailto:shiran.cohen.2016@gmail.com>\" <shiran.cohen.2016@gmail.com<mailto:shiran.cohen.2016@gmail.com>>\nCc:\nBcc:\nDate: Fri, 24 Feb 2017 00:03:18 +0000\nSubject: Re: [statnet_help] Latentnet package\nHi, Shiran,\n\n1) I was able to run the examples but I did not understand what is the difference between finding latent position models like this code: ergm(samplk.tot~edges+nodematch(\"group\",diff=TRUE))  and ERGM models.\n\nThis model does not ask for a latent space: nodematch() is for exogenous grouping. If you request tofit=\"mle\", the results should be identical to those from ergm().\n\nA latent space fit, like\n\nergmm(samplik.tot~edges + euclidean(d=2, G=3))\n\nwould ask the package to find the groups in the network, whatever they may be.\n\n2) How can I interoperate the summary of the model to latent positions?  is cluster affiliation of a node suggests it's role in the network?\n\nI think that it for Euclidean distance, at least, it suggests is affiliation to a particular cohesive subgroup in the network.\n\n3)I did understand that I can find clusters, but how can I explain the reason a node was classified to a certain cluster?\nIn k-means the centroids are the mean of  the features that I used in the model.\n\nIt's model-based clustering. See the Handcock, Raftery, and Tantrum (2007) paper.\n\n4) I read the the classification is based on the Euclidean distance but I did not understand what are the coordinates that are used to determine the node's location in the Euclidean space.\nI guess my question is: how does the algorithm classify nodes to clusters?\n\nIt estimates them, choosing (loosely) positions such that distances among them correspond to the relations.\n\n5) In the social Euclidean space what do the coordinates represent? is it the probability of two members forming an edge?\n\nYes. Take a look at the papers referenced for the interpretation.\n\n6) Also what does random effects mean regarding networks? is it like random effects in GLMM (a different interception or slop for each node)?\n\nIn a sense, yes. It might be easier to think of it as a latent propensity of each node to send and/or receive ties.\n\nI hope this helps,\nPavel\n\n--\n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713<tel:+61%202%204221%203713>\nWeb (NIASRA)<http://niasra.uow.edu.au/index.html> | Web (Personal)<http://www.krivitsky.net/research> | ResearchGate<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID: 0000-0002-9101-3362<http://orcid.org/0000-0002-9101-3362>\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@mailman13.u.washington.edu<mailto:statnet_help@mailman13.u.washington.edu>\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n--\n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA)<http://niasra.uow.edu.au/index.html> | Web (Personal)<http://www.krivitsky.net/research> | ResearchGate<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID: 0000-0002-9101-3362<orcid.org/0000-0002-9101-3362>\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170225/f77a2b5a/attachment.html>",
+      "body_snippet": "On Fri, 2017-02-24 at 22:19 +0200, Shiran Cohen wrote:\nThank you very much for your quick response.\n\nIf I may ask one more question.  Are there any guidelines for selecting the number of dimensions in",
+      "thread_id": "thread-9b4bf34c2b84",
+      "thread_depth": 1,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-f874f865f0c4",
+      "message_id": "<CADJVJ55TBGOfmQwwqqNVL5gDbcz8Umnrm7NLnM0EvH3a-ZJBtQ@mail.gmail.com>",
+      "from_name": "Shiran Cohen",
+      "from_email_hash": "c241ecd973add7b4babec09d63445f4e8a130ba0643f8e2862288306595bf1eb",
+      "date": "2017-02-25T03:06:59Z",
+      "subject": "[statnet_help] EpiModel",
+      "subject_clean": "[statnet_help] EpiModel",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi everyone,\n\nFirst of all I would like to say that I enjoy very much working with the\nstatnet packages in R. I admire your work.\n\nAnd to my questions:\n\nI have a list of networks which I converted to a networkDynamic object.\n\nAccording to the following tutorial:\n\nhttp://statnet.github.io/gal/empnet.html#simulation-and-analysis\n\nI do not need to simulate the data because I have the real observed\nnetworks.\n\n1) So I guess I don't have to use tergm to fit the data.\n(probably B/c I have the real behavior, so no simulation is required. No\nneed to use of Netest or netdx)\n Am I right?\n\n2) My networks do not have the same size in all time steps (some nodes\ndisappear and come back later, like a migration process)\nIs it possible to use the code in the tutorial (mentioned in the above\nlink)?\n\nThe tutorial indicates: \"an observed network with *all* nodes and edges\nobserved over a series of discrete time steps\"\n\nThanks for helping,\n\nShiran\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170225/c48d2186/attachment.html>",
+      "body_snippet": "Hi everyone,\n\nFirst of all I would like to say that I enjoy very much working with the\nstatnet packages in R. I admire your work.\n\nAnd to my questions:\n\nI have a list of networks which I converted to ",
+      "thread_id": "thread-f874f865f0c4",
+      "thread_depth": 0,
+      "month": "2017-02"
+    },
+    {
+      "id": "msg-465478412c54",
+      "message_id": "<1488243803.6052.20.camel@uow.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "2c5c5d8a0c0c672dc573715006c03b55eb5d6fd3594c27a5d79a0ed5b907b0e9",
+      "date": "2017-02-27T17:03:25Z",
+      "subject": "[statnet_help] AIC and BIC calculations for ergm.ego models",
+      "subject_clean": "[statnet_help] AIC and BIC calculations for ergm.ego models",
+      "in_reply_to": "<f83cb215f044444fa387d113cabce97e@iamo.de>",
+      "references": [
+        "<f83cb215f044444fa387d113cabce97e@iamo.de>"
+      ],
+      "body_plain": "Dear Frans,\n\nApologies for the slow reply. I had thought that I had replied to this e-mail, but my records show otherwise.\n\nI am relatively new to ERGMs and I am currently trying to fit a number of ego networks using the ergm.ego package. Some beginner?s questions:\n\n\n1)      Is it possible (or even useful?) to calculate the AIC and BIC of ergm.ego model fits? It seems that the option was included in older versions, but it doesn?t seem to work anymore in the newer version (I am using version 0.3.0)?\n\nFor the inferential machinery used by ergm.ego, AIC and BIC are not straightforward. There are some equivalents, but they are not implemented yet.\n\n\n\n\n2)      Options to add complex dependency terms (like gwdegree, gewesp & gwdesp) are not included in the package. Is this something that will be added in the future, or are these not included because these kind of terms are not relevant to model the characteristics of typical ego networks anyway?\n\n\nThese were not included because they cannot be identified when alter-alter ties are unobserved. The version for which they are is a work in progress.\n\nBest Regards,\nPavel\n\n\n\nAny help would be greatly appreciated.\n\nKind regards,\n\nFrans Hermans\n\n\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n\n--\n\nPavel Krivitsky\nLecturer in Statistics\nNational Institute of Applied Statistics Research Australia (NIASRA)\nSchool of Mathematics and Applied Statistics | Building 39C Room 154\nUniversity of Wollongong NSW 2522 Australia\nT +61 2 4221 3713\nWeb (NIASRA)<http://niasra.uow.edu.au/index.html> | Web (Personal)<http://www.krivitsky.net/research> | ResearchGate<http://www.researchgate.net/profile/Pavel_Krivitsky2> | ORCID: 0000-0002-9101-3362<orcid.org/0000-0002-9101-3362>\nNOTICE: This email is intended for the addressee named and may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Please consider the environment before printing this email.\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170228/58402d71/attachment.html>",
+      "body_snippet": "Dear Frans,\n\nApologies for the slow reply. I had thought that I had replied to this e-mail, but my records show otherwise.\n\nI am relatively new to ERGMs and I am currently trying to fit a number of eg",
+      "thread_id": "thread-465478412c54",
+      "thread_depth": 0,
+      "month": "2017-02"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-3213b9284b92",
+      "subject": "[statnet_help] ergm constraints argument freezes R",
+      "message_count": 7,
+      "participants": [
+        "Zachary Charles Heinemann",
+        "martina morris"
+      ],
+      "started": "2017-02-02T17:19:32Z",
+      "last_reply": "2017-02-05T08:01:04Z",
+      "root_message_id": "msg-3213b9284b92"
+    },
+    {
+      "id": "thread-d366b75aedb1",
+      "subject": "[statnet_help] Comparing ergm coefficients",
+      "message_count": 4,
+      "participants": [
+        "Michał Bojanowski",
+        "Zachary Charles Heinemann",
+        "martina morris"
+      ],
+      "started": "2017-02-03T06:10:08Z",
+      "last_reply": "2017-02-03T10:26:32Z",
+      "root_message_id": "msg-d366b75aedb1"
+    },
+    {
+      "id": "thread-6f308280d8dc",
+      "subject": "[statnet_help] Anova in ergm",
+      "message_count": 2,
+      "participants": [
+        "Golshid",
+        "martina morris"
+      ],
+      "started": "2017-02-04T05:15:19Z",
+      "last_reply": "2017-02-05T07:10:41Z",
+      "root_message_id": "msg-6f308280d8dc"
+    },
+    {
+      "id": "thread-d46809b4cbc3",
+      "subject": "[statnet_help] problem with valued net and degree centrality",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Jesse Sayles"
+      ],
+      "started": "2017-02-09T10:24:13Z",
+      "last_reply": "2017-02-09T10:59:44Z",
+      "root_message_id": "msg-d46809b4cbc3"
+    },
+    {
+      "id": "thread-cbbdc73167dd",
+      "subject": "[statnet_help] ergmm not honoring specified seed",
+      "message_count": 4,
+      "participants": [
+        "Jason Morgan",
+        "Pavel Krivitsky",
+        "Philip Leifeld"
+      ],
+      "started": "2017-02-11T10:15:57Z",
+      "last_reply": "2017-02-16T17:07:14Z",
+      "root_message_id": "msg-cbbdc73167dd"
+    },
+    {
+      "id": "thread-285c5805968d",
+      "subject": "[statnet_help] Please share ads for 2 Postdoctoral fellowships for NSF-funded study of ethnic-racial identity and peer networks",
+      "message_count": 1,
+      "participants": [
+        "Deborah Rivas-Drake"
+      ],
+      "started": "2017-02-15T06:13:18Z",
+      "last_reply": "2017-02-15T06:13:18Z",
+      "root_message_id": "msg-285c5805968d"
+    },
+    {
+      "id": "thread-28de415271f7",
+      "subject": "[statnet_help] Development of latentnet migrated to GitHub",
+      "message_count": 1,
+      "participants": [
+        "Pavel Krivitsky"
+      ],
+      "started": "2017-02-16T17:15:33Z",
+      "last_reply": "2017-02-16T17:15:33Z",
+      "root_message_id": "msg-28de415271f7"
+    },
+    {
+      "id": "thread-e806af431413",
+      "subject": "[statnet_help] Latentnet package",
+      "message_count": 2,
+      "participants": [
+        "Pavel Krivitsky",
+        "Shiran Cohen"
+      ],
+      "started": "2017-02-23T11:48:08Z",
+      "last_reply": "2017-02-23T16:03:18Z",
+      "root_message_id": "msg-e806af431413"
+    },
+    {
+      "id": "thread-9b4bf34c2b84",
+      "subject": "[statnet_help] Latent. statnet_help Digest, Vol 127, Issue 13",
+      "message_count": 2,
+      "participants": [
+        "Pavel Krivitsky",
+        "Shiran Cohen"
+      ],
+      "started": "2017-02-24T12:19:40Z",
+      "last_reply": "2017-02-25T00:00:14Z",
+      "root_message_id": "msg-9b4bf34c2b84"
+    },
+    {
+      "id": "thread-f874f865f0c4",
+      "subject": "[statnet_help] EpiModel",
+      "message_count": 1,
+      "participants": [
+        "Shiran Cohen"
+      ],
+      "started": "2017-02-25T03:06:59Z",
+      "last_reply": "2017-02-25T03:06:59Z",
+      "root_message_id": "msg-f874f865f0c4"
+    },
+    {
+      "id": "thread-465478412c54",
+      "subject": "[statnet_help] AIC and BIC calculations for ergm.ego models",
+      "message_count": 1,
+      "participants": [
+        "Pavel Krivitsky"
+      ],
+      "started": "2017-02-27T17:03:25Z",
+      "last_reply": "2017-02-27T17:03:25Z",
+      "root_message_id": "msg-465478412c54"
+    }
+  ]
+}

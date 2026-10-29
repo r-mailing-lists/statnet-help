@@ -1,0 +1,182 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2021-03",
+  "messages": [
+    {
+      "id": "msg-b00ed8e775af",
+      "message_id": "<dd3fa645e8ffcd86d1ef241a1d05b78c72270566.camel@unsw.edu.au>",
+      "from_name": "Pavel Krivitsky",
+      "from_email_hash": "41572807418827d3378242dec6425ef03cf45319ec22768b112bc8c068097b67",
+      "date": "2021-03-16T22:24:53Z",
+      "subject": "[statnet_help] ergm 4.0, tergm 4.0, and others have been published to GitHub",
+      "subject_clean": "[statnet_help] ergm 4.0, tergm 4.0, and others have been published to GitHub",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear All,\n\nWe have published a major update of the following packages to GitHub:\n\n * ergm\n * tergm\n * ergm.count\n * ergm.rank\n\nMore than 3 years in the making, this update brings major improvements\nto Statnet's computational and modelling capabilities.\n\nYou can try them out by running:\n\ninstall.packages(\"remotes\")\nlibrary(remotes)\ninstall_github(\"statnet/ergm\")\ninstall_github(\"statnet/tergm\")\ninstall_github(\"statnet/ergm.count\")\ninstall_github(\"statnet/ergm.rank\")\n\nThe user interfaces of functions are largely the same, though some\ncontrol parameters may behave somewhat differently.\n\nWe hope to release these updates to CRAN in the next few months.\n\nEnjoy!\nPavel Krivitsky\non behalf of the Statnet Team\n\nP.S. If your package depends on ergm, the are some API changes, but the\nR and C APIs are now cleaner and better documented. And, in particular,\nthe user terms API is backwards compatible: old implementations will\nstill work, though new, more efficient implementations may now be\npossible using the new APIs.",
+      "body_snippet": "Dear All,\n\nWe have published a major update of the following packages to GitHub:\n\n * ergm\n * tergm\n * ergm.count\n * ergm.rank\n\nMore than 3 years in the making, this update brings major improvements\nto",
+      "thread_id": "thread-b00ed8e775af",
+      "thread_depth": 0,
+      "month": "2021-03"
+    },
+    {
+      "id": "msg-b615e4e5ee51",
+      "message_id": "<MN2PR14MB3343E8D0C4954D29AF3DC03B9D649@MN2PR14MB3343.namprd14.prod.outlook.com>",
+      "from_name": "Matthew Katz",
+      "from_email_hash": "a3be3f7219fcf003b73d0376ba9ffbc9dff053ff6bd2775676c11f39c09e09b8",
+      "date": "2021-03-23T11:15:43Z",
+      "subject": "[statnet_help] statnet error: \"Error in .Call(getEdgeAttribute R, el,  attrname, na.omit, null.na, deleted, edges.omit) NULL value passed as symbol address",
+      "subject_clean": "[statnet_help] statnet error: \"Error in .Call(getEdgeAttribute R, el,  attrname, na.omit, null.na, deleted, edges.omit) NULL value passed as symbol address",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi Statnet Group,\n\n\n\nI am new to using Statnet, and am receiving the same error code over and over again. The IT department at my college was unable to identify the issue. We spent a solid two hours trying to identify the problem yesterday, but were unable to do so.\n\n\n\nSometimes the below code works. Sometimes it freezes and forces RStudio to abort. But 95% of the time it returns the same error code.\n\n\n\nError in .Call(getEdgeAttribute_R, el, attrname, na.omit, null.na, deleted.edges.omit) :\n\n  NULL value passed as symbol address\n\n\n\nThe only statnet command (I've probably tried 10 different ones) that seems to always work is network.size . Once I use the next command, the error message returns. I have already installed and loaded statnet and UserNetR, before using the command below\n\n\n\n> network.size(Moreno)\n\n[1] 33\n\n> gden(Moreno)\n\nError in .Call(getEdgeAttribute_R, el, attrname, na.omit, null.na, deleted.edges.omit) :\n\n  NULL value passed as symbol address\n\n\n\nThe dataset in the above examples is one from UserNetR package. I tried to create my own basic matrix, and ran into the same problem.\n\n\n\n> mattmat1 <- rbind(c(0,1,1,0,0),\n\n+                   c(0,0,1,1,1),\n\n+                   c(1,1,0,0,0),\n\n+                   c(0,0,0,1,1),\n\n+                   c(1,1,1,1,0))\n\n> rownames(mattmat1) <- c(\"A\", \"B\", \"C\", \"D\", \"E\")\n\n> colnames(mattmat1) <- c(\"A\", \"B\", \"C\", \"D\", \"E\")\n\n> matt1 <- network(mattmat1, matrix.type=\"adjacency\")\n\nError in .Call(setVertexAttribute_R, x, attrname, value, v) :\n\n  NULL value passed as symbol address\n\n\n\nPer the mailing instructions, I also ran the two lines of code suggested for problems related to installing. Here is the output:\n\n\n\n> sessionInfo()\n\nR version 4.0.4 (2021-02-15)\n\nPlatform: x86_64-w64-mingw32/x64 (64-bit)\n\nRunning under: Windows 10 x64 (build 19042)\n\n\n\nMatrix products: default\n\n\n\nlocale:\n\n[1] LC_COLLATE=English_United States.1252  LC_CTYPE=English_United States.1252\n\n[3] LC_MONETARY=English_United States.1252 LC_NUMERIC=C\n\n[5] LC_TIME=English_United States.1252\n\n\n\nattached base packages:\n\n[1] stats     graphics  grDevices utils     datasets  methods   base\n\n\n\nother attached packages:\n\n[1] statnet_2019.6        tsna_0.3.1            sna_2.6               statnet.common_4.4.1\n\n [5] ergm.count_3.4.0      tergm_3.7.0           networkDynamic_0.10.1 ergm_3.11.0\n\n [9] network_1.16.1        UserNetR_2.62         igraphdata_1.0.1      igraph_1.2.6\n\n\n\nloaded via a namespace (and not attached):\n\n[1] magrittr_2.0.1    MASS_7.3-53.1     lattice_0.20-41   rlang_0.4.10      fansi_0.4.2\n\n [6] tools_4.0.4       parallel_4.0.4    grid_4.0.4        nlme_3.1-152      lpSolve_5.6.15\n\n[11] rle_0.9.2         utf8_1.2.1        coda_0.19-4       ellipsis_0.3.1    tibble_3.1.0\n\n[16] lifecycle_1.0.0   crayon_1.4.1      Matrix_1.3-2      purrr_0.3.4       vctrs_0.3.6\n\n[21] trust_0.1-8       robustbase_0.93-7 DEoptimR_1.0-8    compiler_4.0.4    pillar_1.5.1\n\n[26] pkgconfig_2.0.3\n\n>\n\n> getOption(\"pkgType\")\n\n[1] \"both\"\n\n\n\nAs I mentioned above, sometimes everything works fine. But the majority of time, I get the error messages. I welcome any suggestions, as I'm looking forward to learning to use statnet!\n\n\n\nThank you!\n\nMatt Katz\n\nUMass Amherst\n\n\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210323/3d35b9b6/attachment.html>",
+      "body_snippet": "Hi Statnet Group,\n\n\n\nI am new to using Statnet, and am receiving the same error code over and over again. The IT department at my college was unable to identify the issue. We spent a solid two hours t",
+      "thread_id": "thread-b615e4e5ee51",
+      "thread_depth": 0,
+      "month": "2021-03"
+    },
+    {
+      "id": "msg-959adc76d668",
+      "message_id": "<BN6PR05MB3524A8C43CD3DBD4115168CEA5639@BN6PR05MB3524.namprd05.prod.outlook.com>",
+      "from_name": "James Moody",
+      "from_email_hash": "61bf9f854728eb7df9ce43bf47087ca5c36cfa57a06fc62325b529e4d6312419",
+      "date": "2021-03-24T10:56:34Z",
+      "subject": "[statnet_help] tutorial for bipartite ERGM",
+      "subject_clean": "[statnet_help] tutorial for bipartite ERGM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hey Folks -\n Hope you are well.\n\nDoes anyone have a tutorial already setup for estimating ERGMs on bipartite/two-mode networks?\n\nThanks in advance,\nJim\n\n\nJames Moody\nRobert O. Keohane Professor of Sociology\nFounding Director, Duke Network Analysis Center\nDuke University\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210324/9ab5886e/attachment.html>",
+      "body_snippet": "Hey Folks -\n Hope you are well.\n\nDoes anyone have a tutorial already setup for estimating ERGMs on bipartite/two-mode networks?\n\nThanks in advance,\nJim\n\n\nJames Moody\nRobert O. Keohane Professor of Soc",
+      "thread_id": "thread-959adc76d668",
+      "thread_depth": 0,
+      "month": "2021-03"
+    },
+    {
+      "id": "msg-b17faf406e85",
+      "message_id": "<54be4e1668b3484e9dc8b99d56e83527@mail.ubc.ca>",
+      "from_name": "Tindall, David",
+      "from_email_hash": "f7d5f7015f947c15ba91dca596d817e559ee143d892daa263fda49ac61279d9c",
+      "date": "2021-03-24T11:00:22Z",
+      "subject": "[statnet_help] tutorial for bipartite ERGM",
+      "subject_clean": "[statnet_help] tutorial for bipartite ERGM",
+      "in_reply_to": "<BN6PR05MB3524A8C43CD3DBD4115168CEA5639@BN6PR05MB3524.namprd05.prod.outlook.com>",
+      "references": [
+        "<BN6PR05MB3524A8C43CD3DBD4115168CEA5639@BN6PR05MB3524.namprd05.prod.outlook.com>"
+      ],
+      "body_plain": "I'll be very interested in the answer to this, as well!\n\n\nDBT\n\n\n\n\n________________________________\n\nDavid Tindall Professor Department of Sociology, University of British Columbia Chair Environment and Society Minor, Faculty of Arts, University of British Columbia Mailing address: Department of Sociology University of British Columbia 6303 N.W. Marine Drive Vancouver, British Columbia Canada V6T 1Z1 Office Location: Anthropology and Sociology Building Room 1317 E-mail: tindall@mail.ubc.ca\n\n\n________________________________\nFrom: statnet_help <statnet_help-bounces@mailman13.u.washington.edu> on behalf of James Moody <jmoody77@duke.edu>\nSent: March 24, 2021 10:56 AM\nTo: 'statnet_help@u.washington.edu'\nSubject: [statnet_help] tutorial for bipartite ERGM\n\n[CAUTION: Non-UBC Email]\n\nHey Folks ?\n\n Hope you are well.\n\n\n\nDoes anyone have a tutorial already setup for estimating ERGMs on bipartite/two-mode networks?\n\n\n\nThanks in advance,\n\nJim\n\n\n\n\n\nJames Moody\n\nRobert O. Keohane Professor of Sociology\n\nFounding Director, Duke Network Analysis Center\n\nDuke University\n\n\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210324/35139336/attachment.html>",
+      "body_snippet": "I'll be very interested in the answer to this, as well!\n\n\nDBT\n\n\n\n\n________________________________\n\nDavid Tindall Professor Department of Sociology, University of British Columbia Chair Environment an",
+      "thread_id": "thread-959adc76d668",
+      "thread_depth": 1,
+      "month": "2021-03"
+    },
+    {
+      "id": "msg-bc6aa8cd8264",
+      "message_id": "<aae42d1cd8a94aa28be065236ecac3e2@kit.edu>",
+      "from_name": "Wolbring, Laura (IFSS)",
+      "from_email_hash": "672c122e3a59b47813725b429e51b057f11921f7e582c0aa88e0bd29125acd99",
+      "date": "2021-03-29T04:57:53Z",
+      "subject": "[statnet_help] Add odds ratios and 95% confidence interval to ergm summary table",
+      "subject_clean": "[statnet_help] Add odds ratios and 95% confidence interval to ergm summary table",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nI want to add odds ratios and a 95% confidence interval to my ergm summary table including dependence terms (gwdsp, gwdegree, gwesp).\nTo calculate odds ratios, I already used the exp() and sqrt() functions but I have read that standard errors for dependence models are adjusted due to the use of MCMC estimation. Therefore, odds ratios for dependence models should only be calculated by editing the underlying code of the summary table.\n\nI would be very grateful for any advice on how to add odds ratios to the ergm summary table.\n\nThanks in advance and best regards\nLaura\n\nKarlsruhe Institute of Technology (KIT)\nInstitute of Sports and Sports Science (IfSS)\n\nLaura Wolbring\nResearch Assistant\n\nEngler-Bunte-Ring 15\nBuilding 40.40\nRoom -110\n76131 Karlsruhe\nPhone : +49 721 608-46696\n\nE-Mail: laura.wolbring@kit.edu<mailto:laura.wolbring@kit.edu>\nWeb: www.sport.kit.edu<http://www.sport.kit.edu>\n\nKIT - Die Forschungsuniversit?t in der Helmholtz-Gemeinschaft\nDas KIT ist seit 2010 als familiengerechte Hochschule zertifiziert.\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210329/0b008931/attachment.html>",
+      "body_snippet": "Dear all,\n\nI want to add odds ratios and a 95% confidence interval to my ergm summary table including dependence terms (gwdsp, gwdegree, gwesp).\nTo calculate odds ratios, I already used the exp() and ",
+      "thread_id": "thread-bc6aa8cd8264",
+      "thread_depth": 0,
+      "month": "2021-03"
+    },
+    {
+      "id": "msg-dc143c5c94c6",
+      "message_id": "<c3507e3ee80dc766f05bafee2e7e28bab223d5f4.camel@unsw.edu.au>",
+      "from_name": "Pavel N. Krivitsky",
+      "from_email_hash": "41572807418827d3378242dec6425ef03cf45319ec22768b112bc8c068097b67",
+      "date": "2021-03-29T16:16:59Z",
+      "subject": "[statnet_help] Add odds ratios and 95% confidence interval to ergm summary table",
+      "subject_clean": "[statnet_help] Add odds ratios and 95% confidence interval to ergm summary table",
+      "in_reply_to": "<aae42d1cd8a94aa28be065236ecac3e2@kit.edu>",
+      "references": [
+        "<aae42d1cd8a94aa28be065236ecac3e2@kit.edu>"
+      ],
+      "body_plain": "Dear Laura,\n\nThe quickest way to calculate the odds ratios is probably to use the\nbuilt-in confint() function to get the intervals for the parameters and\nthen call exp() on those.\n\nYou can extract the summary table by calling coef(summary(ergm_fit)).\n\nPutting it all together, something like\n\ncbind(coef(summary(ergm_fit)), exp(confint(ergm_fit)))\n\nshould do the trick.\n\n I hope this helps,\n Pavel\n\nOn Mon, 2021-03-29 at 11:57 +0000, Wolbring, Laura (IFSS) wrote:\n> Dear all,\n> ?\n> I want to add odds ratios and a 95% confidence interval to my ergm\n> summary table including dependence terms (gwdsp, gwdegree, gwesp).\n> To calculate odds ratios, I already used the exp() and sqrt()\n> functions but I have read that standard errors for dependence models\n> are adjusted due to the use of MCMC estimation. Therefore, odds\n> ratios for dependence models should only be calculated by editing the\n> underlying code of the summary table.\n> ?\n> I would be very grateful for any advice on how to add odds ratios to\n> the ergm summary table.\n> ?\n> Thanks in advance and best regards\n> Laura\n> ?\n> Karlsruhe Institute of Technology (KIT)\n> Institute of Sports and Sports Science (IfSS)\n> ?\n> Laura Wolbring\n> Research Assistant\n> ?\n> Engler-Bunte-Ring 15\n> Building 40.40\n> Room -110\n> 76131 Karlsruhe\n> Phone : +49 721 608-46696\n> ?\n> E-Mail:laura.wolbring@kit.edu\n> Web: www.sport.kit.edu\n> ?\n> KIT - Die Forschungsuniversit?t in der Helmholtz-Gemeinschaft\n> Das KIT ist seit 2010 als familiengerechte Hochschule zertifiziert.\n> ?\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210330/87bcbdab/attachment.html>",
+      "body_snippet": "Dear Laura,\n\nThe quickest way to calculate the odds ratios is probably to use the\nbuilt-in confint() function to get the intervals for the parameters and\nthen call exp() on those.\n\nYou can extract the",
+      "thread_id": "thread-bc6aa8cd8264",
+      "thread_depth": 1,
+      "month": "2021-03"
+    },
+    {
+      "id": "msg-802b13f830a3",
+      "message_id": "<CAB+wUOER+yyLxEYrW2bo4uLoYe7S2-oa=YMcywhyb7HCm8sgeg@mail.gmail.com>",
+      "from_name": "Steven M. Goodreau",
+      "from_email_hash": "3d871e55144474592fb2de0bde819442effdf065250dd4235769820013694915",
+      "date": "2021-03-29T16:19:28Z",
+      "subject": "[statnet_help] Network Modeling for Epidemics: Summer short course at the University of Washington, 2-6 August, 2021",
+      "subject_clean": "[statnet_help] Network Modeling for Epidemics: Summer short course at the University of Washington, 2-6 August, 2021",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Network Modeling for Epidemics (NME) is a 5-day short course at the\nUniversity of Washington that provides an introduction to stochastic\nnetwork models for infectious disease transmission dynamics, with a focus\non empirically based modeling of HIV transmission. It is a ''hands-on''\ncourse, using the EpiModel software package in R (www.epimodel.org).\nEpiModel provides a unified framework for statistically based modeling of\ndynamic networks from empirical data, and simulation of epidemic dynamics\non these networks. It has a flexible open-source platform for learning and\nbuilding several types of epidemic models: deterministic compartmental,\nstochastic individual-based, and stochastic network models. Resources\ninclude simple models that run in a browser window, built-in generic models\nthat provide basic control over population contact patterns, pathogen\nproperties and demographics, and templates for user-programmed modules that\nallow EpiModel to be extended to the full range of pathogens, hosts, and\ndisease dynamics for advanced research. This course will touch on the\ndeterministic and individual-based models, but its primary focus is on the\ntheory, methods and application of network models.\n\nThe course uses a mix of lectures, tutorials, and labs with students\nworking in small groups. On the final day, students work to develop an\nEpiModel prototype model (either individually or in groups based on shared\nresearch interests), with input from the instructors, including the lead\nEpiModel software developer, Dr. Samuel Jenness.\n\nReturning students: We encourage previous attendees with active modeling\nprojects to apply to return for a refresher course. The EpiModel package\nhas been significantly enhanced over the last few years. Returning students\nwith active projects will have the opportunity to work with course\ninstructors to address key challenges in the design of their network model\ncode.\n\n*Dates and location:*\n\nThe course will be taught from Monday, August 2 to Friday, August 6 using\nremote learning technologies (Zoom, Slack). Hours are 8am-3pm Pacific\nDaylight Time (UTC -7), with a meal break. If the COVID reopening process\nallows, we may include optional in-person meetings on the University of\nWashington campus in Seattle, for those who wish to participate.\n\n*Costs:*\n\nCourse fee is $750. We offer a limited number of fee waivers for\npre-doctoral students or for attendees from low income countries.\n\n*Application dates and decision dates:*\n\n*    May 1: Application deadline.\n\n*    June 1:  Decisions will be made and announced.\n\n*    July 1:  Registration deadline. Late registration is possible through\nJuly 15 with a late fee of $250.\n\n*    A waitlist will be established along with rolling admission through\nJune 15 if space allows.\n\n*Application:*\n\nApply online at https://catalyst.uw.edu/webq/survey/morrism/404597\n\nCourse website and more information: http://statnet.github.io/nme\n\nPlease feel free to share widely!\n\nYours,\nMartina Morris, Steve Goodreau and Samuel Jenness\n\n-- \n*****************************************************************\nSteven M. Goodreau / Professor / Dept. of Anthropology\nPhysical address: Denny Hall M236\nMailing address: Campus Box 353100 / 4216 Memorial Way NE\nUniv. of Washington / Seattle WA 98195\n1-206-685-3870 (phone) /1-206-543-3285\n(fax)http://faculty.washington.edu/goodreau\n*****************************************************************\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210329/cf1f6f86/attachment.html>",
+      "body_snippet": "Network Modeling for Epidemics (NME) is a 5-day short course at the\nUniversity of Washington that provides an introduction to stochastic\nnetwork models for infectious disease transmission dynamics, wi",
+      "thread_id": "thread-802b13f830a3",
+      "thread_depth": 0,
+      "month": "2021-03"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-b00ed8e775af",
+      "subject": "[statnet_help] ergm 4.0, tergm 4.0, and others have been published to GitHub",
+      "message_count": 1,
+      "participants": [
+        "Pavel Krivitsky"
+      ],
+      "started": "2021-03-16T22:24:53Z",
+      "last_reply": "2021-03-16T22:24:53Z",
+      "root_message_id": "msg-b00ed8e775af"
+    },
+    {
+      "id": "thread-b615e4e5ee51",
+      "subject": "[statnet_help] statnet error: \"Error in .Call(getEdgeAttribute R, el,  attrname, na.omit, null.na, deleted, edges.omit) NULL value passed as symbol address",
+      "message_count": 1,
+      "participants": [
+        "Matthew Katz"
+      ],
+      "started": "2021-03-23T11:15:43Z",
+      "last_reply": "2021-03-23T11:15:43Z",
+      "root_message_id": "msg-b615e4e5ee51"
+    },
+    {
+      "id": "thread-959adc76d668",
+      "subject": "[statnet_help] tutorial for bipartite ERGM",
+      "message_count": 2,
+      "participants": [
+        "James Moody",
+        "Tindall, David"
+      ],
+      "started": "2021-03-24T10:56:34Z",
+      "last_reply": "2021-03-24T11:00:22Z",
+      "root_message_id": "msg-959adc76d668"
+    },
+    {
+      "id": "thread-bc6aa8cd8264",
+      "subject": "[statnet_help] Add odds ratios and 95% confidence interval to ergm summary table",
+      "message_count": 2,
+      "participants": [
+        "Pavel N. Krivitsky",
+        "Wolbring, Laura (IFSS)"
+      ],
+      "started": "2021-03-29T04:57:53Z",
+      "last_reply": "2021-03-29T16:16:59Z",
+      "root_message_id": "msg-bc6aa8cd8264"
+    },
+    {
+      "id": "thread-802b13f830a3",
+      "subject": "[statnet_help] Network Modeling for Epidemics: Summer short course at the University of Washington, 2-6 August, 2021",
+      "message_count": 1,
+      "participants": [
+        "Steven M. Goodreau"
+      ],
+      "started": "2021-03-29T16:19:28Z",
+      "last_reply": "2021-03-29T16:19:28Z",
+      "root_message_id": "msg-802b13f830a3"
+    }
+  ]
+}

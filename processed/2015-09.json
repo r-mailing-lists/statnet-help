@@ -1,0 +1,119 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2015-09",
+  "messages": [
+    {
+      "id": "msg-07153bf70a13",
+      "message_id": "<alpine.WNT.2.00.1509080636110.3884@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2015-09-08T06:54:04Z",
+      "subject": "[statnet_help] ERGM Dyadic Covariate Issue",
+      "subject_clean": "[statnet_help] ERGM Dyadic Covariate Issue",
+      "in_reply_to": "<2E1A7140-5D6E-4534-84A3-9F950108DFF1@vt.edu>",
+      "references": [
+        "<2E1A7140-5D6E-4534-84A3-9F950108DFF1@vt.edu>"
+      ],
+      "body_plain": "Maureen,\n\nGiven the number of terms in your model, and esp. the number of \ndyadic-dependent terms, relative to the information in your data (11 \nreplicates of 81 tie variables), I'm guessing one problem is that you \ndon't have enough data to fit all of these terms.  I'd be worried in \nparticular about the combination of twopaths and 2star terms here, as \nthese types of terms tend to be less stable in small nets.\n\nBut in the first example, the 1.0 correlation between the edges and \ndyadcov suggests you have a more basic problem. Since I can't see what is \nin Behaviors_matrix.csv file, I can't replicate what you have, but see if \nyour dyadcov is identical (or nearly identical) to your outcome variable \nby running a correlation on them alone.\n\nHave you tried to fit some smaller models, and then build up the \nadditional terms to see when the problem arises?\n\nbest,\nMartina\n\nOn Wed, 26 Aug 2015, Maureen McCusker wrote:\n\n> Hi there,\n> My name is Maureen McCusker, and I?m a graduate student at Virginia Tech, earning my Ph.D. in I/O Psychology. First of\n> all, thank you for making yourselves available. I am writing to you because I have been working on on a project running\n> an ERGM model for several months and have been struggling with my dyadic covariate term. To give you a little background,\n> I am analyzing some data on dyadic leadership perceptions within 11 teams of 9, where the outcome is a dichotomous\n> rating. In addition to several other predictors in the model (icov, ocov, absdiff), my model includes 2 edcov terms: the\n> structural zero matrix, reflecting the teams, and the directed dyadic covariate. I have seen the dyadic covariate matrix\n> read into R using run using two different codes, and I am receiving error codes for both (please see below). ?I am\n> wondering if you might be able to tell me which is the correct R code for dyadic covariates, and for the correct one,\n> what the error code means.\n> \n> For the following code, Beh is the dyadic covariate term. \n> \n> 1. The first code I?m using simply reads the data in as a CSV, converts it to a matrix, and then converts it to a\n> network. In the ERGM code itself, I run the network in as an edcov term (see this below). When I run this method, the\n> dyadic covariate term is HIGHLY unstable and changes values as signs with a slight change in the parameters, such MCMC\n> sample size. I also receive a message stating that I likely have highly correlated terms, which is what I assume is\n> driving the instability in the dyadic covariate term. When I check MCMC Diagnostics, I find that the dyadic covariate and\n> the edges term are perfectly correlated at 1.0. I know there have been some recent findings that ERGM may have some\n> issues with small groups and also that there are potentially some problems with highly correlated model terms. If this is\n> the correct way to run the dyadic covariate term, do you have any ideas of how I can fix this issue? ?R Code: \n> \n> #reading behavior file\n> \n> Beh?<- read.csv(\"Behaviors_Matrix.csv\",?header?=?FALSE)\n> \n> Beh.mat1<-as.matrix(Beh)\n> \n> Beh.mat2<-apply(Beh.mat1,1,as.numeric)\n> \n> Beh.mat2[is.na(Beh.mat2)]<-0\n> \n> Beh.mat2\n> \n> Beh.net?<-as.network.matrix(Beh.mat2,directed=T,matrix.type=\"adjacency?)\n> \n> And then here is the ERGM: \n> \n> New_Model_2_beh_2<-ergm(DV.net?~edges+ostar(2)+?mutual?+?twopath?+ istar(2) + edgecov(Struc_Zero.net) +\n> edgecov(tasks.net)+ nodeocov(\"Dom\")+nodeocov(\"Self_Eff\")+nodeicov(\"SAT_Tot\") +nodeicov(\"Dom\") +nodeicov(\"Self_Eff\")\n> +nodeicov(\"Self_Mon\") + absdiff(\"Self_Mon\")+absdiff(\"Dom\") +dyadcov(Beh.net),?eval.loglik=TRUE,??seed=20,?burnin=2000,?interval=50,?MCMCsamplesize=100000,?maxit=10,?control=control\n> .ergm(steplength=.25))\n> \n> summary(New_Model_2_beh_2)\n> \n> 2. The second way I?m running the model is similar to the way that another?researcher, who I know also posted on\n> Statnet_help?regarding a similar issue back in?February, ran hers.?When I do it this way, I receive the same error\n> message she received (In m[tl[!nal] + (hl[!nal] - 1) * network.size(x)] <- val[!nal] : number of items to replace is not\n> a multiple of replacement length). Using this strategy, I first create a megamatrix of all possible ties, then I run in a\n> matrix of all the dyadic ?attributes? to assign to the ties, then I assign attributes to the ?all-possible ties\" matrix.\n> The edgecov term in the ERGM is also different. Please see below: \n> \n> #reading behavior file\n> Beh?<- read.csv(\"Behaviors_Matrix.csv\",?header?=?FALSE)\n> Beh.mat1<-as.matrix(Beh)\n> Beh.mat2<-apply(Beh.mat1,1,as.numeric)\n> Beh.mat2[is.na(Beh.mat2)]<-0 \n> Beh.mat2\n> Beh.net?<-as.network.matrix(Beh.mat2,directed=T,matrix.type=\"adjacency\")\n> summary(Beh.net)\n> \n> #making all possible ties matrix: \n> Poss_ties<- read.csv(\"poss_ties_mat2.csv\",?header?=?FALSE) \n> Poss_ties.mat1<-as.matrix(Poss_ties)\n> Poss_ties.mat2<-apply(Poss_ties.mat1,?1,?as.numeric)\n> Poss_ties.net<-as.network.matrix(Poss_ties,directed=F,matrix.type=\"adjacency?)\n> \n> #assigning behaviors to possible ties \n> set.edge.attribute(Poss_ties.net,\"Beh.net\",Beh.net)\n> \n> The ERGM for strategy 2 is then as follows: \n> New_Model_2<-ergm(DV.net?~edges+ostar(2)+?mutual?+?twopath?+?istar(2)?+?edgecov(tasks.net)?+?edgecov(Poss_ties.net,attrn\n> ame=\"Beh.net\")+?edgecov(Struc_Zero.net)?+?nodeocov(\"Dom\")+nodeocov(\"Self_Eff\")+nodeicov(\"SAT_Tot\")?+nodeicov(\"Dom\")?+nod\n> eicov(\"Self_Eff\")?+nodeicov(\"Self_Mon\")?+?absdiff(\"Self_Mon\")+absdiff(\"Dom\"),?eval.loglik=TRUE,??seed=20,?burnin=3000,?i\n> nterval=50,?MCMCsamplesize=50000,?maxit=10,?control=control.ergm(steplength=.25))\n> \n> As you can see, for both of these strategies, I employ a structural zero matrix. The structural zero matrix has given me\n> problems since i started because the output because the output produces a ?-INF? estimate and NA for standard errors.\n> Perhaps this is part of the issue. \n> \n> \n> Thank you in advance for your help.\n> \n> Maureen \n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Maureen,\n\nGiven the number of terms in your model, and esp. the number of \ndyadic-dependent terms, relative to the information in your data (11 \nreplicates of 81 tie variables), I'm guessing one probl",
+      "thread_id": "thread-07153bf70a13",
+      "thread_depth": 0,
+      "month": "2015-09"
+    },
+    {
+      "id": "msg-69d95f68bc99",
+      "message_id": "<alpine.WNT.2.00.1509100442300.3884@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2015-09-10T04:45:23Z",
+      "subject": "[statnet_help] More on summary statistics for gwesp, gwdsp, gwd terms (fwd)",
+      "subject_clean": "[statnet_help] More on summary statistics for gwesp, gwdsp, gwd terms (fwd)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi folks,\n\nIn the continuing discussion over how to interpret the gw* terms, here is \nthe latest contribution, courtesy of Steve Goodreau and Sam Jenness. \nAttached are a couple of slides from a workshop, and below some \naccompanying explanation.\n\nbest,\nMartina\n\n---------- Forwarded message ----------\nDate: Wed, 9 Sep 2015 16:32:00 -0400\nFrom: Andrew Pilny <andy.pilny@uky.edu>\nTo: martina morris <morrism@u.washington.edu>\nCc: \"goodreau@uw.edu\" <goodreau@uw.edu>,\n     SAMUEL MACLEAN JENNESS <sjenness@uw.edu>\nSubject: Re: Quick question on summary statistics for gwesp, gwdsp, gwd terms\n\nYes! These really help a lot. Thanks for attaching them.\n\nOn Wed, Sep 9, 2015 at 4:16 PM, martina morris <morrism@u.washington.edu> wrote:\n       Hi Andrew,\n\n       The numerical value of the summary will depend on the value you use for\n       alpha.? If you fix it at zero, it is the count of edges (for gwesp) that\n       are in at least one triangle.? As alpha increases the value asymptotes at\n       the number of edges in a triangle (so 3 x # triangles).? For dsp, just\n       substitute dyads with shared partners.\n\n       We've just put together a brief explanation for a workshop, and I'm\n       attaching the relevant slides here.? LMK if they help.\n\n       best,\n       mm\n\n       ? On Wed, 9 Sep 2015, Andrew Pilny wrote:\n\n       > Hi Dr. Morris,\n       >\n       > I am having a little trouble interpreting the summary statistics for the different gw terms, they seem less\n       intuitive\n       > than reciprocity for example. My data shows:\n       >\n       > gwesp = 55.91\n       > gwdsp = 85.57\n       > gwd = 52.50\n       >\n       > Is there a source you can point me to or is there a straight forward interpretation for these statistics?\n       Thanks!\n       >\n       > Best,\n       > Andy\n       >\n       > --\n       > Andy Pilny, PhD\n       > Assistant?Professor\n       > 236 Grehan Building\n       > Department of Communication\n       > University of Kentucky\n       >\n       >\n\n****************************************************************\n ? Professor of Sociology and Statistics\n ? Director, UWCFAR Sociobehavioral and Prevention Research Core\n ? Box 354322\n ? University of Washington\n ? Seattle, WA 98195-4322\n\n ? Office:? ? ? ? (206) 685-3402\n ? Dept Office:? ?(206) 543-5882, 543-7237\n ? Fax:? ? ? ? ? ?(206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n\n\n\n\n--\nAndy Pilny, PhD\nAssistant?Professor\n236 Grehan Building\nDepartment of Communication\nUniversity of Kentucky\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: gwesp.pdf\nType: application/pdf\nSize: 756358 bytes\nDesc: \nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20150910/7f288d28/attachment.pdf>",
+      "body_snippet": "Hi folks,\n\nIn the continuing discussion over how to interpret the gw* terms, here is \nthe latest contribution, courtesy of Steve Goodreau and Sam Jenness. \nAttached are a couple of slides from a works",
+      "thread_id": "thread-69d95f68bc99",
+      "thread_depth": 0,
+      "month": "2015-09"
+    },
+    {
+      "id": "msg-aae5453676f4",
+      "message_id": "<D229B717.821E%akhanna@medicine.bsd.uchicago.edu>",
+      "from_name": "Khanna, Aditya [MED]",
+      "from_email_hash": "bcbc2ecefb65f657cdc48dbcb34944add56ec462b1b27bb58447f547a9f880c3",
+      "date": "2015-09-24T12:20:09Z",
+      "subject": "[statnet_help] Specifying missing/unobserved edges in a network object",
+      "subject_clean": "[statnet_help] Specifying missing/unobserved edges in a network object",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet Developers,\n\nI am looking for ways to apply ergms to model unobserved ties in a network. Say I have a sample of 50 nodes (numbered consecutively from 1 to 50), and I know there are 75 edges between them. However, I only observe 50 edges, between the first 30 nodes. I want to specify that there are 25 possible edges between nodes 31:50, which are ?missing?.\n\nHow can I create a network object that includes a specification for the missing edges?\nThanks,\nAditya\n\n********************************************************************************\nThis e-mail is intended only for the use of the individual or entity to which\nit is addressed and may contain information that is privileged and confidential.\nIf the reader of this e-mail message is not the intended recipient, you are \nhereby notified that any dissemination, distribution or copying of this\ncommunication is prohibited. If you have received this e-mail in error, please \nnotify the sender and destroy all copies of the transmittal. \n\nThank you\nUniversity of Chicago Medicine and Biological Sciences \n********************************************************************************",
+      "body_snippet": "Dear Statnet Developers,\n\nI am looking for ways to apply ergms to model unobserved ties in a network. Say I have a sample of 50 nodes (numbered consecutively from 1 to 50), and I know there are 75 edg",
+      "thread_id": "thread-aae5453676f4",
+      "thread_depth": 0,
+      "month": "2015-09"
+    },
+    {
+      "id": "msg-b131b9b5d707",
+      "message_id": "<560B9B6D.8080001@ethz.ch>",
+      "from_name": "Simon Schweighofer",
+      "from_email_hash": "c04321245edd704893a3cd0b2517f75c828977e2868d599ef8010969b5331ed4",
+      "date": "2015-09-30T01:21:01Z",
+      "subject": "[statnet_help] Complex ERG Model",
+      "subject_clean": "[statnet_help] Complex ERG Model",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet community,\n\nI recently acquired data from an online political debate network, and I \nwould like to analyze it with a somewhat complex erg model. The network \ncomprises 3 different directed link types, which I want to analyze like \nseparate networks. Furthermore, I want to distinguish between 3 \ndifferent political situations (before elections, before referenda, and \nother periods; each situation comprises several different time \nintervals). Basically, I am interested in comparing the strength of \nseveral homophily parameters a) across the 3 different linkstypes and b) \nacross the 3 different situations. Basically, my hpothesis is that \nhomophily will be strongest before elections and weakest before \nreferenda, and that this effect in turn varies with link type. I already \nimplemented this model as a logistic regression, by simply merging the \ndyad lists of all 9  combinations of the 3 link types and 3 situations, \nand including them as dummy variables. The outcomes supported my \nhypotheses, but now I would like to see if I can reproduce them in an \nergm including parameters for reciprocity and triadic closure. At the \nmoment, however, I am only able to do this by computing a separate ergm \nfor each of the 9 combinations. This is of course also problematic since \nit ignores that a link formed in one period might form a triad with a \ntwo-path from a previous period. Additionally, while I can rertieve \nhomophily parameters from every combination and compare them, I have no \ncomprehensive test of whether they really vary in strength according to \nmy hypotheses. I would be very glad for hints of how to combine this in \none big model - Thanks!\n\nSimon Schweighofer,\nPhD candidate at Chair of Systems Design,\nETH Zurich",
+      "body_snippet": "Dear statnet community,\n\nI recently acquired data from an online political debate network, and I \nwould like to analyze it with a somewhat complex erg model. The network \ncomprises 3 different directe",
+      "thread_id": "thread-b131b9b5d707",
+      "thread_depth": 0,
+      "month": "2015-09"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-07153bf70a13",
+      "subject": "[statnet_help] ERGM Dyadic Covariate Issue",
+      "message_count": 1,
+      "participants": [
+        "martina morris"
+      ],
+      "started": "2015-09-08T06:54:04Z",
+      "last_reply": "2015-09-08T06:54:04Z",
+      "root_message_id": "msg-07153bf70a13"
+    },
+    {
+      "id": "thread-69d95f68bc99",
+      "subject": "[statnet_help] More on summary statistics for gwesp, gwdsp, gwd terms (fwd)",
+      "message_count": 1,
+      "participants": [
+        "martina morris"
+      ],
+      "started": "2015-09-10T04:45:23Z",
+      "last_reply": "2015-09-10T04:45:23Z",
+      "root_message_id": "msg-69d95f68bc99"
+    },
+    {
+      "id": "thread-aae5453676f4",
+      "subject": "[statnet_help] Specifying missing/unobserved edges in a network object",
+      "message_count": 1,
+      "participants": [
+        "Khanna, Aditya [MED]"
+      ],
+      "started": "2015-09-24T12:20:09Z",
+      "last_reply": "2015-09-24T12:20:09Z",
+      "root_message_id": "msg-aae5453676f4"
+    },
+    {
+      "id": "thread-b131b9b5d707",
+      "subject": "[statnet_help] Complex ERG Model",
+      "message_count": 1,
+      "participants": [
+        "Simon Schweighofer"
+      ],
+      "started": "2015-09-30T01:21:01Z",
+      "last_reply": "2015-09-30T01:21:01Z",
+      "root_message_id": "msg-b131b9b5d707"
+    }
+  ]
+}

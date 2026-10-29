@@ -1,0 +1,165 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2017-08",
+  "messages": [
+    {
+      "id": "msg-494815c4f323",
+      "message_id": "<CAAXtaJSo1Z60cKxvoVN61Fb0MAnmvKVbjM6p2Ea=NLD+WtopKQ@mail.gmail.com>",
+      "from_name": "Tyler Scott",
+      "from_email_hash": "a6196bf6bee214db58cd900226f3e3e9fc8b0672fb870606b878ab9e684fe083",
+      "date": "2017-08-01T17:42:49Z",
+      "subject": "[statnet_help] 4 cycle blues",
+      "subject_clean": "[statnet_help] 4 cycle blues",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Greetings statnet cognoscenti,\n      I have a series of clarifying/advice seeking questions related to\n4-cycles. My apologies if these are largely obvious and/or stupid. For\ncontext, I am currently modeling an undirected bipartite network (i.e., so\nthat a 4 cycle involves 2 nodes from each mode, and there are no 2 cycles\nor 3 cycles).\n\n1. The gwnsp term includes 0 and 1 nsp counts, which are not 4 cycles - is\nthere currently a means to fit a weighted term that in essence is gwnsp but\ndoes not model 0s and 1s, to avoid having to fit nsp(2) + nsp(3)...?\n\n2. I know the cycle(4) parameter is a direct way to count 4 cycles, but\nthis term seems to impose a uniquely prohibitive computational burden. I\nhave a large, 1385 by 2225 bipartite network, which is obviously part of\nthe problem, but the cycle(4) term hangs even on a high powered simulation\ncluster in a way that no other term (gw___, kstar, triangle, etc.) comes\nremotely close to. This problem seems directly attributable to the\ncomputation burden of the term (and not an idiosyncratic data issue), as\nfitting behavior is similar for simulated networks of a similar size. Are\nthere any strategies specifically related to modeling high high-ordered\ncycle term that might be constructive?\n\n3. In an older post to the usergroup page, Carter Butts discussed setting\nan offset parameter for 4 cycles (http://mailman13.u.washington\n.edu/mailman/htdig/statnet_help/2014/001886.html) as a way to at least make\nsure that the model explores a parameter space with an appropriate 4 cycle\ndensity level. Is there a principled way in which I might go about\nidentifying a suitable offset coefficient, or is that choice largely\nad-hoc?\n\nThanks for your time.\n\n-tyler\n\n\n-- \nTyler Scott\ntyler.andrew.scott@gmail.com\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170801/4ef1d06f/attachment.html>",
+      "body_snippet": "Greetings statnet cognoscenti,\n      I have a series of clarifying/advice seeking questions related to\n4-cycles. My apologies if these are largely obvious and/or stupid. For\ncontext, I am currently mo",
+      "thread_id": "thread-494815c4f323",
+      "thread_depth": 0,
+      "month": "2017-08"
+    },
+    {
+      "id": "msg-5181853553f0",
+      "message_id": "<ac27f314-ea0b-67aa-94bf-a79e71bd1191@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2017-08-01T21:47:28Z",
+      "subject": "[statnet_help] 4 cycle blues",
+      "subject_clean": "[statnet_help] 4 cycle blues",
+      "in_reply_to": "<CAAXtaJSo1Z60cKxvoVN61Fb0MAnmvKVbjM6p2Ea=NLD+WtopKQ@mail.gmail.com>",
+      "references": [
+        "<CAAXtaJSo1Z60cKxvoVN61Fb0MAnmvKVbjM6p2Ea=NLD+WtopKQ@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Tyler -\n\n\nOn 08/01/2017 05:42 PM, Tyler Scott wrote:\n> Greetings statnet cognoscenti,\n>       I have a series of clarifying/advice seeking questions related \n> to 4-cycles. My apologies if these are largely obvious and/or stupid. \n> For context, I am currently modeling an undirected bipartite network \n> (i.e., so that a 4 cycle involves 2 nodes from each mode, and there \n> are no 2 cycles or 3 cycles).\n>\n> 1. The gwnsp term includes 0 and 1 nsp counts, which are not 4 cycles \n> - is there currently a means to fit a weighted term that in essence is \n> gwnsp but does not model 0s and 1s, to avoid having to fit nsp(2) + \n> nsp(3)...?\n>\nIf you think that NSP(1) and NSP(0) will behave differently from what \nGWNSP imposes, you could try adding those two terms to the formula; this \nmight or might not be unstable, depending on whether the corresponding \nstatistics strongly diverge from what would be expected under the \ngeneral geometric weighting pattern (among other things).\n\n> 2. I know the cycle(4) parameter is a direct way to count 4 cycles, \n> but this term seems to impose a uniquely prohibitive computational \n> burden. I have a large, 1385 by 2225 bipartite network, which is \n> obviously part of the problem, but the cycle(4) term hangs even on a \n> high powered simulation cluster in a way that no other term (gw___, \n> kstar, triangle, etc.) comes remotely close to. This problem seems \n> directly attributable to the computation burden of the term (and not \n> an idiosyncratic data issue), as fitting behavior is similar for \n> simulated networks of a similar size. Are there any strategies \n> specifically related to modeling high high-ordered cycle term that \n> might be constructive?\n\nThe complexity of counting cycles scales as something like n^L, where L \nis the cycle length and n is the size of the largest \"dense\" cluster in \nthe graph.  (This is a heuristic, hence the scare quotes.)  Not having \ntriangles helps, but even so, if you have a bipartite subgraph that is \nclose to complete, you will get costs that increase very sharply.  Raw \ncycle terms can work well in networks that are uniformly sparse, but \nthey can go from \"no problem\" to \"no way\" fast when your network has \ndense regions of appreciable size.  It sounds like your network must be \nrelatively dense (or, at least, that it has a such regions), given that \nyou are already hitting the wall with L=4.  I do have some code that \nworks faster than the current release version, but given the description \nof the regime you are in, that's not going to do the trick.  Cycles, \nlike paths and cliques, are inherently expensive to count unless you are \nin the sparse regime.\n\nIf you find that you can very quickly count cycles with kcycle.census or \nsummary(blah~cycle(4)) but that ergm() bogs down, the issue is probably \nthat your model is taking a detour through a part of the graph space \nthat is dense enough to cause computational problems.  Since, per the \nabove, the transition from fast to slow is very abrupt for cycle terms, \nit is certainly possible to have this happen.  This is challenging to \nwork around, but you may be able to make headway by first fitting other \nparts of your model (and ensuring that they do not lead to dense draws), \nand then using the other parameters as seeds for a run that adds the \ncycle term. Essentially, the issue in this case is that the optimization \nprocedure thinks it ought to be able to search the parameter space \nhowever it likes, but some parts of the space are not computationally \nfeasible; these parts may indeed be far from the MLE (and hence, in \nprinciple, irrelevant), but the optimizer doesn't know that.  Coming up \nwith smart procedures that try to recognize when they have entered bad \nparts of the parameter space without churning all the way through an \nMCMC run has been informally discussed, but to my knowledge this is \nstill an open problem. Regardless, ensuring that you have incorporated \nother elements in your model that will act to inhibit runaway tie \nformation is an important first step.  (What they should be is \nimpossible to say without knowing the intimate details of your system, \nyour data, the mechanisms that drive it, etc.  But be sure your model \nmakes use of any information you have on inhibitors of interaction.)\n\nGiven all this, you _could_ also try to deal with \"dense detours\" by \nimposing degree or other constraints that enforce sparsity (setting them \nwell above what is seen in the data, so that hopefully they act only to \nreign in wayward chains).  The intuition is that, so long as the \nconstraint is in a certain sense far from the regime in which the data \nlives, it will only get used for parameter values that aren't near the \nMLE anyway, and hence can improve computational performance with little \nor no impact on the final solution.  The risk is that the MCMC really \nwill encounter the constraint with non-negligible probability near the \nMLE, in which case your estimates will be biased.  A careful examination \nof the MCMC trace can confirm that this is or is not happening.  I am \nhesitant to recommend this strategy, due to the care that must be \nexercised, but it is among the tricks one can use.  It won't help you if \nthe data itself is sufficiently dense for cycle counting to be \nprohibitive, but it can help if the problem is transient in nature.\n\n>\n> 3. In an older post to the usergroup page, Carter Butts discussed \n> setting an offset parameter for 4 cycles \n> (http://mailman13.u.washington.edu/mailman/htdig/statnet_help/2014/001886.html \n> <http://mailman13.u.washington.edu/mailman/htdig/statnet_help/2014/001886.html>) \n> as a way to at least make sure that the model explores a parameter \n> space with an appropriate 4 cycle density level. Is there a principled \n> way in which I might go about identifying a suitable offset \n> coefficient, or is that choice largely ad-hoc?\n>\n\nWhat I was suggesting was systematically varying the cycle parameter and \nusing simulation to examine the behavior of the model as a function of \nthe cycle term.  You would want to pick a range of values, and perform \nthe fit->simulate process for each (using it as the value of a cycle(4) \noffset parameter).  Bracketing the range of values is fairly easily done \nby trial and error (when too high, you'll get overproduction of cycles \nrelative to the data, and when too low, you'll get underproduction); if \nyou need a systematic method, try starting at 0 and exponentially \nsearching in both directions.  Once you have bracketed the range of what \nis reasonable, evaluation on an evenly spaced grid is one reasonable \napproach.\n\nHope that helps,\n\n-Carter\n\n> Thanks for your time.\n>\n> -tyler\n>\n>\n> -- \n> Tyler Scott\n> tyler.andrew.scott@gmail.com <mailto:tyler.andrew.scott@gmail.com>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170801/33a21586/attachment.html>",
+      "body_snippet": "Hi, Tyler -\n\n\nOn 08/01/2017 05:42 PM, Tyler Scott wrote:\n> Greetings statnet cognoscenti,\n>       I have a series of clarifying/advice seeking questions related \n> to 4-cycles. My apologies if these a",
+      "thread_id": "thread-494815c4f323",
+      "thread_depth": 1,
+      "month": "2017-08"
+    },
+    {
+      "id": "msg-1f464fce439d",
+      "message_id": "<CAE47e1cyosN0_01nD64cqg==FR2u6+EYf=QhyV47_PYNCYFRUw@mail.gmail.com>",
+      "from_name": "Nathan Abe",
+      "from_email_hash": "eb55f3375a9b268ed52a4a186299f322db6fa38e0beeb99d7a7fd9d5de49aa0f",
+      "date": "2017-08-04T15:46:11Z",
+      "subject": "[statnet_help] STERGM missing data, interpretation and sample size questions",
+      "subject_clean": "[statnet_help] STERGM missing data, interpretation and sample size questions",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet,\n\n\n\nI have a series of clarifying/advice seeking questions related to the TERGM\npackage for STERGM.  Forgive me if these are rather basic questions in\nnetwork analysis. I have read and reread the STERGM manual and just cannot\nfigure out the answers.\n\n\n\n1)      I am starting to work in the TERGM package to run a longitudinal\nnetwork analysis with directed networks. The issue is that depending on the\nwave of data collection (there are four time points) individuals come and\ngo from the network so I have some missing data. I know there are ways\nthrough imputation, either forwards, backwards, majority, all as ?0? or ?1?\nthrough the impute.network.list() function. What would be the justification\nor rule of thumb for preferring one method over the others?\n\n\n\n2)      Another question is that periodically, when running some\nsimulations and analyzing a STERGM (with the TERGM package), I get -Inf\nvalues for the parameter estimates.  Why is this happening and how is it\ninterpreted?  For example, I get a -Inf value for the edge term in the\nsummary of dissolution of the STERGM. Does this mean, when transformed from\nlog-odds to probability, that the probability of a tie persisting is 0, and\nsaid a different way it means the probability of ties dissolving as 100%?\nIs it correct in the dissolution portion to interpret the edge term\nestimate as the log-odds of a tie persisting when the estimate is positive\nand the log-odds of a tie dissolving if the estimate is negative?  An\nexample of this is in the code and output below;\n\n\n\nseed1 <- sample(1:10000, 1, replace = T)\n\nseed2 <- sample(1:10000, 1, replace = T)\n\nseed3 <- sample(1:10000, 1, replace = T)\n\n\n\ng0 <- network(20, density = 0.06, directed = TRUE)\n\n\n\ng1 <- simulate(~edges + mutual, nsim = 1,\n\n               coef = c(-2.8172, 0), basis = g0,\n\n               control = control.simulate(MCMC.burnin = 1000,\n\n                                          MCMC.interval = 100), seed = seed1)\n\ng2 <- simulate(~edges + mutual, nsim = 1,\n\n               coef = c(-3.0412, 0), basis = g1,\n\n               control = control.simulate(MCMC.burnin = 1000,\n\n                                          MCMC.interval = 100), seed = seed2)\n\ng3 <- simulate(~edges + mutual, nsim = 1,\n\n               coef = c(-3.562, 0), basis = g2,\n\n               control = control.simulate(MCMC.burnin = 1000,\n\n                                          MCMC.interval = 100), seed = seed2)\n\n\n\ng.net <- list()\n\ng.net[[1]] <- g0\n\ng.net[[2]] <- g1\n\ng.net[[3]] <- g2\n\ng.net[[4]] <- g3\n\n\n\nst.g.net <- stergm(g.net,\n\n                   formation = ~edges + mutual,\n\n                   dissolution = ~edges + mutual,\n\n                   estimate = \"CMLE\",\n\n                   control = control.stergm(init.form = NULL,\n\n                                            init.diss = NULL,\n\n                                            init.method = 0,\n\n                                            force.main = FALSE,\n\n                                           SA.restart.on.err = FALSE),\n\n                   times = 1:4)\n\n\n\nsummary(st.g.net)  # STERGM Results\n\n##\n\n## ==============================\n\n## Summary of formation model fit\n\n## ==============================\n\n##\n\n## Formula:   ~edges + mutual\n\n##\n\n## Iterations:  2 out of 20\n\n##\n\n## Monte Carlo MLE Results:\n\n##        Estimate Std. Error MCMC % p-value\n\n## edges   -3.3047     0.1730      0  <1e-04 ***\n\n## mutual   1.1008     0.4576      0  0.0163 *\n\n## ---\n\n## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n##\n\n##      Null Deviance: 1501.4  on 1083  degrees of freedom\n\n##  Residual Deviance:  363.1  on 1081  degrees of freedom\n\n##\n\n## AIC: 367.1    BIC: 377.1    (Smaller is better.)\n\n##\n\n## ================================\n\n## Summary of dissolution model fit\n\n## ================================\n\n##\n\n## Formula:   ~edges + mutual\n\n##\n\n## Iterations:  0 out of 20\n\n##\n\n## Monte Carlo MLE Results:\n\n##        Estimate Std. Error MCMC % p-value\n\n## edges      -Inf          0      0  <1e-04 ***\n\n## mutual     -Inf          0      0  <1e-04 ***\n\n## ---\n\n## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n##\n\n## Log-likelihood was not estimated for this fit.\n\n## To get deviances, AIC, and/or BIC from fit `object$dissolution.fit` run\n\n##   > object$dissolution.fit<-logLik(object$dissolution.fit, add=TRUE)\n\n## to add it to the object or rerun this function with eval.loglik=TRUE.\n\n\n\n3)      Lastly, there is a package called BTERGM for TERGM analysis. What\nrestricts STERGM to require networks at each time point to have the same\nnumber of nodes, while the BTERM package allows for varying numbers of\nnodes at each time point?  Is this due to the BTERGM package looking at the\noverall edge term, while the STERGM looks specifically at formation and\ndissolution separately? If so, would someone be able to help me make sense\nof that?\n\n\n\n\n\nI greatly appreciate any insight on these questions!\n\n\nBest,\n\nNate\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170804/2768f332/attachment.html>",
+      "body_snippet": "Dear Statnet,\n\n\n\nI have a series of clarifying/advice seeking questions related to the TERGM\npackage for STERGM.  Forgive me if these are rather basic questions in\nnetwork analysis. I have read and re",
+      "thread_id": "thread-1f464fce439d",
+      "thread_depth": 0,
+      "month": "2017-08"
+    },
+    {
+      "id": "msg-225256861633",
+      "message_id": "<CAHN00ufGWkf5rECTjXtWKo5hYfTTPdg0-7z4=QAuaAozOG-CJg@mail.gmail.com>",
+      "from_name": "Moses Boudourides",
+      "from_email_hash": "c5624448747271419acb164061064e1a7b0a1e969681d0b921805e16e6affe4a",
+      "date": "2017-08-27T10:32:53Z",
+      "subject": "[statnet_help] Question about bipartite stars and cycles",
+      "subject_clean": "[statnet_help] Question about bipartite stars and cycles",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nMostly I'm using Python in my computations but now I'm trying to do\nERGM in R for a bipartite graph. Actually I'd like to use the\nfollowing terms: b1star(k), b2star(k) and cycle(k). While using, for\nexample, b2star(k, attrname=NULL), how many values of k should I take?\nIs there something like a bipartite gwesp term?\n\nThe other question might be related to something going wrong with my\nconversion of a networkx (Python) graph to an R igraph graph, but I\ncannot figure out what it is. Although my graph g is indeed bipartite\n(it passes the test is_bipartite(g)), after I convert it t ao statnet\ngraph as\n\ng.s <-network::as.network(as.matrix(A), directed=FALSE,biparite=TRUE)\n\nand I run\n\nm03 <- formula(g.s ~ edges + b2star(3, attrname=NULL))\nsummary.statistics(m03)\nm03.ergm <- ergm(m03)\nm03.ergm\n\nI get the error\n\nError in check.ErgmTerm(nw, arglist, directed = FALSE, bipartite =\nTRUE, : The ERGM term may not be used with networks with\nbipartite==FALSE\n\nI understand that there's something I've missed to do and I would\nappreciate your assistance on the above.\n\nBest,\n\n--Moses",
+      "body_snippet": "Hello,\n\nMostly I'm using Python in my computations but now I'm trying to do\nERGM in R for a bipartite graph. Actually I'd like to use the\nfollowing terms: b1star(k), b2star(k) and cycle(k). While usin",
+      "thread_id": "thread-225256861633",
+      "thread_depth": 0,
+      "month": "2017-08"
+    },
+    {
+      "id": "msg-0c71494d8dd1",
+      "message_id": "<CABHA-W5mUMynhkaTP9fS=kY5HPBUOEBdEmMeLxQCR-T+v1+tnw@mail.gmail.com>",
+      "from_name": "An, Weihua",
+      "from_email_hash": "8f9e4c0f67c89e6823863879db87d1ba2120ef15635699ce63ab641394fda354",
+      "date": "2017-08-30T06:57:47Z",
+      "subject": "[statnet_help] Missing sample information in an ERGM object",
+      "subject_clean": "[statnet_help] Missing sample information in an ERGM object",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nThe ERGM help file says ergm returns an object of class ergm that is a list\nincluding information on sample, etc.\n\nBut after fitting an ERGM, I cannot find the sample information. Also\nseveral other values that are described in the help file seem missing as\nwell.\n\nCould any one shed some lights on this? Many thanks!!\n\n\nmd <- ergm (fmh ~ edges + nodefactor (\"Sex\") + nodefactor (\"race\") +\n nodefactor (\"Grade\"))\n\n> md$sample\nNULL\n\n\n\n\nBest regards,\n\nWeihua\n?\n?\n\n\n---------------------------------\nWeihua An, Ph.D.\nDepartment of Sociology and\nInstitute for Quantitative Theory and Methods\nEmory University\nhttps://sites.google.com/view/weihuaan\n\n<https://sites.google.com/view/weihuaan>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170830/ceb9e407/attachment.html>",
+      "body_snippet": "Hello,\n\nThe ERGM help file says ergm returns an object of class ergm that is a list\nincluding information on sample, etc.\n\nBut after fitting an ERGM, I cannot find the sample information. Also\nseveral",
+      "thread_id": "thread-0c71494d8dd1",
+      "thread_depth": 0,
+      "month": "2017-08"
+    },
+    {
+      "id": "msg-5c4f9f413ecf",
+      "message_id": "<YQBPR01MB0161363D31DA2255F6F16DDDAF9D0@YQBPR01MB0161.CANPRD01.PROD.OUTLOOK.COM>",
+      "from_name": "Rachael Milwid",
+      "from_email_hash": "abb07e25a9f4c9b771685a1855a139a628cad81ff1705de35c03725da6211c0a",
+      "date": "2017-08-31T11:58:03Z",
+      "subject": "[statnet_help] statnet ERGM question",
+      "subject_clean": "[statnet_help] statnet ERGM question",
+      "in_reply_to": "<YQBPR01MB0161F21214AD872D14BA6765AF9D0@YQBPR01MB0161.CANPRD01.PROD.OUTLOOK.COM>",
+      "references": [
+        "<YQBPR01MB0161F21214AD872D14BA6765AF9D0@YQBPR01MB0161.CANPRD01.PROD.OUTLOOK.COM>"
+      ],
+      "body_plain": "HI,\nI have a question regarding the formulation of an ERGM model.\nI was wondering a) how do you test for multi-collinearity?\n                My model is producing NAs in the output (however, it does not do this if I take out another term) and I was wondering if this is due to multi-collinearity.\n                                b) Is there a rule regarding the number of terms in the model formulation equation with respect to over fitting the model?\n                                i.e. my model looks like this:\nm1=ergm(new1~edges +\n                   nodematch('pasture')+ nodematch('sex')+nodematch('breed')+nodematch('use')+\n                   nodecov('age')+\n                   nodefactor('pasture')+ nodefactor('sex')+nodefactor('breed')+nodefactor('use')\n        )\n                My network consists of 28 nodes, 225 edges and has a density of .595 . The model output says I have 378 degrees of freedom. Am I including too many terms for my data? How would I calculate the appropriate number of dof for my data?\n\nThanks in advance,\nRachael Milwid\nPhD (c), University of Guelph\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20170831/49bc7936/attachment.html>",
+      "body_snippet": "HI,\nI have a question regarding the formulation of an ERGM model.\nI was wondering a) how do you test for multi-collinearity?\n                My model is producing NAs in the output (however, it does n",
+      "thread_id": "thread-5c4f9f413ecf",
+      "thread_depth": 0,
+      "month": "2017-08"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-494815c4f323",
+      "subject": "[statnet_help] 4 cycle blues",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Tyler Scott"
+      ],
+      "started": "2017-08-01T17:42:49Z",
+      "last_reply": "2017-08-01T21:47:28Z",
+      "root_message_id": "msg-494815c4f323"
+    },
+    {
+      "id": "thread-1f464fce439d",
+      "subject": "[statnet_help] STERGM missing data, interpretation and sample size questions",
+      "message_count": 1,
+      "participants": [
+        "Nathan Abe"
+      ],
+      "started": "2017-08-04T15:46:11Z",
+      "last_reply": "2017-08-04T15:46:11Z",
+      "root_message_id": "msg-1f464fce439d"
+    },
+    {
+      "id": "thread-225256861633",
+      "subject": "[statnet_help] Question about bipartite stars and cycles",
+      "message_count": 1,
+      "participants": [
+        "Moses Boudourides"
+      ],
+      "started": "2017-08-27T10:32:53Z",
+      "last_reply": "2017-08-27T10:32:53Z",
+      "root_message_id": "msg-225256861633"
+    },
+    {
+      "id": "thread-0c71494d8dd1",
+      "subject": "[statnet_help] Missing sample information in an ERGM object",
+      "message_count": 1,
+      "participants": [
+        "An, Weihua"
+      ],
+      "started": "2017-08-30T06:57:47Z",
+      "last_reply": "2017-08-30T06:57:47Z",
+      "root_message_id": "msg-0c71494d8dd1"
+    },
+    {
+      "id": "thread-5c4f9f413ecf",
+      "subject": "[statnet_help] statnet ERGM question",
+      "message_count": 1,
+      "participants": [
+        "Rachael Milwid"
+      ],
+      "started": "2017-08-31T11:58:03Z",
+      "last_reply": "2017-08-31T11:58:03Z",
+      "root_message_id": "msg-5c4f9f413ecf"
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2022-06",
+  "messages": [
+    {
+      "id": "msg-a5ebcf60c2e9",
+      "message_id": "<BN6PR01MB2340C0EC1A52DEE55DFC09FDDDA79@BN6PR01MB2340.prod.exchangelabs.com>",
+      "from_name": "Zachary Gibson",
+      "from_email_hash": "1fe6d05be6c3a99458ca5704605bc26a9fa66d768370c4a4ae19620797d794da",
+      "date": "2022-06-09T14:38:24Z",
+      "subject": "[statnet_help] Appropriate terms for bipartite ERGM?",
+      "subject_clean": "[statnet_help] Appropriate terms for bipartite ERGM?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hello,\n\nI'm currently working on a project with bipartite networks. We're interested in understanding what drives actors in the first mode to connect with the same node in the second mode. We hypothesized:\n\n\n  1.  Actors who are similar in certain traits would be more likely to connect with the same node\n  2.  Actors who are geographically proximal would be more likely to connect with the same node.\n\nI'm unsure of terms in ERGM that aptly capture these hypotheses except for b1nodematch, which doesn't seem intended for continuous covariates. I considered building terms using the ergm.userterms package, but that appears to be offline at the moment?\n\nAny advice would be greatly appreciated! Thank you!\n\nZachary Gibson, Ph.D.\nResearch Associate (Community Services & Technology)\nD'Aniello Institute for Veterans and Military Families<https://ivmf.syracuse.edu/>\n\nT 847.440.6930\nzagibson@syr.edu<mailto:zagibson@syr.edu>\n\nNational Veterans Resource Center\nDaniel & Gayle D'Aniello Building\n101 Waverly Ave, Syracuse, NY 13244\nivmf.syracuse.edu<https://ivmf.syracuse.edu/>\n[Syracuse University D'Aniello Institute for Veterans and Military Families Logo. JPMorgan Chase & Co., Founding Partner.]\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20220609/b5e3d8d7/attachment.html>\n-------------- next part --------------\nA non-text attachment was scrubbed...\nName: image001.png\nType: image/png\nSize: 16365 bytes\nDesc: image001.png\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20220609/b5e3d8d7/attachment.png>",
+      "body_snippet": "Hello,\n\nI'm currently working on a project with bipartite networks. We're interested in understanding what drives actors in the first mode to connect with the same node in the second mode. We hypothes",
+      "thread_id": "thread-a5ebcf60c2e9",
+      "thread_depth": 0,
+      "month": "2022-06"
+    },
+    {
+      "id": "msg-92a120fb584e",
+      "message_id": "<1b72ea0.c57.1816a183403.Coremail.15927173853@163.com>",
+      "from_name": "霍龙霞",
+      "from_email_hash": "1cc3cd3a4ebab53b59a8422c6a36a465ee7ee3165bde7ca44a7ff6713b8c5ab0",
+      "date": "2022-06-15T18:19:40Z",
+      "subject": "[statnet_help] error in ergm-term triangle",
+      "subject_clean": "[statnet_help] error in ergm-term triangle",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI use the ergm to model the formation of network. but it is always degeneracy. there are 43 nodes, 492 edeges, 3562 triangles. i use the code as follow:\n\n\nergm1<-ergm(net1~edges+triangle,control=control.ergm(seed=2345))\n\n\n\nThe error message popppes up: \n\n\nModel statistics ?triangle? are not varying. This may indicate that the observed data occupies an extreme point in the sample space or that the estimation has reached a dead-end configuration.\n\n\n\nI also try to use gwesp to solve model degeneracy. the code as follow\n\n\nergm1<-ergm(net1~edges+gwesp(0.5, fixed = TRUE),control=control.ergm(seed=2345))\n\n\nHowever, it doesn't work, either. And the error as follows: \n\n\nIteration 2 of at most 60:\nError in ergm.MCMLE(init, nw, model, initialfit = (initialfit <- NULL),  :\n  Unconstrained MCMC sampling did not mix at all. Optimization cannot continue.\nIn addition: Warning message:\nIn ergm_MCMC_sample(s, control, theta = mcmc.init, verbose = max(verbose -  :\n  Unable to reach target effective size in iterations alotted.\n\n\nI want to know is there  any solution to fix this error? \nThank you very much!\n\n\n\nBest,\nLongxia Huo\nPh.D. Student\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20220616/51cc87a4/attachment.html>",
+      "body_snippet": "Hi all,\n\nI use the ergm to model the formation of network. but it is always degeneracy. there are 43 nodes, 492 edeges, 3562 triangles. i use the code as follow:\n\n\nergm1<-ergm(net1~edges+triangle,cont",
+      "thread_id": "thread-92a120fb584e",
+      "thread_depth": 0,
+      "month": "2022-06"
+    },
+    {
+      "id": "msg-8986aa9ecd34",
+      "message_id": "<23c0488e-95d5-841a-5e5f-ffe7da5ba9e5@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2022-06-15T22:21:36Z",
+      "subject": "[statnet_help] error in ergm-term triangle",
+      "subject_clean": "[statnet_help] error in ergm-term triangle",
+      "in_reply_to": "<1b72ea0.c57.1816a183403.Coremail.15927173853@163.com>",
+      "references": [
+        "<1b72ea0.c57.1816a183403.Coremail.15927173853@163.com>"
+      ],
+      "body_plain": "Hi, Longxia -\n\nThis is not a bug: the model families you are fitting are usually \ndegenerate in social networks.? The edge-triangle family is particularly \ninfamous in that regard - you can find the first results on that one in \nStrauss's 1986 SIAM paper, and it has been the target of many other \ntheoretical studies.? We love to work with it as a theoretical and \ndidactic tool for understanding how ERGMs work, but it is rarely useful \nin empirical models.? (It can have uses when the triangle parameter is \n/negative/, but that doesn't happen in most social networks. /Local/ \ntriangle terms can also work, but only when confined to very small \ngroups.? So, while there are exceptions, one should not be surprised to \nfind that an edge-triangle model fails when modeling social networks.)\n\nWithout belaboring the point on why this goes bad (as noted, there's a \nwhole literature on that), the basic intuition is that a positive \ntriangle term \"says\" that every shared partner of an i,j pair should \nincrease the conditional log-odds of an i,j tie by a constant unit.? \nThat sounds harmless, but in practice it leads to runaway triangle \nformation: once triangles form, they don't break, and triangles beget \nmore triangles without limit.? (This is the \"density explosion\" route to \ndegeneracy.)? In the end, the MCMC simulation that is being used to fit \nyour model tells you that something has gone horribly wrong, and quits.? \nThat's not a bug: what this is telling you is that the model you are \npositing, is incompatible with your data.\n\nAs you correctly observe, GWESP is an alternative parameterization that \nis less prone to the density explosion, and it often works very well.? \nVery approximately speaking, it works by implementing diminishing \nmarginal effects for the impact of shared partners on tie formation: the \nfirst matters more than the second, the second matters more than the \nthird, etc.? This fall-off is controlled by the decay parameter.? If the \ndecay parameter is too large, then the decay will be too slow, and you \nwill wind up right back in the same regime you were in with the triangle \nterm; how large is too large is case specific, but if you find that the \nmodel stops mixing, it's a good idea to reduce the parameter and try \nagain.? Although there are no (and cannot be) general rules, 0.25 is \noften a reasonable starting value for many social networks.? I would try \nmuch smaller values, and see if that helps.\n\nAnother general issue is that your model is depending on a homogeneous \nclustering effect to explain all of the excess triangulation in the \ngraph.? In real-world social networks, much triangulation usually \nresults from inhomogeneities (e.g., non-uniform mixing due to \ndemographics, shared social settings, exogenous group memberships, \netc.), which produce a \"patchy\" and uneven distribution of triangles \nthat is not similar to what is generated by homogeneous terms (e.g., \ntriangles, GWESP, ESPs). Fitting such networks with edges + GWESP forces \nthe model to struggle between putting too few triangles in the parts of \nthe network that need them, and putting too many in the parts that don't \n- the results are often disappointing.? The solution here is to use \ncovariate effects to capture differential mixing, and then to add GWESP \nand other dependence terms to \"mop up\" what cannot be captured via \ncovariate effects.? This is something that we used to cover in our ergm \nworkshop, so you may want to check our online workshop materials.? I'm \nnot certain if it's still in the latest version (since various topics \nand examples get rotated in and out over time), but if not, it should be \nin some of the older ones.\n\nSo, in sum:\n\n1. Avoid triangle terms, unless you know that you are in one of those \nspecial exceptional cases where they are useful (and if they aren't \nworking, you aren't in one of those situations!);\n\n2. When in doubt, try starting GWESP with small decay parameters (0.25 \nor less is often, though not always, reasonable when trying to get a \nmodel to fit the first time);\n\n3. Start by visualizing your network and trying to understand its \nsources of triangulation; account for those first using covariate \neffects, and then add dependence terms if/as needed to mop up what those \ncouldn't capture.\n\nHope that helps,\n\n-Carter\n\nOn 6/15/22 6:19 PM, ??? wrote:\n> Hi all,\n> I use the ergm to model the formation of network. but it is always \n> degeneracy. there are 43 nodes, 492?edeges, 3562 triangles. i use the \n> code as follow:\n> /\n> /\n> /ergm1<-ergm(net1~edges+triangle,control=control.ergm(seed=2345))/\n> /\n> /\n> The error message popppes up:\n>\n> /Model statistics ?triangle? are not varying. This may indicate that \n> the observed data occupies an extreme point in the sample space or \n> that the estimation has reached a dead-end configuration./\n> /\n> /\n> I also try to use gwesp to solve model degeneracy. the code as follow\n>\n> /ergm1<-ergm(net1~edges+gwesp(0.5, fixed = \n> TRUE),control=control.ergm(seed=2345))/\n> /\n> /\n> However, it doesn't work, either. And the error as follows:\n>\n> /Iteration 2 of at most 60:/\n> /Error in ergm.MCMLE(init, nw, model, initialfit = (initialfit <- \n> NULL), ?:\n> ? Unconstrained MCMC sampling did not mix at all. Optimization cannot \n> continue.\n> In addition: Warning message:\n> In ergm_MCMC_sample(s, control, theta = mcmc.init, verbose = \n> max(verbose - ?:\n> ? Unable to reach target effective size in iterations alotted./\n> /\n> /\n> I want to know is there any solution to fix this error?\n> Thank you very much!\n>\n> Best,\n> Longxia Huo\n> Ph.D. Student\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://urldefense.com/v3/__http://mailman13.u.washington.edu/mailman/listinfo/statnet_help__;!!CzAuKJ42GuquVTTmVmPViYEvSg!MEpJKUWuuhzOb4dbedz9CP8vReuII3z5EQcaUBdOHJhs7smhlyKxWK7zoy6WF4vaYfJJKJo9TK3LsXVf7hA$  \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20220615/39add128/attachment.html>",
+      "body_snippet": "Hi, Longxia -\n\nThis is not a bug: the model families you are fitting are usually \ndegenerate in social networks.? The edge-triangle family is particularly \ninfamous in that regard - you can find the f",
+      "thread_id": "thread-92a120fb584e",
+      "thread_depth": 1,
+      "month": "2022-06"
+    },
+    {
+      "id": "msg-03ea56ed779a",
+      "message_id": "<OS0P286MB0515D3B5C9F094C7A39F181592AC9@OS0P286MB0515.JPNP286.PROD.OUTLOOK.COM>",
+      "from_name": "Jing Chen",
+      "from_email_hash": "8923754ec0448096ae5c75baefc020a0cd5331a6a52bfc5beaca53d0dfa54320",
+      "date": "2022-06-16T04:43:57Z",
+      "subject": "[statnet_help] standardized coefficients in ERGMs",
+      "subject_clean": "[statnet_help] standardized coefficients in ERGMs",
+      "in_reply_to": "<OS0P286MB0515D936B141F1D93162A65692D09@OS0P286MB0515.JPNP286.PROD.OUTLOOK.COM>",
+      "references": [
+        "<OS0P286MB0515D936B141F1D93162A65692D09@OS0P286MB0515.JPNP286.PROD.OUTLOOK.COM>"
+      ],
+      "body_plain": "Dear Statnet community,\n\nI am posting this question again - not sure if the previous one was sent successfully.\n\nI am trying to compare the strength of an edge effect across ERGMs (the identical model specification, but the outcome objects are different). I am wondering how do we talk about effect sizes in the ERGM world? Are the \"regression\" coefficients presented in the ERGM output standardized? If not, is there a way to do so?\n\nAny information would be appreciated. Thank you!\n\nJing Chen, Ph.D.\nAssistant professor\nShanghai Jiao Tong University\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20220616/2e99aba8/attachment.html>",
+      "body_snippet": "Dear Statnet community,\n\nI am posting this question again - not sure if the previous one was sent successfully.\n\nI am trying to compare the strength of an edge effect across ERGMs (the identical model",
+      "thread_id": "thread-03ea56ed779a",
+      "thread_depth": 0,
+      "month": "2022-06"
+    },
+    {
+      "id": "msg-7415207623f3",
+      "message_id": "<f871c07efa7845f39be51014528416f1@fu-berlin.de>",
+      "from_name": "Krause, Robert",
+      "from_email_hash": "beb307e385eea7a3c563da915a7d7d3aefa115d831f242a6a171932874d1e025",
+      "date": "2022-06-16T08:29:55Z",
+      "subject": "[statnet_help] standardized coefficients in ERGMs",
+      "subject_clean": "[statnet_help] standardized coefficients in ERGMs",
+      "in_reply_to": "<OS0P286MB0515D3B5C9F094C7A39F181592AC9@OS0P286MB0515.JPNP286.PROD.OUTLOOK.COM>",
+      "references": [
+        "<OS0P286MB0515D936B141F1D93162A65692D09@OS0P286MB0515.JPNP286.PROD.OUTLOOK.COM>",
+        "<OS0P286MB0515D3B5C9F094C7A39F181592AC9@OS0P286MB0515.JPNP286.PROD.OUTLOOK.COM>"
+      ],
+      "body_plain": "Dear Jing,\n\n\nIn general terms, it is extremely difficult to compare parameters across models. Carina Mood (2010) showed this in detail for simple logistic regression models. Her results very much hold for ergms but are much more pronounced here due to the increased complexity and the connectedness, of well, everything.\n\nIf you go to the mail that Carter wrote this morning and take the example he used, that you might have subgroups based on some covariate which have high levels of transitive closure within the groups but relatively fewer ties (and thus also fewer transitive ties) between groups. And now compare this to a network where the same covariates exert a far weaker influence on homophilic clustering. If the transitivity (gwesp...) parameters are the same across the two networks (but density is different so that overall degree is the same), for most people the real contribution on probability for creating a tie due to shared partners will be different.\n\nIf you take the odds ratios, as I often see as a reviewer, than they are (as Mood 2010 shows!!) not a good idea, because, say your have a reciprocity/mutual effect of '2', then this effect will matter very differently for a dyad that shares several covariates and has many friends in common, having the incoming tie will increase the probability, but the real effect might be relatively small, given that the probability to connect was already high. On the other hand, two nodes that do not share any covariates or friends in common might be much stronger affected if one send a tie to another. If a certain parameter now primarily occurs together with other parameters in one network or one part of a network (e.g., where there are subgroups there is also clustering - but no interaction between groups and clustering), then this is very difficult to compare to another network.\n\n\nSo, in short, no the parameters are not standardized and there is no easy way to do this.\n\nAverage marginal effect would be great to have but no one has, as far as I know, implemented them or something similar for ergms and the computational power required will probably be very large in all but trivial models or very small graphs (SAOMs have Relative Importance, see Indlekofer & Brandes 2013, and something similar could probably be implemented in ergm).\n\nOne option would be to create a few example cases and vary the statistics for the parameters to see the effects on tie probability, something like Marginal Effect at Representative values (MER)?\n\n\nSorry :/ I do not have a better answer - and sorry for the late response, I saw the mail last month but forgot to reply...\n\n\nCheers from a (way too) sunny Berlin,\n\nRobert\n\n________________________________\nVon: statnet_help <statnet_help-bounces@mailman13.u.washington.edu> im Auftrag von Jing Chen <chenj.chenjing@outlook.com>\nGesendet: Donnerstag, 16. Juni 2022 13:43:57\nAn: statnet_help@u.washington.edu\nBetreff: [statnet_help] standardized coefficients in ERGMs\n\nDear Statnet community,\n\nI am posting this question again ? not sure if the previous one was sent successfully.\n\nI am trying to compare the strength of an edge effect across ERGMs (the identical model specification, but the outcome objects are different). I am wondering how do we talk about effect sizes in the ERGM world? Are the ?regression? coefficients presented in the ERGM output standardized? If not, is there a way to do so?\n\nAny information would be appreciated. Thank you!\n\nJing Chen, Ph.D.\nAssistant professor\nShanghai Jiao Tong University\n\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20220616/99c9e1c7/attachment.html>",
+      "body_snippet": "Dear Jing,\n\n\nIn general terms, it is extremely difficult to compare parameters across models. Carina Mood (2010) showed this in detail for simple logistic regression models. Her results very much hold",
+      "thread_id": "thread-03ea56ed779a",
+      "thread_depth": 1,
+      "month": "2022-06"
+    },
+    {
+      "id": "msg-07f31632642e",
+      "message_id": "<1d81aaf7-becf-ee44-c8ad-78a36ccd8d66@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2022-06-16T20:58:22Z",
+      "subject": "[statnet_help] standardized coefficients in ERGMs",
+      "subject_clean": "[statnet_help] standardized coefficients in ERGMs",
+      "in_reply_to": "<OS0P286MB0515D3B5C9F094C7A39F181592AC9@OS0P286MB0515.JPNP286.PROD.OUTLOOK.COM>",
+      "references": [
+        "<OS0P286MB0515D936B141F1D93162A65692D09@OS0P286MB0515.JPNP286.PROD.OUTLOOK.COM>",
+        "<OS0P286MB0515D3B5C9F094C7A39F181592AC9@OS0P286MB0515.JPNP286.PROD.OUTLOOK.COM>"
+      ],
+      "body_plain": "Hi, Jing -\n\nRobert's email pointed out some of the complexities here, but I think \none might even more usefully turn the question around.? What do does one \n/want to mean/ by an effect size?? By a standardized coefficient?? Once \nthat is decided, one can determine (1) if such a quantity is \nwell-defined, and (2) if so, how it can be calculated.? As Robert \nobserved, many ideas that analysts have about effect sizes and \nstandardization are actually special properties of linear models, and do \nnot generalize to the non-linear world.? Such ideas are of limited use \nin understanding even logistic regression, much less complex systems \nwith \"feedback\" among the elements (which is what we ERGMs are \nrepresenting).? But, on the other hand, there are lots of ways to talk \nabout effects and relative effects that can be useful for comparative \npurposes.? For instance:\n\n ?- Trivially, the ERGM coefficients tell you about how the conditional \nlog odds of an edge vary as a function of the covariates, and the rest \nof the graph.? This provides an effect that has a consistent meaning \nacross networks, and indeed is about as comparable as anything gets in a \nnonlinear model.? (The meaning is /local/, in the sense that the change \nin log odds is taken relative to a particular state, but that's the \nprice of living in a nonlinear world.)? For quantitative covariate \neffects, one can pick any scale one wants, so if you wanted to partially \n\"standardize\" by scaling the covariates to have unit variance, one could \ndo this.? (I tend to think that this type of practice usually causes \nmore problems than it solves in the long run, but there's nothing \nillegitimate about it.)\n\n ?- Via conditional simulation, one can evaluate e.g. the expected \nchange in one or more target statistics, as a function of change in one \n(or a combination of) parameters.? This is local with respect to the \nparameter vector, and may or may not be useful to compare across graphs \ndepending on one's choice of statistics, but it does capture (local) \n\"net\" effects due to feedback between statistics, etc.? If one has a \nconcrete substantive question relating to some aspect of network \nstructure, computing such effects may be insightful.? One can, further, \npartially \"standardize\" these effects by scaling them by the standard \ndeviation of the target statistics (or a function thereof) at the base \nparameter vector.? This gives you the expected change in statistics per \nunit change in parameters (local to the current base value), in units of \nthe standard deviation in those statistics.? As with the above case, \nwhether this is a good idea depends on what you want to know, but it can \nbe helpful in giving you a sense of the extent to which small changes in \nthe parameters are making a large difference in network structure, \nrelative to the variation that you would naturally expect to see in that \nstructure.\n\n ?- I'm a fan these days of scenario evaluations, and things like \nvirtual \"knock-out\" experiments: in the latter case, we compare the \nexpectation of some target statistic (or some other distributional \nstatistic) for particular parameters (e.g., the MLE of a fitted model) \nwith what we get if one or more terms in the model are set to zero.? \nThat is, we reach in and \"turn off\" the term, and see what it does to \nthe graph (as is done physically in a knock-out experiment, where one \nmight e.g., \"turn off\" expression of some gene in a mouse and see what \neffect it has). This can be useful as a probe to better understand how \nparticular mechanisms are contributing to the overall behavior of the \nmodel, and can be used to construct a certain type of \"effect size\" \nbased on how the target changes when specific effects are removed. \n(Whether that is useful depends on what you want to know, of course, but \nit can be insightful.)? We can of course do knock-down/knock-in/knock-up \nversions, as well, as well as versions where we modify e.g. covariates \nrather than parameters - all boil down to trying to understand the \nimplications of model terms on substantive behavior by comparing across \nhypothetical scenarios (whether of empirically plausible or entirely \nconceptual nature).\n\n ?- In some physical settings, the ERGM parameters have a pretty \nconcrete meaning as effective forces: setting aside things like \ncontributions from the reference measure, a given parameter is the \nenergy per unit change in the statistic, times -1/(kT) where T is the \nsystem temperature and k is Boltzmann's constant.? So, what we see is \nthe (additive inverse of the) energetic cost of changing a given \nstatistic by one unit, relative to the size of typical energy \nfluctuations (i.e., kT).? Admittedly, this is not as immediately helpful \nfor social networks, but there are other settings where T is known, and \nthe adjusted parameters then have a very direct and absolute \ninterpretation.? From this vantage point, our usual coefficients are \nalready standardized, in the sense that they reflect (to gloss it a bit) \ncosts of changing the graph relative to available resources.? I think \nthis can be pushed a bit further even in the social case, but I think it \nis safe to say that this is still something that is being worked out.? \nWe'll have to see where it leads.\n\nAnyway, those are just a few of the examples of things that folks are \ndoing in this area.? I agree with Robert that we're not going to have \nsome simple, generic recipe for how to think about effects that is ideal \nin all cases, but that doesn't exist even for linear models.? By turns, \nwe have quite a lot of powerful ways to use and interpret the \ncoefficients that we have, and I think that folks will continue to come \nup with new ones as the number of applications grows.? What needs to be \nin the driver's seat, in my view, are the substantive questions.? If \nfolks know and can clearly articulate what they are trying to learn, \nthen they are likely to be able to come up with ways to measure the \nright quantities.\n\nHope that is helpful,\n\n-Carter\n\nOn 6/16/22 4:43 AM, Jing Chen wrote:\n>\n> Dear Statnet community,\n>\n> I am posting this question again ? not sure if the previous one was \n> sent successfully.\n>\n> I am trying to compare the strength of an edge effect across ERGMs \n> (the identical model specification, but the outcome objects are \n> different). I am wondering how do we talk about effect sizes in the \n> ERGM world? Are the ?regression? coefficients presented in the ERGM \n> output standardized? If not, is there a way to do so?\n>\n> Any information would be appreciated. Thank you!\n>\n> Jing Chen, Ph.D.\n>\n> Assistant professor\n>\n> Shanghai Jiao Tong University\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://urldefense.com/v3/__http://mailman13.u.washington.edu/mailman/listinfo/statnet_help__;!!CzAuKJ42GuquVTTmVmPViYEvSg!M_zeRwLHiLMJLk_Nxn_dg32pF8ECLVLcU2Sed2IKAaJFtBJa4hT_afhwHhFydSu0iOdUHi2jERtRUQqE9FnFwOxq$  \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20220616/39478cc8/attachment.html>",
+      "body_snippet": "Hi, Jing -\n\nRobert's email pointed out some of the complexities here, but I think \none might even more usefully turn the question around.? What do does one \n/want to mean/ by an effect size?? By a sta",
+      "thread_id": "thread-03ea56ed779a",
+      "thread_depth": 1,
+      "month": "2022-06"
+    },
+    {
+      "id": "msg-0649e10b9994",
+      "message_id": "<OS0P286MB05159F06D0C6A417E16EA70192AF9@OS0P286MB0515.JPNP286.PROD.OUTLOOK.COM>",
+      "from_name": "Jing Chen",
+      "from_email_hash": "8923754ec0448096ae5c75baefc020a0cd5331a6a52bfc5beaca53d0dfa54320",
+      "date": "2022-06-17T01:23:06Z",
+      "subject": "[statnet_help] standardized coefficients in ERGMs",
+      "subject_clean": "[statnet_help] standardized coefficients in ERGMs",
+      "in_reply_to": "<1d81aaf7-becf-ee44-c8ad-78a36ccd8d66@uci.edu>",
+      "references": [
+        "<OS0P286MB0515D936B141F1D93162A65692D09@OS0P286MB0515.JPNP286.PROD.OUTLOOK.COM>",
+        "<OS0P286MB0515D3B5C9F094C7A39F181592AC9@OS0P286MB0515.JPNP286.PROD.OUTLOOK.COM>",
+        "<1d81aaf7-becf-ee44-c8ad-78a36ccd8d66@uci.edu>"
+      ],
+      "body_plain": "A lot of thanks to Carter and Robert for your thoughtful responses! They have been very helpful!\n\nWhat I am trying to compare is the strengths of a few edge effects, which basically are the associations between pairs of network objects. Carter?s idea of turning the question around is inspiring. Instead of diving deep methodologically into the ?effect size? issue, Jaccard index and QAP may be good enough for my purpose, given my reviewers are probably not familiar with network analysis.\n\nThanks again,\nJing\n\nFrom: statnet_help <statnet_help-bounces@mailman13.u.washington.edu> On Behalf Of Carter T. Butts\nSent: Friday, June 17, 2022 11:58 AM\nTo: statnet_help@u.washington.edu\nSubject: Re: [statnet_help] standardized coefficients in ERGMs\n\n\nHi, Jing -\n\nRobert's email pointed out some of the complexities here, but I think one might even more usefully turn the question around.  What do does one want to mean by an effect size?  By a standardized coefficient?  Once that is decided, one can determine (1) if such a quantity is well-defined, and (2) if so, how it can be calculated.  As Robert observed, many ideas that analysts have about effect sizes and standardization are actually special properties of linear models, and do not generalize to the non-linear world.  Such ideas are of limited use in understanding even logistic regression, much less complex systems with \"feedback\" among the elements (which is what we ERGMs are representing).  But, on the other hand, there are lots of ways to talk about effects and relative effects that can be useful for comparative purposes.  For instance:\n\n - Trivially, the ERGM coefficients tell you about how the conditional log odds of an edge vary as a function of the covariates, and the rest of the graph.  This provides an effect that has a consistent meaning across networks, and indeed is about as comparable as anything gets in a nonlinear model.  (The meaning is local, in the sense that the change in log odds is taken relative to a particular state, but that's the price of living in a nonlinear world.)  For quantitative covariate effects, one can pick any scale one wants, so if you wanted to partially \"standardize\" by scaling the covariates to have unit variance, one could do this.  (I tend to think that this type of practice usually causes more problems than it solves in the long run, but there's nothing illegitimate about it.)\n\n - Via conditional simulation, one can evaluate e.g. the expected change in one or more target statistics, as a function of change in one (or a combination of) parameters.  This is local with respect to the parameter vector, and may or may not be useful to compare across graphs depending on one's choice of statistics, but it does capture (local) \"net\" effects due to feedback between statistics, etc.  If one has a concrete substantive question relating to some aspect of network structure, computing such effects may be insightful.  One can, further, partially \"standardize\" these effects by scaling them by the standard deviation of the target statistics (or a function thereof) at the base parameter vector.  This gives you the expected change in statistics per unit change in parameters (local to the current base value), in units of the standard deviation in those statistics.  As with the above case, whether this is a good idea depends on what you want to know, but it can be helpful in giving you a sense of the extent to which small changes in the parameters are making a large difference in network structure, relative to the variation that you would naturally expect to see in that structure.\n\n - I'm a fan these days of scenario evaluations, and things like virtual \"knock-out\" experiments: in the latter case, we compare the expectation of some target statistic (or some other distributional statistic) for particular parameters (e.g., the MLE of a fitted model) with what we get if one or more terms in the model are set to zero.  That is, we reach in and \"turn off\" the term, and see what it does to the graph (as is done physically in a knock-out experiment, where one might e.g., \"turn off\" expression of some gene in a mouse and see what effect it has).  This can be useful as a probe to better understand how particular mechanisms are contributing to the overall behavior of the model, and can be used to construct a certain type of \"effect size\" based on how the target changes when specific effects are removed.  (Whether that is useful depends on what you want to know, of course, but it can be insightful.)  We can of course do knock-down/knock-in/knock-up versions, as well, as well as versions where we modify e.g. covariates rather than parameters - all boil down to trying to understand the implications of model terms on substantive behavior by comparing across hypothetical scenarios (whether of empirically plausible or entirely conceptual nature).\n\n - In some physical settings, the ERGM parameters have a pretty concrete meaning as effective forces: setting aside things like contributions from the reference measure, a given parameter is the energy per unit change in the statistic, times -1/(kT) where T is the system temperature and k is Boltzmann's constant.  So, what we see is the (additive inverse of the) energetic cost of changing a given statistic by one unit, relative to the size of typical energy fluctuations (i.e., kT).  Admittedly, this is not as immediately helpful for social networks, but there are other settings where T is known, and the adjusted parameters then have a very direct and absolute interpretation.  From this vantage point, our usual coefficients are already standardized, in the sense that they reflect (to gloss it a bit) costs of changing the graph relative to available resources.  I think this can be pushed a bit further even in the social case, but I think it is safe to say that this is still something that is being worked out.  We'll have to see where it leads.\n\nAnyway, those are just a few of the examples of things that folks are doing in this area.  I agree with Robert that we're not going to have some simple, generic recipe for how to think about effects that is ideal in all cases, but that doesn't exist even for linear models.  By turns, we have quite a lot of powerful ways to use and interpret the coefficients that we have, and I think that folks will continue to come up with new ones as the number of applications grows.  What needs to be in the driver's seat, in my view, are the substantive questions.  If folks know and can clearly articulate what they are trying to learn, then they are likely to be able to come up with ways to measure the right quantities.\n\nHope that is helpful,\n\n-Carter\nOn 6/16/22 4:43 AM, Jing Chen wrote:\nDear Statnet community,\n\nI am posting this question again ? not sure if the previous one was sent successfully.\n\nI am trying to compare the strength of an edge effect across ERGMs (the identical model specification, but the outcome objects are different). I am wondering how do we talk about effect sizes in the ERGM world? Are the ?regression? coefficients presented in the ERGM output standardized? If not, is there a way to do so?\n\nAny information would be appreciated. Thank you!\n\nJing Chen, Ph.D.\nAssistant professor\nShanghai Jiao Tong University\n\n\n\n\n\n_______________________________________________\n\nstatnet_help mailing list\n\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\n\nhttps://urldefense.com/v3/__http://mailman13.u.washington.edu/mailman/listinfo/statnet_help__;!!CzAuKJ42GuquVTTmVmPViYEvSg!M_zeRwLHiLMJLk_Nxn_dg32pF8ECLVLcU2Sed2IKAaJFtBJa4hT_afhwHhFydSu0iOdUHi2jERtRUQqE9FnFwOxq$<https://urldefense.com/v3/__http:/mailman13.u.washington.edu/mailman/listinfo/statnet_help__;!!CzAuKJ42GuquVTTmVmPViYEvSg!M_zeRwLHiLMJLk_Nxn_dg32pF8ECLVLcU2Sed2IKAaJFtBJa4hT_afhwHhFydSu0iOdUHi2jERtRUQqE9FnFwOxq$>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20220617/ae0784a8/attachment.html>",
+      "body_snippet": "A lot of thanks to Carter and Robert for your thoughtful responses! They have been very helpful!\n\nWhat I am trying to compare is the strengths of a few edge effects, which basically are the associatio",
+      "thread_id": "thread-03ea56ed779a",
+      "thread_depth": 2,
+      "month": "2022-06"
+    },
+    {
+      "id": "msg-33374899fec9",
+      "message_id": "<7f44c74.3d63.1818a502d41.Coremail.15927173853@163.com>",
+      "from_name": "霍龙霞",
+      "from_email_hash": "1cc3cd3a4ebab53b59a8422c6a36a465ee7ee3165bde7ca44a7ff6713b8c5ab0",
+      "date": "2022-06-22T00:28:39Z",
+      "subject": "[statnet_help] question about standardized coefficients in MR-QAP",
+      "subject_clean": "[statnet_help] question about standardized coefficients in MR-QAP",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI have a question relating to MR-QAP coefficient. I have two different undirected collaborative networks: N1(35*35) and N2(41*41). And I want to run MR-QAP to (1) examine factors predicting collaboration (homophily, sender effect, and transitivity; the model specification are same); (2) explore the relative contribution of above effects within network; (3) and compare the strength of certain effect across QAPs (e.g. is the homophily effect in N1 stronger than N2). For the goal(3), Could I compare the standardized coefficient of N1 model and N2 model?\n\nThank you!\n\nBest,\n\nLongxia Huo\n\nPh.D. Student\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20220622/fb381bb9/attachment.html>",
+      "body_snippet": "Hi all,\n\nI have a question relating to MR-QAP coefficient. I have two different undirected collaborative networks: N1(35*35) and N2(41*41). And I want to run MR-QAP to (1) examine factors predicting c",
+      "thread_id": "thread-33374899fec9",
+      "thread_depth": 0,
+      "month": "2022-06"
+    },
+    {
+      "id": "msg-074d23ddde2b",
+      "message_id": "<9b8c557a-0a8d-b8a4-d87c-de9b4eb44050@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2022-06-22T01:00:14Z",
+      "subject": "[statnet_help] question about standardized coefficients in MR-QAP",
+      "subject_clean": "[statnet_help] question about standardized coefficients in MR-QAP",
+      "in_reply_to": "<7f44c74.3d63.1818a502d41.Coremail.15927173853@163.com>",
+      "references": [
+        "<7f44c74.3d63.1818a502d41.Coremail.15927173853@163.com>"
+      ],
+      "body_plain": "Hi, Longxia Huo -\n\nOLS network regression coefficients (as obtained e.g., from netlm) can \nbe interpreted in the same fashion as any other linear regression \ncoefficients - they are, in fact, exactly equivalent to vectorizing the \ndependent network and regressing it on the vectorized versions of the \nindependent networks.? So, in that regard, effect sizes and such have \ntheir usual linear meanings (provided that one interprets them in terms \nof edge variables, and sticks to descriptive statements - some \ninferential ones can also be justified, but beware of anything that \nrequires an independence assumption).? By turns, the QAP null hypothesis \ntests are just that (tests), and you would not want to use QAP quantiles \nas a proxy for effect sizes, or otherwise compare them across models. \n(At least, not without some guiding theory, and I'm not aware of \nanything apposite.)\n\nHope that helps!\n\n-Carter\n\nOn 6/22/22 12:28 AM, ??? wrote:\n>\n> Hi all,\n>\n> I have a question?relating to MR-QAP coefficient. I have two different \n> undirected collaborative networks: N1(35*35) and N2(41*41). And I want \n> to run MR-QAP to (1) examine factors predicting collaboration \n> (homophily, sender effect, and transitivity; the model specification \n> are same); (2) explore the relative contribution of above effects \n> within network; (3) and compare the strength of certain effect across \n> QAPs (e.g. is the homophily effect in N1 stronger than N2). For the \n> goal(3), Could I compare the standardized coefficient of N1 model and \n> N2 model?\n>\n> Thank you!\n>\n> Best,\n>\n> Longxia Huo\n>\n> Ph.D. Student\n>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://urldefense.com/v3/__http://mailman13.u.washington.edu/mailman/listinfo/statnet_help__;!!CzAuKJ42GuquVTTmVmPViYEvSg!MfEHpuDk-Bh78ovdq-bOxkwiDC4SivhxSS4BNxc_6gmEicM6kd8SK_IsIa6Q8rqyWMmqrUNCuB0IdZ6VCcQ$  \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20220622/25cf03c9/attachment.html>",
+      "body_snippet": "Hi, Longxia Huo -\n\nOLS network regression coefficients (as obtained e.g., from netlm) can \nbe interpreted in the same fashion as any other linear regression \ncoefficients - they are, in fact, exactly ",
+      "thread_id": "thread-33374899fec9",
+      "thread_depth": 1,
+      "month": "2022-06"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-a5ebcf60c2e9",
+      "subject": "[statnet_help] Appropriate terms for bipartite ERGM?",
+      "message_count": 1,
+      "participants": [
+        "Zachary Gibson"
+      ],
+      "started": "2022-06-09T14:38:24Z",
+      "last_reply": "2022-06-09T14:38:24Z",
+      "root_message_id": "msg-a5ebcf60c2e9"
+    },
+    {
+      "id": "thread-92a120fb584e",
+      "subject": "[statnet_help] error in ergm-term triangle",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "霍龙霞"
+      ],
+      "started": "2022-06-15T18:19:40Z",
+      "last_reply": "2022-06-15T22:21:36Z",
+      "root_message_id": "msg-92a120fb584e"
+    },
+    {
+      "id": "thread-03ea56ed779a",
+      "subject": "[statnet_help] standardized coefficients in ERGMs",
+      "message_count": 4,
+      "participants": [
+        "Carter T. Butts",
+        "Jing Chen",
+        "Krause, Robert"
+      ],
+      "started": "2022-06-16T04:43:57Z",
+      "last_reply": "2022-06-17T01:23:06Z",
+      "root_message_id": "msg-03ea56ed779a"
+    },
+    {
+      "id": "thread-33374899fec9",
+      "subject": "[statnet_help] question about standardized coefficients in MR-QAP",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "霍龙霞"
+      ],
+      "started": "2022-06-22T00:28:39Z",
+      "last_reply": "2022-06-22T01:00:14Z",
+      "root_message_id": "msg-33374899fec9"
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2016-09",
+  "messages": [
+    {
+      "id": "msg-c09c7289453f",
+      "message_id": "<CAENSEbXO95gfpxkUvoG9b4EYFDVbOETYD3eB2=ZLQ01SsUxG-A@mail.gmail.com>",
+      "from_name": "Michael Levy",
+      "from_email_hash": "03cf81384732776750b91438028da6ede681ced4d3fba0e2a1fda3266c4aff57",
+      "date": "2016-09-08T13:18:29Z",
+      "subject": "[statnet_help] Help understanding estimation routine",
+      "subject_clean": "[statnet_help] Help understanding estimation routine",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hi all,\n\nI want to make sure I understand the machinery underlying ergm. Here's what\nI think I understand: For each iteration there's an initial guess at\nparameter values, usually from MPLE to start or from the previous\niteration. Those parameters are used to accept or reject edge-toggle\nproposals, and the networks from accepted toggles are used to generate a\nsample of the sufficient statistics. Then somehow the old parameter values\nand the sample of statistics are used to get new parameter estimates. How\ndoes that last step happen, and where do p-values on the parameter\nestimates come from? Thanks very much,\n\nMichael\n\n\n\nMichael Levy\nPhD Candidate\nDepartment of Environmental Science and Policy\nUniversity of California, Davis\nmalevy@ucdavis.edu\n*www.michaellevy.name <http://www.michaellevy.name/>*\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160908/1a7d9401/attachment.html>",
+      "body_snippet": "Hi all,\n\nI want to make sure I understand the machinery underlying ergm. Here's what\nI think I understand: For each iteration there's an initial guess at\nparameter values, usually from MPLE to start o",
+      "thread_id": "thread-c09c7289453f",
+      "thread_depth": 0,
+      "month": "2016-09"
+    },
+    {
+      "id": "msg-9d95f2b53754",
+      "message_id": "<alpine.WNT.2.00.1609131912530.216@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2016-09-13T19:31:40Z",
+      "subject": "[statnet_help] Help understanding estimation routine",
+      "subject_clean": "[statnet_help] Help understanding estimation routine",
+      "in_reply_to": "<CAENSEbXO95gfpxkUvoG9b4EYFDVbOETYD3eB2=ZLQ01SsUxG-A@mail.gmail.com>",
+      "references": [
+        "<CAENSEbXO95gfpxkUvoG9b4EYFDVbOETYD3eB2=ZLQ01SsUxG-A@mail.gmail.com>"
+      ],
+      "body_plain": "Michael,\n\nSorry for the delay responding.  I needed to check a few things, and \nthat sent me off on a longish search.\n\nFirst, what you describe is right.\n\nThe final steps after \"somehow\" is:\n\n* The MCMC sample of networks is summarized into a matrix of simulated \nsufficient statistics (the network terms in the model) -- with one row for \neach network in the sample from this parameter set\n\n* These are compared to the statistics in the observed network (or the \ntarget stats, if you're working with egocentric data)\n\n* The resulting deviations are used to solve for the change in the \nparameters that maximizes the estimated likelihood -- the method used to \nsolve depends on the erg model; with no curved terms, it uses the \nlognormal approximation and a Nelder-Mead algorithm.\n\nBut there's quite a bit of algorithmic detail that has been added over the \nyears to make this part of the estimation more efficient.  the most \nimportant recent change was the adoption of a \"steplength\" algorithm \n(described here: Hummel RM, Hunter DR, Handcock MS. Improving \nSimulation-Based Algorithms for Fitting ERGMs. Journal of Computational \nand Graphical Statistics. 2012;21(4):920-39. doi: \n10.1080/10618600.2012.679224. PubMed PMID: WOS:000313311100006.) \nEssentially, this takes bigger steps when farther away, and smaller steps \nwhen close.\n\n* The s.e.'s are calculated from the inverse Hessian matrix at the end.\n\nWe made a diagram of the algorithm about a year ago.  See if you can view \nit here:\n\nhttps://statnet.csde.washington.edu/trac/raw-attachment/wiki/ESS/ergm%20ESS%20flowchart.pdf\n\nIf you can't I'll make a pdf and send it to you.\n\nHope this helps.\n\nOn Thu, 8 Sep 2016, Michael Levy \nwrote:\n\n> Hi all,\n> \n> I want to make sure I understand the machinery underlying ergm. Here's what I think I\n> understand: For each iteration there's an initial guess at parameter values, usually from\n> MPLE to start or from the previous iteration. Those parameters are used to accept or reject\n> edge-toggle proposals, and the networks from accepted toggles are used to generate a sample\n> of the sufficient statistics. Then somehow the old parameter values and the sample of\n> statistics are used to get new parameter estimates. How does that last step happen, and\n> where do p-values on the parameter estimates come from? Thanks very much,\n> \n> Michael\n> \n> \n> \n> Michael Levy\n> \n> PhD Candidate\n> Department of Environmental Science and Policy\n> University of California, Davis\n> malevy@ucdavis.edu\n> www.michaellevy.name\n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "Michael,\n\nSorry for the delay responding.  I needed to check a few things, and \nthat sent me off on a longish search.\n\nFirst, what you describe is right.\n\nThe final steps after \"somehow\" is:\n\n* The MC",
+      "thread_id": "thread-c09c7289453f",
+      "thread_depth": 1,
+      "month": "2016-09"
+    },
+    {
+      "id": "msg-2d37ba912208",
+      "message_id": "<alpine.WNT.2.00.1609131933030.216@morrism-laptop>",
+      "from_name": "martina morris",
+      "from_email_hash": "b4f86ba19c9a3858c62f1152ef81dee794d813ffe4309b99cb47e403edd9388a",
+      "date": "2016-09-13T19:34:29Z",
+      "subject": "[statnet_help] Help understanding estimation routine",
+      "subject_clean": "[statnet_help] Help understanding estimation routine",
+      "in_reply_to": "<CAENSEbXO95gfpxkUvoG9b4EYFDVbOETYD3eB2=ZLQ01SsUxG-A@mail.gmail.com>",
+      "references": [
+        "<CAENSEbXO95gfpxkUvoG9b4EYFDVbOETYD3eB2=ZLQ01SsUxG-A@mail.gmail.com>"
+      ],
+      "body_plain": "One last comment on the s.e. calculation, see Hunter and Handcock (2006), \nsince there is a pretty detailed discussion on pages 570-572\n\nHunter DR, Handcock MS. Inference in Curved Exponential Family \nModels for Networks. Journal of Computational and Graphical Statistics. \n2006;15(3):565-83. doi: 10.1198/106186006X133069.\n\n\nOn Thu, 8 Sep 2016, Michael Levy wrote:\n\n> Hi all,\n> \n> I want to make sure I understand the machinery underlying ergm. Here's what I think I\n> understand: For each iteration there's an initial guess at parameter values, usually from\n> MPLE to start or from the previous iteration. Those parameters are used to accept or reject\n> edge-toggle proposals, and the networks from accepted toggles are used to generate a sample\n> of the sufficient statistics. Then somehow the old parameter values and the sample of\n> statistics are used to get new parameter estimates. How does that last step happen, and\n> where do p-values on the parameter estimates come from? Thanks very much,\n> \n> Michael\n> \n> \n> \n> Michael Levy\n> \n> PhD Candidate\n> Department of Environmental Science and Policy\n> University of California, Davis\n> malevy@ucdavis.edu\n> www.michaellevy.name\n> \n> \n>\n\n****************************************************************\n  Professor of Sociology and Statistics\n  Director, UWCFAR Sociobehavioral and Prevention Research Core\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322\n\n  Office:        (206) 685-3402\n  Dept Office:   (206) 543-5882, 543-7237\n  Fax:           (206) 685-7419\n\nmorrism@u.washington.edu\nhttp://faculty.washington.edu/morrism/\n-------------- next part --------------\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu\nhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help",
+      "body_snippet": "One last comment on the s.e. calculation, see Hunter and Handcock (2006), \nsince there is a pretty detailed discussion on pages 570-572\n\nHunter DR, Handcock MS. Inference in Curved Exponential Family ",
+      "thread_id": "thread-c09c7289453f",
+      "thread_depth": 1,
+      "month": "2016-09"
+    },
+    {
+      "id": "msg-0f6656fe56d3",
+      "message_id": "<CAENSEbVfw1tUNkJ0a4_Q3xcCJDSsCw=L1ACA-GUCsZPiUSenKA@mail.gmail.com>",
+      "from_name": "Michael Levy",
+      "from_email_hash": "03cf81384732776750b91438028da6ede681ced4d3fba0e2a1fda3266c4aff57",
+      "date": "2016-09-16T12:15:02Z",
+      "subject": "[statnet_help] Help understanding estimation routine",
+      "subject_clean": "[statnet_help] Help understanding estimation routine",
+      "in_reply_to": "<alpine.WNT.2.00.1609131912530.216@morrism-laptop>",
+      "references": [
+        "<CAENSEbXO95gfpxkUvoG9b4EYFDVbOETYD3eB2=ZLQ01SsUxG-A@mail.gmail.com>",
+        "<alpine.WNT.2.00.1609131912530.216@morrism-laptop>"
+      ],
+      "body_plain": "Thank you, Martina. Your explanation and the section of the Hunter and\nHandcock paper that you point to are very helpful.\n\n\n\nMichael Levy\nPhD Candidate\nDepartment of Environmental Science and Policy\nUniversity of California, Davis\nmalevy@ucdavis.edu\n*www.michaellevy.name <http://www.michaellevy.name/>*\n\n\nOn Tue, Sep 13, 2016 at 7:31 PM, martina morris <morrism@u.washington.edu>\nwrote:\n\n> Michael,\n>\n> Sorry for the delay responding.  I needed to check a few things, and that\n> sent me off on a longish search.\n>\n> First, what you describe is right.\n>\n> The final steps after \"somehow\" is:\n>\n> * The MCMC sample of networks is summarized into a matrix of simulated\n> sufficient statistics (the network terms in the model) -- with one row for\n> each network in the sample from this parameter set\n>\n> * These are compared to the statistics in the observed network (or the\n> target stats, if you're working with egocentric data)\n>\n> * The resulting deviations are used to solve for the change in the\n> parameters that maximizes the estimated likelihood -- the method used to\n> solve depends on the erg model; with no curved terms, it uses the lognormal\n> approximation and a Nelder-Mead algorithm.\n>\n> But there's quite a bit of algorithmic detail that has been added over the\n> years to make this part of the estimation more efficient.  the most\n> important recent change was the adoption of a \"steplength\" algorithm\n> (described here: Hummel RM, Hunter DR, Handcock MS. Improving\n> Simulation-Based Algorithms for Fitting ERGMs. Journal of Computational and\n> Graphical Statistics. 2012;21(4):920-39. doi: 10.1080/10618600.2012.679224.\n> PubMed PMID: WOS:000313311100006.) Essentially, this takes bigger steps\n> when farther away, and smaller steps when close.\n>\n> * The s.e.'s are calculated from the inverse Hessian matrix at the end.\n>\n> We made a diagram of the algorithm about a year ago.  See if you can view\n> it here:\n>\n> https://statnet.csde.washington.edu/trac/raw-attachment/\n> wiki/ESS/ergm%20ESS%20flowchart.pdf\n>\n> If you can't I'll make a pdf and send it to you.\n>\n> Hope this helps.\n>\n>\n> On Thu, 8 Sep 2016, Michael Levy wrote:\n>\n> Hi all,\n>>\n>> I want to make sure I understand the machinery underlying ergm. Here's\n>> what I think I\n>> understand: For each iteration there's an initial guess at parameter\n>> values, usually from\n>> MPLE to start or from the previous iteration. Those parameters are used\n>> to accept or reject\n>> edge-toggle proposals, and the networks from accepted toggles are used to\n>> generate a sample\n>> of the sufficient statistics. Then somehow the old parameter values and\n>> the sample of\n>> statistics are used to get new parameter estimates. How does that last\n>> step happen, and\n>> where do p-values on the parameter estimates come from? Thanks very much,\n>>\n>> Michael\n>>\n>>\n>>\n>> Michael Levy\n>>\n>> PhD Candidate\n>> Department of Environmental Science and Policy\n>> University of California, Davis\n>> malevy@ucdavis.edu\n>> www.michaellevy.name\n>>\n>>\n>>\n>>\n> ****************************************************************\n>  Professor of Sociology and Statistics\n>  Director, UWCFAR Sociobehavioral and Prevention Research Core\n>  Box 354322\n>  University of Washington\n>  Seattle, WA 98195-4322\n>\n>  Office:        (206) 685-3402\n>  Dept Office:   (206) 543-5882, 543-7237\n>  Fax:           (206) 685-7419\n>\n> morrism@u.washington.edu\n> http://faculty.washington.edu/morrism/\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160916/8063cf72/attachment.html>",
+      "body_snippet": "Thank you, Martina. Your explanation and the section of the Hunter and\nHandcock paper that you point to are very helpful.\n\n\n\nMichael Levy\nPhD Candidate\nDepartment of Environmental Science and Policy\nU",
+      "thread_id": "thread-c09c7289453f",
+      "thread_depth": 2,
+      "month": "2016-09"
+    },
+    {
+      "id": "msg-3fbb252008ea",
+      "message_id": "<fdbe03e4-d3e5-5471-7bf2-17da523e48e1@rug.nl>",
+      "from_name": "Christian Steglich",
+      "from_email_hash": "451ac801cb13030df85867128669a31a9211bde96d61e052695b1357564ad56d",
+      "date": "2016-09-18T12:13:13Z",
+      "subject": "[statnet_help] What is the sample returned by ergm() ?",
+      "subject_clean": "[statnet_help] What is the sample returned by ergm() ?",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet experts,\n\nthere is the following note on the help page of mcmc.diagnostics():\n\n> Recent changes in the ergm estimation algorithm mean that these plots \n> can no longer be used to ensure that the mean statistics from the \n> model match the observed network statistics.\n\nWhy is this the case, and where can I read more about this? Does it mean \nthat the ...$sample object of the ergm()-result is _not_ a random sample \nfrom the estimated ergm?\n\nThanks for any help!\nBest regards, Christian\n\n-- \nhttps://liu.se/ias/medarbetare/christian-steglich \n<https://liu.se/ias/medarbetare/christian-steglich/?l=en>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160918/5bb361e2/attachment.html>",
+      "body_snippet": "Dear Statnet experts,\n\nthere is the following note on the help page of mcmc.diagnostics():\n\n> Recent changes in the ergm estimation algorithm mean that these plots \n> can no longer be used to ensure t",
+      "thread_id": "thread-3fbb252008ea",
+      "thread_depth": 0,
+      "month": "2016-09"
+    },
+    {
+      "id": "msg-1fe1fc3cf17b",
+      "message_id": "<08449080-0f12-b1de-a511-433f4e1b8f1b@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2016-09-18T12:37:28Z",
+      "subject": "[statnet_help] What is the sample returned by ergm() ?",
+      "subject_clean": "[statnet_help] What is the sample returned by ergm() ?",
+      "in_reply_to": "<fdbe03e4-d3e5-5471-7bf2-17da523e48e1@rug.nl>",
+      "references": [
+        "<fdbe03e4-d3e5-5471-7bf2-17da523e48e1@rug.nl>"
+      ],
+      "body_plain": "Hi, Christian -\n\nThat is correct: these statistics are from the sample used to _estimate_ \nthe final model, but are not from the final model itself.  As such, they \nare good for general MCMC diagnostics (e.g., is the chain mixing), but \nthey will normally understate the degree of convergence of the \nparameters to the MLE.  (In particular, the mean stats for the sample \nwill often show greater deviation from the target stats than will the \nexpected statistics under the final estimates.)\n\nMy sense is that the current consensus among the statnet team is that \nassessment of target stat convergence should be performed as part of \nmodel adequacy checking using gof(), which usually employs a \nhigher-quality MCMC sample than is needed for parameter estimation and \nwhich can allow assessment of other stats at the same time.  If gof() \nshows poor convergence to the in-model statistics, then refinement of \nthe initial ergm() solution is obviously in order; in my experience, \nhowever, the current code usually does a pretty good job.  Making \ncalculation of in-model statistics part of the default behavior for \ngof() (it has always been available, but optional) is in the works, but \nhasn't been rolled out yet.\n\nPavel or the others may want to chime in further on this issue, but \nthat's my understanding of the current state of play.....\n\n-Carter\n\nOn 09/18/2016 12:13 PM, Christian Steglich wrote:\n>\n> Dear Statnet experts,\n>\n> there is the following note on the help page of mcmc.diagnostics():\n>\n>> Recent changes in the ergm estimation algorithm mean that these plots \n>> can no longer be used to ensure that the mean statistics from the \n>> model match the observed network statistics.\n>\n> Why is this the case, and where can I read more about this? Does it \n> mean that the ...$sample object of the ergm()-result is _not_ a random \n> sample from the estimated ergm?\n>\n> Thanks for any help!\n> Best regards, Christian\n>\n> -- \n> https://liu.se/ias/medarbetare/christian-steglich \n> <https://liu.se/ias/medarbetare/christian-steglich/?l=en>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160918/840cd0a6/attachment.html>",
+      "body_snippet": "Hi, Christian -\n\nThat is correct: these statistics are from the sample used to _estimate_ \nthe final model, but are not from the final model itself.  As such, they \nare good for general MCMC diagnosti",
+      "thread_id": "thread-3fbb252008ea",
+      "thread_depth": 1,
+      "month": "2016-09"
+    },
+    {
+      "id": "msg-cd24aa7109be",
+      "message_id": "<1d3156a4-631d-6ea7-8140-70909ff64ddb@rug.nl>",
+      "from_name": "Christian Steglich",
+      "from_email_hash": "451ac801cb13030df85867128669a31a9211bde96d61e052695b1357564ad56d",
+      "date": "2016-09-18T14:15:17Z",
+      "subject": "[statnet_help] What is the sample returned by ergm() ?",
+      "subject_clean": "[statnet_help] What is the sample returned by ergm() ?",
+      "in_reply_to": "<08449080-0f12-b1de-a511-433f4e1b8f1b@uci.edu>",
+      "references": [
+        "<fdbe03e4-d3e5-5471-7bf2-17da523e48e1@rug.nl>",
+        "<08449080-0f12-b1de-a511-433f4e1b8f1b@uci.edu>"
+      ],
+      "body_plain": "Thanks, Carter, for the quick reply!\n\nIndeed I had hoped for a gof()-avoiding way of assessing convergence of \nthe estimation by looking at closeness of expected values to observed \nones. It's a kind of unsophisticated, albeit necessary criterion for \nconvergence, and easy to communicate.\n\nThe variant \"gof(...,GOF=~model)$sim.model\" tends to be very(!) \ntime-consuming in its current implementation. But yes, I see that \nefficient estimation may not require sampling very much from the \nestimated ergm.\n\nAll the best,\nChristian\n\n\nOn 18-Sep-16 21:37, Carter T. Butts wrote:\n>\n> Hi, Christian -\n>\n> That is correct: these statistics are from the sample used to \n> _estimate_ the final model, but are not from the final model itself.  \n> As such, they are good for general MCMC diagnostics (e.g., is the \n> chain mixing), but they will normally understate the degree of \n> convergence of the parameters to the MLE.  (In particular, the mean \n> stats for the sample will often show greater deviation from the target \n> stats than will the expected statistics under the final estimates.)\n>\n> My sense is that the current consensus among the statnet team is that \n> assessment of target stat convergence should be performed as part of \n> model adequacy checking using gof(), which usually employs a \n> higher-quality MCMC sample than is needed for parameter estimation and \n> which can allow assessment of other stats at the same time.  If gof() \n> shows poor convergence to the in-model statistics, then refinement of \n> the initial ergm() solution is obviously in order; in my experience, \n> however, the current code usually does a pretty good job.  Making \n> calculation of in-model statistics part of the default behavior for \n> gof() (it has always been available, but optional) is in the works, \n> but hasn't been rolled out yet.\n>\n> Pavel or the others may want to chime in further on this issue, but \n> that's my understanding of the current state of play.....\n>\n> -Carter\n>\n> On 09/18/2016 12:13 PM, Christian Steglich wrote:\n>>\n>> Dear Statnet experts,\n>>\n>> there is the following note on the help page of mcmc.diagnostics():\n>>\n>>> Recent changes in the ergm estimation algorithm mean that these \n>>> plots can no longer be used to ensure that the mean statistics from \n>>> the model match the observed network statistics.\n>>\n>> Why is this the case, and where can I read more about this? Does it \n>> mean that the ...$sample object of the ergm()-result is _not_ a \n>> random sample from the estimated ergm?\n>>\n>> Thanks for any help!\n>> Best regards, Christian\n\n-- \nhttps://liu.se/ias/medarbetare/christian-steglich \n<https://liu.se/ias/medarbetare/christian-steglich/?l=en>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160918/5650e117/attachment.html>",
+      "body_snippet": "Thanks, Carter, for the quick reply!\n\nIndeed I had hoped for a gof()-avoiding way of assessing convergence of \nthe estimation by looking at closeness of expected values to observed \nones. It's a kind ",
+      "thread_id": "thread-3fbb252008ea",
+      "thread_depth": 2,
+      "month": "2016-09"
+    },
+    {
+      "id": "msg-5d09abea544a",
+      "message_id": "<195cb259-7dde-55df-fd5e-8fc868913f67@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2016-09-18T16:18:53Z",
+      "subject": "[statnet_help] What is the sample returned by ergm() ?",
+      "subject_clean": "[statnet_help] What is the sample returned by ergm() ?",
+      "in_reply_to": "<1d3156a4-631d-6ea7-8140-70909ff64ddb@rug.nl>",
+      "references": [
+        "<fdbe03e4-d3e5-5471-7bf2-17da523e48e1@rug.nl>",
+        "<08449080-0f12-b1de-a511-433f4e1b8f1b@uci.edu>",
+        "<1d3156a4-631d-6ea7-8140-70909ff64ddb@rug.nl>"
+      ],
+      "body_plain": "Hi, Christian -\n\nI agree that verifying convergence by the first-order condition is \nalways a good idea, and using a full gof run at default settings can be \noverkill when you just need a basic convergence check.  As you suggest, \none alternative is just to change the settings to get a more modest \nrun.  Another approach would be to use the final ergm() sample as an \nimportance sample, and obtain an estimate of t(Y)|theta_fin that way.  \nYou are familiar with this route, but for any home viewers, here's a \nsketch of one approach:\n\n1. Let q0 be the penultimate estimate of theta used to draw the final \nsample, and let q be the final theta of interest.  We have (from ergm()) \na sample of simulated statistics from t(Y)|q0, which we will call \nt_1,...,t_n for brevity.  Our goal is to estimate E_q t(Y), using our \nsample.\n\n2. Note that 1/n sum_i t_i W(t_i,q,q0) -> E_q t(Y) as n->inf, where \nW(t_i,q,q0) = Pr(t_i|q)/Pr(t_i|q0) is an importance weight.  For our \ncase, W(t_i,q,q0) = exp(t * (q-q0)) z(q0)/z(q), where z is the \nnormalizing factor (and * is the inner product).  The challenge is \nobviously to calculate z(q0)/z(q).\n\n3. To get the ratio of normalizing factors, we use a similar trick, \nobserving that 1/n sum_i exp(t * (q-q0)) -> z(q)/z(q0) as n->inf.\n\n4. Putting this together (and canceling terms), we estimate the target \nmean by\n       sum_i t_i exp(t_i * (q-q0)) /[ sum_j exp(t_j * (q-q0)) ]\n\n5. If desired, the Var_q t(Y) can be estimated by estimating E_q t(Y)^2 \nand working from there, and the SEs of the estimator itself can be \nestimated by bootstrap or the like.\n\nThis takes a few lines of R code, and is quite fast.  Of course, it is \nonly accurate when q is close to q0, but that should usually be the case \nhere - I haven't done much testing, however, so caveat emptor.  (Also, \nnote that this is closely related to how we obtain our final estimates, \nso it may be inclined to err on the side of agreeing with ergm()'s output.)\n\nOthers may have alternative suggestions for faster diagnostics, but this \nat least provides one alternative....\n\n-Carter\n\nOn 09/18/2016 02:15 PM, Christian Steglich wrote:\n>\n> Thanks, Carter, for the quick reply!\n>\n> Indeed I had hoped for a gof()-avoiding way of assessing convergence \n> of the estimation by looking at closeness of expected values to \n> observed ones. It's a kind of unsophisticated, albeit necessary \n> criterion for convergence, and easy to communicate.\n>\n> The variant \"gof(...,GOF=~model)$sim.model\" tends to be very(!) \n> time-consuming in its current implementation. But yes, I see that \n> efficient estimation may not require sampling very much from the \n> estimated ergm.\n>\n> All the best,\n> Christian\n>\n>\n> On 18-Sep-16 21:37, Carter T. Butts wrote:\n>>\n>> Hi, Christian -\n>>\n>> That is correct: these statistics are from the sample used to \n>> _estimate_ the final model, but are not from the final model itself.  \n>> As such, they are good for general MCMC diagnostics (e.g., is the \n>> chain mixing), but they will normally understate the degree of \n>> convergence of the parameters to the MLE.  (In particular, the mean \n>> stats for the sample will often show greater deviation from the \n>> target stats than will the expected statistics under the final \n>> estimates.)\n>>\n>> My sense is that the current consensus among the statnet team is that \n>> assessment of target stat convergence should be performed as part of \n>> model adequacy checking using gof(), which usually employs a \n>> higher-quality MCMC sample than is needed for parameter estimation \n>> and which can allow assessment of other stats at the same time.  If \n>> gof() shows poor convergence to the in-model statistics, then \n>> refinement of the initial ergm() solution is obviously in order; in \n>> my experience, however, the current code usually does a pretty good \n>> job.  Making calculation of in-model statistics part of the default \n>> behavior for gof() (it has always been available, but optional) is in \n>> the works, but hasn't been rolled out yet.\n>>\n>> Pavel or the others may want to chime in further on this issue, but \n>> that's my understanding of the current state of play.....\n>>\n>> -Carter\n>>\n>> On 09/18/2016 12:13 PM, Christian Steglich wrote:\n>>>\n>>> Dear Statnet experts,\n>>>\n>>> there is the following note on the help page of mcmc.diagnostics():\n>>>\n>>>> Recent changes in the ergm estimation algorithm mean that these \n>>>> plots can no longer be used to ensure that the mean statistics from \n>>>> the model match the observed network statistics.\n>>>\n>>> Why is this the case, and where can I read more about this? Does it \n>>> mean that the ...$sample object of the ergm()-result is _not_ a \n>>> random sample from the estimated ergm?\n>>>\n>>> Thanks for any help!\n>>> Best regards, Christian\n>\n> -- \n> https://liu.se/ias/medarbetare/christian-steglich \n> <https://liu.se/ias/medarbetare/christian-steglich/?l=en>\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160918/e4769f6d/attachment.html>",
+      "body_snippet": "Hi, Christian -\n\nI agree that verifying convergence by the first-order condition is \nalways a good idea, and using a full gof run at default settings can be \noverkill when you just need a basic conver",
+      "thread_id": "thread-3fbb252008ea",
+      "thread_depth": 3,
+      "month": "2016-09"
+    },
+    {
+      "id": "msg-11d2ab9e3200",
+      "message_id": "<57df7eb7.cd8f190a.be2d8.0ad4@mx.google.com>",
+      "from_name": "Christian Steglich",
+      "from_email_hash": "451ac801cb13030df85867128669a31a9211bde96d61e052695b1357564ad56d",
+      "date": "2016-09-18T22:59:19Z",
+      "subject": "[statnet_help] What is the sample returned by ergm() ?",
+      "subject_clean": "[statnet_help] What is the sample returned by ergm() ?",
+      "in_reply_to": "<195cb259-7dde-55df-fd5e-8fc868913f67@uci.edu>",
+      "references": [
+        "<fdbe03e4-d3e5-5471-7bf2-17da523e48e1@rug.nl>",
+        "<08449080-0f12-b1de-a511-433f4e1b8f1b@uci.edu>",
+        "<1d3156a4-631d-6ea7-8140-70909ff64ddb@rug.nl>",
+        "<195cb259-7dde-55df-fd5e-8fc868913f67@uci.edu>"
+      ],
+      "body_plain": "Thanks a lot, Carter -\nthis is very helpful, and it saves time!\nBest, Christian \n\n----- Urspr?ngliche Nachricht -----\nVon: \"Carter T. Butts\" <buttsc@uci.edu>\nGesendet: ?19.?09.?2016 01:23\nAn: \"statnet_help@u.washington.edu\" <statnet_help@u.washington.edu>\nBetreff: Re: [statnet_help] What is the sample returned by ergm() ?\n\nHi, Christian -\nI agree that verifying convergence by the first-order condition is always a good idea, and using a full gof run at default settings can be overkill when you just need a basic convergence check.  As you suggest, one alternative is just to change the settings to get a more modest run.  Another approach would be to use the final ergm() sample as an importance sample, and obtain an estimate of t(Y)|theta_fin that way.  You are familiar with this route, but for any home viewers, here's a sketch of one approach:\n\n1. Let q0 be the penultimate estimate of theta used to draw the final sample, and let q be the final theta of interest.  We have (from ergm()) a sample of simulated statistics from t(Y)|q0, which we will call t_1,...,t_n for brevity.  Our goal is to estimate E_q t(Y), using our sample.\n2. Note that 1/n sum_i t_i W(t_i,q,q0) -> E_q t(Y) as n->inf, where W(t_i,q,q0) = Pr(t_i|q)/Pr(t_i|q0) is an importance weight.  For our case, W(t_i,q,q0) = exp(t * (q-q0)) z(q0)/z(q), where z is the normalizing factor (and * is the inner product).  The challenge is obviously to calculate z(q0)/z(q).\n3. To get the ratio of normalizing factors, we use a similar trick, observing that 1/n sum_i exp(t * (q-q0)) -> z(q)/z(q0) as n->inf.\n\n4. Putting this together (and canceling terms), we estimate the target mean by \n      sum_i t_i exp(t_i * (q-q0)) /[ sum_j exp(t_j * (q-q0)) ]\n\n5. If desired, the Var_q t(Y) can be estimated by estimating E_q t(Y)^2 and working from there, and the SEs of the estimator itself can be estimated by bootstrap or the like.\n\nThis takes a few lines of R code, and is quite fast.  Of course, it is only accurate when q is close to q0, but that should usually be the case here - I haven't done much testing, however, so caveat emptor.  (Also, note that this is closely related to how we obtain our final estimates, so it may be inclined to err on the side of agreeing with ergm()'s output.)\n\nOthers may have alternative suggestions for faster diagnostics, but this at least provides one alternative....\n\n-Carter\n\n\nOn 09/18/2016 02:15 PM, Christian Steglich wrote:\n\nThanks, Carter, for the quick reply!\nIndeed I had hoped for a gof()-avoiding way of assessing convergence of the estimation by looking at closeness of expected values to observed ones. It's a kind of unsophisticated, albeit necessary criterion for convergence, and easy to communicate. \n\nThe variant \"gof(...,GOF=~model)$sim.model\" tends to be very(!) time-consuming in its current implementation. But yes, I see that efficient estimation may not require sampling very much from the estimated ergm. \n\nAll the best,\nChristian\n\n\nOn 18-Sep-16 21:37, Carter T. Butts wrote:\n\nHi, Christian -\nThat is correct: these statistics are from the sample used to _estimate_ the final model, but are not from the final model itself.  As such, they are good for general MCMC diagnostics (e.g., is the chain mixing), but they will normally understate the degree of convergence of the parameters to the MLE.  (In particular, the mean stats for the sample will often show greater deviation from the target stats than will the expected statistics under the final estimates.)\n\nMy sense is that the current consensus among the statnet team is that assessment of target stat convergence should be performed as part of model adequacy checking using gof(), which usually employs a higher-quality MCMC sample than is needed for parameter estimation and which can allow assessment of other stats at the same time.  If gof() shows poor convergence to the in-model statistics, then refinement of the initial ergm() solution is obviously in order; in my experience, however, the current code usually does a pretty good job.  Making calculation of in-model statistics part of the default behavior for gof() (it has always been available, but optional) is in the works, but hasn't been rolled out yet.\n\nPavel or the others may want to chime in further on this issue, but that's my understanding of the current state of play.....\n\n-Carter\n\n\nOn 09/18/2016 12:13 PM, Christian Steglich wrote:\n\nDear Statnet experts,\nthere is the following note on the help page of mcmc.diagnostics():\n\nRecent changes in the ergm estimation algorithm mean that these plots can no longer be used to ensure that the mean statistics from the model match the observed network statistics.\nWhy is this the case, and where can I read more about this? Does it mean that the ...$sample object of the ergm()-result is not a random sample from the estimated ergm?\nThanks for any help!\nBest regards, Christian\n\n\n-- \nhttps://liu.se/ias/medarbetare/christian-steglich\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20160919/8eac7c79/attachment.html>",
+      "body_snippet": "Thanks a lot, Carter -\nthis is very helpful, and it saves time!\nBest, Christian \n\n----- Urspr?ngliche Nachricht -----\nVon: \"Carter T. Butts\" <buttsc@uci.edu>\nGesendet: ?19.?09.?2016 01:23\nAn: \"statnet",
+      "thread_id": "thread-3fbb252008ea",
+      "thread_depth": 4,
+      "month": "2016-09"
+    },
+    {
+      "id": "msg-17ce0e45f873",
+      "message_id": "<E674AA61-FC3A-478D-BE26-E0A59B731571@stat.psu.edu>",
+      "from_name": "David Hunter",
+      "from_email_hash": "88276ddd37679a3a3ecb8ffebd97160b41fac85abcf9f4bea3ff44dbcc5fdb4b",
+      "date": "2016-09-28T13:34:21Z",
+      "subject": "[statnet_help] Fwd: Assistant Professorship in Quantitative Methods (Network Analysis), LSE",
+      "subject_clean": "[statnet_help] Fwd: Assistant Professorship in Quantitative Methods (Network Analysis), LSE",
+      "in_reply_to": null,
+      "references": [
+        "<HE1PR06MB13409D778FFD92EB49589765CFCD0@HE1PR06MB1340.eurprd06.prod.outlook.com>"
+      ],
+      "body_plain": "Dear statnet list,\nHere is a faculty job opening in London that might interest this group:\n\nBest,\nDave\n\n> Begin forwarded message:\n> \n> ________________________________________\n> From: Jouni Kuha <j.kuha@LSE.AC.UK>\n> Sent: 26 September 2016 11:58\n> To: allstat@JISCMAIL.AC.UK\n> Cc: Kuha,J\n> Subject: JOB: Assistant Professorship in Quantitative Methods (Network Analysis), LSE\n> \n> The Department of Methodology at the London School of Economics is seeking outstanding candidates for an Assistant Professorship in Quantitative Methods with a focus on Network Analysis\n> \n> Salary:   Competitive, and not less than ?53,004\n> Closing Date:   Tuesday 1 November 2016\n> Interview Date:   To be confirmed\n> Starting Date: 1 September 2017\n> \n> Informal enquiries can be made to: Prof Kenneth Benoit (Head of Department):  K.R.Benoit@lse.ac.uk\n> \n> Further particulars including job description, person specification, and instructions on how to apply can be found at\n> http://www.lse.ac.uk/LSEJobs/AcademicCareers/Job-adverts.aspx\n> under ?Assistant Professor in Quantitative Methods (Methodology)?\n> \n> Department of Methodology, London School of Economics and Political Science\n> \n> Assistant Professor in Quantitative Methods with a Focus on Network Analysis\n> \n> Salary is competitive with Departments at our peer institutions worldwide and not less than ?53,004 pa inclusive\n> \n> The Department of Methodology is a leading centre for research and education in social science research methods. The Department has a thriving research culture, with its members advancing research in core social science disciplines as well as in research methodology. It leads the provision of research methods education to students across the range of disciplines at LSE. The Department is recruiting an Assistant Professor in Quantitative Methods with special expertise in quantitative network analysis.\n> \n> Candidates should have completed a PhD by the post start date and have research expertise in quantitative network analysis as well as, more broadly, research expertise in a relevant social science discipline and/or in quantitative research methodology. They should have a track record or trajectory of internationally excellent publications and proven ability, as evidenced by existing publications, or potential to publish in top journals in a social science discipline and/or quantitative research methodology. They should have the ability to teach a range of quantitative research methods to multi-disciplinary groups of students.\n> \n> The other criteria that will be used when shortlisting for this post can be found on the person specification, which is attached to this vacancy on the LSE?s online recruitment system.\n> \n> In addition to a competitive salary the benefits that come with this job include an occupational pension scheme, a research incentive scheme with personal reward options, generous research leave (sabbatical) entitlement, a collegial faculty environment and excellent support, training and development opportunities.\n> \n> For further information about the post, please see the how to apply document, job description and person specification.\n> \n> If you have any queries about applying on the online system, or require an alternative format for the application, please e-mail hr.jobs@lse.ac.uk or contact the recruitment team at 020 7107 5205.\n> \n> The closing date for receipt of applications is 1 November 2016 (23.59 UK time). We are unable to accept any late applications.\n> \n> LSE values diversity and strives to promote equality at all levels.\n> For this post, we particularly welcome applications by women and ethnic minorities.\n> \n>",
+      "body_snippet": "Dear statnet list,\nHere is a faculty job opening in London that might interest this group:\n\nBest,\nDave\n\n> Begin forwarded message:\n> \n> ________________________________________\n> From: Jouni Kuha <j.k",
+      "thread_id": "thread-17ce0e45f873",
+      "thread_depth": 0,
+      "month": "2016-09"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-c09c7289453f",
+      "subject": "[statnet_help] Help understanding estimation routine",
+      "message_count": 4,
+      "participants": [
+        "Michael Levy",
+        "martina morris"
+      ],
+      "started": "2016-09-08T13:18:29Z",
+      "last_reply": "2016-09-16T12:15:02Z",
+      "root_message_id": "msg-c09c7289453f"
+    },
+    {
+      "id": "thread-3fbb252008ea",
+      "subject": "[statnet_help] What is the sample returned by ergm() ?",
+      "message_count": 5,
+      "participants": [
+        "Carter T. Butts",
+        "Christian Steglich"
+      ],
+      "started": "2016-09-18T12:13:13Z",
+      "last_reply": "2016-09-18T22:59:19Z",
+      "root_message_id": "msg-3fbb252008ea"
+    },
+    {
+      "id": "thread-17ce0e45f873",
+      "subject": "[statnet_help] Fwd: Assistant Professorship in Quantitative Methods (Network Analysis), LSE",
+      "message_count": 1,
+      "participants": [
+        "David Hunter"
+      ],
+      "started": "2016-09-28T13:34:21Z",
+      "last_reply": "2016-09-28T13:34:21Z",
+      "root_message_id": "msg-17ce0e45f873"
+    }
+  ]
+}
