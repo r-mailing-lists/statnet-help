@@ -6,7 +6,7 @@ Automated mbox archive. Updated daily via GitHub Actions.
 
 ## Structure
 
-- `raw/` - Monthly .mbox files downloaded from [https://mailman23.u.washington.edu/pipermail/statnet_help/](https://mailman23.u.washington.edu/pipermail/statnet_help/)
+- `raw/` - Yearly .mbox files downloaded from [https://mailman23.u.washington.edu/pipermail/statnet_help/](https://mailman23.u.washington.edu/pipermail/statnet_help/), which keeps 2022 on. The years 2006 to 2021 are the list's own yearly files from its earlier address, mailman13.u.washington.edu, as the [Wayback Machine](https://web.archive.org/web/2021/https://mailman13.u.washington.edu/pipermail/statnet_help/) saved them: 2018 runs to 12 June and 2021 to 19 October, the days they were saved.
 - `processed/` - Structured JSON output from rmail-parser
 - `sources/` - Where present, each message's page at the source and the characters that page restores, one JSON file per period
 - `attachments/` - Text Mailman scrubbed out of messages, fetched once from the source and put back by rmail-parser, one gzip-compressed JSON file per period
