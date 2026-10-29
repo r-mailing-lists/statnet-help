@@ -1,0 +1,55 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2026-06",
+  "messages": [
+    {
+      "id": "msg-78afaf7b04df",
+      "message_id": "<689858547.274025.1782408659565@app.mailbox.org>",
+      "from_name": "Robert Krause via statnet_help",
+      "from_email_hash": "cadd53adaa38ad8f3cee64465903f64e467b0a2f6eff7bfb47d78a8e48daa12a",
+      "date": "2026-06-25T10:31:06Z",
+      "subject": "[statnet_help] Interactions with term.options = options(interact.dependent = 'silent')",
+      "subject_clean": "[statnet_help] Interactions with term.options = options(interact.dependent = 'silent')",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Hey Statnet Team,\nThis one is (probably) for Pavel.\nI want to add interactions to Bergm and need to pass the options(interact.dependent = 'silent') but I seem to be doing something wrong.\nHow do I pass it properly to the control argument?\n \nI got these code snippets (and other related ones):\nsimulate(...,control = control.simulate(...,  term.options = options(interact.dependent = 'silent')))\ncontrol <- control.ergm(..., term.options = options(interact.dependent = 'silent'))\n \nI assume I am just putting it in the wrong place or calling it wrong.\n\nThank you,\nRobert\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman23.u.washington.edu/pipermail/statnet_help/attachments/20260625/5236ff15/attachment.html>",
+      "body_snippet": "Hey Statnet Team,\nThis one is (probably) for Pavel.\nI want to add interactions to Bergm and need to pass the options(interact.dependent = 'silent') but I seem to be doing something wrong.\nHow do I pas",
+      "thread_id": "thread-78afaf7b04df",
+      "thread_depth": 0,
+      "month": "2026-06"
+    },
+    {
+      "id": "msg-f296f286d2fe",
+      "message_id": "<3042ea85e8860ae886306565ed47ffb39e1709e4.camel@unsw.edu.au>",
+      "from_name": "Pavel Krivitsky via statnet_help",
+      "from_email_hash": "cadd53adaa38ad8f3cee64465903f64e467b0a2f6eff7bfb47d78a8e48daa12a",
+      "date": "2026-06-25T18:19:51Z",
+      "subject": "[statnet_help] Interactions with term.options = options(interact.dependent = 'silent')",
+      "subject_clean": "[statnet_help] Interactions with term.options = options(interact.dependent = 'silent')",
+      "in_reply_to": "<689858547.274025.1782408659565@app.mailbox.org>",
+      "references": [
+        "<689858547.274025.1782408659565@app.mailbox.org>"
+      ],
+      "body_plain": "Hi, Robert,\n\nIt should be list(), not options(). You can set term options globally using options(ergm.term = list(...)) as well. Though, why are you getting these warnings in the first place?\n\nBest,\nPavel\n\nOn Thu, 2026-06-25 at 19:30 +0200, Robert Krause via statnet_help wrote:\nHey Statnet Team,\nThis one is (probably) for Pavel.\nI want to add interactions to Bergm and need to pass the options(interact.dependent = 'silent') but I seem to be doing something wrong.\nHow do I pass it properly to the control argument?\n\nI got these code snippets (and other related ones):\nsimulate(...,control = control.simulate(...,  term.options = options(interact.dependent = 'silent')))\ncontrol <- control.ergm(..., term.options = options(interact.dependent = 'silent'))\n\nI assume I am just putting it in the wrong place or calling it wrong.\n\nThank you,\nRobert\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman23.u.washington.edu/mailman/listinfo/statnet_help\n\n\n\nThis email and any files transmitted with it may contain confidential information. If you believe you have received this email or any of its contents in error, please notify me immediately by return email and destroy this email. Do not use, disseminate, forward, print or copy any contents of an email received in error.\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman23.u.washington.edu/pipermail/statnet_help/attachments/20260626/1b1762c7/attachment.html>",
+      "body_snippet": "Hi, Robert,\n\nIt should be list(), not options(). You can set term options globally using options(ergm.term = list(...)) as well. Though, why are you getting these warnings in the first place?\n\nBest,\nP",
+      "thread_id": "thread-78afaf7b04df",
+      "thread_depth": 1,
+      "month": "2026-06"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-78afaf7b04df",
+      "subject": "[statnet_help] Interactions with term.options = options(interact.dependent = 'silent')",
+      "message_count": 2,
+      "participants": [
+        "Pavel Krivitsky via statnet_help",
+        "Robert Krause via statnet_help"
+      ],
+      "started": "2026-06-25T10:31:06Z",
+      "last_reply": "2026-06-25T18:19:51Z",
+      "root_message_id": "msg-78afaf7b04df"
+    }
+  ]
+}

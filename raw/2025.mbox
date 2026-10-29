@@ -1,0 +1,508 @@
+From statnet_help at u.washington.edu  Thu Jan 23 10:21:18 2025
+From: statnet_help at u.washington.edu (Willow Kelleigh via statnet_help)
+Date: Thu Jan 23 10:21:27 2025
+Subject: [statnet_help] Node Entry and Exit in STERGM
+Message-ID: <BN6PR05MB3587E0FBC58478774354ED09D0E02@BN6PR05MB3587.namprd05.prod.outlook.com>
+
+Hello All,
+
+I am new to SNA and I am looking to model a co-authorship network. I have determined that STERGM is a good method to use here, but I am wondering if it is possible to account for nodes entering and exiting the network over the course of the model. I am not trying to model/predict entry or exit, only to account for it as it is known in my dataset in order to prevent the model trying to account for a lack of edges from times when a node was not present.
+
+I have gone through the tutorial on TERGMs here (https://statnet.org/workshop-tergm/tergm_tutorial.html) which says it is possible to do node entry and exit, but when I look at the documentation in the relevant packages, I have been unable to find anything more about it.
+
+Does anyone know if this is possible, and if so, have any examples of it being done, pointers to how this would be done in the code, or places I should look in the documentation?
+
+Thanks,
+Willow
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20250123/d7ba4d60/attachment.html>
+From statnet_help at u.washington.edu  Wed Feb 12 07:35:00 2025
+From: statnet_help at u.washington.edu (Volker Rudolf via statnet_help)
+Date: Wed Feb 12 07:35:09 2025
+Subject: [statnet_help] Temporal centrality metrics
+Message-ID: <830d1b58-0c57-4dcd-9538-aee34d8d3359@mail.apps.rice.edu>
+
+Hi,
+
+I'm Volker Rudolf, a Professor in Ecology (so not a network scientist 
+but trying to learn more...) I'm hoping to use your package(s) to 
+analyze the structure of time-ordered ecological networks. Specifically 
+I'm trying to calculate two centrality statistics : temporal betweenness 
+and closeness centrality of nodes (following Kim & Anderson 2012). Note 
+that I do not want to calculate static metrics at multiple time points, 
+which is what the tutorials on tsna package show. I could not find a 
+function that seems to be doing that but wondering if (a) I just missed 
+it, and (b) if not, if folks have a code to calculate those metrics 
+which they are willing to share.
+
+Thanks.
+
+-- 
+Volker H.W. Rudolf, Ph.D. (he/him/his)
+Professor of Ecology & Evolutionary Biology
+BioSciences
+Rice University MS-140
+6100 Main Street, Houston, TX, 77005
+Email: volker.rudolf@rice.edu
+Phone: 713-348-2834
+Fax: 713-348-5232
+Webpage: http://volkerrudolf.weebly.com/
+
+My working day may not be your working day.
+Please don?t feel obliged to reply to this e-mail outside of your normal working hours.
+
+
+From statnet_help at u.washington.edu  Tue Feb 25 21:52:09 2025
+From: statnet_help at u.washington.edu (Skye Bender-deMoll via statnet_help)
+Date: Tue Feb 25 21:52:17 2025
+Subject: [statnet_help] Temporal centrality metrics
+In-Reply-To: <830d1b58-0c57-4dcd-9538-aee34d8d3359@mail.apps.rice.edu>
+References: <830d1b58-0c57-4dcd-9538-aee34d8d3359@mail.apps.rice.edu>
+Message-ID: <a057f6f5-b8f1-44bc-aca9-7356d7e90c6a@skyeome.net>
+
+Hi Prof Rudolf,
+
+The tsna package does calculate some temporal network statistics 
+directly 
+(https://cran.r-project.org/web/packages/tsna/vignettes/tsna_vignette.html#temporal-paths-and-metrics) 
+without using static network slices. However, although it can calculate 
+the 'earliest forward paths' analogous to the shortest paths that would 
+be used to compute  temporal betweeness and centrality as in 
+https://people.ece.ubc.ca/hyoung/publication/TemporalCentrality_PRE.pdf, 
+I don't believe those measures are directly implemented yet.
+
+best,
+  -skye
+
+
+On 2/12/25 7:35 AM, Volker Rudolf via statnet_help wrote:
+> Hi,
+> 
+> I'm Volker Rudolf, a Professor in Ecology (so not a network scientist
+> but trying to learn more...) I'm hoping to use your package(s) to
+> analyze the structure of time-ordered ecological networks. Specifically
+> I'm trying to calculate two centrality statistics : temporal betweenness
+> and closeness centrality of nodes (following Kim & Anderson 2012). Note
+> that I do not want to calculate static metrics at multiple time points,
+> which is what the tutorials on tsna package show. I could not find a
+> function that seems to be doing that but wondering if (a) I just missed
+> it, and (b) if not, if folks have a code to calculate those metrics
+> which they are willing to share.
+
+
+From statnet_help at u.washington.edu  Fri May 30 18:35:05 2025
+From: statnet_help at u.washington.edu (Wallace Chipidza via statnet_help)
+Date: Fri May 30 18:35:19 2025
+Subject: [statnet_help] Modeling interaction effects in ERGM
+Message-ID: <CAN0HJZGyWPURiauyzAeSg_3csxCT6rtvKUZOHggMu7hG8avrGg@mail.gmail.com>
+
+Hi,
+
+I have a network with various demographic attributes and am testing some
+hypotheses on interactions between node attributes and structural effects.
+Is there a way to model the interaction between an attribute like gender
+and reciprocity in ERGM? Some way to test if women are more reciprocal in
+their network behavior than men? So far I've tried:
+
+model1 <- ergm(net ~ edges + mutual:nodefactor("Gender"))
+
+and I receive the message "*Error in `ergm_Init_abort()`:**! In unknown
+function: Change statistic interactions are poorly defined for
+dyad-dependent terms. Use ?interact.dependent? term option to set the
+behavior.FALSE*"
+
+Wallace
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://mailman23.u.washington.edu/pipermail/statnet_help/attachments/20250530/0d51b53f/attachment.html>
+From statnet_help at u.washington.edu  Mon Jun  2 02:12:35 2025
+From: statnet_help at u.washington.edu (Pavel Krivitsky via statnet_help)
+Date: Mon Jun  2 02:12:44 2025
+Subject: [statnet_help] Modeling interaction effects in ERGM
+In-Reply-To: <CAN0HJZGyWPURiauyzAeSg_3csxCT6rtvKUZOHggMu7hG8avrGg@mail.gmail.com>
+References: <CAN0HJZGyWPURiauyzAeSg_3csxCT6rtvKUZOHggMu7hG8avrGg@mail.gmail.com>
+Message-ID: <0b594f6584d239ccba5b06c2006b1d1a4231222a.camel@unsw.edu.au>
+
+Hi, Wallace,
+
+For mutuality, it may in fact, be well-defined, but not in general. A better way to model this type of interaction is probably via the F() (for filtering) operator.
+
+To fit something like what you have here, you could try:
+
+
+net ~ edges +
+
+      For(l = sort(unique(net %v% "Gender"))[-1],
+
+          F(~mutual, ~nodefactor("Gender", levels = I(l)))
+
+      )
+
+
+(I think there's an example in https://doi.org/10.18637/jss.v105.i06 .)
+
+Now that I think about it, there's no reason F() shouldn't be able to test if the filtering term has multiple statistics and act accordingly. Maybe in the next release...
+
+
+I hope this helps,
+Pavel
+
+On Fri, 2025-05-30 at 18:35 -0700, Wallace Chipidza via statnet_help wrote:
+Hi,
+
+I have a network with various demographic attributes and am testing some hypotheses on interactions between node attributes and structural effects. Is there a way to model the interaction between an attribute like gender and reciprocity in ERGM? Some way to test if women are more reciprocal in their network behavior than men? So far I've tried:
+
+model1 <- ergm(net ~ edges + mutual:nodefactor("Gender"))
+
+and I receive the message "Error in `ergm_Init_abort()`:! In unknown function: Change statistic interactions are poorly defined for dyad-dependent terms. Use ?interact.dependent? term option to set the behavior.FALSE"
+
+Wallace
+_______________________________________________
+statnet_help mailing list
+statnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>
+http://mailman23.u.washington.edu/mailman/listinfo/statnet_help
+
+
+
+Confidential communication - This email and any files transmitted with it are confidential and are intended solely for the addressee. If you are not the intended recipient, please be advised that you have received this email in error and that any use, dissemination, forwarding, printing, or copying of this email and any file attachments is strictly prohibited. If you have received this email in error, please notify me immediately by return email and destroy this email.
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://mailman23.u.washington.edu/pipermail/statnet_help/attachments/20250602/2feccaef/attachment.html>
+From statnet_help at u.washington.edu  Fri Jun 20 11:46:14 2025
+From: statnet_help at u.washington.edu (Steven M. Goodreau via statnet_help)
+Date: Fri Jun 20 11:48:12 2025
+Subject: [statnet_help] Fwd: Network Modeling for Epidemics @ SISMID -
+	Applications due June 30
+In-Reply-To: <CAB+wUOFmB9y=xzYHsFi+EMmDqDWApO1FNHW3bFREvC+AdEv30A@mail.gmail.com>
+References: <CAB+wUOFmB9y=xzYHsFi+EMmDqDWApO1FNHW3bFREvC+AdEv30A@mail.gmail.com>
+Message-ID: <CAB+wUOH+HoDVWPt8bKT0o4EZeLw=y3nUnGYOphX=FyZ1ub+-MA@mail.gmail.com>
+
+Hello,
+
+We are pleased to announce that we will be offering two modules pertaining
+to Network Modeling for Epidemics using EpiModel at this year's SISMID
+(Summer Institute in Statistics and Modeling in Infectious Diseases).
+
+Both modules are in person in Atlanta.
+
+Network Modeling for Epidemics I
+<https://sismid.sph.emory.edu/modules/network-model-epidemics/index.html>:
+July 21-23. This module is ideal for those who are starting out with
+EpiModel, or who want a refresher. It is roughly equivalent to a condensed
+version of the old NME workshop in Seattle.
+
+Network Modeling for Epidemics I (NME-I) introduces stochastic network
+models for infectious disease transmission dynamics. It is a ??hands-on??
+course, using the EpiModel software package in R. EpiModel software
+provides a unified framework for statistically based modeling of dynamic
+networks from empirical data, and simulation of epidemic dynamics over
+these networks. This explicit modeling of networks is essential for
+accurate projections when the contacts that enable transmission are sparse,
+highly structured, heterogeneous and/or evolving over time.
+
+Network Modeling for Epidemics II
+<https://sismid.sph.emory.edu/modules/network-model-epidemics-II/index.html>:
+July 23-25. This module is ideal for those who have taken or will take
+NME-I, either this year or last year at SISMID, or else in Seattle in years
+pass.
+
+Network Modeling for Epidemics II extends the material in NME-I to
+developing research-level applications of EpiModel and its underlying TERGM
+statistical framework.  Here, we focus on learning how to use the
+application programming interface (API) in EpiModel to design and program
+epidemic model components (or ?modules?) that define a network-based
+epidemic model for a specific research question. The goal is to enable
+students to build EpiModel extensions to represent any infectious disease
+component in a system of interest.
+
+*Applications are due June 30.*
+
+Please feel free to share widely!
+
+Yours,
+Martina Morris, Steve Goodreau and Samuel Jenness
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://mailman23.u.washington.edu/pipermail/statnet_help/attachments/20250620/7338b9ff/attachment.html>
+From statnet_help at u.washington.edu  Mon Aug 25 15:05:40 2025
+From: statnet_help at u.washington.edu (Zhu, Lin via statnet_help)
+Date: Mon Aug 25 15:05:45 2025
+Subject: [statnet_help] Issue with delete.vertices and
+	network.extract.with.lasttoggle
+Message-ID: <DM8PR07MB88084858F753DAEF61116E4E953EA@DM8PR07MB8808.namprd07.prod.outlook.com>
+
+Dear Statnet community,
+
+Hope everyone is doing great!
+
+I?ve been using Statnet for a few years, and I?m looking to see if anyone had this same error and if it can be fixed. So in a summary I have had this error <simpleError in lttails[w2] <- ltheads[w2]: NAs are not allowed in subscripted assignments>  from the network.extract.with.lasttoggle function since I updated ERGM from 3.11 to 4.9.0, and TERGM from 3.7.0 to 4.2.2.
+
+I then found that it?s associated with delete.vertices, which I use to remove nodes when they die. So only after using this function, simulating nwd again (S3 used is simulate.networkDynamic) will throw the error. What happened is that, after deleting the nodes, the ties attached to them became NULL in mel. And the network.extract.with.lasttoggle function has the following code to record edge heads and tails which are further processed to construct lttails and ltheads (mentioned in the error message):
+    valid_eids <- valid.eids(nwd)
+    tails <- unlist(lapply(nwd$mel, "[[", "outl"))[valid_eids]
+heads <- unlist(lapply(nwd$mel, "[[", "inl"))[valid_eids]
+The issue is, lapply(nwd$mel, "[[", "outl") outputs all vids from mel, including the NULLs. Then unlist(lapply(nwd$mel, "[[", "outl")) automatically removes the NULLs and ends up with a shorter vector, making the edges and indices not matching anymore. Then having the indices [valid_eids] after and outside of unlist will create NAs at the end of tails, with the number of NAs equal to the number of edges that were attached to the removed nodes (the NULL edges).
+
+A simple fix I think is
+    tails <- unlist(lapply(nwd$mel, "[[", "outl")[valid_eids])
+heads <- unlist(lapply(nwd$mel, "[[", "inl") [valid_eids])
+
+However I tried different methods to replace the code, but it either doesn?t use my updated code, or R crashes if I edit the tergm namespace or Rprofile. Since this function is wrapped many layers under simulate, I didn?t find a better way to replace it.
+
+So has anyone had the same issue? Does my debugging make sense? If it?s a common issue, would it be possible to update the function in the package from the statnet side so it won?t crash? Please feel free to reach out if you have any questions. Thank you so much for your help!
+
+(A bit more context of the package updates: I used to use renv to lock the package versions (thanks to Steve?s suggestion) and had no issues. Recently I got a new Mac, which cannot install older R versions written with Rosetta, and renv failed to install the older packages because the newer R defaults to clang instead of gcc in many places, which caused a lot of installation errors. I tried to manually install the packages with no luck. I hence decided to update my statnet to the new versions.)
+
+Best,
+Lin
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://mailman23.u.washington.edu/pipermail/statnet_help/attachments/20250825/26eccd0c/attachment.html>
+From statnet_help at u.washington.edu  Mon Sep 15 16:26:00 2025
+From: statnet_help at u.washington.edu (Steven M. Goodreau via statnet_help)
+Date: Mon Sep 15 16:26:07 2025
+Subject: [statnet_help] Issue with delete.vertices and
+ network.extract.with.lasttoggle
+In-Reply-To: <DM8PR07MB88084858F753DAEF61116E4E953EA@DM8PR07MB8808.namprd07.prod.outlook.com>
+References: <DM8PR07MB88084858F753DAEF61116E4E953EA@DM8PR07MB8808.namprd07.prod.outlook.com>
+Message-ID: <c07c2774-f81e-4944-91d3-fbcd0bebc350@uw.edu>
+
+Hi Lin,
+
+A few of us have taken a look at this and still don't have a clear 
+answer on the behavior or your potential fix. Carter seems confident 
+it's not an issue in network but something upstream that calls it.? I'm 
+not able to reproduce it.
+
+Are you able to create a minimum reproducible example?? Then we can dive 
+in a lot more deeply.
+
+Thanks,
+
+Steve
+
+
+
+On 8/25/2025 3:05 PM, Zhu, Lin via statnet_help wrote:
+>
+> Dear Statnet community,
+>
+> Hope everyone is doing great!
+>
+> I?ve been using Statnet for a few years, and I?m looking to see if 
+> anyone had this same error and if it can be fixed. So in a summary I 
+> have had this error <simpleError in lttails[w2] <- ltheads[w2]: NAs 
+> are not allowed in subscripted assignments> ?from the 
+> network.extract.with.lasttoggle function since I updated ERGM from 
+> 3.11 to 4.9.0, and TERGM from 3.7.0 to 4.2.2.
+>
+> I then found that it?s associated with delete.vertices, which I use to 
+> remove nodes when they die. So only after using this function, 
+> simulating nwd again (S3 used is simulate.networkDynamic) will throw 
+> the error. What happened is that, after deleting the nodes, the ties 
+> attached to them became NULL in mel. And the 
+> network.extract.with.lasttoggle function has the following code to 
+> record edge heads and tails which are further processed to construct 
+> lttails and ltheads (mentioned in the error message):
+>
+> ??? valid_eids <- valid.eids(nwd)
+>
+> ??? tails <- unlist(lapply(nwd$mel, "[[", "outl"))[valid_eids]
+>
+> heads <- unlist(lapply(nwd$mel, "[[", "inl"))[valid_eids]
+>
+> The issue is, lapply(nwd$mel, "[[", "outl") outputs all vids from mel, 
+> including the NULLs. Then unlist(lapply(nwd$mel, "[[", "outl")) 
+> automatically removes the NULLs and ends up with a shorter vector, 
+> making the edges and indices not matching anymore. Then having the 
+> indices [valid_eids] after and outside of unlist will create NAs at 
+> the end of tails, with the number of NAs equal to the number of edges 
+> that were attached to the removed nodes (the NULL edges).
+>
+> A simple fix I think is
+>
+> ????tails <- unlist(lapply(nwd$mel, "[[", "outl")[valid_eids])
+>
+> heads <- unlist(lapply(nwd$mel, "[[", "inl") [valid_eids])
+>
+> However I tried different methods to replace the code, but it either 
+> doesn?t use my updated code, or R crashes if I edit the tergm 
+> namespace or Rprofile. Since this function is wrapped many layers 
+> under simulate, I didn?t find a better way to replace it.
+>
+> So has anyone had the same issue? Does my debugging make sense? If 
+> it?s a common issue, would it be possible to update the function in 
+> the package from the statnet side so it won?t crash? Please feel free 
+> to reach out if you have any questions. Thank you so much for your help!
+>
+> (A bit more context of the package updates: I used to use renv to lock 
+> the package versions (thanks to Steve?s suggestion) and had no issues. 
+> Recently I got a new Mac, which cannot install older R versions 
+> written with Rosetta, and renv failed to install the older packages 
+> because the newer R defaults to clang instead of gcc in many places, 
+> which caused a lot of installation errors. I tried to manually install 
+> the packages with no luck. I hence decided to update my statnet to the 
+> new versions.)
+>
+> Best,
+>
+> Lin
+>
+>
+> _______________________________________________
+> statnet_help mailing list
+> statnet_help@u.washington.edu
+> http://mailman23.u.washington.edu/mailman/listinfo/statnet_help 
+
+-- 
+******************************************************************************************************
+Steven M. Goodreau / Professor, Dept. of Anthropology / Adjunct Prof., Dept. of Epidemiology
+(STEE-vun GOOD-roe) / he-him /https://faculty.washington.edu/goodreau 
+Physical address: Denny Hall M236; Mailing address: Campus Box 353100 / 4216 Memorial Way NE
+University of Washington / Seattle WA 98195 / dzidz?lali?, x???l?
+******************************************************************************************************
+For there is always light, if only we?re brave enough to see it. If only we?re brave enough to be it.
+- Amanda Gorman, The Hill We Climb
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://mailman23.u.washington.edu/pipermail/statnet_help/attachments/20250915/d45765a1/attachment.html>
+From statnet_help at u.washington.edu  Tue Sep 16 12:53:29 2025
+From: statnet_help at u.washington.edu (Zhu, Lin via statnet_help)
+Date: Tue Sep 16 12:53:39 2025
+Subject: [statnet_help] [EXTERNAL] Re: Issue with delete.vertices and
+ network.extract.with.lasttoggle
+In-Reply-To: <c07c2774-f81e-4944-91d3-fbcd0bebc350@uw.edu>
+References: <DM8PR07MB88084858F753DAEF61116E4E953EA@DM8PR07MB8808.namprd07.prod.outlook.com>
+ <c07c2774-f81e-4944-91d3-fbcd0bebc350@uw.edu>
+Message-ID: <BYAPR07MB58610C58E2B8A59092B114469514A@BYAPR07MB5861.namprd07.prod.outlook.com>
+
+Hi Steve and statnet team,
+
+Thank you so much for your help! I really appreciate it!
+
+I have coded a simple example (attached), and attached the initial dynamic network and the fitted STERGM to be used in the example. Please let me know if you can replicate the error or have any questions. Thanks a lot!!
+
+Best,
+Lin
+
+From: Steven M. Goodreau <goodreau@uw.edu>
+Date: Monday, September 15, 2025 at 7:26?PM
+To: Zhu, Lin <l.zhu3@med.miami.edu>, statnet_help@u.washington.edu <statnet_help@u.washington.edu>
+Subject: [EXTERNAL] Re: [statnet_help] Issue with delete.vertices and network.extract.with.lasttoggle
+CAUTION: This email originated from outside the organization. DO NOT CLICK ON LINKS or OPEN ATTACHMENTS unless you know and trust the sender.
+
+Hi Lin,
+
+A few of us have taken a look at this and still don't have a clear answer on the behavior or your potential fix. Carter seems confident it's not an issue in network but something upstream that calls it.  I'm not able to reproduce it.
+
+Are you able to create a minimum reproducible example?  Then we can dive in a lot more deeply.
+
+Thanks,
+
+Steve
+
+
+
+
+On 8/25/2025 3:05 PM, Zhu, Lin via statnet_help wrote:
+Dear Statnet community,
+
+Hope everyone is doing great!
+
+I?ve been using Statnet for a few years, and I?m looking to see if anyone had this same error and if it can be fixed. So in a summary I have had this error <simpleError in lttails[w2] <- ltheads[w2]: NAs are not allowed in subscripted assignments>  from the network.extract.with.lasttoggle function since I updated ERGM from 3.11 to 4.9.0, and TERGM from 3.7.0 to 4.2.2.
+
+I then found that it?s associated with delete.vertices, which I use to remove nodes when they die. So only after using this function, simulating nwd again (S3 used is simulate.networkDynamic) will throw the error. What happened is that, after deleting the nodes, the ties attached to them became NULL in mel. And the network.extract.with.lasttoggle function has the following code to record edge heads and tails which are further processed to construct lttails and ltheads (mentioned in the error message):
+    valid_eids <- valid.eids(nwd)
+    tails <- unlist(lapply(nwd$mel, "[[", "outl"))[valid_eids]
+heads <- unlist(lapply(nwd$mel, "[[", "inl"))[valid_eids]
+The issue is, lapply(nwd$mel, "[[", "outl") outputs all vids from mel, including the NULLs. Then unlist(lapply(nwd$mel, "[[", "outl")) automatically removes the NULLs and ends up with a shorter vector, making the edges and indices not matching anymore. Then having the indices [valid_eids] after and outside of unlist will create NAs at the end of tails, with the number of NAs equal to the number of edges that were attached to the removed nodes (the NULL edges).
+
+A simple fix I think is
+    tails <- unlist(lapply(nwd$mel, "[[", "outl")[valid_eids])
+heads <- unlist(lapply(nwd$mel, "[[", "inl") [valid_eids])
+
+However I tried different methods to replace the code, but it either doesn?t use my updated code, or R crashes if I edit the tergm namespace or Rprofile. Since this function is wrapped many layers under simulate, I didn?t find a better way to replace it.
+
+So has anyone had the same issue? Does my debugging make sense? If it?s a common issue, would it be possible to update the function in the package from the statnet side so it won?t crash? Please feel free to reach out if you have any questions. Thank you so much for your help!
+
+(A bit more context of the package updates: I used to use renv to lock the package versions (thanks to Steve?s suggestion) and had no issues. Recently I got a new Mac, which cannot install older R versions written with Rosetta, and renv failed to install the older packages because the newer R defaults to clang instead of gcc in many places, which caused a lot of installation errors. I tried to manually install the packages with no luck. I hence decided to update my statnet to the new versions.)
+
+Best,
+Lin
+
+
+
+_______________________________________________
+
+statnet_help mailing list
+
+statnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>
+
+http://mailman23.u.washington.edu/mailman/listinfo/statnet_help<https://urldefense.com/v3/__http:/mailman23.u.washington.edu/mailman/listinfo/statnet_help__;!!KVu0SnhVq1hAFvslES2Y!PnYvP4AXoCjRAJ5Qsck3dQcCQrzO93AXbtTABPkRJTRTttTVtEzLzDMDIYMfJ-hRlz05eYPeFNx8MvqIviAeTw$>
+
+--
+
+******************************************************************************************************
+
+Steven M. Goodreau / Professor, Dept. of Anthropology / Adjunct Prof., Dept. of Epidemiology
+
+(STEE-vun GOOD-roe) / he-him / https://faculty.washington.edu/goodreau<https://urldefense.com/v3/__https:/faculty.washington.edu/goodreau__;!!KVu0SnhVq1hAFvslES2Y!PnYvP4AXoCjRAJ5Qsck3dQcCQrzO93AXbtTABPkRJTRTttTVtEzLzDMDIYMfJ-hRlz05eYPeFNx8MvoNvdfoSA$>
+
+Physical address: Denny Hall M236; Mailing address: Campus Box 353100 / 4216 Memorial Way NE
+
+University of Washington / Seattle WA 98195 / dzidz?lali?, x???l?
+
+******************************************************************************************************
+
+For there is always light, if only we?re brave enough to see it. If only we?re brave enough to be it.
+
+- Amanda Gorman, The Hill We Climb
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://mailman23.u.washington.edu/pipermail/statnet_help/attachments/20250916/772c18df/attachment-0001.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: debug_delete_vertices.R
+Type: application/octet-stream
+Size: 2044 bytes
+Desc: debug_delete_vertices.R
+URL: <http://mailman23.u.washington.edu/pipermail/statnet_help/attachments/20250916/772c18df/attachment-0003.obj>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: nwd1.rda
+Type: application/octet-stream
+Size: 52467 bytes
+Desc: nwd1.rda
+URL: <http://mailman23.u.washington.edu/pipermail/statnet_help/attachments/20250916/772c18df/attachment-0004.obj>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: ergm_fit_7_stergm_1373_new.rda
+Type: application/octet-stream
+Size: 131290 bytes
+Desc: ergm_fit_7_stergm_1373_new.rda
+URL: <http://mailman23.u.washington.edu/pipermail/statnet_help/attachments/20250916/772c18df/attachment-0005.obj>
+From statnet_help at u.washington.edu  Mon Nov  3 07:38:13 2025
+From: statnet_help at u.washington.edu (Peter MacDonald via statnet_help)
+Date: Mon Nov  3 07:38:19 2025
+Subject: [statnet_help] Time-varying covariates in tergm
+Message-ID: <YQXPR01MB3944A011EC9A4BD19002A860DEC7A@YQXPR01MB3944.CANPRD01.PROD.OUTLOOK.COM>
+
+Hi,
+
+The mtergm command in the package btergm supports time-varying edge covariate terms, where the edge covariates are specified as a as a list of networks or matrices with the same length as the list of networks to be modeled. See for instance the example in the mtergm documentation.
+
+Is there an analogous way to specify time-varying edge covariate terms inside the Form and Persist operators in tergm?
+
+Thank you!
+
+Peter W. MacDonald
+------------------
+Assistant Professor, Statistics & Actuarial Science
+University of Waterloo M3 4208
+pwmacdonald@uwaterloo.ca<mailto:pwmacdonald@uwaterloo.ca>
+------------------
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://mailman23.u.washington.edu/pipermail/statnet_help/attachments/20251103/ce02f3bf/attachment.html>

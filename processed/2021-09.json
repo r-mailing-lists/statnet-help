@@ -1,0 +1,84 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2021-09",
+  "messages": [
+    {
+      "id": "msg-0c706e968e6a",
+      "message_id": "<alpine.WNT.2.21.999.2108311843410.14056@LAPTOP-PHUBQHL5>",
+      "from_name": "martina morris",
+      "from_email_hash": "723fa6c3cfc81bc0b636cb6ab264b9e07126ad90bc6bb940e8243a073bbb4b8b",
+      "date": "2021-09-01T09:36:46Z",
+      "subject": "[statnet_help] STERGM network eids error",
+      "subject_clean": "[statnet_help] STERGM network eids error",
+      "in_reply_to": "<CH2PR12MB4245CE5DE309ECB38B33CF52BFCC9@CH2PR12MB4245.namprd12.prod.outlook.com>",
+      "references": [
+        "<CH2PR12MB4245CE5DE309ECB38B33CF52BFCC9@CH2PR12MB4245.namprd12.prod.outlook.com>"
+      ],
+      "body_plain": "Hi Molly,\n\nSorry to hear you're having problems with the updated tergm package. It's \nhard to diagnose what is happening without a more \"reproducible example\". \nAre you able to share your data?  Or, if not, can you create a dummy \ndataset with the same structure that generates the same errors, and send \nit to us along with the scripts that are generating the error?\n\nIf you can do the latter, our preferred method would be to file this as an \n\"issue\" on the tergm GitHub repository:  https://github.com/statnet/tergm\nThis requires that you have a GitHub account (easy enough to sign up if \nyou don't).  If all of that seems too daunting, just email us the dummy \ndata and script, and we'll take a look at it.\n\nbest,\nMartina\n\nOn Tue, 31 Aug 2021, Copeland, Molly wrote:\n\n\n> Hi all,\n> \n> My co-authors and I are returning to a project using a STERGM. We've converted to the new tergm 4 format, but we're\n> getting this error when we try to run the model with the stergm or tergm syntax:\n> \n> Error in lapply(nwl[[b]]$mel, ?[[?, ?atl?) [eids] : \n> \n> invalid subscript type ?list? \n> \n> \n> In troubleshooting we've found: we get the same error if we try to make our list of networks into a NetSeries manually,\n> but it works fine if we run each edgelist alone as an ergm, and if we make the networks a NetworkDynamic object, the\n> stergm/tergm runs, but simple models that should take 10 minutes take > 2 days, which seems likely incorrect. We haven't\n> changed our networks (or underlying edgelists) from what previously worked in the STERGM, with the same nodes in both\n> waves. When we compare our constructed networks to the Sampson data, the only difference in the printout is that the samp\n> networks say \"no edge attributes\" and ours says \"edge attribute names not shown\" even though it's an unweighted network.\n> \n> Any clues as to what might be different or where the problem might be, and how to fix?\n> \n> Thanks!\n> Molly\n> \n> Molly Copeland, Ph.D.\n> (she/her)\n> Assistant Professor\n> Department of Sociology\n> Michigan State University\n> \n> \n>\n\n****************************************************************\n  Professor Emerita of Sociology and Statistics\n  Box 354322\n  University of Washington\n  Seattle, WA 98195-4322",
+      "body_snippet": "Hi Molly,\n\nSorry to hear you're having problems with the updated tergm package. It's \nhard to diagnose what is happening without a more \"reproducible example\". \nAre you able to share your data?  Or, i",
+      "thread_id": "thread-0c706e968e6a",
+      "thread_depth": 0,
+      "month": "2021-09"
+    },
+    {
+      "id": "msg-6c3c45730529",
+      "message_id": "<9EAFEC27-F2AB-4245-94AD-B78528A3378E@hxcore.ol>",
+      "from_name": "Nelson Jatel",
+      "from_email_hash": "bae7288722854d2979eccd3dd09797b3bbf816b0dea2dbb12ded220009a2dc8f",
+      "date": "2021-09-19T11:26:10Z",
+      "subject": "[statnet_help] help - \"loop error\" - statnet",
+      "subject_clean": "[statnet_help] help - \"loop error\" - statnet",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "An HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210919/1093c86a/attachment.html>",
+      "body_snippet": "An HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210919/1093c86a/attachment.html>",
+      "thread_id": "thread-6c3c45730529",
+      "thread_depth": 0,
+      "month": "2021-09"
+    },
+    {
+      "id": "msg-bb508bb50976",
+      "message_id": "<f8a85827-61cd-7ea1-3352-8dede462426e@uci.edu>",
+      "from_name": "Carter T. Butts",
+      "from_email_hash": "32055e2499c82303518304145955114972c87c44df2a05ce47265523a5c6a2da",
+      "date": "2021-09-19T14:31:26Z",
+      "subject": "[statnet_help] help - \"loop error\" - statnet",
+      "subject_clean": "[statnet_help] help - \"loop error\" - statnet",
+      "in_reply_to": "<9EAFEC27-F2AB-4245-94AD-B78528A3378E@hxcore.ol>",
+      "references": [
+        "<9EAFEC27-F2AB-4245-94AD-B78528A3378E@hxcore.ol>"
+      ],
+      "body_plain": "Hi, Nelson -\n\nA new coercion method has been added for data frames, which regrettably \nis not handling two-mode adjacency data correctly at present.? \nConverting your data to matrix form should restore the expected \nbehavior.? It is also possible to explicitly call \nas.network.matrix(mydat,bipartite=TRUE), which will force the use of the \nvenerable conversion method.\n\nHope that helps,\n\n-Carter\n\nOn 9/19/21 11:25 AM, Nelson Jatel wrote:\n>\n> Hi,\n>\n> I?m trying to re-analyze some of my network data using ERGMs, \n> something I?ve done many times before.\n>\n> When I try and download my data and convert my data.frame to a network \n> frame (as.frame), I get the following ?contains loops? errors:\n>\n> Example 1.\n>\n> > net_69 <- as.network(data_69, bipartite=T, directed=F, loops = F)\n>\n> Error: `loops` is `FALSE`, but `x` contains loops.\n>\n> The following values are affected:\n>\n> ??????????????? - `x[2, 1:2]`\n>\n> ??????????????? - `x[3, 1:2]`\n>\n> ??????????????? - `x[5, 1:2]`\n>\n> ??????????????? - `x[7, 1:2]`\n>\n> ??????????????? - `x[12, 1:2]`\n>\n> ??????????????? - `x[13, 1:2]\n>\n> Example 2.\n>\n> > class(data1_weak) #data.frame\n>\n> [1] \"data.frame\"\n>\n> > data1_weak\n>\n> ? A B C D E F G\n>\n> A 0 1 0 0 0 0 0\n>\n> B 0 0 0 0 1 1 0\n>\n> C 0 1 0 0 0 0 0\n>\n> D 0 1 0 0 0 0 0\n>\n> E 0 1 0 0 0 1 0\n>\n> F 0 1 0 0 0 0 0\n>\n> G 0 1 0 0 0 0 0\n>\n> > plot(data1_weak)\n>\n> > net_weak <- as.network(data1_weak, bipartite=FALSE, directed=TRUE)\n>\n> Error: `loops` is `FALSE`, but `x` contains loops.\n>\n> The following values are affected:\n>\n> - `x[2, 1:2]`\n>\n> Please advise.\n>\n> Nelson Jatel, /doctoral candidate/\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20210919/093b7433/attachment.html>",
+      "body_snippet": "Hi, Nelson -\n\nA new coercion method has been added for data frames, which regrettably \nis not handling two-mode adjacency data correctly at present.? \nConverting your data to matrix form should restor",
+      "thread_id": "thread-6c3c45730529",
+      "thread_depth": 1,
+      "month": "2021-09"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-0c706e968e6a",
+      "subject": "[statnet_help] STERGM network eids error",
+      "message_count": 1,
+      "participants": [
+        "martina morris"
+      ],
+      "started": "2021-09-01T09:36:46Z",
+      "last_reply": "2021-09-01T09:36:46Z",
+      "root_message_id": "msg-0c706e968e6a"
+    },
+    {
+      "id": "thread-6c3c45730529",
+      "subject": "[statnet_help] help - \"loop error\" - statnet",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts",
+        "Nelson Jatel"
+      ],
+      "started": "2021-09-19T11:26:10Z",
+      "last_reply": "2021-09-19T14:31:26Z",
+      "root_message_id": "msg-6c3c45730529"
+    }
+  ]
+}

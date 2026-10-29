@@ -1,0 +1,122 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2024-07",
+  "messages": [
+    {
+      "id": "msg-016b1321989a",
+      "message_id": "<CAF2+G1p+A9xkirxEOGQ9tcrKLZQGeGqnypzrxxtacbW=T8FN6g@mail.gmail.com>",
+      "from_name": "Federico Salvati via statnet_help",
+      "from_email_hash": "cadd53adaa38ad8f3cee64465903f64e467b0a2f6eff7bfb47d78a8e48daa12a",
+      "date": "2024-07-18T07:45:56Z",
+      "subject": "[statnet_help] TERGM model analysis problem valued edges",
+      "subject_clean": "[statnet_help] TERGM model analysis problem valued edges",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear statnet team,\n\n\nI am a PhD student in Berlin and I mostly do text mining but I am\napproaching Network analysis for my project.\n\nI am having problems applying the TERGM model to my data. I have a dynamic\nnetwork dataset but I really would like to have a weighted value for edges\nand not just a binary value.\n\nCan this be done with the package? I am not sure how to approach the\nproblem\n\n\nSorry if the question might be silly I am approaching SNA for the first\ntime and I am learning on my own so I am not quite proficient with it yet\n\nBest\n\nFederico Salvati\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20240718/e2c507db/attachment.html>",
+      "body_snippet": "Dear statnet team,\n\n\nI am a PhD student in Berlin and I mostly do text mining but I am\napproaching Network analysis for my project.\n\nI am having problems applying the TERGM model to my data. I have a ",
+      "thread_id": "thread-016b1321989a",
+      "thread_depth": 0,
+      "month": "2024-07"
+    },
+    {
+      "id": "msg-5d7f02523ba9",
+      "message_id": "<CAFM2Sf1o8t8D8+Ty=-kq1NKMNR2MWoA0-nbQMMKpvzCgs+wZHg@mail.gmail.com>",
+      "from_name": "Martina Morris via statnet_help",
+      "from_email_hash": "cadd53adaa38ad8f3cee64465903f64e467b0a2f6eff7bfb47d78a8e48daa12a",
+      "date": "2024-07-20T13:52:41Z",
+      "subject": "[statnet_help] TERGM model analysis problem valued edges",
+      "subject_clean": "[statnet_help] TERGM model analysis problem valued edges",
+      "in_reply_to": "<CAF2+G1p+A9xkirxEOGQ9tcrKLZQGeGqnypzrxxtacbW=T8FN6g@mail.gmail.com>",
+      "references": [
+        "<CAF2+G1p+A9xkirxEOGQ9tcrKLZQGeGqnypzrxxtacbW=T8FN6g@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Federico,\n\nI think some types of valued tie terms are possible in tergm.  Tergms are\nimplemented by specifying one or more ergms (how many depends on how many\nof the operators you're using (cross, change, form, diss/persist)).  So the\nvalued terms that are available in ergm may be used in this context.\n\nBut Pavel is the expert on all things valued, so he should chime in here.\n\nbest,\nMartina\n\nOn Thu, Jul 18, 2024 at 7:46?AM Federico Salvati via statnet_help <\nstatnet_help@u.washington.edu> wrote:\n\n> Dear statnet team,\n>\n>\n> I am a PhD student in Berlin and I mostly do text mining but I am\n> approaching Network analysis for my project.\n>\n> I am having problems applying the TERGM model to my data. I have a dynamic\n> network dataset but I really would like to have a weighted value for edges\n> and not just a binary value.\n>\n> Can this be done with the package? I am not sure how to approach the\n> problem\n>\n>\n> Sorry if the question might be silly I am approaching SNA for the first\n> time and I am learning on my own so I am not quite proficient with it yet\n>\n> Best\n>\n> Federico Salvati\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20240720/896985c1/attachment.html>",
+      "body_snippet": "Hi Federico,\n\nI think some types of valued tie terms are possible in tergm.  Tergms are\nimplemented by specifying one or more ergms (how many depends on how many\nof the operators you're using (cross, ",
+      "thread_id": "thread-016b1321989a",
+      "thread_depth": 1,
+      "month": "2024-07"
+    },
+    {
+      "id": "msg-888f531f0712",
+      "message_id": "<cc34c724-834d-4396-ba7a-0b5bd08f3b0c@stat.ucla.edu>",
+      "from_name": "Mark S. Handcock via statnet_help",
+      "from_email_hash": "cadd53adaa38ad8f3cee64465903f64e467b0a2f6eff7bfb47d78a8e48daa12a",
+      "date": "2024-07-20T14:39:01Z",
+      "subject": "[statnet_help] TERGM model analysis problem valued edges",
+      "subject_clean": "[statnet_help] TERGM model analysis problem valued edges",
+      "in_reply_to": "<CAFM2Sf1o8t8D8+Ty=-kq1NKMNR2MWoA0-nbQMMKpvzCgs+wZHg@mail.gmail.com>",
+      "references": [
+        "<CAF2+G1p+A9xkirxEOGQ9tcrKLZQGeGqnypzrxxtacbW=T8FN6g@mail.gmail.com>",
+        "<CAFM2Sf1o8t8D8+Ty=-kq1NKMNR2MWoA0-nbQMMKpvzCgs+wZHg@mail.gmail.com>"
+      ],
+      "body_plain": "Hi Federico,\n\nThe separable model uses the binary nature of the network in a \nfundamental way. If the edges have weights/values then a new \nseparability assumption is needed, and this will generally not be as \nelegant as that for binary edges.\n\nThis, however, has been done by Yik Lun Kei, a former student of mine:\n\n\"A partially separable model for dynamic valued networks\"\n(https://www.sciencedirect.com/science/article/abs/pii/S0167947323001226).\n\nand he has code on GitHub.\n\nBest,\n\nMark\n\n----------------------------------------------------\nMark S. Handcock\nDistinguished Professor of Statistics\nDepartment of Statistics and Data Science\nUniversity of California\nLos Angeles, CA 90095-1554.\nWeb: https://faculty.stat.ucla.edu/handcock\nemail: handcock@stat.ucla.edu <mailto:handcock@stat.ucla.edu>\n\n\n\nOn 7/20/24 1:52 PM, Martina Morris via statnet_help wrote:\n> Hi Federico,\n>\n> I think some types of valued tie terms are possible in tergm.? Tergms \n> are implemented by specifying one or more ergms (how many depends on \n> how many of the operators you're using (cross, change, form, \n> diss/persist)).? So the valued terms that are available in ergm may be \n> used in this context.\n>\n> But Pavel is the expert on all things valued, so he should chime in here.\n>\n> best,\n> Martina\n>\n> On Thu, Jul 18, 2024 at 7:46?AM Federico Salvati via statnet_help \n> <statnet_help@u.washington.edu> wrote:\n>\n>     Dear statnet team,\n>\n>\n>     I am a PhD student in Berlin and I mostly do text mining but I am\n>     approaching?Network analysis for my project.\n>\n>     I am having problems applying the TERGM model to my data. I have a\n>     dynamic network dataset but I really would like to have a weighted\n>     value for edges and not just a binary value.\n>\n>     Can this be done with the package? I am not sure how to\n>     approach?the problem\n>\n>\n>     Sorry if the question might be silly I am approaching SNA for the\n>     first time and I am learning on my own so I am not quite\n>     proficient?with it yet\n>\n>     Best\n>\n>     Federico Salvati\n>     _______________________________________________\n>     statnet_help mailing list\n>     statnet_help@u.washington.edu\n>     http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20240720/4ef88848/attachment.html>",
+      "body_snippet": "Hi Federico,\n\nThe separable model uses the binary nature of the network in a \nfundamental way. If the edges have weights/values then a new \nseparability assumption is needed, and this will generally n",
+      "thread_id": "thread-016b1321989a",
+      "thread_depth": 2,
+      "month": "2024-07"
+    },
+    {
+      "id": "msg-52303658b2a7",
+      "message_id": "<CAF2+G1p=g2vwhgHBWgfFQ1UVRWS+epJa6WWLmxVZ9dBjfHkqDQ@mail.gmail.com>",
+      "from_name": "Federico Salvati via statnet_help",
+      "from_email_hash": "cadd53adaa38ad8f3cee64465903f64e467b0a2f6eff7bfb47d78a8e48daa12a",
+      "date": "2024-07-23T02:48:15Z",
+      "subject": "[statnet_help] TERGM model analysis problem valued edges",
+      "subject_clean": "[statnet_help] TERGM model analysis problem valued edges",
+      "in_reply_to": "<cc34c724-834d-4396-ba7a-0b5bd08f3b0c@stat.ucla.edu>",
+      "references": [
+        "<CAF2+G1p+A9xkirxEOGQ9tcrKLZQGeGqnypzrxxtacbW=T8FN6g@mail.gmail.com>",
+        "<CAFM2Sf1o8t8D8+Ty=-kq1NKMNR2MWoA0-nbQMMKpvzCgs+wZHg@mail.gmail.com>",
+        "<cc34c724-834d-4396-ba7a-0b5bd08f3b0c@stat.ucla.edu>"
+      ],
+      "body_plain": "Wow thank you everybody for your help and your swift responses. What an\namazing community\n\n\nFederico\n\nOn Sat, 20 Jul 2024 at 23:38, Mark S. Handcock <handcock@ucla.edu> wrote:\n\n> Hi Federico,\n>\n> The separable model uses the binary nature of the network in a fundamental\n> way. If the edges have weights/values then a new separability assumption is\n> needed, and this will generally not be as elegant as that for binary edges.\n>\n> This, however, has been done by Yik Lun Kei, a former student of mine:\n>\n> \"A partially separable model for dynamic valued networks\"\n> (https://www.sciencedirect.com/science/article/abs/pii/S0167947323001226).\n>\n>\n> and he has code on GitHub.\n>\n> Best,\n>\n> Mark\n>\n> ----------------------------------------------------\n> Mark S. Handcock\n> Distinguished Professor of Statistics\n> Department of Statistics and Data Science\n> University of California\n> Los Angeles, CA 90095-1554.\n> Web:  https://faculty.stat.ucla.edu/handcock\n> email:  handcock@stat.ucla.edu\n>\n>\n> On 7/20/24 1:52 PM, Martina Morris via statnet_help wrote:\n>\n> Hi Federico,\n>\n> I think some types of valued tie terms are possible in tergm.  Tergms are\n> implemented by specifying one or more ergms (how many depends on how many\n> of the operators you're using (cross, change, form, diss/persist)).  So the\n> valued terms that are available in ergm may be used in this context.\n>\n> But Pavel is the expert on all things valued, so he should chime in here.\n>\n> best,\n> Martina\n>\n> On Thu, Jul 18, 2024 at 7:46?AM Federico Salvati via statnet_help <\n> statnet_help@u.washington.edu> wrote:\n>\n>> Dear statnet team,\n>>\n>>\n>> I am a PhD student in Berlin and I mostly do text mining but I am\n>> approaching Network analysis for my project.\n>>\n>> I am having problems applying the TERGM model to my data. I have a\n>> dynamic network dataset but I really would like to have a weighted value\n>> for edges and not just a binary value.\n>>\n>> Can this be done with the package? I am not sure how to approach the\n>> problem\n>>\n>>\n>> Sorry if the question might be silly I am approaching SNA for the first\n>> time and I am learning on my own so I am not quite proficient with it yet\n>>\n>> Best\n>>\n>> Federico Salvati\n>> _______________________________________________\n>> statnet_help mailing list\n>> statnet_help@u.washington.edu\n>> http://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>>\n>\n> _______________________________________________\n> statnet_help mailing liststatnet_help@u.washington.eduhttp://mailman13.u.washington.edu/mailman/listinfo/statnet_help\n>\n>\n>\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20240723/82aa68ef/attachment.html>",
+      "body_snippet": "Wow thank you everybody for your help and your swift responses. What an\namazing community\n\n\nFederico\n\nOn Sat, 20 Jul 2024 at 23:38, Mark S. Handcock <handcock@ucla.edu> wrote:\n\n> Hi Federico,\n>\n> The ",
+      "thread_id": "thread-016b1321989a",
+      "thread_depth": 3,
+      "month": "2024-07"
+    },
+    {
+      "id": "msg-5eb4cf17a872",
+      "message_id": "<CAEM3vH-Ua391-ZaXXA185NweixpVrjaOfgG=zGh_qwpWmFii5w@mail.gmail.com>",
+      "from_name": "SJ C via statnet_help",
+      "from_email_hash": "cadd53adaa38ad8f3cee64465903f64e467b0a2f6eff7bfb47d78a8e48daa12a",
+      "date": "2024-07-31T18:48:39Z",
+      "subject": "[statnet_help] Question about including an interaction effect in REM",
+      "subject_clean": "[statnet_help] Question about including an interaction effect in REM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear all,\n\nMay I ask a question about including an interaction effect in REM?\nAs illustrated in the code below, let's say I have two variables, A.cat\n(categorical) and B.con (continuous).\n\n  rem.dyad(networkdata, n = 200, effects = c(\"CovSnd\",\"CovRec\", \"CovEvent\",\n                                                 \"NIDRec\",\"NIDSnd\",\n                                                 \"NODSnd\",\"NODRec\",\n                                                 \"PSAB-BA\",\n                                                 \"RRecSnd\", \"RSndSnd\"),\n              covar = list(CovSnd = cbind(A.cat, B.con),\n                              CovRec= cbind(A.cat, B.con),\n                              CovEvent = abind(same.A.cat, A.cat*B.con,\nalong=0)),\n                              ordinal=TRUE, hessian = TRUE)\n\nTo create their interaction effect, I formed a matrix by inserting senders'\nA.cat values into all columns except the diagonal.\nAdditionally, I did the same thing with senders' B.con values and\nmean-centered them.\nThen, I multiplied these two matrices, which is represented as A.cat*B.con\nin the code.\n\nMy questions are:\n1. Can the interaction term be inserted into the REM in the way described\nabove?\n2. Should I also include A.cat and B.con(centered) as components in the\nCovEvent code, along with A.cat*B.con?\n\nBesides these questions, I am also curious whether there are any measures\nor indices that can compare the statistical significance of coefficients\nbetween two REMs with the same parameters?\n\nIt would be greatly appreciated if I can have any responses.\nThank you!\n\nSincerely,\nChoi\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20240801/90bd1629/attachment.html>",
+      "body_snippet": "Dear all,\n\nMay I ask a question about including an interaction effect in REM?\nAs illustrated in the code below, let's say I have two variables, A.cat\n(categorical) and B.con (continuous).\n\n  rem.dyad(",
+      "thread_id": "thread-5eb4cf17a872",
+      "thread_depth": 0,
+      "month": "2024-07"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-016b1321989a",
+      "subject": "[statnet_help] TERGM model analysis problem valued edges",
+      "message_count": 4,
+      "participants": [
+        "Federico Salvati via statnet_help",
+        "Mark S. Handcock via statnet_help",
+        "Martina Morris via statnet_help"
+      ],
+      "started": "2024-07-18T07:45:56Z",
+      "last_reply": "2024-07-23T02:48:15Z",
+      "root_message_id": "msg-016b1321989a"
+    },
+    {
+      "id": "thread-5eb4cf17a872",
+      "subject": "[statnet_help] Question about including an interaction effect in REM",
+      "message_count": 1,
+      "participants": [
+        "SJ C via statnet_help"
+      ],
+      "started": "2024-07-31T18:48:39Z",
+      "last_reply": "2024-07-31T18:48:39Z",
+      "root_message_id": "msg-5eb4cf17a872"
+    }
+  ]
+}

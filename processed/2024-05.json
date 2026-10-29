@@ -1,0 +1,55 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2024-05",
+  "messages": [
+    {
+      "id": "msg-dbbf7506d0af",
+      "message_id": "<CAOtpZk=2Pztfuabf-nGQcXPEA5YjW2RQjRCEHUbbV7Ro=dYRFQ@mail.gmail.com>",
+      "from_name": "Khanna, Aditya via statnet_help",
+      "from_email_hash": "cadd53adaa38ad8f3cee64465903f64e467b0a2f6eff7bfb47d78a8e48daa12a",
+      "date": "2024-05-16T07:52:46Z",
+      "subject": "[statnet_help] Upgrading from ERGM v3.10 to v4.6",
+      "subject_clean": "[statnet_help] Upgrading from ERGM v3.10 to v4.6",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet Dev and User Community:\n\nI have an ERGM that I fit previously with ERGM v3.10.4 on a directed\nnetwork with 32,000 nodes. The model included in- and out-degrees, in\naddition to other terms. The complete Rout from this fit can be seen here\n<https://gist.github.com/khanna7/aefd836baf47463051439c9e72764388>. I am\nnow trying to reproduce this fit with ergm v4.6, but the model does not\nconverge. (See here\n<https://gist.github.com/khanna7/fbabdde53c79504dfeaebd215bb5ee20>.)\n\nI am looking for ideas on how to trouble shoot this. One suggestion I got\nwas to set values for the \"tuning parameters\" in the v4.6 to their defaults\nfrom v3.11.4. But ERGM v4.6 has a lot more  parameters that can be\nspecified, and I am not sure which ones make most sense to consider.\n\nI would be grateful for any suggestions on this or alternate ideas to try.\n\nMany thanks,\nAditya\n\n\n\n\n-- \n\n<https://sph.brown.edu/>\n\n<https://sph.brown.edu/events/10-year-anniversary>\n\nAditya S. Khanna, Ph.D.\n\nAssistant Professor\n\nDepartment of Behavioral and Social Sciences\n\nCenter for Alcohol and Addiction Studies\n\nBrown University School of Public Health\n\nPronouns: he/him/his\n\n401-863-6616\n\nsph.brown.edu\n\nhttps://vivo.brown.edu/display/akhann16\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20240516/eec32919/attachment.html>",
+      "body_snippet": "Dear Statnet Dev and User Community:\n\nI have an ERGM that I fit previously with ERGM v3.10.4 on a directed\nnetwork with 32,000 nodes. The model included in- and out-degrees, in\naddition to other terms",
+      "thread_id": "thread-dbbf7506d0af",
+      "thread_depth": 0,
+      "month": "2024-05"
+    },
+    {
+      "id": "msg-6baab3ff6491",
+      "message_id": "<3bbc0b12-8e50-4ece-a72e-46904a40d811@uci.edu>",
+      "from_name": "Carter T. Butts via statnet_help",
+      "from_email_hash": "cadd53adaa38ad8f3cee64465903f64e467b0a2f6eff7bfb47d78a8e48daa12a",
+      "date": "2024-05-16T11:33:05Z",
+      "subject": "[statnet_help] Upgrading from ERGM v3.10 to v4.6",
+      "subject_clean": "[statnet_help] Upgrading from ERGM v3.10 to v4.6",
+      "in_reply_to": "<CAOtpZk=2Pztfuabf-nGQcXPEA5YjW2RQjRCEHUbbV7Ro=dYRFQ@mail.gmail.com>",
+      "references": [
+        "<CAOtpZk=2Pztfuabf-nGQcXPEA5YjW2RQjRCEHUbbV7Ro=dYRFQ@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Aditya -\n\nI will defer to the mighty Pavel for the exact best formula to reproduce \n3.x fits with the latest codebase.? (You need to switch convergence \ndetection to \"Hotelling,\" and there are some other things that must be \nmodified.)? However, as a general matter, for challenging models where \nGeyer-Thompson-Hummel has a hard time converging (particularly on a \nlarge node set), you may find it useful to try the stochastic \napproximation method (main=\"Stochastic\" in your control argument will \nactivate it). G-T-H can (in principle) have sharper convergence when \nnear the solution, but in practice SA fails more gracefully.?? I would \nsuggest increasing your default MCMC thinning interval (MCMC.interval), \ngiven your network size; depending on density, extent of dependence, and \nother factors, you may need O(N^2) toggles per step.? It is sometimes \npossible to get away with as few as k*N (for some k in, say, the 5-100 \nrange), but if your model has substantial dependence and is not \nexceptionally sparse then you will probably need to be in the quadratic \nregime.? One notes that it can sometimes be helpful when getting things \nset up to run \"pilot\" fits with the default or otherwise smaller \nthinning intervals, so that you can discover if e.g. you have a data \nissue or other problem before you spend the waiting time on a \nhigh-quality model fit.\n\nTo put in the obligatory PSA, both G-T-H and SA are simply different \nstrategies for computing the same thing (the MLE, in this case), so both \nare fine - they just have different engineering tradeoffs.? So use \nwhichever proves more effective for your model and data set.\n\nHope that helps,\n\n-Carter\n\n\nOn 5/16/24 7:52 AM, Khanna, Aditya via statnet_help wrote:\n> Dear Statnet Dev and User Community:\n>\n> I have an ERGM that I fit previously with ERGM v3.10.4 on a directed \n> network with 32,000 nodes. The model included in- and out-degrees, in \n> addition to other terms. The complete Rout from this fit can be seen \n> here \n> <https://urldefense.com/v3/__https://gist.github.com/khanna7/aefd836baf47463051439c9e72764388__;!!CzAuKJ42GuquVTTmVmPViYEvSg!KsbhvmLlx8TkLK7y2NKz59hK4-4H7KXVV7dEyUG4vcQzi4Mh7nO-9HupA7_ep2V2p9KkD_i00tcg6nDqczDwORmxHSho$>. \n> I am now trying to reproduce this fit with ergm v4.6, but the model \n> does not converge. (See here \n> <https://urldefense.com/v3/__https://gist.github.com/khanna7/fbabdde53c79504dfeaebd215bb5ee20__;!!CzAuKJ42GuquVTTmVmPViYEvSg!KsbhvmLlx8TkLK7y2NKz59hK4-4H7KXVV7dEyUG4vcQzi4Mh7nO-9HupA7_ep2V2p9KkD_i00tcg6nDqczDwOW7y31IM$>.)\n>\n> I am looking for ideas on how to trouble shoot this. One suggestion I \n> got was to set values for the \"tuning parameters\" in the v4.6 to their \n> defaults from v3.11.4. But ERGM v4.6 has a lot more ?parameters that \n> can be specified, and I am not sure which ones make most sense to \n> consider.\n>\n> I would be grateful for any suggestions on this or alternate ideas to try.\n>\n> Many thanks,\n> Aditya\n>\n>\n>\n>\n> -- \n>\n> <https://urldefense.com/v3/__https://sph.brown.edu/__;!!CzAuKJ42GuquVTTmVmPViYEvSg!KsbhvmLlx8TkLK7y2NKz59hK4-4H7KXVV7dEyUG4vcQzi4Mh7nO-9HupA7_ep2V2p9KkD_i00tcg6nDqczDwOWf8YDMv$>\n>\n>\n> <https://urldefense.com/v3/__https://sph.brown.edu/events/10-year-anniversary__;!!CzAuKJ42GuquVTTmVmPViYEvSg!KsbhvmLlx8TkLK7y2NKz59hK4-4H7KXVV7dEyUG4vcQzi4Mh7nO-9HupA7_ep2V2p9KkD_i00tcg6nDqczDwOcsy9Aer$>\n>\n> \t\n>\n> Aditya S. Khanna, Ph.D.\n>\n> Assistant Professor\n>\n> Department of Behavioral and Social Sciences\n>\n> Center for Alcohol and Addiction Studies\n>\n> Brown University School of Public Health\n>\n> Pronouns: he/him/his\n>\n>\n> 401-863-6616\n>\n> sph.brown.edu \n> <https://urldefense.com/v3/__https://sph.brown.edu/__;!!CzAuKJ42GuquVTTmVmPViYEvSg!KsbhvmLlx8TkLK7y2NKz59hK4-4H7KXVV7dEyUG4vcQzi4Mh7nO-9HupA7_ep2V2p9KkD_i00tcg6nDqczDwOWf8YDMv$>\n>\n> https://vivo.brown.edu/display/akhann16 \n> <https://urldefense.com/v3/__https://vivo.brown.edu/display/akhann16__;!!CzAuKJ42GuquVTTmVmPViYEvSg!KsbhvmLlx8TkLK7y2NKz59hK4-4H7KXVV7dEyUG4vcQzi4Mh7nO-9HupA7_ep2V2p9KkD_i00tcg6nDqczDwOWy55iTf$>\n>\n>\n> _______________________________________________\n> statnet_help mailing list\n> statnet_help@u.washington.edu\n> https://urldefense.com/v3/__http://mailman13.u.washington.edu/mailman/listinfo/statnet_help__;!!CzAuKJ42GuquVTTmVmPViYEvSg!KsbhvmLlx8TkLK7y2NKz59hK4-4H7KXVV7dEyUG4vcQzi4Mh7nO-9HupA7_ep2V2p9KkD_i00tcg6nDqczDwObRNh35k$  \n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman13.u.washington.edu/pipermail/statnet_help/attachments/20240516/be002182/attachment-0001.html>",
+      "body_snippet": "Hi, Aditya -\n\nI will defer to the mighty Pavel for the exact best formula to reproduce \n3.x fits with the latest codebase.? (You need to switch convergence \ndetection to \"Hotelling,\" and there are som",
+      "thread_id": "thread-dbbf7506d0af",
+      "thread_depth": 1,
+      "month": "2024-05"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-dbbf7506d0af",
+      "subject": "[statnet_help] Upgrading from ERGM v3.10 to v4.6",
+      "message_count": 2,
+      "participants": [
+        "Carter T. Butts via statnet_help",
+        "Khanna, Aditya via statnet_help"
+      ],
+      "started": "2024-05-16T07:52:46Z",
+      "last_reply": "2024-05-16T11:33:05Z",
+      "root_message_id": "msg-dbbf7506d0af"
+    }
+  ]
+}

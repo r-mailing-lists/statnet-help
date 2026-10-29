@@ -1,0 +1,67 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2025-06",
+  "messages": [
+    {
+      "id": "msg-450f8b9527b1",
+      "message_id": "<0b594f6584d239ccba5b06c2006b1d1a4231222a.camel@unsw.edu.au>",
+      "from_name": "Pavel Krivitsky via statnet_help",
+      "from_email_hash": "cadd53adaa38ad8f3cee64465903f64e467b0a2f6eff7bfb47d78a8e48daa12a",
+      "date": "2025-06-02T02:12:44Z",
+      "subject": "[statnet_help] Modeling interaction effects in ERGM",
+      "subject_clean": "[statnet_help] Modeling interaction effects in ERGM",
+      "in_reply_to": "<CAN0HJZGyWPURiauyzAeSg_3csxCT6rtvKUZOHggMu7hG8avrGg@mail.gmail.com>",
+      "references": [
+        "<CAN0HJZGyWPURiauyzAeSg_3csxCT6rtvKUZOHggMu7hG8avrGg@mail.gmail.com>"
+      ],
+      "body_plain": "Hi, Wallace,\n\nFor mutuality, it may in fact, be well-defined, but not in general. A better way to model this type of interaction is probably via the F() (for filtering) operator.\n\nTo fit something like what you have here, you could try:\n\n\nnet ~ edges +\n\n      For(l = sort(unique(net %v% \"Gender\"))[-1],\n\n          F(~mutual, ~nodefactor(\"Gender\", levels = I(l)))\n\n      )\n\n\n(I think there's an example in https://doi.org/10.18637/jss.v105.i06 .)\n\nNow that I think about it, there's no reason F() shouldn't be able to test if the filtering term has multiple statistics and act accordingly. Maybe in the next release...\n\n\nI hope this helps,\nPavel\n\nOn Fri, 2025-05-30 at 18:35 -0700, Wallace Chipidza via statnet_help wrote:\nHi,\n\nI have a network with various demographic attributes and am testing some hypotheses on interactions between node attributes and structural effects. Is there a way to model the interaction between an attribute like gender and reciprocity in ERGM? Some way to test if women are more reciprocal in their network behavior than men? So far I've tried:\n\nmodel1 <- ergm(net ~ edges + mutual:nodefactor(\"Gender\"))\n\nand I receive the message \"Error in `ergm_Init_abort()`:! In unknown function: Change statistic interactions are poorly defined for dyad-dependent terms. Use ?interact.dependent? term option to set the behavior.FALSE\"\n\nWallace\n_______________________________________________\nstatnet_help mailing list\nstatnet_help@u.washington.edu<mailto:statnet_help@u.washington.edu>\nhttp://mailman23.u.washington.edu/mailman/listinfo/statnet_help\n\n\n\nConfidential communication - This email and any files transmitted with it are confidential and are intended solely for the addressee. If you are not the intended recipient, please be advised that you have received this email in error and that any use, dissemination, forwarding, printing, or copying of this email and any file attachments is strictly prohibited. If you have received this email in error, please notify me immediately by return email and destroy this email.\n\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman23.u.washington.edu/pipermail/statnet_help/attachments/20250602/2feccaef/attachment.html>",
+      "body_snippet": "Hi, Wallace,\n\nFor mutuality, it may in fact, be well-defined, but not in general. A better way to model this type of interaction is probably via the F() (for filtering) operator.\n\nTo fit something lik",
+      "thread_id": "thread-450f8b9527b1",
+      "thread_depth": 0,
+      "month": "2025-06"
+    },
+    {
+      "id": "msg-45058fc45031",
+      "message_id": "<CAB+wUOH+HoDVWPt8bKT0o4EZeLw=y3nUnGYOphX=FyZ1ub+-MA@mail.gmail.com>",
+      "from_name": "Steven M. Goodreau via statnet_help",
+      "from_email_hash": "cadd53adaa38ad8f3cee64465903f64e467b0a2f6eff7bfb47d78a8e48daa12a",
+      "date": "2025-06-20T11:48:12Z",
+      "subject": "[statnet_help] Fwd: Network Modeling for Epidemics @ SISMID - Applications due June 30",
+      "subject_clean": "[statnet_help] Fwd: Network Modeling for Epidemics @ SISMID - Applications due June 30",
+      "in_reply_to": "<CAB+wUOFmB9y=xzYHsFi+EMmDqDWApO1FNHW3bFREvC+AdEv30A@mail.gmail.com>",
+      "references": [
+        "<CAB+wUOFmB9y=xzYHsFi+EMmDqDWApO1FNHW3bFREvC+AdEv30A@mail.gmail.com>"
+      ],
+      "body_plain": "Hello,\n\nWe are pleased to announce that we will be offering two modules pertaining\nto Network Modeling for Epidemics using EpiModel at this year's SISMID\n(Summer Institute in Statistics and Modeling in Infectious Diseases).\n\nBoth modules are in person in Atlanta.\n\nNetwork Modeling for Epidemics I\n<https://sismid.sph.emory.edu/modules/network-model-epidemics/index.html>:\nJuly 21-23. This module is ideal for those who are starting out with\nEpiModel, or who want a refresher. It is roughly equivalent to a condensed\nversion of the old NME workshop in Seattle.\n\nNetwork Modeling for Epidemics I (NME-I) introduces stochastic network\nmodels for infectious disease transmission dynamics. It is a ??hands-on??\ncourse, using the EpiModel software package in R. EpiModel software\nprovides a unified framework for statistically based modeling of dynamic\nnetworks from empirical data, and simulation of epidemic dynamics over\nthese networks. This explicit modeling of networks is essential for\naccurate projections when the contacts that enable transmission are sparse,\nhighly structured, heterogeneous and/or evolving over time.\n\nNetwork Modeling for Epidemics II\n<https://sismid.sph.emory.edu/modules/network-model-epidemics-II/index.html>:\nJuly 23-25. This module is ideal for those who have taken or will take\nNME-I, either this year or last year at SISMID, or else in Seattle in years\npass.\n\nNetwork Modeling for Epidemics II extends the material in NME-I to\ndeveloping research-level applications of EpiModel and its underlying TERGM\nstatistical framework.  Here, we focus on learning how to use the\napplication programming interface (API) in EpiModel to design and program\nepidemic model components (or ?modules?) that define a network-based\nepidemic model for a specific research question. The goal is to enable\nstudents to build EpiModel extensions to represent any infectious disease\ncomponent in a system of interest.\n\n*Applications are due June 30.*\n\nPlease feel free to share widely!\n\nYours,\nMartina Morris, Steve Goodreau and Samuel Jenness\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman23.u.washington.edu/pipermail/statnet_help/attachments/20250620/7338b9ff/attachment.html>",
+      "body_snippet": "Hello,\n\nWe are pleased to announce that we will be offering two modules pertaining\nto Network Modeling for Epidemics using EpiModel at this year's SISMID\n(Summer Institute in Statistics and Modeling i",
+      "thread_id": "thread-45058fc45031",
+      "thread_depth": 0,
+      "month": "2025-06"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-450f8b9527b1",
+      "subject": "[statnet_help] Modeling interaction effects in ERGM",
+      "message_count": 1,
+      "participants": [
+        "Pavel Krivitsky via statnet_help"
+      ],
+      "started": "2025-06-02T02:12:44Z",
+      "last_reply": "2025-06-02T02:12:44Z",
+      "root_message_id": "msg-450f8b9527b1"
+    },
+    {
+      "id": "thread-45058fc45031",
+      "subject": "[statnet_help] Fwd: Network Modeling for Epidemics @ SISMID - Applications due June 30",
+      "message_count": 1,
+      "participants": [
+        "Steven M. Goodreau via statnet_help"
+      ],
+      "started": "2025-06-20T11:48:12Z",
+      "last_reply": "2025-06-20T11:48:12Z",
+      "root_message_id": "msg-45058fc45031"
+    }
+  ]
+}

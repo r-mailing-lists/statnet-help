@@ -1,0 +1,36 @@
+{
+  "list": "statnet-help",
+  "description": "",
+  "month": "2025-08",
+  "messages": [
+    {
+      "id": "msg-391040223809",
+      "message_id": "<DM8PR07MB88084858F753DAEF61116E4E953EA@DM8PR07MB8808.namprd07.prod.outlook.com>",
+      "from_name": "Zhu, Lin via statnet_help",
+      "from_email_hash": "cadd53adaa38ad8f3cee64465903f64e467b0a2f6eff7bfb47d78a8e48daa12a",
+      "date": "2025-08-25T15:05:45Z",
+      "subject": "[statnet_help] Issue with delete.vertices and network.extract.with.lasttoggle",
+      "subject_clean": "[statnet_help] Issue with delete.vertices and network.extract.with.lasttoggle",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Dear Statnet community,\n\nHope everyone is doing great!\n\nI?ve been using Statnet for a few years, and I?m looking to see if anyone had this same error and if it can be fixed. So in a summary I have had this error <simpleError in lttails[w2] <- ltheads[w2]: NAs are not allowed in subscripted assignments>  from the network.extract.with.lasttoggle function since I updated ERGM from 3.11 to 4.9.0, and TERGM from 3.7.0 to 4.2.2.\n\nI then found that it?s associated with delete.vertices, which I use to remove nodes when they die. So only after using this function, simulating nwd again (S3 used is simulate.networkDynamic) will throw the error. What happened is that, after deleting the nodes, the ties attached to them became NULL in mel. And the network.extract.with.lasttoggle function has the following code to record edge heads and tails which are further processed to construct lttails and ltheads (mentioned in the error message):\n    valid_eids <- valid.eids(nwd)\n    tails <- unlist(lapply(nwd$mel, \"[[\", \"outl\"))[valid_eids]\nheads <- unlist(lapply(nwd$mel, \"[[\", \"inl\"))[valid_eids]\nThe issue is, lapply(nwd$mel, \"[[\", \"outl\") outputs all vids from mel, including the NULLs. Then unlist(lapply(nwd$mel, \"[[\", \"outl\")) automatically removes the NULLs and ends up with a shorter vector, making the edges and indices not matching anymore. Then having the indices [valid_eids] after and outside of unlist will create NAs at the end of tails, with the number of NAs equal to the number of edges that were attached to the removed nodes (the NULL edges).\n\nA simple fix I think is\n    tails <- unlist(lapply(nwd$mel, \"[[\", \"outl\")[valid_eids])\nheads <- unlist(lapply(nwd$mel, \"[[\", \"inl\") [valid_eids])\n\nHowever I tried different methods to replace the code, but it either doesn?t use my updated code, or R crashes if I edit the tergm namespace or Rprofile. Since this function is wrapped many layers under simulate, I didn?t find a better way to replace it.\n\nSo has anyone had the same issue? Does my debugging make sense? If it?s a common issue, would it be possible to update the function in the package from the statnet side so it won?t crash? Please feel free to reach out if you have any questions. Thank you so much for your help!\n\n(A bit more context of the package updates: I used to use renv to lock the package versions (thanks to Steve?s suggestion) and had no issues. Recently I got a new Mac, which cannot install older R versions written with Rosetta, and renv failed to install the older packages because the newer R defaults to clang instead of gcc in many places, which caused a lot of installation errors. I tried to manually install the packages with no luck. I hence decided to update my statnet to the new versions.)\n\nBest,\nLin\n-------------- next part --------------\nAn HTML attachment was scrubbed...\nURL: <http://mailman23.u.washington.edu/pipermail/statnet_help/attachments/20250825/26eccd0c/attachment.html>",
+      "body_snippet": "Dear Statnet community,\n\nHope everyone is doing great!\n\nI?ve been using Statnet for a few years, and I?m looking to see if anyone had this same error and if it can be fixed. So in a summary I have had",
+      "thread_id": "thread-391040223809",
+      "thread_depth": 0,
+      "month": "2025-08"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-391040223809",
+      "subject": "[statnet_help] Issue with delete.vertices and network.extract.with.lasttoggle",
+      "message_count": 1,
+      "participants": [
+        "Zhu, Lin via statnet_help"
+      ],
+      "started": "2025-08-25T15:05:45Z",
+      "last_reply": "2025-08-25T15:05:45Z",
+      "root_message_id": "msg-391040223809"
+    }
+  ]
+}
