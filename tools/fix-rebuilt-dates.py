@@ -18,7 +18,8 @@ mbox file keeps it.
 """
 import re
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 
 START = re.compile(r"(?m)^(?=From \S+ at \S+  \w{3} \w{3} [ \d]\d \d\d:\d\d:\d\d \d{4}$)")
 ENVELOPE = re.compile(r"From \S+ at \S+  (\w{3} \w{3} [ \d]\d \d\d:\d\d:\d\d \d{4})\n")
@@ -27,10 +28,16 @@ CTIME = "%a %b %d %H:%M:%S %Y"
 
 
 def when(text):
+    """The Date line's moment, written as pipermail does or as the message did."""
     try:
         return datetime.strptime(" ".join(text.split()), CTIME)
     except ValueError:
+        pass
+    try:
+        moment = parsedate_to_datetime(text)
+    except (TypeError, ValueError, IndexError):
         return None
+    return moment.astimezone(timezone.utc).replace(tzinfo=None) if moment.tzinfo else moment
 
 
 BODY_FROM = re.compile(r"(?m)^From ")
